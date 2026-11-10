@@ -10511,5 +10511,283 @@
    },
    "verified": false
   }
+ },
+ {
+  "id": "B-SEQ-235",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "B-13",
+  "level": 3,
+  "minutes": 25,
+  "theme": "$n^4+4$ の分解と2つずれて消える積・和",
+  "topic": "$n^4+4$ の分解と2つずれて消える積・和",
+  "statement": {
+   "tex": "数列 $\\{a_n\\}$ を\n\\[a_1=1,\\qquad a_n=\\left\\{1-\\frac{2n^2-3}{(n^2+1)^2}\\right\\}a_{n-1}\\quad(n\\geqq2)\\]\nで定める．また $b_n=\\displaystyle\\sum_{k=1}^n\\frac{k}{k^4+4}$ とする．\n\\begin{enumerate}\n  \\item $a_n$ を $n$ の式で表せ．\n  \\item $\\displaystyle\\lim_{n\\to\\infty}a_n$ を求めよ．\n  \\item $b_n$ を $n$ の式で表し，$\\displaystyle\\lim_{n\\to\\infty}b_n=\\beta$ を求めよ．さらに $\\displaystyle\\lim_{n\\to\\infty}n^2(\\beta-b_n)$ を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $a_n=\\dfrac{2(n^2+2n+2)}{5(n^2+1)}$　(2) $\\dfrac25$　(3) $b_n=\\dfrac38-\\dfrac14\\left(\\dfrac1{n^2+1}+\\dfrac1{n^2+2n+2}\\right)$，$\\beta=\\dfrac38$，$\\displaystyle\\lim n^2(\\beta-b_n)=\\dfrac12$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "$g(m)=m^2+1$ とおく．$g(m)\\geqq1>0$ である．\n\n(1) $n\\geqq2$ のとき\n\\[(n^2+1)^2-(2n^2-3)=n^4+4=(n^2+2)^2-(2n)^2=(n^2+2n+2)(n^2-2n+2)\\]\nであり，$n^2+2n+2=(n+1)^2+1=g(n+1)$，$n^2-2n+2=(n-1)^2+1=g(n-1)$ だから\n\\[a_n=\\frac{n^4+4}{(n^2+1)^2}a_{n-1}=\\frac{g(n+1)\\,g(n-1)}{g(n)^2}\\,a_{n-1}.\\]\n$r_n=\\dfrac{g(n+1)}{g(n)}\\ (n\\geqq1)$ とおくと $r_n>0$ で，$\\dfrac{g(n+1)g(n-1)}{g(n)^2}=\\dfrac{r_n}{r_{n-1}}$．よって $n\\geqq2$ で\n\\[a_n=\\frac{r_n}{r_{n-1}}a_{n-1}\\quad\\text{すなわち}\\quad\\frac{a_n}{r_n}=\\frac{a_{n-1}}{r_{n-1}}.\\]\nしたがって $\\dfrac{a_n}{r_n}=\\dfrac{a_1}{r_1}=\\dfrac{1}{5/2}=\\dfrac25$（$r_1=\\dfrac{g(2)}{g(1)}=\\dfrac52$）がすべての $n\\geqq1$ で成り立ち，\n\\[a_n=\\frac25\\cdot\\frac{g(n+1)}{g(n)}=\\boldsymbol{\\frac{2(n^2+2n+2)}{5(n^2+1)}}.\\]\n\n(2) $a_n=\\dfrac25\\left(1+\\dfrac{2n+1}{n^2+1}\\right)$ で，$0<\\dfrac{2n+1}{n^2+1}=\\dfrac{2/n+1/n^2}{1+1/n^2}\\to0$ だから $\\displaystyle\\lim_{n\\to\\infty}a_n=\\boldsymbol{\\frac25}$．\n\n(3) $g(k+1)-g(k-1)=(k+1)^2-(k-1)^2=4k$ と (1) の分解から，$k\\geqq1$ で\n\\[\\frac{k}{k^4+4}=\\frac14\\cdot\\frac{g(k+1)-g(k-1)}{g(k+1)\\,g(k-1)}=\\frac14\\left(\\frac1{g(k-1)}-\\frac1{g(k+1)}\\right).\\]\n$k=1$ から $n$ まで加えると\n\\[b_n=\\frac14\\left(\\sum_{j=0}^{n-1}\\frac1{g(j)}-\\sum_{j=2}^{n+1}\\frac1{g(j)}\\right).\\]\n$n=1$ のときは括弧内は $\\dfrac1{g(0)}-\\dfrac1{g(2)}$，$n\\geqq2$ のときは $j=2,\\dots,n-1$ の項が打ち消し合うので，いずれの場合も括弧内は $\\dfrac1{g(0)}+\\dfrac1{g(1)}-\\dfrac1{g(n)}-\\dfrac1{g(n+1)}$ に等しい．$g(0)=1$，$g(1)=2$ より\n\\[b_n=\\boldsymbol{\\frac38-\\frac14\\left(\\frac1{n^2+1}+\\frac1{n^2+2n+2}\\right)}.\\]\n括弧内の2項は $0$ に収束するので $\\beta=\\boldsymbol{\\dfrac38}$．さらに\n\\[n^2(\\beta-b_n)=\\frac14\\left(\\frac{1}{1+1/n^2}+\\frac{1}{1+2/n+2/n^2}\\right)\\to\\frac14(1+1)=\\boldsymbol{\\frac12}.\\]\n\\hfill$\\square$"
+   }
+  ],
+  "idea": {
+   "tex": "$n^4+4=(n^2+2)^2-(2n)^2=\\{(n+1)^2+1\\}\\{(n-1)^2+1\\}$ と，因数が同じ2次式 $g(m)=m^2+1$ を $\\pm1$ ずらしたものになる．積の比 $\\dfrac{g(n+1)g(n-1)}{g(n)^2}$ は「比 $\\dfrac{g(n+1)}{g(n)}$ の比」なので約分が連鎖し，和 $\\dfrac{n}{n^4+4}$ は差 $g(n+1)-g(n-1)=4n$ によって2つずれた差に分かれる．"
+  },
+  "methods": [],
+  "tags": [
+   "ソフィー・ジェルマンの分解",
+   "望遠鏡積",
+   "望遠鏡和",
+   "2段ずれ",
+   "極限"
+  ],
+  "provenance": {
+   "created": "2026-11-10"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "B-SEQ-236",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "B-13",
+  "level": 5,
+  "minutes": 40,
+  "theme": "隠れた1階構造をもつ変数係数3項間漸化式の正値性",
+  "topic": "隠れた1階構造をもつ変数係数3項間漸化式の正値性",
+  "statement": {
+   "tex": "$K$ を2以上の自然数とする．数列 $\\{a_n\\}$ を\n\\[\na_1=1,\\quad a_2=1,\\quad a_{n+2}=a_{n+1}+\\frac{(K+1)(K-n)}{(n+1)(n+2)}\\,a_n\\quad(n=1,2,3,\\dots)\n\\]\nで定める．\n\\begin{enumerate}\n  \\item 定数 $s$ に対して $b_n=a_{n+1}+\\dfrac{s-n}{n+1}\\,a_n\\ (n=1,2,3,\\dots)$ とおく．すべての自然数 $n$ について $b_{n+1}=\\dfrac{K+1}{n+2}\\,b_n$ が成り立つような $s$ の値を求めよ．また，そのときの $b_n$ を $n$ と $K$ の式で表せ．\n  \\item すべての自然数 $n$ について $a_n>0$ であることを示せ．\n  \\item $a_n$ が最大となる自然数 $n$ をすべて求め，$a_n$ の最大値を $K$ の式で表せ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $s=K$，$b_n=\\dfrac{(K+1)^n}{(n+1)!}$　(2) 証明　(3) $n=K+1,\\ K+2$，最大値 $\\dfrac{(K+1)^{K-1}}{K!}$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) $b_{n+1}=a_{n+2}+\\dfrac{s-n-1}{n+2}a_{n+1}$ に漸化式を代入すると\n\\[\nb_{n+1}=\\frac{s+1}{n+2}a_{n+1}+\\frac{(K+1)(K-n)}{(n+1)(n+2)}a_n .\n\\]\n一方 $\\dfrac{K+1}{n+2}b_n=\\dfrac{K+1}{n+2}a_{n+1}+\\dfrac{(K+1)(s-n)}{(n+1)(n+2)}a_n$ なので\n\\[\nb_{n+1}-\\frac{K+1}{n+2}b_n=\\frac{s-K}{n+2}a_{n+1}+\\frac{(K+1)(K-s)}{(n+1)(n+2)}a_n=\\frac{s-K}{n+2}\\left(a_{n+1}-\\frac{K+1}{n+1}a_n\\right).\n\\]\n$n=1$ のとき括弧内は $a_2-\\frac{K+1}2a_1=\\frac{1-K}2\\neq0$（$K\\geqq2$）なので，条件が $n=1$ で成り立つには $s=K$ が必要．逆に $s=K$ なら上式はすべての $n$ で0である．よって $\\boldsymbol{s=K}$．\n\nこのとき $b_1=a_2+\\frac{K-1}2a_1=\\frac{K+1}2$ で，$b_{n+1}=\\frac{K+1}{n+2}b_n$ をくり返し用いると（帰納法）\n\\[\n\\boldsymbol{b_n=\\frac{(K+1)^n}{(n+1)!}}\\quad(n\\geqq1)\n\\]\n（$n=1$ で $\\frac{K+1}2$，$\\frac{K+1}{n+2}\\cdot\\frac{(K+1)^n}{(n+1)!}=\\frac{(K+1)^{n+1}}{(n+2)!}$）．\n\n\\medskip\n(2) (1) より，すべての $n\\geqq1$ で\n\\[\na_{n+1}=b_n+\\frac{n-K}{n+1}a_n,\\qquad b_n=\\frac{(K+1)^n}{(n+1)!}>0 \\tag{$*$}\n\\]\n\\textbf{(i) $1\\leqq n\\leqq K$ の場合．} $w_n=(-1)^{n-1}n!\\,(K-n)!\\,a_n\\ (1\\leqq n\\leqq K)$ とおく．$1\\leqq n\\leqq K-1$ のとき，$(*)$ に $(-1)^n(n+1)!\\,(K-1-n)!$ を掛けると\n\\begin{align*}\nw_{n+1}&=(-1)^n(K-1-n)!\\,(K+1)^n+(-1)^n\\,n!\\,(K-1-n)!\\,(n-K)\\,a_n\\\\\n&=\\bigl(-(K+1)\\bigr)^n(K-1-n)!+(-1)^{n-1}n!\\,(K-n)!\\,a_n\n=w_n+\\bigl(-(K+1)\\bigr)^n(K-1-n)! .\n\\end{align*}\n$w_1=(K-1)!$ なので，$t_j=(K+1)^j(K-1-j)!\\ (0\\leqq j\\leqq K-1)$ とおくと\n\\[\nw_n=\\sum_{j=0}^{n-1}(-1)^jt_j,\\qquad (-1)^{n-1}w_n=t_{n-1}-t_{n-2}+t_{n-3}-\\cdots+(-1)^{n-1}t_0 .\n\\]\n$0\\leqq j\\leqq K-2$ で $\\dfrac{t_{j+1}}{t_j}=\\dfrac{K+1}{K-1-j}>1$ だから $t_0<t_1<\\cdots<t_{K-1}$．右辺を先頭から2項ずつ $(t_{n-1}-t_{n-2})+(t_{n-3}-t_{n-4})+\\cdots$ とまとめると各組は正で，$n$ が奇数のときに最後に残る $t_0$ も正．$n=1$ では $t_0>0$．よって $(-1)^{n-1}w_n>0$ であり，\n\\[\na_n=\\frac{(-1)^{n-1}w_n}{n!\\,(K-n)!}>0\\quad(1\\leqq n\\leqq K).\n\\]\n\\textbf{(ii) $n\\geqq K+1$ の場合．} $(*)$ で $n=K$ とすると $a_{K+1}=b_K>0$．$n\\geqq K+1$ で $a_n>0$ なら，$(*)$ において $b_n>0$，$\\frac{n-K}{n+1}>0$ なので $a_{n+1}>0$．帰納法により $n\\geqq K+1$ で $a_n>0$．\n\n以上より，すべての自然数 $n$ で $a_n>0$．\\hfill$\\square$\n\n\\medskip\n(3) 漸化式より $a_{n+2}-a_{n+1}=\\dfrac{(K+1)(K-n)}{(n+1)(n+2)}a_n$ で，(2) から $a_n>0$．よって\n\\[\na_{n+2}-a_{n+1}\\ \\text{は}\\ n<K\\ \\text{で正},\\quad n=K\\ \\text{で}\\ 0,\\quad n>K\\ \\text{で負}.\n\\]\nしたがって\n\\[\na_1=a_2<a_3<\\cdots<a_{K+1}=a_{K+2}>a_{K+3}>a_{K+4}>\\cdots\n\\]\n（$K\\geqq2$ より $K+1\\geqq3$ なので $a_2<a_{K+1}$）．最大となる $n$ は $\\boldsymbol{n=K+1,\\ K+2}$．その値は $(*)$ で $n=K$ として $a_{K+1}=b_K=\\dfrac{(K+1)^K}{(K+1)!}$，すなわち\n\\[\n\\text{最大値}\\ \\boldsymbol{\\frac{(K+1)^{K-1}}{K!}} .\n\\]"
+   }
+  ],
+  "idea": {
+   "tex": "変数係数の3項間漸化式に対し，$b_n=a_{n+1}+\\frac{s-n}{n+1}a_n$ の形の補助数列を，$b_{n+1}=\\frac{K+1}{n+2}b_n$ となるように $s$ を決めて見つけ，1階の漸化式に落とす．正値性は与えられず，$n\\leqq K$ では $a_n$ の係数 $\\frac{n-K}{n+1}$ が負なので，$(-1)^{n-1}n!(K-n)!\\,a_n$ という「符号つきの積分因子」で和に直し，項の絶対値が単調に増える交代和は最後の項の符号をもつことから示す．最大項は漸化式そのものが $a_{n+2}-a_{n+1}$ の符号を与えることから決まる．"
+  },
+  "methods": [],
+  "tags": [
+   "3項間漸化式",
+   "変数係数",
+   "補助数列",
+   "交代和",
+   "正値性",
+   "最大項"
+  ],
+  "provenance": {
+   "created": "2026-11-10"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "B-SEQ-237",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "B-13",
+  "level": 4,
+  "minutes": 35,
+  "theme": "番号とともに変わる絶対値つき漸化式",
+  "topic": "番号とともに変わる絶対値つき漸化式",
+  "statement": {
+   "tex": "$a$ を正の実数とし，数列 $\\{a_n\\}$ を\n\\[\na_1=a,\\qquad \\log_2a_{n+1}=n-\\bigl|\\log_2a_n\\bigr|\\quad(n=1,2,3,\\dots)\n\\]\nで定める．\n\\begin{enumerate}\n  \\item ある正の整数 $m$ について $1\\leqq a_m\\leqq2^m$ が成り立つならば，$n\\geqq m$ をみたすすべての整数 $n$ について $1\\leqq a_n\\leqq2^n$ かつ $a_{n+2}=2a_n$ が成り立つことを示せ．\n  \\item $a=2^{2016}$ のとき，一般項 $a_n$ を求めよ．\n  \\item $n\\geqq2$ のある整数 $n$ について $a_n=1$ となるような $a$ をすべて求めよ．\n  \\item すべての正の実数 $a$ について，$\\displaystyle\\lim_{n\\to\\infty}(a_n)^{\\frac1n}=\\sqrt2$ であることを示せ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 証明　(2) $a_1=2^{2016}$，$2\\leqq n\\leqq64$ のとき $a_n=2^{\\frac{n(n-1)}2-2016}$，$n\\geqq64$ で $n$ が偶数のとき $a_n=2^{\\frac{n-64}2}$，$n\\geqq65$ で $n$ が奇数のとき $a_n=2^{\\frac{n+63}2}$　(3) $a=2^{\\frac{k(k+1)}2}$，$2^{-\\frac{k(k+1)}2}$（$k=1,2,3,\\dots$）　(4) 証明"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "$b_n=\\log_2a_n$ とおくと，$b_1=\\log_2a$，$b_{n+1}=n-|b_n|$ である．また $a_n=2^{b_n}$ だから，$1\\leqq a_n\\leqq2^n\\iff0\\leqq b_n\\leqq n$，$a_{n+2}=2a_n\\iff b_{n+2}=b_n+1$ である．\n\n(1) $0\\leqq b_m\\leqq m$ とする．$n\\geqq m$ について「$0\\leqq b_n\\leqq n$」を帰納法で示す．$n=m$ では仮定より成り立つ．$0\\leqq b_n\\leqq n$ ならば $b_{n+1}=n-b_n$ で，$0\\leqq b_{n+1}\\leqq n<n+1$ となる．よって $n\\geqq m$ のすべてで $0\\leqq b_n\\leqq n$ が成り立つ．このとき $n\\geqq m$ で $b_{n+1}=n-b_n$，$b_{n+2}=(n+1)-b_{n+1}$ だから\n\\[\nb_{n+2}=(n+1)-(n-b_n)=b_n+1.\n\\]\nしたがって $1\\leqq a_n\\leqq2^n$ かつ $a_{n+2}=2a_n$（$n\\geqq m$）．\\hfill$\\square$\n\n\\textbf{準備（一般の $a$）．} $c=|b_1|\\ (\\geqq0)$ とおく．$b_2=1-c$ である．\n\\begin{itemize}\n  \\item[(i)] $c\\leqq1$ のとき：$0\\leqq b_2\\leqq1\\leqq2$ なので，(1) の議論が $m=2$ から使える．$b_3=2-b_2=1+c$ だから，$k\\geqq0$ で $b_{2+2k}=1-c+k$，$b_{3+2k}=1+c+k$．\n  \\item[(ii)] $c>1$ のとき：$b_k<0$ ならば $b_{k+1}=k+b_k$ である．$\\dfrac{n(n-1)}2\\geqq c$ をみたす整数 $n\\geqq2$ は存在するので（例えば $n>2c$ をとればよい），その最小のものを $m$ とする．$\\dfrac{2\\cdot1}{2}=1<c$ より $m\\geqq3$ である．$2\\leqq n\\leqq m$ について $b_n=\\dfrac{n(n-1)}2-c$ を帰納法で示す．$n=2$ では $b_2=1-c$ で成り立つ．$2\\leqq n<m$ で成り立つとすると，$m$ の最小性から $b_n=\\dfrac{n(n-1)}2-c<0$．よって $b_{n+1}=n+b_n=\\dfrac{(n+1)n}2-c$ となり，$n+1$ でも成り立つ．特に $b_m=\\dfrac{m(m-1)}2-c\\geqq0$ である．また $\\dfrac{(m-1)(m-2)}2<c$ より $b_m<\\dfrac{m(m-1)}2-\\dfrac{(m-1)(m-2)}2=m-1<m$ である．よって (1) が使え，$b_{m+1}=m-b_m$ と合わせて，$k\\geqq0$ で\n  \\[\n  b_{m+2k}=b_m+k,\\qquad b_{m+1+2k}=m-b_m+k.\n  \\]\n\\end{itemize}\n\n(2) $b_1=2016$，$c=2016>1$．$\\dfrac{n(n-1)}2\\geqq2016$ をみたす最小の $n$ を求める．$\\dfrac{64\\cdot63}2=2016$，$\\dfrac{63\\cdot62}2=1953<2016$ だから $m=64$ で，$b_{64}=0$ となる．よって $2\\leqq n\\leqq64$ で $b_n=\\dfrac{n(n-1)}2-2016$．$n\\geqq64$ では，$b_{64+2k}=k$，$b_{65+2k}=64+k$ より，$n$ が偶数なら $b_n=\\dfrac{n-64}2$，$n$ が奇数なら $b_n=64+\\dfrac{n-65}2=\\dfrac{n+63}2$．したがって\n\\[\n\\boldsymbol{a_1=2^{2016},\\quad a_n=2^{\\frac{n(n-1)}2-2016}\\ (2\\leqq n\\leqq64),\\quad a_n=\\begin{cases}2^{\\frac{n-64}2}&(n\\geqq64,\\ n\\text{ 偶数})\\\\[2pt]2^{\\frac{n+63}2}&(n\\geqq65,\\ n\\text{ 奇数})\\end{cases}}\n\\]\n（$n=64$ では2つの式がともに $a_{64}=1$ を与える．）\n\n(3) $a_n=1\\iff b_n=0$ である．\n\\begin{itemize}\n  \\item[(i)] $c\\leqq1$ のとき：$b_{3+2k}=1+c+k>0$，$b_{2+2k}=1-c+k$ は $k\\geqq1$ で正である．よって $n\\geqq2$ で $b_n=0$ となるのは $b_2=1-c=0$，すなわち $c=1$ のときに限る．\n  \\item[(ii)] $c>1$ のとき：$2\\leqq n<m$ では $b_n<0$ である．$n>m$ では，$k\\geqq1$ で $b_{m+2k}=b_m+k\\geqq1$，また $k\\geqq0$ で $b_{m+1+2k}=m-b_m+k>1$（$b_m<m-1$ より）なので，いずれも $0$ でない．よって $b_n=0$ となる $n\\geqq2$ があるのは $b_m=0$，すなわち $c=\\dfrac{m(m-1)}2$ のときに限る．逆に，整数 $m\\geqq3$ について $c=\\dfrac{m(m-1)}2$ ならば $c>1$ であり，$\\dfrac{n(n-1)}2\\geqq c$ をみたす最小の $n$ はこの $m$ である（$\\dfrac{n(n-1)}2$ は $n\\geqq1$ で狭義に増加する）．よって $b_m=0$ となる．\n\\end{itemize}\n(i)，(ii) の $c=1=\\dfrac{2\\cdot1}2$ と $c=\\dfrac{m(m-1)}2$（$m\\geqq3$）をまとめると，条件は「$|\\log_2a|=\\dfrac{k(k+1)}2$ となる正の整数 $k$ がある」ことである．すなわち\n\\[\n\\boldsymbol{a=2^{\\frac{k(k+1)}2}\\ \\text{または}\\ a=2^{-\\frac{k(k+1)}2}\\quad(k=1,2,3,\\dots)}.\n\\]\n\n(4) 準備の (i)，(ii) のどちらでも，ある整数 $m\\ (\\geqq2)$ と定数 $p,\\ q$（$a$ だけで決まる）があって，$k\\geqq0$ で $b_{m+2k}=p+k$，$b_{m+1+2k}=q+k$ が成り立つ（(i) では $m=2$，$p=1-c$，$q=1+c$；(ii) では $p=b_m$，$q=m-b_m$）．$n\\geqq m$ を $n=m+2k$ と書くと\n\\[\n\\frac{b_n}n=\\frac{p+\\frac{n-m}2}{n}=\\frac12+\\frac{p-\\frac m2}{n},\n\\]\n$n=m+1+2k$ と書くと\n\\[\n\\frac{b_n}n=\\frac{q+\\frac{n-m-1}2}{n}=\\frac12+\\frac{q-\\frac{m+1}2}{n}.\n\\]\n$p,\\ q,\\ m$ は $n$ によらないので，どちらの場合も $n\\to\\infty$ で $\\dfrac{b_n}{n}\\to\\dfrac12$．よって\n\\[\n(a_n)^{\\frac1n}=2^{\\frac{b_n}n}\\longrightarrow2^{\\frac12}=\\sqrt2\\qquad(n\\to\\infty)\n\\]\n（$2^x$ は連続関数だから）．\\hfill$\\square$"
+   }
+  ],
+  "idea": {
+   "tex": "$b_n=\\log_2a_n$ とおくと，絶対値つきの1次式による漸化式になる．$b_n$ の符号で場合分けし，負の間に起こる単調な移動と，$0$ 以上の範囲に入った後の振る舞いを分けて追う．原題 $b_{n+1}=2-|b_n|$ では，負の間は毎回 $2$ ずつ増え，$[0,2]$ に入ると周期2になる．捻りでは定数 $2$ を番号 $n$ に変える．負の間の増え方が $2,3,4,\\dots$ と大きくなるので，$b_n$ は三角数を使って表される．$0\\leqq b_m\\leqq m$ に入った後は，$b_n+b_{n+1}=n$ から $b_{n+2}=b_n+1$ となり，偶数番目と奇数番目がそれぞれ等差数列になる．"
+  },
+  "methods": [],
+  "tags": [
+   "絶対値つき漸化式",
+   "対数",
+   "三角数",
+   "場合分け",
+   "偶奇で分かれる等差数列"
+  ],
+  "provenance": {
+   "created": "2026-11-10"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "B-SEQ-238",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "B-13",
+  "level": 4,
+  "minutes": 35,
+  "theme": "三角形上を独立に動く2点が同じ頂点にある確率",
+  "topic": "三角形上を独立に動く2点が同じ頂点にある確率",
+  "statement": {
+   "tex": "三角形 ABC の頂点上に置かれた点に対する次の操作 T を考える．\n\\begin{itemize}\n  \\item[(T1)] 点が頂点 A 上にあるときは，確率 $\\frac12$ でそのままにしておき，確率 $\\frac12$ で頂点 B 上に移す．\n  \\item[(T2)] 点が頂点 B 上にあるときは，確率 $\\frac12$ でそのままにしておき，確率 $\\frac12$ で頂点 C 上に移す．\n  \\item[(T3)] 点が頂点 C 上にあるときは，必ず頂点 A 上に移す．\n\\end{itemize}\n\\begin{enumerate}\n  \\item 1つの点をある頂点に置き，操作 T を $n$ 回繰り返し終えたとき，点が頂点 A，B，C 上にある確率をそれぞれ $a_n$，$b_n$，$c_n$ とする（$a_0$，$b_0$，$c_0$ は最初に置いた頂点で決まる）．どの頂点から始めた場合も，すべての $0$ 以上の整数 $n$ に対して\n  \\[\n  a_{n+2}-\\alpha=-\\frac14\\,(a_n-\\alpha),\\quad\n  b_{n+2}-\\beta=-\\frac14\\,(b_n-\\beta),\\quad\n  c_{n+2}-\\gamma=-\\frac14\\,(c_n-\\gamma)\n  \\]\n  が成り立つような定数 $\\alpha$，$\\beta$，$\\gamma$ を求め，それらに対して実際に上の3式が成り立つことを示せ．\n  \\item 2つの点 P，Q をそれぞれ頂点 A，B 上に置き，P と Q のそれぞれに互いに独立に操作 T を行うことを繰り返す．これを $n$ 回繰り返し終えたとき P と Q が同じ頂点上にある確率を $s_n$ とする．$m$ を $0$ 以上の整数とし，$s_{2m}$ と $s_{2m+1}$ を $m$ の式で表せ．\n  \\item $L=\\displaystyle\\lim_{n\\to\\infty}s_n$ を求めよ．また，$s_n>L$ となる自然数 $n$ をすべて求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $\\alpha=\\dfrac25$，$\\beta=\\dfrac25$，$\\gamma=\\dfrac15$（成り立つことは証明）　(2) $r=\\left(-\\dfrac14\\right)^m$ として $s_{2m}=\\dfrac9{25}+\\dfrac2{25}r-\\dfrac{11}{25}r^2$，$s_{2m+1}=\\dfrac9{25}-\\dfrac1{50}r-\\dfrac9{100}r^2$　(3) $L=\\dfrac9{25}$；$s_n>L$ となるのは $n$ が4の倍数のとき，および $n$ を4で割った余りが3で $n\\geqq7$ のとき（$n=3$ は除く）"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "\\textbf{(1)}　操作 T の規則から，どの頂点から始めても $n\\geqq0$ で\n\\[\na_{n+1}=\\frac12a_n+c_n,\\qquad b_{n+1}=\\frac12a_n+\\frac12b_n,\\qquad c_{n+1}=\\frac12b_n,\\qquad a_n+b_n+c_n=1 .\n\\]\n\\emph{定数の決定}．A から始めると $(a_0,b_0,c_0)=(1,0,0)$，$(a_1,b_1,c_1)=\\left(\\frac12,\\frac12,0\\right)$，$(a_2,b_2,c_2)=\\left(\\frac14,\\frac12,\\frac14\\right)$ である．$n=0$ の3式は\n\\[\n\\frac14-\\alpha=-\\frac14(1-\\alpha),\\qquad \\frac12-\\beta=\\frac14\\beta,\\qquad \\frac14-\\gamma=\\frac14\\gamma\n\\]\nとなり，$\\alpha=\\dfrac25$，$\\beta=\\dfrac25$，$\\gamma=\\dfrac15$ が必要である．\n\n\\emph{成り立つこと}．$\\alpha=\\beta=\\frac25$，$\\gamma=\\frac15$ とし，$x_n=a_n-\\frac25$，$y_n=b_n-\\frac25$，$z_n=c_n-\\frac15$ とおく．$\\frac25=\\frac12\\cdot\\frac25+\\frac15$，$\\frac25=\\frac12\\cdot\\frac25+\\frac12\\cdot\\frac25$，$\\frac15=\\frac12\\cdot\\frac25$ であるから，漸化式から定数部分が消えて\n\\[\nx_{n+1}=\\frac12x_n+z_n,\\qquad y_{n+1}=\\frac12x_n+\\frac12y_n,\\qquad z_{n+1}=\\frac12y_n,\\qquad x_n+y_n+z_n=0 .\n\\]\nこれを2回用いると\n\\begin{align*}\nx_{n+2}&=\\frac12x_{n+1}+z_{n+1}=\\frac14x_n+\\frac12z_n+\\frac12y_n=\\frac14x_n-\\frac12x_n=-\\frac14x_n,\\\\\ny_{n+2}&=\\frac12x_{n+1}+\\frac12y_{n+1}=\\frac14x_n+\\frac12z_n+\\frac14x_n+\\frac14y_n=\\frac12(x_n+z_n)+\\frac14y_n=-\\frac14y_n,\\\\\nz_{n+2}&=\\frac12y_{n+1}=\\frac14(x_n+y_n)=-\\frac14z_n .\n\\end{align*}\nよって $\\boldsymbol{\\alpha=\\dfrac25,\\ \\beta=\\dfrac25,\\ \\gamma=\\dfrac15}$ に対して3式が成り立つ．\\hfill$\\square$\n\n\\medskip\n\\textbf{(2)}　$r=\\left(-\\frac14\\right)^m$ とおく．(1) より，各頂点にある確率の「$\\left(\\frac25,\\frac25,\\frac15\\right)$ からのずれ」は，$n=2m$ では $n=0$ のずれの $r$ 倍，$n=2m+1$ では $n=1$ のずれの $r$ 倍である．\n\nP（A から出発）：$n=0$ のずれは $\\left(\\frac35,-\\frac25,-\\frac15\\right)$，$n=1$ の分布は $\\left(\\frac12,\\frac12,0\\right)$ でずれは $\\left(\\frac1{10},\\frac1{10},-\\frac15\\right)$．\n\nQ（B から出発）：$n=0$ のずれは $\\left(-\\frac25,\\frac35,-\\frac15\\right)$，$n=1$ の分布は $\\left(0,\\frac12,\\frac12\\right)$ でずれは $\\left(-\\frac25,\\frac1{10},\\frac3{10}\\right)$．\n\nP と Q は独立に動くので，頂点 V に P がある確率を $p_V$，Q がある確率を $q_V$ とすると $s_n=\\sum_{V}p_Vq_V$ である．$p_V=\\pi_V+u_V$，$q_V=\\pi_V+w_V$（$\\pi=\\left(\\frac25,\\frac25,\\frac15\\right)$）と書くと\n\\[\ns_n=\\sum_V\\pi_V^{\\,2}+\\sum_V\\pi_V(u_V+w_V)+\\sum_Vu_Vw_V,\\qquad \\sum_V\\pi_V^{\\,2}=\\frac4{25}+\\frac4{25}+\\frac1{25}=\\frac9{25}.\n\\]\n\\emph{$n=2m$}：$u+w=r\\left(\\frac15,\\frac15,-\\frac25\\right)$ で $\\sum\\pi_V(u_V+w_V)=r\\left(\\frac2{25}+\\frac2{25}-\\frac2{25}\\right)=\\frac2{25}r$．$\\sum u_Vw_V=r^2\\left(-\\frac6{25}-\\frac6{25}+\\frac1{25}\\right)=-\\frac{11}{25}r^2$．\n\n\\emph{$n=2m+1$}：$u+w=r\\left(-\\frac3{10},\\frac15,\\frac1{10}\\right)$ で $\\sum\\pi_V(u_V+w_V)=r\\left(-\\frac6{50}+\\frac4{50}+\\frac1{50}\\right)=-\\frac1{50}r$．$\\sum u_Vw_V=r^2\\left(-\\frac4{100}+\\frac1{100}-\\frac6{100}\\right)=-\\frac9{100}r^2$．\n\n以上より，$r=\\left(-\\dfrac14\\right)^m$ として\n\\[\n\\boldsymbol{s_{2m}=\\frac9{25}+\\frac2{25}r-\\frac{11}{25}r^2,\\qquad s_{2m+1}=\\frac9{25}-\\frac1{50}r-\\frac9{100}r^2}.\n\\]\n（検算：$s_1=\\frac9{25}-\\frac1{50}-\\frac9{100}=\\frac14$ は，P が B，Q が B にある確率 $\\frac12\\cdot\\frac12$ と一致する．）\n\n\\medskip\n\\textbf{(3)}　$m\\to\\infty$ で $r\\to0$ なので $s_{2m}$，$s_{2m+1}$ はともに $\\frac9{25}$ に収束し，$\\boldsymbol{L=\\dfrac9{25}}$．\n\\[\ns_{2m}-L=\\frac{r}{25}(2-11r),\\qquad s_{2m+1}-L=-\\frac{r}{100}(2+9r).\n\\]\n\\emph{$n=2m$（$m\\geqq1$）}．$m$ が奇数なら $r<0$，$2-11r>0$ で $s_n<L$．$m$ が偶数なら $0<r\\leqq\\frac1{16}$ で $2-11r\\geqq2-\\frac{11}{16}>0$ なので $s_n>L$．\n\n\\emph{$n=2m+1$（$m\\geqq0$）}．$m$ が偶数なら $r>0$，$2+9r>0$ で $s_n<L$（$m=0$ も含む）．$m=1$ なら $r=-\\frac14$，$2+9r=-\\frac14$ で $s_3-L=-\\dfrac{1}{100}\\cdot\\left(-\\dfrac14\\right)\\cdot\\left(-\\dfrac14\\right)=-\\dfrac{1}{1600}<0$（実際 $s_3=\\frac{23}{64}<\\frac9{25}$）．$m$ が3以上の奇数なら $-\\frac1{64}\\leqq r<0$ で $2+9r\\geqq2-\\frac9{64}>0$ なので $s_n-L>0$．\n\n$m$ が2以上の偶数 $\\iff$ $n=2m$ が4の倍数（$n\\geqq4$），$m$ が3以上の奇数 $\\iff$ $n=2m+1$ を4で割った余りが3かつ $n\\geqq7$ である．よって $s_n>L$ となる自然数 $n$ は\n\\[\n\\boldsymbol{n\\equiv0\\pmod 4\\ \\text{の}\\ n\\ (n\\geqq4),\\quad\\text{および}\\quad n\\equiv3\\pmod4\\ \\text{かつ}\\ n\\geqq7\\ \\text{の}\\ n}\n\\]\nである（$n=3$ だけは $4$ で割った余りが3でも $s_3<L$）．"
+   }
+  ],
+  "idea": {
+   "tex": "「A は確率 $\\frac12$ でとどまり $\\frac12$ で B へ，B は $\\frac12$ でとどまり $\\frac12$ で C へ，C は必ず A へ」という推移では，定常な確率 $\\left(\\frac25,\\frac25,\\frac15\\right)$ からのずれが2回の操作でちょうど $-\\frac14$ 倍になる（ずれが周期4で符号を変えながら減衰する）．原題は1点の確率と初到達だったが，捻りでは2点を独立に動かし，同じ頂点にある確率を「各頂点にある確率の積の和」として書く．ずれの1次の項（$(-\\frac14)^m$）と2次の項（$\\frac1{16^m}$）が競合するため，極限値より大きくなる $n$ は $4$ を法とした類で決まるが，小さい $n$ だけ例外が生じる．"
+  },
+  "methods": [],
+  "tags": [
+   "確率漸化式",
+   "連立漸化式",
+   "2回ごとの漸化式",
+   "独立な試行",
+   "符号の判定"
+  ],
+  "provenance": {
+   "created": "2026-11-10"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "B-SEQ-239",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "B-13",
+  "level": 5,
+  "minutes": 40,
+  "theme": "2個ずつ取り出して白玉を除く袋と $2^{X_n}$ の期待値・分散",
+  "topic": "2個ずつ取り出して白玉を除く袋と $2^{X_n}$ の期待値・分散",
+  "statement": {
+   "tex": "袋の中に赤玉3個と白玉3個が入っている．次の操作Tを繰り返し行う．\n\\begin{center}\n\\fbox{\\parbox{0.86\\linewidth}{操作T：袋から玉を2個同時に取り出し，取り出した玉のうち白玉は袋に戻さず，赤玉は袋に戻す．}}\n\\end{center}\n（白玉がなくなった後も操作Tは行うが，このとき袋の中身は変わらない．）$n$ を自然数とし，操作Tを $n$ 回行い終えたとき袋の中の白玉が3個，2個，1個である確率をそれぞれ $p_n$，$q_n$，$r_n$ とする．\n\nさらに，各回の操作Tを行う直前に袋に白玉が1個以上入っていれば1点を得るものとし，1回目から $n$ 回目までに得た点の合計を $X_n$，$Y_n=2^{X_n}$ とする．\n\\begin{enumerate}\n  \\item $p_n$，$q_n$，$r_n$ を $n$ の式で表せ．\n  \\item $Y_n$ の期待値 $E(Y_n)$ を $n$ の式で表せ．また $\\displaystyle\\lim_{n\\to\\infty}\\left\\{E(Y_n)-\\frac{20}{3}n\\right\\}$ を求めよ．\n  \\item $Y_n$ の分散を $V(Y_n)$ とするとき，$\\displaystyle\\lim_{n\\to\\infty}\\frac{V(Y_n)}{2^n}$ を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $p_n=\\left(\\dfrac15\\right)^n$，$q_n=6\\left\\{\\left(\\dfrac3{10}\\right)^n-\\left(\\dfrac15\\right)^n\\right\\}$，$r_n=\\dfrac{20}3\\left(\\dfrac12\\right)^n-18\\left(\\dfrac3{10}\\right)^n+\\dfrac{34}3\\left(\\dfrac15\\right)^n$　(2) $E(Y_n)=\\dfrac{20}3n-\\dfrac{166}9+30\\left(\\dfrac35\\right)^n-\\dfrac{95}9\\left(\\dfrac25\\right)^n$，極限 $-\\dfrac{166}9$　(3) $20$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "白玉が $w$ 個（赤玉は常に3個）のとき，2個の取り出し方は ${}_{w+3}\\mathrm C_2$ 通りで同様に確からしい．\n\\begin{itemize}\n  \\item $w=3$（計6個，15通り）：白2個 $3$ 通り，白赤1個ずつ $9$ 通り，赤2個 $3$ 通り．$3\\to1$ が $\\frac15$，$3\\to2$ が $\\frac35$，$3\\to3$ が $\\frac15$．\n  \\item $w=2$（計5個，10通り）：白2個 $1$，白赤 $6$，赤2個 $3$．$2\\to0$ が $\\frac1{10}$，$2\\to1$ が $\\frac35$，$2\\to2$ が $\\frac3{10}$．\n  \\item $w=1$（計4個，6通り）：白赤 $3$，赤2個 $3$．$1\\to0$ が $\\frac12$，$1\\to1$ が $\\frac12$．\n\\end{itemize}\n白玉は増えないので，$n\\geqq0$ について（$p_0=1$，$q_0=r_0=0$ とする）\n\\[\np_{n+1}=\\frac15p_n,\\quad q_{n+1}=\\frac35p_n+\\frac3{10}q_n,\\quad r_{n+1}=\\frac15p_n+\\frac35q_n+\\frac12r_n .\n\\]\n\n\\textbf{(1)}　$p_n=\\left(\\dfrac15\\right)^n$．次に $q_{n+1}=\\dfrac3{10}q_n+\\dfrac35\\left(\\dfrac15\\right)^n$ の両辺を $\\left(\\dfrac3{10}\\right)^{n+1}$ で割り，$Q_n=q_n\\left(\\dfrac{10}3\\right)^n$ とおくと $Q_{n+1}=Q_n+2\\left(\\dfrac23\\right)^n$，$Q_0=0$．よって $Q_n=2\\cdot\\dfrac{1-(2/3)^n}{1-2/3}=6\\left\\{1-\\left(\\dfrac23\\right)^n\\right\\}$ で\n\\[\n\\boldsymbol{q_n=6\\left\\{\\left(\\frac3{10}\\right)^n-\\left(\\frac15\\right)^n\\right\\}}.\n\\]\n$r_n$ について $s_n=r_n+18\\left(\\dfrac3{10}\\right)^n-\\dfrac{34}3\\left(\\dfrac15\\right)^n$ とおく．\n$\\dfrac35q_n=12\\left(\\dfrac3{10}\\right)^{n+1}-18\\left(\\dfrac15\\right)^{n+1}$，$\\dfrac15p_n=\\left(\\dfrac15\\right)^{n+1}$ に注意すると\n\\[\ns_{n+1}=\\frac12r_n+\\Bigl(12+18\\Bigr)\\left(\\frac3{10}\\right)^{n+1}+\\Bigl(1-18-\\frac{34}3\\Bigr)\\left(\\frac15\\right)^{n+1}\n=\\frac12r_n+9\\left(\\frac3{10}\\right)^{n}-\\frac{17}3\\left(\\frac15\\right)^{n}=\\frac12s_n .\n\\]\n$s_0=0+18-\\dfrac{34}3=\\dfrac{20}3$ より $s_n=\\dfrac{20}3\\left(\\dfrac12\\right)^n$ で\n\\[\n\\boldsymbol{r_n=\\frac{20}3\\left(\\frac12\\right)^n-18\\left(\\frac3{10}\\right)^n+\\frac{34}3\\left(\\frac15\\right)^n}.\n\\]\n（検算：$r_1=\\frac{10}3-\\frac{27}5+\\frac{34}{15}=\\frac15$，$r_2=\\frac53-\\frac{81}{50}+\\frac{34}{75}=\\frac12$ は直接計算と一致．）\n\n\\medskip\n\\textbf{(2)}　「$k$ 回目の操作の後に初めて白玉が $0$ 個になる」という事象を $T=k$ と書き，「$n$ 回目の操作の後にまだ白玉が残っている」という事象を $T>n$ と書く．$k$ 回目の直前に白玉があるのは「$k-1$ 回目までに白玉がなくなっていない」ときなので，$T=k$（$1\\leqq k\\leqq n$）のとき $X_n=k$，$T>n$ のとき $X_n=n$ であり，これらの事象は互いに排反で全体をつくす．したがって\n\\[\nE(Y_n)=\\sum_{k=1}^n2^kP(T=k)+2^n\\,P(T>n),\\qquad P(T>n)=p_n+q_n+r_n .\n\\]\n$T=k$ となるのは $k-1$ 回目の後に白玉が2個で $k$ 回目に $2\\to0$，または1個で $1\\to0$ となるとき（$3\\to0$ はない）だから，$k\\geqq1$ で\n\\[\nP(T=k)=\\frac1{10}q_{k-1}+\\frac12r_{k-1}\n=\\frac{10}3\\left(\\frac12\\right)^{k-1}-\\frac{42}5\\left(\\frac3{10}\\right)^{k-1}+\\frac{76}{15}\\left(\\frac15\\right)^{k-1}\n\\]\n（$\\frac35-9=-\\frac{42}5$，$-\\frac35+\\frac{17}3=\\frac{76}{15}$）．$2^k$ を掛けて和をとると\n\\begin{align*}\n\\sum_{k=1}^n2^kP(T=k)&=\\sum_{k=1}^n\\left\\{\\frac{20}3-\\frac{84}5\\left(\\frac35\\right)^{k-1}+\\frac{152}{15}\\left(\\frac25\\right)^{k-1}\\right\\}\\\\\n&=\\frac{20}3n-42\\left\\{1-\\left(\\frac35\\right)^n\\right\\}+\\frac{152}9\\left\\{1-\\left(\\frac25\\right)^n\\right\\}.\n\\end{align*}\nまた\n\\[\n2^n(p_n+q_n+r_n)=\\left(\\frac25\\right)^n+6\\left(\\frac35\\right)^n-6\\left(\\frac25\\right)^n+\\frac{20}3-18\\left(\\frac35\\right)^n+\\frac{34}3\\left(\\frac25\\right)^n\n=\\frac{20}3-12\\left(\\frac35\\right)^n+\\frac{19}3\\left(\\frac25\\right)^n .\n\\]\n合わせて\n\\[\n\\boldsymbol{E(Y_n)=\\frac{20}3n-\\frac{166}9+30\\left(\\frac35\\right)^n-\\frac{95}9\\left(\\frac25\\right)^n}\n\\]\n（定数項 $-42+\\frac{152}9+\\frac{20}3=-\\frac{166}9$，$\\left(\\frac25\\right)^n$ の係数 $-\\frac{152}9+\\frac{19}3=-\\frac{95}9$）．$n=1$ では $2$ となり，$X_1=1$（1回目の直前には必ず白玉がある）と一致する．$\\left(\\frac35\\right)^n,\\left(\\frac25\\right)^n\\to0$ より\n\\[\n\\lim_{n\\to\\infty}\\left\\{E(Y_n)-\\frac{20}3n\\right\\}=\\boldsymbol{-\\frac{166}9}.\n\\]\n\n\\medskip\n\\textbf{(3)}　同様に $E(Y_n^{\\,2})=E(4^{X_n})=\\displaystyle\\sum_{k=1}^n4^kP(T=k)+4^n(p_n+q_n+r_n)$．\n\\[\n4^kP(T=k)=\\frac{40}3\\,2^{k-1}-\\frac{168}5\\left(\\frac65\\right)^{k-1}+\\frac{304}{15}\\left(\\frac45\\right)^{k-1},\n\\]\n\\[\n\\sum_{k=1}^n4^kP(T=k)=\\frac{40}3(2^n-1)-168\\left\\{\\left(\\frac65\\right)^n-1\\right\\}+\\frac{304}3\\left\\{1-\\left(\\frac45\\right)^n\\right\\},\n\\]\n\\[\n4^n(p_n+q_n+r_n)=\\frac{20}3\\,2^n-12\\left(\\frac65\\right)^n+\\frac{19}3\\left(\\frac45\\right)^n .\n\\]\nよって\n\\[\nE(Y_n^{\\,2})=20\\cdot2^n-180\\left(\\frac65\\right)^n+256-95\\left(\\frac45\\right)^n\n\\]\n（$n=1$ で $4$ となり正しい）．$V(Y_n)=E(Y_n^{\\,2})-\\{E(Y_n)\\}^2$ であり，\n\\[\n\\frac{V(Y_n)}{2^n}=20-180\\left(\\frac35\\right)^n+\\frac{256}{2^n}-95\\left(\\frac25\\right)^n-\\frac{\\{E(Y_n)\\}^2}{2^n}.\n\\]\n(2) より $n\\geqq1$ で $|E(Y_n)|\\leqq\\frac{20}3n+\\frac{166}9+30+\\frac{95}9\\leqq 7n+60\\leqq67n$．また $n\\geqq3$ で $2^n=(1+1)^n\\geqq{}_n\\mathrm C_3=\\dfrac{n(n-1)(n-2)}6$ なので\n\\[\n0\\leqq\\frac{\\{E(Y_n)\\}^2}{2^n}\\leqq\\frac{67^2n^2\\cdot6}{n(n-1)(n-2)}\\to0 .\n\\]\nしたがって $\\displaystyle\\lim_{n\\to\\infty}\\frac{V(Y_n)}{2^n}=\\boldsymbol{20}$．\n\n（$2^n$ の項は，白玉1個の状態にとどまる確率 $\\frac12$ と $4^k$ の比 $2$ から生じる．$E(Y_n)$ が $n$ に比例するのも同じ状態からで，$\\frac12\\cdot2=1$ と打ち消し合うためである．）"
+   }
+  ],
+  "idea": {
+   "tex": "白玉の個数は減る一方で，各状態にとどまる確率 $\\frac15,\\frac3{10},\\frac12$ が互いに異なるので，各状態にある確率はそれらの等比数列の1次結合になる（1つずつ順に「等比数列を引く」ことで解く）．白玉がなくなる回を $T$ とすると，$X_n$ は $T\\leqq n$ なら $T$，$T>n$ なら $n$ に等しいので，$E(2^{X_n})$ は $\\sum2^kP(T=k)+2^nP(T>n)$．とどまる確率 $\\frac12$ と底 $2$ が打ち消し合う最後の状態だけが $n$ に比例する項を生み，$E(4^{X_n})$ では同じ状態が $2^n$ の項を生む．原題の「1個ずつ取り出し，白玉1個ずつ除く」を「2個同時に取り出し，白玉2個を一度に除くこともある」に変え，状態を飛び越す推移を含めた．"
+  },
+  "methods": [],
+  "tags": [
+   "確率漸化式",
+   "吸収される推移",
+   "等比数列の和",
+   "期待値",
+   "分散",
+   "増え方の比較"
+  ],
+  "provenance": {
+   "created": "2026-11-10"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "B-SEQ-240",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "B-13",
+  "level": 4,
+  "minutes": 35,
+  "theme": "乱数係数の漸化式の2乗の期待値",
+  "topic": "乱数係数の漸化式の2乗の期待値",
+  "statement": {
+   "tex": "正の数 $r$ に対して，$a_1=0$，$a_2=r$ とおき，数列 $\\{a_n\\}$ を次の漸化式で定める．\n\\[a_{n+1}=a_n+r_n(a_n-a_{n-1})\\qquad(n=2,3,4,\\dots)\\]\nただし $a_n$ と $a_{n-1}$ から $a_{n+1}$ を決める際には硬貨を投げ，表がでたとき $r_n=\\dfrac r2$，裏がでたとき $r_n=\\dfrac1{2r}$ とする．硬貨投げは毎回独立に行い，表がでる確率と裏がでる確率は等しいとする．$a_n$ の期待値を $p_n$，$a_n^{\\,2}$ の期待値を $s_n$ とする．\n\\begin{enumerate}\n  \\item $n\\geqq2$ のとき $p_n$ を $n$ と $r$ を用いて表せ．\n  \\item 数列 $\\{s_n\\}$ が収束するような正の数 $r$ の範囲を求めよ．\n  \\item $r=2$ のとき，極限値 $\\displaystyle\\lim_{n\\to\\infty}\\left(s_n-p_n^{\\,2}\\right)$ を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $\\mu=\\dfrac{r^2+1}{4r}$ として，$r\\neq2\\pm\\sqrt3$ のとき $p_n=\\dfrac{r(1-\\mu^{n-1})}{1-\\mu}$，$r=2\\pm\\sqrt3$ のとき $p_n=(n-1)r$　(2) $\\dfrac{\\sqrt{10}-\\sqrt6}2<r<\\dfrac{\\sqrt{10}+\\sqrt6}2$　(3) $\\dfrac{128}{15}$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "硬貨投げは独立なので，$r_2,r_3,\\dots$ は互いに独立な確率変数である．\n\\[\\mu=E[r_n]=\\frac12\\left(\\frac r2+\\frac1{2r}\\right)=\\frac{r^2+1}{4r},\\qquad \\nu=E[r_n^{\\,2}]=\\frac12\\left(\\frac{r^2}4+\\frac1{4r^2}\\right)=\\frac{r^4+1}{8r^2}\\]\nとおく．$d_k=a_k-a_{k-1}$（$k\\geqq2$）とすると $d_2=r$，$d_{k+1}=r_kd_k$ だから\n\\[d_k=r\\,r_2r_3\\cdots r_{k-1}\\quad(k\\geqq2;\\ k=2\\ \\text{のときは}\\ d_2=r).\\]\n$k<l$ のとき $d_l=d_k\\cdot r_kr_{k+1}\\cdots r_{l-1}$ で，$d_k$（$r_2,\\dots,r_{k-1}$ で決まる）と $r_k\\cdots r_{l-1}$ は独立．独立な確率変数の積の期待値は期待値の積なので\n\\[E[d_k]=r\\mu^{k-2},\\quad E[d_k^{\\,2}]=r^2\\nu^{k-2},\\quad E[d_kd_l]=E[d_k^{\\,2}]\\,\\mu^{l-k}=r^2\\nu^{k-2}\\mu^{l-k}.\\]\n\n\\textbf{(1)} $a_n=\\sum_{k=2}^nd_k$ より $p_n=\\sum_{k=2}^nr\\mu^{k-2}$．$\\mu=1\\iff r^2-4r+1=0\\iff r=2\\pm\\sqrt3$．よって\n\\[\\boldsymbol{p_n=\\frac{r\\left(1-\\mu^{n-1}\\right)}{1-\\mu}\\ \\left(r\\neq2\\pm\\sqrt3\\right),\\qquad p_n=(n-1)r\\ \\left(r=2\\pm\\sqrt3\\right)},\\quad \\mu=\\frac{r^2+1}{4r}.\\]\n\n\\textbf{(2)} $a_n^{\\,2}=\\sum_kd_k^{\\,2}+2\\sum_{k<l}d_kd_l$ より\n\\[s_n=r^2\\sum_{k=2}^n\\nu^{k-2}\\Bigl(1+2\\sum_{j=1}^{n-k}\\mu^j\\Bigr).\\]\n各項は正である．\n\n$\\nu\\geqq1$ のとき：$s_n\\geqq r^2\\sum_{k=2}^n\\nu^{k-2}\\geqq r^2(n-1)$ で，$s_n\\to\\infty$（発散）．\n\n$\\nu<1$ のとき：$\\nu-\\mu^2=\\dfrac{2(r^4+1)-(r^2+1)^2}{16r^2}=\\dfrac{(r^2-1)^2}{16r^2}\\geqq0$ より $0<\\mu\\leqq\\sqrt\\nu<1$．\n$1+2\\sum_{j=1}^{m}\\mu^j=\\dfrac{1+\\mu}{1-\\mu}-\\dfrac{2\\mu^{m+1}}{1-\\mu}$ を用いて\n\\[s_n=\\frac{r^2}{1-\\mu}\\Bigl\\{(1+\\mu)\\sum_{k=2}^n\\nu^{k-2}-2U_n\\Bigr\\},\\qquad U_n=\\sum_{k=2}^n\\nu^{k-2}\\mu^{n-k+1}.\\]\n$\\mu,\\nu$ のうち小さくない方を $\\lambda$ とすると $0<\\lambda<1$ で，$U_n$ の各項は $\\lambda^{n-1}$ 以下だから $0<U_n\\leqq(n-1)\\lambda^{n-1}$．$\\dfrac1\\lambda=1+h$（$h>0$）とおくと，$N\\geqq2$ で二項定理により $(1+h)^N\\geqq\\dfrac{N(N-1)}2h^2$ なので $0<N\\lambda^N\\leqq\\dfrac2{(N-1)h^2}\\to0$．よって $U_n\\to0$ で，\n\\[\\lim_{n\\to\\infty}s_n=\\frac{r^2(1+\\mu)}{(1-\\mu)(1-\\nu)}\\quad(\\text{収束}).\\]\nしたがって $\\{s_n\\}$ が収束する条件は $\\nu<1$，すなわち $r^4-8r^2+1<0\\iff4-\\sqrt{15}<r^2<4+\\sqrt{15}$．$\\left(\\dfrac{\\sqrt{10}\\pm\\sqrt6}2\\right)^2=4\\pm\\sqrt{15}$ だから\n\\[\\boldsymbol{\\frac{\\sqrt{10}-\\sqrt6}2<r<\\frac{\\sqrt{10}+\\sqrt6}2}.\\]\n（平均 $p_n$ の収束条件 $\\mu<1\\iff2-\\sqrt3<r<2+\\sqrt3$ より狭い．）\n\n\\textbf{(3)} $r=2$ のとき $\\mu=\\dfrac58$，$\\nu=\\dfrac{17}{32}<1$．$\\mu^{n-1}\\to0$ より $p_n\\to\\dfrac{2}{1-\\frac58}=\\dfrac{16}3$．(2)より\n\\[s_n\\to\\frac{4\\cdot\\frac{13}8}{\\frac38\\cdot\\frac{15}{32}}=\\frac{1664}{45}.\\]\nよって $\\displaystyle\\lim_{n\\to\\infty}(s_n-p_n^{\\,2})=\\frac{1664}{45}-\\frac{256}9=\\frac{1664-1280}{45}=\\boldsymbol{\\frac{128}{15}}$．\n\\hfill$\\square$"
+   }
+  ],
+  "idea": {
+   "tex": "差 $d_n=a_n-a_{n-1}$ は毎回独立な係数 $r_n$ を掛けて進むので，$d_n$ はそれまでの係数の積．期待値は「独立な確率変数の積の期待値は期待値の積」で等比数列になる．2乗の期待値では交差項 $E[d_kd_l]=E[d_k^2]\\,\\mu^{\\,l-k}$ が現れ，収束の条件は $E[r_n^2]<1$ で決まり，平均の収束条件 $E[r_n]<1$ より厳しくなる．"
+  },
+  "methods": [],
+  "tags": [
+   "期待値",
+   "独立",
+   "漸化式",
+   "等比数列",
+   "極限"
+  ],
+  "provenance": {
+   "created": "2026-11-10"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
  }
 ]

@@ -24302,5 +24302,1370 @@
    },
    "verified": false
   }
+ },
+ {
+  "id": "III-INT-545",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "III-17",
+  "level": 4,
+  "minutes": 40,
+  "theme": "転がるルーローの三角形の中心の軌跡",
+  "topic": "転がるルーローの三角形の中心の軌跡",
+  "statement": {
+   "tex": "平面上で1辺の長さが1の正三角形 ABC の頂点 A，B，C を中心とする半径1の円で囲まれた部分の共通部分を $K$ とする．$K$ は弧 AB，弧 BC，弧 CA で囲まれた図形である．正三角形 ABC の重心を G とする．\n\n$xy$ 平面上に，はじめ A が点 $(0,1)$ に，B が第1象限に，C が第2象限にあり，弧 BC の中点が原点にあるように $K$ をおく．この $K$ が $x$ 軸の上を正の向きにすべることなく転がり，1回転する．ただし，頂点が $x$ 軸に接している間は，$K$ はその頂点を中心に回転するものとする．このとき G が描く曲線を $M$ とする．\n\\begin{enumerate}\n  \\item $K$ がはじめの位置から角 $\\varphi$ $\\left(0\\leqq\\varphi\\leqq\\dfrac{\\pi}{6}\\right)$ だけ回転したときの G の座標を $\\varphi$ を用いて表せ．\n  \\item 頂点 B が $x$ 軸に接している間の G の座標を $K$ の回転角 $\\varphi$ を用いて表せ．また，$M$ は $\\varphi=\\dfrac{\\pi}{6}$ に対応する点において，その前後の部分が共通の接線をもつことを示せ．\n  \\item G の $y$ 座標の最大値と最小値を求めよ．\n  \\item 曲線 $M$ と $x$ 軸および直線 $x=0$，$x=\\pi$ で囲まれた部分の面積を求めよ．ただし，$K$ が1回転し終えたときの G の $x$ 座標が $\\pi$ であることも示すこと．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $\\left(\\varphi-\\dfrac{\\sin\\varphi}{\\sqrt3},\\ 1-\\dfrac{\\cos\\varphi}{\\sqrt3}\\right)$　(2) $\\left(\\dfrac{\\pi}{6}+\\dfrac{1}{\\sqrt3}\\sin\\left(\\varphi-\\dfrac{\\pi}{3}\\right),\\ \\dfrac{1}{\\sqrt3}\\cos\\left(\\varphi-\\dfrac{\\pi}{3}\\right)\\right)$ $\\left(\\dfrac{\\pi}{6}\\leqq\\varphi\\leqq\\dfrac{\\pi}{2}\\right)$，接線の一致は証明　(3) 最大値 $\\dfrac{1}{\\sqrt3}$，最小値 $1-\\dfrac{1}{\\sqrt3}$　(4) $\\dfrac{4\\pi}{3}-\\dfrac{3\\sqrt3}{2}$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "$r=\\mathrm{AG}=\\dfrac23\\cdot\\dfrac{\\sqrt3}{2}=\\dfrac{1}{\\sqrt3}$ とおく．$K$ は G を中心とする $120^\\circ$ の回転で自分自身に重なる．\n\n\\textbf{準備（転がり方）}　弧 BC は A を中心とする半径1，中心角 $\\dfrac{\\pi}{3}$ の弧である．弧 BC 上の点 P で $K$ が $x$ 軸に接しているとき，$x$ 軸は P における円の接線だから AP $\\perp$ ($x$ 軸) であり，A は P の真上，高さ1にある．すべらずに転がるので，$K$ が角 $\\varphi$ だけ回転する間に接点は弧上を長さ $1\\cdot\\varphi$ だけ移り，$x$ 軸上の接点も $\\varphi$ だけ進む．$x$ 軸の正の向きに転がるとき $K$ は時計回りに回転する．\n\n頂点 B では，弧 BC の接線は AB に垂直，弧 AB（中心 C）の接線は CB に垂直で，AB と CB のなす角は $\\dfrac{\\pi}{3}$ だから，2つの接線のなす角は $\\dfrac{\\pi}{3}$ である．よって B が $x$ 軸に接している間に $K$ は B を中心に $\\dfrac{\\pi}{3}$ 回転し，その後は弧 AB が接して C が高さ1となる．\n\n(1) はじめ G は A の真下にあり $\\overrightarrow{\\mathrm{AG}}=(0,-r)$．$K$ が時計回りに $\\varphi$ 回転すると $\\overrightarrow{\\mathrm{AG}}=r(-\\sin\\varphi,\\,-\\cos\\varphi)$ となる．このとき A から接点への向き（真下）は，$K$ に固定して見るとはじめの真下の向きを反時計回りに $\\varphi$ 回した向きであり，$\\overrightarrow{\\mathrm{AB}}$ ははじめの真下の向きを反時計回りに $\\dfrac{\\pi}{6}$ 回した向きだから，$0\\leqq\\varphi\\leqq\\dfrac{\\pi}{6}$ では接点は弧 BC 上にあり，$\\varphi=\\dfrac{\\pi}{6}$ で B に達する．このとき A$=(\\varphi,1)$ であるから\n\\[\n\\mathrm{G}=\\boldsymbol{\\left(\\varphi-\\frac{\\sin\\varphi}{\\sqrt3},\\ 1-\\frac{\\cos\\varphi}{\\sqrt3}\\right)}.\n\\]\n\n(2) $\\varphi=\\dfrac{\\pi}{6}$ のとき B$=\\left(\\dfrac{\\pi}{6},0\\right)$，(1)より G$=\\left(\\dfrac{\\pi}{6}-\\dfrac{r}{2},\\ \\dfrac12\\right)$ だから $\\overrightarrow{\\mathrm{BG}}=r\\left(\\sin\\left(-\\dfrac{\\pi}{6}\\right),\\ \\cos\\left(-\\dfrac{\\pi}{6}\\right)\\right)$．$\\dfrac{\\pi}{6}\\leqq\\varphi\\leqq\\dfrac{\\pi}{2}$ の間 B は固定され，$K$ は B を中心に時計回りに回るので，$\\psi=\\varphi-\\dfrac{\\pi}{3}$ $\\left(-\\dfrac{\\pi}{6}\\leqq\\psi\\leqq\\dfrac{\\pi}{6}\\right)$ として\n\\[\n\\mathrm{G}=\\boldsymbol{\\left(\\frac{\\pi}{6}+\\frac{1}{\\sqrt3}\\sin\\Bigl(\\varphi-\\frac{\\pi}{3}\\Bigr),\\ \\frac{1}{\\sqrt3}\\cos\\Bigl(\\varphi-\\frac{\\pi}{3}\\Bigr)\\right)}\\quad\\left(\\frac{\\pi}{6}\\leqq\\varphi\\leqq\\frac{\\pi}{2}\\right).\n\\]\n$\\varphi=\\dfrac{\\pi}{6}$ の前後で G の速度ベクトルを比べる．(1)の式から $\\dfrac{d\\mathrm{G}}{d\\varphi}=(1-r\\cos\\varphi,\\ r\\sin\\varphi)$ で，$\\varphi=\\dfrac{\\pi}{6}$ では $\\left(\\dfrac12,\\ \\dfrac{1}{2\\sqrt3}\\right)$．(2)の式から $\\dfrac{d\\mathrm{G}}{d\\varphi}=(r\\cos\\psi,\\ -r\\sin\\psi)$ で，$\\psi=-\\dfrac{\\pi}{6}$ では $\\left(\\dfrac12,\\ \\dfrac{1}{2\\sqrt3}\\right)$．両者は一致し，零ベクトルでないから，この点で前後の部分は共通の接線（傾き $\\dfrac{1}{\\sqrt3}$）をもつ．\\hfill$\\square$\n\n(3) $\\varphi=\\dfrac{2\\pi}{3}$ のとき，接点は弧 AB の中点で C$=\\left(\\dfrac{\\pi}{3},1\\right)$ の真下にある．$K$ ははじめから時計回りに $\\dfrac{2\\pi}{3}$ 回転しており，$K$ は G のまわりの $120^\\circ$ 回転で自分に重なるから，このときの $K$ ははじめの $K$ を $x$ 軸方向に $\\dfrac{\\pi}{3}$ 平行移動したものに一致する（頂点の名前は A$\\to$C と入れかわる）．以後の運動も同じことの繰り返しなので，\n\\[\n\\mathrm{G}\\Bigl(\\varphi+\\frac{2\\pi}{3}\\Bigr)=\\mathrm{G}(\\varphi)+\\Bigl(\\frac{\\pi}{3},0\\Bigr)\\quad\\cdots\\text{③}\n\\]\nである．また $\\dfrac{\\pi}{2}\\leqq\\varphi\\leqq\\dfrac{2\\pi}{3}$ では C が高さ1にあり，(1)と同様に $\\beta=\\varphi-\\dfrac{2\\pi}{3}$ $\\left(-\\dfrac{\\pi}{6}\\leqq\\beta\\leqq0\\right)$ として G$=\\left(\\dfrac{\\pi}{3}+\\beta-r\\sin\\beta,\\ 1-r\\cos\\beta\\right)$ となる．\n\nゆえに G の $y$ 座標は，弧が接している間は $1-r\\cos\\beta$（$|\\beta|\\leqq\\dfrac{\\pi}{6}$），頂点が接している間は $r\\cos\\psi$（$|\\psi|\\leqq\\dfrac{\\pi}{6}$）の値をとる．$\\dfrac{\\sqrt3}{2}\\leqq\\cos\\beta\\leqq1$ より前者は $1-\\dfrac{1}{\\sqrt3}\\leqq y\\leqq\\dfrac12$，後者は $\\dfrac12\\leqq y\\leqq\\dfrac{1}{\\sqrt3}$ で，両端の値はそれぞれ $\\beta=0$，$\\psi=0$ などで実際にとる．$1-\\dfrac{1}{\\sqrt3}<\\dfrac12<\\dfrac{1}{\\sqrt3}$ であるから\n\\[\n\\text{最大値 }\\boldsymbol{\\frac{1}{\\sqrt3}},\\qquad \\text{最小値 }\\boldsymbol{1-\\frac{1}{\\sqrt3}}.\n\\]\n\n(4) ③より $\\varphi=2\\pi=3\\cdot\\dfrac{2\\pi}{3}$ のとき G$=\\mathrm{G}(0)+(\\pi,0)=\\left(\\pi,\\ 1-\\dfrac{1}{\\sqrt3}\\right)$ であり，1回転後の G の $x$ 座標は $\\pi$ である．\n\n弧が接している間 $\\dfrac{dx}{d\\beta}=1-r\\cos\\beta>0$，頂点が接している間 $\\dfrac{dx}{d\\psi}=r\\cos\\psi>0$ であるから，G の $x$ 座標は $\\varphi$ とともに増加し，$M$ は $0\\leqq x\\leqq\\pi$ で定義された関数のグラフで，$y>0$ である．よって面積 $S$ は $\\displaystyle\\int y\\,dx$ を各部分で置換積分して足せばよい．\n\n\\textbf{弧が接している部分}（$\\beta$ の範囲 $\\left[-\\dfrac{\\pi}{6},\\dfrac{\\pi}{6}\\right]$ 全体について）\n\\[\n\\int_{-\\pi/6}^{\\pi/6}(1-r\\cos\\beta)^2\\,d\\beta=\\int_{-\\pi/6}^{\\pi/6}\\bigl(1-2r\\cos\\beta+r^2\\cos^2\\beta\\bigr)d\\beta .\n\\]\n$\\displaystyle\\int_{-\\pi/6}^{\\pi/6}\\cos\\beta\\,d\\beta=2\\sin\\frac{\\pi}{6}=1$，$\\displaystyle\\int_{-\\pi/6}^{\\pi/6}\\cos^2\\beta\\,d\\beta=\\Bigl[\\frac{\\beta}{2}+\\frac{\\sin2\\beta}{4}\\Bigr]_{-\\pi/6}^{\\pi/6}=\\frac{\\pi}{6}+\\frac{\\sqrt3}{4}$ より，これは\n\\[\n\\frac{\\pi}{3}-\\frac{2}{\\sqrt3}+\\frac13\\Bigl(\\frac{\\pi}{6}+\\frac{\\sqrt3}{4}\\Bigr)=\\frac{\\pi}{3}-\\frac{2\\sqrt3}{3}+\\frac{\\pi}{18}+\\frac{\\sqrt3}{12}.\n\\]\n\\textbf{頂点が接している部分}\n\\[\n\\int_{-\\pi/6}^{\\pi/6}r\\cos\\psi\\cdot r\\cos\\psi\\,d\\psi=\\frac13\\Bigl(\\frac{\\pi}{6}+\\frac{\\sqrt3}{4}\\Bigr)=\\frac{\\pi}{18}+\\frac{\\sqrt3}{12}.\n\\]\n$0\\leqq\\varphi\\leqq\\dfrac{2\\pi}{3}$ の部分は，A が高さ1の部分（$\\beta=\\varphi\\in\\left[0,\\dfrac{\\pi}{6}\\right]$），B を中心に回る部分，C が高さ1の部分（$\\beta\\in\\left[-\\dfrac{\\pi}{6},0\\right]$）からなり，被積分関数 $(1-r\\cos\\beta)^2$ は同じだから，第1・第3の部分を合わせると弧の部分1つ分になる．よってこの部分の面積は\n\\[\n\\frac{\\pi}{3}-\\frac{2\\sqrt3}{3}+2\\Bigl(\\frac{\\pi}{18}+\\frac{\\sqrt3}{12}\\Bigr)=\\frac{4\\pi}{9}-\\frac{\\sqrt3}{2}.\n\\]\n③より $0\\leqq x\\leqq\\pi$ 全体はこれを $x$ 軸方向に平行移動した3つの部分からなるので\n\\[\nS=3\\Bigl(\\frac{4\\pi}{9}-\\frac{\\sqrt3}{2}\\Bigr)=\\boldsymbol{\\frac{4\\pi}{3}-\\frac{3\\sqrt3}{2}}.\n\\]"
+   }
+  ],
+  "idea": {
+   "tex": "円弧が直線に接して転がる間，その弧の中心は直線から一定の高さにあり，転がった弧の長さだけ水平に進む．弧と弧の境目（頂点）が直線に接する間は，図形はその頂点を中心に回転する．図形上の点の位置は「動く中心（または止まった頂点）$+$ 回転するベクトル」で表し，対称性で1周期分に帰着させる．"
+  },
+  "methods": [],
+  "tags": [
+   "すべらずに転がる",
+   "頂点まわりの回転",
+   "トロコイド",
+   "面積"
+  ],
+  "provenance": {
+   "created": "2026-11-10"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "III-INT-546",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "III-17",
+  "level": 5,
+  "minutes": 35,
+  "theme": "区間の幅が一定の積分とずらしても減らない関数",
+  "topic": "区間の幅が一定の積分とずらしても減らない関数",
+  "statement": {
+   "tex": "実数 $x$ に対し，$x$ と $x$ に最も近い整数との距離を $\\varphi(x)$ とする（たとえば $\\varphi(2.3)=0.3$，$\\varphi(-0.8)=0.2$，$\\varphi(1.5)=0.5$）．\n\\[f(x)=x+5\\varphi(x)\\]\nとし，正の実数 $r$ に対して\n\\[g(x)=\\int_{x-r}^{x+r}f(t)\\,dt\\]\nと定める．\n\\begin{enumerate}\n  \\item 正の実数 $d$ に対し，$y$ の関数 $\\varphi(y+d)-\\varphi(y)$ の最小値は $-\\varphi(d)$ であることを示せ．\n  \\item 「$x_1<x_2$ ならば $g(x_1)\\leqq g(x_2)$」がすべての実数 $x_1,x_2$ について成り立つような $r$ の範囲を求めよ．\n  \\item 「$x_1<x_2$ ならば $g(x_1)<g(x_2)$」がすべての実数 $x_1,x_2$ について成り立つような $r$ の範囲を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 証明　(2) $\\dfrac5{12}\\leqq r\\leqq\\dfrac58$，$r\\geqq\\dfrac56$　(3) $\\dfrac5{12}<r<\\dfrac58$，$r>\\dfrac56$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "\\textbf{準備．}任意の実数 $p,q$ に対し $|\\varphi(p)-\\varphi(q)|\\leqq|p-q|$ である．実際，$q$ に最も近い整数を $n$ とすると $\\varphi(p)\\leqq|p-n|\\leqq|p-q|+|q-n|=|p-q|+\\varphi(q)$ で，$p,q$ を入れかえても同様．特に $\\varphi$ は連続で，$f$ も連続である．また $\\varphi$ は周期1をもち，$0\\leqq x\\leqq\\dfrac12$ で $\\varphi(x)=x$，$\\dfrac12\\leqq x\\leqq1$ で $\\varphi(x)=1-x$ である．\n\n\\textbf{(1)}\n$d$ に最も近い整数を $n$ とし，$e=d-n$ とおくと $|e|=\\varphi(d)\\leqq\\dfrac12$．周期性と準備から\n\\[\\varphi(y+d)-\\varphi(y)=\\varphi(y+e)-\\varphi(y)\\geqq-|e|=-\\varphi(d)．\\]\n$y=\\dfrac12$ のとき：$e\\geqq0$ なら $\\dfrac12+e\\in\\left[\\dfrac12,1\\right]$ で $\\varphi\\left(\\dfrac12+e\\right)=\\dfrac12-e$，$e<0$ なら $\\dfrac12+e\\in\\left[0,\\dfrac12\\right)$ で $\\varphi\\left(\\dfrac12+e\\right)=\\dfrac12+e$．いずれも $\\varphi\\left(\\dfrac12+e\\right)-\\dfrac12=-|e|$ となり，等号が成り立つ．よって最小値は $-\\varphi(d)$．\\hfill$\\square$\n\n\\textbf{(2)}\n$f$ の原始関数を $F$ とすると $g(x)=F(x+r)-F(x-r)$ は微分可能で\n\\[g'(x)=f(x+r)-f(x-r)=2r+5\\bigl(\\varphi(y+d)-\\varphi(y)\\bigr)\\qquad(d=2r,\\ y=x-r)．\\]\n「$x_1<x_2\\Rightarrow g(x_1)\\leqq g(x_2)$」はすべての $x$ で $g'(x)\\geqq0$ と同値である．実際，$g'\\geqq0$ なら平均値の定理より $g(x_2)-g(x_1)=g'(c)(x_2-x_1)\\geqq0$．逆にある $x_0$ で $g'(x_0)<0$ なら，$\\dfrac{g(x_0+h)-g(x_0)}h\\to g'(x_0)$（$h\\to+0$）より十分小さい $h>0$ で $g(x_0+h)<g(x_0)$ となる．\n\n$y$ は実数全体を動くので，(1) より\n\\[\\text{すべての }x\\text{ で }g'(x)\\geqq0\\iff d-5\\varphi(d)\\geqq0．\\]\n$d\\geqq\\dfrac52$ では $5\\varphi(d)\\leqq\\dfrac52\\leqq d$ で成り立つ．$0<d<\\dfrac52$ では\n\\begin{itemize}\n  \\item $0<d\\leqq\\dfrac12$：$\\varphi(d)=d$，$d\\geqq5d$ は不成立．\n  \\item $\\dfrac12\\leqq d\\leqq1$：$\\varphi(d)=1-d$，$d\\geqq5-5d\\iff d\\geqq\\dfrac56$．\n  \\item $1\\leqq d\\leqq\\dfrac32$：$\\varphi(d)=d-1$，$d\\geqq5d-5\\iff d\\leqq\\dfrac54$．\n  \\item $\\dfrac32\\leqq d\\leqq2$：$\\varphi(d)=2-d$，$d\\geqq10-5d\\iff d\\geqq\\dfrac53$．\n  \\item $2\\leqq d<\\dfrac52$：$\\varphi(d)=d-2$，$d\\geqq5d-10\\iff d\\leqq\\dfrac52$ で常に成立．\n\\end{itemize}\nよって条件は $\\dfrac56\\leqq d\\leqq\\dfrac54$ または $d\\geqq\\dfrac53$．$r=\\dfrac d2$ だから\n\\[\\boldsymbol{\\frac5{12}\\leqq r\\leqq\\frac58,\\quad r\\geqq\\frac56}．\\]\n\n\\textbf{(3)}\n狭義の増加は広義の増加を含むので，(2) の範囲で調べる．\n\n\\textbf{$d>5\\varphi(d)$ のとき．}(1) よりすべての $x$ で $g'(x)\\geqq d-5\\varphi(d)>0$ で，平均値の定理から狭義に増加する．(2) の表から，(2) の範囲で $d=5\\varphi(d)$ となるのは $d=\\dfrac56,\\dfrac54,\\dfrac53,\\dfrac52$ だけであり，それ以外はこの場合である．\n\n\\textbf{$d=\\dfrac56$（$r=\\dfrac5{12}$）．}$\\dfrac16\\leqq y\\leqq\\dfrac12$ のとき $\\varphi\\left(y+\\dfrac56\\right)=\\varphi\\left(y-\\dfrac16\\right)=y-\\dfrac16$（$0\\leqq y-\\dfrac16\\leqq\\dfrac13$），$\\varphi(y)=y$ だから $g'=\\dfrac56+5\\left(-\\dfrac16\\right)=0$．よって $g$ は区間 $\\dfrac16+r\\leqq x\\leqq\\dfrac12+r$ で定数となり，狭義には増加しない．\n\n\\textbf{$d=\\dfrac54$（$r=\\dfrac58$）．}$\\dfrac12\\leqq y\\leqq\\dfrac34$ のとき $\\varphi\\left(y+\\dfrac54\\right)=\\varphi\\left(y+\\dfrac14\\right)=\\dfrac34-y$（$\\dfrac34\\leqq y+\\dfrac14\\leqq1$），$\\varphi(y)=1-y$ だから $g'=\\dfrac54-\\dfrac54=0$．同様に不適．\n\n\\textbf{$d=\\dfrac53$（$r=\\dfrac56$）．}$\\dfrac13\\leqq y\\leqq\\dfrac12$ のとき $\\varphi\\left(y+\\dfrac53\\right)=\\varphi\\left(y-\\dfrac13\\right)=y-\\dfrac13$，$\\varphi(y)=y$ だから $g'=\\dfrac53-\\dfrac53=0$．同様に不適．\n\n\\textbf{$d=\\dfrac52$（$r=\\dfrac54$）．}$g'(x)=\\dfrac52+5\\left(\\varphi\\left(y+\\dfrac12\\right)-\\varphi(y)\\right)$ で，$0\\leqq\\varphi\\leqq\\dfrac12$ だから $\\varphi\\left(y+\\dfrac12\\right)-\\varphi(y)\\geqq-\\dfrac12$，等号は $\\varphi\\left(y+\\dfrac12\\right)=0$ のとき，すなわち $y+\\dfrac12$ が整数のときに限る．よって $g'\\geqq0$ で，$g'(x)=0$ となるのは $x=y+\\dfrac54=n+\\dfrac34$（$n$ は整数）に限る．各区間 $n+\\dfrac34\\leqq x\\leqq n+\\dfrac74$ では，内部で $g'>0$ だから，その区間内の $x_1<x_2$ に対し平均値の定理で $g(x_2)-g(x_1)=g'(c)(x_2-x_1)>0$（$x_1<c<x_2$ は区間の内部）．これらの区間をつなげば，任意の $x_1<x_2$ について $g(x_1)<g(x_2)$ がわかる．よって $r=\\dfrac54$ は適する．\n\n以上より，求める範囲は\n\\[\\boldsymbol{\\frac5{12}<r<\\frac58,\\quad r>\\frac56}\\]\n（$r=\\dfrac54$ は $g'$ が孤立した点で $0$ になるが，狭義に増加するので含まれる）．\\hfill$\\square$"
+   }
+  ],
+  "idea": {
+   "tex": "$g(x)=\\displaystyle\\int_{x-r}^{x+r}f(t)\\,dt$ の単調性は $g'(x)=f(x+r)-f(x-r)$ の符号，すなわち「幅 $d=2r$ だけずらしても $f$ が減らない」という $x$ についての全称条件に帰着する．$f=x+5\\varphi(x)$（$\\varphi$ は最も近い整数との距離）では，$\\varphi(y+d)-\\varphi(y)$ の最小値が $-\\varphi(d)$ であることから条件は $d\\geqq5\\varphi(d)$ となり，解は区間にならない．境界の値では $g'$ が区間全体で $0$ になるかどうかで狭義の単調性が分かれる．"
+  },
+  "methods": [],
+  "tags": [
+   "積分で定義された関数",
+   "微分",
+   "最も近い整数との距離",
+   "すべての"
+  ],
+  "provenance": {
+   "created": "2026-11-10"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "III-INT-547",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "III-17",
+  "level": 5,
+  "minutes": 40,
+  "theme": "正八面体の辺上の12点と正二十面体の体積",
+  "topic": "正八面体の辺上の12点と正二十面体の体積",
+  "statement": {
+   "tex": "$xyz$ 空間において，$|x|+|y|+|z|\\leqq1$ で表される正八面体を $\\Omega$ とする．$0<a<\\dfrac12$，$b=1-a$ とし，次の12点を考える（複号任意）．\n\\[(0,\\pm a,\\pm b),\\qquad(\\pm b,0,\\pm a),\\qquad(\\pm a,\\pm b,0)\\]\nさらに，連立不等式\n\\[|x|+|y|+|z|\\leqq1,\\quad(b-a)|x|+b|z|\\leqq b^2,\\quad(b-a)|y|+b|x|\\leqq b^2,\\quad(b-a)|z|+b|y|\\leqq b^2\\]\nの表す立体を $K$ とする．\n\\begin{enumerate}\n  \\item 12点のうち点 $(0,a,b)$ 以外の11点で，$(0,a,b)$ からの距離が最小となるものがちょうど5個あるような $a$ の値を求めよ．\n  \\item $K$ の体積 $V(a)$ を $a$ の式で表せ．\n  \\item $a$ が (1) で求めた値のとき，$K$ は上の12点を頂点とする正二十面体であることが知られている．これを用いて，1辺の長さが1の正二十面体の体積を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $a=\\dfrac{3-\\sqrt5}2$　(2) $V(a)=\\dfrac43-4a^2(1-a)$　(3) $\\dfrac{5(3+\\sqrt5)}{12}$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "\\textbf{(1)}\n$a+b=1$ に注意する．点 $(0,a,b)$ から他の11点までの距離の2乗は次のとおり．\n\\begin{itemize}\n  \\item $(0,-a,b)$：$4a^2$．\\quad $(0,a,-b)$：$4b^2$．\\quad $(0,-a,-b)$：$4a^2+4b^2$．\n  \\item $(\\pm b,0,a)$，$(\\pm a,b,0)$ の4点：$b^2+a^2+(b-a)^2=2a^2+2b^2-2ab$（これを $s^2$ とおく）．\n  \\item $(\\pm b,0,-a)$，$(\\pm a,-b,0)$ の4点：$a^2+b^2+(a+b)^2=a^2+b^2+1$．\n\\end{itemize}\n$0<a<b$ だから $4a^2<4b^2<4a^2+4b^2$，$s^2-(a^2+b^2+1)=(b-a)^2-1<0$，$s^2-4b^2=2(a^2-ab-b^2)=2a(a-b)-2b^2<0$．よって最小距離は $4a^2$ と $s^2$ のうち小さい方の平方根で，最小となる点は，$4a^2<s^2$ なら1個，$4a^2>s^2$ なら4個，$4a^2=s^2$ なら5個．\n\\[4a^2=2a^2+2b^2-2ab\\iff a^2+ab-b^2=0．\\]\n$b=1-a$ を代入して $a^2+a(1-a)-(1-a)^2=-a^2+3a-1=0$，$a=\\dfrac{3\\pm\\sqrt5}2$．$0<a<\\dfrac12$ より $\\boldsymbol{a=\\dfrac{3-\\sqrt5}2}$（$\\sqrt5>2$ より $a<\\dfrac12$，$\\sqrt5<3$ より $a>0$）．\n\n\\textbf{(2)}\n$\\Omega$ の体積は，8つの各卦限にある $x+y+z\\leqq1$ の四面体（体積 $\\dfrac16$）の和で $\\dfrac43$．\n$\\Omega$ の点のうち $K$ に属さないものの集合を，次の6つに分ける．\n\\begin{gather*}P_{z\\pm}:\\ (b-a)|x|+b|z|>b^2,\\ \\pm z>0;\\qquad P_{x\\pm}:\\ (b-a)|y|+b|x|>b^2,\\ \\pm x>0;\\\\ P_{y\\pm}:\\ (b-a)|z|+b|y|>b^2,\\ \\pm y>0\\end{gather*}\n（いずれも $\\Omega$ の点）．$(b-a)|x|+b|z|>b^2$ なら $z\\neq0$ である（$z=0$ なら $(b-a)|x|\\leqq b-a<b^2$．実際 $b^2-b+a=b^2-2b+1=a^2>0$）．他も同様なので，$\\Omega$ のうち $K$ の外の部分はこの6つの和集合である．\n\n\\textbf{$P_{z+}$ の体積．}$P_{z+}$ の点では $|x|+z\\leqq1$ と $z>b-\\dfrac{(b-a)|x|}b$ から $|x|<1-b+\\dfrac{(b-a)|x|}b$，すなわち $\\dfrac ab|x|<a$，$|x|<b$．$|x|<b$ を固定すると，$h=b-\\dfrac{(b-a)|x|}b\\ (>a>0)$ として，断面は $yz$ 平面上の $|y|+z\\leqq1-|x|$，$z>h$ の部分で，頂点 $(0,1-|x|)$，高さ $1-|x|-h$ の直角二等辺三角形（斜辺は $z=h$ 上）である．\n\\[1-|x|-h=a-|x|+\\frac{(b-a)|x|}b=a\\left(1-\\frac{|x|}b\\right)>0\\]\nだから断面積は $(1-|x|-h)^2=a^2\\left(1-\\dfrac{|x|}b\\right)^2$ で，\n\\[\\mathrm{vol}(P_{z+})=2\\int_0^ba^2\\left(1-\\frac xb\\right)^2dx=2a^2\\left[-\\frac b3\\left(1-\\frac xb\\right)^3\\right]_0^b=\\frac23a^2b．\\]\n\n\\textbf{6つの部分が重ならないこと．}$K$ を定める不等式の組は，$x,y,z$ の符号の入れかえ，および $(x,y,z)\\mapsto(y,z,x)$ という置きかえ（$(x,z)\\to(y,x)\\to(z,y)\\to(x,z)$ と組が巡回する）で変わらない．これらで6つの部分は互いに移り合い，体積はすべて $\\dfrac23a^2b$ である．$P_{z+}$ と $P_{z-}$ は $z$ の符号で分かれる．隣り合う組（$P_{z\\pm}$ と $P_{x\\pm}$，$P_{x\\pm}$ と $P_{y\\pm}$，$P_{y\\pm}$ と $P_{z\\pm}$）はこれらの対称性で $P_{z+}$ と $P_{x+}$ の組に移るので，この組が共有点をもたないことを示せばよい．共有点 $(x,y,z)$ があるとすると $x>0$，$z>0$ で\n\\[(b-a)x+bz>b^2,\\qquad(b-a)|y|+bx>b^2\\]\nを加えて $(2b-a)x+bz+(b-a)|y|>2b^2$．一方 $z\\leqq1-x-|y|$ と，$P_{z+}$ の点であることから得た $x<b$ を用いると\n\\begin{align*}(2b-a)x+bz+(b-a)|y|&\\leqq(2b-a)x+b(1-x-|y|)+(b-a)|y|=(b-a)x+b-a|y|\\\\&<(b-a)b+b=b(1+b-a)=2b^2\\end{align*}\n（最後に $1=a+b$ を用いた）．これは矛盾．\n\nよって\n\\[V(a)=\\frac43-6\\cdot\\frac23a^2b=\\boldsymbol{\\frac43-4a^2(1-a)}．\\]\n\n\\textbf{(3)}\n$a=\\dfrac{3-\\sqrt5}2$ のとき $b=\\dfrac{\\sqrt5-1}2$，$a^2=\\dfrac{7-3\\sqrt5}2$，\n\\[a^2b=\\frac{(7-3\\sqrt5)(\\sqrt5-1)}4=\\frac{10\\sqrt5-22}4=\\frac{5\\sqrt5-11}2,\\qquad V(a)=\\frac43-(10\\sqrt5-22)=\\frac{70}3-10\\sqrt5．\\]\nこのとき $K$ は正二十面体で，その1辺の長さは (1) の最小距離 $2a=3-\\sqrt5$ である（正二十面体の辺は頂点間の最短距離）．$(3-\\sqrt5)^3=27-27\\sqrt5+45-5\\sqrt5=72-32\\sqrt5$ だから，1辺1の正二十面体の体積は相似比の3乗で割って\n\\[\\frac{\\frac{70}3-10\\sqrt5}{72-32\\sqrt5}=\\frac{10(7-3\\sqrt5)}{3\\cdot8(9-4\\sqrt5)}=\\frac{5(7-3\\sqrt5)(9+4\\sqrt5)}{12(81-80)}\\]\n\\[=\\frac{5(63+28\\sqrt5-27\\sqrt5-60)}{12}=\\boldsymbol{\\frac{5(3+\\sqrt5)}{12}}．\\]\n\\hfill$\\square$"
+   }
+  ],
+  "idea": {
+   "tex": "正二十面体の12頂点は，正八面体 $|x|+|y|+|z|\\leqq1$ の12本の辺を同じ向きに $a:b$（$a+b=1$）に分ける点としてとれる．最も近い5点が等距離になる条件から $a^2+ab-b^2=0$（黄金比）．立体は正八面体から各頂点の近くを2枚の平面で切り取ったもので，切り取る部分の断面は直角二等辺三角形で，体積は断面積の積分 $\\dfrac23a^2b$．隣り合う部分が重ならないことは不等式を足し合わせて $a+b=1$ を使って示す．"
+  },
+  "methods": [],
+  "tags": [
+   "正八面体",
+   "正二十面体",
+   "黄金比",
+   "断面積",
+   "体積",
+   "切り取った立体"
+  ],
+  "provenance": {
+   "created": "2026-11-10"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "III-INT-548",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "III-17",
+  "level": 5,
+  "minutes": 45,
+  "theme": "端点の値で決まる振動積分と $\\displaystyle\\sum\\frac1{m^4}$",
+  "topic": "端点の値で決まる振動積分と $\\displaystyle\\sum\\frac1{m^4}$",
+  "statement": {
+   "tex": "多項式 $f(x)$ と正の整数 $m$ に対して\n\\[\nI_m(f)=\\int_0^\\pi f(x)\\cos mx\\,dx\n\\]\nとおく．\n\\begin{enumerate}\n  \\item $f(x)$ が4次以下の多項式のとき，すべての正の整数 $m$ に対して\n  \\[\n  I_m(f)=\\frac{(-1)^mf'(\\pi)-f'(0)}{m^2}-\\frac{(-1)^mf'''(\\pi)-f'''(0)}{m^4}\n  \\]\n  が成り立つことを示せ．\n  \\item $f(0)=0$ をみたす4次以下の多項式 $f(x)$ で，すべての正の整数 $m$ に対して $I_m(f)=\\dfrac1{m^4}$ となるものをすべて求めよ．\n  \\item 正の整数 $N$ と $0<x\\leqq\\pi$ をみたす実数 $x$ に対して，次の等式を示せ．\n  \\[\n  \\sum_{m=1}^N\\cos mx=\\frac{\\sin\\frac{(2N+1)x}{2}}{2\\sin\\frac x2}-\\frac12\n  \\]\n  \\item 無限級数 $\\displaystyle\\sum_{m=1}^\\infty\\frac1{m^4}$ は収束することを示し，その和を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 証明　(2) $f(x)=-\\dfrac{x^2(2\\pi-x)^2}{24\\pi}$　(3) 証明　(4) $\\dfrac{\\pi^4}{90}$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) $f$ は4次以下の多項式なので，$f''''$ は定数 $c$ である．$m$ は正の整数なので $\\sin m\\pi=\\sin0=0$，$\\cos m\\pi=(-1)^m$．部分積分により\n\\[\n\\begin{aligned}\n\\int_0^\\pi f(x)\\cos mx\\,dx&=\\Bigl[\\frac{f(x)\\sin mx}{m}\\Bigr]_0^\\pi-\\frac1m\\int_0^\\pi f'(x)\\sin mx\\,dx=-\\frac1m\\int_0^\\pi f'(x)\\sin mx\\,dx,\\\\\n\\int_0^\\pi f'(x)\\sin mx\\,dx&=\\Bigl[-\\frac{f'(x)\\cos mx}{m}\\Bigr]_0^\\pi+\\frac1m\\int_0^\\pi f''(x)\\cos mx\\,dx\\\\\n&=-\\frac{(-1)^mf'(\\pi)-f'(0)}{m}+\\frac1m\\int_0^\\pi f''(x)\\cos mx\\,dx.\n\\end{aligned}\n\\]\nよって，任意の多項式 $F$ について\n\\[\n\\text{(☆)}\\quad \\int_0^\\pi F(x)\\cos mx\\,dx=\\frac{(-1)^mF'(\\pi)-F'(0)}{m^2}-\\frac1{m^2}\\int_0^\\pi F''(x)\\cos mx\\,dx.\n\\]\n(☆) を $F=f''$ に用いると，$f''''=c$ と $\\displaystyle\\int_0^\\pi\\cos mx\\,dx=\\Bigl[\\frac{\\sin mx}m\\Bigr]_0^\\pi=0$ より\n\\[\n\\int_0^\\pi f''(x)\\cos mx\\,dx=\\frac{(-1)^mf'''(\\pi)-f'''(0)}{m^2}-\\frac{c}{m^2}\\cdot0.\n\\]\nこれを $F=f$ の (☆) に代入して\n\\[\nI_m(f)=\\frac{(-1)^mf'(\\pi)-f'(0)}{m^2}-\\frac{(-1)^mf'''(\\pi)-f'''(0)}{m^4}.\n\\]\n\\hfill$\\square$\n\n(2) $A=f'(\\pi)$，$B=f'(0)$，$C=f'''(\\pi)$，$D=f'''(0)$ とおく．(1) より，条件は，すべての正の整数 $m$ について\n\\[\nm^2\\bigl((-1)^mA-B\\bigr)-\\bigl((-1)^mC-D\\bigr)=1\n\\]\nが成り立つことである．$m$ が偶数のとき $(A-B)m^2=1+C-D$ がすべての正の偶数 $m$ で成り立つので，$m=2,4$ の差をとって $12(A-B)=0$．よって $A=B$，$D-C=1$．$m$ が奇数のときも同様に $m=1,3$ の差から $-(A+B)=0$，$C+D=1$．したがって\n\\[\nf'(0)=f'(\\pi)=0,\\qquad f'''(0)=1,\\qquad f'''(\\pi)=0.\n\\]\n逆にこの4条件が成り立てば，(1) より $I_m(f)=\\dfrac{1}{m^4}$ である．よって (2) の条件は，この4条件と $f(0)=0$ が成り立つことと同値である．\n\n$f(0)=0$ より $f(x)=c_1x+c_2x^2+c_3x^3+c_4x^4$ とおける．$f'(0)=c_1=0$．$f'''(x)=6c_3+24c_4x$ より $6c_3=1$，$6c_3+24c_4\\pi=0$ なので，$c_3=\\dfrac16$，$c_4=-\\dfrac1{24\\pi}$．さらに\n\\[\nf'(\\pi)=2c_2\\pi+3c_3\\pi^2+4c_4\\pi^3=2c_2\\pi+\\frac{\\pi^2}2-\\frac{\\pi^2}6=0\n\\]\nより $c_2=-\\dfrac\\pi6$．よって条件をみたす $f$ はただ1つで，\n\\[\nf(x)=-\\frac{\\pi}{6}x^2+\\frac16x^3-\\frac1{24\\pi}x^4=\\boldsymbol{-\\frac{x^2(2\\pi-x)^2}{24\\pi}}.\n\\]\n（最後の変形は $x^2(2\\pi-x)^2=4\\pi^2x^2-4\\pi x^3+x^4$ による．）\n\n(3) 積和の公式より，$2\\sin\\dfrac x2\\cos mx=\\sin\\Bigl(m+\\dfrac12\\Bigr)x-\\sin\\Bigl(m-\\dfrac12\\Bigr)x$．$m=1,\\ldots,N$ で加えると，隣り合う項が打ち消し合って\n\\[\n2\\sin\\frac x2\\sum_{m=1}^N\\cos mx=\\sin\\frac{(2N+1)x}2-\\sin\\frac x2.\n\\]\n$0<x\\leqq\\pi$ では $0<\\dfrac x2\\leqq\\dfrac\\pi2$ より $\\sin\\dfrac x2>0$ なので，両辺を $2\\sin\\dfrac x2$ で割って示す式を得る．\\hfill$\\square$\n\n(4) 以下，$f$ は (2) の関数とし，$K=N+\\dfrac12$ とおく．\n\n\\textbf{ステップ1（和を積分で表す）．} (2) より\n\\[\n\\sum_{m=1}^N\\frac1{m^4}=\\sum_{m=1}^NI_m(f)=\\int_0^\\pi f(x)S_N(x)\\,dx,\\qquad S_N(x)=\\sum_{m=1}^N\\cos mx.\n\\]\n$f(x)S_N(x)$ は $[0,\\pi]$ で連続なので，$0<\\varepsilon<\\pi$ として $\\displaystyle\\int_0^\\pi fS_N\\,dx=\\lim_{\\varepsilon\\to+0}\\int_\\varepsilon^\\pi fS_N\\,dx$ である．$[\\varepsilon,\\pi]$ では (3) が使えるので\n\\[\n\\int_\\varepsilon^\\pi f(x)S_N(x)\\,dx=J_\\varepsilon-\\frac12\\int_\\varepsilon^\\pi f(x)\\,dx,\\qquad J_\\varepsilon=\\int_\\varepsilon^\\pi G(x)\\sin Kx\\,dx,\\quad G(x)=\\frac{f(x)}{2\\sin\\frac x2}.\n\\]\n\n\\textbf{ステップ2（$G$ と $G'$ の評価）．} $0<x\\leqq\\pi$ で\n\\[\nG(x)=q(x)\\,\\varphi(x),\\qquad q(x)=\\frac{f(x)}{x}=-\\frac{x(2\\pi-x)^2}{24\\pi},\\qquad \\varphi(x)=\\frac{x}{2\\sin\\frac x2}\n\\]\nと分ける．$t=\\dfrac x2$（$0<t\\leqq\\dfrac\\pi2$）とし，$v(t)=\\sin t-t\\cos t$ とおく．\n\n(i) $v(0)=0$，$v'(t)=t\\sin t>0$（$0<t\\leqq\\frac\\pi2$）より $v(t)>0$．また $(t-\\sin t)'=1-\\cos t\\geqq0$ と $t-\\sin t$ が $t=0$ で $0$ であることから $\\sin t\\leqq t$．よって $w(t)=\\dfrac{t^3}3-v(t)$ は $w(0)=0$，$w'(t)=t^2-t\\sin t=t(t-\\sin t)\\geqq0$ をみたし，$v(t)\\leqq\\dfrac{t^3}3$．\n\n(ii) $\\left(\\dfrac{\\sin t}t\\right)'=\\dfrac{t\\cos t-\\sin t}{t^2}=-\\dfrac{v(t)}{t^2}<0$ より $\\dfrac{\\sin t}{t}$ は $0<t\\leqq\\dfrac\\pi2$ で減少するので，$\\dfrac{\\sin t}t\\geqq\\dfrac{1}{\\pi/2}=\\dfrac2\\pi$．\n\n(ii) より $0<\\varphi(x)=\\dfrac t{\\sin t}\\leqq\\dfrac\\pi2$．また $\\varphi'(x)=\\dfrac12\\cdot\\dfrac{\\sin t-t\\cos t}{\\sin^2t}=\\dfrac{v(t)}{2\\sin^2t}$ であり，(i)(ii) より\n\\[\n0<\\varphi'(x)\\leqq\\frac{t^3/3}{2\\cdot\\frac{4t^2}{\\pi^2}}=\\frac{\\pi^2t}{24}\\leqq\\frac{\\pi^3}{48}.\n\\]\n一方 $0\\leqq x\\leqq\\pi$ では $0\\leqq x\\leqq\\pi$，$0<2\\pi-x\\leqq2\\pi$ より $|q(x)|\\leqq\\dfrac{\\pi\\cdot4\\pi^2}{24\\pi}=\\dfrac{\\pi^2}6$．さらに $q'(x)=-\\dfrac{(2\\pi-x)(2\\pi-3x)}{24\\pi}$ で $|2\\pi-3x|\\leqq2\\pi$ なので $|q'(x)|\\leqq\\dfrac{2\\pi\\cdot2\\pi}{24\\pi}=\\dfrac\\pi6$．よって $0<x\\leqq\\pi$ で\n\\[\n|G(x)|\\leqq\\frac{\\pi^2}6\\cdot\\frac\\pi2=\\frac{\\pi^3}{12},\\qquad |G'(x)|\\leqq|q'|\\varphi+|q|\\varphi'\\leqq\\frac\\pi6\\cdot\\frac\\pi2+\\frac{\\pi^2}6\\cdot\\frac{\\pi^3}{48}=M\n\\]\n（$M=\\dfrac{\\pi^2}{12}+\\dfrac{\\pi^5}{288}$ は $N,\\ \\varepsilon$ によらない定数）．\n\n\\textbf{ステップ3（$J_\\varepsilon$ の評価）．} 部分積分により\n\\[\nJ_\\varepsilon=\\Bigl[-\\frac{G(x)\\cos Kx}{K}\\Bigr]_\\varepsilon^\\pi+\\frac1K\\int_\\varepsilon^\\pi G'(x)\\cos Kx\\,dx\n\\]\nなので，ステップ2より\n\\[\n|J_\\varepsilon|\\leqq\\frac{|G(\\pi)|+|G(\\varepsilon)|}{K}+\\frac1K\\int_\\varepsilon^\\pi|G'(x)|\\,dx\\leqq\\frac{1}{K}\\Bigl(\\frac{\\pi^3}{6}+\\pi M\\Bigr)=\\frac{L}{K}.\n\\]\nここで $L=\\dfrac{\\pi^3}6+\\pi M$ は $N,\\ \\varepsilon$ によらない．\n\n\\textbf{ステップ4（極限）．} ステップ1より $J_\\varepsilon=\\displaystyle\\int_\\varepsilon^\\pi fS_N\\,dx+\\frac12\\int_\\varepsilon^\\pi f\\,dx$ であり，$\\varepsilon\\to+0$ のとき右辺は $\\displaystyle\\sum_{m=1}^N\\frac1{m^4}+\\frac12\\int_0^\\pi f\\,dx$ に収束する．各 $\\varepsilon$ で $|J_\\varepsilon|\\leqq\\dfrac LK$ なので，極限でも\n\\[\n\\left|\\sum_{m=1}^N\\frac1{m^4}+\\frac12\\int_0^\\pi f(x)\\,dx\\right|\\leqq\\frac{L}{N+\\frac12}.\n\\]\nここで\n\\[\n\\int_0^\\pi f(x)\\,dx=\\int_0^\\pi\\Bigl(-\\frac\\pi6x^2+\\frac16x^3-\\frac1{24\\pi}x^4\\Bigr)dx=-\\frac{\\pi^4}{18}+\\frac{\\pi^4}{24}-\\frac{\\pi^4}{120}=\\frac{(-20+15-3)\\pi^4}{360}=-\\frac{\\pi^4}{45}.\n\\]\nよって $\\left|\\displaystyle\\sum_{m=1}^N\\frac1{m^4}-\\frac{\\pi^4}{90}\\right|\\leqq\\dfrac{L}{N+\\frac12}$．$N\\to\\infty$ のとき右辺は $0$ に収束するので，はさみうちの原理により部分和は $\\dfrac{\\pi^4}{90}$ に収束する．したがって級数は収束し，\n\\[\n\\boldsymbol{\\sum_{m=1}^\\infty\\frac1{m^4}=\\frac{\\pi^4}{90}}.\n\\]\n\\hfill$\\square$"
+   }
+  ],
+  "idea": {
+   "tex": "多項式 $f$ に対して $\\displaystyle\\int f(x)\\cos mx\\,dx$（または $\\sin mx$）を部分積分すると，$\\dfrac1m$ のべきで並んだ有限個の項になり，各項の係数は区間の端点での $f$ の導関数の値だけで決まる．原題は，この展開の主要項を消すように係数を決める問題である．捻りでは逆に，「すべての $m$ で $\\dfrac1{m^4}$ になる」という条件から，端点での導関数の値を通して多項式 $f$ を決める．さらに $\\displaystyle\\sum_{m=1}^N\\cos mx$ を $\\sin\\dfrac{(2N+1)x}2$ を含む式にまとめる．残りの積分は部分積分でもう一度 $\\dfrac1N$ 程度におさえ，$\\displaystyle\\sum\\frac1{m^4}$ の値を求める．"
+  },
+  "methods": [],
+  "tags": [
+   "部分積分",
+   "端点の値",
+   "三角関数の和",
+   "はさみうち",
+   "無限級数"
+  ],
+  "provenance": {
+   "created": "2026-11-10"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "III-INT-549",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "III-17",
+  "level": 5,
+  "minutes": 45,
+  "theme": "$\\sin(\\pi\\sqrt{x})$ の部分和と台形公式の誤差",
+  "topic": "$\\sin(\\pi\\sqrt{x})$ の部分和と台形公式の誤差",
+  "statement": {
+   "tex": "正の実数 $x$ に対して $f(x)=\\sin(\\pi\\sqrt x)$ とし，自然数 $n$ に対して $\\displaystyle S_n=\\sum_{k=1}^nf(k)$ とする（$S_0=0$ とする）．必要ならば $3<\\pi<4$，$2<e<3$ であることを証明なしに用いてよい．\n\\begin{enumerate}\n  \\item $k$ を自然数とし，関数 $g(x)$ は区間 $k\\leqq x\\leqq k+1$ で2回微分可能で，$g''(x)$ は連続であるとする．次の等式を示せ．\n  \\[\n  \\int_k^{k+1}g(x)\\,dx=\\frac{g(k)+g(k+1)}2-\\frac12\\int_k^{k+1}(x-k)(k+1-x)\\,g''(x)\\,dx\n  \\]\n  \\item 2以上の自然数 $m$ に対して，$\\displaystyle\\int_1^{m^2}f(x)\\,dx$ を $m$ の式で表せ．\n  \\item 2以上の自然数 $m$ に対して，次の不等式が成り立つことを示せ．\n  \\[\n  \\left|\\,S_{m^2}-\\int_1^{m^2}f(x)\\,dx\\,\\right|\\leqq\\frac{\\pi^2\\log m+\\pi}{16}\n  \\]\n  \\item 3つの条件 $S_{n-1}=S_n$，$S_n>0$，$2025\\leqq n\\leqq19881$ を同時に満たす自然数 $n$ の個数を求めよ．\n  \\item 2つの条件 $S_{n-1}\\leqq0<S_n$，$2025\\leqq n\\leqq19881$ を同時に満たす自然数 $n$ の個数を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 証明　(2) $\\dfrac2\\pi\\{(-1)^{m+1}m-1\\}$　(3) 証明　(4) $49$ 個　(5) $48$ 個"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) $w(x)=(x-k)(k+1-x)$ とおくと $w(k)=w(k+1)=0$，$w'(x)=2k+1-2x$，$w''(x)=-2$ である．部分積分を2回行うと\n\\begin{align*}\n\\int_k^{k+1}w(x)g''(x)\\,dx\n&=\\Bigl[w(x)g'(x)\\Bigr]_k^{k+1}-\\int_k^{k+1}w'(x)g'(x)\\,dx\n=-\\int_k^{k+1}w'(x)g'(x)\\,dx\\\\\n&=-\\Bigl[w'(x)g(x)\\Bigr]_k^{k+1}+\\int_k^{k+1}w''(x)g(x)\\,dx\\\\\n&=-\\bigl\\{(-1)\\cdot g(k+1)-1\\cdot g(k)\\bigr\\}-2\\int_k^{k+1}g(x)\\,dx\\\\\n&=g(k)+g(k+1)-2\\int_k^{k+1}g(x)\\,dx .\n\\end{align*}\nこれを $\\displaystyle\\int_k^{k+1}g(x)\\,dx$ について解けば与式を得る．\\hfill$\\square$\n\n\\medskip\n(2) $x=t^2\\ (1\\leqq t\\leqq m)$ と置換すると $dx=2t\\,dt$ であり，\n\\begin{align*}\n\\int_1^{m^2}f(x)\\,dx&=\\int_1^m2t\\sin(\\pi t)\\,dt\n=\\left[-\\frac{2t\\cos(\\pi t)}\\pi\\right]_1^m+\\int_1^m\\frac{2\\cos(\\pi t)}\\pi\\,dt\\\\\n&=-\\frac{2m(-1)^m}\\pi-\\frac2\\pi+\\left[\\frac{2\\sin(\\pi t)}{\\pi^2}\\right]_1^m\n=\\boldsymbol{\\frac2\\pi\\bigl\\{(-1)^{m+1}m-1\\bigr\\}} .\n\\end{align*}\n\n\\medskip\n(3) $x\\geqq1$ で $f$ は何回でも微分可能で，\n\\[\nf'(x)=\\frac{\\pi\\cos(\\pi\\sqrt x)}{2\\sqrt x},\\qquad\nf''(x)=-\\frac{\\pi^2\\sin(\\pi\\sqrt x)}{4x}-\\frac{\\pi\\cos(\\pi\\sqrt x)}{4x^{3/2}}\n\\]\nであるから $|f''(x)|\\leqq\\dfrac{\\pi^2}{4x}+\\dfrac{\\pi}{4x^{3/2}}$．$N=m^2$ とおく．(1) を $g=f$，$k=1,2,\\dots,N-1$ に用いて加えると\n\\[\n\\int_1^Nf(x)\\,dx=\\sum_{k=1}^{N-1}\\frac{f(k)+f(k+1)}2-\\frac12\\sum_{k=1}^{N-1}\\int_k^{k+1}(x-k)(k+1-x)f''(x)\\,dx .\n\\]\nここで $f(1)=\\sin\\pi=0$，$f(N)=\\sin(m\\pi)=0$ なので $\\displaystyle\\sum_{k=1}^{N-1}\\frac{f(k)+f(k+1)}2=S_N-\\frac{f(1)+f(N)}2=S_N$．また $k\\leqq x\\leqq k+1$ で $0\\leqq(x-k)(k+1-x)\\leqq\\frac14$ である（相加平均・相乗平均の関係）．よって\n\\begin{align*}\n\\left|S_N-\\int_1^Nf(x)\\,dx\\right|\n&\\leqq\\frac12\\cdot\\frac14\\int_1^N|f''(x)|\\,dx\n\\leqq\\frac18\\int_1^{m^2}\\left(\\frac{\\pi^2}{4x}+\\frac{\\pi}{4x^{3/2}}\\right)dx\\\\\n&=\\frac18\\left\\{\\frac{\\pi^2}4\\log m^2+\\frac\\pi4\\left[-\\frac2{\\sqrt x}\\right]_1^{m^2}\\right\\}\n=\\frac{\\pi^2\\log m}{16}+\\frac{\\pi}{16}\\left(1-\\frac1m\\right)\n\\leqq\\frac{\\pi^2\\log m+\\pi}{16} .\n\\end{align*}\n\\hfill$\\square$\n\n\\medskip\n(4) \\textbf{(i) $S_{n-1}=S_n$ となる $n$．} $S_n-S_{n-1}=f(n)=\\sin(\\pi\\sqrt n)$ であり，$\\sin(\\pi y)=0\\iff y$ は整数．$\\sqrt n$ が整数でないとき $\\sqrt n$ は無理数である（$\\sqrt n=\\frac pq$，$p,q$ は互いに素な自然数，$q\\geqq2$ とすると $nq^2=p^2$ で，$q$ の素因数 $r$ は $p^2$ を割るので $p$ を割り，互いに素に反する）．よって $S_{n-1}=S_n\\iff n$ は平方数．\n\n\\textbf{(ii) $S_{m^2}$ の符号．} $m\\geqq10$ のとき，$m$ が奇数なら $S_{m^2}>0$，偶数なら $S_{m^2}<0$ であることを示す．$E=S_{m^2}-\\int_1^{m^2}f\\,dx$ とおくと (3) と $\\pi<4$，$\\log m>0$ から\n\\[\n|E|\\leqq\\frac{\\pi^2\\log m+\\pi}{16}<\\frac{16\\log m+4}{16}=\\log m+\\frac14 .\n\\]\nまた $\\frac2\\pi>\\frac12$ である．$h(x)=\\frac{x-1}2-\\log x-\\frac14$ とおくと $h'(x)=\\frac12-\\frac1x>0\\ (x>2)$ で，$e>2$ より $e^4>16>10$，すなわち $\\log10<4$ だから $h(10)=\\frac{17}4-\\log10>0$．よって $m\\geqq10$ で $h(m)>0$．\n\\begin{itemize}\n  \\item $m$ 奇数：$S_{m^2}=\\frac2\\pi(m-1)+E>\\frac{m-1}2-\\log m-\\frac14=h(m)>0$．\n  \\item $m$ 偶数：$S_{m^2}=-\\frac2\\pi(m+1)+E<-\\frac{m+1}2+\\log m+\\frac14=-h(m)-1<0$．\n\\end{itemize}\n\n\\textbf{(iii) 個数．} $2025=45^2$，$19881=141^2$ なので，範囲内の平方数は $n=m^2\\ (45\\leqq m\\leqq141)$．(ii) より $S_{m^2}>0$ となるのは $m$ が奇数のときで，$m=45,47,\\dots,141$ の $\\boldsymbol{49}$ 個．\n\n\\medskip\n(5) 自然数 $m$ と $m^2<k<(m+1)^2$ をみたす整数 $k$ について $m<\\sqrt k<m+1$ なので，$f(k)$ の符号は $(-1)^m$ で，0ではない．したがって $m^2\\leqq n-1<n\\leqq(m+1)^2-1$ の範囲で，$m$ が偶数なら $S_n$ は狭義単調増加，奇数なら狭義単調減少であり，$S_{(m+1)^2}=S_{(m+1)^2-1}$ である．\n\n範囲 $2025\\leqq n\\leqq19881$ の $n$ は，$45\\leqq m\\leqq140$ のいずれかについて $m^2<n\\leqq(m+1)^2$ をみたすか，$n=2025$ である．\n\\begin{itemize}\n  \\item $n=2025$ や $n=(m+1)^2$ では $S_{n-1}=S_n$ なので条件をみたさない．\n  \\item $m$ が奇数で $m^2<n<(m+1)^2$ なら $S_n<S_{n-1}$ で，条件をみたさない．\n  \\item $m$ が偶数（$46\\leqq m\\leqq140$）のとき，(ii) より $S_{m^2}<0<S_{(m+1)^2}=S_{(m+1)^2-1}$．$S_n$ は $m^2\\leqq n\\leqq(m+1)^2-1$ で狭義単調増加だから，$S_n>0$ となる最小の $n=n_0$ がこの範囲に存在し，$m^2<n_0$ かつ $S_{n_0-1}\\leqq0<S_{n_0}$．逆に条件をみたす $n$ では $S_{n-1}\\leqq0<S_n$ と単調性から $n$ は $S_n>0$ となる最小のもの，すなわち $n_0$ に限る．よってこの区間にちょうど1個．\n\\end{itemize}\n偶数 $m=46,48,\\dots,140$ は48個なので，求める個数は $\\boldsymbol{48}$ 個．"
+   }
+  ],
+  "idea": {
+   "tex": "$\\sin(\\pi\\sqrt x)$ は区間 $m^2<x<(m+1)^2$ で符号 $(-1)^m$ を保つので，部分和 $S_n$ はこの区間ごとに単調で，平方数 $n=m^2$ での値 $S_{m^2}$ の符号だけで「0をまたぐ回数」が決まる．$S_{m^2}$ は積分 $\\frac2\\pi\\{(-1)^{m+1}m-1\\}$（大きさ $m$ 程度）で近似されるが，1次の評価（$|f'|$ による和と積分の差）では誤差も $m$ 程度になって符号が決まらない．そこで台形公式の誤差 $\\frac12\\int(x-k)(k+1-x)g''(x)\\,dx$ を部分積分で導き，誤差を $\\log m$ 程度に落とす．"
+  },
+  "methods": [],
+  "tags": [
+   "和と積分",
+   "台形公式",
+   "部分積分",
+   "符号の変化",
+   "数え上げ",
+   "誤差評価"
+  ],
+  "provenance": {
+   "created": "2026-11-10"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "III-INT-550",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "III-17",
+  "level": 5,
+  "minutes": 45,
+  "theme": "$x\\dfrac{d}{dx}$ の反復と2次のモーメント",
+  "topic": "$x\\dfrac{d}{dx}$ の反復と2次のモーメント",
+  "statement": {
+   "tex": "$x$ を正の実数とし，$n$ を0以上の整数とする．関数 $f_n(x)$ を\n\\[\nf_0(x)=x^{-\\log x},\\qquad f_n(x)=x\\,\\frac{d}{dx}f_{n-1}(x)\\quad(n=1,2,3,\\dots)\n\\]\nで定め，実数 $u$ に対して $\\ell_n(u)=(-1)^ne^{u^2}f_n(e^u)$ とおく．ただし，$\\displaystyle\\lim_{a\\to\\infty}\\int_0^ae^{-s^2}ds=\\frac{\\sqrt\\pi}2$ であることを証明なしに用いてよい．\n\\begin{enumerate}\n  \\item $\\ell_0(u)=1$ であり，$n\\geqq0$ に対して $\\ell_{n+1}(u)=2u\\,\\ell_n(u)-\\ell_n'(u)$，$n\\geqq1$ に対して $\\ell_n'(u)=2n\\,\\ell_{n-1}(u)$ が成り立つことを示せ．\n  \\item $0\\leqq m<n$ である整数 $m,n$ に対して\n  \\[\n  \\lim_{b\\to\\infty}\\int_{\\frac1b}^bf_m(x)f_n(x)\\,x^{\\log x-1}dx=0\n  \\]\n  であることを示せ．また，$\\displaystyle N_n=\\lim_{b\\to\\infty}\\int_{\\frac1b}^b\\{f_n(x)\\}^2x^{\\log x-1}dx$ を $n$ の式で表せ．\n  \\item $\\displaystyle J_n=\\lim_{b\\to\\infty}\\int_{\\frac1b}^b(\\log x)^2\\{f_n(x)\\}^2x^{\\log x-1}dx$ を $n$ の式で表せ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 証明　(2) 前半は証明，$N_n=2^n\\,n!\\sqrt\\pi$　(3) $J_n=2^{n-1}(2n+1)\\,n!\\sqrt\\pi$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "$\\varphi(u)=e^{-u^2}$，$F_n(u)=f_n(e^u)$ とおく．\n\n(1) $F_0(u)=(e^u)^{-\\log e^u}=(e^u)^{-u}=e^{-u^2}=\\varphi(u)$．また合成関数の微分により\n\\[\nF_{n-1}'(u)=f_{n-1}'(e^u)\\,e^u=f_n(e^u)=F_n(u)\n\\]\nなので，$F_n=\\varphi^{(n)}$（$\\varphi$ の第 $n$ 次導関数）．定義から $\\ell_n(u)=(-1)^ne^{u^2}\\varphi^{(n)}(u)$，すなわち\n\\[\n\\varphi^{(n)}=(-1)^n\\ell_n\\varphi . \\tag{A}\n\\]\n$\\ell_0=e^{u^2}e^{-u^2}=1$．(A) を微分し $\\varphi'=-2u\\varphi$ を用いると\n\\[\n\\varphi^{(n+1)}=(-1)^n(\\ell_n'\\varphi+\\ell_n\\varphi')=(-1)^n(\\ell_n'-2u\\ell_n)\\varphi .\n\\]\nこれと $\\varphi^{(n+1)}=(-1)^{n+1}\\ell_{n+1}\\varphi$，$\\varphi>0$ から $\\ell_{n+1}=2u\\ell_n-\\ell_n'$．この式と $\\ell_0=1$ から，帰納法で $\\ell_n$ は $u$ の $n$ 次多項式で $u^n$ の係数は $2^n$ である．\n\n次に $\\ell_n'=2n\\ell_{n-1}$ を帰納法で示す．$\\ell_1=2u$ より $\\ell_1'=2=2\\cdot1\\cdot\\ell_0$．$\\ell_n'=2n\\ell_{n-1}$ を仮定すると，両辺を微分して $\\ell_n''=2n\\ell_{n-1}'$ なので\n\\[\n\\ell_{n+1}'=(2u\\ell_n-\\ell_n')'=2\\ell_n+2u\\ell_n'-\\ell_n''=2\\ell_n+2n\\,(2u\\ell_{n-1}-\\ell_{n-1}')=2\\ell_n+2n\\ell_n=2(n+1)\\ell_n .\n\\]\n\\hfill$\\square$\n\n\\medskip\n(2) \\textbf{積分の変形．} $x=e^u$ と置換すると $dx=x\\,du$，$x^{\\log x}=e^{u^2}$，$x$ が $\\frac1b$ から $b$ まで動くとき $u$ は $-B$ から $B$（$B=\\log b$）まで動き，$b\\to\\infty\\iff B\\to\\infty$．(A) より $F_mF_n=(-1)^{m+n}\\ell_m\\ell_n\\varphi^2$ なので\n\\[\n\\int_{\\frac1b}^bf_m(x)f_n(x)\\,x^{\\log x-1}dx=\\int_{-B}^BF_mF_ne^{u^2}du=(-1)^{m+n}\\int_{-B}^B\\ell_m\\ell_n\\varphi\\,du . \\tag{B}\n\\]\n\n\\textbf{補題1．} 多項式 $P$ に対し $\\displaystyle\\lim_{u\\to\\pm\\infty}P(u)\\varphi(u)=0$．\n\n（証明）$t\\geqq0$，整数 $L\\geqq0$ に対し $e^t\\geqq\\dfrac{t^L}{L!}$ を $L$ についての帰納法で示す．$L=0$ は $e^t\\geqq1$．$L-1$ で成り立つとき $q(t)=e^t-\\frac{t^L}{L!}$ は $q(0)=1>0$，$q'(t)=e^t-\\frac{t^{L-1}}{(L-1)!}\\geqq0$ より $q(t)\\geqq0$．$P$ の次数より大きい $2L$ をとると，$|u|\\geqq1$ で $0\\leqq|P(u)|\\varphi(u)\\leqq\\dfrac{L!\\,|P(u)|}{u^{2L}}\\to0$．\\hfill$\\square$\n\n\\textbf{補題2．} 多項式 $P$ と自然数 $k$ に対し\n\\[\n\\lim_{B\\to\\infty}\\left\\{\\int_{-B}^BP\\varphi^{(k)}du-(-1)^k\\int_{-B}^BP^{(k)}\\varphi\\,du\\right\\}=0 .\n\\]\n（証明）部分積分により $\\displaystyle\\int_{-B}^BP\\varphi^{(k)}du=\\Bigl[P\\varphi^{(k-1)}\\Bigr]_{-B}^B-\\int_{-B}^BP'\\varphi^{(k-1)}du$．(A) より $P\\varphi^{(k-1)}=(-1)^{k-1}P\\ell_{k-1}\\varphi$ は（多項式）$\\times\\varphi$ なので，補題1より境界項は $B\\to\\infty$ で0に収束する．$P$ を $P'$，$k$ を $k-1$ にして同じことを $k$ 回くり返せばよい（最後は $\\varphi^{(0)}=\\varphi$）．\\hfill$\\square$\n\nまた，$\\varphi$ は偶関数なので $\\displaystyle\\int_{-B}^B\\varphi\\,du=2\\int_0^Be^{-s^2}ds\\to\\sqrt\\pi$．\n\n\\textbf{直交性．} $0\\leqq m<n$ とする．(A) より $\\ell_n\\varphi=(-1)^n\\varphi^{(n)}$ なので $\\displaystyle\\int_{-B}^B\\ell_m\\ell_n\\varphi\\,du=(-1)^n\\int_{-B}^B\\ell_m\\varphi^{(n)}du$．$\\ell_m$ は $m$ 次（$<n$）なので $\\ell_m^{(n)}=0$ であり，補題2からこれは $B\\to\\infty$ で0に収束する．(B) より与えられた極限は $0$．\\hfill$\\square$\n\n\\textbf{$N_n$．} 同様に $\\displaystyle\\int_{-B}^B\\ell_n^2\\varphi\\,du=(-1)^n\\int_{-B}^B\\ell_n\\varphi^{(n)}du$．$\\ell_n$ の $u^n$ の係数は $2^n$ なので $\\ell_n^{(n)}=2^n\\,n!$（定数）．補題2より\n\\[\n\\lim_{B\\to\\infty}\\int_{-B}^B\\ell_n^2\\varphi\\,du=\\lim_{B\\to\\infty}2^n\\,n!\\int_{-B}^B\\varphi\\,du=2^n\\,n!\\sqrt\\pi .\n\\]\n(B) で $m=n$（符号 $(-1)^{2n}=1$）として $\\boldsymbol{N_n=2^n\\,n!\\sqrt\\pi}$．\n\n\\medskip\n(3) (B) と同じ置換で $(\\log x)^2=u^2$ なので\n\\[\n\\int_{\\frac1b}^b(\\log x)^2\\{f_n(x)\\}^2x^{\\log x-1}dx=\\int_{-B}^B\\bigl(u\\,\\ell_n(u)\\bigr)^2\\varphi\\,du .\n\\]\n(1) の2式から $\\ell_n'$ を消去すると，$n\\geqq1$ で $2u\\ell_n=\\ell_{n+1}+\\ell_n'=\\ell_{n+1}+2n\\ell_{n-1}$，すなわち\n\\[\nu\\ell_n=\\frac12\\ell_{n+1}+n\\ell_{n-1}\\quad(n\\geqq1),\\qquad u\\ell_0=\\frac12\\ell_1 .\n\\]\n$n\\geqq1$ のとき\n\\[\n(u\\ell_n)^2\\varphi=\\frac14\\ell_{n+1}^2\\varphi+n\\,\\ell_{n-1}\\ell_{n+1}\\varphi+n^2\\ell_{n-1}^2\\varphi\n\\]\nで，(2) の結果より各項の $[-B,B]$ での積分は $B\\to\\infty$ でそれぞれ $\\frac14N_{n+1}$，$0$，$n^2N_{n-1}$ に収束する．よって\n\\[\nJ_n=\\frac14\\cdot2^{n+1}(n+1)!\\sqrt\\pi+n^2\\cdot2^{n-1}(n-1)!\\sqrt\\pi=2^{n-1}\\,n!\\sqrt\\pi\\,\\bigl\\{(n+1)+n\\bigr\\}\n=\\boldsymbol{2^{n-1}(2n+1)\\,n!\\sqrt\\pi} .\n\\]\n$n=0$ のときは $J_0=\\frac14N_1=\\frac{\\sqrt\\pi}2$ で，これも同じ式で表される．"
+   }
+  ],
+  "idea": {
+   "tex": "$x=e^u$ とおくと $x\\dfrac{d}{dx}=\\dfrac{d}{du}$ なので，$f_n$ は $e^{-u^2}$ の $n$ 次導関数になり，$e^{u^2}$ を掛けたものは $n$ 次多項式 $\\ell_n$．$\\ell_{n+1}=2u\\ell_n-\\ell_n'$ と $\\ell_n'=2n\\ell_{n-1}$ を組み合わせると $u\\ell_n=\\frac12\\ell_{n+1}+n\\ell_{n-1}$．重み $e^{-u^2}$ の積分は部分積分を $n$ 回くり返して微分を多項式側に移すと，次数の低い多項式は消え（直交性），$\\ell_n$ 自身では $2^nn!\\sqrt\\pi$ が残る．2次のモーメント $\\int u^2\\ell_n^2e^{-u^2}du$ は $u\\ell_n$ を隣の2つに分解し，直交性で交差項を消して求める．"
+  },
+  "methods": [],
+  "tags": [
+   "対数による置換",
+   "高次導関数",
+   "部分積分",
+   "直交性",
+   "広義積分",
+   "漸化式"
+  ],
+  "provenance": {
+   "created": "2026-11-10"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "III-INT-551",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "III-17",
+  "level": 5,
+  "minutes": 40,
+  "theme": "放物線の内側の平行曲線とつばめの尾",
+  "topic": "放物線の内側の平行曲線とつばめの尾",
+  "statement": {
+   "tex": "曲線 $C_1:\\ y=1-\\dfrac12x^2$ 上の点 $\\mathrm P\\left(t,\\ 1-\\dfrac12t^2\\right)$ を考える．P における $C_1$ の法線上にあって P からの距離が $2$ である2点のうち，$y$ 座標が小さい方を Q とする．$t$ が実数全体を動くとき Q が描く曲線を $C_2$ とする．\n\\begin{enumerate}\n  \\item Q の座標を $\\bigl(X(t),\\ Y(t)\\bigr)$ とする．$X(t)$，$Y(t)$ を $t$ で表し，すべての実数 $t$ について $\\dfrac{dY}{dt}=-t\\,\\dfrac{dX}{dt}$ が成り立つことを示せ．\n  \\item $\\dfrac{dX}{dt}=0$ となる $t$ をすべて求め，そのときの点 Q の座標を求めよ．\n  \\item $C_2$ と $y$ 軸の共有点をすべて求め，それぞれに対応する $t$ の値を答えよ．\n  \\item $-\\sqrt3\\leqq t\\leqq\\sqrt3$ の範囲で Q が描く曲線は，点 $\\bigl(X(\\sqrt3),Y(\\sqrt3)\\bigr)$ 以外では自分自身と交わらない閉じた曲線であることを示し，これで囲まれた部分の面積 $S$ を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $X(t)=t-\\dfrac{2t}{\\sqrt{1+t^2}}$，$Y(t)=1-\\dfrac{t^2}2-\\dfrac{2}{\\sqrt{1+t^2}}$；証明　(2) $t=\\pm\\sqrt{\\sqrt[3]4-1}$，Q$\\left(\\mp(\\sqrt[3]4-1)^{\\frac32},\\ \\dfrac{3-3\\sqrt[3]4}2\\right)$（複号同順）　(3) $(0,-1)$（$t=0$），$\\left(0,-\\dfrac32\\right)$（$t=\\pm\\sqrt3$）　(4) 証明；$S=\\sqrt3-\\dfrac43\\pi+2\\log(2+\\sqrt3)$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) $y=1-\\dfrac12x^2$ より $y'=-x$ なので，P における接線の方向ベクトルは $(1,\\,-t)$ であり，法線の方向ベクトルは $(t,\\,1)$ である．$u=\\dfrac1{\\sqrt{1+t^2}}$ とおくと，$\\vec n=u\\,(t,\\,1)$ は法線方向の単位ベクトルで，その $y$ 成分 $u$ は正である．法線上で P からの距離が $2$ の点は $\\mathrm P\\pm2\\vec n$ の2点で，$y$ 座標は $1-\\dfrac{t^2}2\\pm2u$ だから，$y$ 座標が小さい方は $\\mathrm Q=\\mathrm P-2\\vec n$ である．よって\n\\[\n\\boldsymbol{X(t)=t-\\frac{2t}{\\sqrt{1+t^2}},\\qquad Y(t)=1-\\frac{t^2}2-\\frac{2}{\\sqrt{1+t^2}}}.\n\\]\n微分すると\n\\[\n\\frac{d}{dt}\\frac{t}{\\sqrt{1+t^2}}=\\frac{\\sqrt{1+t^2}-\\dfrac{t^2}{\\sqrt{1+t^2}}}{1+t^2}=\\frac{1}{(1+t^2)^{\\frac32}},\\qquad\n\\frac{d}{dt}\\frac{1}{\\sqrt{1+t^2}}=-\\frac{t}{(1+t^2)^{\\frac32}}\n\\]\nより\n\\[\n\\frac{dX}{dt}=1-\\frac{2}{(1+t^2)^{\\frac32}},\\qquad\n\\frac{dY}{dt}=-t+\\frac{2t}{(1+t^2)^{\\frac32}}=-t\\left(1-\\frac{2}{(1+t^2)^{\\frac32}}\\right)=-t\\,\\frac{dX}{dt}.\n\\]\n\\hfill$\\square$\n\n(2) $\\dfrac{dX}{dt}=0\\iff(1+t^2)^{\\frac32}=2\\iff1+t^2=2^{\\frac23}=\\sqrt[3]4\\iff t=\\pm t_c$．ここで $t_c=\\sqrt{\\sqrt[3]4-1}\\ (>0)$ とおいた．このとき $\\sqrt{1+t^2}=\\sqrt[3]2$ だから\n\\[\nX(\\pm t_c)=\\pm t_c\\left(1-\\frac2{\\sqrt[3]2}\\right)=\\pm t_c(1-\\sqrt[3]4)=\\mp t_c^{\\,3}=\\mp(\\sqrt[3]4-1)^{\\frac32},\n\\]\n\\[\nY(\\pm t_c)=1-\\frac{\\sqrt[3]4-1}{2}-\\sqrt[3]4=\\frac{3-3\\sqrt[3]4}{2}.\n\\]\nよって $\\boldsymbol{t=\\pm\\sqrt{\\sqrt[3]4-1}}$ のとき $\\boldsymbol{\\mathrm Q\\left(\\mp(\\sqrt[3]4-1)^{\\frac32},\\ \\dfrac{3-3\\sqrt[3]4}2\\right)}$（複号同順）．\n\n(3) $X(t)=t\\left(1-\\dfrac2{\\sqrt{1+t^2}}\\right)=0\\iff t=0$ または $\\sqrt{1+t^2}=2\\iff t=0,\\ \\pm\\sqrt3$．$Y(0)=1-2=-1$，$Y(\\pm\\sqrt3)=1-\\dfrac32-1=-\\dfrac32$．よって共有点は\n\\[\n\\boldsymbol{(0,\\,-1)\\ (t=0),\\qquad \\left(0,\\,-\\frac32\\right)\\ (t=\\pm\\sqrt3)}.\n\\]\n\n(4) \\textbf{符号と増減．} $X(-t)=-X(t)$，$Y(-t)=Y(t)$ なので，$t$ と $-t$ に対応する点は $y$ 軸に関して対称である．$0<t<\\sqrt3$ では $\\sqrt{1+t^2}<2$ より $X(t)<0$，$-\\sqrt3<t<0$ では $X(t)>0$ である．また $\\dfrac{dX}{dt}=1-\\dfrac2{(1+t^2)^{3/2}}$ は $0\\leqq t<t_c$ で負，$t_c<t$ で正である．ゆえに $0\\leqq t\\leqq\\sqrt3$ において，$X(t)$ は $[0,t_c]$ で $0$ から $x_c=-t_c^{\\,3}$ まで狭義に減少し，$[t_c,\\sqrt3]$ で $x_c$ から $0$ まで狭義に増加する．\n\n\\textbf{2本の枝．} $x_c\\leqq x\\leqq0$ に対し，$X(s)=x$ となる $s\\in[0,t_c]$ と，$X(\\tau)=x$ となる $\\tau\\in[t_c,\\sqrt3]$ がそれぞれただ1つ存在する（連続で狭義単調だから）．それらを $s(x)$，$\\tau(x)$ とし，\n\\[\ny_A(x)=Y\\bigl(s(x)\\bigr),\\qquad y_B(x)=Y\\bigl(\\tau(x)\\bigr)\\qquad(x_c\\leqq x\\leqq0)\n\\]\nとおく．$x_c<x<0$ では $s(x)\\in(0,t_c)$，$\\tau(x)\\in(t_c,\\sqrt3)$ で，そこでは $\\dfrac{dX}{dt}\\neq0$ だから，逆関数の微分法と (1) により\n\\[\ny_A'(x)=\\frac{Y'(s)}{X'(s)}=-s(x),\\qquad y_B'(x)=\\frac{Y'(\\tau)}{X'(\\tau)}=-\\tau(x).\n\\]\nよって $h(x)=y_A(x)-y_B(x)$ は $[x_c,0]$ で連続，$(x_c,0)$ で $h'(x)=\\tau(x)-s(x)>0$ である．さらに $s(x_c)=\\tau(x_c)=t_c$ より $h(x_c)=0$．したがって $x_c<x\\leqq0$ で $h(x)>0$，すなわち $y_A(x)>y_B(x)$ である（$x=0$ では $y_A(0)=-1>y_B(0)=-\\dfrac32$）．\n\n\\textbf{閉曲線であること．} $0\\leqq t\\leqq\\sqrt3$ の部分は，$x_c\\leqq x\\leqq0$ 上の2つのグラフ $y=y_A(x)$，$y=y_B(x)$ を $x=x_c$ でつないだものである．この2つのグラフは $x=x_c$ 以外で共有点をもたない．また，それぞれのグラフ上で異なる $x$ には異なる点が対応する．よってこの部分は自分自身と交わらない．$-\\sqrt3\\leqq t\\leqq0$ の部分はこれと $y$ 軸に関して対称で，$x\\geqq0$ にある．2つの部分の共有点は $y$ 軸上の点に限られ，(3) より $(0,-1)$（ともに $t=0$）と $\\left(0,-\\frac32\\right)$（$t=\\sqrt3$ と $t=-\\sqrt3$）だけである．ゆえに $-\\sqrt3\\leqq t\\leqq\\sqrt3$ で Q が描く曲線は，$\\left(0,-\\frac32\\right)$ で始点と終点が一致する閉じた曲線で，それ以外では自分自身と交わらない．囲まれる部分は\n\\[\n\\Bigl\\{(x,y)\\ \\Big|\\ x_c\\leqq x\\leqq0,\\ y_B(x)\\leqq y\\leqq y_A(x)\\Bigr\\}\n\\]\nと，これを $y$ 軸に関して折り返したものとの和である．\n\n\\textbf{面積．} 対称性から $S=2\\displaystyle\\int_{x_c}^0\\{y_A(x)-y_B(x)\\}\\,dx$．$x=X(t)$ と置換すると，$y_A$ では $t$ が $t_c$ から $0$ まで，$y_B$ では $t_c$ から $\\sqrt3$ まで動くので\n\\[\n\\int_{x_c}^0y_A\\,dx-\\int_{x_c}^0y_B\\,dx=\\int_{t_c}^{0}Y\\frac{dX}{dt}\\,dt-\\int_{t_c}^{\\sqrt3}Y\\frac{dX}{dt}\\,dt=-\\int_0^{\\sqrt3}Y\\frac{dX}{dt}\\,dt.\n\\]\n$u=\\dfrac1{\\sqrt{1+t^2}}$ とおくと $Y=1-\\dfrac{t^2}2-2u$，$\\dfrac{dX}{dt}=1-2u^3$．また $t^2u^3=\\left(\\dfrac1{u^2}-1\\right)u^3=u-u^3$ なので\n\\[\nY\\frac{dX}{dt}=1-\\frac{t^2}2-2u-2u^3+t^2u^3+4u^4=1-\\frac{t^2}{2}-u-3u^3+4u^4.\n\\]\n各項を積分する．\n\\begin{itemize}\n  \\item $\\displaystyle\\int_0^{\\sqrt3}\\left(1-\\frac{t^2}2\\right)dt=\\sqrt3-\\frac{3\\sqrt3}6=\\frac{\\sqrt3}2$．\n  \\item $\\bigl\\{\\log(t+\\sqrt{1+t^2})\\bigr\\}'=\\dfrac{1+\\frac{t}{\\sqrt{1+t^2}}}{t+\\sqrt{1+t^2}}=\\dfrac1{\\sqrt{1+t^2}}$ より $\\displaystyle\\int_0^{\\sqrt3}u\\,dt=\\log(2+\\sqrt3)$．\n  \\item (1) の計算より $\\left(\\dfrac{t}{\\sqrt{1+t^2}}\\right)'=u^3$ なので $\\displaystyle\\int_0^{\\sqrt3}u^3\\,dt=\\frac{\\sqrt3}2$．\n  \\item $t=\\tan\\theta$ $\\left(0\\leqq\\theta\\leqq\\frac\\pi3\\right)$ とおくと $dt=\\dfrac{d\\theta}{\\cos^2\\theta}$，$u^4=\\cos^4\\theta$ だから\n  \\[\n  \\int_0^{\\sqrt3}u^4\\,dt=\\int_0^{\\frac\\pi3}\\cos^2\\theta\\,d\\theta=\\left[\\frac\\theta2+\\frac{\\sin2\\theta}4\\right]_0^{\\frac\\pi3}=\\frac\\pi6+\\frac{\\sqrt3}8.\n  \\]\n\\end{itemize}\nよって\n\\[\n\\int_0^{\\sqrt3}Y\\frac{dX}{dt}\\,dt=\\frac{\\sqrt3}2-\\log(2+\\sqrt3)-\\frac{3\\sqrt3}2+\\frac{2\\pi}3+\\frac{\\sqrt3}2=-\\frac{\\sqrt3}2+\\frac{2\\pi}3-\\log(2+\\sqrt3)\n\\]\nであり，\n\\[\nS=2\\left(\\frac{\\sqrt3}2-\\frac{2\\pi}3+\\log(2+\\sqrt3)\\right)=\\boldsymbol{\\sqrt3-\\frac43\\pi+2\\log(2+\\sqrt3)}.\n\\]\n（$h>0$ だから $S>0$ である．数値ではおよそ $0.177$ となる．）\n\\hfill$\\square$"
+   }
+  ],
+  "idea": {
+   "tex": "曲線上の点 P から法線方向に一定の距離だけ進んだ点 Q の軌跡（平行曲線）を，P の媒介変数で表して調べる．原題は凸の外側へずらした曲線と $x$ 軸で囲まれた面積を求める．捻りでは凹の内側へ，曲率半径の最小値 $1$ より大きい距離 $2$ だけずらす．すると速度が $0$ になる点（尖点）が2つ現れ，曲線は $y$ 軸上で自分自身と交わってループを作る．$\\dfrac{dY}{dt}=-t\\dfrac{dX}{dt}$（接線は元の放物線の接線と平行）から，ループの上下2本の枝を $x$ の関数とみたときの導関数が $-s$，$-\\tau$ になる．これで上下関係を確定し，$\\displaystyle\\int Y\\frac{dX}{dt}\\,dt$ で面積を求める．"
+  },
+  "methods": [],
+  "tags": [
+   "平行曲線",
+   "媒介変数表示",
+   "尖点",
+   "ループの面積",
+   "逆関数の微分"
+  ],
+  "provenance": {
+   "created": "2026-11-10"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "III-INT-552",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "III-17",
+  "level": 4,
+  "minutes": 35,
+  "theme": "分母に $\\cos\\theta$ を含む関数の余弦係数と平行移動した積分",
+  "topic": "分母に $\\cos\\theta$ を含む関数の余弦係数と平行移動した積分",
+  "statement": {
+   "tex": "$0<a<1$ とし，実数 $\\theta$ に対して\n\\[\nf(\\theta)=\\frac{1-a^2}{2\\pi\\,(1+a^2-2a\\cos\\theta)}\n\\]\nとする．\n\\begin{enumerate}\n  \\item $\\displaystyle\\int_{-\\pi}^{\\pi}f(\\theta)\\,d\\theta=1$ であることを示せ．\n  \\item $0$ 以上の整数 $n$ に対して $\\displaystyle I_n=\\int_{-\\pi}^{\\pi}f(\\theta)\\cos n\\theta\\,d\\theta$ とおく．$I_n$ を $a$ と $n$ の式で表せ．\n  \\item 実数 $r$ に対して\n  \\[\n  J(r)=\\int_0^{2\\pi}f(\\theta-r)\\,(\\cos\\theta-\\cos2\\theta)\\,d\\theta\n  \\]\n  とおく．$J(r)$ を $a$ と $r$ の式で表せ．さらに，$r$ が実数全体を動くときの $J(r)$ の最大値を $a$ の式で表せ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 証明　(2) $I_n=a^n$　(3) $J(r)=a\\cos r-a^2\\cos2r$．最大値は $0<a<\\dfrac14$ のとき $a-a^2$，$\\dfrac14\\leqq a<1$ のとき $a^2+\\dfrac18$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "$D(\\theta)=1+a^2-2a\\cos\\theta$ とおく．$D(\\theta)\\geqq1+a^2-2a=(1-a)^2>0$ なので $f$ は連続で，$f(-\\theta)=f(\\theta)$，$f(\\theta+2\\pi)=f(\\theta)$，さらに\n\\[\nf(\\theta)D(\\theta)=\\frac{1-a^2}{2\\pi}\\quad\\cdots\\text{①}\n\\]\nである．\n\n(1) $f$ は偶関数なので $\\displaystyle\\int_{-\\pi}^{\\pi}f(\\theta)\\,d\\theta=2\\int_0^{\\pi}f(\\theta)\\,d\\theta=\\frac{1-a^2}{\\pi}\\int_0^{\\pi}\\frac{d\\theta}{D(\\theta)}$．$\\displaystyle\\int_{\\frac\\pi2}^{\\pi}\\frac{d\\theta}{D(\\theta)}$ で $\\theta=\\pi-\\varphi$ と置換すると $\\cos\\theta=-\\cos\\varphi$ だから\n\\[\n\\int_0^{\\pi}\\frac{d\\theta}{D(\\theta)}=\\int_0^{\\frac\\pi2}\\frac{d\\theta}{1+a^2-2a\\cos\\theta}+\\int_0^{\\frac\\pi2}\\frac{d\\theta}{1+a^2+2a\\cos\\theta}.\n\\]\n$0\\leqq\\theta\\leqq\\dfrac\\pi2$ で $t=\\tan\\dfrac\\theta2$ とおくと，$t$ は $0$ から $1$ まで増加し，$\\dfrac{dt}{d\\theta}=\\dfrac1{2\\cos^2\\frac\\theta2}=\\dfrac{1+t^2}2$，$\\cos\\theta=\\dfrac{1-t^2}{1+t^2}$ であり，\n\\[\n1+a^2\\mp2a\\cos\\theta=\\frac{(1+a^2)(1+t^2)\\mp2a(1-t^2)}{1+t^2}=\\frac{(1\\mp a)^2+(1\\pm a)^2t^2}{1+t^2}\\quad(\\text{複号同順}).\n\\]\n$b=\\dfrac{1-a}{1+a}$（$0<b<1$）とおくと\n\\[\n\\int_0^{\\frac\\pi2}\\frac{d\\theta}{1+a^2-2a\\cos\\theta}=\\int_0^1\\frac{2\\,dt}{(1-a)^2+(1+a)^2t^2}=\\frac2{(1+a)^2}\\int_0^1\\frac{dt}{b^2+t^2},\n\\]\n\\[\n\\int_0^{\\frac\\pi2}\\frac{d\\theta}{1+a^2+2a\\cos\\theta}=\\int_0^1\\frac{2\\,dt}{(1+a)^2+(1-a)^2t^2}=\\frac{2b^2}{(1-a)^2}\\int_0^1\\frac{dt}{1+b^2t^2}.\n\\]\n$\\tan$ は $0\\leqq u\\leqq\\dfrac\\pi4$ で連続かつ増加し $\\tan0=0<b<1=\\tan\\dfrac\\pi4$ だから，中間値の定理により $\\tan U_2=b$ をみたす $U_2$ が $0<U_2<\\dfrac\\pi4$ にただ1つある．$U_1=\\dfrac\\pi2-U_2$ とおくと $0<U_1<\\dfrac\\pi2$，$\\tan U_1=\\dfrac1{\\tan U_2}=\\dfrac1b$ であり，$U_1+U_2=\\dfrac\\pi2$．\n\n$t=b\\tan u$（$0\\leqq u\\leqq U_1$，$t$ は $0$ から $1$ まで）と置換すると $dt=\\dfrac{b}{\\cos^2u}du$，$b^2+t^2=\\dfrac{b^2}{\\cos^2u}$ だから $\\displaystyle\\int_0^1\\frac{dt}{b^2+t^2}=\\int_0^{U_1}\\frac{du}{b}=\\frac{U_1}b$．\n同様に $bt=\\tan u$（$0\\leqq u\\leqq U_2$，$t$ は $0$ から $1$ まで）と置換すると $dt=\\dfrac{1}{b\\cos^2u}du$，$1+b^2t^2=\\dfrac1{\\cos^2u}$ だから $\\displaystyle\\int_0^1\\frac{dt}{1+b^2t^2}=\\frac{U_2}b$．\n$(1+a)^2b=(1-a)(1+a)=1-a^2$，$\\dfrac{(1-a)^2}{b}=1-a^2$ に注意すると\n\\[\n\\int_0^{\\pi}\\frac{d\\theta}{D(\\theta)}=\\frac{2U_1}{(1+a)^2b}+\\frac{2bU_2}{(1-a)^2}=\\frac{2(U_1+U_2)}{1-a^2}=\\frac{\\pi}{1-a^2}.\n\\]\nよって $\\displaystyle\\int_{-\\pi}^{\\pi}f(\\theta)\\,d\\theta=\\frac{1-a^2}{\\pi}\\cdot\\frac{\\pi}{1-a^2}=1$．\\hfill$\\square$\n\n(2) $I_0=1$ は (1)．$2a\\cos\\theta=(1+a^2)-D(\\theta)$ と ① より，整数 $n\\geqq0$ に対し\n\\[\n2a\\int_{-\\pi}^{\\pi}f(\\theta)\\cos\\theta\\cos n\\theta\\,d\\theta=(1+a^2)I_n-\\frac{1-a^2}{2\\pi}\\int_{-\\pi}^{\\pi}\\cos n\\theta\\,d\\theta.\n\\]\n$n=0$ のとき右辺の積分は $2\\pi$ なので $2aI_1=(1+a^2)-(1-a^2)=2a^2$，$I_1=a$．\n$n\\geqq1$ のとき $\\displaystyle\\int_{-\\pi}^{\\pi}\\cos n\\theta\\,d\\theta=0$，左辺は $2\\cos\\theta\\cos n\\theta=\\cos(n+1)\\theta+\\cos(n-1)\\theta$ より $a(I_{n+1}+I_{n-1})$．よって\n\\[\naI_{n+1}+aI_{n-1}=(1+a^2)I_n\\iff I_{n+1}-aI_n=\\frac1a\\left(I_n-aI_{n-1}\\right)\\quad(n\\geqq1).\n\\]\n$I_1-aI_0=0$ だから帰納的にすべての $n\\geqq0$ で $I_{n+1}-aI_n=0$．したがって $\\boldsymbol{I_n=a^n}$．\n\n(3) まず，連続で周期 $2\\pi$ の関数 $H$ について $\\displaystyle K(c)=\\int_c^{c+2\\pi}H(\\varphi)\\,d\\varphi$ は $K'(c)=H(c+2\\pi)-H(c)=0$ より $c$ によらず一定である．\n\n$\\varphi=\\theta-r$ と置換し，$w(\\theta)=\\cos\\theta-\\cos2\\theta$ とおくと\n\\[\nJ(r)=\\int_{-r}^{2\\pi-r}f(\\varphi)\\,w(\\varphi+r)\\,d\\varphi=\\int_{-\\pi}^{\\pi}f(\\varphi)\\,w(\\varphi+r)\\,d\\varphi\n\\]\n（被積分関数は $\\varphi$ について周期 $2\\pi$ の連続関数）．加法定理で\n\\[\nw(\\varphi+r)=\\cos r\\cos\\varphi-\\sin r\\sin\\varphi-\\cos2r\\cos2\\varphi+\\sin2r\\sin2\\varphi.\n\\]\n$f$ は偶関数なので $f(\\varphi)\\sin m\\varphi$ は奇関数で，$[-\\pi,\\pi]$ での積分は $0$．よって (2) より\n\\[\n\\boldsymbol{J(r)=I_1\\cos r-I_2\\cos2r=a\\cos r-a^2\\cos2r}.\n\\]\n$x=\\cos r$ とおくと $x$ は $-1\\leqq x\\leqq1$ のすべての値をとり，\n\\[\nJ=ax-a^2(2x^2-1)=-2a^2\\left(x-\\frac1{4a}\\right)^2+a^2+\\frac18.\n\\]\n\\begin{itemize}\n  \\item $\\dfrac1{4a}\\leqq1$，すなわち $\\dfrac14\\leqq a<1$ のとき，$x=\\dfrac1{4a}$ で最大値 $\\boldsymbol{a^2+\\dfrac18}$．\n  \\item $0<a<\\dfrac14$ のとき，$\\dfrac1{4a}>1$ なので $-1\\leqq x\\leqq1$ で $J$ は増加し，$x=1$（$r=0$）で最大値 $\\boldsymbol{a-a^2}$．\n\\end{itemize}"
+   }
+  ],
+  "idea": {
+   "tex": "分母 $D(\\theta)=1+a^2-2a\\cos\\theta$ に対して $2a\\cos\\theta=(1+a^2)-D(\\theta)$ と書けば，$f\\cdot D$ が定数になることから $\\cos\\theta$ を「消す」ことができる．$\\int f=1$ は，$f$ が偶関数であることと $\\theta\\to\\pi-\\theta$ の置換で $\\left[0,\\frac\\pi2\\right]$ 上の2つの積分に直し，$\\tan\\frac\\theta2$ と $b\\tan u$ の置換で角 $U_1,U_2$（$\\tan U_1=\\frac1b$，$\\tan U_2=b$，$U_1+U_2=\\frac\\pi2$）に帰着させて示す．$f(\\theta-r)$ を掛けた積分は，周期関数の積分区間をずらしてよいことと $f$ が偶関数であることから $f$ の余弦係数に帰着する．原題は $\\cos\\theta$ の係数1つだけを求めたが，ここでは $\\cos(n+1)\\theta+\\cos(n-1)\\theta=2\\cos\\theta\\cos n\\theta$ と組み合わせて係数 $I_n$ の3項間漸化式を作り，$I_n=a^n$ を導いて，2つの係数が入る積分の最大値まで求めさせる．"
+  },
+  "methods": [],
+  "tags": [
+   "半角の正接の置換",
+   "周期関数の積分",
+   "3項間漸化式",
+   "偶関数・奇関数"
+  ],
+  "provenance": {
+   "created": "2026-11-10"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "III-INT-553",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "III-17",
+  "level": 4,
+  "minutes": 30,
+  "theme": "長さ一定の弦が切り取る放物線の切片の回転体",
+  "topic": "長さ一定の弦が切り取る放物線の切片の回転体",
+  "statement": {
+   "tex": "$xy$ 平面上の放物線 $C:y=x^2$ 上の2点 $\\mathrm P(\\alpha,\\alpha^2)$，$\\mathrm Q(\\beta,\\beta^2)$（$\\alpha<\\beta$）を，線分 PQ の長さがつねに $\\dfrac{\\sqrt6}{3}$ であるように動かす．線分 PQ と $C$ で囲まれた図形を $x$ 軸のまわりに1回転させてできる立体の体積を $V$ とする．また $c=\\dfrac{\\alpha+\\beta}2$，$h=\\dfrac{\\beta-\\alpha}2$ とおく．\n\\begin{enumerate}\n  \\item $V$ を $c$ と $h$ の式で表せ．\n  \\item $V$ が最大となるときの $\\alpha,\\beta$ の値と，$V$ の最大値を求めよ．\n  \\item $V$ のとりうる値の範囲を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $V=\\pi\\left(\\dfrac83c^2h^3+\\dfrac85h^5\\right)$　(2) $(\\alpha,\\beta)=\\left(\\dfrac12-\\dfrac{\\sqrt3}6,\\dfrac12+\\dfrac{\\sqrt3}6\\right),\\left(-\\dfrac12-\\dfrac{\\sqrt3}6,-\\dfrac12+\\dfrac{\\sqrt3}6\\right)$ のとき最大値 $\\dfrac{\\sqrt3}{90}\\pi$　(3) $0<V\\leqq\\dfrac{\\sqrt3}{90}\\pi$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) 直線 PQ の式は $y=\\ell(x)$，$\\ell(x)=(\\alpha+\\beta)x-\\alpha\\beta$ で，$\\ell(x)-x^2=(x-\\alpha)(\\beta-x)$．$\\alpha\\leqq x\\leqq\\beta$ で $0\\leqq x^2\\leqq\\ell(x)$ なので，図形は $\\alpha\\leqq x\\leqq\\beta$，$x^2\\leqq y\\leqq\\ell(x)$ で，$x$ 軸に垂直な平面による立体の断面は外半径 $\\ell(x)$，内半径 $x^2$ の円環．\n\\[\nV=\\pi\\int_\\alpha^\\beta\\{\\ell(x)^2-x^4\\}\\,dx=\\pi\\int_\\alpha^\\beta\\{\\ell(x)-x^2\\}\\{\\ell(x)+x^2\\}\\,dx.\n\\]\n$x=c+s$ とおくと $\\alpha=c-h$，$\\beta=c+h$ より $\\ell(x)-x^2=(s+h)(h-s)=h^2-s^2$，$\\ell(x)+x^2=(h^2-s^2)+2(c+s)^2$．\n\\[\n\\frac V\\pi=\\int_{-h}^{h}(h^2-s^2)(h^2+s^2+2c^2)\\,ds+4c\\int_{-h}^{h}(h^2-s^2)s\\,ds.\n\\]\n第2項は奇関数の積分で $0$．$\\displaystyle\\int_{-h}^h(h^4-s^4)ds=\\frac85h^5$，$\\displaystyle\\int_{-h}^h(h^2-s^2)ds=\\frac43h^3$ より\n\\[\n\\boldsymbol{V=\\pi\\left(\\frac83c^2h^3+\\frac85h^5\\right)}.\n\\]\n\n(2) $\\mathrm{PQ}^2=(\\beta-\\alpha)^2+(\\beta^2-\\alpha^2)^2=4h^2(1+4c^2)=\\dfrac23$ より $h^2=\\dfrac1{6(1+4c^2)}$．逆に任意の実数 $c$ に対しこの $h>0$ をとれば条件をみたす P，Q が定まる．$U=4c^2$（$U\\geqq0$）とおくと $c^2=\\dfrac U4$，$h^2=\\dfrac1{6(1+U)}$ で\n\\[\n\\frac V\\pi=h^3\\left(\\frac{2U}3+\\frac{4}{15(1+U)}\\right)=\\frac{2(5U^2+5U+2)}{15(1+U)}\\cdot\\frac1{6\\sqrt6\\,(1+U)^{3/2}}=\\frac{\\varphi(U)}{45\\sqrt6},\n\\]\nただし $\\varphi(U)=\\dfrac{5U^2+5U+2}{(1+U)^{5/2}}$．\n\\[\n\\varphi'(U)=\\frac{(10U+5)(1+U)-\\frac52(5U^2+5U+2)}{(1+U)^{7/2}}=\\frac{5U(1-U)}{2(1+U)^{7/2}}.\n\\]\nよって $\\varphi$ は $0\\leqq U\\leqq1$ で増加，$U\\geqq1$ で減少し，$U=1$ で最大．$\\varphi(1)=\\dfrac{12}{4\\sqrt2}=\\dfrac{3}{\\sqrt2}$ より最大値は\n\\[\nV=\\frac{3\\pi}{45\\sqrt6\\cdot\\sqrt2}=\\frac{\\pi}{15\\cdot2\\sqrt3}=\\boldsymbol{\\frac{\\sqrt3}{90}\\pi}.\n\\]\nこのとき $c=\\pm\\dfrac12$，$h^2=\\dfrac1{12}$，$h=\\dfrac{\\sqrt3}6$ で，\n\\[\n\\boldsymbol{(\\alpha,\\beta)=\\left(\\dfrac12-\\dfrac{\\sqrt3}6,\\ \\dfrac12+\\dfrac{\\sqrt3}6\\right),\\ \\left(-\\dfrac12-\\dfrac{\\sqrt3}6,\\ -\\dfrac12+\\dfrac{\\sqrt3}6\\right)}.\n\\]\n\n(3) $5U^2+5U+2>0$ より $\\varphi(U)>0$，よって $V>0$．また $5U^2+5U+2\\leqq5(1+U)^2$ より $0<\\varphi(U)\\leqq\\dfrac5{\\sqrt{1+U}}$ なので $U\\to\\infty$ のとき $\\varphi(U)\\to0$．$0<v\\leqq\\varphi(1)$ を任意にとると，$\\varphi(U_1)<v$ となる $U_1>1$ があり，連続関数 $\\varphi$ に区間 $[1,U_1]$ で中間値の定理を用いて $\\varphi(U)=v$ となる $U$ が存在する．$0\\leqq U\\leqq1$ での値 $\\varphi(0)=2\\leqq\\varphi\\leqq\\varphi(1)$ もこれに含まれる．よって\n\\[\n\\boldsymbol{0<V\\leqq\\frac{\\sqrt3}{90}\\pi}.\n\\]"
+   }
+  ],
+  "idea": {
+   "tex": "放物線 $y=x^2$ の弦 $\\ell$ と放物線の間の図形を $x$ 軸のまわりに回転すると，断面は外径 $\\ell(x)$，内径 $x^2$ の円環で，$\\ell^2-x^4=(\\ell-x^2)(\\ell+x^2)$．弦の中点の $x$ 座標 $c$ を中心に $x=c+s$ とずらすと $\\ell-x^2=h^2-s^2$ が $c$ によらず，体積は $\\pi\\left(\\frac83c^2h^3+\\frac85h^5\\right)$ という $c$ と半幅 $h$ の式になる．原題は幅一定（$h$ 一定）で $c=0$ が最小だったが，ここでは弦の長さを一定にして $h$ を $c$ で表すので，弦を傾けると幅が縮む効果と回転半径が大きくなる効果がせめぎ合い，最大になるのは弦が傾いた位置になる．"
+  },
+  "methods": [],
+  "tags": [
+   "回転体の体積",
+   "放物線と弦",
+   "平行移動",
+   "1変数の最大・最小"
+  ],
+  "provenance": {
+   "created": "2026-11-10"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "III-INT-554",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "III-17",
+  "level": 5,
+  "minutes": 40,
+  "theme": "$e^2$ の無理数性と係数に $n$ を含む3項間漸化式",
+  "topic": "$e^2$ の無理数性と係数に $n$ を含む3項間漸化式",
+  "statement": {
+   "tex": "$0$ 以上の整数 $n$ に対して\n\\[\na_n=\\frac{1}{2^n\\,n!}\\int_{-1}^{1}(1-x^2)^n e^x\\,dx\n\\]\nと定める（$0!=1$）．また，数列 $\\{p_n\\}$，$\\{q_n\\}$ を\n\\[\np_0=1,\\quad p_1=0,\\quad p_{n+1}=(2n+1)p_n+p_{n-1},\\qquad\nq_0=1,\\quad q_1=2,\\quad q_{n+1}=(2n+1)q_n+q_{n-1}\n\\]\n（$n=1,2,3,\\cdots$）で定める．\n\\begin{enumerate}\n  \\item $a_0$，$a_1$ を求めよ．また，$n\\geqq1$ のとき $a_{n+1}=a_{n-1}-(2n+1)a_n$ が成り立つことを示せ．\n  \\item すべての $n\\geqq0$ に対して $e\\,a_n=(-1)^n\\left(p_ne^2-q_n\\right)$ が成り立つことを示せ．\n  \\item $n\\geqq2$ のとき，$\\dfrac{q_n}{p_n}-e^2$ の符号を $n$ の偶奇によって答えよ．また，極限値 $\\displaystyle\\lim_{n\\to\\infty}\\frac{q_n}{p_n}$ を求めよ．\n  \\item $e^2$ は無理数であることを示せ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $a_0=e-\\dfrac1e$，$a_1=\\dfrac2e$，漸化式は証明　(2) 証明　(3) $n$ が偶数のとき負（$\\dfrac{q_n}{p_n}<e^2$），$n$ が奇数のとき正（$\\dfrac{q_n}{p_n}>e^2$）；$\\displaystyle\\lim_{n\\to\\infty}\\dfrac{q_n}{p_n}=e^2$　(4) 証明"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "$I_n=\\displaystyle\\int_{-1}^{1}(1-x^2)^ne^x\\,dx$ とおくと $a_n=\\dfrac{I_n}{2^nn!}$．\n\n\\textbf{(1)}　$I_0=e-e^{-1}$ より $\\boldsymbol{a_0=e-\\dfrac1e}$．\n\\[\nI_1=\\Bigl[(1-x^2)e^x\\Bigr]_{-1}^{1}+\\int_{-1}^{1}2xe^x\\,dx=2\\Bigl[(x-1)e^x\\Bigr]_{-1}^{1}=2\\cdot\\frac2e=\\frac4e\n\\]\nより $\\boldsymbol{a_1=\\dfrac{I_1}{2}=\\dfrac2e}$．\n\n$n\\geqq2$ とする．$(1-x^2)^n$ は $x=\\pm1$ で $0$ なので，部分積分により\n\\[\nI_n=\\Bigl[(1-x^2)^ne^x\\Bigr]_{-1}^{1}+2n\\int_{-1}^{1}x(1-x^2)^{n-1}e^x\\,dx=2n\\,K_n,\\qquad K_n=\\int_{-1}^{1}x(1-x^2)^{n-1}e^x\\,dx .\n\\]\n$n\\geqq2$ より $x(1-x^2)^{n-1}$ も $x=\\pm1$ で $0$ であり，$\\bigl(x(1-x^2)^{n-1}\\bigr)'=(1-x^2)^{n-1}-2(n-1)x^2(1-x^2)^{n-2}$ だから\n\\[\nK_n=-\\int_{-1}^{1}\\Bigl\\{(1-x^2)^{n-1}-2(n-1)x^2(1-x^2)^{n-2}\\Bigr\\}e^x\\,dx .\n\\]\n$x^2=1-(1-x^2)$ より $\\displaystyle\\int_{-1}^{1}x^2(1-x^2)^{n-2}e^x\\,dx=I_{n-2}-I_{n-1}$．よって\n\\[\nK_n=-I_{n-1}+2(n-1)(I_{n-2}-I_{n-1})=2(n-1)I_{n-2}-(2n-1)I_{n-1},\n\\]\n\\[\nI_n=4n(n-1)I_{n-2}-2n(2n-1)I_{n-1}.\n\\]\n両辺を $2^nn!$ で割ると，$\\dfrac{4n(n-1)}{2^nn!}=\\dfrac1{2^{n-2}(n-2)!}$，$\\dfrac{2n(2n-1)}{2^nn!}=\\dfrac{2n-1}{2^{n-1}(n-1)!}$ より\n$a_n=a_{n-2}-(2n-1)a_{n-1}$（$n\\geqq2$）．$n$ を $n+1$ に置き換えて，$n\\geqq1$ で $a_{n+1}=a_{n-1}-(2n+1)a_n$．\\hfill$\\square$\n\n\\medskip\n\\textbf{(2)}　$b_n=(-1)^n(p_ne^2-q_n)$ とおき，$e\\,a_n=b_n$ を数学的帰納法で示す．\n\n$n=0$：$e\\,a_0=e^2-1=p_0e^2-q_0=b_0$．$n=1$：$e\\,a_1=2=-(0\\cdot e^2-2)=b_1$．\n\n$n\\geqq1$ で $e\\,a_{n-1}=b_{n-1}$，$e\\,a_n=b_n$ が成り立つとすると，(1) より\n\\begin{align*}\ne\\,a_{n+1}&=b_{n-1}-(2n+1)b_n\\\\\n&=(-1)^{n+1}\\Bigl[\\bigl(p_{n-1}+(2n+1)p_n\\bigr)e^2-\\bigl(q_{n-1}+(2n+1)q_n\\bigr)\\Bigr]\\\\\n&=(-1)^{n+1}(p_{n+1}e^2-q_{n+1})=b_{n+1}.\n\\end{align*}\n（$(-1)^{n-1}=(-1)^{n+1}$，$-(-1)^n=(-1)^{n+1}$ を用いた．）よってすべての $n\\geqq0$ で成り立つ．\\hfill$\\square$\n\n\\medskip\n\\textbf{(3)}　漸化式から $p_n,q_n$ は整数で，$p_0=1$，$p_1=0$ から帰納的に $p_n\\geqq0$．さらに $p_2=1$ であり，$n\\geqq2$ で $p_n\\geqq1$ ならば $p_{n+1}\\geqq(2n+1)p_n\\geqq1$ なので，$n\\geqq2$ で $p_n\\geqq1$．\n\nまた $-1<x<1$ で $(1-x^2)^ne^x>0$ であり被積分関数は連続だから $a_n>0$．さらに $-1\\leqq x\\leqq1$ で $0\\leqq(1-x^2)^n\\leqq1$ より\n\\[\n0<a_n\\leqq\\frac{1}{2^nn!}\\int_{-1}^{1}e^x\\,dx=\\frac{e-e^{-1}}{2^nn!}. \\tag{$*$}\n\\]\n(2) より $q_n-p_ne^2=(-1)^{n+1}e\\,a_n$ なので，$n\\geqq2$ で\n\\[\n\\frac{q_n}{p_n}-e^2=(-1)^{n+1}\\frac{e\\,a_n}{p_n}.\n\\]\n$\\dfrac{e\\,a_n}{p_n}>0$ だから，$\\boldsymbol{n}$ \\textbf{が偶数のとき負}（$\\frac{q_n}{p_n}<e^2$），$\\boldsymbol{n}$ \\textbf{が奇数のとき正}（$\\frac{q_n}{p_n}>e^2$）．\n\nさらに $p_n\\geqq1$ と $(*)$ より $\\left|\\dfrac{q_n}{p_n}-e^2\\right|\\leqq e\\,a_n\\leqq\\dfrac{e^2-1}{2^nn!}\\leqq\\dfrac{e^2-1}{2^n}\\to0$．よって $\\displaystyle\\lim_{n\\to\\infty}\\frac{q_n}{p_n}=\\boldsymbol{e^2}$．\n\n\\medskip\n\\textbf{(4)}　$e^2$ が有理数であると仮定し，$e^2=\\dfrac mk$（$m,k$ は正の整数）とおく．(2) より\n\\[\nN_n=(-1)^nk\\,e\\,a_n=k(p_ne^2-q_n)=mp_n-kq_n\n\\]\nは整数である．一方 $a_n>0$ と $(*)$，および $e<3$ より $e^2-1<8$ だから\n\\[\n0<|N_n|=k\\,e\\,a_n\\leqq\\frac{k(e^2-1)}{2^nn!}<\\frac{8k}{2^nn!}\\leqq\\frac{8k}{2^n}.\n\\]\n$n=k+3$ とすると $2^{k+3}=8\\cdot2^k>8k$（二項定理より $2^k=(1+1)^k\\geqq1+k>k$）なので $0<|N_n|<1$ となり，$N_n$ が整数であることに矛盾する．よって $e^2$ は無理数である．\\hfill$\\square$"
+   }
+  ],
+  "idea": {
+   "tex": "定積分で定めた数列が係数に $n$ を含む3項間漸化式をみたし，同じ漸化式を有理数（整数）の数列もみたす．漸化式は初めの2項で数列を決めるので，積分の数列はそれらの1次結合（係数が $e$ などの定数）として書ける．積分が $0$ に近づくことから比の極限が出て，さらに「$0$ でない整数なのに絶対値が $1$ 未満」で無理数性まで言える．"
+  },
+  "methods": [],
+  "tags": [
+   "部分積分",
+   "3項間漸化式",
+   "有理数近似",
+   "無理数の証明"
+  ],
+  "provenance": {
+   "created": "2026-11-10"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "III-INT-555",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "III-17",
+  "level": 4,
+  "minutes": 35,
+  "theme": "両端で打ち消し合う振動積分",
+  "topic": "両端で打ち消し合う振動積分",
+  "statement": {
+   "tex": "$f(x)=\\sin x\\sin2x\\cos4x$ とおく．\n\\begin{enumerate}\n  \\item $a\\geqq1$，$t>0$ のとき，$\\displaystyle\\left|\\int_t^{at}\\frac{\\cos x}x\\,dx\\right|\\leqq\\frac2t$ が成り立つことを示せ．\n  \\item $a\\geqq1$ のとき，$\\displaystyle\\lim_{s\\to+0}\\int_s^{as}\\frac{\\cos x}x\\,dx=\\log a$ を示せ．\n  \\item 極限値 $\\displaystyle\\lim_{t\\to\\infty}\\int_{1/t}^{t}\\frac{f(x)}x\\,dx$ を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 証明　(2) 証明　(3) $\\dfrac14\\log\\dfrac7{15}$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) 部分積分により\n\\[\n\\int_t^{at}\\frac{\\cos x}x\\,dx=\\Bigl[\\frac{\\sin x}{x}\\Bigr]_t^{at}+\\int_t^{at}\\frac{\\sin x}{x^2}\\,dx .\n\\]\n$\\left|\\dfrac{\\sin at}{at}\\right|\\leqq\\dfrac1{at}$，$\\left|\\dfrac{\\sin t}{t}\\right|\\leqq\\dfrac1t$，また $t\\leqq x\\leqq at$ で $\\left|\\dfrac{\\sin x}{x^2}\\right|\\leqq\\dfrac1{x^2}$ より\n\\[\n\\left|\\int_t^{at}\\frac{\\sin x}{x^2}\\,dx\\right|\\leqq\\int_t^{at}\\frac{dx}{x^2}=\\frac1t-\\frac1{at}.\n\\]\nよって\n\\[\n\\left|\\int_t^{at}\\frac{\\cos x}x\\,dx\\right|\\leqq\\frac1{at}+\\frac1t+\\frac1t-\\frac1{at}=\\frac2t .\n\\]\n\\hfill$\\square$\n\n(2) $0<s<\\dfrac{\\pi}{2a}$ とすると，区間 $[s,as]$ は $\\left(0,\\dfrac\\pi2\\right)$ に含まれ，そこで $\\cos x$ は減少するから $\\cos as\\leqq\\cos x\\leqq1$．$x>0$ で割って積分すると，$\\displaystyle\\int_s^{as}\\frac{dx}{x}=\\log a$ より\n\\[\n\\cos(as)\\cdot\\log a\\leqq\\int_s^{as}\\frac{\\cos x}x\\,dx\\leqq\\log a\\qquad(\\log a\\geqq0).\n\\]\n$s\\to+0$ のとき $\\cos(as)\\to1$ なので，はさみうちの原理より極限は $\\log a$ である．\\hfill$\\square$\n\n(3) 積和公式より $\\sin x\\sin2x=\\dfrac12(\\cos x-\\cos3x)$，さらに\n\\[\n\\cos x\\cos4x=\\frac12(\\cos3x+\\cos5x),\\qquad\\cos3x\\cos4x=\\frac12(\\cos x+\\cos7x)\n\\]\nだから\n\\[\nf(x)=\\frac14\\bigl(\\cos3x+\\cos5x-\\cos x-\\cos7x\\bigr).\n\\]\n$t>1$ とし，$a>0$ に対して $\\displaystyle J_a(t)=\\int_{1/t}^{t}\\frac{\\cos ax}{x}\\,dx$ とおく．$u=ax$ と置換すると $\\dfrac{dx}{x}=\\dfrac{du}{u}$ なので\n\\[\nJ_a(t)=\\int_{a/t}^{at}\\frac{\\cos u}{u}\\,du=\\int_{1/t}^{t}\\frac{\\cos u}{u}\\,du-\\int_{1/t}^{a/t}\\frac{\\cos u}{u}\\,du+\\int_{t}^{at}\\frac{\\cos u}{u}\\,du .\n\\]\n（向きつきの積分の加法性による．）ここで $\\displaystyle A_a(t)=\\int_{1/t}^{a/t}\\frac{\\cos u}u\\,du$，$\\displaystyle B_a(t)=\\int_t^{at}\\frac{\\cos u}u\\,du$ とおけば $J_a=J_1-A_a+B_a$，$A_1=B_1=0$ である．したがって\n\\[\n\\int_{1/t}^{t}\\frac{f(x)}{x}\\,dx=\\frac14\\bigl(J_3+J_5-J_1-J_7\\bigr)\n=\\frac14\\Bigl\\{(1+1-1-1)J_1-A_3-A_5+A_7+B_3+B_5-B_7\\Bigr\\}.\n\\]\n$J_1$ の係数は $0$ なので\n\\[\n\\int_{1/t}^{t}\\frac{f(x)}{x}\\,dx=\\frac14\\bigl(-A_3-A_5+A_7\\bigr)+\\frac14\\bigl(B_3+B_5-B_7\\bigr).\n\\]\n(1)より $|B_a(t)|\\leqq\\dfrac2t\\to0$（$a=3,5,7$）．(2)で $s=\\dfrac1t\\to+0$ とすると $A_a(t)\\to\\log a$．よって\n\\[\n\\lim_{t\\to\\infty}\\int_{1/t}^{t}\\frac{f(x)}{x}\\,dx=\\frac14\\bigl(-\\log3-\\log5+\\log7\\bigr)=\\boldsymbol{\\frac14\\log\\frac7{15}} .\n\\]"
+   }
+  ],
+  "idea": {
+   "tex": "積和公式で $\\dfrac{f(x)}x$ を $\\sum c_k\\dfrac{\\cos a_kx}x$（$\\sum c_k=0$）に分解し，置換 $u=a_kx$ で積分区間をずらすと，共通部分が打ち消し合って「遠方の区間 $[t,a_kt]$」と「原点近くの区間 $[\\frac1t,\\frac{a_k}t]$」の積分だけが残る．遠方は部分積分で $\\frac1t$ 程度に抑え，原点近くは $\\cos$ の単調性で $\\log a_k$ にはさむ．"
+  },
+  "methods": [],
+  "tags": [
+   "部分積分",
+   "置換積分",
+   "はさみうち",
+   "積和公式"
+  ],
+  "provenance": {
+   "created": "2026-11-10"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "III-INT-556",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "III-17",
+  "level": 5,
+  "minutes": 40,
+  "theme": "渦巻線が掃く図形の回転体",
+  "topic": "渦巻線が掃く図形の回転体",
+  "statement": {
+   "tex": "座標平面上の点を極座標 $(r,\\theta)$ でも表す．図形を $x$ 軸のまわりに1回転して得られる立体を，単にその図形の回転体という．\n\\begin{enumerate}\n  \\item $0\\leqq\\alpha<\\beta\\leqq\\pi$，$R>0$ とする．極座標で $0\\leqq r\\leqq R$，$\\alpha\\leqq\\theta\\leqq\\beta$ と表される扇形の回転体の体積 $T(\\alpha,\\beta;R)$ を $\\alpha,\\beta,R$ で表せ．\n  \\item $f(\\theta)$ は $0\\leqq\\theta\\leqq\\pi$ で連続で $f(\\theta)\\geqq0$ をみたす関数とする．$0<\\alpha\\leqq\\pi$ に対し，極座標で $0\\leqq\\theta\\leqq\\alpha$，$0\\leqq r\\leqq f(\\theta)$ と表される図形 $D(\\alpha)$ の回転体の体積を $V(\\alpha)$ とする．$0<\\alpha<\\pi$ において $V(\\alpha)$ は微分可能で\n  \\[\n  V'(\\alpha)=\\frac{2\\pi}{3}f(\\alpha)^3\\sin\\alpha\n  \\]\n  が成り立つことを示し，さらに $0<\\alpha\\leqq\\pi$ で $V(\\alpha)=\\dfrac{2\\pi}3\\displaystyle\\int_0^\\alpha f(\\theta)^3\\sin\\theta\\,d\\theta$ であることを示せ．\n  \\item 極座標で $0\\leqq\\theta\\leqq\\pi$，$0\\leqq r\\leqq\\theta$ と表される図形の回転体の体積 $V_1$ を求めよ．\n  \\item 極座標で $0\\leqq\\theta\\leqq2\\pi$，$0\\leqq r\\leqq\\theta$ と表される図形（渦巻線 $r=\\theta$ の1周分と $x$ 軸の線分で囲まれた図形）の回転体の体積 $V_2$ を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $T(\\alpha,\\beta;R)=\\dfrac{2\\pi}{3}R^3(\\cos\\alpha-\\cos\\beta)$　(2) 証明　(3) $V_1=\\dfrac{2\\pi^2(\\pi^2-6)}{3}$　(4) $V_2=6\\pi^2(\\pi^2-2)$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "\\textbf{準備（回転体の見方）．}\\ 空間で $x$ 軸を含む座標をとり，原点 O と点 Q に対して，ベクトル $\\overrightarrow{\\mathrm{OQ}}$ と $x$ 軸の正の向きのなす角を $\\varphi$（$0\\leqq\\varphi\\leqq\\pi$）とする．平面上の点 $(r\\cos\\theta,r\\sin\\theta)$（$r\\geqq0$，$0\\leqq\\theta\\leqq\\pi$）を $x$ 軸のまわりに1回転すると，O からの距離が $r$ で $\\varphi=\\theta$ である点全体（円）を描く．また $\\pi\\leqq\\theta\\leqq2\\pi$ の点は，O からの距離 $r$，$\\varphi=2\\pi-\\theta$ の点全体を描く．したがって $x$ 軸より上（$0\\leqq\\theta\\leqq\\pi$）にある図形の回転体は，「$\\varphi$ と $|\\mathrm{OQ}|$ の組がその図形の $(\\theta,r)$ の組になっている点 Q 全体」である．\n\n\\medskip\n\\textbf{(1)}\\ まず $\\alpha=0$ の場合，すなわち $K_\\beta=\\{\\mathrm Q:\\ |\\mathrm{OQ}|\\leqq R,\\ \\varphi\\leqq\\beta\\}$ の体積 $T(0,\\beta;R)$ を求める．\n\n\\emph{$0<\\beta\\leqq\\dfrac\\pi2$ のとき．}\\ Q$=(x,y,z)$ とし，$\\rho=\\sqrt{y^2+z^2}$ とする．$K_\\beta$ を\n\\[\nK'=\\{\\,0\\leqq x\\leqq R\\cos\\beta,\\ \\rho\\leqq x\\tan\\beta\\,\\}\\ (\\beta<\\tfrac\\pi2\\text{ のとき}),\\qquad\nK''=\\{\\,x\\geqq R\\cos\\beta,\\ x^2+\\rho^2\\leqq R^2\\,\\}\n\\]\nの和に分ける（$\\beta=\\frac\\pi2$ のときは $K'$ は空として $K_\\beta=K''$）．実際，$\\mathrm Q\\in K_\\beta$ なら $x=|\\mathrm{OQ}|\\cos\\varphi\\geqq0$ で，$x\\leqq R\\cos\\beta$ のときは $\\varphi\\leqq\\beta<\\frac\\pi2$ より $\\rho=x\\tan\\varphi\\leqq x\\tan\\beta$ なので Q$\\in K'$，$x\\geqq R\\cos\\beta$ のときは Q$\\in K''$．逆に Q$\\in K'$ なら $\\tan\\varphi\\leqq\\tan\\beta$ より $\\varphi\\leqq\\beta$，$|\\mathrm{OQ}|=\\frac{x}{\\cos\\varphi}\\leqq\\frac{x}{\\cos\\beta}\\leqq R$．Q$\\in K''$ なら $x>0$ のとき $\\cos\\varphi=\\frac{x}{|\\mathrm{OQ}|}\\geqq\\frac{R\\cos\\beta}{R}=\\cos\\beta$ で $\\varphi\\leqq\\beta$（$x=0$ は $\\beta=\\frac\\pi2$ のときだけ起こり，$\\varphi\\leqq\\frac\\pi2$）．$K'$ と $K''$ の共通部分は平面 $x=R\\cos\\beta$ 上にあるので体積は足し合わせてよい．\n\n$K'$ は高さ $R\\cos\\beta$，底面の半径 $R\\sin\\beta$ の円錐で，体積は $\\frac\\pi3R^3\\sin^2\\beta\\cos\\beta$．$K''$ の体積は\n\\[\n\\pi\\int_{R\\cos\\beta}^{R}(R^2-x^2)\\,dx=\\pi R^3\\left(\\frac23-\\cos\\beta+\\frac{\\cos^3\\beta}3\\right).\n\\]\nよって\n\\[\nT(0,\\beta;R)=\\pi R^3\\left\\{\\frac{(1-\\cos^2\\beta)\\cos\\beta}3+\\frac23-\\cos\\beta+\\frac{\\cos^3\\beta}3\\right\\}=\\frac{2\\pi}3R^3(1-\\cos\\beta).\n\\]\n\n\\emph{$\\dfrac\\pi2<\\beta\\leqq\\pi$ のとき．}\\ 半径 $R$ の球から $K_\\beta$ を除いた部分は（境界を除き）$\\{\\varphi>\\beta\\}$，すなわち $x$ 軸の負の向きとのなす角が $\\pi-\\beta\\ (<\\frac\\pi2)$ 未満の部分で，$yz$ 平面に関する対称性から体積は $T(0,\\pi-\\beta;R)=\\frac{2\\pi}3R^3(1+\\cos\\beta)$（$\\beta=\\pi$ なら $0$）．よって\n\\[\nT(0,\\beta;R)=\\frac{4\\pi}3R^3-\\frac{2\\pi}3R^3(1+\\cos\\beta)=\\frac{2\\pi}3R^3(1-\\cos\\beta).\n\\]\n\n$\\alpha>0$ のとき，扇形の回転体は $K_\\beta$ から $K_\\alpha$ を除いたもの（境界の円錐面 $\\varphi=\\alpha$ は体積 $0$）なので\n\\[\n\\boldsymbol{T(\\alpha,\\beta;R)=\\frac{2\\pi}{3}R^3(\\cos\\alpha-\\cos\\beta)}\n\\]\n（$\\alpha=0$ でも成り立つ）．\n\n\\medskip\n\\textbf{(2)}\\ $D(\\alpha)$ の回転体を $W(\\alpha)$ とする．準備より $W(\\alpha)=\\{\\mathrm Q:\\ \\varphi\\leqq\\alpha,\\ |\\mathrm{OQ}|\\leqq f(\\varphi)\\}$ である．$0<\\alpha<\\alpha'\\leqq\\pi$ に対し，$W(\\alpha')$ は $W(\\alpha)$ と\n\\[\nP(\\alpha,\\alpha')=\\{\\mathrm Q:\\ \\alpha\\leqq\\varphi\\leqq\\alpha',\\ |\\mathrm{OQ}|\\leqq f(\\varphi)\\}\n\\]\nの和で，共通部分は円錐面 $\\varphi=\\alpha$ 上にあるから $V(\\alpha')-V(\\alpha)=\\bigl(P(\\alpha,\\alpha')\\text{ の体積}\\bigr)$．$f$ は閉区間 $[\\alpha,\\alpha']$ で連続だから最小値 $m$ と最大値 $M$ をもち，\n\\[\n\\{\\alpha\\leqq\\varphi\\leqq\\alpha',\\ |\\mathrm{OQ}|\\leqq m\\}\\subset P(\\alpha,\\alpha')\\subset\\{\\alpha\\leqq\\varphi\\leqq\\alpha',\\ |\\mathrm{OQ}|\\leqq M\\}.\n\\]\n(1) より（$m=0$ のときは左端の立体の体積は $0$）\n\\[\n\\frac{2\\pi}3m^3(\\cos\\alpha-\\cos\\alpha')\\leqq V(\\alpha')-V(\\alpha)\\leqq\\frac{2\\pi}3M^3(\\cos\\alpha-\\cos\\alpha').\\tag{$*$}\n\\]\n\n\\emph{微分可能性．}\\ $0<\\alpha<\\pi$ とする．$h>0$（$\\alpha+h\\leqq\\pi$）に対し $(*)$ で $\\alpha'=\\alpha+h$ とし，そのときの $m,M$ を $m_h,M_h$ と書く．$h$ で割ると\n\\[\n\\frac{2\\pi}3m_h^3\\cdot\\frac{\\cos\\alpha-\\cos(\\alpha+h)}h\\leqq\\frac{V(\\alpha+h)-V(\\alpha)}h\\leqq\\frac{2\\pi}3M_h^3\\cdot\\frac{\\cos\\alpha-\\cos(\\alpha+h)}h.\n\\]\n$m_h,M_h$ は $f$ の $[\\alpha,\\alpha+h]$ 上の値なので，$f$ の連続性から $h\\to+0$ で $m_h\\to f(\\alpha)$，$M_h\\to f(\\alpha)$．また $\\dfrac{\\cos\\alpha-\\cos(\\alpha+h)}h\\to\\sin\\alpha$．はさみうちの原理により右側極限は $\\frac{2\\pi}3f(\\alpha)^3\\sin\\alpha$．$h<0$（$\\alpha+h>0$）のときは $(*)$ を区間 $[\\alpha+h,\\alpha]$ に用いて\n\\[\n\\frac{2\\pi}3m_h^3\\bigl(\\cos(\\alpha+h)-\\cos\\alpha\\bigr)\\leqq V(\\alpha)-V(\\alpha+h)\\leqq\\frac{2\\pi}3M_h^3\\bigl(\\cos(\\alpha+h)-\\cos\\alpha\\bigr)\n\\]\n（$m_h,M_h$ は $[\\alpha+h,\\alpha]$ での最小値・最大値）．$-h>0$ で割ると同様に左側極限も $\\frac{2\\pi}3f(\\alpha)^3\\sin\\alpha$．よって $V$ は $\\alpha$ で微分可能で $V'(\\alpha)=\\dfrac{2\\pi}3f(\\alpha)^3\\sin\\alpha$．\\hfill$\\square$\n\n\\emph{積分表示．}\\ $f$ の $[0,\\pi]$ での最大値を $L$ とする．$G(\\alpha)=V(\\alpha)-\\dfrac{2\\pi}3\\displaystyle\\int_0^\\alpha f(\\theta)^3\\sin\\theta\\,d\\theta$ とおくと，$0<\\alpha<\\pi$ で $G'(\\alpha)=0$．平均値の定理により $G$ は $0<\\alpha<\\pi$ で定数 $C$ である．ここで $D(\\alpha)$ は扇形 $0\\leqq r\\leqq L$，$0\\leqq\\theta\\leqq\\alpha$ に含まれるから $0\\leqq V(\\alpha)\\leqq\\frac{2\\pi}3L^3(1-\\cos\\alpha)\\to0$（$\\alpha\\to+0$），積分の項も $\\to0$ なので $C=0$．さらに $(*)$ より $0\\leqq V(\\pi)-V(\\alpha)\\leqq\\frac{2\\pi}3L^3(\\cos\\alpha+1)\\to0$（$\\alpha\\to\\pi-0$）であり，積分の項も $\\alpha$ について連続なので，$G(\\pi)=\\lim_{\\alpha\\to\\pi-0}G(\\alpha)=0$．以上で $0<\\alpha\\leqq\\pi$ において $V(\\alpha)=\\dfrac{2\\pi}3\\displaystyle\\int_0^\\alpha f(\\theta)^3\\sin\\theta\\,d\\theta$．\\hfill$\\square$\n\n\\medskip\n\\textbf{(3)}\\ (2) を $f(\\theta)=\\theta$ に用いる．部分積分をくり返すと\n\\[\n\\int\\theta^3\\sin\\theta\\,d\\theta=-\\theta^3\\cos\\theta+3\\theta^2\\sin\\theta+6\\theta\\cos\\theta-6\\sin\\theta+(\\text{定数})\n\\]\n（右辺を微分すると $\\theta^3\\sin\\theta$ に戻ることで確かめられる）．よって $\\displaystyle\\int_0^\\pi\\theta^3\\sin\\theta\\,d\\theta=\\pi^3-6\\pi$ で，\n\\[\n\\boldsymbol{V_1=\\frac{2\\pi}3(\\pi^3-6\\pi)=\\frac{2\\pi^2(\\pi^2-6)}{3}}.\n\\]\n\n\\medskip\n\\textbf{(4)}\\ 図形を $F=\\{(r\\cos\\theta,r\\sin\\theta):0\\leqq\\theta\\leqq2\\pi,\\ 0\\leqq r\\leqq\\theta\\}$ とする．準備より，$F$ のうち $0\\leqq\\theta\\leqq\\pi$ の部分の回転体は $\\{\\mathrm Q:|\\mathrm{OQ}|\\leqq\\varphi\\}$，$\\pi\\leqq\\theta\\leqq2\\pi$ の部分の回転体は，$\\theta=2\\pi-\\varphi$ と書けるので $\\{\\mathrm Q:|\\mathrm{OQ}|\\leqq2\\pi-\\varphi\\}$ である（$\\varphi$ は $0\\leqq\\varphi\\leqq\\pi$ をすべて動く）．$F$ の回転体はこの2つの和集合で，$0\\leqq\\varphi\\leqq\\pi$ では $\\varphi\\leqq\\pi\\leqq2\\pi-\\varphi$ だから，和集合は\n\\[\n\\{\\mathrm Q:\\ |\\mathrm{OQ}|\\leqq2\\pi-\\varphi\\}\n\\]\nに等しい．これは極座標で $0\\leqq\\theta\\leqq\\pi$，$0\\leqq r\\leqq2\\pi-\\theta$ と表される図形の回転体であり，$g(\\theta)=2\\pi-\\theta$ は $[0,\\pi]$ で連続かつ正なので (2) が使える．$p(\\theta)=(2\\pi-\\theta)^3$ とおくと $p'=-3(2\\pi-\\theta)^2$，$p''=6(2\\pi-\\theta)$，$p'''=-6$ で，\n\\begin{align*}\n\\int p\\sin\\theta\\,d\\theta&=-p\\cos\\theta+p'\\sin\\theta+p''\\cos\\theta-p'''\\sin\\theta\\\\\n&=-(2\\pi-\\theta)^3\\cos\\theta-3(2\\pi-\\theta)^2\\sin\\theta+6(2\\pi-\\theta)\\cos\\theta+6\\sin\\theta\n\\end{align*}\n（定数を除く．右辺を微分すると $p\\sin\\theta$ に戻る）．$\\theta=\\pi$ で $\\pi^3-6\\pi$，$\\theta=0$ で $-8\\pi^3+12\\pi$ だから\n\\[\n\\int_0^\\pi(2\\pi-\\theta)^3\\sin\\theta\\,d\\theta=9\\pi^3-18\\pi,\\qquad\n\\boldsymbol{V_2=\\frac{2\\pi}3(9\\pi^3-18\\pi)=6\\pi^2(\\pi^2-2)}.\n\\]\n（上下の部分の回転体の体積を単純に足すと重なりを2重に数えることになり，正しくない．）"
+   }
+  ],
+  "idea": {
+   "tex": "極座標で $0\\leqq r\\leqq R$，$\\alpha\\leqq\\theta\\leqq\\beta$ の扇形を $x$ 軸のまわりに回すと「球の扇形」になり，体積は $\\frac{2\\pi}3R^3(\\cos\\alpha-\\cos\\beta)$（円錐＋球冠）．曲線 $r=f(\\theta)$ と2本の半直線で囲まれた図形の回転体の体積 $V(\\alpha)$ は，増分を半径が $f$ のその区間での最小値・最大値である扇形の回転体ではさむと $V'(\\alpha)=\\frac{2\\pi}3f(\\alpha)^3\\sin\\alpha$．$x$ 軸の上下にまたがる図形では，回転すると上下の部分が重なり，各方向で長い方の半径だけが効く．"
+  },
+  "methods": [],
+  "tags": [
+   "回転体の体積",
+   "極座標",
+   "はさみうち",
+   "最大値最小値の定理",
+   "球の扇形"
+  ],
+  "provenance": {
+   "created": "2026-11-10"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "III-INT-557",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "III-17",
+  "level": 5,
+  "minutes": 40,
+  "theme": "$xyz\\leqq1$ の立体の体積の増え方",
+  "topic": "$xyz\\leqq1$ の立体の体積の増え方",
+  "statement": {
+   "tex": "$t$ を正の実数とする．座標空間において，\n\\begin{align*}\nD(t)&:\\ 0\\leqq x\\leqq t,\\quad 0\\leqq y\\leqq t,\\quad 0\\leqq z\\leqq t,\\quad xyz\\leqq1,\\\\\nE(t)&:\\ x\\geqq0,\\quad y\\geqq0,\\quad z\\geqq0,\\quad x+y+z\\leqq t,\\quad xyz\\leqq1\n\\end{align*}\nの表す立体の体積をそれぞれ $V(t)$，$W(t)$ とする．\n\\begin{enumerate}\n  \\item $t\\geqq1$ のとき，$V(t)$ を求めよ．\n  \\item $t$ によらない定数 $K$ があって，$t\\geqq3$ のとき $0\\leqq V(t)-W(t)\\leqq K$ が成り立つことを示せ．\n  \\item 極限 $\\displaystyle\\lim_{t\\to\\infty}\\frac{W(t)-\\frac92(\\log t)^2}{\\log t}$ を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $V(t)=\\dfrac92(\\log t)^2+3\\log t+1$　(2) 証明（例えば $K=12(1+\\log3)$）　(3) $3$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) $0<z\\leqq t$ に対し，平面 $z=\\text{一定}$ による $D(t)$ の切り口は $xy$ 平面の領域 $0\\leqq x\\leqq t$，$0\\leqq y\\leqq t$，$xy\\leqq\\frac1z$ と同じ形である．$c=\\frac1z$ とおき，その面積を $A(z)$ とする．\n\\begin{itemize}\n  \\item $c\\geqq t^2$（$0<z\\leqq\\frac1{t^2}$）のとき，正方形全体で $xy\\leqq t^2\\leqq c$ だから $A(z)=t^2$．\n  \\item $c<t^2$（$\\frac1{t^2}<z\\leqq t$）のとき，$0\\leqq x\\leqq\\frac ct$ では $\\frac cx\\geqq t$ だから $y$ の範囲は $[0,t]$，$\\frac ct\\leqq x\\leqq t$ では $[0,\\frac cx]$．よって\n  \\[A(z)=\\frac ct\\cdot t+\\int_{c/t}^t\\frac cx\\,dx=c+c\\log\\frac{t^2}c=\\frac{1+\\log(t^2z)}z .\\]\n\\end{itemize}\n$t\\geqq1$ より $\\frac1{t^2}\\leqq t$ であるから，\n\\[\nV(t)=\\int_0^{1/t^2}t^2\\,dz+\\int_{1/t^2}^t\\frac{1+\\log(t^2z)}z\\,dz .\n\\]\n第1項は1．第2項で $w=\\log(t^2z)$ とおくと $dw=\\frac{dz}z$，$w$ は $0$ から $3\\log t$ まで動くから $\\int_0^{3\\log t}(1+w)\\,dw=3\\log t+\\frac92(\\log t)^2$．\n\\[\n\\boldsymbol{V(t)=\\frac92(\\log t)^2+3\\log t+1}.\n\\]\n\n(2) $E(t)$ の点は $x,y,z\\geqq0$，$x+y+z\\leqq t$ より各座標が $t$ 以下なので $E(t)\\subset D(t)$，よって $V(t)-W(t)\\geqq0$ で，$V(t)-W(t)$ は $G=\\{\\mathrm P\\in D(t)\\mid x+y+z>t\\}$ の体積に等しい．\n$G$ の点では $x,y,z$ の最大のものが $\\frac t3$ より大きい．$G_x=\\{\\mathrm P\\in G\\mid x\\geqq\\frac t3\\}$ とし，$G_y,G_z$ も同様に定めると $G=G_x\\cup G_y\\cup G_z$ で，対称性から3つの体積は等しいので，$G$ の体積は $G_x$ の体積の3倍以下である．\n\n$\\frac t3\\leqq x<t$ に対し，平面 $x=\\text{一定}$ による $G_x$ の切り口は\n$R(x):\\ 0\\leqq y\\leqq t,\\ 0\\leqq z\\leqq t,\\ yz\\leqq\\frac1x,\\ y+z>m$（$m=t-x>0$）．\n$R(x)$ の点では $y>\\frac m2$ または $z>\\frac m2$ である．$z>\\frac m2$ の部分は，各 $z\\in\\left(\\frac m2,t\\right]$ について $y$ の範囲が $\\left[0,\\frac1{xz}\\right]$ に含まれるから，面積は $\\int_{m/2}^t\\frac{dz}{xz}=\\frac1x\\log\\frac{2t}m$ 以下（$m\\leqq\\frac{2t}3$ より $\\frac m2<t$）．$y>\\frac m2$ の部分も同様．よって，$x\\geqq\\frac t3$ も用いて\n\\[\n\\text{（$R(x)$ の面積）}\\leqq\\frac2x\\log\\frac{2t}{t-x}\\leqq\\frac6t\\log\\frac{2t}{t-x}.\n\\]\n$\\frac t3<\\tau<t$ に対し，$G_x$ のうち $x\\leqq\\tau$ の部分の体積は，$x=t-tu$ と置換して\n\\[\n\\int_{t/3}^{\\tau}\\frac6t\\log\\frac{2t}{t-x}\\,dx=6\\int_{\\varepsilon}^{2/3}\\log\\frac2u\\,du\\qquad\\Bigl(\\varepsilon=\\frac{t-\\tau}t\\Bigr)\n\\]\n以下である．$\\frac d{du}\\Bigl(u\\log\\frac2u+u\\Bigr)=\\log\\frac2u$ より，\n\\[\n6\\int_{\\varepsilon}^{2/3}\\log\\frac2u\\,du=6\\Bigl[u\\log\\frac2u+u\\Bigr]_\\varepsilon^{2/3}=4(1+\\log3)-6\\varepsilon\\Bigl(\\log\\frac2\\varepsilon+1\\Bigr)\\leqq4(1+\\log3)\n\\]\n（$0<\\varepsilon<\\frac23$ では $\\log\\frac2\\varepsilon>0$）．$G_x$ のうち $\\tau<x\\leqq t$ の部分は直方体 $[\\tau,t]\\times[0,t]^2$ に含まれ体積は $(t-\\tau)t^2$ 以下．よって $G_x$ の体積は $4(1+\\log3)+(t-\\tau)t^2$ 以下で，$\\tau\\to t$ として $4(1+\\log3)$ 以下．\nしたがって $t\\geqq3$ のとき\n\\[\n0\\leqq V(t)-W(t)\\leqq12(1+\\log3)\n\\]\nで，$K=12(1+\\log3)$ とすればよい．\\hfill$\\square$\n\n(3) $L=\\log t$ とおく．$t\\geqq3$ で (1)，(2) より\n\\[\n\\frac{W(t)-\\frac92L^2}L=\\frac{V(t)-\\frac92L^2}L-\\frac{V(t)-W(t)}L=3+\\frac1L-\\frac{V(t)-W(t)}L,\n\\]\n$0\\leqq\\frac{V(t)-W(t)}L\\leqq\\frac KL\\to0$ だから，はさみうちの原理より極限は $\\boldsymbol{3}$．"
+   }
+  ],
+  "idea": {
+   "tex": "$xyz\\leqq1$ を $z$ 一定の平面で切ると，断面は「$xy\\leqq\\frac1z$ と正方形の共通部分」で，面積は $\\frac1z\\bigl(1+\\log(t^2z)\\bigr)$．$w=\\log(t^2z)$ と置換すると $(\\log t)^2$ の多項式になる．切り方（立方体か $x+y+z\\leqq t$ か）の違いは，「1つの座標が $\\frac t3$ 以上で，残り2つの積が $\\frac1x$ 以下」という薄い部分に押し込めて，体積の差が有界であることを示す．"
+  },
+  "methods": [],
+  "tags": [
+   "断面積",
+   "対数の積分",
+   "はさみうち",
+   "体積の評価"
+  ],
+  "provenance": {
+   "created": "2026-11-10"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "III-INT-558",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "III-17",
+  "level": 4,
+  "minutes": 30,
+  "theme": "2つのべきの差がつくる回転体と相似拡大",
+  "topic": "2つのべきの差がつくる回転体と相似拡大",
+  "statement": {
+   "tex": "$0<\\alpha<\\beta$，$m>0$ とする．曲線 $y=x^\\alpha-mx^\\beta\\ (x\\geqq0)$ と $x$ 軸で囲まれた図形を $x$ 軸のまわりに1回転させてできる立体の体積を $V$ とする．\n\\begin{enumerate}\n  \\item $V=\\pi\\,m^{-\\frac{2\\alpha+1}{\\beta-\\alpha}}K(\\alpha,\\beta)$（$K(\\alpha,\\beta)$ は $m$ によらない）と表されることを示し，$K(\\alpha,\\beta)$ を求めよ．\n  \\item $\\beta$ と $m$ を固定して $\\alpha\\to+0$ とするときの $V$ の極限値を $\\beta,m$ で表せ．\n  \\item $\\alpha,\\beta$ を固定して $m\\to\\infty$ とするとき，$m^3V$ が $0$ でない有限の値に収束するための $\\alpha,\\beta$ の条件を求めよ．また，そのときの極限値を $\\alpha$ だけで表せ．\n  \\item (3) の条件のもとで $\\alpha$ を動かすとき，(3) の極限値のとりうる値の範囲を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $K(\\alpha,\\beta)=\\dfrac1{2\\alpha+1}-\\dfrac2{\\alpha+\\beta+1}+\\dfrac1{2\\beta+1}$　(2) $\\dfrac{2\\pi\\beta^2}{(\\beta+1)(2\\beta+1)}m^{-\\frac1\\beta}$　(3) $\\beta=\\dfrac{5\\alpha+1}3$，極限値 $\\dfrac{\\pi}{10(2\\alpha+1)}$　(4) $0<(\\text{極限値})<\\dfrac{\\pi}{10}$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) $x>0$ では $y=x^\\alpha\\left(1-mx^{\\beta-\\alpha}\\right)$ で，$\\beta-\\alpha>0$ より $x^{\\beta-\\alpha}$ は $0$ から限りなく増加する．$x_0=m^{-\\frac1{\\beta-\\alpha}}$ とおくと $mx_0^{\\beta-\\alpha}=1$ であり，$0<x<x_0$ で $y>0$，$x>x_0$ で $y<0$，また $x=0,x_0$ で $y=0$．よって曲線と $x$ 軸で囲まれた図形は $0\\leqq x\\leqq x_0$ の部分で，\n\\[V=\\pi\\int_0^{x_0}\\left(x^\\alpha-mx^\\beta\\right)^2dx.\\]\n$x=x_0t$ と置換すると，$mx_0^\\beta=x_0^\\alpha\\cdot mx_0^{\\beta-\\alpha}=x_0^\\alpha$ だから $x^\\alpha-mx^\\beta=x_0^\\alpha(t^\\alpha-t^\\beta)$，$dx=x_0\\,dt$ で\n\\[V=\\pi x_0^{2\\alpha+1}\\int_0^1\\left(t^{2\\alpha}-2t^{\\alpha+\\beta}+t^{2\\beta}\\right)dt=\\pi\\,m^{-\\frac{2\\alpha+1}{\\beta-\\alpha}}\\left(\\frac1{2\\alpha+1}-\\frac2{\\alpha+\\beta+1}+\\frac1{2\\beta+1}\\right).\\]\nよって $\\boldsymbol{K(\\alpha,\\beta)=\\dfrac1{2\\alpha+1}-\\dfrac2{\\alpha+\\beta+1}+\\dfrac1{2\\beta+1}}$．なお $K(\\alpha,\\beta)=\\int_0^1(t^\\alpha-t^\\beta)^2dt$ で，被積分関数は $0<t<1$ で連続かつ正だから $K(\\alpha,\\beta)>0$．\\hfill$\\square$\n\n(2) 指数 $e(\\alpha)=-\\dfrac{2\\alpha+1}{\\beta-\\alpha}$ と $K(\\alpha,\\beta)$ は，$\\alpha=0$ の近くで分母が $0$ にならない $\\alpha$ の分数式だから $\\alpha\\to+0$ で $e(\\alpha)\\to-\\dfrac1\\beta$，$K(\\alpha,\\beta)\\to K(0,\\beta)$．また $m^{e(\\alpha)}=e^{e(\\alpha)\\log m}$ は指数について連続．\n\\[K(0,\\beta)=1-\\frac2{\\beta+1}+\\frac1{2\\beta+1}=\\frac{(\\beta+1)(2\\beta+1)-2(2\\beta+1)+(\\beta+1)}{(\\beta+1)(2\\beta+1)}=\\frac{2\\beta^2}{(\\beta+1)(2\\beta+1)}.\\]\nよって $\\displaystyle\\lim_{\\alpha\\to+0}V=\\boldsymbol{\\frac{2\\pi\\beta^2}{(\\beta+1)(2\\beta+1)}\\,m^{-\\frac1\\beta}}$．\n\n(3) $m^3V=\\pi K(\\alpha,\\beta)\\,m^{c}$，$c=3-\\dfrac{2\\alpha+1}{\\beta-\\alpha}$．$K>0$ だから，$m\\to\\infty$ のとき $c>0$ なら $m^3V\\to\\infty$，$c<0$ なら $m^3V\\to0$，$c=0$ なら $m^3V=\\pi K$ で一定．よって条件は $c=0$，すなわち $3(\\beta-\\alpha)=2\\alpha+1$，\n\\[\\boldsymbol{\\beta=\\frac{5\\alpha+1}3}.\\]\nこれは $\\beta-\\alpha=\\dfrac{2\\alpha+1}3>0$ をみたすので，任意の $\\alpha>0$ に対して条件 $0<\\alpha<\\beta$ と両立する．このとき $\\alpha+\\beta+1=\\dfrac{4(2\\alpha+1)}3$，$2\\beta+1=\\dfrac{5(2\\alpha+1)}3$ だから\n\\[K=\\frac1{2\\alpha+1}-\\frac3{2(2\\alpha+1)}+\\frac3{5(2\\alpha+1)}=\\frac{10-15+6}{10(2\\alpha+1)}=\\frac1{10(2\\alpha+1)}.\\]\n極限値は $\\boldsymbol{\\dfrac{\\pi}{10(2\\alpha+1)}}$．\n\n(4) $\\alpha$ が正の実数全体を動くと $2\\alpha+1$ は $1$ より大きい実数全体を動くので，$\\dfrac{\\pi}{10(2\\alpha+1)}$ は $0$ より大きく $\\dfrac\\pi{10}$ より小さいすべての値をとる．範囲は $\\boldsymbol{0<(\\text{極限値})<\\dfrac\\pi{10}}$．"
+   }
+  ],
+  "idea": {
+   "tex": "正の零点 $x_0$ を使って $x=x_0t$ と置くと $x^\\alpha-mx^\\beta=x_0^{\\alpha}(t^\\alpha-t^\\beta)$ となり，$m$ を変えた曲線はすべて1本の曲線を縦横に拡大したものになる．体積は $x_0^{2\\alpha+1}$ に比例し，$m$ のべき指数 $-\\dfrac{2\\alpha+1}{\\beta-\\alpha}$ が極限のふるまいをすべて決める．"
+  },
+  "methods": [],
+  "tags": [
+   "回転体の体積",
+   "相似拡大",
+   "置換積分",
+   "極限"
+  ],
+  "provenance": {
+   "created": "2026-11-10"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "III-INT-559",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "III-17",
+  "level": 5,
+  "minutes": 40,
+  "theme": "短い円柱に含まれる斜めの軸の回転体",
+  "topic": "短い円柱に含まれる斜めの軸の回転体",
+  "statement": {
+   "tex": "$xyz$ 空間において，連立不等式\n\\[\nx^2+y^2\\leqq1,\\qquad |z|\\leqq\\frac{\\sqrt3}{2}\n\\]\nで定まる立体を $V$ とし，2点 $(1,0,1)$，$(-1,0,-1)$ を通る直線を $\\ell$ とする．実数 $u$ に対して，点 $\\mathrm P_u(u,0,u)$ を通り $\\ell$ に垂直な平面を $H_u$ とする．\n\\begin{enumerate}\n  \\item $|u|\\leqq1$ とする．実数 $\\theta$ に対し，点 $(\\cos\\theta,\\sin\\theta,0)$ を通り $z$ 軸に平行な直線と $H_u$ との交点を $\\mathrm Q_\\theta$ とする．$\\theta$ が実数全体を動くときの線分 $\\mathrm P_u\\mathrm Q_\\theta$ の長さの最小値を $u$ で表せ．\n  \\item $\\ell$ を回転軸にもつ回転体で $V$ に含まれるものを考える．このような回転体のうちで体積が最大となるものの体積を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $|u|\\leqq\\dfrac12$ のとき $\\sqrt{1-2u^2}$，$\\dfrac12\\leqq|u|\\leqq1$ のとき $\\sqrt2\\,(1-|u|)$　(2) $\\dfrac{(6\\sqrt6-\\sqrt2)\\pi}{12}$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "$a=\\dfrac{\\sqrt3}2$ とおく．$\\ell$ は直線 $x=z$，$y=0$ で，方向の単位ベクトルは $\\vec e=\\frac1{\\sqrt2}(1,0,1)$．$H_u$ は平面 $x+z=2u$ である．$H_u$ に平行な単位ベクトル $\\vec e_1=\\frac1{\\sqrt2}(1,0,-1)$，$\\vec e_2=(0,1,0)$ は互いに垂直なので，$H_u$ の点は実数 $X,Y$ により\n\\[\n\\mathrm P_u+X\\vec e_1+Y\\vec e_2=\\Bigl(u+\\tfrac{X}{\\sqrt2},\\ Y,\\ u-\\tfrac{X}{\\sqrt2}\\Bigr)\n\\]\nとただ1通りに表され，この点と $\\mathrm P_u$ の距離は $\\sqrt{X^2+Y^2}$ である．\n\n\\medskip\n\\textbf{(1)}　$\\mathrm Q_\\theta$ は $z=2u-\\cos\\theta$ をみたすので $\\mathrm Q_\\theta(\\cos\\theta,\\sin\\theta,2u-\\cos\\theta)$．$c=\\cos\\theta$ とおくと\n\\[\n\\mathrm P_u\\mathrm Q_\\theta^{\\,2}=(c-u)^2+\\sin^2\\theta+(u-c)^2=2(c-u)^2+1-c^2=(c-2u)^2+1-2u^2 .\n\\]\n$c$ は $-1\\leqq c\\leqq1$ を動く．\n\\begin{itemize}\n  \\item $|u|\\leqq\\frac12$ のとき：$c=2u$ でとれて最小値 $1-2u^2$．\n  \\item $\\frac12<u\\leqq1$ のとき：$2u>1$ なので $c=1$ で最小，値は $(1-2u)^2+1-2u^2=2(1-u)^2$．\n  \\item $-1\\leqq u<-\\frac12$ のとき：同様に $c=-1$ で最小，値は $2(1+u)^2=2(1-|u|)^2$．\n\\end{itemize}\nよって最小値は $|u|\\leqq\\dfrac12$ のとき $\\boldsymbol{\\sqrt{1-2u^2}}$，$\\dfrac12\\leqq|u|\\leqq1$ のとき $\\boldsymbol{\\sqrt2\\,(1-|u|)}$（$|u|=\\frac12$ では両者は一致する）．以下この最小値の2乗を $f(u)$ とする．\n\n\\medskip\n\\textbf{(2)}　\\emph{断面の制約}．$K$ を $\\ell$ を軸とする回転体で $V$ に含まれるものとし，$K_u=K\\cap H_u$ とする．$K_u$ は $\\mathrm P_u$ を中心とする（$H_u$ 内の）円（半径0なら点 $\\mathrm P_u$）の和集合である．そこで，$\\rho\\geqq0$ に対し $\\mathrm P_u$ を中心とする $H_u$ 内の半径 $\\rho$ の円（$\\rho=0$ なら点 $\\mathrm P_u$）を $\\Gamma_\\rho$ とし，$\\Gamma_\\rho$ が $V$ に含まれる条件を調べる．$H_u$ の点を上の $(X,Y)$ で表すと，$\\Gamma_\\rho$ は $X^2+Y^2=\\rho^2$ である．\n\n(ア) $|z|\\leqq a$ について：点の $z$ 座標は $u-\\frac{X}{\\sqrt2}$ で，$\\Gamma_\\rho$ 上では $X$ が $-\\rho$ から $\\rho$ まで動くので $z$ の範囲は $\\left[u-\\frac\\rho{\\sqrt2},\\,u+\\frac\\rho{\\sqrt2}\\right]$．よって $\\Gamma_\\rho$ が $|z|\\leqq a$ に含まれる $\\iff$ $\\rho\\leqq\\sqrt2\\,(a-|u|)$．特に $K_u$ が空でなければ $|u|\\leqq a$ である．\n\n(イ) $x^2+y^2\\leqq1$ について（$|u|\\leqq a$ とする）：$g(X,Y)=\\left(u+\\frac X{\\sqrt2}\\right)^2+Y^2-1$ とおく．$|u|\\leqq a<1$ より $g(0,0)=u^2-1<0$．$g=0$ をみたす点は $x=\\cos\\theta$，$y=\\sin\\theta$ と書ける点，すなわち $\\mathrm Q_\\theta$ 全体なので，(1) より $g=0$ の点の原点（$\\mathrm P_u$）からの距離の最小値は $\\sqrt{f(u)}$ である．\n原点から出る半直線上の点 $\\lambda(X_0,Y_0)$（$\\lambda\\geqq0$，$X_0^2+Y_0^2=1$）では $g$ は $\\lambda$ の2次関数で $\\lambda^2$ の係数が正（下に凸），$\\lambda=0$ で負である．よってこの半直線上で $g=0$ となる $\\lambda$ はただ1つ $\\lambda_0>0$ で，$0\\leqq\\lambda\\leqq\\lambda_0$ で $g\\leqq0$，$\\lambda>\\lambda_0$ で $g>0$．しかも $\\lambda_0(X_0,Y_0)$ はある $\\mathrm Q_\\theta$ なので $\\lambda_0\\geqq\\sqrt{f(u)}$ であり，距離が $\\sqrt{f(u)}$ となる $\\mathrm Q_\\theta$ の方向では $\\lambda_0=\\sqrt{f(u)}$．\nしたがって，$\\rho\\leqq\\sqrt{f(u)}$ なら，$\\Gamma_\\rho$ の各点は $\\lambda=\\rho\\leqq\\lambda_0$ の点なので $g\\leqq0$ をみたし，$\\Gamma_\\rho$ は $x^2+y^2\\leqq1$ に含まれる．$\\rho>\\sqrt{f(u)}$ なら，$\\lambda_0=\\sqrt{f(u)}$ となる方向の $\\Gamma_\\rho$ 上の点は $g>0$ で含まれない．よって $\\Gamma_\\rho$ が $x^2+y^2\\leqq1$ に含まれる $\\iff$ $\\rho\\leqq\\sqrt{f(u)}$．\n\n以上より，$|u|\\leqq a$ のとき，$f(u)$ と $2(a-|u|)^2$ のうち大きくない方を $R(u)^2$（$R(u)\\geqq0$）とおくと\n\\[\n\\Gamma_\\rho\\subset V\\iff\\rho\\leqq R(u)\n\\]\nであり，$|u|>a$ のときはどの $\\Gamma_\\rho$ も $V$ に含まれない．よって $K_u$ は $|u|\\leqq a$ のときに限り空でなく，そのとき $\\mathrm P_u$ を中心とする半径 $R(u)$ の円板 $D_u$（$0\\leqq\\rho\\leqq R(u)$ の $\\Gamma_\\rho$ の和集合）に含まれる．逆に，$|u|\\leqq a$ の各 $u$ について $D_u$ を集めた立体 $K^*$ は $\\ell$ を軸とする回転体で $V$ に含まれ，$K\\subset K^*$．よって求める最大値は $K^*$ の体積である．\n\n$R(u)$ は $u$ の偶関数なので $0\\leqq u\\leqq a$ で調べる．\n\\begin{itemize}\n  \\item $0\\leqq u\\leqq\\frac12$：$2(a-u)^2\\leqq1-2u^2\\iff4u^2-4au+2a^2-1\\leqq0\\iff4u^2-2\\sqrt3u+\\frac12\\leqq0\\iff\\dfrac{\\sqrt3-1}4\\leqq u\\leqq\\dfrac{\\sqrt3+1}4$．$\\dfrac{\\sqrt3+1}4>\\dfrac12$ なので，$c=\\dfrac{\\sqrt3-1}4$ とおくと $0\\leqq u\\leqq c$ で $R^2=1-2u^2$，$c\\leqq u\\leqq\\frac12$ で $R^2=2(a-u)^2$．\n  \\item $\\frac12\\leqq u\\leqq a$：$a<1$ より $2(a-u)^2<2(1-u)^2=f(u)$ なので $R^2=2(a-u)^2$．\n\\end{itemize}\n\n\\emph{体積}．$\\mathrm P_u$ の $\\ell$ 上の符号つき位置は $\\overrightarrow{\\mathrm{OP}_u}\\cdot\\vec e=\\sqrt2\\,u$ なので，体積は\n\\begin{align*}\nW&=\\int_{-a}^{a}\\pi R(u)^2\\cdot\\sqrt2\\,du=2\\sqrt2\\,\\pi\\left\\{\\int_0^c(1-2u^2)\\,du+\\int_c^a2(a-u)^2\\,du\\right\\}\\\\\n&=2\\sqrt2\\,\\pi\\left\\{c-\\frac23c^3+\\frac23(a-c)^3\\right\\}.\n\\end{align*}\n$a-c=\\dfrac{\\sqrt3+1}4$，$(\\sqrt3+1)^3=6\\sqrt3+10$，$(\\sqrt3-1)^3=6\\sqrt3-10$ より $(a-c)^3-c^3=\\dfrac{20}{64}=\\dfrac5{16}$．よって\n\\[\nW=2\\sqrt2\\,\\pi\\left(\\frac{\\sqrt3-1}4+\\frac5{24}\\right)=2\\sqrt2\\,\\pi\\cdot\\frac{6\\sqrt3-1}{24}=\\boldsymbol{\\frac{(6\\sqrt6-\\sqrt2)\\pi}{12}} .\n\\]"
+   }
+  ],
+  "idea": {
+   "tex": "軸 $\\ell$ を回転軸とする回転体が $V$ に含まれる条件は，軸に垂直な各平面 $H$ での「$V\\cap H$ に収まる，軸上の点 $\\mathrm P$ を中心とする円の半径の最大値」で決まり，最大の回転体はその半径の円板を集めたもの．円が $V$ に収まる半径の範囲は，円柱面と上下の面の各条件で決まる半径の小さい方以下である．円柱面からの距離は母線との交点を $\\cos\\theta$ の2次関数として最小化し，平らな上下の面からの距離は平面内の最大傾斜方向で測る．どちらの条件が効くかが軸上の位置で入れかわる．"
+  },
+  "methods": [],
+  "tags": [
+   "回転体",
+   "軸に垂直な断面",
+   "凸集合",
+   "点と境界の距離",
+   "2次関数の最小"
+  ],
+  "provenance": {
+   "created": "2026-11-10"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "III-INT-560",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "III-17",
+  "level": 5,
+  "minutes": 40,
+  "theme": "双曲線上を動く点の連立条件と定義域の限界",
+  "topic": "双曲線上を動く点の連立条件と定義域の限界",
+  "statement": {
+   "tex": "$c$ を正の実数とし，区間 $-c<t<c$ で定義された微分可能な関数 $f(t)$，$g(t)$ が\n\\[\nf'(t)=f(t)g(t),\\qquad g'(t)=\\{f(t)\\}^2,\\qquad f(0)=1,\\qquad g(0)=0\n\\]\nをみたすとする．\n\\begin{enumerate}\n  \\item $-c<t<c$ において $\\{f(t)\\}^2-\\{g(t)\\}^2=1$ かつ $f(t)\\geqq1$ であることを示せ．\n  \\item $u(t)=\\dfrac1{f(t)}$，$v(t)=\\dfrac{g(t)}{f(t)}$ とおく．$-c<t<c$ において $u(t)=\\cos t$，$v(t)=\\sin t$ であることを示せ．\n  \\item $c\\leqq\\dfrac\\pi2$ であることを示せ．\n  \\item $c>\\dfrac\\pi4$ とする．$0<T<c$ かつ $f(T)=\\sqrt2\\,g(T)$ をみたす $T$ がただ1つ存在することを示せ．さらに，その $T$ に対し，曲線 $(x,y)=\\bigl(f(t),g(t)\\bigr)$（$0\\leqq t\\leqq T$），線分 OQ，線分 OE で囲まれた部分の面積を求めよ．ただし O は原点，Q$\\bigl(f(T),g(T)\\bigr)$，E$(1,0)$ とする．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 証明　(2) 証明　(3) 証明　(4) $T=\\dfrac\\pi4$，面積 $\\dfrac12\\log(1+\\sqrt2)$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) $F(t)=\\{f(t)\\}^2-\\{g(t)\\}^2$ とおくと\n\\[\nF'(t)=2f(t)f'(t)-2g(t)g'(t)=2f(t)\\cdot f(t)g(t)-2g(t)\\{f(t)\\}^2=0\n\\]\nなので $F(t)$ は区間 $-c<t<c$ で定数であり，$F(t)=F(0)=1-0=1$．よって $\\{f(t)\\}^2=1+\\{g(t)\\}^2\\geqq1$，すなわち $|f(t)|\\geqq1$ で，特に $f(t)\\neq0$．\n\nもしある $t_0$ で $f(t_0)<0$ とすると，$f$ は微分可能なので連続であり，$f(0)=1>0$ だから，中間値の定理により $0$ と $t_0$ の間に $f(t_1)=0$ となる $t_1$ が存在する．これは $f\\neq0$ に反する．よって $f(t)>0$ であり，$|f(t)|\\geqq1$ と合わせて $f(t)\\geqq1$．\\hfill$\\square$\n\n\\medskip\n(2) (1) より $f(t)\\neq0$ なので $u$，$v$ は区間で微分可能で，\n\\[\nu'=-\\frac{f'}{f^2}=-\\frac{fg}{f^2}=-\\frac gf=-v,\n\\]\n\\[\nv'=\\frac{g'f-gf'}{f^2}=\\frac{f^3-fg^2}{f^2}=\\frac{f(f^2-g^2)}{f^2}=\\frac1f=u\n\\]\n（(1) の $f^2-g^2=1$ を用いた）．ここで\n\\[\nH(t)=\\bigl(u(t)-\\cos t\\bigr)^2+\\bigl(v(t)-\\sin t\\bigr)^2\n\\]\nとおくと\n\\[\nH'(t)=2(u-\\cos t)(-v+\\sin t)+2(v-\\sin t)(u-\\cos t)=0\n\\]\nなので $H(t)$ は定数で，$H(t)=H(0)=(1-1)^2+(0-0)^2=0$．2乗の和が0だから $u(t)=\\cos t$，$v(t)=\\sin t$ である．\\hfill$\\square$\n\n\\medskip\n(3) (1)，(2) より，$-c<t<c$ のすべての $t$ で $\\cos t=u(t)=\\dfrac1{f(t)}>0$ である．もし $c>\\dfrac\\pi2$ なら $t=\\dfrac\\pi2$ はこの区間に属し，$\\cos\\dfrac\\pi2=0$ となって矛盾する．よって $c\\leqq\\dfrac\\pi2$．\\hfill$\\square$\n\n（なお，$c=\\frac\\pi2$ のとき $f(t)=\\frac1{\\cos t}$，$g(t)=\\tan t$ は実際に条件をみたす：$f'=\\frac{\\sin t}{\\cos^2t}=fg$，$g'=\\frac1{\\cos^2t}=f^2$．）\n\n\\medskip\n(4) (2) より $f(t)=\\dfrac1{\\cos t}$，$g(t)=\\dfrac{v}{u}=\\tan t$ である．$0<T<c\\ (\\leqq\\frac\\pi2)$ において\n\\[\nf(T)=\\sqrt2\\,g(T)\\iff\\frac1{\\cos T}=\\frac{\\sqrt2\\sin T}{\\cos T}\\iff\\sin T=\\frac1{\\sqrt2}.\n\\]\n$0<T<\\frac\\pi2$ の範囲で $\\sin T=\\frac1{\\sqrt2}$ となるのは $T=\\frac\\pi4$ だけで，$c>\\frac\\pi4$ よりこれは $0<T<c$ をみたす．よって $T=\\boldsymbol{\\dfrac\\pi4}$ がただ1つ存在し，$\\mathrm Q(\\sqrt2,1)$ である．\n\n\\textbf{図形の把握．}\\ $0\\leqq t\\leqq\\frac\\pi4$ で $g(t)=\\tan t$ は $0$ から $1$ まで狭義に増加し，(1) より $f(t)=\\sqrt{1+\\{g(t)\\}^2}$．よって曲線は $x=\\sqrt{1+y^2}$（$0\\leqq y\\leqq1$）であり，E$(1,0)$ から Q$(\\sqrt2,1)$ に至る．線分 OQ は $x=\\sqrt2y$（$0\\leqq y\\leqq1$），線分 OE は $y=0$ 上にある．$0\\leqq y\\leqq1$ では $2y^2\\leqq1+y^2$ より $\\sqrt2y\\leqq\\sqrt{1+y^2}$ なので，囲まれた部分は\n\\[\nD=\\left\\{(x,y)\\ \\middle|\\ 0\\leqq y\\leqq1,\\ \\sqrt2y\\leqq x\\leqq\\sqrt{1+y^2}\\right\\}\n\\]\nであり，その面積は\n\\[\nS=\\int_0^1\\sqrt{1+y^2}\\,dy-\\int_0^1\\sqrt2y\\,dy=\\int_0^1\\sqrt{1+y^2}\\,dy-\\frac{\\sqrt2}2 .\n\\]\n\n\\textbf{積分の計算．}\\ $y=g(t)$（$0\\leqq t\\leqq\\frac\\pi4$）と置換すると，$dy=g'(t)\\,dt=f^2\\,dt$，$\\sqrt{1+y^2}=f$ より\n\\[\n\\int_0^1\\sqrt{1+y^2}\\,dy=\\int_0^{\\frac\\pi4}f^3\\,dt .\n\\]\nここで $(fg)'=f'g+fg'=fg^2+f^3$ と $f^3=f(1+g^2)=f+fg^2$ から $fg^2=(fg)'-f^3$ を代入して $f^3=f+(fg)'-f^3$，すなわち\n\\[\nf^3=\\frac12\\bigl\\{f+(fg)'\\bigr\\}.\n\\]\nよって\n\\[\n\\int_0^{\\frac\\pi4}f^3\\,dt=\\frac12\\int_0^{\\frac\\pi4}f\\,dt+\\frac12\\Bigl[f(t)g(t)\\Bigr]_0^{\\frac\\pi4}=\\frac12\\int_0^{\\frac\\pi4}f\\,dt+\\frac{\\sqrt2}2\n\\]\n（$f(\\frac\\pi4)g(\\frac\\pi4)=\\sqrt2\\cdot1$，$f(0)g(0)=0$）．したがって $S=\\dfrac12\\displaystyle\\int_0^{\\frac\\pi4}\\frac{dt}{\\cos t}$．\n\n$s=\\sin t$ と置換すると $ds=\\cos t\\,dt$ で，\n\\[\n\\int_0^{\\frac\\pi4}\\frac{dt}{\\cos t}=\\int_0^{\\frac\\pi4}\\frac{\\cos t}{1-\\sin^2t}\\,dt=\\int_0^{\\frac1{\\sqrt2}}\\frac{ds}{1-s^2}\n=\\int_0^{\\frac1{\\sqrt2}}\\frac12\\left(\\frac1{1+s}+\\frac1{1-s}\\right)ds\n=\\frac12\\Bigl[\\log\\frac{1+s}{1-s}\\Bigr]_0^{\\frac1{\\sqrt2}} .\n\\]\n$\\dfrac{1+\\frac1{\\sqrt2}}{1-\\frac1{\\sqrt2}}=\\dfrac{\\sqrt2+1}{\\sqrt2-1}=(\\sqrt2+1)^2$ なので，この値は $\\frac12\\log(\\sqrt2+1)^2=\\log(1+\\sqrt2)$．以上より\n\\[\nS=\\boldsymbol{\\frac12\\log(1+\\sqrt2)} .\n\\]\n\\hfill$\\square$"
+   }
+  ],
+  "idea": {
+   "tex": "2つの関数の微分の連立条件から，組み合わせ（$f^2-g^2$ など）の導関数が0になる保存量を見つけ，さらに適切な比（$\\frac1f$，$\\frac gf$）をとると既知の関数がみたす単純な連立条件に帰着する．一意性は「差の2乗和」の導関数が0であることで示す．解が有限の区間でしか存在しないことも，この表示から読み取る．面積は $(fg)'$ の式を使って $\\int f\\,dt$ に帰着させる．"
+  },
+  "methods": [],
+  "tags": [
+   "保存量",
+   "商の微分",
+   "一意性",
+   "三角関数",
+   "定義域",
+   "面積",
+   "媒介変数"
+  ],
+  "provenance": {
+   "created": "2026-11-10"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "III-INT-561",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "III-17",
+  "level": 5,
+  "minutes": 40,
+  "theme": "$(x-t)$ を含む積分の等式と関数列による $e$ の評価",
+  "topic": "$(x-t)$ を含む積分の等式と関数列による $e$ の評価",
+  "statement": {
+   "tex": "$f(x)=\\dfrac{e^x+e^{-x}}2$ とする．関数 $f_n(x)$（$n=0,1,2,\\dots$）を\n\\[\nf_0(x)=1,\\qquad f_n(x)=1+\\int_0^x(x-t)f_{n-1}(t)\\,dt\\quad(n=1,2,3,\\dots)\n\\]\nにより順に定める．必要ならば $2<e<3$ を用いてよい．\n\\begin{enumerate}\n  \\item すべての実数 $x$ について $f(x)=1+\\displaystyle\\int_0^x(x-t)f(t)\\,dt$ が成り立つことを示せ．また，$f_n(x)$ を $x,n$ の式（和の記号を用いてよい）で表せ．\n  \\item $K=f(1)-1$ とおく．$0\\leqq x\\leqq1$，$n\\geqq1$ のとき\n  \\[\n  0\\leqq f(x)-f_n(x)\\leqq\\frac{K}{(2n)!}x^{2n},\\qquad 0\\leqq f'(x)-f_n'(x)\\leqq\\frac{K}{(2n-1)!}x^{2n-1}\n  \\]\n  を示せ．\n  \\item $2.7182<e<2.7183$ を示せ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 証明；$f_n(x)=\\displaystyle\\sum_{k=0}^{n}\\frac{x^{2k}}{(2k)!}$　(2) 証明　(3) 証明（$f_5(1)+f_5'(1)=\\displaystyle\\sum_{j=0}^{10}\\frac1{j!}=\\frac{9864101}{3628800}$ を用いる）"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "\\textbf{(1)}　$g(x)=\\dfrac{e^x-e^{-x}}2$ とおくと $f'=g$，$g'=f$，$f(0)=1$，$g(0)=0$．\n\\[\n\\begin{aligned}\\int_0^x(x-t)f(t)\\,dt&=x\\int_0^xf(t)\\,dt-\\int_0^xtf(t)\\,dt=xg(x)-\\Bigl\\{\\bigl[tg(t)\\bigr]_0^x-\\int_0^xg(t)\\,dt\\Bigr\\}\\\\&=xg(x)-xg(x)+f(x)-1\\end{aligned}\n\\]\nとなり，$f(x)=1+\\int_0^x(x-t)f(t)\\,dt$ が成り立つ．\n\n次に，整数 $m\\geqq0$ について\n\\[\n\\int_0^x(x-t)t^m\\,dt=\\frac{x^{m+2}}{m+1}-\\frac{x^{m+2}}{m+2}=\\frac{x^{m+2}}{(m+1)(m+2)} .\n\\]\n$f_n(x)=\\sum_{k=0}^n\\frac{x^{2k}}{(2k)!}$ を帰納法で示す．$n=0$ は正しい．$n-1$ で正しいとき，\n\\[\nf_n(x)=1+\\sum_{k=0}^{n-1}\\frac1{(2k)!}\\cdot\\frac{x^{2k+2}}{(2k+1)(2k+2)}=1+\\sum_{k=0}^{n-1}\\frac{x^{2k+2}}{(2k+2)!}=\\sum_{k=0}^{n}\\frac{x^{2k}}{(2k)!} .\n\\]\nよって $\\boldsymbol{f_n(x)=\\displaystyle\\sum_{k=0}^{n}\\frac{x^{2k}}{(2k)!}}$．\n\n\\medskip\n\\textbf{(2)}　$e_n(x)=f(x)-f_n(x)$ とおく．(1) の2式を引くと，$n\\geqq1$ で\n\\[\ne_n(x)=\\int_0^x(x-t)e_{n-1}(t)\\,dt .\n\\]\nまた，連続関数 $h$ について $\\dfrac d{dx}\\Bigl(x\\int_0^xh\\,dt-\\int_0^xth\\,dt\\Bigr)=\\int_0^xh\\,dt+xh(x)-xh(x)=\\int_0^xh(t)\\,dt$ なので，$f_n'(x)=\\int_0^xf_{n-1}(t)\\,dt$．一方 $f'(x)=g(x)=\\int_0^xf(t)\\,dt$．よって\n\\[\nf'(x)-f_n'(x)=\\int_0^xe_{n-1}(t)\\,dt .\n\\]\n$x\\geqq0$ で $f'(x)=g(x)\\geqq0$ なので $f$ は $x\\geqq0$ で増加し，$0\\leqq x\\leqq1$ で $0\\leqq e_0(x)=f(x)-1\\leqq K$．\n\n主張「$0\\leqq x\\leqq1$ で $0\\leqq e_{n}(x)\\leqq\\frac K{(2n)!}x^{2n}$」を $n\\geqq0$ について帰納法で示す．$n=0$ は上で示した．$n-1$ で正しいとき，$0\\leqq t\\leqq x\\leqq1$ で $x-t\\geqq0$ だから\n\\[\n0\\leqq e_n(x)\\leqq\\frac K{(2n-2)!}\\int_0^x(x-t)t^{2n-2}\\,dt=\\frac K{(2n-2)!}\\cdot\\frac{x^{2n}}{(2n-1)(2n)}=\\frac K{(2n)!}x^{2n}.\n\\]\nさらに $n\\geqq1$ で\n\\[\n0\\leqq f'(x)-f_n'(x)=\\int_0^xe_{n-1}(t)\\,dt\\leqq\\frac K{(2n-2)!}\\cdot\\frac{x^{2n-1}}{2n-1}=\\frac K{(2n-1)!}x^{2n-1}.\n\\]\n\\hfill$\\square$\n\n\\medskip\n\\textbf{(3)}　$e=f(1)+g(1)=f(1)+f'(1)$．$S_n=f_n(1)+f_n'(1)$ とおくと，(1) より $f_n'(x)=\\sum_{k=1}^n\\frac{x^{2k-1}}{(2k-1)!}$ なので $S_n=\\sum_{j=0}^{2n}\\frac1{j!}$．(2) で $x=1$ とすると\n\\[\n0\\leqq e-S_n\\leqq K\\Bigl(\\frac1{(2n)!}+\\frac1{(2n-1)!}\\Bigr)=K\\cdot\\frac{2n+1}{(2n)!} .\n\\]\n$2<e<3$ より $\\frac1e<\\frac12$ なので $K=\\frac{e+e^{-1}}2-1<\\frac{3+\\frac12}2-1=\\frac34$．$n=5$ とすると\n\\[\nS_5=\\sum_{j=0}^{10}\\frac1{j!}=\\frac{9864101}{3628800},\\qquad 0\\leqq e-S_5<\\frac34\\cdot\\frac{11}{3628800}=\\frac{33}{14515200}.\n\\]\n（$S_5$ は $10!=3628800$ を分母として $3628800+3628800+1814400+604800+151200+30240+5040+720+90+10+1=9864101$．）\n\n下からの評価：$2.7182\\times3628800=9863804.16<9864101$ なので $e\\geqq S_5>2.7182$．\n\n上からの評価：$e<\\dfrac{4\\cdot9864101+33}{14515200}=\\dfrac{39456437}{14515200}$ で，$2.7183\\times14515200=39456668.16>39456437$．よって $e<2.7183$．\n\n以上より $2.7182<e<2.7183$．\\hfill$\\square$"
+   }
+  ],
+  "idea": {
+   "tex": "積分を含む等式 $f(x)=1+\\int_0^x(x-t)f(t)\\,dt$ をみたす関数を，$f_0=1$ から右辺に代入し直してできる関数列 $f_n$ で近づける．誤差 $f-f_n$ も同じ積分の形の漸化式をみたすので，最初の誤差を定数で抑えれば，帰納法で $x$ のべきと階乗の形の評価が積み上がる．ここでは$\\int_0^x(x-t)t^m\\,dt=\\frac{x^{m+2}}{(m+1)(m+2)}$ により次数が2ずつ上がり，さらに微分 $f_n'(x)=\\int_0^xf_{n-1}(t)\\,dt$ の誤差もいっしょに評価できる．"
+  },
+  "methods": [],
+  "tags": [
+   "積分方程式",
+   "逐次近似",
+   "数学的帰納法",
+   "誤差評価",
+   "不等式"
+  ],
+  "provenance": {
+   "created": "2026-11-10"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "III-INT-562",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "III-17",
+  "level": 4,
+  "minutes": 30,
+  "theme": "$\\sqrt x$ の折れ線近似が残す回転体と対数の増え方",
+  "topic": "$\\sqrt x$ の折れ線近似が残す回転体と対数の増え方",
+  "statement": {
+   "tex": "曲線 $C:y=\\sqrt x$ を考える．\n\\begin{enumerate}\n  \\item $0\\leqq a<b$ とし，$C$ 上の2点 $(a,\\sqrt a)$，$(b,\\sqrt b)$ を結ぶ線分と $C$ で囲まれた部分を $x$ 軸のまわりに1回転させてできる立体の体積 $V(a,b)$ を求め，$a,b$ の積の形で表せ．\n  \\item $n\\geqq2$ を整数とし，$C$ 上の点 $\\mathrm P_k(k,\\sqrt k)$（$k=1,2,\\dots,n$）を順に結んだ折れ線 $\\mathrm P_1\\mathrm P_2\\cdots\\mathrm P_n$ と $C$（$1\\leqq x\\leqq n$）で囲まれた部分を $x$ 軸のまわりに1回転させてできる立体の体積を $W_n$ とする．極限 $\\displaystyle\\lim_{n\\to\\infty}\\frac{W_n}{\\log n}$ を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $V(a,b)=\\dfrac\\pi6(b-a)(\\sqrt b-\\sqrt a)^2$　(2) $\\dfrac{\\pi}{24}$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) 弦を $y=l(x)$ とすると $l(x)=\\sqrt a+\\dfrac{x-a}{\\sqrt a+\\sqrt b}$（傾き $\\frac{\\sqrt b-\\sqrt a}{b-a}=\\frac1{\\sqrt a+\\sqrt b}$）．$a\\leqq x\\leqq b$ で\n\\[\n\\sqrt x-l(x)=(\\sqrt x-\\sqrt a)\\left(1-\\frac{\\sqrt x+\\sqrt a}{\\sqrt a+\\sqrt b}\\right)=\\frac{(\\sqrt x-\\sqrt a)(\\sqrt b-\\sqrt x)}{\\sqrt a+\\sqrt b}\\geqq0\n\\]\nであり，$l(x)\\geqq\\sqrt a\\geqq0$．よって切り口は内径 $l(x)$，外径 $\\sqrt x$ の円環で，\n$V(a,b)=\\pi\\displaystyle\\int_a^b\\{x-l(x)^2\\}dx$．\n$l$ は1次式なので，$l(x)=\\alpha+\\beta(x-a)$ とおくと $\\displaystyle\\int_a^bl^2dx=\\Bigl[\\frac{l^3}{3\\beta}\\Bigr]_a^b=\\frac{l(b)^3-l(a)^3}{3\\beta}=\\frac{(b-a)\\{l(a)^2+l(a)l(b)+l(b)^2\\}}3$（$\\beta(b-a)=l(b)-l(a)$）．\n$l(a)=\\sqrt a$，$l(b)=\\sqrt b$ より $\\displaystyle\\int_a^bl^2dx=\\frac{(b-a)(a+\\sqrt{ab}+b)}3$．$\\displaystyle\\int_a^bx\\,dx=\\frac{(b-a)(a+b)}2$ だから\n\\[\nV(a,b)=\\pi(b-a)\\left(\\frac{a+b}2-\\frac{a+b+\\sqrt{ab}}3\\right)=\\frac{\\pi(b-a)(a+b-2\\sqrt{ab})}6=\\boldsymbol{\\frac\\pi6(b-a)(\\sqrt b-\\sqrt a)^2}.\n\\]\n\n(2) 折れ線は各区間 $[k,k+1]$ で弦 $\\mathrm P_k\\mathrm P_{k+1}$ であり，(1) の通り曲線の下側かつ $x$ 軸の上側にあるから，立体は各区間の立体を並べたものである．よって\n\\[\nW_n=\\sum_{k=1}^{n-1}V(k,k+1)=\\frac\\pi6\\sum_{k=1}^{n-1}(\\sqrt{k+1}-\\sqrt k)^2=\\frac\\pi6\\sum_{k=1}^{n-1}\\frac1{(\\sqrt{k+1}+\\sqrt k)^2}.\n\\]\n$(\\sqrt{k+1}+\\sqrt k)^2=2k+1+2\\sqrt{k^2+k}$ で，$k<\\sqrt{k^2+k}<k+\\frac12$（2乗して比べる）から $4k+1<(\\sqrt{k+1}+\\sqrt k)^2<4k+2$．よって $4k<(\\sqrt{k+1}+\\sqrt k)^2<4(k+1)$ で，\n\\[\n\\frac\\pi{24}\\sum_{k=1}^{n-1}\\frac1{k+1}<W_n<\\frac\\pi{24}\\sum_{k=1}^{n-1}\\frac1k .\n\\]\n$\\frac1x$ は減少関数なので，$j\\geqq2$ で $\\frac1j>\\int_j^{j+1}\\frac{dx}x$，$k\\geqq2$ で $\\frac1k<\\int_{k-1}^{k}\\frac{dx}x$．よって\n\\[\n\\sum_{k=1}^{n-1}\\frac1{k+1}=\\sum_{j=2}^{n}\\frac1j>\\int_2^{n+1}\\frac{dx}x=\\log\\frac{n+1}2,\\qquad\n\\sum_{k=1}^{n-1}\\frac1k\\leqq1+\\int_1^{n-1}\\frac{dx}x=1+\\log(n-1).\n\\]\nしたがって $n\\geqq3$ で\n\\[\n\\frac\\pi{24}\\cdot\\frac{\\log(n+1)-\\log2}{\\log n}<\\frac{W_n}{\\log n}<\\frac\\pi{24}\\cdot\\frac{1+\\log(n-1)}{\\log n}.\n\\]\n$\\frac{\\log(n+1)}{\\log n}=1+\\frac{\\log(1+\\frac1n)}{\\log n}\\to1$，$\\frac{\\log(n-1)}{\\log n}=1+\\frac{\\log(1-\\frac1n)}{\\log n}\\to1$ だから，両端はともに $\\frac\\pi{24}$ に収束し，\n$\\displaystyle\\lim_{n\\to\\infty}\\frac{W_n}{\\log n}=\\boldsymbol{\\frac\\pi{24}}$．"
+   }
+  ],
+  "idea": {
+   "tex": "弦 $l(x)$ と曲線 $\\sqrt x$ の間の回転体は $\\pi\\int(x-l^2)\\,dx$．$x$ が1次なので弦の2乗の積分は端点の値だけで決まり，$V=\\frac\\pi6(b-a)(\\sqrt b-\\sqrt a)^2$ と因数分解される．隣り合う整数を結ぶ弦では $\\frac\\pi6(\\sqrt{k+1}-\\sqrt k)^2=\\frac{\\pi}{6(\\sqrt{k+1}+\\sqrt k)^2}$ が $\\frac1{4k}$ と $\\frac1{4(k+1)}$ にはさまれ，和は調和級数として $\\log n$ の速さで増える．"
+  },
+  "methods": [],
+  "tags": [
+   "回転体の体積",
+   "弦",
+   "調和級数",
+   "はさみうち"
+  ],
+  "provenance": {
+   "created": "2026-11-10"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "III-INT-563",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "III-17",
+  "level": 4,
+  "minutes": 30,
+  "theme": "2つの指数曲線と $y$ 軸で囲まれた部分の体積とその通過範囲",
+  "topic": "2つの指数曲線と $y$ 軸で囲まれた部分の体積とその通過範囲",
+  "statement": {
+   "tex": "$t$ を負の実数とし，$xy$ 平面上で曲線 $y=2^{2x+2t}$ と曲線 $y=2^{x+3t}$ および $y$ 軸で囲まれる部分（境界を含む）を $D(t)$ とする．\n\\begin{enumerate}\n  \\item $D(t)$ を $x$ 軸のまわりに1回転させてできる回転体の体積 $V(t)$ を求め，$t$ が負の実数全体を動くときの $V(t)$ の最大値を求めよ．\n  \\item $t$ が負の実数全体を動くとき，$D(t)$ が通過する範囲 $E$ を求めよ．さらに，$E$ を $x$ 軸のまわりに1回転させてできる立体の体積 $W$ を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $V(t)=\\dfrac{\\pi\\,16^{t}(1-4^t)^2}{4\\log2}$，$t=-\\dfrac12$ のとき最大値 $\\dfrac{\\pi}{64\\log2}$　(2) $E=\\{(x,y)\\mid x<0,\\ 0<y\\leqq16^x\\}\\cup\\{(0,y)\\mid 0<y<1\\}$，$W=\\dfrac{\\pi}{8\\log2}$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) $t\\leqq x\\leqq0$ で $(2x+2t)-(x+3t)=x-t\\geqq0$ なので $2^{x+3t}\\leqq2^{2x+2t}$（等号は $x=t$，すなわち2曲線の交点）．よって $D(t)=\\{(x,y)\\mid t\\leqq x\\leqq0,\\ 2^{x+3t}\\leqq y\\leqq2^{2x+2t}\\}$ で\n\\[\nV(t)=\\pi\\int_t^0\\left(2^{4x+4t}-2^{2x+6t}\\right)dx=\\pi\\left\\{\\frac{2^{4t}(1-2^{4t})}{4\\log2}-\\frac{2^{6t}(1-2^{2t})}{2\\log2}\\right\\}.\n\\]\n$u=2^{2t}=4^t$（$0<u<1$）とおくと\n\\[\nV(t)=\\frac{\\pi}{4\\log2}\\left\\{u^2(1-u^2)-2u^3(1-u)\\right\\}=\\frac{\\pi}{4\\log2}u^2(1-u)\\{(1+u)-2u\\}=\\frac{\\pi u^2(1-u)^2}{4\\log2}.\n\\]\nすなわち $\\boldsymbol{V(t)=\\dfrac{\\pi\\,16^t(1-4^t)^2}{4\\log2}}$．$u(1-u)=\\frac14-\\left(u-\\frac12\\right)^2\\leqq\\frac14$（等号 $u=\\frac12$，$t=-\\frac12$）なので，最大値は $\\boldsymbol{\\dfrac{\\pi}{64\\log2}}$（$t=-\\frac12$）．\n\n(2) 点 $(x,y)$ が $E$ に属する $\\iff$ ある $t<0$ で $t\\leqq x\\leqq0$，$2^{x+3t}\\leqq y\\leqq2^{2x+2t}$．\n\\begin{itemize}\n  \\item （必要）このとき $x\\leqq0$，$y>0$ で，$t\\leqq x$ より $y\\leqq2^{2x+2t}\\leqq2^{4x}$．さらに $x=0$ なら $y\\leqq2^{2t}<1$．\n  \\item （十分）$x\\leqq0$，$0<y\\leqq2^{4x}$ とし，$x=0$ のときは $y<1$ とする．$L=\\log_2y\\ (\\leqq4x)$，$t=\\frac{L}2-x$ とおく．$t\\leqq x\\iff L\\leqq4x$ は成立．$t<0\\iff L<2x$ は，$x<0$ なら $L\\leqq4x<2x$，$x=0$ なら $L<0$ から成立．$y=2^{2x+2t}$ で，$x+3t\\leqq2x+2t\\iff t\\leqq x$ より $2^{x+3t}\\leqq y$．よって $(x,y)\\in D(t)$．\n\\end{itemize}\nしたがって $\\boldsymbol{E=\\{(x,y)\\mid x<0,\\ 0<y\\leqq16^x\\}\\cup\\{(0,y)\\mid 0<y<1\\}}$．\n$E$ を回転した立体の $x=c\\ (<0)$ での切り口は半径 $16^c$ の円板（中心を除く）で，\n\\[\nW=\\lim_{a\\to-\\infty}\\pi\\int_a^0(16^{x})^2dx=\\lim_{a\\to-\\infty}\\frac{\\pi(1-2^{8a})}{8\\log2}=\\boldsymbol{\\frac{\\pi}{8\\log2}}.\n\\]\n（(1) の最大値はちょうど $W$ の $\\frac18$ である．）"
+   }
+  ],
+  "idea": {
+   "tex": "$u=4^t$ とおくと体積は $u^2(1-u)^2$ の定数倍になり，$u(1-u)\\leqq\\frac14$ で最大．$D(t)$ の和集合は，点 $(x,y)$ を固定して「条件をみたす $t<0$ が存在するか」を $t$ の不等式の連立として調べる（$t=\\frac{\\log_2y}2-x$ が実際にとれるかの確認が要る）．"
+  },
+  "methods": [],
+  "tags": [
+   "回転体の体積",
+   "指数関数",
+   "通過領域",
+   "広義積分"
+  ],
+  "provenance": {
+   "created": "2026-11-10"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "III-INT-564",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "III-17",
+  "level": 4,
+  "minutes": 30,
+  "theme": "$\\log f''=-f$ をみたす関数の無限区間での積分",
+  "topic": "$\\log f''=-f$ をみたす関数の無限区間での積分",
+  "statement": {
+   "tex": "関数 $f(x)=2\\log(1+e^x)-x-\\log2$ を考える．ただし対数は自然対数であり，必要ならば $\\displaystyle\\lim_{x\\to\\infty}xe^{-x}=0$ を用いてよい．\n\\begin{enumerate}\n  \\item 等式 $\\log f''(x)=-f(x)$ および $\\{f'(x)\\}^2+2f''(x)=1$ が成り立つことを示せ．\n  \\item 極限 $\\displaystyle\\lim_{a\\to\\infty}\\int_0^{a}x\\,e^{-f(x)}\\,dx$ を求めよ．\n  \\item 極限 $\\displaystyle\\lim_{a\\to\\infty}\\int_0^{a}x\\,f'(x)\\,e^{-f(x)}\\,dx$ を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 証明　(2) $2\\log2$　(3) $1$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) $f'(x)=\\dfrac{2e^x}{1+e^x}-1=\\dfrac{e^x-1}{e^x+1}$，$f''(x)=\\dfrac{2e^x(e^x+1)-2e^x\\cdot e^x}{(e^x+1)^2}=\\dfrac{2e^x}{(1+e^x)^2}$．\n一方 $e^{-f(x)}=\\dfrac{e^x\\cdot2}{(1+e^x)^2}$ なので $f''(x)=e^{-f(x)}$，すなわち $\\log f''(x)=-f(x)$．\nまた $f'^2+2f''=\\dfrac{(e^x-1)^2+4e^x}{(e^x+1)^2}=1$．\\hfill$\\square$\n\n(2) $e^{-f}=f''$ なので部分積分により\n\\[\n\\int_0^ax f''(x)\\,dx=\\Bigl[xf'(x)\\Bigr]_0^a-\\int_0^af'(x)\\,dx=af'(a)-f(a)+f(0).\n\\]\n$f(0)=\\log2$，$f(a)=2\\log\\{e^a(1+e^{-a})\\}-a-\\log2=a+2\\log(1+e^{-a})-\\log2$，$af'(a)=a-\\dfrac{2a}{e^a+1}$．よって\n\\[\n\\int_0^axe^{-f}dx=2\\log2-\\frac{2a}{e^a+1}-2\\log(1+e^{-a}).\n\\]\n$0<\\frac{2a}{e^a+1}<2ae^{-a}\\to0$，$\\log(1+e^{-a})\\to0$ より，極限は $\\boldsymbol{2\\log2}$．\n\n(3) $(f'^2)'=2f'f''$ を用いて部分積分し，(1) の $f'^2=1-2f''$ を使うと\n\\[\n\\int_0^axf'f''dx=\\Bigl[\\frac{xf'^2}2\\Bigr]_0^a-\\frac12\\int_0^af'^2dx=\\frac{af'(a)^2}2-\\frac12\\int_0^a(1-2f'')dx=\\frac{a\\{f'(a)^2-1\\}}2+f'(a)-f'(0).\n\\]\n$f'(0)=0$，$f'(a)^2-1=-2f''(a)$ だから，値は $-af''(a)+f'(a)$．\n$0<af''(a)=\\dfrac{2ae^a}{(1+e^a)^2}<2ae^{-a}\\to0$，$f'(a)=\\dfrac{1-e^{-a}}{1+e^{-a}}\\to1$．よって極限は $\\boldsymbol1$．"
+   }
+  ],
+  "idea": {
+   "tex": "$e^{-f}=f''$ と見抜くと，$x$ を掛けた積分は部分積分で $f'$ と $f$ の値だけになる．さらに $f'^2+2f''=1$ という保存則を使えば，$x f'f''$ の積分も $f'^2$ の積分を経由して端点の値で求まる．無限大での極限は $\\lim xe^{-x}=0$ に帰着．"
+  },
+  "methods": [],
+  "tags": [
+   "部分積分",
+   "広義積分",
+   "関数の恒等式",
+   "極限"
+  ],
+  "provenance": {
+   "created": "2026-11-10"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "III-INT-565",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "III-17",
+  "level": 3,
+  "minutes": 25,
+  "theme": "立方体の中で球の外を動く球の中心の範囲",
+  "topic": "立方体の中で球の外を動く球の中心の範囲",
+  "statement": {
+   "tex": "1辺の長さが6の立方体 $K$ が空間に固定されている．$K$ の中心を中心とする半径 $r$ の球を $T$ とする．半径1の球 $S$ が次の条件 (A)，(B) を同時にみたしながら動く．\n\\begin{center}\n(A)　$S$ は $K$ の内部にある（$K$ の面に接してもよい）．\\qquad\n(B)　$S$ は $T$ の外部にある（$T$ に外接してもよい）．\n\\end{center}\n$S$ の中心が存在しうる範囲を $D$ とし，その体積を $V(r)$ とする．\n\\begin{enumerate}\n  \\item $0<r\\leqq1$ のとき，$V(r)$ を求めよ．\n  \\item $1<r\\leqq2\\sqrt2-1$ のとき，$V(r)$ を求めよ．また $V\\!\\left(\\dfrac32\\right)$ を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $V(r)=64-\\dfrac{4\\pi}3(r+1)^3$　(2) $V(r)=64-\\dfrac{4\\pi}3(r+1)^3+4\\pi(r-1)^2(r+2)$，$V\\!\\left(\\dfrac32\\right)=64-\\dfrac{52}3\\pi$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "$K$ の中心を原点に，各面を座標平面に平行にとると $K=\\{|x|\\leqq3,|y|\\leqq3,|z|\\leqq3\\}$．$S$ の中心を $\\mathrm P(x,y,z)$，$R=r+1$ とする．\n(A) $\\iff$ 中心から各面までの距離が1以上 $\\iff|x|\\leqq2,|y|\\leqq2,|z|\\leqq2$（この立方体を $K'$ とする）．\n(B) $\\iff\\mathrm{OP}\\geqq r+1=R$．\nよって $D=K'\\setminus\\{\\mathrm{OP}<R\\}$ で，$V(r)=64-(\\text{球 }\\mathrm{OP}<R\\text{ と }K'\\text{ の共通部分の体積})$．\n\n\\textbf{球欠の体積．}半径 $R$ の球のうち $x>R-h$ の部分（$0<h\\leqq R$）の体積は\n\\[\n\\pi\\int_{R-h}^{R}(R^2-x^2)dx=\\pi\\left\\{R^2h-\\frac{R^3-(R-h)^3}3\\right\\}=\\frac{\\pi h^2(3R-h)}3 .\n\\]\n\n(1) $0<r\\leqq1$ なら $R\\leqq2$ で球（の内部）は $K'$ に含まれる．$V(r)=\\boldsymbol{64-\\dfrac{4\\pi}3(r+1)^3}$．\n\n(2) $1<r\\leqq2\\sqrt2-1$ なら $2<R\\leqq2\\sqrt2$．球のうち $K'$ の外にある部分は，6つの面の外側にはみ出す部分 $\\{x>2\\}$，$\\{x<-2\\}$ など6個の和である．このうち2つが共通点をもつとすれば，向かい合う面（$x>2$ と $x<-2$）は明らかに共通点がなく，隣り合う面なら例えば $x>2$，$y>2$ で $\\mathrm{OP}^2>8\\geqq R^2$ となり球の内部にない．よって6個は互いに重ならず，それぞれ高さ $h=R-2$ の球欠．\n\\[\n\\frac{\\pi(R-2)^2\\{3R-(R-2)\\}}3\\times6=4\\pi(R-2)^2(R+1)=4\\pi(r-1)^2(r+2).\n\\]\nよって $V(r)=64-\\left\\{\\dfrac{4\\pi}3(r+1)^3-4\\pi(r-1)^2(r+2)\\right\\}=\\boldsymbol{64-\\dfrac{4\\pi}3(r+1)^3+4\\pi(r-1)^2(r+2)}$．\n$r=\\frac32$：$\\frac{4\\pi}3\\cdot\\frac{125}8=\\frac{125\\pi}6$，$4\\pi\\cdot\\frac14\\cdot\\frac72=\\frac{21\\pi}6$ より $V\\!\\left(\\frac32\\right)=64-\\frac{104\\pi}6=\\boldsymbol{64-\\dfrac{52}3\\pi}$．"
+   }
+  ],
+  "idea": {
+   "tex": "半径1の球が図形の内部にある（外部にある）条件を，中心と面（中心）との距離の条件に直すと，中心の範囲は「1辺4の立方体」から「半径 $r+1$ の球の内部」を除いた部分．球が立方体の面からはみ出す部分は球欠で，$r+1\\leqq2\\sqrt2$ なら隣り合う面の球欠どうしは重ならない（$x>2,\\ y>2$ なら中心からの距離 $>2\\sqrt2$）．"
+  },
+  "methods": [],
+  "tags": [
+   "球の中心の動く範囲",
+   "球欠の体積",
+   "場合分け"
+  ],
+  "provenance": {
+   "created": "2026-11-10"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "III-INT-566",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "III-17",
+  "level": 4,
+  "minutes": 35,
+  "theme": "直線 $y=mx$ と $\\dfrac{1}{x(x^2-1)}$ が囲む面積の $m$ による変化",
+  "topic": "直線 $y=mx$ と $\\dfrac{1}{x(x^2-1)}$ が囲む面積の $m$ による変化",
+  "statement": {
+   "tex": "$x\\neq0,\\ \\pm1$ で定義された関数\n\\[\nf(x)=\\frac{1}{x(x^2-1)}\n\\]\nを考える．$m$ を実数の定数とする．\n\\begin{enumerate}\n  \\item 直線 $y=mx$ と曲線 $y=f(x)$ の共有点の個数を，$m$ の値によって分類して答えよ．\n  \\item $m<-4$ とする．直線 $y=mx$ と曲線 $y=f(x)$ の共有点のうち $x$ 座標が正であるものの $x$ 座標を $\\alpha$，$\\beta$（$\\alpha<\\beta$）とし，直線 $y=mx$ と曲線 $y=f(x)$（$\\alpha\\leqq x\\leqq\\beta$）で囲まれた部分の面積を $S(m)$ とする．$S(m)$ を $m$ の式で表せ．\n  \\item (2) の $S(m)$ について，$\\dfrac{dS}{dm}$ を $m$ の式で表せ．また，それが $-\\dfrac{\\beta^2-\\alpha^2}{2}$ に等しいことを示せ．\n  \\item 極限 $\\displaystyle\\lim_{m\\to-\\infty}\\left\\{S(m)+\\frac m2+\\log(-m)\\right\\}$ を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $m>0$ のとき2個，$-4<m\\leqq0$ のとき0個，$m=-4$ のとき2個，$m<-4$ のとき4個　(2) $S(m)=\\dfrac12\\sqrt{m^2+4m}-2\\log\\dfrac{\\sqrt{-m}+\\sqrt{-m-4}}{2}$　(3) $\\dfrac{dS}{dm}=-\\dfrac12\\sqrt{1+\\dfrac4m}$（$=-\\dfrac{\\beta^2-\\alpha^2}2$ は証明）　(4) $-1$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "\\textbf{(1)}　$x\\neq0,\\pm1$ のもとで $mx=f(x)$ の両辺に $x(x^2-1)\\ (\\neq0)$ を掛けると\n\\[\nmx^2(x^2-1)=1\\qquad\\cdots\\text{①}\n\\]\n逆に ① をみたす実数 $x$ は，$x=0,\\pm1$ では左辺が $0$ となるので ① をみたさず，自動的に $x\\neq0,\\pm1$ であり，$x(x^2-1)$ で割れば $mx=f(x)$ に戻る．よって共有点の $x$ 座標は ① の実数解と一致する．$X=x^2$ とおくと ① は\n\\[\nmX^2-mX-1=0\\qquad\\cdots\\text{②}\n\\]\nであり，② の正の解 $X$ 1つにつき ① の解 $x=\\pm\\sqrt X$ が2つずつ対応し，異なる正の解からは異なる $x$ が得られる（$X\\leqq0$ の解からは実数 $x$ は得られない．$X=0$ は ② をみたさない）．\n\n$m=0$ のとき ② は $-1=0$ となり解はない．$m\\neq0$ のとき ② の判別式は $D=m^2+4m=m(m+4)$，2解の和は $1$，積は $-\\dfrac1m$ である．\n\\begin{itemize}\n  \\item $m>0$：$D>0$ で積が負なので，正の解はちょうど1つ．共有点は2個．\n  \\item $-4<m<0$：$D<0$ で実数解がなく，共有点は0個．\n  \\item $m=-4$：② は $-(2X-1)^2=0$ で $X=\\frac12$（正）のみ．共有点は2個．\n  \\item $m<-4$：$D>0$，積 $-\\frac1m>0$，和 $1>0$ なので異なる2つの正の解をもつ．共有点は4個．\n\\end{itemize}\nよって $\\boldsymbol{m>0}$ \\textbf{のとき2個，$\\boldsymbol{-4<m\\leqq0}$ のとき0個，$\\boldsymbol{m=-4}$ のとき2個，$\\boldsymbol{m<-4}$ のとき4個}．\n\n\\medskip\n\\textbf{(2)}　$m<-4$ のとき，② の2解を $X_1<X_2$ とすると $\\alpha=\\sqrt{X_1}$，$\\beta=\\sqrt{X_2}$ で\n\\[\nX_1+X_2=1,\\qquad X_1X_2=-\\frac1m,\\qquad (X_2-X_1)^2=1+\\frac4m=\\frac{m^2+4m}{m^2}.\n\\]\n$d=X_2-X_1=\\dfrac{\\sqrt{m^2+4m}}{-m}$（$-m=|m|$）とおくと $0<d<1$，$X_1=\\dfrac{1-d}2$，$X_2=\\dfrac{1+d}2$ であり，$0<X_1<X_2<1$ なので $0<\\alpha<\\beta<1$ である．\n\n\\emph{上下関係．}$0<x<1$ において\n\\[\nf(x)-mx=\\frac{1-mx^2(x^2-1)}{x(x^2-1)}=\\frac{-(mX^2-mX-1)}{x(x^2-1)}\\qquad(X=x^2).\n\\]\n$m<0$ より $mX^2-mX-1$ は上に凸な $X$ の2次式で，$X_1<X<X_2$ で正．分母 $x(x^2-1)$ は $0<x<1$ で負．よって $\\alpha<x<\\beta$ で $f(x)-mx>0$ であり，\n\\[\nS(m)=\\int_\\alpha^\\beta\\{f(x)-mx\\}\\,dx .\n\\]\n\\emph{原始関数．}$\\dfrac1{x(x^2-1)}=-\\dfrac1x+\\dfrac{1}{2(x-1)}+\\dfrac1{2(x+1)}$（右辺を通分すると分子は $-(x^2-1)+\\frac12x(x+1)+\\frac12x(x-1)=1$）．$0<x<1$ では\n\\[\nF(x)=-\\log x+\\frac12\\log(1-x)+\\frac12\\log(1+x)=\\frac12\\log\\frac{1-x^2}{x^2}\n\\]\nが $f(x)$ の原始関数である．$1-X_2=X_1$，$1-X_1=X_2$ を使うと\n\\[\nF(\\beta)-F(\\alpha)=\\frac12\\left(\\log\\frac{X_1}{X_2}-\\log\\frac{X_2}{X_1}\\right)=\\log\\frac{X_1}{X_2}.\n\\]\nまた $\\displaystyle\\int_\\alpha^\\beta mx\\,dx=\\frac m2(X_2-X_1)=\\frac m2d=-\\frac12\\sqrt{m^2+4m}$．よって\n\\[\nS(m)=\\frac12\\sqrt{m^2+4m}+\\log\\frac{X_1}{X_2}.\n\\]\nここで $\\dfrac{X_1}{X_2}=\\dfrac{1-d}{1+d}=\\dfrac{1-d^2}{(1+d)^2}$，$1-d^2=-\\dfrac4m$ であり，$m<-4$ では $\\sqrt{m^2+4m}=\\sqrt{-m}\\,\\sqrt{-m-4}$ なので\n\\[\n\\sqrt{-m}\\,(1+d)=\\sqrt{-m}+\\frac{\\sqrt{-m}\\sqrt{-m-4}}{\\sqrt{-m}}=\\sqrt{-m}+\\sqrt{-m-4}.\n\\]\nしたがって $\\dfrac{X_1}{X_2}=\\dfrac{4}{(-m)(1+d)^2}=\\left(\\dfrac{2}{\\sqrt{-m}+\\sqrt{-m-4}}\\right)^2$ となり，\n\\[\n\\boldsymbol{S(m)=\\frac12\\sqrt{m^2+4m}-2\\log\\frac{\\sqrt{-m}+\\sqrt{-m-4}}{2}}.\n\\]\n\n\\medskip\n\\textbf{(3)}　$u=-m\\ (>4)$ とおくと $S=\\dfrac12\\sqrt{u^2-4u}-2\\log\\dfrac{\\sqrt u+\\sqrt{u-4}}2$ で\n\\[\n\\frac{d}{du}\\left(\\frac12\\sqrt{u^2-4u}\\right)=\\frac{u-2}{2\\sqrt{u^2-4u}},\n\\]\n\\[\n\\frac{d}{du}\\left(-2\\log\\frac{\\sqrt u+\\sqrt{u-4}}2\\right)=-2\\cdot\\frac{\\frac1{2\\sqrt u}+\\frac1{2\\sqrt{u-4}}}{\\sqrt u+\\sqrt{u-4}}=-2\\cdot\\frac{\\sqrt{u-4}+\\sqrt u}{2\\sqrt u\\sqrt{u-4}\\,(\\sqrt u+\\sqrt{u-4})}=-\\frac1{\\sqrt{u^2-4u}}.\n\\]\nよって $\\dfrac{dS}{du}=\\dfrac{u-4}{2\\sqrt{u(u-4)}}=\\dfrac{\\sqrt{u-4}}{2\\sqrt u}$ で，$\\dfrac{dS}{dm}=-\\dfrac{dS}{du}$ より\n\\[\n\\boldsymbol{\\frac{dS}{dm}=-\\frac{\\sqrt{-m-4}}{2\\sqrt{-m}}=-\\frac12\\sqrt{1+\\frac4m}}.\n\\]\n一方 $\\beta^2-\\alpha^2=X_2-X_1=d=\\sqrt{1+\\dfrac4m}$ なので，$\\dfrac{dS}{dm}=-\\dfrac{\\beta^2-\\alpha^2}2$ である．\\hfill$\\square$\n\n（意味：被積分関数 $f(x)-mx$ は両端 $x=\\alpha,\\beta$ で $0$ なので，端点の動きは $S$ の変化に寄与せず，$f(x)-mx$ を $m$ について微分した $-x$ の積分 $-\\int_\\alpha^\\beta x\\,dx$ だけが残る．）\n\n\\medskip\n\\textbf{(4)}　$u=-m$ とすると，$m\\to-\\infty$ は $u\\to\\infty$ で\n\\[\nS+\\frac m2+\\log(-m)=\\frac12\\left(\\sqrt{u^2-4u}-u\\right)-2\\log\\frac{\\sqrt u+\\sqrt{u-4}}{2}+\\log u .\n\\]\n$\\log u=2\\log\\sqrt u$ なので後ろの2項は $-2\\log\\dfrac{\\sqrt u+\\sqrt{u-4}}{2\\sqrt u}=-2\\log\\dfrac{1+\\sqrt{1-\\frac4u}}{2}\\to-2\\log1=0$．また\n\\[\n\\frac12\\left(\\sqrt{u^2-4u}-u\\right)=\\frac12\\cdot\\frac{-4u}{\\sqrt{u^2-4u}+u}=\\frac{-2}{\\sqrt{1-\\frac4u}+1}\\to-1 .\n\\]\nよって求める極限は $\\boldsymbol{-1}$．"
+   }
+  ],
+  "idea": {
+   "tex": "$mx=f(x)$ は $X=x^2$ の2次方程式 $mX^2-mX-1=0$ に帰着し，2解の和が $1$ であることから $1-X_2=X_1$．これを使うと，部分分数分解で得た原始関数 $\\frac12\\log\\frac{1-x^2}{x^2}$ の差が $\\log\\frac{X_1}{X_2}$ にまとまり，面積が $m$ だけの閉じた式になる．面積を $m$ で微分すると，端点で被積分関数が $0$ になるので $-\\frac12(\\beta^2-\\alpha^2)$ だけが残る．原題の「下端が動く広義積分と三角形の比の極限」を，「2交点の間の面積の閉じた式・その変化率・$m\\to-\\infty$ での漸近展開」に置き換えた．"
+  },
+  "methods": [],
+  "tags": [
+   "複2次方程式",
+   "解と係数の関係",
+   "部分分数分解",
+   "面積の微分",
+   "漸近挙動"
+  ],
+  "provenance": {
+   "created": "2026-11-10"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "III-INT-567",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "III-17",
+  "level": 4,
+  "minutes": 30,
+  "theme": "絶対値を重ねた不等式が表す立体の体積",
+  "topic": "絶対値を重ねた不等式が表す立体の体積",
+  "statement": {
+   "tex": "座標空間において，不等式\n\\[\\bigl||x|-1\\bigr|+\\bigl||y|-1\\bigr|+\\bigl||z|-1\\bigr|\\leqq3\\]\nの表す立体を $K_0$，不等式\n\\[1\\leqq\\bigl||x|-1\\bigr|+\\bigl||y|-1\\bigr|+\\bigl||z|-1\\bigr|\\leqq3\\]\nの表す立体を $K$ とする．\n\\begin{enumerate}\n  \\item $K_0$ のうち $x\\geqq0$，$y\\geqq0$，$z\\geqq0$ の部分の体積を求めよ．\n  \\item $K$ の体積を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $21$　(2) $\\dfrac{472}3$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "\\textbf{対称性．}不等式は $x$ を $-x$ に（$y,z$ も同様に）変えても変わらないので，$K_0$，$K$ は3つの座標平面に関して対称．座標平面上の部分は体積0なので，体積は $x,y,z\\geqq0$ の部分の8倍．\n\n$x,y,z\\geqq0$ では $u=x-1$，$v=y-1$，$w=z-1$ と平行移動すると，条件は $u,v,w\\geqq-1$ と $|u|+|v|+|w|$ の条件になる．$O_\\rho:\\ |u|+|v|+|w|\\leqq\\rho$ は8つの象限にある四面体 $\\{u,v,w\\geqq0,\\ u+v+w\\leqq\\rho\\}$（体積 $\\frac{\\rho^3}6$）の合併で，体積 $\\dfrac43\\rho^3$．\n\n\\textbf{(1)} 求める体積は $O_3$ から $A_u=O_3\\cap\\{u<-1\\}$，$A_v$，$A_w$ の合併を除いたもの．\n\\begin{itemize}\n  \\item $A_u$：$u=-\\sigma$（$1<\\sigma\\leqq3$）での切り口は $|v|+|w|\\leqq3-\\sigma$ で面積 $2(3-\\sigma)^2$．体積 $\\displaystyle\\int_1^32(3-\\sigma)^2d\\sigma=\\frac{16}3$．\n  \\item $A_u\\cap A_v$：$\\sigma=-u-1>0$，$\\tau=-v-1>0$ とおくと $\\sigma+\\tau+|w|\\leqq1$．これは2つの四面体 $\\{\\sigma,\\tau\\geqq0,\\ \\sigma+\\tau+|w|\\leqq1\\}$（$w\\geqq0$，$w\\leqq0$）からなり，体積 $2\\cdot\\dfrac16=\\dfrac13$．\n  \\item $A_u\\cap A_v\\cap A_w$：$|u|+|v|+|w|>3$ となるので空集合．\n\\end{itemize}\n包除原理により，体積は $36-3\\cdot\\dfrac{16}3+3\\cdot\\dfrac13-0=\\boldsymbol{21}$．\n\n\\textbf{(2)} $O_1$（$|u|+|v|+|w|<1$ の部分）では $|u|,|v|,|w|<1$ なので $u,v,w\\geqq-1$ に完全に含まれる．よって $K$ の $x,y,z\\geqq0$ の部分の体積は $21-\\dfrac43=\\dfrac{59}3$．$K$ の体積は $8\\cdot\\dfrac{59}3=\\boldsymbol{\\dfrac{472}3}$．\n\\hfill$\\square$"
+   }
+  ],
+  "idea": {
+   "tex": "$|x|,|y|,|z|$ の対称性で第1象限（$x,y,z\\geqq0$）に帰着し，$u=x-1$ などと平行移動すると「正八面体 $|u|+|v|+|w|\\leqq\\rho$ を $u,v,w\\geqq-1$ で切った部分」になる．はみ出す部分は角錐で，2方向に同時にはみ出す部分を包除原理で戻す．"
+  },
+  "methods": [],
+  "tags": [
+   "体積",
+   "絶対値",
+   "対称性",
+   "正八面体",
+   "包除原理"
+  ],
+  "provenance": {
+   "created": "2026-11-10"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "III-INT-568",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "III-17",
+  "level": 4,
+  "minutes": 30,
+  "theme": "2段階の漸近と対数の重み",
+  "topic": "2段階の漸近と対数の重み",
+  "statement": {
+   "tex": "自然数 $n$ に対して\n\\[\nI_n=\\int_0^n\\frac{x^2}{n^2(1+x)}\\log\\Bigl(1+\\frac xn\\Bigr)\\,dx\n\\]\nとおく．ただし $\\displaystyle\\lim_{x\\to\\infty}\\frac{\\log x}{x}=0$ であることは用いてよい．\n\\begin{enumerate}\n  \\item $\\displaystyle\\lim_{n\\to\\infty}I_n$ を求めよ．\n  \\item (1) の極限値を $L$ とするとき，$\\displaystyle\\lim_{n\\to\\infty}n\\,(L-I_n)$ を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $\\dfrac14$　(2) $2\\log2-1$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) $x=nt$ と置換すると $dx=n\\,dt$，$x:0\\to n$ のとき $t:0\\to1$ で，$\\dfrac{x^2}{n^2(1+x)}=\\dfrac{t^2}{1+nt}$ だから\n\\[\nI_n=\\int_0^1\\frac{nt^2}{1+nt}\\log(1+t)\\,dt .\n\\]\nまず，部分積分により\n\\begin{align*}\n\\int_0^1t\\log(1+t)\\,dt&=\\Bigl[\\frac{t^2}2\\log(1+t)\\Bigr]_0^1-\\frac12\\int_0^1\\frac{t^2}{1+t}\\,dt\n=\\frac{\\log2}2-\\frac12\\int_0^1\\Bigl(t-1+\\frac1{1+t}\\Bigr)dt\\\\\n&=\\frac{\\log2}2-\\frac12\\Bigl(\\frac12-1+\\log2\\Bigr)=\\frac14 .\n\\end{align*}\n$1-\\dfrac{nt}{1+nt}=\\dfrac1{1+nt}$ より\n\\[\n\\frac14-I_n=\\int_0^1t\\log(1+t)\\Bigl(1-\\frac{nt}{1+nt}\\Bigr)dt=\\int_0^1\\frac{t\\log(1+t)}{1+nt}\\,dt .\n\\]\n$0\\leqq t\\leqq1$ で $0\\leqq\\log(1+t)\\leqq\\log2$，$0\\leqq\\dfrac t{1+nt}<\\dfrac{t}{nt}=\\dfrac1n$（$t>0$），$t=0$ では値 $0$ なので\n\\[\n0\\leqq\\frac14-I_n\\leqq\\frac{\\log2}n\\longrightarrow0\\quad(n\\to\\infty).\n\\]\nよって $\\displaystyle\\lim_{n\\to\\infty}I_n=\\boldsymbol{\\dfrac14}$．\n\n(2) $L=\\dfrac14$．(1) の式に $n$ を掛けると\n\\[\nn\\Bigl(\\frac14-I_n\\Bigr)=\\int_0^1\\frac{nt}{1+nt}\\log(1+t)\\,dt=\\int_0^1\\log(1+t)\\,dt-D_n,\\qquad D_n=\\int_0^1\\frac{\\log(1+t)}{1+nt}\\,dt .\n\\]\nここで $\\displaystyle\\int_0^1\\log(1+t)\\,dt=\\Bigl[(1+t)\\log(1+t)-t\\Bigr]_0^1=2\\log2-1$．また $0\\leqq\\log(1+t)\\leqq\\log2$ より\n\\[\n0\\leqq D_n\\leqq\\log2\\int_0^1\\frac{dt}{1+nt}=\\log2\\cdot\\Bigl[\\frac1n\\log(1+nt)\\Bigr]_0^1=\\log2\\cdot\\frac{\\log(1+n)}n .\n\\]\n$\\dfrac{\\log(1+n)}n=\\dfrac{\\log(1+n)}{1+n}\\cdot\\dfrac{n+1}n$ で，$\\dfrac{\\log(1+n)}{1+n}\\to0$，$\\dfrac{n+1}n\\to1$ だから $D_n\\to0$．よって\n\\[\n\\lim_{n\\to\\infty}n(L-I_n)=\\boldsymbol{2\\log2-1}.\n\\]\n\\hfill$\\square$"
+   }
+  ],
+  "idea": {
+   "tex": "$x=nt$ と置換すると区間 $[0,n]$ が $[0,1]$ に縮み，被積分関数に重み $\\dfrac{nt}{1+nt}$ が現れる．$1-\\dfrac{nt}{1+nt}=\\dfrac1{1+nt}$ の積分は $\\dfrac{\\log(1+n)}n$ と計算でき，これが $0$ に近づくことで誤差が消える．1段目の誤差に $n$ を掛けると再び同じ形の重みが現れ，2段目の極限も同じ評価で求まる．"
+  },
+  "methods": [],
+  "tags": [
+   "置換積分",
+   "区分的評価",
+   "極限",
+   "はさみうち"
+  ],
+  "provenance": {
+   "created": "2026-11-10"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "III-INT-569",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "III-17",
+  "level": 4,
+  "minutes": 30,
+  "theme": "直交する向きに離れていく2つの球",
+  "topic": "直交する向きに離れていく2つの球",
+  "statement": {
+   "tex": "座標空間において，点 P は時刻 $0$ に原点を出発して $x$ 軸上を正の向きに速さ $1$ で動き，点 Q は時刻 $0$ に原点を出発して $y$ 軸上を正の向きに速さ $\\sqrt3$ で動く．P，Q はともに時刻 $1$ で停止する．P，Q を中心とする半径 $1$ の球をそれぞれ $A$，$B$ とし，空間で $x\\leqq1$ の部分を $C$ とする．\n\\begin{enumerate}\n  \\item 時刻 $t\\ (0\\leqq t\\leqq1)$ における立体 $(A\\cup B)\\cap C$ の体積 $V(t)$ を求めよ．\n  \\item $V(t)$ の最大値と，そのときの $t$ を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $V(t)=\\dfrac\\pi3(4+6t-3t^2-t^3)$　(2) $t=\\sqrt3-1$ のとき最大値 $\\dfrac{(6\\sqrt3-4)\\pi}3$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) 時刻 $t$ で P$(t,0,0)$，Q$(0,\\sqrt3t,0)$，$\\mathrm{PQ}=\\sqrt{t^2+3t^2}=2t$．\n\n\\textbf{切片の体積．}半径1の球を，中心からの距離 $1-h$（$0\\leqq h\\leqq2$）の平面で切った小さい側（高さ $h$）の体積は\n\\[\n\\int_{1-h}^1\\pi(1-u^2)\\,du=\\pi\\Bigl\\{h-\\frac{1-(1-h)^3}3\\Bigr\\}=\\pi\\Bigl(h^2-\\frac{h^3}3\\Bigr)=\\frac\\pi3h^2(3-h)\n\\]\nで，これを $K(h)$ とおく．\n\n以下，立体 $X$ の体積を $|X|$ と書く．\n\n\\textbf{$A\\cap B$．}線分 PQ の垂直二等分面を $\\alpha$ とする．$\\alpha$ に関して P 側の点 X は $\\mathrm{XP}\\leqq\\mathrm{XQ}$ をみたすので，$\\mathrm X\\in B$ なら $\\mathrm X\\in A$．よって $A\\cap B$ のうち P 側の部分は「$B$ のうち $\\alpha$ の P 側にある部分」で，これは Q からの距離 $t$ の平面で切った高さ $1-t$ の切片である．Q 側も同様なので $|A\\cap B|=2K(1-t)$（$0\\leqq t\\leqq1$ で $0\\leqq1-t\\leqq1$）．\n\n\\textbf{$C$ による切り取り．}$B$ の点の $x$ 座標は $-1$ 以上 $1$ 以下なので $B\\subset C$．$A$ のうち $C$ に入らない部分は $x>1$ の部分で，中心 P からの距離 $1-t$ の平面で切った高さ $t$ の切片（体積 $K(t)$）であり，$B$ とは共有点をもたない．したがって\n\\[\nV(t)=|A|+|B|-|A\\cap B|-K(t)=\\frac{8\\pi}3-2K(1-t)-K(t).\n\\]\n$2K(1-t)=\\dfrac{2\\pi}3(1-t)^2(2+t)=\\dfrac{2\\pi}3(2-3t+t^3)$，$K(t)=\\dfrac\\pi3(3t^2-t^3)$ より\n\\[\nV(t)=\\frac\\pi3\\{8-4+6t-2t^3-3t^2+t^3\\}=\\boldsymbol{\\frac\\pi3(4+6t-3t^2-t^3)}.\n\\]\n\n(2) $V'(t)=\\dfrac\\pi3(6-6t-3t^2)=-\\pi(t^2+2t-2)$．$t^2+2t-2=0$ の正の解は $t=\\sqrt3-1$（$0<\\sqrt3-1<1$）．$0\\leqq t<\\sqrt3-1$ で $V'>0$，$\\sqrt3-1<t\\leqq1$ で $V'<0$ だから，$t=\\sqrt3-1$ で最大．このとき $t^2=4-2\\sqrt3$，$t^3=t\\cdot t^2=(\\sqrt3-1)(4-2\\sqrt3)=6\\sqrt3-10$ で\n\\[\n4+6t-3t^2-t^3=4+(6\\sqrt3-6)-(12-6\\sqrt3)-(6\\sqrt3-10)=6\\sqrt3-4 .\n\\]\nよって最大値は $\\boldsymbol{\\dfrac{(6\\sqrt3-4)\\pi}3}$（$t=\\boldsymbol{\\sqrt3-1}$）．\\hfill$\\square$"
+   }
+  ],
+  "idea": {
+   "tex": "2つの球の和集合から平面で切り取った立体の体積は「球2個 $-$ 共通部分 $-$ はみ出した切片」．2球の共通部分は中心を結ぶ線分の垂直二等分面で2つの切片に分かれ，切片の体積 $\\frac\\pi3h^2(3-h)$ に帰着する．中心間距離と切片の高さがともに時刻の1次式なので，体積は時刻の3次式となり微分で最大を求める．"
+  },
+  "methods": [],
+  "tags": [
+   "球の切片",
+   "レンズ形",
+   "体積",
+   "微分による最大"
+  ],
+  "provenance": {
+   "created": "2026-11-10"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "III-INT-570",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "III-17",
+  "level": 4,
+  "minutes": 30,
+  "theme": "共通弦が $x$ 軸上にある2円の回転体",
+  "topic": "共通弦が $x$ 軸上にある2円の回転体",
+  "statement": {
+   "tex": "$t>0$ とする．原点 O を中心とする半径1の円を $C_1$，点 $(0,t)$ を中心とし2点 $\\mathrm A(-1,0)$，$\\mathrm B(1,0)$ を通る円を $C_2$ とする．2直線 $x=-1$，$x=1$ ではさまれた部分のうち，$C_2$ の内部にあって $C_1$ の外部にある部分を $D_1$，$C_1$ の内部にあって $C_2$ の外部にある部分を $D_2$ とする．$D_1$，$D_2$ を $x$ 軸のまわりに1回転させてできる立体の体積をそれぞれ $V_1$，$V_2$ とする．\n\\begin{enumerate}\n  \\item $D_1$ は $y>0$ の部分に，$D_2$ は $y\\leqq0$ の部分にあることを示し，$V_1-V_2$ を $t$ で表せ．\n  \\item $V_2$ は $t$ の増加関数であることを示せ．\n  \\item $L=\\displaystyle\\lim_{t\\to\\infty}V_2$ を求めよ．さらに $\\displaystyle\\lim_{t\\to\\infty}t^2\\left(L-V_2\\right)$ を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 証明，$V_1-V_2=8\\pi t^2$　(2) 証明　(3) $\\displaystyle\\lim_{t\\to\\infty}V_2=\\dfrac{4\\pi}{3}$，$\\displaystyle\\lim_{t\\to\\infty}t^2\\left(\\dfrac{4\\pi}3-V_2\\right)=\\dfrac{4\\pi}{15}$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "$|x|\\leqq1$ で $w_1=\\sqrt{1-x^2}$，$w_2=\\sqrt{t^2+1-x^2}$ とおく．$C_2$ の半径は $\\sqrt{1+t^2}$ で，直線 $x$（$|x|<1$）上の $C_2$ の内部は $t-w_2<y<t+w_2$，$C_1$ の内部は $-w_1<y<w_1$．\n\\[ t-w_2=-\\frac{1-x^2}{t+w_2}=-h_t(x)\\quad\\left(h_t(x)=\\frac{1-x^2}{t+w_2}\\geqq0\\right). \\]\n\n(1) $w_2>w_1$ より $t+w_2>w_1$，また $w_1(t+w_2)>w_1^2=1-x^2$ より $h_t<w_1$（$|x|<1$），すなわち $-w_1<t-w_2\\leqq0$．よって\n\\begin{itemize}\n  \\item $D_1$ の切り口は $w_1\\leqq y<t+w_2$（$C_2$ の下の部分は $C_1$ の内部に含まれる）で，$y>0$ にある．\n  \\item $D_2$ の切り口は $-w_1<y\\leqq-h_t$ で，$y\\leqq0$ にある．\n\\end{itemize}\n回転すると切り口はそれぞれ外径 $t+w_2$，内径 $w_1$ の円環，外径 $w_1$，内径 $h_t=w_2-t$ の円環で，\n\\begin{align*} V_1-V_2&=\\pi\\int_{-1}^1\\left\\{(t+w_2)^2-w_1^2-w_1^2+(w_2-t)^2\\right\\}dx\\\\&=\\pi\\int_{-1}^1\\left(2t^2+2w_2^2-2w_1^2\\right)dx=\\pi\\int_{-1}^14t^2\\,dx=\\boldsymbol{8\\pi t^2}. \\end{align*}\n\n(2) $V_2=\\pi\\displaystyle\\int_{-1}^1\\left\\{(1-x^2)-h_t(x)^2\\right\\}dx$．各 $x$ で $t+\\sqrt{t^2+1-x^2}$ は $t$ の増加関数だから $h_t(x)$ は $t$ について減少し，$t<t'$ なら $h_{t'}(x)^2\\leqq h_t(x)^2$（等号は $x=\\pm1$ のみ）．よって $V_2$ は $t$ の増加関数．\\hfill$\\square$\n\n(3) $\\pi\\int_{-1}^1(1-x^2)dx=\\frac{4\\pi}3$ より $\\frac{4\\pi}3-V_2=\\pi\\int_{-1}^1h_t^2dx$．$t\\leqq w_2\\leqq\\sqrt{t^2+1}$ より $2t\\leqq t+w_2\\leqq t+\\sqrt{t^2+1}$ で，\n\\[ \\frac{t^2(1-x^2)^2}{\\left(t+\\sqrt{t^2+1}\\right)^2}\\leqq t^2h_t^2\\leqq\\frac{(1-x^2)^2}{4}. \\]\n$\\int_{-1}^1(1-x^2)^2dx=\\frac{16}{15}$ だから\n\\[ \\frac{16\\pi}{15}\\cdot\\frac{1}{\\left(1+\\sqrt{1+t^{-2}}\\right)^2}\\leqq t^2\\left(\\frac{4\\pi}3-V_2\\right)\\leqq\\frac{4\\pi}{15}. \\]\nとくに $0\\leqq\\frac{4\\pi}3-V_2\\leqq\\frac{4\\pi}{15t^2}\\to0$ で $\\displaystyle\\lim_{t\\to\\infty}V_2=\\boldsymbol{\\frac{4\\pi}3}$，はさみうちで $\\displaystyle\\lim_{t\\to\\infty}t^2\\left(\\frac{4\\pi}3-V_2\\right)=\\boldsymbol{\\frac{4\\pi}{15}}$．"
+   }
+  ],
+  "idea": {
+   "tex": "2つの回転体の体積の差では，$x$ 軸の上下にある部分の外径・内径の2乗が組み合わさって根号の項が打ち消し合い，被積分関数が定数になる．下側の弧は分子の有理化で $-\\frac{1-x^2}{t+\\sqrt{t^2+1-x^2}}$ と書け，$t$ について単調であることと $t\\to\\infty$ での大きさ（$\\frac1{2t}$ 程度）が一目でわかる．"
+  },
+  "methods": [],
+  "tags": [
+   "回転体の体積",
+   "有理化",
+   "単調性",
+   "極限"
+  ],
+  "provenance": {
+   "created": "2026-11-10"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "III-INT-571",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "III-17",
+  "level": 4,
+  "minutes": 30,
+  "theme": "周期4の符号をもつ調和級数",
+  "topic": "周期4の符号をもつ調和級数",
+  "statement": {
+   "tex": "数列 $\\{c_k\\}$ を，$k$ を4で割った余りが $1,2$ のとき $c_k=1$，$3,0$ のとき $c_k=-1$ で定め，$s_N=\\displaystyle\\sum_{k=1}^N\\frac{c_k}k$ とおく．\n\\begin{enumerate}\n  \\item 自然数 $n$ に対し，$s_{4n}=\\displaystyle\\int_0^1\\frac{(1+x)(1-x^{4n})}{1+x^2}\\,dx$ が成り立つことを示せ．\n  \\item $\\displaystyle\\lim_{n\\to\\infty}s_{4n}$ を求めよ．\n  \\item 数列 $\\{s_N\\}$ は収束することを示し，その極限値を答えよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 証明　(2) $\\dfrac\\pi4+\\dfrac12\\log2$　(3) 証明，$\\displaystyle\\lim_{N\\to\\infty}s_N=\\dfrac\\pi4+\\dfrac12\\log2$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) $0\\leqq x<1$ で，1周期分は $1+x-x^2-x^3=(1+x)(1-x^2)$ なので\n\\begin{align*} \\sum_{k=1}^{4n}c_kx^{k-1}&=(1+x)(1-x^2)\\left(1+x^4+\\dots+x^{4(n-1)}\\right)\\\\&=\\frac{(1+x)(1-x^2)(1-x^{4n})}{1-x^4}=\\frac{(1+x)(1-x^{4n})}{1+x^2}. \\end{align*}\n両端は $[0,1]$ で連続な関数で $x=1$ でも一致する．$\\int_0^1x^{k-1}dx=\\frac1k$ より，両辺を $0$ から $1$ まで積分して $s_{4n}=\\int_0^1\\frac{(1+x)(1-x^{4n})}{1+x^2}dx$．\\hfill$\\square$\n\n(2) $0\\leqq x\\leqq1$ で $0\\leqq\\frac{(1+x)x^{4n}}{1+x^2}\\leqq2x^{4n}$ だから\n\\[ 0\\leqq\\int_0^1\\frac{1+x}{1+x^2}dx-s_{4n}\\leqq\\int_0^12x^{4n}dx=\\frac{2}{4n+1}\\to0 . \\]\n$\\int_0^1\\frac{dx}{1+x^2}$ は $x=\\tan u$ とおいて $\\int_0^{\\pi/4}du=\\frac\\pi4$，$\\int_0^1\\frac{x}{1+x^2}dx=\\left[\\frac12\\log(1+x^2)\\right]_0^1=\\frac12\\log2$．よって $\\displaystyle\\lim_{n\\to\\infty}s_{4n}=\\boldsymbol{\\frac\\pi4+\\frac12\\log2}$．\n\n(3) $N=4n+j$（$j=0,1,2,3$）のとき $|s_N-s_{4n}|\\leqq\\frac{3}{4n+1}$．$N\\to\\infty$ のとき $n\\to\\infty$ だから $s_N$ も同じ値に収束する．極限値は $\\boldsymbol{\\dfrac\\pi4+\\dfrac12\\log2}$．\\hfill$\\square$"
+   }
+  ],
+  "idea": {
+   "tex": "$\\frac1k=\\int_0^1x^{k-1}dx$ により，係数の並びの和は「多項式の積分」になる．符号の周期 $(+,+,-,-)$ の1周期分は $(1+x)(1-x^2)$ で，$1-x^4$ で割ると $\\frac{1+x}{1+x^2}$ に約分される．残りの $x^{4n}$ の項は積分すると $0$ に近づく．"
+  },
+  "methods": [],
+  "tags": [
+   "級数",
+   "定積分の表示",
+   "等比数列の和",
+   "極限"
+  ],
+  "provenance": {
+   "created": "2026-11-10"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "III-INT-572",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "III-17",
+  "level": 4,
+  "minutes": 30,
+  "theme": "$y=x\\sin^2x$ と $y=x$ にはさまれた部分の回転体",
+  "topic": "$y=x\\sin^2x$ と $y=x$ にはさまれた部分の回転体",
+  "statement": {
+   "tex": "曲線 $y=x\\sin^2x$ と直線 $y=x$ の共有点のうち $x$ 座標が正のものを，$x$ 座標の小さい順に $\\mathrm A_1,\\mathrm A_2,\\dots$ とする．\n\\begin{enumerate}\n  \\item $\\mathrm A_n$ の $x$ 座標を求めよ．また，$\\mathrm A_n$ において曲線と直線は接していることを示せ．\n  \\item 線分 $\\mathrm A_n\\mathrm A_{n+1}$ と曲線 $y=x\\sin^2x$ で囲まれる部分を $x$ 軸のまわりに1回転させてできる立体の体積 $V_n$ を求めよ．\n  \\item $\\displaystyle\\lim_{n\\to\\infty}\\frac{V_n}{n^2}$ を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $x=\\dfrac{(2n-1)\\pi}{2}$，接することは証明　(2) $V_n=\\dfrac{\\pi^2\\left\\{10\\pi^2(12n^2+1)-51\\right\\}}{192}$　(3) $\\dfrac{5\\pi^4}{8}$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) $x>0$ で $x\\sin^2x=x\\iff\\sin^2x=1\\iff x=\\frac\\pi2+(n-1)\\pi$．よって $\\mathrm A_n$ の $x$ 座標は $\\boldsymbol{\\dfrac{(2n-1)\\pi}2}$．$y=x\\sin^2x$ の導関数は $\\sin^2x+2x\\sin x\\cos x$ で，$\\sin^2x=1$，$\\cos x=0$ の点では $1$ となり直線の傾きと一致する．共有点で傾きが等しいので接する．\\hfill$\\square$\n\n(2) $a=\\frac{(2n-1)\\pi}2$ とおく．$x>0$ で $0\\leqq x\\sin^2x\\leqq x$ なので，囲まれる部分は $a\\leqq x\\leqq a+\\pi$，$x\\sin^2x\\leqq y\\leqq x$．回転体の切り口は外径 $x$，内径 $x\\sin^2x$ の円環で\n\\[ V_n=\\pi\\int_a^{a+\\pi}x^2(1-\\sin^4x)\\,dx . \\]\n$1-\\sin^4x=\\cos^2x(1+\\sin^2x)=\\cos^2x+\\frac14\\sin^22x=\\frac{1+\\cos2x}2+\\frac{1-\\cos4x}8=\\frac58+\\frac12\\cos2x-\\frac18\\cos4x$．\n\n部分積分により（$m=2,4$）\n\\[ \\int x^2\\cos mx\\,dx=\\frac{x^2\\sin mx}m+\\frac{2x\\cos mx}{m^2}-\\frac{2\\sin mx}{m^3}. \\]\n$\\sin2a=\\sin4a=0$，$\\cos2a=\\cos(2a+2\\pi)=-1$，$\\cos4a=1$ だから\n\\[ \\int_a^{a+\\pi}x^2\\cos2x\\,dx=\\frac{2\\{(a+\\pi)(-1)-a(-1)\\}}{4}=-\\frac\\pi2,\\qquad\\int_a^{a+\\pi}x^2\\cos4x\\,dx=\\frac{2\\pi}{16}=\\frac\\pi8. \\]\nまた $(a+\\pi)^3-a^3=3\\pi a^2+3\\pi^2a+\\pi^3=\\frac{\\pi^3(12n^2+1)}4$．よって\n\\[ V_n=\\pi\\left\\{\\frac58\\cdot\\frac{\\pi^3(12n^2+1)}{12}-\\frac\\pi4-\\frac{\\pi}{64}\\right\\}=\\boldsymbol{\\frac{\\pi^2\\left\\{10\\pi^2(12n^2+1)-51\\right\\}}{192}}. \\]\n\n(3) $\\dfrac{V_n}{n^2}=\\dfrac{\\pi^2}{192}\\left(120\\pi^2+\\dfrac{10\\pi^2-51}{n^2}\\right)\\to\\dfrac{120\\pi^4}{192}=\\boldsymbol{\\dfrac{5\\pi^4}8}$．"
+   }
+  ],
+  "idea": {
+   "tex": "$x-x\\sin^2x=x\\cos^2x$ は $\\cos x=0$ で2重に0になるので接する．回転体は $\\pi\\int x^2(1-\\sin^4x)\\,dx$ で，$1-\\sin^4x=\\cos^2x(1+\\sin^2x)$ を $\\frac58+\\frac12\\cos2x-\\frac18\\cos4x$ に次数下げし，$x^2\\cos2x$，$x^2\\cos4x$ は端点で $\\sin$ が消えることを使って部分積分する．"
+  },
+  "methods": [],
+  "tags": [
+   "接する条件",
+   "回転体の体積",
+   "次数下げ",
+   "部分積分"
+  ],
+  "provenance": {
+   "created": "2026-11-10"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "III-INT-573",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "III-17",
+  "level": 4,
+  "minutes": 35,
+  "theme": "直線上でだけ速く動ける点の到達範囲",
+  "topic": "直線上でだけ速く動ける点の到達範囲",
+  "statement": {
+   "tex": "$a>1$ とする．座標空間内を動く点 P は，時刻0に原点 O にあり，$x$ 軸上にあるときは速さ $a$ 以下で，$x$ 軸上にないときは速さ1以下で動くことができる．P が時刻1までに到達しうる点全体を $W$ とする．\n\\begin{enumerate}\n  \\item 点 X が $W$ に属するための必要十分条件は，ある実数 $s$（$|s|\\leqq a$）が存在して，点 $(s,0,0)$ と X の距離が $1-\\dfrac{|s|}a$ 以下となることであることを示せ．\n  \\item $0\\leqq k\\leqq a$ とする．平面 $x=k$ による $W$ の切り口は，点 $(k,0,0)$ を中心とする円板になることを示し，その半径 $\\rho(k)$ を求めよ．\n  \\item $W$ の体積 $V(a)$ を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 証明　(2) $0\\leqq k\\leqq\\dfrac1a$ のとき $\\rho(k)=\\sqrt{1-k^2}$，$\\dfrac1a\\leqq k\\leqq a$ のとき $\\rho(k)=\\dfrac{a-k}{\\sqrt{a^2-1}}$　(3) $V(a)=\\dfrac{2\\pi(a^2+1)}{3a}$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "点 $(s,0,0)$ を中心とする半径 $1-\\dfrac{|s|}a$ の球（$|s|\\leqq a$）を $B_s$ とする．以下「ある時間区間で速さが $v$ 以下なら，その間の移動距離（始点と終点の距離）は $v\\times$（時間）以下」を用いる．\n\n(1) \\textbf{十分性．} $|s|\\leqq a$，$\\mathrm X\\in B_s$ とする．$x$ 軸上を速さ $a$ で O から $\\mathrm S(s,0,0)$ まで進み（時間 $\\dfrac{|s|}a$），そこから X へ速さ1でまっすぐ進む（時間 $\\mathrm{SX}\\leqq1-\\dfrac{|s|}a$；途中が $x$ 軸上でも速さ $1<a$ なので許される）．到着後はとどまればよい．よって $\\mathrm X\\in W$．\n\n\\textbf{必要性．} P が時刻 $T\\ (\\leqq1)$ に X にいるとする．$[0,T]$ のうち P が $x$ 軸上にある時刻全体は，0 を含み，P の位置が時刻について連続なので最大値 $\\tau$ をもつ．$\\mathrm P(\\tau)=\\mathrm S(s,0,0)$ とおく．P の速さはつねに $a$ 以下なので $|s|=\\mathrm{OS}\\leqq a\\tau$．$\\tau<t\\leqq T$ では P は $x$ 軸上にないので速さ1以下で，$\\mathrm{SX}\\leqq T-\\tau\\leqq1-\\tau\\leqq1-\\dfrac{|s|}a$．特に $|s|\\leqq a$ で，$\\mathrm X\\in B_s$．\\hfill$\\square$\n\n(2) (1) より $W=\\bigcup_{|s|\\leqq a}B_s$．$k\\geqq0$ とする．$B_s$ の平面 $x=k$ による切り口は，$F_s=\\left(1-\\dfrac{|s|}a\\right)^2-(k-s)^2\\geqq0$ のとき点 $(k,0,0)$ を中心とする半径 $\\sqrt{F_s}$ の円板である．中心が共通なので，$|s|\\leqq a$ における $F_s$ の最大値を $M$ とすると，それらの和集合は半径 $\\sqrt M$ の円板（$M\\geqq0$ のとき）．$s<0$ のときは $k\\geqq0$ より $F_s\\leqq\\left(1-\\dfrac{|s|}a\\right)^2-(k-|s|)^2=F_{|s|}$ なので，$0\\leqq s\\leqq a$ で考えればよい．\n\\[F(s)=\\left(1-\\frac sa\\right)^2-(k-s)^2=-\\left(1-\\frac1{a^2}\\right)s^2+2\\left(k-\\frac1a\\right)s+1-k^2\\]\nは $s^2$ の係数が負の2次関数で，軸は $s^*=\\dfrac{a(ak-1)}{a^2-1}$．\n\\begin{itemize}\n  \\item $0\\leqq k\\leqq\\dfrac1a$：$s^*\\leqq0$ なので $F$ は $[0,a]$ で減少し，最大値 $F(0)=1-k^2\\geqq0$．\n  \\item $\\dfrac1a\\leqq k\\leqq a$：$0\\leqq s^*\\leqq a$（$s^*\\leqq a\\iff k\\leqq a$）．$1-\\dfrac{s^*}a=\\dfrac{a(a-k)}{a^2-1}$，$k-s^*=\\dfrac{a-k}{a^2-1}$ より\n  \\[F(s^*)=\\frac{a^2(a-k)^2-(a-k)^2}{(a^2-1)^2}=\\frac{(a-k)^2}{a^2-1}\\geqq0.\\]\n\\end{itemize}\nよって\n\\[\\rho(k)=\\boldsymbol{\\sqrt{1-k^2}}\\ \\left(0\\leqq k\\leqq\\frac1a\\right),\\qquad \\rho(k)=\\boldsymbol{\\frac{a-k}{\\sqrt{a^2-1}}}\\ \\left(\\frac1a\\leqq k\\leqq a\\right).\\]\nなお $k>a$ では，$0\\leqq s\\leqq a$ に対し $k-s>a-s\\geqq1-\\dfrac sa\\geqq0$（$(a-s)-\\left(1-\\dfrac sa\\right)=(a-1)\\left(1-\\dfrac sa\\right)\\geqq0$）より $F(s)<0$ で，切り口は空である．\n\n(3) $W$ は平面 $x=0$ に関して対称（条件が $s\\mapsto-s$ で不変）だから\n\\begin{align*}\nV(a)&=2\\pi\\left\\{\\int_0^{\\frac1a}(1-k^2)\\,dk+\\int_{\\frac1a}^a\\frac{(a-k)^2}{a^2-1}\\,dk\\right\\}\n=2\\pi\\left\\{\\frac1a-\\frac1{3a^3}+\\frac{(a-\\frac1a)^3}{3(a^2-1)}\\right\\}\\\\\n&=2\\pi\\cdot\\frac{3a^2-1+(a^2-1)^2}{3a^3}=2\\pi\\cdot\\frac{a^4+a^2}{3a^3}=\\boldsymbol{\\frac{2\\pi(a^2+1)}{3a}}.\n\\end{align*}\n\\hfill$\\square$"
+   }
+  ],
+  "idea": {
+   "tex": "速く動ける場所を最後に離れる時刻で経路を2つに分けると，到達範囲は「速い場所の点 S を中心とし，S に着くまでの残り時間を半径とする球」の和集合になる．切り口では1変数の2次関数の最大値として半径が求まり，境界は球の包絡面（円錐面）になる．"
+  },
+  "methods": [],
+  "tags": [
+   "到達範囲",
+   "球の和集合",
+   "包絡",
+   "回転体の体積"
+  ],
+  "provenance": {
+   "created": "2026-11-10"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "III-INT-574",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "III-17",
+  "level": 4,
+  "minutes": 35,
+  "theme": "円周上を動く円板が2度通る部分",
+  "topic": "円周上を動く円板が2度通る部分",
+  "statement": {
+   "tex": "$xy$ 平面上の原点を中心とする半径1の円周を $C$ とする．半径1の円板 $D$ が，次の条件 (a)，(b) をみたしながら座標空間内を動く．\n\\begin{center}\n(a) $D$ の中心は $C$ 上にあり，$C$ を1周する．\\qquad (b) $D$ を含む平面はつねにベクトル $(0,1,0)$ と垂直である．\n\\end{center}\n\\begin{enumerate}\n  \\item $D$ が通過する部分のうち，円柱 $x^2+y^2\\leqq1$ の内部（境界を含む）にある部分の体積 $V_1$ を求めよ．\n  \\item 空間内の点で，$D$ が異なる2つの時刻に通過するもの全体からなる立体の体積 $V_2$ を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $V_1=\\dfrac{16}3$　(2) $V_2=2\\pi-\\dfrac{16}3$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(b) より $D$ を含む平面は $y=(\\text{中心の }y\\text{ 座標})$ である．$-1<s<1$ とし $c=\\sqrt{1-s^2}$ とおく．$D$ が平面 $y=s$ 上にくるのは中心が $(c,s,0)$，$(-c,s,0)$ のときの2回だけ（中心 $(\\cos\\theta,\\sin\\theta,0)$ で $\\sin\\theta=s$ となる $\\theta$ は1周で2つ）．平面 $y=s$ 上の点を $(x,s,z)$ と書くと，$D$ が通過する点の集まりは\n\\[E_+:\\ (x-c)^2+z^2\\leqq1,\\qquad E_-:\\ (x+c)^2+z^2\\leqq1\\]\nの和集合で，2つの時刻に通過する点は $E_+\\cap E_-$ である（$s=\\pm1$ の切り口は体積に影響しない）．$0\\leqq s<1$ に対し $s=\\sin\\varphi$（$0\\leqq\\varphi<\\frac\\pi2$）とおくと $c=\\cos\\varphi$．$u=\\sin w$ と置換して，$0\\leqq c\\leqq1$ のとき\n\\[\\int_0^c\\sqrt{1-u^2}\\,du=\\int_0^{\\frac\\pi2-\\varphi}\\cos^2w\\,dw=\\frac12\\left(\\frac\\pi2-\\varphi\\right)+\\frac12\\sin\\varphi\\cos\\varphi\\]\n（$\\sin\\left(\\frac\\pi2-\\varphi\\right)=c$），特に $\\displaystyle\\int_0^1\\sqrt{1-u^2}\\,du=\\frac\\pi4$．また\n\\begin{gather*}\\int_0^{\\frac\\pi2}\\cos\\varphi\\,d\\varphi=1,\\qquad \\int_0^{\\frac\\pi2}\\varphi\\cos\\varphi\\,d\\varphi=\\Bigl[\\varphi\\sin\\varphi+\\cos\\varphi\\Bigr]_0^{\\frac\\pi2}=\\frac\\pi2-1,\\\\ \\int_0^{\\frac\\pi2}\\sin2\\varphi\\cos\\varphi\\,d\\varphi=\\Bigl[-\\frac23\\cos^3\\varphi\\Bigr]_0^{\\frac\\pi2}=\\frac23.\\end{gather*}\n\n(1) 円柱の内部の条件は $x^2+s^2\\leqq1$，すなわち $|x|\\leqq c$．$0\\leqq x\\leqq c$ では $(x-c)^2\\leqq(x+c)^2$ なので，和集合の条件は $z^2\\leqq1-(c-x)^2$．$x\\leqq0$ 側も対称で，切り口の面積は\n\\[A_1(s)=2\\int_0^c2\\sqrt{1-(c-x)^2}\\,dx=4\\int_0^c\\sqrt{1-u^2}\\,du=\\pi-2\\varphi+\\sin2\\varphi.\\]\n$y\\mapsto-y$ の対称性と $ds=\\cos\\varphi\\,d\\varphi$ より\n\\[V_1=2\\int_0^{\\frac\\pi2}(\\pi-2\\varphi+\\sin2\\varphi)\\cos\\varphi\\,d\\varphi=2\\left\\{\\pi-2\\left(\\frac\\pi2-1\\right)+\\frac23\\right\\}=\\boldsymbol{\\frac{16}3}.\\]\n\n(2) $E_+\\cap E_-$ の条件は $z^2\\leqq1-(x-c)^2$ かつ $z^2\\leqq1-(x+c)^2$ である．$c\\geqq0$ より $(x-c)^2$ と $(x+c)^2$ のうち小さくない方は $(|x|+c)^2$ に等しいので，条件は $z^2\\leqq1-(|x|+c)^2$ で，$|x|\\leqq1-c$ の範囲にある．面積は\n\\begin{align*}A_2(s)&=4\\int_0^{1-c}\\sqrt{1-(x+c)^2}\\,dx=4\\int_c^1\\sqrt{1-u^2}\\,du\\\\&=4\\left\\{\\frac\\pi4-\\frac12\\left(\\frac\\pi2-\\varphi\\right)-\\frac12\\sin\\varphi\\cos\\varphi\\right\\}=2\\varphi-\\sin2\\varphi.\\end{align*}\nよって\n\\[V_2=2\\int_0^{\\frac\\pi2}(2\\varphi-\\sin2\\varphi)\\cos\\varphi\\,d\\varphi=2\\left\\{2\\left(\\frac\\pi2-1\\right)-\\frac23\\right\\}=\\boldsymbol{2\\pi-\\frac{16}3}.\\]\n\\hfill$\\square$"
+   }
+  ],
+  "idea": {
+   "tex": "平面 $y=s$ で切ると，円板がその平面上にくるのは中心が $(\\pm\\sqrt{1-s^2},s,0)$ の2回だけで，切り口は2つの単位円板の和集合（重なりはレンズ形）．$s=\\sin\\varphi$ とおくと中心間の距離の半分が $\\cos\\varphi$ になり，弓形の面積の中の角がちょうど $\\varphi$ でそろう．"
+  },
+  "methods": [],
+  "tags": [
+   "通過領域",
+   "断面積",
+   "2円の共通部分",
+   "置換積分"
+  ],
+  "provenance": {
+   "created": "2026-11-10"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
  }
 ]

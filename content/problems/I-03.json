@@ -5790,5 +5790,95 @@
    },
    "verified": false
   }
+ },
+ {
+  "id": "I-TRI-124",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "I-03",
+  "level": 4,
+  "minutes": 35,
+  "theme": "$\\angle\\mathrm C=3\\angle\\mathrm B$ の三角形と整数辺",
+  "topic": "$\\angle\\mathrm C=3\\angle\\mathrm B$ の三角形と整数辺",
+  "statement": {
+   "tex": "三角形 ABC において $\\mathrm{BC}=a$，$\\mathrm{CA}=b$，$\\mathrm{AB}=c$ とし，$\\angle\\mathrm{ACB}=3\\angle\\mathrm{ABC}$ であるとする．\n\\begin{enumerate}\n  \\item $b<c<3b$ を示せ．\n  \\item $(c-b)^2(c+b)=a^2b$ を示せ．\n  \\item $a,b,c$ がすべて整数で，周の長さ $a+b+c$ が150以下であるものをすべて求め，$(a,b,c)$ の組で答えよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 証明　(2) 証明　(3) $(a,b,c)=(3k,8k,10k)\\ (k=1,2,\\dots,7)$ と $(35,27,48)$ の8組"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "$\\angle\\mathrm{ABC}=\\beta$ とおくと $\\angle\\mathrm{ACB}=3\\beta$，$\\angle\\mathrm{BAC}=\\pi-4\\beta>0$ より $0<\\beta<\\frac\\pi4$．$x=2\\cos\\beta$ とおくと，$\\cos$ は $\\left[0,\\frac\\pi4\\right]$ で減少するから $\\sqrt2<x<2$．\n\n正弦定理と3倍角・2倍角の公式より\n\\begin{align*}\n\\frac cb&=\\frac{\\sin3\\beta}{\\sin\\beta}=3-4\\sin^2\\beta=4\\cos^2\\beta-1=x^2-1,\\\\\n\\frac ab&=\\frac{\\sin(\\pi-4\\beta)}{\\sin\\beta}=\\frac{2\\sin2\\beta\\cos2\\beta}{\\sin\\beta}=4\\cos\\beta\\cos2\\beta=2x\\Bigl(\\frac{x^2}2-1\\Bigr)=x(x^2-2).\n\\end{align*}\n\n(1) $\\sqrt2<x<2$ より $1<x^2-1<3$，すなわち $b<c<3b$．\\hfill$\\square$\n\n(2) $\\frac cb-1=x^2-2$，$\\frac cb+1=x^2$ だから\n$\\left(\\frac cb-1\\right)^2\\left(\\frac cb+1\\right)=x^2(x^2-2)^2=\\left(\\frac ab\\right)^2$．両辺に $b^3$ を掛けて $(c-b)^2(c+b)=a^2b$．\\hfill$\\square$\n\n(3) $a,b,c$ を整数とする．$\\frac ab=x\\left(\\frac cb-1\\right)$ と (1) の $c-b>0$ より $x=\\frac a{c-b}$ は正の有理数である．$x=\\frac pq$（$p,q$ は互いに素な正の整数）とおくと $\\sqrt2<\\frac pq<2$，特に $p^2>2q^2$．\n\\[\nb:c:a=1:\\frac{p^2-q^2}{q^2}:\\frac{p(p^2-2q^2)}{q^3}=q^3:q(p^2-q^2):p(p^2-2q^2).\n\\]\n$b_0=q^3$，$c_0=q(p^2-q^2)$，$a_0=p(p^2-2q^2)$ はいずれも正の整数．$q$ の素因数 $r$ は $p$ を割らず，$p^2-2q^2\\equiv p^2\\pmod r$ も割らないから，$a_0$ と $b_0$ は互いに素．\n$(a,b,c)=\\mu(a_0,b_0,c_0)$ とおくと $\\mu$ は正の有理数で，$\\mu=\\frac md$（既約）とすると $\\mu a_0,\\mu b_0$ が整数であることから $d$ は $a_0$ と $b_0$ の公約数であり，よって $d=1$ で $\\mu$ は正の整数．周の長さは\n\\[\n\\mu(a_0+b_0+c_0)=\\mu(p^3+p^2q-2pq^2)=\\mu\\,p(p-q)(p+2q).\n\\]\n$\\sqrt2q<p<2q$ をみたす $(p,q)$ について，\n\\begin{itemize}\n  \\item $q=1$：$1.4<\\sqrt2<p<2$ となる整数 $p$ はない．\n  \\item $q=2$：$2\\sqrt2<p<4$ より $p=3$．$p(p-q)(p+2q)=3\\cdot1\\cdot7=21$．$(a_0,b_0,c_0)=(3,8,10)$．\n  \\item $q=3$：$3\\sqrt2<p<6$ より $p=5$．$5\\cdot2\\cdot11=110$．$(a_0,b_0,c_0)=(35,27,48)$．\n  \\item $q\\geqq4$：$p>\\sqrt2q\\geqq4\\sqrt2>5$ より $p\\geqq6$，$p-q>(\\sqrt2-1)q\\geqq4(\\sqrt2-1)>1$（$\\sqrt2>\\frac54$ による）より $p-q\\geqq2$，$p+2q\\geqq14$．よって $p(p-q)(p+2q)\\geqq6\\cdot2\\cdot14=168>150$．\n\\end{itemize}\nしたがって周の長さが150以下なのは，$(a,b,c)=\\mu(3,8,10)$ で $21\\mu\\leqq150$（$\\mu\\leqq7$），または $(a,b,c)=(35,27,48)$ に限られる．\n\n逆に，$\\sqrt2<\\frac pq<2$ のとき $\\cos\\beta=\\frac p{2q}\\in\\left(\\frac{\\sqrt2}2,1\\right)$ をみたす $\\beta\\in\\left(0,\\frac\\pi4\\right)$ がとれ，内角が $\\beta$，$3\\beta$，$\\pi-4\\beta$ の三角形が存在する．その3辺の比は上の計算により $a_0:b_0:c_0$ に等しいから，3辺が $\\mu(a_0,b_0,c_0)$ の三角形はこれと相似で，$\\angle\\mathrm{ACB}=3\\angle\\mathrm{ABC}$ をみたす．以上より\n\\[\n\\boldsymbol{(a,b,c)=(3k,8k,10k)\\ (k=1,2,\\dots,7),\\quad(35,27,48)}\\quad\\text{の8組}.\n\\]"
+   }
+  ],
+  "idea": {
+   "tex": "角の条件 $C=nB$ は正弦定理で辺の比 $\\frac cb=\\frac{\\sin nB}{\\sin B}$ になり，これは $x=2\\cos B$ の多項式で書ける．$n=3$ では $\\frac cb=x^2-1$，$\\frac ab=x(x^2-2)$ となり，$x$ を消去すると辺の関係式が出る．整数辺なら $x=\\frac a{c-b}$ は有理数で，$x=\\frac pq$ と既約分数で書くと，辺はすべて $p,q$ の整式のスカラー倍になる．"
+  },
+  "methods": [],
+  "tags": [
+   "正弦定理",
+   "3倍角",
+   "有理数パラメータ",
+   "整数辺の三角形"
+  ],
+  "provenance": {
+   "created": "2026-11-10"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "I-TRI-125",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "I-03",
+  "level": 4,
+  "minutes": 30,
+  "theme": "3本の回転軸についての回転体の体積の和",
+  "topic": "3本の回転軸についての回転体の体積の和",
+  "statement": {
+   "tex": "3辺の長さの和が2である三角形 ABC において，$\\mathrm{BC}=a$，$\\mathrm{CA}=b$，$\\mathrm{AB}=c$ とし，面積を $S$ とする．三角形 ABC を直線 BC，CA，AB のまわりにそれぞれ1回転させてできる立体の体積を $V_a$，$V_b$，$V_c$ とし，$T=V_a+V_b+V_c$ とおく．\n\\begin{enumerate}\n  \\item $V_a=\\dfrac{4\\pi S^2}{3a}$ を示せ．\n  \\item $a=\\dfrac12$ であるとき，$T$ の最大値と，そのときの $b,c$ を求めよ．\n  \\item $a,b,c$ がすべて変化するとき，$T$ の最大値と，そのときの $a,b,c$ を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 証明　(2) 最大値 $\\dfrac{7\\pi}{36}$（$b=c=\\dfrac34$）　(3) 最大値 $\\dfrac{2\\pi}9$（$a=b=c=\\dfrac23$）"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) A から直線 BC に下ろした垂線の足を H，$h=\\mathrm{AH}=\\frac{2S}a$ とする．回転体の体積は，三角形の各点の「軸方向の位置」と「軸からの距離」で決まる．\n\\begin{itemize}\n  \\item H が線分 BC 上（両端を含む）のとき：立体は，底面の半径 $h$，高さ BH の円錐と，底面の半径 $h$，高さ HC の円錐を合わせたもの（BH$=0$ や HC$=0$ なら一方のみ）で，体積は $\\frac\\pi3h^2(\\mathrm{BH}+\\mathrm{HC})=\\frac\\pi3h^2a$．\n  \\item H が B の外側（C と反対側）にあるとき：三角形 ABC は三角形 AHC から三角形 AHB（辺 AB は残す）を除いたもので，どちらも軸 BC の同じ側にあるから，回転体も「高さ HC の円錐」から「高さ HB の円錐」を除いたものになる．体積は $\\frac\\pi3h^2(\\mathrm{HC}-\\mathrm{HB})=\\frac\\pi3h^2a$．H が C の外側にあるときも同様．\n\\end{itemize}\nいずれの場合も $V_a=\\frac\\pi3h^2a=\\frac\\pi3\\cdot\\frac{4S^2}{a^2}\\cdot a=\\frac{4\\pi S^2}{3a}$．\\hfill$\\square$\n\n（面積の公式）余弦定理より $16S^2=4a^2b^2\\sin^2C=(2ab)^2-(a^2+b^2-c^2)^2=\\{c^2-(a-b)^2\\}\\{(a+b)^2-c^2\\}$\n$=(b+c-a)(c+a-b)(a+b-c)(a+b+c)$．$a+b+c=2$ を代入すると $16S^2=2\\cdot8(1-a)(1-b)(1-c)$，すなわち\n\\[S^2=(1-a)(1-b)(1-c).\\]\n$x=1-a$，$y=1-b$，$z=1-c$ とおくと，三角形の成立条件 $a<b+c$ は $a<1$，すなわち $x>0$ と同値（$y,z$ も同様）で，$x+y+z=1$，$a=y+z$，$b=z+x$，$c=x+y$．逆に $x,y,z>0$，$x+y+z=1$ ならこの $a,b,c$ を3辺とする周の長さ2の三角形がある．(1) より\n\\[\nT=\\frac{4\\pi}3xyz\\Bigl(\\frac1{y+z}+\\frac1{z+x}+\\frac1{x+y}\\Bigr).\n\\]\n\n(2) $a=\\frac12$ より $x=\\frac12$，$y+z=\\frac12$．$P=yz$ とおくと $0<P\\leqq\\frac{(y+z)^2}4=\\frac1{16}$（等号は $y=z=\\frac14$）．\n$\\frac1{z+\\frac12}+\\frac1{y+\\frac12}=\\frac{y+z+1}{yz+\\frac12(y+z)+\\frac14}=\\frac{3/2}{P+\\frac12}$ だから\n\\[\nT=\\frac{4\\pi}3\\cdot\\frac P2\\Bigl(2+\\frac{3}{2P+1}\\Bigr)=\\frac{2\\pi}3\\Bigl(2P+\\frac{3P}{2P+1}\\Bigr).\n\\]\n$2P$ も $\\frac{3P}{2P+1}=\\frac32-\\frac{3}{2(2P+1)}$ も $P$ について増加するから，$T$ は $P=\\frac1{16}$ で最大．値は $\\frac{2\\pi}3\\left(\\frac18+\\frac{3/16}{9/8}\\right)=\\frac{2\\pi}3\\cdot\\frac7{24}=\\frac{7\\pi}{36}$．\n最大値 $\\boldsymbol{\\dfrac{7\\pi}{36}}$（$\\boldsymbol{b=c=\\dfrac34}$）．\n\n(3) $y,z>0$ に対し $(y+z)^2-4yz=(y-z)^2\\geqq0$ より $\\frac1{y+z}\\leqq\\frac{y+z}{4yz}=\\frac14\\Bigl(\\frac1y+\\frac1z\\Bigr)$．3つを加えて\n$\\sum\\frac1{y+z}\\leqq\\frac12\\Bigl(\\frac1x+\\frac1y+\\frac1z\\Bigr)$．よって\n\\[\nxyz\\sum\\frac1{y+z}\\leqq\\frac12(yz+zx+xy)\\leqq\\frac12\\cdot\\frac{(x+y+z)^2}3=\\frac16 .\n\\]\nここで $(x+y+z)^2-3(xy+yz+zx)=\\frac12\\{(x-y)^2+(y-z)^2+(z-x)^2\\}\\geqq0$ を用いた．等号はいずれも $x=y=z=\\frac13$ のとき成り立つ．\nしたがって $T\\leqq\\frac{4\\pi}3\\cdot\\frac16=\\frac{2\\pi}9$ で，等号は $a=b=c=\\frac23$ のとき．\n最大値 $\\boldsymbol{\\dfrac{2\\pi}9}$（$\\boldsymbol{a=b=c=\\dfrac23}$）．"
+   }
+  ],
+  "idea": {
+   "tex": "辺 BC のまわりの回転体は（鈍角の場合も含めて）$\\frac\\pi3h^2a=\\frac{4\\pi S^2}{3a}$．周の長さが2なら $S^2=(1-a)(1-b)(1-c)$ で，$x=1-a$，$y=1-b$，$z=1-c$ とおくと三角形の条件は $x,y,z>0$，$x+y+z=1$ だけになる．3つの体積の和は $xyz\\sum\\frac1{y+z}$ に比例し，$\\frac1{y+z}\\leqq\\frac14\\bigl(\\frac1y+\\frac1z\\bigr)$ で対称式に落とす．"
+  },
+  "methods": [],
+  "tags": [
+   "回転体",
+   "ヘロンの公式",
+   "置き換え",
+   "相加相乗平均"
+  ],
+  "provenance": {
+   "created": "2026-11-10"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
  }
 ]

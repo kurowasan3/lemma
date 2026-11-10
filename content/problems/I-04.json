@@ -1347,5 +1347,96 @@
    },
    "verified": false
   }
+ },
+ {
+  "id": "I-DAT-029",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "I-04",
+  "level": 4,
+  "minutes": 30,
+  "theme": "縦に読み直した番号との相関係数",
+  "topic": "縦に読み直した番号との相関係数",
+  "statement": {
+   "tex": "$a,b$ を2以上の整数とし，$N=ab$ とする．$1$ から $N$ までの整数を，横に $a$ 個ずつ $b$ 行に並べる（第1行に $1,2,\\dots,a$，第2行に $a+1,\\dots,2a$，…）．このとき，$i$ が置かれた場所を上から縦に読み直した順番を $y_i$ とする．すなわち，$1\\leqq i\\leqq N$ に対し $i-1=aq+s$（$q,s$ は整数，$0\\leqq s\\leqq a-1$）と表すとき\n\\[x_i=i,\\qquad y_i=bs+q+1\\]\nとおき，$N$ 個の値の組 $(x_i,y_i)$ からなる2つの変量 $x,y$ を考える．$x$ と $y$ の共分散を $s_{xy}$，相関係数を $r$ とする．\n\\begin{enumerate}\n  \\item $y_1,y_2,\\dots,y_N$ は $1,2,\\dots,N$ を並べかえたものであることを示し，$s_{xy}$ と $r$ を $a,b$ で表せ．\n  \\item $r\\geqq\\dfrac12$ となる組 $(a,b)$ をすべて求めよ．\n  \\item $r=\\dfrac17$ となる組 $(a,b)$ をすべて求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $s_{xy}=\\dfrac{a(b^2-1)+b(a^2-1)}{12}$，$r=\\dfrac{a+b}{ab+1}$　(2) $a=2$（$b\\geqq2$ は任意），$b=2$（$a\\geqq2$ は任意），および $(a,b)=(3,3),(3,4),(4,3),(3,5),(5,3)$　(3) $(a,b)=(8,55),(9,31),(10,23),(11,19),(13,15),(15,13),(19,11),(23,10),(31,9),(55,8)$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "\\textbf{(1)}\n$i-1$ を $a$ で割った商が $q$，余りが $s$ である．$1\\leqq i\\leqq N$ のとき $0\\leqq i-1\\leqq ab-1$ であるから $0\\leqq q\\leqq b-1$ であり，$i$ と整数の組 $(q,s)$（$0\\leqq q\\leqq b-1$，$0\\leqq s\\leqq a-1$）は1対1に対応する．同様に $0\\leqq q\\leqq b-1$ より $y_i-1=bs+q$ は「$y_i-1$ を $b$ で割った商が $s$，余りが $q$」という表示であり，整数 $Y$（$1\\leqq Y\\leqq N$）と組 $(s,q)$ も1対1に対応する．したがって $i\\mapsto y_i$ は $\\{1,\\dots,N\\}$ から $\\{1,\\dots,N\\}$ への1対1の対応であり，$y_1,\\dots,y_N$ は $1,\\dots,N$ の並べかえである．\n\nよって $x$ と $y$ の平均はともに $\\dfrac{N+1}2$，分散はともに $1,\\dots,N$ の分散\n\\[s_x^2=s_y^2=\\frac1N\\sum_{i=1}^Ni^2-\\left(\\frac{N+1}2\\right)^2=\\frac{(N+1)(2N+1)}6-\\frac{(N+1)^2}4=\\frac{N^2-1}{12}\\]\nである．同じ計算から，$0,1,\\dots,b-1$ の平均 $\\bar q=\\dfrac{b-1}2$ のまわりの偏差平方和は $\\displaystyle\\sum_{q=0}^{b-1}(q-\\bar q)^2=\\frac{b(b^2-1)}{12}$，同様に $\\bar s=\\dfrac{a-1}2$ として $\\displaystyle\\sum_{s=0}^{a-1}(s-\\bar s)^2=\\frac{a(a^2-1)}{12}$ である．\n\n$x_i-1=aq+s$，$y_i-1=bs+q$ で，平均 $\\dfrac{N+1}2$ について $\\dfrac{N+1}2-1=\\dfrac{ab-1}2=a\\bar q+\\bar s=b\\bar s+\\bar q$ であるから，$Q=q-\\bar q$，$T=s-\\bar s$ とおくと\n\\[x_i-\\bar x=aQ+T,\\qquad y_i-\\bar y=bT+Q\\]\nとなる．$i$ をすべて動かすことは $(q,s)$ をすべての組で動かすことだから\n\\[Ns_{xy}=\\sum_{q=0}^{b-1}\\sum_{s=0}^{a-1}(aQ+T)(bT+Q)=\\sum_{q,s}\\bigl(abQT+aQ^2+bT^2+QT\\bigr)．\\]\n$\\displaystyle\\sum_{q,s}QT=\\Bigl(\\sum_qQ\\Bigr)\\Bigl(\\sum_sT\\Bigr)=0\\cdot0=0$，$\\displaystyle\\sum_{q,s}Q^2=a\\cdot\\frac{b(b^2-1)}{12}$，$\\displaystyle\\sum_{q,s}T^2=b\\cdot\\frac{a(a^2-1)}{12}$ であるから\n\\[Ns_{xy}=\\frac{ab\\{a(b^2-1)+b(a^2-1)\\}}{12},\\qquad \\boldsymbol{s_{xy}=\\frac{a(b^2-1)+b(a^2-1)}{12}}．\\]\nさらに $a(b^2-1)+b(a^2-1)=ab(a+b)-(a+b)=(a+b)(ab-1)$，$N^2-1=(ab-1)(ab+1)$ であり $ab-1>0$ だから\n\\[r=\\frac{s_{xy}}{s_xs_y}=\\frac{s_{xy}}{s_x^2}=\\frac{(a+b)(ab-1)}{(ab-1)(ab+1)}=\\boldsymbol{\\frac{a+b}{ab+1}}．\\]\n\n\\textbf{(2)}\n$r\\geqq\\dfrac12\\iff2(a+b)\\geqq ab+1\\iff ab-2a-2b+4\\leqq3\\iff(a-2)(b-2)\\leqq3$．\n$a-2\\geqq0$，$b-2\\geqq0$ である．$a=2$ または $b=2$ ならば左辺は $0$ で常に成り立つ．$a,b\\geqq3$ ならば $(a-2)(b-2)$ は $1,2,3$ のいずれかで，$(a-2,b-2)=(1,1),(1,2),(2,1),(1,3),(3,1)$．以上より\n\\[\\boldsymbol{a=2\\ (b\\text{ は任意}),\\quad b=2\\ (a\\text{ は任意}),\\quad (a,b)=(3,3),(3,4),(4,3),(3,5),(5,3)}．\\]\n\n\\textbf{(3)}\n$r=\\dfrac17\\iff7(a+b)=ab+1\\iff(a-7)(b-7)=48$．\n$a-7$ と $b-7$ は同符号の整数である．ともに負とすると $a,b\\geqq2$ より $-5\\leqq a-7\\leqq-1$，$-5\\leqq b-7\\leqq-1$ で積は $25$ 以下となり $48$ にならない．よってともに正で，$48$ の正の約数の組 $(a-7,b-7)=(1,48),(2,24),(3,16),(4,12),(6,8)$ とその入れかえである．\n\\[\\boldsymbol{(a,b)=(8,55),(9,31),(10,23),(11,19),(13,15),}\\]\n\\[\\boldsymbol{(15,13),(19,11),(23,10),(31,9),(55,8)}\\]\n\\hfill$\\square$"
+   }
+  ],
+  "idea": {
+   "tex": "データ $y$ が $x=1,2,\\dots,N$ の並べかえのとき，平均も分散も $x$ と同じで，相関係数は共分散だけで決まる．番号 $i$ を「行 $q$・列 $s$」に分解すると $x-1=aq+s$，$y-1=bs+q$ と2つの独立な添字の1次式になり，偏差の積の和は交差項が消えて各添字の偏差平方和だけで書ける．$r=\\dfrac{a+b}{ab+1}$ となり，$r$ の条件は $(a-m)(b-m)=m^2-1$ 型の積の形の不定方程式になる．"
+  },
+  "methods": [],
+  "tags": [
+   "共分散",
+   "相関係数",
+   "番号の並べかえ",
+   "偏差の分解",
+   "不定方程式"
+  ],
+  "provenance": {
+   "created": "2026-11-10"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "I-DAT-030",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "I-04",
+  "level": 5,
+  "minutes": 35,
+  "theme": "順位相関係数が0になりうる人数",
+  "topic": "順位相関係数が0になりうる人数",
+  "statement": {
+   "tex": "$n$ を2以上の整数とする．$n$ 人のクラスで英語と理科のテストを行う．どちらの科目にも同順位の者はいないとする．出席番号 $i$（$i=1,2,\\dots,n$）の生徒の英語の順位を $x_i$，理科の順位を $y_i$ とし，\n\\[d_i=x_i-y_i,\\qquad D=\\sum_{i=1}^nd_i^2\\]\nとおく．また，変量 $x,y$ の相関係数を $r$ とする．\n\\begin{enumerate}\n  \\item $r=1-\\dfrac{6D}{n(n^2-1)}$ であることを示せ．\n  \\item $D$ はつねに偶数であることを示せ．\n  \\item $r=0$ となるような2科目の順位のつき方が存在する $n$ をすべて求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 証明　(2) 証明　(3) $n$ を4で割った余りが $0$ または $1$ であるすべての $n$，および余りが $3$ で $n\\geqq7$ であるすべての $n$（$n\\equiv2\\pmod4$ と $n=3$ では存在しない）"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) $x_1,\\dots,x_n$ と $y_1,\\dots,y_n$ はどちらも $1,2,\\dots,n$ の並べかえである．よって平均はともに $\\dfrac{n+1}2$，分散はともに\n\\[s^2=\\frac1n\\sum_{k=1}^nk^2-\\left(\\frac{n+1}2\\right)^2=\\frac{(n+1)(2n+1)}6-\\frac{(n+1)^2}4=\\frac{n^2-1}{12}\\ (>0).\\]\nまた $D=\\sum x_i^2+\\sum y_i^2-2\\sum x_iy_i=2\\sum_{k=1}^nk^2-2\\sum x_iy_i$ だから $\\sum x_iy_i=\\sum k^2-\\dfrac D2$．共分散は\n\\[s_{xy}=\\frac1n\\sum x_iy_i-\\left(\\frac{n+1}2\\right)^2=s^2-\\frac D{2n}.\\]\nしたがって $r=\\dfrac{s_{xy}}{s\\cdot s}=1-\\dfrac D{2ns^2}=1-\\dfrac{6D}{n(n^2-1)}$．\\hfill$\\square$\n\n(2) 各 $i$ で $d_i^2-d_i=d_i(d_i-1)$ は連続2整数の積なので偶数．よって $D\\equiv\\sum d_i\\pmod2$．$\\sum d_i=\\sum x_i-\\sum y_i=0$ だから $D$ は偶数．\\hfill$\\square$\n\n(3) (1) より $r=0\\iff D=T$，$T=\\dfrac{n(n^2-1)}6$．\n\n\\textbf{$n\\equiv2\\pmod4$ のとき．} $N=(n-1)n(n+1)$ とおく．$n=2\\times(\\text{奇数})$，$n\\pm1$ は奇数だから $N=2M$（$M$ は奇数）．連続3整数の積 $N$ は3の倍数で，3は奇数だから $M$ が3の倍数．よって $T=\\dfrac N6=\\dfrac M3$ は奇数．(2) より $D$ は偶数なので $D\\neq T$，$r\\neq0$．\n\n\\textbf{$n=3$ のとき．} 生徒の番号をつけかえても $D,r$ は変わらないので，$x_i=i$ としてよい．$(y_1,y_2,y_3)$ は6通りで，$D$ の値は\n$(1,2,3):0$，$(2,1,3):2$，$(1,3,2):2$，$(2,3,1):6$，$(3,1,2):6$，$(3,2,1):8$．$T=4$ は現れないので $r\\neq0$．\n\n\\textbf{構成．} $u_i=x_i-\\dfrac{n+1}2$，$v_i=y_i-\\dfrac{n+1}2$ とおくと $s_{xy}=\\dfrac1n\\sum u_iv_i$ なので，$r=0\\iff\\sum u_iv_i=0$．$u_i$ のとりうる値の集合 $W=\\left\\{k-\\dfrac{n+1}2\\ \\middle|\\ k=1,\\dots,n\\right\\}$ は $0$ に関して対称である．$W$ から $W$ への1対1の対応 $\\varphi$ を1つ決め，「英語の $u$ の値が $w$ の生徒の理科の $v$ の値を $\\varphi(w)$ とする」と順位がつけられ，このとき $\\sum u_iv_i=\\sum_{w\\in W}w\\,\\varphi(w)$．\n\n【補題】$a,b$ を $W$ の正の要素で $a\\neq b$ とすると，4つの値 $a,b,-a,-b$ を $a\\to b\\to-a\\to-b\\to a$ と対応させたときの $w\\varphi(w)$ の和は $ab+b(-a)+(-a)(-b)+(-b)a=0$．\n\n\\begin{itemize}\n  \\item $n=4m$（$m\\geqq1$）：$W$ の正の要素は $\\dfrac12,\\dfrac32,\\dots,\\dfrac{4m-1}2$ の $2m$ 個．これを $\\left\\{\\dfrac{4j-3}2,\\dfrac{4j-1}2\\right\\}$（$j=1,\\dots,m$）の $m$ 組に分け，各組とその符号を変えたものの4値に補題の対応を使うと，和は $0$．\n  \\item $n=4m+1$（$m\\geqq1$）：$W=\\{0,\\pm1,\\dots,\\pm2m\\}$．$\\varphi(0)=0$ とし，正の要素を $\\{2j-1,2j\\}$（$j=1,\\dots,m$）に分けて補題を使うと和は $0$．\n  \\item $n=4m+3$（$m\\geqq1$）：$W=\\{0,\\pm1,\\dots,\\pm(2m+1)\\}$．$\\{0,\\pm1,\\pm2,\\pm3\\}$ では $\\varphi(-3)=-1$，$\\varphi(-1)=3$，$\\varphi(3)=-3$，残り $0,\\pm2,1$ は動かさないとすると\n  \\[(-3)(-1)+(-1)\\cdot3+3\\cdot(-3)+0^2+(-2)^2+2^2+1^2=3-3-9+0+4+4+1=0.\\]\n  $m\\geqq2$ なら残りの正の要素 $4,5,\\dots,2m+1$ を $\\{2j,2j+1\\}$（$j=2,\\dots,m$）に分けて補題を使う．全体の和は $0$．\n\\end{itemize}\n以上より，$r=0$ となる順位のつき方が存在するのは\n\\[\\boldsymbol{n\\equiv0,1\\pmod4\\ \\text{のすべての}\\ n,\\ \\text{および}\\ n\\equiv3\\pmod4\\ \\text{かつ}\\ n\\geqq7\\ \\text{のすべての}\\ n}\\]\nである（$n\\geqq2$ の範囲で，$n=4m+1$ は $n\\geqq5$，$n=4m$ は $n\\geqq4$ となり，上の構成はすべてを尽くす）．"
+   }
+  ],
+  "idea": {
+   "tex": "順位は $1,\\dots,n$ の並べかえなので平均・分散は $n$ だけで決まり，$r=1-\\dfrac{6\\sum d_i^2}{n(n^2-1)}$．$d_i^2\\equiv d_i\\pmod2$ と $\\sum d_i=0$ から $\\sum d_i^2$ はつねに偶数で，$n\\equiv2\\pmod4$ では $\\dfrac{n(n^2-1)}6$ が奇数なので $r\\neq0$．逆に，平均を引いた順位を $\\pm a,\\pm b$ の4つ組に分けて $a\\to b\\to-a\\to-b\\to a$ と対応させると積の和が打ち消し合い，$r=0$ の例が作れる．"
+  },
+  "methods": [],
+  "tags": [
+   "相関係数",
+   "順位",
+   "偶奇",
+   "並べかえの構成"
+  ],
+  "provenance": {
+   "created": "2026-11-10"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
  }
 ]

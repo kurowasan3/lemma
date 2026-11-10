@@ -15960,5 +15960,738 @@
    },
    "verified": false
   }
+ },
+ {
+  "id": "C-VEC-344",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "C-18",
+  "level": 4,
+  "minutes": 35,
+  "theme": "内積の等式で決まる半回転対称な四面体",
+  "topic": "内積の等式で決まる半回転対称な四面体",
+  "statement": {
+   "tex": "空間内の同一平面上にない4点 A，B，C，D が\n\\[\n\\overrightarrow{\\mathrm{AC}}\\cdot\\overrightarrow{\\mathrm{AD}}=\\overrightarrow{\\mathrm{BC}}\\cdot\\overrightarrow{\\mathrm{BD}},\\qquad\n\\overrightarrow{\\mathrm{CA}}\\cdot\\overrightarrow{\\mathrm{CB}}=\\overrightarrow{\\mathrm{DA}}\\cdot\\overrightarrow{\\mathrm{DB}}\n\\]\nをみたしている．辺 AB，CD の中点をそれぞれ M，N とする．\n\\begin{enumerate}\n  \\item $\\mathrm{AC}=\\mathrm{BD}$ かつ $\\mathrm{AD}=\\mathrm{BC}$ であることを示せ．\n  \\item $\\mathrm M\\neq\\mathrm N$ であり，$\\overrightarrow{\\mathrm{MN}}\\perp\\overrightarrow{\\mathrm{AB}}$，$\\overrightarrow{\\mathrm{MN}}\\perp\\overrightarrow{\\mathrm{CD}}$ であることを示せ．\n  \\item さらに $\\mathrm{AB}=2$，$\\mathrm{CD}=4$，$\\mathrm{AC}=\\sqrt6$ であるとき，AD のとりうる値の範囲を求めよ．\n  \\item (3) の条件のもとで，四面体 ABCD の体積 $V$ の最大値を求めよ．また，そのときの AD の長さと，2直線 AB，CD のなす角を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 証明　(2) 証明　(3) $2<\\mathrm{AD}<\\sqrt{14}$　(4) 最大値 $V=2$，そのとき $\\mathrm{AD}=\\sqrt{10}$，なす角 $60^\\circ$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "4点の位置ベクトルを $\\vec a,\\vec b,\\vec c,\\vec d$ とする．\n\n(1) 一般に $|\\overrightarrow{\\mathrm{CD}}|^2=|\\overrightarrow{\\mathrm{AD}}-\\overrightarrow{\\mathrm{AC}}|^2=\\mathrm{AC}^2+\\mathrm{AD}^2-2\\,\\overrightarrow{\\mathrm{AC}}\\cdot\\overrightarrow{\\mathrm{AD}}$ より\n\\[\n\\overrightarrow{\\mathrm{AC}}\\cdot\\overrightarrow{\\mathrm{AD}}=\\tfrac12(\\mathrm{AC}^2+\\mathrm{AD}^2-\\mathrm{CD}^2),\\qquad\n\\overrightarrow{\\mathrm{BC}}\\cdot\\overrightarrow{\\mathrm{BD}}=\\tfrac12(\\mathrm{BC}^2+\\mathrm{BD}^2-\\mathrm{CD}^2).\n\\]\nよって第1の条件は $\\mathrm{AC}^2+\\mathrm{AD}^2=\\mathrm{BC}^2+\\mathrm{BD}^2$ \\ (i) と同値である．同様に\n$\\overrightarrow{\\mathrm{CA}}\\cdot\\overrightarrow{\\mathrm{CB}}=\\frac12(\\mathrm{AC}^2+\\mathrm{BC}^2-\\mathrm{AB}^2)$，\n$\\overrightarrow{\\mathrm{DA}}\\cdot\\overrightarrow{\\mathrm{DB}}=\\frac12(\\mathrm{AD}^2+\\mathrm{BD}^2-\\mathrm{AB}^2)$\nであるから，第2の条件は $\\mathrm{AC}^2+\\mathrm{BC}^2=\\mathrm{AD}^2+\\mathrm{BD}^2$ \\ (ii) と同値である．\n(i)$-$(ii) より $\\mathrm{AD}^2-\\mathrm{BC}^2=\\mathrm{BC}^2-\\mathrm{AD}^2$，すなわち $\\mathrm{AD}^2=\\mathrm{BC}^2$．これを (i) に代入して $\\mathrm{AC}^2=\\mathrm{BD}^2$．長さは正なので $\\mathrm{AC}=\\mathrm{BD}$，$\\mathrm{AD}=\\mathrm{BC}$．\n\n逆に $\\mathrm{AC}=\\mathrm{BD}$，$\\mathrm{AD}=\\mathrm{BC}$ ならば (i)(ii) が成り立つので，与えられた2つの条件は「$\\mathrm{AC}=\\mathrm{BD}$ かつ $\\mathrm{AD}=\\mathrm{BC}$」と同値である（(3) で用いる）．\\hfill$\\square$\n\n(2) $\\vec m=\\frac{\\vec a+\\vec b}2$，$\\vec n=\\frac{\\vec c+\\vec d}2$ である．もし $\\mathrm M=\\mathrm N$ ならば，直線 AB と直線 CD がこの点を共有し，4点 A，B，C，D は1つの平面上にあることになり，仮定に反する．よって $\\mathrm M\\neq\\mathrm N$．\n\n$\\overrightarrow{\\mathrm{NA}}=\\frac12(\\overrightarrow{\\mathrm{CA}}+\\overrightarrow{\\mathrm{DA}})$ より\n\\[\n\\mathrm{NA}^2=\\tfrac14\\bigl(\\mathrm{AC}^2+\\mathrm{AD}^2+2\\,\\overrightarrow{\\mathrm{CA}}\\cdot\\overrightarrow{\\mathrm{DA}}\\bigr)\n=\\tfrac14\\bigl(2\\mathrm{AC}^2+2\\mathrm{AD}^2-\\mathrm{CD}^2\\bigr)\n\\]\n（(1) の内積の式を用いた）．同様に $\\mathrm{NB}^2=\\frac14(2\\mathrm{BC}^2+2\\mathrm{BD}^2-\\mathrm{CD}^2)$．(i) より $\\mathrm{NA}^2=\\mathrm{NB}^2$．一方\n\\[\n\\mathrm{NA}^2-\\mathrm{NB}^2=|\\vec a-\\vec n|^2-|\\vec b-\\vec n|^2=(\\vec a-\\vec b)\\cdot(\\vec a+\\vec b-2\\vec n)=2(\\vec a-\\vec b)\\cdot(\\vec m-\\vec n)\n\\]\nであるから $\\overrightarrow{\\mathrm{BA}}\\cdot\\overrightarrow{\\mathrm{NM}}=0$．$\\overrightarrow{\\mathrm{AB}}\\neq\\vec0$，$\\overrightarrow{\\mathrm{MN}}\\neq\\vec0$ なので $\\overrightarrow{\\mathrm{MN}}\\perp\\overrightarrow{\\mathrm{AB}}$．\n\n同様に $\\mathrm{MC}^2=\\frac14(2\\mathrm{AC}^2+2\\mathrm{BC}^2-\\mathrm{AB}^2)$，$\\mathrm{MD}^2=\\frac14(2\\mathrm{AD}^2+2\\mathrm{BD}^2-\\mathrm{AB}^2)$ であり，(ii) より $\\mathrm{MC}^2=\\mathrm{MD}^2$．\n$\\mathrm{MC}^2-\\mathrm{MD}^2=(\\vec c-\\vec d)\\cdot(\\vec c+\\vec d-2\\vec m)=2(\\vec c-\\vec d)\\cdot(\\vec n-\\vec m)$ より $\\overrightarrow{\\mathrm{MN}}\\perp\\overrightarrow{\\mathrm{CD}}$．\\hfill$\\square$\n\n(3) 座標を次のように定める．M を原点とし，$x$ 軸の正の向きを $\\overrightarrow{\\mathrm{MA}}$ の向き，$z$ 軸の正の向きを $\\overrightarrow{\\mathrm{MN}}$ の向きにとる（(2) よりこの2つの向きは垂直）．$h=\\mathrm{MN}>0$ とおくと\n\\[\n\\mathrm A(1,0,0),\\quad \\mathrm B(-1,0,0),\\quad \\mathrm N(0,0,h).\n\\]\n(2) より $\\overrightarrow{\\mathrm{NC}}$ は $z$ 軸に垂直で $|\\overrightarrow{\\mathrm{NC}}|=2$ だから，ある $\\theta$ によって $\\mathrm C(2\\cos\\theta,2\\sin\\theta,h)$，N は CD の中点なので $\\mathrm D(-2\\cos\\theta,-2\\sin\\theta,h)$ と書ける．$\\sin\\theta=0$ なら4点はすべて平面 $y=0$ 上にあるので，$\\sin\\theta\\neq0$ である．このとき\n\\begin{align*}\n\\mathrm{AC}^2&=(1-2\\cos\\theta)^2+4\\sin^2\\theta+h^2=5-4\\cos\\theta+h^2,\\\\\n\\mathrm{AD}^2&=(1+2\\cos\\theta)^2+4\\sin^2\\theta+h^2=5+4\\cos\\theta+h^2 .\n\\end{align*}\n$c=\\cos\\theta$ とおく．$\\mathrm{AC}^2=6$ より $h^2=1+4c$，したがって $\\mathrm{AD}^2=6+8c$．\n$h>0$ から $c>-\\frac14$，$\\sin\\theta\\neq0$ から $c\\neq\\pm1$ なので $-\\frac14<c<1$．\n\n逆に $-\\frac14<c<1$ をみたす任意の $c$ に対し，$0<\\theta<\\pi$ で $\\cos\\theta=c$ となる $\\theta$ をとり，$h=\\sqrt{1+4c}>0$ として上の座標で4点を定める．$\\mathrm{BD}^2=(-1+2c)^2+4\\sin^2\\theta+h^2=\\mathrm{AC}^2$，$\\mathrm{BC}^2=(1+2c)^2+4\\sin^2\\theta+h^2=\\mathrm{AD}^2$ なので，(1) の同値性から2つの内積の条件をみたす．また $\\mathrm{AB}=2$，$\\mathrm{CD}=4$，$\\mathrm{AC}^2=5-4c+1+4c=6$ である．さらに，A，B，C，D を含む平面があったとすると，それは CD の中点 N も含む．$h>0$ より A，B，N は一直線上にないので，その平面は A，B，N を含む平面 $y=0$ に一致するが，C の $y$ 座標 $2\\sin\\theta$ は0でないから矛盾．よって4点は同一平面上にない．\n\nここで体積を計算しておく．平面 $y=0$ は A，B，N を含み，C，D はこの平面の両側にある．N は辺 CD 上にあるので，四面体 ABCD は平面 ABN で四面体 ABNC と ABND に分けられる．$\\overrightarrow{\\mathrm{MN}}\\perp\\overrightarrow{\\mathrm{AB}}$ より $\\triangle\\mathrm{ABN}=\\frac12\\cdot2\\cdot h=h$，C，D から平面 $y=0$ までの距離はともに $2|\\sin\\theta|$ なので\n\\[\nV=2\\cdot\\frac13\\cdot h\\cdot2|\\sin\\theta|=\\frac43h|\\sin\\theta|>0 .\n\\]\n以上より $c$ は $-\\frac14<c<1$ の範囲のすべての値をとり，$\\mathrm{AD}^2=6+8c$ は $4<\\mathrm{AD}^2<14$ のすべての値をとる．\n\\[\n\\boldsymbol{2<\\mathrm{AD}<\\sqrt{14}}\n\\]\n\n(4) (3) より $V^2=\\frac{16}9h^2\\sin^2\\theta=\\frac{16}9(1+4c)(1-c^2)$．$g(c)=(1+4c)(1-c^2)$ とおくと\n\\[\ng'(c)=4(1-c^2)-2c(1+4c)=-12c^2-2c+4=-2(2c-1)(3c+2).\n\\]\n$-\\frac14<c<1$ では $3c+2>0$ なので，$g$ は $-\\frac14<c\\leqq\\frac12$ で増加，$\\frac12\\leqq c<1$ で減少し，最大値は $g\\left(\\frac12\\right)=3\\cdot\\frac34=\\frac94$（$c=\\frac12$ は範囲内で実現される）．よって $V^2\\leqq\\frac{16}9\\cdot\\frac94=4$ で，$V$ の最大値は $\\boldsymbol{2}$．\n\nこのとき $\\mathrm{AD}^2=6+4=10$ より $\\boldsymbol{\\mathrm{AD}=\\sqrt{10}}$．直線 AB の方向は $(1,0,0)$，直線 CD の方向は $(\\cos\\theta,\\sin\\theta,0)$ で，なす角 $\\varphi$（$0^\\circ\\leqq\\varphi\\leqq90^\\circ$）は $\\cos\\varphi=|\\cos\\theta|=\\frac12$ より $\\boldsymbol{\\varphi=60^\\circ}$．"
+   }
+  ],
+  "idea": {
+   "tex": "$\\overrightarrow{\\mathrm{AC}}\\cdot\\overrightarrow{\\mathrm{AD}}=\\frac12(\\mathrm{AC}^2+\\mathrm{AD}^2-\\mathrm{CD}^2)$ によって内積の条件を辺の長さの条件に直すと，対辺が2組等しい（$\\mathrm{AC}=\\mathrm{BD}$，$\\mathrm{AD}=\\mathrm{BC}$）ことと同値になる．中線定理から，対辺の中点を結ぶ線分 MN が AB，CD の共通垂線になり，M を原点，MN を1つの軸にとると C，D は N に関して対称に置ける．体積は平面 ABN で2つに切って $\\frac43h|\\sin\\theta|$ となり，AC 一定の条件で $h$ と $\\theta$ が連動する1変数の最大化に帰着する．"
+  },
+  "methods": [],
+  "tags": [
+   "内積",
+   "中線定理",
+   "共通垂線",
+   "四面体の体積",
+   "最大最小"
+  ],
+  "provenance": {
+   "created": "2026-11-10"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "C-VEC-345",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "C-18",
+  "level": 4,
+  "minutes": 35,
+  "theme": "正二十面体の層・中央の正十角形・五角反柱",
+  "topic": "正二十面体の層・中央の正十角形・五角反柱",
+  "statement": {
+   "tex": "$t=\\dfrac{1+\\sqrt5}2$ とする．$xyz$ 空間の12点\n\\[(0,\\pm1,\\pm t),\\quad(\\pm1,\\pm t,0),\\quad(\\pm t,0,\\pm1)\\quad(\\text{複号任意})\\]\nを頂点とする1辺の長さ2の正二十面体を $X$ とする（このことは認めてよい．$X$ の20個の面は，互いの距離が2である3頂点を結ぶ正三角形である）．O を原点とし，$\\mathrm A(0,1,t)$ とする．\n\\begin{enumerate}\n  \\item $X$ の各頂点 P について内積 $\\overrightarrow{\\mathrm{OA}}\\cdot\\overrightarrow{\\mathrm{OP}}$ の値を求めよ．また，この値が $t$ である5頂点は $\\overrightarrow{\\mathrm{OA}}$ に垂直な1つの平面 $\\pi$ 上にあって1辺2の正五角形の頂点をなすことを示し，O と $\\pi$ の距離を求めよ．\n  \\item O を通り $\\overrightarrow{\\mathrm{OA}}$ に垂直な平面 $\\alpha$ による $X$ の切り口は正十角形であることを示し，その1辺の長さと面積を求めよ．\n  \\item $\\pi$ と，$\\pi$ を O に関して対称移動した平面 $\\pi'$ とではさまれた $X$ の部分の体積を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 内積は A で $t+2$，5頂点で $t$，5頂点で $-t$，$(0,-1,-t)$ で $-t-2$；距離 $\\sqrt{\\dfrac{5+\\sqrt5}{10}}$（正五角形は証明）　(2) 1辺の長さ $1$，面積 $\\dfrac52\\sqrt{5+2\\sqrt5}$（正十角形は証明）　(3) $\\dfrac{20+8\\sqrt5}3$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "$t^2=t+1$ を繰り返し用いる．$t^4=(t+1)^2=t^2+2t+1=3t+2$．また $|\\overrightarrow{\\mathrm{OP}}|^2=1+t^2=t+2$ がすべての頂点で成り立つ．\n\n\\textbf{準備（$\\cos36^\\circ$，$\\cos72^\\circ$）．}$\\theta=36^\\circ$ とすると $3\\theta=180^\\circ-2\\theta$ より $\\sin3\\theta=\\sin2\\theta$．$3\\sin\\theta-4\\sin^3\\theta=2\\sin\\theta\\cos\\theta$ を $\\sin\\theta>0$ で割り，$c=\\cos\\theta$ とおくと $3-4(1-c^2)=2c$，$4c^2-2c-1=0$．$c>0$ より $\\cos36^\\circ=\\dfrac{1+\\sqrt5}4=\\dfrac t2$．$\\cos72^\\circ=2c^2-1=\\dfrac{\\sqrt5-1}4=\\dfrac1{2t}$（$\\dfrac1{2t}=\\dfrac1{1+\\sqrt5}=\\dfrac{\\sqrt5-1}4$），$\\cos144^\\circ=-\\dfrac t2$．\n\n(1) $\\vec a=\\overrightarrow{\\mathrm{OA}}=(0,1,t)$ との内積は\n\\begin{itemize}\n  \\item $(0,1,t)$：$1+t^2=t+2$．$(0,-1,-t)$：$-t-2$．\n  \\item $(0,-1,t)$：$t^2-1=t$．$(0,1,-t)$：$-t$．\n  \\item $(\\pm1,t,0)$：$t$．$(\\pm1,-t,0)$：$-t$．\n  \\item $(\\pm t,0,1)$：$t$．$(\\pm t,0,-1)$：$-t$．\n\\end{itemize}\n内積が $t$ の5頂点を $\\mathrm P_1(0,-1,t)$，$\\mathrm P_2(t,0,1)$，$\\mathrm P_3(1,t,0)$，$\\mathrm P_4(-1,t,0)$，$\\mathrm P_5(-t,0,1)$ とする．これらは平面 $\\pi:\\ \\vec a\\cdot\\vec x=t$ 上にあり，$\\pi\\perp\\vec a$．O と $\\pi$ の距離は\n\\[d=\\frac t{|\\vec a|}=\\frac t{\\sqrt{t+2}},\\qquad d^2=\\frac{t^2}{t+2}=\\frac{3+\\sqrt5}{5+\\sqrt5}=\\frac{5+\\sqrt5}{10}\\]\nより $\\boldsymbol{d=\\sqrt{\\dfrac{5+\\sqrt5}{10}}}$．\n\n正五角形であること：$\\pi$ と直線 OA の交点を $\\mathrm H$ とすると，$|\\mathrm{HP}_i|^2=|\\overrightarrow{\\mathrm{OP}_i}|^2-d^2=(t+2)-\\dfrac{t^2}{t+2}=\\dfrac{4t+4}{t+2}=\\dfrac{4t^2}{t+2}=:\\rho^2$ はすべての $i$ で等しい．また成分計算と $t^2=t+1$ から\n\\[|\\mathrm P_1\\mathrm P_2|^2=t^2+1+(1-t)^2=4,\\quad |\\mathrm P_2\\mathrm P_3|^2=(t-1)^2+t^2+1=4,\\]\n\\[|\\mathrm P_3\\mathrm P_4|^2=4,\\quad |\\mathrm P_4\\mathrm P_5|^2=(t-1)^2+t^2+1=4,\\quad |\\mathrm P_5\\mathrm P_1|^2=t^2+1+(1-t)^2=4,\\]\n\\[|\\mathrm P_1\\mathrm P_3|^2=1+(t+1)^2+t^2=4t+4=4t^2\\]\nで，同様に $|\\mathrm P_i\\mathrm P_{i+2}|=2t$（添字は5を法とする）がすべての $i$ で成り立つ．余弦定理より\n\\[\\cos\\angle\\mathrm P_i\\mathrm H\\mathrm P_{i+1}=1-\\frac{2}{\\rho^2}=1-\\frac{t+2}{2t+2}=\\frac t{2t^2}=\\frac1{2t}=\\cos72^\\circ,\\]\n\\[\\cos\\angle\\mathrm P_i\\mathrm H\\mathrm P_{i+2}=1-\\frac{2t^2}{\\rho^2}=1-\\frac{t+2}2=-\\frac t2=\\cos144^\\circ.\\]\nよって $\\pi$ 内で H を中心とする回転で見ると，$\\mathrm P_{i+1}$ は $\\mathrm P_i$ を $72^\\circ$ 回転した点であり，$\\mathrm P_{i+2}$ は $\\mathrm P_{i+1}$ を $72^\\circ$ 回転した点である．後者の回転が前者と逆向きなら $\\mathrm P_{i+2}=\\mathrm P_i$ となって $\\angle\\mathrm P_i\\mathrm H\\mathrm P_{i+2}=144^\\circ$ に反するので，同じ向きである．したがって $\\mathrm P_1,\\dots,\\mathrm P_5$ は H を中心とする半径 $\\rho$ の円周上を同じ向きに $72^\\circ$ ずつ進んだ5点で，1辺2の正五角形をなす．\\hfill$\\square$\n\n(2) $\\vec a\\cdot\\vec x$ を「高さ」とよぶ．頂点の高さは A が $t+2$，$\\mathrm P_i$ が $t$，残りの5頂点（$\\mathrm P_i'$ とする）が $-t$，$(0,-1,-t)$ が $-t-2$．\n\\begin{itemize}\n  \\item A を含む面は $\\triangle\\mathrm{AP}_i\\mathrm P_{i+1}$ の5個（A と距離2の頂点は $\\mathrm P_1,\\dots,\\mathrm P_5$ だけ）で，高さはすべて正．同様に $(0,-1,-t)$ を含む5面は高さがすべて負．\n  \\item 残りの10面は高さ $\\pm t$ の頂点だけからなる．3頂点とも高さ $t$ とすると互いの距離が2の3点が $\\mathrm P_1,\\dots,\\mathrm P_5$ から選べることになるが，距離2の組は隣り合う $\\mathrm P_i\\mathrm P_{i+1}$ だけなので不可能．$-t$ 側も同様．よってこの10面はいずれも高さ $t$ の頂点と $-t$ の頂点を両方含み，高さ $t$ と $-t$ の頂点を結ぶ辺をちょうど2本もつ．\n\\end{itemize}\n高さは線分上で1次的に変わるから，高さ $t$ の点 P と $-t$ の点 Q を結ぶ辺は $\\alpha$（高さ0）とその中点で交わる．したがって $\\alpha$ と交わる面は上の10面だけで，各面の切り口は2辺の中点を結ぶ線分，長さは中点連結定理より $\\dfrac12\\cdot2=1$．\n\nこのような辺 PQ の中点 M について，$\\overrightarrow{\\mathrm{OP}}\\cdot\\overrightarrow{\\mathrm{OQ}}=\\dfrac{(t+2)+(t+2)-4}2=t$ より\n\\[|\\overrightarrow{\\mathrm{OM}}|^2=\\frac{(t+2)+(t+2)+2t}4=t+1=t^2,\\qquad \\mathrm{OM}=t.\\]\n$X\\cap\\alpha$ は凸多角形で，その周は上の10本の長さ1の線分からなり（各中点は2面に共有されるのでちょうど2本の線分の端点），頂点は10個の中点で，すべて O を中心とする半径 $t$ の円周上にある．円に内接し10辺の長さが等しい凸多角形なので，等しい弦に対する中心角は等しく，$X\\cap\\alpha$ は\\textbf{正十角形}である（中心角の余弦は $1-\\dfrac1{2t^2}=\\dfrac{2t+1}{2t+2}=\\dfrac t2=\\cos36^\\circ$ で $10\\times36^\\circ=360^\\circ$ とも合う）．\\hfill$\\square$\n\n1辺の長さは $\\boldsymbol1$．面積は O と各辺でできる10個の二等辺三角形（高さ $\\sqrt{t^2-\\frac14}$）の和で\n\\[10\\cdot\\frac12\\cdot1\\cdot\\sqrt{t+\\frac34}=5\\sqrt{\\frac{5+2\\sqrt5}4}=\\boldsymbol{\\frac52\\sqrt{5+2\\sqrt5}}.\\]\n\n(3) \\textbf{$X$ の体積．}各面は1辺2の正三角形（面積 $\\sqrt3$，外接円の半径 $\\dfrac2{\\sqrt3}$）で，3頂点はいずれも O からの距離が $\\sqrt{t+2}$ なので，O から面に下ろした垂線の足は面の外心（＝重心）であり，O と面の距離は\n\\[\\sqrt{(t+2)-\\frac43}=\\sqrt{\\frac{3t+2}3}=\\frac{t^2}{\\sqrt3}.\\]\nO は $X$ の内部にあるから $X$ は O を頂点とし各面を底面とする20個の三角錐に分割され，\n\\[V_X=20\\cdot\\frac13\\cdot\\sqrt3\\cdot\\frac{t^2}{\\sqrt3}=\\frac{20t^2}3.\\]\n\n\\textbf{両端の五角錐．}$X$ のうち $\\pi$ に関して A の側にある部分は，A を頂点とし正五角形 $\\mathrm P_1\\cdots\\mathrm P_5$ を底面とする五角錐 $K$ である（A に集まる5面と $\\pi$ で囲まれる）．底面は H を中心とする5個の二等辺三角形 $\\mathrm{HP}_i\\mathrm P_{i+1}$（底辺2，高さ $\\sqrt{\\rho^2-1}$）に分けられ，\n\\[\\rho^2-1=\\frac{4t^2-t-2}{t+2}=\\frac{3t+2}{t+2}=\\frac{t^4}{t+2},\\qquad \\text{底面積}=5\\sqrt{\\rho^2-1}=\\frac{5t^2}{\\sqrt{t+2}}.\\]\n高さは A と $\\pi$ の距離 $\\dfrac{(t+2)-t}{|\\vec a|}=\\dfrac2{\\sqrt{t+2}}$ なので\n\\[V_K=\\frac13\\cdot\\frac{5t^2}{\\sqrt{t+2}}\\cdot\\frac2{\\sqrt{t+2}}=\\frac{10t^2}{3(t+2)}.\\]\n$X$ は O に関して対称（頂点の集合が $\\vec x\\mapsto-\\vec x$ で不変）なので，$\\pi'$ の外側の部分も体積 $V_K$ の五角錐である．求める体積は\n\\[V_X-2V_K=\\frac{20t^2}3\\cdot\\frac{t+1}{t+2}=\\frac{20t^4}{3(t+2)}=\\frac{20(3t+2)}{3(t+2)}.\\]\n$3t+2=\\dfrac{7+3\\sqrt5}2$，$t+2=\\dfrac{5+\\sqrt5}2$ で $\\dfrac{7+3\\sqrt5}{5+\\sqrt5}=\\dfrac{(7+3\\sqrt5)(5-\\sqrt5)}{20}=\\dfrac{20+8\\sqrt5}{20}$ だから，求める体積は $\\boldsymbol{\\dfrac{20+8\\sqrt5}3}$．"
+   }
+  ],
+  "idea": {
+   "tex": "1つの頂点方向 $\\overrightarrow{\\mathrm{OA}}$ との内積で12頂点を「高さ」の層 $1\\cdot5\\cdot5\\cdot1$ に分ける．中央の平面は上下の層を結ぶ10本の辺をちょうど中点で切り，各面の切り口は中点連結線（長さ1）なので切り口は正十角形．両端の五角錐を全体から除くと中央の帯（五角反柱）の体積が出る．"
+  },
+  "methods": [],
+  "tags": [
+   "正二十面体",
+   "内積による高さ",
+   "正五角形",
+   "正十角形",
+   "体積"
+  ],
+  "provenance": {
+   "created": "2026-11-10"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "C-VEC-346",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "C-18",
+  "level": 4,
+  "minutes": 35,
+  "theme": "3辺が直交する四面体を最長辺のまわりに回したときの影",
+  "topic": "3辺が直交する四面体を最長辺のまわりに回したときの影",
+  "statement": {
+   "tex": "四面体ABCDは $\\mathrm{AB}=\\mathrm{BC}=\\mathrm{CD}=1$ であり，辺ABは面BCDに垂直，辺CDは面ABCに垂直であるとする．点B，Cから直線ADに下ろした垂線の足をそれぞれH，Kとする．\n\\begin{enumerate}\n  \\item 辺ADの長さ，および AH，AK，BH，CK を求めよ．\n  \\item $\\overrightarrow{\\mathrm{HB}}$ と $\\overrightarrow{\\mathrm{KC}}$ のなす角を求めよ．\n\\end{enumerate}\n次に，四面体ABCDから十分に離れたところに直線ADと平行な平面 $\\alpha$ を一つとる．$\\alpha$ に垂直な平行光線を四面体ABCDにあてて，$\\alpha$ 上に影をつくる．その影の面積を $S$ とする．\n\\begin{enumerate}[resume]\n  \\item 面ABDが $\\alpha$ に平行であるときの $S$ を求めよ．\n  \\item 直線ADを軸として四面体ABCDを1回転させるとき，$S$ の最大値，最小値を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $\\mathrm{AD}=\\sqrt3$，$\\mathrm{AH}=\\dfrac{\\sqrt3}{3}$，$\\mathrm{AK}=\\dfrac{2\\sqrt3}{3}$，$\\mathrm{BH}=\\mathrm{CK}=\\dfrac{\\sqrt6}{3}$　(2) $60^\\circ$　(3) $S=\\dfrac{\\sqrt2}{2}$　(4) 最大値 $\\dfrac{\\sqrt6}{3}$，最小値 $\\dfrac{\\sqrt6}{4}$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) ABは面BCDに垂直なので $\\mathrm{AB}\\perp\\mathrm{BC}$，$\\mathrm{AB}\\perp\\mathrm{CD}$．CDは面ABCに垂直なので $\\mathrm{CD}\\perp\\mathrm{BC}$．よって $\\overrightarrow{\\mathrm{AB}},\\overrightarrow{\\mathrm{BC}},\\overrightarrow{\\mathrm{CD}}$ は互いに垂直な長さ1のベクトルであり，これらを $x,y,z$ 軸の正の向きの単位ベクトルとする座標をとれば\n\\[\\mathrm A(0,0,0),\\quad\\mathrm B(1,0,0),\\quad\\mathrm C(1,1,0),\\quad\\mathrm D(1,1,1)\\]\nとおける．$\\mathrm{AD}=\\boldsymbol{\\sqrt3}$ で，$\\vec e=\\dfrac1{\\sqrt3}(1,1,1)$ を直線ADの単位方向ベクトルとする．Hは直線AD上で $\\overrightarrow{\\mathrm{HB}}\\perp\\vec e$ となる点なので $\\overrightarrow{\\mathrm{AH}}=(\\overrightarrow{\\mathrm{AB}}\\cdot\\vec e)\\vec e$，同様に $\\overrightarrow{\\mathrm{AK}}=(\\overrightarrow{\\mathrm{AC}}\\cdot\\vec e)\\vec e$ である．$\\overrightarrow{\\mathrm{AB}}\\cdot\\vec e=\\dfrac1{\\sqrt3}>0$，$\\overrightarrow{\\mathrm{AC}}\\cdot\\vec e=\\dfrac2{\\sqrt3}>0$ より\n\\[\\mathrm{AH}=\\boldsymbol{\\frac{\\sqrt3}{3}},\\qquad\\mathrm{AK}=\\boldsymbol{\\frac{2\\sqrt3}{3}}\\]\nであり，H，Kはともに線分AD上にあって $\\mathrm{AH}:\\mathrm{HK}:\\mathrm{KD}=1:1:1$．三平方の定理より\n\\[\\mathrm{BH}=\\sqrt{1-\\frac13}=\\boldsymbol{\\frac{\\sqrt6}{3}},\\qquad\\mathrm{CK}=\\sqrt{2-\\frac43}=\\boldsymbol{\\frac{\\sqrt6}{3}}.\\]\n\n(2) $\\overrightarrow{\\mathrm{HB}}=(1,0,0)-\\dfrac13(1,1,1)=\\dfrac13(2,-1,-1)$，$\\overrightarrow{\\mathrm{KC}}=(1,1,0)-\\dfrac23(1,1,1)=\\dfrac13(1,1,-2)$．\n\\[\\overrightarrow{\\mathrm{HB}}\\cdot\\overrightarrow{\\mathrm{KC}}=\\frac{2-1+2}{9}=\\frac13,\\qquad|\\overrightarrow{\\mathrm{HB}}|=|\\overrightarrow{\\mathrm{KC}}|=\\frac{\\sqrt6}3\\]\nより，なす角の余弦は $\\dfrac{1/3}{2/3}=\\dfrac12$．なす角は $\\boldsymbol{60^\\circ}$．\n\n\\medskip\n\\textbf{影の面積の表し方．}光線は $\\alpha$ に垂直なので，影は四面体の $\\alpha$ への正射影である．$\\alpha$ に平行な平面への正射影どうしは平行移動で重なるから，$S$ は，直線ADを含み $\\alpha$ に平行な平面 $\\pi$ への正射影の面積に等しい．また，四面体は4頂点の $s\\vec p_1+t\\vec p_2+u\\vec p_3+v\\vec p_4$（$s,t,u,v\\geqq0$，$s+t+u+v=1$）全体であり，正射影は1次式で表されるので，影は4頂点の像の凸包（像を頂点とする凸多角形）である．\n\n四面体を固定して考え，代わりに $\\pi$ を直線ADのまわりに回す．$h=\\dfrac{\\sqrt6}3$ とおき，$\\vec e_1=\\dfrac1h\\overrightarrow{\\mathrm{HB}}$ とし，$\\vec e_2$ を $\\vec e,\\vec e_1$ の両方に垂直な単位ベクトルで $\\overrightarrow{\\mathrm{KC}}=h\\Bigl(\\dfrac12\\vec e_1+\\dfrac{\\sqrt3}2\\vec e_2\\Bigr)$ となるものとする（(2) より $\\overrightarrow{\\mathrm{KC}}$ は $\\vec e$ に垂直で $\\vec e_1$ と $60^\\circ$ をなすので，このような $\\vec e_2$ がとれる）．$\\pi$ は $\\vec e$ と，ある $\\theta$ により $\\vec w=\\cos\\theta\\,\\vec e_1+\\sin\\theta\\,\\vec e_2$ で張られる平面であり，四面体を軸ADのまわりに1回転させることは $\\theta$ を1周させることと同じである．$\\pi$ 上にAを原点，$\\vec e$ 方向を $X$ 軸，$\\vec w$ 方向を $Y$ 軸とする座標をとると，点Pの像は $(\\overrightarrow{\\mathrm{AP}}\\cdot\\vec e,\\ \\overrightarrow{\\mathrm{AP}}\\cdot\\vec w)$ である．$\\overrightarrow{\\mathrm{AH}}\\cdot\\vec w=0$ などに注意すると，像は\n\\[\\mathrm A'(0,0),\\quad\\mathrm D'(\\sqrt3,0),\\quad\\mathrm B'\\Bigl(\\frac{\\sqrt3}3,\\ hp\\Bigr),\\quad\\mathrm C'\\Bigl(\\frac{2\\sqrt3}3,\\ hq\\Bigr),\\qquad p=\\cos\\theta,\\ q=\\cos\\Bigl(\\theta-\\frac\\pi3\\Bigr)\\]\nとなる．以下 $\\sqrt3h=\\sqrt2$ を用いる．\n\n\\textbf{凸包の面積．}$p,q$ は同時に0にならない．\n\\begin{itemize}\n  \\item[(i)] $pq\\leqq0$ のとき．$p\\geqq0\\geqq q$ としてよい（逆も同様）．$p>0>q$ なら線分B$'$C$'$は $X$ 軸と $X$ 座標が $\\dfrac{\\sqrt3}3$ と $\\dfrac{2\\sqrt3}3$ の間の点で交わり，これは線分A$'$D$'$の内部の点である．対角線A$'$D$'$とB$'$C$'$が交わるので四角形A$'$B$'$D$'$C$'$は凸で，これが凸包である．面積は $\\triangle\\mathrm{A'D'B'}+\\triangle\\mathrm{A'D'C'}$ で\n  \\[S=\\frac12\\sqrt3\\,h(|p|+|q|)=\\frac{\\sqrt2}2(|p|+|q|).\\]\n  $p=0$ または $q=0$ のときは凸包が三角形になり，同じ式が成り立つ．\n  \\item[(ii)] $p>0$，$q>0$ のとき．$X=\\dfrac{\\sqrt3}3$ における線分A$'$C$'$上の点は $\\Bigl(\\dfrac{\\sqrt3}3,\\dfrac{hq}2\\Bigr)$，$X=\\dfrac{2\\sqrt3}3$ における線分B$'$D$'$上の点は $\\Bigl(\\dfrac{2\\sqrt3}3,\\dfrac{hp}2\\Bigr)$ である．\n  \\begin{itemize}\n    \\item $\\dfrac q2\\leqq p\\leqq2q$ のとき：B$'$は直線A$'$C$'$の上側（またはその上），C$'$は直線B$'$D$'$の上側（またはその上）にあるので，四角形A$'$B$'$C$'$D$'$は凸で4点すべてを含み，凸包である．台形に分けて\n    \\[S=\\frac{\\sqrt3}3\\Bigl(\\frac{hp}2+\\frac{hp+hq}2+\\frac{hq}2\\Bigr)=\\frac{\\sqrt2}3(p+q).\\]\n    \\item $q>2p$ のとき：B$'$は $\\Bigl(\\dfrac{\\sqrt3}3,0\\Bigr)$ と $\\Bigl(\\dfrac{\\sqrt3}3,\\dfrac{hq}2\\Bigr)$ を結ぶ線分上にあり，この2点は三角形A$'$C$'$D$'$の辺上にあるから，B$'$はこの三角形に含まれる．凸包は $\\triangle\\mathrm{A'C'D'}$ で $S=\\dfrac{\\sqrt2}2q$．\n    \\item $p>2q$ のとき：同様にC$'$が $\\triangle\\mathrm{A'B'D'}$ に含まれ，$S=\\dfrac{\\sqrt2}2p$．\n  \\end{itemize}\n  \\item[(iii)] $p<0$，$q<0$ のとき．$\\theta$ を $\\theta+\\pi$ に変えると $p,q$ の符号がともに変わり，像は $X$ 軸に関して対称に移るだけなので $S$ は変わらない．よって $S$ は周期 $\\pi$ をもち，(i)(ii) に帰着する．\n\\end{itemize}\n\n(3) 面ABDが $\\alpha$ に平行 $\\iff$ $\\pi$ が面ABDと一致 $\\iff$ $\\vec w=\\pm\\vec e_1$，すなわち $\\theta=0$（または $\\pi$）．このとき $p=1$，$q=\\dfrac12$ で $\\dfrac q2\\leqq p\\leqq2q$ をみたすから\n\\[S=\\frac{\\sqrt2}3\\Bigl(1+\\frac12\\Bigr)=\\boldsymbol{\\frac{\\sqrt2}2}.\\]\n\n(4) 周期 $\\pi$ なので $-\\dfrac\\pi6\\leqq\\theta\\leqq\\dfrac{5\\pi}6$ で調べる．\n\\[q-2p=\\frac{\\sqrt3}2\\sin\\theta-\\frac32\\cos\\theta=\\sqrt3\\sin\\Bigl(\\theta-\\frac\\pi3\\Bigr),\\qquad p-2q=-\\sqrt3\\sin\\theta,\\]\n\\[p+q=2\\cos\\Bigl(\\theta-\\frac\\pi6\\Bigr)\\cos\\frac\\pi6=\\sqrt3\\cos\\Bigl(\\theta-\\frac\\pi6\\Bigr),\\qquad q-p=-2\\sin\\Bigl(\\theta-\\frac\\pi6\\Bigr)\\sin\\Bigl(-\\frac\\pi6\\Bigr)=\\sin\\Bigl(\\theta-\\frac\\pi6\\Bigr).\\]\n\\begin{itemize}\n  \\item $0\\leqq\\theta\\leqq\\dfrac\\pi3$：$p>0$，$q>0$ で，$\\sin\\theta\\geqq0$ より $p\\leqq2q$，$\\sin\\Bigl(\\theta-\\dfrac\\pi3\\Bigr)\\leqq0$ より $q\\leqq2p$．よって $S=\\dfrac{\\sqrt2}3(p+q)=\\dfrac{\\sqrt6}3\\cos\\Bigl(\\theta-\\dfrac\\pi6\\Bigr)$．$\\theta-\\dfrac\\pi6\\in\\Bigl[-\\dfrac\\pi6,\\dfrac\\pi6\\Bigr]$ なので $\\dfrac{\\sqrt2}2\\leqq S\\leqq\\dfrac{\\sqrt6}3$，最大は $\\theta=\\dfrac\\pi6$．\n  \\item $-\\dfrac\\pi6<\\theta<0$：$p>0$，$q>0$，$p-2q=-\\sqrt3\\sin\\theta>0$ より $S=\\dfrac{\\sqrt2}2\\cos\\theta$ で，$\\dfrac{\\sqrt6}4<S<\\dfrac{\\sqrt2}2$．\n  \\item $\\dfrac\\pi3<\\theta<\\dfrac\\pi2$：$p>0$，$q>0$，$q-2p>0$ より $S=\\dfrac{\\sqrt2}2\\cos\\Bigl(\\theta-\\dfrac\\pi3\\Bigr)$ で，$\\dfrac{\\sqrt6}4<S<\\dfrac{\\sqrt2}2$．\n  \\item $\\dfrac\\pi2\\leqq\\theta\\leqq\\dfrac{5\\pi}6$，および $\\theta=-\\dfrac\\pi6$：$p\\leqq0\\leqq q$（$\\theta=-\\dfrac\\pi6$ では $q=0<p$）で (i) の場合．$\\dfrac\\pi2\\leqq\\theta\\leqq\\dfrac{5\\pi}6$ では $S=\\dfrac{\\sqrt2}2(q-p)=\\dfrac{\\sqrt2}2\\sin\\Bigl(\\theta-\\dfrac\\pi6\\Bigr)$，$\\theta-\\dfrac\\pi6\\in\\Bigl[\\dfrac\\pi3,\\dfrac{2\\pi}3\\Bigr]$ より $\\dfrac{\\sqrt6}4\\leqq S\\leqq\\dfrac{\\sqrt2}2$ で，$\\dfrac{\\sqrt6}4$ は $\\theta=\\dfrac\\pi2,\\dfrac{5\\pi}6$ でとる．$\\theta=-\\dfrac\\pi6$ では $S=\\dfrac{\\sqrt2}2\\cdot\\dfrac{\\sqrt3}2=\\dfrac{\\sqrt6}4$．\n\\end{itemize}\n以上より\n\\[\\text{最大値 }\\boldsymbol{\\frac{\\sqrt6}3}\\ \\Bigl(\\theta=\\frac\\pi6\\Bigr),\\qquad\\text{最小値 }\\boldsymbol{\\frac{\\sqrt6}4}\\ \\Bigl(\\theta=\\frac\\pi2,\\ \\frac{5\\pi}6\\Bigr).\\]\n最大のときは影が四角形，最小のときは影が三角形（$\\theta=\\dfrac\\pi2$ では B$'$ が辺A$'$D$'$上，$\\theta=\\dfrac{5\\pi}6$ では C$'$ が辺A$'$D$'$上）である．\\hfill$\\square$"
+   }
+  ],
+  "idea": {
+   "tex": "平行光線による影は正射影であり，凸な立体の影は頂点の像の凸包になる．回転軸を含む平面への射影では，軸上の2点の像は固定され，残りの頂点の像は「軸上の足の位置」は動かず「軸からの距離 $\\times\\cos$（回転角$-$位相）」だけが変わる．凸包の形（四角形か三角形か，軸の両側か片側か）で面積の式が切り替わるので，境目を三角関数の大小比較で求め，区間ごとに合成して最大・最小を調べる．"
+  },
+  "methods": [],
+  "tags": [
+   "正射影",
+   "凸包",
+   "回転",
+   "三角関数の合成",
+   "場合分け"
+  ],
+  "provenance": {
+   "created": "2026-11-10"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "C-VEC-347",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "C-18",
+  "level": 4,
+  "minutes": 35,
+  "theme": "どの2つのなす角も等しい空間ベクトルの組と四面体",
+  "topic": "どの2つのなす角も等しい空間ベクトルの組と四面体",
+  "statement": {
+   "tex": "空間内の零ベクトルでないベクトルの組で，どの2つも平行でなく，かつ，どの2つのなす角も等しいものを「等角な組」とよぶ．\n\\begin{enumerate}\n  \\item 4つのベクトル $\\vec a_1,\\vec a_2,\\vec a_3,\\vec a_4$ が等角な組であるとし，そのなす角を $\\theta$ とする．$\\cos\\theta=-\\dfrac13$ であり，さらに\n  \\[\n  \\frac{\\vec a_1}{|\\vec a_1|}+\\frac{\\vec a_2}{|\\vec a_2|}+\\frac{\\vec a_3}{|\\vec a_3|}+\\frac{\\vec a_4}{|\\vec a_4|}=\\vec0\n  \\]\n  が成り立つことを示せ．\n  \\item $n$ 個のベクトルからなる等角な組が存在するような正の整数 $n\\ (n\\geqq2)$ の最大値を求めよ．\n  \\item $\\vec a_1,\\vec a_2,\\vec a_3,\\vec a_4$ を等角な組とし，原点 O に対して $\\overrightarrow{\\mathrm{OA}_i}=\\vec a_i$，$r_i=|\\vec a_i|$ $(i=1,2,3,4)$ とする．四面体 $\\mathrm{A_1A_2A_3A_4}$ の体積 $V$ を $r_1,r_2,r_3,r_4$ で表せ．また，$r_1=1$，$r_2=2$，$r_3=3$，$r_4=4$ のときの $V$ の値を求めよ．\n  \\item (3) において $r_1+r_2+r_3+r_4=4$ であるとき，$V$ の最大値を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 証明　(2) $4$　(3) $V=\\dfrac{2\\sqrt3}{27}(r_2r_3r_4+r_1r_3r_4+r_1r_2r_4+r_1r_2r_3)$，$r_i=1,2,3,4$ のとき $V=\\dfrac{100\\sqrt3}{27}$　(4) $\\dfrac{8\\sqrt3}{27}$（$r_1=r_2=r_3=r_4=1$ のとき）"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "以下，等角な組 $\\vec a_1,\\dots,\\vec a_m$ に対して $\\vec u_i=\\dfrac{\\vec a_i}{|\\vec a_i|}$（単位ベクトル），$c=\\cos\\theta$ とおく．$\\vec u_i\\cdot\\vec u_j=c$ $(i\\neq j)$ である．どの2つも平行でないから $\\theta\\neq0,\\pi$，すなわち $c\\neq\\pm1$ である．\n\n(1) \\textbf{まず，実数 $\\lambda_1,\\dots,\\lambda_4$ で，少なくとも1つは0でなく $\\sum_{i=1}^4\\lambda_i\\vec u_i=\\vec0$ をみたすものが存在することを示す．}\n\n(i) $\\vec u_1,\\vec u_2,\\vec u_3$ が（始点を O にそろえたとき）同一平面上にないとき，空間ベクトルの基本定理より $\\vec u_4=x\\vec u_1+y\\vec u_2+z\\vec u_3$ となる実数 $x,y,z$ がある．$(\\lambda_1,\\lambda_2,\\lambda_3,\\lambda_4)=(x,y,z,-1)$ とすればよい．\n\n(ii) 同一平面上にあるとき，$\\vec u_1,\\vec u_2$ は平行でない零でないベクトルなので，その平面上のベクトル $\\vec u_3$ は $\\vec u_3=x\\vec u_1+y\\vec u_2$ と表せる．$(\\lambda_1,\\lambda_2,\\lambda_3,\\lambda_4)=(x,y,-1,0)$ とすればよい．\n\nこのような $\\lambda_i$ をとり，$\\Lambda=\\lambda_1+\\lambda_2+\\lambda_3+\\lambda_4$ とおく．$\\sum_i\\lambda_i\\vec u_i=\\vec0$ と $\\vec u_j$ との内積をとると，$|\\vec u_j|^2=1$，$\\vec u_i\\cdot\\vec u_j=c$ $(i\\neq j)$ より\n\\[\n\\lambda_j+c\\sum_{i\\neq j}\\lambda_i=0,\\quad\\text{すなわち}\\quad (1-c)\\lambda_j+c\\Lambda=0\\qquad(j=1,2,3,4).\n\\]\n$1-c\\neq0$ であるから $\\lambda_j=-\\dfrac{c\\Lambda}{1-c}$ となり，$\\lambda_1,\\lambda_2,\\lambda_3,\\lambda_4$ はすべて等しい．その共通の値を $\\lambda$ とすると，少なくとも1つは0でないので $\\lambda\\neq0$ である．このとき $\\Lambda=4\\lambda$ で，上式は\n\\[\n(1-c)\\lambda+4c\\lambda=0\\iff(1+3c)\\lambda=0\n\\]\nとなり，$\\lambda\\neq0$ より $c=-\\dfrac13$．すなわち $\\cos\\theta=-\\dfrac13$．\n\nまた $\\lambda(\\vec u_1+\\vec u_2+\\vec u_3+\\vec u_4)=\\vec0$，$\\lambda\\neq0$ より $\\vec u_1+\\vec u_2+\\vec u_3+\\vec u_4=\\vec0$，すなわち\n$\\displaystyle\\sum_{i=1}^4\\frac{\\vec a_i}{|\\vec a_i|}=\\vec0$．\\hfill$\\square$\n\n（なお，(ii) の場合には $\\lambda_4=0$ なので $\\lambda=0$ となり矛盾が生じる．したがって実際には (ii) の場合は起こらない．）\n\n(2) \\textbf{$n=4$ の組は存在する．} 例えば\n\\[\n\\vec a_1=(1,1,1),\\quad\\vec a_2=(1,-1,-1),\\quad\\vec a_3=(-1,1,-1),\\quad\\vec a_4=(-1,-1,1)\n\\]\nとすると，どれも大きさ $\\sqrt3$ で，異なる2つの内積はすべて $-1$ であるから，なす角の余弦はすべて $-\\frac13$ で等しい．また $\\cos\\neq\\pm1$ なのでどの2つも平行でない．（この4つのうち $k$ 個 $(k=2,3)$ をとれば $n=2,3$ の組も得られる．）\n\n\\textbf{$n\\geqq5$ の組は存在しない．} 等角な組 $\\vec a_1,\\dots,\\vec a_n$ $(n\\geqq5)$ があったとする．その中の任意の4つも等角な組であるから，(1) を $\\{\\vec a_1,\\vec a_2,\\vec a_3,\\vec a_4\\}$ と $\\{\\vec a_1,\\vec a_2,\\vec a_3,\\vec a_5\\}$ に用いると\n\\[\n\\vec u_1+\\vec u_2+\\vec u_3+\\vec u_4=\\vec0,\\qquad \\vec u_1+\\vec u_2+\\vec u_3+\\vec u_5=\\vec0 .\n\\]\n辺々引いて $\\vec u_4=\\vec u_5$ となり，$\\vec a_4$ と $\\vec a_5$ は平行になって矛盾する．\n\n以上より，求める最大値は $\\boldsymbol{4}$ である．\n\n(3) (1) より $c=-\\frac13$，$\\sin\\theta=\\sqrt{1-\\frac19}=\\frac{2\\sqrt2}3$，$\\vec u_1+\\vec u_2+\\vec u_3+\\vec u_4=\\vec0$ である．\n\n\\textbf{四面体 $\\mathrm{OA_2A_3A_4}$ の体積．} $\\vec w=\\vec u_4+\\frac12(\\vec u_2+\\vec u_3)$ とおくと\n\\[\n\\vec w\\cdot\\vec u_2=c+\\tfrac12(1+c)=-\\tfrac13+\\tfrac13=0,\\qquad \\vec w\\cdot\\vec u_3=0\\ (\\text{同様}),\n\\]\n\\[\n|\\vec w|^2=1+\\tfrac14(1+2c+1)+(\\vec u_4\\cdot\\vec u_2+\\vec u_4\\cdot\\vec u_3)=1+\\tfrac13-\\tfrac23=\\tfrac23 .\n\\]\nよって $\\vec w$ は $\\vec u_2,\\vec u_3$ の張る平面（平面 $\\mathrm{OA_2A_3}$）に垂直で，$|\\vec w|=\\sqrt{\\frac23}>0$．\n$\\overrightarrow{\\mathrm{OA_4}}=r_4\\vec w-\\frac{r_4}2(\\vec u_2+\\vec u_3)$ の第2項は平面 $\\mathrm{OA_2A_3}$ に平行であるから，$\\mathrm A_4$ と平面 $\\mathrm{OA_2A_3}$ の距離は $r_4|\\vec w|=r_4\\sqrt{\\frac23}$ である．また $\\triangle\\mathrm{OA_2A_3}=\\frac12r_2r_3\\sin\\theta=\\frac{\\sqrt2}3r_2r_3$．したがって\n\\[\nV_1:=(\\text{四面体 }\\mathrm{OA_2A_3A_4})=\\frac13\\cdot\\frac{\\sqrt2}3r_2r_3\\cdot r_4\\sqrt{\\frac23}=\\frac{2}{9\\sqrt3}r_2r_3r_4=\\frac{2\\sqrt3}{27}r_2r_3r_4>0 .\n\\]\n特に O，$\\mathrm A_2$，$\\mathrm A_3$，$\\mathrm A_4$ は同一平面上になく，O は平面 $\\alpha=\\mathrm{A_2A_3A_4}$ 上にない．\n\n\\textbf{$V$ と $V_1$ の関係．} $\\vec u_i=\\frac1{r_i}\\vec a_i$ より $\\displaystyle\\sum_{i=1}^4\\frac1{r_i}\\vec a_i=\\vec0$．$W=\\sum_{i=1}^4\\frac1{r_i}>0$，$w_i=\\dfrac{1/r_i}{W}>0$ とおくと\n\\[\nw_1\\vec a_1+w_2\\vec a_2+w_3\\vec a_3+w_4\\vec a_4=\\vec0,\\qquad w_1+w_2+w_3+w_4=1 .\n\\]\n$\\vec g=\\dfrac{w_2\\vec a_2+w_3\\vec a_3+w_4\\vec a_4}{1-w_1}$ で点 G を定めると，係数の和が1なので G は平面 $\\alpha$ 上にあり，上式は\n\\[\n\\vec0=w_1\\vec a_1+(1-w_1)\\vec g,\\quad\\text{すなわち}\\quad \\overrightarrow{\\mathrm{GO}}=w_1\\overrightarrow{\\mathrm{GA_1}}\n\\]\nを意味する．$\\alpha$ の単位法線ベクトル $\\vec e$ をとると，G が $\\alpha$ 上にあることから O，$\\mathrm A_1$ の $\\alpha$ からの距離はそれぞれ $|\\overrightarrow{\\mathrm{GO}}\\cdot\\vec e|$，$|\\overrightarrow{\\mathrm{GA_1}}\\cdot\\vec e|$ であり，前者は後者の $w_1$ 倍である．O は $\\alpha$ 上にないから $\\mathrm A_1$ も $\\alpha$ 上になく，四面体 $\\mathrm{A_1A_2A_3A_4}$ は確かに存在する．底面 $\\triangle\\mathrm{A_2A_3A_4}$ を共有するので $V_1=w_1V$．よって\n\\[\nV=\\frac{V_1}{w_1}=\\frac{2\\sqrt3}{27}r_2r_3r_4\\cdot r_1W\n=\\boldsymbol{\\frac{2\\sqrt3}{27}\\,(r_2r_3r_4+r_1r_3r_4+r_1r_2r_4+r_1r_2r_3)}.\n\\]\n$r_1=1,r_2=2,r_3=3,r_4=4$ のとき，かっこ内は $24+12+8+6=50$ なので $V=\\boldsymbol{\\dfrac{100\\sqrt3}{27}}$．\n\n（この値をとる組が実際に存在することは，(2) の例の単位ベクトルにそれぞれ $1,2,3,4$ を掛けたものでわかる．）\n\n(4) $s=r_1+r_2$，$t=r_3+r_4$ とおくと $s+t=4$，$s,t>0$．相加平均・相乗平均の関係より $r_1r_2\\leqq\\frac{s^2}4$，$r_3r_4\\leqq\\frac{t^2}4$ であるから\n\\[\nr_2r_3r_4+r_1r_3r_4+r_1r_2r_4+r_1r_2r_3=r_3r_4\\,s+r_1r_2\\,t\\leqq\\frac{t^2s}4+\\frac{s^2t}4=\\frac{st(s+t)}4=st\\leqq\\Bigl(\\frac{s+t}2\\Bigr)^2=4 .\n\\]\n等号は $r_1=r_2$，$r_3=r_4$，$s=t=2$，すなわち $r_1=r_2=r_3=r_4=1$ のときに成り立ち，このような等角な組は (2) の例を $\\frac1{\\sqrt3}$ 倍したもので実現する．よって (3) より\n\\[\nV\\leqq\\frac{2\\sqrt3}{27}\\cdot4=\\frac{8\\sqrt3}{27},\n\\]\n最大値は $\\boldsymbol{\\dfrac{8\\sqrt3}{27}}$（$r_1=r_2=r_3=r_4=1$ のとき）．\\hfill$\\square$"
+   }
+  ],
+  "idea": {
+   "tex": "空間の4つのベクトルは必ず1次従属である．単位ベクトル $\\vec u_i$ の間の関係式 $\\sum\\lambda_i\\vec u_i=\\vec0$ に各 $\\vec u_j$ を内積すると，なす角が等しいことから $\\lambda_j(1-c)+c\\sum\\lambda_i=0$（$c=\\cos\\theta$）となり，係数 $\\lambda_j$ がすべて等しいことが従う．これから $c=-\\frac13$，$\\sum\\vec u_i=\\vec0$ が決まり，5個以上は存在しない．$\\sum\\frac1{r_i}\\overrightarrow{\\mathrm{OA}_i}=\\vec0$ は原点が四面体の内部にあることを表し，1つの面までの高さの比から体積が $r_i$ の基本対称式で書ける．"
+  },
+  "methods": [],
+  "tags": [
+   "内積",
+   "1次独立",
+   "空間ベクトルの基本定理",
+   "四面体の体積",
+   "最大最小"
+  ],
+  "provenance": {
+   "created": "2026-11-10"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "C-VEC-348",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "C-18",
+  "level": 5,
+  "minutes": 35,
+  "theme": "交わる2直線の交点が乗る平面と双曲線",
+  "topic": "交わる2直線の交点が乗る平面と双曲線",
+  "statement": {
+   "tex": "$xyz$ 空間において，原点 O を中心とする $xy$ 平面上の半径1の円を $C$ とし，2点 $\\mathrm A(0,0,2)$，$\\mathrm B(1,0,1)$ をとる．\n\\begin{enumerate}\n  \\item 直線 AB と $xy$ 平面の交点 E の座標を求めよ．\n  \\item $C$ 上の点 $\\mathrm P(p,q,0)$ に対し，直線 EP と $C$ の共有点のうち P と異なるものを R とする（直線 EP が $C$ に接するときは $\\mathrm R=\\mathrm P$ とする）．R の座標を $p,q$ で表せ．\n  \\item 2直線 AP，BR が共有点をもつための $p$ の条件を求めよ．また，そのときの共有点 U の座標を $p,q$ で表せ．\n  \\item P が (3) の条件をみたしながら $C$ 上を動くとき，U はつねにある定平面 $\\pi$ 上にあることを示し，$\\pi$ の方程式を求めよ．さらに，U から $xy$ 平面に下ろした垂線の足 U$'$ が描く図形を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $\\mathrm E(2,0,0)$　(2) $\\mathrm R\\left(\\dfrac{4-5p}{5-4p},\\ \\dfrac{3q}{5-4p},\\ 0\\right)$　(3) $p\\neq-\\dfrac14$，$\\mathrm U\\left(\\dfrac{3p}{4p+1},\\ \\dfrac{3q}{4p+1},\\ \\dfrac{8p-4}{4p+1}\\right)$　(4) $\\pi:\\ z=8x-4$，U$'$ は $xy$ 平面上の双曲線 $25\\left(x-\\dfrac45\\right)^2-\\dfrac53y^2=1$ の全体"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) 直線 AB 上の点は $\\overrightarrow{\\mathrm{OA}}+t\\overrightarrow{\\mathrm{AB}}=(t,\\ 0,\\ 2-t)$ と表せる．$z=0$ より $t=2$ で，$\\boldsymbol{\\mathrm E(2,0,0)}$．\n\n(2) 以下 $p^2+q^2=1$ である．直線 EP 上の点は $(2+\\lambda(p-2),\\ \\lambda q,\\ 0)$ と表せ，これが $C$ 上にある条件は\n\\[\\{2+\\lambda(p-2)\\}^2+\\lambda^2q^2=1 .\\]\n$(p-2)^2+q^2=p^2+q^2-4p+4=5-4p$ を用いて整理すると\n\\[(5-4p)\\lambda^2+4(p-2)\\lambda+3=0 .\\]\n$|p|\\leqq1$ より $5-4p>0$ で，これは $\\lambda$ の2次方程式である．$\\lambda=1$（点 P）を代入すると $5-4p+4p-8+3=0$ だから $\\lambda=1$ は解であり，解と係数の関係から他方の解は $\\lambda=\\dfrac{3}{5-4p}$ である（2解が一致するのは EP が $C$ に接するときで，そのときもこの値は $1$ となり $\\mathrm R=\\mathrm P$ と一致する）．したがって\n\\[\\mathrm R=\\left(2+\\frac{3(p-2)}{5-4p},\\ \\frac{3q}{5-4p},\\ 0\\right)=\\boldsymbol{\\left(\\frac{4-5p}{5-4p},\\ \\frac{3q}{5-4p},\\ 0\\right)} .\\]\n\n(3) まず2直線 AP，BR は一致しない．実際，一致すれば A は直線 BR 上にあり，その直線は直線 AB に等しくなるが，直線 AB と $xy$ 平面の共有点は E だけで，$\\mathrm{OE}=2\\neq1$ より R $\\neq$ E だから矛盾である．よって共有点をもつことは，実数 $s,u$ で\n\\[\\overrightarrow{\\mathrm{OA}}+s(\\overrightarrow{\\mathrm{OP}}-\\overrightarrow{\\mathrm{OA}})=\\overrightarrow{\\mathrm{OB}}+u(\\overrightarrow{\\mathrm{OR}}-\\overrightarrow{\\mathrm{OB}})\\qquad\\cdots\\text{①}\\]\nをみたすものが存在することと同値である．左辺は $(sp,\\ sq,\\ 2-2s)$，右辺は，$\\dfrac{4-5p}{5-4p}-1=-\\dfrac{1+p}{5-4p}$ より\n\\[\\left(1-\\frac{u(1+p)}{5-4p},\\ \\frac{3uq}{5-4p},\\ 1-u\\right).\\]\n$z$ 成分から $u=2s-1$．これを $x$ 成分に代入して両辺に $5-4p$ を掛けると\n\\[sp(5-4p)=5-4p-(2s-1)(1+p)\\iff s(-4p^2+7p+2)=6-3p .\\]\n$-4p^2+7p+2=(4p+1)(2-p)$，$6-3p=3(2-p)$ であり，$p\\leqq1$ より $2-p>0$ だから\n\\[s(4p+1)=3 .\\qquad\\cdots\\text{②}\\]\n$y$ 成分は $sq(5-4p)=3q(2s-1)$，すなわち $q\\{s(5-4p)-6s+3\\}=q\\{3-s(4p+1)\\}=0$ であり，② のもとで自動的に成り立つ．\n\nよって，$4p+1\\neq0$ のときは $s=\\dfrac3{4p+1}$，$u=\\dfrac{5-4p}{4p+1}$ が ① をみたし共有点をもつ．$4p+1=0$ のときは ② をみたす $s$ がなく共有点をもたない（実際このとき $\\overrightarrow{\\mathrm{AP}}=\\left(-\\frac14,q,-2\\right)$，$\\overrightarrow{\\mathrm{BR}}=\\left(-\\frac18,\\frac q2,-1\\right)=\\frac12\\overrightarrow{\\mathrm{AP}}$ で，2直線は平行である）．求める条件は $\\boldsymbol{p\\neq-\\dfrac14}$ で，\n\\[\\mathrm U=(sp,\\ sq,\\ 2-2s)=\\boldsymbol{\\left(\\frac{3p}{4p+1},\\ \\frac{3q}{4p+1},\\ \\frac{8p-4}{4p+1}\\right)} .\\]\n\n(4) U $=(x,y,z)$ とすると\n\\[8x-z=\\frac{24p-(8p-4)}{4p+1}=\\frac{4(4p+1)}{4p+1}=4\\]\nであるから，U はつねに平面 $\\boldsymbol{\\pi:\\ z=8x-4}$ 上にある．\n\n次に U$'=(X,Y,0)$，$X=\\dfrac{3p}{4p+1}$，$Y=\\dfrac{3q}{4p+1}$ とする．第1式から $X(4p+1)=3p$，すなわち $p(3-4X)=X$．ここで $X=\\dfrac34$ とすると $3p+\\dfrac34=3p$ となり矛盾するから $X\\neq\\dfrac34$ で，\n\\[p=\\frac{X}{3-4X},\\qquad 4p+1=\\frac{3}{3-4X},\\qquad q=\\frac{Y(4p+1)}3=\\frac{Y}{3-4X} .\\]\n$p^2+q^2=1$ に代入すると $X^2+Y^2=(3-4X)^2$，すなわち $15X^2-24X+9-Y^2=0$．平方完成して\n\\[15\\left(X-\\frac45\\right)^2-Y^2=\\frac35\\iff 25\\left(X-\\frac45\\right)^2-\\frac53Y^2=1 .\\qquad\\cdots\\text{③}\\]\n逆に，③ をみたす任意の点 $(X,Y)$ をとる．$X=\\dfrac34$ なら ③ の左辺は $25\\cdot\\dfrac1{400}-\\dfrac53Y^2\\leqq\\dfrac1{16}<1$ となるので $X\\neq\\dfrac34$ である．$p=\\dfrac X{3-4X}$，$q=\\dfrac Y{3-4X}$ とおくと，③ は $X^2+Y^2=(3-4X)^2$ と同値だから $p^2+q^2=1$ で，点 $(p,q,0)$ は $C$ 上にある．また $4p+1=\\dfrac3{3-4X}\\neq0$ で，$\\dfrac{3p}{4p+1}=X$，$\\dfrac{3q}{4p+1}=Y$ となる．よって ③ のすべての点が U$'$ として現れる．\n\n以上より，U$'$ が描く図形は $xy$ 平面上の\\textbf{双曲線} $\\boldsymbol{25\\left(x-\\dfrac45\\right)^2-\\dfrac53y^2=1}$ \\textbf{の全体}である．\\hfill$\\square$"
+   }
+  ],
+  "idea": {
+   "tex": "平面 $z=0$ 上の点 P，R と平面外の点 A，B について，直線 AP と直線 BR が交わる $\\iff$ 4点 A，B，P，R が同一平面上 $\\iff$ 直線 PR が「直線 AB と平面 $z=0$ の交点 E」を通る．よって R は E を通る割線と円のもう1つの交点で，解と係数の関係から $p$ の1次分数式で表せる．交点 U の座標も $p,q$ の1次分数式となり，その間の1次の関係から U は定平面上にあり，その影は円の中心射影として双曲線を描く．"
+  },
+  "methods": [],
+  "tags": [
+   "空間の直線",
+   "同一平面",
+   "割線",
+   "解と係数の関係",
+   "中心射影",
+   "双曲線"
+  ],
+  "provenance": {
+   "created": "2026-11-10"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "C-VEC-349",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "C-18",
+  "level": 5,
+  "minutes": 40,
+  "theme": "球に辺が接する四面体の接線の長さの関係式",
+  "topic": "球に辺が接する四面体の接線の長さの関係式",
+  "statement": {
+   "tex": "$xyz$ 空間で，原点 O を中心とする半径1の球面を $S$ とする．$|\\overrightarrow{\\mathrm{OX}}|>1$ である点 X に対して $t(\\mathrm X)=\\sqrt{|\\overrightarrow{\\mathrm{OX}}|^2-1}$ とおく．以下，「線分 XY が $S$ に接する」とは，線分 XY と $S$ の共有点がちょうど1個であることをいう．\n\\begin{enumerate}\n  \\item $|\\overrightarrow{\\mathrm{OX}}|>1$，$|\\overrightarrow{\\mathrm{OY}}|>1$ である異なる2点 X，Y について，線分 XY が $S$ に接するための必要十分条件は\n  \\[\n  \\overrightarrow{\\mathrm{OX}}\\cdot\\overrightarrow{\\mathrm{OY}}=1-t(\\mathrm X)\\,t(\\mathrm Y)\n  \\]\n  であることを示せ．また，このとき $\\mathrm{XY}=t(\\mathrm X)+t(\\mathrm Y)$ であることを示せ．\n  \\item 四面体 $\\mathrm P_1\\mathrm P_2\\mathrm P_3\\mathrm P_4$ の4頂点はすべて $S$ の外部（$|\\overrightarrow{\\mathrm{OP}_i}|>1$）にあり，6本の辺はすべて $S$ に接しているとする．$k_i=\\dfrac1{t(\\mathrm P_i)}$（$i=1,2,3,4$）とおくとき，\n  \\[\n  (k_1+k_2+k_3+k_4)^2=2(k_1^2+k_2^2+k_3^2+k_4^2)+4\n  \\]\n  が成り立つことを示せ．\n  \\item (2) の条件をみたす四面体で，$t(\\mathrm P_1)=t(\\mathrm P_2)=t(\\mathrm P_3)=1$ であるものを考える．$t(\\mathrm P_4)$ としてありうる値をすべて求めよ．\n  \\item (2) の条件をみたす四面体で，$t(\\mathrm P_1)=t(\\mathrm P_2)=1$，$t(\\mathrm P_3)=t(\\mathrm P_4)$ であるものについて，$t(\\mathrm P_3)$ の値と四面体の体積を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 証明　(2) 証明　(3) $t(\\mathrm P_4)=3-2\\sqrt2,\\ 3+2\\sqrt2$　(4) $t(\\mathrm P_3)=2$，体積 $\\dfrac83$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "点 X の位置ベクトルを $\\vec x$ などと書き，$t(\\mathrm X)=t_{\\mathrm X}$ と略す．$|\\vec x|^2=1+t_{\\mathrm X}^2$ である．\n\n(1) 線分 XY 上の点は $(1-s)\\vec x+s\\vec y$（$0\\leqq s\\leqq1$）で，$1=\\{(1-s)+s\\}^2$ を用いると\n\\[\n|(1-s)\\vec x+s\\vec y|^2-1=t_{\\mathrm X}^2(1-s)^2+2(\\vec x\\cdot\\vec y-1)s(1-s)+t_{\\mathrm Y}^2s^2=:Q(s).\n\\]\n$Q(0)=t_{\\mathrm X}^2>0$，$Q(1)=t_{\\mathrm Y}^2>0$ なので，共有点は $0<s<1$ での $Q(s)=0$ の解に対応する．$0<s<1$ と $w=\\dfrac{1-s}s>0$ は1対1に対応し，$Q(s)=s^2q(w)$，\n\\[\nq(w)=t_{\\mathrm X}^2w^2+2(\\vec x\\cdot\\vec y-1)w+t_{\\mathrm Y}^2.\n\\]\nよって共有点の個数は $q(w)=0$ の正の解の個数に等しい．$q(w)=0$ が実数解をもつとき2解の積は $\\dfrac{t_{\\mathrm Y}^2}{t_{\\mathrm X}^2}>0$ で2解は同符号．したがって正の解がちょうど1個 $\\iff$ 重解をもちそれが正\n\\[\n\\iff(\\vec x\\cdot\\vec y-1)^2=t_{\\mathrm X}^2t_{\\mathrm Y}^2\\ \\text{かつ}\\ -\\frac{\\vec x\\cdot\\vec y-1}{t_{\\mathrm X}^2}>0\\iff\\vec x\\cdot\\vec y-1=-t_{\\mathrm X}t_{\\mathrm Y}.\n\\]\n（異なる2実数解のときは2解とも正か2解とも負なので，共有点は2個か0個．）このとき\n\\[\n\\mathrm{XY}^2=|\\vec x|^2+|\\vec y|^2-2\\vec x\\cdot\\vec y=(1+t_{\\mathrm X}^2)+(1+t_{\\mathrm Y}^2)-2+2t_{\\mathrm X}t_{\\mathrm Y}=(t_{\\mathrm X}+t_{\\mathrm Y})^2\n\\]\nで，$\\mathrm{XY}=t_{\\mathrm X}+t_{\\mathrm Y}$．\\hfill$\\square$\n\n(2) $\\vec p_i=\\overrightarrow{\\mathrm{OP}_i}$，$t_i=t(\\mathrm P_i)$ とおく．(1) より $i\\neq j$ で $\\vec p_i\\cdot\\vec p_j=1-t_it_j$，また $|\\vec p_i|^2=1+t_i^2$．\n\nまず，すべては $0$ でない実数 $\\lambda_1,\\dots,\\lambda_4$ で $\\sum\\lambda_i\\vec p_i=\\vec 0$ となるものがある．実際，$\\vec p_1,\\vec p_2,\\vec p_3$ が同一平面上にない（1次独立）なら $\\vec p_4=x\\vec p_1+y\\vec p_2+z\\vec p_3$ と表せ，$(\\lambda_i)=(x,y,z,-1)$ でよい．同一平面上にあるとき，$\\vec p_1\\neq\\vec 0$ と $\\vec p_2$ が平行なら $\\vec p_2=x\\vec p_1$ で $(x,-1,0,0)$，平行でなければ $\\vec p_3=x\\vec p_1+y\\vec p_2$ で $(x,y,-1,0)$ でよい．\n\n$\\Lambda=\\sum_i\\lambda_i$，$L=\\sum_i\\lambda_it_i$ とおく．$\\sum_i\\lambda_i\\vec p_i=\\vec 0$ と $\\vec p_j$ の内積をとると\n\\[\n\\lambda_j(1+t_j^2)+\\sum_{i\\neq j}\\lambda_i(1-t_it_j)=\\Lambda-t_j(L-\\lambda_jt_j)+\\lambda_jt_j^2=0\n\\]\nより $2\\lambda_jt_j^2=t_jL-\\Lambda$，すなわち\n\\[\n\\lambda_j=\\frac{Lk_j-\\Lambda k_j^2}2\\qquad(j=1,2,3,4).\n\\]\nこれを $L=\\sum\\lambda_jt_j$ に代入すると $L=\\sum_j\\dfrac{L-\\Lambda k_j}2=2L-\\dfrac{\\Lambda}2\\sum k_j$ で，$L=\\dfrac\\Lambda2\\sum k_j$．\nもし $\\Lambda=0$ なら $L=0$ となり，すべての $\\lambda_j=0$ で矛盾．よって $\\Lambda\\neq0$．$\\Lambda=\\sum\\lambda_j$ に代入すると\n\\[\n\\Lambda=\\frac{L\\sum k_j-\\Lambda\\sum k_j^2}2=\\frac\\Lambda2\\left\\{\\frac{(\\sum k_j)^2}2-\\sum k_j^2\\right\\}.\n\\]\n$\\Lambda\\neq0$ で割って $(\\sum k_j)^2=2\\sum k_j^2+4$．\\hfill$\\square$\n\n(3) $t(\\mathrm P_4)=t$，$k=\\dfrac1t$ とすると (2) より $(3+k)^2=2(3+k^2)+4$，$k^2-6k+1=0$，$k=3\\pm2\\sqrt2$（ともに正）．$t=\\dfrac1k=3\\mp2\\sqrt2$．\n\n逆に，両方とも実現できることを示す．$\\mathrm P_1(\\sqrt2,0,0)$，$\\mathrm P_2(0,\\sqrt2,0)$，$\\mathrm P_3(0,0,\\sqrt2)$ とすると $|\\vec p_i|^2=2$ で $t_i=1$，$\\vec p_i\\cdot\\vec p_j=0=1-1\\cdot1$．$\\mathrm P_4(\\sigma,\\sigma,\\sigma)$ とおく．\n\\begin{itemize}\n  \\item $t=3-2\\sqrt2$：$\\sigma=2-\\sqrt2$．$|\\vec p_4|^2=3(6-4\\sqrt2)=18-12\\sqrt2=1+(17-12\\sqrt2)=1+t^2$ で $t(\\mathrm P_4)=t$，$\\vec p_i\\cdot\\vec p_4=\\sqrt2\\sigma=2\\sqrt2-2=1-t$．\n  \\item $t=3+2\\sqrt2$：$\\sigma=-(2+\\sqrt2)$．$|\\vec p_4|^2=18+12\\sqrt2=1+t^2$，$\\vec p_i\\cdot\\vec p_4=-2\\sqrt2-2=1-t$．\n\\end{itemize}\nどちらも $3\\sigma\\neq\\sqrt2$ なので $\\mathrm P_4$ は平面 $x+y+z=\\sqrt2$（$\\mathrm P_1,\\mathrm P_2,\\mathrm P_3$ を含む平面）上になく四面体ができ，4頂点は $S$ の外部にある．(1) よりすべての辺が $S$ に接する．答 $\\boldsymbol{t(\\mathrm P_4)=3-2\\sqrt2,\\ 3+2\\sqrt2}$．\n\n(4) $t(\\mathrm P_3)=t(\\mathrm P_4)=t$，$k=\\dfrac1t$ とすると $(2+2k)^2=2(2+2k^2)+4$ より $8k=4$，$k=\\dfrac12$，$\\boldsymbol{t(\\mathrm P_3)=2}$．\n実際，$\\mathrm P_1(1,1,0)$，$\\mathrm P_2(1,-1,0)$，$\\mathrm P_3(-1,0,2)$，$\\mathrm P_4(-1,0,-2)$ は $t=1,1,2,2$ で，\n$\\vec p_1\\cdot\\vec p_2=0=1-1$，$\\vec p_3\\cdot\\vec p_4=-3=1-4$，$\\vec p_i\\cdot\\vec p_j=-1=1-2$（$i\\in\\{1,2\\}$，$j\\in\\{3,4\\}$）なので (1) より条件をみたす（$\\mathrm P_3,\\mathrm P_4$ は平面 $z=0$ の両側にあり四面体ができる）．\n\n体積：(1) より，どのような四面体でも辺の長さは $\\mathrm P_1\\mathrm P_2=2$，$\\mathrm P_3\\mathrm P_4=4$，残りの4辺は $3$ である．$\\mathrm P_1\\mathrm P_2$ の中点を M とすると，$\\mathrm P_3\\mathrm P_1=\\mathrm P_3\\mathrm P_2$ より $\\mathrm{MP}_3\\perp\\mathrm P_1\\mathrm P_2$，同様に $\\mathrm{MP}_4\\perp\\mathrm P_1\\mathrm P_2$．$\\mathrm{MP}_3=\\mathrm{MP}_4=\\sqrt{9-1}=2\\sqrt2$，$\\mathrm P_3\\mathrm P_4=4<4\\sqrt2$ より $\\triangle\\mathrm{MP}_3\\mathrm P_4$ は三角形で，$\\mathrm P_1\\mathrm P_2$ はその平面に垂直．面積は，$\\mathrm P_3\\mathrm P_4$ への高さが $\\sqrt{8-4}=2$ なので $\\frac12\\cdot4\\cdot2=4$．四面体はこの平面で2つの三角錐（高さ $\\mathrm{MP}_1=\\mathrm{MP}_2=1$）に分かれるので，体積は $2\\cdot\\dfrac13\\cdot4\\cdot1=\\boldsymbol{\\dfrac83}$．"
+   }
+  ],
+  "idea": {
+   "tex": "球面 $|\\vec x|=1$ の外の点 X からの接線の長さを $t_{\\mathrm X}=\\sqrt{|\\overrightarrow{\\mathrm{OX}}|^2-1}$ とすると，線分 XY 上の点 $(1-s)\\mathrm X+s\\mathrm Y$ について $|\\cdot|^2-1=t_{\\mathrm X}^2(1-s)^2+2(\\overrightarrow{\\mathrm{OX}}\\cdot\\overrightarrow{\\mathrm{OY}}-1)s(1-s)+t_{\\mathrm Y}^2s^2$ と同次式になり，「線分が球面に接する」$\\iff\\overrightarrow{\\mathrm{OX}}\\cdot\\overrightarrow{\\mathrm{OY}}=1-t_{\\mathrm X}t_{\\mathrm Y}$，このとき $\\mathrm{XY}=t_{\\mathrm X}+t_{\\mathrm Y}$．原題は辺がすべて球に接する格子点の四面体を1つ見つけさせたが，ここでは4本の位置ベクトルの1次従属な関係式とこの内積の条件を組み合わせ，接線の長さの逆数 $k_i$ が $(\\sum k_i)^2=2\\sum k_i^2+4$ をみたすこと（デカルトの円定理の類似）を導き，接線の長さの決定と存在の確認をさせる．"
+  },
+  "methods": [],
+  "tags": [
+   "球と直線の接触",
+   "接線の長さ",
+   "内積",
+   "1次従属",
+   "必要十分"
+  ],
+  "provenance": {
+   "created": "2026-11-10"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "C-VEC-350",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "C-18",
+  "level": 4,
+  "minutes": 30,
+  "theme": "空間の隠れた正規直交基底と球の一部",
+  "topic": "空間の隠れた正規直交基底と球の一部",
+  "statement": {
+   "tex": "空間内の4点 O，A，B，C が\n\\[\n|2\\overrightarrow{\\mathrm{OA}}+\\overrightarrow{\\mathrm{OB}}+\\overrightarrow{\\mathrm{OC}}|=|\\overrightarrow{\\mathrm{OA}}+2\\overrightarrow{\\mathrm{OB}}+\\overrightarrow{\\mathrm{OC}}|=|\\overrightarrow{\\mathrm{OA}}+\\overrightarrow{\\mathrm{OB}}+2\\overrightarrow{\\mathrm{OC}}|=1\n\\]\nおよび\n\\[\n(2\\overrightarrow{\\mathrm{OA}}+\\overrightarrow{\\mathrm{OB}}+\\overrightarrow{\\mathrm{OC}})\\cdot\\vec s=(\\overrightarrow{\\mathrm{OA}}+2\\overrightarrow{\\mathrm{OB}}+\\overrightarrow{\\mathrm{OC}})\\cdot\\vec s=(\\overrightarrow{\\mathrm{OA}}+\\overrightarrow{\\mathrm{OB}}+2\\overrightarrow{\\mathrm{OC}})\\cdot\\vec s=\\frac14\n\\]\nをみたすとする．ただし $\\vec s=\\overrightarrow{\\mathrm{OA}}+\\overrightarrow{\\mathrm{OB}}+\\overrightarrow{\\mathrm{OC}}$ である．\n\\begin{enumerate}\n  \\item 内積 $(2\\overrightarrow{\\mathrm{OA}}+\\overrightarrow{\\mathrm{OB}}+\\overrightarrow{\\mathrm{OC}})\\cdot(\\overrightarrow{\\mathrm{OA}}+2\\overrightarrow{\\mathrm{OB}}+\\overrightarrow{\\mathrm{OC}})$ と $|\\vec s|$ を求めよ．\n  \\item 空間内の点 P が\n  \\[\n  |\\overrightarrow{\\mathrm{OP}}-\\vec s|\\leqq\\frac14,\\qquad\n  \\overrightarrow{\\mathrm{OP}}\\cdot(2\\overrightarrow{\\mathrm{OA}}+\\overrightarrow{\\mathrm{OB}}+\\overrightarrow{\\mathrm{OC}})\\geqq\\frac14,\\qquad\n  \\overrightarrow{\\mathrm{OP}}\\cdot(\\overrightarrow{\\mathrm{OA}}+2\\overrightarrow{\\mathrm{OB}}+\\overrightarrow{\\mathrm{OC}})\\leqq\\frac14\n  \\]\n  をみたしながら動くとき，$|\\overrightarrow{\\mathrm{OP}}|$ の最大値と最小値を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 内積 $0$，$|\\vec s|=\\dfrac{\\sqrt3}4$　(2) 最大値 $\\dfrac{\\sqrt{4+2\\sqrt2}}4$，最小値 $\\dfrac{\\sqrt{4-2\\sqrt2}}4$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "$\\vec a=\\overrightarrow{\\mathrm{OA}}$ などと書き，$\\vec u=2\\vec a+\\vec b+\\vec c$，$\\vec v=\\vec a+2\\vec b+\\vec c$，$\\vec w=\\vec a+\\vec b+2\\vec c$ とおく．$\\vec u+\\vec v+\\vec w=4\\vec s$ である．\n\n(1) $|\\vec u|=|\\vec v|=|\\vec w|=1$ と $p=\\vec v\\cdot\\vec w$，$q=\\vec w\\cdot\\vec u$，$r=\\vec u\\cdot\\vec v$ を用いると\n\\[\n\\vec u\\cdot\\vec s=\\frac{\\vec u\\cdot(\\vec u+\\vec v+\\vec w)}4=\\frac{1+r+q}4\n\\]\nで，これが $\\frac14$ だから $q+r=0$．同様に $\\vec v\\cdot\\vec s=\\frac14$ から $r+p=0$，$\\vec w\\cdot\\vec s=\\frac14$ から $p+q=0$．3式を加えて $p+q+r=0$，したがって $p=q=r=0$．よって\n\\[\n(2\\overrightarrow{\\mathrm{OA}}+\\overrightarrow{\\mathrm{OB}}+\\overrightarrow{\\mathrm{OC}})\\cdot(\\overrightarrow{\\mathrm{OA}}+2\\overrightarrow{\\mathrm{OB}}+\\overrightarrow{\\mathrm{OC}})=\\boldsymbol{0}.\n\\]\nまた $|\\vec s|^2=\\dfrac{|\\vec u+\\vec v+\\vec w|^2}{16}=\\dfrac{1+1+1+2(p+q+r)}{16}=\\dfrac3{16}$ より $|\\vec s|=\\boldsymbol{\\dfrac{\\sqrt3}4}$．\n\n(2) $\\vec u,\\vec v,\\vec w$ は互いに垂直な単位ベクトルである．これらは同一平面上にない：もし $\\vec w=\\alpha\\vec u+\\beta\\vec v$ と書けたとすると，両辺と $\\vec w$ の内積をとって $1=0$ となり矛盾（$\\vec u,\\vec v$ は平行でない）．よって空間の任意のベクトルはただ1通りに $x\\vec u+y\\vec v+z\\vec w$ と表せ，内積をとると $x=\\vec p\\cdot\\vec u$ などで，$|x\\vec u+y\\vec v+z\\vec w|^2=x^2+y^2+z^2$ である．\n\n$\\overrightarrow{\\mathrm{OP}}=x\\vec u+y\\vec v+z\\vec w$ とおくと，$\\vec s=\\frac14(\\vec u+\\vec v+\\vec w)$ だから条件は\n\\[\n\\left(x-\\tfrac14\\right)^2+\\left(y-\\tfrac14\\right)^2+\\left(z-\\tfrac14\\right)^2\\leqq\\frac1{16},\\qquad x\\geqq\\frac14,\\qquad y\\leqq\\frac14\n\\]\nとなる．$X=x-\\frac14$，$Y=y-\\frac14$，$Z=z-\\frac14$ とおくと $X^2+Y^2+Z^2\\leqq\\frac1{16}$，$X\\geqq0$，$Y\\leqq0$ で，\n\\[\n|\\overrightarrow{\\mathrm{OP}}|^2=x^2+y^2+z^2=X^2+Y^2+Z^2+\\frac{X+Y+Z}2+\\frac3{16}.\n\\]\n\n\\textbf{最大値．}$Y\\leqq0$ と $(X+Z)^2\\leqq2(X^2+Z^2)$ より\n\\[\nX+Y+Z\\leqq X+Z\\leqq\\sqrt{2(X^2+Z^2)}\\leqq\\sqrt{2\\cdot\\tfrac1{16}}=\\frac{\\sqrt2}4,\n\\]\nよって $|\\overrightarrow{\\mathrm{OP}}|^2\\leqq\\dfrac1{16}+\\dfrac{\\sqrt2}8+\\dfrac3{16}=\\dfrac{4+2\\sqrt2}{16}$．\n等号は $Y=0$，$X=Z=\\dfrac{\\sqrt2}8$ のときで，これは $X\\geqq0$，$Y\\leqq0$，$X^2+Y^2+Z^2=\\frac1{16}$ をみたす．最大値は $\\boldsymbol{\\dfrac{\\sqrt{4+2\\sqrt2}}4}$．\n\n\\textbf{最小値．}$x\\geqq\\frac14$ より $x^2\\geqq\\frac1{16}$．また $(y-\\frac14)^2+(z-\\frac14)^2\\leqq\\frac1{16}-X^2\\leqq\\frac1{16}$ なので，$yz$ 平面で点 $Q(y,z)$ は中心 $\\mathrm M(\\frac14,\\frac14)$，半径 $\\frac14$ の円板内にあり，三角不等式から\n\\[\n\\sqrt{y^2+z^2}=|\\overrightarrow{\\mathrm{O'Q}}|\\geqq|\\overrightarrow{\\mathrm{O'M}}|-|\\overrightarrow{\\mathrm{MQ}}|\\geqq\\frac{\\sqrt2}4-\\frac14=\\frac{\\sqrt2-1}4>0\n\\]\n（$\\mathrm O'$ は $yz$ 平面の原点）．よって\n\\[\n|\\overrightarrow{\\mathrm{OP}}|^2\\geqq\\frac1{16}+\\frac{(\\sqrt2-1)^2}{16}=\\frac{4-2\\sqrt2}{16}.\n\\]\n等号は $x=\\frac14$，$y=z=\\dfrac{2-\\sqrt2}8$ のときで，$(y-\\frac14)^2+(z-\\frac14)^2=2\\cdot\\frac2{64}=\\frac1{16}$，$x\\geqq\\frac14$，$y\\leqq\\frac14$ をみたす．最小値は $\\boldsymbol{\\dfrac{\\sqrt{4-2\\sqrt2}}4}$．"
+   }
+  ],
+  "idea": {
+   "tex": "与えられた式の組合せ $\\vec u=2\\vec a+\\vec b+\\vec c$ などが正規直交基底になっていることを，$\\vec u+\\vec v+\\vec w=4(\\vec a+\\vec b+\\vec c)$ を使って内積の連立方程式から見抜く．その基底で座標を入れると条件は「球と2つの半空間の共通部分」になり，$|\\overrightarrow{\\mathrm{OP}}|$ の最小は平面上の円板と原点の距離（三角不等式），最大は中心からのずれの1次式をコーシー・シュワルツ型の評価で押さえる．"
+  },
+  "methods": [],
+  "tags": [
+   "正規直交基底",
+   "内積",
+   "座標の導入",
+   "球と半空間",
+   "距離の最大最小"
+  ],
+  "provenance": {
+   "created": "2026-11-10"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "C-VEC-351",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "C-18",
+  "level": 4,
+  "minutes": 35,
+  "theme": "2つの球に外接して平面に乗る球の中心の描く楕円",
+  "topic": "2つの球に外接して平面に乗る球の中心の描く楕円",
+  "statement": {
+   "tex": "座標空間において，$xy$ 平面を $\\alpha$ とし，$z\\geqq0$ の側に置かれた球だけを考える．球 $S_1$ は半径 $1$ で原点 O において $\\alpha$ に接し，球 $S_2$ は半径 $4$ で $x$ 軸の正の部分の点 $\\mathrm{P}_2$ において $\\alpha$ に接している．さらに $S_1$ と $S_2$ は外接している．\n\\begin{enumerate}\n  \\item $\\mathrm P_2$ の座標を求めよ．\n  \\item $\\alpha$ に接し，$S_1$ と $S_2$ の両方に外接する球を $T$ とし，$T$ と $\\alpha$ の接点を P とする．このような $T$ すべてについての P 全体の集合は1つの円であることを示し，その中心と半径を求めよ．\n  \\item (2) の $T$ すべてについて，その中心は1つの平面上にあることを示し，その平面の方程式を求めよ．また，$T$ の半径のとりうる値の範囲を求めよ．\n  \\item (2) の $T$ すべてについての中心全体がつくる曲線で囲まれた，(3) の平面上の部分の面積を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $\\mathrm P_2(4,0,0)$　(2) 中心 $\\left(-\\dfrac43,0,0\\right)$，半径 $\\dfrac83$ の（$\\alpha$ 上の）円　(3) 平面 $2x+3z=4$，半径の範囲 $\\dfrac49\\leqq r\\leqq4$　(4) $\\dfrac{64\\sqrt{13}}{27}\\pi$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "一般に，$\\alpha$ に接する半径 $r,s$ の2球の接点を Q，R とすると，中心は Q，R の真上の高さ $r,s$ の点なので，中心間の距離の2乗は $\\mathrm{QR}^2+(r-s)^2$．2球が外接する $\\iff\\mathrm{QR}^2+(r-s)^2=(r+s)^2\\iff\\mathrm{QR}^2=4rs$．\\hfill$(\\ast)$\n\n(1) $(\\ast)$ より $\\mathrm{OP}_2^2=4\\cdot1\\cdot4=16$，$\\mathrm{OP}_2=4$．$\\boldsymbol{\\mathrm P_2(4,0,0)}$．\n\n(2) $T$ の半径を $r$，P$(x,y,0)$ とする．$(\\ast)$ より\n\\[\nT\\ \\text{が}\\ S_1,S_2\\ \\text{に外接}\\iff x^2+y^2=4r\\ \\text{かつ}\\ (x-4)^2+y^2=16r.\\qquad\\cdots\\text{①}\n\\]\n① から $r$ を消去すると $(x-4)^2+y^2=4(x^2+y^2)$，すなわち $3x^2+3y^2+8x-16=0$，\n\\[\n\\left(x+\\frac43\\right)^2+y^2=\\frac{64}9.\\qquad\\cdots\\text{②}\n\\]\nよって P は ② の円上にある．逆に P$(x,y,0)$ が ② 上にあるとき，O$(0,0)$ は ② をみたさない（$\\frac{16}9\\neq\\frac{64}9$）ので $r=\\dfrac{x^2+y^2}4>0$ と定めることができ，② から $(x-4)^2+y^2=4(x^2+y^2)=16r$ となって ① が成り立つ．すなわち P で $\\alpha$ に接する半径 $r$ の球は $S_1,S_2$ に外接する．\nしたがって P 全体は $\\alpha$ 上の \\textbf{中心 $\\boldsymbol{\\left(-\\frac43,0,0\\right)}$，半径 $\\boldsymbol{\\frac83}$ の円} である．\n\n(3) ② より $x^2+y^2=\\frac{16-8x}3$ なので $r=\\dfrac{x^2+y^2}4=\\dfrac{4-2x}3$．$T$ の中心は $(x,y,r)$ だから，中心はすべて平面 $\\boldsymbol{2x+3z=4}$ 上にある．\n② 上で $x$ は $-4\\leqq x\\leqq\\frac43$ の値をすべてとるので，$r=\\frac{4-2x}3$ は $\\boldsymbol{\\frac49\\leqq r\\leqq4}$ の値をすべてとる（最小は $x=\\frac43$，最大は $x=-4$ のとき）．\n\n(4) ② 上の点は $x=-\\frac43+\\frac83\\cos\\theta$，$y=\\frac83\\sin\\theta$（$0\\leqq\\theta<2\\pi$）と1対1に表され，このとき $r=\\frac{4-2x}3=\\frac{20}9-\\frac{16}9\\cos\\theta$．よって中心は\n\\[\n\\overrightarrow{\\mathrm{OC}}=\\overrightarrow{\\mathrm{OK}}+\\cos\\theta\\,\\vec u+\\sin\\theta\\,\\vec w,\\quad\n\\mathrm K\\left(-\\frac43,0,\\frac{20}9\\right),\\ \\vec u=\\left(\\frac83,0,-\\frac{16}9\\right),\\ \\vec w=\\left(0,\\frac83,0\\right).\n\\]\n$\\vec u\\cdot\\vec w=0$，$|\\vec u|=\\sqrt{\\frac{64}9+\\frac{256}{81}}=\\frac{\\sqrt{832}}9=\\frac{8\\sqrt{13}}9$，$|\\vec w|=\\frac83$．平面 $2x+3z=4$ 上に K を原点とし，単位ベクトル $\\frac{\\vec u}{|\\vec u|}$，$\\frac{\\vec w}{|\\vec w|}$ の向きを軸とする直交座標 $(X,Y)$ を入れると（$\\vec u,\\vec w$ はともにこの平面に平行：$2\\cdot\\frac83+3\\cdot\\left(-\\frac{16}9\\right)=0$），中心は $(X,Y)=(|\\vec u|\\cos\\theta,|\\vec w|\\sin\\theta)$ を描く．これは楕円\n\\[\n\\frac{X^2}{|\\vec u|^2}+\\frac{Y^2}{|\\vec w|^2}=1\n\\]\n全体であり，囲む面積は $\\pi|\\vec u||\\vec w|=\\pi\\cdot\\frac{8\\sqrt{13}}9\\cdot\\frac83=\\boldsymbol{\\frac{64\\sqrt{13}}{27}\\pi}$．"
+   }
+  ],
+  "idea": {
+   "tex": "平面に乗った半径 $r,s$ の2球が外接する $\\iff$ 接点間の距離が $2\\sqrt{rs}$．第3の球の接点 P について $\\mathrm{PP}_1^2=4r$，$\\mathrm{PP}_2^2=4r\\cdot\\frac{r_2}{r_1}$ で，比 $\\mathrm{PP}_1:\\mathrm{PP}_2$ は $r$ によらずアポロニウスの円になる．さらに $r=\\frac{\\mathrm{PP}_1^2}{4r_1}$ は円周上では P の座標の1次式（円の方程式で2次の項が消える）なので，中心は1つの平面上にあり，円柱との交わりとして楕円を描く．"
+  },
+  "methods": [],
+  "tags": [
+   "球の接触",
+   "接点間の距離",
+   "アポロニウスの円",
+   "平面の方程式",
+   "楕円の面積"
+  ],
+  "provenance": {
+   "created": "2026-11-10"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "C-VEC-352",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "C-18",
+  "level": 4,
+  "minutes": 35,
+  "theme": "四面体の切り口が円に内接する条件（辺の延長上の定点）",
+  "topic": "四面体の切り口が円に内接する条件（辺の延長上の定点）",
+  "statement": {
+   "tex": "座標空間に5点\n\\[\n\\mathrm O(0,0,0),\\quad \\mathrm A(2,0,0),\\quad \\mathrm B(0,2,0),\\quad \\mathrm C(0,0,2),\\quad \\mathrm P(3,-1,0)\n\\]\nをとる．$0<a<2$，$0<u<2$ に対して2点 $\\mathrm Q(a,0,0)$，$\\mathrm T(2-u,0,u)$ を考え，3点 P，Q，T を通る平面を H とする．\n\\begin{enumerate}\n  \\item 平面 H は辺 OB，辺 BC と，それぞれ両端以外のただ1点 R，S で交わることを示し，R，S の座標を $a,u$ で表せ．\n  \\item 4点 Q，R，S，T が同一円周上にあるための必要十分条件を，$a,u$ の等式で表せ．\n  \\item $a$ を $0<a<2$ の範囲で1つ定めるごとに，(2) の条件をみたす $u$ $(0<u<2)$ がただ1つ存在することを示せ．また，$a$ が $0<a<2$ の範囲を動くとき，その $u$ のとりうる値の範囲を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $\\mathrm R\\left(0,\\dfrac{a}{3-a},0\\right)$，$\\mathrm S\\left(0,\\dfrac{2-u}{1+u},\\dfrac{3u}{1+u}\\right)$　(2) $(3-a)+\\dfrac1{3-a}=2u+\\dfrac2{1+u}$　(3) 証明，$0<u<\\dfrac{1+\\sqrt7}3$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) 点 P は直線 AB 上にある．実際 $\\overrightarrow{\\mathrm{AP}}=(1,-1,0)=-\\dfrac12\\overrightarrow{\\mathrm{AB}}$．また平面 ABC の方程式は $x+y+z=2$ で，P も T もこの上にある．\n\n\\textbf{R について．}Q，P はともに平面 $z=0$ 上にあり，T は $z=u>0$ なので H は平面 $z=0$ と一致しない．よって H と平面 $z=0$ の共通部分は直線 PQ であり，H と辺 OB（平面 $z=0$ 上）の共有点は直線 PQ と辺 OB の共有点である．直線 PQ 上の点は\n\\[\n\\overrightarrow{\\mathrm{OP}}+s\\overrightarrow{\\mathrm{PQ}}=(3-s(3-a),\\,-1+s,\\,0)\n\\]\nで，$x=0$ となるのは $s=\\dfrac3{3-a}$ のときのみ，そのとき $y=-1+\\dfrac3{3-a}=\\dfrac a{3-a}$．$0<a<2$ より $0<\\dfrac a{3-a}<\\dfrac21=2$ なので，これは辺 OB の両端以外の点で，\n\\[\n\\boldsymbol{\\mathrm R\\left(0,\\ \\frac a{3-a},\\ 0\\right)}．\n\\]\n\n\\textbf{S について．}Q は $x+y+z=a<2$ なので平面 ABC 上になく，H は平面 ABC と一致しない．P，T は両平面の上にあるので，H と平面 ABC の共通部分は直線 PT であり，H と辺 BC の共有点は直線 PT と辺 BC の共有点である．直線 PT 上の点は\n\\[\n\\overrightarrow{\\mathrm{OP}}+s\\overrightarrow{\\mathrm{PT}}=(3-s(1+u),\\,-1+s,\\,su)\n\\]\nで，$x=0$ となるのは $s=\\dfrac3{1+u}$ のときのみ，そのとき\n\\[\n\\boldsymbol{\\mathrm S\\left(0,\\ \\frac{2-u}{1+u},\\ \\frac{3u}{1+u}\\right)}．\n\\]\n$0<u<2$ よりこの $y$ 座標，$z$ 座標は正で和は2なので，S は辺 BC の両端以外の点である．\n\n(2) 4点は平面 H 上にある．(1) より，直線 PQ 上で $\\overrightarrow{\\mathrm{PR}}=\\dfrac3{3-a}\\overrightarrow{\\mathrm{PQ}}$，直線 PT 上で $\\overrightarrow{\\mathrm{PS}}=\\dfrac3{1+u}\\overrightarrow{\\mathrm{PT}}$ で，係数はともに1より大きい．よって Q は線分 PR 上（R と異なる），T は線分 PS 上（S と異なる）にあり，2直線 PQR，PTS は P で交わる異なる直線である（T は $z>0$ なので直線 PQ 上にない）．\n\\[\n\\mathrm{PQ}^2=(3-a)^2+1,\\qquad \\mathrm{PQ}\\cdot\\mathrm{PR}=\\frac3{3-a}\\mathrm{PQ}^2=\\frac{3\\{(3-a)^2+1\\}}{3-a},\n\\]\n\\[\n\\mathrm{PT}^2=(1+u)^2+1+u^2=2(u^2+u+1),\\qquad \\mathrm{PT}\\cdot\\mathrm{PS}=\\frac3{1+u}\\mathrm{PT}^2=\\frac{6(u^2+u+1)}{1+u}．\n\\]\n\n\\textbf{必要性．}4点が同一円周上にあれば，その円は3点 Q，R，T を含む平面 H 上にある．P から引いた2本の割線について方べきの定理より $\\mathrm{PQ}\\cdot\\mathrm{PR}=\\mathrm{PT}\\cdot\\mathrm{PS}$．\n\n\\textbf{十分性．}$\\mathrm{PQ}\\cdot\\mathrm{PR}=\\mathrm{PT}\\cdot\\mathrm{PS}$ とすると $\\dfrac{\\mathrm{PQ}}{\\mathrm{PT}}=\\dfrac{\\mathrm{PS}}{\\mathrm{PR}}$．Q と R，T と S はそれぞれ P から見て同じ向きにあるので $\\angle\\mathrm{QPS}=\\angle\\mathrm{TPR}$ で，$\\triangle\\mathrm{PQS}\\sim\\triangle\\mathrm{PTR}$（2辺の比とその間の角）．よって $\\angle\\mathrm{PQS}=\\angle\\mathrm{PTR}$ で，\n\\[\n\\angle\\mathrm{RQS}=\\pi-\\angle\\mathrm{PQS}=\\pi-\\angle\\mathrm{PTR}=\\angle\\mathrm{STR}．\n\\]\nQ は線分 PR 上の R 以外の点，T は線分 PS 上の S 以外の点で，P は直線 RS 上にない（直線 PR と PS は異なる）から，Q，T はどちらも直線 RS に関して P と同じ側にある．円周角の定理の逆より Q，T，R，S は同一円周上にある．\n\nしたがって求める条件は $\\dfrac{3\\{(3-a)^2+1\\}}{3-a}=\\dfrac{6(u^2+u+1)}{1+u}$，すなわち $\\dfrac{6(u^2+u+1)}{1+u}=6\\left(u+\\dfrac1{1+u}\\right)$ に注意して\n\\[\n\\boldsymbol{(3-a)+\\frac1{3-a}=2u+\\frac2{1+u}}．\n\\]\n\n(3) $\\varphi(p)=p+\\dfrac1p$（$1<p<3$），$\\psi(u)=2u+\\dfrac2{1+u}$（$0<u<2$）とおく．$1<p_1<p_2$ のとき\n\\[\n\\varphi(p_2)-\\varphi(p_1)=(p_2-p_1)\\left(1-\\frac1{p_1p_2}\\right)>0,\n\\]\n$0\\leqq u_1<u_2$ のとき\n\\[\n\\psi(u_2)-\\psi(u_1)=(u_2-u_1)\\left(2-\\frac2{(1+u_1)(1+u_2)}\\right)>0\n\\]\nなので，$\\varphi$ は $1<p<3$ で，$\\psi$ は $0\\leqq u\\leqq2$ で単調増加かつ連続．$\\varphi$ の値域は $\\left(2,\\dfrac{10}3\\right)$，$\\psi(0)=2$，$\\psi(2)=\\dfrac{14}3$．\n\n$a$ を定めると $p=3-a\\in(1,3)$ で $\\varphi(p)\\in\\left(2,\\dfrac{10}3\\right)\\subset\\left(\\psi(0),\\psi(2)\\right)$．中間値の定理により $\\psi(u)=\\varphi(p)$ となる $u\\in(0,2)$ が存在し，$\\psi$ が単調増加なのでただ1つである．\n\n$a$ が $(0,2)$ を動くと $p=3-a$ は $(1,3)$ 全体を動き，$\\varphi(p)$ は $\\left(2,\\dfrac{10}3\\right)$ 全体を動く（連続で単調）．よって $u$ のとりうる値は $2<\\psi(u)<\\dfrac{10}3$ をみたす $u$ 全体である．$\\psi(u)=\\dfrac{10}3$ は $6u(1+u)+6=10(1+u)$，すなわち $3u^2-2u-2=0$ で，正の解は $u=\\dfrac{1+\\sqrt7}3$（$<2$）．$\\psi$ は単調増加なので，求める範囲は\n\\[\n\\boldsymbol{0<u<\\frac{1+\\sqrt7}3}．\n\\]\n\\hfill$\\square$"
+   }
+  ],
+  "idea": {
+   "tex": "平面 H による四面体の切り口の四角形では，向かい合う2辺の延長が，2つの面の交線上の1点で交わる．その点からの2本の割線に方べきの定理とその逆を使うと，「4点が同一円周上」が長さの積の等式になる．"
+  },
+  "methods": [],
+  "tags": [
+   "空間図形",
+   "方べきの定理",
+   "方べきの定理の逆",
+   "単調性"
+  ],
+  "provenance": {
+   "created": "2026-11-10"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "C-VEC-353",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "C-18",
+  "level": 5,
+  "minutes": 40,
+  "theme": "ねじれ四角形の4辺に接する球面の族",
+  "topic": "ねじれ四角形の4辺に接する球面の族",
+  "statement": {
+   "tex": "空間内の4点 A，B，C，D について，球面 $S$ が線分 XY に接するとは，直線 XY と $S$ の共有点がただ1つで，その点が線分 XY 上（両端を除く）にあることをいう．\n\\begin{enumerate}\n  \\item 同一平面上にない4点 A，B，C，D と，4つの線分 AB，BC，CD，DA のすべてに接する球面 $S$ があるとき，$\\mathrm{AB}+\\mathrm{CD}=\\mathrm{BC}+\\mathrm{DA}$ が成り立つことを示せ．\n\\end{enumerate}\n以下，A$(0,0,0)$，B$(2,0,0)$，C$(2,2,0)$，D$(0,2,2)$ とする．\n\\begin{enumerate}[resume]\n  \\item 4つの線分 AB，BC，CD，DA のすべてに接する球面の中心の軌跡を求めよ．\n  \\item (2) の球面の半径の最小値と，そのときの中心の座標を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 証明　(2) 2点 $(0,2,-2)$，$(2,0,2\\sqrt2)$ を結ぶ線分（両端を除く），すなわち点 $\\left(a,\\,2-a,\\,(1+\\sqrt2)a-2\\right)$（$0<a<2$）全体　(3) 最小値 $\\sqrt{4-2\\sqrt2}$，中心 $(1,1,\\sqrt2-1)$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "\\textbf{補題．}\\ 球面 $S$（中心 O，半径 $r$）と直線 $\\ell$ について，O から $\\ell$ に下ろした垂線の足を H とする．$\\ell$ 上の点 X について三平方の定理より $\\mathrm{OX}^2=\\mathrm{OH}^2+\\mathrm{HX}^2$ だから，\n\\[\n\\mathrm X\\in S\\iff\\mathrm{HX}^2=r^2-\\mathrm{OH}^2 .\n\\]\nこれをみたす $\\ell$ 上の点 X がただ1つであるのは，$r^2-\\mathrm{OH}^2=0$ のとき，すなわち $\\mathrm{OH}=r$ のときに限り，そのとき共有点は H である（$r^2-\\mathrm{OH}^2>0$ なら2点，$<0$ なら0点）．したがって，\n\\begin{center}\n$S$ と $\\ell$ の共有点がただ1つ $\\iff$ $\\mathrm{OH}=r$，そのとき共有点は H\n\\end{center}\nであり，このとき $\\ell$ 上の任意の点 X に対して $\\mathrm{XH}^2=\\mathrm{OX}^2-r^2$ である．\n\n\\medskip\n(1) $S$ の中心を O，半径を $r$ とし，$S$ と線分 AB，BC，CD，DA の共有点（接点）をそれぞれ P，Q，R，T とする．補題より P，T はそれぞれ O から直線 AB，AD に下ろした垂線の足で\n\\[\n\\mathrm{AP}^2=\\mathrm{OA}^2-r^2=\\mathrm{AT}^2,\\quad\\text{よって}\\quad \\mathrm{AP}=\\mathrm{AT}.\n\\]\n同様に $\\mathrm{BP}=\\mathrm{BQ}$，$\\mathrm{CQ}=\\mathrm{CR}$，$\\mathrm{DR}=\\mathrm{DT}$ である．P，Q，R，T は各線分上にあるので\n\\[\n\\mathrm{AB}+\\mathrm{CD}=(\\mathrm{AP}+\\mathrm{PB})+(\\mathrm{CR}+\\mathrm{RD})\n=(\\mathrm{AT}+\\mathrm{BQ})+(\\mathrm{CQ}+\\mathrm{DT})\n=(\\mathrm{BQ}+\\mathrm{QC})+(\\mathrm{DT}+\\mathrm{TA})=\\mathrm{BC}+\\mathrm{DA}.\n\\]\n\\hfill$\\square$\n\n\\medskip\n(2) $\\mathrm{AB}=2$，$\\mathrm{BC}=2$，$\\mathrm{CD}=\\sqrt{4+0+4}=2\\sqrt2$，$\\mathrm{DA}=\\sqrt{0+4+4}=2\\sqrt2$ である．また D の $z$ 座標は $2\\neq0$ で，A，B，C は平面 $z=0$ 上にあるから，4点は同一平面上にない．\n\n\\textbf{必要条件．}\\ 4つの線分に接する球面 $S$（中心 O$(p,q,s)$，半径 $r$）があるとし，接点を (1) と同様に P，Q，R，T とする．(1) の証明より $\\mathrm{AP}=\\mathrm{AT}=a$，$\\mathrm{BP}=\\mathrm{BQ}=b$，$\\mathrm{CQ}=\\mathrm{CR}=c$，$\\mathrm{DR}=\\mathrm{DT}=d$ とおけて，すべて正であり\n\\[\na+b=2,\\quad b+c=2,\\quad c+d=2\\sqrt2,\\quad d+a=2\\sqrt2 .\n\\]\n最初の3式から $b=2-a$，$c=a$，$d=2\\sqrt2-a$（第4式も成り立つ）．$a>0$，$b>0$ より $0<a<2$ で，このとき $c>0$，$d>0$ も成り立つ．接点は\n\\[\n\\mathrm P(a,0,0),\\quad \\mathrm Q(2,\\,2-a,\\,0),\\quad\n\\mathrm R=\\mathrm C+\\frac{a}{2\\sqrt2}\\overrightarrow{\\mathrm{CD}}=\\left(2-\\tfrac a{\\sqrt2},\\,2,\\,\\tfrac a{\\sqrt2}\\right),\\quad\n\\mathrm T=\\frac{a}{2\\sqrt2}\\overrightarrow{\\mathrm{AD}}=\\left(0,\\,\\tfrac a{\\sqrt2},\\,\\tfrac a{\\sqrt2}\\right)\n\\]\nとなる．補題より $\\overrightarrow{\\mathrm{PO}}\\perp\\overrightarrow{\\mathrm{AB}}=(2,0,0)$，$\\overrightarrow{\\mathrm{QO}}\\perp\\overrightarrow{\\mathrm{BC}}=(0,2,0)$，$\\overrightarrow{\\mathrm{TO}}\\perp\\overrightarrow{\\mathrm{AD}}=(0,2,2)$ だから\n\\[\n2(p-a)=0,\\qquad 2\\{q-(2-a)\\}=0,\\qquad 2\\left(q-\\tfrac a{\\sqrt2}\\right)+2\\left(s-\\tfrac a{\\sqrt2}\\right)=0 .\n\\]\nよって $p=a$，$q=2-a$，$s=\\sqrt2a-q=(1+\\sqrt2)a-2$ であり，\n\\[\n\\mathrm O=\\mathrm O_a:=\\bigl(a,\\ 2-a,\\ (1+\\sqrt2)a-2\\bigr)\\qquad(0<a<2)\n\\]\nと表される．\n\n\\textbf{十分条件．}\\ 逆に $0<a<2$ を任意にとり，$\\mathrm O_a$ と上の P，Q，R，T を考える．$0<a<2$，$0<2-a<2$，$0<a<2\\sqrt2$ だから P，Q，R，T はそれぞれ線分 AB，BC，CD，DA 上（両端を除く）にある．$m=\\left(1+\\frac1{\\sqrt2}\\right)a-2$ とおくと，$\\sqrt2-\\frac1{\\sqrt2}=\\frac1{\\sqrt2}$ に注意して\n\\[\n\\overrightarrow{\\mathrm{PO_a}}=\\bigl(0,\\,2-a,\\,s\\bigr),\\quad\n\\overrightarrow{\\mathrm{QO_a}}=\\bigl(a-2,\\,0,\\,s\\bigr),\\quad\n\\overrightarrow{\\mathrm{RO_a}}=(m,\\,-a,\\,m),\\quad\n\\overrightarrow{\\mathrm{TO_a}}=(a,\\,-m,\\,m)\n\\]\n（$s=(1+\\sqrt2)a-2$）．各方向ベクトルとの内積は\n\\[\n\\overrightarrow{\\mathrm{PO_a}}\\cdot(2,0,0)=0,\\qquad\n\\overrightarrow{\\mathrm{QO_a}}\\cdot(0,2,0)=0,\n\\]\n\\[\n\\overrightarrow{\\mathrm{RO_a}}\\cdot(-2,0,2)=-2m+2m=0,\\qquad\n\\overrightarrow{\\mathrm{TO_a}}\\cdot(0,2,2)=-2m+2m=0\n\\]\nなので，P，Q，R，T はそれぞれ $\\mathrm O_a$ から4直線に下ろした垂線の足である．さらに\n\\[\n|\\overrightarrow{\\mathrm{PO_a}}|^2=|\\overrightarrow{\\mathrm{QO_a}}|^2=(2-a)^2+\\{(1+\\sqrt2)a-2\\}^2=(4+2\\sqrt2)a^2-(8+4\\sqrt2)a+8,\n\\]\n\\[\n|\\overrightarrow{\\mathrm{RO_a}}|^2=|\\overrightarrow{\\mathrm{TO_a}}|^2=a^2+2m^2\n=a^2+2\\left(\\tfrac32+\\sqrt2\\right)a^2-8\\left(1+\\tfrac1{\\sqrt2}\\right)a+8\n=(4+2\\sqrt2)a^2-(8+4\\sqrt2)a+8\n\\]\nで4つとも等しい．この値を $r_a^2$ とおくと\n\\[\nr_a^2=(4+2\\sqrt2)(a^2-2a)+8=(4+2\\sqrt2)(a-1)^2+4-2\\sqrt2>0 .\n\\]\nよって中心 $\\mathrm O_a$，半径 $r_a$ の球面は，補題により4直線にそれぞれ P，Q，R，T でただ1点を共有し，それらは線分上（両端を除く）にあるから，4つの線分に接する．\n\n以上より，求める軌跡は $\\mathrm O_a$（$0<a<2$）全体，すなわち\n\\[\n\\boldsymbol{2\\text{点 }(0,2,-2),\\ (2,0,2\\sqrt2)\\text{ を結ぶ線分（両端を除く）}}\n\\]\nである．\n\n\\medskip\n(3) (2) より，4つの線分に接する球面は中心 $\\mathrm O_a$，半径 $r_a$（$0<a<2$）のものに限られ，その半径は\n\\[\nr_a^2=(4+2\\sqrt2)(a-1)^2+4-2\\sqrt2\\geqq4-2\\sqrt2\n\\]\nをみたし，等号は $a=1$（$0<1<2$）のときに成り立つ．よって半径の最小値は $\\boldsymbol{\\sqrt{4-2\\sqrt2}}$，そのときの中心は $\\boldsymbol{(1,\\,1,\\,\\sqrt2-1)}$ である．\\hfill$\\square$"
+   }
+  ],
+  "idea": {
+   "tex": "球面が直線に接する $\\iff$ 中心から直線までの距離が半径に等しく，接点は垂線の足．頂点から2本の辺上の接点までの長さは $\\sqrt{(\\text{中心までの距離})^2-r^2}$ で等しい（空間の「接線の長さ」）．ここから辺の長さの条件 $\\mathrm{AB}+\\mathrm{CD}=\\mathrm{BC}+\\mathrm{DA}$ が必要になり，それが成り立つねじれ四角形では接点が1つのパラメータで動き，4辺に接する球面が無数に存在する．"
+  },
+  "methods": [],
+  "tags": [
+   "空間座標",
+   "球面と直線の接触",
+   "接線の長さ",
+   "垂線の足",
+   "軌跡",
+   "最小値"
+  ],
+  "provenance": {
+   "created": "2026-11-10"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "C-VEC-354",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "C-18",
+  "level": 3,
+  "minutes": 25,
+  "theme": "等角に開いた3本の半直線上の線分と重心を結ぶ長さ",
+  "topic": "等角に開いた3本の半直線上の線分と重心を結ぶ長さ",
+  "statement": {
+   "tex": "空間内の点 O から出る3本の半直線 OX，OY，OZ があり，どの2本のなす角も $\\theta$ である．ただし $0<\\theta\\leqq\\dfrac{2\\pi}3$ とする．2点 A，B が OX 上に O，A，B の順に，2点 C，D が OY 上に O，C，D の順に，2点 E，F が OZ 上に O，E，F の順に並んでいる．\n\\[\n\\overrightarrow{\\mathrm{OG}}=\\frac13\\left(\\overrightarrow{\\mathrm{OA}}+\\overrightarrow{\\mathrm{OC}}+\\overrightarrow{\\mathrm{OE}}\\right),\\qquad\n\\overrightarrow{\\mathrm{OH}}=\\frac13\\left(\\overrightarrow{\\mathrm{OB}}+\\overrightarrow{\\mathrm{OD}}+\\overrightarrow{\\mathrm{OF}}\\right)\n\\]\nで点 G，H を定め，$\\mathrm{AB}=s$，$\\mathrm{CD}=t$，$\\mathrm{EF}=u$ とする．\n\\begin{enumerate}\n  \\item 線分 GH の長さを $s,t,u,\\theta$ で表せ．\n  \\item 6点が $s^2+t^2+u^2=1$ をみたしながら動くとき，GH の長さの最大値・最小値が存在するかどうかを $\\theta$ の値で場合分けして調べ，存在するものはその値を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $\\mathrm{GH}=\\dfrac13\\sqrt{s^2+t^2+u^2+2(st+tu+us)\\cos\\theta}$　(2) $0<\\theta<\\dfrac\\pi2$：最大値 $\\dfrac{\\sqrt{1+2\\cos\\theta}}3$，最小値なし；$\\theta=\\dfrac\\pi2$：つねに $\\dfrac13$（最大値・最小値とも $\\dfrac13$）；$\\dfrac\\pi2<\\theta\\leqq\\dfrac{2\\pi}3$：最小値 $\\dfrac{\\sqrt{1+2\\cos\\theta}}3$，最大値なし"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) OX，OY，OZ 方向の単位ベクトルを $\\vec e_1,\\vec e_2,\\vec e_3$ とすると $\\vec e_i\\cdot\\vec e_j=\\cos\\theta$（$i\\neq j$）．順序の条件から $\\overrightarrow{\\mathrm{AB}}=s\\vec e_1$，$\\overrightarrow{\\mathrm{CD}}=t\\vec e_2$，$\\overrightarrow{\\mathrm{EF}}=u\\vec e_3$ なので\n\\[\n\\overrightarrow{\\mathrm{GH}}=\\frac13\\left(\\overrightarrow{\\mathrm{AB}}+\\overrightarrow{\\mathrm{CD}}+\\overrightarrow{\\mathrm{EF}}\\right)=\\frac13(s\\vec e_1+t\\vec e_2+u\\vec e_3),\n\\]\n\\[\n\\mathrm{GH}=\\boldsymbol{\\frac13\\sqrt{s^2+t^2+u^2+2(st+tu+us)\\cos\\theta}}.\n\\]\n\n(2) $\\sigma=st+tu+us$ とおくと，$s^2+t^2+u^2=1$ のもとで $\\mathrm{GH}^2=\\dfrac{1+2\\sigma\\cos\\theta}9$．\n$s,t,u>0$ より $\\sigma>0$．また $1-\\sigma=\\frac12\\{(s-t)^2+(t-u)^2+(u-s)^2\\}\\geqq0$ で，$\\sigma=1\\iff s=t=u=\\frac1{\\sqrt3}$．\nさらに $0<\\varepsilon<\\frac12$ に対し $(s,t,u)=(\\sqrt{1-2\\varepsilon^2},\\varepsilon,\\varepsilon)$ は条件をみたし（A，B などは $s,t,u>0$ ならどの位置にもとれる），$\\sigma=2\\varepsilon\\sqrt{1-2\\varepsilon^2}+\\varepsilon^2<3\\varepsilon$．よって $\\sigma$ はいくらでも0に近い値をとるが，0にはならない．\n\\begin{itemize}\n  \\item $0<\\theta<\\frac\\pi2$（$\\cos\\theta>0$）：$\\mathrm{GH}^2$ は $\\sigma$ の増加関数．$\\sigma=1$ で最大値 $\\boldsymbol{\\dfrac{\\sqrt{1+2\\cos\\theta}}3}$．$\\mathrm{GH}^2>\\frac19$ はつねに成り立ち，$\\frac19$ にいくらでも近づくが，どの値 $\\frac19+\\delta$ もより小さい値が実現されるので，\\textbf{最小値はない}．\n  \\item $\\theta=\\frac\\pi2$：$\\mathrm{GH}=\\boldsymbol{\\dfrac13}$ で一定（最大値・最小値とも $\\frac13$）．\n  \\item $\\frac\\pi2<\\theta\\leqq\\frac{2\\pi}3$（$-\\frac12\\leqq\\cos\\theta<0$）：$\\mathrm{GH}^2$ は $\\sigma$ の減少関数．$\\sigma=1$ で最小値 $\\boldsymbol{\\dfrac{\\sqrt{1+2\\cos\\theta}}3}$（$\\theta=\\frac{2\\pi}3$ では0）．$\\mathrm{GH}^2<\\frac19$ で上と同様に \\textbf{最大値はない}．\n\\end{itemize}"
+   }
+  ],
+  "idea": {
+   "tex": "対応する点の「重心どうしの差」は，各半直線上の移動ベクトルの平均 $\\overrightarrow{\\mathrm{GH}}=\\frac13(\\overrightarrow{\\mathrm{AB}}+\\overrightarrow{\\mathrm{CD}}+\\overrightarrow{\\mathrm{EF}})$ で，始点の位置によらない．長さの2乗は $s^2+t^2+u^2$ と $st+tu+us$ の1次式になり，後者の範囲 $0<st+tu+us\\leqq1$（下限は達しない）と $\\cos\\theta$ の符号で，最大・最小の存在が入れ替わる．"
+  },
+  "methods": [],
+  "tags": [
+   "空間ベクトル",
+   "重心",
+   "2次式の最大最小",
+   "存在しない最大値"
+  ],
+  "provenance": {
+   "created": "2026-11-10"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "C-VEC-355",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "C-18",
+  "level": 4,
+  "minutes": 30,
+  "theme": "2頂点の内角・外角の二等分線に下ろした4つの垂線の足",
+  "topic": "2頂点の内角・外角の二等分線に下ろした4つの垂線の足",
+  "statement": {
+   "tex": "三角形 ABC において，$\\mathrm{BC}=a$，$\\mathrm{CA}=b$，$\\mathrm{AB}=c$ とする．頂点 A から，頂点 B における外角の二等分線，頂点 C における外角の二等分線，頂点 B における内角の二等分線，頂点 C における内角の二等分線に下ろした垂線の足を，それぞれ D，E，F，G とする．\n\\begin{enumerate}\n  \\item 4点 D，E，F，G は，辺 AB の中点と辺 AC の中点を通る直線上にあることを示せ．\n  \\item $\\mathrm{DE}=\\dfrac{a+b+c}2$，$\\mathrm{FG}=\\dfrac{b+c-a}2$ を示せ．\n  \\item $a=1$，$\\angle\\mathrm{BAC}=60^\\circ$ のとき，$\\mathrm{DE}\\cdot\\mathrm{FG}$ の最大値を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 証明　(2) 証明　(3) $\\dfrac34$（$b=c=1$ のとき）"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) B を始点とし，$\\vec u=\\dfrac{\\overrightarrow{\\mathrm{BA}}}c$，$\\vec e=\\dfrac{\\overrightarrow{\\mathrm{BC}}}a$ とする（単位ベクトル）．B における内角の二等分線の方向は $\\vec u+\\vec e$，外角の二等分線の方向は $\\vec u-\\vec e$ である（$\\vec u$ と $-\\vec e$ のなす角を2等分）．\n\n\\textbf{補題．}原点を通り方向 $\\vec d$ の直線 $\\ell$ に関する対称移動を考える．$|\\vec p|=|\\vec q|$，$\\vec p\\neq\\vec q$ で $\\vec p+\\vec q\\parallel\\vec d$ なら，$\\vec p$ の像は $\\vec q$．\n\n（証明）$(\\vec p-\\vec q)\\cdot(\\vec p+\\vec q)=|\\vec p|^2-|\\vec q|^2=0$ なので，$\\vec p$ と $\\vec q$ を結ぶ線分は $\\ell$ に垂直で，中点 $\\frac{\\vec p+\\vec q}2$ は $\\ell$ 上にある．\\hfill$\\square$\n\n$\\vec p=c\\vec u$ に対し，$\\vec q=-c\\vec e$ とすると $\\vec p+\\vec q=c(\\vec u-\\vec e)$，$\\vec q=c\\vec e$ とすると $\\vec p+\\vec q=c(\\vec u+\\vec e)$（$\\vec u\\neq\\pm\\vec e$ なので $\\vec p\\neq\\vec q$）．よって A の外角・内角の二等分線に関する対称点はそれぞれ $\\mathrm B-c\\vec e$，$\\mathrm B+c\\vec e$（点をその位置ベクトルで表す）．A からの垂線の足は A とその対称点の中点だから\n\\[\n\\mathrm D=\\frac{\\mathrm A+\\mathrm B-c\\vec e}2,\\qquad\\mathrm F=\\frac{\\mathrm A+\\mathrm B+c\\vec e}2.\n\\]\nC についても $\\vec e\\,'=\\dfrac{\\overrightarrow{\\mathrm{CB}}}a=-\\vec e$ を用いて同様に\n\\[\n\\mathrm E=\\frac{\\mathrm A+\\mathrm C-b\\vec e\\,'}2=\\frac{\\mathrm A+\\mathrm C+b\\vec e}2,\\qquad \\mathrm G=\\frac{\\mathrm A+\\mathrm C-b\\vec e}2.\n\\]\nAB，AC の中点を $\\mathrm M=\\frac{\\mathrm A+\\mathrm B}2$，$\\mathrm N=\\frac{\\mathrm A+\\mathrm C}2$ とすると $\\mathrm N=\\mathrm M+\\frac a2\\vec e$ であり，\n\\[\n\\mathrm D=\\mathrm M-\\tfrac c2\\vec e,\\quad \\mathrm F=\\mathrm M+\\tfrac c2\\vec e,\\quad \\mathrm E=\\mathrm M+\\tfrac{a+b}2\\vec e,\\quad \\mathrm G=\\mathrm M+\\tfrac{a-b}2\\vec e .\n\\]\n4点はすべて直線 $\\{\\mathrm M+\\lambda\\vec e\\}$，すなわち直線 MN 上にある．\\hfill$\\square$\n\n(2) $|\\vec e|=1$ なので，直線 MN 上の座標 $\\lambda$ の差が距離．\n$\\mathrm{DE}=\\frac{a+b}2+\\frac c2=\\dfrac{a+b+c}2$，$\\mathrm{FG}=\\left|\\frac c2-\\frac{a-b}2\\right|=\\dfrac{b+c-a}2$（三角不等式より $b+c-a>0$）．\\hfill$\\square$\n\n(3) $\\mathrm{DE}\\cdot\\mathrm{FG}=\\dfrac{(b+c)^2-a^2}4$．余弦定理 $a^2=b^2+c^2-bc$ より $(b+c)^2-a^2=3bc$．\n$a=1$ のとき $1=b^2+c^2-bc\\geqq2bc-bc=bc$（等号 $b=c$）．$b=c=1$ は正三角形として実現される．よって最大値 $\\boldsymbol{\\dfrac34}$．"
+   }
+  ],
+  "idea": {
+   "tex": "B を通る角の二等分線に関する対称移動は，BA 方向の単位ベクトル $\\vec u$ と BC 方向の単位ベクトル $\\vec e$ を（内角なら $\\vec u\\leftrightarrow\\vec e$，外角なら $\\vec u\\leftrightarrow-\\vec e$）入れかえる．よって A の像は直線 BC 上にあり，垂線の足はその像と A の中点だから，中点連結で AB，AC の中点を通る直線上に並ぶ．"
+  },
+  "methods": [],
+  "tags": [
+   "角の二等分線",
+   "対称移動",
+   "中点連結定理",
+   "最大値"
+  ],
+  "provenance": {
+   "created": "2026-11-10"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "C-VEC-356",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "C-18",
+  "level": 4,
+  "minutes": 30,
+  "theme": "係数が単位円板を動くときの1次結合",
+  "topic": "係数が単位円板を動くときの1次結合",
+  "statement": {
+   "tex": "実数 $a,b,c,d,e$ に対して，座標平面上の点 A$(a,b)$，B$(c,d)$，C$(e,0)$ をとる．ただし点 A と点 B はどちらも原点 O$(0,0)$ とは異なる点とする．\n\\begin{enumerate}\n  \\item 実数 $s,t$ で\n  \\[s^2+t^2\\leqq1\\quad\\text{かつ}\\quad s\\overrightarrow{\\mathrm{OA}}+t\\overrightarrow{\\mathrm{OB}}=\\overrightarrow{\\mathrm{OC}}\\]\n  をみたすものが存在するための，$a,b,c,d,e$ についての必要十分条件を求めよ．\n  \\item A$(1,2)$，B$(2,1)$ とする．$s^2+t^2\\leqq1$ をみたす実数 $s,t$ を用いて $\\overrightarrow{\\mathrm{OP}}=s\\overrightarrow{\\mathrm{OA}}+t\\overrightarrow{\\mathrm{OB}}$ と表される点 P 全体のなす図形の面積を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $e^2(b^2+d^2)\\leqq(ad-bc)^2$ かつ $e^2\\leqq a^2+c^2$　(2) $3\\pi$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "\\textbf{(1)} 条件は $sa+tc=e$ かつ $sb+td=0$ かつ $s^2+t^2\\leqq1$．$D=ad-bc$ とおく．ラグランジュの恒等式\n\\[(a^2+c^2)(b^2+d^2)=(ab+cd)^2+(ad-bc)^2\\qquad(\\ast)\\]\n（両辺を展開して確かめられる）を用いる．\n\n\\textbf{(i) $D\\neq0$ のとき．}連立1次方程式はただ1組の解 $s=\\dfrac{ed}{D}$，$t=-\\dfrac{eb}{D}$ をもち，$s^2+t^2=\\dfrac{e^2(b^2+d^2)}{D^2}$．よって条件は $e^2(b^2+d^2)\\leqq D^2$．このとき $D\\neq0$ より $b^2+d^2>0$ で，$(\\ast)$ から $e^2(b^2+d^2)\\leqq D^2\\leqq(a^2+c^2)(b^2+d^2)$，よって $e^2\\leqq a^2+c^2$ も成り立つ．\n\n\\textbf{(ii) $D=0$ かつ $(b,d)\\neq(0,0)$ のとき．}$D=0$ より $\\overrightarrow{\\mathrm{OA}}\\parallel\\overrightarrow{\\mathrm{OB}}$ で，$s\\overrightarrow{\\mathrm{OA}}+t\\overrightarrow{\\mathrm{OB}}$ はつねに直線 OA 上にある．$b\\neq0$ なら A は $x$ 軸上になく，$d\\neq0$ なら B は $x$ 軸上にないので，この直線は $x$ 軸と異なり，$x$ 軸との共有点は O のみ．よって C$=$O，$e=0$ が必要で，$e=0$ なら $s=t=0$ でよい．条件は $e=0$ であり，これは $e^2(b^2+d^2)\\leqq0=D^2$ と同値（このとき $e^2\\leqq a^2+c^2$ も成立）．\n\n\\textbf{(iii) $b=d=0$ のとき．}A，B は O と異なるので $a\\neq0$，$c\\neq0$．条件は $s^2+t^2\\leqq1$，$sa+tc=e$．$(\\ast)$ と同じ計算で $(sa+tc)^2\\leqq(s^2+t^2)(a^2+c^2)\\leqq a^2+c^2$ だから $e^2\\leqq a^2+c^2$ が必要．逆に $e^2\\leqq a^2+c^2$ なら $s=\\dfrac{ea}{a^2+c^2}$，$t=\\dfrac{ec}{a^2+c^2}$ が $sa+tc=e$，$s^2+t^2=\\dfrac{e^2}{a^2+c^2}\\leqq1$ をみたす．このとき $e^2(b^2+d^2)=0\\leqq D^2$ は自動的に成り立つ．\n\n以上をまとめて，求める必要十分条件は\n\\[\\boldsymbol{e^2(b^2+d^2)\\leqq(ad-bc)^2\\quad\\text{かつ}\\quad e^2\\leqq a^2+c^2}.\\]\n\n\\textbf{(2)} P$(X,Y)$ とすると $s+2t=X$，$2s+t=Y$ より $s=\\dfrac{2Y-X}3$，$t=\\dfrac{2X-Y}3$（ただ1組）．条件は\n\\[(2Y-X)^2+(2X-Y)^2\\leqq9\\iff5X^2-8XY+5Y^2\\leqq9 .\\]\n原点のまわりの $45^\\circ$ 回転 $X=\\dfrac{\\xi-\\eta}{\\sqrt2}$，$Y=\\dfrac{\\xi+\\eta}{\\sqrt2}$（面積は不変）で $X^2+Y^2=\\xi^2+\\eta^2$，$XY=\\dfrac{\\xi^2-\\eta^2}2$ となり，$\\xi^2+9\\eta^2\\leqq9$，すなわち楕円 $\\dfrac{\\xi^2}{9}+\\eta^2\\leqq1$ の周および内部．面積は $\\pi\\cdot3\\cdot1=\\boldsymbol{3\\pi}$．\n\\hfill$\\square$"
+   }
+  ],
+  "idea": {
+   "tex": "$\\overrightarrow{\\mathrm{OA}},\\overrightarrow{\\mathrm{OB}}$ が平行でなければ係数 $(s,t)$ はただ1通りに決まり，$s^2+t^2$ を直接計算できる．平行なときは O，A，B が1直線上にあり，その直線が $x$ 軸か否かで分ける．ラグランジュの恒等式 $(a^2+c^2)(b^2+d^2)=(ab+cd)^2+(ad-bc)^2$ で2つの場合の条件が1つの形にまとまる．"
+  },
+  "methods": [],
+  "tags": [
+   "ベクトル",
+   "1次結合",
+   "平行条件",
+   "コーシー・シュワルツ",
+   "場合分け"
+  ],
+  "provenance": {
+   "created": "2026-11-10"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "C-VEC-357",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "C-18",
+  "level": 5,
+  "minutes": 40,
+  "theme": "立方体の表面に頂点をもつ三角形の面積の最大",
+  "topic": "立方体の表面に頂点をもつ三角形の面積の最大",
+  "statement": {
+   "tex": "1辺の長さが1の立方体 $K=\\{(x,y,z)\\mid 0\\leqq x\\leqq1,\\ 0\\leqq y\\leqq1,\\ 0\\leqq z\\leqq1\\}$ を考える．\n\\begin{enumerate}\n  \\item 空間内の異なる2点 A，B と線分 CD を考える．点 P が線分 CD 上を動くとき，三角形 ABP の面積（3点が一直線上にあるときは0とする）は，P が C または D にあるときに最大となることを示せ．\n  \\item 3点 P，Q，R が $K$ の表面上を動くとき，三角形 PQR の面積の最大値を求めよ．\n  \\item Q を面 $z=0$ の中心 $\\left(\\frac12,\\frac12,0\\right)$ に固定する．2点 P，R が $K$ の表面上を $\\angle\\mathrm{PQR}=90^\\circ$ をみたしながら動くとき，三角形 PQR の面積の最大値を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 証明　(2) $\\dfrac{\\sqrt3}{2}$　(3) $\\dfrac{3\\sqrt2}{8}$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) $\\vec e=\\dfrac{\\overrightarrow{\\mathrm{AB}}}{|\\overrightarrow{\\mathrm{AB}}|}$，$\\vec w=\\overrightarrow{\\mathrm{AC}}$，$\\vec v=\\overrightarrow{\\mathrm{CD}}$ とし，$\\overrightarrow{\\mathrm{AP}}=\\vec w+t\\vec v$（$0\\leqq t\\leqq1$）とおく．P と直線 AB の距離を $h(t)$ とすると，$\\overrightarrow{\\mathrm{AP}}$ を $\\vec e$ 方向とそれに垂直な方向に分けて\n\\[h(t)^2=|\\vec w+t\\vec v|^2-\\{(\\vec w+t\\vec v)\\cdot\\vec e\\}^2=\\alpha t^2+\\beta t+\\gamma,\\quad\\alpha=|\\vec v|^2-(\\vec v\\cdot\\vec e)^2\\geqq0\\]\n（$|\\vec v\\cdot\\vec e|\\leqq|\\vec v||\\vec e|=|\\vec v|$ による）．$g(t)=h(t)^2$ とおくと，\n\\[g(t)-\\{(1-t)g(0)+tg(1)\\}=\\alpha t^2+\\beta t+\\gamma-\\{\\gamma+t(\\alpha+\\beta)\\}=\\alpha t(t-1)\\leqq0\\quad(0\\leqq t\\leqq1)\\]\nだから $g(t)\\leqq(1-t)g(0)+tg(1)$ で，右辺は $g(0)$ と $g(1)$ のうち大きい方以下である．面積は $\\frac12\\mathrm{AB}\\cdot h(t)$ で $h(t)\\geqq0$ だから，面積は $t=0$ または $t=1$，すなわち P が C または D にあるとき最大となる．\\hfill$\\square$\n\n(2) \\textbf{頂点への押し出し．}P，Q を固定し，R が面 $F$（1辺1の正方形）上にあるとする．P$=$Q なら面積は0なので P$\\neq$Q とする．R を通り $F$ の1辺に平行な線分を $F$ の中に引くと，その両端は $F$ の向かい合う2辺上にある．(1) より面積はその端点の一方 R$_1$ で R のとき以上になる．R$_1$ は $F$ の辺（線分）上にあるので，再び (1) より，その辺の端点（立方体の頂点）R$_2$ で面積は R$_1$ のとき以上になる．同じことを P，Q についても順に行うと（各段階で固定する2点が一致するときは面積は0なので，以後の評価は自明に成り立つ），三角形 PQR の面積は，$K$ の頂点（重複を許す）を3つ選んだ三角形の面積のどれか以下である．\n\n\\textbf{頂点のつくる三角形．}$K$ の頂点は座標がすべて0か1の点で，2頂点間の距離の2乗は「座標が異なる成分の個数」$d\\in\\{1,2,3\\}$ である．異なる3頂点 X，Y，Z について\n\\begin{itemize}\n  \\item $d(\\mathrm X,\\mathrm Y)=d(\\mathrm X,\\mathrm Z)=3$ なら Y，Z はともに X のすべての成分を入れかえた点で Y$=$Z となり矛盾．よって3の値は高々1つ．\n  \\item 各頂点の成分の和を $w$ とすると $d(\\mathrm X,\\mathrm Y)\\equiv w(\\mathrm X)+w(\\mathrm Y)\\pmod2$．3つを足すと $d$ の和は偶数．\n\\end{itemize}\nこれらをみたす $\\{d\\}$ の組は $\\{1,1,2\\}$，$\\{2,2,2\\}$，$\\{1,2,3\\}$ のみ．対応する辺の長さと面積は\n$(1,1,\\sqrt2)$：直角二等辺三角形で $\\frac12$；\n$(\\sqrt2,\\sqrt2,\\sqrt2)$：正三角形で $\\frac{\\sqrt3}4\\cdot2=\\frac{\\sqrt3}2$；\n$(1,\\sqrt2,\\sqrt3)$：$1^2+(\\sqrt2)^2=(\\sqrt3)^2$ より直角三角形で $\\frac{\\sqrt2}2$．\n最大は $\\frac{\\sqrt3}2$ で，P$(1,0,0)$，Q$(0,1,0)$，R$(0,0,1)$（いずれも表面上）で実現する．最大値 $\\boldsymbol{\\dfrac{\\sqrt3}{2}}$．\n\n(3) $\\overrightarrow{\\mathrm{QP}}=(a,b,c)$，$\\overrightarrow{\\mathrm{QR}}=(d,e,f)$ とおく．P，R は $K$ 内の点だから\n\\[|a|,|b|,|d|,|e|\\leqq\\tfrac12,\\qquad 0\\leqq c\\leqq1,\\quad 0\\leqq f\\leqq1.\\]\n$\\alpha=\\sqrt{a^2+b^2}\\leqq\\frac1{\\sqrt2}$，$\\beta=\\sqrt{d^2+e^2}\\leqq\\frac1{\\sqrt2}$ とする．直交条件 $ad+be+cf=0$ とコーシー・シュワルツの不等式から\n\\[cf=-(ad+be)\\leqq\\alpha\\beta\\leqq\\tfrac12.\\]\nしたがって\n\\[\\mathrm{QP}^2\\,\\mathrm{QR}^2=(\\alpha^2+c^2)(\\beta^2+f^2)\\leqq\\left(\\tfrac12+c^2\\right)\\left(\\tfrac12+f^2\\right)=\\tfrac14+\\tfrac12(c^2+f^2)+c^2f^2.\\]\nここで $c^2f^2\\leqq\\frac14$，また $(1-c^2)(1-f^2)\\geqq0$ より $c^2+f^2\\leqq1+c^2f^2\\leqq\\frac54$．よって\n\\[\\mathrm{QP}^2\\,\\mathrm{QR}^2\\leqq\\tfrac14+\\tfrac58+\\tfrac14=\\tfrac98,\\qquad \\triangle\\mathrm{PQR}=\\tfrac12\\mathrm{QP}\\cdot\\mathrm{QR}\\leqq\\tfrac12\\cdot\\tfrac{3}{2\\sqrt2}=\\tfrac{3\\sqrt2}8.\\]\n等号は P$(0,0,1)$，R$\\left(1,1,\\frac12\\right)$ のとき成立する．実際，P は面 $z=1$ 上，R は面 $x=1$ 上にあり，$\\overrightarrow{\\mathrm{QP}}=\\left(-\\frac12,-\\frac12,1\\right)$，$\\overrightarrow{\\mathrm{QR}}=\\left(\\frac12,\\frac12,\\frac12\\right)$ で内積は $-\\frac14-\\frac14+\\frac12=0$，$\\mathrm{QP}^2=\\frac32$，$\\mathrm{QR}^2=\\frac34$，積は $\\frac98$．\n最大値 $\\boldsymbol{\\dfrac{3\\sqrt2}{8}}$．\\hfill$\\square$"
+   }
+  ],
+  "idea": {
+   "tex": "2頂点を固定すると，残りの1頂点が線分上を動くときの（面積）$^2$ は媒介変数の2次式で，2次の係数は0以上．よって最大は線分の端点でとる．これを面の中で2回使うと頂点は立方体の頂点に押し出せる．直角の条件がつくと押し出しは使えず，内積の条件をコーシー・シュワルツの不等式で処理する．"
+  },
+  "methods": [],
+  "tags": [
+   "最大値",
+   "凸性",
+   "2次関数",
+   "空間ベクトル",
+   "コーシー・シュワルツ"
+  ],
+  "provenance": {
+   "created": "2026-11-10"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "C-VEC-358",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "C-18",
+  "level": 4,
+  "minutes": 35,
+  "theme": "正八面体の中心を通る切り口の最小",
+  "topic": "正八面体の中心を通る切り口の最小",
+  "statement": {
+   "tex": "座標空間に6点\n\\[\n\\mathrm A(0,0,1),\\ \\mathrm B(1,0,0),\\ \\mathrm C(0,1,0),\\ \\mathrm D(-1,0,0),\\ \\mathrm E(0,-1,0),\\ \\mathrm F(0,0,-1)\n\\]\nを頂点とする正八面体 ABCDEF がある．$s,t$ を $0<s<1$，$0<t<1$ をみたす実数とする．線分 AB，AC をそれぞれ $1-s:s$ に内分する点を P，Q とし，線分 FD，FE をそれぞれ $1-t:t$ に内分する点を R，S とする．また，原点を O とする．\n\\begin{enumerate}\n  \\item 4点 P，Q，R，S は同一平面上にあることを示せ．さらに，その平面が O を通るための必要十分条件は $s=t$ であることを示せ．\n  \\item $s=t$ とする．正八面体の，4点 P，Q，R，S を通る平面による切り口の面積 $X$ を $s$ で表せ．\n  \\item $s=t$ のまま $s$ が $0<s<1$ の範囲を動くとき，$X$ のとりうる値の範囲を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 証明　(2) $X=(2-s)\\sqrt{3s^2-2s+1}$　(3) $\\dfrac{3\\sqrt3}4\\leqq X<2$（最小は $s=\\dfrac12$）"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) 内分の公式より\n\\[\n\\mathrm P(1-s,0,s),\\ \\mathrm Q(0,1-s,s),\\ \\mathrm R(-(1-t),0,-t),\\ \\mathrm S(0,-(1-t),-t).\n\\]\n$\\vec d=(-1,1,0)$ とおくと $\\overrightarrow{\\mathrm{PQ}}=(1-s)\\vec d$，$\\overrightarrow{\\mathrm{SR}}=(1-t)\\vec d$ で，PQ と RS は平行．直線 PQ 上の点の $x+y$ は $1-s$，直線 RS 上の点の $x+y$ は $-(1-t)$ で異なるから2直線は一致しない．平行な異なる2直線はちょうど1つの平面 $\\alpha$ を定めるので，4点は同一平面上にある．\n\nPQ，RS の中点を L$\\bigl(\\frac{1-s}2,\\frac{1-s}2,s\\bigr)$，M$\\bigl(-\\frac{1-t}2,-\\frac{1-t}2,-t\\bigr)$ とすると，$\\alpha$ の点は $\\overrightarrow{\\mathrm{OL}}+\\lambda\\vec d+\\mu\\overrightarrow{\\mathrm{LM}}$ と表せる．$\\overrightarrow{\\mathrm{OL}}$，$\\overrightarrow{\\mathrm{LM}}$ は $x$ 成分と $y$ 成分が等しいので $\\vec d$ と直交する．O$\\in\\alpha$ とすると $\\vec0=\\overrightarrow{\\mathrm{OL}}+\\lambda\\vec d+\\mu\\overrightarrow{\\mathrm{LM}}$ で，$\\vec d$ との内積をとって $2\\lambda=0$．よって O は直線 LM 上にあり，$\\overrightarrow{\\mathrm{OL}}\\parallel\\overrightarrow{\\mathrm{OM}}$．両ベクトルの $(x,z)$ 成分 $\\bigl(\\frac{1-s}2,s\\bigr)$，$\\bigl(-\\frac{1-t}2,-t\\bigr)$ が平行なので $-\\frac{1-s}2t+\\frac{1-t}2s=0$，すなわち $s=t$．逆に $s=t$ なら $\\overrightarrow{\\mathrm{OM}}=-\\overrightarrow{\\mathrm{OL}}$ で O は線分 LM の中点となり $\\alpha$ 上にある．\n\n(2) $s=t$ のとき $\\mathrm R=-\\mathrm P$，$\\mathrm S=-\\mathrm Q$（O に関して対称）．$h(x,y,z)=s(x+y)-(1-s)z$ とおくと $h(\\vec d)=0$，$h(\\mathrm L)=s(1-s)-(1-s)s=0$，$h(\\mathrm O)=0$ で，$h$ は1次式なので $\\alpha$ 上で $h=0$．$h$ は0でない1次式だから $\\alpha=\\{h=0\\}$．頂点での値は\n\\[\nh(\\mathrm A)=-(1-s)<0,\\ h(\\mathrm B)=h(\\mathrm C)=s>0,\\ h(\\mathrm D)=h(\\mathrm E)=-s<0,\\ h(\\mathrm F)=1-s>0 .\n\\]\n符号が変わる辺は AB，AC，CD，DF，FE，EB の6本で，交点は P，Q，V，R，S，U．ここで辺 EB 上の点 $(1-\\lambda,-\\lambda,0)$ では $h=s(1-2\\lambda)$ より U$\\bigl(\\frac12,-\\frac12,0\\bigr)$，同様に V$\\bigl(-\\frac12,\\frac12,0\\bigr)$．凸多面体の切り口は，平面と辺の交点を頂点とする凸多角形なので，切り口は六角形 PQVRSU である．\n\n直線 UV（$z=0$）はこの六角形を，P，Q を含む側（$z>0$）と R，S を含む側に分け，両者は O に関して対称で合同．$z\\geqq0$ の部分は四角形 UPQV で，$\\overrightarrow{\\mathrm{UV}}=\\vec d$，$\\overrightarrow{\\mathrm{PQ}}=(1-s)\\vec d$ より台形．$\\overrightarrow{\\mathrm{OL}}\\perp\\vec d$ なので，O（UV の中点）と L の距離が台形の高さで\n\\[\n\\mathrm{OL}=\\sqrt{\\frac{(1-s)^2}2+s^2}=\\sqrt{\\frac{3s^2-2s+1}2}.\n\\]\n$|\\overrightarrow{\\mathrm{UV}}|=\\sqrt2$，$|\\overrightarrow{\\mathrm{PQ}}|=\\sqrt2(1-s)$ だから\n\\[\nX=2\\times\\frac12\\bigl(\\sqrt2+\\sqrt2(1-s)\\bigr)\\sqrt{\\frac{3s^2-2s+1}2}=\\boldsymbol{(2-s)\\sqrt{3s^2-2s+1}}.\n\\]\n\n(3) $Y(s)=X^2=(2-s)^2(3s^2-2s+1)$ とおくと\n\\[\nY'(s)=(2-s)\\{-2(3s^2-2s+1)+(2-s)(6s-2)\\}=(2-s)(-12s^2+18s-6)=6(2-s)(2s-1)(1-s).\n\\]\n$0<s<1$ で $2-s>0$，$1-s>0$ なので，$Y$ は $0<s\\leqq\\frac12$ で減少，$\\frac12\\leqq s<1$ で増加．$X(\\tfrac12)=\\frac32\\cdot\\frac{\\sqrt3}2=\\frac{3\\sqrt3}4$，$s\\to+0$ で $X\\to2$，$s\\to1-0$ で $X\\to\\sqrt2$．$X$ は連続なので，$0<s\\leqq\\frac12$ で $X$ は $\\bigl[\\frac{3\\sqrt3}4,2\\bigr)$ の値をすべてとり，$\\frac12\\leqq s<1$ でとる値 $\\bigl[\\frac{3\\sqrt3}4,\\sqrt2\\bigr)$ はこれに含まれる．よって\n\\[\n\\boldsymbol{\\frac{3\\sqrt3}4\\leqq X<2}\\quad(\\text{最小は }s=\\tfrac12\\text{ のときで，切り口は正六角形}).\n\\]\n\\hfill$\\square$"
+   }
+  ],
+  "idea": {
+   "tex": "PQ と RS はともに BC に平行なので4点は同一平面上にあり，その平面は中点 L，M と BC 方向で決まる．O を含む条件は「O，L，M が一直線上」に帰着する．中心を通る切り口は中心対称な六角形で，BC に平行な辺をもつ2つの台形に分けると面積が $s$ の式になる．"
+  },
+  "methods": [],
+  "tags": [
+   "空間ベクトル",
+   "正八面体",
+   "切り口の面積",
+   "微分"
+  ],
+  "provenance": {
+   "created": "2026-11-10"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "C-VEC-359",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "C-18",
+  "level": 4,
+  "minutes": 35,
+  "theme": "2本の線分の交点がつくる三角形の面積と中点三角形",
+  "topic": "2本の線分の交点がつくる三角形の面積と中点三角形",
+  "statement": {
+   "tex": "$\\triangle\\mathrm{ABC}$ の面積を1とし，辺 AB，AC，BC の中点をそれぞれ M，N，L とする．$0\\leqq x<1$，$0\\leqq y<1$ に対し，辺 AB を $x:(1-x)$ に内分する点を P，辺 AC を $y:(1-y)$ に内分する点を Q とし（$x=0$ や $y=0$ のときは A とする），線分 BQ と線分 CP の交点を R とする．$\\vec b=\\overrightarrow{\\mathrm{AB}}$，$\\vec c=\\overrightarrow{\\mathrm{AC}}$ とおく．\n\\begin{enumerate}\n  \\item $\\overrightarrow{\\mathrm{AR}}$ を $x,y,\\vec b,\\vec c$ で表せ．\n  \\item $\\triangle\\mathrm{PQR}$ の面積を $x,y$ で表せ．\n  \\item $\\triangle\\mathrm{PQR}$ の面積の最大値と，そのときの $x,y$ を求めよ．\n  \\item R が $\\triangle\\mathrm{LMN}$（周を含む）に含まれるような点 $(x,y)$ 全体を $xy$ 平面に図示し，その面積を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $\\overrightarrow{\\mathrm{AR}}=\\dfrac{x(1-y)\\vec b+y(1-x)\\vec c}{1-xy}$　(2) $\\dfrac{xy(1-x)(1-y)}{1-xy}$　(3) 最大値 $\\dfrac{5\\sqrt5-11}2$（$x=y=\\dfrac{\\sqrt5-1}2$）　(4) 領域は $2x+2y-3xy\\geqq1$，$x\\leqq\\dfrac1{2-y}$，$y\\leqq\\dfrac1{2-x}$（$0\\leqq x,y<1$），面積 $\\dfrac{20}9\\log2-\\dfrac43$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "A を始点とする位置ベクトルで考える．$\\overrightarrow{\\mathrm{AP}}=x\\vec b$，$\\overrightarrow{\\mathrm{AQ}}=y\\vec c$ であり，$\\vec b,\\vec c$ は1次独立．\n\n(1) R は線分 BQ 上と線分 CP 上にあるので\n\\[\\overrightarrow{\\mathrm{AR}}=(1-\\sigma)\\vec b+\\sigma y\\vec c=\\tau x\\vec b+(1-\\tau)\\vec c\\quad(0\\leqq\\sigma,\\tau\\leqq1).\\]\n係数を比べて $1-\\sigma=\\tau x$，$\\sigma y=1-\\tau$．$\\sigma=1-\\tau x$ を代入すると $\\tau(1-xy)=1-y$，$1-xy>0$ より $\\tau=\\dfrac{1-y}{1-xy}$，$\\sigma=\\dfrac{1-x}{1-xy}$（ともに $0$ 以上 $1$ 以下）．よって\n\\[\\overrightarrow{\\mathrm{AR}}=\\boldsymbol{\\frac{x(1-y)\\vec b+y(1-x)\\vec c}{1-xy}}.\\]\n以下 $v=\\dfrac{x(1-y)}{1-xy}$，$w=\\dfrac{y(1-x)}{1-xy}$ とおく．\n\n(2) $\\vec u=\\lambda_1\\vec b+\\mu_1\\vec c$，$\\vec v'=\\lambda_2\\vec b+\\mu_2\\vec c$ がつくる三角形の面積は $\\frac12\\sqrt{|\\vec u|^2|\\vec v'|^2-(\\vec u\\cdot\\vec v')^2}$ で，展開すると $|\\lambda_1\\mu_2-\\lambda_2\\mu_1|\\cdot\\frac12\\sqrt{|\\vec b|^2|\\vec c|^2-(\\vec b\\cdot\\vec c)^2}=|\\lambda_1\\mu_2-\\lambda_2\\mu_1|\\cdot\\triangle\\mathrm{ABC}$．\n$\\overrightarrow{\\mathrm{PQ}}=-x\\vec b+y\\vec c$，$\\overrightarrow{\\mathrm{PR}}=(v-x)\\vec b+w\\vec c$ より\n\\[(-x)w-y(v-x)=xy-(xw+yv)=xy-\\frac{xy(2-x-y)}{1-xy}=-\\frac{xy(1-x)(1-y)}{1-xy}.\\]\nよって $\\triangle\\mathrm{PQR}=\\boldsymbol{\\dfrac{xy(1-x)(1-y)}{1-xy}}$．\n\n(3) $x=0$ または $y=0$ なら面積0．$x,y>0$ とし $s=\\sqrt{xy}$（$0<s<1$）とおくと，相加・相乗平均より $(1-x)(1-y)=1-(x+y)+xy\\leqq1-2s+s^2=(1-s)^2$（等号は $x=y$）．よって\n\\[\\triangle\\mathrm{PQR}\\leqq\\frac{s^2(1-s)^2}{1-s^2}=\\frac{s^2(1-s)}{1+s}=h(s).\\]\n$h'(s)=\\dfrac{(2s-3s^2)(1+s)-(s^2-s^3)}{(1+s)^2}=\\dfrac{2s(1-s-s^2)}{(1+s)^2}$ は $s_0=\\dfrac{\\sqrt5-1}2$ で正から負に変わるので，$h$ は $s=s_0$ で最大．$s_0^2=1-s_0$，$1+s_0=\\dfrac1{s_0}$ より $h(s_0)=s_0^2\\cdot s_0^2\\cdot s_0=s_0^5$．$s_0^2=\\dfrac{3-\\sqrt5}2$，$s_0^4=\\dfrac{7-3\\sqrt5}2$，$s_0^5=\\dfrac{(7-3\\sqrt5)(\\sqrt5-1)}4=\\dfrac{5\\sqrt5-11}2$．\n等号は $x=y=s_0$ で成り立つので，最大値 $\\boldsymbol{\\dfrac{5\\sqrt5-11}2}$（$\\boldsymbol{x=y=\\dfrac{\\sqrt5-1}2}$）．\n\n(4) $\\overrightarrow{\\mathrm{AM}}=\\frac12\\vec b$，$\\overrightarrow{\\mathrm{AN}}=\\frac12\\vec c$，$\\overrightarrow{\\mathrm{AL}}=\\frac12(\\vec b+\\vec c)$．$\\triangle\\mathrm{LMN}$ の点は\n\\[\\overrightarrow{\\mathrm{AM}}+\\lambda\\overrightarrow{\\mathrm{MN}}+\\mu\\overrightarrow{\\mathrm{ML}}=\\frac{1-\\lambda}2\\vec b+\\frac{\\lambda+\\mu}2\\vec c\\quad(\\lambda,\\mu\\geqq0,\\ \\lambda+\\mu\\leqq1)\\]\nと表される．$v\\vec b+w\\vec c$ がこの形になる条件は，$\\lambda=1-2v$，$\\mu=2v+2w-1$ として\n\\[v\\leqq\\frac12,\\qquad w\\leqq\\frac12,\\qquad v+w\\geqq\\frac12.\\]\n$X=\\dfrac x{1-x}$，$Y=\\dfrac y{1-y}$ とおくと $(1-x)(1-y)(1+X+Y)=1-xy$ より $v=\\dfrac X{1+X+Y}$，$w=\\dfrac Y{1+X+Y}$．条件は\n\\[X\\leqq1+Y,\\qquad Y\\leqq1+X,\\qquad X+Y\\geqq1\\]\nで，順に $x(2-y)\\leqq1$，$y(2-x)\\leqq1$，$2x+2y-3xy\\geqq1$ と同値（分母を払う）．すなわち\n\\[x\\leqq\\frac1{2-y},\\qquad y\\leqq\\frac1{2-x},\\qquad 2x+2y-3xy\\geqq1\\qquad(0\\leqq x<1,\\ 0\\leqq y<1).\\]\n3曲線 $x=\\frac1{2-y}$，$y=\\frac1{2-x}$，$2x+2y-3xy=1$ は，2本ずつ $\\left(\\frac12,0\\right)$，$\\left(0,\\frac12\\right)$，$(1,1)$ で交わり，領域はこの3点を頂点とする曲線三角形（点 $(1,1)$ は除く）である．\n\n面積は，正方形 $0\\leqq x,y<1$ から次の3つを除いて求める．\n\\begin{itemize}\n  \\item $E_1:\\ 2x+2y-3xy<1$．$0\\leqq x<\\frac12$ では $y<\\dfrac{1-2x}{2-3x}$，$\\frac12\\leqq x\\leqq\\frac23$ では $y(2-3x)\\geqq0\\geqq1-2x$ で不成立，$x>\\frac23$ では $y>\\dfrac{2x-1}{3x-2}\\geqq1$ で不成立．\n  \\[(E_1\\text{ の面積})=\\int_0^{\\frac12}\\left(\\frac23-\\frac13\\cdot\\frac1{2-3x}\\right)dx=\\frac13-\\frac19\\log4=\\frac13-\\frac29\\log2.\\]\n  \\item $E_2:\\ x>\\dfrac1{2-y}$．$E_2$ の面積は $\\displaystyle\\int_0^1\\left(1-\\frac1{2-y}\\right)dy=1-\\log2$．$E_3:\\ y>\\dfrac1{2-x}$ も同様に $1-\\log2$．\n\\end{itemize}\n$E_2\\cap E_3$ は $X>1+Y$ かつ $Y>1+X$ で空，$E_1\\cap E_2$ は $X+Y<1$ かつ $X>1+Y\\geqq1$ で空，$E_1\\cap E_3$ も同様に空．境界の面積は0なので，求める面積は\n\\[1-\\left(\\frac13-\\frac29\\log2\\right)-2(1-\\log2)=\\boldsymbol{\\frac{20}9\\log2-\\frac43}.\\]\n\\hfill$\\square$"
+   }
+  ],
+  "idea": {
+   "tex": "BQ と CP の交点 R は2通りの表示の係数比較で $\\overrightarrow{\\mathrm{AR}}=\\dfrac{x(1-y)\\vec b+y(1-x)\\vec c}{1-xy}$．係数を $X=\\dfrac x{1-x}$，$Y=\\dfrac y{1-y}$ で書くと $1:X:Y$ の比になり，R の位置の条件が $x,y$ の簡単な不等式に翻訳される．"
+  },
+  "methods": [],
+  "tags": [
+   "交点の位置ベクトル",
+   "面積比",
+   "相加相乗平均",
+   "領域の面積"
+  ],
+  "provenance": {
+   "created": "2026-11-10"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
  }
 ]

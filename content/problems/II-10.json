@@ -6817,5 +6817,142 @@
    },
    "verified": false
   }
+ },
+ {
+  "id": "II-TRI-147",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-10",
+  "level": 4,
+  "minutes": 35,
+  "theme": "対角線が直交する円に内接する五角形",
+  "topic": "対角線が直交する円に内接する五角形",
+  "statement": {
+   "tex": "半径1の円に内接する五角形 $\\mathrm A_1\\mathrm A_2\\mathrm A_3\\mathrm A_4\\mathrm A_5$ を考える（頂点はこの順に円周上に並ぶ）．対角線 $\\mathrm A_1\\mathrm A_4$ と $\\mathrm A_2\\mathrm A_5$ は点 B で垂直に交わり，$\\mathrm A_3\\mathrm A_2=\\mathrm A_3\\mathrm A_4$ であるとする．$a=\\mathrm A_1\\mathrm A_2$，$b=\\mathrm A_4\\mathrm A_5$，$c=\\mathrm A_2\\mathrm A_3$ とおく．\n\\begin{enumerate}\n  \\item $a^2+b^2=4$ であることを証明せよ．\n  \\item 辺 $\\mathrm A_4\\mathrm A_5$ の中点を M とする．直線 MB は直線 $\\mathrm A_1\\mathrm A_2$ と垂直であることを証明せよ．\n  \\item 五角形 $\\mathrm A_1\\mathrm A_2\\mathrm A_3\\mathrm A_4\\mathrm A_5$ の面積 $S$ を $a$，$c$ を用いて表し，$S$ の最大値と，そのときの $a$，$c$ の値を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 証明　(2) 証明　(3) $S=\\dfrac{a\\sqrt{4-a^2}}2+\\dfrac{c\\,(4-c^2)^{\\frac32}}4$（$0<a<2$，$0<c<\\sqrt2$），最大値 $1+\\dfrac{3\\sqrt3}4$（$a=\\sqrt2$，$c=1$）"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "円の中心を O とする．弧 $\\mathrm A_1\\mathrm A_2$，$\\mathrm A_2\\mathrm A_3$，$\\mathrm A_3\\mathrm A_4$，$\\mathrm A_4\\mathrm A_5$，$\\mathrm A_5\\mathrm A_1$（他の頂点を含まない弧）の中心角をそれぞれ $2\\alpha,2\\gamma,2\\gamma',2\\beta,2\\delta$ とする（すべて正，和は $2\\pi$）．$\\mathrm A_3\\mathrm A_2=\\mathrm A_3\\mathrm A_4$ より等しい弦に対する弧は等しく $\\gamma'=\\gamma$．半径1なので弦の長さは $a=2\\sin\\alpha$，$b=2\\sin\\beta$，$c=2\\sin\\gamma$ である．\n\n(1) 三角形 $\\mathrm A_2\\mathrm B\\mathrm A_4$ で，B は線分 $\\mathrm A_1\\mathrm A_4$ 上にあるので $\\angle\\mathrm A_1\\mathrm B\\mathrm A_2$ はその外角であり，\n\\[\n\\angle\\mathrm A_1\\mathrm B\\mathrm A_2=\\angle\\mathrm B\\mathrm A_2\\mathrm A_4+\\angle\\mathrm B\\mathrm A_4\\mathrm A_2=\\angle\\mathrm A_5\\mathrm A_2\\mathrm A_4+\\angle\\mathrm A_1\\mathrm A_4\\mathrm A_2=\\beta+\\alpha\n\\]\n（円周角は弧 $\\mathrm A_4\\mathrm A_5$，$\\mathrm A_1\\mathrm A_2$ の中心角の半分）．これが $\\frac\\pi2$ なので $\\alpha+\\beta=\\frac\\pi2$，$0<\\alpha<\\frac\\pi2$．よって $b=2\\sin\\left(\\frac\\pi2-\\alpha\\right)=2\\cos\\alpha$ で\n\\[\na^2+b^2=4\\sin^2\\alpha+4\\cos^2\\alpha=4.\\qquad\\square\n\\]\n\n(2) $\\angle\\mathrm A_4\\mathrm B\\mathrm A_5=\\angle\\mathrm A_1\\mathrm B\\mathrm A_2=\\frac\\pi2$（対頂角）なので，直角三角形 $\\mathrm A_4\\mathrm B\\mathrm A_5$ の斜辺の中点 M は外心で $\\mathrm{MB}=\\mathrm{MA_4}$．よって\n\\[\n\\angle\\mathrm M\\mathrm B\\mathrm A_4=\\angle\\mathrm M\\mathrm A_4\\mathrm B=\\angle\\mathrm A_5\\mathrm A_4\\mathrm A_1=\\angle\\mathrm A_5\\mathrm A_2\\mathrm A_1=\\angle\\mathrm B\\mathrm A_2\\mathrm A_1.\n\\]\n（3つ目の等号は，弧 $\\mathrm A_5\\mathrm A_1$ に対する円周角で，$\\mathrm A_2,\\mathrm A_4$ はともにこの弧の反対側にある．）M は線分 $\\mathrm A_4\\mathrm A_5$ 上にあるので半直線 BM は $\\angle\\mathrm A_4\\mathrm B\\mathrm A_5$ の内部にあり，その反対向きの半直線は対頂角 $\\angle\\mathrm A_1\\mathrm B\\mathrm A_2$ の内部にあって線分 $\\mathrm A_1\\mathrm A_2$ と点 H で交わる．$\\angle\\mathrm H\\mathrm B\\mathrm A_1=\\angle\\mathrm M\\mathrm B\\mathrm A_4$（対頂角）$=\\angle\\mathrm B\\mathrm A_2\\mathrm A_1$．三角形 $\\mathrm A_1\\mathrm B\\mathrm A_2$ で $\\angle\\mathrm B\\mathrm A_1\\mathrm A_2+\\angle\\mathrm B\\mathrm A_2\\mathrm A_1=\\frac\\pi2$ なので，三角形 $\\mathrm A_1\\mathrm B\\mathrm H$ で\n\\[\n\\angle\\mathrm B\\mathrm H\\mathrm A_1=\\pi-\\angle\\mathrm H\\mathrm B\\mathrm A_1-\\angle\\mathrm H\\mathrm A_1\\mathrm B=\\pi-\\left(\\angle\\mathrm B\\mathrm A_2\\mathrm A_1+\\angle\\mathrm B\\mathrm A_1\\mathrm A_2\\right)=\\frac\\pi2.\n\\]\nよって $\\mathrm{MB}\\perp\\mathrm A_1\\mathrm A_2$．\\hfill$\\square$\n\n(3) $2\\alpha+2\\beta=\\pi$ より $4\\gamma+2\\delta=\\pi$，したがって $0<\\gamma<\\frac\\pi4$，$2\\delta=\\pi-4\\gamma$．5つの弧の中心角はすべて $\\pi$ 未満なので，O は各辺に関して五角形と同じ側にあり，五角形は5つの三角形 $\\mathrm{OA}_i\\mathrm A_{i+1}$ に分割される．よって\n\\[\nS=\\frac12\\left(\\sin2\\alpha+2\\sin2\\gamma+\\sin2\\beta+\\sin2\\delta\\right)=\\sin2\\alpha+\\sin2\\gamma+\\frac12\\sin4\\gamma\n\\]\n（$\\sin2\\beta=\\sin(\\pi-2\\alpha)=\\sin2\\alpha$，$\\sin2\\delta=\\sin4\\gamma$）．\n\n$a=2\\sin\\alpha$，$0<\\alpha<\\frac\\pi2$ より $\\cos\\alpha=\\frac{\\sqrt{4-a^2}}2$，$\\sin2\\alpha=\\frac{a\\sqrt{4-a^2}}2$．$c=2\\sin\\gamma$，$0<\\gamma<\\frac\\pi4$ より $\\cos\\gamma=\\frac{\\sqrt{4-c^2}}2$，$\\sin2\\gamma=\\frac{c\\sqrt{4-c^2}}2$，$\\cos2\\gamma=1-\\frac{c^2}2$ で\n\\[\n\\sin2\\gamma+\\frac12\\sin4\\gamma=\\sin2\\gamma(1+\\cos2\\gamma)=\\frac{c\\sqrt{4-c^2}}2\\cdot\\frac{4-c^2}2.\n\\]\nよって\n\\[\n\\boldsymbol{S=\\frac{a\\sqrt{4-a^2}}2+\\frac{c\\,(4-c^2)^{\\frac32}}4}\\qquad(0<a<2,\\ 0<c<\\sqrt2).\n\\]\n逆に $0<\\alpha<\\frac\\pi2$，$0<\\gamma<\\frac\\pi4$ を任意にとれば弧の中心角 $2\\alpha,2\\gamma,2\\gamma,\\pi-2\\alpha,\\pi-4\\gamma$ で条件をみたす五角形が作れる（(1) の計算を逆にたどると交角は $\\frac\\pi2$）ので，$a$ と $c$ はこの範囲を独立に動く．\n\n\\textbf{最大値．} $\\sin2\\alpha\\leqq1$（等号 $\\alpha=\\frac\\pi4$）．$h(\\gamma)=\\sin2\\gamma+\\frac12\\sin4\\gamma$（$0<\\gamma<\\frac\\pi4$）とおくと\n\\[\nh'(\\gamma)=2\\cos2\\gamma+2\\cos4\\gamma=2(2\\cos2\\gamma-1)(\\cos2\\gamma+1).\n\\]\n$\\cos2\\gamma+1>0$ で，$2\\cos2\\gamma-1$ は $0<\\gamma<\\frac\\pi6$ で正，$\\frac\\pi6<\\gamma<\\frac\\pi4$ で負．よって $h$ は $\\gamma=\\frac\\pi6$ で最大値 $\\frac{\\sqrt3}2+\\frac{\\sqrt3}4=\\frac{3\\sqrt3}4$ をとる．$\\alpha$ と $\\gamma$ は独立に選べるので，\n\\[\nS\\text{ の最大値 }\\boldsymbol{1+\\frac{3\\sqrt3}4}\\quad\\left(\\alpha=\\frac\\pi4,\\ \\gamma=\\frac\\pi6,\\ \\text{すなわち }\\boldsymbol{a=\\sqrt2,\\ c=1}\\right).\n\\]"
+   }
+  ],
+  "idea": {
+   "tex": "内部で交わる2弦の交角は，はさむ2つの弧の円周角の和（外角定理）．直交なら $\\alpha+\\beta=\\frac\\pi2$ で $a=2\\sin\\alpha$，$b=2\\cos\\alpha$．直角三角形の斜辺の中点は外心なので二等辺三角形ができ，円周角で角を移すと中線の延長が対辺に垂直．面積は中心から5つの三角形に分けると，$\\alpha$ だけの部分と $\\gamma$ だけの部分に分離し，それぞれを最大化すればよい．"
+  },
+  "methods": [],
+  "tags": [
+   "円周角",
+   "弦の交角",
+   "ブラーマグプタの定理",
+   "面積の最大",
+   "2変数の分離"
+  ],
+  "provenance": {
+   "created": "2026-11-10"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-TRI-148",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-10",
+  "level": 5,
+  "minutes": 40,
+  "theme": "単位円の像の最大半径と2回合成",
+  "topic": "単位円の像の最大半径と2回合成",
+  "statement": {
+   "tex": "実数 $a,b,c$ に対し，座標平面上の点 $(x,y)$ を点 $(ax+cy,\\ by)$ に移す移動を $f$ とする．原点 O を中心とする半径1の円周上を点 P が動くとき，$\\mathrm{OQ}$（Q は P の $f$ による像）の最大値を $L(f)$，最小値を $\\ell(f)$ と書く．また $f^{(1)}=f$，$f^{(n+1)}=f\\circ f^{(n)}$（$f^{(n)}$ で移したあと $f$ で移す移動）とする．\n\\begin{enumerate}\n  \\item $L(f)^2$ と $\\ell(f)^2$ は，$z$ の2次方程式 $z^2-(a^2+b^2+c^2)z+a^2b^2=0$ の2つの解（重解の場合はその解）であることを示せ．\n  \\item $a=b=1$，$c>0$ とする．$L(f^{(n)})$ を $n,c$ で表し，極限 $\\displaystyle\\lim_{n\\to\\infty}L(f^{(n)})^{\\frac1n}$ を求めよ．\n  \\item $a,b,c$ が任意の実数のとき，$L(f\\circ f)\\leqq L(f)^2$ が成り立つことを示せ．また，等号が成り立つための $a,b,c$ の条件を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 証明　(2) $L(f^{(n)})=\\dfrac{nc+\\sqrt{n^2c^2+4}}2$，$\\displaystyle\\lim_{n\\to\\infty}L(f^{(n)})^{\\frac1n}=1$　(3) 証明；等号成立は $c=0$ のとき，かつそのときに限る"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "\\textbf{(1)}　P$(\\cos\\theta,\\sin\\theta)$ とおくと，Q$(a\\cos\\theta+c\\sin\\theta,\\ b\\sin\\theta)$ で\n\\[\n\\mathrm{OQ}^2=a^2\\cos^2\\theta+2ac\\sin\\theta\\cos\\theta+(b^2+c^2)\\sin^2\\theta\n=\\frac T2+p\\cos2\\theta+q\\sin2\\theta .\n\\]\nただし $T=a^2+b^2+c^2$，$p=\\dfrac{a^2-b^2-c^2}2$，$q=ac$ である．$R=\\sqrt{p^2+q^2}$ とおく．$R>0$ のときは合成により $p\\cos2\\theta+q\\sin2\\theta=R\\sin(2\\theta+\\varphi)$（$\\varphi$ は定数）と書け，$\\theta$ が $0\\leqq\\theta<2\\pi$ を動くとき $2\\theta+\\varphi$ は長さ $4\\pi$ の区間を動くので，この値は $-R$ 以上 $R$ 以下のすべての値をとる．$R=0$ のときは $\\mathrm{OQ}^2=\\frac T2$ で一定である．いずれの場合も\n\\[\nL(f)^2=\\frac T2+R,\\qquad \\ell(f)^2=\\frac T2-R .\n\\]\nしたがって $L(f)^2+\\ell(f)^2=T$，また\n\\[\nL(f)^2\\,\\ell(f)^2=\\frac{T^2}4-p^2-q^2=\\Bigl(\\frac T2-p\\Bigr)\\Bigl(\\frac T2+p\\Bigr)-a^2c^2=(b^2+c^2)\\,a^2-a^2c^2=a^2b^2 .\n\\]\nよって $(z-L(f)^2)(z-\\ell(f)^2)=z^2-Tz+a^2b^2$ であり，$L(f)^2$，$\\ell(f)^2$ は $z^2-(a^2+b^2+c^2)z+a^2b^2=0$ の2解である．\\hfill$\\square$\n\n\\medskip\n\\textbf{(2)}　$f(x,y)=(x+cy,\\ y)$．$f^{(n)}(x,y)=(x+ncy,\\ y)$ を帰納法で示す．$n=1$ では正しい．$n$ で正しければ $f^{(n+1)}(x,y)=f(x+ncy,\\ y)=(x+ncy+cy,\\ y)=(x+(n+1)cy,\\ y)$．\n\nよって $f^{(n)}$ は (1) の形で $(a,b,c)$ を $(1,1,nc)$ としたものである．$k=nc>0$ とおくと，$L(f^{(n)})^2$ は $z^2-(2+k^2)z+1=0$ の大きい方の解で\n\\[\nL(f^{(n)})^2=\\frac{2+k^2+\\sqrt{(2+k^2)^2-4}}2=\\frac{2+k^2+k\\sqrt{k^2+4}}2=\\Bigl(\\frac{k+\\sqrt{k^2+4}}2\\Bigr)^2 .\n\\]\n（最後の等号は右辺を展開して確かめられる．）$L(f^{(n)})>0$ より\n\\[\nL(f^{(n)})=\\boldsymbol{\\frac{nc+\\sqrt{n^2c^2+4}}2}.\n\\]\n次に極限．$\\sqrt{n^2c^2+4}>2$ と $\\sqrt{n^2c^2+4}<nc+2$ から $1<L(f^{(n)})<nc+1$，よって\n\\[\n0<\\log L(f^{(n)})^{\\frac1n}<\\frac{\\log(1+nc)}n .\n\\]\nここで $y>0$ に対し $h(y)=\\sqrt y-\\log y$ とおくと $h'(y)=\\dfrac{\\sqrt y-2}{2y}$ で，$h$ は $y=4$ で最小値 $2-2\\log2>0$ をとる（$\\log2<1$）．よって $\\log y<\\sqrt y$ であり\n\\[\n0<\\frac{\\log(1+nc)}n<\\frac{\\sqrt{1+nc}}n=\\sqrt{\\frac1{n^2}+\\frac cn}\\ \\longrightarrow\\ 0\\quad(n\\to\\infty).\n\\]\nはさみうちの原理により $\\log L(f^{(n)})^{\\frac1n}\\to0$，すなわち $\\displaystyle\\lim_{n\\to\\infty}L(f^{(n)})^{\\frac1n}=\\boldsymbol{1}$．\n\n（$L(f)=\\frac{c+\\sqrt{c^2+4}}2>1$ なので $L(f)^n\\to\\infty$ であり，$L(f^{(n)})$ は $L(f)^n$ よりはるかに小さい．）\n\n\\medskip\n\\textbf{(3)}　$\\sigma=L(f)$，$\\tau=\\ell(f)$ とおくと，(1) より $\\sigma^2+\\tau^2=T$，$\\sigma^2\\tau^2=a^2b^2$，$\\sigma\\geqq\\tau\\geqq0$．\n\n$f\\circ f(x,y)=f(ax+cy,\\ by)=(a^2x+c(a+b)y,\\ b^2y)$ なので，$f\\circ f$ は (1) の形で $(a,b,c)$ を $(a^2,b^2,c(a+b))$ としたものである．よって $\\Lambda=L(f\\circ f)^2$ は\n\\[\nh(z)=z^2-T'z+a^4b^4,\\qquad T'=a^4+b^4+c^2(a+b)^2\n\\]\nの大きい方の解である．$h$ は $z\\geqq\\frac{T'}2$ で単調増加し，$\\Lambda\\geqq\\frac{T'}2$，$h(\\Lambda)=0$ だから，$z\\geqq\\frac{T'}2$ の範囲では「$h(z)\\geqq0\\iff z\\geqq\\Lambda$」，「$h(z)=0\\iff z=\\Lambda$」が成り立つ．\n\nまず\n\\[\n\\sigma^4+\\tau^4-T'=(\\sigma^2+\\tau^2)^2-2\\sigma^2\\tau^2-T'=(a^2+b^2+c^2)^2-2a^2b^2-a^4-b^4-c^2(a+b)^2 .\n\\]\n展開すると $(a^2+b^2+c^2)^2-2a^2b^2-a^4-b^4=2a^2c^2+2b^2c^2+c^4$ なので\n\\[\n\\sigma^4+\\tau^4-T'=2a^2c^2+2b^2c^2+c^4-c^2(a^2+2ab+b^2)=c^2\\{(a-b)^2+c^2\\}\\geqq0 .\n\\]\nしたがって $\\sigma^4\\geqq\\dfrac{\\sigma^4+\\tau^4}2\\geqq\\dfrac{T'}2$ であり，\n\\[\nh(\\sigma^4)=\\sigma^8-T'\\sigma^4+\\sigma^4\\tau^4=\\sigma^4(\\sigma^4+\\tau^4-T')=\\sigma^4c^2\\{(a-b)^2+c^2\\}\\geqq0 .\n\\]\nよって $\\sigma^4\\geqq\\Lambda$，すなわち $L(f\\circ f)\\leqq L(f)^2$ である．\n\n等号 $\\sigma^4=\\Lambda$ は $h(\\sigma^4)=0$，すなわち「$\\sigma=0$ または $c^2\\{(a-b)^2+c^2\\}=0$」と同値である．$c\\neq0$ なら $(a-b)^2+c^2>0$ なので後者は $c=0$ と同値．また $\\sigma=0$ ならすべての点が原点に移るので $(1,0)\\mapsto(a,0)$，$(0,1)\\mapsto(c,b)$ から $a=b=c=0$ で，やはり $c=0$．逆に $c=0$ なら $h(\\sigma^4)=0$ となり等号が成り立つ．以上より等号成立の条件は $\\boldsymbol{c=0}$ である．\\hfill$\\square$"
+   }
+  ],
+  "idea": {
+   "tex": "移動 $(x,y)\\mapsto(ax+cy,\\ by)$ で単位円上の点がどこまで遠くへ動くかは，$|f(\\cos\\theta,\\sin\\theta)|^2$ を2倍角で書いて合成すれば最大・最小が出る．さらに最大値 $L^2$ と最小値 $\\ell^2$ の和は $a^2+b^2+c^2$，積は $a^2b^2$ で，2数は1つの2次方程式の2解になる．2回合成した移動の最大値を，この2次方程式に $L^4$ を代入した値の符号で比べると，$L(f\\circ f)\\leqq L(f)^2$ と等号条件が計算だけで決まる．"
+  },
+  "methods": [],
+  "tags": [
+   "点の移動",
+   "三角関数の合成",
+   "解と係数の関係",
+   "極限",
+   "不等式"
+  ],
+  "provenance": {
+   "created": "2026-11-10"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-TRI-149",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-10",
+  "level": 4,
+  "minutes": 35,
+  "theme": "直角三角形の斜辺に沿って並ぶ等しい円の鎖",
+  "topic": "直角三角形の斜辺に沿って並ぶ等しい円の鎖",
+  "statement": {
+   "tex": "$0<\\theta<\\dfrac\\pi2$ とし，座標平面上で不等式 $x\\geqq0$，$y\\geqq0$，$x\\sin\\theta+y\\cos\\theta\\leqq1$ の表す領域を $D$，直線 $x\\sin\\theta+y\\cos\\theta=1$ を $l$ とする．$n$ を2以上の整数とし，$D$ に含まれる半径 $r$ の $n$ 個の円 $C_1,C_2,\\dots,C_n$ が次の条件をみたすとする．\n\\begin{center}\n\\begin{minipage}{0.86\\linewidth}\n(i) どの円も $l$ に接する．\\quad (ii) $C_1$ は $y$ 軸に，$C_n$ は $x$ 軸に接する．\\\\\n(iii) $C_k$ と $C_{k+1}$ は外接する（$k=1,\\dots,n-1$）．\\quad (iv) どの2つの円も内部に共通部分をもたない．\n\\end{minipage}\n\\end{center}\n\\begin{enumerate}\n  \\item このような円の配置が存在することを示し，$\\dfrac1r$ を $\\theta$ と $n$ で表せ．\n  \\item $\\theta$ が $0<\\theta<\\dfrac\\pi2$ の範囲を動くとき，$r$ のとりうる値の範囲を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $\\dfrac1r=1+\\sin\\theta+\\cos\\theta+(n-1)\\sin2\\theta$　(2) $\\dfrac{1}{n+\\sqrt2}\\leqq r<\\dfrac12$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "$s=\\sin\\theta$，$c=\\cos\\theta$ とし，$\\mathrm A\\left(\\frac1s,0\\right)$，$\\mathrm B\\left(0,\\frac1c\\right)$ とする．$D$ は直角三角形 OAB で，$\\angle\\mathrm A=\\theta$，$\\angle\\mathrm B=\\frac\\pi2-\\theta$，$\\mathrm{AB}=\\frac1{sc}$，O から $l$ までの距離は1．\n\n\\textbf{準備}　角 $\\varphi$ の2辺に接する半径 $\\rho$ の円の接点は頂点から $\\rho\\cdot\\frac{1+\\cos\\varphi}{\\sin\\varphi}$ の距離にある（中心と頂点を結ぶ線は角を2等分し，接点までの距離は $\\rho\\div\\tan\\frac\\varphi2=\\rho\\cdot\\frac{1+\\cos\\varphi}{\\sin\\varphi}$）．$\\varphi=\\angle\\mathrm B$ では $\\frac{1+s}{c}$，$\\varphi=\\angle\\mathrm A$ では $\\frac{1+c}{s}$．\n\n(1) 半径 $r$ の円が $D$ に含まれ $l$ に接する $\\iff$ 中心が「$x\\geqq r$，$y\\geqq r$，$l$ までの距離 $=r$（O 側）」をみたす．このような中心全体は直線 $m:\\ sx+cy=1-r$ のうち $x\\geqq r$，$y\\geqq r$ の部分で，これが空でないとき端点 E（$x=r$），F（$y=r$）を結ぶ線分 EF である．E，F の円はそれぞれ $l$ と $y$ 軸，$l$ と $x$ 軸に接するので，$l$ 上の接点は B から $r\\frac{1+s}{c}$，A から $r\\frac{1+c}{s}$ の位置にあり，\n\\[ \\mathrm{EF}=\\frac1{sc}-r\\left(\\frac{1+s}c+\\frac{1+c}s\\right)\\quad\\left(\\text{ただし }\\geqq0\\right). \\]\n\\textbf{必要性}　条件をみたす配置があるとき，中心 $\\mathrm O_1,\\dots,\\mathrm O_n$ は線分 EF 上にあり，$\\mathrm O_1=\\mathrm E$，$\\mathrm O_n=\\mathrm F$．(iii) より $\\mathrm O_k\\mathrm O_{k+1}=2r$，(iv) より $j\\neq k$ で $\\mathrm O_j\\mathrm O_k\\geqq2r$．EF 上の座標を E から測って $\\tau_k$ とすると $|\\tau_{k+1}-\\tau_k|=2r$ で，向きが途中で反転すれば $\\tau_{k+2}=\\tau_k$ となり (iv) に反する．よって $\\tau_k$ は単調で，$\\tau_1=0$，$\\tau_n=\\mathrm{EF}$ より $\\mathrm{EF}=2(n-1)r$．したがって\n\\[ \\frac1{sc}=r\\left\\{\\frac{1+s}c+\\frac{1+c}s+2(n-1)\\right\\}. \\]\n両辺に $sc$ を掛けて $1=r\\{s(1+s)+c(1+c)+2(n-1)sc\\}=r\\{1+s+c+(n-1)\\sin2\\theta\\}$．\n\n\\textbf{存在}　逆に $r=\\frac1{1+s+c+(n-1)\\sin2\\theta}$ とおくと $r(1+s+c)\\leqq1$ で，E$\\left(r,\\frac{1-r-rs}c\\right)$ の $y$ 座標は $r$ 以上（$\\iff1\\geqq r(1+s+c)$）で，同様に F$\\left(\\frac{1-r-rc}s,r\\right)$ の $x$ 座標も $r$ 以上．よって線分 EF は存在し，上の計算から $\\mathrm{EF}=2(n-1)r$．EF 上に E から $2r$ 間隔に $n$ 個の中心をとれば，(i)〜(iv) をみたす．ゆえに\n\\[ \\boldsymbol{\\frac1r=1+\\sin\\theta+\\cos\\theta+(n-1)\\sin2\\theta}. \\]\n\n(2) $u=\\sin\\theta+\\cos\\theta=\\sqrt2\\sin\\left(\\theta+\\frac\\pi4\\right)$ は $0<\\theta<\\frac\\pi2$ で $1<u\\leqq\\sqrt2$ の値をすべてとり（$\\theta=\\frac\\pi4$ で $u=\\sqrt2$），$\\sin2\\theta=u^2-1$．\n\\[ \\frac1r=1+u+(n-1)(u^2-1) \\]\nは $u>1$ で狭義増加し連続．$u\\to1+0$ で $2$，$u=\\sqrt2$ で $1+\\sqrt2+n-1=n+\\sqrt2$．よって $\\frac1r$ のとりうる値は $(2,\\,n+\\sqrt2]$，\n\\[ \\boldsymbol{\\frac1{n+\\sqrt2}\\leqq r<\\frac12}. \\]"
+   }
+  ],
+  "idea": {
+   "tex": "角 $\\varphi$ の2辺に接する半径 $r$ の円の接点は頂点から $r\\cdot\\frac{1+\\cos\\varphi}{\\sin\\varphi}$．等しい円が1直線に接しながら外接して並ぶと接点の間隔は $2r$．斜辺の長さの式に $\\sin\\theta\\cos\\theta$ を掛けると $\\frac1r=1+\\sin\\theta+\\cos\\theta+(n-1)\\sin2\\theta$ となり，$u=\\sin\\theta+\\cos\\theta$ の増加関数になる．"
+  },
+  "methods": [],
+  "tags": [
+   "接する円",
+   "半角",
+   "三角関数の合成",
+   "値域"
+  ],
+  "provenance": {
+   "created": "2026-11-10"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
  }
 ]

@@ -9746,5 +9746,234 @@
    },
    "verified": false
   }
+ },
+ {
+  "id": "II-EQ-209",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-08",
+  "level": 4,
+  "minutes": 35,
+  "theme": "2次の整数係数方程式の解がみたす欠項の方程式",
+  "topic": "2次の整数係数方程式の解がみたす欠項の方程式",
+  "statement": {
+   "tex": "複素数 $z$ に関する次の条件 (C)，(D)，(E) を考える．\n\\begin{itemize}\n  \\item[(C)] $z^2+mz+n=0$ をみたす整数 $m,\\ n$ が存在する．\n  \\item[(D)] $z^3+pz^2+q=0$ をみたす整数 $p,\\ q$ が存在する．\n  \\item[(E)] $z^4+pz+q=0$ をみたす整数 $p,\\ q$ が存在する．\n\\end{itemize}\n\\begin{enumerate}\n  \\item 複素数 $z$ が条件 (C) をみたすならば，条件 (E) もみたすことを証明せよ．\n  \\item $m,\\ n$ を整数とし，2次方程式 $x^2+mx+n=0$ は有理数の解をもたないとする．この方程式の解 $z$ が条件 (D) をみたすための，$m,\\ n$ についての必要十分条件を求めよ．\n  \\item $z=a+bi$（$a,\\ b$ は実数）と表したとき $a^2+b^2=1$ となる複素数 $z$ で，条件 (E) をみたすものをすべて求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 証明　(2) $m\\neq0$ かつ $n$ が $m$ の倍数　(3) $z=\\pm1,\\ \\pm i,\\ \\dfrac{\\pm1\\pm\\sqrt3\\,i}{2},\\ \\dfrac{\\pm1\\pm i}{\\sqrt2}$（複号任意，計12個）"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) $z^2=-mz-n$ を用いて次数を下げる．\n\\[\nz^3=z\\cdot z^2=-mz^2-nz=-m(-mz-n)-nz=(m^2-n)z+mn,\n\\]\n\\[\nz^4=z\\cdot z^3=(m^2-n)z^2+mnz=(m^2-n)(-mz-n)+mnz=(2mn-m^3)z+n^2-m^2n.\n\\]\nよって $p=m^3-2mn$，$q=m^2n-n^2$ とおくと，これらは整数で $z^4+pz+q=0$ が成り立つ．したがって $z$ は条件 (E) をみたす．\\hfill$\\square$\n\n(2) 整数 $p,\\ q$ に対して，展開して確かめられる恒等式\n\\[\nx^3+px^2+q=(x^2+mx+n)(x+p-m)+(m^2-mp-n)x+(q+mn-np)\n\\]\nが成り立つ（実際，$(x^2+mx+n)(x+p-m)=x^3+px^2+(mp-m^2+n)x+np-mn$ である）．$\\alpha=m^2-mp-n$，$\\beta=q+mn-np$ とおくと，これらは整数で，$z^2+mz+n=0$ より\n\\[\nz^3+pz^2+q=\\alpha z+\\beta \\quad\\cdots\\text{①}\n\\]\nである．\n\n\\textbf{必要性}　$z$ が (D) をみたすとし，そのときの整数を $p,\\ q$ とすると，①より $\\alpha z+\\beta=0$．もし $\\alpha\\neq0$ なら $z=-\\dfrac{\\beta}{\\alpha}$ は有理数となり，$x^2+mx+n=0$ が有理数の解をもたないことに反する．よって $\\alpha=0$，したがって $\\beta=0$ である．\n\nここで $m=0$ とすると $\\alpha=-n=0$ となり，方程式は $x^2=0$ で有理数の解 $0$ をもつから矛盾する．よって $m\\neq0$ であり，$\\alpha=0$ より $n=m(m-p)$，すなわち $n$ は $m$ の倍数である．\n\n\\textbf{十分性}　$m\\neq0$ かつ $n=km$（$k$ は整数）とする．$p=m-k$，$q=-nk$ とおくとこれらは整数で，\n\\[\n\\alpha=m^2-m(m-k)-km=0,\\qquad \\beta=-nk+mn-n(m-k)=0.\n\\]\nよって①より $z^3+pz^2+q=0$ となり，$z$ は (D) をみたす．\n\n以上より，求める条件は $\\boldsymbol{m\\neq0}$ \\textbf{かつ} $\\boldsymbol{n}$ \\textbf{が} $\\boldsymbol{m}$ \\textbf{の倍数} である．（例えば $x^2-x-1=0$ の解は $x^3-2x^2+1=0$ をみたすが，$\\sqrt2$ は (D) をみたさない．）\n\n(3) $z=a+bi$（$a,\\ b$ は実数，$a^2+b^2=1$）とする．\n\n\\textbf{$z$ が実数の場合}　$b=0$ より $a^2=1$，$z=\\pm1$．このとき $z^4-1=0$ であるから，$p=0$，$q=-1$ として (E) をみたす．\n\n\\textbf{$z$ が虚数の場合}　$b\\neq0$ である．$c=z+\\overline{z}=2a$ とおくと $c$ は実数で，$c^2=4a^2=4(1-b^2)$ と $b\\neq0$ より $0\\leqq c^2<4$ である．また $z\\overline{z}=a^2+b^2=1$ だから $(x-z)(x-\\overline{z})=x^2-cx+1$ であり，$z^2-cz+1=0$ が成り立つ．\n\n展開すると $(x^2-cx+1)(x^2+cx+c^2-1)=x^4+(2c-c^3)x+c^2-1$ であるから，\n\\[\nx^4+px+q=(x^2-cx+1)(x^2+cx+c^2-1)+(p-2c+c^3)x+(q-c^2+1)\n\\]\nが恒等的に成り立つ．$x=z$ を代入して\n\\[\nz^4+pz+q=(p-2c+c^3)z+(q-c^2+1)\\quad\\cdots\\text{②}\n\\]\nを得る．\n\n\\textbf{必要性}　整数 $p,\\ q$ で $z^4+pz+q=0$ とすると，②より $(p-2c+c^3)z+(q-c^2+1)=0$．2つの係数は実数であり，$p-2c+c^3\\neq0$ ならば $z$ が実数となって矛盾する．よって\n\\[\np=2c-c^3=c(2-c^2),\\qquad q=c^2-1.\n\\]\n後者より $c^2=q+1$ は整数で，$0\\leqq c^2<4$ から $c^2\\in\\{0,1,2,3\\}$．$c^2=3$ ならば $p=-c$ で $p^2=3$ となるが，$p^2=3$ をみたす整数 $p$ は存在しない．よって $c^2\\in\\{0,1,2\\}$，すなわち $c\\in\\{0,\\ \\pm1,\\ \\pm\\sqrt2\\}$ であり，$z$ は $x^2-cx+1=0$ の虚数解である：\n\\begin{itemize}\n  \\item $c=0$：$z^2+1=0$ より $z=\\pm i$．\n  \\item $c=\\pm1$：$z^2\\mp z+1=0$ より $z=\\dfrac{\\pm1\\pm\\sqrt3\\,i}{2}$（複号任意）．\n  \\item $c=\\pm\\sqrt2$：$z^2\\mp\\sqrt2z+1=0$ より $z=\\dfrac{\\pm1\\pm i}{\\sqrt2}$（複号任意）．\n\\end{itemize}\n\n\\textbf{十分性}　上の各 $z$ は，$c\\in\\{0,\\pm1,\\pm\\sqrt2\\}$ に対する $x^2-cx+1=0$ の解であり，判別式 $c^2-4<0$ より虚数である．その解の一方を $z=a+bi$ とすると他方は $\\overline{z}=a-bi$ であり，解と係数の関係より $a^2+b^2=z\\overline{z}=1$ をみたす．$p=c(2-c^2)$，$q=c^2-1$ とおくと\n\\[\n(c,p,q)=(0,0,-1),\\ (1,1,0),\\ (-1,-1,0),\\ (\\pm\\sqrt2,0,1)\n\\]\nでいずれも $p,\\ q$ は整数であり，②の右辺の係数がともに $0$ になるので $z^4+pz+q=0$ が成り立つ．\n\n以上より求める $z$ は\n\\[\n\\boldsymbol{z=\\pm1,\\ \\ \\pm i,\\ \\ \\dfrac{\\pm1\\pm\\sqrt3\\,i}{2},\\ \\ \\dfrac{\\pm1\\pm i}{\\sqrt2}}\\quad\\text{（複号任意，計12個）}.\n\\]"
+   }
+  ],
+  "idea": {
+   "tex": "$z^2=-mz-n$ を使って $z$ の高次の式を1次式 $\\alpha z+\\beta$（$\\alpha,\\beta$ は整数）まで下げる．$z$ が有理数でない（または虚数である）とき，$\\alpha z+\\beta=0$ から $\\alpha=\\beta=0$ が出るので，「$z$ がある方程式をみたすか」は割り算の余りの係数が $0$ になる条件に翻訳される．$z\\overline{z}=1$ の虚数 $z$ は $x^2-cx+1$（$c=z+\\overline{z}$）の解なので，この2次式で割った余りが $0$ になる条件から $c$ を決める．"
+  },
+  "methods": [],
+  "tags": [
+   "整式の割り算",
+   "余りの係数比較",
+   "共役複素数",
+   "単位円上の解"
+  ],
+  "provenance": {
+   "created": "2026-11-10"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-EQ-210",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-08",
+  "level": 4,
+  "minutes": 30,
+  "theme": "位数4の1次分数関数による2乗和の方程式",
+  "topic": "位数4の1次分数関数による2乗和の方程式",
+  "statement": {
+   "tex": "$x$ は $x\\neq0$，$\\pm1$ をみたす実数とし，$f(x)=\\dfrac{1+x}{1-x}$ とおく．$c$ を実数とし，$x$ の方程式\n\\[\n(E_c)\\qquad x^2+\\{f(x)\\}^2+\\{f(f(x))\\}^2+\\{f(f(f(x)))\\}^2=c\n\\]\nを考える．\n\\begin{enumerate}\n  \\item $f(x)$ も $x\\neq0$，$\\pm1$ をみたす実数であることを示し，$f(f(x))=-\\dfrac1x$ および $f(f(f(f(x))))=x$ を証明せよ．\n  \\item $s(x)=x-\\dfrac1x$ とおく．$s(f(x))=-\\dfrac4{s(x)}$ であることを示し，$(E_c)$ の左辺を $s(x)$ で表せ．\n  \\item $(E_c)$ の実数解の個数を，$c$ の値によって分類して求めよ．\n  \\item $c=\\dfrac{481}{36}$ のとき，$(E_c)$ を解け．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 証明　(2) 証明，左辺 $=\\{s(x)\\}^2+\\dfrac{16}{\\{s(x)\\}^2}+4$　(3) $c<12$ のとき $0$ 個，$c=12$ のとき $4$ 個，$c>12$ のとき $8$ 個　(4) $x=\\pm2,\\ \\pm3,\\ \\pm\\dfrac12,\\ \\pm\\dfrac13$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) $x\\neq1$ より $f(x)$ は定義される．$f(x)=0\\iff x=-1$，$f(x)=1\\iff1+x=1-x\\iff x=0$，$f(x)=-1\\iff1+x=x-1$ で解なし．よって $x\\neq0,\\pm1$ なら $f(x)\\neq0,\\pm1$．次に\n\\[\nf(f(x))=\\frac{1+\\frac{1+x}{1-x}}{1-\\frac{1+x}{1-x}}=\\frac{(1-x)+(1+x)}{(1-x)-(1+x)}=\\frac2{-2x}=-\\frac1x.\n\\]\nこれを2回用いて $f(f(f(f(x))))=-\\dfrac1{-\\frac1x}=x$．\\hfill$\\square$\n\n(2)\n\\[\ns(f(x))=\\frac{1+x}{1-x}-\\frac{1-x}{1+x}=\\frac{(1+x)^2-(1-x)^2}{1-x^2}=\\frac{4x}{1-x^2}=-\\frac4{\\frac{x^2-1}x}=-\\frac4{s(x)}.\n\\]\n（$x\\neq\\pm1$ より $s(x)\\neq0$．）(1) より $f(f(x))=-\\frac1x$，$f(f(f(x)))=f(f(u))=-\\frac1u$（$u=f(x)$）なので\n\\[\nx^2+\\{f(f(x))\\}^2=x^2+\\frac1{x^2}=s(x)^2+2,\\qquad\nu^2+\\{f(f(u))\\}^2=s(u)^2+2=\\frac{16}{s(x)^2}+2.\n\\]\nよって左辺 $=\\boldsymbol{\\{s(x)\\}^2+\\dfrac{16}{\\{s(x)\\}^2}+4}$．\n\n(3) \\textbf{$s$ と $x$ の対応．} 0でない実数 $\\sigma$ に対し，$s(x)=\\sigma$ をみたす $x\\neq0,\\pm1$ は $x^2-\\sigma x-1=0$ の解である．判別式 $\\sigma^2+4>0$ より異なる2実数解をもち，その積は $-1$ なので0でなく，$x=\\pm1$ なら $\\sigma=s(\\pm1)=0$ となるので $\\pm1$ でもない．逆に $x\\neq0,\\pm1$ なら $s(x)\\neq0$．また異なる $\\sigma$ に対応する $x$ は異なる．よって0でない $\\sigma$ の1つの値に，解 $x$ がちょうど2個ずつ対応する．\n\n\\textbf{$w=s^2$ の方程式．} (2) より $(E_c)\\iff w+\\dfrac{16}w=c-4$，$w=\\{s(x)\\}^2>0$．$w>0$ の1つの値には $\\sigma=\\pm\\sqrt w$ の2つが対応する．相加平均と相乗平均の関係より $w+\\frac{16}w\\geqq8$（等号は $w=4$）．\n\\begin{itemize}\n  \\item $c<12$：$c-4<8$ なので $w$ は存在せず，解は $\\boldsymbol0$ 個．\n  \\item $c=12$：$w=4$ のみ．$\\sigma=\\pm2$ で解は $\\boldsymbol4$ 個．\n  \\item $c>12$：$w^2-(c-4)w+16=0$ は判別式 $(c-4)^2-64>0$ より異なる2実数解をもち，和 $c-4>0$，積 $16>0$ よりともに正．$\\sigma$ は4個で，解は $\\boldsymbol8$ 個．\n\\end{itemize}\n\n(4) $c-4=\\dfrac{337}{36}$ で，$36w^2-337w+576=0$，すなわち $(4w-9)(9w-64)=0$．$w=\\dfrac94,\\dfrac{64}9$ なので $\\sigma=\\pm\\dfrac32,\\pm\\dfrac83$．\n\\begin{itemize}\n  \\item $\\sigma=\\frac32$：$2x^2-3x-2=(2x+1)(x-2)=0$ で $x=2,-\\frac12$．$\\sigma=-\\frac32$：$x=-2,\\frac12$．\n  \\item $\\sigma=\\frac83$：$3x^2-8x-3=(3x+1)(x-3)=0$ で $x=3,-\\frac13$．$\\sigma=-\\frac83$：$x=-3,\\frac13$．\n\\end{itemize}\n$\\boldsymbol{x=\\pm2,\\ \\pm3,\\ \\pm\\dfrac12,\\ \\pm\\dfrac13}$．（実際 $2\\to-3\\to-\\frac12\\to\\frac13\\to2$ と $f$ で巡回し，$4+9+\\frac14+\\frac19=\\frac{481}{36}$．）"
+   }
+  ],
+  "idea": {
+   "tex": "$f(x)=\\frac{1+x}{1-x}$ では $f(f(x))=-\\frac1x$ で，$f$ を4回合成すると元に戻る．$x$ と $f(f(x))$，$f(x)$ と $f(f(f(x)))$ を組にすると，2乗和はそれぞれ $s^2+2$ の形（$s=x-\\frac1x$）になり，しかも $s(f(x))=-\\frac4{s(x)}$．方程式は $w=s^2>0$ についての $w+\\frac{16}w=c-4$ に帰着し，相加相乗平均で下限が決まる．$s\\neq0$ ごとに $x$ がちょうど2個ずつ対応することを確かめて解の個数を数える．"
+  },
+  "methods": [],
+  "tags": [
+   "1次分数関数",
+   "合成関数",
+   "置き換え",
+   "相加相乗平均",
+   "解の個数"
+  ],
+  "provenance": {
+   "created": "2026-11-10"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-EQ-211",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-08",
+  "level": 5,
+  "minutes": 40,
+  "theme": "3つ組の積と3次式の方程式の解の個数",
+  "topic": "3つ組の積と3次式の方程式の解の個数",
+  "statement": {
+   "tex": "実数の3つ組 $X=\\langle x,y,z\\rangle$ 全体を考える．$X=\\langle x,y,z\\rangle$，$X'=\\langle x',y',z'\\rangle$ と実数 $s$ に対し\n\\[\nX+X'=\\langle x+x',\\,y+y',\\,z+z'\\rangle,\\quad sX=\\langle sx,\\,sy,\\,sz\\rangle,\\quad\nX*X'=\\langle xx',\\,xy'+yz',\\,zz'\\rangle\n\\]\nと定め，$E=\\langle1,0,1\\rangle$，$X^1=X$，$X^{n+1}=X^n*X$（$n=1,2,\\dots$）とする．実数 $k,l,m$ に対し $f(t)=t^3+kt^2+lt+m$ とおき，\n\\[\nf(X)=X^3+kX^2+lX+mE\n\\]\nと定める．\n\\begin{enumerate}\n  \\item $X^2$，$X^3$ を成分で表せ．また，$f(X)=\\langle f(x),\\,y\\,\\Delta(x,z),\\,f(z)\\rangle$ となる $x,z$ の整式 $\\Delta(x,z)$ を求め，$x\\neq z$ のとき $\\Delta(x,z)=\\dfrac{f(x)-f(z)}{x-z}$，$x=z$ のとき $\\Delta(x,x)=f'(x)$ であることを示せ．\n  \\item $f(t)=t^3-3t$ とする．3つ組 $A=\\langle a,b,c\\rangle$ に対し，$f(X)=A$ をみたす3つ組 $X$ の個数を $N(A)$ とする（無数にあるときは $N(A)=\\infty$ と書く）．$N(A)=\\infty$ となるための $a,b,c$ の条件を求めよ．また，$N(A)$ のとりうる値をすべて求め，$N(A)=4$ となる $A$ をすべて求めよ．\n  \\item 「どのような3つ組 $A$ に対しても，$f(X)=A$ をみたす3つ組 $X$ がちょうど1つ存在する」ための $k,l,m$ の必要十分条件を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $X^2=\\langle x^2,\\,y(x+z),\\,z^2\\rangle$，$X^3=\\langle x^3,\\,y(x^2+xz+z^2),\\,z^3\\rangle$，$\\Delta(x,z)=x^2+xz+z^2+k(x+z)+l$（後半は証明）　(2) $N(A)=\\infty\\iff a=c$ かつ $b=0$ かつ $|a|\\leqq2$；とりうる値は $1,2,3,4,6,9,\\infty$；$N(A)=4\\iff A=\\langle2,b,-2\\rangle$ または $\\langle-2,b,2\\rangle$（$b$ は任意の実数）　(3) $k^2<3l$（$m$ は任意）"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "\\textbf{(1)}\\ 定義から\n\\[\nX^2=X*X=\\langle x^2,\\ xy+yz,\\ z^2\\rangle=\\boldsymbol{\\langle x^2,\\ y(x+z),\\ z^2\\rangle},\n\\]\n\\[\nX^3=X^2*X=\\langle x^3,\\ x^2y+y(x+z)z,\\ z^3\\rangle=\\boldsymbol{\\langle x^3,\\ y(x^2+xz+z^2),\\ z^3\\rangle}.\n\\]\n$E$ の第2成分は $0$ なので，$f(X)$ の第1成分は $x^3+kx^2+lx+m=f(x)$，第3成分は $f(z)$，第2成分は\n\\[\ny(x^2+xz+z^2)+ky(x+z)+ly=y\\,\\Delta(x,z),\\qquad \\boldsymbol{\\Delta(x,z)=x^2+xz+z^2+k(x+z)+l}.\n\\]\n$x\\neq z$ のとき\n\\[\n\\frac{f(x)-f(z)}{x-z}=\\frac{x^3-z^3}{x-z}+k\\,\\frac{x^2-z^2}{x-z}+l=x^2+xz+z^2+k(x+z)+l=\\Delta(x,z).\n\\]\n$x=z$ のとき $\\Delta(x,x)=3x^2+2kx+l=f'(x)$．\\hfill$\\square$\n\n以下，$f(X)=A$（$A=\\langle a,b,c\\rangle$）は\n\\[\nf(x)=a,\\qquad f(z)=c,\\qquad y\\,\\Delta(x,z)=b\\tag{$\\dagger$}\n\\]\nと同値である．\n\n\\medskip\n\\textbf{(2)}\\ $f(t)=t^3-3t$，$\\Delta(x,z)=x^2+xz+z^2-3$．\n\n\\emph{$f(t)=a$ の実数解の個数 $n(a)$．}\\ $f'(t)=3(t+1)(t-1)$ より $f$ は $t\\leqq-1$ で増加，$-1\\leqq t\\leqq1$ で減少，$t\\geqq1$ で増加し，$f(-1)=2$，$f(1)=-2$，$t\\to\\pm\\infty$ で $f(t)\\to\\pm\\infty$．各区間で $f$ は連続かつ狭義単調なので，中間値の定理とあわせて，各区間で $f(t)=a$ の解は値の範囲に入るときちょうど1つ．よって $|a|<2$ のとき $n(a)=3$（3区間に1つずつ，どれも $\\pm1$ ではない）．$a=2$ のとき $t^3-3t-2=(t+1)^2(t-2)$ で解は $-1,\\,2$，$a=-2$ のとき $t^3-3t+2=(t-1)^2(t+2)$ で解は $1,\\,-2$ で $n(\\pm2)=2$．$|a|>2$ のとき $n(a)=1$．特に $f(t)=a$ の解に $t=-1$ が含まれるのは $a=2$ のとき，$t=1$ が含まれるのは $a=-2$ のときに限る．\n\n\\emph{$\\Delta$ が $0$ になる場合．}\\ $f(x)=a$，$f(z)=c$ の解の組 $(x,z)$ について，(1) より $x\\neq z$ なら $\\Delta(x,z)=\\dfrac{a-c}{x-z}$，$x=z$ なら $\\Delta=f'(x)=3(x^2-1)$．\n\n\\emph{場合1：$a\\neq c$．}\\ このとき必ず $x\\neq z$ で $\\Delta=\\frac{a-c}{x-z}\\neq0$ だから，各組 $(x,z)$ に対し $y=\\frac b\\Delta$ がただ1つ定まる．よって $N(A)=n(a)\\,n(c)$ で，その値は $1,2,3,4,6,9$ のいずれか．実際すべて実現する：$(a,c)=(3,4),(3,2),(3,0),(2,-2),(2,0),(0,1)$ でそれぞれ $1,2,3,4,6,9$．\n\n\\emph{場合2：$a=c$．}\\ $x\\neq z$ の組では $\\Delta=0$ で，$(\\dagger)$ の第3式は $b=0$ のとき任意の $y$ で成立，$b\\neq0$ のとき不成立．$x=z$ の組では $\\Delta=3(x^2-1)$．\n\\begin{itemize}\n  \\item $b=0$ かつ $|a|\\leqq2$：$n(a)\\geqq2$ より $x\\neq z$ の組があり，$y$ は任意なので $N(A)=\\infty$．\n  \\item $b=0$ かつ $|a|>2$：解は1つだけで $x=z$，しかも $x\\neq\\pm1$ だから $\\Delta\\neq0$ で $y=0$．$N(A)=1$．\n  \\item $b\\neq0$：$x=z$ かつ $x^2\\neq1$ の組だけが解を1つずつ与える．$|a|<2$ なら3個の解のどれも $\\pm1$ でないので $N(A)=3$．$a=2$ なら解 $-1,2$ のうち $2$ だけで $N(A)=1$，$a=-2$ も同様に $N(A)=1$．$|a|>2$ なら $N(A)=1$．\n\\end{itemize}\n\n以上より\n\\[\n\\boldsymbol{N(A)=\\infty\\iff a=c,\\ b=0,\\ |a|\\leqq2},\\qquad\nN(A)\\text{ のとりうる値は }\\boldsymbol{1,\\,2,\\,3,\\,4,\\,6,\\,9,\\,\\infty}.\n\\]\n$N(A)=4$ となるのは場合1で $n(a)=n(c)=2$，すなわち $|a|=|c|=2$，$a\\neq c$ のときに限るので（場合2の値は $1,3,\\infty$）\n\\[\n\\boldsymbol{A=\\langle2,\\,b,\\,-2\\rangle\\ \\text{または}\\ \\langle-2,\\,b,\\,2\\rangle\\quad(b\\text{ は任意の実数})}.\n\\]\n\n\\medskip\n\\textbf{(3)}\\ $f'(t)=3t^2+2kt+l=3\\left(t+\\dfrac k3\\right)^2+l-\\dfrac{k^2}3$．\n\n\\emph{十分性．}\\ $k^2<3l$ なら，すべての $t$ で $f'(t)>0$ なので $f$ は狭義増加．$t\\to\\pm\\infty$ で $f(t)\\to\\pm\\infty$ と中間値の定理から，任意の実数 $a$ に対し $f(x)=a$ の解はちょうど1つ．同様に $z$ もただ1つ．このとき $x\\neq z$ なら $\\Delta=\\frac{f(x)-f(z)}{x-z}>0$（狭義増加より分子と分母が同符号），$x=z$ なら $\\Delta=f'(x)>0$．よって $y=\\frac b\\Delta$ もただ1つで，$X$ はちょうど1つ存在する．\n\n\\emph{必要性．}\\ $k^2\\geqq3l$ とする．\n\\begin{itemize}\n  \\item $k^2>3l$ のとき：$f'(t)=0$ は異なる2実数解 $t_1<t_2$ をもち，$t_1<t<t_2$ で $f'(t)<0$ なので $f(t_1)>f(t_2)$．$f$ は $t\\geqq t_2$ で連続で $t\\to\\infty$ のとき $f(t)\\to\\infty$ だから，中間値の定理により $f(s)=f(t_1)$ となる $s>t_2$ がある．$a=f(t_1)$，$A=\\langle a,0,a\\rangle$ とすると，$x=t_1$，$z=s$（$x\\neq z$）で $\\Delta=\\frac{f(t_1)-f(s)}{t_1-s}=0$ となり，$(\\dagger)$ は任意の $y$ で成り立つ．解が無数にあり，条件をみたさない．\n  \\item $k^2=3l$ のとき：$t_0=-\\dfrac k3$ とおくと $f(t)=(t-t_0)^3+f(t_0)$（展開して係数を比べると $t^3+kt^2+\\frac{k^2}3t-\\frac{k^3}{27}+f(t_0)$ で，$t=t_0$ を代入して定数項が一致する）．$f$ は狭義増加なので，$A=\\langle f(t_0),1,f(t_0)\\rangle$ に対して $(\\dagger)$ の第1，2式は $x=z=t_0$ に限られ，$\\Delta=f'(t_0)=0$ だから第3式 $0=1$ が成り立たない．解がなく，条件をみたさない．\n\\end{itemize}\n$m$ は $\\Delta$ にも単調性にも関係しない．よって求める条件は\n\\[\n\\boldsymbol{k^2<3l\\quad(m\\text{ は任意})}.\n\\]"
+   }
+  ],
+  "idea": {
+   "tex": "成分ごとの計算で $f(X)=\\langle f(x),\\,y\\,\\Delta(x,z),\\,f(z)\\rangle$ となり，$\\Delta$ は $x\\neq z$ なら平均変化率 $\\frac{f(x)-f(z)}{x-z}$，$x=z$ なら $f'(x)$．したがって $f(X)=A$ は「$f(x)=a$，$f(z)=c$ の解の組ごとに1次方程式 $y\\Delta=b$」に分解され，$\\Delta=0$ となるのは「同じ値をとる異なる2点」か「$f'=0$ の点」に限る．解の個数は $f(t)=a$ の実数解の個数の積と，これら例外の組合せで決まる．"
+  },
+  "methods": [],
+  "tags": [
+   "3次方程式の実数解の個数",
+   "平均変化率",
+   "単調性",
+   "場合分け",
+   "必要十分条件"
+  ],
+  "provenance": {
+   "created": "2026-11-10"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-EQ-212",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-08",
+  "level": 4,
+  "minutes": 35,
+  "theme": "$g\\circ h+h\\circ g$ が $g$ の2次式になる多項式",
+  "topic": "$g\\circ h+h\\circ g$ が $g$ の2次式になる多項式",
+  "statement": {
+   "tex": "$f(x)$ を $0$ でない実数係数の多項式とし，\n\\[\ng(x)=\\int_0^xf(t)\\,dt,\\qquad h(x)=\\int_x^1f(t)\\,dt,\\qquad a=g(1)\n\\]\nとする．ある実数の定数 $b$，$c$ が存在して，$x$ についての恒等式\n\\[\ng\\bigl(h(x)\\bigr)+h\\bigl(g(x)\\bigr)=b\\{g(x)\\}^2+c\n\\]\nが成り立つとする．\n\\begin{enumerate}\n  \\item 多項式 $G(y)$ と定数でない多項式 $H(x)$ について，$G(H(x))=0$ が $x$ についての恒等式ならば $G(y)$ は恒等的に $0$ であることを示せ．これを用いて，$b=0$，$c=a$ であり，すべての実数 $y$ に対して $g(a-y)=g(y)$ が成り立つことを示せ．\n  \\item さらに $f(x)$ の次数が3以下で $f(0)=0$ であるとする．このような $g(x)$ をすべて求めよ．\n  \\item (2) で $a\\neq0$ の場合を考える．$x$ についての方程式 $g(x)=a$ の異なる実数解の個数を，$a$ の値によって分類して答えよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 証明　(2) $a=0$ のとき $g(x)=p(x^4-x^2)$（$p$ は $0$ でない任意の実数），$a\\neq0$ のとき $a\\neq1$ で $g(x)=\\dfrac{a\\,x^2(x-a)^2}{(1-a)^2}$　(3) $a<-2-2\\sqrt2$ のとき4個，$a=-2-2\\sqrt2$ のとき3個，$-2-2\\sqrt2<a<-2+2\\sqrt2$（$a\\neq0$）のとき2個，$a=-2+2\\sqrt2$ のとき3個，$a>-2+2\\sqrt2$（$a\\neq1,\\ 2$）のとき4個，$a=2$ のとき3個"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "\\textbf{(1)}　\\emph{前半．}$H(x)$ の次数を $N\\ (\\geqq1)$ とする．任意の実数 $k$ に対し $H(x)-k$ は $N$ 次の多項式なので，$H(x)=k$ となる $x$ は高々 $N$ 個である．したがって $x=1,2,\\cdots,N\\ell+1$ における $H(x)$ の値のうち異なるものは少なくとも $\\ell+1$ 個あり（各値は高々 $N$ 回しか現れない），$\\ell$ は任意なので $H(x)$ のとる値は無限個ある．それらはすべて $G(y)=0$ の解である．$G$ が $0$ でない多項式なら，その次数を $d$ として解は高々 $d$ 個（$d=0$ なら0個）なので矛盾する．よって $G(y)$ は恒等的に $0$．\\hfill$\\square$\n\n\\emph{後半．}$g(x)+h(x)=\\displaystyle\\int_0^1f(t)\\,dt=a$ なので $h(x)=a-g(x)$．よって $h(g(x))=a-g(g(x))$ であり，条件は\n\\[\ng\\bigl(a-g(x)\\bigr)+a-g\\bigl(g(x)\\bigr)-b\\{g(x)\\}^2-c=0 .\n\\]\n$G(y)=g(a-y)-g(y)+a-by^2-c$（$y$ の多項式）とおくと，これは $G(g(x))=0$（恒等式）である．$g(x)$ は定数でない：定数なら $g(x)=g(0)=0$ で，$f(x)=g'(x)=0$ となり仮定に反する．前半より $G(y)=0$ がすべての $y$ で成り立つ．$y$ を $a-y$ に替えた式と足すと $g$ の項が打ち消し合い\n\\[\n2(a-c)-b\\{y^2+(a-y)^2\\}=0\\quad(\\text{すべての }y),\\qquad\\text{すなわち}\\quad 2(a-c)-ba^2+2bay-2by^2=0 .\n\\]\n$y^2$ の係数から $b=0$，すると定数項から $c=a$．このとき $G(y)=0$ は $g(a-y)=g(y)$ となる．\\hfill$\\square$\n\n\\medskip\n\\textbf{(2)}　$g(a-y)=g(y)$ で $y=\\frac a2+s$ とすると $g\\left(\\frac a2-s\\right)=g\\left(\\frac a2+s\\right)$．$\\varphi(s)=g\\left(\\frac a2+s\\right)$ は $s$ の多項式で $\\varphi(-s)=\\varphi(s)$ なので，奇数次の係数はすべて $0$ である（$\\varphi(s)-\\varphi(-s)=2\\times(\\text{奇数次の項の和})$ が恒等的に $0$）．$g$ の次数は $f$ の次数 $+1\\leqq4$ なので $\\varphi(s)=\\lambda s^4+\\mu s^2+\\nu$．$s^2=\\left(x-\\frac a2\\right)^2=w+\\frac{a^2}4$（$w=x(x-a)$）だから，$g(x)$ は $w$ の2次以下の多項式\n\\[\ng(x)=Pw^2+Qw+R\\qquad(w=x(x-a))\n\\]\nと書ける．$x=0$ で $w=0$ なので $R=g(0)=0$．また $f(x)=g'(x)=(2Pw+Q)(2x-a)$ より $f(0)=-aQ$．$x=1$ で $w=1-a$ なので $g(1)=a$ は $P(1-a)^2+Q(1-a)=a$．\n\n\\emph{$a=0$ のとき．}$w=x^2$，$g=Px^4+Qx^2$，$f(0)=0$ は自動的に成り立ち，$g(1)=0$ から $Q=-P$．$g(x)=P(x^4-x^2)$ で，$f\\neq0$ より $P\\neq0$．\n\n\\emph{$a\\neq0$ のとき．}$f(0)=0$ から $Q=0$，$P(1-a)^2=a\\neq0$ より $a\\neq1$，$P=\\dfrac a{(1-a)^2}$．\n\n逆に，これらの $g$ はいずれも $f=g'$ が $0$ でない3次以下の多項式で $f(0)=0$，$g(0)=0$，$g(1)=a$ をみたし，$w=x(x-a)$ が $x\\mapsto a-x$ で不変なので $g(a-y)=g(y)$ が成り立つ．このとき $h=a-g$ より\n\\[\ng(h(x))+h(g(x))=g\\bigl(a-g(x)\\bigr)+a-g\\bigl(g(x)\\bigr)=a\n\\]\nとなり，$b=0$，$c=a$ として条件をみたす．以上より\n\\[\n\\boldsymbol{a=0\\ \\text{のとき}\\ g(x)=p(x^4-x^2)\\ (p\\neq0),\\qquad a\\neq0\\ \\text{のとき}\\ a\\neq1\\ \\text{で}\\ g(x)=\\frac{a\\,x^2(x-a)^2}{(1-a)^2}}.\n\\]\n\n\\medskip\n\\textbf{(3)}　$a\\neq0,1$ で $g(x)=a\\iff x^2(x-a)^2=(1-a)^2\\iff x(x-a)=1-a$ または $x(x-a)=a-1$．\n\\begin{itemize}\n  \\item $x^2-ax-(1-a)=0$ は $(x-1)(x+1-a)=0$ と因数分解でき，解は $x=1,\\ a-1$（一致するのは $a=2$ のときだけ）．\n  \\item $x^2-ax+(1-a)=0$ の判別式は $a^2-4(1-a)=(a+2)^2-8$．\n  \\item 2つの方程式に共通解があれば $x(x-a)$ の値が $1-a$ と $a-1$ の両方に等しく，$a=1$ となるので，$a\\neq1$ では共通解はない．\n\\end{itemize}\n$(a+2)^2>8\\iff a<-2-2\\sqrt2$ または $a>-2+2\\sqrt2$ であり，$-2+2\\sqrt2<1<2$ に注意して数えると\n\\[\n\\boldsymbol{\\begin{array}{ll}\na<-2-2\\sqrt2 & 4\\text{個}\\\\\na=-2-2\\sqrt2 & 3\\text{個}\\\\\n-2-2\\sqrt2<a<-2+2\\sqrt2\\ (a\\neq0) & 2\\text{個}\\\\\na=-2+2\\sqrt2 & 3\\text{個}\\\\\na>-2+2\\sqrt2\\ (a\\neq1,\\ 2) & 4\\text{個}\\\\\na=2 & 3\\text{個}\n\\end{array}}\n\\]\n（$a=2$ では第1式の解が $x=1$ のみ，第2式は判別式 $8>0$ で2解．）"
+   }
+  ],
+  "idea": {
+   "tex": "$g(x)+h(x)=a$（定数）なので $h=a-g$ を代入すると，条件は $y=g(x)$ についての式 $G(g(x))=0$ になる．$g$ が定数でなければ $g(x)$ は無限個の値をとるので，多項式 $G$ は恒等的に $0$．得られる恒等式で $y$ と $a-y$ を入れかえて足すと左辺が打ち消し合い，右辺の $y^2$ の係数が $0$ でなければならないことがわかる（係数を比べる前に「対称性で消す」のが鍵）．結局 $g$ は直線 $x=\\frac a2$ に関して対称になり，$x(x-a)$ の多項式として書ける．原題の「合成の恒等式から $g$ の形を読みとる」に，$g\\circ h$ と $h\\circ g$ の両方を入れて対称性の議論を加えた．"
+  },
+  "methods": [],
+  "tags": [
+   "合成関数",
+   "恒等式",
+   "多項式の一致",
+   "対称性",
+   "解の個数"
+  ],
+  "provenance": {
+   "created": "2026-11-10"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-EQ-213",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-08",
+  "level": 4,
+  "minutes": 30,
+  "theme": "5次式の値が等差数列となる歩幅",
+  "topic": "5次式の値が等差数列となる歩幅",
+  "statement": {
+   "tex": "$l,m$ を実数の定数とし，$f(x)=x(x-1)(x-2)(x-3)(x-4)+lx+m$ とする．\n\\begin{enumerate}\n  \\item 実数 $c$ と正の数 $d$ に対し，3数 $f(c-d),\\ f(c),\\ f(c+d)$ がこの順に等差数列であることと，\n  \\[c=2\\quad\\text{または}\\quad2(c-2)^2+d^2=3\\]\n  が成り立つことは同値であることを示せ．\n  \\item 実数 $\\alpha$ と正の数 $d$ で，4数 $f(\\alpha),\\ f(\\alpha+d),\\ f(\\alpha+2d),\\ f(\\alpha+3d)$ がこの順に等差数列となるような組 $(\\alpha,d)$ をすべて求めよ．\n  \\item 実数 $\\alpha$，正の数 $d$，5以上の整数 $k$ で，$k$ 項からなる数列 $f(\\alpha),\\ f(\\alpha+d),\\ \\dots,\\ f(\\alpha+(k-1)d)$ が等差数列となるような組 $(\\alpha,d,k)$ をすべて求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 証明　(2) $(\\alpha,d)=(0,1),\\ (1,1),\\ \\left(2-\\dfrac{3\\sqrt2}2,\\ \\sqrt2\\right)$　(3) $(\\alpha,d,k)=(0,1,5)$ のみ"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "$P(x)=x(x-1)(x-2)(x-3)(x-4)$ とし，$Q(y)=P(y+2)=(y+2)(y+1)y(y-1)(y-2)=y^5-5y^3+4y$ とおく．\n\n\\textbf{(1)} 3数がこの順に等差数列 $\\iff f(c+d)-2f(c)+f(c-d)=0$．1次式の部分は $l(c+d)-2lc+l(c-d)=0$ で消え，$m$ も消えるから，$u=c-2$ として条件は $Q(u+d)+Q(u-d)-2Q(u)=0$．\n\\[(u+d)^5+(u-d)^5=2(u^5+10u^3d^2+5ud^4),\\quad(u+d)^3+(u-d)^3=2(u^3+3ud^2),\\quad(u+d)+(u-d)=2u\\]\nより\n\\[Q(u+d)+Q(u-d)-2Q(u)=2(10u^3d^2+5ud^4)-5\\cdot6ud^2=10ud^2(2u^2+d^2-3).\\]\n$d>0$ だから，条件は $u=0$ または $2u^2+d^2=3$，すなわち $c=2$ または $2(c-2)^2+d^2=3$．\\hfill$\\square$\n\n\\textbf{(2)} 4数が等差数列 $\\iff$ 「$f(\\alpha),f(\\alpha+d),f(\\alpha+2d)$ が等差数列」かつ「$f(\\alpha+d),f(\\alpha+2d),f(\\alpha+3d)$ が等差数列」．中心はそれぞれ $c_1=\\alpha+d$，$c_2=\\alpha+2d$．$u_1=c_1-2$，$u_2=c_2-2=u_1+d$ とおくと，(1)より\n\\[\\bigl(u_1=0\\ \\text{または}\\ 2u_1^{\\,2}+d^2=3\\bigr)\\ \\text{かつ}\\ \\bigl(u_2=0\\ \\text{または}\\ 2u_2^{\\,2}+d^2=3\\bigr).\\]\n$u_1\\neq u_2$ なので $u_1=u_2=0$ はない．\n\\begin{itemize}\n  \\item $u_1=0$ のとき：$u_2=d$ で $3d^2=3$，$d=1$，$\\alpha=c_1-d=1$．\n  \\item $u_2=0$ のとき：$u_1=-d$ で $3d^2=3$，$d=1$，$c_1=1$，$\\alpha=0$．\n  \\item $u_1\\neq0$，$u_2\\neq0$ のとき：$2u_1^{\\,2}+d^2=2u_2^{\\,2}+d^2$ より $u_1^{\\,2}=u_2^{\\,2}$，$u_1\\neq u_2$ だから $u_2=-u_1$，$u_1=-\\dfrac d2$．$\\dfrac{d^2}2+d^2=3$ より $d=\\sqrt2$，$c_1=2-\\dfrac{\\sqrt2}2$，$\\alpha=2-\\dfrac{3\\sqrt2}2$．\n\\end{itemize}\n各段階は同値変形なので，求める組は $\\boldsymbol{(\\alpha,d)=(0,1),\\ (1,1),\\ \\left(2-\\dfrac{3\\sqrt2}2,\\ \\sqrt2\\right)}$．\n\n\\textbf{(3)} $k=5$ のとき：等差数列であることは，最初の4項と最後の4項がともに等差数列であることと同値．よって $(\\alpha,d)$ と $(\\alpha+d,d)$ がともに(2)の組．$d=1$ なら $\\alpha\\in\\{0,1\\}$ かつ $\\alpha+1\\in\\{0,1\\}$ で $\\alpha=0$．$d=\\sqrt2$ なら $\\alpha+\\sqrt2=2-\\dfrac{\\sqrt2}2\\neq2-\\dfrac{3\\sqrt2}2$ で不適．逆に $(\\alpha,d)=(0,1)$ なら $f(j)=lj+m$（$j=0,1,2,3,4$）で等差数列．\n\n$k\\geqq6$ のとき：最初の5項と第2項からの5項がともに等差数列なので $\\alpha=0$ かつ $\\alpha+d=0$ となり $d>0$ に反する．\n\nよって $\\boldsymbol{(\\alpha,d,k)=(0,1,5)}$ のみ．\n\\hfill$\\square$"
+   }
+  ],
+  "idea": {
+   "tex": "$x(x-1)(x-2)(x-3)(x-4)$ は $y=x-2$ とおくと奇関数 $y(y^2-1)(y^2-4)$ になり，1次式 $lx+m$ は2階差分で消える．中心 $c$，歩幅 $d$ の3項が等差数列である条件は $u=c-2$ について $ud^2(2u^2+d^2-3)=0$ と因数分解でき，4項・5項の条件は隣り合う3項の条件を重ねて解く．"
+  },
+  "methods": [],
+  "tags": [
+   "5次式",
+   "等差数列",
+   "2階差分",
+   "対称移動",
+   "奇関数"
+  ],
+  "provenance": {
+   "created": "2026-11-10"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
  }
 ]

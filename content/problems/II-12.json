@@ -12425,5 +12425,95 @@
    },
    "verified": false
   }
+ },
+ {
+  "id": "II-CAL-267",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-12",
+  "level": 4,
+  "minutes": 30,
+  "theme": "3次曲線を点対称に移した曲線との囲む面積",
+  "topic": "3次曲線を点対称に移した曲線との囲む面積",
+  "statement": {
+   "tex": "$f(x)=x^3-x$ とし，$t$ を実数とする．$xy$ 平面において，曲線 $C_1:y=f(x)$ を点 $(t,\\,t)$ に関して対称移動した曲線を $C_2$ とする．\n\\begin{enumerate}\n  \\item $C_2$ の方程式を求めよ．また，$C_1$ と $C_2$ がちょうど2個の共有点をもつような $t$ の値の範囲を求めよ．\n  \\item $t$ が (1) で求めた範囲を動くとき，$C_1$ と $C_2$ で囲まれた部分の面積 $S$ の最大値と，そのときの $t$ の値を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $C_2:y=2t-f(2t-x)$，$0<|t|<\\sqrt2$　(2) $t=\\pm\\dfrac1{\\sqrt2}$ のとき最大値 $S=2$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) 点 $(X,Y)$ の点 $(t,t)$ に関する対称点は $(2t-X,\\,2t-Y)$．$(x,y)$ が $C_2$ 上 $\\iff(2t-x,\\,2t-y)$ が $C_1$ 上 $\\iff2t-y=f(2t-x)$．よって $C_2:\\boldsymbol{y=2t-f(2t-x)}$．\n\n共有点の $x$ 座標は $f(x)+f(2t-x)=2t$ の実数解．$x=t+u$ とおくと\n\\[\nf(t+u)+f(t-u)=(t+u)^3+(t-u)^3-2t=2t^3+6tu^2-2t\n\\]\nだから，方程式は $6tu^2=4t-2t^3$，すなわち $3tu^2=t(2-t^2)$．\n\\begin{itemize}\n  \\item $t=0$ のとき，すべての $u$ で成り立ち（$f$ は奇関数で $C_2=C_1$），共有点は無数．\n  \\item $t\\neq0$ のとき $u^2=\\dfrac{2-t^2}3$．異なる2実数解 $\\iff t^2<2$．$t^2=2$ なら1個，$t^2>2$ なら0個．\n\\end{itemize}\n共有点の $x$ 座標が決まれば点は1つに決まるので，ちょうど2個 $\\iff\\boldsymbol{0<|t|<\\sqrt2}$．\n\n(2) $c=\\sqrt{\\dfrac{2-t^2}3}$ とおく．$x=t+u$ で\n\\[\nf(x)-\\{2t-f(2t-x)\\}=2t^3+6tu^2-4t=6t(u^2-c^2).\n\\]\n2曲線の差は2次式なので，囲まれた部分は $-c\\leqq u\\leqq c$ の部分だけで，\n\\[\nS=\\int_{-c}^{c}6|t|(c^2-u^2)\\,du=6|t|\\cdot\\frac43c^3=8|t|c^3>0\n\\]\nであり，\n\\[\nS^2=64t^2c^6=\\frac{64}{27}\\,t^2(2-t^2)^3 .\n\\]\n$v=t^2$ とおくと $0<v<2$ で，$\\varphi(v)=v(2-v)^3=-v^4+6v^3-12v^2+8v$ の最大値を考えればよい．\n\\[\n\\varphi'(v)=-4v^3+18v^2-24v+8=-2(2v^3-9v^2+12v-4)=-2(v-2)^2(2v-1)\n\\]\nなので，$0<v<2$ では $\\varphi'(v)>0\\ \\bigl(v<\\frac12\\bigr)$，$\\varphi'(v)<0\\ \\bigl(\\frac12<v<2\\bigr)$ となり，$\\varphi$ は $v=\\frac12$ で最大値 $\\varphi\\left(\\frac12\\right)=\\frac12\\cdot\\left(\\frac32\\right)^3=\\frac{27}{16}$ をとる．$S>0$ なので $S$ も $v=\\frac12$ のとき最大で，$S^2=\\frac{64}{27}\\cdot\\frac{27}{16}=4$．\nよって $\\boldsymbol{t=\\pm\\dfrac1{\\sqrt2}}$ のとき最大値 $S=\\boldsymbol{2}$．"
+   }
+  ],
+  "idea": {
+   "tex": "対称の中心の $x$ 座標 $t$ を原点に移して $x=t+u$ とおく．点対称移動では $f(t+u)+f(t-u)$ が $u$ の偶関数となり，3次の項が打ち消し合って交点の方程式は $u^2=(\\text{定数})$ の形の2次方程式になる．面積は $\\int_{-c}^{c}(c^2-u^2)du=\\frac43c^3$ 型．"
+  },
+  "methods": [],
+  "tags": [
+   "3次関数",
+   "点対称移動",
+   "面積",
+   "最大値"
+  ],
+  "provenance": {
+   "created": "2026-11-10"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-CAL-268",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-12",
+  "level": 5,
+  "minutes": 40,
+  "theme": "3次曲線に頂点をもつ長方形と正方形",
+  "topic": "3次曲線に頂点をもつ長方形と正方形",
+  "statement": {
+   "tex": "$k$ を実数の定数とし，曲線 $C:\\ y=x^3-kx$ を考える．\n\\begin{enumerate}\n  \\item $C$ 上の相異なる4点を頂点とする平行四辺形があるとき，その対角線の交点は原点であることを示せ．\n  \\item $C$ 上の相異なる4点を頂点とする長方形が存在するような $k$ の値の範囲を求めよ．\n  \\item $C$ 上の相異なる4点を頂点とする正方形の個数を，$k$ の値によって答えよ．また $k=3$ のとき，それらの正方形の1辺の長さを求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 証明　(2) $k>\\sqrt3$　(3) $k<2\\sqrt2$ のとき $0$ 個，$k=2\\sqrt2$ のとき $1$ 個，$k>2\\sqrt2$ のとき $2$ 個；$k=3$ のとき1辺の長さは $2\\sqrt2$ と $\\sqrt{10}$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "$f(x)=x^3-kx$ とする．\n\n(1) 平行四辺形の対角線の交点を $\\mathrm M(m,c)$ とすると，4頂点は M に関して対称な2組に分かれる．点 $(x,f(x))$ の M に関する対称点 $(2m-x,\\,2c-f(x))$ が $C$ 上にある条件は $f(x)+f(2m-x)=2c$ で，\n\\[ f(x)+f(2m-x)-2c=6mx^2-12m^2x+8m^3-2km-2c. \\]\n4頂点は $C$ 上の相異なる点なので $x$ 座標も相異なり（$C$ は関数のグラフ），4つの $x$ 座標はすべてこの右辺を0にする．$m\\neq0$ なら右辺は $x$ の2次式で，0になる $x$ は高々2個だから矛盾．よって $m=0$ で，このとき右辺は $-2c$ なので $c=0$．交点は原点である．\\hfill$\\square$\n\n(2) (1) より長方形の頂点は $\\mathrm P(p,f(p))$，$\\mathrm Q(q,f(q))$，$-\\mathrm P$，$-\\mathrm Q$ の形で，4点が相異なることは $p\\neq0$，$q\\neq0$，$p\\neq\\pm q$ と同値．このとき Q は直線 OP 上にない（OP 上で $C$ と交わるのは $x=0,\\pm p$ の点だけ）ので，4点は O を中心とする平行四辺形をなし，長方形 $\\iff$ 対角線が等しい $\\iff|\\mathrm{OP}|=|\\mathrm{OQ}|$．\n\n$u=p^2$，$v=q^2$ とおくと $u,v>0$，$u\\neq v$ で，$|\\mathrm{OP}|^2=u+u(u-k)^2$．\n\\[ \\{u+u(u-k)^2\\}-\\{v+v(v-k)^2\\}=(u-v)\\{u^2+uv+v^2-2k(u+v)+k^2+1\\}. \\]\nよって条件は $u^2+uv+v^2-2k(u+v)+k^2+1=0$．$a=u-k$，$b=v-k$ とおくと，これは\n\\[ a^2+ab+b^2+k(a+b)+1=0 \\tag{①} \\]\nとなる（展開すると $k^2$ の項は $1+1+1-4+1=0$ で消える）．$s=a+b$，$t=ab$ とすると ① は $t=s^2+ks+1$．\n\n求める条件は「① をみたす相異なる実数 $a,b$ で $a+k>0$，$b+k>0$ のものが存在する」こと．\n\\begin{itemize}\n  \\item $a,b$ が相異なる実数 $\\iff s^2-4t>0\\iff3s^2+4ks+4<0$．\n  \\item $a+k>0$ かつ $b+k>0\\iff s+2k>0$ かつ $t+ks+k^2>0$．ここで $t+ks+k^2=(s+k)^2+1>0$ は常に成り立つ．\n\\end{itemize}\n$3s^2+4ks+4<0$ をみたす $s$ があるのは $4k^2-12>0$，すなわち $|k|>\\sqrt3$ のときで，その範囲は $\\dfrac{-2k-2\\sqrt{k^2-3}}3<s<\\dfrac{-2k+2\\sqrt{k^2-3}}3$．\n\\begin{itemize}\n  \\item $k>\\sqrt3$：上端 $\\frac{-2k+2\\sqrt{k^2-3}}3>-2k$（$\\iff2\\sqrt{k^2-3}>-4k$）なので $s>-2k$ もみたす $s$ がある．\n  \\item $k<-\\sqrt3$：上端 $<\\frac{-2k+2|k|}3=\\frac{4|k|}3<2|k|=-2k$ なので $s>-2k$ となる $s$ はない．\n\\end{itemize}\n$s$ が決まれば $a,b$ は $X^2-sX+t=0$ の2解として得られ，$p=\\sqrt{a+k}$，$q=\\sqrt{b+k}$ とすればよい．よって $\\boldsymbol{k>\\sqrt3}$．\n\n(3) 正方形 $\\iff$ 長方形かつ $\\mathrm{OP}\\perp\\mathrm{OQ}$．$\\overrightarrow{\\mathrm{OP}}\\cdot\\overrightarrow{\\mathrm{OQ}}=pq\\{1+(p^2-k)(q^2-k)\\}=pq(1+ab)$ で $pq\\neq0$ だから，直交 $\\iff ab=-1$．これと ① から $a^2+b^2+ks=0$，すなわち $s^2+ks+2=0$．逆に $s^2+ks+2=0$，$t=-1$ なら $t=s^2+ks+1$ で ① が成り立ち，$s^2-4t=s^2+4>0$ で $a\\neq b$．あとは $s>-2k$ が条件．\n\\begin{itemize}\n  \\item $s^2+ks+2=0$ が実数解をもつのは $k^2\\geqq8$．\n  \\item $k\\geqq2\\sqrt2$：2解 $s=\\frac{-k\\pm\\sqrt{k^2-8}}2$ はともに $>-2k$（$\\iff3k>\\sqrt{k^2-8}$ で成立）．\n  \\item $k\\leqq-2\\sqrt2$：解は正で $\\leqq\\frac{|k|+|k|}2=|k|<2|k|=-2k$ となり不適．\n\\end{itemize}\n正方形（4頂点の集合）は $\\{u,v\\}$ で決まり，$u+v=s+2k$ なので異なる $s$ は異なる正方形を与える．よって\\textbf{個数は $\\boldsymbol{k<2\\sqrt2}$ のとき0個，$\\boldsymbol{k=2\\sqrt2}$ のとき1個，$\\boldsymbol{k>2\\sqrt2}$ のとき2個}．\n\n$k=3$ のとき $s^2+3s+2=0$ より $s=-1,-2$．1辺は $\\sqrt2|\\mathrm{OP}|$，$|\\mathrm{OP}|^2=u(1+a^2)$．\n\\begin{itemize}\n  \\item $s=-2$：$a$ は $X^2+2X-1=0$ の解，$a=-1+\\sqrt2$ とすると $u=2+\\sqrt2$，$1+a^2=4-2\\sqrt2$，$|\\mathrm{OP}|^2=(2+\\sqrt2)(4-2\\sqrt2)=4$．1辺 $2\\sqrt2$．\n  \\item $s=-1$：$a=\\frac{-1+\\sqrt5}2$ とすると $u=\\frac{5+\\sqrt5}2$，$1+a^2=\\frac{5-\\sqrt5}2$，$|\\mathrm{OP}|^2=\\frac{25-5}4=5$．1辺 $\\sqrt{10}$．\n\\end{itemize}\nよって1辺の長さは $\\boldsymbol{2\\sqrt2}$ と $\\boldsymbol{\\sqrt{10}}$．"
+   }
+  ],
+  "idea": {
+   "tex": "曲線上の平行四辺形の中心 M について「点 $X$ と M に関する対称点がともに曲線上」は $x$ の方程式になり，$x^3$ の項が消えて高々2次．4つの異なる解をもつには恒等式でなければならず，中心は変曲点（原点）に限る．長方形は $|\\mathrm{OP}|=|\\mathrm{OQ}|$，正方形はさらに $\\mathrm{OP}\\perp\\mathrm{OQ}$ で，$u=p^2$，$v=q^2$ の対称式の条件（実数解・正の解の存在）に帰着する．"
+  },
+  "methods": [],
+  "tags": [
+   "点対称",
+   "平行四辺形",
+   "対称式",
+   "解の存在条件"
+  ],
+  "provenance": {
+   "created": "2026-11-10"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
  }
 ]

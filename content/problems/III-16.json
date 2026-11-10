@@ -12152,5 +12152,640 @@
    },
    "verified": false
   }
+ },
+ {
+  "id": "III-DIF-273",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "III-16",
+  "level": 4,
+  "minutes": 40,
+  "theme": "和が $N$ の2整数での $xe^{-x}$ の和の最大（全整数 $N$ での分類）",
+  "topic": "和が $N$ の2整数での $xe^{-x}$ の和の最大（全整数 $N$ での分類）",
+  "statement": {
+   "tex": "$f(x)=xe^{-x}$ とする．整数 $N$ に対し，$m+n=N$ かつ $m\\leqq n$ をみたす整数の組 $(m,n)$ を考え，$f(m)+f(n)$ の値が最大となる組 $(m,n)$ を求めたい．必要ならば $2.7<e<2.8$ であることを用いてよい．\n\\begin{enumerate}\n  \\item $N=4$ の場合と $N=5$ の場合について，$f(m)+f(n)$ が最大となる組 $(m,n)$ をそれぞれ求めよ．\n  \\item $N\\geqq6$ のとき，$f(m)+f(n)$ が最大となる組 $(m,n)$ を $N$ を用いて表せ．\n  \\item $N\\leqq3$ のとき，$f(m)+f(n)$ が最大となる組 $(m,n)$ を $N$ を用いて表せ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $N=4$ のとき $(2,2)$，$N=5$ のとき $(1,4)$　(2) $(1,\\ N-1)$　(3) $N$ が偶数のとき $\\left(\\dfrac N2,\\ \\dfrac N2\\right)$，$N$ が奇数のとき $\\left(\\dfrac{N-1}2,\\ \\dfrac{N+1}2\\right)$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "$f'(x)=(1-x)e^{-x}$ より，$f$ は $x\\leqq1$ で増加，$x\\geqq1$ で減少し，最大値 $f(1)=\\dfrac1e$ をとる．また $x<0$ で $f(x)<0$，$f(0)=0$，$x>0$ で $f(x)>0$．以下 $2.7<e<2.8$ を用いる．\n\n\\textbf{共通の評価}　$m\\leqq-1$ ならば $f(m)\\leqq f(-1)=-e$，$f(n)\\leqq\\dfrac1e$ だから\n\\[\nf(m)+f(n)\\leqq-e+\\frac1e<0\\quad\\cdots\\text{④}\n\\]\n\n(1) \\textbf{$N=4$}　$m\\leqq n$ より $m\\leqq2$．$m\\leqq-1$ のとき④より和は負．$m=0,1,2$ のとき和はそれぞれ $\\dfrac{4}{e^4}$，$\\dfrac1e+\\dfrac{3}{e^3}$，$\\dfrac{4}{e^2}$ で，いずれも正．$f$ は $x\\geqq1$ で減少するから $f(4)<f(1)<f(1)+f(3)$．さらに\n\\[\n\\frac{4}{e^2}-\\Bigl(\\frac1e+\\frac{3}{e^3}\\Bigr)=\\frac{-e^2+4e-3}{e^3}=\\frac{(e-1)(3-e)}{e^3}>0 .\n\\]\nよって最大となるのは $\\boldsymbol{(m,n)=(2,2)}$．\n\n\\textbf{$N=5$}　$m\\leqq2$．$m\\leqq-1$ は④より和が負．$m=0$ のとき $f(5)<f(4)<f(1)+f(4)$．$m=1,2$ を比べると\n\\[\n\\Bigl(\\frac1e+\\frac{4}{e^4}\\Bigr)-\\Bigl(\\frac{2}{e^2}+\\frac{3}{e^3}\\Bigr)=\\frac{e^3-2e^2-3e+4}{e^4}=\\frac{(e-1)(e^2-e-4)}{e^4}.\n\\]\n$e^2-e-4=e(e-1)-4>2.7\\cdot1.7-4=0.59>0$ だからこれは正．よって最大となるのは $\\boldsymbol{(m,n)=(1,4)}$．\n\n(2) $N\\geqq6$ とし，$m\\leqq\\dfrac N2$ の各場合を $f(1)+f(N-1)$（$>\\dfrac1e$，$f(N-1)>0$ より）と比べる．\n\\begin{itemize}\n  \\item $m\\leqq-1$：④より和は負で，$f(1)+f(N-1)$ より小さい．\n  \\item $m=0$：$N-1\\geqq1$ で $f$ は減少するから $f(0)+f(N)=f(N)<f(N-1)<f(1)+f(N-1)$．\n  \\item $m=2$：$n=N-2\\geqq4$ だから $f(2)+f(n)\\leqq\\dfrac{2}{e^2}+\\dfrac{4}{e^4}$．ここで\n  \\[\n  \\frac1e-\\frac{2}{e^2}-\\frac{4}{e^4}=\\frac{e^2(e-2)-4}{e^4}>\\frac{7.29\\cdot0.7-4}{e^4}>0\n  \\]\n  （$e^2>7.29$，$e-2>0.7$ による）より $f(2)+f(n)<\\dfrac1e<f(1)+f(N-1)$．\n  \\item $m\\geqq3$：$3\\leqq m\\leqq n$ だから $f(m)+f(n)\\leqq2f(3)=\\dfrac{6}{e^3}$．$e^2>7.29>6$ より $\\dfrac{6}{e^3}<\\dfrac1e<f(1)+f(N-1)$．\n\\end{itemize}\nよって最大となるのは $\\boldsymbol{(m,n)=(1,\\ N-1)}$ のみである．\n\n(3) \\textbf{$0\\leqq N\\leqq3$ のとき}　$m\\leqq-1$ では④より和は負．一方 $m\\geqq0$ の組は $0\\leqq m\\leqq\\dfrac N2$ の有限個で和は $0$ 以上だから，$m\\geqq0$ の組だけ比べればよい．\n\\begin{itemize}\n  \\item $N=0$：$(0,0)$ のみ．$N=1$：$(0,1)$ のみ．\n  \\item $N=2$：$f(0)+f(2)=\\dfrac{2}{e^2}<\\dfrac{2}{e}=f(1)+f(1)$ より $(1,1)$．\n  \\item $N=3$：$f(0)+f(3)=f(3)<f(2)<f(1)+f(2)$ より $(1,2)$．\n\\end{itemize}\n\\textbf{$N\\leqq-1$ のとき}　$s=-N\\geqq1$ とし，$t\\geqq0$ に対して $g(t)=te^t$ とおくと $f(-t)=-g(t)$．$g'(t)=(1+t)e^t>0$ より $g$ は増加する．また $a,b\\geqq0$ に対し\n\\[\ng(a+b)=ae^{a+b}+be^{a+b}\\geqq ae^a+be^b=g(a)+g(b)\\quad\\cdots\\text{⑤}\n\\]\nさらに $D(t)=g(t+1)-g(t)=e^t\\{(e-1)t+e\\}$ は $t\\geqq0$ で正の増加関数の積だから増加する．\n\n(i) $n\\geqq1$ の組：$m=N-n\\leqq N-1<0$ で $f$ は $x\\leqq1$ で増加するから $f(m)\\leqq f(N-1)=-g(s+1)$，$f(n)\\leqq\\dfrac1e$．\n\n(ii) $n\\leqq0$ の組：$a=-m$，$b=-n$ とおくと $a\\geqq b\\geqq0$，$a+b=s$ で，$f(m)+f(n)=-\\{g(a)+g(b)\\}$．このような組は有限個である．$a-b\\geqq2$ のとき，$(a,b)$ を $(a-1,b+1)$ に替えると，$a-1>b$ より\n\\[\n\\{g(a)+g(b)\\}-\\{g(a-1)+g(b+1)\\}=D(a-1)-D(b)>0\n\\]\nで $f(m)+f(n)$ は真に増える．よって (ii) の中で最大となるのは $a-b\\in\\{0,1\\}$ の組，すなわち $N$ が偶数なら $m=n=\\dfrac N2$，奇数なら $(m,n)=\\left(\\dfrac{N-1}2,\\dfrac{N+1}2\\right)$ のただ1つで，その値 $B$ は⑤より $B=-\\{g(a)+g(b)\\}\\geqq-g(s)$ をみたす．\n\n(i)の組の値は $-g(s+1)+\\dfrac1e$ 以下であり，$g(s+1)-g(s)=D(s)=e^s\\{(e-1)s+e\\}>1>\\dfrac1e$ だから\n\\[\nf(m)+f(n)\\leqq-g(s+1)+\\frac1e<-g(s)\\leqq B .\n\\]\nよって (i) の組は最大とならない．\n\n以上と $N=0,1,2,3$ の結果をまとめて，$N\\leqq3$ で最大となる組は\n\\[\n\\boldsymbol{N\\text{ が偶数のとき }\\Bigl(\\frac N2,\\ \\frac N2\\Bigr),\\qquad N\\text{ が奇数のとき }\\Bigl(\\frac{N-1}2,\\ \\frac{N+1}2\\Bigr)}\n\\]\nである．（(1)とあわせると，$N\\leqq4$ では2数をできるだけ等しく分けるのが最大で，$N\\geqq5$ で $(1,N-1)$ に切りかわる．）"
+   }
+  ],
+  "idea": {
+   "tex": "$f(x)=xe^{-x}$ は $x\\leqq1$ で増加，$x\\geqq1$ で減少．整数の組の候補を，単調性による上からの評価で有限個に絞り，残りを $e$ の評価で直接比べる．負の側では $g(t)=te^t$ の差 $g(t+1)-g(t)$ が増加することから，2数を近づけるほど和が大きくなる（離散的な凸性）．"
+  },
+  "methods": [],
+  "tags": [
+   "増減",
+   "整数の候補の絞り込み",
+   "離散的な凸性",
+   "eの評価"
+  ],
+  "provenance": {
+   "created": "2026-11-10"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "III-DIF-274",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "III-16",
+  "level": 4,
+  "minutes": 35,
+  "theme": "円との距離で特徴づける「円が曲線に接する」こと",
+  "topic": "円との距離で特徴づける「円が曲線に接する」こと",
+  "statement": {
+   "tex": "関数 $f(t)$，$g(t)$ はある区間で微分可能でその導関数は連続であり，$f'(t)$，$g'(t)$ の値は同時に0になることはないとする．$xy$ 平面上で $x=f(t)$，$y=g(t)$ と表される曲線を $C$ とし，この区間内の $t_0$ に対して P$(f(t_0),g(t_0))$ とおき，$\\vec v=(f'(t_0),g'(t_0))$ とする．ただし $t\\neq t_0$ ならば $(f(t),g(t))\\neq(f(t_0),g(t_0))$ とする．\n\n点 M を中心とし P を通る半径 $R$ の円を $\\Gamma$ とする．$C$ 上の P と異なる点 Q$(f(t),g(t))$ に対し，$d=|\\mathrm{MQ}-R|$ とおく（Q と $\\Gamma$ の距離）．\nP における $\\Gamma$ の接線が P における $C$ の接線と一致するとき，「$\\Gamma$ は P で $C$ に接する」という．\n\\begin{enumerate}\n  \\item 極限 $\\displaystyle\\lim_{t\\to t_0}\\frac{d}{|\\overrightarrow{\\mathrm{PQ}}|}$ が存在し，$\\dfrac{|\\overrightarrow{\\mathrm{MP}}\\cdot\\vec v|}{R\\,|\\vec v|}$ に等しいことを証明せよ．\n  \\item $\\Gamma$ が P で $C$ に接するための必要十分条件は $\\displaystyle\\lim_{t\\to t_0}\\frac{d}{|\\overrightarrow{\\mathrm{PQ}}|}=0$ であることを証明せよ．\n  \\item $C$ を $x=t$，$y=t^2$，$t_0=0$（P は原点 O）とし，$r>0$ に対して点 $(0,r)$ を中心とし O を通る円を $\\Gamma_r$ とする．$\\Gamma_r$ は O で $C$ に接することを示し，$\\displaystyle L(r)=\\lim_{t\\to0}\\frac{d}{|\\overrightarrow{\\mathrm{PQ}}|^2}$ を求めよ．さらに $\\displaystyle\\lim_{t\\to0}\\frac{d}{|\\overrightarrow{\\mathrm{PQ}}|^3}=0$ となる $r$ を求め，その $r$ に対して $\\displaystyle\\lim_{t\\to0}\\frac{d}{|\\overrightarrow{\\mathrm{PQ}}|^4}$ を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 証明　(2) 証明　(3) 接することは証明，$L(r)=\\dfrac{|1-2r|}{2r}$，$r=\\dfrac12$，そのとき $\\displaystyle\\lim_{t\\to0}\\frac{d}{|\\overrightarrow{\\mathrm{PQ}}|^4}=1$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) $h=t-t_0\\neq0$，$\\vec w=\\overrightarrow{\\mathrm{PQ}}=(f(t)-f(t_0),\\,g(t)-g(t_0))$ とおく．仮定より $\\vec w\\neq\\vec0$．微分係数の定義より $t\\to t_0$ のとき $\\dfrac{\\vec w}{h}\\to\\vec v$ であり，したがって $\\dfrac{|\\vec w|}{|h|}\\to|\\vec v|>0$．また $f$，$g$ は連続なので $|\\vec w|\\to0$．\n\n$|\\overrightarrow{\\mathrm{MP}}|=R$ より\n\\[\n\\mathrm{MQ}^2-R^2=|\\overrightarrow{\\mathrm{MP}}+\\vec w|^2-R^2=2\\,\\overrightarrow{\\mathrm{MP}}\\cdot\\vec w+|\\vec w|^2,\n\\]\n$\\mathrm{MQ}+R>0$ なので $d=\\dfrac{|\\mathrm{MQ}^2-R^2|}{\\mathrm{MQ}+R}$．よって\n\\[\n\\frac d{|\\vec w|}=\\frac{\\left|2\\,\\overrightarrow{\\mathrm{MP}}\\cdot\\dfrac{\\vec w}h+\\dfrac{|\\vec w|^2}h\\right|}{\\dfrac{|\\vec w|}{|h|}\\,(\\mathrm{MQ}+R)}.\n\\]\nここで $\\left|\\dfrac{|\\vec w|^2}h\\right|=|\\vec w|\\cdot\\dfrac{|\\vec w|}{|h|}\\to0\\cdot|\\vec v|=0$，$\\overrightarrow{\\mathrm{MP}}\\cdot\\dfrac{\\vec w}h\\to\\overrightarrow{\\mathrm{MP}}\\cdot\\vec v$，また三角不等式より $|\\mathrm{MQ}-R|\\leqq|\\vec w|\\to0$ なので $\\mathrm{MQ}+R\\to2R$．したがって\n\\[\n\\lim_{t\\to t_0}\\frac d{|\\overrightarrow{\\mathrm{PQ}}|}=\\frac{2|\\overrightarrow{\\mathrm{MP}}\\cdot\\vec v|}{|\\vec v|\\cdot2R}=\\frac{|\\overrightarrow{\\mathrm{MP}}\\cdot\\vec v|}{R\\,|\\vec v|}.\\qquad\\square\n\\]\n\n(2) P における $C$ の接線は P を通り方向 $\\vec v$（$\\neq\\vec0$）の直線，$\\Gamma$ の接線は P を通り $\\overrightarrow{\\mathrm{MP}}$ に垂直な直線である．どちらも P を通るから，一致する $\\iff\\vec v\\perp\\overrightarrow{\\mathrm{MP}}\\iff\\overrightarrow{\\mathrm{MP}}\\cdot\\vec v=0$．(1) より極限は $\\dfrac{|\\overrightarrow{\\mathrm{MP}}\\cdot\\vec v|}{R|\\vec v|}$ なので，これが0であることと同値．\\hfill$\\square$\n\n(3) $f(t)=t$，$g(t)=t^2$ は条件をみたし（$f'=1\\neq0$，$t\\neq0$ なら $(t,t^2)\\neq(0,0)$），$\\vec v=(1,0)$．M$(0,r)$ で $\\overrightarrow{\\mathrm{MP}}=(0,-r)$，$\\overrightarrow{\\mathrm{MP}}\\cdot\\vec v=0$ なので，(2) の証明で示した同値により $\\Gamma_r$ は O で $C$ に接する．\n\nQ$(t,t^2)$ に対し\n\\[\n\\mathrm{MQ}^2-r^2=t^2+(t^2-r)^2-r^2=(1-2r)t^2+t^4,\\qquad|\\overrightarrow{\\mathrm{PQ}}|^2=t^2(1+t^2).\n\\]\nよって $t\\neq0$ で\n\\[\n\\frac d{|\\overrightarrow{\\mathrm{PQ}}|^2}=\\frac{|1-2r+t^2|}{(1+t^2)(\\mathrm{MQ}+r)}.\n\\]\n$t\\to0$ で $\\mathrm{MQ}\\to r$ なので $\\boldsymbol{L(r)=\\dfrac{|1-2r|}{2r}}$．\n\n$r\\neq\\frac12$ のとき $L(r)>0$ で，$t$ が0に十分近ければ $\\dfrac d{|\\overrightarrow{\\mathrm{PQ}}|^2}>\\dfrac{L(r)}2$，よって $\\dfrac d{|\\overrightarrow{\\mathrm{PQ}}|^3}>\\dfrac{L(r)}{2|\\overrightarrow{\\mathrm{PQ}}|}\\to\\infty$ となり，極限は0でない．\n\n$r=\\frac12$ のとき $d=\\dfrac{t^4}{\\mathrm{MQ}+\\frac12}$，$|\\overrightarrow{\\mathrm{PQ}}|^4=t^4(1+t^2)^2$ だから\n\\[\n\\frac d{|\\overrightarrow{\\mathrm{PQ}}|^4}=\\frac1{(1+t^2)^2\\left(\\mathrm{MQ}+\\frac12\\right)}\\to\\frac1{1\\cdot1}=1,\n\\]\nしたがって $\\dfrac d{|\\overrightarrow{\\mathrm{PQ}}|^3}=\\dfrac d{|\\overrightarrow{\\mathrm{PQ}}|^4}\\cdot|\\overrightarrow{\\mathrm{PQ}}|\\to1\\cdot0=0$．\n\n以上より $\\boldsymbol{r=\\dfrac12}$ で，そのとき $\\displaystyle\\lim_{t\\to0}\\frac d{|\\overrightarrow{\\mathrm{PQ}}|^4}=\\boldsymbol1$．"
+   }
+  ],
+  "idea": {
+   "tex": "$\\overrightarrow{\\mathrm{PQ}}/(t-t_0)\\to\\vec v$（微分係数の定義）．円との距離は $|\\mathrm{MQ}-R|=\\dfrac{|\\mathrm{MQ}^2-R^2|}{\\mathrm{MQ}+R}$ と有理化し，$\\mathrm{MQ}^2-R^2=2\\overrightarrow{\\mathrm{MP}}\\cdot\\overrightarrow{\\mathrm{PQ}}+|\\overrightarrow{\\mathrm{PQ}}|^2$ と「1次の項＋2次の項」に分けると，比の極限が $\\dfrac{|\\overrightarrow{\\mathrm{MP}}\\cdot\\vec v|}{R|\\vec v|}$ になる．接するとき1次の項が消え，次の位数 $|\\mathrm{PQ}|^2$ で割った極限が円の半径の選び方を決める．"
+  },
+  "methods": [],
+  "tags": [
+   "接線",
+   "微分係数の定義",
+   "極限",
+   "円の接線",
+   "2次の接触"
+  ],
+  "provenance": {
+   "created": "2026-11-10"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "III-DIF-275",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "III-16",
+  "level": 5,
+  "minutes": 40,
+  "theme": "$e^{-|x|}$ の下に収まる三角形の最大",
+  "topic": "$e^{-|x|}$ の下に収まる三角形の最大",
+  "statement": {
+   "tex": "$f(x)=e^{-|x|}$ とする．曲線 $y=f(x)$ 上の点 A$(a,\\ f(a))$ を固定する．$x$ 軸上に2点 B，C をとり，不等式 $y\\leqq f(x)$ の表す領域に含まれる三角形 ABC を考える．このような三角形のうち最大の面積をもつものの面積を $S(a)$ とする．\n\\begin{enumerate}\n  \\item $S(0)$ を求めよ．\n  \\item $a>0$ とする．方程式 $w-\\log w=2a+1$ は $w>1$ の範囲にただ1つの解をもつことを示せ．また，その解を $w_a$ とするとき，$S(a)=\\dfrac{(w_a+1)e^{-a}}{2}$ であることを示せ．\n  \\item $a$ が実数全体を動くとき，$S(a)$ の最大値と，最大値を与える $a$ の値を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $S(0)=1$　(2) 証明　(3) 最大値 $\\dfrac{2+\\sqrt2}{2}\\sqrt{1+\\sqrt2}\\,e^{-\\frac{\\sqrt2}{2}}$，$a=\\pm\\dfrac{\\sqrt2-\\log(1+\\sqrt2)}{2}$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "\\textbf{準備．} 実数 $t$ について $e^t\\geqq1+t$（等号は $t=0$ のときのみ）．実際 $\\varphi(t)=e^t-1-t$ は $\\varphi'(t)=e^t-1$ より $t=0$ で最小値 $0$ をとる．\n\n$f$ は偶関数なので，$a$ と $-a$ では図形が $y$ 軸に関して対称になり，$S(-a)=S(a)$．以下 $a\\geqq0$ とし，$h=f(a)=e^{-a}$，B$(\\beta,0)$，C$(\\gamma,0)$，$\\beta<\\gamma$ とする（三角形の面積は $\\frac12(\\gamma-\\beta)h$）．\n\n\\textbf{手順1：$\\beta\\leqq a\\leqq\\gamma$ としてよい．} $\\gamma<a$ のとき D$(a,0)$ とすると，C は線分 BD 上にあるので三角形 ABC は三角形 ABD に含まれる．三角形 ABD は $\\beta\\leqq x\\leqq a$，$0\\leqq y\\leqq\\ell_{\\mathrm{AB}}(x)$（$\\ell_{\\mathrm{AB}}$ は直線 AB を表す1次関数）で表され，辺 AB は三角形 ABC に含まれるので $\\ell_{\\mathrm{AB}}(x)\\leqq f(x)$（$\\beta\\leqq x\\leqq a$）である．よって三角形 ABD も領域に含まれ，面積は $\\frac12(a-\\beta)h>\\frac12(\\gamma-\\beta)h$．$\\beta>a$ のときも同様．よって $\\beta\\leqq a\\leqq\\gamma$ の場合だけ調べればよい．\n\n\\textbf{手順2：条件の分離．} $\\beta\\leqq a\\leqq\\gamma$ のとき，三角形は $\\beta\\leqq x\\leqq\\gamma$，$0\\leqq y\\leqq T(x)$ で表される．ここで $T$ は $[\\beta,a]$ では直線 AB，$[a,\\gamma]$ では直線 AC を表す．$f>0$ なので，領域に含まれる条件は\n\\[\n\\text{(L)}\\ \\ \\ell_{\\mathrm{AB}}(x)\\leqq f(x)\\ (\\beta\\leqq x\\leqq a),\\qquad \\text{(R)}\\ \\ \\ell_{\\mathrm{AC}}(x)\\leqq f(x)\\ (a\\leqq x\\leqq\\gamma)\n\\]\nであり，(L) は $\\beta$ だけ，(R) は $\\gamma$ だけの条件である．よって $\\gamma$ の最大値と $\\beta$ の最小値を別々に求めればよい．\n\n\\textbf{手順3：$\\gamma$ の最大値は $a+1$．} $x\\geqq a\\ (\\geqq0)$ では $f(x)=e^{-x}$ であり，$x=a+t$（$0\\leqq t\\leqq\\gamma-a$）とおくと\n\\[\n\\ell_{\\mathrm{AC}}(x)-f(x)=e^{-a}\\left(1-\\frac{t}{\\gamma-a}-e^{-t}\\right).\n\\]\n$\\gamma-a\\leqq1$ なら $\\frac{t}{\\gamma-a}\\geqq t$ なので，準備より $1-\\frac{t}{\\gamma-a}-e^{-t}\\leqq1-t-e^{-t}\\leqq0$ となり (R) が成り立つ．$\\gamma-a>1$ なら，$\\psi(t)=1-\\frac t{\\gamma-a}-e^{-t}$ は $\\psi(0)=0$，$\\psi'(t)=e^{-t}-\\frac1{\\gamma-a}$ で，$0<t<\\log(\\gamma-a)$ では $\\psi'(t)>0$．よって $0<t<\\log(\\gamma-a)$ かつ $0<t<\\gamma-a$ をみたす $t$ で $\\psi(t)>0$ となり，(R) は成り立たない．ゆえに $\\gamma$ の最大値は $a+1$．\n\n\\textbf{手順4：$\\beta$ の最小値は $u_0-1$．} $\\beta<a$ とし，直線 AB の傾きを $m=\\dfrac{h}{a-\\beta}>0$ とすると $\\ell_{\\mathrm{AB}}(x)=h+m(x-a)$．$0\\leqq x\\leqq a$ では $\\ell_{\\mathrm{AB}}(x)\\leqq h=e^{-a}\\leqq e^{-x}=f(x)$ が常に成り立つ．よって (L) は「$\\beta<0$ のとき，$\\beta\\leqq x\\leqq0$ で $\\ell_{\\mathrm{AB}}(x)\\leqq e^x$」と同値である．\n\n$g(u)=e^u(a-u+1)$（$u\\leqq0$）とおく．$g'(u)=e^u(a-u)$ は $u<0$ で正なので，$g$ は $u\\leqq0$ で単調に増加する．$g(0)=a+1\\geqq e^{-a}$（等号は $a=0$ のときのみ）であり，$u\\to-\\infty$ で $e^u\\to0$，$ue^u\\to0$ より $g(u)\\to0<e^{-a}$．中間値の定理と単調性から，$g(u_0)=e^{-a}$ をみたす $u_0\\leqq0$ がただ1つあり，$u_0=0\\iff a=0$．\n\n$y=e^x$ の $x=u_0$ における接線 $L(x)=e^{u_0}(x-u_0+1)$ は，$L(a)=g(u_0)=e^{-a}$ より A を通り，$x$ 切片は $u_0-1$ である．準備より $e^x=e^{u_0}e^{x-u_0}\\geqq e^{u_0}(1+x-u_0)=L(x)$ がすべての $x$ で成り立つ．よって $\\beta=u_0-1$ のとき直線 AB は $L$ そのものであり，(L) をみたす．\n\n$\\beta<u_0-1$ とすると，$m=\\dfrac{h}{a-\\beta}<\\dfrac{h}{a-(u_0-1)}=e^{u_0}$（$L$ の傾き）．$a>0$ のときは $u_0<0$ であり，$\\beta<u_0<0$ より $x=u_0$ は区間 $[\\beta,0]$ にあり，$u_0-a<0$ だから\n\\[\n\\ell_{\\mathrm{AB}}(u_0)=h+m(u_0-a)>h+e^{u_0}(u_0-a)=L(u_0)=e^{u_0}=f(u_0)\n\\]\nとなって (L) に反する．$a=0$ のときは $u_0=0$，$h=1$ で，$m<e^0=1$ である．$\\phi(x)=\\ell_{\\mathrm{AB}}(x)-e^x=1+mx-e^x$ とおくと $\\phi(0)=0$，$\\phi'(x)=m-e^x$ は $\\log m<x<0$ で負なので，$\\beta<x<0$ かつ $\\log m<x<0$ をみたす $x$（区間 $[\\beta,0]$ 内）で $\\phi(x)>\\phi(0)=0$ となり，やはり (L) に反する．ゆえに $\\beta$ の最小値は $u_0-1$ である．\n\n以上より，最大の三角形は存在し，\n\\[\nS(a)=\\frac{e^{-a}}2\\bigl\\{(a+1)-(u_0-1)\\bigr\\}=\\frac{e^{-a}}2(a-u_0+2)\\qquad(a\\geqq0).\n\\]\n\n(1) $a=0$ のとき $u_0=0$ なので $\\boldsymbol{S(0)=1}$．\n\n(2) $a>0$ とする．$\\chi(w)=w-\\log w$ は $\\chi'(w)=1-\\dfrac1w>0$（$w>1$）より $w>1$ で単調に増加するので，$\\chi(w)=2a+1$ の解は $w>1$ に高々1つである．$w=a-u_0+1$ とおくと，$u_0<0$ より $w>a+1>1$．$g(u_0)=e^{-a}$ に $u_0=a+1-w$ を代入すると $e^{a+1-w}w=e^{-a}$，両辺の対数をとって $w-\\log w=2a+1$．よって解はただ1つ存在して $w_a=a-u_0+1$ であり，\n\\[\nS(a)=\\frac{e^{-a}}2(w_a+1).\n\\]\n\n(3) $S(-a)=S(a)$ より $a\\geqq0$ で考える．$a=0$ のときも $w=1$ が $w-\\log w=1$ をみたし，$S(0)=\\frac{e^0}{2}(1+1)$ なので，$w_0=1$ とすれば (2) の式は $a=0$ でも成り立つ．$a(w)=\\dfrac{w-1-\\log w}2$ は $w\\geqq1$ で連続かつ単調に増加し，$a(1)=0$，$w\\to\\infty$ で $a(w)\\to\\infty$ である．よって $w\\geqq1$ と $a\\geqq0$ は1対1に対応し，$w_a$ はこの対応で $a$ に対応する $w$ である．$e^{-a}=\\exp\\left(-\\dfrac{w-1-\\log w}{2}\\right)=\\sqrt w\\,e^{\\frac{1-w}2}$ より\n\\[\nS=\\Phi(w)=\\frac{(w+1)\\sqrt w}{2}e^{\\frac{1-w}{2}}\\qquad(w\\geqq1).\n\\]\n\\[\n\\frac{d}{dw}\\log\\Phi(w)=\\frac1{w+1}+\\frac1{2w}-\\frac12=\\frac{-(w^2-2w-1)}{2w(w+1)}\n\\]\nは $1\\leqq w<1+\\sqrt2$ で正，$w>1+\\sqrt2$ で負なので，$\\Phi$ は $w=1+\\sqrt2$ で最大となる．このとき\n\\[\n\\Phi(1+\\sqrt2)=\\frac{2+\\sqrt2}{2}\\sqrt{1+\\sqrt2}\\,e^{-\\frac{\\sqrt2}2},\\qquad a=\\frac{\\sqrt2-\\log(1+\\sqrt2)}{2}.\n\\]\nしたがって\n\\[\n\\boldsymbol{\\text{最大値}\\ \\frac{2+\\sqrt2}{2}\\sqrt{1+\\sqrt2}\\,e^{-\\frac{\\sqrt2}{2}}\\quad\\left(a=\\pm\\frac{\\sqrt2-\\log(1+\\sqrt2)}{2}\\right)}.\n\\]\n（この値は約 $1.31$ で，$S(0)=1$ より大きい．）\\hfill$\\square$"
+   }
+  ],
+  "idea": {
+   "tex": "頂点 A を曲線上に固定し，底辺を $x$ 軸上にとった三角形が曲線の下に収まる条件を，A を通る2辺それぞれの条件に分ける．凸な部分では，1辺は「A での接線」または「A から曲線に引いた接線」のときに底辺が最も長くなる．原題では $S(0)$ が最大になるが，捻りの $e^{-|x|}$ では，A から反対側の枝に引いた接線の接点が方程式 $w-\\log w=2a+1$ で決まる．面積を $w$ で表して最大を求めると，最大になるのは $a=0$ ではない．"
+  },
+  "methods": [],
+  "tags": [
+   "接線",
+   "凸関数",
+   "中間値の定理",
+   "媒介変数で最大化"
+  ],
+  "provenance": {
+   "created": "2026-11-10"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "III-DIF-276",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "III-16",
+  "level": 4,
+  "minutes": 35,
+  "theme": "$\\cos x$ を分数式で4階まで近似して円周率を評価する",
+  "topic": "$\\cos x$ を分数式で4階まで近似して円周率を評価する",
+  "statement": {
+   "tex": "$a,\\ b$ を実数の定数とし，$b>0$ とする．$g(x)=\\dfrac{1+ax^2}{1+bx^2}$ とおく．\n\\begin{enumerate}\n  \\item $k=0,\\ 1,\\ 2,\\ 3,\\ 4$ のすべてについて，$x=0$ における $k$ 階導関数の値が $\\cos x$ と $g(x)$ で一致するような $a,\\ b$ を求めよ．ただし，0階導関数は関数そのものとする．\n  \\item (1) で求めた $a,\\ b$ について，すべての実数 $x$ で $\\cos x\\geqq g(x)$ が成り立つことを示せ．また，等号が成り立つのは $x=0$ のときに限ることを示せ．\n  \\item $\\pi>3.14$ であることを示せ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $a=-\\dfrac{5}{12}$，$b=\\dfrac1{12}$　(2) 証明（等号は $x=0$ のときのみ）　(3) 証明"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "\\textbf{準備（積の高次導関数）．} 何回でも微分できる関数 $\\varphi,\\ \\psi$ について，積の微分法 $(\\varphi^{(j)}\\psi^{(l)})'=\\varphi^{(j+1)}\\psi^{(l)}+\\varphi^{(j)}\\psi^{(l+1)}$ をくり返すと，$k$ に関する帰納法により，$(\\varphi\\psi)^{(k)}$ は $\\varphi^{(j)}\\psi^{(k-j)}$（$0\\leqq j\\leqq k$）に定数をかけたものの和で表される．したがって\n\\[\n\\text{(★)}\\quad \\varphi^{(j)}(0)=0\\ (j=0,1,\\ldots,4)\\ \\Longrightarrow\\ (\\varphi\\psi)^{(k)}(0)=0\\ (k=0,1,\\ldots,4).\n\\]\n\n(1) $d(x)=\\cos x-g(x)$，$u(x)=(1+bx^2)\\cos x-(1+ax^2)$ とおくと，$u(x)=(1+bx^2)\\,d(x)$，$d(x)=\\dfrac{1}{1+bx^2}\\,u(x)$ である（$b>0$ より $1+bx^2>0$）．$1+bx^2$ も $\\dfrac1{1+bx^2}$ も何回でも微分できるので，(★) を両方向に使うと\n\\[\nd^{(k)}(0)=0\\ (k=0,\\ldots,4)\\iff u^{(k)}(0)=0\\ (k=0,\\ldots,4).\n\\]\n$u$ は偶関数である．偶関数の導関数は奇関数，奇関数の導関数は偶関数なので，$u',\\ u'''$ は奇関数で，$u'(0)=u'''(0)=0$．また $u(0)=1-1=0$．\n\n$p(x)=x^2\\cos x$ とおくと\n\\[\n\\begin{aligned}\np'&=2x\\cos x-x^2\\sin x,\\qquad p''=2\\cos x-4x\\sin x-x^2\\cos x,\\\\\np'''&=-6\\sin x-6x\\cos x+x^2\\sin x,\\qquad p''''=-12\\cos x+8x\\sin x+x^2\\cos x\n\\end{aligned}\n\\]\nなので $p''(0)=2$，$p''''(0)=-12$．$u=\\cos x+bp(x)-1-ax^2$ より\n\\[\nu''(0)=-1+2b-2a,\\qquad u''''(0)=1-12b.\n\\]\nよって条件は $-1+2b-2a=0$ かつ $1-12b=0$ であり，$b=\\dfrac1{12}$（$b>0$ をみたす），$a=b-\\dfrac12=-\\dfrac5{12}$．逆にこのとき $u^{(k)}(0)=0$（$k=0,\\ldots,4$）なので条件をみたす．\n\\[\n\\boldsymbol{a=-\\frac5{12},\\qquad b=\\frac1{12}}\n\\]\n\n(2) $g(x)=\\dfrac{12-5x^2}{12+x^2}$ で $12+x^2>0$ なので，\n\\[\n\\cos x\\geqq g(x)\\iff h(x)=(12+x^2)\\cos x-12+5x^2\\geqq0,\n\\]\n等号の条件も一致する．$h$ は偶関数なので，$x\\geqq0$ で「$h(x)\\geqq0$，等号は $x=0$ のみ」を示せばよい．$h(0)=0$ である．\n\n微分すると\n\\[\n\\begin{aligned}\nh'(x)&=2x\\cos x-(12+x^2)\\sin x+10x,\\\\\nh''(x)&=10-(10+x^2)\\cos x-4x\\sin x,\\\\\nh'''(x)&=(6+x^2)\\sin x-6x\\cos x,\\\\\nh''''(x)&=x\\,(x\\cos x+8\\sin x)\n\\end{aligned}\n\\]\nで，$h'(0)=h''(0)=h'''(0)=0$．\n\n\\textbf{$0\\leqq x\\leqq\\pi$ の場合．} $0<x\\leqq\\dfrac\\pi2$ では $\\cos x\\geqq0$，$\\sin x>0$ より $h''''(x)>0$．よって $h'''$ は $\\left[0,\\dfrac\\pi2\\right]$ で増加し，$0<x\\leqq\\dfrac\\pi2$ で $h'''(x)>h'''(0)=0$．$\\dfrac\\pi2\\leqq x<\\pi$ では $\\sin x>0$，$-6x\\cos x\\geqq0$ より $h'''(x)>0$．$x=\\pi$ では $h'''(\\pi)=6\\pi>0$．したがって $0<x\\leqq\\pi$ で $h'''(x)>0$ である．\n\nよって $h''$ は $[0,\\pi]$ で増加し，$0<x\\leqq\\pi$ で $h''(x)>h''(0)=0$．同様に $h'$ は $[0,\\pi]$ で増加して $0<x\\leqq\\pi$ で $h'(x)>0$，さらに $h$ は増加して $0<x\\leqq\\pi$ で $h(x)>h(0)=0$．\n\n\\textbf{$x>\\pi$ の場合．} $\\cos x\\geqq-1$ と $12+x^2>0$ より\n\\[\nh(x)\\geqq-(12+x^2)-12+5x^2=4x^2-24>4\\pi^2-24>4\\cdot9-24>0\n\\]\n（$\\pi>3$ を用いた）．\n\n以上より，すべての実数 $x$ で $h(x)\\geqq0$ であり，等号は $x=0$ のときに限る．よって $\\cos x\\geqq g(x)$，\\textbf{等号は $x=0$ のときに限る．}\\hfill$\\square$\n\n(3) (2) を $x=t=\\dfrac\\pi6$（$\\neq0$）に用いると，$\\cos t=\\dfrac{\\sqrt3}2$ より\n\\[\n(12+t^2)\\frac{\\sqrt3}2>12-5t^2\\iff t^2\\left(5+\\frac{\\sqrt3}2\\right)>12-6\\sqrt3\\iff t^2>\\frac{24-12\\sqrt3}{10+\\sqrt3}.\n\\]\n$\\pi^2=36t^2$ なので\n\\[\n\\pi^2>\\frac{36(24-12\\sqrt3)}{10+\\sqrt3}=\\frac{432(2-\\sqrt3)(10-\\sqrt3)}{(10+\\sqrt3)(10-\\sqrt3)}=\\frac{432(23-12\\sqrt3)}{97}.\n\\]\nここで $1.7321^2=3.00017041>3$ より $\\sqrt3<1.7321$ であり，\n\\[\n\\begin{aligned}\n432\\cdot23-97\\cdot3.14^2-432\\cdot12\\sqrt3&=9936-956.3812-5184\\sqrt3\\\\\n&>8979.6188-5184\\cdot1.7321=8979.6188-8979.2064>0.\n\\end{aligned}\n\\]\nしたがって $\\dfrac{432(23-12\\sqrt3)}{97}>3.14^2$ であり，$\\pi^2>3.14^2$．$\\pi>0$ より $\\boldsymbol{\\pi>3.14}$．\\hfill$\\square$"
+   }
+  ],
+  "idea": {
+   "tex": "関数 $f$ と分数式 $g=\\dfrac{p}{q}$ の $x=0$ での導関数を高い階数まで一致させる条件は，分母を払った $qf-p$ の導関数が $x=0$ で $0$ になる条件と同じである（積の導関数は「片方の導関数 × もう片方の導関数」の和）．こうすると $g$ の高次導関数を直接計算しなくてよい．捻りでは $\\cos x$ を $\\dfrac{1+ax^2}{1+bx^2}$ で4階まで近似する．分母を払った差 $h(x)$ の符号は，4階導関数から順にさかのぼって決める．この不等式を $x=\\dfrac\\pi6$ に使うと，$\\pi>3.14$ が出る．"
+  },
+  "methods": [],
+  "tags": [
+   "高次導関数",
+   "分数式による近似",
+   "積の微分",
+   "不等式の証明",
+   "円周率の評価"
+  ],
+  "provenance": {
+   "created": "2026-11-10"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "III-DIF-277",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "III-16",
+  "level": 4,
+  "minutes": 35,
+  "theme": "$e^{-x}$ と $\\left(1-\\frac xn\\right)^n$ の差が最大になる位置と最大値",
+  "topic": "$e^{-x}$ と $\\left(1-\\frac xn\\right)^n$ の差が最大になる位置と最大値",
+  "statement": {
+   "tex": "$n$ を4以上の整数とし，$0\\leqq x\\leqq n$ で定義された関数\n\\[f(x)=e^{-x}-\\left(1-\\frac xn\\right)^n\\]\nを考える．\n\\begin{enumerate}\n  \\item $0\\leqq t<1$ のとき，次の不等式を示せ．\n  \\[t+\\frac{t^2}2\\leqq-\\log(1-t)\\leqq t+\\frac{t^2}2+\\frac{t^3}{3(1-t)}\\]\n  \\item $f(x)$ は $0<x<n$ のただ1つの点 $x=q_n$ で最大となることを示せ．さらに，最大値 $f(q_n)$ を $q_n$ と $n$ のみを用いて（指数関数 $e^{-q_n}$ は用いてよい）表せ．\n  \\item $2-\\dfrac4n<q_n<2+\\dfrac2{n-1}$ を示せ．\n  \\item $\\displaystyle\\lim_{n\\to\\infty}n\\,f(q_n)$ を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 証明　(2) 証明；$f(q_n)=\\dfrac{q_ne^{-q_n}}{n}$　(3) 証明　(4) $\\dfrac{2}{e^2}$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) $h(t)=-\\log(1-t)-t-\\dfrac{t^2}2$ とおくと $h'(t)=\\dfrac1{1-t}-1-t=\\dfrac{t^2}{1-t}\\geqq0$（$0\\leqq t<1$），$h(0)=0$ より $h(t)\\geqq0$．さらに $0<t<1$ で $h'(t)>0$ なので，$t>0$ では $h(t)>0$（等号は $t=0$ のみ）．\n\n$k(t)=t+\\dfrac{t^2}2+\\dfrac{t^3}{3(1-t)}+\\log(1-t)$ とおくと，$\\left(\\dfrac{t^3}{3(1-t)}\\right)'=\\dfrac{3t^2(1-t)+t^3}{3(1-t)^2}=\\dfrac{3t^2-2t^3}{3(1-t)^2}$ より\n\\[k'(t)=1+t-\\frac1{1-t}+\\frac{3t^2-2t^3}{3(1-t)^2}=-\\frac{t^2}{1-t}+\\frac{3t^2-2t^3}{3(1-t)^2}=\\frac{t^2\\{-3(1-t)+3-2t\\}}{3(1-t)^2}=\\frac{t^3}{3(1-t)^2}\\geqq0.\\]\n$k(0)=0$ より $k(t)\\geqq0$．以上で示された．\\hfill$\\square$\n\n(2) $0\\leqq x<n$ で $\\left(1-\\frac xn\\right)^{n-1}=e^{(n-1)\\log(1-\\frac xn)}$ なので\n\\[f'(x)=-e^{-x}+\\left(1-\\frac xn\\right)^{n-1}=e^{-x}\\left(e^{g(x)}-1\\right),\\qquad g(x)=x+(n-1)\\log\\left(1-\\frac xn\\right).\\]\n$f'(x)$ の符号は $g(x)$ の符号と一致する．$g'(x)=1-\\dfrac{n-1}{n-x}=\\dfrac{1-x}{n-x}$ より，$g$ は $0\\leqq x\\leqq1$ で増加，$1\\leqq x<n$ で減少する．$g(0)=0$ なので $0<x\\leqq1$ で $g(x)>0$．また $x\\to n-0$ で $\\log\\left(1-\\frac xn\\right)\\to-\\infty$ より $g(x)\\to-\\infty$．$g$ は $[1,n)$ で連続かつ減少し，$g(1)>0$ だから，$g(x)=0$ をみたす $x$ は $1<x<n$ にただ1つ存在する．これを $q_n$ とすると，$0<x<q_n$ で $g>0$，$q_n<x<n$ で $g<0$．よって $f$ は $0\\leqq x\\leqq q_n$ で増加，$q_n\\leqq x\\leqq n$ で減少し（$f$ は $x=n$ でも連続），最大となるのは $x=q_n$ のみである．\n\n$g(q_n)=0$ より $\\left(1-\\frac{q_n}n\\right)^{n-1}=e^{-q_n}$．これを用いて\n\\[f(q_n)=e^{-q_n}-\\left(1-\\frac{q_n}n\\right)\\left(1-\\frac{q_n}n\\right)^{n-1}=e^{-q_n}-\\left(1-\\frac{q_n}n\\right)e^{-q_n}=\\boldsymbol{\\frac{q_n\\,e^{-q_n}}{n}}.\\]\n\n(3) (2) より，$0<x<n$ において $g(x)>0\\iff x<q_n$，$g(x)<0\\iff x>q_n$．$0<x<n$ のとき $t=\\frac xn\\in(0,1)$ として (1) を用いる．\n\n\\textbf{上からの評価．}(1) の左側の不等式（$t>0$ で等号なし）より\n\\[g(x)=x-(n-1)\\{-\\log(1-t)\\}<x-(n-1)\\left(\\frac xn+\\frac{x^2}{2n^2}\\right)=\\frac xn\\left(1-\\frac{(n-1)x}{2n}\\right).\\]\n$x_1=\\dfrac{2n}{n-1}$ は $n\\geqq4$ より $0<x_1<n$ をみたし（$x_1<n\\iff2<n-1$），右辺は $x=x_1$ で0になるので $g(x_1)<0$．よって $q_n<x_1=2+\\dfrac2{n-1}$．\n\n\\textbf{下からの評価．}(1) の右側の不等式より\n\\[g(x)\\geqq x-(n-1)\\left(\\frac xn+\\frac{x^2}{2n^2}+\\frac{x^3}{3n^2(n-x)}\\right)=\\frac xn\\left(1-\\frac{(n-1)x}{2n}-\\frac{(n-1)x^2}{3n(n-x)}\\right).\\]\n$x_0=2-\\dfrac4n$ とおくと $n\\geqq4$ より $1\\leqq x_0<2$．$\\dfrac{(n-1)x_0}{2n}=\\dfrac{(n-1)(n-2)}{n^2}$ なので $1-\\dfrac{(n-1)x_0}{2n}=\\dfrac{3n-2}{n^2}$．また $x_0^2<4$，$n-x_0>n-2>0$ より $\\dfrac{(n-1)x_0^2}{3n(n-x_0)}<\\dfrac{4(n-1)}{3n(n-2)}$．よって括弧内は\n\\[>\\frac{3n-2}{n^2}-\\frac{4(n-1)}{3n(n-2)}=\\frac{3(3n-2)(n-2)-4n(n-1)}{3n^2(n-2)}=\\frac{5n^2-20n+12}{3n^2(n-2)}=\\frac{5n(n-4)+12}{3n^2(n-2)}>0.\\]\nしたがって $g(x_0)>0$ で，$x_0<q_n$．以上で $2-\\dfrac4n<q_n<2+\\dfrac2{n-1}$．\\hfill$\\square$\n\n(4) (3) とはさみうちの原理より $\\displaystyle\\lim_{n\\to\\infty}q_n=2$．(2) より $nf(q_n)=q_ne^{-q_n}$ で，$xe^{-x}$ は連続なので\n\\[\\lim_{n\\to\\infty}nf(q_n)=2e^{-2}=\\boldsymbol{\\frac2{e^2}}.\\]"
+   }
+  ],
+  "idea": {
+   "tex": "差 $f(x)$ の導関数の符号は，指数をそろえて $e^{-x}\\bigl(e^{g(x)}-1\\bigr)$ と書けば補助関数 $g(x)=x+(n-1)\\log\\left(1-\\frac xn\\right)$ の符号で決まる．原題は最大点が $1<p_n<4$ にあることと最大値が0に近づくことだけを示したが，捻りでは，臨界点での関係式 $\\left(1-\\frac qn\\right)^{n-1}=e^{-q}$ を $f$ に代入して最大値が正確に $\\frac{q_ne^{-q_n}}n$ と書けることを見抜き，$-\\log(1-t)$ を $t+\\frac{t^2}2$ と $t+\\frac{t^2}2+\\frac{t^3}{3(1-t)}$ ではさんで最大点を $2-\\frac4n<q_n<2+\\frac2{n-1}$ と追い込む．これで $f$ の最大値の $n$ 倍が $\\frac2{e^2}$ に収束すること がわかる．"
+  },
+  "methods": [],
+  "tags": [
+   "対数の不等式",
+   "増減",
+   "臨界点での関係式",
+   "はさみうち",
+   "極限"
+  ],
+  "provenance": {
+   "created": "2026-11-10"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "III-DIF-278",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "III-16",
+  "level": 4,
+  "minutes": 35,
+  "theme": "正弦曲線に2点で接する直線の全体",
+  "topic": "正弦曲線に2点で接する直線の全体",
+  "statement": {
+   "tex": "曲線 $C:y=\\sin x$（$x$ はすべての実数）を考える．\n\\begin{enumerate}\n  \\item 直線 $\\ell$ は $x$ 軸に平行でなく，$C$ と異なる2点 $(s,\\sin s)$，$(t,\\sin t)$（$s<t$）で接しているとする．このとき，ある整数 $n$ について $s+t=2n\\pi$ となり，$v=\\dfrac{t-s}2$ は $\\tan v=v$ をみたし，さらに $\\ell$ は点 $(n\\pi,0)$ を通ることを示せ．\n  \\item 方程式 $\\tan v=v$ の正の解は，各自然数 $k$ について区間 $k\\pi<v<k\\pi+\\dfrac\\pi2$ にただ1つずつ存在し，それ以外にはないことを示せ．その解を $v_k$ とするとき，$x$ 軸に平行でなく $C$ と2点以上で接する直線をすべて，$v_k$ を用いて求めよ．\n  \\item 極限 $\\displaystyle\\lim_{k\\to\\infty}k\\,|\\cos v_k|$ および $\\displaystyle\\lim_{k\\to\\infty}k\\left(k\\pi+\\frac\\pi2-v_k\\right)$ を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 証明　(2) 証明；直線 $y=(-1)^n\\cos v_k\\,(x-n\\pi)$（$n$ は整数，$k$ は自然数；接点は $x=n\\pi\\pm v_k$）　(3) ともに $\\dfrac1\\pi$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) $\\ell$ は $s$ における接線 $y=\\cos s\\,(x-s)+\\sin s$ であり，$t$ における接線とも一致するので\n\\[\n\\cos t=\\cos s,\\qquad \\sin t-\\sin s=\\cos s\\,(t-s)\\qquad\\cdots\\cdots\\text{①}\n\\]\n$\\cos t-\\cos s=-2\\sin\\dfrac{t+s}2\\sin\\dfrac{t-s}2=0$ より，ある整数 $k$ で $t-s=2k\\pi$ または $t+s=2k\\pi$．\n\n$t-s=2k\\pi$ のとき $\\sin t=\\sin s$ なので①第2式より $\\cos s\\,(t-s)=0$，$t\\neq s$ から $\\cos s=0$ となり，$\\ell$ の傾きは0で $x$ 軸に平行となって仮定に反する．ゆえに $s+t=2n\\pi$（$n$ は整数）．\n\n$v=\\dfrac{t-s}2>0$ とおくと $s=n\\pi-v$，$t=n\\pi+v$ で，$\\cos n\\pi=(-1)^n$，$\\sin n\\pi=0$ より\n\\[\n\\sin s=-(-1)^n\\sin v,\\quad \\sin t=(-1)^n\\sin v,\\quad \\cos s=(-1)^n\\cos v .\n\\]\n①第2式は $2(-1)^n\\sin v=(-1)^n\\cos v\\cdot2v$，すなわち $\\sin v=v\\cos v$．$\\cos v=0$ とすると $\\sin v=0$ となり $\\sin^2v+\\cos^2v=1$ に反するので $\\cos v\\neq0$，よって $\\tan v=v$．\nさらに $\\ell$ の $x=n\\pi$ での値は\n\\[\n\\cos s\\,(n\\pi-s)+\\sin s=(-1)^n(v\\cos v-\\sin v)=0\n\\]\nなので，$\\ell$ は点 $(n\\pi,0)$ を通る．\\hfill$\\square$\n\n(2) $g(v)=\\tan v-v$ とおくと $g'(v)=\\dfrac1{\\cos^2v}-1=\\tan^2v\\geqq0$ で，等号は $v=k\\pi$ のときだけ．よって $g$ は各区間 $I_k=\\left(k\\pi-\\frac\\pi2,\\,k\\pi+\\frac\\pi2\\right)$ で狭義単調増加である．$\\tan v$ が定義されない $v=k\\pi+\\frac\\pi2$ は解でない．\n\\begin{itemize}\n  \\item $0<v<\\frac\\pi2$：$g(0)=0$ と単調増加から $g(v)>0$．解はない．\n  \\item $k\\geqq1$ の $I_k$：$g(k\\pi)=-k\\pi<0$ なので，$k\\pi-\\frac\\pi2<v\\leqq k\\pi$ では $g(v)\\leqq g(k\\pi)<0$ で解はない．$k\\pi\\leqq v<k\\pi+\\frac\\pi2$ では $g$ は連続な増加関数で $g(k\\pi)<0$，$\\displaystyle\\lim_{v\\to k\\pi+\\frac\\pi2-0}g(v)=+\\infty$ だから，中間値の定理と単調性により解はただ1つで，それは $k\\pi<v<k\\pi+\\frac\\pi2$ にある．\n\\end{itemize}\nよって正の解は各 $k$ について区間 $\\left(k\\pi,k\\pi+\\frac\\pi2\\right)$ に1つずつの $v_k$ に限る．\n\n(1)より，$x$ 軸に平行でなく2点以上で接する直線は，そのうち2つの接点を $s<t$ とすれば，整数 $n$ と自然数 $k$ によって $s=n\\pi-v_k$，$t=n\\pi+v_k$ と書け，傾き $\\cos s=(-1)^n\\cos v_k$ で $(n\\pi,0)$ を通る直線 $y=(-1)^n\\cos v_k\\,(x-n\\pi)$ である．\n\n逆に，整数 $n$，自然数 $k$ に対し $L:y=(-1)^n\\cos v_k\\,(x-n\\pi)$ を考える．$v=v_k$ は $\\sin v=v\\cos v$ をみたすから，\n\\[\n\\sin(n\\pi\\pm v)=\\pm(-1)^n\\sin v=(-1)^n\\cos v\\cdot(\\pm v),\\qquad \\cos(n\\pi\\pm v)=(-1)^n\\cos v\n\\]\nとなり，$L$ は $x=n\\pi\\pm v_k$ の2点で $C$ 上の点を通り，そこでの $C$ の接線の傾きと一致する．すなわち $L$ はこの2点で $C$ に接し，$\\cos v_k\\neq0$ より $x$ 軸に平行でない．\n\n以上より，求める直線は\n\\[\n\\boldsymbol{y=(-1)^n\\cos v_k\\,(x-n\\pi)}\\quad(n\\text{ は整数},\\ k\\text{ は自然数})\n\\]\nで，接点の $x$ 座標は $n\\pi\\pm v_k$ である．\\hfill$\\square$\n\n(3) $\\delta_k=k\\pi+\\frac\\pi2-v_k$ とおくと，(2)より $0<\\delta_k<\\frac\\pi2$．\n\\[\n\\tan v_k=\\tan\\left(k\\pi+\\frac\\pi2-\\delta_k\\right)=\\tan\\left(\\frac\\pi2-\\delta_k\\right)=\\frac{\\cos\\delta_k}{\\sin\\delta_k}=\\frac1{\\tan\\delta_k}\n\\]\nで $\\tan v_k=v_k$ だから $\\tan\\delta_k=\\dfrac1{v_k}$．$0<\\theta<\\frac\\pi2$ では $\\theta<\\tan\\theta$ なので $0<\\delta_k<\\tan\\delta_k=\\dfrac1{v_k}<\\dfrac1{k\\pi}$ となり，$\\delta_k\\to0$．\n\\[\nk\\delta_k=\\frac{\\delta_k}{\\tan\\delta_k}\\cdot\\frac k{v_k}=\\frac{\\delta_k}{\\sin\\delta_k}\\cos\\delta_k\\cdot\\frac k{v_k}.\n\\]\n$\\delta_k\\to0$ より $\\dfrac{\\delta_k}{\\sin\\delta_k}\\cos\\delta_k\\to1$．また $k\\pi<v_k<k\\pi+\\frac\\pi2$ より $\\pi<\\dfrac{v_k}k<\\pi+\\dfrac\\pi{2k}$ で，はさみうちにより $\\dfrac{v_k}k\\to\\pi$．よって\n\\[\n\\lim_{k\\to\\infty}k\\left(k\\pi+\\frac\\pi2-v_k\\right)=\\boldsymbol{\\frac1\\pi}.\n\\]\n次に $\\cos^2v_k=\\dfrac1{1+\\tan^2v_k}=\\dfrac1{1+v_k^2}$ より\n\\[\nk|\\cos v_k|=\\frac k{\\sqrt{1+v_k^2}}=\\frac1{\\sqrt{\\dfrac1{k^2}+\\left(\\dfrac{v_k}k\\right)^2}}\\longrightarrow\\frac1{\\sqrt{\\pi^2}}=\\boldsymbol{\\frac1\\pi}.\n\\]"
+   }
+  ],
+  "idea": {
+   "tex": "2点で接する条件「傾きが等しい」「一方の接線が他方の接点を通る」を書くと，$\\cos s=\\cos t$ から $s+t=2n\\pi$（平行移動 $t=s+2k\\pi$ は水平線しか生まない）．中心 $(n\\pi,0)$ からの半幅 $v$ で書くと条件は $\\tan v=v$ に一本化され，直線は必ず $(n\\pi,0)$ を通る．$\\tan v=v$ の解は $\\tan v-v$ の単調性で区間ごとに1つ．漸近挙動は $\\delta=k\\pi+\\frac\\pi2-v$ とおいて $\\tan\\delta=\\frac1v$ から読む．"
+  },
+  "methods": [],
+  "tags": [
+   "複接線",
+   "点対称",
+   "tanx=x",
+   "三角関数の極限",
+   "はさみうち"
+  ],
+  "provenance": {
+   "created": "2026-11-10"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "III-DIF-279",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "III-16",
+  "level": 5,
+  "minutes": 35,
+  "theme": "$y=\\frac1{x^2}$ への2接線の接点の比",
+  "topic": "$y=\\frac1{x^2}$ への2接線の接点の比",
+  "statement": {
+   "tex": "曲線 $C:\\ y=\\dfrac1{x^2}\\ (x>0)$ と，$a^2b<1$ をみたす正の実数 $a,b$ に対する点 $\\mathrm P(a,b)$ を考える．\n\\begin{enumerate}\n  \\item P を通る $C$ の接線はちょうど2本あることを示せ．以下，その接点の $x$ 座標を $s,t$（$s<t$）とする．\n  \\item $\\dfrac ts$ は $a^2b$ の値だけで定まり，$a^2b$ が大きいほど $\\dfrac ts$ は小さいことを示せ．\n  \\item 点 P が直線 $x+y=\\dfrac32$ の $x>0$，$y>0$ の部分を動くとき，$\\dfrac ts$ の最小値と，そのときの P の座標を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 証明　(2) 証明　(3) 最小値 $\\sqrt3+1$，$\\mathrm P\\left(1,\\dfrac12\\right)$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) $y'=-\\frac2{x^3}$ より，$C$ 上の点 $\\left(u,\\frac1{u^2}\\right)$ での接線は $y=-\\frac2{u^3}x+\\frac3{u^2}$．傾き $-\\frac2{u^3}$ は $u>0$ について狭義単調だから，接点が異なれば接線も異なる．よって P を通る接線の本数は，\n\\[\nb-\\Bigl(-\\frac{2a}{u^3}+\\frac3{u^2}\\Bigr)=0\\iff bu^3-3u+2a=0\n\\]\nの正の解 $u$ の個数に等しい．$k=a\\sqrt b$ とおくと $a^2b<1$ より $0<k<1$．$u=\\frac w{\\sqrt b}$ とおくと $bu^3-3u+2a=\\frac{w^3-3w+2k}{\\sqrt b}$ だから，正の解 $u$ と方程式 $h(w)=w^3-3w+2k=0$ の正の解 $w$ が $u=\\frac w{\\sqrt b}$ で1対1に対応する．\n$h'(w)=3(w-1)(w+1)$ より $h$ は $[0,1]$ で狭義減少，$[1,\\infty)$ で狭義増加．$h(0)=2k>0$，$h(1)=2k-2<0$，$h(2)=2+2k>0$ だから，中間値の定理と単調性により $h(w)=0$ の正の解は $(0,1)$ と $(1,2)$ にちょうど1つずつある．よって接線はちょうど2本．\\hfill$\\square$\n\n(2) その2解を $w_1<w_2$ とすると $s=\\frac{w_1}{\\sqrt b}$，$t=\\frac{w_2}{\\sqrt b}$，$\\frac ts=\\frac{w_2}{w_1}$ で，これは $k$，すなわち $a^2b=k^2$ だけで定まる．\n\n$\\theta$ が $\\left(\\frac\\pi2,\\pi\\right)$ を動くとき $\\cos\\theta$ は $0$ から $-1$ まで連続かつ狭義に減少するから，$\\cos3\\varphi=-k$ をみたす $\\varphi\\in\\left(\\frac\\pi6,\\frac\\pi3\\right)$ がただ1つある．3倍角の公式 $(2\\cos\\theta)^3-3(2\\cos\\theta)=2\\cos3\\theta$ と $\\cos3\\left(\\varphi\\pm\\frac{2\\pi}3\\right)=\\cos3\\varphi$ より，$2\\cos\\varphi$，$2\\cos\\left(\\varphi+\\frac{2\\pi}3\\right)$，$2\\cos\\left(\\varphi-\\frac{2\\pi}3\\right)$ はいずれも $h(w)=0$ の解である．\n$\\varphi+\\frac{2\\pi}3\\in\\left(\\frac{5\\pi}6,\\pi\\right)$ より2番目は負，$\\frac{2\\pi}3-\\varphi\\in\\left(\\frac\\pi3,\\frac\\pi2\\right)$ より3番目 $2\\cos\\left(\\frac{2\\pi}3-\\varphi\\right)\\in(0,1)$，$\\varphi\\in\\left(\\frac\\pi6,\\frac\\pi3\\right)$ より $2\\cos\\varphi\\in(1,\\sqrt3)$．これらは異なる3つの値で，3次方程式の解は高々3個だから，$w_1=2\\cos\\left(\\frac{2\\pi}3-\\varphi\\right)$，$w_2=2\\cos\\varphi$．\n\\[\n\\frac ts=\\frac{\\cos\\varphi}{\\cos\\left(\\frac{2\\pi}3-\\varphi\\right)}.\n\\]\n$k=-\\cos3\\varphi$ は $\\varphi\\in\\left(\\frac\\pi6,\\frac\\pi3\\right)$ について狭義増加だから，$k$ が大きいほど $\\varphi$ は大きい．$\\varphi$ が増えると，分子 $\\cos\\varphi$ は減少し，$\\frac{2\\pi}3-\\varphi$ は $\\left(\\frac\\pi3,\\frac\\pi2\\right)$ で減少するので分母（正）は増加する．よって $\\frac ts$ は $\\varphi$ について狭義減少，したがって $a^2b$ が大きいほど $\\frac ts$ は小さい．\\hfill$\\square$\n\n(3) P$(a,b)$ は $0<a<\\frac32$，$b=\\frac32-a$．$g(a)=a^2b=\\frac32a^2-a^3$ とおくと $g'(a)=3a(1-a)$ で，$g$ は $0<a\\leqq1$ で増加，$1\\leqq a<\\frac32$ で減少．よって $g(a)\\leqq g(1)=\\frac12<1$ で，直線上のすべての点が $a^2b<1$ をみたし，(1)，(2) が適用できる．\n(2) より $\\frac ts$ が最小 $\\iff a^2b$ が最大 $\\iff a=1$，$b=\\frac12$．このとき $k=\\frac1{\\sqrt2}$，$\\cos3\\varphi=-\\frac1{\\sqrt2}$，$3\\varphi\\in\\left(\\frac\\pi2,\\pi\\right)$ より $3\\varphi=\\frac{3\\pi}4$，$\\varphi=\\frac\\pi4$．\n$\\cos\\frac{5\\pi}{12}=\\cos\\left(\\frac\\pi4+\\frac\\pi6\\right)=\\frac{\\sqrt6-\\sqrt2}4$ だから\n\\[\n\\frac ts=\\frac{\\frac{\\sqrt2}2}{\\frac{\\sqrt6-\\sqrt2}4}=\\frac{2\\sqrt2}{\\sqrt6-\\sqrt2}=\\frac{2\\sqrt2(\\sqrt6+\\sqrt2)}4=\\sqrt3+1 .\n\\]\n最小値 $\\boldsymbol{\\sqrt3+1}$，$\\boldsymbol{\\mathrm P\\left(1,\\dfrac12\\right)}$．"
+   }
+  ],
+  "idea": {
+   "tex": "接点の $x$ 座標 $u$ は $bu^3-3u+2a=0$ の正の解．$u=\\frac w{\\sqrt b}$ と縮尺を変えると $w^3-3w+2k=0$（$k=a\\sqrt b$）となり，接点の比は $a^2b$ だけで決まる．この3次方程式は $w=2\\cos\\theta$ と $\\cos3\\theta$ の公式で解け，比 $\\frac{\\cos\\varphi}{\\cos(\\frac{2\\pi}3-\\varphi)}$ が $k$ について減少することが見える．最小化は $a^2b$ の最大化に帰着する．"
+  },
+  "methods": [],
+  "tags": [
+   "接線",
+   "3次方程式",
+   "スケール不変性",
+   "3倍角"
+  ],
+  "provenance": {
+   "created": "2026-11-10"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "III-DIF-280",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "III-16",
+  "level": 4,
+  "minutes": 35,
+  "theme": "$n^{N-n}$ の最大を与える番号の一意性と増え方",
+  "topic": "$n^{N-n}$ の最大を与える番号の一意性と増え方",
+  "statement": {
+   "tex": "$N$ を2以上の整数とし，$a_n=n^{N-n}$（$n=1,2,\\dots,N$）とする．$a_1,a_2,\\dots,a_N$ の最大値を $M$ とする．\n\\begin{enumerate}\n  \\item 関数 $f(x)=(N-x)\\log x$（$1\\leqq x\\leqq N$）は，ただ1つの $x=x_N$ で最大となり，$x_N$ は $x_N(1+\\log x_N)=N$ をみたすことを示せ．\n  \\item $N\\geqq3$ のとき，$a_n=M$ となる $n$ はただ1つであることを示せ．\n  \\item $N\\geqq3$ のとき (2) の $n$ を $n_N$ とする．$\\displaystyle\\lim_{N\\to\\infty}\\frac{n_N\\log n_N}{N}$ を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 証明　(2) 証明　(3) $1$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) $f'(x)=-\\log x+\\dfrac{N-x}x=-\\log x+\\dfrac Nx-1$，$f''(x)=-\\dfrac1x-\\dfrac N{x^2}<0$．よって $f$ は上に凸で $f'$ は狭義減少．$f'(1)=N-1>0$，$f'(N)=-\\log N<0$ なので，$f'(x_N)=0$ となる $x_N$ が $1<x_N<N$ にただ1つあり，$f$ は $[1,x_N]$ で増加，$[x_N,N]$ で減少する．よって最大はただ1つの $x=x_N$ でとり，$f'(x_N)=0$ を整理すると $x_N(1+\\log x_N)=N$．\\hfill$\\square$\n\n(2) $a_n=e^{f(n)}$ なので $a_n=M\\iff f(n)$ が $f(1),\\dots,f(N)$ の最大値．\n最大値を $m_0$ とし，最大をとる番号 $i<j$ が $j\\geqq i+2$ だとする．$k=i+1$ とすると $i<k<j$．平均値の定理より $\\frac{f(k)-f(i)}{k-i}=f'(\\xi_1)$，$\\frac{f(j)-f(k)}{j-k}=f'(\\xi_2)$（$i<\\xi_1<k<\\xi_2<j$）で，$f'$ は狭義減少だから\n\\[\n\\frac{f(k)-m_0}{k-i}>\\frac{m_0-f(k)}{j-k}.\n\\]\n$f(k)\\leqq m_0$ なら左辺 $\\leqq0\\leqq$ 右辺となり矛盾．よって $f(k)>m_0$ となり，$m_0$ が最大値であることに反する．ゆえに最大をとる番号は高々2つで，2つなら隣り合う $n,n+1$（$1\\leqq n\\leqq N-1$）で $n^{N-n}=(n+1)^{N-n-1}$．\n\\begin{itemize}\n  \\item $n=N-1$ なら $N-1=1$ で $N=2$．\n  \\item $n\\leqq N-2$ のとき，右辺は $n+1\\geqq2$ の正の累乗なので2以上．左辺も2以上だから $n\\geqq2$．$n$ の素因数 $p$ をとると，$p$ は左辺の約数なので右辺 $(n+1)^{N-n-1}$ の約数であり，$p$ は素数だから $n+1$ の約数となる．すると $p$ は $(n+1)-n=1$ の約数となり矛盾．\n\\end{itemize}\nよって $N\\geqq3$ では最大をとる番号はただ1つ．\\hfill$\\square$\n\n(3) $x_N$ 以下の最大の整数を $m_N$ とする（$1\\leqq m_N\\leqq x_N<m_N+1$）．(1) より $f$ は $[1,x_N]$ で増加，$[x_N,N]$ で減少するから，$1\\leqq k\\leqq x_N$ の整数 $k$ の中では $f$ は $k=m_N$ で最大，$x_N\\leqq k\\leqq N$ の整数 $k$ の中では $k=m_N+1$（$x_N$ が整数なら $k=x_N$）で最大．よって $n_N$ はこのどちらかで，$|n_N-x_N|<1$．\n$g(x)=x(1+\\log x)$ は $x\\geqq1$ で増加し $g(x_N)=N$ なので，任意の $L>1$ に対し $N>g(L)$ なら $x_N>L$．よって $x_N\\to\\infty$（$N\\to\\infty$）．\n\\[\n\\frac{n_N\\log n_N}N=\\frac{n_N}{x_N}\\cdot\\frac{\\log n_N}{1+\\log x_N}.\n\\]\n$1-\\frac1{x_N}<\\frac{n_N}{x_N}<1+\\frac1{x_N}$ より $\\frac{n_N}{x_N}\\to1$．また $\\log n_N=\\log x_N+\\log\\frac{n_N}{x_N}$ で $\\log\\frac{n_N}{x_N}\\to0$ だから $\\frac{\\log n_N}{1+\\log x_N}=\\frac{1+\\frac{\\log(n_N/x_N)}{\\log x_N}}{1+\\frac1{\\log x_N}}\\to1$．\nよって $\\displaystyle\\lim_{N\\to\\infty}\\frac{n_N\\log n_N}N=\\boldsymbol1$．"
+   }
+  ],
+  "idea": {
+   "tex": "$\\log a_n=f(n)$，$f(x)=(N-x)\\log x$ は上に凸なので，最大をとる番号は高々2つで隣り合う．2つになるなら $n^{N-n}=(n+1)^{N-n-1}$ で，$n$ と $n+1$ が互いに素だから両辺1しかない．最大の番号は $f'(x)=0$ の解 $x_N$ との差が1未満で，$x_N(1+\\log x_N)=N$ から増え方が読める．"
+  },
+  "methods": [],
+  "tags": [
+   "凹関数",
+   "離散最大",
+   "互いに素",
+   "極限"
+  ],
+  "provenance": {
+   "created": "2026-11-10"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "III-DIF-281",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "III-16",
+  "level": 4,
+  "minutes": 35,
+  "theme": "2つの極値点が合体するときの極値の大きさ",
+  "topic": "2つの極値点が合体するときの極値の大きさ",
+  "statement": {
+   "tex": "$a$ を実数の定数とし，\n\\[\nf(x)=\\log x-\\frac{a(x-1)}{x+1}\\qquad(x>0)\n\\]\nとする．\n\\begin{enumerate}\n  \\item $f(x)$ が極値をもつための $a$ の必要十分条件を求めよ．また，すべての $x>0$ に対して $f\\!\\left(\\dfrac1x\\right)=-f(x)$ であることを示せ．\n  \\item $a$ が (1) の条件をみたすとき，$f(x)$ が極大値をとる $x$ を $p$，極小値をとる $x$ を $q$ とし，極大値を $M(a)$ とする．$q=e^t$（$t>0$）とおくとき，$a$ と $M(a)$ を $t$ の式で表せ．\n  \\item 方程式 $f(x)=0$ の異なる実数解の個数を，$a$ の値によって分類して答えよ．\n  \\item 極限 $\\displaystyle\\lim_{a\\to2+0}\\frac{M(a)}{(a-2)^{\\frac32}}$ と $\\displaystyle\\lim_{a\\to2+0}\\frac{q-p}{\\sqrt{a-2}}$ を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $a>2$（$f(1/x)=-f(x)$ は証明）　(2) $a=1+\\dfrac{e^t+e^{-t}}2$，$M(a)=\\dfrac{e^t-e^{-t}}2-t$　(3) $a>2$ のとき3個，$a\\leqq2$ のとき1個　(4) $\\dfrac{\\sqrt2}3$，$2\\sqrt2$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "以下 $\\mathrm s(u)=\\dfrac{e^u-e^{-u}}2$，$\\mathrm c(u)=\\dfrac{e^u+e^{-u}}2$ と書く．$\\mathrm s'=\\mathrm c$，$\\mathrm c'=\\mathrm s$，$\\mathrm s(0)=0$，$\\mathrm c(0)=1$，$\\mathrm c(u)\\geqq1$，$u>0$ で $\\mathrm s(u)>0$ である．\n\n\\textbf{(1)}　$\\left(\\dfrac{x-1}{x+1}\\right)'=\\dfrac{2}{(x+1)^2}$ より\n\\[\nf'(x)=\\frac1x-\\frac{2a}{(x+1)^2}=\\frac{x^2+(2-2a)x+1}{x(x+1)^2}.\n\\]\n分子を $N(x)=x^2+(2-2a)x+1=(x-1)^2+(4-2a)x$ とする．$a\\leqq2$ なら $x>0$ で $N(x)\\geqq0$ で，等号は $a=2,\\ x=1$ のときだけなので，$f$ は $x>0$ で（狭義）単調増加し極値をもたない．$a>2$ なら $N(x)=0$ の判別式 $4(a^2-2a)>0$，2解の和 $2a-2>0$，積 $1>0$ なので異なる2つの正の解 $p<q$ をもち，$N$ の符号は $(0,p)$ で正，$(p,q)$ で負，$(q,\\infty)$ で正．よって $x=p$ で極大，$x=q$ で極小となる．求める条件は $\\boldsymbol{a>2}$．\n\nまた\n\\[\nf\\!\\left(\\frac1x\\right)=-\\log x-\\frac{a\\left(\\frac1x-1\\right)}{\\frac1x+1}=-\\log x-\\frac{a(1-x)}{1+x}=-f(x).\\qquad\\square\n\\]\n\n\\medskip\n\\textbf{(2)}　$pq=1$ より $p=e^{-t}$．$q=e^t$ は $N(q)=0$，すなわち $(q+1)^2=2aq$ をみたすので\n\\[\na=\\frac{(e^t+1)^2}{2e^t}=\\frac{e^t+2+e^{-t}}2,\\qquad\\boldsymbol{a=1+\\frac{e^t+e^{-t}}2}.\n\\]\n極小値は $f(e^t)=t-\\dfrac{(e^t+1)^2}{2e^t}\\cdot\\dfrac{e^t-1}{e^t+1}=t-\\dfrac{e^{2t}-1}{2e^t}=t-\\mathrm s(t)$．(1) の対称性より $M(a)=f(e^{-t})=-f(e^t)$ なので\n\\[\n\\boldsymbol{M(a)=\\frac{e^t-e^{-t}}2-t}.\n\\]\nなお $a=1+\\mathrm c(t)$ は $t>0$ で連続かつ狭義増加（$\\mathrm c'=\\mathrm s>0$）で，$t\\to+0$ で $2$ に，$t\\to\\infty$ で $\\infty$ に近づくので，$a>2$ と $t>0$ は1対1に対応し，$a\\to2+0\\iff t\\to+0$ である．\n\n\\medskip\n\\textbf{(3)}　\\emph{補題．}$t>0$ のとき\n\\[\nt\\leqq\\mathrm s(t)\\leqq t\\,\\mathrm c(t),\\qquad \\frac{t^2}2\\leqq\\mathrm c(t)-1\\leqq\\frac{t^2}2\\mathrm c(t),\\qquad \\frac{t^3}6\\leqq\\mathrm s(t)-t\\leqq\\frac{t^3}6\\mathrm c(t).\n\\]\n（証明）$t>0$ を固定し $0\\leqq u\\leqq t$ で考える．$1\\leqq\\mathrm c(u)\\leqq\\mathrm c(t)$（$\\mathrm c$ は $u\\geqq0$ で増加）を $0$ から $u$ まで積分して $u\\leqq\\mathrm s(u)\\leqq u\\,\\mathrm c(t)$．これをさらに積分して $\\dfrac{u^2}2\\leqq\\mathrm c(u)-1\\leqq\\dfrac{u^2}2\\mathrm c(t)$．もう一度積分して $\\dfrac{u^3}6\\leqq\\mathrm s(u)-u\\leqq\\dfrac{u^3}6\\mathrm c(t)$．$u=t$ とおけばよい．\\hfill$\\square$\n\n$a>2$ のとき，$M=\\mathrm s(t)-t\\geqq\\frac{t^3}6>0$ で，極小値は $-M<0$．$x\\to+0$ で $\\log x\\to-\\infty$，$\\dfrac{a(x-1)}{x+1}\\to-a$ より $f(x)\\to-\\infty$；$x\\to\\infty$ で $\\dfrac{a(x-1)}{x+1}\\to a$ より $f(x)\\to\\infty$．増減より\n\\begin{itemize}\n  \\item $(0,p]$ で $-\\infty$ から $M>0$ まで狭義増加：解はちょうど1個．\n  \\item $[p,q]$ で $M$ から $-M$ まで狭義減少：解はちょうど1個（$p<1<q$ で $f(1)=0$ なので $x=1$）．\n  \\item $[q,\\infty)$ で $-M$ から $\\infty$ まで狭義増加：解はちょうど1個．\n\\end{itemize}\n（いずれも中間値の定理と単調性による．）$a\\leqq2$ のとき $f$ は狭義増加で $f(1)=0$ なので解は $x=1$ のみ．よって $\\boldsymbol{a>2}$ \\textbf{のとき3個，$\\boldsymbol{a\\leqq2}$ のとき1個}．\n\n\\medskip\n\\textbf{(4)}　$a-2=\\mathrm c(t)-1$，$M=\\mathrm s(t)-t$，$q-p=e^t-e^{-t}=2\\,\\mathrm s(t)$．補題を $t^3$，$t^2$，$t$ で割ると\n\\[\n\\frac16\\leqq\\frac{M}{t^3}\\leqq\\frac{\\mathrm c(t)}6,\\qquad \\frac12\\leqq\\frac{a-2}{t^2}\\leqq\\frac{\\mathrm c(t)}2,\\qquad 1\\leqq\\frac{\\mathrm s(t)}t\\leqq\\mathrm c(t).\n\\]\n$t\\to+0$ で $\\mathrm c(t)\\to1$ なので，はさみうちの原理より $\\dfrac{M}{t^3}\\to\\dfrac16$，$\\dfrac{a-2}{t^2}\\to\\dfrac12$，$\\dfrac{\\mathrm s(t)}t\\to1$．よって\n\\[\n\\frac{M(a)}{(a-2)^{\\frac32}}=\\frac{M/t^3}{\\left(\\frac{a-2}{t^2}\\right)^{\\frac32}}\\to\\frac{1/6}{(1/2)^{\\frac32}}=\\frac{2\\sqrt2}6=\\boldsymbol{\\frac{\\sqrt2}3},\n\\qquad\n\\frac{q-p}{\\sqrt{a-2}}=\\frac{2\\,\\mathrm s(t)/t}{\\sqrt{\\frac{a-2}{t^2}}}\\to\\frac{2}{\\sqrt{1/2}}=\\boldsymbol{2\\sqrt2}.\n\\]\n（極大値と極小値の差 $2M$ は $(a-2)^{\\frac32}$ に比例して $0$ に近づき，2つの極値点の距離は $\\sqrt{a-2}$ に比例して縮む．）"
+   }
+  ],
+  "idea": {
+   "tex": "$a=2$ で2つの極値点が $x=1$ で合体する．極値点の積が $1$ なので $f(1/x)=-f(x)$ と組み合わせると極大値と極小値は符号違いで，極小点を $e^t$ とおくと $a=1+\\frac{e^t+e^{-t}}2$，極大値 $=\\frac{e^t-e^{-t}}2-t$ と1つの媒介変数で表せる．$a-2$ は $t^2$ 程度，極大値は $t^3$ 程度の小ささなので，比は $(a-2)^{\\frac32}$ で割ると有限の値に近づく．極限は，$\\frac{e^u-e^{-u}}2$ と $\\frac{e^u+e^{-u}}2$ を交互に積分して得られる不等式ではさんで求める．原題の「極値点の位置 $g(a)$ や面積 $S(a)$ の合体点での極限」を，対数と1次分数の差で極値の値そのものの大きさを問う形にした．"
+  },
+  "methods": [],
+  "tags": [
+   "極値の存在条件",
+   "対称性",
+   "媒介変数",
+   "はさみうち",
+   "極限"
+  ],
+  "provenance": {
+   "created": "2026-11-10"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "III-DIF-282",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "III-16",
+  "level": 4,
+  "minutes": 35,
+  "theme": "直線の下に接する曲線族が通過する領域",
+  "topic": "直線の下に接する曲線族が通過する領域",
+  "statement": {
+   "tex": "$t>0$ において定義された関数 $f(t)$ は次の条件 (ア)，(イ) をみたす．\n\\begin{itemize}\n  \\item[(ア)] $t>0$ のとき，すべての実数 $x$ に対して不等式 $t\\cdot\\dfrac{e^x+e^{-x}}2+f(t)\\geqq1+x$ が成り立つ．\n  \\item[(イ)] $t>0$ に対して，等式 $t\\cdot\\dfrac{e^x+e^{-x}}2+f(t)=1+x$ をみたす実数 $x$ が存在する．\n\\end{itemize}\n\\begin{enumerate}\n  \\item $f(t)$ を求めよ．\n  \\item $t$ が正の実数全体を動くとき，$xy$ 平面上の曲線 $C_t:\\ y=t\\cdot\\dfrac{e^x+e^{-x}}2+f(t)$ が通過する領域を図示せよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $f(t)=1-\\sqrt{1+t^2}+\\log\\dfrac{1+\\sqrt{1+t^2}}t$　(2) $y\\geqq1+|x|$ の表す領域から点 $(0,1)$ を除いたもの（境界は点 $(0,1)$ 以外を含む）"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "$u(x)=\\dfrac{e^x+e^{-x}}2$，$v(x)=\\dfrac{e^x-e^{-x}}2$ とおく．$u'=v$，$v'=u>0$，$u^2-v^2=1$，$u(-x)=u(x)$ で，$v$ は増加関数で $v(0)=0$．相加平均・相乗平均の関係より $u(x)\\geqq1$ で，等号は $x=0$ のときに限る．\n\n\\textbf{(1)} $t>0$ を固定し $h(x)=1+x-tu(x)$ とする．$h'(x)=1-tv(x)$ は狭義減少で，$v$ の値域はすべての実数（$x\\to\\pm\\infty$ で $v\\to\\pm\\infty$）だから $h'(x_t)=0$ となる $x_t$ がただ1つある．$h$ は $x<x_t$ で増加，$x>x_t$ で減少し，最大値 $M(t)=h(x_t)$ をとる（最大点は $x_t$ のみ）．\n\n(ア) $\\iff f(t)\\geqq h(x)$（すべての $x$）$\\iff f(t)\\geqq M(t)$．(イ) より $f(t)=h(x)$ となる $x$ があるから $f(t)\\leqq M(t)$．よって $f(t)=M(t)$ で，逆にこれは (ア)(イ) をみたす．\n\n$v(x_t)=\\dfrac1t$ より $e^{2x_t}-\\dfrac2te^{x_t}-1=0$，$e^{x_t}>0$ から $e^{x_t}=\\dfrac{1+\\sqrt{1+t^2}}t$．また $u(x_t)=\\sqrt{1+v(x_t)^2}=\\dfrac{\\sqrt{1+t^2}}t$．よって\n\\[\\boldsymbol{f(t)=1+x_t-tu(x_t)=1-\\sqrt{1+t^2}+\\log\\frac{1+\\sqrt{1+t^2}}t}.\\]\nなお $v(x_t)=\\frac1t>0=v(0)$ より $x_t>0$．\n\n\\textbf{(2)} $X$ を固定し，$\\varphi(t)=tu(X)+f(t)$（$t>0$）とおく．直線 $x=X$ 上で $C_t$ が通過する点の $y$ 座標全体は $\\varphi$ の値域である．$\\varphi$ は $t>0$ で連続．\n\n\\textbf{(a) 下からの評価．}$f(t)=M(t)\\geqq h(|X|)=1+|X|-tu(|X|)$ で $u(|X|)=u(X)$ だから，$\\varphi(t)\\geqq1+|X|$．等号は $|X|$ が $h$ の最大点，すなわち $|X|=x_t$ のときに限る．$x_t>0$ なので，$X=0$ のときはつねに $\\varphi(t)>1$．$X\\neq0$ のときは $v(|X|)=\\frac1t$，すなわち $t=t_X=\\dfrac1{v(|X|)}$ で等号が成り立つ．\n\n\\textbf{(b) $t\\to+0$．}$0<t\\leqq1$ で $\\sqrt{1+t^2}\\leqq\\sqrt2$，$\\dfrac{1+\\sqrt{1+t^2}}t\\geqq\\dfrac1t$ より $\\varphi(t)>f(t)\\geqq1-\\sqrt2+\\log\\dfrac1t\\to\\infty$．\n\n\\textbf{(c) $t\\to\\infty$．}$t-\\sqrt{1+t^2}=-\\dfrac1{t+\\sqrt{1+t^2}}$ である．\n$X\\neq0$ のとき：$\\log\\dfrac{1+\\sqrt{1+t^2}}t>\\log1=0$ だから\n\\[\\varphi(t)=t\\{u(X)-1\\}+1+\\log\\frac{1+\\sqrt{1+t^2}}t-\\frac1{t+\\sqrt{1+t^2}}>t\\{u(X)-1\\}\\to\\infty\\]\n（$u(X)>1$）．\n$X=0$ のとき：$\\varphi(t)=1+\\log\\left(\\dfrac1t+\\sqrt{\\dfrac1{t^2}+1}\\right)-\\dfrac1{t+\\sqrt{1+t^2}}\\to1+\\log1-0=1$．\n\n\\textbf{(d) 値域．}$X\\neq0$ のとき，$\\varphi(t_X)=1+|X|$．$y>1+|X|$ とすると，(c)より $\\varphi(t_1)>y$ となる $t_1>t_X$ があり，中間値の定理で $\\varphi(t)=y$ となる $t\\in(t_X,t_1)$ がある．(a)と合わせて値域は $y\\geqq1+|X|$．\n$X=0$ のとき，(a)より $\\varphi>1$．$y>1$ とすると，(c)より $\\varphi(t_2)<y$ となる $t_2$ が，(b)より $\\varphi(t_3)>y$ となる $t_3<t_2$ があり，中間値の定理で $\\varphi(t)=y$ となる $t$ がある．値域は $y>1$．\n\nよって通過する領域は\n\\[\\boldsymbol{\\{(x,y)\\mid y\\geqq1+|x|\\}\\ \\text{から点}\\ (0,1)\\ \\text{を除いたもの}}.\\]\n図示：折れ線 $y=1+|x|$（頂点 $(0,1)$，傾き $\\pm1$）とその上側の部分で，境界の折れ線は含むが頂点 $(0,1)$ だけは含まない．\n\\hfill$\\square$"
+   }
+  ],
+  "idea": {
+   "tex": "「すべての $x$ で $\\geqq$ かつ等号成立の $x$ が存在」は $f(t)$ が $x$ の関数 $1+x-tu(x)$（$u(x)=\\frac{e^x+e^{-x}}2$）の最大値に等しいことを意味する．曲線 $y=tu(x)+f(t)$ の $x=X$ での高さは，最大値の定義に $x=|X|$ を代入するだけで $1+|X|$ 以上とわかり，等号は最大点が $|X|$ のときに限る．$t\\to+0,\\ t\\to\\infty$ の振る舞いと中間値の定理で値域を決める．"
+  },
+  "methods": [],
+  "tags": [
+   "最大値",
+   "接する曲線族",
+   "通過領域",
+   "中間値の定理",
+   "指数関数"
+  ],
+  "provenance": {
+   "created": "2026-11-10"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "III-DIF-283",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "III-16",
+  "level": 4,
+  "minutes": 35,
+  "theme": "$x=0$ をまたいで減少する関数",
+  "topic": "$x=0$ をまたいで減少する関数",
+  "statement": {
+   "tex": "\\begin{enumerate}\n  \\item $-1<x<0$ のとき $\\dfrac x{\\sqrt{1+x}}<\\log(1+x)<x-\\dfrac{x^2}2$，\\\\\n  $x>0$ のとき $x-\\dfrac{x^2}2<\\log(1+x)<\\dfrac x{\\sqrt{1+x}}$ が成り立つことを示せ．\n  \\item $x>-1$ で定義された関数 $g(x)$ を\n  \\[\n  g(x)=\\frac1{\\log(1+x)}-\\frac1x\\quad(x\\neq0),\\qquad g(0)=\\frac12\n  \\]\n  で定める．$g(x)$ は $x=0$ で連続であることを示せ．\n  \\item $g(x)$ は $x>-1$ で減少することを示し，$g(x)$ のとりうる値の範囲を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 証明　(2) 証明　(3) $0<g(x)<1$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) $x>-1$ で $\\varphi(x)=\\log(1+x)-x+\\dfrac{x^2}2$，$\\psi(x)=\\log(1+x)-\\dfrac x{\\sqrt{1+x}}$ とおく．$\\varphi(0)=\\psi(0)=0$．\n\\[\n\\varphi'(x)=\\frac1{1+x}-1+x=\\frac{x^2}{1+x}\\geqq0,\n\\]\n等号は $x=0$ のみなので $\\varphi$ は増加．よって $-1<x<0$ で $\\varphi(x)<0$，$x>0$ で $\\varphi(x)>0$．また\n\\[\n\\psi'(x)=\\frac1{1+x}-\\frac{(1+x)-\\frac x2}{(1+x)^{3/2}}=\\frac{2\\sqrt{1+x}-(2+x)}{2(1+x)^{3/2}}=-\\frac{(\\sqrt{1+x}-1)^2}{2(1+x)^{3/2}}\\leqq0,\n\\]\n等号は $x=0$ のみなので $\\psi$ は減少．よって $-1<x<0$ で $\\psi(x)>0$，$x>0$ で $\\psi(x)<0$．以上で示された．\n\n(2) \\textbf{$0<x<2$ のとき．}$0<x-\\frac{x^2}2<\\log(1+x)<\\frac x{\\sqrt{1+x}}$ より，逆数をとって $\\frac1x$ を引くと\n\\[\n\\frac{\\sqrt{1+x}-1}x<g(x)<\\frac1{x-\\frac{x^2}2}-\\frac1x=\\frac1{2-x},\\quad\\text{すなわち}\\quad \\frac1{1+\\sqrt{1+x}}<g(x)<\\frac1{2-x}.\n\\]\n\\textbf{$-1<x<0$ のとき．}$\\frac x{\\sqrt{1+x}}<\\log(1+x)<x-\\frac{x^2}2<0$ で，負の数どうしの逆数は大小が逆になるので\n\\[\n\\frac1{x-\\frac{x^2}2}<\\frac1{\\log(1+x)}<\\frac{\\sqrt{1+x}}x,\\quad\\text{すなわち}\\quad\\frac1{2-x}<g(x)<\\frac1{1+\\sqrt{1+x}}.\n\\]\nいずれの側でも $g(x)$ は $\\dfrac1{2-x}$ と $\\dfrac1{1+\\sqrt{1+x}}$ の間にあり，$x\\to0$ でともに $\\dfrac12$ に近づく．よって $\\displaystyle\\lim_{x\\to0}g(x)=\\frac12=g(0)$ で，$g$ は $x=0$ で連続．\n\n(3) $x\\neq0$ で\n\\[\ng'(x)=-\\frac1{(1+x)\\{\\log(1+x)\\}^2}+\\frac1{x^2}=\\frac{(1+x)\\{\\log(1+x)\\}^2-x^2}{x^2(1+x)\\{\\log(1+x)\\}^2}.\n\\]\n分子は $\\bigl(\\sqrt{1+x}\\,|\\log(1+x)|-|x|\\bigr)\\bigl(\\sqrt{1+x}\\,|\\log(1+x)|+|x|\\bigr)$ で，第2因数は正．(1) より，$x>0$ では $0<\\log(1+x)<\\frac x{\\sqrt{1+x}}$，$-1<x<0$ では $0<-\\log(1+x)<\\frac{-x}{\\sqrt{1+x}}$ なので，どちらでも $\\sqrt{1+x}\\,|\\log(1+x)|<|x|$．よって $-1<x<0$，$x>0$ で $g'(x)<0$．\n\n$-1<x_1<x_2$ とする．$x_1,x_2$ が $0$ の同じ側にあれば $g(x_1)>g(x_2)$．$x_1<0\\leqq x_2$ のとき，$g$ は $[x_1,0]$ で連続（(2)），$(x_1,0)$ で微分可能なので平均値の定理により $g(0)-g(x_1)=g'(\\xi)(0-x_1)<0$ となる $\\xi$ があり $g(x_1)>g(0)$．同様に $x_2>0$ なら $g(0)>g(x_2)$．よって $g$ は $x>-1$ で（狭義に）減少する．\n\n$x\\to-1+0$ のとき $\\log(1+x)\\to-\\infty$ より $\\frac1{\\log(1+x)}\\to0$，$-\\frac1x\\to1$ で $g(x)\\to1$．$x\\to\\infty$ のとき $\\frac1{\\log(1+x)}\\to0$，$\\frac1x\\to0$ で $g(x)\\to0$．\n\n任意の $x>-1$ をとり，$-1<y<x<z$ となる $y,z$ を1つずつ固定する．$-1<y'<y$ をみたすすべての $y'$ で $g(y')>g(y)$ なので，$y'\\to-1+0$ として $1\\geqq g(y)$，よって $g(x)<g(y)\\leqq1$．同様に $z'>z$ をみたすすべての $z'$ で $g(z')<g(z)$ なので，$z'\\to\\infty$ として $0\\leqq g(z)$，よって $g(x)>g(z)\\geqq0$．したがって $0<g(x)<1$．\n\n逆に $0<c<1$ とする．$x\\to-1+0$ で $g(x)\\to1>c$，$x\\to\\infty$ で $g(x)\\to0<c$ だから，$g(a)>c>g(b)$ となる $-1<a<b$ がとれる．$g$ は $[a,b]$ で連続なので，中間値の定理により $g(x)=c$ となる $x$ が存在する．よって $g(x)$ のとりうる値の範囲は $\\boldsymbol{0<g(x)<1}$．\\hfill$\\square$"
+   }
+  ],
+  "idea": {
+   "tex": "$\\log(1+x)$ を $x-\\frac{x^2}2$ と $\\frac x{\\sqrt{1+x}}$ ではさむ不等式は，$x<0$ では向きが入れ替わって成り立つ．両側で $g(x)$ が $\\frac1{2-x}$ と $\\frac1{1+\\sqrt{1+x}}$ の間にあるので $x=0$ で連続．$g'(x)<0$ は $(1+x)\\{\\log(1+x)\\}^2<x^2$ と同値で，これも同じ不等式から両側で従う．"
+  },
+  "methods": [],
+  "tags": [
+   "不等式の証明",
+   "はさみうち",
+   "連続性",
+   "単調性",
+   "値域"
+  ],
+  "provenance": {
+   "created": "2026-11-10"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "III-DIF-284",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "III-16",
+  "level": 4,
+  "minutes": 35,
+  "theme": "$x^n$ と $a\\log x$ の共通接線と面積比の次の項",
+  "topic": "$x^n$ と $a\\log x$ の共通接線と面積比の次の項",
+  "statement": {
+   "tex": "$n$ を正の整数，$a$ を正の実数とする．曲線 $y=x^n$ と曲線 $y=a\\log x$ が点 P で共通の接線をもつとし，P の $x$ 座標を $t$ とする．曲線 $y=x^n$ と $x$ 軸および直線 $x=t$ で囲まれる部分の面積を $S_1$，曲線 $y=a\\log x$ と $x$ 軸および直線 $x=t$ で囲まれる部分の面積を $S_2$ とする．\n\\begin{enumerate}\n  \\item $a$，$t$ を $n$ で表し，$\\dfrac{S_2}{S_1}=n(n+1)\\left(e^{-\\frac1n}+\\dfrac1n-1\\right)$ を示せ．\n  \\item $x\\geqq0$ のとき，次の不等式を示せ．\n  \\[ \\frac{x^2}2-\\frac{x^3}6\\leqq e^{-x}+x-1\\leqq\\frac{x^2}2-\\frac{x^3}6+\\frac{x^4}{24} \\]\n  \\item 極限値 $\\displaystyle\\lim_{n\\to\\infty}n\\left(\\frac{S_2}{S_1}-\\frac12\\right)$ を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $a=ne$，$t=e^{\\frac1n}$，等式は証明　(2) 証明　(3) $\\dfrac13$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) 接点で値と傾きが一致：$t^n=a\\log t$，$nt^{n-1}=\\frac at$．第2式から $a=nt^n$，代入して $\\log t=\\frac1n$．よって $\\boldsymbol{t=e^{\\frac1n}}$，$\\boldsymbol{a=ne}$．$h=\\frac1n$ とおくと\n\\begin{align*} S_1&=\\int_0^tx^ndx=\\frac{t^{n+1}}{n+1}=\\frac{e\\cdot e^{h}}{n+1},\\\\ S_2&=\\int_1^ta\\log x\\,dx=a\\,[x\\log x-x]_1^t=ne\\left(he^h-e^h+1\\right)=e\\left\\{n-(n-1)e^h\\right\\}. \\end{align*}\n$\\frac{S_2}{S_1}=(n+1)\\left\\{ne^{-h}-(n-1)\\right\\}$ で，$nh=1$ より $ne^{-h}-(n-1)=n\\left(e^{-h}+h-1\\right)$．よって $\\frac{S_2}{S_1}=n(n+1)\\left(e^{-\\frac1n}+\\frac1n-1\\right)$．\\hfill$\\square$\n\n(2) $x\\geqq0$ で $e^{-x}\\leqq1$．$0$ から $x$ まで積分すると $1-e^{-x}\\leqq x$，すなわち $e^{-x}\\geqq1-x$．これを積分して $1-e^{-x}\\geqq x-\\frac{x^2}2$，すなわち $e^{-x}\\leqq1-x+\\frac{x^2}2$．さらに積分して $e^{-x}\\geqq1-x+\\frac{x^2}2-\\frac{x^3}6$，もう一度積分して $e^{-x}\\leqq1-x+\\frac{x^2}2-\\frac{x^3}6+\\frac{x^4}{24}$．後の2つの両辺に $x-1$ を加えれば求める不等式．\\hfill$\\square$\n\n(3) $E=e^{-h}+h-1$ とすると，(2) より $\\frac{h^2}2-\\frac{h^3}6\\leqq E\\leqq\\frac{h^2}2-\\frac{h^3}6+\\frac{h^4}{24}$．$h=\\frac1n$ で $n(n+1)$ を掛けると\n\\[ \\frac{n+1}{2n}-\\frac{n+1}{6n^2}\\leqq\\frac{S_2}{S_1}\\leqq\\frac{n+1}{2n}-\\frac{n+1}{6n^2}+\\frac{n+1}{24n^3}. \\]\n$\\frac{n+1}{2n}-\\frac12=\\frac1{2n}$ なので，$n$ 倍して\n\\[ \\frac12-\\frac{n+1}{6n}\\leqq n\\left(\\frac{S_2}{S_1}-\\frac12\\right)\\leqq\\frac12-\\frac{n+1}{6n}+\\frac{n+1}{24n^2}. \\]\n両辺は $\\frac12-\\frac16=\\frac13$ に収束する．極限値は $\\boldsymbol{\\dfrac13}$．"
+   }
+  ],
+  "idea": {
+   "tex": "面積比を $h=\\frac1n$ で書くと $\\frac{S_2}{S_1}=n(n+1)\\left(e^{-h}+h-1\\right)$ と1つの関数 $E(h)=e^{-h}+h-1$ にまとまる．$e^{-x}\\leqq1$ から積分を4回くり返して $E$ を3次と4次の多項式ではさむと，$\\frac12$ からのずれの主要項 $\\frac1{3n}$ まで確定する．"
+  },
+  "methods": [],
+  "tags": [
+   "共通接線",
+   "面積",
+   "指数関数の不等式",
+   "極限"
+  ],
+  "provenance": {
+   "created": "2026-11-10"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "III-DIF-285",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "III-16",
+  "level": 4,
+  "minutes": 30,
+  "theme": "3階導関数の漸化式で作る多項式の全係数",
+  "topic": "3階導関数の漸化式で作る多項式の全係数",
+  "statement": {
+   "tex": "多項式 $f_n(x)$（$n=1,2,3,\\dots$）を\n\\[f_1(x)=x^3,\\qquad f_{n+1}(x)=f_n(x)+x^4f_n'''(x)\\]\nで定める．ただし $f_n'''(x)$ は $f_n(x)$ の第3次導関数である．\n\\begin{enumerate}\n  \\item $f_n(x)$ は $(n+2)$ 次式であることを示し，$x^{n+2}$ の係数を求めよ．\n  \\item 0以上の整数 $k$ に対し，$f_n(x)$ の第 $k$ 次導関数の $x=0$ での値 $f_n^{(k)}(0)$ を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 係数 $\\dfrac{(n+1)!\\,n!\\,(n-1)!}2$　(2) $3\\leqq k\\leqq n+2$ のとき $f_n^{(k)}(0)=\\dfrac{k!\\,(k-1)!\\,(k-2)!\\,(k-3)!}2\\,{}_{n-1}\\mathrm C_{k-3}$，それ以外の $k$ では $0$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "$x^4(x^j)'''=j(j-1)(j-2)x^{j+1}$ である．$f_n(x)=\\displaystyle\\sum_kc_{n,k}x^k$ とおくと（$c_{n,k}$ は $k$ が範囲外なら0）\n\\[c_{n+1,k}=c_{n,k}+(k-1)(k-2)(k-3)c_{n,k-1}.\\]\n$k\\geqq3$ に対し $g(k)=\\dfrac{(k-1)!\\,(k-2)!\\,(k-3)!}2$ とおくと $g(3)=1$，$k\\geqq4$ で $\\dfrac{g(k)}{g(k-1)}=(k-1)(k-2)(k-3)$．\n\n\\textbf{主張．} $c_{n,k}=g(k)\\,{}_{n-1}\\mathrm C_{k-3}$（$3\\leqq k\\leqq n+2$），それ以外の $k$ では $c_{n,k}=0$．（${}_m\\mathrm C_j=0$（$j<0$ または $j>m$）と約束すれば「$k\\geqq3$ で $c_{n,k}=g(k)\\,{}_{n-1}\\mathrm C_{k-3}$，$k\\leqq2$ で0」とまとめられる．）\n\n$n=1$ は $f_1=x^3$ で正しい．$n$ で正しいとすると，$k\\leqq2$ では両項とも0（$k=3$ では係数 $(k-3)=0$ も効く）．$k\\geqq4$ では\n\\begin{align*}c_{n+1,k}&=g(k)\\,{}_{n-1}\\mathrm C_{k-3}+(k-1)(k-2)(k-3)g(k-1)\\,{}_{n-1}\\mathrm C_{k-4}\\\\&=g(k)\\left({}_{n-1}\\mathrm C_{k-3}+{}_{n-1}\\mathrm C_{k-4}\\right)=g(k)\\,{}_n\\mathrm C_{k-3},\\end{align*}\n$k=3$ では $c_{n+1,3}=c_{n,3}=1=g(3)\\,{}_n\\mathrm C_0$．よって $n+1$ でも正しい．\n\n(1) ${}_{n-1}\\mathrm C_{k-3}\\neq0\\iff3\\leqq k\\leqq n+2$ なので $f_n$ は $(n+2)$ 次式で，$x^{n+2}$ の係数は $g(n+2)=\\boldsymbol{\\dfrac{(n+1)!\\,n!\\,(n-1)!}2}$．\n\n(2) $f_n^{(k)}(0)=k!\\,c_{n,k}$ だから\n\\[f_n^{(k)}(0)=\\boldsymbol{\\frac{k!\\,(k-1)!\\,(k-2)!\\,(k-3)!}2\\,{}_{n-1}\\mathrm C_{k-3}}\\quad(3\\leqq k\\leqq n+2),\\qquad\\text{それ以外の }k\\text{ で }\\boldsymbol0.\\]\n\\hfill$\\square$"
+   }
+  ],
+  "idea": {
+   "tex": "$x^k$ に作用させると $x^4(x^k)'''=k(k-1)(k-2)x^{k+1}$ なので，係数の漸化式 $c_{n+1,k}=c_{n,k}+(k-1)(k-2)(k-3)c_{n,k-1}$ ができる．階乗の積で割ってそろえると，パスカルの三角形の漸化式になる．"
+  },
+  "methods": [],
+  "tags": [
+   "多項式",
+   "係数の漸化式",
+   "二項係数",
+   "高次導関数"
+  ],
+  "provenance": {
+   "created": "2026-11-10"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "III-DIF-286",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "III-16",
+  "level": 4,
+  "minutes": 30,
+  "theme": "区間を制限した「すべての $t$」条件と領域の面積",
+  "topic": "区間を制限した「すべての $t$」条件と領域の面積",
+  "statement": {
+   "tex": "\\begin{enumerate}\n  \\item $a,b$ を正の定数とし，$g(t)=\\dfrac1bt^a-\\log t$ とおく．$t>0$ における $g(t)$ の増減を調べ，最小値を求めよ．\n  \\item $m$ を正の定数とし，$xy$ 平面において次の条件をみたす点 $(x,y)$ 全体を $D$ とする．\n  \\begin{center}\n  $x>0$，$y>0$ であり，$0<t\\leqq1$ をみたすすべての $t$ に対して $\\dfrac1yt^x-\\log t\\geqq m$．\n  \\end{center}\n  $D$ を図示せよ．\n  \\item $R>\\dfrac1m$ とし，$D$ のうち $x\\leqq R$ の部分の面積を $S(R)$ とする．$S(R)$ と $\\displaystyle\\lim_{R\\to\\infty}S(R)$ を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $0<t\\leqq\\left(\\dfrac ba\\right)^{\\frac1a}$ で減少，$t\\geqq\\left(\\dfrac ba\\right)^{\\frac1a}$ で増加；最小値 $\\dfrac1a\\left(1+\\log\\dfrac ab\\right)$　(2) 正方形 $0<x\\leqq\\dfrac1m,\\ 0<y\\leqq\\dfrac1m$ と，$x>\\dfrac1m,\\ 0<y\\leqq xe^{1-mx}$ の部分を合わせた領域　(3) $S(R)=\\dfrac{3-(mR+1)e^{1-mR}}{m^2}$，極限 $\\dfrac3{m^2}$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) $g'(t)=\\dfrac abt^{a-1}-\\dfrac1t=\\dfrac{at^a-b}{bt}$．$t_0=\\left(\\dfrac ba\\right)^{\\frac1a}$ とおくと，$0<t<t_0$ で $g'<0$，$t>t_0$ で $g'>0$．よって $g$ は $\\boldsymbol{0<t\\leqq t_0}$ \\textbf{で減少，}$\\boldsymbol{t\\geqq t_0}$ \\textbf{で増加}し，最小値は\n\\[g(t_0)=\\frac1b\\cdot\\frac ba-\\frac1a\\log\\frac ba=\\boldsymbol{\\frac1a\\left(1+\\log\\frac ab\\right)}.\\]\n\n(2) $a=x$，$b=y$ として (1) を使う．$h(t)=\\dfrac1yt^x-\\log t$ の極小点は $t_0=\\left(\\dfrac yx\\right)^{\\frac1x}$ で，$t_0\\leqq1\\iff y\\leqq x$．\n\\begin{itemize}\n  \\item $y\\leqq x$ のとき：$t_0\\in(0,1]$ なので $(0,1]$ での最小値は $h(t_0)=\\dfrac1x(1+\\log x-\\log y)$．条件は $\\log y\\leqq1+\\log x-mx$，すなわち $y\\leqq xe^{1-mx}$．\n  \\item $y>x$ のとき：$t_0>1$ で $h$ は $(0,1]$ で減少するから最小値は $h(1)=\\dfrac1y$．条件は $y\\leqq\\dfrac1m$．\n\\end{itemize}\n$0<x\\leqq\\dfrac1m$ では $e^{1-mx}\\geqq1$ なので $0<y\\leqq x$ の点はすべて条件をみたし，$y>x$ の点は $y\\leqq\\frac1m$ のときに限る．$x>\\dfrac1m$ では $y>x>\\dfrac1m$ の点は条件をみたさず，$y\\leqq x$ の点は $y\\leqq xe^{1-mx}\\ (<x)$ のときに限る．よって\n\\[D=\\left\\{0<x\\leqq\\frac1m,\\ 0<y\\leqq\\frac1m\\right\\}\\cup\\left\\{x>\\frac1m,\\ 0<y\\leqq xe^{1-mx}\\right\\}.\\]\n曲線 $y=xe^{1-mx}$ は $\\left(\\frac1m,\\frac1m\\right)$ を通り，$x>\\frac1m$ では $y'=(1-mx)e^{1-mx}<0$ で減少して $x$ 軸に近づく．$D$ は「1辺 $\\frac1m$ の正方形」と「その右上の頂点から右へ減少していく曲線の下側」をつないだ領域である（境界は $x$ 軸上・$y$ 軸上の点を含まず，正方形の上辺・右辺の正方形側と曲線を含む）．\n\n(3) $\\displaystyle\\int xe^{1-mx}dx=-\\frac{(mx+1)e^{1-mx}}{m^2}+C$ より\n\\[S(R)=\\frac1{m^2}+\\int_{\\frac1m}^Rxe^{1-mx}\\,dx=\\frac1{m^2}+\\frac{2-(mR+1)e^{1-mR}}{m^2}=\\boldsymbol{\\frac{3-(mR+1)e^{1-mR}}{m^2}}.\\]\n$\\displaystyle\\lim_{u\\to\\infty}ue^{-u}=0$ より $(mR+1)e^{1-mR}\\to0$ で，$\\displaystyle\\lim_{R\\to\\infty}S(R)=\\boldsymbol{\\frac3{m^2}}$．\n\\hfill$\\square$"
+   }
+  ],
+  "idea": {
+   "tex": "「すべての $t$ で $g(t)\\geqq m$」は「$g$ の最小値 $\\geqq m$」．$t$ の範囲を $0<t\\leqq1$ に制限すると，極小点 $t_0$ が範囲に入るか（$y\\leqq x$）入らないか（$y>x$）で最小値の位置が変わり，境界が $y=xe^{1-mx}$ と $y=\\dfrac1m$ に分かれる．"
+  },
+  "methods": [],
+  "tags": [
+   "最小値",
+   "すべての"
+  ],
+  "provenance": {
+   "created": "2026-11-10"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
  }
 ]

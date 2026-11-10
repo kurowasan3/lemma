@@ -5721,5 +5721,50 @@
    },
    "verified": false
   }
+ },
+ {
+  "id": "I-EXP-123",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "I-01",
+  "level": 4,
+  "minutes": 35,
+  "theme": "$\\sqrt2$ と $\\sqrt[3]3$，$\\sqrt[3]9$ の独立性",
+  "topic": "$\\sqrt2$ と $\\sqrt[3]3$，$\\sqrt[3]9$ の独立性",
+  "statement": {
+   "tex": "$c=\\sqrt[3]3$ とおく．$\\sqrt2$ が無理数であることは用いてよい．\n\\begin{enumerate}\n  \\item $c$ が無理数であることを示せ．さらに，有理数 $u,v,w$ が $u+vc+wc^2=0$ をみたすならば $u=v=w=0$ であることを示せ．\n  \\item 有理数 $p,q,r$ について $p\\sqrt2+q\\sqrt[3]3+r\\sqrt[3]9$ が有理数ならば，$p=q=r=0$ であることを示せ．\n  \\item $\\alpha=\\sqrt2+\\sqrt[3]3$ は，有理数を係数とする1次方程式および2次方程式の解にならないことを示せ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 証明　(2) 証明　(3) 証明"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) $c$ が有理数であると仮定し，$c=\\dfrac mk$（$m,k$ は互いに素な自然数）とおく．$m^3=3k^3$ より $m^3$ は3の倍数．$m$ が3の倍数でなければ $m\\equiv\\pm1\\pmod3$ で $m^3\\equiv\\pm1\\pmod 3$ となるから，$m$ は3の倍数である．$m=3m'$ とおくと $27m'^3=3k^3$，$k^3=9m'^3$ となり，同様に $k$ も3の倍数．これは $m,k$ が互いに素であることに矛盾．よって $c$ は無理数．\n\n次に $u+vc+wc^2=0$ …① とする．$c^3=3$ に注意して①に $c$ を掛けると $uc+vc^2+3w=0$ …②．①$\\times v-$②$\\times w$ より\n\\[\n(uv-3w^2)+(v^2-uw)c=0 .\n\\]\n$v^2-uw\\neq0$ なら $c=-\\dfrac{uv-3w^2}{v^2-uw}$ が有理数となり矛盾するから $v^2=uw$，したがって $uv=3w^2$．\n\\begin{itemize}\n  \\item $w=0$ のとき：$v^2=0$ より $v=0$，①より $u=0$．\n  \\item $w\\neq0$ のとき：$u=\\dfrac{v^2}w$ を $uv=3w^2$ に代入して $v^3=3w^3$．$w\\neq0$ より $\\Bigl(\\dfrac vw\\Bigr)^3=3$ で，実数の3乗根はただ1つだから $\\dfrac vw=c$ となり，$c$ が有理数になって矛盾．\n\\end{itemize}\nよって $u=v=w=0$．\n\n(2) $s=p\\sqrt2+qc+rc^2$ が有理数であるとする．$qc+rc^2-s=-p\\sqrt2$ の両辺を2乗する．$c^3=3$，$c^4=3c$ を用いると\n\\[\n(qc+rc^2-s)^2=q^2c^2+3r^2c+s^2+6qr-2qsc-2rsc^2\n\\]\nだから\n\\[\n(s^2+6qr-2p^2)+(3r^2-2qs)c+(q^2-2rs)c^2=0 .\n\\]\n係数はすべて有理数なので，(1) より\n\\[\ns^2+6qr=2p^2,\\qquad 3r^2=2qs,\\qquad q^2=2rs .\n\\]\n\\begin{itemize}\n  \\item $s=0$ のとき：$q^2=0$，$3r^2=0$ より $q=r=0$，すると $2p^2=0$ より $p=0$．\n  \\item $s\\neq0$ のとき：$r=\\dfrac{q^2}{2s}$ を $3r^2=2qs$ に代入して $3q^4=8qs^3$．$q=0$ なら $r=0$ で $s^2=2p^2$．$p=0$ なら $s=0$ となって不適，$p\\neq0$ なら $\\Bigl(\\dfrac{|s|}{|p|}\\Bigr)^2=2$ で $\\sqrt2$ が有理数となり矛盾．$q\\neq0$ なら $\\Bigl(\\dfrac{2s}q\\Bigr)^3=3$ より $\\dfrac{2s}q=c$ が有理数となり矛盾．\n\\end{itemize}\nいずれにせよ $p=q=r=0$（かつ $s=0$）である．\n\n(3) 1次方程式 $a_1\\alpha+a_0=0$（$a_1\\neq0$）の解なら $\\alpha=\\sqrt2+c$ が有理数となるが，これは (2) で $p=q=1$，$r=0$ とした場合に反する．\n\n2次方程式の解であるとし，$x^2$ の係数で割って $\\alpha^2+B\\alpha+C=0$（$B,C$ は有理数）とする．$\\alpha^2=2+2\\sqrt2\\,c+c^2$ だから，$K=2+C$ とおくと\n\\[\n\\sqrt2\\,(B+2c)=-(K+Bc+c^2).\n\\]\n両辺を2乗して，左辺 $=2B^2+8Bc+8c^2$，右辺 $=K^2+B^2c^2+c^4+2KBc+2Kc^2+2Bc^3=K^2+6B+(3+2KB)c+(B^2+2K)c^2$．よって\n\\[\n(2B^2-K^2-6B)+(8B-3-2KB)c+(8-B^2-2K)c^2=0 .\n\\]\n(1) よりすべての係数が0．第3式から $2K=8-B^2$，これを第2式に代入すると $8B=3+B(8-B^2)$，すなわち $B^3=3$．$B$ は有理数だから，(1) と同様に $B=c$ となって矛盾．\n\n以上より，$\\alpha$ は有理数係数の1次・2次方程式の解にならない．\\hfill$\\square$"
+   }
+  ],
+  "idea": {
+   "tex": "2乗根と3乗根が混ざった1次結合は，一方の根号だけを片側に残して累乗し，他方の根号のべきの「基底」$1,\\sqrt[3]3,\\sqrt[3]9$ の係数比較に持ち込む．基底の独立性は $c=\\sqrt[3]3$ を掛けた式との連立で $c$ の1次式に落とし，$c$ の無理性で決着させる．"
+  },
+  "methods": [],
+  "tags": [
+   "無理数",
+   "背理法",
+   "3乗根",
+   "係数比較"
+  ],
+  "provenance": {
+   "created": "2026-11-10"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
  }
 ]

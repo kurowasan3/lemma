@@ -10481,5 +10481,645 @@
    },
    "verified": false
   }
+ },
+ {
+  "id": "III-LIM-236",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "III-15",
+  "level": 5,
+  "minutes": 40,
+  "theme": "$\\log(1+x)$ の反復の減衰速度と対数の補正",
+  "topic": "$\\log(1+x)$ の反復の減衰速度と対数の補正",
+  "statement": {
+   "tex": "数列 $\\{a_n\\}$ を\n\\[\na_1=1,\\qquad a_{n+1}=\\log(1+a_n)\\quad(n=1,2,3,\\dots)\n\\]\nで定める．ただし対数は自然対数とする．\n\\begin{enumerate}\n  \\item $0<x\\leqq1$ のとき，次の不等式が成り立つことを証明せよ．\n  \\[\n  \\frac12-\\frac x{12}<\\frac1{\\log(1+x)}-\\frac1x<\\frac12-\\frac x{12}+\\frac{x^2}{24}\n  \\]\n  \\item 極限 $\\displaystyle\\lim_{n\\to\\infty}na_n$ を求めよ．\n  \\item 極限 $\\displaystyle\\lim_{n\\to\\infty}\\frac{n^2a_n-2n}{\\log n}$ を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 証明　(2) $2$　(3) $\\dfrac23$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) $0<x\\leqq1$ では $\\log(1+x)>0$ である．\n\n\\textbf{左側の不等式．} $D(x)=12+6x-x^2$ とおく．$0\\leqq x\\leqq1$ では $x^2\\leqq x$ より $D(x)\\geqq12+5x>0$．\n\\[\n\\frac1{\\log(1+x)}-\\frac1x>\\frac12-\\frac x{12}\\iff\\frac1{\\log(1+x)}>\\frac{D(x)}{12x}\\iff\\log(1+x)<\\frac{12x}{D(x)}\n\\]\n（両辺正）．$h(x)=\\dfrac{12x}{D(x)}-\\log(1+x)$ とおくと $h(0)=0$ であり，$D(x)-xD'(x)=12+x^2$ より\n\\[\nh'(x)=\\frac{12(12+x^2)}{D(x)^2}-\\frac1{1+x}=\\frac{12(12+x^2)(1+x)-D(x)^2}{(1+x)D(x)^2}.\n\\]\n$12(12+x^2)(1+x)=144+144x+12x^2+12x^3$，$D(x)^2=144+144x+12x^2-12x^3+x^4$ より分子は $24x^3-x^4=x^3(24-x)$．$0<x\\leqq1$ で $h'(x)>0$ だから $h$ は $0\\leqq x\\leqq1$ で増加し，$h(x)>h(0)=0$．\n\n\\textbf{右側の不等式．} $\\dfrac1x+\\dfrac12-\\dfrac x{12}+\\dfrac{x^2}{24}=\\dfrac{P(x)}{24x}$，$P(x)=x^3-2x^2+12x+24=x\\{(x-1)^2+11\\}+24>0$ とおくと\n\\[\n\\frac1{\\log(1+x)}<\\frac{P(x)}{24x}\\iff\\log(1+x)>\\frac{24x}{P(x)} .\n\\]\n$k(x)=\\log(1+x)-\\dfrac{24x}{P(x)}$ とおくと $k(0)=0$，$P(x)-xP'(x)=24+2x^2-2x^3$ より\n\\[\nk'(x)=\\frac1{1+x}-\\frac{24(24+2x^2-2x^3)}{P(x)^2}=\\frac{P(x)^2-24(1+x)(24+2x^2-2x^3)}{(1+x)P(x)^2}.\n\\]\n$P(x)^2=x^6-4x^5+28x^4+48x^2+576x+576$，$24(1+x)(24+2x^2-2x^3)=-48x^4+48x^2+576x+576$ より分子は\n$x^6-4x^5+76x^4=x^4\\{(x-2)^2+72\\}>0$（$x>0$）．よって $k(x)>k(0)=0$．\\hfill$\\square$\n\n(2) まず $0<a_n\\leqq1$ をすべての $n$ で示す．$n=1$ で正しい．$0<a_n\\leqq1$ ならば $a_{n+1}=\\log(1+a_n)>0$ であり，(1) の左側より $\\frac1{\\log(1+a_n)}-\\frac1{a_n}>\\frac12-\\frac{a_n}{12}>0$ なので $a_{n+1}<a_n\\leqq1$．\n\n$b_n=\\dfrac1{a_n}$，$d_k=b_{k+1}-b_k=\\dfrac1{\\log(1+a_k)}-\\dfrac1{a_k}$ とおく．(1) と $0<a_k\\leqq1$ より\n\\[\n\\frac5{12}\\leqq\\frac12-\\frac{a_k}{12}<d_k<\\frac12-\\frac{a_k}{12}+\\frac{a_k^2}{24}\\leqq\\frac12 \\tag{A}\n\\]\n（最後は $\\frac{a_k^2}{24}\\leqq\\frac{a_k}{12}\\iff a_k\\leqq2$）．$b_n=1+\\sum_{k=1}^{n-1}d_k$ より，すべての $n\\geqq1$ で\n\\[\n\\frac{5n+7}{12}\\leqq b_n\\leqq\\frac{n+1}2,\\qquad\\text{特に}\\quad a_k\\leqq\\frac{12}{5k+7}<\\frac{12}{5k}. \\tag{B}\n\\]\n次に，$k\\geqq2$ で $\\frac1k<\\int_{k-1}^k\\frac{dx}x$，$k\\geqq1$ で $\\frac1k>\\int_k^{k+1}\\frac{dx}x$ より，$m\\geqq1$ に対し\n\\[\n\\log(m+1)<\\sum_{k=1}^m\\frac1k\\leqq1+\\log m. \\tag{C}\n\\]\n(A) の左側と (B)(C) より，$n\\geqq2$ のとき\n\\[\nb_n>1+\\frac{n-1}2-\\frac1{12}\\sum_{k=1}^{n-1}a_k>\\frac{n+1}2-\\frac15\\sum_{k=1}^{n-1}\\frac1k\\geqq\\frac{n+1}2-\\frac{1+\\log n}5 .\n\\]\nこれは $n=1$ でも成り立つ．また $x>0$ で $\\sqrt x-\\log x$ は $x=4$ で最小値 $2-2\\log2>0$ をとるので $\\log x<\\sqrt x$．したがって $\\frac{1+\\log n}5<\\frac{1+n}5<\\frac{n+1}2$ で右辺は正であり，\n\\[\n\\frac{2n}{n+1}\\leqq na_n=\\frac n{b_n}<\\frac{n}{\\frac{n+1}2-\\frac{1+\\log n}5}.\n\\]\n$0<\\frac{\\log n}n<\\frac1{\\sqrt n}\\to0$ より両端はともに $2$ に収束する．はさみうちの原理により $\\displaystyle\\lim_{n\\to\\infty}na_n=\\boldsymbol{2}$．\n\n(3) $c_n=b_n-\\dfrac n2+\\dfrac{\\log n}6$ とおき，$n\\geqq2$ で $|c_n|$ が $n$ によらない定数で抑えられることを示す．\n\n$d_k=\\frac12-\\frac{a_k}{12}+r_k$ とおくと，(A) より $0<r_k<\\frac{a_k^2}{24}$．$b_n=1+\\sum_{k=1}^{n-1}d_k$ より\n\\[\nc_n=\\frac12-\\frac1{12}\\Bigl(\\sum_{k=1}^{n-1}a_k-2\\log n\\Bigr)+\\sum_{k=1}^{n-1}r_k .\n\\]\n\\textbf{$r_k$ の和．} (B) より $a_k^2<\\frac{144}{25k^2}$．$k\\geqq2$ で $\\frac1{k^2}<\\frac1{k-1}-\\frac1k$ より $\\sum_{k=1}^{m}\\frac1{k^2}<2$．よって $0<\\sum_{k=1}^{n-1}r_k<\\frac1{24}\\cdot\\frac{144}{25}\\cdot2=\\frac{12}{25}$．\n\n\\textbf{$\\sum a_k-2\\log n$．}\n\\[\n\\sum_{k=1}^{n-1}a_k-2\\log n=\\sum_{k=1}^{n-1}\\Bigl(a_k-\\frac2k\\Bigr)+2\\Bigl(\\sum_{k=1}^{n-1}\\frac1k-\\log n\\Bigr).\n\\]\n(C) より $\\log n<\\sum_{k=1}^{n-1}\\frac1k\\leqq1+\\log(n-1)<1+\\log n$ なので，第2項は $0$ と $2$ の間にある．\n第1項について，$a_k-\\frac2k=\\dfrac{k-2b_k}{kb_k}$ である．(B) より $k-2b_k\\geqq-1$，(2) で示した $b_k>\\frac{k+1}2-\\frac{1+\\log k}5$ より $k-2b_k<-1+\\frac{2(1+\\log k)}5<1+\\log k$．よって $|k-2b_k|\\leqq1+\\log k$．さらに $b_k\\geqq\\frac{5k+7}{12}>\\frac{5k}{12}$ と $\\log k<\\sqrt k$ を用いると\n\\[\n\\Bigl|a_k-\\frac2k\\Bigr|\\leqq\\frac{12(1+\\log k)}{5k^2}<\\frac{12}5\\Bigl(\\frac1{k^2}+\\frac1{k\\sqrt k}\\Bigr).\n\\]\n$k\\geqq2$ で $\\frac1{k\\sqrt k}<\\int_{k-1}^kx^{-\\frac32}dx$ より $\\sum_{k=1}^m\\frac1{k\\sqrt k}<1+\\int_1^mx^{-\\frac32}dx<1+2=3$．したがって\n$\\Bigl|\\sum_{k=1}^{n-1}\\bigl(a_k-\\frac2k\\bigr)\\Bigr|<\\frac{12}5(2+3)=12$．\n\n以上より $\\Bigl|\\sum_{k=1}^{n-1}a_k-2\\log n\\Bigr|<14$ であり，$n\\geqq2$ で\n\\[\n|c_n|<\\frac12+\\frac{14}{12}+\\frac{12}{25}<3 .\n\\]\n\\textbf{極限．} $n-2b_n=\\frac{\\log n}3-2c_n$ より\n\\[\n\\frac{n^2a_n-2n}{\\log n}=\\frac{n(n-2b_n)}{b_n\\log n}=na_n\\Bigl(\\frac13-\\frac{2c_n}{\\log n}\\Bigr).\n\\]\n$\\left|\\frac{2c_n}{\\log n}\\right|<\\frac6{\\log n}\\to0$ と (2) より，求める極限は $2\\cdot\\frac13=\\boldsymbol{\\dfrac23}$．"
+   }
+  ],
+  "idea": {
+   "tex": "逆数 $b_n=\\frac1{a_n}$ をとると，差 $b_{n+1}-b_n=\\frac1{\\log(1+a_n)}-\\frac1{a_n}$ は $\\frac12-\\frac{a_n}{12}$ に近い．まず粗い評価で $a_n$ が $\\frac2n$ 程度であることを出し，それを差の補正項に戻すと $\\sum a_k$ と $2\\log n$ の差が有界であることがわかり，$b_n-\\frac n2+\\frac{\\log n}6$ が有界になる．有界性は調和級数と $\\sum k^{-3/2}$ の積分による評価で示す．"
+  },
+  "methods": [],
+  "tags": [
+   "漸化式",
+   "逆数",
+   "はさみうち",
+   "調和級数",
+   "不等式の証明",
+   "積分による評価"
+  ],
+  "provenance": {
+   "created": "2026-11-10"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "III-LIM-237",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "III-15",
+  "level": 5,
+  "minutes": 40,
+  "theme": "下降階乗の極値点の漸近挙動と $\\dfrac1e$",
+  "topic": "下降階乗の極値点の漸近挙動と $\\dfrac1e$",
+  "statement": {
+   "tex": "$n$ は3以上の整数とする．$n$ 個の式 $x-k$（$k=0,1,2,\\dots,n-1$）の積を $f_n(x)$ とする．すなわち\n\\[f_n(x)=x(x-1)(x-2)\\cdots(x-n+1)\\]\nである．ただし，対数は自然対数である．\n\\begin{enumerate}\n  \\item 方程式 $f_n'(x)=0$ は，各区間 $k<x<k+1$（$k=0,1,\\dots,n-2$）にちょうど1つずつ実数解をもち，それ以外に実数解をもたないことを示せ．さらに，区間 $0<x<1$，$n-2<x<n-1$ にある解をそれぞれ $c_n$，$d_n$ とするとき，$c_n+d_n=n-1$ であることを示せ．\n  \\item $0<c_n<\\dfrac12$ であり，さらに\n  \\[\\log n<\\frac1{c_n}<\\log n+3\\]\n  が成り立つことを示せ．また，$\\displaystyle\\lim_{n\\to\\infty}c_n\\log n$ を求めよ．\n  \\item $\\displaystyle\\lim_{n\\to\\infty}\\frac{|f_n(c_n)|}{c_n\\cdot(n-1)!}$ を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 証明　(2) 証明，$\\displaystyle\\lim_{n\\to\\infty}c_n\\log n=1$　(3) $\\dfrac1e$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) $f_n(k)=f_n(k+1)=0$ なので，平均値の定理により $f_n'(\\xi)=\\dfrac{f_n(k+1)-f_n(k)}{1}=0$ となる $\\xi$ が各区間 $k<\\xi<k+1$（$k=0,1,\\dots,n-2$）に存在する．これらの区間は互いに共通部分をもたないので，$f_n'(x)=0$ は異なる $n-1$ 個以上の実数解をもつ．一方 $f_n'(x)$ は $x^{n-1}$ の係数が $n$ の $n-1$ 次式なので，実数解は高々 $n-1$ 個．よって各区間にちょうど1つずつあり，それ以外にはない．\n\n次に\n\\[f_n(n-1-x)=(n-1-x)(n-2-x)\\cdots(1-x)(-x)=(-1)^nx(x-1)\\cdots(x-n+1)=(-1)^nf_n(x)\\]\n（$n$ 個の因数の符号をすべて変えた）．両辺を $x$ で微分して $-f_n'(n-1-x)=(-1)^nf_n'(x)$．$x=c_n$ とおくと $f_n'(n-1-c_n)=0$ であり，$0<c_n<1$ より $n-2<n-1-c_n<n-1$．この区間の解はただ1つなので $d_n=n-1-c_n$，すなわち $c_n+d_n=n-1$．\\hfill$\\square$\n\n(2) 以下 $c=c_n$ とおく．$0<x<1$ では $f_n(x)\\neq0$ で，積の微分法を繰り返し用いると $f_n'(x)$ は，$k=0,1,\\dots,n-1$ のそれぞれについて $f_n(x)$ の $(x-k)$ 以外の因数の積をとり，それらをすべて足したものなので\n\\[g(x)=\\frac{f_n'(x)}{f_n(x)}=\\sum_{k=0}^{n-1}\\frac1{x-k}=\\frac1x-\\sum_{j=1}^{n-1}\\frac1{j-x}.\\]\n$g'(x)=-\\displaystyle\\sum_{k=0}^{n-1}\\frac1{(x-k)^2}<0$ より $g$ は $0<x<1$ で減少し，$g(c)=0$．$n\\geqq3$ より\n\\[g\\Bigl(\\frac12\\Bigr)=2-2-\\sum_{j=2}^{n-1}\\frac1{j-\\frac12}<0=g(c)\\]\nなので $c<\\dfrac12$．よって $0<c<\\dfrac12$．また $g(c)=0$ より\n\\[\\frac1c=\\sum_{j=1}^{n-1}\\frac1{j-c}.\\qquad\\cdots\\text{①}\\]\n$H=\\displaystyle\\sum_{j=1}^{n-1}\\frac1j$ とおく．$j\\leqq x\\leqq j+1$ で $\\dfrac1x\\leqq\\dfrac1j$（等号は $x=j$ のみ）より $\\displaystyle\\int_j^{j+1}\\frac{dx}x<\\frac1j$．$j=1,\\dots,n-1$ で加えて $\\log n<H$．同様に $j\\geqq2$ で $\\dfrac1j<\\displaystyle\\int_{j-1}^j\\frac{dx}x$ より $H<1+\\log(n-1)<1+\\log n$．\n\n①の各項について，$0<c<\\dfrac12$，$j\\geqq1$ より $j-c>\\dfrac j2$ なので\n\\[0<\\frac1{j-c}-\\frac1j=\\frac{c}{j(j-c)}<\\frac{2c}{j^2}.\\]\nさらに $\\displaystyle\\sum_{j=1}^{n-1}\\frac1{j^2}\\leqq1+\\sum_{j=2}^{n-1}\\frac1{j(j-1)}=2-\\frac1{n-1}<2$ だから，①より\n\\[H<\\frac1c<H+4c.\\qquad\\cdots\\text{②}\\]\nよって $\\log n<H<\\dfrac1c<H+4c<1+\\log n+2=\\log n+3$（$4c<2$ を用いた）．すなわち\n\\[\\log n<\\frac1{c_n}<\\log n+3.\\]\nしたがって $\\dfrac{\\log n}{\\log n+3}<c_n\\log n<1$ で，$\\dfrac{\\log n}{\\log n+3}=\\dfrac1{1+\\frac3{\\log n}}\\to1$ より\n\\[\\lim_{n\\to\\infty}c_n\\log n=\\boldsymbol{1}.\\]\n\n(3) $0<c<1$ より $|f_n(c)|=c\\displaystyle(1-c)(2-c)\\cdots(n-1-c)=c\\cdot(n-1)!\\Bigl(1-\\frac c1\\Bigr)\\Bigl(1-\\frac c2\\Bigr)\\cdots\\Bigl(1-\\frac c{n-1}\\Bigr)$ なので，\n\\[P_n=\\frac{|f_n(c_n)|}{c_n\\cdot(n-1)!}=\\Bigl(1-\\frac c1\\Bigr)\\Bigl(1-\\frac c2\\Bigr)\\cdots\\Bigl(1-\\frac c{n-1}\\Bigr).\\]\n\\textbf{補題．}$0\\leqq t\\leqq\\dfrac12$ のとき $-t-t^2\\leqq\\log(1-t)\\leqq-t$．\\\\\n（証明）$\\varphi(t)=-t-\\log(1-t)$ は $\\varphi'(t)=\\dfrac t{1-t}\\geqq0$，$\\varphi(0)=0$ より $\\varphi(t)\\geqq0$．$\\psi(t)=\\log(1-t)+t+t^2$ は $\\psi'(t)=-\\dfrac1{1-t}+1+2t=\\dfrac{t(1-2t)}{1-t}\\geqq0$，$\\psi(0)=0$ より $\\psi(t)\\geqq0$．\\hfill$\\square$\n\n$0<\\dfrac cj<\\dfrac12$ なので補題を $t=\\dfrac cj$ に用いて加えると\n\\[-cH-c^2\\sum_{j=1}^{n-1}\\frac1{j^2}\\leqq\\log P_n\\leqq-cH.\\]\n②の各辺に $c>0$ を掛けると $1-4c^2<cH<1$．これと $\\displaystyle\\sum\\frac1{j^2}<2$ から\n\\[-1-2c^2<\\log P_n<-1+4c^2.\\]\n(2) より $0<c_n<\\dfrac1{\\log n}\\to0$ なので両端は $-1$ に収束し，はさみうちの原理より $\\log P_n\\to-1$．指数関数の連続性より\n\\[\\lim_{n\\to\\infty}\\frac{|f_n(c_n)|}{c_n\\cdot(n-1)!}=\\boldsymbol{\\frac1e}.\\]\n\\hfill$\\square$"
+   }
+  ],
+  "idea": {
+   "tex": "$f_n(x)=x(x-1)\\cdots(x-n+1)$ は $f_n(n-1-x)=(-1)^nf_n(x)$ という対称性をもち，隣り合う零点の間に極値点がちょうど1つずつある．端の区間 $(0,1)$ の極値点 $c$ は対数微分 $\\dfrac{f'}{f}=\\displaystyle\\sum\\frac1{x-k}$ から $\\dfrac1c=\\displaystyle\\sum_{j=1}^{n-1}\\frac1{j-c}$ をみたし，右辺は調和数列の和 $\\displaystyle\\sum\\frac1j$ とほぼ等しい．和を積分ではさんで $\\dfrac1c\\approx\\log n$ を出し，$|f_n(c)|$ は $\\displaystyle\\Bigl(1-\\frac c1\\Bigr)\\Bigl(1-\\frac c2\\Bigr)\\cdots\\Bigl(1-\\frac c{n-1}\\Bigr)$ の対数を $-t-t^2\\leqq\\log(1-t)\\leqq-t$ で評価すると $c\\displaystyle\\sum\\frac1j\\to1$ から $e^{-1}$ が現れる．"
+  },
+  "methods": [],
+  "tags": [
+   "平均値の定理",
+   "対数微分",
+   "和と積分の比較",
+   "はさみうちの原理",
+   "対数の評価"
+  ],
+  "provenance": {
+   "created": "2026-11-10"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "III-LIM-238",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "III-15",
+  "level": 4,
+  "minutes": 35,
+  "theme": "1枚ずつ増える硬貨投げの終了時の枚数の期待値",
+  "topic": "1枚ずつ増える硬貨投げの終了時の枚数の期待値",
+  "statement": {
+   "tex": "以下のような硬貨投げを行う．ただし硬貨の表と裏の出る確率はそれぞれ $\\frac12$ とする．\n\n1枚の硬貨を投げて裏が出たら硬貨投げを終了し，表が出たら1枚の硬貨を加え2枚の硬貨を同時に投げる．2枚のうち1枚でも裏が出たら終了し，全部が表ならば1枚の硬貨を加え3枚の硬貨を同時に投げる．以下同様にして，全部が表ならば1枚の硬貨を加えて硬貨投げを続ける．\n\n硬貨投げが終了したときの硬貨の枚数を $N$ とし，$p_n$ を $N=n$ となる確率，$c_n$ を $N\\geqq n$ となる確率とする（$n\\geqq1$）．無限級数 $\\displaystyle\\sum_{n=1}^\\infty c_n$，$\\displaystyle\\sum_{n=1}^\\infty nc_n$ が収束することは用いてよい．\n\\begin{enumerate}\n  \\item $c_n$ と $p_n$ を $n$ を用いて表せ．\n  \\item $\\displaystyle\\sum_{n=1}^m np_n=\\sum_{n=1}^m c_n-mc_{m+1}$ を示し，$N$ の期待値 $\\displaystyle E=\\sum_{n=1}^\\infty np_n$ について $\\displaystyle E=\\sum_{n=1}^\\infty c_n$ を証明せよ．\n  \\item $1.641<E<1.642$ であることを証明せよ．\n  \\item 終了までに投げた硬貨の延べ枚数 $T=1+2+\\dots+N$ の期待値 $\\displaystyle E'=\\sum_{n=1}^\\infty\\frac{n(n+1)}2p_n$ について，$\\displaystyle E'=\\sum_{n=1}^\\infty nc_n$ を示し，$2.442<E'<2.443$ であることを証明せよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $c_n=2^{-\\frac{n(n-1)}2}$，$p_n=2^{-\\frac{n(n-1)}2}\\left(1-2^{-n}\\right)$　(2) 証明　(3) 証明　(4) 証明"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) $N\\geqq n$ となるのは，硬貨が $1,2,\\dots,n-1$ 枚の各段階ですべて表が出るときである．$j$ 枚の段階ですべて表の確率は $2^{-j}$ で，各段階の結果は独立だから\n\\[\nc_n=2^{-1}\\cdot2^{-2}\\cdots2^{-(n-1)}=\\boldsymbol{2^{-\\frac{n(n-1)}2}}\\quad(c_1=1).\n\\]\n$N=n$ は「$N\\geqq n$ かつ $N\\geqq n+1$ でない」ことなので\n\\[\np_n=c_n-c_{n+1}=\\boldsymbol{2^{-\\frac{n(n-1)}2}\\left(1-2^{-n}\\right)}.\n\\]\n\n\\textbf{級数の収束．}次の補題を示す．\n\n\\textbf{補題．}正の数からなる数列 $\\{b_n\\}$ が $n\\geqq2$ で $b_{n+1}\\leqq\\dfrac38b_n$ をみたすならば，$\\displaystyle\\sum_{n=1}^\\infty b_n$ は収束する．\n\n（証明）$h_n=2^{n+1}b_n$ とおくと，$n\\geqq2$ で $h_{n+1}\\leqq\\dfrac34h_n$ なので，$\\{h_n\\}$ は $n\\geqq2$ で減少し，$0<h_n\\leqq h_2\\left(\\dfrac34\\right)^{n-2}$ より $h_n\\to0$．\n\n区間 $I_n=\\left[1-2^{1-n},\\ 1-2^{-n}\\right]$（$n=1,2,\\dots$，長さ $2^{-n}$）を考えると，$I_n$ と $I_{n+1}$ は端点 $1-2^{-n}$ を共有して並び，$0\\leqq t<1$ の各 $t$ はいずれかの $I_n$ に属する．関数 $\\varphi(t)$（$0\\leqq t\\leqq1$）を，各 $I_n$ 上では両端で0，中点で $h_n$ をとる折れ線（底辺 $2^{-n}$，高さ $h_n$ の二等辺三角形の2辺）とし，$\\varphi(1)=0$ と定める．共有端点では両側の値がともに0なので，$\\varphi$ は $0\\leqq t<1$ で連続である．また $n\\geqq2$ のとき，$1-2^{1-n}\\leqq t<1$ ならば $t$ はある $I_j$（$j\\geqq n$）に属するので $0\\leqq\\varphi(t)\\leqq h_j\\leqq h_n$ であり，$h_n\\to0$ とはさみうちの原理より $\\displaystyle\\lim_{t\\to1-0}\\varphi(t)=0=\\varphi(1)$．よって $\\varphi$ は $0\\leqq t\\leqq1$ で連続である．\n\n$F(t)=\\displaystyle\\int_0^t\\varphi(x)\\,dx$（$0\\leqq t\\leqq1$）とおくと，$\\varphi$ が連続なので $F$ は微分可能で $F'(t)=\\varphi(t)$，特に $F$ は連続である．$I_j$ 上の積分は三角形の面積 $\\dfrac12\\cdot2^{-j}\\cdot h_j=b_j$ に等しいので\n\\[\n\\sum_{n=1}^m b_n=\\int_0^{1-2^{-m}}\\varphi(x)\\,dx=F\\left(1-2^{-m}\\right).\n\\]\n$m\\to\\infty$ のとき $1-2^{-m}\\to1$ なので，$F$ の連続性より $\\displaystyle\\sum_{n=1}^m b_n\\to F(1)$．すなわち $\\displaystyle\\sum_{n=1}^\\infty b_n$ は収束する．\\hfill$\\square$\n\n$c_n>0$ で，$n\\geqq2$ のとき\n\\[\n\\frac{c_{n+1}}{c_n}=2^{-n}\\leqq\\frac14<\\frac38,\\qquad\\frac{(n+1)c_{n+1}}{nc_n}=\\frac{n+1}n\\cdot2^{-n}\\leqq\\frac32\\cdot\\frac14=\\frac38\n\\]\nだから，補題より $\\displaystyle\\sum_{n=1}^\\infty c_n$，$\\displaystyle\\sum_{n=1}^\\infty nc_n$ はともに収束する．\n\n(2)\n\\[\n\\sum_{n=1}^m n(c_n-c_{n+1})=\\sum_{n=1}^m nc_n-\\sum_{n=2}^{m+1}(n-1)c_n=c_1+\\sum_{n=2}^m c_n-mc_{m+1}=\\sum_{n=1}^m c_n-mc_{m+1}.\n\\]\n$m\\geqq2$ のとき二項定理より $2^m\\geqq1+m+\\frac{m(m-1)}2>\\frac{m(m-1)}2$，また $\\frac{m(m+1)}2\\geqq m$ なので\n\\[\n0<mc_{m+1}=\\frac m{2^{\\frac{m(m+1)}2}}\\leqq\\frac m{2^m}<\\frac2{m-1}\\to0.\n\\]\n$\\sum c_n$ は収束するので，$m\\to\\infty$ として $E=\\displaystyle\\sum_{n=1}^\\infty c_n$．\\hfill$\\square$\n\n(3) $S_m=\\sum_{n=1}^m c_n$ とおくと $S_m$ は増加し $E=\\lim S_m$．\n\\[\nS_5=1+\\frac12+\\frac18+\\frac1{64}+\\frac1{1024}=\\frac{1681}{1024}=1.6416015625.\n\\]\n\\textbf{下からの評価．} $m\\geqq6$ で $S_m\\geqq S_6=S_5+c_6$ なので $E\\geqq S_5+c_6>S_5>1.641$．\n\n\\textbf{上からの評価．} $n\\geqq6$ では $\\dfrac{c_{n+1}}{c_n}=2^{-n}\\leqq\\dfrac1{64}$ なので $c_n\\leqq c_6\\left(\\frac1{64}\\right)^{n-6}$．よって $m\\geqq6$ で\n\\[\nS_m-S_5\\leqq c_6\\sum_{j=0}^{m-6}\\left(\\frac1{64}\\right)^j<2^{-15}\\cdot\\frac{64}{63}=\\frac1{63\\cdot512}<0.0001,\n\\]\n$S_m<1.6416015625+0.0001=1.6417015625$．極限をとって $E\\leqq1.6417015625<1.642$．以上で $1.641<E<1.642$．\\hfill$\\square$\n\n(4) $T_n=\\frac{n(n+1)}2$ とおくと $T_n-T_{n-1}=n$（$T_0=0$）．\n\\[\n\\sum_{n=1}^m T_n(c_n-c_{n+1})=\\sum_{n=1}^m T_nc_n-\\sum_{n=2}^{m+1}T_{n-1}c_n=\\sum_{n=1}^m(T_n-T_{n-1})c_n-T_mc_{m+1}=\\sum_{n=1}^m nc_n-T_mc_{m+1}.\n\\]\n$m\\geqq2$ のとき $X=T_m\\geqq3$ とおくと $T_mc_{m+1}=\\dfrac X{2^X}<\\dfrac2{X-1}\\to0$（(2) と同じ評価）．$\\sum nc_n$ は収束するので $E'=\\displaystyle\\sum_{n=1}^\\infty nc_n$．\n\n$U_m=\\sum_{n=1}^m nc_n$ とおく．\n\\[\nU_5=1+1+\\frac38+\\frac4{64}+\\frac5{1024}=\\frac{2501}{1024}=2.4423828125>2.442.\n\\]\n$U_m$ は増加するので $E'\\geqq U_6>U_5>2.442$．$n\\geqq6$ では\n\\[\n\\frac{(n+1)c_{n+1}}{nc_n}=\\frac{n+1}n\\cdot2^{-n}\\leqq\\frac76\\cdot\\frac1{64}<\\frac1{32}\n\\]\nなので $nc_n\\leqq6c_6\\left(\\frac1{32}\\right)^{n-6}$．よって $m\\geqq6$ で\n\\[\nU_m-U_5<6\\cdot2^{-15}\\cdot\\frac{32}{31}=\\frac6{31\\cdot1024}<0.0002,\n\\]\n$U_m<2.4425828125$，極限をとって $E'\\leqq2.4425828125<2.443$．以上で $2.442<E'<2.443$．\\hfill$\\square$"
+   }
+  ],
+  "idea": {
+   "tex": "「$n$ 枚以上の段階まで進む」確率 $c_n=2^{-\\frac{n(n-1)}2}$ を先に求めると $p_n=c_n-c_{n+1}$．期待値 $\\sum np_n$ は部分和をずらして整理すると $\\sum_{n\\leqq m}c_n-mc_{m+1}$ となり（アーベルの総和の形），$\\sum c_n$ に等しい．延べ枚数 $\\frac{N(N+1)}2$ でも同様に $\\sum nc_n$．値の評価は，初めの数項をそのまま足し，残りは隣の項との比 $\\leqq\\frac1{32}$ などで等比級数に抑える．"
+  },
+  "methods": [],
+  "tags": [
+   "確率の積",
+   "望遠鏡和",
+   "期待値",
+   "無限級数",
+   "評価"
+  ],
+  "provenance": {
+   "created": "2026-11-10"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "III-LIM-239",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "III-15",
+  "level": 4,
+  "minutes": 35,
+  "theme": "$\\log3$ の級数の余りを表す積分とその速さ",
+  "topic": "$\\log3$ の級数の余りを表す積分とその速さ",
+  "statement": {
+   "tex": "$n$ を正の整数とし，$|x|<2$ で定義された関数\n\\[\nf_n(x)=\\frac1{(2-x)^n}+(-1)^{n-1}\\frac1{(2+x)^n}\n\\]\nと，$I_n=\\displaystyle\\int_0^1(1-x)^{n-1}f_n(x)\\,dx$ を考える．また，正の整数 $k$ に対して $S_k=\\displaystyle\\sum_{j=1}^{k}\\frac1{4^{j-1}(2j-1)}$ とおく．\n\\begin{enumerate}\n  \\item $I_n=\\displaystyle\\int_0^{\\frac12}u^{n-1}\\left(\\frac1{1-u}+\\frac{(-1)^{n-1}}{1+u}\\right)du$ であることを示せ．\n  \\item 正の整数 $k$ に対して $\\log3-S_k=I_{2k+1}$ であることを示せ．\n  \\item 極限値 $\\displaystyle\\lim_{k\\to\\infty}k\\cdot4^k\\left(\\log3-S_k\\right)$ を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 証明　(2) 証明　(3) $\\dfrac23$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) $I_n=A_n+(-1)^{n-1}B_n$，$A_n=\\displaystyle\\int_0^1\\frac{(1-x)^{n-1}}{(2-x)^n}dx$，$B_n=\\displaystyle\\int_0^1\\frac{(1-x)^{n-1}}{(2+x)^n}dx$ とする．\n\n$A_n$ で $u=\\dfrac{1-x}{2-x}=1-\\dfrac1{2-x}$ とおくと，$\\dfrac{du}{dx}=-\\dfrac1{(2-x)^2}$，$2-x=\\dfrac1{1-u}$ であり，$x:0\\to1$ のとき $u:\\frac12\\to0$．\n\\[\n\\frac{(1-x)^{n-1}}{(2-x)^n}dx=\\frac{u^{n-1}}{2-x}\\cdot\\bigl(-(2-x)^2\\bigr)du=-\\frac{u^{n-1}}{1-u}du\n\\]\nより $A_n=\\displaystyle\\int_0^{\\frac12}\\frac{u^{n-1}}{1-u}du$．\n\n$B_n$ で $v=\\dfrac{1-x}{2+x}=\\dfrac3{2+x}-1$ とおくと，$\\dfrac{dv}{dx}=-\\dfrac3{(2+x)^2}$，$2+x=\\dfrac3{1+v}$ であり，$x:0\\to1$ のとき $v:\\frac12\\to0$．\n\\[\n\\frac{(1-x)^{n-1}}{(2+x)^n}dx=\\frac{v^{n-1}}{2+x}\\cdot\\left(-\\frac{(2+x)^2}{3}\\right)dv=-\\frac{v^{n-1}}{1+v}dv\n\\]\nより $B_n=\\displaystyle\\int_0^{\\frac12}\\frac{v^{n-1}}{1+v}dv$．2つを合わせて示すべき式を得る．\n\n(2) $n=2k+1$ では $(-1)^{n-1}=1$ で，$\\dfrac1{1-u}+\\dfrac1{1+u}=\\dfrac2{1-u^2}$ だから\n\\[\nI_{2k+1}=\\int_0^{\\frac12}\\frac{2u^{2k}}{1-u^2}du.\n\\]\n等比数列の和の公式から，$0\\leqq u\\leqq\\frac12$ で\n\\[\n\\frac2{1-u^2}=\\sum_{j=1}^{k}2u^{2j-2}+\\frac{2u^{2k}}{1-u^2}.\n\\]\n両辺を $0$ から $\\frac12$ まで積分する．左辺は\n\\[\n\\int_0^{\\frac12}\\left(\\frac1{1-u}+\\frac1{1+u}\\right)du=\\Bigl[\\log\\frac{1+u}{1-u}\\Bigr]_0^{\\frac12}=\\log3,\n\\]\n右辺の和の各項は $\\displaystyle\\int_0^{\\frac12}2u^{2j-2}du=\\frac{2}{2j-1}\\left(\\frac12\\right)^{2j-1}=\\frac1{4^{j-1}(2j-1)}$．よって $\\log3=S_k+I_{2k+1}$．\n\n(3) $0\\leqq u\\leqq\\frac12$ で\n\\[\n\\frac43-\\frac1{1-u^2}=\\frac{1-4u^2}{3(1-u^2)},\\qquad 0\\leqq\\frac{1-4u^2}{3(1-u^2)}\\leqq\\frac{1-4u^2}{3\\cdot\\frac34}=\\frac{4(1-4u^2)}{9}\n\\]\n（$1-u^2\\geqq\\frac34$ による）．これに $2u^{2k}\\geqq0$ をかけて積分すると\n\\[\n\\frac83J-\\frac89K\\leqq I_{2k+1}\\leqq\\frac83J,\\qquad J=\\int_0^{\\frac12}u^{2k}du,\\quad K=\\int_0^{\\frac12}u^{2k}(1-4u^2)du.\n\\]\nここで\n\\[\nJ=\\frac{1}{2\\cdot4^k(2k+1)},\\qquad K=\\frac{1}{2\\cdot4^k}\\left(\\frac1{2k+1}-\\frac1{2k+3}\\right)=\\frac{1}{4^k(2k+1)(2k+3)}.\n\\]\nよって (2) より\n\\[\n\\frac{4k}{3(2k+1)}-\\frac{8k}{9(2k+1)(2k+3)}\\leqq k\\cdot4^k(\\log3-S_k)\\leqq\\frac{4k}{3(2k+1)}.\n\\]\n$k\\to\\infty$ で $\\dfrac{4k}{3(2k+1)}=\\dfrac{4}{3\\left(2+\\frac1k\\right)}\\to\\dfrac23$，$\\dfrac{8k}{9(2k+1)(2k+3)}\\to0$ なので，はさみうちの原理より\n\\[\n\\boldsymbol{\\lim_{k\\to\\infty}k\\cdot4^k(\\log3-S_k)=\\frac23}.\n\\]\n\\hfill$\\square$"
+   }
+  ],
+  "idea": {
+   "tex": "$f_n(x)=\\dfrac1{(2-x)^n}+\\dfrac{(-1)^{n-1}}{(2+x)^n}$ に重み $(1-x)^{n-1}$ をかけた積分 $I_n$ は，$\\log3$ の級数の部分和の余りを表す．原題では $f_n'=nf_{n+1}$ を使った部分積分で漸化式を作るが，捻りでは $u=\\dfrac{1-x}{2-x}$，$v=\\dfrac{1-x}{2+x}$ と置換すると $I_n=\\displaystyle\\int_0^{1/2}u^{n-1}\\Bigl(\\frac1{1-u}+\\frac{(-1)^{n-1}}{1+u}\\Bigr)du$ になり，余りが等比数列の和の余りとして見える．$\\dfrac1{1-u^2}$ を区間の端の値 $\\dfrac43$ で近似し，その誤差を評価して，余りがどれだけ速く $0$ に近づくかを求める．"
+  },
+  "methods": [],
+  "tags": [
+   "置換積分",
+   "積分による余りの表示",
+   "はさみうち",
+   "級数"
+  ],
+  "provenance": {
+   "created": "2026-11-10"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "III-LIM-240",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "III-15",
+  "level": 4,
+  "minutes": 30,
+  "theme": "回転する複素数列の実部・虚部の絶対値和の平均",
+  "topic": "回転する複素数列の実部・虚部の絶対値和の平均",
+  "statement": {
+   "tex": "$i$ を虚数単位，$N$ を正の整数とし，$h=\\dfrac{\\pi}{2N}$，$\\gamma=\\cos h+i\\sin h$ とおく．正の整数 $k$ に対して，複素数\n\\[w_k=(k+i\\sin k)\\,\\gamma^k\\]\nの実部を $a_k$，虚部を $b_k$ とする（$\\sin k$ は $k$ ラジアンの正弦）．また，実数 $x$ に対して $c(x)=|\\cos x|+|\\sin x|$ とおく．\n\\begin{enumerate}\n  \\item すべての実数 $x$ について $c\\!\\left(x+\\dfrac\\pi2\\right)=c(x)$，$1\\leqq c(x)\\leqq\\sqrt2$ が成り立つことを示せ．さらに\n  \\[\\sum_{k=0}^{N-1}c(kh)=\\frac{\\cos\\frac h2}{\\sin\\frac h2}\\]\n  を示せ．\n  \\item 極限 $L_N=\\displaystyle\\lim_{n\\to\\infty}\\frac1{n^2}\\sum_{k=1}^{n}\\bigl(|a_k|+|b_k|\\bigr)$ が存在することを示し，$L_N$ を $N$ の式で表せ．特に $L_3$ の値を求めよ．\n  \\item $\\displaystyle\\lim_{N\\to\\infty}L_N$ を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 証明　(2) $L_N=\\dfrac{\\cos\\frac{\\pi}{4N}}{2N\\sin\\frac{\\pi}{4N}}$，$L_3=\\dfrac{2+\\sqrt3}{6}$　(3) $\\dfrac2\\pi$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) $c\\!\\left(x+\\frac\\pi2\\right)=\\left|-\\sin x\\right|+|\\cos x|=c(x)$．また $c(x)^2=1+2|\\sin x\\cos x|=1+|\\sin2x|$ は1以上2以下なので $1\\leqq c(x)\\leqq\\sqrt2$．\n\n$0\\leqq k\\leqq N-1$ では $0\\leqq kh<\\frac\\pi2$ なので $c(kh)=\\cos kh+\\sin kh=\\sqrt2\\sin\\left(kh+\\frac\\pi4\\right)$．積和公式\n\\[2\\sin\\frac h2\\sin\\left(kh+\\frac\\pi4\\right)=\\cos\\left(kh+\\frac\\pi4-\\frac h2\\right)-\\cos\\left(kh+\\frac\\pi4+\\frac h2\\right)\\]\nを $k=0,1,\\dots,N-1$ で加えると，右辺は隣り合う項が打ち消し合い，$Nh=\\frac\\pi2$ を用いて\n\\begin{align*}\n2\\sin\\frac h2\\sum_{k=0}^{N-1}\\sin\\left(kh+\\frac\\pi4\\right)&=\\cos\\left(\\frac\\pi4-\\frac h2\\right)-\\cos\\left(\\frac{3\\pi}4-\\frac h2\\right)\\\\\n&=\\cos\\left(\\frac\\pi4-\\frac h2\\right)+\\cos\\left(\\frac\\pi4+\\frac h2\\right)=\\sqrt2\\cos\\frac h2.\n\\end{align*}\n$0<\\frac h2\\leqq\\frac\\pi4$ より $\\sin\\frac h2>0$ なので，$\\displaystyle\\sum_{k=0}^{N-1}c(kh)=\\sqrt2\\cdot\\frac{\\sqrt2\\cos\\frac h2}{2\\sin\\frac h2}=\\frac{\\cos\\frac h2}{\\sin\\frac h2}$．\\hfill$\\square$\n\n(2) $S_N=\\dfrac{\\cos\\frac h2}{\\sin\\frac h2}$，$C=\\dfrac{S_N}N$，$c_k=c(kh)$ とおく．\n\n\\textbf{摂動の除去．}ド・モアブルの定理より $\\gamma^k=\\cos kh+i\\sin kh$．$u_k=k\\gamma^k$，$v_k=i\\sin k\\cdot\\gamma^k$ とおくと $w_k=u_k+v_k$，$|v_k|=|\\sin k|\\leqq1$ であり，$u_k$ の実部・虚部は $k\\cos kh,\\ k\\sin kh$ である．実数 $\\alpha,\\beta$ に対し $\\bigl||\\alpha+\\beta|-|\\alpha|\\bigr|\\leqq|\\beta|$ であるから\n\\[\\bigl||a_k|-k|\\cos kh|\\bigr|\\leqq|v_k\\text{ の実部}|\\leqq|v_k|\\leqq1,\\qquad\\bigl||b_k|-k|\\sin kh|\\bigr|\\leqq1.\\]\nよって $F_n=\\displaystyle\\sum_{k=1}^n\\bigl(|a_k|+|b_k|\\bigr)-\\sum_{k=1}^nkc_k$ は $|F_n|\\leqq2n$ をみたす．\n\n\\textbf{周期数列の平均．}(1) より $c_{k+N}=c(kh+\\frac\\pi2)=c_k$．$d_k=c_k-C$，$D_k=\\sum_{l=1}^kd_l$（$D_0=0$）とおく．$c_N=c_0$ より $\\sum_{l=1}^Nc_l=\\sum_{l=0}^{N-1}c_l=S_N=NC$，すなわち $D_N=0$ で，周期性から $D_{k+N}=D_k$．また $c_l$ も $C$（$c_0,\\dots,c_{N-1}$ の平均）も $1$ 以上 $\\sqrt2$ 以下なので $|d_l|\\leqq\\sqrt2-1<1$．$D_k$ は $D_0,D_1,\\dots,D_{N-1}$ のいずれかに等しく，それぞれ $N-1$ 個以下の $d_l$ の和なので $|D_k|<N$．$d_k=D_k-D_{k-1}$ より\n\\[\\sum_{k=1}^nkd_k=\\sum_{k=1}^nkD_k-\\sum_{k=1}^{n}kD_{k-1}=\\sum_{k=1}^nkD_k-\\sum_{k=0}^{n-1}(k+1)D_k=nD_n-\\sum_{k=1}^{n-1}D_k,\\]\nよって $E_n=\\displaystyle\\sum_{k=1}^nkd_k$ は $|E_n|<nN+(n-1)N<2nN$．したがって\n\\[\\sum_{k=1}^n\\bigl(|a_k|+|b_k|\\bigr)=C\\cdot\\frac{n(n+1)}2+E_n+F_n,\\qquad\\left|\\frac{E_n+F_n}{n^2}\\right|<\\frac{2N+2}{n}.\\]\n$n\\to\\infty$ で $\\frac{2N+2}n\\to0$，$\\frac{n(n+1)}{2n^2}\\to\\frac12$ なので，はさみうちの原理より極限は存在して\n\\[L_N=\\frac C2=\\frac{S_N}{2N}=\\boldsymbol{\\frac{\\cos\\frac{\\pi}{4N}}{2N\\sin\\frac{\\pi}{4N}}}.\\]\n$N=3$ のとき $\\frac h2=\\frac\\pi{12}$ で，$\\cos\\frac\\pi{12}=\\frac{\\sqrt6+\\sqrt2}4$，$\\sin\\frac\\pi{12}=\\frac{\\sqrt6-\\sqrt2}4$ より $\\dfrac{\\cos\\frac\\pi{12}}{\\sin\\frac\\pi{12}}=\\dfrac{(\\sqrt6+\\sqrt2)^2}{4}=2+\\sqrt3$．よって $L_3=\\boldsymbol{\\dfrac{2+\\sqrt3}6}$．\n\n(3) $t=\\dfrac\\pi{4N}$ とおくと $2N=\\dfrac{\\pi}{2t}$ で，\n\\[L_N=\\frac{\\cos t}{\\frac{\\pi}{2t}\\sin t}=\\frac2\\pi\\cdot\\cos t\\cdot\\frac{t}{\\sin t}.\\]\n$N\\to\\infty$ のとき $t\\to+0$ で，$\\cos t\\to1$，$\\dfrac{\\sin t}t\\to1$ より $\\displaystyle\\lim_{N\\to\\infty}L_N=\\boldsymbol{\\frac2\\pi}$．"
+   }
+  ],
+  "idea": {
+   "tex": "複素数 $w=a+bi$ の $|a|+|b|$ は $|w|\\bigl(|\\cos\\varphi|+|\\sin\\varphi|\\bigr)$（$\\varphi$ は偏角）で，摂動 $v$ を加えたときの変化は三角不等式で $2|v|$ 以下に抑えられる．原題は主要項が純虚数で絶対値の計算が単純だったが，捻りでは主要項 $k\\gamma^k$ が回転するため，係数 $|\\cos kh|+|\\sin kh|$ が周期 $N$ で振動する．周期数列 $c_k$ の平均 $C$ からのずれの部分和が有界であることをアーベルの変形（$\\sum k(D_k-D_{k-1})$）で使えば，$\\frac1{n^2}\\sum kc_k\\to\\frac C2$ が得られる．$C$ は 積和公式で隣り合う項を打ち消し合わせて閉じた形になる．"
+  },
+  "methods": [],
+  "tags": [
+   "ド・モアブルの定理",
+   "三角不等式",
+   "アーベルの変形",
+   "周期数列の平均",
+   "はさみうち"
+  ],
+  "provenance": {
+   "created": "2026-11-10"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "III-LIM-241",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "III-15",
+  "level": 4,
+  "minutes": 35,
+  "theme": "速度が鉛直になる時刻の間隔の2次のずれ",
+  "topic": "速度が鉛直になる時刻の間隔の2次のずれ",
+  "statement": {
+   "tex": "座標平面上を運動する点 P の時刻 $t\\ (t>0)$ における座標 $(x,y)$ が\n\\[\nx=t^3\\cos t,\\qquad y=t^3\\sin t\n\\]\nで表されている．時刻 $t$ における P の速度ベクトルを $\\vec v$ とする．\n\\begin{enumerate}\n  \\item $\\vec v$ が $y$ 軸に平行になる（$\\vec v\\neq\\vec 0$ かつ $\\vec v$ の $x$ 成分が $0$ となる）ような $t>0$ は，各正の整数 $n$ について区間 $(n-1)\\pi<t<(n-1)\\pi+\\dfrac\\pi2$ にちょうど1つずつあり，それ以外にはないことを示せ．以下，その値を $t_n$ とする．\n  \\item すべての正の整数 $n$ に対して $t_{n+1}-t_n<\\pi$ であることを示せ．\n  \\item 極限値 $\\displaystyle\\lim_{n\\to\\infty}n^2\\bigl\\{\\pi-(t_{n+1}-t_n)\\bigr\\}$ を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 証明　(2) 証明　(3) $\\dfrac3\\pi$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "$x'=3t^2\\cos t-t^3\\sin t=t^2(3\\cos t-t\\sin t)$，$y'=3t^2\\sin t+t^3\\cos t=t^2(3\\sin t+t\\cos t)$．\n\n(1) まず $t>0$ で $\\vec v\\neq\\vec0$ である．実際，$x'=y'=0$ とすると $3\\cos t=t\\sin t$，$3\\sin t=-t\\cos t$ で，第1式の両辺に $3$ を掛けて第2式を用いると $9\\cos t=3t\\sin t=-t^2\\cos t$，すなわち $(9+t^2)\\cos t=0$ となり $\\cos t=0$．すると第1式から $t\\sin t=0$ となるが，$\\cos t=0$ のとき $\\sin t=\\pm1$ なので $t=0$ となり矛盾する．\n\nよって「$\\vec v$ が $y$ 軸に平行」$\\iff x'=0\\iff3\\cos t=t\\sin t$．ここで $\\cos t=0$ なら $t\\sin t=0$ となり上と同様に矛盾するので，$\\cos t\\neq0$ であり，条件は\n\\[\n\\tan t=\\frac3t\\qquad\\cdots\\text{①}\n\\]\nと同値である．\n\n正の整数 $n$ を固定する．区間 $(n-1)\\pi+\\frac\\pi2<t\\leqq n\\pi$ では $\\tan t\\leqq0<\\frac3t$（$t=n\\pi$ では $\\tan t=0$）なので ① の解はない．区間 $I_n:(n-1)\\pi<t<(n-1)\\pi+\\frac\\pi2$ では $h(t)=\\tan t-\\frac3t$ は連続で，$\\tan t$ は増加，$\\frac3t$ は減少なので $h$ は狭義に増加する．$t\\to(n-1)\\pi+\\frac\\pi2-0$ で $h(t)\\to+\\infty$．また $n\\geqq2$ のとき $h((n-1)\\pi)=-\\frac3{(n-1)\\pi}<0$ で $h$ は $t=(n-1)\\pi$ でも連続，$n=1$ のとき $t\\to+0$ で $h(t)\\to-\\infty$．中間値の定理と単調性より，① は $I_n$ にちょうど1つの解をもつ．$t>0$ は $I_n$ と上の区間（$n=1,2,\\dots$）で覆われるので，それ以外に解はない．\\hfill$\\square$\n\n(2) $t_n=(n-1)\\pi+\\beta_n$ とおくと $0<\\beta_n<\\frac\\pi2$ で，$\\tan$ の周期性から $\\tan\\beta_n=\\tan t_n=\\dfrac3{t_n}$．$t_{n+1}>t_n$ より $\\tan\\beta_{n+1}=\\dfrac3{t_{n+1}}<\\dfrac3{t_n}=\\tan\\beta_n$ で，$\\tan$ は $\\left(0,\\frac\\pi2\\right)$ で増加だから $\\beta_{n+1}<\\beta_n$．よって\n\\[\nt_{n+1}-t_n=\\pi+\\beta_{n+1}-\\beta_n<\\pi.\n\\]\n\\hfill$\\square$\n\n(3) $\\delta_n=\\pi-(t_{n+1}-t_n)=\\beta_n-\\beta_{n+1}>0$，$\\tau_n=\\tan\\beta_n=\\dfrac3{t_n}$ とおく．\n\n\\textbf{補題.} $0\\leqq\\beta<\\frac\\pi2$ のとき $\\tan\\beta-\\frac13\\tan^3\\beta\\leqq\\beta\\leqq\\tan\\beta$．\n\n証明：$h_1(\\beta)=\\tan\\beta-\\beta$ は $h_1'=\\frac1{\\cos^2\\beta}-1=\\tan^2\\beta\\geqq0$，$h_1(0)=0$ より $h_1\\geqq0$．$h_2(\\beta)=\\beta-\\tan\\beta+\\frac13\\tan^3\\beta$ は\n$h_2'=1-\\frac1{\\cos^2\\beta}+\\tan^2\\beta\\cdot\\frac1{\\cos^2\\beta}=-\\tan^2\\beta+\\tan^2\\beta(1+\\tan^2\\beta)=\\tan^4\\beta\\geqq0$，$h_2(0)=0$ より $h_2\\geqq0$．\\hfill$\\square$\n\n補題より\n\\[\n(\\tau_n-\\tau_{n+1})-\\frac{\\tau_n^3}3\\leqq\\beta_n-\\beta_{n+1}\\leqq(\\tau_n-\\tau_{n+1})+\\frac{\\tau_{n+1}^3}3.\\qquad\\cdots\\text{②}\n\\]\nここで $(n-1)\\pi<t_n<\\left(n-\\frac12\\right)\\pi$ より $\\dfrac{t_n}n\\to\\pi$，$\\dfrac{t_{n+1}}n\\to\\pi$．また $0<\\delta_n<\\beta_n\\leqq\\tau_n=\\dfrac3{t_n}<\\dfrac3{(n-1)\\pi}$（$n\\geqq2$）より $\\delta_n\\to0$，よって $t_{n+1}-t_n=\\pi-\\delta_n\\to\\pi$．したがって\n\\[\nn^2(\\tau_n-\\tau_{n+1})=\\frac{3n^2(t_{n+1}-t_n)}{t_nt_{n+1}}=\\frac{3(t_{n+1}-t_n)}{\\dfrac{t_n}n\\cdot\\dfrac{t_{n+1}}n}\\longrightarrow\\frac{3\\pi}{\\pi^2}=\\frac3\\pi.\n\\]\n一方 $n\\geqq2$ で $0<n^2\\tau_n^3=\\dfrac{27n^2}{t_n^3}<\\dfrac{27n^2}{(n-1)^3\\pi^3}\\to0$，同様に $n^2\\tau_{n+1}^3\\to0$．② に $n^2$ を掛けてはさみうちの原理を用いると\n\\[\n\\lim_{n\\to\\infty}n^2\\bigl\\{\\pi-(t_{n+1}-t_n)\\bigr\\}=\\boldsymbol{\\frac3\\pi}.\n\\]"
+   }
+  ],
+  "idea": {
+   "tex": "$r=t^k$ 型のらせんで速度が $y$ 軸に平行になる時刻は $\\tan t=\\dfrac kt$ の正の解．各区間 $\\bigl((n-1)\\pi,(n-1)\\pi+\\frac\\pi2\\bigr)$ にちょうど1つあり，$t_n=(n-1)\\pi+\\beta_n$（$\\tan\\beta_n=\\frac k{t_n}$）と書くと間隔の不足分は $\\pi-(t_{n+1}-t_n)=\\beta_n-\\beta_{n+1}$ に化ける．$\\tan\\beta-\\frac13\\tan^3\\beta\\leqq\\beta\\leqq\\tan\\beta$ ではさめば，$\\beta_n-\\beta_{n+1}$ の主要部は $\\frac k{t_n}-\\frac k{t_{n+1}}$ となり，$n^2$ 倍の極限が求まる．"
+  },
+  "methods": [],
+  "tags": [
+   "媒介変数表示",
+   "速度ベクトル",
+   "方程式の解の位置",
+   "はさみうち",
+   "正接の評価"
+  ],
+  "provenance": {
+   "created": "2026-11-10"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "III-LIM-242",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "III-15",
+  "level": 5,
+  "minutes": 45,
+  "theme": "ジグザグな三角形の帯の面積和を最小にする位置",
+  "topic": "ジグザグな三角形の帯の面積和を最小にする位置",
+  "statement": {
+   "tex": "$n$ を自然数，$t$ を実数とし，$h=\\dfrac2n$ とおく．座標空間に $2(n+1)$ 個の点\n\\[\n\\mathrm P_k\\left(t+kh,\\ 2\\sqrt6,\\ 0\\right),\\qquad \\mathrm Q_k\\left(t+kh,\\ 0,\\ t+kh\\right)\\qquad(k=0,1,\\dots,n)\n\\]\nをとり，\n\\[\nS_n(t)=\\sum_{k=0}^{n-1}\\left(\\triangle\\mathrm P_k\\mathrm Q_k\\mathrm P_{k+1}+\\triangle\\mathrm Q_k\\mathrm P_{k+1}\\mathrm Q_{k+1}\\right)\n\\]\nとおく（$\\triangle$ は三角形の面積を表す）．また $x_k=t+kh$ とおく．\n\\begin{enumerate}\n  \\item $\\triangle\\mathrm P_k\\mathrm Q_k\\mathrm P_{k+1}$ と $\\triangle\\mathrm Q_k\\mathrm P_{k+1}\\mathrm Q_{k+1}$ を $x_k$，$x_{k+1}$，$h$ で表せ．また，$S_1(t)$ を最小にする $t$ の値を求めよ．\n  \\item $S_n(t)$ を最小にする $t$ の値はただ1つであることを示せ．さらに，その値を $c_n$ とするとき，$-1<c_n<-1+\\dfrac1n$ が成り立つことを示せ．\n  \\item 極限 $\\displaystyle\\lim_{n\\to\\infty}n\\,(c_n+1)$ を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $\\triangle\\mathrm P_k\\mathrm Q_k\\mathrm P_{k+1}=\\dfrac h2\\sqrt{x_k^2+24}$，$\\triangle\\mathrm Q_k\\mathrm P_{k+1}\\mathrm Q_{k+1}=\\dfrac h2\\sqrt{x_{k+1}^2+48}$，$S_1$ を最小にするのは $t=2-2\\sqrt2$　(2) 証明　(3) $\\dfrac16$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "以下，$\\varphi(x)=\\dfrac{x}{\\sqrt{x^2+24}}$，$\\psi(x)=\\dfrac{x}{\\sqrt{x^2+48}}$ とおく．\n\n\\medskip\n(1) 空間の三角形の面積は，2辺のベクトル $\\vec u,\\vec v$ を用いて $\\dfrac12\\sqrt{|\\vec u|^2|\\vec v|^2-(\\vec u\\cdot\\vec v)^2}$ である．\n\n$\\triangle\\mathrm P_k\\mathrm Q_k\\mathrm P_{k+1}$ では $\\vec u=\\overrightarrow{\\mathrm P_k\\mathrm Q_k}=(0,-2\\sqrt6,x_k)$，$\\vec v=\\overrightarrow{\\mathrm P_k\\mathrm P_{k+1}}=(h,0,0)$ で，$|\\vec u|^2=x_k^2+24$，$|\\vec v|^2=h^2$，$\\vec u\\cdot\\vec v=0$．よって\n\\[\n\\triangle\\mathrm P_k\\mathrm Q_k\\mathrm P_{k+1}=\\boldsymbol{\\frac h2\\sqrt{x_k^2+24}}.\n\\]\n$\\triangle\\mathrm Q_k\\mathrm P_{k+1}\\mathrm Q_{k+1}$ では $\\vec u=\\overrightarrow{\\mathrm Q_k\\mathrm P_{k+1}}=(h,2\\sqrt6,-x_k)$，$\\vec v=\\overrightarrow{\\mathrm Q_k\\mathrm Q_{k+1}}=(h,0,h)$ で，\n$|\\vec u|^2=h^2+24+x_k^2$，$|\\vec v|^2=2h^2$，$\\vec u\\cdot\\vec v=h^2-hx_k$．\n\\[\n|\\vec u|^2|\\vec v|^2-(\\vec u\\cdot\\vec v)^2=2h^2(h^2+24+x_k^2)-h^2(h-x_k)^2=h^2\\{(x_k+h)^2+48\\}\n\\]\nとなるから，$x_k+h=x_{k+1}$ より\n\\[\n\\triangle\\mathrm Q_k\\mathrm P_{k+1}\\mathrm Q_{k+1}=\\boldsymbol{\\frac h2\\sqrt{x_{k+1}^2+48}}.\n\\]\nしたがって\n\\[\nS_n(t)=\\frac h2\\sum_{k=0}^{n-1}\\left(\\sqrt{(t+kh)^2+24}+\\sqrt{(t+(k+1)h)^2+48}\\right),\n\\qquad\nS_n'(t)=\\frac h2\\,D_n(t),\n\\]\n\\[\nD_n(t)=\\sum_{k=0}^{n-1}\\Bigl(\\varphi(t+kh)+\\psi(t+(k+1)h)\\Bigr).\n\\]\n$n=1$（$h=2$）のとき $D_1(t)=\\varphi(t)+\\psi(t+2)$．$\\varphi'(x)=\\dfrac{24}{(x^2+24)^{3/2}}>0$，$\\psi'(x)=\\dfrac{48}{(x^2+48)^{3/2}}>0$ より $D_1$ は狭義単調増加で，$\\varphi,\\psi$ は $x$ と同符号である．$t\\geqq0$ なら $D_1(t)>0$，$t\\leqq-2$ なら $D_1(t)<0$ なので，$D_1(t)=0$ となる $t$ は $-2<t<0$ にあり，そこでは\n\\[\nD_1(t)=0\\iff\\frac{-t}{\\sqrt{t^2+24}}=\\frac{t+2}{\\sqrt{(t+2)^2+48}}\n\\iff t^2\\{(t+2)^2+48\\}=(t+2)^2(t^2+24)\n\\]\n（両辺正なので2乗してよい）$\\iff 2t^2=(t+2)^2\\iff -\\sqrt2\\,t=t+2$（$-t>0$，$t+2>0$）．\nよって $t=-\\dfrac2{1+\\sqrt2}=2-2\\sqrt2$ でただ1つ．$D_1$ は増加なので $S_1$ はこの点の左で減少，右で増加し，$S_1$ を最小にするのは $t=\\boldsymbol{2-2\\sqrt2}$．\n\n\\medskip\n(2) $\\varphi,\\psi$ は狭義単調増加なので $D_n(t)$ も狭義単調増加で連続．\n\\[\ny_k=-1+\\left(k+\\tfrac12\\right)h\\qquad(k=0,1,\\dots,n-1)\n\\]\nとおくと $y_{n-1-k}=-1+\\left(n-k-\\tfrac12\\right)h=1-\\left(k+\\tfrac12\\right)h=-y_k$ であり，$|y_k|\\leqq1-\\frac h2$ である．\n\\[\n\\Phi(u)=\\sum_{k=0}^{n-1}\\varphi(y_k+u),\\qquad\\Psi(u)=\\sum_{k=0}^{n-1}\\psi(y_k+u)\n\\]\nとおく．$\\varphi$ が奇関数なので $\\Phi(-u)=\\sum\\varphi(-y_{n-1-k}-u)=-\\sum\\varphi(y_{n-1-k}+u)=-\\Phi(u)$，同様に $\\Psi$ も奇関数で，ともに狭義単調増加，$\\Phi(0)=\\Psi(0)=0$．\n$t=-1+\\delta$ と書くと $t+kh=y_k+\\delta-\\frac h2$，$t+(k+1)h=y_k+\\delta+\\frac h2$ だから\n\\[\nD_n(-1+\\delta)=\\Phi\\!\\left(\\delta-\\tfrac h2\\right)+\\Psi\\!\\left(\\delta+\\tfrac h2\\right).\\tag{$*$}\n\\]\n\n\\textbf{$\\delta=\\frac h2$ のとき．}$D_n\\!\\left(-1+\\frac h2\\right)=\\Phi(0)+\\Psi(h)=\\Psi(h)>\\Psi(0)=0$．\n\n\\textbf{$\\delta=0$ のとき．}$D_n(-1)=-\\Phi\\!\\left(\\frac h2\\right)+\\Psi\\!\\left(\\frac h2\\right)=-\\Omega\\!\\left(\\frac h2\\right)$，ただし $\\omega=\\varphi-\\psi$，$\\Omega(u)=\\sum_k\\omega(y_k+u)$．\n\nまず $\\omega$ は $-2\\leqq x\\leqq2$ で狭義単調増加であることを示す．\n$\\omega'(x)=\\dfrac{24}{(x^2+24)^{3/2}}-\\dfrac{48}{(x^2+48)^{3/2}}$ で，$X=x^2$ とおくと\n\\[\n\\omega'(x)>0\\iff(X+48)^{3/2}>2(X+24)^{3/2}\\iff(X+48)^3>4(X+24)^3 .\n\\]\n\\[\n(X+48)^3-4(X+24)^3=-3X^3-144X^2+55296\n\\]\nは $0\\leqq X\\leqq4$ で $-3\\cdot64-144\\cdot16+55296=52800>0$ 以上（$X$ について減少）なので，$|x|\\leqq2$ で $\\omega'(x)>0$．\n\n$0<u\\leqq\\frac h2$ とする．$k$ と $n-1-k$ の項を組にすると，$y_k>0$ となる $k$ について\n\\[\n\\omega(y_k+u)+\\omega(-y_k+u)=\\omega(u+y_k)-\\omega(y_k-u)>0\n\\]\n（$\\omega$ は奇関数，$u+y_k>y_k-u$ で，両者とも $[-1,1]$ に属するので増加性が使える）．$n$ が奇数のときの中央の項 $y_k=0$ は $\\omega(u)>\\omega(0)=0$．よって $\\Omega(u)>0$，特に $D_n(-1)=-\\Omega\\!\\left(\\frac h2\\right)<0$．\n\n$D_n$ は狭義単調増加で $D_n(-1)<0<D_n\\!\\left(-1+\\frac h2\\right)$ だから，$D_n(t)=0$ となる $t$ はただ1つで，それを $c_n$ とすると $-1<c_n<-1+\\frac h2=-1+\\frac1n$．$S_n'(t)=\\frac h2D_n(t)$ は $t<c_n$ で負，$t>c_n$ で正なので，$S_n$ は $t=c_n$ でのみ最小となる．\\hfill$\\square$\n\n\\medskip\n(3) $\\delta_n=c_n+1$ とおくと $0<\\delta_n<\\frac h2$．$(*)$ と $\\Phi$ が奇関数であることから，$D_n(c_n)=0$ は\n\\[\n\\Phi(u)=\\Psi(v),\\qquad u=\\tfrac h2-\\delta_n\\in\\left(0,\\tfrac h2\\right),\\quad v=\\tfrac h2+\\delta_n\\in\\left(\\tfrac h2,h\\right)\n\\]\nと同値．平均値の定理により，$\\xi_k\\,(y_k<\\xi_k<y_k+u)$，$\\eta_k\\,(y_k<\\eta_k<y_k+v)$ があって\n\\[\n\\Phi(u)=\\sum_k\\{\\varphi(y_k+u)-\\varphi(y_k)\\}=u\\sum_k\\varphi'(\\xi_k),\\qquad\\Psi(v)=v\\sum_k\\psi'(\\eta_k)\n\\]\n（$\\sum_k\\varphi(y_k)=\\Phi(0)=0$ を用いた）．$\\alpha_n=h\\sum_k\\varphi'(\\xi_k)>0$，$\\beta_n=h\\sum_k\\psi'(\\eta_k)>0$ とおくと $u\\alpha_n=v\\beta_n$，$u+v=h$ より\n\\[\nu=\\frac{h\\beta_n}{\\alpha_n+\\beta_n},\\quad v=\\frac{h\\alpha_n}{\\alpha_n+\\beta_n},\\quad\n\\delta_n=\\frac{v-u}2=\\frac h2\\cdot\\frac{\\alpha_n-\\beta_n}{\\alpha_n+\\beta_n},\n\\]\n$nh=2$ より\n\\[\nn\\,\\delta_n=\\frac{\\alpha_n-\\beta_n}{\\alpha_n+\\beta_n}.\n\\]\n\n\\textbf{$\\alpha_n,\\beta_n$ の極限．}\n$\\varphi''(x)=-\\dfrac{72x}{(x^2+24)^{5/2}}$，$\\psi''(x)=-\\dfrac{144x}{(x^2+48)^{5/2}}$ で，$|x|\\leqq2$ のとき\n$|\\varphi''(x)|\\leqq\\dfrac{144}{24^{5/2}}<1$，$|\\psi''(x)|\\leqq\\dfrac{288}{48^{5/2}}<1$（$24^{5/2}=576\\sqrt{24}>576\\cdot4$，$48^{5/2}=2304\\sqrt{48}>2304\\cdot6$）．\n$n\\geqq2$ のとき $h\\leqq1$ で，$\\xi_k,\\eta_k$ と $z_k=-1+kh$ はすべて $[-2,2]$ に入り，$|\\xi_k-z_k|\\leqq\\frac h2+u<h$，$|\\eta_k-z_k|\\leqq\\frac h2+v<\\frac{3h}2$．平均値の定理を $\\varphi',\\psi'$ に用いると\n\\[\n\\left|\\alpha_n-h\\sum_{k=0}^{n-1}\\varphi'(z_k)\\right|\\leqq h\\cdot n\\cdot h=2h,\\qquad\n\\left|\\beta_n-h\\sum_{k=0}^{n-1}\\psi'(z_k)\\right|\\leqq h\\cdot n\\cdot\\frac{3h}2=3h .\n\\]\n区分求積法より\n\\[\nh\\sum_{k=0}^{n-1}\\varphi'(z_k)=\\frac2n\\sum_{k=0}^{n-1}\\varphi'\\!\\left(-1+\\frac{2k}n\\right)\\to\\int_{-1}^1\\varphi'(x)\\,dx=\\varphi(1)-\\varphi(-1)=\\frac25,\n\\]\n同様に $h\\sum\\psi'(z_k)\\to\\psi(1)-\\psi(-1)=\\dfrac27$．$h\\to0$ だから $\\alpha_n\\to\\dfrac25$，$\\beta_n\\to\\dfrac27$．\n\nゆえに\n\\[\n\\lim_{n\\to\\infty}n\\,(c_n+1)=\\frac{\\frac25-\\frac27}{\\frac25+\\frac27}=\\frac{4/35}{24/35}=\\boldsymbol{\\frac16}.\n\\]"
+   }
+  ],
+  "idea": {
+   "tex": "2種類の三角形の面積和 $S_n(t)$ の導関数は，左端で標本をとる $\\varphi$ の和と右端で標本をとる $\\psi$ の和．目盛りの中点の集合が原点対称なので $\\Phi(u)=\\sum\\varphi(y_k+u)$ は奇関数になる．$\\omega=\\varphi-\\psi$ が増加することを対になる項どうしで使うと，最小点は半目盛りの幅の中に閉じ込められる．さらに平均値の定理で $\\Phi(u)=u\\cdot(\\text{区分求積の和})$ と線形化すると，最小点のずれの $n$ 倍の極限が $\\varphi,\\psi$ の端点の値で決まる．"
+  },
+  "methods": [],
+  "tags": [
+   "区分求積",
+   "平均値の定理",
+   "奇関数の和",
+   "最小値の位置",
+   "空間の三角形"
+  ],
+  "provenance": {
+   "created": "2026-11-10"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "III-LIM-243",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "III-15",
+  "level": 5,
+  "minutes": 40,
+  "theme": "面積一定の放物線の弧長の精密な漸近挙動",
+  "topic": "面積一定の放物線の弧長の精密な漸近挙動",
+  "statement": {
+   "tex": "$A$ を正の定数とする．$b>0$，$c>0$ に対して関数 $f(x)=b\\left(1-\\dfrac{x^2}{c}\\right)$（$0\\leqq x\\leqq\\sqrt c$）を考え，曲線 $y=f(x)$ と $x$ 軸，$y$ 軸で囲まれた図形の面積がつねに $A$ であるように $b$ を $c$ に応じて定める．このときの曲線 $y=f(x)$（$0\\leqq x\\leqq\\sqrt c$）の長さを $L(c)$ とする．\n\\begin{enumerate}\n  \\item $b$ を $A,c$ で表せ．また，$g(u)=\\dfrac1{\\sqrt{1+u^2}+u}$ とおくとき，\n  \\[\n  L(c)-b=\\frac{c\\sqrt c}{3A}\\int_0^{\\frac{3A}c}g(u)\\,du\n  \\]\n  が成り立つことを示せ．\n  \\item 極限 $\\displaystyle\\lim_{c\\to\\infty}c\\sqrt c\\,\\bigl(L(c)-\\sqrt c\\bigr)$ を求めよ．\n  \\item 極限 $\\displaystyle\\lim_{c\\to+0}\\frac{L(c)-b}{c\\sqrt c\\,\\log\\frac1c}$ を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $b=\\dfrac{3A}{2\\sqrt c}$（後半は証明）　(2) $\\dfrac{3A^2}{2}$　(3) $\\dfrac1{6A}$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) $A=\\displaystyle\\int_0^{\\sqrt c}b\\left(1-\\frac{x^2}c\\right)dx=b\\left(\\sqrt c-\\frac{\\sqrt c}3\\right)=\\frac{2b\\sqrt c}3$ より $\\boldsymbol{b=\\dfrac{3A}{2\\sqrt c}}$．\n\n$f'(x)=-\\dfrac{2b}{c}x$ で，$m=\\dfrac{2b}c=\\dfrac{3A}{c\\sqrt c}$ とおくと $L(c)=\\displaystyle\\int_0^{\\sqrt c}\\sqrt{1+m^2x^2}\\,dx$．また $\\displaystyle\\int_0^{\\sqrt c}mx\\,dx=\\frac{mc}2=b$ だから\n\\[\nL(c)-b=\\int_0^{\\sqrt c}\\left(\\sqrt{1+m^2x^2}-mx\\right)dx=\\int_0^{\\sqrt c}\\frac{dx}{\\sqrt{1+m^2x^2}+mx}.\n\\]\n$u=mx$ と置換すると $dx=\\frac{du}m$，$x:0\\to\\sqrt c$ に $u:0\\to m\\sqrt c=\\frac{3A}c$ が対応し，$\\frac1m=\\frac{c\\sqrt c}{3A}$ なので\n\\[\nL(c)-b=\\frac{c\\sqrt c}{3A}\\int_0^{\\frac{3A}c}g(u)\\,du .\\tag*{$\\square$}\n\\]\n\n(2) $v=m^2x^2$ とおくと $\\sqrt{1+v}-1=\\dfrac{v}{\\sqrt{1+v}+1}$ で，$0\\leqq x\\leqq\\sqrt c$ では $0\\leqq v\\leqq m^2c=\\dfrac{9A^2}{c^2}=:\\mu$．$1\\leqq\\sqrt{1+v}\\leqq\\sqrt{1+\\mu}$ より\n\\[\n\\frac{v}{\\sqrt{1+\\mu}+1}\\leqq\\sqrt{1+v}-1\\leqq\\frac v2 .\n\\]\n$L(c)-\\sqrt c=\\displaystyle\\int_0^{\\sqrt c}\\left(\\sqrt{1+m^2x^2}-1\\right)dx$ であり，$\\displaystyle\\int_0^{\\sqrt c}m^2x^2\\,dx=\\frac{m^2c\\sqrt c}{3}=\\frac{9A^2}{c^3}\\cdot\\frac{c\\sqrt c}3=\\frac{3A^2}{c\\sqrt c}$ だから\n\\[\n\\frac{3A^2}{\\sqrt{1+\\mu}+1}\\leqq c\\sqrt c\\,\\bigl(L(c)-\\sqrt c\\bigr)\\leqq\\frac{3A^2}2 .\n\\]\n$c\\to\\infty$ のとき $\\mu=\\frac{9A^2}{c^2}\\to0$ なので左辺 $\\to\\frac{3A^2}2$．はさみうちの原理により\n\\[\n\\lim_{c\\to\\infty}c\\sqrt c\\,\\bigl(L(c)-\\sqrt c\\bigr)=\\boldsymbol{\\frac{3A^2}2}.\n\\]\n\n(3) $u\\geqq0$ で $u^2\\leqq1+u^2\\leqq(1+u)^2$ より $u\\leqq\\sqrt{1+u^2}\\leqq u+1$．よって\n\\[\n\\frac1{2u+1}\\leqq g(u),\\qquad g(u)\\leqq\\frac1{2u}\\ (u>0),\\qquad g(u)\\leqq1\\ (\\because\\ \\sqrt{1+u^2}+u\\geqq1).\n\\]\n$M=\\frac{3A}c$ とおき，$0<c<3A$（$M>1$）とする．\n\\[\n\\int_0^Mg(u)\\,du\\geqq\\int_0^M\\frac{du}{2u+1}=\\frac12\\log(2M+1)>\\frac12\\log(2M),\n\\]\n\\[\n\\int_0^Mg(u)\\,du\\leqq\\int_0^1du+\\int_1^M\\frac{du}{2u}=1+\\frac12\\log M .\n\\]\n(1) より $\\dfrac{L(c)-b}{c\\sqrt c\\,\\log\\frac1c}=\\dfrac1{3A\\log\\frac1c}\\displaystyle\\int_0^Mg(u)\\,du$ であり，$0<c<1$ では $\\log\\frac1c>0$．$\\log M=\\log3A+\\log\\frac1c$，$\\log2M=\\log6A+\\log\\frac1c$ を代入すると\n\\[\n\\frac{1}{6A}\\left(1+\\frac{\\log6A}{\\log\\frac1c}\\right)<\\frac{L(c)-b}{c\\sqrt c\\,\\log\\frac1c}\\leqq\\frac1{6A}\\left(1+\\frac{2+\\log3A}{\\log\\frac1c}\\right)\n\\]\n（$0<c<1$ かつ $0<c<3A$ のとき）．$c\\to+0$ のとき $\\log\\frac1c\\to\\infty$ なので両端はともに $\\frac1{6A}$ に収束し，\n\\[\n\\lim_{c\\to+0}\\frac{L(c)-b}{c\\sqrt c\\,\\log\\frac1c}=\\boldsymbol{\\frac1{6A}}.\n\\]"
+   }
+  ],
+  "idea": {
+   "tex": "弧長 $\\int\\sqrt{1+(f')^2}\\,dx$ を「主要項（横幅または高さ）$+$ 誤差」に分け，誤差の被積分関数を $\\sqrt{1+v}-1=\\dfrac{v}{\\sqrt{1+v}+1}$，$\\sqrt{1+u^2}-u=\\dfrac1{\\sqrt{1+u^2}+u}$ と有理化して，分母を $u\\leqq\\sqrt{1+u^2}\\leqq u+1$ などで上下から評価する．幅が広い極限では誤差は2次の小ささ，細長い極限では $\\int\\frac{du}{2u}$ 型の対数的な寄与が残る．"
+  },
+  "methods": [],
+  "tags": [
+   "曲線の長さ",
+   "はさみうち",
+   "有理化",
+   "対数の増大",
+   "漸近挙動"
+  ],
+  "provenance": {
+   "created": "2026-11-10"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "III-LIM-244",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "III-15",
+  "level": 5,
+  "minutes": 35,
+  "theme": "正弦の山を区切ったルーレットの分散",
+  "topic": "正弦の山を区切ったルーレットの分散",
+  "statement": {
+   "tex": "$f(x)=\\dfrac\\pi2\\sin\\pi x$ とする．2以上の整数 $n$ に対し，$1,2,\\dots,n$ を出目とするルーレットがあり，出目が $i$ となる確率は\n\\[\np_i=\\int_{\\frac{i-1}n}^{\\frac in}f(x)\\,dx\\qquad(i=1,2,\\dots,n)\n\\]\nであるとする．このルーレットを1回まわしたときの出目を $X$ とする．\n\\begin{enumerate}\n  \\item $p_1+p_2+\\dots+p_n=1$ を示し，$X$ の期待値 $E(X)$ を求めよ．\n  \\item $X$ の分散 $V(X)$ を $n$ の式で表せ．\n  \\item 極限 $c=\\displaystyle\\lim_{n\\to\\infty}\\frac{V(X)}{n^2}$ を求めよ．さらに，極限 $\\displaystyle\\lim_{n\\to\\infty}\\bigl\\{V(X)-cn^2\\bigr\\}$ を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 証明，$E(X)=\\dfrac{n+1}2$　(2) $V(X)=\\dfrac{n^2+1}4-\\dfrac1{2\\sin^2\\frac{\\pi}{2n}}$　(3) $c=\\dfrac14-\\dfrac2{\\pi^2}$，$\\displaystyle\\lim_{n\\to\\infty}\\{V(X)-cn^2\\}=\\dfrac1{12}$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "$\\varphi=\\dfrac\\pi n$，$c_i=\\cos i\\varphi$ とおく．\n\\[\np_i=\\left[-\\frac12\\cos\\pi x\\right]_{\\frac{i-1}n}^{\\frac in}=\\frac{c_{i-1}-c_i}2 .\n\\]\n$\\cos$ は $[0,\\pi]$ で減少するので $p_i>0$．また $c_{n-i}=\\cos(\\pi-i\\varphi)=-c_i$ なので，$\\displaystyle\\sum_{i=1}^{n-1}c_i$ は $i$ を $n-i$ に置き換えると符号が変わり，$\\displaystyle\\sum_{i=1}^{n-1}c_i=0$．\n\n\\textbf{部分和分．}数列 $g(i)$ に対し\n\\[\n\\sum_{i=1}^ng(i)(c_{i-1}-c_i)=\\sum_{i=0}^{n-1}g(i+1)c_i-\\sum_{i=1}^ng(i)c_i=g(1)c_0-g(n)c_n+\\sum_{i=1}^{n-1}\\{g(i+1)-g(i)\\}c_i．\\tag{$\\ast$}\n\\]\n\n(1) $\\displaystyle\\sum_{i=1}^np_i=\\frac{c_0-c_n}2=\\frac{1-(-1)}2=1$．$(\\ast)$ で $g(i)=i$ とすると\n\\[\nE(X)=\\frac12\\left\\{1-n\\cdot(-1)+\\sum_{i=1}^{n-1}c_i\\right\\}=\\boldsymbol{\\frac{n+1}2}．\n\\]\n\n(2) $m=\\dfrac{n+1}2$，$g(i)=(i-m)^2$ とすると $V(X)=\\dfrac12\\displaystyle\\sum g(i)(c_{i-1}-c_i)$．$g(1)=g(n)=\\dfrac{(n-1)^2}4$，$g(i+1)-g(i)=2(i-m)+1=2i-n$ なので，$(\\ast)$ と $\\sum c_i=0$ から\n\\[\nV(X)=\\frac12\\left\\{\\frac{(n-1)^2}4\\cdot2+\\sum_{i=1}^{n-1}(2i-n)c_i\\right\\}=\\frac{(n-1)^2}4+S,\\qquad S=\\sum_{i=1}^{n-1}ic_i．\n\\]\n$s_j=\\sin\\left(j-\\frac12\\right)\\varphi$ とおく．積和公式より $2\\sin\\frac\\varphi2\\cos i\\varphi=s_{i+1}-s_i$，$2\\sin\\frac\\varphi2\\,s_j=\\cos(j-1)\\varphi-\\cos j\\varphi$．後者を $j=1,\\dots,n$ で加えると $2\\sin\\frac\\varphi2\\displaystyle\\sum_{j=1}^ns_j=1-\\cos\\pi=2$ で，$\\sin\\frac\\varphi2>0$ より $\\displaystyle\\sum_{j=1}^ns_j=\\frac1{\\sin\\frac\\varphi2}$．また $s_n=\\sin\\left(\\pi-\\frac\\varphi2\\right)=\\sin\\frac\\varphi2$．前者から\n\\[\n2\\sin\\frac\\varphi2\\cdot S=\\sum_{i=1}^{n-1}i(s_{i+1}-s_i)=\\sum_{j=2}^n(j-1)s_j-\\sum_{i=1}^{n-1}is_i=(n-1)s_n-\\sum_{j=1}^{n-1}s_j\n\\]\n\\[\n=(n-1)\\sin\\frac\\varphi2-\\left(\\frac1{\\sin\\frac\\varphi2}-\\sin\\frac\\varphi2\\right)=n\\sin\\frac\\varphi2-\\frac1{\\sin\\frac\\varphi2}．\n\\]\nよって $S=\\dfrac n2-\\dfrac1{2\\sin^2\\frac\\varphi2}$ で，\n\\[\nV(X)=\\frac{(n-1)^2}4+\\frac n2-\\frac1{2\\sin^2\\frac{\\pi}{2n}}=\\boldsymbol{\\frac{n^2+1}4-\\frac1{2\\sin^2\\frac{\\pi}{2n}}}．\n\\]\n\n(3) $\\theta=\\dfrac\\pi{2n}$ とおくと $n\\to\\infty$ で $\\theta\\to+0$，$n^2=\\dfrac{\\pi^2}{4\\theta^2}$．\n\\[\n\\frac{V(X)}{n^2}=\\frac14\\left(1+\\frac1{n^2}\\right)-\\frac{2}{\\pi^2}\\left(\\frac\\theta{\\sin\\theta}\\right)^2\\ \\longrightarrow\\ \\frac14-\\frac2{\\pi^2}．\n\\]\nよって $\\boldsymbol{c=\\dfrac14-\\dfrac2{\\pi^2}}$．次に $cn^2=\\dfrac{n^2}4-\\dfrac1{2\\theta^2}$ より\n\\[\nV(X)-cn^2=\\frac14+\\frac12\\left(\\frac1{\\theta^2}-\\frac1{\\sin^2\\theta}\\right)=\\frac14-\\frac12\\cdot\\frac{\\theta-\\sin\\theta}{\\theta^3}\\cdot\\frac{\\theta+\\sin\\theta}{\\theta}\\cdot\\left(\\frac{\\theta}{\\sin\\theta}\\right)^2 .\n\\]\n\\textbf{評価．}$\\theta>0$ で次の関数を順に考える（いずれも $\\theta=0$ で値0）．\n\\begin{itemize}\n  \\item $k_1=\\theta-\\sin\\theta$：$k_1'=1-\\cos\\theta\\geqq0$（等号は孤立点のみ）で $k_1>0$．\n  \\item $k_2=\\cos\\theta-1+\\frac{\\theta^2}2$：$k_2'=k_1>0$ で $k_2>0$．\n  \\item $k_3=\\sin\\theta-\\theta+\\frac{\\theta^3}6$：$k_3'=k_2>0$ で $k_3>0$．\n  \\item $k_4=\\cos\\theta-1+\\frac{\\theta^2}2-\\frac{\\theta^4}{24}$：$k_4'=-k_3<0$ で $k_4<0$．\n  \\item $k_5=\\sin\\theta-\\theta+\\frac{\\theta^3}6-\\frac{\\theta^5}{120}$：$k_5'=k_4<0$ で $k_5<0$．\n\\end{itemize}\n$k_3>0$，$k_5<0$ より $\\dfrac16-\\dfrac{\\theta^2}{120}<\\dfrac{\\theta-\\sin\\theta}{\\theta^3}<\\dfrac16$ で，はさみうちにより $\\dfrac{\\theta-\\sin\\theta}{\\theta^3}\\to\\dfrac16$．また $\\dfrac{\\sin\\theta}\\theta\\to1$ より $\\dfrac{\\theta+\\sin\\theta}\\theta\\to2$，$\\left(\\dfrac\\theta{\\sin\\theta}\\right)^2\\to1$．したがって\n\\[\n\\lim_{n\\to\\infty}\\{V(X)-cn^2\\}=\\frac14-\\frac12\\cdot\\frac16\\cdot2\\cdot1=\\boldsymbol{\\frac1{12}}．\n\\]\n\\hfill$\\square$"
+   }
+  ],
+  "idea": {
+   "tex": "関数 $f$ の積分を区間ごとに区切った値を確率とするルーレット．確率 $p_i$ が「隣り合う値の差」の形なので，$\\sum g(i)p_i$ は和の順序を組み替えて（部分和分），$g$ の差分と三角関数の和に帰着する．三角関数の和は $2\\sin\\frac\\varphi2$ を掛けて差の形にする．$n^2$ の主要項の次の定数項は $\\dfrac1{\\sin^2\\theta}-\\dfrac1{\\theta^2}$ の極限で，$\\sin\\theta$ の多項式による評価から出る．"
+  },
+  "methods": [],
+  "tags": [
+   "確率分布",
+   "分散",
+   "三角関数の和",
+   "アーベルの和の変形",
+   "極限"
+  ],
+  "provenance": {
+   "created": "2026-11-10"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "III-LIM-245",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "III-15",
+  "level": 4,
+  "minutes": 30,
+  "theme": "$y=\\log(nx)$ と円の交点の2次の漸近挙動",
+  "topic": "$y=\\log(nx)$ と円の交点の2次の漸近挙動",
+  "statement": {
+   "tex": "$n=1,2,3,\\dots$ に対して，曲線 $y=\\log(nx)$ と円 $\\left(x-\\dfrac1n\\right)^2+y^2=1$ の第1象限にある交点を考える．\n\\begin{enumerate}\n  \\item 第1象限にある交点はただ1つであることを示せ．以下，それを $(p_n,q_n)$ とする．\n  \\item 極限 $\\displaystyle\\lim_{n\\to\\infty}n^2(1-q_n)$ を求めよ．\n  \\item $S_n=\\displaystyle\\int_{\\frac1n}^{p_n}\\log(nx)\\,dx$ とするとき，極限 $\\displaystyle\\lim_{n\\to\\infty}n^2(nS_n-1)$ を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 証明　(2) $\\dfrac{(e-1)^2}2$　(3) $-\\dfrac{e(e-1)^2}2$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) 第1象限の点 $(x,y)$（$x>0,y>0$）が曲線上にあるとき $y=\\log(nx)$ より $x=\\dfrac{e^y}n$．円上にある条件は $\\left(\\dfrac{e^y-1}n\\right)^2+y^2=1$．逆に $y>0$ がこれをみたせば $\\left(\\frac{e^y}n,\\,y\\right)$ は第1象限の交点．\n円上で $y\\leqq1$ であり，$y=1$ なら $(e-1)^2=0$ となり不適なので $0<y<1$．\n$h(y)=(e^y-1)^2+n^2y^2-n^2$ は $0\\leqq y\\leqq1$ で狭義増加（2つの増加関数の和），$h(0)=-n^2<0$，$h(1)=(e-1)^2>0$．よって $h(y)=0$ は $0<y<1$ にただ1つの解をもち，交点はただ1つ．\\hfill$\\square$\n\n(2) $q=q_n$ と書く．$h(q)=0$ より\n\\[\n(1-q)(1+q)=\\frac{(e^q-1)^2}{n^2},\\qquad 0<1-q\\leqq\\frac{(e-1)^2}{n^2}\\ \\ (\\because\\ 1+q>1,\\ e^q-1<e-1).\n\\]\nよって $q_n\\to1$．さらに $n^2(1-q_n)=\\dfrac{(e^{q_n}-1)^2}{1+q_n}\\to\\boldsymbol{\\dfrac{(e-1)^2}2}$．\n\n(3) $p_n=\\frac{e^q}n$，$\\log(np_n)=q$ だから\n\\[\nS_n=\\Bigl[x\\log(nx)-x\\Bigr]_{\\frac1n}^{p_n}=p_nq-p_n+\\frac1n=\\frac{e^q(q-1)+1}n .\n\\]\nよって $nS_n-1=-e^{q}(1-q)$ で，$n^2(nS_n-1)=-e^{q_n}\\cdot n^2(1-q_n)\\to\\boldsymbol{-\\dfrac{e(e-1)^2}2}$．"
+   }
+  ],
+  "idea": {
+   "tex": "交点を $q=q_n$ だけで表すと $p_n=\\frac{e^{q}}n$ で，円の式は $(1-q)(1+q)=\\frac{(e^q-1)^2}{n^2}$．右辺の分子が有界なので $q\\to1$，さらに等式そのものから $n^2(1-q)$ の極限まで読める．面積も $q$ の式 $\\frac{e^q(q-1)+1}n$ に直せば，$nS_n-1=-e^{q}(1-q)$ となって同じ量に帰着する．"
+  },
+  "methods": [],
+  "tags": [
+   "交点の存在と一意性",
+   "はさみうち",
+   "漸近",
+   "定積分"
+  ],
+  "provenance": {
+   "created": "2026-11-10"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "III-LIM-246",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "III-15",
+  "level": 4,
+  "minutes": 35,
+  "theme": "大きさの異なる2球をとり巻く球の輪",
+  "topic": "大きさの異なる2球をとり巻く球の輪",
+  "statement": {
+   "tex": "半径1の球 $S_1$ と半径2の球 $S_2$ が1点で外接している．互いに重なる部分のない等しい半径をもつ $n$ 個（$n\\geqq3$）の球 $T_1,T_2,\\dots,T_n$ があり，次の条件 (ア)，(イ) をみたす．\n\\begin{itemize}\n  \\item[(ア)] $T_i$ は $S_1$，$S_2$ にそれぞれ1点で外接している（$i=1,2,\\dots,n$）．\n  \\item[(イ)] $T_i$ は $T_{i+1}$ に1点で外接しており（$i=1,2,\\dots,n-1$），そして $T_n$ は $T_1$ に1点で外接している．\n\\end{itemize}\n\\begin{enumerate}\n  \\item $T_1,T_2,\\dots,T_n$ の共通の半径 $r_n$ を $n$ を用いて表せ．\n  \\item $r_n$ が有理数となるような $n$ をすべて求め，そのときの $r_n$ の値を求めよ．\n  \\item 極限値 $\\displaystyle\\lim_{n\\to\\infty}n^2r_n$ を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $r_n=\\dfrac{24\\sin^2\\frac\\pi n}{9-8\\sin^2\\frac\\pi n}=\\dfrac{12\\left(1-\\cos\\frac{2\\pi}n\\right)}{5+4\\cos\\frac{2\\pi}n}$　(2) $n=3$ で $r_3=6$，$n=4$ で $r_4=\\dfrac{12}5$，$n=6$ で $r_6=\\dfrac67$　(3) $\\dfrac{8\\pi^2}3$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "\\textbf{(1)} $S_1$ の中心を O$_1(0,0,0)$，$S_2$ の中心を O$_2(0,0,3)$ とする（O$_1$O$_2=1+2$）．$T_i$ の半径を $r$，中心を C$(x,y,z)$ とすると (ア)より\n\\[x^2+y^2+z^2=(1+r)^2,\\qquad x^2+y^2+(z-3)^2=(2+r)^2 .\\]\n辺々引いて $6z-9=(1+r)^2-(2+r)^2=-3-2r$，$z=1-\\dfrac r3$．さらに\n\\[x^2+y^2=(1+r)^2-\\left(1-\\frac r3\\right)^2=\\frac{4r}3\\left(2+\\frac{2r}3\\right)=\\frac{8r(r+3)}9=:\\rho^2 .\\]\nよって $n$ 個の中心はすべて，平面 $z=1-\\frac r3$ 上で $z$ 軸上の点を中心とする半径 $\\rho$ の円 $\\Gamma$ 上にある．\n\n$\\Gamma$ 上の2点の中心角を $\\varphi$（$0\\leqq\\varphi\\leqq\\pi$）とすると，2点間の距離は $2\\rho\\sin\\dfrac\\varphi2$ で，$\\varphi$ について増加．(イ)の外接する2球の中心間の距離は $2r$ なので，その中心角は $\\sin\\dfrac\\theta2=\\dfrac r\\rho$ で定まる一定の値 $\\theta$．重なりがないので，どの2つの中心も距離 $2r$ 以上，すなわち中心角 $\\theta$ 以上．\n\n$n$ 個の中心を $\\Gamma$ 上に反時計回りに並べ，隣り合う2点の間の弧の中心角を $g_1,\\dots,g_n$（和 $2\\pi$）とすると各 $g_j\\geqq\\theta$．(イ)で外接する2球の中心が隣り合っていないとすると，2点を結ぶ2つの弧はどちらも他の中心を含むので，どちらも中心角 $2\\theta$ 以上となり，中心角が $\\theta$ であることに反する．よって (イ) の $n$ 組（$n\\geqq3$ より相異なる $n$ 組）はすべて隣り合う組で，それらの弧の中心角は $\\theta$．隣り合う組はちょうど $n$ 組なので $g_1=\\dots=g_n=\\theta$，$n\\theta=2\\pi$．\nしたがって $\\rho\\sin\\dfrac\\pi n=r$．$\\sigma=\\sin^2\\dfrac\\pi n$ とおくと\n\\[r^2=\\sigma\\cdot\\frac{8r(r+3)}9\\iff r(9-8\\sigma)=24\\sigma\\]\nで，$9-8\\sigma>0$ だから\n\\[\\boldsymbol{r_n=\\frac{24\\sin^2\\frac\\pi n}{9-8\\sin^2\\frac\\pi n}=\\frac{12\\left(1-\\cos\\frac{2\\pi}n\\right)}{5+4\\cos\\frac{2\\pi}n}}\\]\n（$\\sin^2\\frac\\pi n=\\frac{1-\\cos\\frac{2\\pi}n}2$ を代入）．逆にこの $r$ で中心を $\\Gamma$ 上に等間隔に置けば，隣り合う球は外接し，隣り合わない球は中心角 $\\frac{4\\pi}n$ 以上で重ならないので，条件をみたす配置が存在する．\n\n\\textbf{(2)} $\\gamma=\\cos\\dfrac{2\\pi}n$ とおくと $r_n(5+4\\gamma)=12-12\\gamma$ より $\\gamma=\\dfrac{12-5r_n}{12+4r_n}$．よって $r_n$ が有理数 $\\iff\\gamma$ が有理数．\n\n\\textbf{補題}：$n\\geqq3$ で $\\cos\\dfrac{2\\pi}n$ が有理数なら $n=3,4,6$．\n\n証明：$\\beta_k=2\\cos\\dfrac{2^{k+1}\\pi}n$（$k=0,1,2,\\dots$）とおくと，2倍角の公式より $\\beta_{k+1}=\\beta_k^{\\,2}-2$．$\\beta_0=\\dfrac pq$（既約分数，$q\\geqq1$）とし，$q\\geqq2$ と仮定する．$\\beta_k=\\dfrac{p_k}{q^{2^k}}$（$p_k$ は $q$ と互いに素な整数）と表せることを帰納法で示す．$k=0$ は成立．$k$ で成り立てば\n\\[\\beta_{k+1}=\\frac{p_k^{\\,2}-2q^{2^{k+1}}}{q^{2^{k+1}}}\\]\nで，分子と $q$ の公約数は $p_k^{\\,2}$ と $q$ の公約数なので1．よって $k+1$ でも成立．\n$q\\geqq2$ より既約分数としての分母 $q^{2^k}$ はすべて異なるから，$\\beta_0,\\beta_1,\\dots$ は互いに異なる無限個の値．一方 $\\dfrac{2^{k+1}\\pi}n$ は $\\dfrac{2\\pi j}n$（$j=0,1,\\dots,n-1$）のいずれかと $2\\pi$ の整数倍だけ異なるので，$\\beta_k$ のとりうる値は高々 $n$ 個．矛盾．よって $q=1$ で $2\\gamma$ は $-2\\leqq2\\gamma\\leqq2$ の整数．\n$n\\geqq3$ では $0<\\dfrac{2\\pi}n\\leqq\\dfrac{2\\pi}3$ より $-\\dfrac12\\leqq\\gamma<1$ なので $\\gamma\\in\\left\\{-\\dfrac12,0,\\dfrac12\\right\\}$，それぞれ $n=3,4,6$．\\hfill$\\square$\n\n逆に $n=3,4,6$ では $\\gamma=-\\frac12,0,\\frac12$ で\n\\[\\boldsymbol{r_3=\\frac{12\\cdot\\frac32}{3}=6,\\qquad r_4=\\frac{12}5,\\qquad r_6=\\frac{12\\cdot\\frac12}{7}=\\frac67}.\\]\nよって $r_n$ が有理数となるのは $\\boldsymbol{n=3,4,6}$．\n\n\\textbf{(3)} $x_n=\\dfrac\\pi n\\to0$ で $\\dfrac{\\sin x_n}{x_n}\\to1$ だから\n\\[n^2r_n=\\frac{24\\pi^2\\left(\\dfrac{\\sin x_n}{x_n}\\right)^2}{9-8\\sin^2x_n}\\to\\frac{24\\pi^2}9=\\boldsymbol{\\frac{8\\pi^2}3}.\\]\n\\hfill$\\square$"
+   }
+  ],
+  "idea": {
+   "tex": "2球の両方に外接する球の中心は，2球の中心を結ぶ直線を軸とする1つの円周上にある（大きさが異なるので中央の平面からずれる）．輪の条件は円周上の等間隔配置で $\\rho\\sin\\frac\\pi n=r$．$r_n$ が有理数 $\\iff$ $\\cos\\frac{2\\pi}n$ が有理数で，$2\\cos2\\theta=(2\\cos\\theta)^2-2$ を繰り返すと分母が増え続けることから $n=3,4,6$ に限られる．"
+  },
+  "methods": [],
+  "tags": [
+   "球",
+   "円周上の配置",
+   "有理数",
+   "倍角",
+   "極限"
+  ],
+  "provenance": {
+   "created": "2026-11-10"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "III-LIM-247",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "III-15",
+  "level": 4,
+  "minutes": 35,
+  "theme": "符号が2回変わる関数値の部分和の最小値と次の項",
+  "topic": "符号が2回変わる関数値の部分和の最小値と次の項",
+  "statement": {
+   "tex": "$f(x)=1-2\\cos2x$ とし，$n$ を2以上の整数として\n\\[ g_n(k)=f\\!\\left(\\frac{\\pi}{6n}\\right)+f\\!\\left(\\frac{2\\pi}{6n}\\right)+\\dots+f\\!\\left(\\frac{k\\pi}{6n}\\right)\\qquad(k=1,2,\\dots,6n) \\]\nとおく．\n\\begin{enumerate}\n  \\item $2\\leqq k\\leqq6n$ の範囲で $g_n(k-1)\\geqq g_n(k)$ となる $k$ をすべて求めよ．また，$1\\leqq k\\leqq6n$ の範囲で $g_n(k)$ を最小にする $k$ をすべて求めよ．\n  \\item (1) における $g_n(k)$ の最小値を $G_n$ とする．$G_n$ を $n$ の式で表せ．\n  \\item 極限値 $\\displaystyle\\lim_{n\\to\\infty}\\left\\{G_n-\\left(1-\\frac{3\\sqrt3}{\\pi}\\right)n\\right\\}$ を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $g_n(k-1)\\geqq g_n(k)$ となるのは $2\\leqq k\\leqq n$ または $5n\\leqq k\\leqq6n$；最小にする $k$ は $k=n-1,\\ n$　(2) $G_n=n+\\dfrac12-\\dfrac{\\sqrt3}{2}\\cdot\\dfrac{\\cos\\frac{\\pi}{6n}}{\\sin\\frac{\\pi}{6n}}$　(3) $\\dfrac12$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "$x_j=\\dfrac{j\\pi}{6n}$ とおく．$f(x_j)=1-2\\cos\\dfrac{j\\pi}{3n}$．\n\n(1) $g_n(k-1)\\geqq g_n(k)\\iff f(x_k)\\leqq0\\iff\\cos\\dfrac{k\\pi}{3n}\\geqq\\dfrac12$．$0<\\dfrac{k\\pi}{3n}\\leqq2\\pi$ より $\\dfrac{k\\pi}{3n}\\in\\left(0,\\dfrac\\pi3\\right]\\cup\\left[\\dfrac{5\\pi}3,2\\pi\\right]$，すなわち $k\\leqq n$ または $k\\geqq5n$．よって $\\boldsymbol{2\\leqq k\\leqq n,\\ 5n\\leqq k\\leqq6n}$．\n\nさらに $f(x_j)<0$（$j<n$ または $j>5n$），$f(x_n)=f(x_{5n})=0$，$f(x_j)>0$（$n<j<5n$）である．よって $g_n$ は $1\\leqq k\\leqq n-1$ で狭義に減少し，$g_n(n)=g_n(n-1)$，$n\\leqq k\\leqq5n-1$ で狭義に増加，$g_n(5n)=g_n(5n-1)$，$5n\\leqq k\\leqq6n$ で狭義に減少する．最小値の候補は $g_n(n-1)=g_n(n)$ と $g_n(6n)$．\n\n$\\alpha=\\dfrac\\pi{3n}$ とおくと，積和公式 $2\\sin\\frac\\alpha2\\cos j\\alpha=\\sin\\left(j+\\frac12\\right)\\alpha-\\sin\\left(j-\\frac12\\right)\\alpha$ を $j=1,\\dots,m$ で加えて\n\\[ \\sum_{j=1}^m\\cos j\\alpha=\\frac{\\sin\\left(m+\\frac12\\right)\\alpha-\\sin\\frac\\alpha2}{2\\sin\\frac\\alpha2}. \\tag{$*$} \\]\n$m=6n$ では $\\left(6n+\\frac12\\right)\\alpha=2\\pi+\\frac\\alpha2$ なので和は0で，$g_n(6n)=6n>0$．一方 $n\\geqq2$ より $g_n(n)=\\sum_{j=1}^{n-1}f(x_j)<0$．よって最小にする $k$ は $\\boldsymbol{k=n-1,\\ n}$．\n\n(2) $(*)$ で $m=n$，$\\varepsilon=\\frac\\alpha2=\\frac{\\pi}{6n}$ とすると $\\left(n+\\frac12\\right)\\alpha=\\frac\\pi3+\\varepsilon$ で\n\\[ G_n=g_n(n)=n-2\\sum_{j=1}^n\\cos j\\alpha=n+1-\\frac{\\sin\\left(\\frac\\pi3+\\varepsilon\\right)}{\\sin\\varepsilon}=n+1-\\frac{\\frac{\\sqrt3}2\\cos\\varepsilon+\\frac12\\sin\\varepsilon}{\\sin\\varepsilon}. \\]\nよって $\\boldsymbol{G_n=n+\\dfrac12-\\dfrac{\\sqrt3}2\\cdot\\dfrac{\\cos\\frac\\pi{6n}}{\\sin\\frac\\pi{6n}}}$．\n\n(3) $\\left(1-\\frac{3\\sqrt3}\\pi\\right)n=n-\\frac{\\sqrt3}2\\cdot\\frac1\\varepsilon$ だから\n\\[ G_n-\\left(1-\\frac{3\\sqrt3}\\pi\\right)n=\\frac12+\\frac{\\sqrt3}2\\left(\\frac1\\varepsilon-\\frac{\\cos\\varepsilon}{\\sin\\varepsilon}\\right)=\\frac12+\\frac{\\sqrt3}2\\cdot\\frac{\\sin\\varepsilon-\\varepsilon\\cos\\varepsilon}{\\varepsilon\\sin\\varepsilon}. \\]\n$k(\\varepsilon)=\\sin\\varepsilon-\\varepsilon\\cos\\varepsilon$ は $k(0)=0$，$k'(\\varepsilon)=\\varepsilon\\sin\\varepsilon$ で $0\\leqq k'(\\varepsilon)\\leqq\\varepsilon^2$（$0\\leqq\\varepsilon\\leqq\\frac\\pi2$）．よって $0\\leqq k(\\varepsilon)\\leqq\\frac{\\varepsilon^3}3$．また $0<\\varepsilon<\\frac\\pi2$ で $\\tan\\varepsilon>\\varepsilon$ より $\\sin\\varepsilon>\\varepsilon\\cos\\varepsilon$，よって\n\\[ 0\\leqq\\frac{\\sin\\varepsilon-\\varepsilon\\cos\\varepsilon}{\\varepsilon\\sin\\varepsilon}\\leqq\\frac{\\varepsilon^3/3}{\\varepsilon^2\\cos\\varepsilon}=\\frac{\\varepsilon}{3\\cos\\varepsilon}\\longrightarrow0\\quad(n\\to\\infty). \\]\nしたがって極限値は $\\boldsymbol{\\dfrac12}$．"
+   }
+  ],
+  "idea": {
+   "tex": "部分和 $g(k)$ は $f$ の値が負の間は減り，正の間は増えるので，最小の候補は符号の変わり目と右端だけ．和を積和で閉じた形にすると，$G_n$ は $n$ に比例する主要部と定数の補正項に分かれ，補正項の極限は $\\frac1\\varepsilon-\\frac{\\cos\\varepsilon}{\\sin\\varepsilon}\\to0$ の評価で求まる．"
+  },
+  "methods": [],
+  "tags": [
+   "三角関数の和",
+   "部分和の最小",
+   "極限",
+   "不等式評価"
+  ],
+  "provenance": {
+   "created": "2026-11-10"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "III-LIM-248",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "III-15",
+  "level": 5,
+  "minutes": 40,
+  "theme": "円に外接する放物線の帽子と面積の精密な極限",
+  "topic": "円に外接する放物線の帽子と面積の精密な極限",
+  "statement": {
+   "tex": "$n$ を3以上の整数とする．O を中心とする半径1の円周を $n$ 等分する点を順に $\\mathrm P_0,\\mathrm P_1,\\dots,\\mathrm P_{n-1}$ とし，$\\mathrm P_n=\\mathrm P_0$ とする．各 $i=1,2,\\dots,n$ に対し，線分 $\\mathrm P_{i-1}\\mathrm P_i$ の中点を $\\mathrm M_i$ とし，対称軸が直線 $\\mathrm{OM}_i$ であって，円の点 $\\mathrm P_{i-1}$，$\\mathrm P_i$ における接線にそれぞれ $\\mathrm P_{i-1}$，$\\mathrm P_i$ で接する放物線を $C_i$ とする．$C_i$ の $\\mathrm P_{i-1}$ から $\\mathrm P_i$ までの弧を $\\gamma_i$ とし，$\\gamma_1,\\gamma_2,\\dots,\\gamma_n$ で囲まれる部分の面積を $S_n$ とする．\n\\begin{enumerate}\n  \\item $x=\\dfrac\\pi n$ とおくとき，$S_n=n\\left(\\sin x\\cos x+\\dfrac{2\\sin^3x}{3\\cos x}\\right)$ であることを示せ．\n  \\item すべての $n\\geqq3$ について $S_n>\\pi$ であることを示せ．\n  \\item 極限値 $\\displaystyle\\lim_{n\\to\\infty}n^4\\left(S_n-\\pi\\right)$ を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 証明　(2) 証明　(3) $\\dfrac{2\\pi^5}{15}$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) 円の中心 O を原点とし，$\\mathrm M_i$ が $y$ 軸の正の部分にくるよう回転して考える．中心角 $\\angle\\mathrm P_{i-1}\\mathrm{OP}_i=2x$ だから $\\mathrm P_{i-1},\\mathrm P_i=(\\mp\\sin x,\\cos x)$．対称軸が $y$ 軸の放物線を $y=\\alpha-\\beta X^2$（$X$ は横座標）とする．円の $(\\sin x,\\cos x)$ における接線の傾きは $-\\frac{\\sin x}{\\cos x}$ だから，接する条件は\n\\[ -2\\beta\\sin x=-\\frac{\\sin x}{\\cos x},\\qquad\\alpha-\\beta\\sin^2x=\\cos x, \\]\nよって $\\beta=\\frac1{2\\cos x}$，$\\alpha=\\cos x+\\frac{\\sin^2x}{2\\cos x}$ と一意に定まり（$(-\\sin x,\\cos x)$ でも対称性から同じ条件），$C_i$ は存在してただ1つ．弦 $y=\\cos x$ との差は $\\frac{\\sin^2x-X^2}{2\\cos x}\\geqq0$ で，弧 $\\gamma_i$ は弦の外側（O と反対側）にある．また $C_i$ は上に凸なので弧は両端の接線の下側にあり，$\\gamma_i$ と弦で囲まれる部分は，弦と2接線でできる三角形の中にある．これらの三角形は $i$ ごとに互いに重ならず，正 $n$ 角形の外側にある．よって囲まれる部分は正 $n$ 角形に $n$ 個の帽子を加えたもので，帽子の面積は\n\\[ \\int_{-\\sin x}^{\\sin x}\\frac{\\sin^2x-X^2}{2\\cos x}dX=\\frac{1}{2\\cos x}\\cdot\\frac43\\sin^3x=\\frac{2\\sin^3x}{3\\cos x}. \\]\n正 $n$ 角形の面積は $n\\cdot\\frac12\\sin2x=n\\sin x\\cos x$．よって $S_n=n\\left(\\sin x\\cos x+\\frac{2\\sin^3x}{3\\cos x}\\right)$．\\hfill$\\square$\n\n(2) $\\sin x\\cos^2x+\\frac23\\sin^3x=\\sin x-\\frac13\\sin^3x$ より，$x=\\frac\\pi n\\in\\left(0,\\frac\\pi3\\right]$ として\n\\[ S_n-\\pi=n\\left(\\sin x\\cos x+\\frac{2\\sin^3x}{3\\cos x}-x\\right)=\\frac{n}{\\cos x}h(x),\\qquad h(x)=\\sin x-\\frac13\\sin^3x-x\\cos x. \\]\n$h(0)=0$，$h'(x)=\\cos x-\\sin^2x\\cos x-\\cos x+x\\sin x=\\sin x\\left(x-\\sin x\\cos x\\right)=\\frac{\\sin x}2(2x-\\sin2x)$．$u>0$ で $\\sin u<u$ だから $0<x\\leqq\\frac\\pi3$ で $h'(x)>0$，よって $h(x)>0$，$S_n>\\pi$．\\hfill$\\square$\n\n(3) $t\\geqq0$ で $\\cos t\\leqq1$ から出発し，$0$ から $t$ まで積分することをくり返すと\n\\[ \\sin t\\leqq t,\\quad\\cos t\\geqq1-\\frac{t^2}2,\\quad\\sin t\\geqq t-\\frac{t^3}6,\\quad\\cos t\\leqq1-\\frac{t^2}2+\\frac{t^4}{24},\\quad\\sin t\\leqq t-\\frac{t^3}6+\\frac{t^5}{120}. \\]\nよって $u\\geqq0$ で $\\frac{u^3}6-\\frac{u^5}{120}\\leqq u-\\sin u\\leqq\\frac{u^3}6$．$u=2t$ として\n\\[ \\frac{2t^3}3-\\frac{2t^5}{15}\\leqq\\frac{2t-\\sin2t}2\\leqq\\frac{2t^3}3 . \\]\n$0\\leqq t\\leqq1$ では左辺 $\\geqq0$，$t-\\frac{t^3}6\\geqq0$ なので\n\\[ \\left(t-\\frac{t^3}6\\right)\\left(\\frac{2t^3}3-\\frac{2t^5}{15}\\right)\\leqq h'(t)\\leqq t\\cdot\\frac{2t^3}3 . \\]\n左辺 $=\\frac23t^4-\\frac{2}{15}t^6-\\frac19t^6+\\frac1{45}t^8\\geqq\\frac23t^4-\\frac{11}{45}t^6$．$0$ から $x$（$0<x\\leqq1$）まで積分して\n\\[ \\frac{2}{15}x^5-\\frac{11}{315}x^7\\leqq h(x)\\leqq\\frac{2}{15}x^5 . \\]\n$n\\geqq4$ で $x=\\frac\\pi n<1$．$n^4(S_n-\\pi)=\\frac{n^5h(x)}{\\cos x}$ で $n^5x^5=\\pi^5$ だから\n\\[ \\frac{\\frac{2}{15}\\pi^5-\\frac{11}{315}\\cdot\\frac{\\pi^7}{n^2}}{\\cos\\frac\\pi n}\\leqq n^4(S_n-\\pi)\\leqq\\frac{\\frac2{15}\\pi^5}{\\cos\\frac\\pi n}. \\]\n$n\\to\\infty$ で両辺とも $\\frac2{15}\\pi^5$ に収束するので，極限値は $\\boldsymbol{\\dfrac{2\\pi^5}{15}}$．"
+   }
+  ],
+  "idea": {
+   "tex": "対称軸を固定すれば，弦の両端で円の接線に接する放物線は1つに決まり，弦との間の面積は「接線2本と弦でできる三角形の $\\frac23$」．多角形に $n$ 個の帽子を足した面積と $\\pi$ の差は $\\frac n{\\cos x}h(x)$，$h'(x)=\\sin x\\left(x-\\sin x\\cos x\\right)>0$ で符号が決まり，$\\sin$ を多項式ではさむ評価で $x^5$ の係数まで確定する．"
+  },
+  "methods": [],
+  "tags": [
+   "放物線",
+   "面積",
+   "不等式評価",
+   "極限"
+  ],
+  "provenance": {
+   "created": "2026-11-10"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "III-LIM-249",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "III-15",
+  "level": 5,
+  "minutes": 40,
+  "theme": "指数曲線の交点と面積の2次の漸近挙動",
+  "topic": "指数曲線の交点と面積の2次の漸近挙動",
+  "statement": {
+   "tex": "$n$ を2以上の整数とし，2曲線 $C_1:\\ y=e^x$，$C_2:\\ y=e^{nx}-1$ を考える．\n\\begin{enumerate}\n  \\item $C_1$ と $C_2$ は $x>0$ の範囲でただ1つの共有点をもつことを示せ．その $x$ 座標を $a_n$ とする．\n  \\item $0\\leqq u\\leqq\\dfrac12$ のとき $u+\\dfrac{u^2}2\\leqq e^u-1\\leqq u+\\dfrac{u^2}2+u^3$ を示せ．\n  \\item 極限 $\\displaystyle\\lim_{n\\to\\infty}n\\left(na_n-\\log2\\right)$ を求めよ．\n  \\item $C_1$，$C_2$ および $y$ 軸で囲まれた部分の面積を $S_n$ とする．極限 $\\displaystyle\\lim_{n\\to\\infty}n\\Bigl\\{nS_n-(2\\log2-1)\\Bigr\\}$ を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 証明　(2) 証明　(3) $\\dfrac{\\log2}2$　(4) $\\dfrac{(\\log2)^2}2$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) $h(x)=e^{nx}-1-e^x$ とおく．$h(0)=-1<0$，$x\\geqq0$ で $h'(x)=e^x\\left(ne^{(n-1)x}-1\\right)>0$，$h(1)=e^n-1-e\\geqq e^2-e-1>0$．よって $h(x)=0$ は $x>0$ にただ1つの解をもち，それは $0<x<1$ にある．\\hfill$\\square$\n\n(2) $\\varphi_1(u)=e^u-1-u-\\dfrac{u^2}2$ は $\\varphi_1(0)=0$，$\\varphi_1'(u)=e^u-1-u$，$\\varphi_1''(u)=e^u-1\\geqq0$ で $\\varphi_1'(0)=0$ より $\\varphi_1'\\geqq0$，よって $\\varphi_1\\geqq0$．\n$\\varphi_2(u)=1+u+\\dfrac{u^2}2+u^3-e^u$ は $\\varphi_2(0)=\\varphi_2'(0)=\\varphi_2''(0)=0$（$\\varphi_2'=1+u+3u^2-e^u$，$\\varphi_2''=1+6u-e^u$）で，$0\\leqq u\\leqq\\dfrac12$ では $\\varphi_2'''=6-e^u>0$．よって順に $\\varphi_2''\\geqq0$，$\\varphi_2'\\geqq0$，$\\varphi_2\\geqq0$．\\hfill$\\square$\n\n(3) $t=na_n$，$u=a_n=\\dfrac tn$ とおくと $e^t=e^u+1$．$e^u>1$ より $e^t>2$，$t>\\log2$．また $u\\leqq\\dfrac t2$ より $e^t\\leqq e^{t/2}+1$ で，$w=e^{t/2}$ とおくと $w^2-w-1\\leqq0$，$w\\leqq\\tau=\\dfrac{1+\\sqrt5}2$．$\\sqrt5<2.24$（$2.24^2=5.0176$）より $\\tau<1.62$，$\\tau^2=\\tau+1<2.62<2.7<e$ だから $w<\\sqrt e$，$t<1$．よって $0<u<\\dfrac1n\\leqq\\dfrac12$．\n\n$\\delta=e^u-1$ とおくと (2) より $u\\leqq\\delta\\leqq u+\\dfrac{u^2}2+u^3\\leqq u+u^2$．$e^t=2+\\delta$ より $t-\\log2=\\log\\left(1+\\dfrac\\delta2\\right)$．\n\nここで $s\\geqq0$ に対し $s-s^2\\leqq\\log(1+s)\\leqq s$．（右は $s-\\log(1+s)$ の導関数 $\\dfrac s{1+s}\\geqq0$ から．左は $\\log(1+s)-\\dfrac s{1+s}$ の導関数 $\\dfrac s{(1+s)^2}\\geqq0$ から $\\log(1+s)\\geqq\\dfrac s{1+s}$，さらに $\\dfrac s{1+s}-(s-s^2)=\\dfrac{s^3}{1+s}\\geqq0$．）よって\n\\[\\frac{n\\delta}2-\\frac{n\\delta^2}4\\leqq n(t-\\log2)\\leqq\\frac{n\\delta}2.\\]\n$t\\leqq n\\delta\\leqq n(u+u^2)=t+\\dfrac{t^2}n$ であり，$0<t-\\log2\\leqq\\dfrac\\delta2\\leqq\\dfrac{u+u^2}2\\to0$ だから $t\\to\\log2$，したがって $n\\delta\\to\\log2$，$n\\delta^2=(n\\delta)\\delta\\to0$．はさみうちにより\n\\[\\lim_{n\\to\\infty}n(na_n-\\log2)=\\boldsymbol{\\frac{\\log2}2}.\\]\n\n(4) $0\\leqq x<a_n$ では $h(x)<0$，すなわち $e^x>e^{nx}-1$ だから\n\\[S_n=\\int_0^{a_n}\\left(e^x+1-e^{nx}\\right)dx=e^{u}-1+u-\\frac{e^{t}-1}n.\\]\n$e^t-1=e^u$，$nu=t$ より $nS_n=n(e^u-1)+t-e^u$．$L=\\log2$ とおくと\n\\[nS_n-(2L-1)=n(e^u-1-u)+2(t-L)-(e^u-1)\\]\nなので\n\\[n\\{nS_n-(2L-1)\\}=n^2(e^u-1-u)+2n(t-L)-n\\delta.\\]\n(2) より $\\dfrac{t^2}2=\\dfrac{n^2u^2}2\\leqq n^2(e^u-1-u)\\leqq\\dfrac{t^2}2+\\dfrac{t^3}n$ で，$t\\to L$ より第1項 $\\to\\dfrac{L^2}2$．(3) より $2n(t-L)\\to L$，$n\\delta\\to L$．よって\n\\[\\lim_{n\\to\\infty}n\\{nS_n-(2\\log2-1)\\}=\\boldsymbol{\\frac{(\\log2)^2}2}.\\]\n\\hfill$\\square$"
+   }
+  ],
+  "idea": {
+   "tex": "交点の $x$ 座標 $a_n$ は $t_n=na_n$ とおくと $e^{t_n}=e^{t_n/n}+1$ をみたし，$t_n\\to\\log2$．面積も $nS_n$ を $t_n$ と $u=\\dfrac{t_n}n$ だけで表す．$u$ が小さいことを使い，$e^u$ を多項式ではさむ不等式で次の項まで取り出す．"
+  },
+  "methods": [],
+  "tags": [
+   "極限",
+   "指数関数の評価",
+   "はさみうち",
+   "面積"
+  ],
+  "provenance": {
+   "created": "2026-11-10"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
  }
 ]

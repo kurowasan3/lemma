@@ -4349,5 +4349,97 @@
    },
    "verified": false
   }
+ },
+ {
+  "id": "A-GEO-094",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "A-06",
+  "level": 4,
+  "minutes": 35,
+  "theme": "接する円が切り出す点と2つの内接円の共通内接線",
+  "topic": "接する円が切り出す点と2つの内接円の共通内接線",
+  "statement": {
+   "tex": "$a$ は正の実数とする．平面上に $\\triangle$OAB があり，辺OAの長さは $a$，辺OBの長さは1，$\\overrightarrow{\\mathrm{OA}}$ と $\\overrightarrow{\\mathrm{OB}}$ の内積は $\\dfrac12$ であるとする．さらに，点Aを通り，直線OBとOで接する円 $C$ が辺ABとA以外の点Dで交わり，DはBとも異なるとする．$\\triangle$OADの内接円を $C_1$，$\\triangle$OBDの内接円を $C_2$ とする．\n\\begin{enumerate}\n  \\item $a$ のとり得る値の範囲を求めよ．また，線分BD，ODの長さを $a$ で表せ．\n  \\item $C_1$ と $C_2$ が共有点をもつための必要十分条件は $a=2$ であることを示せ．\n  \\item $a\\neq2$ とする．このとき $C_1$ と $C_2$ の共通接線のうち，$C_1$ と $C_2$ がその両側に分かれるもの（共通内接線）は2本あり，その1本は直線ODである．もう1本を $\\ell$ とする．$\\ell$ は直線ABとただ1点で交わることを示し，その交点をXとして線分AXの長さを $a$ で表せ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $a>1$，$\\mathrm{BD}=\\dfrac1a$，$\\mathrm{OD}=1$　(2) 証明　(3) 証明，$\\mathrm{AX}=a-\\dfrac12$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) $\\angle\\mathrm{AOB}=\\varphi$ とすると $a\\cos\\varphi=\\dfrac12$．$0<\\varphi<\\pi$ となる $\\varphi$ が存在する条件は $\\dfrac1{2a}<1$，すなわち $a>\\dfrac12$．このとき\n\\[\\mathrm{AB}^2=a^2-2\\cdot\\frac12+1=a^2\\quad\\text{より}\\quad\\mathrm{AB}=a.\\]\n点Bは円 $C$ の接線OB上のO以外の点なので $C$ の外部にある．直線BAは $C$ とAで交わり，もう1つの交点（接する場合はA自身）をD$'$とすると，方べきの定理より $\\mathrm{BA}\\cdot\\mathrm{BD'}=\\mathrm{BO}^2=1$ で，D$'$は半直線BA上にある（BはC の外部にあり，2交点を結ぶ弦は円の内部にあるので，Bはその弦上にない）．よって $\\mathrm{BD'}=\\dfrac1a$．D$'$が辺AB上でA，Bと異なる条件は $0<\\dfrac1a<a$，すなわち $a>1$（これは $a>\\dfrac12$ をみたす）．求める範囲は $\\boldsymbol{a>1}$ で，$\\mathrm{BD}=\\boldsymbol{\\dfrac1a}$．\n\n$\\triangle$BODと$\\triangle$BAOにおいて，$\\angle$Bは共通，$\\dfrac{\\mathrm{BD}}{\\mathrm{BO}}=\\dfrac1a=\\dfrac{\\mathrm{BO}}{\\mathrm{BA}}$ なので $\\triangle\\mathrm{BOD}\\sim\\triangle\\mathrm{BAO}$（相似比 $1:a$）．よって $\\mathrm{OD}=\\dfrac1a\\mathrm{AO}=\\boldsymbol1$．\n\n\\medskip\n\\textbf{接点の位置．}$C_1$ が辺AB，OD に接する点を $\\mathrm E_1$，$\\mathrm K_1$ とする．頂点D，A，Oから $C_1$ への接線の長さを $x,y,z$ とすると $x+y=\\mathrm{DA}$，$x+z=\\mathrm{DO}$，$y+z=\\mathrm{OA}$ なので\n\\[u:=\\mathrm{DE_1}=\\mathrm{DK_1}=\\frac{\\mathrm{DA}+\\mathrm{DO}-\\mathrm{OA}}2=\\frac{\\bigl(a-\\frac1a\\bigr)+1-a}2=\\frac{a-1}{2a}.\\]\n同様に $C_2$ が辺AB，OD に接する点を $\\mathrm E_2$，$\\mathrm K_2$ とすると\n\\[v:=\\mathrm{DE_2}=\\mathrm{DK_2}=\\frac{\\mathrm{DB}+\\mathrm{DO}-\\mathrm{OB}}2=\\frac{\\frac1a+1-1}2=\\frac1{2a}.\\]\n$a>1$ より $u>0$，$v>0$．$\\mathrm E_1$ は線分DA上，$\\mathrm E_2$ は線分DB上，$\\mathrm K_1,\\mathrm K_2$ はともに線分DO上にある．\n\n(2) DはABの内点なので，A，Bは直線ODの反対側にあり，$C_1$（$\\triangle$OADの周および内部に含まれる）と $C_2$（$\\triangle$OBDの周および内部に含まれる）は直線ODの反対側にある．よって共有点があればそれは直線OD上にあり，$C_1$ と直線ODの共有点は $\\mathrm K_1$ のみ，$C_2$ と直線ODの共有点は $\\mathrm K_2$ のみだから，共有点をもつ $\\iff$ $\\mathrm K_1=\\mathrm K_2$ $\\iff$ $u=v$ $\\iff$ $a-1=1$ $\\iff$ $a=2$．\\hfill$\\square$\n\n(3) $a\\neq2$ より $u\\neq v$．$C_1$，$C_2$ の中心を $\\mathrm I_1$，$\\mathrm I_2$，半径を $r_1$，$r_2$ とする．(2) の証明より $C_1$，$C_2$ は直線ODの反対側にあり，$a\\neq2$ では共有点をもたないので，一方が他方の内部にあることはなく，互いに外部にある．よって $\\mathrm{I_1I_2}>r_1+r_2$ で，2円の共通接線は4本，そのうち2円がその両側に分かれるもの（共通内接線）はちょうど2本ある．直線ODは両円に接し，両円がその両側に分かれるので，その1本である．\n\n\\textbf{(ア) 共通内接線上の接点間の距離．}直線 $m$ が $C_1$，$C_2$ にそれぞれ $\\mathrm M_1$，$\\mathrm M_2$ で接し，両円が $m$ の反対側にあるとする．$\\overrightarrow{\\mathrm{I_1M_1}}$，$\\overrightarrow{\\mathrm{M_2I_2}}$ はともに $m$ に垂直で，$\\mathrm I_1$ 側から $\\mathrm I_2$ 側へ向かう同じ向きをもつ．$\\overrightarrow{\\mathrm{I_1I_2}}=\\overrightarrow{\\mathrm{I_1M_1}}+\\overrightarrow{\\mathrm{M_1M_2}}+\\overrightarrow{\\mathrm{M_2I_2}}$ で，第2項は $m$ に平行なので他と垂直．よって\n\\[\\mathrm{I_1I_2}^2=\\mathrm{M_1M_2}^2+(r_1+r_2)^2.\\]\n$m=\\mathrm{OD}$ と $m=\\ell$（接点を $\\mathrm P_1,\\mathrm P_2$ とする）に用いると $\\mathrm{P_1P_2}=\\mathrm{K_1K_2}=|u-v|$．\n\n\\textbf{(イ) $\\ell$ は直線ABと交わる．}$C_1$，$C_2$ はともに直線ABに接し，ABの同じ側（Oの側）にあるので，$\\ell\\neq$ AB．$\\ell\\parallel\\mathrm{AB}$ と仮定すると，直線ABは $\\ell$ のどちらか一方の側（開いた半平面）に含まれる．$C_1$，$C_2$ は $\\ell$ の反対側にあるので，一方は $\\ell$ に関してABと反対側の閉じた半平面に含まれ，ABと共有点をもたない．これはABに接することに反する．よって $\\ell$ と直線ABはただ1点Xで交わる．\n\n\\textbf{(ウ) Xの位置．}直線AB上に，Dを原点としBの向きを正とする座標 $t$ を入れる．$\\mathrm E_1$ は $t=-u$，$\\mathrm E_2$ は $t=v$ にある．Xの座標を $x$ とする．\n\nDは $C_1$ の外部の点で，Dを通る $C_1$ の接線はABとODの2本だけである．$\\ell$ はABともODとも異なるので，$\\ell$ はDを通らず，$x\\neq0$．\n\nXは $C_1$ の2本の接線AB，$\\ell$ の交点なので，接線の長さは等しく $\\mathrm{XP_1}=\\mathrm{XE_1}=|x+u|$．同様に $\\mathrm{XP_2}=\\mathrm{XE_2}=|x-v|$．（Xが接点と一致する場合も両辺0で成り立つ．）X，$\\mathrm P_1$，$\\mathrm P_2$ は $\\ell$ 上にあるので，$\\mathrm{P_1P_2}$ は $\\mathrm{XP_1}+\\mathrm{XP_2}$ か $|\\mathrm{XP_1}-\\mathrm{XP_2}|$ のいずれかに等しい．\n\\begin{itemize}\n  \\item $\\mathrm{XP_1}+\\mathrm{XP_2}=|u-v|$ とすると，$|x+u|+|x-v|\\geqq|(x+u)-(x-v)|=u+v>|u-v|$ に矛盾．\n  \\item $\\bigl||x+u|-|x-v|\\bigr|=|u-v|$ のとき．$x\\geqq v$ なら左辺 $=u+v$，$x\\leqq-u$ なら左辺 $=u+v$ で，いずれも $u+v>|u-v|$ に矛盾．よって $-u<x<v$ で，左辺 $=|2x+u-v|$．$2x+u-v=\\pm(u-v)$ より $x=0$ または $x=v-u$．$x\\neq0$ なので $x=v-u$．\n\\end{itemize}\nしたがってXはDからBの向きに $v-u=\\dfrac{2-a}{2a}$ だけ進んだ点（負ならAの向き）で，\n\\[\\mathrm{AX}=\\mathrm{AD}+(v-u)=\\Bigl(a-\\frac1a\\Bigr)+\\frac1a-\\frac12=\\boldsymbol{a-\\frac12}.\\]\n$0<a-\\dfrac12<a$ よりXは辺AB上にある．なお $a-\\dfrac12=\\dfrac{\\mathrm{OA}+\\mathrm{AB}-\\mathrm{OB}}2$ は，$\\triangle$OABの内接円が辺ABに接する点までのAからの距離であり，Xは $a$ によらずその接点に一致する（$a=2$ のときはDがその接点となり，(2) で $C_1$，$C_2$ が接する）．\\hfill$\\square$"
+   }
+  ],
+  "idea": {
+   "tex": "直線OBにOで接する円と直線BAの交点は方べき $\\mathrm{BD}\\cdot\\mathrm{BA}=\\mathrm{BO}^2$ で決まり，$\\triangle\\mathrm{BOD}\\sim\\triangle\\mathrm{BAO}$．2つの内接円の接点は「接線の長さ $=\\frac12$（隣り合う2辺の和$-$対辺）」で直線上の位置が数値化される．共通内接線の2本は「中心間距離$^2=$（接点間の距離）$^2+(r_1+r_2)^2$」により接点間の距離が等しく，第3の接線（辺AB）上の点からの接線の長さの和・差と照らし合わせると，もう1本の共通内接線と辺ABの交点が1点に決まる．"
+  },
+  "methods": [],
+  "tags": [
+   "方べきの定理",
+   "相似",
+   "接線の長さ",
+   "共通内接線",
+   "内接円"
+  ],
+  "provenance": {
+   "created": "2026-11-10"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "A-GEO-095",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "A-06",
+  "level": 4,
+  "minutes": 40,
+  "theme": "正三角形と正六角形でできた凸多面体と球の共通部分",
+  "topic": "正三角形と正六角形でできた凸多面体と球の共通部分",
+  "statement": {
+   "tex": "次の条件 (a)，(b) をみたす凸多面体を考える．\n\\begin{itemize}\n  \\item[(a)] 各面は1辺の長さ1の正三角形，または1辺の長さ1の正六角形である．\n  \\item[(b)] 正三角形の面どうしは辺を共有しない．\n\\end{itemize}\nただし，凸多面体について次のことは用いてよい．\n各頂点には3つ以上の面が集まり，その頂点のまわりの面を順にたどると隣り合う2面はその頂点を端点とする辺を共有する．\n各頂点に集まる面の，その頂点における内角の和は $360^\\circ$ 未満である．\n頂点・辺・面の数をそれぞれ $v$，$e$，$f$ とすると $v-e+f=2$ である．\n\\begin{enumerate}\n  \\item 各頂点には，正三角形がちょうど1つ，正六角形がちょうど2つ集まることを証明せよ．\n  \\item この多面体の頂点と辺の数，および正三角形と正六角形の面の数をそれぞれ求めよ．\n  \\item 1辺の長さ3の正四面体を4つの平面で切断すると，条件 (a)，(b) をみたす凸多面体が得られる．どのように切断すればよいか説明し，得られた立体が (a)，(b) をみたすことを示せ．\n  \\item (3) の切断で得られる凸多面体を $F$ とし，もとの正四面体の外接球の中心を O とする．O を中心とし，$F$ のすべての正三角形の面を含む平面に接する球を $B$ とする．$B$ と $F$ の共通部分の体積を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 証明　(2) 頂点 $12$，辺 $18$，正三角形 $4$，正六角形 $4$　(3) 各頂点から出る3辺上の，頂点から距離1の3点を通る平面で4つの頂点を切り落とす（(a)(b)の確認は証明）　(4) $\\dfrac{73\\sqrt6}{216}\\pi$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) 頂点 V に集まる面の数を $k$（$\\geqq3$），そのうち正三角形を $m$ 個，正六角形を $h$ 個とする（$m+h=k$）．V のまわりで隣り合う2面は辺を共有するから，(b) より正三角形どうしは隣り合わない．\n\n$m=0$ なら内角の和は $120^\\circ\\times k\\geqq360^\\circ$ となり不適．よって $m\\geqq1$．V のまわりの $k$ 個の面を順に円形に並べると，各正三角形の直後（同じ向きにたどった次）の面は正六角形で，異なる正三角形の直後の面は異なるから $h\\geqq m$．内角の和は $60m+120h$ で，$h\\geqq m\\geqq1$，$m+h\\geqq3$ のもとで\n\\begin{itemize}\n  \\item $(m,h)=(1,2)$：$300^\\circ<360^\\circ$ で可．\n  \\item $m=1$，$h\\geqq3$：$60+360>360$ で不可．\n  \\item $m\\geqq2$：$h\\geqq2$ なので $60m+120h\\geqq120+240=360$ で不可．\n\\end{itemize}\nよって各頂点には正三角形1つ，正六角形2つが集まる．\\hfill$\\square$\n\n(2) 正三角形の面の数を $t$，正六角形の面の数を $s$ とする．(1) より各頂点はちょうど1つの正三角形に含まれるので，「正三角形の頂点」を数えて $3t=v$．各頂点はちょうど2つの正六角形に含まれるので $6s=2v$．各頂点には面が3つ，したがって辺が3本集まり，各辺は2頂点を結ぶので $2e=3v$．$v-e+f=2$ に代入して\n\\[\nv-\\frac{3v}2+\\frac v3+\\frac v3=\\frac v6=2.\n\\]\nよって $\\boldsymbol{v=12}$，$\\boldsymbol{e=18}$，正三角形 $\\boldsymbol{t=4}$，正六角形 $\\boldsymbol{s=4}$．\n\n(3) 正四面体の各頂点 V について，V から出る3辺上で V からの距離が1の3点を通る平面で切り，V を含む側の小さい部分を取り除く（4頂点すべてで行う）．\n\n辺の長さは3なので，1本の辺の上の2つの切断点（両端からの距離1）は異なり，その間に長さ1の部分が残る．よって取り除く4つの部分は互いに重ならない．V で切り取られる部分は，V から出る3辺上で V から距離1の点を頂点とする1辺1の正四面体で，その切り口は1辺1の正三角形である．もとの各面（1辺3の正三角形）からは3つの角の1辺1の正三角形が除かれ，残りは各辺の長さが1（$3-1-1$）で内角がすべて $180^\\circ-60^\\circ=120^\\circ$ の六角形，すなわち1辺1の正六角形になる．得られた立体は8つの半空間の共通部分なので凸であり，面は正三角形4つと正六角形4つで (a) をみたす．異なる頂点で作られた切り口の正三角形は，頂点がすべて互いに異なる点（各辺の異なる切断点）なので，辺を共有しない．よって (b) もみたす．\\hfill$\\square$\n\n(4) $k=\\dfrac{3\\sqrt2}4$ とし，座標空間に正四面体の頂点を\n\\[\n\\mathrm V_1(k,k,k),\\ \\mathrm V_2(k,-k,-k),\\ \\mathrm V_3(-k,k,-k),\\ \\mathrm V_4(-k,-k,k)\n\\]\nととる．各辺の長さは $2\\sqrt2k=3$ で，各頂点の原点からの距離は等しく $\\sqrt3k$ だから，O は原点．$\\vec\\varepsilon_1=(1,1,1)$，$\\vec\\varepsilon_2=(1,-1,-1)$，$\\vec\\varepsilon_3=(-1,1,-1)$，$\\vec\\varepsilon_4=(-1,-1,1)$ とおくと $\\mathrm V_i$ の位置ベクトルは $k\\vec\\varepsilon_i$ である．\n\n$\\mathrm V_1$ の対面は $\\mathrm V_2,\\mathrm V_3,\\mathrm V_4$ を通る平面 $x+y+z=-k$ で，O は $x+y+z>-k$ の側にある．同様に考えて，正四面体は $\\vec\\varepsilon_i\\cdot\\vec x\\geqq-k$（$i=1,2,3,4$）で表される．$\\mathrm V_1$ での切断点は，たとえば $\\mathrm V_1+\\frac13(\\mathrm V_2-\\mathrm V_1)=\\left(k,\\frac k3,\\frac k3\\right)$ で，3点とも平面 $x+y+z=\\frac{5k}3$ 上にある．したがって\n\\[\nF=\\left\\{\\vec x\\;\\middle|\\;-k\\leqq\\vec\\varepsilon_i\\cdot\\vec x\\leqq\\frac{5k}3\\ (i=1,2,3,4)\\right\\}.\n\\]\nO と正三角形の面を含む平面 $\\vec\\varepsilon_i\\cdot\\vec x=\\frac{5k}3$ との距離は $\\dfrac{5k}{3\\sqrt3}$，正六角形の面を含む平面 $\\vec\\varepsilon_i\\cdot\\vec x=-k$ との距離は $\\dfrac k{\\sqrt3}$ である．$k=\\dfrac{3\\sqrt2}4$ を代入すると\n\\[\nr=\\frac{5k}{3\\sqrt3}=\\frac{5\\sqrt6}{12},\\qquad \\delta=\\frac k{\\sqrt3}=\\frac{\\sqrt6}4\n\\]\nで，$B$ は O 中心，半径 $r$ の球．\n\n$B$ 内の点 $\\vec x$ では $|\\vec x|\\leqq r$ なので，$\\vec\\varepsilon_i\\cdot\\vec x\\leqq|\\vec\\varepsilon_i||\\vec x|\\leqq\\sqrt3r=\\frac{5k}3$．よって $B$ は4つの不等式 $\\vec\\varepsilon_i\\cdot\\vec x\\leqq\\frac{5k}3$ をすべてみたし，\n\\[\nB\\cap F=B\\setminus(D_1\\cup D_2\\cup D_3\\cup D_4),\\qquad D_i=\\{\\vec x\\in B\\mid\\vec\\varepsilon_i\\cdot\\vec x<-k\\}.\n\\]\n$D_i$ と $D_j$（$i\\neq j$）は交わらない．実際，$\\vec\\varepsilon_i+\\vec\\varepsilon_j$ は成分の1つが $\\pm2$，他が0のベクトル（たとえば $\\vec\\varepsilon_1+\\vec\\varepsilon_2=(2,0,0)$）なので，共通の点 $\\vec x$ があれば $(\\vec\\varepsilon_i+\\vec\\varepsilon_j)\\cdot\\vec x<-2k$ から，ある座標について $|x_l|>k$．一方 $|x_l|\\leqq|\\vec x|\\leqq r=\\frac{5k}{3\\sqrt3}<k$（$25<27$ より $5<3\\sqrt3$）で矛盾．\n\n$D_i$ は，球 $B$ を中心からの距離 $\\delta$ の平面で切った小さい方の部分（球欠）である．その平面に垂直に O を通る軸をとり，O からの符号付き距離 $u$（$\\delta\\leqq u\\leqq r$）の平面で切った断面は半径 $\\sqrt{r^2-u^2}$ の円だから，\n\\[\n|D_i|=\\int_\\delta^r\\pi(r^2-u^2)\\,du=\\pi\\left(\\frac23r^3-r^2\\delta+\\frac{\\delta^3}3\\right).\n\\]\n$\\tau=\\dfrac{\\sqrt6}{12}$ とおくと $r=5\\tau$，$\\delta=3\\tau$，$\\tau^3=\\dfrac{6\\sqrt6}{1728}=\\dfrac{\\sqrt6}{288}$ で，\n\\[\n|D_i|=\\pi\\tau^3\\left(\\frac{250}3-75+9\\right)=\\frac{52}3\\pi\\tau^3,\\qquad |B|=\\frac43\\pi(5\\tau)^3=\\frac{500}3\\pi\\tau^3.\n\\]\nよって\n\\[\n|B\\cap F|=\\frac{500-4\\cdot52}3\\pi\\tau^3=\\frac{292}3\\cdot\\frac{\\sqrt6}{288}\\pi=\\boldsymbol{\\frac{73\\sqrt6}{216}\\pi}.\n\\]"
+   }
+  ],
+  "idea": {
+   "tex": "頂点のまわりで隣り合う面は辺を共有するので，「正三角形どうしは辺を共有しない」は「頂点のまわりで正三角形が連続しない」ことになり，正六角形の個数 $\\geqq$ 正三角形の個数．角の和 $<360^\\circ$ と合わせると頂点の型は（三角形1，六角形2）に限られ，$120^\\circ$ が2つ並ぶ型は平らになって除外される．面の数は「頂点ごとに数えて重複で割る」二重数え上げとオイラーの定理．体積は座標をとると面が $\\vec\\varepsilon\\cdot\\vec x=$ 定数（$\\vec\\varepsilon$ は成分が $\\pm1$）の8平面で表され，球がはみ出す4つの球欠が互いに交わらないことを内積の和で示してから引く．"
+  },
+  "methods": [],
+  "tags": [
+   "半正多面体",
+   "頂点のまわりの角の和",
+   "オイラーの多面体定理",
+   "切頂四面体",
+   "球欠の体積"
+  ],
+  "provenance": {
+   "created": "2026-11-10"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
  }
 ]

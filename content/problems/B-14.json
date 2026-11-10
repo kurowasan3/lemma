@@ -1730,5 +1730,50 @@
    },
    "verified": false
   }
+ },
+ {
+  "id": "B-STA-037",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "B-14",
+  "level": 4,
+  "minutes": 30,
+  "theme": "3個のさいころで作る3次式の係数の期待値",
+  "topic": "3個のさいころで作る3次式の係数の期待値",
+  "statement": {
+   "tex": "1から6までの目が等確率で出るさいころを3回投げ，出た目を順に $\\alpha,\\beta,\\gamma$ とする．\n\\[f(x)=(x-\\alpha)(x-\\beta)(x-\\gamma)=x^3+px^2+qx+r\\]\nとおき，$f(x)^2=x^6+c_5x^5+c_4x^4+c_3x^3+c_2x^2+c_1x+c_0$ と展開する．\n\\begin{enumerate}\n  \\item $p,q,r$ の期待値を求めよ．\n  \\item $c_3$ と $c_0$ の期待値を求めよ．また，実数 $x$ を固定するごとに $f(x)^2$ の期待値を考える．これを最小にする $x$ と，その最小値を求めよ．\n  \\item さらにさいころをもう1回投げ，出た目を $\\delta$ とする．$f(\\delta)$ の期待値と $f(\\delta)^2$ の期待値を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $E(p)=-\\dfrac{21}2$，$E(q)=\\dfrac{147}4$，$E(r)=-\\dfrac{343}8$　(2) $E(c_3)=-980$，$E(c_0)=\\dfrac{753571}{216}$；$x=\\dfrac72$ で最小値 $\\dfrac{42875}{1728}$　(3) $E(f(\\delta))=0$，$E(f(\\delta)^2)=\\dfrac{67675}{216}$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "$E(\\alpha)=\\dfrac72$，$E(\\alpha^2)=\\dfrac{91}6$（$\\beta,\\gamma,\\delta$ も同じ）．$\\alpha,\\beta,\\gamma,\\delta$ は独立なので，それらの関数の積の期待値は期待値の積である．\n\n(1) $p=-(\\alpha+\\beta+\\gamma)$，$q=\\alpha\\beta+\\beta\\gamma+\\gamma\\alpha$，$r=-\\alpha\\beta\\gamma$ より\n\\[E(p)=\\boldsymbol{-\\frac{21}2},\\qquad E(q)=3\\left(\\frac72\\right)^2=\\boldsymbol{\\frac{147}4},\\qquad E(r)=-\\left(\\frac72\\right)^3=\\boldsymbol{-\\frac{343}8}.\\]\n\n(2) 実数 $x$ を固定すると，独立性より\n\\[E\\bigl(f(x)^2\\bigr)=E\\bigl((x-\\alpha)^2\\bigr)E\\bigl((x-\\beta)^2\\bigr)E\\bigl((x-\\gamma)^2\\bigr)=\\left(x^2-7x+\\frac{91}6\\right)^3.\\]\n一方 $E\\bigl(f(x)^2\\bigr)=\\displaystyle\\sum_kE(c_k)x^k$（$c_6=1$）．これがすべての実数 $x$ で成り立つので，両辺の係数は一致する．$(x^2+Bx+C)^3$（$B=-7$，$C=\\frac{91}6$）の $x^3$ の係数は $6BC+B^3=-637-343=-980$，定数項は $C^3$．よって\n\\[E(c_3)=\\boldsymbol{-980},\\qquad E(c_0)=\\left(\\frac{91}6\\right)^3=\\boldsymbol{\\frac{753571}{216}}.\\]\nまた $x^2-7x+\\dfrac{91}6=\\left(x-\\dfrac72\\right)^2+\\dfrac{35}{12}\\geqq\\dfrac{35}{12}$ より，$E\\bigl(f(x)^2\\bigr)$ は $\\boldsymbol{x=\\dfrac72}$ で最小値 $\\left(\\dfrac{35}{12}\\right)^3=\\boldsymbol{\\dfrac{42875}{1728}}$ をとる．\n\n(3) $\\delta$ は $\\alpha,\\beta,\\gamma$ と独立なので，$\\delta=d$ で場合分けして\n\\[E\\bigl(f(\\delta)\\bigr)=\\frac16\\sum_{d=1}^6E\\bigl(f(d)\\bigr)=\\frac16\\sum_{d=1}^6\\left(d-\\frac72\\right)^3=\\boldsymbol0\\]\n（$d$ と $7-d$ の項が打ち消し合う）．同様に\n\\[E\\bigl(f(\\delta)^2\\bigr)=\\frac16\\sum_{d=1}^6\\left\\{\\left(d-\\frac72\\right)^2+\\frac{35}{12}\\right\\}^3.\\]\n$\\left(d-\\frac72\\right)^2$ は $\\frac{25}4,\\frac94,\\frac14$ を2回ずつとり，$\\frac{35}{12}$ を足すと $\\frac{55}6,\\frac{31}6,\\frac{19}6$．よって\n\\[E\\bigl(f(\\delta)^2\\bigr)=\\frac13\\cdot\\frac{55^3+31^3+19^3}{216}=\\frac{166375+29791+6859}{648}=\\boldsymbol{\\frac{67675}{216}}.\\]\n\\hfill$\\square$"
+   }
+  ],
+  "idea": {
+   "tex": "独立な確率変数の積の期待値は期待値の積．係数を目の対称式で表して1つずつ期待値をとる．$x$ を固定すれば $E\\bigl(f(x)^2\\bigr)=E\\bigl((x-\\alpha)^2\\bigr)E\\bigl((x-\\beta)^2\\bigr)E\\bigl((x-\\gamma)^2\\bigr)$ と因数分解でき，係数の期待値は展開して読み取れる．"
+  },
+  "methods": [],
+  "tags": [
+   "期待値",
+   "独立",
+   "対称式",
+   "2乗の期待値"
+  ],
+  "provenance": {
+   "created": "2026-11-10"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
  }
 ]

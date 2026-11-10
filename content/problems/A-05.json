@@ -16242,5 +16242,598 @@
    },
    "verified": false
   }
+ },
+ {
+  "id": "A-COM-348",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "A-05",
+  "level": 5,
+  "minutes": 40,
+  "theme": "6で割った余りの倍数の集合と和の集合",
+  "topic": "6で割った余りの倍数の集合と和の集合",
+  "statement": {
+   "tex": "0以上の整数 $m$ に対し，$m$ を6で割った余りを $r(m)$ と表す．自然数 $k,l$ に対し，$xy$ 平面上の点\n\\[\\bigl(r(k),r(l)\\bigr),\\ \\bigl(r(2k),r(2l)\\bigr),\\ \\bigl(r(3k),r(3l)\\bigr),\\ \\bigl(r(4k),r(4l)\\bigr),\\ \\bigl(r(5k),r(5l)\\bigr),\\ \\bigl(r(6k),r(6l)\\bigr)\\]\nを要素とする集合を $A(k,l)$ とする．\n\\begin{enumerate}\n  \\item 大小2つのさいころを投げ，大きいさいころの目を $k$，小さいさいころの目を $l$ とする．36通りの目の出方に対する集合 $A(k,l)$ のうち，互いに異なるものは何個あるか．\n  \\item 自然数 $k_1,l_1,k_2,l_2$ に対し，集合\n  \\[B=\\bigl\\{\\bigl(r(x_1+x_2),\\,r(y_1+y_2)\\bigr)\\ \\big|\\ (x_1,y_1)\\in A(k_1,l_1),\\ (x_2,y_2)\\in A(k_2,l_2)\\bigr\\}\\]\n  を考える．$B$ の要素の個数が36であるための必要十分条件は，$k_1l_2-k_2l_1$ が2でも3でも割り切れないことであることを証明せよ．\n  \\item 大小2つのさいころを投げて出た目を $k_1,l_1$ とし，もう一度投げて出た目を $k_2,l_2$ とする．(2) の $B$ の要素の個数が36となる確率を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $20$ 個　(2) 証明　(3) $\\dfrac29$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "\\textbf{準備．}$r$ は6で割った余りなので，$A(k,l)$ は $k,l$ を6で割った余りだけで決まる．以下，$0\\leqq k,l\\leqq5$ の整数の組 $g=(k,l)$ を考え，整数 $j$ に対して $jg=\\bigl(r'(jk),r'(jl)\\bigr)$（$r'$ は6で割った余り，負の数にも適用）と書き，$O=(0,0)$ とする．さいころの目 $1,2,\\dots,6$ の6で割った余りは $1,2,3,4,5,0$ でちょうど1回ずつ現れるので，さいころの目の組 $(k,l)$ の36通りは組 $g$ の36通りと1対1に対応する．\n\n$jg=O$ となる最小の正の整数 $j$ を $m(g)$ とする（$6g=O$ だから $m(g)\\leqq6$）．\n\\begin{itemize}\n  \\item 整数 $j$ を $j=pm+s$（$0\\leqq s<m$，$m=m(g)$）と表すと $jg=sg$．特に $jg=O\\iff$「$j$ は $m$ の倍数」．$6g=O$ より6は $m$ で割り切れる．すなわち $m\\in\\{1,2,3,6\\}$．\n  \\item $g,2g,\\dots,mg$ はすべて異なる（$ig=i'g$，$1\\leqq i<i'\\leqq m$ なら $(i'-i)g=O$ で最小性に反する）．よって $A(g)=\\{g,2g,\\dots,mg\\}$，要素の個数は $m(g)$．\n  \\item $h\\in A(g)$，$h=cg$ ならば $jh=(jc)g\\in A(g)$ だから $A(h)\\subset A(g)$．したがって $A(h)=A(g)\\iff h\\in A(g)$ かつ $m(h)=m(g)$（$h\\in A(h)$ に注意）．\n\\end{itemize}\n\n\\textbf{(1)}\n$m(g)$ ごとに $g$ の個数を数える．「2は $m(g)$ で割り切れる」$\\iff2g=O\\iff k,l\\in\\{0,3\\}$ で4個，そのうち $m=1$ は $O$ のみなので $m=2$ は3個．「3は $m(g)$ で割り切れる」$\\iff3g=O\\iff k,l\\in\\{0,2,4\\}$ で9個，$m=3$ は8個．残り $36-1-3-8=24$ 個が $m=6$．\n\n1つの集合 $A(g)$（$m=m(g)$）を与える組は，$A(g)$ の要素 $h=jg$（$1\\leqq j\\leqq m$）のうち $m(h)=m$ となるものである．\n$m=6$ のとき：$j=2,4$ なら $3(jg)=O$，$j=3$ なら $2(jg)=O$，$j=6$ なら $jg=O$ で $m(h)<6$．$j=5$ なら $i(5g)=O\\iff$「$5i$ は6の倍数」$\\iff$「$i$ は6の倍数」 で $m(h)=6$．$j=1$ も同様．よって2個．\n$m=3$ のとき：$j=1,2$ で $i(2g)=O\\iff$「$2i$ は3の倍数」$\\iff$「$i$ は3の倍数」 だから $m(h)=3$，$j=3$ は $O$．よって2個．$m=2,1$ のときは $g$ 自身の1個．\nしたがって異なる集合の個数は\n\\[1+\\frac31+\\frac82+\\frac{24}2=\\boldsymbol{20}\\ \\text{個}．\\]\n\n\\textbf{(2)}\n$g_1=(k_1,l_1)$，$g_2=(k_2,l_2)$，$D=k_1l_2-k_2l_1$ とする．$A(g)=\\{jg\\mid0\\leqq j\\leqq5\\}$（$6g=O$）だから\n\\[B=\\bigl\\{\\bigl(r'(jk_1+j'k_2),\\,r'(jl_1+j'l_2)\\bigr)\\ \\big|\\ 0\\leqq j,j'\\leqq5\\bigr\\}\\]\nで，$B$ の要素は $0\\leqq X,Y\\leqq5$ の組 $(X,Y)$ なので $n(B)\\leqq36$ であり，$n(B)=36$ は「すべての $(X,Y)$ が $B$ に属する」ことと同値．\n\n$D$ が2でも3でも割り切れないとき，$D$ を6で割った余りは1か5で，$D'=D$ とおけば $DD'=D^2$ を6で割った余りは1（$1^2=1$，$5^2=25$）．任意の $(X,Y)$ に対し $j,j'$ をそれぞれ $D'(Xl_2-Yk_2)$，$D'(Yk_1-Xl_1)$ を6で割った余りとすると，6を法として\n\\[jk_1+j'k_2\\equiv D'(Xl_2k_1-Yk_2k_1+Yk_1k_2-Xl_1k_2)=D'DX\\equiv X,\\]\n\\[jl_1+j'l_2\\equiv D'(Xl_2l_1-Yk_2l_1+Yk_1l_2-Xl_1l_2)=D'DY\\equiv Y\\]\nとなり，$(X,Y)\\in B$．よって $n(B)=36$．\n\n逆に $D$ が素数 $p$（$p=2$ または $3$）で割り切れ，かつ $n(B)=36$ と仮定する．$B$ の任意の要素 $(X,Y)$ について，$X\\equiv jk_1+j'k_2$，$Y\\equiv jl_1+j'l_2\\pmod 6$ より $p$ を法として\n\\[Xl_2-Yk_2\\equiv jD\\equiv0,\\qquad Yk_1-Xl_1\\equiv j'D\\equiv0．\\]\n$(X,Y)=(1,0)$ を代入して $l_2\\equiv0$，$l_1\\equiv0$，$(X,Y)=(0,1)$ を代入して $k_2\\equiv0$，$k_1\\equiv0\\pmod p$．すると $B$ のすべての要素で $X\\equiv jk_1+j'k_2\\equiv0\\pmod p$ となり，$(1,0)\\in B$ に矛盾する．\\hfill$\\square$\n\n\\textbf{(3)}\n$(k_1,l_1,k_2,l_2)$ の $6^4=1296$ 通りは同様に確からしく，6で割った余りの4つ組 $0\\leqq k_1,l_1,k_2,l_2\\leqq5$ と1対1に対応する．(2) より $D$ が2でも3でも割り切れない4つ組の個数を数えればよい．\n\n\\textbf{2と3への分解．}$0\\leqq x\\leqq5$ の整数 $x$ に，$x$ を2で割った余りと3で割った余りの組を対応させると，2つの $x$ が同じ組を与えれば差が2でも3でも割り切れて6で割り切れ，$x$ は一致する．組は $2\\times3=6$ 通りなので，この対応は1対1である．したがって余りの4つ組は「2で割った余りの4つ組」と「3で割った余りの4つ組」の対と1対1に対応し，$D$ を2で割った余りは前者，3で割った余りは後者だけで決まる．よって求める個数は $N_2\\times N_3$，ただし $N_p$ は $0\\leqq k_1,l_1,k_2,l_2\\leqq p-1$ で $D\\not\\equiv0\\pmod p$ となる個数．\n\n\\textbf{$N_p$ の計算（$p=2,3$）．}$(k_1,l_1)=(0,0)$ なら $D\\equiv0$．$(k_1,l_1)\\neq(0,0)$ のとき，$(k_2,l_2)\\equiv c(k_1,l_1)$（$0\\leqq c\\leqq p-1$）ならば $D\\equiv c(k_1l_1-k_1l_1)=0$．逆に $D\\equiv0$ とし，たとえば $k_1\\not\\equiv0$ とする（$l_1\\not\\equiv0$ でも同様）．$c$ が $0,\\dots,p-1$ を動くとき $ck_1$ の余りはすべて異なる（$ck_1\\equiv c'k_1$ なら $(c-c')k_1$ は $p$ で割り切れ，$p$ は素数で $k_1$ は $p$ で割り切れないから $c-c'$ は $p$ で割り切れる）ので，$ck_1\\equiv k_2$ となる $c$ がある．このとき $k_1l_2\\equiv k_2l_1\\equiv ck_1l_1$ より $k_1(l_2-cl_1)$ は $p$ で割り切れ，よって $l_2\\equiv cl_1$．また $c(k_1,l_1)$ の $p$ 個は互いに異なる．ゆえに $D\\equiv0$ となる $(k_2,l_2)$ はちょうど $p$ 個で，\n\\[N_p=(p^2-1)(p^2-p),\\qquad N_2=3\\cdot2=6,\\quad N_3=8\\cdot6=48．\\]\n求める確率は\n\\[\\frac{6\\times48}{1296}=\\frac{288}{1296}=\\boldsymbol{\\frac29}．\\]\n\\hfill$\\square$"
+   }
+  ],
+  "idea": {
+   "tex": "$A(k,l)$ は $(k,l)$ の倍数を6で割った余りの組全体で，その要素の個数は「何倍して初めて $(0,0)$ になるか」という最小の倍数 $m$ に等しい．同じ集合を与える $(k,l)$ は集合の中で個数がちょうど $m$ となる要素であり，これを数えれば異なる集合の個数が出る．2つの集合の和の集合が全体になる条件は $k_1l_2-k_2l_1$ が6と互いに素であることで，その数え上げは余りを「2で割った余り」と「3で割った余り」の組に分けて行う．"
+  },
+  "methods": [],
+  "tags": [
+   "余り",
+   "倍数の集合",
+   "位数",
+   "場合の数",
+   "2と3への分解",
+   "確率"
+  ],
+  "provenance": {
+   "created": "2026-11-10"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "A-COM-349",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "A-05",
+  "level": 4,
+  "minutes": 30,
+  "theme": "正八面体の頂点に置いたカードと3の倍数になる面",
+  "topic": "正八面体の頂点に置いたカードと3の倍数になる面",
+  "statement": {
+   "tex": "1 から 9 までの番号が書かれたカードが1枚ずつ全部で 9 枚ある．この中から無作為に1枚ずつ6枚を取り出し，正八面体の6個の頂点に，取り出した順に決められた頂点へ1枚ずつ割り当てる．正八面体の8個の面のうち，面の3頂点に割り当てたカードの番号の和が3の倍数になる面の個数を $N$ とする．\n\\begin{enumerate}\n  \\item $N=8$ となる確率を求めよ．\n  \\item $N$ のとりうる値をすべて求めよ．\n  \\item $N=3$ となる確率を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $\\dfrac{3}{140}$　(2) $N=0,\\ 2,\\ 3,\\ 4,\\ 8$　(3) $\\dfrac{9}{35}$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "\\textbf{面の構造．} 正八面体の頂点を $\\pm\\vec e_1,\\ \\pm\\vec e_2,\\ \\pm\\vec e_3$（座標軸上の単位点）に置くと，8個の面は $\\{s_1\\vec e_1,\\ s_2\\vec e_2,\\ s_3\\vec e_3\\}$（$s_i=\\pm1$）である．すなわち，向かい合う頂点の組が3つあり，各面はそれぞれの組から1頂点ずつ選んだ3頂点からなる．面と選び方は1対1に対応する．\n\n番号を3で割った余りで考える．余り $0,1,2$ のカードはそれぞれ $\\{3,6,9\\},\\{1,4,7\\},\\{2,5,8\\}$ の3枚ずつである．第 $i$ 組の2頂点の余りが等しいとき，その組を「同型」，異なるとき「異型」とよぶ．異型の組 $i$ については，その2頂点の余りに現れない余りが1つあるので，それを $m_i$ とする．異型の組の個数を $D$ とする．\n\n\\textbf{(2)} $D$ で場合を分ける．\n\\begin{itemize}\n  \\item $D=0$：各組の余り $r_1,r_2,r_3$ はそれぞれ2回ずつ使われる．同じ余りのカードは3枚しかないので $r_1,r_2,r_3$ は相異なり，$\\{r_1,r_2,r_3\\}=\\{0,1,2\\}$．どの面の和も $r_1+r_2+r_3\\equiv0$ なので $N=8$．\n  \\item $D=1$：組1，2が同型（余り $r_1,r_2$），組3が異型とする．面の和は $r_1+r_2+x_3$（$x_3$ は組3から選んだ頂点の余り）．組3の2頂点の余りは異なるので，$x_3\\equiv-(r_1+r_2)$ となる頂点は高々1つ．その頂点を含む面は $2\\times2=4$ 個なので $N=0$ または $4$．\n  \\item $D=2$：組1が同型（余り $r_1$），組2，3が異型とする．$N=2\\times M$，$M$ は組2，3から1頂点ずつ選ぶ選び方のうち余りの和が $-r_1$ と合同になるものの数．組2の各頂点に対して条件をみたす組3の頂点は高々1つなので $M\\leqq2$．また，組2の2頂点に対して必要な余り $-r_1-x_2$ は相異なる2つの余りであり，組3の2頂点の余りも相異なる2つの余りである．3つの余りのうちの2つずつなので共通の余りがあり，$M\\geqq1$．よって $N=2$ または $4$．\n  \\item $D=3$：各組の2頂点の余りは $m_i$ 以外の2つなので，面は「$x_i\\neq m_i$ をみたす余りの組 $(x_1,x_2,x_3)$」と1対1に対応する．$x_1+x_2+x_3\\equiv0$ の解 $(x_1,x_2,x_3)\\in\\{0,1,2\\}^3$ は $x_1,x_2$ を自由に選んで $x_3$ が決まるので9個．$x_i=m_i$ となる解は各 $i$ について3個，$x_i=m_i,\\ x_j=m_j$ となる解は各組で1個，$x_1=m_1,\\ x_2=m_2,\\ x_3=m_3$ となる解は $m_1+m_2+m_3\\equiv0$ のときだけ1個．包除原理より\n  \\[\n  N=9-3\\cdot3+3\\cdot1-\\delta=3-\\delta,\\qquad \\delta=\\begin{cases}1&(m_1+m_2+m_3\\equiv0)\\\\0&(\\text{それ以外})\\end{cases}\n  \\]\n  となり，$N=2$ または $3$．\n\\end{itemize}\nよって $N\\in\\{0,2,3,4,8\\}$．各値は次の余りの配置で実現する（組ごとに2頂点の余りを並べる．各余りの使用回数は3以下）：\n$N=8$：$(0,0),(1,1),(2,2)$．$N=0$：$(0,0),(1,1),(0,1)$．$N=4$：$(0,0),(1,1),(0,2)$．$N=2$：$(1,2),(0,2),(0,1)$．$N=3$：$(1,2),(1,2),(0,2)$（$m=(0,0,1)$）．\n\\[\n\\boldsymbol{N=0,\\ 2,\\ 3,\\ 4,\\ 8}\n\\]\n\n全事象は $9\\cdot8\\cdot7\\cdot6\\cdot5\\cdot4=60480$ 通りで同様に確からしい．余りの配置を決めたとき，余り $r$ の頂点が $c_r$ 個あれば，カードの割り当て方は $\\dfrac{3!}{(3-c_0)!}\\cdot\\dfrac{3!}{(3-c_1)!}\\cdot\\dfrac{3!}{(3-c_2)!}$ 通りである．\n\n\\textbf{(1)} 上の分類より，$N=8$ となるのは $D=0$ の場合だけであり，$D=0$ なら必ず $N=8$．3つの組への余り $0,1,2$ の割り当て方が $3!=6$ 通り，各余りについてカードの割り当て方が $3\\cdot2=6$ 通りなので $6\\cdot6^3=1296$ 通り．\n\\[\n\\boldsymbol{\\frac{1296}{60480}=\\frac{3}{140}}\n\\]\n\n\\textbf{(3)} $N=3$ となるのは $D=3$ かつ $m_1+m_2+m_3\\not\\equiv0$ のときに限る．$m_1,m_2,m_3$ の和が3の倍数になるのは「3つとも等しい」か「すべて異なる」ときなので，条件は「ちょうど2つが等しい」ことであり，そのような $(m_1,m_2,m_3)$ は $3\\cdot3\\cdot2=18$ 通り．各組の2頂点への2つの余りの並べ方が $2^3=8$ 通り．余り $r$ が $m_i$ となる $i$ の個数を $n_r$ とすると $c_r=3-n_r$ で，$\\{n_0,n_1,n_2\\}=\\{2,1,0\\}$ なので，カードの割り当て方は $\\dfrac{3!}{2!}\\cdot\\dfrac{3!}{1!}\\cdot\\dfrac{3!}{0!}=108$ 通り．よって $18\\cdot8\\cdot108=15552$ 通りで\n\\[\n\\boldsymbol{\\frac{15552}{60480}=\\frac{9}{35}}.\n\\]\n\\hfill$\\square$"
+   }
+  ],
+  "idea": {
+   "tex": "面ごとの和の条件は，番号そのものではなく余り（偶奇・3で割った余り）だけで決まる．立体の面と頂点の関係を整理して，「条件をみたす面の個数」を頂点の余りの配置の型で分類する．捻りでは正八面体と3で割った余りを扱う．各面は向かい合う3組の頂点から1つずつ選んだものなので，各組の2頂点の余りが等しいかどうかで型を分け，面の個数を包除原理で数える．各余りのカードが3枚ずつしかないことも配置の型を制限する．"
+  },
+  "methods": [],
+  "tags": [
+   "余りによる分類",
+   "向かい合う頂点の組",
+   "包除原理",
+   "確率"
+  ],
+  "provenance": {
+   "created": "2026-11-10"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "A-COM-350",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "A-05",
+  "level": 4,
+  "minutes": 40,
+  "theme": "c が連続しない文字列における c の割合",
+  "topic": "c が連続しない文字列における c の割合",
+  "statement": {
+   "tex": "$n$ を正の整数とし，文字 a，b，c を重複を許して $n$ 個並べてできる文字列のうち，次の条件 $(*)$ をみたすもの全体の集合を $V_n$ とし，その個数を $T_n$ とする．\n\\begin{center}\n$(*)$\\ 文字 c が2つ以上連続して現れない．\n\\end{center}\n便宜上 $T_0=1$ とする．$V_n$ から要素を1つ選ぶとき，どの要素も同じ確率で選ばれるとし，選ばれた文字列に含まれる c の個数の期待値を $E_n$ とする．\n\\begin{enumerate}\n  \\item $T_n$ を $n$ の式で表せ．\n  \\item $n\\geqq3$ とする．$2\\leqq k\\leqq n-1$ のとき，$V_n$ の要素のうち $k$ 番目の文字が c であるものの個数を，$T_0,T_1,\\dots$ のうちのいくつかを用いて表せ．また，$k=1$ のときと $k=n$ のときも同様に表せ．\n  \\item 極限値 $\\displaystyle\\lim_{n\\to\\infty}\\frac{E_n}n$ を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $T_n=\\dfrac{3+2\\sqrt3}6(1+\\sqrt3)^n+\\dfrac{3-2\\sqrt3}6(1-\\sqrt3)^n$　(2) $2\\leqq k\\leqq n-1$ のとき $4T_{k-2}T_{n-k-1}$，$k=1,n$ のとき $2T_{n-2}$　(3) $\\dfrac{3-\\sqrt3}6$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) $V_n$ の要素のうち末尾が c でないものの個数を $x_n$，末尾が c のものの個数を $y_n$ とする．長さ $n+1$ の列は長さ $n$ の列に1文字付け加えたもので，a，b はいつでも付けられ，c は末尾が c でないときに限り付けられるから\n\\[\nx_{n+1}=2(x_n+y_n)=2T_n,\\qquad y_{n+1}=x_n.\n\\]\nよって $n\\geqq1$ で $T_{n+1}=x_{n+1}+y_{n+1}=2T_n+x_n=2T_n+2T_{n-1}$（$n=1$ でも $x_1=2=2T_0$ で成立）．$T_0=1$，$T_1=3$．\n特性方程式 $t^2=2t+2$ の解は $\\lambda=1+\\sqrt3$，$\\mu=1-\\sqrt3$．$T_n=A\\lambda^n+B\\mu^n$ とおき $A+B=1$，$A\\lambda+B\\mu=3$ を解くと $A=\\dfrac{3-\\mu}{\\lambda-\\mu}=\\dfrac{2+\\sqrt3}{2\\sqrt3}=\\dfrac{3+2\\sqrt3}6$，$B=1-A=\\dfrac{3-2\\sqrt3}6$．両辺とも同じ3項間漸化式と初めの2項をみたすので，すべての $n\\geqq0$ で\n\\[\n\\boldsymbol{T_n=\\frac{3+2\\sqrt3}6(1+\\sqrt3)^n+\\frac{3-2\\sqrt3}6(1-\\sqrt3)^n}.\n\\]\n\n(2) $k$ 番目が c である $V_n$ の要素では，$k-1$ 番目と $k+1$ 番目（存在すれば）は c でない．逆に，前の $k-1$ 文字が $(*)$ をみたし末尾が c でなく，後の $n-k$ 文字が $(*)$ をみたし先頭が c でなければ，連結した列は $(*)$ をみたす（新たに隣り合うのは c とその両隣だけ）．前の部分の個数は $x_{k-1}=2T_{k-2}$．後の部分は左右を反転すれば「末尾が c でない長さ $n-k$ の列」と1対1なので $x_{n-k}=2T_{n-k-1}$．よって $2\\leqq k\\leqq n-1$ のとき $\\boldsymbol{4T_{k-2}T_{n-k-1}}$ 個．\n$k=1$ のときは後の部分だけで $\\boldsymbol{2T_{n-2}}$ 個，$k=n$ のときも対称に $\\boldsymbol{2T_{n-2}}$ 個．\n\n(3) c の個数は「各位置が c なら1」を $k=1,\\dots,n$ について足したものなので，\n\\[\nE_n=\\frac1{T_n}\\sum_{k=1}^n(\\text{$k$ 番目が c である $V_n$ の要素の個数}).\n\\]\n(2) より $n\\geqq3$ で\n\\[\nE_n=\\frac{4T_{n-2}+4U_{n-3}}{T_n},\\qquad U_M=\\sum_{j=0}^{M}T_jT_{M-j}.\n\\]\n(1) の一般項を代入すると\n\\[\nU_M=A^2(M+1)\\lambda^M+B^2(M+1)\\mu^M+AB\\sum_{j=0}^M\\left(\\lambda^j\\mu^{M-j}+\\mu^j\\lambda^{M-j}\\right).\n\\]\n最後の和は $2\\displaystyle\\sum_{j=0}^M\\lambda^j\\mu^{M-j}=\\frac{2(\\lambda^{M+1}-\\mu^{M+1})}{\\lambda-\\mu}$ である．\nここで $|\\mu|=\\sqrt3-1<1$ より $\\mu^n\\to0$，よって $\\dfrac{T_n}{\\lambda^n}=A+B\\left(\\dfrac\\mu\\lambda\\right)^n\\to A>0$．以下 $M=n-3$ として各項を $nT_n$ で割る．\n\\begin{itemize}\n  \\item $0<\\dfrac{4T_{n-2}}{nT_n}<\\dfrac4n\\to0$（$T_n$ は増加）．\n  \\item $\\dfrac{4A^2(n-2)\\lambda^{n-3}}{nT_n}=\\dfrac{4A^2}{\\lambda^3}\\cdot\\dfrac{n-2}n\\cdot\\dfrac{\\lambda^n}{T_n}\\to\\dfrac{4A^2}{\\lambda^3}\\cdot\\dfrac1A=\\dfrac{4A}{\\lambda^3}$．\n  \\item $\\left|\\dfrac{4B^2(n-2)\\mu^{n-3}}{nT_n}\\right|\\leqq\\dfrac{4B^2|\\mu|^{n-3}}{T_n}\\to0$．\n  \\item $\\left|\\dfrac{8AB(\\lambda^{n-2}-\\mu^{n-2})}{(\\lambda-\\mu)nT_n}\\right|\\leqq\\dfrac{8|AB|}{2\\sqrt3\\,n}\\left(\\dfrac1{\\lambda^2}\\cdot\\dfrac{\\lambda^n}{T_n}+\\dfrac{1}{T_n}\\right)\\to0$．\n\\end{itemize}\nしたがって\n\\[\n\\lim_{n\\to\\infty}\\frac{E_n}n=\\frac{4A}{\\lambda^3}=\\frac{4\\cdot\\frac{3+2\\sqrt3}6}{(1+\\sqrt3)^3}=\\frac{2(3+2\\sqrt3)}{3(10+6\\sqrt3)}=\\frac{3+2\\sqrt3}{3(5+3\\sqrt3)}.\n\\]\n分母分子に $5-3\\sqrt3$ を掛けると $\\dfrac{(3+2\\sqrt3)(5-3\\sqrt3)}{3(25-27)}=\\dfrac{-3+\\sqrt3}{-6}$ なので\n\\[\n\\lim_{n\\to\\infty}\\frac{E_n}n=\\boldsymbol{\\frac{3-\\sqrt3}6}.\n\\]"
+   }
+  ],
+  "idea": {
+   "tex": "c を連続させない列の個数 $T_n$ は末尾で分類して $T_{n+1}=2T_n+2T_{n-1}$．第 $k$ 文字が c の列は，その両隣が c でないので「末尾が c でない長さ $k-1$ の列」と「先頭が c でない長さ $n-k$ の列」の積で数えられる．c の個数の期待値は $T$ の畳み込み和になり，一般項 $A\\lambda^n+B\\mu^n$（$|\\mu|<1$）を代入すると主要部が $nA^2\\lambda^{n-3}$ となって，割合の極限が出る．"
+  },
+  "methods": [],
+  "tags": [
+   "隣接禁止",
+   "漸化式",
+   "期待値",
+   "畳み込み",
+   "極限"
+  ],
+  "provenance": {
+   "created": "2026-11-10"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "A-COM-351",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "A-05",
+  "level": 5,
+  "minutes": 40,
+  "theme": "次数で重みをつけた硬貨のそろい方",
+  "topic": "次数で重みをつけた硬貨のそろい方",
+  "statement": {
+   "tex": "正五角形 $\\mathrm A_1\\mathrm A_2\\mathrm A_3\\mathrm A_4\\mathrm A_5$ の5本の辺と2本の対角線 $\\mathrm A_1\\mathrm A_3$，$\\mathrm A_1\\mathrm A_4$ の計7本の線分を考え，この7本のどれかで直接結ばれている2頂点を「隣接する」という．各頂点に硬貨を1枚ずつ置き，次の操作Tを繰り返す．\n\\begin{center}\n\\fbox{\\parbox{0.86\\linewidth}{\n操作T：5つの頂点から1つを確率 $\\frac15$ ずつ選ぶ．選んだ頂点を $\\mathrm A_i$ とし，$\\mathrm A_i$ に隣接する頂点の個数を $d$，そのうち $\\mathrm A_i$ の硬貨と逆の面を上にした硬貨が置かれている頂点の個数を $k$ とする．$\\mathrm A_i$ の硬貨を確率 $\\frac kd$ で裏返し，確率 $1-\\frac kd$ でそのままにする．\n}}\n\\end{center}\n初めは $\\mathrm A_1$ の硬貨だけが表で，他の4枚は裏である．操作Tを $n$ 回行った後，5枚すべてが表である確率を $x_n$，5枚すべてが裏である確率を $y_n$，表と裏が混在している確率を $u_n=1-x_n-y_n$ とする．\n\\begin{enumerate}\n  \\item $y_2$ を求めよ．\n  \\item $\\displaystyle\\lim_{n\\to\\infty}u_n=0$ を示せ．\n  \\item $\\displaystyle\\lim_{n\\to\\infty}x_n$ を求めよ．また，初めに $\\mathrm A_2$ の硬貨だけが表で他の4枚が裏であった場合の $\\displaystyle\\lim_{n\\to\\infty}x_n$ も求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $y_2=\\dfrac{22}{75}$　(2) 証明　(3) $\\displaystyle\\lim_{n\\to\\infty}x_n=\\dfrac27$；初めに $\\mathrm A_2$ だけが表の場合は $\\dfrac17$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "各頂点の隣接頂点の個数（次数）は $\\mathrm A_1:4$，$\\mathrm A_2:2$，$\\mathrm A_3:3$，$\\mathrm A_4:3$，$\\mathrm A_5:2$ で，総和は $14$．$\\mathrm A_1$ は他の4頂点すべてと隣接している．\nすべて表またはすべて裏の状態では，どの頂点でも $k=0$ なので操作Tで状態は変わらない．\n\n\\medskip\n(1) 1回目の操作の結果を調べる．\n\\begin{itemize}\n  \\item $\\mathrm A_1$ を選ぶ（確率 $\\frac15$）：隣の4枚はすべて裏で $k=d=4$，必ず裏返り，すべて裏になる．\n  \\item $\\mathrm A_j\\ (j\\ne1)$ を選ぶ：隣のうち表は $\\mathrm A_1$ だけで $k=1$．裏返れば表が2枚になり，裏返らなければ初めの状態のまま．\n\\end{itemize}\nよって1回目の後，すべて裏である確率は $\\frac15$，初めの状態（$\\mathrm A_1$ だけ表）のままである確率は\n\\[\n\\frac15\\left(1-\\frac12\\right)+\\frac15\\left(1-\\frac13\\right)+\\frac15\\left(1-\\frac13\\right)+\\frac15\\left(1-\\frac12\\right)=\\frac7{15},\n\\]\n残りは表が2枚の状態である．\n1回の操作で裏返るのは高々1枚なので，表が2枚の状態から次の1回ですべて裏になることはない．すべて裏の状態はそのまま，$\\mathrm A_1$ だけ表の状態からは確率 $\\frac15$ ですべて裏になる．よって\n\\[\ny_2=\\frac15+\\frac7{15}\\cdot\\frac15=\\boldsymbol{\\frac{22}{75}}.\n\\]\n\n\\medskip\n(2) \\textbf{補題．}表と裏が混在しているどの状態から始めても，その後4回の操作の後にすべて裏になっている確率は $\\left(\\frac1{20}\\right)^4$ 以上である．\n\n\\textbf{証明．}表の枚数を $m\\ (1\\leqq m\\leqq4)$ とする．5本の辺 $\\mathrm A_1\\mathrm A_2,\\dots,\\mathrm A_5\\mathrm A_1$ をたどると表と裏が両方現れるので，表の頂点と裏の頂点を結ぶ辺がある．その表の頂点 $v$ を選ぶ確率は $\\frac15$，そのとき $k\\geqq1$，$d\\leqq4$ なので裏返る確率は $\\frac14$ 以上．よって確率 $\\frac1{20}$ 以上で表の枚数が1減る．表が残っている限り同じ議論を繰り返すと，確率 $\\left(\\frac1{20}\\right)^m$ 以上で $m$ 回後にすべて裏となり，その後は変わらない．$\\left(\\frac1{20}\\right)^m\\geqq\\left(\\frac1{20}\\right)^4$．\\hfill$\\square$\n\n操作Tの結果の確率は現在の状態だけで決まる．$n$ 回後の状態で場合分けすると，そろった状態からは以後ずっとそろったままなので，補題より\n\\[\nu_{n+4}\\leqq\\left(1-\\frac1{20^4}\\right)u_n .\n\\]\nしたがって $0\\leqq u_n\\leqq\\left(1-\\dfrac1{20^4}\\right)^{\\left[\\frac n4\\right]}$（$u_0,u_1,u_2,u_3\\leqq1$）．$0<1-\\dfrac1{20^4}<1$ より $\\displaystyle\\lim_{n\\to\\infty}u_n=0$．\\hfill$\\square$\n\n\\medskip\n(3) 状態 $c$ に対し，表の硬貨が置かれた頂点の次数の和を $W(c)$ とする．\n\n\\textbf{補題．}どの状態 $c$ からでも，1回の操作後の $W$ の期待値は $W(c)$ に等しい．\n\n\\textbf{証明．}頂点 $v$ の次数を $d_v$，$v$ の隣で $v$ と逆の面の頂点の個数を $k_v$，$s_v=1$（$v$ が裏），$s_v=-1$（$v$ が表）とする．$v$ が選ばれて裏返ると $W$ は $s_vd_v$ だけ変わるから，$W$ の変化の期待値は\n\\[\n\\sum_v\\frac15\\cdot\\frac{k_v}{d_v}\\cdot s_vd_v=\\frac15\\sum_vk_vs_v .\n\\]\n$\\sum_vk_vs_v$ は，表と裏が食い違う線分 $\\mathrm{uv}$ のそれぞれについて両端の $s_u+s_v$ を加えたものに等しく，各線分で一方が表，他方が裏なので $s_u+s_v=0$．よって変化の期待値は $0$．\\hfill$\\square$\n\n$n$ 回後の状態で場合分けすると，補題より $E[W_{n+1}]=E[W_n]$．よって $E[W_n]=W_0$．\nすべて表なら $W=14$，すべて裏なら $W=0$，混在なら $0<W<14$ なので\n\\[\n14x_n\\leqq E[W_n]\\leqq14x_n+14u_n,\\qquad\\text{すなわち}\\qquad \\frac{W_0}{14}-u_n\\leqq x_n\\leqq\\frac{W_0}{14}.\n\\]\n(2) より（$\\mathrm A_2$ から始めた場合も(2)の証明はそのまま成り立つ）$u_n\\to0$ なので $\\displaystyle\\lim_{n\\to\\infty}x_n=\\frac{W_0}{14}$．\n\n$\\mathrm A_1$ だけ表のとき $W_0=4$ で $\\displaystyle\\lim_{n\\to\\infty}x_n=\\boldsymbol{\\frac27}$．\n$\\mathrm A_2$ だけ表のとき $W_0=2$ で $\\displaystyle\\lim_{n\\to\\infty}x_n=\\boldsymbol{\\frac17}$．"
+   }
+  ],
+  "idea": {
+   "tex": "頂点の硬貨を「逆の面の隣の個数 $k$」$\\div$「隣の個数 $d$」の確率で裏返すと，表の頂点の次数の和 $W$ の期待値は1回の操作で変わらない（表と裏が食い違う線分ごとに，表の端点が裏返る寄与と裏の端点が裏返る寄与が打ち消し合う）．すべてそろった状態は動かず，混在が残る確率は数回ごとに一定の割合以下に減って0に近づく．$E[W]$ が一定であることから，すべて表になる確率の極限は（初めに表の頂点の次数の和）$\\div$（次数の総和）．"
+  },
+  "methods": [],
+  "tags": [
+   "確率",
+   "期待値の保存",
+   "吸収状態",
+   "極限",
+   "グラフ"
+  ],
+  "provenance": {
+   "created": "2026-11-10"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "A-COM-352",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "A-05",
+  "level": 5,
+  "minutes": 40,
+  "theme": "原点を通る平面による空間の分割",
+  "topic": "原点を通る平面による空間の分割",
+  "statement": {
+   "tex": "$n$ を正の整数とし，$H_1,\\dots,H_n$ を空間内の相異なる $n$ 枚の平面で，いずれも原点 O を通るものとする．$H_1,\\dots,H_n$ によって空間が $T(H_1,\\dots,H_n)$ 個の部分に分割されるとする．例えば，平面 $x=0$，$y=0$，$z=0$ によって空間は8個に，平面 $x=0$，$y=0$，$x=y$ によって空間は6個に分割される．\n\\begin{enumerate}\n  \\item 各 $n$ に対して $T(H_1,\\dots,H_n)$ のとりうる値のうち最も大きいものを求めよ．\n  \\item $T(H_1,\\dots,H_n)$ は常に偶数であることを示せ．また，$n\\geqq3$ のとき，$T(H_1,\\dots,H_n)$ のとりうる値のうち2番目に大きいものを求めよ．\n  \\item $n\\geqq4$ のとき，$T(H_1,\\dots,H_n)$ のとりうる値のうち3番目に大きいものを求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $n^2-n+2$　(2) 証明，$n^2-n$　(3) $n=4$ のとき $8$，$n\\geqq5$ のとき $n^2-n-2$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "\\emph{準備（1枚加えたときの増え方）}．$T_k=T(H_1,\\dots,H_k)$ とおく．$T_1=2$．$k\\geqq2$ のとき，$H_k$ と $H_j$（$j<k$）はともに O を通る異なる平面なので，交わりは O を通る直線 $H_k\\cap H_j$ である．これら $k-1$ 本のうち相異なるものの本数を $d_k$（$1\\leqq d_k\\leqq k-1$）とする．$H_k$ は O を通る $d_k$ 本の直線で $2d_k$ 個の扇形（$d_k=1$ なら半平面2つ）に分けられ，各扇形（直線上の点を除く）は凸である．\n\n$H_1,\\dots,H_{k-1}$ による各部分は半空間の共通部分なので凸である．\n\\begin{itemize}\n  \\item 1つの扇形 $S$ は1つの部分に含まれる．もし $S$ の2点が異なる部分にあれば，ある $H_j$（$j<k$）が2点を分け，2点を結ぶ線分（$S$ の凸性により $S$ 内）が $H_j$ と交わる．その交点は $H_k\\cap H_j$ 上にあり，$S$ がこれらの直線を含まないことに反する．\n  \\item 1つの部分 $D$ と $H_k$ の共通部分は凸で，どの $H_j$（$j<k$）とも交わらないので，同様に1つの扇形に含まれる．\n\\end{itemize}\nよって $H_k$ と交わる部分と扇形は1対1に対応し，交わる部分 $D$ は $H_k$ によって両側の2つ（どちらも空でない凸な部分）に分かれ，交わらない部分はそのまま残る．したがって\n\\[\nT_k=T_{k-1}+2d_k,\\qquad T_n=2+2\\sum_{k=2}^{n}d_k .\\qquad\\cdots(*)\n\\]\nまた，$H_k\\cap H_i=H_k\\cap H_j$（$i\\neq j$，$i,j<k$）となるのは，この直線が $H_i\\cap H_j$ に一致する，すなわち $H_k$ が直線 $H_i\\cap H_j$ を含むときに限る．\n\n\\emph{補題（一般的な追加）}．O を通る相異なる平面 $H_1,\\dots,H_{k-1}$ が与えられたとき，$d_k=k-1$ となる新しい平面 $H_k$（既存のどれとも異なる）がとれる．\n実際，法線ベクトル $\\vec n_s=(1,s,s^2)$ の O を通る平面を考える．方向ベクトル $\\vec v=(v_1,v_2,v_3)\\neq\\vec0$ の直線を含む条件は $v_1+v_2s+v_3s^2=0$ で，左辺は $0$ でない高々2次の多項式なので，これをみたす $s$ は高々2個．既存の交線（有限個）と，各既存平面に含まれる2本の異なる直線（これを両方含めばその平面と一致する）を避けるように $s$ を選べばよい．このとき $H_k$ はどの $H_i\\cap H_j$ も含まないので $d_k=k-1$．\n\n\\medskip\n\\textbf{(1)}　$(*)$ と $d_k\\leqq k-1$ より $T_n\\leqq2+2\\sum_{k=2}^n(k-1)=n^2-n+2$．補題を $k=2,\\dots,n$ に順に用いれば等号が実現する．最大値は $\\boldsymbol{n^2-n+2}$．\n\n\\medskip\n\\textbf{(2)}　$(*)$ より $T_n$ は常に偶数．\\hfill$\\square$\n\n$e=\\sum_{k=2}^n(k-1-d_k)\\ (\\geqq0)$ とおくと $T_n=n^2-n+2-2e$．偶数なので最大値の次に大きい候補は $n^2-n$（$e=1$）．\n$H_1:x=0$，$H_2:y=0$，$H_3:x=y$ とすると，3枚とも $z$ 軸を含むので $d_2=d_3=1$．$H_4,\\dots,H_n$ を補題で加えれば $d_k=k-1$（$k\\geqq4$）で $e=1$．よって2番目に大きい値は $\\boldsymbol{n^2-n}$．\n\n\\medskip\n\\textbf{(3)}　3番目の候補は $n^2-n-2$（$e=2$）．\n\n\\emph{$n\\geqq5$}：$H_1:x=0$，$H_2:y=0$，$H_3:x=y$，$H_4:x=z$，$H_5:y=z$ とする．$d_2=1$，$d_3=1$（$z$ 軸）．$H_4$ と $H_1,H_2,H_3$ の交線の方向は $(0,1,0)$，$(1,0,1)$，$(1,1,1)$ で相異なり $d_4=3$．$H_5$ と $H_1,\\dots,H_4$ の交線の方向は $(0,1,1)$，$(1,0,0)$，$(1,1,1)$，$(1,1,1)$ で $d_5=3$．よって $k\\leqq5$ での不足は $0+1+0+1=2$．$H_6,\\dots,H_n$ を補題で加えれば $e=2$，$T_n=n^2-n-2$．したがって3番目は $\\boldsymbol{n^2-n-2}$（$n\\geqq5$）．\n\n\\emph{$n=4$}：$e=(2-d_3)+(3-d_4)$ のとりうる値を調べる．$\\ell_{ij}=H_i\\cap H_j$ と書く．\n\\begin{itemize}\n  \\item $H_3$ が $\\ell_{12}$ を含まない場合（$d_3=2$）：$\\ell_{13}=\\ell_{23}$ なら，それは $H_1\\cap H_2=\\ell_{12}$ で $H_3\\supset\\ell_{12}$ となり矛盾．よって $\\ell_{12},\\ell_{13},\\ell_{23}$ は相異なる．このうちどの2本も1枚の $H_i$ に含まれる（$\\ell_{12},\\ell_{13}\\subset H_1$ など）ので，$H_4$ が2本を含めば O を通る異なる2直線を含むことから $H_4=H_i$ となり矛盾．よって $H_4$ が含むのは高々1本で，$d_4\\in\\{3,2\\}$．$e\\in\\{0,1\\}$．\n  \\item $H_3$ が $\\ell_{12}$ を含む場合（$d_3=1$，$\\ell_{12}=\\ell_{13}=\\ell_{23}=\\ell$）：$H_4\\supset\\ell$ なら3本の交線はすべて $\\ell$ で $d_4=1$，$e=3$．$H_4\\not\\supset\\ell$ なら交線は相異なり $d_4=3$，$e=1$．\n\\end{itemize}\nよって $e\\in\\{0,1,3\\}$，$T\\in\\{14,12,8\\}$ であり，$e=3$ は $H_1,\\dots,H_4$ がすべて $z$ 軸を含むとき（例えば $x=0$，$y=0$，$x=y$，$x=-y$）に実現する．3番目に大きい値は $\\boldsymbol{8}$（$n=4$）．\n\n以上より，3番目に大きい値は $n=4$ のとき $\\boldsymbol{8}$，$n\\geqq5$ のとき $\\boldsymbol{n^2-n-2}$．"
+   }
+  ],
+  "idea": {
+   "tex": "平面を1枚ずつ加えると，新しい平面は既存の平面との交線で扇形に分けられ，扇形1つにつき領域が1つ増える．すべての平面が原点を通ると，交線は原点を通る直線なので，交線が $d$ 本なら扇形は $2d$ 個で，領域数は常に偶数になる．交線が一致するのは新しい平面が既存の交線を含むときだけで，「2本の交線を含めばもとの平面と一致する」ことから，減り方の可能性が強く制限される．最大値・2番目・3番目は「構成」と「それ以外が起こらないこと」の両方で決まり，枚数が少ないと3番目が飛ぶ．"
+  },
+  "methods": [],
+  "tags": [
+   "空間の分割",
+   "帰納的な数え上げ",
+   "偶奇",
+   "構成と不可能性",
+   "平面の交線"
+  ],
+  "provenance": {
+   "created": "2026-11-10"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "A-COM-353",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "A-05",
+  "level": 5,
+  "minutes": 40,
+  "theme": "2色に塗った線分と単色の三角形の最小個数",
+  "topic": "2色に塗った線分と単色の三角形の最小個数",
+  "statement": {
+   "tex": "平面上に $N$ 個の点 $\\mathrm P_1,\\mathrm P_2,\\dots,\\mathrm P_N$（$N\\geqq3$）があり，どの3点も同一直線上にない．どの2点も線分で結び，各線分を赤か青のどちらか一方で塗る．3点を頂点とする三角形のうち，3辺がすべて同じ色であるものを「単色三角形」とよぶ．\n\\begin{enumerate}\n  \\item $N=2n$（$n\\geqq2$）のとき，塗り方によらず単色三角形は $\\dfrac{n(n-1)(n-2)}3$ 個以上あることを示し，ちょうどこの個数になる塗り方を1つ示せ．\n  \\item $N=2n+1$（$n$ は正の偶数）のとき，単色三角形の個数の最小値を求めよ．\n  \\item $N=7$ のとき，単色三角形の個数の最小値を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 証明（例：$n$ 点ずつの2組に分け，同じ組の2点を結ぶ線分を赤，異なる組の2点を結ぶ線分を青に塗る）　(2) $\\dfrac{n(n-2)(2n+1)}6$　(3) $4$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "\\textbf{基本の関係式．}　$\\mathrm P_i$ を端点とする赤の線分の本数を $r_i$，青の線分の本数を $b_i$ とすると $r_i+b_i=N-1$．$\\mathrm P_i$ を共通の端点とする2本の線分の組で，色が異なるものを「異色の角」とよぶ．$\\mathrm P_i$ における異色の角は $r_ib_i$ 個ある．\n\n$\\mathrm P_i$ を共通の端点とする2本の線分 $\\mathrm P_i\\mathrm P_j$，$\\mathrm P_i\\mathrm P_k$ の組は，三角形 $\\mathrm P_i\\mathrm P_j\\mathrm P_k$ の頂点 $\\mathrm P_i$ の角とちょうど1対1に対応する．単色三角形の3つの角はどれも異色の角でない．単色でない三角形は，3辺が「ある色2本と他の色1本」なので，2本の同色の辺が出会う頂点の角は異色でなく，残り2つの頂点の角は異色である．よって\n\\[\n\\sum_{i=1}^Nr_ib_i=2\\times(\\text{単色でない三角形の個数}),\\qquad\n(\\text{単色三角形の個数})={}_N\\mathrm C_3-\\frac12\\sum_{i=1}^Nr_ib_i .\\tag{$*$}\n\\]\n\n\\textbf{(1)}　$N=2n$ のとき $r_ib_i=r_i(2n-1-r_i)=-\\bigl(r_i-\\frac{2n-1}2\\bigr)^2+\\frac{(2n-1)^2}4$．$r_i$ は整数なので $\\bigl|r_i-\\frac{2n-1}2\\bigr|\\geqq\\frac12$，よって $r_ib_i\\leqq\\frac{(2n-1)^2-1}4=n(n-1)$．($*$) より\n\\[\n(\\text{単色三角形})\\geqq\\frac{2n(2n-1)(2n-2)}6-\\frac12\\cdot2n\\cdot n(n-1)=n(n-1)\\Bigl(\\frac{2(2n-1)}3-n\\Bigr)=\\frac{n(n-1)(n-2)}3 .\n\\]\n\\emph{等号の例．}　$2n$ 個の点を $n$ 個ずつの2組に分け，同じ組の2点を結ぶ線分を赤，異なる組の2点を結ぶ線分を青に塗る．青の線分だけでは三角形はできない（3点のうち2点は同じ組にある）．赤の単色三角形は各組の中の3点で，$2\\cdot{}_n\\mathrm C_3=\\frac{n(n-1)(n-2)}3$ 個．よって等号が成り立つ．\\hfill$\\square$\n\n\\medskip\n\\textbf{(2)}　$N=2n+1$ のとき $r_ib_i=r_i(2n-r_i)=n^2-(r_i-n)^2\\leqq n^2$ なので，($*$) より\n\\[\n\\begin{aligned}(\\text{単色三角形})&\\geqq\\frac{(2n+1)\\cdot2n\\cdot(2n-1)}6-\\frac{(2n+1)n^2}2\\\\&=(2n+1)n\\cdot\\frac{2(2n-1)-3n}6=\\frac{n(n-2)(2n+1)}6 .\\end{aligned}\n\\]\n$n$ が偶数のとき，等号は次の塗り方で成り立つ．$2n+1$ 個の点を円周上に等間隔に並べて番号 $0,1,\\dots,2n$ をつけ，番号 $i,j$ の2点について $|i-j|$ と $2n+1-|i-j|$ の小さい方（円周に沿った「間隔」）が $\\frac n2$ 以下なら赤，そうでなければ青に塗る．各点から見て間隔が $1,2,\\dots,\\frac n2$ の点は両側に1つずつあるので $r_i=n$，$b_i=n$ となり，すべての $i$ で $r_ib_i=n^2$．よって ($*$) で等号が成り立つ．したがって最小値は $\\boldsymbol{\\dfrac{n(n-2)(2n+1)}6}$ である．\n\n\\medskip\n\\textbf{(3)}　$N=7$ では $r_i+b_i=6$，$r_ib_i=9-(r_i-3)^2$．$\\sum r_i$ は赤の線分の本数の2倍なので偶数である．もしすべての $i$ で $r_i=3$ なら $\\sum r_i=21$ で奇数となり矛盾．よって $r_i\\neq3$ となる $i$ が少なくとも1つあり，その $i$ では $r_ib_i\\leqq9-1=8$．したがって $\\sum r_ib_i\\leqq6\\cdot9+8=62$ で，\n\\[\n(\\text{単色三角形})\\geqq35-31=4 .\n\\]\n\\emph{4個の例．}　$X=\\{\\mathrm P_1,\\mathrm P_2,\\mathrm P_3\\}$，$Y=\\{\\mathrm P_4,\\mathrm P_5,\\mathrm P_6,\\mathrm P_7\\}$ とし，$X$ の点と $Y$ の点を結ぶ12本のうち $\\mathrm P_1\\mathrm P_4$，$\\mathrm P_2\\mathrm P_5$，$\\mathrm P_3\\mathrm P_6$ を除く9本と，$\\mathrm P_4\\mathrm P_5$ の計10本を赤，残り11本を青に塗る．このとき $r_1=r_2=r_3=3$，$r_4=r_5=3$，$r_6=2$，$r_7=3$ で $\\sum r_ib_i=6\\cdot9+8=62$．($*$) より単色三角形は $35-31=4$ 個である（実際，青の $\\mathrm P_1\\mathrm P_2\\mathrm P_3$，$\\mathrm P_5\\mathrm P_6\\mathrm P_7$，$\\mathrm P_4\\mathrm P_6\\mathrm P_7$ と赤の $\\mathrm P_3\\mathrm P_4\\mathrm P_5$ の4個）．\n\nよって最小値は $\\boldsymbol4$ である．"
+   }
+  ],
+  "idea": {
+   "tex": "頂点ごとの次数で三角形を数える．点 $\\mathrm P_i$ から出る赤・青の線分の本数を $r_i,b_i$ とすると，「色の異なる2本の線分が $\\mathrm P_i$ で作る角」は $r_ib_i$ 個あり，単色でない三角形はこの角をちょうど2つ含む．よって単色三角形の個数は $\\binom N3-\\frac12\\sum r_ib_i$ で，$r_i+b_i=N-1$ の下での整数の積の最大値で下から抑えられる．$N$ が奇数のときは赤の線分の端点の総数 $\\sum r_i$ が偶数であることが等号を妨げる．"
+  },
+  "methods": [],
+  "tags": [
+   "数え上げ",
+   "2通りに数える",
+   "2次関数の最大",
+   "偶奇",
+   "構成"
+  ],
+  "provenance": {
+   "created": "2026-11-10"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "A-COM-354",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "A-05",
+  "level": 5,
+  "minutes": 35,
+  "theme": "型のそろった操作の列とその結果が零にならない回数",
+  "topic": "型のそろった操作の列とその結果が零にならない回数",
+  "statement": {
+   "tex": "平面ベクトル $(x,y)$ を「2型」，空間ベクトル $(x,y,z)$ を「3型」とよぶ．次の4つの操作 A，B，C，D を考える．\n\\[\n\\begin{aligned}\n&\\mathrm A:\\ (x,y)\\mapsto(x-y,\\ x-y)\\quad(\\text{2型から2型}),&&\\mathrm B:\\ (x,y)\\mapsto(0,\\ x,\\ 0)\\quad(\\text{2型から3型}),\\\\\n&\\mathrm C:\\ (x,y,z)\\mapsto(x+y,\\ 0)\\quad(\\text{3型から2型}),&&\\mathrm D:\\ (x,y,z)\\mapsto(y,\\ 0,\\ 0)\\quad(\\text{3型から3型}).\n\\end{aligned}\n\\]\n$n$ を正の整数とし，A，B，C，D から重複を許して $n$ 個を選んで並べた列 $M_1,M_2,\\dots,M_n$ を考える．各 $i=1,2,\\dots,n-1$ について $M_i$ の出力の型と $M_{i+1}$ の入力の型が一致するとき，この列は「施せる」という．施せる列に対し，$M_1$ の入力の型のベクトル $\\vec v$ に $M_1,M_2,\\dots,M_n$ を順に施して得られるベクトルを $F(\\vec v)$ とする．すべての $\\vec v$ について $F(\\vec v)$ が零ベクトルとなるとき，列は「消える」という．\n\\begin{enumerate}\n  \\item 施せる列の個数を $n$ で表せ．\n  \\item 施せる列のうち消えないものの個数 $T_n$ を $n$ で表せ．\n  \\item 施せる列のうち，消えず，しかも $M_1$ の入力と $M_n$ の出力がともに2型であるものの個数 $U_n$ を $n$ で表せ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $2^{n+1}$　(2) $T_n=\\dfrac2{\\sqrt5}\\left\\{\\left(\\dfrac{1+\\sqrt5}2\\right)^{n+2}-\\left(\\dfrac{1-\\sqrt5}2\\right)^{n+2}\\right\\}$　(3) $F_k=\\dfrac1{\\sqrt5}\\left\\{\\left(\\dfrac{1+\\sqrt5}2\\right)^{k}-\\left(\\dfrac{1-\\sqrt5}2\\right)^{k}\\right\\}$ として $U_n=\\dfrac{F_{n+2}+\\varepsilon_n}2$，$\\varepsilon_n$ は $n$ を3で割った余りが $1,2,0$ のときそれぞれ $0,-1,1$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) 各操作は入力の型と出力の型の組で1つに決まる（A$=(2,2)$，B$=(2,3)$，C$=(3,2)$，D$=(3,3)$）．施せる列は，$M_1$ の入力の型と，$M_1,\\dots,M_n$ の出力の型を順に自由に選ぶことと1対1に対応する（$M_{i+1}$ の入力は $M_i$ の出力で決まる）．よって $2\\cdot2^n=\\boldsymbol{2^{n+1}}$ 個．\n\n(2) どの操作も，ベクトル $\\vec w_X,\\vec u_X$ を用いて $X(\\vec v)=(\\vec w_X\\cdot\\vec v)\\,\\vec u_X$ と書ける：\n\\[\n\\begin{aligned}\n&\\vec w_{\\mathrm A}=(1,-1),\\ \\vec u_{\\mathrm A}=(1,1);\\quad \\vec w_{\\mathrm B}=(1,0),\\ \\vec u_{\\mathrm B}=(0,1,0);\\\\\n&\\vec w_{\\mathrm C}=(1,1,0),\\ \\vec u_{\\mathrm C}=(1,0);\\quad \\vec w_{\\mathrm D}=(0,1,0),\\ \\vec u_{\\mathrm D}=(1,0,0).\n\\end{aligned}\n\\]\n$c_i=\\vec w_{M_{i+1}}\\cdot\\vec u_{M_i}$（$i=1,2,\\dots,n-1$）とおく．$M_1,\\dots,M_k$ を順に施した結果を $\\vec v_k$ とすると，$\\vec v_1=(\\vec w_{M_1}\\cdot\\vec v)\\,\\vec u_{M_1}$ であり，$\\vec v_k=(\\vec w_{M_1}\\cdot\\vec v)\\,c_1c_2\\cdots c_{k-1}\\,\\vec u_{M_k}$ ならば\n\\[\n\\vec v_{k+1}=\\bigl(\\vec w_{M_{k+1}}\\cdot\\vec v_k\\bigr)\\vec u_{M_{k+1}}=(\\vec w_{M_1}\\cdot\\vec v)\\,c_1c_2\\cdots c_{k}\\,\\vec u_{M_{k+1}}\n\\]\nとなる．よって数学的帰納法により\n\\[\nF(\\vec v)=(\\vec w_{M_1}\\cdot\\vec v)\\,c_1c_2\\cdots c_{n-1}\\;\\vec u_{M_n}\\quad(n=1\\text{ のときは }c\\text{ の積を }1\\text{ とする}).\n\\]\n$\\vec w_{M_1}\\neq\\vec 0$ だから $\\vec w_{M_1}\\cdot\\vec v\\neq0$ となる $\\vec v$（例えば $\\vec v=\\vec w_{M_1}$）があり，$\\vec u_{M_n}\\neq\\vec0$．よって「消えない」$\\iff c_1c_2\\cdots c_{n-1}\\neq0\\iff$ すべての $i$ で $c_i=\\vec w_{M_{i+1}}\\cdot\\vec u_{M_i}\\neq0$．\n型の合う8通りの隣接（前→後）を調べると，\nA→A：$\\vec w_{\\mathrm A}\\cdot\\vec u_{\\mathrm A}=0$，D→D：$\\vec w_{\\mathrm D}\\cdot\\vec u_{\\mathrm D}=0$，\nA→B，C→A，C→B，B→C，B→D，D→C はいずれも値が1．\nしたがって消えない列とは「施せて，A が2つ続かず，D が2つ続かない列」である．\n\n長さ $n$ のそのような列で末尾が A，B，C，D のものの個数を $\\alpha_n,\\beta_n,\\gamma_n,\\delta_n$ とすると，A の前は C のみ，B の前は A か C，C の前は B か D，D の前は B のみが許されるので\n\\[\n\\alpha_{n+1}=\\gamma_n,\\quad\\beta_{n+1}=\\alpha_n+\\gamma_n,\\quad\\gamma_{n+1}=\\beta_n+\\delta_n,\\quad\\delta_{n+1}=\\beta_n .\n\\]\n$P_n=\\alpha_n+\\delta_n$，$Q_n=\\beta_n+\\gamma_n$ とおくと $P_{n+1}=Q_n$，$Q_{n+1}=P_n+Q_n$．$T_n=P_n+Q_n$ は $T_{n+2}=Q_{n+1}+Q_{n+2}=Q_{n+1}+P_{n+1}+Q_{n+1}$，一方 $T_{n+1}+T_n=P_{n+1}+Q_{n+1}+P_n+Q_n=P_{n+1}+Q_{n+1}+Q_{n+1}$ で，$T_{n+2}=T_{n+1}+T_n$．\n$n=1$ では4つとも1なので $T_1=4$，$T_2=P_2+Q_2=Q_1+(P_1+Q_1)=2+4=6$．\n$F_1=F_2=1$，$F_{k+2}=F_{k+1}+F_k$ のフィボナッチ数列について $2F_3=4$，$2F_4=6$ なので $T_n=2F_{n+2}$．$F_k=\\dfrac1{\\sqrt5}(\\phi^k-\\psi^k)$（$\\phi=\\frac{1+\\sqrt5}2$，$\\psi=\\frac{1-\\sqrt5}2$ は $x^2=x+1$ の2解で，右辺は同じ漸化式と $k=1,2$ の値をみたす）だから\n\\[\nT_n=\\boldsymbol{\\frac2{\\sqrt5}\\left\\{\\left(\\frac{1+\\sqrt5}2\\right)^{n+2}-\\left(\\frac{1-\\sqrt5}2\\right)^{n+2}\\right\\}}.\n\\]\n\n(3) $M_1$ の入力が2型 $\\iff M_1\\in\\{\\mathrm A,\\mathrm B\\}$，$M_n$ の出力が2型 $\\iff M_n\\in\\{\\mathrm A,\\mathrm C\\}$．\n同じ漸化式を初期値 $\\alpha_1=\\beta_1=1$，$\\gamma_1=\\delta_1=0$ で用いると，$U_n=\\alpha_n+\\gamma_n$．このとき $P_1=Q_1=1$ なので，(2) と同様に $P_n+Q_n=F_{n+2}$（$n=1$：$2=F_3$，$n=2$：$Q_1+P_1+Q_1=3=F_4$）．\n$e_n=\\alpha_n-\\delta_n$，$h_n=\\beta_n-\\gamma_n$ とおくと\n\\[\ne_{n+1}=\\gamma_n-\\beta_n=-h_n,\\qquad h_{n+1}=(\\alpha_n+\\gamma_n)-(\\beta_n+\\delta_n)=e_n-h_n .\n\\]\n$(e_1,h_1)=(1,1)$，$(e_2,h_2)=(-1,0)$，$(e_3,h_3)=(0,-1)$，$(e_4,h_4)=(1,1)$ となり，$(e_n,h_n)$ は周期3で繰り返す．$\\varepsilon_n=e_n-h_n$ は $n\\equiv1,2,0\\pmod 3$ でそれぞれ $0,-1,1$．\n$\\alpha_n+\\gamma_n=\\dfrac{(\\alpha_n+\\delta_n)+(\\beta_n+\\gamma_n)+(\\alpha_n-\\delta_n)-(\\beta_n-\\gamma_n)}2$ だから\n\\[\n\\boldsymbol{U_n=\\frac{F_{n+2}+\\varepsilon_n}2},\\quad F_k=\\frac1{\\sqrt5}\\left\\{\\left(\\frac{1+\\sqrt5}2\\right)^{k}-\\left(\\frac{1-\\sqrt5}2\\right)^{k}\\right\\},\n\\]\n$\\varepsilon_n$ は $n$ を3で割った余りが $1,2,0$ のときそれぞれ $\\boldsymbol{0,-1,1}$．（例：$U_1=1$，$U_2=1$，$U_3=3$，$U_4=4$．）"
+   }
+  ],
+  "idea": {
+   "tex": "「施せる」は入力と出力の型の連鎖で，型を順に選ぶと数えられる．どの操作も $\\vec v\\mapsto(\\vec w\\cdot\\vec v)\\vec u$ の形なので，順に施した結果は $(\\vec w_1\\cdot\\vec v)$ と各 $\\vec w_{i+1}\\cdot\\vec u_i$（$i=1,\\dots,n-1$）の積を $\\vec u_n$ にかけたものとなり，零ベクトルに限るかどうかは隣り合う2つの組だけで決まる．禁止された隣接を避ける列は，末尾の文字ごとの個数の連立漸化式で数え，和と差の組合せに分けるとフィボナッチ型と周期3の数列に分解される．"
+  },
+  "methods": [],
+  "tags": [
+   "数え上げ",
+   "漸化式",
+   "フィボナッチ数列",
+   "写像の合成"
+  ],
+  "provenance": {
+   "created": "2026-11-10"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "A-COM-355",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "A-05",
+  "level": 5,
+  "minutes": 40,
+  "theme": "同じ面が100回続いたら終わる試行",
+  "topic": "同じ面が100回続いたら終わる試行",
+  "statement": {
+   "tex": "1枚の硬貨を繰り返し投げ，同じ面（表または裏）が100回続けて出た時点で終わるものとする．$n$ 回目で終わる確率を $p(n)$，$m$ 回目までに終わる確率を $Q(m)=\\displaystyle\\sum_{k=1}^mp(k)$ とする．\n\\begin{enumerate}\n  \\item $n\\geqq101$ のとき，$p(n)=2^{-100}\\{1-Q(n-100)\\}$ が成り立つことを示せ．\n  \\item $101\\leqq n\\leqq299$ のとき，$p(n)$ を $n$ の式で表せ．\n  \\item $300\\leqq n\\leqq399$ のとき，$p(n)$ を $n$ の式で表せ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 証明　(2) $101\\leqq n\\leqq199$ で $p(n)=2^{-100}$，$200\\leqq n\\leqq299$ で $p(n)=2^{-100}-2^{-200}(n-198)$　(3) $p(n)=2^{-100}-2^{-200}(n-198)+2^{-300}\\left\\{\\dfrac{(n-298)(n-297)}2-1\\right\\}$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "$L=100$，$r=2^{-L}$ とし，$k$ 回目の結果を $X_k$ とする．「時刻 $e$ で終わる」とは $X_{e-L+1}=\\dots=X_e$ となる最初の $e$ のこと．\n\n(1) $n\\geqq L+1$，$m=n-L\\ (\\geqq1)$ とし，「$m$ 回目までに終わらない」事象を $A_m$ とする．次を示す：\n\\[\nn\\text{ 回目で終わる}\\iff A_m\\text{ かつ }X_{m+1}=\\dots=X_n\\neq X_m .\n\\]\n（$\\Rightarrow$）$X_{m+1}=\\dots=X_n$ は明らか．$X_m=X_{m+1}$ なら $X_m=\\dots=X_{n-1}$ で $n-1$ 回目までに終わっており矛盾．また $n$ 回目より前に終わっていないので $A_m$．\n（$\\Leftarrow$）$X_{m+1}=\\dots=X_n$ で $n$ 回目に同じ面が $L$ 回続いている．$n$ より前の時刻 $e$ で終わったとすると，$A_m$ より $e\\geqq m+1$．このとき $e-L+1\\leqq m$ なので，同じ面の $L$ 回の連続 $X_{e-L+1},\\dots,X_e$ は $X_m$ と $X_{m+1}$ をともに含み，$X_m\\neq X_{m+1}$ に反する．\n\n$A_m$ と $X_m$ は最初の $m$ 回で決まり，$X_{m+1},\\dots,X_n$ はそれと独立．続く面が表である場合と裏である場合を足すと\n\\[\np(n)=r\\left\\{P(A_m\\cap\\{X_m=\\text{裏}\\})+P(A_m\\cap\\{X_m=\\text{表}\\})\\right\\}=r\\,P(A_m)=r\\{1-Q(m)\\}.\n\\]\n\\hfill$\\square$\n\n(2) $n\\leqq L-1$ では $p(n)=0$，$p(L)=2r$（$L$ 回すべて表かすべて裏）．よって $Q(m)=0$（$1\\leqq m\\leqq L-1$），$Q(L)=2r$．\n(1) より $L+1\\leqq n\\leqq2L-1$ では $Q(n-L)=0$ で $p(n)=r$．すると $L\\leqq m\\leqq2L-1$ で $Q(m)=2r+(m-L)r$．\n$2L\\leqq n\\leqq3L-1$ では $n-L\\in[L,2L-1]$ なので $p(n)=r\\{1-2r-(n-2L)r\\}=r-r^2(n-2L+2)$．\n$L=100$ として，$\\boldsymbol{101\\leqq n\\leqq199}$ で $\\boldsymbol{p(n)=2^{-100}}$，$\\boldsymbol{200\\leqq n\\leqq299}$ で $\\boldsymbol{p(n)=2^{-100}-2^{-200}(n-198)}$．\n\n(3) $2L\\leqq m\\leqq3L-1$ のとき，$j=k-2L+2$ とおいて\n\\[\n\\begin{aligned}\nQ(m)&=Q(2L-1)+\\sum_{k=2L}^{m}\\{r-r^2(k-2L+2)\\}=(L+1)r+(m-2L+1)r-r^2\\sum_{j=2}^{m-2L+2}j\\\\\n&=(m-L+2)r-r^2\\left\\{\\frac{(m-2L+2)(m-2L+3)}2-1\\right\\}.\n\\end{aligned}\n\\]\n$3L\\leqq n\\leqq4L-1$ では $m=n-L\\in[2L,3L-1]$ なので\n\\[\np(n)=r\\{1-Q(n-L)\\}=r-r^2(n-2L+2)+r^3\\left\\{\\frac{(n-3L+2)(n-3L+3)}2-1\\right\\}.\n\\]\n$L=100$ として，$300\\leqq n\\leqq399$ で\n\\[\n\\boldsymbol{p(n)=2^{-100}-2^{-200}(n-198)+2^{-300}\\left\\{\\frac{(n-298)(n-297)}2-1\\right\\}}.\n\\]"
+   }
+  ],
+  "idea": {
+   "tex": "$n$ 回目に終わるのは「最後の100回が同じ面，その直前は反対の面，$n-100$ 回目までに終わっていない」とき．どちらの面で終わるかを足し合わせると「直前の面」の条件が消え，$p(n)=2^{-100}\\{1-Q(n-100)\\}$（$Q(m)$ は $m$ 回目までに終わる確率）という自己参照の式になる．これを区間ごとに使うと，$p(n)$ は100回ごとに次数が1つ上がる多項式になる．"
+  },
+  "methods": [],
+  "tags": [
+   "確率",
+   "連続",
+   "事象の分解",
+   "漸化的な和"
+  ],
+  "provenance": {
+   "created": "2026-11-10"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "A-COM-356",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "A-05",
+  "level": 4,
+  "minutes": 30,
+  "theme": "さいころで決まる分数関数の最小値が整数になる確率",
+  "topic": "さいころで決まる分数関数の最小値が整数になる確率",
+  "statement": {
+   "tex": "1個のさいころを3回続けて投げるとき，1回目に出る目を $l$，2回目に出る目を $m$，3回目に出る目を $n$ とし，\n\\[f(x)=\\frac{lx^2+mx+n}{x+1}\\qquad(x>-1)\\]\nとおく．\n\\begin{enumerate}\n  \\item $f(x)$ が $x>-1$ の範囲で最小値をもち，しかもその最小値が整数となる確率を求めよ．\n  \\item $f(x)$ が $x>-1$ の範囲で最小値をもち，しかも最小値をとる $x$ の値が整数となる確率を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $\\dfrac{43}{216}$　(2) $\\dfrac{13}{72}$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "$c=l-m+n$ とおくと $lx^2+mx+n=(x+1)(lx+m-l)+c$ だから，$t=x+1>0$ として\n\\[f(x)=lt+\\frac ct+m-2l .\\]\n\\begin{itemize}\n  \\item $c\\leqq0$ のとき：$t$ が増えると $lt$ は増加し $\\dfrac ct$ は減少しない（$c<0$ なら増加，$c=0$ なら一定）から，$f$ は $x>-1$ で増加関数で，最小値をもたない．\n  \\item $c>0$ のとき：相加平均・相乗平均の関係より $lt+\\dfrac ct\\geqq2\\sqrt{lc}$，等号は $t=\\sqrt{\\dfrac cl}$ のとき．よって最小値 $m-2l+2\\sqrt{lc}$ を $x=-1+\\sqrt{\\dfrac cl}$ でとる．\n\\end{itemize}\n$(l,c)$ を決めると，$(m,n)$ は $n-m=c-l$ をみたす1以上6以下の整数の組で，その個数は $|c-l|\\leqq5$ のとき $6-|c-l|$，それ以外は0．また $1\\leqq c\\leqq11$．\n\n\\textbf{(1)} 条件は $c>0$ かつ $\\sqrt{lc}$ が整数．$m-2l$ は整数なので最小値が整数 $\\iff\\sqrt{lc}$ が整数．（$\\sqrt{lc}$ が整数でなければ無理数である：$\\sqrt N=\\frac pq$（既約，$q\\geqq2$）とすると $p^2=Nq^2$ で $q$ の素因数が $p$ を割り，矛盾．したがって $2\\sqrt{lc}$ も整数でない．）よって条件は「$lc$ が平方数」．\n\\begin{center}\n\\begin{tabular}{c|l|c}\n$l$ & 平方数となる $c$（$1\\leqq c\\leqq11$） & $(m,n)$ の個数 \\\\ \\hline\n1 & $1,4,9$ & $6+3+0=9$\\\\\n2 & $2,8$ & $6+0=6$\\\\\n3 & $3$ & $6$\\\\\n4 & $1,4,9$ & $3+6+1=10$\\\\\n5 & $5$ & $6$\\\\\n6 & $6$ & $6$\n\\end{tabular}\n\\end{center}\n合計43通りで，確率は $\\boldsymbol{\\dfrac{43}{216}}$．\n\n\\textbf{(2)} 条件は $c>0$ かつ $\\sqrt{\\dfrac cl}$ が整数 $k\\geqq1$（このとき $x=k-1>-1$ は整数），すなわち $c=lk^2$．\n$l=1$：$c=1,4,9$ で $6+3+0=9$．$l=2$：$c=2,8$ で $6+0=6$．$l=3,4,5,6$：$c=l$ のみ（$4l>11$）でそれぞれ6．\n合計 $9+6+6\\cdot4=39$ 通りで，確率は $\\dfrac{39}{216}=\\boldsymbol{\\dfrac{13}{72}}$．\n\\hfill$\\square$"
+   }
+  ],
+  "idea": {
+   "tex": "$lx^2+mx+n=(x+1)(lx+m-l)+c$（$c=l-m+n$）と割ると $f(x)=l(x+1)+\\dfrac{c}{x+1}+m-2l$．$c>0$ のときだけ最小値 $m-2l+2\\sqrt{lc}$ をもつので，「最小値が整数」は「$lc$ が平方数」，「最小点が整数」は「$c=lk^2$」に言いかえられ，$l$ と $c$ ごとに $n-m=c-l$ をみたす $(m,n)$ を数える．"
+  },
+  "methods": [],
+  "tags": [
+   "確率",
+   "分数関数",
+   "相加相乗平均",
+   "平方数",
+   "数え上げ"
+  ],
+  "provenance": {
+   "created": "2026-11-10"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "A-COM-357",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "A-05",
+  "level": 5,
+  "minutes": 40,
+  "theme": "どの $2\\times2$ にも1がちょうど1個",
+  "topic": "どの $2\\times2$ にも1がちょうど1個",
+  "statement": {
+   "tex": "$n$ を2以上の整数とする．正方形の形に並んだ $n\\times n$ のマスに $0$ または $1$ のいずれかの数字を入れる．マスは上から第1行，第2行，$\\dots$，左から第1列，第2列，$\\dots$ と数える．数字の入れ方についての次の条件 $q$ を考える．\n\\begin{center}\n条件 $q$：$1$ から $n-1$ までのどの整数 $i,j$ についても，第 $i$ 行，第 $i+1$ 行と第 $j$ 列，第 $j+1$ 列が作る\\\\ $2\\times2$ の4個のマスには，$1$ がちょうど1個入る．\n\\end{center}\n\\begin{enumerate}\n  \\item 条件 $q$ をみたすとき，次の (ア)〜(エ) の少なくとも1つが成り立つことを示せ．\n  \\begin{center}\n  (ア) 奇数番目の行のマスはすべて $0$　(イ) 偶数番目の行のマスはすべて $0$\\\\\n  (ウ) 奇数番目の列のマスはすべて $0$　(エ) 偶数番目の列のマスはすべて $0$\n  \\end{center}\n  \\item 条件 $q$ をみたす数字の入れ方の総数 $a_n$ を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 証明　(2) $n=2k$ のとき $a_n=2^{k+2}-4$，$n=2k+1$ のとき $a_n=3\\cdot2^{k+1}-4$（$k$ は自然数）"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "第 $i$ 行第 $j$ 列のマスの数を $a_{i,j}$ とする．$1\\leqq i\\leqq n-1$ に対して $s^{(i)}_j=a_{i,j}+a_{i+1,j}$（$1\\leqq j\\leqq n$）とおくと，条件 $q$ は\n\\[\ns^{(i)}_j+s^{(i)}_{j+1}=1\\qquad(1\\leqq i\\leqq n-1,\\ 1\\leqq j\\leqq n-1)\n\\]\nと同値．$s^{(i)}_j$ は0以上の整数なので，各 $i$ について $s^{(i)}_1,s^{(i)}_2,\\dots,s^{(i)}_n$ は $0$ と $1$ が交互に並ぶ．そこで $c_i\\in\\{0,1\\}$ を「$s^{(i)}_j=1\\iff j\\equiv c_i\\pmod2$」となるように定める（$n\\geqq2$ なので各偶奇の列は少なくとも1本ある）．\n\n次の2つの事実を用いる（$k,k'$ は隣り合う行番号，$1\\leqq k,k'\\leqq n$）．\n\\begin{itemize}\n  \\item[(I)] 第 $k$ 行がすべて0なら，第 $k'$ 行は「ある偶奇 $e$ の列だけが1，他は0」という形（以下，\\textbf{交互行}とよぶ）である．実際，第 $k,k'$ 行の組の $s_j$ は第 $k'$ 行の値そのものだから．\n  \\item[(II)] 第 $k$ 行が交互行（1の列の偶奇 $e$）なら，第 $k'$ 行はすべて0である．実際，その組の $s_j$ は $j\\equiv e$ のすべての $j$ で1以上なので，$s_j=1$ となる列の偶奇は $e$ に限られ，$a_{k',j}=s_j-a_{k,j}=0$（すべての $j$）．\n\\end{itemize}\n\n(1) \\textbf{場合1：$c_1=c_2=\\dots=c_{n-1}=c$ のとき．}$j\\not\\equiv c$ の列 $j$ では，すべての $i$ で $s^{(i)}_j=0$ だから，その列のマスはすべて0（どのマスもいずれかの組 $i$ に含まれる）．よって (ウ) または (エ) が成り立つ．\n\n\\textbf{場合2：ある $i$ で $c_i\\neq c_{i+1}$ のとき．}第 $i+1$ 行の各マスについて $a_{i+1,j}\\leqq s^{(i)}_j$ かつ $a_{i+1,j}\\leqq s^{(i+1)}_j$ で，$c_i\\neq c_{i+1}$ よりどの $j$ でも右辺の一方は0．よって第 $i+1$ 行はすべて0．すると (I)，(II) を交互に用いて，第 $i+1$ 行から上下に「すべて0の行」と「交互行」が交互に並ぶ．したがって $i+1$ と偶奇が同じ行はすべて0であり，(ア) または (イ) が成り立つ．\n\n(2) 条件 $q$ をみたす入れ方のうち，(ア) または (イ) をみたすものの集合を $\\mathcal R$，(ウ) または (エ) をみたすものの集合を $\\mathcal C$ とする．(1) より $a_n=|\\mathcal R|+|\\mathcal C|-|\\mathcal R\\cap\\mathcal C|$．\n\n\\textbf{$\\mathcal R$ の要素．}(ア) と (イ) が同時に成り立つとすべてのマスが0となり $q$ に反するので，(ア) の場合と (イ) の場合は重ならない．(ア) が成り立つとき，偶数番目の各行は（隣の奇数番目の行がすべて0なので）(I) により交互行で，1の列の偶奇を2通りから選べる．逆に，奇数番目の行をすべて0，偶数番目の各行を交互行にすると，どの $2\\times2$ のマスも「すべて0の行の2マス」と「交互行の隣り合う2マス（1がちょうど1個）」からなり，$q$ をみたす．(イ) も同様．よって\n\\begin{itemize}\n  \\item $n=2k$ のとき：偶数番目・奇数番目の行はともに $k$ 本で $|\\mathcal R|=2^k+2^k=2^{k+1}$．\n  \\item $n=2k+1$ のとき：偶数番目の行は $k$ 本，奇数番目の行は $k+1$ 本で $|\\mathcal R|=2^k+2^{k+1}=3\\cdot2^k$．\n\\end{itemize}\n行と列の役割を入れかえれば $|\\mathcal C|=|\\mathcal R|$．\n\n\\textbf{$\\mathcal R\\cap\\mathcal C$．}行の側で (ア)，(イ) の一方，列の側で (ウ)，(エ) の一方が成り立つとする．交互行の1の列は，すべて0である列と偶奇が異なるものに限られるので，各交互行は1通りに決まる．逆にそのように決めたものは $\\mathcal R$ の要素であり，しかも指定した偶奇の列はすべて0なので $\\mathcal C$ にも属する．よって行の側2通り×列の側2通りで $|\\mathcal R\\cap\\mathcal C|=4$．\n\n以上より\n\\[\na_n=\\begin{cases}2\\cdot2^{k+1}-4=\\boldsymbol{2^{k+2}-4} & (n=2k)\\\\[2pt] 2\\cdot3\\cdot2^k-4=\\boldsymbol{3\\cdot2^{k+1}-4} & (n=2k+1)\\end{cases}\n\\]\n（$k$ は自然数）．たとえば $a_2=4$，$a_3=8$，$a_4=12$，$a_5=20$．\\hfill$\\square$"
+   }
+  ],
+  "idea": {
+   "tex": "隣り合う2行の各列の和を並べた列は，条件から $0,1$ が交互に並ぶ．その「1の立つ列の偶奇」が全ての2行の組で一致すれば列の側が，どこかで食い違えば行の側が「1つおきに全部0」と決まる（0の行の隣は交互に1が並ぶ行になり，それが連鎖する）．2つの型をそれぞれ数え，両方に属するものを除く．"
+  },
+  "methods": [],
+  "tags": [
+   "数え上げ",
+   "構造決定",
+   "場合分け",
+   "包除原理"
+  ],
+  "provenance": {
+   "created": "2026-11-10"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "A-COM-358",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "A-05",
+  "level": 4,
+  "minutes": 35,
+  "theme": "さいころで決まる折り返しの合成",
+  "topic": "さいころで決まる折り返しの合成",
+  "statement": {
+   "tex": "1個のさいころを繰り返し投げ，$k$ 回目に出た目を $d_k$ とする．関数 $f_n(x)\\ (n=1,2,3,\\dots)$ を\n\\[\nf_1(x)=\\sin(\\pi x),\\qquad f_{k+1}(x)=f_k\\Bigl(\\frac2{d_k}-x\\Bigr)\\quad(k=1,2,3,\\dots)\n\\]\nで定める．\n\\begin{enumerate}\n  \\item $\\displaystyle s_n=\\sum_{k=1}^n(-1)^{k-1}\\frac2{d_k}$ とおくとき，$f_{n+1}(x)=\\sin\\pi\\bigl(s_n+(-1)^nx\\bigr)$ であることを示せ．\n  \\item $f_4(0)=0$ となる確率を求めよ．\n  \\item $f_5(x)$ と $f_1(x)$ が関数として等しい（すべての実数 $x$ で値が一致する）確率を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 証明　(2) $\\dfrac4{27}$　(3) $\\dfrac{23}{324}$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) $s_0=0$ とすると $f_1(x)=\\sin\\pi(s_0+x)$ で，$n=0$ のとき成り立つ．$f_{n+1}(x)=\\sin\\pi\\bigl(s_n+(-1)^nx\\bigr)$ と仮定すると，$\\gamma=\\dfrac2{d_{n+1}}$ として\n\\[\nf_{n+2}(x)=f_{n+1}(\\gamma-x)=\\sin\\pi\\bigl(s_n+(-1)^n\\gamma+(-1)^{n+1}x\\bigr),\n\\]\nで $s_n+(-1)^n\\gamma=s_{n+1}$．よって数学的帰納法により，すべての $n\\geqq0$ で成り立つ．\n\n(2) $f_4(0)=\\sin\\pi s_3=0\\iff s_3$ が整数．$\\alpha_k=\\dfrac2{d_k}$ とおくと $s_3=\\alpha_1-\\alpha_2+\\alpha_3$．$\\alpha$ を1で割った余り（小数部分）$r(d)$ は\n\\[\nr(1)=r(2)=0,\\quad r(3)=\\tfrac23,\\quad r(4)=\\tfrac12,\\quad r(5)=\\tfrac25,\\quad r(6)=\\tfrac13 .\n\\]\n$s_3$ が整数 $\\iff r(d_1)+r(d_3)-r(d_2)$ が整数．$r(d_2)\\in[0,1)$ なので，これは「$r(d_1)+r(d_3)$ の小数部分が $r(d_2)$ に等しい」ことと同値．$(d_1,d_3)$ で分類する．\n\\begin{itemize}\n  \\item $r(d_1)=r(d_3)=0$：$d_1,d_3\\in\\{1,2\\}$，$d_2\\in\\{1,2\\}$ で $2\\cdot2\\cdot2=8$ 通り．\n  \\item 一方だけが0：他方を $d\\in\\{3,4,5,6\\}$ とすると $d_2=d$ に限る．0の側2通り，順序2通りで $4\\cdot2\\cdot2=16$ 通り．\n  \\item 両方0でない：$r(d_1)+r(d_3)$ の小数部分が $\\{0,\\frac23,\\frac12,\\frac25,\\frac13\\}$ に入る組を調べる．$\\frac23+\\frac13=1$，$\\frac12+\\frac12=1$ は小数部分0（$d_2\\in\\{1,2\\}$），$\\frac23+\\frac23=\\frac43$ は $\\frac13$（$d_2=6$），$\\frac13+\\frac13=\\frac23$（$d_2=3$）．他の組 $\\frac25+\\frac25=\\frac45$，$\\frac25+\\frac23=\\frac{16}{15}$，$\\frac25+\\frac12=\\frac9{10}$，$\\frac25+\\frac13=\\frac{11}{15}$，$\\frac12+\\frac23=\\frac76$，$\\frac12+\\frac13=\\frac56$ はいずれも不適．よって $(d_1,d_3)=(3,6),(6,3)$ で $2\\cdot2=4$ 通り，$(4,4)$ で2通り，$(3,3)$，$(6,6)$ で各1通り，計8通り．\n\\end{itemize}\n合計 $8+16+8=32$ 通りで，確率は $\\dfrac{32}{216}=\\boldsymbol{\\dfrac4{27}}$．\n\n(3) (1) より $f_5(x)=\\sin\\pi(s_4+x)$．すべての $x$ で $\\sin\\pi(s_4+x)=\\sin\\pi x$ とすると，$x=0$ で $\\sin\\pi s_4=0$，$x=\\frac12$ で $\\cos\\pi s_4=1$ となり $s_4$ は偶数．逆に $s_4$ が偶数なら周期性から一致する．したがって条件は\n\\[\n\\frac{s_4}2=\\frac1{d_1}+\\frac1{d_3}-\\frac1{d_2}-\\frac1{d_4}\\ \\text{が整数}.\n\\]\n$\\beta(d)$ を $\\frac1d$ の小数部分とすると $\\beta(1)=0$，$\\beta(d)=\\frac1d\\ (d\\geqq2)$．条件は「$\\beta(d_1)+\\beta(d_3)$ と $\\beta(d_2)+\\beta(d_4)$ の小数部分が等しい」ことである．順序のついた組 $(d,d')$（36通り）を $\\beta(d)+\\beta(d')$ の小数部分 $\\rho$ で分類し，その個数を $N(\\rho)$ とする．\n\\begin{itemize}\n  \\item $\\rho=0$：$(1,1)$，$(2,2)$ で $N=2$．\n  \\item $\\rho=\\frac12$：$(1,2),(2,1),(4,4),(3,6),(6,3)$ で $N=5$．\n  \\item $\\rho=\\frac13$：$(1,3),(3,1),(6,6)$ で $N=3$．$\\rho=\\frac23$：$(3,3),(2,6),(6,2)$ で $N=3$．\n  \\item $\\rho=\\frac25$：$(5,5)$ で $N=1$．\n  \\item $\\rho=\\frac14,\\frac15,\\frac16$（$(1,d),(d,1)$），$\\rho=\\frac56,\\frac34,\\frac7{10}$（$\\frac12+\\frac13,\\frac12+\\frac14,\\frac12+\\frac15$），$\\rho=\\frac7{12},\\frac8{15}$（$\\frac13+\\frac14,\\frac13+\\frac15$），$\\rho=\\frac9{20},\\frac5{12},\\frac{11}{30}$（$\\frac14+\\frac15,\\frac14+\\frac16,\\frac15+\\frac16$）の11個は，それぞれ順序の入れかえで $N=2$．\n\\end{itemize}\n（合計 $2+5+3+3+1+11\\cdot2=36$ で漏れはない．）求める場合の数は\n\\[\n\\sum_\\rho N(\\rho)^2=4+25+9+9+1+11\\cdot4=92,\n\\]\n確率は $\\dfrac{92}{6^4}=\\boldsymbol{\\dfrac{23}{324}}$．\\hfill$\\square$"
+   }
+  ],
+  "idea": {
+   "tex": "$x\\mapsto c-x$ 型の置き換え（点 $\\frac c2$ に関する折り返し）を2回続けると平行移動になり，$f_{n+1}$ は常に $\\sin\\pi(s_n\\pm x)$ の形にとどまる．零点や関数の一致は $s_n$ が整数・偶数であることに帰着し，さいころの目の逆数の和を「1を法とした余り」で分類して数える．"
+  },
+  "methods": [],
+  "tags": [
+   "関数の合成",
+   "点対称移動",
+   "平行移動",
+   "確率",
+   "剰余"
+  ],
+  "provenance": {
+   "created": "2026-11-10"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "A-COM-359",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "A-05",
+  "level": 4,
+  "minutes": 30,
+  "theme": "さいころの目の「戻り」の回数の偶奇",
+  "topic": "さいころの目の「戻り」の回数の偶奇",
+  "statement": {
+   "tex": "1つのさいころを $n$ 回（$n\\geqq4$）投げ，$k$ 回目に出た目を $X_k$ とする．\n\\begin{enumerate}\n  \\item 「$X_k\\neq X_{k+1}$（$1\\leqq k\\leqq n-1$）がすべて成り立ち，かつ $X_k=X_{k+2}$ となる $k$（$1\\leqq k\\leqq n-2$）がちょうど $j$ 個ある」確率を求めよ．ただし $0\\leqq j\\leqq n-2$ とする．\n  \\item 「$X_k\\neq X_{k+1}$ がすべて成り立ち，かつ $X_k=X_{k+2}$ となる $k$ の個数が偶数（0を含む）である」確率を求めよ．\n  \\item 「連続する3回の目がつねにすべて異なり，かつ $X_k=X_{k+3}$ となる $k$（$1\\leqq k\\leqq n-3$）の個数が偶数（0を含む）である」確率を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $\\dfrac{30\\,{}_{n-2}\\mathrm C_j\\,4^{\\,n-2-j}}{6^n}$　(2) $\\dfrac{15\\left(5^{n-2}+3^{n-2}\\right)}{6^n}$　(3) $\\dfrac{60\\left(4^{n-3}+2^{n-3}\\right)}{6^n}$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "全事象は $6^n$ 通りで同様に確からしい．\n\n(1) 「隣り合う目が異なる」列を前から作る．$X_1$ は6通り，$X_2$ は $X_1$ 以外の5通り．$m\\geqq3$ では $X_m\\neq X_{m-1}$ の5通りから選ぶが，$X_{m-2}\\neq X_{m-1}$ なので，その5通りのうち $X_m=X_{m-2}$ となるもの（「戻り」と呼ぶ）はちょうど1通り，戻らないものは4通り．どの番号 $m\\in\\{3,\\dots,n\\}$ で戻るかを指定すると，そのような列は $6\\cdot5\\cdot1^{j}\\cdot4^{n-2-j}$ 通り（$j$ は戻りの個数）．$X_k=X_{k+2}$ となる $k$ の個数は戻りの個数に等しく，位置の選び方は ${}_{n-2}\\mathrm C_j$ 通り．よって確率は\n\\[ \\boldsymbol{\\frac{30\\,{}_{n-2}\\mathrm C_j\\,4^{n-2-j}}{6^n}}. \\]\n\n(2) $m=n-2$ とおく．二項定理から $\\sum_j{}_m\\mathrm C_j4^{m-j}=5^m$，$\\sum_j{}_m\\mathrm C_j(-1)^j4^{m-j}=3^m$．辺々加えて2で割ると，$j$ が偶数の項の和は $\\frac{5^m+3^m}2$．よって確率は $\\dfrac{30}{6^n}\\cdot\\dfrac{5^{n-2}+3^{n-2}}2=\\boldsymbol{\\dfrac{15(5^{n-2}+3^{n-2})}{6^n}}$．\n\n(3) 「連続する3回がすべて異なる」$\\iff$ すべての $k$ で $X_k\\neq X_{k+1}$，$X_k\\neq X_{k+2}$．$X_1,X_2,X_3$ は $6\\cdot5\\cdot4$ 通り．$m\\geqq4$ では $X_m\\notin\\{X_{m-1},X_{m-2}\\}$ の4通りで，$X_{m-3}$ は $X_{m-2},X_{m-1}$ と異なるから，4通りのうち $X_m=X_{m-3}$ となるものがちょうど1通り，そうでないものが3通り．(1)(2) と同様に，$X_k=X_{k+3}$ の個数が $j$ の列は $120\\,{}_{n-3}\\mathrm C_j3^{n-3-j}$ 通りで，$j$ が偶数の和は $120\\cdot\\frac{4^{n-3}+2^{n-3}}2$．確率は $\\boldsymbol{\\dfrac{60(4^{n-3}+2^{n-3})}{6^n}}$．"
+   }
+  ],
+  "idea": {
+   "tex": "直前と異なる目だけを出し続けるとき，次の目の5通りのうち「2つ前と同じ目」はちょうど1通り．履歴によらないので，「戻り」の起こる位置の集合ごとに数は $6\\cdot5\\cdot4^{(\\text{戻らない回数})}$ となり，戻りの回数は二項分布．偶数回の和は $\\frac{(4+1)^m+(4-1)^m}2$．3つ連続で異なる場合も同じ構造が1段ずれて現れる．"
+  },
+  "methods": [],
+  "tags": [
+   "確率",
+   "数え上げ",
+   "二項定理",
+   "偶奇"
+  ],
+  "provenance": {
+   "created": "2026-11-10"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "A-COM-360",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "A-05",
+  "level": 4,
+  "minutes": 35,
+  "theme": "カードの和が初めて $N$ を超えるときの和",
+  "topic": "カードの和が初めて $N$ を超えるときの和",
+  "statement": {
+   "tex": "$N$ を正の整数とする．箱の中に1から $N$ までの番号が1つずつ書かれた $N$ 枚のカードが入っている．この箱からカードを1枚取り出して番号を記録し箱に戻す，という試行をくり返し，$j$ 回目に記録した番号を $X_j$ とする．\n\\begin{enumerate}\n  \\item $1\\leqq k\\leqq N$ とする．$X_1+X_2+\\dots+X_j=k$ となる $j$ が存在する確率 $P_N(k)$ を求めよ．\n  \\item 和 $X_1+\\dots+X_j$ が初めて $N$ より大きくなったときのその和を $T$ とする．$1\\leqq j\\leqq N$ に対し，$T=N+j$ となる確率を求めよ．\n  \\item $T$ の期待値 $E_N$ を求めよ．また $\\displaystyle\\lim_{N\\to\\infty}\\frac{E_N}N$ を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $P_N(k)=\\dfrac1N\\left(1+\\dfrac1N\\right)^{k-1}$　(2) $\\dfrac1N\\left\\{\\left(1+\\dfrac1N\\right)^N-\\left(1+\\dfrac1N\\right)^{j-1}\\right\\}$　(3) $E_N=\\dfrac{N+1}2\\left(1+\\dfrac1N\\right)^N$，極限 $\\dfrac e2$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "$q=1+\\dfrac1N$，$S_j=X_1+\\dots+X_j$（$S_0=0$）とする．$S_j$ は $j$ について1以上ずつ増加する．\n\n(1) $1\\leqq k\\leqq N$ とし，$P(k)=P_N(k)$ とおく．$X_1=i$ で場合分けする．$i=k$ なら条件成立，$i>k$ なら $S_j\\geqq X_1>k$ で不成立．$i<k$ なら，条件は「$X_2+\\dots+X_j=k-i$ となる $j\\geqq2$ がある」ことで，$X_2,X_3,\\dots$ は $X_1$ と独立かつ $X_1,X_2,\\dots$ と同じ確率で値をとるので，その確率は $P(k-i)$．よって\n\\[P(k)=\\frac1N\\Bigl(1+\\sum_{m=1}^{k-1}P(m)\\Bigr)\\quad(1\\leqq k\\leqq N).\\]\n$1\\leqq k\\leqq N-1$ で差をとると $P(k+1)-P(k)=\\dfrac{P(k)}N$，$P(k+1)=qP(k)$，$P(1)=\\dfrac1N$．よって $P_N(k)=\\boldsymbol{\\dfrac1N\\left(1+\\dfrac1N\\right)^{k-1}}$．\n\n(2) $S_{N+1}\\geqq N+1$ だから $T$ は必ず定まる．$T=N+j$ となるのは，ある $r\\geqq0$ と $m$ について「$S_r=m\\leqq N$ かつ $X_{r+1}=N+j-m$」となるとき（このとき $S_{r+1}=N+j>N\\geqq S_r$ なので $S_{r+1}$ が初めて $N$ を超えた和）であり，$1\\leqq X_{r+1}\\leqq N$ より $j\\leqq m\\leqq N$．$(r,m)$ が異なればこれらの事象は排反である．$X_{r+1}$ は $X_1,\\dots,X_r$ と独立なので\n\\[P(S_r=m,\\ X_{r+1}=N+j-m)=\\frac1N P(S_r=m).\\]\n$S_j$ は増加するので「$S_r=m$」（$r=0,1,2,\\dots$）は互いに排反で，それらの和事象が「$m$ がある部分和に等しい」事象だから $\\sum_rP(S_r=m)=P_N(m)$（$m\\geqq1$）．よって\n\\begin{align*}P(T=N+j)&=\\frac1N\\sum_{m=j}^NP_N(m)=\\frac1{N^2}\\sum_{m=j}^Nq^{m-1}=\\frac1{N^2}\\cdot\\frac{q^N-q^{j-1}}{q-1}\\\\&=\\boldsymbol{\\frac1N\\left\\{\\left(1+\\frac1N\\right)^N-\\left(1+\\frac1N\\right)^{j-1}\\right\\}}.\\end{align*}\n\n(3) $\\displaystyle\\sum_{j=1}^NP(T=N+j)=q^N-\\frac{q^N-1}{N(q-1)}=1$ だから\n\\[E_N=N+\\frac1N\\sum_{j=1}^Nj\\left(q^N-q^{j-1}\\right)=N+\\frac{(N+1)q^N}2-\\frac1NU,\\qquad U=\\sum_{j=1}^Njq^{j-1}.\\]\n$(1-q)U=\\displaystyle\\sum_{j=1}^Nq^{j-1}-Nq^N=\\frac{q^N-1}{q-1}-Nq^N=N(q^N-1)-Nq^N=-N$ で，$1-q=-\\dfrac1N$ より $U=N^2$．よって\n\\[E_N=\\boldsymbol{\\frac{N+1}2\\left(1+\\frac1N\\right)^N},\\qquad \\frac{E_N}N=\\frac12\\left(1+\\frac1N\\right)\\left(1+\\frac1N\\right)^N\\to\\boldsymbol{\\frac e2}.\\]\n\\hfill$\\square$"
+   }
+  ],
+  "idea": {
+   "tex": "「部分和がちょうど $k$ になる」確率 $P(k)$ は，1枚目で場合分けすると $P(k)=\\dfrac1N\\Bigl(1+\\sum_{i<k}P(i)\\Bigr)$．差をとると等比数列 $P(k)=\\dfrac1N\\left(1+\\dfrac1N\\right)^{k-1}$（$k\\leqq N$）．初めて $N$ を超える和は「$N$ 以下の最後の部分和 $m$」と次のカードで決まる．"
+  },
+  "methods": [],
+  "tags": [
+   "確率漸化式",
+   "部分和",
+   "期待値",
+   "自然対数の底"
+  ],
+  "provenance": {
+   "created": "2026-11-10"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
  }
 ]
