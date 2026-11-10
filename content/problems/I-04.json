@@ -1,0 +1,1351 @@
+[
+ {
+  "id": "I-DAT-001",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "I-04",
+  "level": 3,
+  "minutes": 20,
+  "theme": "重み付きの絶対値の和の最小",
+  "topic": "重み付きの絶対値の和の最小",
+  "statement": {
+   "tex": "\\begin{enumerate}\n  \\item $a_1<a_2<\\dots<a_n$ とする．$f(x)=\\displaystyle\\sum_{i=1}^n(x-a_i)^2$ を最小にする $x$ を求めよ．\n  \\item $g(x)=\\displaystyle\\sum_{k=1}^{10}k|x-k|$ を最小にする $x$ と，その最小値を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $x=\\dfrac1n\\sum_{i=1}^na_i$　(2) $x=7，\\ 112$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) $f(x)=nx^2-2x\\sum a_i+\\sum a_i^2$ より $\\boldsymbol{x=\\dfrac1n\\sum_{i=1}^na_i}$（平均値）．\n\n(2) $g$ は折れ線で，$k<x<k+1$ での傾きは $\\sum_{i\\leqq k}i-\\sum_{i>k}i=k(k+1)-55$．\n$k=6$ で $42-55<0$，$k=7$ で $56-55>0$．$\\boldsymbol{x=7}$ で最小．\n最小値 $\\sum_{k=1}^6k(7-k)+\\sum_{k=8}^{10}k(k-7)=56+56=\\boldsymbol{112}$．"
+   }
+  ],
+  "idea": {
+   "tex": "2乗の和は平均値で最小，絶対値の和は中央値で最小．重みつきなら「重みの累積が全体の半分を超える点」．"
+  },
+  "methods": [],
+  "tags": [
+   "中央値",
+   "平均値",
+   "最小化"
+  ],
+  "provenance": {
+   "created": "2026-10-29"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "I-DAT-002",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "I-04",
+  "level": 2,
+  "minutes": 20,
+  "theme": "等差的なデータの平均・分散・相関",
+  "topic": "等差的なデータの平均・分散・相関",
+  "statement": {
+   "tex": "2つの変量 $x,y$ が，$i=1,2,\\dots,n$ に対して $x_i=2i-1$，$y_i=2(n+1-i)$ で与えられている（$n\\geqq2$）．\n\\begin{enumerate}\n  \\item 変量 $x$ の平均値 $m_x$ と分散 $s_x^2$ を求めよ．\n  \\item 変量 $x$ と変量 $y$ の相関係数 $r$ を求めよ．\n  \\item $n$ 個の変量 $x$ に，平均値 $3n$，分散 $2n^2$ からなる $n$ 個のデータを加えた．この $2n$ 個のデータの平均値 $m'$ と分散 $s'^2$ を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $n，\\ \\dfrac{n^2-1}3$　(2) $-1$　(3) $2n，\\ \\dfrac{13n^2-1}6$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) $m_x=\\frac1n\\sum(2i-1)=\\boldsymbol n$．$\\frac1n\\sum(2i-1)^2=\\frac{4n^2-1}3$ より $s_x^2=\\boldsymbol{\\dfrac{n^2-1}3}$．\n\n(2) $y_i=2n+1-x_i$ で $y$ は $x$ の傾き負の1次式．$r=\\boldsymbol{-1}$．\n\n(3) $m'=\\frac{n+3n}2=\\boldsymbol{2n}$．2乗の平均は $\\frac12\\left\\{\\frac{n^2-1}3+n^2+2n^2+9n^2\\right\\}=\\frac{37n^2-1}6$．\n$s'^2=\\frac{37n^2-1}6-4n^2=\\boldsymbol{\\dfrac{13n^2-1}6}$．"
+   }
+  ],
+  "idea": {
+   "tex": "$y$ が $x$ の1次式なら相関係数は $\\pm1$．データの合併は「2乗の平均」を合併して分散を出す．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) 記述\n(2) -1\n(3) 記述"
+  },
+  "methods": [],
+  "tags": [
+   "平均",
+   "分散",
+   "相関係数",
+   "データの合併"
+  ],
+  "provenance": {
+   "created": "2026-10-29"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "I-DAT-003",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "I-04",
+  "level": 3,
+  "minutes": 20,
+  "theme": "最小二乗法による回帰直線",
+  "topic": "最小二乗法による回帰直線",
+  "statement": {
+   "tex": "$n$ 個のデータ $(x_1,y_1),\\dots,(x_n,y_n)$ について，$x$ の平均 $\\bar x$，分散 $s_x^2$（$>0$），$y$ の平均 $\\bar y$，分散 $s_y^2$，共分散 $s_{xy}$ とする．\n\\begin{enumerate}\n  \\item $Q(a,b)=\\displaystyle\\sum_{i=1}^n(y_i-ax_i-b)^2$ を最小にする $a,b$ は $a=\\dfrac{s_{xy}}{s_x^2}$，$b=\\bar y-a\\bar x$ であることを示せ．\n  \\item $Q$ の最小値は $ns_y^2(1-r^2)$（$r$ は相関係数）であることを示し，$|r|\\leqq1$ を導け．\n  \\item データ $(1,2),(2,3),(3,5),(4,6)$ の回帰直線 $y=ax+b$ を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 証明　(2) 証明　(3) $y=\\dfrac75x+\\dfrac12$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) $Q=\\sum\\{(y_i-\\bar y)-a(x_i-\\bar x)-(b-\\bar y+a\\bar x)\\}^2=n\\{s_y^2-2as_{xy}+a^2s_x^2\\}+n(b-\\bar y+a\\bar x)^2$．\n$=ns_x^2\\left(a-\\frac{s_{xy}}{s_x^2}\\right)^2+n\\left(s_y^2-\\frac{s_{xy}^2}{s_x^2}\\right)+n(\\cdots)^2$．$\\blacksquare$\n\n(2) 最小値 $n\\left(s_y^2-\\frac{s_{xy}^2}{s_x^2}\\right)=ns_y^2(1-r^2)\\geqq0$．$\\blacksquare$\n\n(3) $\\bar x=\\frac52$，$\\bar y=4$，$s_{xy}=\\frac74$，$s_x^2=\\frac54$．$a=\\frac75$，$b=4-\\frac72=\\frac12$．$\\boldsymbol{y=\\dfrac75x+\\dfrac12}$．"
+   }
+  ],
+  "idea": {
+   "tex": "$\\sum(y_i-ax_i-b)^2$ を $b$，続いて $a$ について平方完成．最小値は $ns_y^2(1-r^2)$ で，$|r|\\leqq1$ もここからわかる．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) 証明\n(2) 証明\n(3) $y$：(7/5)x+1/2"
+  },
+  "methods": [],
+  "tags": [
+   "最小二乗法",
+   "平方完成",
+   "相関係数"
+  ],
+  "provenance": {
+   "created": "2026-10-29"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "I-DAT-004",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "I-04",
+  "level": 3,
+  "minutes": 20,
+  "theme": "度数分布表から代表値の範囲を読む",
+  "topic": "度数分布表から代表値の範囲を読む",
+  "statement": {
+   "tex": "あるクラスの10人が受けた国語と数学の小テストの得点（整数）を度数分布表にまとめた．\n\\begin{center}\n\\begin{tabular}{c|cc}\n階級（点） & 国語 & 数学\\\\\\hline\n40以上49以下 & 3 & 1\\\\\n50〜59 & 3 & 2\\\\\n60〜69 & 2 & 4\\\\\n70〜79 & 2 & 3\\\\\\hline\n計 & 10 & 10\n\\end{tabular}\n\\end{center}\n\\begin{enumerate}\n  \\item 国語の得点の中央値として考えられる最小の値と最大の値を求めよ．\n  \\item 国語の平均値 $M_1$，数学の平均値 $M_2$ のとりうる値の範囲をそれぞれ求めよ．\n  \\item $M_2-M_1$ のとりうる値の範囲を求めよ．また，次のうち正しいものをすべて選べ．\\\\\n  ① $M_1=M_2$ となる場合がある \\quad ② $M_1>M_2$ となる場合がある \\quad ③ $M_1<M_2-15$ となる場合がある\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 最小 50 点，最大 59 点　(2) $53\\leqq M_1\\leqq62，\\ 59\\leqq M_2\\leqq68$　(3) $-3\\leqq M_2-M_1\\leqq15$；①，②"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) 中央値は5番目と6番目の平均で，どちらも50〜59点の階級．\\textbf{最小 50 点，最大 59 点}．\n\n(2) $M_1$：最小 $\\frac{3\\cdot40+3\\cdot50+2\\cdot60+2\\cdot70}{10}=53$，最大 $\\frac{3\\cdot49+3\\cdot59+2\\cdot69+2\\cdot79}{10}=62$．$\\boldsymbol{53\\leqq M_1\\leqq62}$．\n$M_2$：最小 $\\frac{40+100+240+210}{10}=59$，最大 $\\frac{49+118+276+237}{10}=68$．$\\boldsymbol{59\\leqq M_2\\leqq68}$．\n\n(3) $M_1$，$M_2$ は独立に（0.1刻みで）動くので $\\boldsymbol{-3\\leqq M_2-M_1\\leqq15}$．\n\\textbf{①，②}（③ は $M_2-M_1>15$ となり不可）．"
+   }
+  ],
+  "idea": {
+   "tex": "各階級の中で値は自由に動くので，平均値の最小・最大は全員を階級の下端・上端に置いたとき．中央値は何番目と何番目の平均かを確かめ，その値が入る階級を読む．"
+  },
+  "methods": [],
+  "tags": [
+   "度数分布",
+   "中央値",
+   "平均値の範囲"
+  ],
+  "provenance": {
+   "created": "2026-10-29"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "I-DAT-005",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "I-04",
+  "level": 3,
+  "minutes": 25,
+  "theme": "5数要約から人数を評価する",
+  "topic": "5数要約から人数を評価する",
+  "statement": {
+   "tex": "ある学校の4種類のテスト A，B，C，D（各100点満点，得点は整数）について，50人の得点の5数要約が次のようであった．\n\\begin{center}\n\\begin{tabular}{c|ccccc}\n & 最小値 & 第1四分位数 & 中央値 & 第3四分位数 & 最大値\\\\\\hline\nA & 25 & 40 & 57 & 73 & 90\\\\\nB & 20 & 33 & 45 & 58 & 78\\\\\nC & 28 & 61 & 70 & 82 & 95\\\\\nD & 45 & 64 & 72 & 80 & 96\n\\end{tabular}\n\\end{center}\nただし，第1四分位数は小さい方から13番目，第3四分位数は38番目の値とする．\n\\begin{enumerate}\n  \\item 38人以上が60点以上であると確実にいえるテストはどれか．\n  \\item 40点未満の生徒が13人以上いると確実にいえるテストはどれか．\n  \\item テストCで40点以上の生徒は最も多くて何人と考えられるか．\n  \\item テストBで40点以上60点未満の生徒は少なくとも何人いるか．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) C，D　(2) B　(3) 49人　(4) 13人"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) $x_{13}\\geqq60$ なら $x_{13},\\dots,x_{50}$ の38人が60点以上．\\textbf{C，D}．（A，B は $x_{13}<60$ で37人以下の可能性がある．）\n\n(2) $x_{13}<40$ なら13人以上．\\textbf{B}．（Aは $x_{13}=40$ で40点未満は12人以下．）\n\n(3) 最小値 28 の1人は40点未満．$x_2$ 以降を40点以上にできる（$x_{13}=61$ と矛盾しない）．\\textbf{49人}．\n\n(4) $x_{25}+x_{26}=90$，$x_{25}\\geqq x_{13}=33$ より $x_{26}\\leqq57$，また $x_{26}\\geqq45$．$x_{26},\\dots,x_{38}$ は $45\\leqq x\\leqq58$ で $[40,60)$ に入る．\n$x_{25}$ 以下は40未満にでき（例 $x_{25}=33$，$x_{26}=57$），$x_{39}$ 以上は60以上にできる．\\textbf{13人}．"
+   }
+  ],
+  "idea": {
+   "tex": "50人を小さい順に $x_1\\leqq\\dots\\leqq x_{50}$ とすると，中央値は $\\frac{x_{25}+x_{26}}2$，第1四分位数は $x_{13}$，第3四分位数は $x_{38}$．各条件を $x_k$ の大小に翻訳する．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) 記述\n(2) 記述\n(3) 49人\n(4) 13人"
+  },
+  "methods": [],
+  "tags": [
+   "四分位数",
+   "箱ひげ図",
+   "人数の評価"
+  ],
+  "provenance": {
+   "created": "2026-10-29"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "I-DAT-006",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "I-04",
+  "level": 2,
+  "minutes": 20,
+  "theme": "仮平均を用いた平均と分散",
+  "topic": "仮平均を用いた平均と分散",
+  "statement": {
+   "tex": "ある団体50人の体重を測定し，次の度数分布表を得た．\n\\begin{center}\n\\begin{tabular}{c|cccccc|c}\n体重（kg） & 40〜44 & 44〜48 & 48〜52 & 52〜56 & 56〜60 & 60〜64 & 計\\\\\\hline\n度数 $f$ & 4 & 8 & 15 & 12 & 7 & 4 & 50\n\\end{tabular}\n\\end{center}\n（各階級は「以上〜未満」）階級値を $x$ とし，$u=\\dfrac{x-50}4$ とする．\n\\begin{enumerate}\n  \\item $\\sum uf$，$\\sum u^2f$ を求め，$u$ の平均値 $\\bar u$ と分散 $s_u^2$ を求めよ．\n  \\item $x$ の平均値 $\\bar x$ と分散 $s_x^2$ を求めよ．\n  \\item 中央値が含まれる階級の階級値を答えよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $22，\\ 100，\\ \\dfrac{11}{25}，\\ \\dfrac{1129}{625}$　(2) $\\dfrac{1294}{25}，\\ \\dfrac{18064}{625}$　(3) $50$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) $u=-2,-1,0,1,2,3$．$\\sum uf=-8-8+0+12+14+12=\\boldsymbol{22}$，$\\sum u^2f=16+8+0+12+28+36=\\boldsymbol{100}$．\n$\\bar u=\\frac{22}{50}=\\boldsymbol{\\dfrac{11}{25}}$，$s_u^2=\\frac{100}{50}-\\left(\\frac{11}{25}\\right)^2=\\boldsymbol{\\dfrac{1129}{625}}$．\n\n(2) $\\bar x=50+4\\bar u=\\boldsymbol{\\dfrac{1294}{25}}$（$=51.76$），$s_x^2=16s_u^2=\\boldsymbol{\\dfrac{18064}{625}}$（$=28.9024$）．\n\n(3) 累積度数 $4,12,27$ より25番目と26番目は 48〜52 の階級．\\textbf{階級値 50}．"
+   }
+  ],
+  "idea": {
+   "tex": "$u=\\frac{x-x_0}c$ とおくと $\\bar x=x_0+c\\bar u$，$s_x^2=c^2s_u^2$．$s_u^2=\\overline{u^2}-\\bar u^2$．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) 記述\n(2) 記述\n(3) 50"
+  },
+  "methods": [],
+  "tags": [
+   "変量の変換",
+   "平均",
+   "分散"
+  ],
+  "provenance": {
+   "created": "2026-10-29"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "I-DAT-007",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "I-04",
+  "level": 4,
+  "minutes": 30,
+  "theme": "3つの値だけからなる2教科の得点",
+  "topic": "3つの値だけからなる2教科の得点",
+  "statement": {
+   "tex": "$a,b,c$ は異なる3つの正の整数とする．10人が受けた科目X，Yの得点は次のとおりである．\n\\begin{center}\n\\begin{tabular}{c|cccccccccc}\n & ① & ② & ③ & ④ & ⑤ & ⑥ & ⑦ & ⑧ & ⑨ & ⑩\\\\\\hline\nX & $a$ & $b$ & $c$ & $c$ & $b$ & $a$ & $c$ & $b$ & $c$ & $a$\\\\\nY & $b$ & $a$ & $b$ & $b$ & $a$ & $c$ & $a$ & $b$ & $a$ & $b$\n\\end{tabular}\n\\end{center}\nX の平均値と Y の平均値は等しいとする．\n\\begin{enumerate}\n  \\item $a,b,c$ の間に成り立つ関係式を求めよ．\n  \\item X の分散を $s_X^2$，Y の分散を $s_Y^2$ とするとき，$\\dfrac{s_X^2}{s_Y^2}$ を求めよ．\n  \\item X と Y の相関係数を，四捨五入して小数第1位まで求めよ．\n  \\item X の中央値が65，Y の分散が201であるとき，$a,b,c$ の組をすべて求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $a+2b=3c$　(2) $\\dfrac{s_X^2}{s_Y^2}=\\dfrac{47}{67}$　(3) $-0.5$　(4) $(a,b,c)=(85,55,65),(45,75,65)$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) X：$a$ 3個，$b$ 3個，$c$ 4個．Y：$a$ 4個，$b$ 5個，$c$ 1個．$3a+3b+4c=4a+5b+c$ より $\\boldsymbol{a+2b=3c}$．\n\n(2) $b=t$，$c=t+d$，$a=t+3d$（$d\\neq0$）．平均はともに $t+\\frac{13}{10}d$．\n$s_X^2=\\frac{141}{100}d^2$，$s_Y^2=\\frac{201}{100}d^2$．$\\boldsymbol{\\dfrac{s_X^2}{s_Y^2}=\\dfrac{47}{67}}$．\n\n(3) 共分散 $=-\\frac{79}{100}d^2$．$r=\\frac{-79}{\\sqrt{141\\cdot201}}\\fallingdotseq-0.469$．$\\boldsymbol{-0.5}$．\n\n(4) $d>0$ でも $d<0$ でも X の値を小さい順に並べると5番目と6番目は $c$．$c=65$．$\\frac{201}{100}d^2=201$ より $d=\\pm10$．\n$d=10$：$b=55$，$a=85$．$d=-10$：$b=75$，$a=45$．$\\boldsymbol{(a,b,c)=(85,55,65),(45,75,65)}$．"
+   }
+  ],
+  "idea": {
+   "tex": "平均が等しい条件で $a,b,c$ の1次関係が出る．$b=t$，$a=t+3d$，$c=t+d$ とおくと，分散・共分散はすべて $d^2$ の定数倍になり，比や相関係数は $d$ によらない．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) 記述\n(2) 記述\n(3) -0.5\n(4) $(a,b,c)$：{(85, 55, 65), (45, 75, 65)}"
+  },
+  "methods": [],
+  "tags": [
+   "分散",
+   "相関係数",
+   "文字の値"
+  ],
+  "provenance": {
+   "created": "2026-10-29"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "I-DAT-008",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "I-04",
+  "level": 3,
+  "minutes": 25,
+  "theme": "データを1つ追加したときの共分散と相関係数",
+  "topic": "データを1つ追加したときの共分散と相関係数",
+  "statement": {
+   "tex": "30人の2つの変量 $x,y$ について，平均値 $\\bar x=20$，$\\bar y=30$，分散 $s_x^2=16$，$s_y^2=25$，共分散 $s_{xy}=12$ であった．\n\\begin{enumerate}\n  \\item $x$ と $y$ の相関係数を求めよ．\n  \\item 31人目として $(x,y)=(20,30)$ のデータを加えた．新しい共分散 $A$ ともとの共分散 $B$，新しい相関係数 $C$ ともとの相関係数 $D$ の大小関係を答えよ．\n  \\item (2) の代わりに $(x,y)=(24,25)$ のデータを加えたとき，新しい相関係数を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $0.6$　(2) $A<B$，$C=D$　(3) $\\dfrac{11}{20}$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) $r=\\frac{12}{4\\cdot5}=\\boldsymbol{0.6}$．\n\n(2) 平均は変わらず，偏差の積の和・2乗の和は変わらない．人数が31になるので $A=\\frac{30}{31}B$，分散も同じ割合．\\textbf{$A<B$，$C=D$}．\n\n(3) 新しい平均との差を考えると，偏差の積の和は $30\\cdot12+\\frac{30}{31}\\cdot4\\cdot(-5)$，2乗和は $30\\cdot16+\\frac{30}{31}\\cdot16=480\\cdot\\frac{32}{31}$，$30\\cdot25+\\frac{30}{31}\\cdot25=750\\cdot\\frac{32}{31}$．\n$C=\\frac{360-\\frac{600}{31}}{\\frac{32}{31}\\sqrt{480\\cdot750}}=\\frac{10560}{19200}=\\boldsymbol{\\dfrac{11}{20}}$（$=0.55$）．"
+   }
+  ],
+  "idea": {
+   "tex": "追加後の偏差の積の和は「元の和 $+\\frac n{n+1}(x-\\bar x)(y-\\bar y)$」．平均と同じ値を追加すると和は不変で人数だけ増え，共分散・分散は同じ割合で減り，相関係数は変わらない．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) 0.6\n(2) A<B ; $C$：D\n(3) 11/20"
+  },
+  "methods": [],
+  "tags": [
+   "共分散",
+   "相関係数",
+   "データの追加"
+  ],
+  "provenance": {
+   "created": "2026-10-29"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "I-DAT-009",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "I-04",
+  "level": 0,
+  "minutes": 5,
+  "theme": "データの代表値／平均値・中央値・最頻値",
+  "unit": "データの代表値",
+  "topic": "平均値・中央値・最頻値",
+  "statement": {
+   "tex": "次のデータは，10人の生徒の小テスト（10点満点）の得点である．\n$4,\\ 7,\\ 5,\\ 9,\\ 7,\\ 3,\\ 8,\\ 7,\\ 6,\\ 4$\nこのデータの平均値，中央値，最頻値を求めよ．"
+  },
+  "answer": {
+   "tex": "平均値 $6$ 点，中央値 $6.5$ 点，最頻値 $7$ 点"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "平均値は $\\dfrac{4+7+5+9+7+3+8+7+6+4}{10}=\\dfrac{60}{10}=\\boldsymbol{6}$ 点．\n小さい順に並べると $3,4,4,5,6,7,7,7,8,9$．10個なので中央値は5番目と6番目の平均で $\\dfrac{6+7}{2}=\\boldsymbol{6.5}$ 点．\n最も多く現れる値は $7$（3回）なので最頻値は $\\boldsymbol{7}$ 点．"
+   }
+  ],
+  "idea": {
+   "tex": "中央値は必ず小さい順に並べ替えてから求める．データの個数が偶数のときは中央の2つの平均．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "平均値：6 ; 中央値：6.5 ; 最頻値：7"
+  },
+  "methods": [],
+  "tags": [
+   "平均値",
+   "中央値",
+   "最頻値"
+  ],
+  "provenance": {
+   "created": "2026-10-30"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "I-DAT-010",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "I-04",
+  "level": 0,
+  "minutes": 5,
+  "theme": "データの散らばり／四分位数と四分位範囲",
+  "unit": "データの散らばり",
+  "topic": "四分位数と四分位範囲",
+  "statement": {
+   "tex": "次のデータは，ある10日間の最高気温（℃）を小さい順に並べたものである．\n$12,\\ 15,\\ 18,\\ 20,\\ 21,\\ 24,\\ 26,\\ 27,\\ 30,\\ 33$\n\\begin{enumerate}\n  \\item 第1四分位数 $Q_1$，第2四分位数 $Q_2$，第3四分位数 $Q_3$ を求めよ．\n  \\item 四分位範囲を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $Q_1=18$，$Q_2=22.5$，$Q_3=27$　(2) $9$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) 10個なので $Q_2$ は5番目と6番目の平均で $\\dfrac{21+24}{2}=\\boldsymbol{22.5}$．\n前半5個 $12,15,18,20,21$ の中央値が $Q_1=\\boldsymbol{18}$，後半5個 $24,26,27,30,33$ の中央値が $Q_3=\\boldsymbol{27}$．\n(2) 四分位範囲は $Q_3-Q_1=27-18=\\boldsymbol{9}$．"
+   }
+  ],
+  "idea": {
+   "tex": "データを中央値で前半と後半に分け，それぞれの中央値が $Q_1$，$Q_3$ になる．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) $Q_1$：18 ; $Q_2$：22.5 ; $Q_3$：27\n(2) 9"
+  },
+  "methods": [],
+  "tags": [
+   "四分位数",
+   "四分位範囲"
+  ],
+  "provenance": {
+   "created": "2026-10-30"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "I-DAT-011",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "I-04",
+  "level": 0,
+  "minutes": 5,
+  "theme": "データの散らばり／分散と標準偏差",
+  "unit": "データの散らばり",
+  "topic": "分散と標準偏差",
+  "statement": {
+   "tex": "5個のデータ $1,\\ 4,\\ 5,\\ 8,\\ 12$ の平均値，分散，標準偏差を求めよ．"
+  },
+  "answer": {
+   "tex": "平均値 $6$，分散 $14$，標準偏差 $\\sqrt{14}$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "平均値は $\\dfrac{1+4+5+8+12}{5}=\\boldsymbol{6}$．\n偏差は $-5,\\ -2,\\ -1,\\ 2,\\ 6$ で，その2乗の和は $25+4+1+4+36=70$．\n分散は $\\dfrac{70}{5}=\\boldsymbol{14}$，標準偏差は $\\boldsymbol{\\sqrt{14}}$．"
+   }
+  ],
+  "idea": {
+   "tex": "分散は「偏差の2乗の平均」，標準偏差はその正の平方根．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "平均値：6 ; 分散：14 ; 標準偏差：sqrt(14)"
+  },
+  "methods": [],
+  "tags": [
+   "分散",
+   "標準偏差"
+  ],
+  "provenance": {
+   "created": "2026-10-30"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "I-DAT-012",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "I-04",
+  "level": 0,
+  "minutes": 5,
+  "theme": "データの散らばり／変量の変換と平均・分散",
+  "unit": "データの散らばり",
+  "topic": "変量の変換と平均・分散",
+  "statement": {
+   "tex": "変量 $x$ のデータの平均値が $5$，分散が $4$ である．$y=3x-2$ によって新しい変量 $y$ を作るとき，$y$ のデータの平均値，分散，標準偏差を求めよ．"
+  },
+  "answer": {
+   "tex": "平均値 $13$，分散 $36$，標準偏差 $6$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "$y=ax+b$ のとき，平均値は $a\\bar x+b$，分散は $a^2s_x^2$，標準偏差は $|a|s_x$．\n平均値 $3\\cdot5-2=\\boldsymbol{13}$，分散 $3^2\\cdot4=\\boldsymbol{36}$，標準偏差 $3\\cdot2=\\boldsymbol{6}$．"
+   }
+  ],
+  "idea": {
+   "tex": "各値を $a$ 倍して $b$ を足すと，平均は同じ変換を受けるが，散らばりは $b$ の影響を受けず $|a|$ 倍になる．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "平均値：13 ; 分散：36 ; 標準偏差：6"
+  },
+  "methods": [],
+  "tags": [
+   "変量の変換",
+   "平均値",
+   "分散"
+  ],
+  "provenance": {
+   "created": "2026-10-30"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "I-DAT-013",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "I-04",
+  "level": 0,
+  "minutes": 6,
+  "theme": "データの散らばり／四分位数と外れ値",
+  "unit": "データの散らばり",
+  "topic": "四分位数と外れ値",
+  "statement": {
+   "tex": "次の10個のデータがある（小さい順）．\n$2,\\ 9,\\ 10,\\ 11,\\ 12,\\ 13,\\ 14,\\ 15,\\ 16,\\ 30$\n「$Q_1-1.5\\times(Q_3-Q_1)$ 以下」または「$Q_3+1.5\\times(Q_3-Q_1)$ 以上」の値を外れ値とする．\n\\begin{enumerate}\n  \\item 第1四分位数 $Q_1$ と第3四分位数 $Q_3$ を求めよ．\n  \\item 外れ値をすべて求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $Q_1=10$，$Q_3=15$　(2) $2,\\ 30$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) 前半5個 $2,9,10,11,12$ の中央値で $Q_1=\\boldsymbol{10}$，後半5個 $13,14,15,16,30$ の中央値で $Q_3=\\boldsymbol{15}$．\n(2) $Q_3-Q_1=5$ より，$10-7.5=2.5$ 以下または $15+7.5=22.5$ 以上が外れ値．\nよって外れ値は $\\boldsymbol{2,\\ 30}$．"
+   }
+  ],
+  "idea": {
+   "tex": "四分位範囲の1.5倍だけ $Q_1$，$Q_3$ から外側に離れた値を外れ値とみなす．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) $Q_1$：10 ; $Q_3$：15\n(2) {2, 30}"
+  },
+  "methods": [],
+  "tags": [
+   "外れ値",
+   "四分位数"
+  ],
+  "provenance": {
+   "created": "2026-10-30"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "I-DAT-014",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "I-04",
+  "level": 0,
+  "minutes": 5,
+  "theme": "データの代表値／度数分布表と平均値・最頻値",
+  "unit": "データの代表値",
+  "topic": "度数分布表と平均値・最頻値",
+  "statement": {
+   "tex": "次の度数分布表は，20人の通学時間（分）をまとめたものである．\n\\begin{tabular}{|c|c|c|c|c|}\\hline\n通学時間（分） & $0$ 以上 $10$ 未満 & $10$〜$20$ & $20$〜$30$ & $30$〜$40$ \\\\ \\hline\n人数 & $2$ & $5$ & $8$ & $5$ \\\\ \\hline\n\\end{tabular}\n（$10$〜$20$ は $10$ 以上 $20$ 未満を表す．他も同様．）\n\\begin{enumerate}\n  \\item 階級値を用いて，通学時間の平均値を求めよ．\n  \\item 最頻値を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $23$ 分　(2) $25$ 分"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) 階級値は $5,15,25,35$．平均値は $\\dfrac{5\\cdot2+15\\cdot5+25\\cdot8+35\\cdot5}{20}=\\dfrac{460}{20}=\\boldsymbol{23}$ 分．\n(2) 度数が最大の階級は $20$ 以上 $30$ 未満で，その階級値 $\\boldsymbol{25}$ 分が最頻値．"
+   }
+  ],
+  "idea": {
+   "tex": "度数分布表では，各階級のデータがすべて階級値に等しいとみなして計算する．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) 23\n(2) 25"
+  },
+  "methods": [],
+  "tags": [
+   "度数分布表",
+   "平均値",
+   "最頻値"
+  ],
+  "provenance": {
+   "created": "2026-10-30"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "I-DAT-015",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "I-04",
+  "level": 0,
+  "minutes": 7,
+  "theme": "データの相関／共分散と相関係数",
+  "unit": "データの相関",
+  "topic": "共分散と相関係数",
+  "statement": {
+   "tex": "2つの変量 $x$，$y$ の5組のデータがある．\n\\begin{tabular}{|c|c|c|c|c|c|}\\hline\n$x$ & $1$ & $2$ & $3$ & $4$ & $5$ \\\\ \\hline\n$y$ & $2$ & $4$ & $3$ & $6$ & $5$ \\\\ \\hline\n\\end{tabular}\n\\begin{enumerate}\n  \\item $x$ と $y$ の共分散を求めよ．\n  \\item $x$ と $y$ の相関係数を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $\\dfrac85$　(2) $\\dfrac45$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "$\\bar x=3$，$\\bar y=4$．偏差は $x$：$-2,-1,0,1,2$，$y$：$-2,0,-1,2,1$．\n(1) 偏差の積の和は $4+0+0+2+2=8$ なので，共分散は $\\dfrac85$，すなわち $\\boldsymbol{\\dfrac85}$．\n(2) $s_x^2=\\dfrac{4+1+0+1+4}{5}=2$，$s_y^2=\\dfrac{4+0+1+4+1}{5}=2$．\n相関係数は $\\dfrac{8/5}{\\sqrt2\\cdot\\sqrt2}=\\boldsymbol{\\dfrac45}$．"
+   }
+  ],
+  "idea": {
+   "tex": "共分散は偏差の積の平均．相関係数は共分散を2つの標準偏差の積で割ったもの．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) 8/5\n(2) 4/5"
+  },
+  "methods": [],
+  "tags": [
+   "共分散",
+   "相関係数"
+  ],
+  "provenance": {
+   "created": "2026-10-30"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "I-DAT-016",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "I-04",
+  "level": 0,
+  "minutes": 5,
+  "theme": "データの散らばり／分散の公式（2乗の平均 $-$ 平均の2乗）",
+  "unit": "データの散らばり",
+  "topic": "分散の公式（2乗の平均 $-$ 平均の2乗）",
+  "statement": {
+   "tex": "10個のデータ $x_1,x_2,\\dots,x_{10}$ について，$x_1+x_2+\\dots+x_{10}=60$，$x_1^2+x_2^2+\\dots+x_{10}^2=400$ である．このデータの平均値，分散，標準偏差を求めよ．"
+  },
+  "answer": {
+   "tex": "平均値 $6$，分散 $4$，標準偏差 $2$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "平均値は $\\dfrac{60}{10}=\\boldsymbol{6}$．\n2乗の平均は $\\dfrac{400}{10}=40$ なので，分散は $40-6^2=\\boldsymbol{4}$，標準偏差は $\\boldsymbol{2}$．"
+   }
+  ],
+  "idea": {
+   "tex": "分散 $=$（2乗の平均）$-$（平均の2乗）．個々の値がわからなくても和と2乗の和から求まる．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "平均値：6 ; 分散：4 ; 標準偏差：2"
+  },
+  "methods": [],
+  "tags": [
+   "分散",
+   "平均値"
+  ],
+  "provenance": {
+   "created": "2026-10-30"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "I-DAT-017",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "I-04",
+  "level": 0,
+  "minutes": 7,
+  "theme": "データの散らばり／2つのグループを合わせた平均と分散",
+  "unit": "データの散らばり",
+  "topic": "2つのグループを合わせた平均と分散",
+  "statement": {
+   "tex": "A組6人とB組4人の得点について，A組は平均値 $5$ 点，分散 $4$，B組は平均値 $10$ 点，分散 $9$ である．2組を合わせた10人の得点の平均値と分散を求めよ．"
+  },
+  "answer": {
+   "tex": "平均値 $7$ 点，分散 $12$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "平均値は $\\dfrac{6\\cdot5+4\\cdot10}{10}=\\dfrac{70}{10}=\\boldsymbol{7}$ 点．\n各組の2乗の平均は（分散）$+$（平均）$^2$ で，A組 $4+25=29$，B組 $9+100=109$．\n10人の2乗の平均は $\\dfrac{6\\cdot29+4\\cdot109}{10}=\\dfrac{610}{10}=61$．\nよって分散は $61-7^2=\\boldsymbol{12}$．"
+   }
+  ],
+  "idea": {
+   "tex": "分散は単純に平均できない．各組の「2乗の和」に戻してから合計し，分散の公式を使う．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "平均値：7 ; 分散：12"
+  },
+  "methods": [],
+  "tags": [
+   "分散",
+   "平均値",
+   "データの統合"
+  ],
+  "provenance": {
+   "created": "2026-10-30"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "I-DAT-018",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "I-04",
+  "level": 0,
+  "minutes": 7,
+  "theme": "仮説検定の考え方／コイン投げのシミュレーション",
+  "unit": "仮説検定の考え方",
+  "topic": "コイン投げのシミュレーション",
+  "statement": {
+   "tex": "あるコインを20回投げたところ，表が15回出た．このコインは表が出やすいといえるかを考える．公正なコイン（表と裏が等しい確率で出る）を20回投げる実験を1000セット行ったところ，表が15回以上出たセットの数は次のようであった．\n\\begin{tabular}{|c|c|c|c|c|c|c|}\\hline\n表の回数 & $15$ & $16$ & $17$ & $18$ & $19$ & $20$ \\\\ \\hline\nセット数 & $15$ & $5$ & $1$ & $0$ & $0$ & $0$ \\\\ \\hline\n\\end{tabular}\n\\begin{enumerate}\n  \\item 公正なコインで表が15回以上出る場合の相対度数を求めよ．\n  \\item 基準となる確率を $0.05$ とするとき，次の 1，2 のどちらの判断が適切か，番号で答えよ．\n1：「表と裏が等しい確率で出る」という仮説は正しくなかったと考えられ，表が出やすいと判断できる．\n2：「表と裏が等しい確率で出る」という仮説が正しくなかったとはいえず，表が出やすいとは判断できない．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $0.021$　(2) $1$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) 表が15回以上出たセット数は $15+5+1=21$ なので，相対度数は $\\dfrac{21}{1000}=\\boldsymbol{0.021}$．\n(2) 「公正なコインである」と仮定すると，表が15回以上出ることは $0.021$ 程度しか起こらず，基準の $0.05$ より小さい．\nめったに起こらないことが起きたので仮定は正しくなかったと考え，表が出やすいと判断する．よって $\\boldsymbol{1}$．"
+   }
+  ],
+  "idea": {
+   "tex": "主張と反対の仮説（公正なコイン）のもとで，観測結果以上に偏ったことが起こる割合を求め，基準と比べる．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) 0.021\n(2) 1"
+  },
+  "methods": [],
+  "tags": [
+   "仮説検定",
+   "相対度数"
+  ],
+  "provenance": {
+   "created": "2026-10-30"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "I-DAT-019",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "I-04",
+  "level": 1,
+  "minutes": 10,
+  "theme": "データの散らばり／誤ったデータを修正したときの平均・分散",
+  "unit": "データの散らばり",
+  "topic": "誤ったデータを修正したときの平均・分散",
+  "statement": {
+   "tex": "10個のデータの平均値が $6$，分散が $5$ と計算されたが，そのうちの1つの値を，本当は $8$ であるのに誤って $3$ として計算していたことがわかった．正しい平均値と分散を，それぞれ小数で求めよ．"
+  },
+  "answer": {
+   "tex": "平均値 $6.5$，分散 $4.25$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "誤ったデータでの値の和は $10\\cdot6=60$，2乗の和は $10(5+6^2)=410$．\n正しくは，和 $60-3+8=65$，2乗の和 $410-3^2+8^2=465$．\n平均値は $\\dfrac{65}{10}=\\boldsymbol{6.5}$，分散は $\\dfrac{465}{10}-6.5^2=46.5-42.25=\\boldsymbol{4.25}$．"
+   }
+  ],
+  "idea": {
+   "tex": "平均と分散から「和」と「2乗の和」を復元すれば，個々の値を入れ替えた影響を正確に計算できる．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "平均値：6.5 ; 分散：4.25"
+  },
+  "methods": [],
+  "tags": [
+   "分散",
+   "平均値",
+   "データの修正"
+  ],
+  "provenance": {
+   "created": "2026-10-30"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "I-DAT-020",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "I-04",
+  "level": 1,
+  "minutes": 12,
+  "theme": "データの散らばり／平均値と分散から未知の値を決める",
+  "unit": "データの散らばり",
+  "topic": "平均値と分散から未知の値を決める",
+  "statement": {
+   "tex": "5個のデータ $3,\\ 5,\\ 7,\\ x,\\ y$ の平均値が $5$，分散が $8$ である．$x<y$ のとき，$x$，$y$ の値を求めよ．"
+  },
+  "answer": {
+   "tex": "$x=1$，$y=9$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "平均値の条件から $3+5+7+x+y=25$，$x+y=10$．\n分散の条件から $\\dfrac{9+25+49+x^2+y^2}{5}-5^2=8$，$x^2+y^2=165-83=82$．\n$xy=\\dfrac{(x+y)^2-(x^2+y^2)}{2}=\\dfrac{100-82}{2}=9$．\n$x$，$y$ は $t^2-10t+9=0$ の2解で $t=1,\\ 9$．$x<y$ より $\\boldsymbol{x=1}$，$\\boldsymbol{y=9}$．"
+   }
+  ],
+  "idea": {
+   "tex": "平均値から和，分散から2乗の和が得られる．和と2乗の和から積を出し，2次方程式で2数を決める．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "$x$：1 ; $y$：9"
+  },
+  "methods": [],
+  "tags": [
+   "分散",
+   "平均値",
+   "対称式"
+  ],
+  "provenance": {
+   "created": "2026-10-30"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "I-DAT-021",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "I-04",
+  "level": 1,
+  "minutes": 12,
+  "theme": "データの相関／変量の変換と共分散・相関係数",
+  "unit": "データの相関",
+  "topic": "変量の変換と共分散・相関係数",
+  "statement": {
+   "tex": "2つの変量 $x$，$y$ のデータについて，$x$ の標準偏差は $3$，$y$ の標準偏差は $4$，$x$ と $y$ の共分散は $-6$ である．\n新しい変量 $u=2x+1$，$v=-3y+5$ を考える．\n\\begin{enumerate}\n  \\item $x$ と $y$ の相関係数を求めよ．\n  \\item $u$ と $v$ の共分散を求めよ．\n  \\item $u$ と $v$ の相関係数を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $-\\dfrac12$　(2) $36$　(3) $\\dfrac12$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) $r_{xy}=\\dfrac{-6}{3\\cdot4}=\\boldsymbol{-\\dfrac12}$．\n(2) $u$，$v$ の偏差はそれぞれ $x$ の偏差の $2$ 倍，$y$ の偏差の $-3$ 倍なので，偏差の積は $-6$ 倍．\nよって $s_{uv}=-6\\cdot(-6)=\\boldsymbol{36}$．\n(3) $s_u=2\\cdot3=6$，$s_v=|-3|\\cdot4=12$ より $r_{uv}=\\dfrac{36}{6\\cdot12}=\\boldsymbol{\\dfrac12}$．"
+   }
+  ],
+  "idea": {
+   "tex": "平行移動（$+b$）は偏差を変えない．共分散は係数の積倍，標準偏差は係数の絶対値倍になるので，相関係数は符号だけが変わりうる．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) -1/2\n(2) 36\n(3) 1/2"
+  },
+  "methods": [],
+  "tags": [
+   "相関係数",
+   "共分散",
+   "変量の変換"
+  ],
+  "provenance": {
+   "created": "2026-10-30"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "I-DAT-022",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "I-04",
+  "level": 1,
+  "minutes": 12,
+  "theme": "データの代表値／未知の値を含むデータの中央値",
+  "unit": "データの代表値",
+  "topic": "未知の値を含むデータの中央値",
+  "statement": {
+   "tex": "9個のデータ $3,\\ 5,\\ 7,\\ 8,\\ 10,\\ 12,\\ 14,\\ 15,\\ a$ がある．ただし $a$ は $1\\leqq a\\leqq20$ を満たす整数である．\n\\begin{enumerate}\n  \\item このデータの中央値として考えられる値をすべて求めよ．\n  \\item このデータの平均値と中央値が等しくなるような $a$ の値を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $8,\\ 9,\\ 10$　(2) $a=16$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "9個なので中央値は小さい方から5番目の値．\n(1) $a\\leqq8$ のとき5番目は $8$．$a=9$ のとき5番目は $9$．$a\\geqq10$ のとき5番目は $10$．\nよって中央値は $\\boldsymbol{8,\\ 9,\\ 10}$ のいずれか．\n(2) 平均値は $\\dfrac{74+a}{9}$．\n$a\\leqq8$ のとき $\\dfrac{74+a}{9}=8$ より $a=-2$ で不適．$a=9$ のとき平均値 $\\dfrac{83}{9}\\neq9$．\n$a\\geqq10$ のとき $\\dfrac{74+a}{9}=10$ より $a=16$ で適する．よって $\\boldsymbol{a=16}$．"
+   }
+  ],
+  "idea": {
+   "tex": "未知の値が並び順のどこに入るかで場合分けし，中央の位置にくる値を調べる．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) {8, 9, 10}\n(2) 16"
+  },
+  "methods": [],
+  "tags": [
+   "中央値",
+   "平均値",
+   "場合分け"
+  ],
+  "provenance": {
+   "created": "2026-10-30"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "I-DAT-023",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "I-04",
+  "level": 1,
+  "minutes": 10,
+  "theme": "データの散らばり／標準化した値による比較",
+  "unit": "データの散らばり",
+  "topic": "標準化した値による比較",
+  "statement": {
+   "tex": "テストAは平均値 $60$ 点，標準偏差 $10$ 点，テストBは平均値 $50$ 点，標準偏差 $8$ 点であった．得点 $x$ を $z=\\dfrac{x-(\\text{平均値})}{(\\text{標準偏差})}$ によって標準化する．\n\\begin{enumerate}\n  \\item テストAで $75$ 点，テストBで $64$ 点をとったとき，それぞれの得点を標準化した値を求めよ．\n  \\item テストBで，テストAの $75$ 点と標準化した値が等しくなる得点を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) A：$1.5$，B：$1.75$　(2) $62$ 点"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) A：$z=\\dfrac{75-60}{10}=\\boldsymbol{1.5}$．B：$z=\\dfrac{64-50}{8}=\\boldsymbol{1.75}$．\n（B の方が，平均からの離れ具合が標準偏差の何倍かでみて大きい．）\n(2) $\\dfrac{x-50}{8}=1.5$ より $x=50+12=\\boldsymbol{62}$ 点．"
+   }
+  ],
+  "idea": {
+   "tex": "平均値も散らばりも違うデータどうしは，「平均から標準偏差の何倍離れているか」に直して比べる．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) A：1.5 ; B：1.75\n(2) 62"
+  },
+  "methods": [],
+  "tags": [
+   "標準化",
+   "標準偏差",
+   "変量の変換"
+  ],
+  "provenance": {
+   "created": "2026-10-30"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "I-DAT-024",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "I-04",
+  "level": 1,
+  "minutes": 13,
+  "theme": "仮説検定の考え方／好みの調査と判断の基準",
+  "unit": "仮説検定の考え方",
+  "topic": "好みの調査と判断の基準",
+  "statement": {
+   "tex": "新しい味Aと従来の味Bのどちらがおいしいかを30人に答えてもらう．「Aの方が好まれる」といえるかを考えるため，「AとBは同じ程度に好まれる（各人がAと答える確率が $\\dfrac12$）」と仮定して，公正なコインを30回投げる実験を1000セット行い，表（Aと答えたとみなす）の回数を数えた．表が19回以上出たセットの数は次の通りであった．\n\\begin{tabular}{|c|c|c|c|c|c|c|c|}\\hline\n表の回数 & $19$ & $20$ & $21$ & $22$ & $23$ & $24$ & $25$以上 \\\\ \\hline\nセット数 & $51$ & $28$ & $13$ & $5$ & $2$ & $1$ & $0$ \\\\ \\hline\n\\end{tabular}\n基準となる確率を $0.05$ とし，次の 1，2 から判断を選ぶ．\n1：Aの方が好まれると判断できる．　2：Aの方が好まれるとは判断できない．\n\\begin{enumerate}\n  \\item 30人中20人がAと答えた場合について，表が20回以上出た相対度数と，判断の番号を答えよ．\n  \\item 30人中19人がAと答えた場合について，表が19回以上出た相対度数と，判断の番号を答えよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 相対度数 $0.049$，判断 $1$　(2) 相対度数 $0.1$，判断 $2$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) 表が20回以上のセット数は $28+13+5+2+1=49$ で，相対度数は $\\boldsymbol{0.049}$．\nこれは $0.05$ より小さいので，仮定のもとでは起こりにくいことが起きたと考え，仮定を否定する．判断は $\\boldsymbol{1}$．\n(2) 表が19回以上のセット数は $49+51=100$ で，相対度数は $\\boldsymbol{0.1}$．\nこれは $0.05$ より大きいので，仮定のもとでも珍しくない結果であり，仮定を否定できない．判断は $\\boldsymbol{2}$．"
+   }
+  ],
+  "idea": {
+   "tex": "「観測値以上に偏った結果」が仮説のもとで起こる割合を求める．基準より小さいときだけ仮説を否定する．基準をわずかに超えるだけでも否定はできない．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) 相対度数：0.049 ; 判断：1\n(2) 相対度数：0.1 ; 判断：2"
+  },
+  "methods": [],
+  "tags": [
+   "仮説検定",
+   "相対度数"
+  ],
+  "provenance": {
+   "created": "2026-10-30"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "I-DAT-025",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "I-04",
+  "level": 1,
+  "minutes": 12,
+  "theme": "データの散らばり／データを1つ追加したときの平均・分散",
+  "unit": "データの散らばり",
+  "topic": "データを1つ追加したときの平均・分散",
+  "statement": {
+   "tex": "9個のデータの平均値が $5$，分散が $4$ である．これに1個のデータを追加して10個のデータとする．\n\\begin{enumerate}\n  \\item 値 $5$ のデータを追加したときの分散を，小数で求めよ．\n  \\item 値 $15$ のデータを追加したときの平均値と分散を，小数で求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $3.6$　(2) 平均値 $6$，分散 $12.6$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "9個の和は $9\\cdot5=45$，2乗の和は $9(4+25)=261$．\n(1) 和 $50$，2乗の和 $261+25=286$．平均値 $5$ で，分散は $28.6-25=\\boldsymbol{3.6}$．\n（平均値に等しいデータを加えると，偏差の2乗の和は変わらず個数だけ増えるので分散は小さくなる．）\n(2) 和 $60$，2乗の和 $261+225=486$．平均値 $\\boldsymbol{6}$，分散 $48.6-36=\\boldsymbol{12.6}$．"
+   }
+  ],
+  "idea": {
+   "tex": "平均と分散から和と2乗の和を求め，追加した値を加えてから分散の公式で計算し直す．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) 3.6\n(2) 平均値：6 ; 分散：12.6"
+  },
+  "methods": [],
+  "tags": [
+   "分散",
+   "平均値",
+   "データの追加"
+  ],
+  "provenance": {
+   "created": "2026-10-30"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "I-DAT-026",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "I-04",
+  "level": 1,
+  "minutes": 12,
+  "theme": "データの相関／相関係数の計算と評価",
+  "unit": "データの相関",
+  "topic": "相関係数の計算と評価",
+  "statement": {
+   "tex": "2つの変量 $x$，$y$ の5組のデータがある．\n\\begin{tabular}{|c|c|c|c|c|c|}\\hline\n$x$ & $2$ & $4$ & $6$ & $8$ & $10$ \\\\ \\hline\n$y$ & $3$ & $1$ & $4$ & $5$ & $7$ \\\\ \\hline\n\\end{tabular}\n\\begin{enumerate}\n  \\item $x$ と $y$ の共分散を求めよ．\n  \\item $x$ と $y$ の相関係数を求めよ．答えは小数第3位を四捨五入して小数第2位まで求めよ（$\\sqrt2=1.4142$ とする）．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $\\dfrac{24}{5}$　(2) $\\dfrac{3\\sqrt2}{5}$，約 $0.85$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "$\\bar x=6$，$\\bar y=4$．偏差は $x$：$-4,-2,0,2,4$，$y$：$-1,-3,0,1,3$．\n(1) 偏差の積の和は $4+6+0+2+12=24$ で，共分散は $\\boldsymbol{\\dfrac{24}{5}}$．\n(2) $s_x^2=\\dfrac{16+4+0+4+16}{5}=8$，$s_y^2=\\dfrac{1+9+0+1+9}{5}=4$．\n$r=\\dfrac{24/5}{\\sqrt8\\cdot2}=\\dfrac{24}{20\\sqrt2}=\\dfrac{3\\sqrt2}{5}=0.848\\cdots$ より $\\boldsymbol{0.85}$．強い正の相関がある．"
+   }
+  ],
+  "idea": {
+   "tex": "相関係数は $\\dfrac{\\text{偏差の積の和}}{\\sqrt{(\\text{偏差の2乗の和})\\times(\\text{偏差の2乗の和})}}$ と和のまま計算してもよい．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) 24/5\n(2) 0.85"
+  },
+  "methods": [],
+  "tags": [
+   "相関係数",
+   "共分散"
+  ],
+  "provenance": {
+   "created": "2026-10-30"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "I-DAT-027",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "I-04",
+  "level": 1,
+  "minutes": 12,
+  "theme": "データの散らばり／四分位数から未知の値を決める",
+  "unit": "データの散らばり",
+  "topic": "四分位数から未知の値を決める",
+  "statement": {
+   "tex": "8個の整数のデータ $2,\\ 4,\\ 5,\\ a,\\ 9,\\ 11,\\ b,\\ 16$ が小さい順に並んでいる（$5\\leqq a\\leqq9$，$11\\leqq b\\leqq16$）．このデータの中央値は $8$，第3四分位数は $12.5$ である．\n\\begin{enumerate}\n  \\item $a$，$b$ の値を求めよ．\n  \\item このデータの四分位範囲を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $a=7$，$b=14$　(2) $8$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) 8個なので中央値は4番目と5番目の平均：$\\dfrac{a+9}{2}=8$ より $a=\\boldsymbol{7}$．\n後半4個 $9,11,b,16$ の中央値が $Q_3$ なので $\\dfrac{11+b}{2}=12.5$，$b=\\boldsymbol{14}$．\n(2) 前半4個 $2,4,5,7$ の中央値は $Q_1=\\dfrac{4+5}{2}=4.5$．四分位範囲は $12.5-4.5=\\boldsymbol{8}$．"
+   }
+  ],
+  "idea": {
+   "tex": "個数が偶数のとき，中央値も四分位数も「中央の2つの平均」になる．どの2つの平均かを位置で確認する．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) $a$：7 ; $b$：14\n(2) 8"
+  },
+  "methods": [],
+  "tags": [
+   "四分位数",
+   "中央値",
+   "四分位範囲"
+  ],
+  "provenance": {
+   "created": "2026-10-30"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "I-DAT-028",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "I-04",
+  "level": 1,
+  "minutes": 12,
+  "theme": "データの代表値／度数分布表の未知の度数",
+  "unit": "データの代表値",
+  "topic": "度数分布表の未知の度数",
+  "statement": {
+   "tex": "次の度数分布表は，25人のある記録をまとめたものである．階級値を用いて計算した平均値は $30$ であった．\n\\begin{tabular}{|c|c|c|c|c|c|}\\hline\n階級 & $5$ 以上 $15$ 未満 & $15$〜$25$ & $25$〜$35$ & $35$〜$45$ & $45$〜$55$ \\\\ \\hline\n度数 & $3$ & $x$ & $8$ & $y$ & $2$ \\\\ \\hline\n\\end{tabular}\n（$15$〜$25$ は $15$ 以上 $25$ 未満を表す．他も同様．）\n\\begin{enumerate}\n  \\item $x$，$y$ の値を求めよ．\n  \\item 中央値が含まれる階級の階級値を答えよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $x=5$，$y=7$　(2) $30$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) 階級値は $10,20,30,40,50$．度数の合計から $3+x+8+y+2=25$，$x+y=12$．\n平均値から $10\\cdot3+20x+30\\cdot8+40y+50\\cdot2=30\\cdot25$，$20x+40y=380$，$x+2y=19$．\nこれを解いて $\\boldsymbol{x=5}$，$\\boldsymbol{y=7}$．\n(2) 中央値は13番目の値．累積度数は $3,8,16,\\dots$ なので13番目は $25$ 以上 $35$ 未満の階級にあり，階級値は $\\boldsymbol{30}$．"
+   }
+  ],
+  "idea": {
+   "tex": "度数の合計と平均値の2つの条件から連立方程式を立てる．中央値の階級は累積度数で探す．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) $x$：5 ; $y$：7\n(2) 30"
+  },
+  "methods": [],
+  "tags": [
+   "度数分布表",
+   "平均値",
+   "中央値"
+  ],
+  "provenance": {
+   "created": "2026-10-30"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ }
+]

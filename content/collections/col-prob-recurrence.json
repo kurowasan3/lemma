@@ -1,0 +1,32 @@
+{
+ "id": "col-prob-recurrence",
+ "schema": "lemma.collection/1",
+ "title": "確率漸化式",
+ "description": "状態を決めて漸化式を立てる練習。",
+ "order": 5,
+ "items": [
+  {
+   "id": "X-MIX-027"
+  },
+  {
+   "id": "A-COM-049"
+  },
+  {
+   "id": "A-COM-095"
+  },
+  {
+   "id": "A-COM-096"
+  },
+  {
+   "id": "A-INT-061"
+  },
+  {
+   "id": "B-SEQ-032"
+  },
+  {
+   "id": "B-SEQ-067"
+  }
+ ],
+ "visibility": "public",
+ "createdBy": "lemma"
+}

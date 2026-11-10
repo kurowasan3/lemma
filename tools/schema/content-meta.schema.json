@@ -1,0 +1,22 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "$id": "lemma.content-meta/1",
+ "type": "object",
+ "required": [
+  "schema",
+  "source",
+  "generated"
+ ],
+ "properties": {
+  "schema": {
+   "const": "lemma.content-meta/1"
+  },
+  "source": {
+   "type": "string"
+  },
+  "generated": {
+   "type": "string"
+  }
+ },
+ "additionalProperties": false
+}

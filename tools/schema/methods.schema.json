@@ -1,0 +1,63 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "$id": "lemma.methods/1",
+ "title": "Lemma 解法",
+ "type": "object",
+ "required": [
+  "schema",
+  "methods"
+ ],
+ "properties": {
+  "schema": {
+   "const": "lemma.methods/1"
+  },
+  "methods": {
+   "type": "array",
+   "items": {
+    "type": "object",
+    "required": [
+     "id",
+     "name"
+    ],
+    "additionalProperties": false,
+    "properties": {
+     "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$"
+     },
+     "name": {
+      "type": "string"
+     },
+     "field": {
+      "type": "string",
+      "pattern": "^(I|A|II|B|III|C|X)-\\d{2}$"
+     },
+     "unit": {
+      "type": "string"
+     },
+     "pre": {
+      "type": "array",
+      "items": {
+       "type": "string"
+      }
+     },
+     "summary": {
+      "type": "object",
+      "required": [
+       "tex"
+      ],
+      "properties": {
+       "tex": {
+        "type": "string"
+       }
+      },
+      "additionalProperties": false
+     },
+     "assets": {
+      "type": "object"
+     }
+    }
+   }
+  }
+ }
+}

@@ -1,0 +1,87 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "$id": "lemma.taxonomy/1",
+ "title": "Lemma 分類（科目・分野）",
+ "type": "object",
+ "required": [
+  "schema",
+  "subjects",
+  "fields",
+  "builtinUnits"
+ ],
+ "properties": {
+  "schema": {
+   "const": "lemma.taxonomy/1"
+  },
+  "note": {
+   "type": "string"
+  },
+  "subjects": {
+   "type": "array",
+   "items": {
+    "type": "object",
+    "required": [
+     "id",
+     "name"
+    ]
+   }
+  },
+  "fields": {
+   "type": "array",
+   "items": {
+    "type": "object",
+    "required": [
+     "key",
+     "subject",
+     "name",
+     "order"
+    ],
+    "additionalProperties": false,
+    "properties": {
+     "key": {
+      "type": "string",
+      "pattern": "^(I|A|II|B|III|C|X)-\\d{2}$"
+     },
+     "subject": {
+      "type": "string"
+     },
+     "name": {
+      "type": "string"
+     },
+     "idPrefix": {
+      "type": [
+       "string",
+       "null"
+      ],
+      "pattern": "^[A-Z]+-[A-Z]+$"
+     },
+     "order": {
+      "type": "integer"
+     },
+     "replacedBy": {
+      "type": "string"
+     },
+     "units": {
+      "type": "array",
+      "items": {
+       "type": "string"
+      }
+     }
+    }
+   }
+  },
+  "retiredNumbers": {
+   "type": "array",
+   "items": {
+    "type": "integer"
+   }
+  },
+  "builtinUnits": {
+   "type": "object",
+   "additionalProperties": {
+    "type": "string",
+    "pattern": "^(I|A|II|B|III|C|X)-\\d{2}$"
+   }
+  }
+ }
+}

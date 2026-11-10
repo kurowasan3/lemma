@@ -1,0 +1,66 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "$id": "lemma.collection/1",
+ "title": "Lemma 問題セット",
+ "type": "object",
+ "required": [
+  "id",
+  "schema",
+  "title",
+  "items"
+ ],
+ "additionalProperties": false,
+ "properties": {
+  "id": {
+   "type": "string",
+   "pattern": "^col-[a-z0-9]+(-[a-z0-9]+)*$"
+  },
+  "schema": {
+   "const": "lemma.collection/1"
+  },
+  "title": {
+   "type": "string"
+  },
+  "description": {
+   "type": "string"
+  },
+  "level": {
+   "type": "integer",
+   "minimum": 0,
+   "maximum": 5
+  },
+  "items": {
+   "type": "array",
+   "minItems": 1,
+   "items": {
+    "type": "object",
+    "required": [
+     "id"
+    ],
+    "additionalProperties": false,
+    "properties": {
+     "id": {
+      "type": "string"
+     },
+     "note": {
+      "type": "string"
+     }
+    }
+   }
+  },
+  "visibility": {
+   "enum": [
+    "public",
+    "unlisted",
+    "private"
+   ]
+  },
+  "createdBy": {
+   "type": "string"
+  },
+  "order": {
+   "type": "integer",
+   "description": "表示順（小さいほど先）"
+  }
+ }
+}

@@ -1,0 +1,198 @@
+{
+ "schema": "lemma.taxonomy/1",
+ "note": "分野ID（key）は一度決めたら変えない・再利用しない。分野を消すときは retiredNumbers に番号を移す。並びは order。",
+ "subjects": [
+  {
+   "id": "I",
+   "name": "数I"
+  },
+  {
+   "id": "A",
+   "name": "数A"
+  },
+  {
+   "id": "II",
+   "name": "数II"
+  },
+  {
+   "id": "B",
+   "name": "数B"
+  },
+  {
+   "id": "III",
+   "name": "数III"
+  },
+  {
+   "id": "C",
+   "name": "数C"
+  },
+  {
+   "id": "X",
+   "name": "融合"
+  }
+ ],
+ "fields": [
+  {
+   "key": "I-01",
+   "subject": "数I",
+   "name": "数と式",
+   "idPrefix": "I-EXP",
+   "order": 1
+  },
+  {
+   "key": "I-02",
+   "subject": "数I",
+   "name": "2次関数",
+   "idPrefix": "I-QF",
+   "order": 2
+  },
+  {
+   "key": "I-03",
+   "subject": "数I",
+   "name": "図形と計量",
+   "idPrefix": "I-TRI",
+   "order": 3
+  },
+  {
+   "key": "I-04",
+   "subject": "数I",
+   "name": "データの分析",
+   "idPrefix": "I-DAT",
+   "order": 4
+  },
+  {
+   "key": "A-05",
+   "subject": "数A",
+   "name": "場合の数と確率",
+   "idPrefix": "A-COM",
+   "order": 5
+  },
+  {
+   "key": "A-06",
+   "subject": "数A",
+   "name": "図形の性質",
+   "idPrefix": "A-GEO",
+   "order": 6
+  },
+  {
+   "key": "A-07",
+   "subject": "数A",
+   "name": "整数（数学と人間の活動）",
+   "idPrefix": "A-INT",
+   "order": 7
+  },
+  {
+   "key": "II-08",
+   "subject": "数II",
+   "name": "いろいろな式",
+   "idPrefix": "II-EQ",
+   "order": 8
+  },
+  {
+   "key": "II-09",
+   "subject": "数II",
+   "name": "図形と方程式",
+   "idPrefix": "II-GEO",
+   "order": 9
+  },
+  {
+   "key": "II-10",
+   "subject": "数II",
+   "name": "三角関数",
+   "idPrefix": "II-TRI",
+   "order": 10
+  },
+  {
+   "key": "II-11",
+   "subject": "数II",
+   "name": "指数関数・対数関数",
+   "idPrefix": "II-LOG",
+   "order": 11
+  },
+  {
+   "key": "II-12",
+   "subject": "数II",
+   "name": "微分法・積分法",
+   "idPrefix": "II-CAL",
+   "order": 12
+  },
+  {
+   "key": "B-13",
+   "subject": "数B",
+   "name": "数列",
+   "idPrefix": "B-SEQ",
+   "order": 13
+  },
+  {
+   "key": "B-14",
+   "subject": "数B",
+   "name": "統計的な推測",
+   "idPrefix": "B-STA",
+   "order": 14
+  },
+  {
+   "key": "III-15",
+   "subject": "数III",
+   "name": "極限",
+   "idPrefix": "III-LIM",
+   "order": 15
+  },
+  {
+   "key": "III-16",
+   "subject": "数III",
+   "name": "微分法",
+   "idPrefix": "III-DIF",
+   "order": 16
+  },
+  {
+   "key": "III-17",
+   "subject": "数III",
+   "name": "積分法",
+   "idPrefix": "III-INT",
+   "order": 17
+  },
+  {
+   "key": "C-18",
+   "subject": "数C",
+   "name": "ベクトル",
+   "idPrefix": "C-VEC",
+   "order": 18
+  },
+  {
+   "key": "C-19",
+   "subject": "数C",
+   "name": "平面上の曲線と複素数平面",
+   "idPrefix": "C-CUR",
+   "order": 19
+  },
+  {
+   "key": "X-20",
+   "subject": "融合",
+   "name": "分野横断",
+   "idPrefix": "X-MIX",
+   "order": 20
+  }
+ ],
+ "retiredNumbers": [],
+ "builtinUnits": {
+  "i-quad": "I-02",
+  "i-geo": "I-03",
+  "i-data": "I-04",
+  "a-prob": "A-05",
+  "a-int": "A-07",
+  "a-geo": "A-06",
+  "ii-eq": "II-08",
+  "ii-coord": "II-09",
+  "ii-trig": "II-10",
+  "ii-exp": "II-11",
+  "ii-calc": "II-12",
+  "b-seq": "B-13",
+  "b-stat": "B-14",
+  "iii-lim": "III-15",
+  "iii-diff": "III-16",
+  "iii-int": "III-17",
+  "c-vec": "C-18",
+  "c-cplx": "C-19",
+  "c-conic": "C-19"
+ }
+}

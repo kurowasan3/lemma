@@ -1,0 +1,488 @@
+{
+ "schema": "lemma.methods/1",
+ "methods": [
+  {
+   "id": "qe-loc",
+   "name": "解の配置",
+   "field": "I-02",
+   "unit": "i-quad",
+   "pre": [],
+   "summary": {
+    "tex": "$f(x)=0$ の解が区間 $p<x<q$ に2つある条件は **判別式・軸の位置・端点の符号** の3つ。グラフを描いてから条件を書く。"
+   },
+   "assets": {
+    "graph": [
+     "y=x^2-2ax+a+6",
+     "a=3.1",
+     "x=1",
+     "x=4"
+    ]
+   }
+  },
+  {
+   "id": "qf-max",
+   "name": "文字を含む2次関数の最大・最小",
+   "field": "I-02",
+   "unit": "i-quad",
+   "pre": [],
+   "summary": {
+    "tex": "軸 $x=a$ が区間の左・中・右のどこにあるかで場合分け。最小値 $m(a)$ のような「関数の関数」は、$a$ を横軸にしたグラフで考える。"
+   }
+  },
+  {
+   "id": "trig-tri",
+   "name": "三角形・四角形の計量",
+   "field": "I-03",
+   "unit": "i-geo",
+   "pre": [],
+   "summary": {
+    "tex": "角の二等分線の長さは **面積を2通りに** 表して求める。円に内接する四角形は対角の和が $180^\\circ$ なので、対角線を2通りの余弦定理で表すと $\\cos$ が決まる。"
+   }
+  },
+  {
+   "id": "data",
+   "name": "平均と分散",
+   "field": "I-04",
+   "unit": "i-data",
+   "pre": [],
+   "summary": {
+    "tex": "分散 $=\\overline{x^2}-\\left(\\overline{x}\\right)^2$（2乗の平均 − 平均の2乗）。データの追加・変更は「総和」と「2乗の総和」で管理する。"
+   }
+  },
+  {
+   "id": "prob-comp",
+   "name": "余事象と倍数の確率",
+   "field": "A-05",
+   "unit": "a-prob",
+   "pre": [],
+   "summary": {
+    "tex": "「〜の倍数になる」は余事象「ならない」の方が数えやすいことが多い。素因数の個数で場合を分ける。"
+   }
+  },
+  {
+   "id": "prob-rec",
+   "name": "確率漸化式",
+   "field": "A-05",
+   "unit": "a-prob",
+   "pre": [],
+   "summary": {
+    "tex": "$n$ 回後の状態から $n+1$ 回後への推移を式にする。$p_{n+1}=ap_n+b$ 型は特性方程式 $\\alpha=a\\alpha+b$ の解を引いて等比数列にする。"
+   }
+  },
+  {
+   "id": "count",
+   "name": "場合の数の数え方",
+   "field": "A-05",
+   "unit": "a-prob",
+   "pre": [],
+   "summary": {
+    "tex": "取り出す順番の問題は「並べ方全体」を同様に確からしいとみる。全員がずれる並べ方（攪乱順列）は $W_n=(n-1)(W_{n-1}+W_{n-2})$。"
+   }
+  },
+  {
+   "id": "int-bound",
+   "name": "大小関係で範囲を絞る",
+   "field": "A-07",
+   "unit": "a-int",
+   "pre": [],
+   "summary": {
+    "tex": "対称な不定方程式は $x\\le y\\le z$ と仮定し、最小の文字の範囲を不等式で有限個に絞ってから調べる。"
+   }
+  },
+  {
+   "id": "int-factor",
+   "name": "積の形に直す",
+   "field": "A-07",
+   "unit": "a-int",
+   "pre": [],
+   "summary": {
+    "tex": "$m^2-n^2=N$ のような方程式は $(m-n)(m+n)=N$ と **積 = 定数** の形にして約数の組を調べる。偶奇の一致にも注意。"
+   }
+  },
+  {
+   "id": "int-mod",
+   "name": "合同式と周期",
+   "field": "A-07",
+   "unit": "a-int",
+   "pre": [],
+   "summary": {
+    "tex": "余りは合同式で計算する。累乗の余りは周期を探す。$n^p-n$ が $p$ で割り切れる（フェルマーの小定理）は、$n$ を $p$ で割った余りで場合分けしても示せる。"
+   }
+  },
+  {
+   "id": "geo-ratio",
+   "name": "線分比と面積比",
+   "field": "A-06",
+   "unit": "a-geo",
+   "pre": [],
+   "summary": {
+    "tex": "角の二等分線は $BD:DC=AB:AC$。交点の比はメネラウスの定理か、ベクトルで2通りに表して係数比較する。面積比は底辺比・高さ比に分解する。"
+   }
+  },
+  {
+   "id": "poly-rem",
+   "name": "剰余の定理",
+   "field": "II-08",
+   "unit": "ii-eq",
+   "pre": [],
+   "summary": {
+    "tex": "2次式で割った余りは $ax+b$ とおき、割る式の根を代入して $a,b$ を決める。$x^n$ の割り算でも同じ。"
+   }
+  },
+  {
+   "id": "cplx-root",
+   "name": "共役な解と解と係数の関係",
+   "field": "II-08",
+   "unit": "ii-eq",
+   "pre": [],
+   "summary": {
+    "tex": "実数係数の方程式が $p+qi$ を解にもてば $p-qi$ も解。2つの積・和から2次の因数が決まる。"
+   }
+  },
+  {
+   "id": "amgm",
+   "name": "相加・相乗平均",
+   "field": "II-08",
+   "unit": "ii-eq",
+   "pre": [],
+   "summary": {
+    "tex": "$a+b\\ge2\\sqrt{ab}$。条件式で1文字にまとめてから使い、等号が成り立つことを必ず確認する。"
+   }
+  },
+  {
+   "id": "dist",
+   "name": "点と直線の距離",
+   "field": "II-09",
+   "unit": "ii-coord",
+   "pre": [],
+   "summary": {
+    "tex": "点 $(x_0,y_0)$ と直線 $ax+by+c=0$ の距離は $\\dfrac{|ax_0+by_0+c|}{\\sqrt{a^2+b^2}}$。曲線上の点なら1変数の関数の最小値になる。"
+   }
+  },
+  {
+   "id": "sweep",
+   "name": "通過領域（ファクシミリ論法）",
+   "field": "II-09",
+   "unit": "ii-coord",
+   "pre": [],
+   "summary": {
+    "tex": "パラメータ $t$ を含む直線の通過領域は、$x$ を固定して $y$ を $t$ の関数とみて、その値域を求める。または $t$ の方程式が範囲内に解をもつ条件（逆像法）。"
+   },
+   "assets": {
+    "graph": [
+     "y=2sx-s^2",
+     "s=0.5",
+     "y=x^2"
+    ]
+   }
+  },
+  {
+   "id": "cheb",
+   "name": "倍角の公式とチェビシェフ多項式",
+   "field": "II-10",
+   "unit": "ii-trig",
+   "pre": [],
+   "summary": {
+    "tex": "$\\cos n\\theta=T_n(\\cos\\theta)$ となる多項式 $T_n$ は $T_{n+1}(x)=2xT_n(x)-T_{n-1}(x)$ で作れる（和積公式から）。$\\cos\\frac{2\\pi}{5}$ などはこれで方程式に帰着する。"
+   }
+  },
+  {
+   "id": "trig-sub",
+   "name": "$\\sin\\theta+\\cos\\theta=t$ の置き換え",
+   "field": "II-10",
+   "unit": "ii-trig",
+   "pre": [],
+   "summary": {
+    "tex": "$t=\\sin\\theta+\\cos\\theta$ とおくと $\\sin\\theta\\cos\\theta=\\frac{t^2-1}{2}$、$-\\sqrt2\\le t\\le\\sqrt2$。**置き換えたら $t$ の範囲** を忘れない。"
+   }
+  },
+  {
+   "id": "exp-sub",
+   "name": "置き換えと解の個数",
+   "field": "II-11",
+   "unit": "ii-exp",
+   "pre": [],
+   "summary": {
+    "tex": "$t=2^x$ とおくと $t>0$ で、$x$ と $t$ は1対1に対応する。$t$ の2次方程式が **正の解** を何個もつかに言い換える。"
+   }
+  },
+  {
+   "id": "log-digit",
+   "name": "桁数と最高位の数字",
+   "field": "II-11",
+   "unit": "ii-exp",
+   "pre": [],
+   "summary": {
+    "tex": "$\\log_{10}N=n+\\alpha\\ (0\\le\\alpha<1)$ なら $N$ は $n+1$ 桁で、最高位の数字は $10^\\alpha$ の整数部分。$\\alpha$ を $\\log_{10}k$ と比べる。"
+   }
+  },
+  {
+   "id": "tangent-count",
+   "name": "接線の本数",
+   "field": "II-12",
+   "unit": "ii-calc",
+   "pre": [],
+   "summary": {
+    "tex": "3次関数では接点が異なれば接線も異なる。接点を $t$ とおき、通る条件を $t$ の3次方程式にして実数解の個数を数える。"
+   },
+   "assets": {
+    "graph": [
+     "y=x^3-x",
+     "y=-x"
+    ]
+   }
+  },
+  {
+   "id": "param-int",
+   "name": "絶対値を含む定積分",
+   "field": "II-12",
+   "unit": "ii-calc",
+   "pre": [],
+   "summary": {
+    "tex": "被積分関数の符号が変わる点で区間を分ける。分け目が文字を含むときは、その文字の範囲で場合分けしてから関数として最小値を求める。"
+   }
+  },
+  {
+   "id": "maxmin-case",
+   "name": "文字を含む3次関数の最大・最小",
+   "field": "II-12",
+   "unit": "ii-calc",
+   "pre": [],
+   "summary": {
+    "tex": "極値をとる $x$ が区間の内か外かで場合分けし、端点の値と比べる。"
+   }
+  },
+  {
+   "id": "sixth",
+   "name": "1/6公式",
+   "field": "II-12",
+   "unit": "ii-calc",
+   "pre": [],
+   "summary": {
+    "tex": "$\\displaystyle\\int_\\alpha^\\beta(x-\\alpha)(x-\\beta)\\,dx=-\\frac{(\\beta-\\alpha)^3}{6}$。交点を直接求めず、解と係数の関係で $(\\beta-\\alpha)^2$ を出すのが定石。"
+   }
+  },
+  {
+   "id": "recur",
+   "name": "漸化式の変形",
+   "field": "B-13",
+   "unit": "b-seq",
+   "pre": [],
+   "summary": {
+    "tex": "$a_{n+1}=pa_n+(n\\text{ の式})$ は $a_n+(\\text{1次式})$ を等比にする。分数型 $a_{n+1}=\\frac{pa_n+q}{ra_n+s}$ は不動点 $\\alpha,\\beta$ を使い $\\frac{a_n-\\alpha}{a_n-\\beta}$ を考える。"
+   }
+  },
+  {
+   "id": "sum-shift",
+   "name": "（等差）×（等比）の和",
+   "field": "B-13",
+   "unit": "b-seq",
+   "pre": [],
+   "summary": {
+    "tex": "$S=\\sum k r^k$ は $S-rS$ を計算すると等比数列の和に帰着する。"
+   }
+  },
+  {
+   "id": "group-seq",
+   "name": "群数列",
+   "field": "B-13",
+   "unit": "b-seq",
+   "pre": [],
+   "summary": {
+    "tex": "第 $k$ 群までの項数の和で「第何群の何番目か」を決める。和は群ごとの和を足してから端数を加える。"
+   }
+  },
+  {
+   "id": "stat",
+   "name": "二項分布と正規分布",
+   "field": "B-14",
+   "unit": "b-stat",
+   "pre": [],
+   "summary": {
+    "tex": "$X\\sim B(n,p)$ なら $E(X)=np,\\ V(X)=np(1-p)$、$E(X^2)=V(X)+\\{E(X)\\}^2$。$n$ が大きいとき $N(np,\\,np(1-p))$ で近似し、標準化 $Z=\\frac{X-np}{\\sqrt{np(1-p)}}$。"
+   }
+  },
+  {
+   "id": "squeeze",
+   "name": "はさみうちの原理",
+   "field": "III-15",
+   "unit": "iii-lim",
+   "pre": [],
+   "summary": {
+    "tex": "直接求めにくい極限は、両側から同じ値に収束する式ではさむ。累乗根なら最大の項でくくる。"
+   }
+  },
+  {
+   "id": "lim-std",
+   "name": "関数の極限と不等式評価",
+   "field": "III-15",
+   "unit": "iii-lim",
+   "pre": [],
+   "summary": {
+    "tex": "$e^x$ の多項式による評価 $1+x+\\frac{x^2}{2}\\le e^x$（$x\\ge0$）などを微分で示し、はさみうちに使う。"
+   }
+  },
+  {
+   "id": "riemann",
+   "name": "区分求積法",
+   "field": "III-17",
+   "unit": "iii-int",
+   "pre": [],
+   "summary": {
+    "tex": "$\\displaystyle\\lim_{n\\to\\infty}\\frac1n\\sum_{k=1}^{n}f\\!\\left(\\frac kn\\right)=\\int_0^1f(x)\\,dx$。積の形の極限は **対数をとって和** にしてから使う。"
+   }
+  },
+  {
+   "id": "sep",
+   "name": "定数分離",
+   "field": "III-16",
+   "unit": "iii-diff",
+   "pre": [],
+   "summary": {
+    "tex": "文字定数 $a$ を分離して $g(x)=a$ の形にし、$y=g(x)$ と直線 $y=a$ の位置関係で解の個数や不等式の成立条件を読む。"
+   },
+   "assets": {
+    "graph": [
+     "y=e^x/x",
+     "y=k",
+     "k=3"
+    ]
+   }
+  },
+  {
+   "id": "ineq",
+   "name": "微分と不等式・大小比較",
+   "field": "III-16",
+   "unit": "iii-diff",
+   "pre": [],
+   "summary": {
+    "tex": "$f(x)>g(x)$ は差の関数の最小値で示す。$a^b$ と $b^a$ の大小は対数をとって $\\frac{\\log x}{x}$ の増減に帰着させる。"
+   }
+  },
+  {
+   "id": "shape",
+   "name": "グラフの概形",
+   "field": "III-16",
+   "unit": "iii-diff",
+   "pre": [],
+   "summary": {
+    "tex": "①定義域 ②$y'$ で増減 ③$y''$ で凹凸 ④端や定義されない点での極限（漸近線）の順に調べる。"
+   }
+  },
+  {
+   "id": "king",
+   "name": "置換 $x\\to a-x$ の対称性",
+   "field": "III-17",
+   "unit": "iii-int",
+   "pre": [],
+   "summary": {
+    "tex": "$\\displaystyle\\int_0^a f(x)\\,dx=\\int_0^a f(a-x)\\,dx$。$\\sin$ と $\\cos$ が入れ替わる、$x$ が消えるなど、元の積分と足すと簡単になる形を探す。"
+   }
+  },
+  {
+   "id": "wallis",
+   "name": "三角関数のべきの積分",
+   "field": "III-17",
+   "unit": "iii-int",
+   "pre": [],
+   "summary": {
+    "tex": "$I_n=\\displaystyle\\int_0^{\\frac\\pi2}\\sin^nx\\,dx$ は部分積分で $I_n=\\frac{n-1}{n}I_{n-2}$、$I_0=\\frac\\pi2,\\ I_1=1$。"
+   }
+  },
+  {
+   "id": "volume",
+   "name": "回転体の体積",
+   "field": "III-17",
+   "unit": "iii-int",
+   "pre": [],
+   "summary": {
+    "tex": "$x$ 軸まわりは $\\pi\\int(f^2-g^2)dx$（$\\pi\\int(f-g)^2dx$ ではない）。$y$ 軸まわりは **バウムクーヘン型** $2\\pi\\int x\\,f(x)\\,dx$ が速い。"
+   }
+  },
+  {
+   "id": "arc",
+   "name": "曲線の長さ",
+   "field": "III-17",
+   "unit": "iii-int",
+   "pre": [],
+   "summary": {
+    "tex": "$L=\\displaystyle\\int_a^b\\sqrt{1+\\{f'(x)\\}^2}\\,dx$。媒介変数なら $\\displaystyle\\int\\sqrt{\\dot x^2+\\dot y^2}\\,dt$。根号が外れるよう作られていることが多い。"
+   }
+  },
+  {
+   "id": "vec-perp",
+   "name": "ベクトルの内積と垂線・距離",
+   "field": "C-18",
+   "unit": "c-vec",
+   "pre": [],
+   "summary": {
+    "tex": "基準のベクトルを決め、すべてを1次結合で表す。長さは2乗して内積で計算。垂線の足は「直線上にある」＋「内積が0」の2条件。"
+   }
+  },
+  {
+   "id": "vec-plane",
+   "name": "平面の方程式と距離",
+   "field": "C-18",
+   "unit": "c-vec",
+   "pre": [],
+   "summary": {
+    "tex": "3軸を $a,b,c$ で切る平面は $\\frac xa+\\frac yb+\\frac zc=1$。点と平面の距離は点と直線の距離の公式の空間版。"
+   }
+  },
+  {
+   "id": "cplx-poly",
+   "name": "1の $n$ 乗根",
+   "field": "C-19",
+   "unit": "c-cplx",
+   "pre": [],
+   "summary": {
+    "tex": "$z^n=1$ の解 $1,\\omega,\\dots,\\omega^{n-1}$ について $z^n-1=(z-1)(z-\\omega)\\cdots(z-\\omega^{n-1})$。$z^{n-1}+\\dots+z+1$ の因数分解として使う。"
+   }
+  },
+  {
+   "id": "cplx-geo",
+   "name": "複素数と図形・条件",
+   "field": "C-19",
+   "unit": "c-cplx",
+   "pre": [],
+   "summary": {
+    "tex": "$w$ が実数 $\\iff\\overline w=w$。$|z|=1$ なら $\\overline z=\\frac1z$、$z=\\cos\\theta+i\\sin\\theta$ とおくと式がまとまる。"
+   }
+  },
+  {
+   "id": "conic-param",
+   "name": "2次曲線の媒介変数表示",
+   "field": "C-19",
+   "unit": "c-conic",
+   "pre": [],
+   "summary": {
+    "tex": "楕円 $\\frac{x^2}{a^2}+\\frac{y^2}{b^2}=1$ 上の点は $(a\\cos\\theta,\\,b\\sin\\theta)$。距離や面積は三角関数の合成で最大・最小を求める。"
+   }
+  },
+  {
+   "id": "conic-tangent",
+   "name": "2次曲線の接線",
+   "field": "C-19",
+   "unit": "c-conic",
+   "pre": [],
+   "summary": {
+    "tex": "点 $(x_0,y_0)$ での接線は $\\frac{x_0x}{a^2}\\pm\\frac{y_0y}{b^2}=1$。楕円の直交する2接線の交点は円 $x^2+y^2=a^2+b^2$（準円）上。"
+   }
+  },
+  {
+   "id": "polar-area",
+   "name": "極座標と面積",
+   "field": "C-19",
+   "unit": "c-conic",
+   "pre": [],
+   "summary": {
+    "tex": "極方程式 $r=f(\\theta)$ で囲まれた面積は $\\dfrac12\\displaystyle\\int r^2\\,d\\theta$（扇形の和）。"
+   },
+   "assets": {
+    "graph": [
+     "r=1+cos(θ)"
+    ]
+   }
+  }
+ ]
+}

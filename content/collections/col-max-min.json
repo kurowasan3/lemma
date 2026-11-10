@@ -1,0 +1,59 @@
+{
+ "id": "col-max-min",
+ "schema": "lemma.collection/1",
+ "title": "最大・最小の典型",
+ "description": "「最大・最小」の問題を易しいものから。平方完成・微分・相加相乗平均など道具の使い分けを練習。",
+ "order": 3,
+ "items": [
+  {
+   "id": "II-TRI-107"
+  },
+  {
+   "id": "I-QF-128"
+  },
+  {
+   "id": "I-QF-135"
+  },
+  {
+   "id": "I-TRI-105"
+  },
+  {
+   "id": "II-EQ-174"
+  },
+  {
+   "id": "II-GEO-208"
+  },
+  {
+   "id": "II-LOG-075"
+  },
+  {
+   "id": "II-CAL-227"
+  },
+  {
+   "id": "B-STA-030"
+  },
+  {
+   "id": "III-DIF-221"
+  },
+  {
+   "id": "III-INT-437"
+  },
+  {
+   "id": "C-VEC-272"
+  },
+  {
+   "id": "X-MIX-031"
+  },
+  {
+   "id": "A-COM-038"
+  },
+  {
+   "id": "A-COM-085"
+  },
+  {
+   "id": "II-EQ-042"
+  }
+ ],
+ "visibility": "public",
+ "createdBy": "lemma"
+}

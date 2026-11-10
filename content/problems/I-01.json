@@ -1,0 +1,5725 @@
+[
+ {
+  "id": "I-EXP-001",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "I-01",
+  "level": 2,
+  "minutes": 15,
+  "theme": "展開／$x-p$ での展開",
+  "unit": "展開",
+  "topic": "$x-p$ での展開",
+  "statement": {
+   "tex": "$f(x)=(x-1)(x-3)(x-5)(x-7)$ とする．\n\\begin{enumerate}\n  \\item $f(x)$ を $x-4$ について展開せよ．すなわち $f(x)=\\sum_{k=0}^{4}c_k(x-4)^k$ となる定数 $c_0,\\dots,c_4$ を求めよ．\n  \\item $f(x)$ の最小値と，それを与える $x$ をすべて求めよ．\n  \\item 方程式 $f(x)=k$ が相異なる4個の実数解をもつような実数 $k$ の範囲を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $c_4=1,\\ c_3=0,\\ c_2=-10,\\ c_1=0,\\ c_0=9$　(2) 最小値 $-16$（$x=4\\pm\\sqrt5$）　(3) $-16<k<9$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) $u=x-4$ とおくと $(x-1)(x-7)=u^2-9,\\ (x-3)(x-5)=u^2-1$ より $f=(u^2-9)(u^2-1)=u^4-10u^2+9$．\n(2) $s=u^2\\ (\\geqq0)$ として $f=(s-5)^2-16$．$s=5$ すなわち $x=4\\pm\\sqrt5$ で最小値 $-16$．\n(3) $s>0$ の1つの値に $x$ が2個，$s=0$ に1個対応する．$s^2-10s+9=k$ が相異なる2つの正の解をもつ条件を，$y=(s-5)^2-16\\ (s>0)$ と $y=k$ の交点で考えて $-16<k<9$．"
+   }
+  ],
+  "idea": {
+   "tex": "組み合わせを工夫して共通の「かたまり」を作る／中心 $x=p$ のまわりで展開すると式の構造が見える。"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) $c_4$：1 ; $c_3$：0 ; $c_2$：-10 ; $c_1$：0 ; $c_0$：9\n(2) 最小値：-16\n(3) -16<k<9"
+  },
+  "methods": [],
+  "tags": [
+   "展開",
+   "置き換え",
+   "4次関数",
+   "解の個数"
+  ],
+  "provenance": {
+   "created": "2026-10-26"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "I-EXP-002",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "I-01",
+  "level": 3,
+  "minutes": 15,
+  "theme": "因数分解／最低次の文字・置き換え",
+  "unit": "因数分解",
+  "topic": "最低次の文字・置き換え",
+  "statement": {
+   "tex": "次の式を因数分解せよ．\n\\begin{enumerate}\n  \\item $x^5+3x^4+(y-1)x^3-x^2-xy+6x+2y$\n  \\item $(x+1)(x+2)(x+3)(x+6)-3x^2$\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $(x^3-x+2)(x^2+3x+y)$　(2) $(x^2+4x+6)(x^2+8x+6)$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) $y$ について1次なので $y$ で整理すると，与式 $=y(x^3-x+2)+x(x^4+3x^3-x^2-x+6)$．$x^4+3x^3-x^2-x+6=(x^3-x+2)(x+3)$ より与式 $=(x^3-x+2)(x^2+3x+y)$．（$x^3-x+2$ は有理数の根をもたない．）\n(2) 定数項の積が等しくなる組 $(x+1)(x+6)=x^2+7x+6,\\ (x+2)(x+3)=x^2+5x+6$．$t=x^2+6$ とおくと $(t+7x)(t+5x)-3x^2=t^2+12xt+32x^2=(t+4x)(t+8x)$．"
+   }
+  ],
+  "idea": {
+   "tex": "最低次の文字について整理する／かたまりを置き換えて2次式に帰着する。"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) (x^3-x+2)(x^2+3x+y)\n(2) (x^2+4x+6)(x^2+8x+6)"
+  },
+  "methods": [],
+  "tags": [
+   "因数分解",
+   "最低次の文字",
+   "置き換え"
+  ],
+  "provenance": {
+   "created": "2026-10-26"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "I-EXP-003",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "I-01",
+  "level": 3,
+  "minutes": 20,
+  "theme": "因数分解／交代式・複2次式",
+  "unit": "因数分解",
+  "topic": "交代式・複2次式",
+  "statement": {
+   "tex": "\\begin{enumerate}\n  \\item $a^4(b-c)+b^4(c-a)+c^4(a-b)$ を因数分解せよ．\n  \\item $|n^4-11n^2+1|$ が素数となるような整数 $n$ をすべて求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $-(a-b)(b-c)(c-a)(a^2+b^2+c^2+ab+bc+ca)$　(2) $n=\\pm3$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) 与式は交代式なので $(a-b)(b-c)(c-a)$ を因数にもち，残りは対称な2次式 $p(a^2+b^2+c^2)+q(ab+bc+ca)$．係数比較（$a^4b$ の係数や $(a,b,c)=(0,1,2)$ の代入）で $p=q=-1$．\n(2) $n^4-11n^2+1=(n^2-1)^2-9n^2=(n^2-3n-1)(n^2+3n-1)$．素数の絶対値になるには一方の因数が $\\pm1$．$n^2-3n-1=1$ は整数解なし，$n^2-3n-1=-1\\iff n=0,3$．$n=0$ では値 $1$（不適），$n=3$ では $(-1)\\cdot17$ で $17$．もう一方の因数も同様に $n=-3$．よって $n=\\pm3$．"
+   }
+  ],
+  "idea": {
+   "tex": "交代式は差積を因数にもつ／複2次式は $x^4$ と定数項で平方完成して平方の差へ。"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) -(a-b)(b-c)(c-a)(a^2+b^2+c^2+ab+bc+ca)\n(2) $n$：{3, -3}"
+  },
+  "methods": [],
+  "tags": [
+   "因数分解",
+   "交代式",
+   "複2次式",
+   "整数",
+   "素数"
+  ],
+  "provenance": {
+   "created": "2026-10-26"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "I-EXP-004",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "I-01",
+  "level": 3,
+  "minutes": 20,
+  "theme": "式の値／有理化・二重根号・$\\sqrt{A^2}=|A|$",
+  "unit": "式の値",
+  "topic": "有理化・二重根号・$\\sqrt{A^2}=|A|$",
+  "statement": {
+   "tex": "\\begin{enumerate}\n  \\item $\\dfrac{1}{1+\\sqrt2+\\sqrt3+\\sqrt6}$ の分母を有理化せよ．\n  \\item $t\\geqq 4$ に対し $F(t)=\\sqrt{t+4\\sqrt{t-4}}+\\sqrt{t-4\\sqrt{t-4}}$ とする．$F(t)$ を根号を1つだけ含む（または含まない）式で表せ．\n  \\item $F(t)=5$ となる $t$ を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $\\dfrac{\\sqrt6-\\sqrt3-\\sqrt2+1}{2}$　(2) $4\\leqq t\\leqq8$ で $F=4$，$t\\geqq8$ で $F=2\\sqrt{t-4}$　(3) $t=\\dfrac{41}{4}$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) 分母 $=(1+\\sqrt2)(1+\\sqrt3)$ より，$\\dfrac{(\\sqrt2-1)(\\sqrt3-1)}{1\\cdot2}=\\dfrac{\\sqrt6-\\sqrt3-\\sqrt2+1}{2}$．\n(2) $s=\\sqrt{t-4}\\ (\\geqq0)$ とおくと $t\\pm4s=(s\\pm2)^2$．$F=(s+2)+|s-2|$ より，$4\\leqq t\\leqq8$ で $4$，$t\\geqq8$ で $2\\sqrt{t-4}$．\n(3) $4\\leqq t\\leqq8$ では $F=4\\neq5$．$t\\geqq8$ で $2\\sqrt{t-4}=5$ より $t=\\dfrac{41}{4}$（$\\geqq8$ を満たす）．"
+   }
+  ],
+  "idea": {
+   "tex": "因数分解できる分母は分けて有理化／$\\sqrt{(\\ \\cdot\\ )^2}$ は絶対値で外す。"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) (sqrt(6)-sqrt(3)-sqrt(2)+1)/2\n(2) 記述\n(3) $t$：41/4"
+  },
+  "methods": [],
+  "tags": [
+   "有理化",
+   "二重根号",
+   "絶対値",
+   "場合分け"
+  ],
+  "provenance": {
+   "created": "2026-10-26"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "I-EXP-005",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "I-01",
+  "level": 4,
+  "minutes": 25,
+  "theme": "式の値／比例式（$k$ とおく）",
+  "unit": "式の値",
+  "topic": "比例式（$k$ とおく）",
+  "statement": {
+   "tex": "相異なる実数 $a,b,c$（いずれも $0$ でない）が\n\\[ a+\\frac1b=b+\\frac1c=c+\\frac1a \\]\nを満たすとし，この共通の値を $k$ とする．\n\\begin{enumerate}\n  \\item $(abc)^2=1$ を示せ．\n  \\item $k$ の値を求めよ．また，そのときの $abc$ の値を求めよ．\n  \\item (2) の各 $k$ について，条件を満たす $(a,b,c)$ の例を1組ずつ挙げよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 証明　(2) $k=1$ のとき $abc=-1$，$k=-1$ のとき $abc=1$　(3) 例：$k=1$ で $(2,-1,\\tfrac12)$，$k=-1$ で $(2,-\\tfrac13,-\\tfrac32)$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) 差をとると $a-b=\\dfrac{b-c}{bc},\\ b-c=\\dfrac{c-a}{ca},\\ c-a=\\dfrac{a-b}{ab}$．辺々掛けて $(a-b)(b-c)(c-a)=\\dfrac{(a-b)(b-c)(c-a)}{(abc)^2}$，左辺 $\\neq0$ より $(abc)^2=1$．\n(2) $ab=kb-1,\\ bc=kc-1$ より $abc=c\\cdot ab=k(kc-1)-c$，すなわち $abc+k=(k^2-1)c$．同様に $abc+k=(k^2-1)a$．$a\\neq c$ より $k^2=1$，かつ $abc=-k$．したがって $(k,abc)=(1,-1)$ または $(-1,1)$ が必要で，これらが実際に起こることを (3) で確かめる．\n(3) $k=1$：$(a,b,c)=\\bigl(2,-1,\\frac12\\bigr)$ は相異なり $0$ でなく，$a+\\frac1b=2-1=1,\\ b+\\frac1c=-1+2=1,\\ c+\\frac1a=\\frac12+\\frac12=1$，$abc=-1$．\n$k=-1$：$(a,b,c)=\\bigl(2,-\\frac13,-\\frac32\\bigr)$ は相異なり $0$ でなく，$a+\\frac1b=2-3=-1,\\ b+\\frac1c=-\\frac13-\\frac23=-1,\\ c+\\frac1a=-\\frac32+\\frac12=-1$，$abc=1$．\nよって (2) の $k=\\pm1$ はいずれも実際に起こる．"
+   }
+  ],
+  "idea": {
+   "tex": "等しい値を $k$ とおき，条件式を連立して文字を消去する／巡回する式は辺々演算。"
+  },
+  "methods": [],
+  "tags": [
+   "比例式",
+   "対称性",
+   "巡回",
+   "証明"
+  ],
+  "provenance": {
+   "created": "2026-10-26"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "I-EXP-006",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "I-01",
+  "level": 3,
+  "minutes": 20,
+  "theme": "連立1次方程式／解の存在と2直線の位置関係",
+  "unit": "連立1次方程式",
+  "topic": "解の存在と2直線の位置関係",
+  "statement": {
+   "tex": "連立方程式\n\\[ \\begin{cases} (k+1)x+2y=k+3\\\\ 2x+(k+1)y=4 \\end{cases} \\]\nについて，\n\\begin{enumerate}\n  \\item 解が存在しない $k$，解が無数に存在する $k$ をそれぞれ求めよ．\n  \\item 解が無数に存在するとき，解 $(x,y)$ についての $x^2+y^2$ の最小値を求めよ．\n  \\item ただ1組の解をもち，その解 $x,y$ がともに整数となる整数 $k$ をすべて求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 解なし $k=-3$，無数 $k=1$　(2) $2$　(3) $k=-5,-4,-2,-1$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) $(k+1)^2-4=0\\iff k=1,-3$．$k=1$ で両式とも $x+y=2$（一致），$k=-3$ で $x-y=0,\\ x-y=2$ となり平行で解なし．\n(2) $x+y=2$ 上で $x^2+y^2\\geqq\\frac{(x+y)^2}{2}=2$（$x=y=1$ で等号）．\n(3) $k\\neq1,-3$ のとき $x=\\dfrac{k+5}{k+3}=1+\\dfrac{2}{k+3},\\ y=\\dfrac{2}{k+3}$．$k+3=\\pm1,\\pm2$ より $k=-5,-4,-2,-1$．"
+   }
+  ],
+  "idea": {
+   "tex": "解の存在は2直線の位置関係（交わる／平行／一致）で判定。"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) 解なし：-3 ; 無数：1\n(2) 2\n(3) $k$：{-5, -4, -2, -1}"
+  },
+  "methods": [],
+  "tags": [
+   "連立方程式",
+   "文字係数",
+   "整数解"
+  ],
+  "provenance": {
+   "created": "2026-10-26"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "I-EXP-007",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "I-01",
+  "level": 4,
+  "minutes": 25,
+  "theme": "1次不等式と整数解の個数",
+  "topic": "1次不等式と整数解の個数",
+  "statement": {
+   "tex": "\\begin{enumerate}\n  \\item $x$ の連立不等式 $3(x-a)>x-5,\\ x\\leqq a+2$ を満たす整数 $x$ がちょうど3個となるような実数 $a$ の範囲を求めよ．\n  \\item $x$ の不等式 $(a-2)x\\leqq a^2-4$ の解が，$1\\leqq x\\leqq 3$ を満たすすべての $x$ を含むような実数 $a$ の範囲を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $\\frac53\\leqq a<2,\\ \\frac73\\leqq a<\\frac{11}{3},\\ 4\\leqq a<\\frac{13}{3}$　(2) $a\\leqq-1,\\ a\\geqq2$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) 解は $\\frac{3a-5}{2}<x\\leqq a+2$．$a+2$ 以下の最大の整数を $N$ とする．解の集合は区間なので，整数解がちょうど3個 $\\iff$ $N,N-1,N-2$ が解で $N-3$ が解でない $\\iff$ $N\\leqq a+2<N+1$ かつ $N-3\\leqq\\frac{3a-5}{2}<N-2$，すなわち\n\\[ N-2\\leqq a<N-1\\quad\\text{かつ}\\quad\\frac{2N-1}{3}\\leqq a<\\frac{2N+1}{3}. \\]\nこの2区間が共通部分をもつ条件は $N-2<\\frac{2N+1}{3}$ かつ $\\frac{2N-1}{3}<N-1$，すなわち $2<N<7$．\n$N=3$：$\\frac53\\leqq a<2$，$N=4$：$\\frac73\\leqq a<3$，$N=5$：$3\\leqq a<\\frac{11}{3}$，$N=6$：$4\\leqq a<\\frac{13}{3}$．\nよって $\\boldsymbol{\\frac53\\leqq a<2,\\ \\frac73\\leqq a<\\frac{11}{3},\\ 4\\leqq a<\\frac{13}{3}}$．\n(2) $a>2$：$x\\leqq a+2$ で常に成立．$a=2$：$0\\leqq0$ で成立．$a<2$：$x\\geqq a+2$ より $a+2\\leqq1\\iff a\\leqq-1$．"
+   }
+  ],
+  "idea": {
+   "tex": "文字係数は符号で場合分け／整数解の個数は数直線上で端点の位置を管理する。"
+  },
+  "methods": [],
+  "tags": [
+   "1次不等式",
+   "整数解",
+   "場合分け",
+   "文字係数"
+  ],
+  "provenance": {
+   "created": "2026-10-26"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "I-EXP-008",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "I-01",
+  "level": 3,
+  "minutes": 20,
+  "theme": "不等式／取り得る値の範囲（独立変数への置き換え）",
+  "unit": "不等式",
+  "topic": "取り得る値の範囲（独立変数への置き換え）",
+  "statement": {
+   "tex": "実数 $x,y$ が $1\\leqq x-y\\leqq 3,\\ 2\\leqq x+2y\\leqq 5$ を満たすとき，\n\\begin{enumerate}\n  \\item $2x+y$ の取り得る値の範囲を求めよ．\n  \\item $xy$ の取り得る値の範囲を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $3\\leqq 2x+y\\leqq 8$　(2) $-\\dfrac89\\leqq xy\\leqq\\dfrac{25}{8}$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "$p=x-y,\\ q=x+2y$ とおくと $x=\\frac{2p+q}{3},\\ y=\\frac{q-p}{3}$ で，$(p,q)$ は $[1,3]\\times[2,5]$ を独立に動く．\n(1) $2x+y=p+q$ より $3\\leqq2x+y\\leqq8$．\n(2) $xy=\\frac{q^2+pq-2p^2}{9}$．$p\\geqq1,\\ q\\geqq2$ で $q^2+pq$ は $q$ について増加なので，各 $p$ に対し $q=2$ で最小，$q=5$ で最大．\n最小：$q=2$ のとき $\\frac{-2p^2+2p+4}{9}=\\frac{-2(p-\\frac12)^2+\\frac92}{9}$ は $1\\leqq p\\leqq3$ で減少するので，$p=3$ で $-\\frac89$（$(x,y)=(\\frac83,-\\frac13)$）．\n最大：$q=5$ のとき $\\frac{-2p^2+5p+25}{9}=\\frac{-2(p-\\frac54)^2+\\frac{225}{8}}{9}$ は $p=\\frac54$ で最大値 $\\frac{25}{8}$（$(x,y)=(\\frac52,\\frac54)$）．辺々の掛け算で評価すると誤る．"
+   }
+  ],
+  "idea": {
+   "tex": "独立に動ける2変数 $p,q$ に置き換えてから評価する（不等式の辺々の足し算は罠）。"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) 3<=2x+y<=8\n(2) 記述"
+  },
+  "methods": [],
+  "tags": [
+   "不等式",
+   "範囲",
+   "置き換え",
+   "2変数"
+  ],
+  "provenance": {
+   "created": "2026-10-26"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "I-EXP-009",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "I-01",
+  "level": 3,
+  "minutes": 20,
+  "theme": "絶対値つき関数／折れ線の最小値",
+  "unit": "絶対値つき関数",
+  "topic": "折れ線の最小値",
+  "statement": {
+   "tex": "実数 $a$ に対し $f(x)=|x-1|+2|x-3|+3|x-a|$ とし，その最小値を $m(a)$ とする．\n\\begin{enumerate}\n  \\item $a=5$ のとき，$f(x)$ の最小値と，最小値を与える $x$ の範囲を求めよ．\n  \\item $m(a)$ を $a$ の式で表し，$m(a)$ の最小値を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 最小値 $8$（$3\\leqq x\\leqq5$）　(2) $m(a)=7-3a\\ (a\\leqq1),\\ 5-a\\ (1\\leqq a\\leqq3),\\ 3a-7\\ (a\\geqq3)$，最小値 $2$（$a=3$）"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "傾きは（$x$ より左の重みの和）$-$（右の重みの和）．総重み $6$．\n(1) 傾きは $x<1$：$-6$，$1<x<3$：$-4$，$3<x<5$：$0$，$x>5$：$6$．最小値 $f(3)=8$，$3\\leqq x\\leqq5$ で最小．\n(2) $a\\geqq3$：$[3,a]$ で傾き $0$，$m=f(3)=3a-7$．$1\\leqq a\\leqq3$：点 $a$ で傾きが $-4\\to2$，$m=f(a)=5-a$．$a\\leqq1$：$m=f(1)=7-3a$．最小値は $a=3$ で $2$．"
+   }
+  ],
+  "idea": {
+   "tex": "絶対値の和は折れ線．各区間の傾きの符号変化で最小を判定する。"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) 最小値：8\n(2) 記述"
+  },
+  "methods": [],
+  "tags": [
+   "絶対値",
+   "折れ線",
+   "最小値",
+   "パラメータ"
+  ],
+  "provenance": {
+   "created": "2026-10-26"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "I-EXP-010",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "I-01",
+  "level": 4,
+  "minutes": 25,
+  "theme": "絶対値つき関数／動く定義域上での最大",
+  "unit": "絶対値つき関数",
+  "topic": "動く定義域上での最大",
+  "statement": {
+   "tex": "$f(x)=\\bigl||x|-2\\bigr|$ とする．実数 $t$ に対し，区間 $t\\leqq x\\leqq t+3$ における $f(x)$ の最大値を $M(t)$ とする．\n\\begin{enumerate}\n  \\item $M(t)$ を $t$ の式で表せ．\n  \\item $M(t)$ の最小値と，それを与える $t$ を求めよ．\n  \\item $M(t)=2$ となる $t$ をすべて求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $M=-t-2\\ (t\\leqq-\\frac72),\\ t+5\\ (-\\frac72\\leqq t\\leqq-3),\\ 2\\ (-3\\leqq t\\leqq0),\\ 2-t\\ (0\\leqq t\\leqq\\frac12),\\ t+1\\ (t\\geqq\\frac12)$　(2) 最小値 $\\frac32$（$t=-\\frac72,\\ \\frac12$）　(3) $t=-4,\\ -3\\leqq t\\leqq0,\\ t=1$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "$y=f(x)$ は $(-2,0),(0,2),(2,0)$ を結ぶW型（$x=0$ で極大値 $2$）．\n(1) $t<-3$：端点比較 $|t+2|\\geqq|t+5|\\iff t\\leqq-\\frac72$．$-3\\leqq t\\leqq0$：$0$ を含み，端点の値は $2$ 以下なので $M=2$．$t>0$：$|t+1|\\geqq|t-2|\\iff t\\geqq\\frac12$．\n(2) (1) より $M(t)$ は $t\\leqq-\\frac72$ で減少，$-\\frac72\\leqq t\\leqq-3$ で増加，$-3\\leqq t\\leqq0$ で一定値 $2$，$0\\leqq t\\leqq\\frac12$ で減少，$t\\geqq\\frac12$ で増加．$M\\bigl(-\\frac72\\bigr)=M\\bigl(\\frac12\\bigr)=\\frac32<2$ より，最小値 $\\frac32$（$t=-\\frac72,\\ \\frac12$）．\n(3) $-t-2=2\\Rightarrow t=-4$，$t+1=2\\Rightarrow t=1$，および $-3\\leqq t\\leqq0$．"
+   }
+  ],
+  "idea": {
+   "tex": "区間上の最大値は「区間内の極大値」と「端点の値」の最大のもの。"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) 記述\n(2) 最小値：3/2\n(3) 記述"
+  },
+  "methods": [],
+  "tags": [
+   "絶対値",
+   "動く区間",
+   "最大値",
+   "場合分け"
+  ],
+  "provenance": {
+   "created": "2026-10-26"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "I-EXP-011",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "I-01",
+  "level": 3,
+  "minutes": 20,
+  "theme": "$a^3+b^3+c^3-3abc$ の因数分解",
+  "topic": "$a^3+b^3+c^3-3abc$ の因数分解",
+  "statement": {
+   "tex": "\\begin{enumerate}\n  \\item $x^3-8y^3+18xy+27$ を因数分解せよ．\n  \\item 方程式 $(x-1)^3+(x-2)^3+(3-2x)^3=0$ を解け．\n  \\item $a^3+b^3+1=3ab$ を満たす実数の組 $(a,b)$ 全体は，$ab$ 平面上でどのような図形になるか．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $(x-2y+3)(x^2+4y^2+9+2xy+6y-3x)$　(2) $x=1,2,\\frac32$　(3) 直線 $a+b=-1$ と点 $(1,1)$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) $a=x,\\ b=-2y,\\ c=3$ とおくと $3abc=-18xy$ なので，与式 $=a^3+b^3+c^3-3abc$．\n\\[ \\text{与式}=(x-2y+3)(x^2+4y^2+9+2xy+6y-3x). \\]\n\n(2) $a=x-1,\\ b=x-2,\\ c=3-2x$ とおくと $a+b+c=0$ なので $a^3+b^3+c^3=3abc$．\nよって $3(x-1)(x-2)(3-2x)=0$，$\\boldsymbol{x=1,\\ 2,\\ \\dfrac32}$．\n\n(3) $c=1$ として $a^3+b^3+1-3ab=(a+b+1)\\cdot\\frac12\\{(a-b)^2+(b-1)^2+(1-a)^2\\}=0$．\n$a+b+1=0$ または $a=b=1$．よって\\textbf{直線 $a+b=-1$ と点 $(1,1)$ をあわせた図形}．"
+   }
+  ],
+  "idea": {
+   "tex": "$a^3+b^3+c^3-3abc=(a+b+c)(a^2+b^2+c^2-ab-bc-ca)$．第2因数は $\\frac12\\{(a-b)^2+(b-c)^2+(c-a)^2\\}$ で，$0$ になるのは $a=b=c$ のときだけ．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) (x-2y+3)(x^2+4y^2+9+2xy+6y-3x)\n(2) 記述\n(3) 記述"
+  },
+  "methods": [],
+  "tags": [
+   "因数分解",
+   "3乗の和",
+   "対称式"
+  ],
+  "provenance": {
+   "created": "2026-10-27"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "I-EXP-012",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "I-01",
+  "level": 3,
+  "minutes": 20,
+  "theme": "絶対値を含む関数の最小値",
+  "topic": "絶対値を含む関数の最小値",
+  "statement": {
+   "tex": "$a$ を定数とし，$f(x)=2|x-a|-|x-a-3|$ とする．\n\\begin{enumerate}\n  \\item $a=0$ のとき，$y=f(x)$ のグラフをかけ．\n  \\item $0\\leqq x\\leqq2$ における $f(x)$ の最小値 $m(a)$ を $a$ を用いて表せ．\n  \\item $m(a)=0$ となる $a$ をすべて求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 図示　(2) $m(a)=3-a\\ (a\\leqq-3),\\ -3a-3\\ (-3\\leqq a\\leqq0),\\ -3\\ (0\\leqq a\\leqq2),\\ a-5\\ (a\\geqq2)$　(3) $a=-1,5$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "折れ目は $x=a,\\ a+3$．各区間の傾きは $x<a$ で $-1$，$a<x<a+3$ で $3$，$x>a+3$ で $1$．最小は $x=a$ での値 $-3$．\n\n(1) $a=0$：$f(x)=\\begin{cases}-x-3&(x\\leqq0)\\\\3x-3&(0\\leqq x\\leqq3)\\\\x+3&(x\\geqq3)\\end{cases}$．\n点 $(0,-3)$ を最下点とし，$(3,6)$ で傾きが3から1に変わる折れ線．\n\n(2)\n\\begin{itemize}\n  \\item $0\\leqq a\\leqq2$：$x=a$ が定義域内なので $m=-3$．\n  \\item $a>2$：$[0,2]$ は $x<a$ 側で減少．$m=f(2)=a-5$．\n  \\item $-3\\leqq a<0$：$[0,2]$ で増加，$0$ は $(a,a+3]$ 内なので $m=f(0)=-3a-3$．\n  \\item $a<-3$：$0>a+3$ なので $m=f(0)=3-a$．\n\\end{itemize}\n\\[ m(a)=\\begin{cases}3-a&(a\\leqq-3)\\\\-3a-3&(-3\\leqq a\\leqq0)\\\\-3&(0\\leqq a\\leqq2)\\\\a-5&(a\\geqq2)\\end{cases} \\]\n\n(3) $-3a-3=0\\Rightarrow a=-1$，$a-5=0\\Rightarrow a=5$（$3-a=0$ は $a\\leqq-3$ を満たさない）．$\\boldsymbol{a=-1,\\ 5}$．"
+   }
+  ],
+  "idea": {
+   "tex": "絶対値の1次式の和は折れ線．各区間の傾きで増減を読み，定義域と折れ目の位置関係で場合分けする．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) 図示\n(2) 記述\n(3) $a$：{-1, 5}"
+  },
+  "methods": [],
+  "tags": [
+   "絶対値",
+   "折れ線",
+   "最小値",
+   "場合分け"
+  ],
+  "provenance": {
+   "created": "2026-10-27"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "I-EXP-013",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "I-01",
+  "level": 2,
+  "minutes": 15,
+  "theme": "集合の演算",
+  "topic": "集合の演算",
+  "statement": {
+   "tex": "全体集合を $U$ とし，$A,B$ をその部分集合とする．$\\overline{A}$ は $A$ の補集合を表す．\n\\begin{enumerate}\n  \\item $(A\\cup B)\\cap(A\\cup\\overline{B})$ および $(A\\cap B)\\cup(\\overline{A}\\cap B)\\cup(A\\cap\\overline{B})$ を簡単にせよ．\n  \\item $(A\\cap\\overline{B})\\cup(\\overline{A}\\cap B)=A\\cup B$ が成り立つための，$A,B$ についての必要十分条件を求めよ．\n  \\item $U=\\{1,2,\\dots,60\\}$，$A$ を4の倍数全体，$B$ を6の倍数全体とするとき，$(A\\cap\\overline{B})\\cup(\\overline{A}\\cap B)$ の要素の個数を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $A$，$A\\cup B$　(2) $A\\cap B=\\varnothing$　(3) $15$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) 分配法則より $(A\\cup B)\\cap(A\\cup\\overline{B})=A\\cup(B\\cap\\overline{B})=A\\cup\\varnothing=\\boldsymbol{A}$．\n$(A\\cap B)\\cup(\\overline{A}\\cap B)=(A\\cup\\overline{A})\\cap B=B$ なので，全体は $B\\cup(A\\cap\\overline{B})=(B\\cup A)\\cap(B\\cup\\overline{B})=\\boldsymbol{A\\cup B}$．\n\n(2) 左辺は「$A,B$ のちょうど一方に属する要素」の集合で，$A\\cup B$ から $A\\cap B$ を除いたもの．\nよって等号が成り立つ $\\iff$ $\\boldsymbol{A\\cap B=\\varnothing}$．\n\n(3) $n(A)=15,\\ n(B)=10$，$A\\cap B$ は12の倍数で $n(A\\cap B)=5$．\n求める個数 $=n(A)+n(B)-2n(A\\cap B)=15+10-10=\\boldsymbol{15}$．"
+   }
+  ],
+  "idea": {
+   "tex": "ベン図で領域を確認するか，分配法則・ド・モルガンの法則で式変形する．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) 記述\n(2) 記述\n(3) 15"
+  },
+  "methods": [],
+  "tags": [
+   "集合",
+   "ド・モルガン",
+   "要素の個数"
+  ],
+  "provenance": {
+   "created": "2026-10-28"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "I-EXP-014",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "I-01",
+  "level": 3,
+  "minutes": 20,
+  "theme": "集合の要素の個数",
+  "topic": "集合の要素の個数",
+  "statement": {
+   "tex": "100人に3種類の商品 A，B，C を買ったかどうか調査したところ，A を買った人は60人，B は70人，C は80人であった．\n\\begin{enumerate}\n  \\item 3種類すべてを買った人数として考えられる最小値と最大値を求めよ．\n  \\item 2種類以上を買った人数として考えられる最小値を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 最小 $10$，最大 $60$　(2) $55$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "A のみ，B のみ，C のみ，AB のみ，AC のみ，BC のみ，ABC，どれも買わない人数をそれぞれ $a,b,c,p,q,r,s,t\\ (\\geqq0)$ とする．\n1種類だけ買った人数を $x_1=a+b+c$，ちょうど2種類を $x_2=p+q+r$，3種類を $x_3=s$ とすると\n\\[ x_1+x_2+x_3+t=100,\\qquad x_1+2x_2+3x_3=60+70+80=210. \\]\n\n(1) 最小：$2\\times$（第1式）$-$（第2式）より $x_1+2t-x_3=-10$，よって $x_3=x_1+2t+10\\geqq10$．\n$x_1=t=0,\\ x_2=90,\\ x_3=10$ は，$p=20,\\ q=30,\\ r=40,\\ s=10$ で実現できる．最小値 $\\boldsymbol{10}$．\n最大：$s\\leqq60$（A の人数）．$s=60$ のとき $r=10$，$c=10$，$t=20$ などで実現できる．最大値 $\\boldsymbol{60}$．\n\n(2) $k=x_2+x_3$ とおく．$x_1\\leqq100-k$ なので $210=x_1+2x_2+3x_3\\leqq(100-k)+3k=100+2k$，$k\\geqq55$．\n$s=55,\\ a=5,\\ b=15,\\ c=25$（他は0）で A $=60$，B $=70$，C $=80$ となり実現できる．最小値 $\\boldsymbol{55}$．"
+   }
+  ],
+  "idea": {
+   "tex": "ベン図の各領域の人数を文字でおき，与えられた合計の式を連立する．最大・最小は「領域の人数 $\\geqq0$」から評価する．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) 最小：10 ; 最大：60\n(2) 55"
+  },
+  "methods": [],
+  "tags": [
+   "集合の要素の個数",
+   "ベン図",
+   "最大最小"
+  ],
+  "provenance": {
+   "created": "2026-10-28"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "I-EXP-015",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "I-01",
+  "level": 2,
+  "minutes": 15,
+  "theme": "数直線と命題",
+  "topic": "数直線と命題",
+  "statement": {
+   "tex": "$a$ を実数とし，$A=\\{x\\mid x^2-4x+3\\leqq0\\}$，$B=\\{x\\mid |x-a|<2\\}$ とする．\n\\begin{enumerate}\n  \\item $A\\subset B$ となる $a$ の範囲を求めよ．\n  \\item $A\\cap B=\\varnothing$ となる $a$ の範囲を求めよ．\n  \\item $A\\cap B$ に含まれる整数がちょうど1個となる $a$ の範囲を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $1<a<3$　(2) $a\\leqq-1,\\ a\\geqq5$　(3) $-1<a\\leqq0,\\ 4\\leqq a<5$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "$A=[1,3]$，$B=(a-2,\\ a+2)$（開区間）．\n\n(1) $a-2<1$ かつ $3<a+2$ より $\\boldsymbol{1<a<3}$．\n\n(2) $a+2\\leqq1$ または $a-2\\geqq3$ より $\\boldsymbol{a\\leqq-1,\\ a\\geqq5}$．\n\n(3) $A$ に含まれる整数は $1,2,3$．$B$ は長さ4の開区間なので，2だけを含んで1，3を含まないことはない．\n\\begin{itemize}\n  \\item 1だけ：$1\\in B$ かつ $2\\notin B$．$a-2<1<a+2$ かつ $a+2\\leqq2$ より $-1<a\\leqq0$．\n  \\item 3だけ：$3\\in B$ かつ $2\\notin B$．$a-2<3<a+2$ かつ $a-2\\geqq2$ より $4\\leqq a<5$．\n\\end{itemize}\nよって $\\boldsymbol{-1<a\\leqq0,\\ 4\\leqq a<5}$．"
+   }
+  ],
+  "idea": {
+   "tex": "集合を数直線上に図示し，端点の大小（等号の有無に注意）で包含関係を判定する．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) 1<a<3\n(2) 記述\n(3) 記述"
+  },
+  "methods": [],
+  "tags": [
+   "集合",
+   "数直線",
+   "包含関係"
+  ],
+  "provenance": {
+   "created": "2026-10-28"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "I-EXP-016",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "I-01",
+  "level": 2,
+  "minutes": 15,
+  "theme": "必要条件・十分条件（式）",
+  "topic": "必要条件・十分条件（式）",
+  "statement": {
+   "tex": "$x,y,z$ は実数とする．次の空欄に，「必要十分条件である」「必要条件であるが十分条件でない」「十分条件であるが必要条件でない」「必要条件でも十分条件でもない」のいずれかを入れよ．\n\\begin{enumerate}\n  \\item 「$x+y>2$ かつ $xy>1$」は「$x>1$ かつ $y>1$」であるための \\fbox{\\phantom{XX}}．\n  \\item 「$x+y>2$ かつ $(x-1)(y-1)>0$」は「$x>1$ かつ $y>1$」であるための \\fbox{\\phantom{XX}}．\n  \\item 「$x^2+y^2+z^2=xy+yz+zx$」は「$x=y=z$」であるための \\fbox{\\phantom{XX}}．\n  \\item 「$x^2>y^2$」は「$x>|y|$」であるための \\fbox{\\phantom{XX}}．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 必要条件であるが十分でない　(2) 必要十分　(3) 必要十分　(4) 必要条件であるが十分でない"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) $x>1,\\ y>1\\Rightarrow x+y>2,\\ xy>1$ は真．逆は $x=\\frac12,\\ y=3$ が反例．\\textbf{必要条件であるが十分条件でない}．\n\n(2) $(x-1)(y-1)>0$ は「$x>1$ かつ $y>1$」または「$x<1$ かつ $y<1$」．後者では $x+y<2$ なので，$x+y>2$ と合わせると前者のみ．逆も成り立つ．\\textbf{必要十分条件}．\n\n(3) $x^2+y^2+z^2-xy-yz-zx=\\frac12\\{(x-y)^2+(y-z)^2+(z-x)^2\\}$ なので，$=0\\iff x=y=z$．\\textbf{必要十分条件}．\n\n(4) $x>|y|\\Rightarrow x^2>y^2$ は真．逆は $x=-2,\\ y=0$ が反例．\\textbf{必要条件であるが十分条件でない}．"
+   }
+  ],
+  "idea": {
+   "tex": "「$p\\Rightarrow q$」の真偽を調べ，偽なら反例を1つ挙げる．同値変形できれば必要十分．"
+  },
+  "methods": [],
+  "tags": [
+   "必要条件",
+   "十分条件",
+   "反例"
+  ],
+  "provenance": {
+   "created": "2026-10-28"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "I-EXP-017",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "I-01",
+  "level": 3,
+  "minutes": 20,
+  "theme": "必要条件・十分条件（領域）",
+  "topic": "必要条件・十分条件（領域）",
+  "statement": {
+   "tex": "$x,y$ は実数とする．\n\\begin{enumerate}\n  \\item 「$x^2+y^2\\leqq r^2$」が「$|x|+|y|\\leqq1$」であるための十分条件となるような正の数 $r$ の最大値を求めよ．\n  \\item 「$|x|+|y|\\leqq k$」が「$x^2+y^2\\leqq1$」であるための必要条件となるような正の数 $k$ の最小値を求めよ．\n  \\item 「$x^2+y^2\\leqq1$」が「$y\\geqq x^2-a$」であるための十分条件となるような実数 $a$ の範囲を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $\\frac{\\sqrt2}{2}$　(2) $\\sqrt2$　(3) $a\\geqq\\frac54$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) 正方形 $|x|+|y|\\leqq1$ に円板 $x^2+y^2\\leqq r^2$ が含まれればよい．原点と辺 $x+y=1$ の距離は $\\frac1{\\sqrt2}$ なので，$r$ の最大値は $\\boldsymbol{\\dfrac{\\sqrt2}{2}}$．\n\n(2) 円板 $x^2+y^2\\leqq1$ が正方形 $|x|+|y|\\leqq k$ に含まれればよい．円板上で $(|x|+|y|)^2=x^2+y^2+2|x||y|\\leqq2(x^2+y^2)\\leqq2$（$2|x||y|\\leqq x^2+y^2$ による）より $|x|+|y|\\leqq\\sqrt2$ で，$x=y=\\frac{1}{\\sqrt2}$ のとき等号．よって $|x|+|y|$ の最大値は $\\sqrt2$．$k$ の最小値は $\\boldsymbol{\\sqrt2}$．\n\n(3) 円板上のすべての点で $a\\geqq x^2-y$ となればよい．円板上では $x^2\\leqq1-y^2$ なので\n$x^2-y\\leqq1-y^2-y=-\\bigl(y+\\frac12\\bigr)^2+\\frac54\\leqq\\frac54$ で，等号は $y=-\\frac12,\\ x=\\pm\\frac{\\sqrt3}{2}$（円板上の点）．よって最大値 $\\frac54$．よって $\\boldsymbol{a\\geqq\\dfrac54}$．"
+   }
+  ],
+  "idea": {
+   "tex": "2変数の条件は座標平面上の領域で表し，「$p\\Rightarrow q$」を「領域 $P\\subset$ 領域 $Q$」として判定する．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) sqrt(2)/2\n(2) sqrt(2)\n(3) a>=5/4"
+  },
+  "methods": [],
+  "tags": [
+   "必要条件",
+   "十分条件",
+   "領域"
+  ],
+  "provenance": {
+   "created": "2026-10-28"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "I-EXP-018",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "I-01",
+  "level": 2,
+  "minutes": 15,
+  "theme": "逆・裏・対偶",
+  "topic": "逆・裏・対偶",
+  "statement": {
+   "tex": "$x,y$ は実数とする．\n\\begin{enumerate}\n  \\item 命題「$x+y$ と $xy$ がともに有理数ならば，$x,y$ はともに有理数である」の逆・裏・対偶を述べ，もとの命題を含む4つの命題の真偽をそれぞれ答えよ（偽であるものには反例を挙げよ）．\n  \\item 命題「$x+y$，$x-y$，$xy$ がすべて有理数ならば，$x,y$ はともに有理数である」の真偽を答えよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 元：偽，逆：真，裏：真，対偶：偽　(2) 真"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1)\n\\begin{itemize}\n  \\item もとの命題：\\textbf{偽}．反例 $x=\\sqrt2,\\ y=-\\sqrt2$（$x+y=0,\\ xy=-2$）．\n  \\item 逆「$x,y$ がともに有理数ならば，$x+y,\\ xy$ はともに有理数」：\\textbf{真}．\n  \\item 裏「$x+y,\\ xy$ の少なくとも一方が無理数ならば，$x,y$ の少なくとも一方は無理数」：\\textbf{真}（逆の対偶）．\n  \\item 対偶「$x,y$ の少なくとも一方が無理数ならば，$x+y,\\ xy$ の少なくとも一方は無理数」：\\textbf{偽}（もとの命題と同じ反例）．\n\\end{itemize}\n\n(2) $x=\\frac{(x+y)+(x-y)}{2},\\ y=\\frac{(x+y)-(x-y)}{2}$ はともに有理数．\\textbf{真}．"
+   }
+  ],
+  "idea": {
+   "tex": "命題とその対偶の真偽は一致し，逆と裏の真偽も一致する．「少なくとも一方」は「どちらも〜でない」の否定．"
+  },
+  "methods": [],
+  "tags": [
+   "逆裏対偶",
+   "有理数",
+   "反例"
+  ],
+  "provenance": {
+   "created": "2026-10-28"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "I-EXP-019",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "I-01",
+  "level": 3,
+  "minutes": 20,
+  "theme": "「ある」と「すべて」の否定",
+  "topic": "「ある」と「すべて」の否定",
+  "statement": {
+   "tex": "$a$ を実数の定数とする．\n\\begin{enumerate}\n  \\item 命題 P「すべての実数 $x$ に対して，ある実数 $y$ が存在して $x^2-2axy+y^2<1$ が成り立つ」の否定を述べよ．\n  \\item 命題 P が真となる $a$ の範囲を求めよ．\n  \\item 命題 Q「ある実数 $y$ が存在して，すべての実数 $x$ に対して $x^2-2axy+y^2<1$ が成り立つ」は，どのような $a$ に対しても偽であることを示せ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 否定文　(2) $a\\leqq-1,\\ a\\geqq1$　(3) 証明"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) 「ある実数 $x$ が存在して，すべての実数 $y$ に対して $x^2-2axy+y^2\\geqq1$ が成り立つ」．\n\n(2) $x$ を固定すると $g(y)=y^2-2axy+x^2=(y-ax)^2+(1-a^2)x^2$ の最小値は $(1-a^2)x^2$．\nP が真 $\\iff$ すべての $x$ で $(1-a^2)x^2<1$ $\\iff$ $1-a^2\\leqq0$（$1-a^2>0$ なら $|x|$ を大きくとれば不成立）．\nよって $\\boldsymbol{a\\leqq-1,\\ a\\geqq1}$．\n\n(3) どの $y$ を選んでも，$x$ について $x^2-2ayx+y^2$ は $x\\to\\infty$ でいくらでも大きくなるので，ある $x$ で $\\geqq1$ となる．よって Q は常に偽．"
+   }
+  ],
+  "idea": {
+   "tex": "「すべての $x$ で $p$」の否定は「ある $x$ で $p$ でない」．量化記号の順序が入れ替わると命題の意味が変わる．"
+  },
+  "methods": [],
+  "tags": [
+   "全称と存在",
+   "否定",
+   "量化の順序"
+  ],
+  "provenance": {
+   "created": "2026-10-28"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "I-EXP-020",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "I-01",
+  "level": 3,
+  "minutes": 20,
+  "theme": "有理数・無理数と背理法",
+  "topic": "有理数・無理数と背理法",
+  "statement": {
+   "tex": "$\\sqrt2,\\ \\sqrt3,\\ \\sqrt6$ が無理数であることは用いてよい．\n\\begin{enumerate}\n  \\item $\\log_2 3$ は無理数であることを示せ．\n  \\item 有理数 $a,b,c$ が $a+b\\sqrt2+c\\sqrt3=0$ を満たすならば，$a=b=c=0$ であることを示せ．\n  \\item 有理数 $x,y$ が $(x+y\\sqrt2)^3=7+5\\sqrt2$ を満たすとき，$x,y$ を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1)(2) 証明　(3) $x=1,\\ y=1$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) $\\log_23>0$．$\\log_23=\\frac mn$（$m,n$ は自然数）と仮定すると $3=2^{m/n}$，$3^n=2^m$．左辺は奇数，右辺は偶数なので矛盾．\n\n(2) $a+b\\sqrt2=-c\\sqrt3$ の両辺を2乗して $a^2+2b^2+2ab\\sqrt2=3c^2$．\n$ab\\neq0$ なら $\\sqrt2=\\frac{3c^2-a^2-2b^2}{2ab}$ が有理数となり矛盾．よって $ab=0$．\n\\begin{itemize}\n  \\item $a=0$：$2b^2=3c^2$．$b\\neq0$ なら $\\bigl(\\frac{3c}{b}\\bigr)^2=\\frac{9c^2}{b^2}=6$ より $\\sqrt6=\\bigl|\\frac{3c}{b}\\bigr|$ が有理数となり矛盾．よって $b=0$，すると $c=0$．\n  \\item $b=0$：$a^2=3c^2$．$c\\neq0$ なら $\\sqrt3=\\frac{|a|}{|c|}$ で矛盾．よって $a=c=0$．\n\\end{itemize}\n\n(3) $1+\\sqrt2$ について $(1+\\sqrt2)^3=1+3\\sqrt2+6+2\\sqrt2=7+5\\sqrt2$．\n実数の3乗根はただ1つなので $x+y\\sqrt2=1+\\sqrt2$，すなわち $(x-1)+(y-1)\\sqrt2=0$．$x,y$ は有理数なので $\\boldsymbol{x=1,\\ y=1}$．"
+   }
+  ],
+  "idea": {
+   "tex": "「無理数である」は「有理数でない」なので，有理数と仮定して矛盾を導く．$p+q\\sqrt2=0$（$p,q$ 有理数）なら $p=q=0$．"
+  },
+  "methods": [],
+  "tags": [
+   "背理法",
+   "無理数",
+   "有理数"
+  ],
+  "provenance": {
+   "created": "2026-10-28"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "I-EXP-021",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "I-01",
+  "level": 3,
+  "minutes": 15,
+  "theme": "対称式と累乗和",
+  "topic": "対称式と累乗和",
+  "statement": {
+   "tex": "\\begin{enumerate}\n  \\item 複素数 $a,b,c$ が $a+b+c=1$，$a^2+b^2+c^2=3$，$a^3+b^3+c^3=7$ を満たすとき，$abc$ と $a^4+b^4+c^4$ の値を求めよ．\n  \\item 複素数 $a,b,c$ が $a^2+b^2+c^2=2$，$a^3+b^3+c^3=2$，$abc=\\dfrac23$ を満たすとき，$x=a+b+c$ のとりうる値をすべて求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $abc=1$，$a^4+b^4+c^4=11$　(2) $x=0,\\pm\\sqrt6$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "$e_1=a+b+c$，$e_2=ab+bc+ca$，$e_3=abc$，$p_k=a^k+b^k+c^k$ とする．\n\n(1) $e_2=\\frac{1-3}2=-1$．$p_3=e_1^3-3e_1e_2+3e_3=1+3+3e_3=7$ より $\\boldsymbol{abc=1}$．\n$a,b,c$ は $t^3-e_1t^2+e_2t-e_3=0$ の解なので，各解について $t^4=e_1t^3-e_2t^2+e_3t$．これを $a,b,c$ について加えて $p_4=e_1p_3-e_2p_2+e_3p_1=7+3+1=\\boldsymbol{11}$．\n\n(2) $e_2=\\frac{x^2-2}2$，$p_3=x^3-3x\\cdot\\frac{x^2-2}2+3\\cdot\\frac23=2$ より $x^3-6x=0$．$x=\\boldsymbol{0,\\ \\pm\\sqrt6}$．\n（逆に，各 $x$ に対し $t^3-xt^2+e_2t-\\frac23=0$ の3解を $a,b,c$ とすればよい．）"
+   }
+  ],
+  "idea": {
+   "tex": "$a+b+c,\\ ab+bc+ca,\\ abc$ と累乗和の関係（ニュートンの公式）．$a^3+b^3+c^3-3abc=(a+b+c)(a^2+b^2+c^2-ab-bc-ca)$．"
+  },
+  "methods": [],
+  "tags": [
+   "対称式",
+   "累乗和"
+  ],
+  "provenance": {
+   "created": "2026-10-28"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "I-EXP-022",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "I-01",
+  "level": 2,
+  "minutes": 10,
+  "theme": "必要条件・十分条件",
+  "topic": "必要条件・十分条件",
+  "statement": {
+   "tex": "$x,y$ は実数とする．次の各空欄に，(ア) 必要条件であるが十分条件ではない　(イ) 十分条件であるが必要条件ではない　(ウ) 必要十分条件である　(エ) 必要条件でも十分条件でもない，から適するものを入れよ．\n\\begin{enumerate}\n  \\item $|x|+|y|<1$ は，$x^2+y^2<1$ であるための \\fbox{\\phantom{ア}}．\n  \\item $x+y>2$ かつ $xy>1$ は，$x>1$ かつ $y>1$ であるための \\fbox{\\phantom{ア}}．\n  \\item $x+y>2$ かつ $(x-1)(y-1)>0$ は，$x>1$ かつ $y>1$ であるための \\fbox{\\phantom{ア}}．\n  \\item $x^2+y^2<2$ は，$x<1$ かつ $y<1$ であるための \\fbox{\\phantom{ア}}．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) イ　(2) ア　(3) ウ　(4) エ"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) $|x|+|y|<1$ の正方形は単位円の内部に含まれ，逆は $(0.6,0.6)$ が反例．\\textbf{(イ)}．\n\n(2) $x>1,y>1\\Rightarrow x+y>2,\\ xy>1$ は真．逆は $(x,y)=\\bigl(\\frac12,3\\bigr)$ が反例．\\textbf{(ア)}．\n\n(3) $(x-1)(y-1)>0$ なら $x-1,y-1$ は同符号，$x+y>2$ より両方正．逆も真．\\textbf{(ウ)}．\n\n(4) $(0,-1.5)$ は $x<1,y<1$ を満たすが $x^2+y^2<2$ でない．$(1.2,0)$ は $x^2+y^2<2$ だが $x<1$ でない．\\textbf{(エ)}．"
+   }
+  ],
+  "idea": {
+   "tex": "$P\\Rightarrow Q$ が真なら $P$ は十分条件，$Q$ は必要条件．領域の包含で判定し，偽なら反例を1つ挙げる．"
+  },
+  "methods": [],
+  "tags": [
+   "必要条件",
+   "十分条件"
+  ],
+  "provenance": {
+   "created": "2026-10-28"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "I-EXP-023",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "I-01",
+  "level": 3,
+  "minutes": 15,
+  "theme": "無理数であることの証明",
+  "topic": "無理数であることの証明",
+  "statement": {
+   "tex": "\\begin{enumerate}\n  \\item $\\sqrt6$ が無理数であることを用いて，$\\sqrt2+\\sqrt3$ が無理数であることを証明せよ．\n  \\item $\\log_23$ が無理数であることを証明せよ．\n  \\item 実数 $a$ が $a^3+a+1=0$ を満たすとき，$a$ は無理数であることを証明せよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "証明（背理法，有理数解の定理）"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) $\\sqrt2+\\sqrt3=r$（有理数）とすると $r^2=5+2\\sqrt6$，$\\sqrt6=\\frac{r^2-5}2$ が有理数となり矛盾．\n\n(2) $\\log_23>0$．$\\log_23=\\frac mn$（$m,n$ 正の整数）とすると $3^n=2^m$．左辺は奇数，右辺は偶数で矛盾．\n\n(3) $a=\\frac pq$（既約，$q>0$）とすると $p^3+pq^2+q^3=0$．$q^3=-p(p^2+q^2)$ より $p\\mid q^3$，既約から $p=\\pm1$．同様に $q\\mid p^3$ から $q=1$．\n$a=\\pm1$ だが，$1+1+1\\neq0$，$-1-1+1\\neq0$．よって $a$ は無理数．"
+   }
+  ],
+  "idea": {
+   "tex": "有理数 $\\frac pq$（既約）と仮定して矛盾を導く．多項式の有理数解は「定数項の約数／最高次の係数の約数」．"
+  },
+  "methods": [],
+  "tags": [
+   "無理数の証明"
+  ],
+  "provenance": {
+   "created": "2026-10-28"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "I-EXP-024",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "I-01",
+  "level": 4,
+  "minutes": 25,
+  "theme": "無理数の二項展開",
+  "topic": "無理数の二項展開",
+  "statement": {
+   "tex": "\\begin{enumerate}\n  \\item $n$ が奇数のとき $(\\sqrt3+\\sqrt2)^n=a_n\\sqrt3+b_n\\sqrt2$，偶数のとき $(\\sqrt3+\\sqrt2)^n=a_n+b_n\\sqrt6$（$a_n,b_n$ は自然数）と表せることを示せ．また，$(\\sqrt3-\\sqrt2)^n$ を $a_n,b_n$ で表せ．\n  \\item 適当な自然数 $m_n$ を用いて $(\\sqrt3-\\sqrt2)^n=\\sqrt{m_n}-\\sqrt{m_n-1}\\ (n=1,2,\\dots)$ と表せることを示せ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $a_n\\sqrt3-b_n\\sqrt2$（奇数），$a_n-b_n\\sqrt6$（偶数）　(2) 証明"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) 帰納法：$(a\\sqrt3+b\\sqrt2)(\\sqrt3+\\sqrt2)=(3a+2b)+(a+b)\\sqrt6$，$(a+b\\sqrt6)(\\sqrt3+\\sqrt2)=(a+2b)\\sqrt3+(a+3b)\\sqrt2$．\n同じ計算で $\\sqrt2\\to-\\sqrt2$ としたものが成り立つので，$(\\sqrt3-\\sqrt2)^n=\\boldsymbol{a_n\\sqrt3-b_n\\sqrt2}$（$n$ 奇数），$\\boldsymbol{a_n-b_n\\sqrt6}$（$n$ 偶数）．\n\n(2) 積をとると $(\\sqrt3+\\sqrt2)^n(\\sqrt3-\\sqrt2)^n=1$：奇数なら $3a_n^2-2b_n^2=1$，偶数なら $a_n^2-6b_n^2=1$．\n$m_n=3a_n^2$（奇数），$a_n^2$（偶数）とすれば $(\\sqrt3-\\sqrt2)^n=\\sqrt{m_n}-\\sqrt{m_n-1}$．"
+   }
+  ],
+  "idea": {
+   "tex": "$(p+q\\sqrt d)^n$ と共役 $(p-q\\sqrt d)^n$ の積が一定．差の形 $\\sqrt{k}-\\sqrt{k-1}$ に直す．"
+  },
+  "methods": [],
+  "tags": [
+   "無理数",
+   "二項展開"
+  ],
+  "provenance": {
+   "created": "2026-10-28"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "I-EXP-025",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "I-01",
+  "level": 3,
+  "minutes": 15,
+  "theme": "格子点と無理数",
+  "topic": "格子点と無理数",
+  "statement": {
+   "tex": "$x,y$ 座標がともに整数である点を格子点という．$\\sqrt2,\\sqrt3$ が無理数であることは証明なしに用いてよい．\n\\begin{enumerate}\n  \\item 直線 $y=\\dfrac{x}{\\sqrt2+1}+3-2\\sqrt2$ が通る格子点をすべて求めよ．\n  \\item 原点を通る2直線 $l,m$ がそれぞれ原点以外の格子点を通るとき，$l,m$ のなす角は $30^\\circ$ にならないことを示せ．また，$45^\\circ$ になる例を挙げよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $(2,1)$　(2) 証明，例 $y=0$ と $y=x$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) $y=(\\sqrt2-1)x+3-2\\sqrt2$，$y+x-3=\\sqrt2(x-2)$．格子点なら左辺は整数で，$x=2$，$y=1$．$\\boldsymbol{(2,1)}$．\n\n(2) 格子点を通る直線の傾き（または縦）は有理数か縦．$\\tan(\\theta_1-\\theta_2)=\\frac{m_1-m_2}{1+m_1m_2}$ は有理数（縦の場合も $\\frac1{m}$ 型で有理数）．$\\tan30^\\circ=\\frac1{\\sqrt3}$ は無理数なので不可．\n$45^\\circ$ の例：$y=0$ と $y=x$．"
+   }
+  ],
+  "idea": {
+   "tex": "$A+B\\sqrt3=0$（$A,B$ 有理数）なら $A=B=0$．格子点を通る直線の傾きは有理数で，$\\tan$ の加法定理で角を調べる．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) (2, 1)\n(2) 記述"
+  },
+  "methods": [],
+  "tags": [
+   "無理数",
+   "格子点"
+  ],
+  "provenance": {
+   "created": "2026-10-28"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "I-EXP-026",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "I-01",
+  "level": 3,
+  "minutes": 15,
+  "theme": "3乗根の和と有理性",
+  "topic": "3乗根の和と有理性",
+  "statement": {
+   "tex": "\\begin{enumerate}\n  \\item $c=\\sqrt[3]{\\sqrt{\\dfrac{28}{27}}+1}-\\sqrt[3]{\\sqrt{\\dfrac{28}{27}}-1}$ は整数であることを示し，その値を求めよ．\n  \\item $a=\\sqrt[3]{\\sqrt{\\dfrac{65}{64}}+1}-\\sqrt[3]{\\sqrt{\\dfrac{65}{64}}-1}$ は整数係数の3次方程式の解であることを示し，$a$ が有理数でないことを証明せよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $c=1$　(2) $4a^3+3a-8=0$，証明"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) $u=\\sqrt[3]{\\sqrt{28/27}+1}$，$v=\\sqrt[3]{\\sqrt{28/27}-1}$ とすると $u^3-v^3=2$，$uv=\\sqrt[3]{\\frac{28}{27}-1}=\\frac13$．\n$c^3=u^3-v^3-3uvc=2-c$，$c^3+c-2=(c-1)(c^2+c+2)=0$．$c$ は実数なので $\\boldsymbol{c=1}$．\n\n(2) 同様に $uv=\\frac14$，$a^3=2-\\frac34a$，$\\boldsymbol{4a^3+3a-8=0}$．$a$ が有理数であると仮定し，$a=\\frac pq$（$p,q$ は互いに素な整数，$q>0$）とおくと $4p^3+3pq^2-8q^3=0$．$p$ は $8q^3$ の約数で $q$ と互いに素だから $p$ は $8$ の約数，$q$ は $4p^3$ の約数で $p$ と互いに素だから $q$ は $4$ の約数．\n一方 $f(x)=4x^3+3x-8$ は $f'(x)=12x^2+3>0$ より単調増加で，$f(1)=-1<0$，$f\\bigl(\\frac54\\bigr)=\\frac{125}{16}+\\frac{15}4-8=\\frac{57}{16}>0$ だから，実数解 $a$ はただ1つで $1<a<\\frac54$．ところが $\\frac pq$（$p\\mid8$，$q\\mid4$）の形の正の数は $\\frac14,\\frac12,1,2,4,8$ であり，いずれも $1<x<\\frac54$ に属さない．これは矛盾．よって $a$ は有理数でない．"
+   }
+  ],
+  "idea": {
+   "tex": "$a=u-v$ とおき $a^3=u^3-v^3-3uva$．$uv$ が有理数になるよう作られている．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) $c$：1\n(2) 記述"
+  },
+  "methods": [],
+  "tags": [
+   "3乗根",
+   "有理性"
+  ],
+  "provenance": {
+   "created": "2026-10-28"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "I-EXP-027",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "I-01",
+  "level": 2,
+  "minutes": 10,
+  "theme": "展開と対称式",
+  "topic": "展開と対称式",
+  "statement": {
+   "tex": "$p=x^2+y^2+z^2$，$q=x^4+y^4+z^4$ とする．$(x+y+z)(-x+y+z)(x-y+z)(x+y-z)$ を $p,q$ で表せ．"
+  },
+  "answer": {
+   "tex": "$p^2-2q$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "$(x+y+z)(-x+y+z)=(y+z)^2-x^2$，$(x-y+z)(x+y-z)=x^2-(y-z)^2$ と組み合わせて\n与式 $=x^2\\{(y+z)^2+(y-z)^2\\}-x^4-(y^2-z^2)^2=2x^2y^2+2z^2x^2-x^4-y^4+2y^2z^2-z^4$\n$=2(x^2y^2+y^2z^2+z^2x^2)-(x^4+y^4+z^4)$．\n$p^2=q+2(x^2y^2+y^2z^2+z^2x^2)$ より，与式 $=(p^2-q)-q=\\boldsymbol{p^2-2q}$．"
+   }
+  ],
+  "idea": {
+   "tex": "展開した式の項の次数はすべて等しい．対称性と特殊値（$x=y=z$ など）で係数を決める．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "p^2-2q"
+  },
+  "methods": [],
+  "tags": [
+   "展開",
+   "対称式"
+  ],
+  "provenance": {
+   "created": "2026-10-28"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "I-EXP-028",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "I-01",
+  "level": 3,
+  "minutes": 15,
+  "theme": "因数分解（1文字に着目）",
+  "topic": "因数分解（1文字に着目）",
+  "statement": {
+   "tex": "次の式を因数分解せよ．\n\\begin{enumerate}\n  \\item $(x+y)(y+z)(z+x)+xyz$\n  \\item $x^4(y-z)+y^4(z-x)+z^4(x-y)$\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $(x+y+z)(xy+yz+zx)$　(2) $-(x-y)(y-z)(z-x)(x^2+y^2+z^2+xy+yz+zx)$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) $x$ について整理：$(y+z)x^2+(y+z)^2x+yz(y+z)+xyz=(y+z)x^2+(y^2+3yz+z^2)x+yz(y+z)$．\n$=\\{(y+z)x+yz\\}(x+y+z)$ より $\\boldsymbol{(x+y+z)(xy+yz+zx)}$．\n\n(2) 与式を $F$ とする．どの2文字を入れ替えても $F$ は $-1$ 倍になる（交代式）．$x=y$ とすると $F=x^4(x-z)+x^4(z-x)=0$ なので，$x$ の整式とみて因数定理より $F$ は $x-y$ で割り切れ，同様に $y-z$，$z-x$ でも割り切れる．\nよって $F=(x-y)(y-z)(z-x)G$ で，$G$ は2次の同次式．$F$ と $(x-y)(y-z)(z-x)$ はともに交代式なので $G$ は対称式で，$G=a(x^2+y^2+z^2)+b(xy+yz+zx)$ とおける．\n$(x,y,z)=(0,1,2)$：$-14=2(5a+2b)$，$(x,y,z)=(0,1,-1)$：$-2=2(2a-b)$．これより $a=b=-1$ で\n$\\boldsymbol{-(x-y)(y-z)(z-x)(x^2+y^2+z^2+xy+yz+zx)}$．"
+   }
+  ],
+  "idea": {
+   "tex": "最低次の文字で整理する．交代式は $(x-y)(y-z)(z-x)$ を因数にもつ．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) (x+y+z)(xy+yz+zx)\n(2) -(x-y)(y-z)(z-x)(x^2+y^2+z^2+xy+yz+zx)"
+  },
+  "methods": [],
+  "tags": [
+   "因数分解",
+   "交代式"
+  ],
+  "provenance": {
+   "created": "2026-10-28"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "I-EXP-029",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "I-01",
+  "level": 2,
+  "minutes": 10,
+  "theme": "二重根号と整数部分",
+  "topic": "二重根号と整数部分",
+  "statement": {
+   "tex": "$\\sqrt{11+6\\sqrt2}$ の整数部分を $a$，小数部分を $b$ とするとき，$\\dfrac ab-\\dfrac b{a+b-1}$ の値を求めよ．"
+  },
+  "answer": {
+   "tex": "$6+\\dfrac{5\\sqrt2}2$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "$\\sqrt{11+6\\sqrt2}=3+\\sqrt2$，$a=4$，$b=\\sqrt2-1$．\n$\\frac ab=4(\\sqrt2+1)$，$\\frac b{a+b-1}=\\frac{\\sqrt2-1}{2+\\sqrt2}=\\frac{3\\sqrt2-4}2$．値は $\\boldsymbol{6+\\dfrac{5\\sqrt2}2}$．"
+   }
+  ],
+  "idea": {
+   "tex": "$\\sqrt{a+2\\sqrt b}=\\sqrt m+\\sqrt n$（$m+n=a$，$mn=b$）．小数部分は（数）$-$（整数部分）．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "6+5sqrt(2)/2"
+  },
+  "methods": [],
+  "tags": [
+   "二重根号",
+   "整数部分"
+  ],
+  "provenance": {
+   "created": "2026-10-28"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "I-EXP-030",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "I-01",
+  "level": 3,
+  "minutes": 15,
+  "theme": "根号を含む式の計算",
+  "topic": "根号を含む式の計算",
+  "statement": {
+   "tex": "\\begin{enumerate}\n  \\item $(1+\\sqrt2+\\sqrt3)(1+\\sqrt2-\\sqrt3)(1-\\sqrt2+\\sqrt3)(-1+\\sqrt2+\\sqrt3)$ の値を求めよ．\n  \\item $\\dfrac1{1+\\sqrt[3]2+\\sqrt[3]4}=a+b\\sqrt[3]2+c\\sqrt[3]4$ をみたす有理数 $a,b,c$ を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $8$　(2) $a=-1,\\ b=1,\\ c=0$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) $\\{(1+\\sqrt2)^2-3\\}\\{3-(1-\\sqrt2)^2\\}=2\\sqrt2\\cdot2\\sqrt2=\\boldsymbol8$．\n\n(2) $t=\\sqrt[3]2$ とすると $(t-1)(1+t+t^2)=t^3-1=1$．よって $\\frac1{1+t+t^2}=t-1$，$\\boldsymbol{a=-1,\\ b=1,\\ c=0}$．"
+   }
+  ],
+  "idea": {
+   "tex": "根号を含む4項の積は，2つずつ組にして和と差の積にする．3乗根の有理化は $a^3-b^3=(a-b)(a^2+ab+b^2)$．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) 8\n(2) $a$：-1 ; $b$：1 ; $c$：0"
+  },
+  "methods": [],
+  "tags": [
+   "根号",
+   "有理化"
+  ],
+  "provenance": {
+   "created": "2026-10-28"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "I-EXP-031",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "I-01",
+  "level": 2,
+  "minutes": 10,
+  "theme": "式の値（次数下げ）",
+  "topic": "式の値（次数下げ）",
+  "statement": {
+   "tex": "$x=3+\\sqrt2$ のとき，$P=x^4-5x^3+2x^2+10x+1$ の値を求めよ．"
+  },
+  "answer": {
+   "tex": "$21+9\\sqrt2$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "$x^2-6x+7=0$．$P=(x^2-6x+7)(x^2+x-1)+9x-6$ より $P=9(3+\\sqrt2)-6=\\boldsymbol{21+9\\sqrt2}$．"
+   }
+  ],
+  "idea": {
+   "tex": "$x$ がみたす2次方程式で $P(x)$ を割り，余りに代入する．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "21+9sqrt(2)"
+  },
+  "methods": [],
+  "tags": [
+   "次数下げ"
+  ],
+  "provenance": {
+   "created": "2026-10-28"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "I-EXP-032",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "I-01",
+  "level": 2,
+  "minutes": 15,
+  "theme": "対称式の値",
+  "topic": "対称式の値",
+  "statement": {
+   "tex": "\\begin{enumerate}\n  \\item $x=\\dfrac1{\\sqrt3+\\sqrt2}$，$y=\\dfrac1{\\sqrt3-\\sqrt2}$ のとき，$x^3+y^3$，$x^4+y^4$ の値を求めよ．\n  \\item $x>0$，$x^4+\\dfrac1{x^4}=47$ のとき，$x+\\dfrac1x$，$x^3+\\dfrac1{x^3}$，$x^5+\\dfrac1{x^5}$ の値を求めよ．\n  \\item 実数 $x,y$ が $xy+x+y=11$，$x^2y+xy^2=30$ をみたすとき，$x^2+y^2$，$x^3+y^3$ のとりうる値をすべて求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $18\\sqrt3$，$98$　(2) $3$，$18$，$123$　(3) $13,\\ 26$，$35,\\ 126$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) $x=\\sqrt3-\\sqrt2$，$y=\\sqrt3+\\sqrt2$，$x+y=2\\sqrt3$，$xy=1$．\n$x^3+y^3=24\\sqrt3-6\\sqrt3=\\boldsymbol{18\\sqrt3}$，$x^2+y^2=10$，$x^4+y^4=100-2=\\boldsymbol{98}$．\n\n(2) $x^2+\\frac1{x^2}=\\sqrt{47+2}=7$，$x+\\frac1x=\\sqrt{9}=\\boldsymbol3$．\n$x^3+\\frac1{x^3}=27-9=\\boldsymbol{18}$，$x^5+\\frac1{x^5}=7\\cdot18-3=\\boldsymbol{123}$．\n\n(3) $s=x+y$，$p=xy$：$s+p=11$，$sp=30$ より $(s,p)=(5,6),(6,5)$（ともに $s^2\\geqq4p$ で実数）．\n$x^2+y^2=\\boldsymbol{13,\\ 26}$，$x^3+y^3=s^3-3ps=\\boldsymbol{35,\\ 126}$（それぞれ対応）．"
+   }
+  ],
+  "idea": {
+   "tex": "和と積（$s=x+y$，$p=xy$）で表す．$x^n+\\frac1{x^n}$ は $t=x+\\frac1x$ の多項式．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) 記述\n(2) 記述\n(3) {13, 26} ; {35, 126}"
+  },
+  "methods": [],
+  "tags": [
+   "対称式",
+   "式の値"
+  ],
+  "provenance": {
+   "created": "2026-10-28"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "I-EXP-033",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "I-01",
+  "level": 3,
+  "minutes": 15,
+  "theme": "3文字の対称式",
+  "topic": "3文字の対称式",
+  "statement": {
+   "tex": "\\begin{enumerate}\n  \\item $x+y+z=2$，$x^2+y^2+z^2=6$，$x^3+y^3+z^3=8$ のとき，$xyz$ と $x^4+y^4+z^4$ の値を求めよ．\n  \\item $a+b+c=3$，$a^2+b^2+c^2=5$，$abc=-1$ のとき，$(a+b)(b+c)(c+a)$ と $\\dfrac1a+\\dfrac1b+\\dfrac1c$ の値を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $-2$，$18$　(2) $7$，$-2$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) $e_1=x+y+z=2$，$e_2=xy+yz+zx=\\frac{e_1^2-6}2=-1$，$e_3=xyz$ とする．\n$x^3+y^3+z^3-3xyz=(x+y+z)(x^2+y^2+z^2-xy-yz-zx)$ より $8-3e_3=2\\{6-(-1)\\}=14$，$xyz=\\boldsymbol{-2}$．\n$(t-x)(t-y)(t-z)=t^3-e_1t^2+e_2t-e_3=t^3-2t^2-t+2$ より $x,y,z$ は $t^3=2t^2+t-2$ をみたし，$t$ を掛けて $t^4=2t^3+t^2-2t$．$x,y,z$ について加えて\n$x^4+y^4+z^4=2\\cdot8+6-2\\cdot2=\\boldsymbol{18}$．\n\n(2) $ab+bc+ca=\\frac{9-5}2=2$．$(a+b)(b+c)(c+a)=(3-c)(3-a)(3-b)=27-9(a+b+c)+3(ab+bc+ca)-abc=27-27+6+1=\\boldsymbol7$，\n$\\frac1a+\\frac1b+\\frac1c=\\frac{ab+bc+ca}{abc}=\\boldsymbol{-2}$．"
+   }
+  ],
+  "idea": {
+   "tex": "基本対称式 $e_1,e_2,e_3$ を求める．$x,y,z$ は $t^3-e_1t^2+e_2t-e_3=0$ の解なので，$t^k$ の次数を下げて冪和を順に求める．"
+  },
+  "methods": [],
+  "tags": [
+   "基本対称式",
+   "ニュートンの公式"
+  ],
+  "provenance": {
+   "created": "2026-10-28"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "I-EXP-034",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "I-01",
+  "level": 3,
+  "minutes": 15,
+  "theme": "比例式",
+  "topic": "比例式",
+  "statement": {
+   "tex": "正の実数 $x,y,z$ が $\\dfrac{yz}x=\\dfrac{zx}{2y}=\\dfrac{xy}{3z}$ をみたすとき，$x:y:z$ を求め，$\\dfrac{x+y+z}{\\sqrt{x^2+y^2+z^2}}$ の値を求めよ．"
+  },
+  "answer": {
+   "tex": "$\\sqrt6:\\sqrt3:\\sqrt2$，$\\dfrac{\\sqrt6+\\sqrt3+\\sqrt2}{\\sqrt{11}}$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "共通の値を $k$ とすると，2つずつの積から $\\frac{z^2}2=k^2$，$\\frac{x^2}6=k^2$，$\\frac{y^2}3=k^2$．\n$x:y:z=\\boldsymbol{\\sqrt6:\\sqrt3:\\sqrt2}$，値は $\\boldsymbol{\\dfrac{\\sqrt6+\\sqrt3+\\sqrt2}{\\sqrt{11}}}$．"
+   }
+  ],
+  "idea": {
+   "tex": "比例式 $=k$ とおき，2つずつの積をとると各文字の2乗が $k^2$ で表せる．"
+  },
+  "methods": [],
+  "tags": [
+   "比例式"
+  ],
+  "provenance": {
+   "created": "2026-10-28"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "I-EXP-035",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "I-01",
+  "level": 1,
+  "minutes": 10,
+  "theme": "循環小数",
+  "topic": "循環小数",
+  "statement": {
+   "tex": "循環小数 $0.\\dot1\\dot8$ と $0.1\\dot6$ をそれぞれ既約分数で表せ．また，その積を循環小数で表せ．"
+  },
+  "answer": {
+   "tex": "$\\dfrac2{11}$，$\\dfrac16$，$0.\\dot0\\dot3$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "$0.\\dot1\\dot8=\\frac{18}{99}=\\boldsymbol{\\dfrac2{11}}$，$0.1\\dot6=\\frac{16-1}{90}=\\boldsymbol{\\dfrac16}$．積 $\\frac1{33}=\\boldsymbol{0.\\dot0\\dot3}$．"
+   }
+  ],
+  "idea": {
+   "tex": "循環節が $k$ 桁なら $10^k$ 倍して引く．"
+  },
+  "methods": [],
+  "tags": [
+   "循環小数"
+  ],
+  "provenance": {
+   "created": "2026-10-28"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "I-EXP-036",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "I-01",
+  "level": 3,
+  "minutes": 20,
+  "theme": "絶対値・無理方程式と不等式",
+  "topic": "絶対値・無理方程式と不等式",
+  "statement": {
+   "tex": "\\begin{enumerate}\n  \\item 方程式 $\\bigl|2x-|x-5|\\bigr|=3$ を解け．\n  \\item 方程式 $\\sqrt{\\dfrac{1-x}2}=1-2x^2$ を満たす実数 $x$ をすべて求めよ．\n  \\item 不等式 $|x^2-4x|<|x+2|-|x-3|$ を解け．\n  \\item 不等式 $\\sqrt{4x-x^2}>x-2$ を解け．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $x=\\dfrac23,\\ \\dfrac83$　(2) $x=\\dfrac12,\\ \\dfrac{1-\\sqrt5}4$　(3) $1+\\sqrt2<x<5$　(4) $0\\leqq x<2+\\sqrt2$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) $x\\geqq5$：$|x+5|=3$ は不適．$x<5$：$|3x-5|=3$ より $\\boldsymbol{x=\\dfrac23,\\ \\dfrac83}$．\n\n(2) $1-2x^2\\geqq0$ のもとで2乗：$\\frac{1-x}2=(1-2x^2)^2$，$8x^4-8x^2+x+1=0$，$(x+1)(2x-1)(4x^2-2x-1)=0$．\n$x=-1$ は $1-2x^2<0$ で不適．$x=\\frac{1+\\sqrt5}4$ も $1-2x^2<0$ で不適．$\\boldsymbol{x=\\dfrac12,\\ \\dfrac{1-\\sqrt5}4}$．\n\n(3) 右辺：$x\\leqq-2$ で $-5$，$-2\\leqq x\\leqq3$ で $2x-1$，$x\\geqq3$ で $5$．左辺 $\\geqq0$ より右辺 $>0$ が必要．\n$\\frac12<x\\leqq3$：$|x^2-4x|<2x-1$．$0\\leqq x\\leqq3$ では $4x-x^2<2x-1$ より $x>1+\\sqrt2$．$x\\geqq3$：$|x^2-4x|<5$ より $x<5$．\n$\\boldsymbol{1+\\sqrt2<x<5}$．\n\n(4) 定義域 $0\\leqq x\\leqq4$．$x<2$ なら成立．$x\\geqq2$：$4x-x^2>(x-2)^2$，$x^2-4x+2<0$，$x<2+\\sqrt2$．$\\boldsymbol{0\\leqq x<2+\\sqrt2}$．"
+   }
+  ],
+  "idea": {
+   "tex": "絶対値は中身の符号で場合分け（内側から）．無理方程式は2乗する前に両辺の符号条件を確認する．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) 記述\n(2) $x$：{1/2, (1-sqrt(5))/4}\n(3) 1+sqrt(2)<x<5\n(4) 0<=x<2+sqrt(2)"
+  },
+  "methods": [],
+  "tags": [
+   "絶対値",
+   "無理方程式",
+   "不等式"
+  ],
+  "provenance": {
+   "created": "2026-10-28"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "I-EXP-037",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "I-01",
+  "level": 2,
+  "minutes": 15,
+  "theme": "整数解の個数",
+  "topic": "整数解の個数",
+  "statement": {
+   "tex": "$a$ を実数の定数とする．不等式 $3-a-2x\\leqq4x\\leqq2x+a$ をみたす整数 $x$ がちょうど4個存在するとき，$a$ の範囲を求めよ．"
+  },
+  "answer": {
+   "tex": "$6\\leqq a<8$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "$3-a-2x\\leqq4x$ より $x\\geqq\\frac{3-a}6$，$4x\\leqq2x+a$ より $x\\leqq\\frac a2$．解は $\\frac{3-a}6\\leqq x\\leqq\\frac a2$．\n$a<6$ のとき：$\\frac{3-a}6>-\\frac12$，$\\frac a2<3$ より，含まれる整数は $0,1,2$ のうちにあり3個以下．\n$6\\leqq a<8$ のとき：$-1<\\frac{3-a}6\\leqq-\\frac12$，$3\\leqq\\frac a2<4$ より，含まれる整数は $0,1,2,3$ のちょうど4個．\n$a\\geqq8$ のとき：$\\frac{3-a}6<0$，$\\frac a2\\geqq4$ より $0,1,2,3,4$ を含み5個以上．\nよって $\\boldsymbol{6\\leqq a<8}$．"
+   }
+  ],
+  "idea": {
+   "tex": "解の区間 $[\\alpha(a),\\beta(a)]$ に含まれる整数を，端点が動くときに数える．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "6<=a<8"
+  },
+  "methods": [],
+  "tags": [
+   "1次不等式",
+   "整数解"
+  ],
+  "provenance": {
+   "created": "2026-10-28"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "I-EXP-038",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "I-01",
+  "level": 2,
+  "minutes": 15,
+  "theme": "集合の要素と文字の決定",
+  "topic": "集合の要素と文字の決定",
+  "statement": {
+   "tex": "$U=\\{1,2,\\dots,10\\}$ を全体集合とし，その部分集合 $A=\\{3,6,a+2,a^2+1\\}$，$B=\\{1,4,a+3,a^2-a+1\\}$ を考える（$a$ は整数，$A,B$ の要素はそれぞれ4個）．\n\\begin{enumerate}\n  \\item $a=2$ のとき，$A\\cap B$，$\\overline A\\cap B$，$n(A\\cup B)$ を求めよ．\n  \\item $A\\cap B$ の要素がちょうど1個であるとき，$a$ の値と $\\overline A\\cap\\overline B$ を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $\\{3,4,5\\}$，$\\{1\\}$，$5$　(2) $a=3$，$\\{2,8,9\\}$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) $A=\\{3,4,5,6\\}$，$B=\\{1,3,4,5\\}$．$A\\cap B=\\boldsymbol{\\{3,4,5\\}}$，$\\overline A\\cap B=\\boldsymbol{\\{1\\}}$，$n(A\\cup B)=\\boldsymbol5$．\n\n(2) $a^2+1\\leqq10$ より $|a|\\leqq3$．各 $a$ で調べると，要素が4個ずつになるのは $a=-1,2,3$ で，$A\\cap B$ はそれぞれ $\\{1,2,3\\},\\{3,4,5\\},\\{6\\}$．\n$\\boldsymbol{a=3}$，$A=\\{3,5,6,10\\}$，$B=\\{1,4,6,7\\}$，$\\overline A\\cap\\overline B=\\overline{A\\cup B}=\\boldsymbol{\\{2,8,9\\}}$．"
+   }
+  ],
+  "idea": {
+   "tex": "要素の候補から文字を絞り，「要素の個数」「重複なし」の条件で不適を除く．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) 記述\n(2) $a$：3 ; {2, 8, 9}"
+  },
+  "methods": [],
+  "tags": [
+   "集合",
+   "共通部分"
+  ],
+  "provenance": {
+   "created": "2026-10-28"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "I-EXP-039",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "I-01",
+  "level": 2,
+  "minutes": 15,
+  "theme": "命題が真となる条件",
+  "topic": "命題が真となる条件",
+  "statement": {
+   "tex": "$a,b$ を正の定数とする．\n\\begin{enumerate}\n  \\item 「$x^2+y^2<a$ ならば $x+2y<5$」が真となる $a$ の範囲を求めよ．\n  \\item 「$x+2y<5$ ならば $x<1$ または $y<b$」が真となる $b$ の範囲を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $0<a\\leqq5$　(2) $b\\geqq2$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) 円 $x^2+y^2<a$ が半平面 $x+2y<5$ に含まれる $\\iff\\sqrt a\\leqq\\frac5{\\sqrt5}$．$\\boldsymbol{0<a\\leqq5}$．\n\n(2) 対偶「$x\\geqq1$ かつ $y\\geqq b$ ならば $x+2y\\geqq5$」が真 $\\iff1+2b\\geqq5$．$\\boldsymbol{b\\geqq2}$．"
+   }
+  ],
+  "idea": {
+   "tex": "命題の真偽は集合の包含．円が半平面に含まれる条件は「中心と直線の距離 $\\geqq$ 半径」．対偶も有効．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) 0<a<=5\n(2) b>=2"
+  },
+  "methods": [],
+  "tags": [
+   "命題",
+   "包含関係"
+  ],
+  "provenance": {
+   "created": "2026-10-28"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "I-EXP-040",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "I-01",
+  "level": 2,
+  "minutes": 15,
+  "theme": "命題の真偽と反例",
+  "topic": "命題の真偽と反例",
+  "statement": {
+   "tex": "実数 $a,b$ について，次の命題の真偽を答え，真なら証明し，偽なら反例を挙げよ．\n\\begin{enumerate}\n  \\item $a^2+b^2\\geqq2$ かつ $ab\\geqq1$ ならば $a+b\\geqq2$．\n  \\item $a^2+b^2\\leqq2$ かつ $a+b\\geqq2$ ならば $a=b=1$．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $a=b=-1$　(2) 証明"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) \\textbf{偽}．反例 $\\boldsymbol{a=b=-1}$（$a^2+b^2=2$，$ab=1$，$a+b=-2$）．\n\n(2) \\textbf{真}．$(a+b)^2\\leqq2(a^2+b^2)\\leqq4$ より $a+b\\leqq2$．よって $a+b=2$ かつ等号 $a=b$ が成り立ち，$a=b=1$．"
+   }
+  ],
+  "idea": {
+   "tex": "偽を示すには反例1つ．真を示すには不等式の評価（例えば $(a+b)^2\\leqq2(a^2+b^2)$）．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) $a$：-1 ; $b$：-1\n(2) 証明"
+  },
+  "methods": [],
+  "tags": [
+   "命題",
+   "反例"
+  ],
+  "provenance": {
+   "created": "2026-10-28"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "I-EXP-041",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "I-01",
+  "level": 3,
+  "minutes": 20,
+  "theme": "max と min の演算",
+  "topic": "max と min の演算",
+  "statement": {
+   "tex": "実数 $x,y$ に対して $x\\vee y$ は $x,y$ の小さくない方，$x\\wedge y$ は大きくない方を表す．\n\\begin{enumerate}\n  \\item $(2\\wedge5)\\vee(4\\wedge3)$ および $(2\\vee4)\\wedge(5\\vee3)$ を求めよ．\n  \\item 実数 $a,b,c,d$ に対して $(a\\wedge b)\\vee(c\\wedge d)\\leqq(a\\vee c)\\wedge(b\\vee d)$ を示せ．\n  \\item (2) で等号はつねに成り立つか．成り立たない例があれば挙げよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $3$，$4$　(2) 証明　(3) $a=1,b=0,c=0,d=1$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) $(2\\wedge5)\\vee(4\\wedge3)=2\\vee3=\\boldsymbol3$，$(2\\vee4)\\wedge(5\\vee3)=4\\wedge5=\\boldsymbol4$．\n\n(2) $a\\wedge b\\leqq a\\leqq a\\vee c$，$a\\wedge b\\leqq b\\leqq b\\vee d$ より $a\\wedge b\\leqq$ 右辺．同様に $c\\wedge d\\leqq c\\vee a$，$c\\wedge d\\leqq d\\vee b$ より $c\\wedge d\\leqq$ 右辺．よって左辺（大きい方）$\\leqq$ 右辺．\n\n(3) 成り立たない．$\\boldsymbol{a=1,b=0,c=0,d=1}$：左辺 $0$，右辺 $1$．"
+   }
+  ],
+  "idea": {
+   "tex": "$x\\vee y=\\max$，$x\\wedge y=\\min$．不等式は「右辺の候補それぞれが左辺以下」を示せばよい．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) 記述\n(2) 証明\n(3) $a$：1 ; $b$：0 ; $c$：0 ; $d$：1"
+  },
+  "methods": [],
+  "tags": [
+   "最大最小",
+   "論証"
+  ],
+  "provenance": {
+   "created": "2026-10-28"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "I-EXP-042",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "I-01",
+  "level": 2,
+  "minutes": 15,
+  "theme": "必要条件・十分条件と区間",
+  "topic": "必要条件・十分条件と区間",
+  "statement": {
+   "tex": "実数 $x$ に対する条件 $P:3x-4\\geqq x+6$，$Q:x^2-(2a+1)x+a^2+a-6\\leqq0$，$R:9\\leqq x\\leqq12$ を考える．\n\\begin{enumerate}\n  \\item $Q$ が $P$ であるための十分条件となる $a$ の範囲，$Q$ が $R$ であるための必要条件となる $a$ の範囲を求めよ．\n  \\item 両方をみたす整数 $a$ をすべて求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $a\\geqq7$，$9\\leqq a\\leqq11$　(2) $9,10,11$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "$P:x\\geqq5$，$Q:a-2\\leqq x\\leqq a+3$，$R:9\\leqq x\\leqq12$．\n\n(1) 十分条件：$Q\\subset P\\iff a-2\\geqq5$，$\\boldsymbol{a\\geqq7}$．必要条件：$R\\subset Q\\iff a-2\\leqq9$ かつ $a+3\\geqq12$，$\\boldsymbol{9\\leqq a\\leqq11}$．\n\n(2) $\\boldsymbol{9,10,11}$．"
+   }
+  ],
+  "idea": {
+   "tex": "「$Q$ が $P$ の十分条件」⇔ $Q$ の集合 $\\subset P$ の集合．区間の端点を比べる．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) 記述\n(2) {9, 10, 11}"
+  },
+  "methods": [],
+  "tags": [
+   "必要十分",
+   "包含関係"
+  ],
+  "provenance": {
+   "created": "2026-10-28"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "I-EXP-043",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "I-01",
+  "level": 3,
+  "minutes": 20,
+  "theme": "数の集合と条件",
+  "topic": "数の集合と条件",
+  "statement": {
+   "tex": "集合 $A$ は有理数 $x,y$ によって $x+y\\sqrt3$ と表せる実数全体とする．$a,b$ を実数とするとき，次の空欄に ①必要条件であるが十分条件でない ②十分条件であるが必要条件でない ③必要十分条件 ④どちらでもない のいずれかを入れよ．\n\\begin{enumerate}\n  \\item 「$a,b\\in A$」は「$a+b\\in A$」であるための \\fbox{\\phantom{ア}}．\n  \\item 「$a,b\\in A$」は「$a+b\\in A$ かつ $a-b\\in A$」であるための \\fbox{\\phantom{ア}}．\n  \\item 「$a,b\\in A$」は「$ab\\in A$」であるための \\fbox{\\phantom{ア}}．\n  \\item $b\\neq0$ のとき，「$a,b\\in A$」は「$ab\\in A$ かつ $\\frac ab\\in A$」であるための \\fbox{\\phantom{ア}}．\n  \\item 「$a\\notin A$」は「$a^2\\notin A$」であるための \\fbox{\\phantom{ア}}．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $②$　(2) $③$　(3) $②$　(4) $②$　(5) $①$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "まず $\\sqrt2\\notin A$ を示す．$\\sqrt2=x+y\\sqrt3$（$x,y$ 有理数）とすると $2=x^2+3y^2+2xy\\sqrt3$ で，$\\sqrt3$ は無理数なので $xy=0$．$y=0$ なら $\\sqrt2=x$ が有理数となり矛盾．$x=0$ なら $3y^2=2$ で，$y=\\frac pq$（$p,q$ は互いに素な整数）とすると $3p^2=2q^2$ より $p$ は偶数，$p=2p'$ として $q^2=6p'^2$ より $q$ も偶数となり矛盾．よって $\\sqrt2\\notin A$，同様に $-\\sqrt2\\notin A$．\nまた $A$ は和・差・積で閉じ，$u+v\\sqrt3\\neq0$ なら $u^2-3v^2\\neq0$ で $\\frac1{u+v\\sqrt3}=\\frac{u-v\\sqrt3}{u^2-3v^2}\\in A$ なので商でも閉じている．\n\n(1) $\\boldsymbol{②}$（$a=\\sqrt2$，$b=-\\sqrt2$ は $a+b\\in A$ だが $a,b\\notin A$）．\n\n(2) $\\boldsymbol{③}$（$a=\\frac{(a+b)+(a-b)}2$ など）．\n\n(3) $\\boldsymbol{②}$（$a=b=\\sqrt2$）．\n\n(4) $\\boldsymbol{②}$（$a=b=\\sqrt2$ で $ab=2$，$\\frac ab=1$）．\n\n(5) $\\boldsymbol{①}$（$a\\in A\\Rightarrow a^2\\in A$ の対偶より必要．$a=\\sqrt2$ で $a^2=2\\in A$ より十分でない）．"
+   }
+  ],
+  "idea": {
+   "tex": "$A=\\{x+y\\sqrt3\\}$ は四則で閉じている．逆向きは $\\sqrt2$ のような $A$ 外の数で反例を作る．"
+  },
+  "methods": [],
+  "tags": [
+   "必要十分",
+   "無理数"
+  ],
+  "provenance": {
+   "created": "2026-10-28"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "I-EXP-044",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "I-01",
+  "level": 2,
+  "minutes": 15,
+  "theme": "少なくとも1つが2",
+  "topic": "少なくとも1つが2",
+  "statement": {
+   "tex": "実数 $a,b,c$ が $a+b+c=7$ かつ $ab+bc+ca=\\dfrac{abc}2+10$ を満たしている．\n\\begin{enumerate}\n  \\item $a,b,c$ の少なくとも1つは2であることを示せ．\n  \\item さらに $abc=12$ のとき，組 $(a,b,c)$ をすべて求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 証明　(2) $(a,b,c)=(2,2,3),\\ (2,3,2),\\ (3,2,2)$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) $(a-2)(b-2)(c-2)=abc-2(ab+bc+ca)+4(a+b+c)-8=abc-abc-20+28-8=0$．$\\blacksquare$\n\n(2) $a=2$ としてよい．$b+c=5$，$bc=6$ より $\\{b,c\\}=\\{2,3\\}$．このとき $ab+bc+ca=16=\\frac{12}2+10$ を満たす．\n$\\boldsymbol{(a,b,c)=(2,2,3),\\ (2,3,2),\\ (3,2,2)}$．"
+   }
+  ],
+  "idea": {
+   "tex": "「少なくとも1つが $k$」$\\iff(a-k)(b-k)(c-k)=0$．展開して基本対称式で表し，条件を代入する．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) 証明\n(2) $(a,b,c)$：{(2, 2, 3), (2, 3, 2), (3, 2, 2)}"
+  },
+  "methods": [],
+  "tags": [
+   "対称式",
+   "因数分解"
+  ],
+  "provenance": {
+   "created": "2026-10-29"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "I-EXP-045",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "I-01",
+  "level": 3,
+  "minutes": 20,
+  "theme": "$\\dfrac u{1+u}$ 型の不等式",
+  "topic": "$\\dfrac u{1+u}$ 型の不等式",
+  "statement": {
+   "tex": "\\begin{enumerate}\n  \\item $x\\geqq0,\\ y\\geqq0$ のとき，$\\dfrac{x+y}{1+x+y}$ と $\\dfrac x{1+x}+\\dfrac y{1+y}$ の大小を比較せよ．\n  \\item $a,b,c$ を実数とする．$\\dfrac{|a-c|}{1+|a-c|}\\leqq\\dfrac{|a-b|}{1+|a-b|}+\\dfrac{|b-c|}{1+|b-c|}$ を示せ．\n  \\item (2) で等号が成り立つための条件を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $\\dfrac{x+y}{1+x+y}\\leqq\\dfrac x{1+x}+\\dfrac y{1+y}$　(2) 証明　(3) $a=b\\text{ または }b=c$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) 右辺 $-$ 左辺 $=\\frac x{1+x}-\\frac x{1+x+y}+\\frac y{1+y}-\\frac y{1+x+y}\\geqq0$．\n$\\boldsymbol{\\dfrac{x+y}{1+x+y}\\leqq\\dfrac x{1+x}+\\dfrac y{1+y}}$（等号は $x=0$ または $y=0$）．\n\n(2) $\\varphi(u)=1-\\frac1{1+u}$ は増加．$|a-c|\\leqq|a-b|+|b-c|$ と (1) より\n$\\varphi(|a-c|)\\leqq\\varphi(|a-b|+|b-c|)\\leqq\\varphi(|a-b|)+\\varphi(|b-c|)$．$\\blacksquare$\n\n(3) 2つの等号が同時に成り立つ：$|a-b|=0$ または $|b-c|=0$（このとき三角不等式も等号）．$\\boldsymbol{a=b\\text{ または }b=c}$．"
+   }
+  ],
+  "idea": {
+   "tex": "$\\varphi(u)=\\frac u{1+u}=1-\\frac1{1+u}$ は $u\\geqq0$ で増加．三角不等式 $|a-c|\\leqq|a-b|+|b-c|$ と組み合わせる．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) (x+y)/(1+x+y)<=x/(1+x)+y/(1+y)\n(2) 証明\n(3) $a$：c"
+  },
+  "methods": [],
+  "tags": [
+   "不等式の証明",
+   "単調性",
+   "三角不等式"
+  ],
+  "provenance": {
+   "created": "2026-10-29"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "I-EXP-046",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "I-01",
+  "level": 3,
+  "minutes": 20,
+  "theme": "対称式の値の範囲",
+  "topic": "対称式の値の範囲",
+  "statement": {
+   "tex": "$x,y$ を実数とする．\n\\begin{enumerate}\n  \\item $x+y=2$ のとき，$x^2+y^2$，$x^3+y^3$，$x^4+y^4$ のとりうる値の最小値を求めよ．\n  \\item $x^2+y^2=4$ のとき，$x+y$ と $xy$ のとりうる値の範囲を求めよ．\n  \\item $x^2+y^2=4$ のとき，$x^3+y^3$ のとりうる値の範囲を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $2$　(2) $-2\\sqrt2\\leqq x+y\\leqq2\\sqrt2，\\ -2\\leqq xy\\leqq2$　(3) $-8\\leqq x^3+y^3\\leqq8$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) $t=xy\\leqq1$．$x^2+y^2=4-2t\\geqq2$，$x^3+y^3=8-6t\\geqq2$，$x^4+y^4=(4-2t)^2-2t^2=2(t-4)^2-16\\geqq2$（$t\\leqq1$）．\n最小値はいずれも $\\boldsymbol2$（$x=y=1$）．\n\n(2) $s=x+y$，$xy=\\frac{s^2-4}2$．実数条件 $s^2-4\\cdot\\frac{s^2-4}2\\geqq0$ より $s^2\\leqq8$．\n$\\boldsymbol{-2\\sqrt2\\leqq x+y\\leqq2\\sqrt2}$，$\\boldsymbol{-2\\leqq xy\\leqq2}$．\n\n(3) $x^3+y^3=s^3-3s\\cdot\\frac{s^2-4}2=\\frac{s(12-s^2)}2$．$|s|\\leqq2\\sqrt2$ で $s=\\pm2$ が極値 $\\pm8$，端点 $\\pm4\\sqrt2$．\n$\\boldsymbol{-8\\leqq x^3+y^3\\leqq8}$．"
+   }
+  ],
+  "idea": {
+   "tex": "$s=x+y,\\ t=xy$ とおき，$x,y$ が実数 $\\iff s^2-4t\\geqq0$．値域は $s$ だけの関数にしてから．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) 2\n(2) 記述\n(3) -8<=x^3+y^3<=8"
+  },
+  "methods": [],
+  "tags": [
+   "対称式",
+   "実数条件",
+   "3次関数"
+  ],
+  "provenance": {
+   "created": "2026-10-29"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "I-EXP-047",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "I-01",
+  "level": 2,
+  "minutes": 15,
+  "theme": "文字係数の連立方程式と整数解",
+  "topic": "文字係数の連立方程式と整数解",
+  "statement": {
+   "tex": "$a$ は整数の定数とする．連立方程式 $\\begin{cases}x-(a+5)y=1\\\\ ax-6(a+1)y=-2\\end{cases}$ について，\n\\begin{enumerate}\n  \\item 解が存在しない $a$ と，解が無数に存在する $a$ をそれぞれ求めよ．\n  \\item 解がただ1つ存在するとき，その解 $(x,y)$ を $a$ で表せ．\n  \\item 解がただ1つ存在し，その解 $(x,y)$ がともに整数となる $a$ をすべて求めよ．また，ともに正の整数となる $a$ を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $\\text{解なし }a=3,\\ \\text{無数 }a=-2$　(2) $x=\\dfrac8{3-a}，\\ y=\\dfrac1{3-a}$　(3) $a=2,4，\\ a=2$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) 第1式×$a$ を引いて $\\{a(a+5)-6(a+1)\\}y=-2-a$，すなわち $(a-3)(a+2)y=-(a+2)$．\n$a=3$：$0=-5$ で\\textbf{解なし}，$a=-2$：$0=0$ で\\textbf{無数}．$\\boldsymbol{\\text{解なし }a=3,\\ \\text{無数 }a=-2}$．\n\n(2) $y=\\dfrac1{3-a}$，$x=1+\\dfrac{a+5}{3-a}=\\boldsymbol{\\dfrac8{3-a}}$，$\\boldsymbol{y=\\dfrac1{3-a}}$．\n\n(3) 解がただ1つ（$a\\neq3,-2$）で $y$ が整数より $3-a=\\pm1$．$a=2$：$(8,1)$，$a=4$：$(-8,-1)$．$\\boldsymbol{a=2,4}$，正の整数は $\\boldsymbol{a=2}$．"
+   }
+  ],
+  "idea": {
+   "tex": "$x$ を消去した式 $(a-3)(a+2)y=-(a+2)$ の $y$ の係数が0のとき解なしか無数．それ以外は $y$ を $a$ の分数式で表し，分母が分子を割り切る条件にする．"
+  },
+  "methods": [],
+  "tags": [
+   "連立方程式",
+   "行列式",
+   "整数解"
+  ],
+  "provenance": {
+   "created": "2026-10-29"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "I-EXP-048",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "I-01",
+  "level": 3,
+  "minutes": 20,
+  "theme": "差が1以下の3数の2乗和",
+  "topic": "差が1以下の3数の2乗和",
+  "statement": {
+   "tex": "実数 $p,q,r$ が $p+q+r=0$，$|p-q|\\leqq1$，$|q-r|\\leqq1$，$|r-p|\\leqq1$ をみたすとする．\n\\begin{enumerate}\n  \\item $p^2+q^2+r^2=\\dfrac13\\{(p-q)^2+(q-r)^2+(r-p)^2\\}$ を示せ．\n  \\item $p^2+q^2+r^2$ の最大値を求めよ．また最大値をとる $(p,q,r)$ をすべて求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 証明　(2) 最大値 $\\dfrac23$，$(p,q,r)$ は $\\left(-\\dfrac23,\\dfrac13,\\dfrac13\\right)$，$\\left(-\\dfrac13,-\\dfrac13,\\dfrac23\\right)$ の並べかえ（計6組）"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) 右辺 $=\\frac23(p^2+q^2+r^2)-\\frac23(pq+qr+rp)$，$(p+q+r)^2=0$ より $pq+qr+rp=-\\frac12(p^2+q^2+r^2)$．代入して成立．$\\blacksquare$\n\n(2) 小さい順に $s\\leqq t\\leqq u$，$t-s=\\lambda,\\ u-t=\\mu$（$\\lambda,\\mu\\geqq0$，$\\lambda+\\mu\\leqq1$）．\n2乗和 $=\\frac13\\{\\lambda^2+\\mu^2+(\\lambda+\\mu)^2\\}\\leqq\\frac13\\{(\\lambda+\\mu)^2+(\\lambda+\\mu)^2\\}\\leqq\\frac23$．\n等号は $\\lambda\\mu=0$ かつ $\\lambda+\\mu=1$．最大値 $\\boldsymbol{\\dfrac23}$．\n$(s,t,u)=\\left(-\\frac23,\\frac13,\\frac13\\right)$ または $\\left(-\\frac13,-\\frac13,\\frac23\\right)$ で，$(p,q,r)$ はこれらの並べかえ（計6組）．"
+   }
+  ],
+  "idea": {
+   "tex": "和が0なら2乗和は差の2乗和で書ける．大小順に並べ，隣り合う差 $u,v$（$u+v\\leqq1$）の関数として最大化．"
+  },
+  "methods": [],
+  "tags": [
+   "不等式",
+   "最大値",
+   "対称式"
+  ],
+  "provenance": {
+   "created": "2026-10-29"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "I-EXP-049",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "I-01",
+  "level": 4,
+  "minutes": 25,
+  "theme": "積の条件からべき乗和の大小へ",
+  "topic": "積の条件からべき乗和の大小へ",
+  "statement": {
+   "tex": "$a\\geqq b\\geqq0$，$c\\geqq d\\geqq0$ とする．\n\\begin{enumerate}\n  \\item 「$a\\leqq c$」だけを仮定しても $a+b\\leqq c+d$ は必ずしも成立しないことを示せ．\n  \\item 「$ab\\leqq cd$」だけを仮定しても $a+b\\leqq c+d$ は必ずしも成立しないことを示せ．\n  \\item $a\\leqq c$ かつ $ab\\leqq cd$ ならば，すべての正の整数 $n$ に対して $a^n+b^n\\leqq c^n+d^n$ であることを示せ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 証明　(2) 証明　(3) 証明"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) 例：$a=b=2,\\ c=3,\\ d=0$．$a\\leqq c$ だが $4>3$．\n\n(2) $a=3,\\ b=0,\\ c=d=1$：$0\\leqq1$ だが $3>2$．\n\n(3) $ab=0$ なら $a^n+b^n=a^n\\leqq c^n$．$ab>0$ のとき $c>0$，$d\\geqq\\frac{ab}c$．\n$g(t)=t^n+\\left(\\frac{ab}t\\right)^n$ は $g'(t)=\\frac nt\\left\\{t^n-\\left(\\frac{ab}t\\right)^n\\right\\}$ で $t\\geqq\\sqrt{ab}$ において増加．\n$c\\geqq a\\geqq\\sqrt{ab}$ より $c^n+d^n\\geqq g(c)\\geqq g(a)=a^n+b^n$．$\\blacksquare$"
+   }
+  ],
+  "idea": {
+   "tex": "$d\\geqq\\frac{ab}c$ と下から抑え，$g(t)=t^n+\\left(\\frac{ab}t\\right)^n$ が $t\\geqq\\sqrt{ab}$ で増加することを使う．"
+  },
+  "methods": [],
+  "tags": [
+   "不等式",
+   "単調性",
+   "反例"
+  ],
+  "provenance": {
+   "created": "2026-10-29"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "I-EXP-050",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "I-01",
+  "level": 2,
+  "minutes": 15,
+  "theme": "条件付き不等式と相加相乗平均",
+  "topic": "条件付き不等式と相加相乗平均",
+  "statement": {
+   "tex": "次の問いに答えよ．\n\\begin{enumerate}\n  \\item 実数 $a,b$ が $a\\geqq0$，$b\\geqq0$ を満たすとき，$ab\\leqq\\left(\\dfrac{a+b}2\\right)^2$ が成り立つことを示せ．\n  \\item 実数 $x,y$ が $x>y>0$ と $x^3y-x^2y^2\\geqq4$ を満たすとき，$x\\geqq2$ が成り立つことを示せ．また等号が成り立つ $(x,y)$ を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 証明　(2) $(x,y)=(2,1)$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) $\\left(\\frac{a+b}2\\right)^2-ab=\\left(\\frac{a-b}2\\right)^2\\geqq0$．$\\blacksquare$\n\n(2) $x^3y-x^2y^2=x^2\\cdot y(x-y)\\leqq x^2\\cdot\\frac{x^2}4$（(1) で $a=y,\\ b=x-y$）．$\\frac{x^4}4\\geqq4$ より $x\\geqq2$．\n等号は $y=x-y$ かつ $x=2$：$\\boldsymbol{(x,y)=(2,1)}$．$\\blacksquare$"
+   }
+  ],
+  "idea": {
+   "tex": "条件式を因数分解し，$y(x-y)\\leqq\\left(\\frac x2\\right)^2$（和が一定の積の最大）で $x$ だけの式に．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) 証明\n(2) $(x,y)$：(2, 1)"
+  },
+  "methods": [],
+  "tags": [
+   "相加相乗平均",
+   "因数分解"
+  ],
+  "provenance": {
+   "created": "2026-10-29"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "I-EXP-051",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "I-01",
+  "level": 3,
+  "minutes": 25,
+  "theme": "絶対値の入れ子と解の個数",
+  "topic": "絶対値の入れ子と解の個数",
+  "statement": {
+   "tex": "$a$ を実数とする．$h(x)=x-a|x-1|$ とおき，方程式 $|h(x)|=1$ を考える．\n\\begin{enumerate}\n  \\item $a=2$ のとき，方程式の実数解をすべて求めよ．\n  \\item 方程式の実数解の個数を，$a$ の値によって分類せよ．\n  \\item 実数解の個数が有限であるための必要十分条件は $a\\neq\\pm1$ であることを証明せよ．また，解が3個のとき，それらは等比数列をなすことを示せ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $x=\\dfrac13,1,3$　(2) $a<-1:1\\text{ 個},\\ -1<a<1:2\\text{ 個},\\ a>1:3\\text{ 個},\\ a=\\pm1:\\text{無数}$　(3) 証明"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "$h(x)=(1-a)x+a$（$x\\geqq1$），$h(x)=(1+a)x-a$（$x<1$）．$h(1)=1$．\n(1) $x\\geqq1$：$-x+2=\\pm1$ で $x=1,3$．$x<1$：$3x-2=-1$ で $x=\\frac13$（$=1$ は範囲外）．$\\boldsymbol{x=\\dfrac13,1,3}$．\n\n(2) $a\\neq\\pm1$ のとき，$x\\geqq1$ の $h=1$：$(1-a)(x-1)=0$ より $x=1$．$x\\geqq1$ の $h=-1$：$x=\\frac{a+1}{a-1}\\geqq1\\iff a>1$．$x<1$ の $h=1$：$(1+a)(x-1)=0$ より $x=1$ で不適．$x<1$ の $h=-1$：$x=\\frac{a-1}{a+1}<1\\iff a>-1$．$x=1$ は常に解．\n$\\boldsymbol{a<-1:1\\text{ 個},\\ -1<a<1:2\\text{ 個},\\ a>1:3\\text{ 個},\\ a=\\pm1:\\text{無数}}$．\n\n(3) $a=1$ では $x\\geqq1$ で $h=1$，$a=-1$ では $x<1$ で $h=(1+a)x-a=1$ となり，いずれも解は無数．$a\\neq\\pm1$ では各区間で1次関数の傾きが0でなく，解は各方程式に高々1つずつで有限．$\\blacksquare$\n3個のとき解は $\\frac{a-1}{a+1},1,\\frac{a+1}{a-1}$ で，公比 $\\frac{a+1}{a-1}$ の等比数列．$\\blacksquare$"
+   }
+  ],
+  "idea": {
+   "tex": "内側の $x-a|x-1|$ は $x=1$ で傾きが変わる折れ線．$|h|=1$ を $h=\\pm1$ に分け，各区間の1次方程式の解が区間内にあるかを調べる．傾き0の区間があると解が無数．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) $x$：{1/3, 1, 3}\n(2) 記述\n(3) 証明"
+  },
+  "methods": [],
+  "tags": [
+   "絶対値",
+   "折れ線",
+   "解の個数"
+  ],
+  "provenance": {
+   "created": "2026-10-29"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "I-EXP-052",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "I-01",
+  "level": 3,
+  "minutes": 25,
+  "theme": "チェビシェフの和の不等式",
+  "topic": "チェビシェフの和の不等式",
+  "statement": {
+   "tex": "\\begin{enumerate}\n  \\item $a_1\\leqq a_2\\leqq\\dots\\leqq a_n$，$b_1\\leqq b_2\\leqq\\dots\\leqq b_n$ のとき，$n\\displaystyle\\sum_{i=1}^na_ib_i\\geqq\\left(\\sum_{i=1}^na_i\\right)\\left(\\sum_{i=1}^nb_i\\right)$ を示せ．\n  \\item 正の数 $x,y,z$ に対して $3(x^3+y^3+z^3)\\geqq(x+y+z)(x^2+y^2+z^2)$ を示せ．\n  \\item 三角形ABCの辺の長さを $a,b,c$，その対角を $A,B,C$（ラジアン）とするとき，$\\dfrac{aA+bB+cC}{a+b+c}\\geqq\\dfrac\\pi3$ を示せ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 証明　(2) 証明　(3) 証明"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) $\\sum_{i,j}(a_i-a_j)(b_i-b_j)\\geqq0$（各項は同符号の積）．展開すると $2n\\sum a_ib_i-2\\sum a_i\\sum b_i$．$\\blacksquare$\n\n(2) $x\\leqq y\\leqq z$ としてよく，$(x,y,z)$ と $(x^2,y^2,z^2)$ は同順．(1) で $n=3$．$\\blacksquare$\n\n(3) 大きい辺の対角は大きく，$(a,b,c)$ と $(A,B,C)$ は同順．$3(aA+bB+cC)\\geqq(a+b+c)(A+B+C)=(a+b+c)\\pi$．$\\blacksquare$"
+   }
+  ],
+  "idea": {
+   "tex": "同順に並んだ2数列について $n\\sum a_ib_i-\\sum a_i\\sum b_i=\\frac12\\sum_{i,j}(a_i-a_j)(b_i-b_j)\\geqq0$．三角形では大きい辺の対角が大きい．"
+  },
+  "methods": [],
+  "tags": [
+   "チェビシェフの不等式",
+   "並べかえ",
+   "三角形"
+  ],
+  "provenance": {
+   "created": "2026-10-29"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "I-EXP-053",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "I-01",
+  "level": 3,
+  "minutes": 20,
+  "theme": "対称式の不等式の連鎖（ムーアヘッド型）",
+  "topic": "対称式の不等式の連鎖（ムーアヘッド型）",
+  "statement": {
+   "tex": "正の数 $x,y,z$ について，次を示せ．\n\\begin{enumerate}\n  \\item $x^3+y^3\\geqq x^2y+xy^2$\n  \\item $2(x^3+y^3+z^3)\\geqq x^2y+xy^2+y^2z+yz^2+z^2x+zx^2$\n  \\item $x^2y+xy^2+y^2z+yz^2+z^2x+zx^2\\geqq6xyz$\n  \\item (2)(3) の等号が成り立つ条件をそれぞれ求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 証明　(2) 証明　(3) 証明　(4) $x=y=z$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) 差 $=(x+y)(x-y)^2\\geqq0$．$\\blacksquare$\n\n(2) (1) を $(x,y),(y,z),(z,x)$ で加える．$\\blacksquare$\n\n(3) $x^2y+yz^2\\geqq2xyz$ などの相加相乗平均3つを加える（$x(y-z)^2+y(z-x)^2+z(x-y)^2\\geqq0$ でもよい）．$\\blacksquare$\n\n(4) どちらも $\\boldsymbol{x=y=z}$．"
+   }
+  ],
+  "idea": {
+   "tex": "指数の組 $(3,0,0)\\succ(2,1,0)\\succ(1,1,1)$ に対応する対称和は大きい順．2変数の基本形 $x^3+y^3-x^2y-xy^2=(x+y)(x-y)^2$ を足し合わせる．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) 証明\n(2) 証明\n(3) 証明\n(4) $x$：z ; $y$：z"
+  },
+  "methods": [],
+  "tags": [
+   "対称式",
+   "不等式",
+   "和の比較"
+  ],
+  "provenance": {
+   "created": "2026-10-29"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "I-EXP-054",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "I-01",
+  "level": 3,
+  "minutes": 20,
+  "theme": "和集合が実数全体になる瞬間",
+  "topic": "和集合が実数全体になる瞬間",
+  "statement": {
+   "tex": "$k$ を実数の定数とし，$A=\\{x\\mid -1<x\\leqq2\\}$，$B=\\{x\\mid x\\leqq k\\ \\text{または}\\ x\\geqq k^2-2\\}$ とする．\n\\begin{enumerate}\n  \\item $A\\subset B$ となる $k$ の値の範囲を求めよ．\n  \\item $A\\cap B=\\varnothing$ となる $k$ の値の範囲を求めよ．\n  \\item $A\\cup B=\\mathbb R$ となる $k$ の値の範囲を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $k\\geqq-1$　(2) $k<-2$　(3) $-1\\leqq k\\leqq2$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "$\\overline B=\\{x\\mid k<x<k^2-2\\}$．$k^2-2\\leqq k\\iff-1\\leqq k\\leqq2$ のとき $\\overline B=\\varnothing$（$B=\\mathbb R$）．\n\n(1) $A\\subset B\\iff A\\cap\\overline B=\\varnothing$．$-1\\leqq k\\leqq2$ なら成立．$k>2$ では $\\overline B\\subset(2,\\infty)$ で成立．$k<-1$ では $k<-1<k^2-2$ より $\\overline B$ は $-1$ の少し右の点を含み不成立．$\\boldsymbol{k\\geqq-1}$．\n\n(2) $A\\subset\\overline B$：$k\\leqq-1$ かつ $k^2-2>2$．$\\boldsymbol{k<-2}$（$k=-2$ では $x=2\\in B$）．\n\n(3) $\\overline B\\subset A$．$\\overline B=\\varnothing$ なら成立．$\\overline B\\neq\\varnothing$（$k<-1$ または $k>2$）では $k\\geqq-1$ かつ $k^2-2\\leqq2$ が必要で，$-1\\leqq k\\leqq2$ と矛盾．$\\boldsymbol{-1\\leqq k\\leqq2}$（$B$ が全体のときだけ）．"
+   }
+  ],
+  "idea": {
+   "tex": "$A\\subset B$ は $\\forall x(x\\in A\\Rightarrow x\\in B)$．$B$ の補集合 $\\{x\\mid k<x<k^2-2\\}$ が空になる場合（$B=\\mathbb R$）を落とさない．包含・共通部分・和集合をすべて補集合で言い換える．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) k>=-1\n(2) k<-2\n(3) -1<=k<=2"
+  },
+  "methods": [],
+  "tags": [
+   "集合",
+   "包含関係",
+   "空集合"
+  ],
+  "provenance": {
+   "created": "2026-10-29"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "I-EXP-055",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "I-01",
+  "level": 4,
+  "minutes": 25,
+  "theme": "下限・最小値・値域を論理式で区別する",
+  "topic": "下限・最小値・値域を論理式で区別する",
+  "statement": {
+   "tex": "$f(x)$ はすべての実数 $x$ に対して定義された関数，$m$ は実数とする．次の条件を考える．\n\\begin{center}\n\\begin{tabular}{ll}\n(a) $f(x)$ の値はつねに $m$ 以上である． & (b) $f(x)=m$ となる $x$ がある．\\\\\n(c) $f(x)$ は $m$ 以上のすべての実数値をとり得る． & (d) $f(x)$ のとりうる値の範囲は $m$ 以上の実数全体である．\\\\\n\\multicolumn{2}{l}{(e) どんな正の数 $\\varepsilon$ に対しても，$f(x)<m+\\varepsilon$ となる $x$ がある．}\n\\end{tabular}\n\\end{center}\n\\begin{enumerate}\n  \\item (a)，(b)，(c)，(e) を，「すべての $x$ について」「ある $x$ が存在して」という言葉を用いて言い換えよ．\n  \\item (d) $\\iff$ (a) かつ (c) を示せ．\n  \\item 「(a) かつ (e) ならば (b)」は正しいか．正しければ証明し，正しくなければ反例をあげよ．\n  \\item (c) $\\Rightarrow$ (e) を示せ．また，(c) かつ (e) であっても (a) が成り立たない例をあげよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) (a) $\\forall x[f(x)\\geqq m]$，(b) $\\exists x[f(x)=m]$，(c) $\\forall y[y\\geqq m\\Rightarrow\\exists x(f(x)=y)]$，(e) $\\forall\\varepsilon[\\varepsilon>0\\Rightarrow\\exists x(f(x)<m+\\varepsilon)]$　(2) 証明　(3) 正しくない（反例 $f(x)=e^x$，$m=0$）　(4) 証明（例 $f(x)=x$，$m=0$）"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) (a) $\\forall x[f(x)\\geqq m]$，(b) $\\exists x[f(x)=m]$，(c) $\\forall y[y\\geqq m\\Rightarrow\\exists x(f(x)=y)]$，(e) $\\forall\\varepsilon[\\varepsilon>0\\Rightarrow\\exists x(f(x)<m+\\varepsilon)]$．\n\n(2) (d) は $\\forall y[\\exists x(f(x)=y)\\iff y\\geqq m]$．$\\Leftarrow$ 向きが (c)．$\\Rightarrow$ 向き $\\forall y[\\exists x(f(x)=y)\\Rightarrow y\\geqq m]$ は $\\forall x[f(x)\\geqq m]$ すなわち (a) と同値．$\\blacksquare$\n\n(3) \\textbf{正しくない}．反例 $f(x)=e^x$，$m=0$：(a)(e) は成り立つが $e^x=0$ となる $x$ はない．\n\n(4) (c) で $y=m$ とすれば $f(x_0)=m<m+\\varepsilon$．$\\blacksquare$\\ 例：$f(x)=x$，$m=0$（(c)(e) は真，(a) は偽）．"
+   }
+  ],
+  "idea": {
+   "tex": "「最小値が $m$」は $\\forall x[f(x)\\geqq m]\\wedge\\exists x[f(x)=m]$．「$m$ 以上の値をすべてとる」は $\\forall y[y\\geqq m\\Rightarrow\\exists x(f(x)=y)]$ で，値域 $=[m,\\infty)$ は両者の「かつ」．いくらでも近づくことと到達することは別．"
+  },
+  "methods": [],
+  "tags": [
+   "量化記号",
+   "最小値",
+   "値域",
+   "反例"
+  ],
+  "provenance": {
+   "created": "2026-10-29"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "I-EXP-056",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "I-01",
+  "level": 4,
+  "minutes": 30,
+  "theme": "開区間か閉区間かで変わる1次の全称条件",
+  "topic": "開区間か閉区間かで変わる1次の全称条件",
+  "statement": {
+   "tex": "$a$ は定数とする．\n\\begin{enumerate}\n  \\item $0\\leqq m\\leqq1$ であるどんな $m$ に対しても $(m-a)x<m+1$ が成り立つような $x$ の値の範囲を，$a$ の値によって場合分けして求めよ．\n  \\item $0<m<1$ であるどんな $m$ に対しても $(m-a)x<m+1$ が成り立つような $x$ の値の範囲を求め，(1) との違いを述べよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $a>1$：$x>-\\dfrac1a$，$a=1$：$x>-1$，$0<a<1$：$-\\dfrac1a<x<\\dfrac2{1-a}$，$a=0$：$x<2$，$-1\\leqq a<0$：$x<\\dfrac2{1-a}$，$a<-1$：$x<-\\dfrac1a$　(2) (1) の不等号 $<,>$ を $\\leqq,\\geqq$ に変えたもの（ただし $a=-1$ のときは $x<1$ で (1) と同じ）"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "$g(m)=(m-a)x-(m+1)=(x-1)m-ax-1$ とおくと，条件は $g(m)<0$．$g(0)=-ax-1$，$g(1)=(1-a)x-2$ で，$g(m)=(1-m)g(0)+mg(1)$．\n\n(1) $0\\leqq m\\leqq1$ で $g(m)$ は $g(0)$ と $g(1)$ の間の値をとるので，条件 $\\iff g(0)<0$ かつ $g(1)<0\\iff ax>-1$ かつ $(1-a)x<2$．\n\\begin{itemize}\n  \\item $a>1$：$x>-\\frac1a$ かつ $x>-\\frac2{a-1}$．$-\\frac1a-\\left(-\\frac2{a-1}\\right)=\\frac{a+1}{a(a-1)}>0$ より $x>-\\frac1a$．$a=1$：第2式は $0<2$ で常に成立し $x>-1$．\n  \\item $0<a<1$：$-\\frac1a<x<\\frac2{1-a}$．$a=0$：第1式は常に成立し $x<2$．\n  \\item $a<0$：$x<-\\frac1a$ かつ $x<\\frac2{1-a}$．$-\\frac1a-\\frac2{1-a}=\\frac{-(a+1)}{a(1-a)}$ は $-1\\leqq a<0$ で $\\geqq0$，$a<-1$ で $<0$．よって $-1\\leqq a<0$：$x<\\frac2{1-a}$．$a<-1$：$x<-\\frac1a$．\n\\end{itemize}\n\n(2) $0<m<1$ で常に $g(m)<0$ $\\iff$ $g(0)\\leqq0$，$g(1)\\leqq0$ で，かつ $g(0)=g(1)=0$ でない．\n（$g(0),g(1)\\leqq0$ で一方が負なら $0<m<1$ で $g(m)=(1-m)g(0)+mg(1)<0$．$g(0)=g(1)=0$ なら $g(m)\\equiv0$ で不成立．$g(0)>0$ や $g(1)>0$ なら，$g$ の連続性から $m$ が0や1に十分近いとき $g(m)>0$ で不成立．）\n両方0は $ax=-1$，$(1-a)x=2$ で，辺々加えて $x=1$，$a=-1$ のときのみ．\nよって答えは (1) の各不等号 $<,>$ を $\\leqq,\\geqq$ に変えたもの（大小比較は (1) と同じ）．ただし $a=-1$ のときは $x\\leqq1$ から $x=1$ を除いて $x<1$ となり，(1) と一致する．\n\\textbf{(1) との違い}：$a\\neq-1$ では端点（$x=-\\frac1a$，$\\frac2{1-a}$，$-1$，$2$）が新たに含まれる．$a=-1$ では (1) と同じ．"
+   }
+  ],
+  "idea": {
+   "tex": "$m$ の1次式 $g(m)$ について，$\\forall m\\in[0,1]\\,(g(m)<0)\\iff g(0)<0\\wedge g(1)<0$．開区間 $(0,1)$ では $g(0)\\leqq0\\wedge g(1)\\leqq0$ から「$g(0)=g(1)=0$」だけを除く．"
+  },
+  "methods": [],
+  "tags": [
+   "1次関数",
+   "全称命題",
+   "端点"
+  ],
+  "provenance": {
+   "created": "2026-10-29"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "I-EXP-057",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "I-01",
+  "level": 3,
+  "minutes": 25,
+  "theme": "原像は共通部分を保つ",
+  "topic": "原像は共通部分を保つ",
+  "statement": {
+   "tex": "集合 $X$ から集合 $Y$ への写像 $f$ がある．$A\\subset X$，$C\\subset Y$ に対し，$f(A)=\\{f(x)\\mid x\\in A\\}$，$f^{-1}(C)=\\{x\\in X\\mid f(x)\\in C\\}$ と定める．\n\\begin{enumerate}\n  \\item $f^{-1}(C\\cap D)=f^{-1}(C)\\cap f^{-1}(D)$，$f^{-1}(C\\cup D)=f^{-1}(C)\\cup f^{-1}(D)$ を示せ．\n  \\item $A\\subset f^{-1}(f(A))$ を示せ．また，等号が成り立たない例をあげよ．\n  \\item 「$X$ のすべての部分集合 $A,B$ について $f(A\\cap B)=f(A)\\cap f(B)$」が成り立つことは，$f$ が単射（$x\\neq x'\\Rightarrow f(x)\\neq f(x')$）であることと同値であることを示せ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 証明　(2) 証明　(3) 証明"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) $x\\in f^{-1}(C\\cap D)\\iff f(x)\\in C\\wedge f(x)\\in D\\iff x\\in f^{-1}(C)\\cap f^{-1}(D)$．$\\cup$ も同様．$\\blacksquare$\n\n(2) $x\\in A$ なら $f(x)\\in f(A)$．$\\blacksquare$\\ 例：$f(x)=x^2$，$A=\\{1\\}$ で $f^{-1}(f(A))=\\{-1,1\\}$．\n\n(3) $f$ が単射なら，$y\\in f(A)\\cap f(B)$ で $y=f(a)=f(b)$（$a\\in A$，$b\\in B$）のとき $a=b\\in A\\cap B$ なので $y\\in f(A\\cap B)$．逆向きの $f(A\\cap B)\\subset f(A)\\cap f(B)$ は $A\\cap B\\subset A$，$A\\cap B\\subset B$ から常に成り立つ．よって等号．\n逆に単射でないとき $f(x)=f(x')$，$x\\neq x'$ をとり $A=\\{x\\}$，$B=\\{x'\\}$ とすると，$f(A\\cap B)=\\varnothing\\neq f(A)\\cap f(B)$．$\\blacksquare$"
+   }
+  ],
+  "idea": {
+   "tex": "$x\\in f^{-1}(C)\\iff f(x)\\in C$ は $x$ ごとの命題なので，$\\wedge$，$\\vee$ をそのまま通す．像では $\\exists$ が $\\wedge$ に分配できず，単射のときだけ等号．"
+  },
+  "methods": [],
+  "tags": [
+   "写像",
+   "像と原像",
+   "単射"
+  ],
+  "provenance": {
+   "created": "2026-10-29"
+  },
+  "quality": {
+   "status": "hidden",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "I-EXP-058",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "I-01",
+  "level": 4,
+  "minutes": 30,
+  "theme": "4つの量化文の含意関係",
+  "topic": "4つの量化文の含意関係",
+  "statement": {
+   "tex": "$\\mathbb R$ の空でない部分集合 $M,N$ に関する次の4つの文を考える．\n\\begin{center}\n\\begin{tabular}{ll}\nP：$\\forall x\\in M\\ \\exists y\\in N\\ [x<y]$ & Q：$\\exists y\\in N\\ \\forall x\\in M\\ [x<y]$\\\\\nR：$\\forall y\\in N\\ \\exists x\\in M\\ [x<y]$ & S：$\\exists x\\in M\\ \\forall y\\in N\\ [x<y]$\n\\end{tabular}\n\\end{center}\n\\begin{enumerate}\n  \\item P，Q，R，S のうち異なる2つ X，Y について「X $\\Rightarrow$ Y」の形の12個の文のうち，$M,N$ によらず成り立つものをすべて求めよ．成り立たないものには反例をあげよ．\n  \\item P と Q の否定をそれぞれ論理記号で表し，日常語でも述べよ．\n  \\item $M=N=\\{x\\mid0<x<1\\}$ のとき，P，Q，R，S の真偽を判定せよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 成り立つのは Q$\\Rightarrow$P，S$\\Rightarrow$R のみ　(2) $\\overline{\\mathrm P}$：$\\exists x\\in M\\ \\forall y\\in N\\ [y\\leqq x]$，$\\overline{\\mathrm Q}$：$\\forall y\\in N\\ \\exists x\\in M\\ [x\\geqq y]$　(3) P：真，Q：偽，R：真，S：偽"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) \\textbf{Q $\\Rightarrow$ P，S $\\Rightarrow$ R の2つだけ}（Q の $y$ を P の各 $x$ に共通に使う．S も同様）．反例：\n\\begin{itemize}\n  \\item 例1 $M=\\{0\\}$，$N=\\{-1,1\\}$：P，Q 真，R，S 偽．P$\\Rightarrow$R，P$\\Rightarrow$S，Q$\\Rightarrow$R，Q$\\Rightarrow$S を否定．\n  \\item 例2 $M=\\{-1,1\\}$，$N=\\{0\\}$：P，Q 偽，R，S 真．R$\\Rightarrow$P，R$\\Rightarrow$Q，S$\\Rightarrow$P，S$\\Rightarrow$Q を否定．\n  \\item 例3 $M=N=(0,1)$：P，R 真，Q，S 偽．P$\\Rightarrow$Q，R$\\Rightarrow$S を否定．\n\\end{itemize}\n\n(2) $\\overline{\\mathrm P}$：$\\exists x\\in M\\ \\forall y\\in N\\ [y\\leqq x]$（$M$ のある要素は $N$ のどの要素以上）．\n$\\overline{\\mathrm Q}$：$\\forall y\\in N\\ \\exists x\\in M\\ [x\\geqq y]$（$N$ のどの要素に対しても，それ以上の $M$ の要素がある）．\n\n(3) \\textbf{P：真，Q：偽，R：真，S：偽}（P は $y=\\frac{x+1}2$，R は $x=\\frac y2$）．"
+   }
+  ],
+  "idea": {
+   "tex": "$\\exists y\\forall x\\Rightarrow\\forall x\\exists y$ は常に正しいが逆は偽．どの含意が偽かは，少数の反例（1点集合や開区間）で一気に判定できる．否定は量化記号を入れ替え，$<$ を $\\geqq$ に．"
+  },
+  "methods": [],
+  "tags": [
+   "量化記号の順序",
+   "反例",
+   "否定"
+  ],
+  "provenance": {
+   "created": "2026-10-29"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "I-EXP-059",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "I-01",
+  "level": 4,
+  "minutes": 30,
+  "theme": "双線形関数のマックスミン",
+  "topic": "双線形関数のマックスミン",
+  "statement": {
+   "tex": "変数 $x,y,u,v$ は0以上の実数で，$x+y=1$，$u+v=1$ をみたして変化する．\n\\[f=xu-2xv-3yu+4yv\\]\n\\begin{enumerate}\n  \\item $f$ のとり得る値の最大値と最小値を求めよ．\n  \\item 次の2条件がともに成り立つような $k$ の値を求めよ．\n  \\begin{enumerate}\n    \\item 適当な $x,y$ の値をとれば，$u,v$ の値をどのように決めても $f\\geqq k$ となる．\n    \\item 適当な $u,v$ の値をとれば，$x,y$ の値をどのように決めても $f\\leqq k$ となる．\n  \\end{enumerate}\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 最大値 $4$，最小値 $-3$　(2) $k=-\\dfrac15$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "$f=xu-2x(1-u)-3(1-x)u+4(1-x)(1-u)=10xu-6x-7u+4$．\n\n(1) $x,u$ それぞれ1次なので四隅で：$f(1,1)=1$，$f(1,0)=-2$，$f(0,1)=-3$，$f(0,0)=4$．\\textbf{最大値 $4$，最小値 $-3$}．\n\n(2) (a) $\\min_uf=\\min(4x-3,\\ 4-6x)$ の最大は $x=\\frac7{10}$ で $-\\frac15$．よって (a) $\\iff k\\leqq-\\frac15$．\n(b) $\\max_xf=\\max(3u-2,\\ 4-7u)$ の最小は $u=\\frac35$ で $-\\frac15$．(b) $\\iff k\\geqq-\\frac15$．$\\boldsymbol{k=-\\dfrac15}$．"
+   }
+  ],
+  "idea": {
+   "tex": "$y=1-x$，$v=1-u$ を代入すると $f$ は $x,u$ それぞれについて1次．「$\\exists x\\forall u\\ f\\geqq k$」は $\\max_x\\min_uf\\geqq k$，「$\\exists u\\forall x\\ f\\leqq k$」は $\\min_u\\max_xf\\leqq k$．端点同士でなく，2本の1次関数の交点が答えになる．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) 最大値：4 ; 最小値：-3\n(2) $k$：-1/5"
+  },
+  "methods": [],
+  "tags": [
+   "1次関数",
+   "最大最小",
+   "量化の順序"
+  ],
+  "provenance": {
+   "created": "2026-10-29"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "I-EXP-060",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "I-01",
+  "level": 3,
+  "minutes": 25,
+  "theme": "和と和の比の最良定数",
+  "topic": "和と和の比の最良定数",
+  "statement": {
+   "tex": "\\begin{enumerate}\n  \\item 任意の正の数 $a,b$ に対して $\\sqrt a+2\\sqrt b\\leqq k\\sqrt{a+b}$ が成り立つような実数 $k$ の最小値を求めよ．\n  \\item 任意の正の数 $a,b$ に対して $\\sqrt[3]a+\\sqrt[3]b\\leqq k\\sqrt[3]{a+b}$ が成り立つような実数 $k$ の最小値を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $\\sqrt5$　(2) $\\sqrt[3]4$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) $(\\sqrt a+2\\sqrt b)^2\\leqq(1+4)(a+b)$（コーシー・シュワルツ），等号 $b=4a$．$\\boldsymbol{\\sqrt5}$．\n\n(2) $p=\\sqrt[3]a$，$q=\\sqrt[3]b$（$p,q>0$）とおくと，条件は $(p+q)^3\\leqq k^3(p^3+q^3)$．$4(p^3+q^3)-(p+q)^3=3(p^3+q^3-p^2q-pq^2)=3(p+q)(p-q)^2\\geqq0$ より $\\frac{\\sqrt[3]a+\\sqrt[3]b}{\\sqrt[3]{a+b}}\\leqq\\sqrt[3]4$ で，等号は $p=q$（$a=b$）のとき成り立つ．よって $k$ の最小値は $\\boldsymbol{\\sqrt[3]4}$．"
+   }
+  ],
+  "idea": {
+   "tex": "同次なので比の最大値を求める．係数つきの和はコーシー・シュワルツ（2次元ベクトル形），3乗根は $p=\\sqrt[3]a$，$q=\\sqrt[3]b$ とおいて $4(p^3+q^3)-(p+q)^3=3(p+q)(p-q)^2\\geqq0$．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) sqrt(5)\n(2) 4^(1/3)"
+  },
+  "methods": [],
+  "tags": [
+   "コーシー・シュワルツ",
+   "最良定数",
+   "凹関数"
+  ],
+  "provenance": {
+   "created": "2026-10-29"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "I-EXP-061",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "I-01",
+  "level": 3,
+  "minutes": 25,
+  "theme": "重みつき絶対値の和の最小",
+  "topic": "重みつき絶対値の和の最小",
+  "statement": {
+   "tex": "実数 $x$ に対して $S(x)=\\displaystyle\\sum_{k=1}^{100}k|x-k|$ とする．\n\\begin{enumerate}\n  \\item $m\\leqq x\\leqq m+1$（$m$ は整数，$1\\leqq m\\leqq99$）における $S(x)$ の傾きを $m$ で表せ．\n  \\item $S(x)$ の最小値と，そのときの $x$ を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $m(m+1)-5050$　(2) $99080，\\ x=71$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) 傾き $=\\sum_{k\\leqq m}k-\\sum_{k>m}k=m(m+1)-5050$．\n\n(2) $m(m+1)<5050$ は $m\\leqq70$，$m=71$ で $5112>5050$．$x=71$ で傾きが負から正．\n$S(71)=\\sum_{k=1}^{71}k(71-k)+\\sum_{k=72}^{100}k(k-71)=\\boldsymbol{99080}$，$\\boldsymbol{x=71}$．"
+   }
+  ],
+  "idea": {
+   "tex": "$S(x)$ は折れ線で，傾きは「左側の重みの和－右側の重みの和」．傾きが負から正に変わる点（重みつき中央値）で最小．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) m(m+1)-5050\n(2) 記述"
+  },
+  "methods": [],
+  "tags": [
+   "絶対値",
+   "折れ線",
+   "重みつき中央値"
+  ],
+  "provenance": {
+   "created": "2026-10-29"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "I-EXP-062",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "I-01",
+  "level": 3,
+  "minutes": 25,
+  "theme": "3つの制約からの値の範囲",
+  "topic": "3つの制約からの値の範囲",
+  "statement": {
+   "tex": "$f(x)=x^3+ax^2+bx$（$a,b$ は実数）とする．\n\\begin{enumerate}\n  \\item $1\\leqq f(1)\\leqq2$ かつ $2\\leqq f(2)\\leqq4$ のとき，$f(3)$ のとり得る値の範囲を求めよ．\n  \\item (1) の条件に $f(-1)\\geqq-8$ を加えたとき，$f(3)$ のとり得る値の範囲を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $6\\leqq f(3)\\leqq15$　(2) $8\\leqq f(3)\\leqq15$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "$u=f(1)-1=a+b$，$v=f(2)-8=4a+2b$ で $f(3)=27+9a+3b=27+3v-3u$．\n\n(1) $0\\leqq u\\leqq1$，$-6\\leqq v\\leqq-4$ は独立に動く．$\\boldsymbol{6\\leqq f(3)\\leqq15}$．\n\n(2) $a=\\frac{v-2u}2$，$b=\\frac{4u-v}2$ より $f(-1)=-1+a-b=-1-(3u-v)$．条件は $v\\geqq3u-7$．\n$(u,v)$ の領域 $0\\leqq u\\leqq1$，$-6\\leqq v\\leqq-4$，$v\\geqq3u-7$ は頂点 $(0,-6),\\left(\\tfrac13,-6\\right),(1,-4),(0,-4)$ の四角形．\n$27+3v-3u$ の値は順に $9,8,12,15$．$\\boldsymbol{8\\leqq f(3)\\leqq15}$（(1) の最小値6を与える $(u,v)=(1,-6)$ が除かれる）．"
+   }
+  ],
+  "idea": {
+   "tex": "求める式を条件式の1次結合で表す．条件が増えて独立でなくなると，範囲の端が条件の組み合わせで決まるので，$(a,b)$ 平面の領域の頂点で評価する．"
+  },
+  "methods": [],
+  "tags": [
+   "1次不等式",
+   "線形計画",
+   "領域"
+  ],
+  "provenance": {
+   "created": "2026-10-29"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "I-EXP-063",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "I-01",
+  "level": 3,
+  "minutes": 20,
+  "theme": "制約つき双1次式の範囲",
+  "topic": "制約つき双1次式の範囲",
+  "statement": {
+   "tex": "実数 $a,b,c,d$ が $|a|\\leqq2$，$|b|\\leqq2$，$|c|\\leqq2$，$|d|\\leqq2$，$a+b=1$，$c+d=2$ をみたすとき，$ac+bd$ のとり得る値の範囲を求めよ．"
+  },
+  "answer": {
+   "tex": "$-2\\leqq ac+bd\\leqq4$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "$b=1-a$，$d=2-c$．$|b|\\leqq2$ と合わせ $-1\\leqq a\\leqq2$，$|d|\\leqq2$ と合わせ $0\\leqq c\\leqq2$．\n$ac+bd=ac+(1-a)(2-c)$ は $a,c$ それぞれ1次．四隅 $(a,c)=(-1,0),(-1,2),(2,0),(2,2)$ で $4,-2,-2,4$．\n$\\boldsymbol{-2\\leqq ac+bd\\leqq4}$．"
+   }
+  ],
+  "idea": {
+   "tex": "$b,d$ を消去すると $a,c$ それぞれについて1次式．変数の範囲は消去した変数の範囲も反映させて決める．各変数について1次なら最大・最小は範囲の端．"
+  },
+  "methods": [],
+  "tags": [
+   "1次関数",
+   "最大最小",
+   "変数の範囲"
+  ],
+  "provenance": {
+   "created": "2026-10-29"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "I-EXP-064",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "I-01",
+  "level": 2,
+  "minutes": 15,
+  "theme": "共通因数をくくり出してから展開する",
+  "topic": "共通因数をくくり出してから展開する",
+  "statement": {
+   "tex": "$A=x^3+2x^2+4x+8$，$B=x^3-2x^2+4x-8$ とする．\n\\begin{enumerate}\n  \\item $A^3+B^3$ の展開式における $x^7$ の係数と $x^5$ の係数を求めよ．\n  \\item $A^3-B^3$ の展開式における $x^6$ の係数を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $48，\\ 384$　(2) $160$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "$A=(x+2)(x^2+4)$，$B=(x-2)(x^2+4)$．\n(1) $(x+2)^3+(x-2)^3=2x^3+24x$，$(x^2+4)^3=x^6+12x^4+48x^2+64$．\n$x^7$：$2\\cdot12+24\\cdot1=\\boldsymbol{48}$，$x^5$：$2\\cdot48+24\\cdot12=\\boldsymbol{384}$．\n\n(2) $(x+2)^3-(x-2)^3=12x^2+16$．$x^6$：$12\\cdot12+16\\cdot1=\\boldsymbol{160}$．"
+   }
+  ],
+  "idea": {
+   "tex": "$A=(x+2)(x^2+4)$，$B=(x-2)(x^2+4)$ と共通因数をくくると，$A^3\\pm B^3=(x^2+4)^3\\{(x+2)^3\\pm(x-2)^3\\}$．中の式は奇数次（偶数次）の項だけが残る．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) 記述\n(2) 160"
+  },
+  "methods": [],
+  "tags": [
+   "展開",
+   "共通因数",
+   "係数"
+  ],
+  "provenance": {
+   "created": "2026-10-29"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "I-EXP-065",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "I-01",
+  "level": 3,
+  "minutes": 25,
+  "theme": "因数分解の諸型",
+  "topic": "因数分解の諸型",
+  "statement": {
+   "tex": "次の式を因数分解（(6) は簡単に）せよ．\n\\begin{enumerate}\n  \\item $x^4-4x^3-7x^2+22x+24$\n  \\item $(x+2y)(x-y+3)-2x-4y$\n  \\item $(a+b-c)^3+(b+c-a)^3+(c+a-b)^3-(a+b+c)^3$\n  \\item $a^4(b-c)+b^4(c-a)+c^4(a-b)$\n  \\item $(x+2y)^3+(z-3y)^3-(x-y+z)^3$\n  \\item $\\dfrac{a(x-b)(x-c)}{(a-b)(a-c)}+\\dfrac{b(x-c)(x-a)}{(b-c)(b-a)}+\\dfrac{c(x-a)(x-b)}{(c-a)(c-b)}$（$a,b,c$ は相異なる）\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $(x+1)(x+2)(x-3)(x-4)$　(2) $(x+2y)(x-y+1)$　(3) $-24abc$　(4) $-(a-b)(b-c)(c-a)(a^2+b^2+c^2+ab+bc+ca)$　(5) $-3(x+2y)(z-3y)(x-y+z)$　(6) $x$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) $x=-1,-2,3,4$ を代入すると0．$\\boldsymbol{(x+1)(x+2)(x-3)(x-4)}$．\n\n(2) $(x+2y)(x-y+3)-2(x+2y)=\\boldsymbol{(x+2y)(x-y+1)}$．\n\n(3) $u=a+b-c$，$v=b+c-a$，$w=c+a-b$ で $u+v+w=a+b+c$．$(u+v+w)^3-u^3-v^3-w^3=3(u+v)(v+w)(w+u)=3\\cdot2b\\cdot2c\\cdot2a$．\nよって与式 $=\\boldsymbol{-24abc}$．\n\n(4) 交代式なので $(a-b)(b-c)(c-a)$ で割り切れ，商は2次の対称式．係数比較で\n$\\boldsymbol{-(a-b)(b-c)(c-a)(a^2+b^2+c^2+ab+bc+ca)}$．\n\n(5) $u=x+2y$，$v=z-3y$，$w=-(x-y+z)$ で $u+v+w=0$．与式 $=3uvw=\\boldsymbol{-3(x+2y)(z-3y)(x-y+z)}$．\n\n(6) 与式を $g(x)$ とおくと2次以下で，$g(a)=a$，$g(b)=b$，$g(c)=c$．$g(x)-x$ は2次以下で3つの解をもつので恒等的に0．$\\boldsymbol{x}$．"
+   }
+  ],
+  "idea": {
+   "tex": "4次式は因数定理で1次因数を探す．$u+v+w=0$ なら $u^3+v^3+w^3=3uvw$．交代式は $(a-b)(b-c)(c-a)$ を因数にもち，残りは次数と係数比較で決まる．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) (x+1)(x+2)(x-3)(x-4)\n(2) (x+2y)(x-y+1)\n(3) -24abc\n(4) -(a-b)(b-c)(c-a)(a^2+b^2+c^2+ab+bc+ca)\n(5) -3(x+2y)(z-3y)(x-y+z)\n(6) x"
+  },
+  "methods": [],
+  "tags": [
+   "因数分解",
+   "対称式",
+   "交代式"
+  ],
+  "provenance": {
+   "created": "2026-10-29"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "I-EXP-066",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "I-01",
+  "level": 3,
+  "minutes": 20,
+  "theme": "おき換えで整理する式",
+  "topic": "おき換えで整理する式",
+  "statement": {
+   "tex": "次の式を簡単にせよ．\n\\begin{enumerate}\n  \\item $(a+2b+3c)^2-(2b+3c-a)^2+(3c+a-2b)^2-(a+2b-3c)^2$\n  \\item $(a+b+c)(-a+b+c)(a-b+c)+(a+b+c)(a-b+c)(a+b-c)+(a+b+c)(a+b-c)(-a+b+c)-(-a+b+c)(a-b+c)(a+b-c)$\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $24ac$　(2) $8abc$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) $P=a$，$Q=2b+3c$ とすると最初の2項は $(Q+P)^2-(Q-P)^2=4PQ$．後の2項は $R=3c-2b$ で $(a+R)^2-(a-R)^2=4aR$．\n和 $4a(2b+3c)+4a(3c-2b)=\\boldsymbol{24ac}$．\n\n(2) $A=a+b+c$，$B=-a+b+c$，$C=a-b+c$，$D=a+b-c$ で $B+C+D=A$．\n与式 $=A(BC+CD+DB)-BCD$．展開して整理すると $\\boldsymbol{8abc}$．"
+   }
+  ],
+  "idea": {
+   "tex": "同じ2項の組を $P$，$Q$ とおくと，$(P+Q)^2-(P-Q)^2=4PQ$ の形がくり返し現れる．4つの1次式 $A,B,C,D$ をおくと，$B+C+D=A$ などの関係で積の和が整理できる．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) 24ac\n(2) 8abc"
+  },
+  "methods": [],
+  "tags": [
+   "式の計算",
+   "おき換え",
+   "対称性"
+  ],
+  "provenance": {
+   "created": "2026-10-29"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "I-EXP-067",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "I-01",
+  "level": 3,
+  "minutes": 25,
+  "theme": "べき和から4乗和を作る",
+  "topic": "べき和から4乗和を作る",
+  "statement": {
+   "tex": "実数 $a,b,c$ に対して $A=a+b+c$，$B=a^2+b^2+c^2$，$C=a^3+b^3+c^3$ とおく．\n\\begin{enumerate}\n  \\item $ab+bc+ca$ と $abc$ を $A,B,C$ で表せ．\n  \\item $a^4+b^4+c^4$ を $A,B,C$ で表せ．\n  \\item $a=2,\\ b=-1,\\ c=3$ のとき，(2) の結果が正しいことを確かめよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $ab+bc+ca=\\dfrac{A^2-B}2，\\ abc=\\dfrac{A^3-3AB+2C}6$　(2) $\\dfrac{A^4-6A^2B+3B^2+8AC}6$　(3) 証明"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) $\\boldsymbol{ab+bc+ca=\\dfrac{A^2-B}2}$，$\\boldsymbol{abc=\\dfrac{A^3-3AB+2C}6}$．\n\n(2) $e_2=ab+bc+ca$，$e_3=abc$ とおくと $a,b,c$ は $X^3-AX^2+e_2X-e_3=0$ の解なので $a^4=Aa^3-e_2a^2+e_3a$（$b,c$ も同様）．辺々加えて $a^4+b^4+c^4=AC-\\frac{A^2-B}2B+\\frac{A^3-3AB+2C}6A=\\boldsymbol{\\dfrac{A^4-6A^2B+3B^2+8AC}6}$．\n\n(3) $A=4$，$B=14$，$C=34$ で $\\frac{256-1344+588+1088}6=98$．直接計算すると $16+1+81=98$ で一致する．"
+   }
+  ],
+  "idea": {
+   "tex": "基本対称式 $e_1,e_2,e_3$ を $A,B,C$ で表し，$p_4=e_1p_3-e_2p_2+e_3p_1$（ニュートンの関係式）で4乗和を作る．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) 記述\n(2) (A^4-6A^2B+3B^2+8AC)/6\n(3) 証明"
+  },
+  "methods": [],
+  "tags": [
+   "対称式",
+   "基本対称式",
+   "べき和"
+  ],
+  "provenance": {
+   "created": "2026-10-29"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "I-EXP-068",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "I-01",
+  "level": 2,
+  "minutes": 15,
+  "theme": "循環小数の計算",
+  "topic": "循環小数の計算",
+  "statement": {
+   "tex": "次の値を既約分数で答えよ．\n\\begin{enumerate}\n  \\item $2.1\\dot3\\dot6-0.\\dot8\\dot1$\n  \\item $0.\\dot3\\dot6\\times2.\\dot4$\n  \\item $1.2\\dot4\\dot5$\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $\\dfrac{29}{22}$　(2) $\\dfrac89$　(3) $\\dfrac{137}{110}$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) $2.1\\dot3\\dot6=2+\\frac1{10}+\\frac{36}{990}=\\frac{47}{22}$，$0.\\dot8\\dot1=\\frac9{11}$．$\\boldsymbol{\\dfrac{29}{22}}$．\n\n(2) $\\frac4{11}\\times\\frac{22}9=\\boldsymbol{\\dfrac89}$．\n\n(3) $1+\\frac2{10}+\\frac{45}{990}=\\boldsymbol{\\dfrac{137}{110}}$．"
+   }
+  ],
+  "idea": {
+   "tex": "循環節が $k$ 桁なら $10^k$ 倍して引く．整数部分と循環しない部分を先に分ける．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) 29/22\n(2) 8/9\n(3) 137/110"
+  },
+  "methods": [],
+  "tags": [
+   "循環小数",
+   "分数",
+   "計算"
+  ],
+  "provenance": {
+   "created": "2026-10-29"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "I-EXP-069",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "I-01",
+  "level": 3,
+  "minutes": 25,
+  "theme": "二重根号と有理化",
+  "topic": "二重根号と有理化",
+  "statement": {
+   "tex": "次の式を簡単にせよ．\n\\begin{enumerate}\n  \\item $(\\sqrt3+\\sqrt2)^4+(\\sqrt3-\\sqrt2)^4$，\\quad $(\\sqrt3+\\sqrt2)^3-(\\sqrt3-\\sqrt2)^3$\n  \\item $\\dfrac4{1+\\sqrt2-\\sqrt3}+\\sqrt{5-2\\sqrt6}$\n  \\item $\\dfrac1{3+\\sqrt3+\\sqrt5+\\sqrt{15}}$\n  \\item $\\dfrac1{\\sqrt2-\\sqrt3+\\sqrt7}+\\dfrac1{\\sqrt2+\\sqrt3-\\sqrt7}-\\dfrac1{\\sqrt2-\\sqrt3-\\sqrt7}-\\dfrac1{\\sqrt2+\\sqrt3+\\sqrt7}$\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $98，\\ 22\\sqrt2$　(2) $2+\\sqrt3+\\sqrt6$　(3) $\\dfrac{\\sqrt{15}+\\sqrt3-\\sqrt5-3}4$　(4) $\\dfrac{2\\sqrt{42}}5$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) $\\sqrt3\\pm\\sqrt2$ の和 $2\\sqrt3$，積 $1$．4乗和 $=(\\text{2乗和})^2-2=10^2-2=\\boldsymbol{98}$．3乗の差 $=(\\alpha-\\beta)(\\alpha^2+\\alpha\\beta+\\beta^2)=2\\sqrt2\\cdot(10+1)=\\boldsymbol{22\\sqrt2}$（$\\alpha=\\sqrt3+\\sqrt2$，$\\beta=\\sqrt3-\\sqrt2$）．\n\n(2) $(1+\\sqrt2-\\sqrt3)(1+\\sqrt2+\\sqrt3)=2\\sqrt2$ より第1項は $\\sqrt2(1+\\sqrt2+\\sqrt3)=2+\\sqrt2+\\sqrt6$．第2項 $\\sqrt3-\\sqrt2$．$\\boldsymbol{2+\\sqrt3+\\sqrt6}$．\n\n(3) 分母 $=(\\sqrt3+\\sqrt5)(1+\\sqrt3)$．$\\frac{(\\sqrt5-\\sqrt3)(\\sqrt3-1)}{2\\cdot2}=\\boldsymbol{\\dfrac{\\sqrt{15}+\\sqrt3-\\sqrt5-3}4}$．\n\n(4) 第1項と第4項，第2項と第3項を組にして通分すると，与式 $=\\boldsymbol{\\dfrac{2\\sqrt{42}}5}$．"
+   }
+  ],
+  "idea": {
+   "tex": "分母が3項以上なら2項ずつ組にして有理化．分母が積に因数分解できる形（$(\\sqrt3+\\sqrt5)(1+\\sqrt3)$ など）を見抜くと1回で済む．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) 記述\n(2) 2+sqrt(3)+sqrt(6)\n(3) (sqrt(15)+sqrt(3)-sqrt(5)-3)/4\n(4) 2sqrt(42)/5"
+  },
+  "methods": [],
+  "tags": [
+   "有理化",
+   "二重根号",
+   "式の値"
+  ],
+  "provenance": {
+   "created": "2026-10-29"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "I-EXP-070",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "I-01",
+  "level": 2,
+  "minutes": 15,
+  "theme": "区間で符号が分かれる根号",
+  "topic": "区間で符号が分かれる根号",
+  "statement": {
+   "tex": "$\\dfrac12<x<\\dfrac23$ のとき，$\\sqrt{4x^2-4x+1}+\\sqrt{9x^2-12x+4}-\\sqrt{16x^2-24x+9}$ を簡単にせよ．"
+  },
+  "answer": {
+   "tex": "$3x-2$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "$|2x-1|=2x-1$，$|3x-2|=2-3x$，$|4x-3|=3-4x$．与式 $=(2x-1)+(2-3x)-(3-4x)=\\boldsymbol{3x-2}$．"
+   }
+  ],
+  "idea": {
+   "tex": "$\\sqrt{A^2}=|A|$．各1次式の符号を区間で決めてから絶対値をはずす．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "3x-2"
+  },
+  "methods": [],
+  "tags": [
+   "絶対値",
+   "根号",
+   "場合分け"
+  ],
+  "provenance": {
+   "created": "2026-10-29"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "I-EXP-071",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "I-01",
+  "level": 3,
+  "minutes": 20,
+  "theme": "二重根号をはずした値の計算",
+  "topic": "二重根号をはずした値の計算",
+  "statement": {
+   "tex": "$x=\\sqrt{9+2\\sqrt{14}}$，$y=\\sqrt{9-2\\sqrt{14}}$ のとき，次の値を求めよ．\n\\begin{enumerate}\n  \\item $\\sqrt{\\dfrac xy}$\n  \\item $\\dfrac{\\sqrt x+\\sqrt y}{\\sqrt x-\\sqrt y}$\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $\\dfrac{\\sqrt{35}+\\sqrt{10}}5$　(2) $\\dfrac{\\sqrt{14}+\\sqrt{10}}2$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "$x=\\sqrt7+\\sqrt2$，$y=\\sqrt7-\\sqrt2$，$xy=5$，$x+y=2\\sqrt7$，$x-y=2\\sqrt2$．\n\n(1) $\\frac x{\\sqrt{xy}}=\\frac{\\sqrt7+\\sqrt2}{\\sqrt5}=\\boldsymbol{\\dfrac{\\sqrt{35}+\\sqrt{10}}5}$．\n\n(2) $\\frac{x+y+2\\sqrt5}{x-y}=\\frac{2\\sqrt7+2\\sqrt5}{2\\sqrt2}=\\boldsymbol{\\dfrac{\\sqrt{14}+\\sqrt{10}}2}$．"
+   }
+  ],
+  "idea": {
+   "tex": "$\\sqrt{9+2\\sqrt{14}}=\\sqrt7+\\sqrt2$．$xy$ が有理数なら $\\sqrt{\\frac xy}=\\frac x{\\sqrt{xy}}$，$\\frac{\\sqrt x+\\sqrt y}{\\sqrt x-\\sqrt y}=\\frac{x+y+2\\sqrt{xy}}{x-y}$．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) (sqrt(35)+sqrt(10))/5\n(2) (sqrt(14)+sqrt(10))/2"
+  },
+  "methods": [],
+  "tags": [
+   "二重根号",
+   "式の値",
+   "有理化"
+  ],
+  "provenance": {
+   "created": "2026-10-29"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "I-EXP-072",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "I-01",
+  "level": 3,
+  "minutes": 25,
+  "theme": "逆数の小数部分",
+  "topic": "逆数の小数部分",
+  "statement": {
+   "tex": "正の実数 $x$ で，その逆数の小数部分が $\\dfrac x3$ に等しく，しかも $0<\\dfrac1x\\leqq4$ をみたすものをすべて求めよ．"
+  },
+  "answer": {
+   "tex": "$x=\\sqrt3,\\ \\dfrac{-3+\\sqrt{21}}2,\\ -3+2\\sqrt3,\\ \\dfrac{-9+\\sqrt{93}}2$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "$\\frac1x$ の整数部分を $n$ とすると $\\frac1x=n+\\frac x3$，$0\\leqq\\frac x3<1$．$0<\\frac1x\\leqq4$ より $n\\in\\{0,1,2,3,4\\}$．\n$x^2+3nx-3=0$，$x>0$ より $x=\\frac{-3n+\\sqrt{9n^2+12}}2=\\frac6{3n+\\sqrt{9n^2+12}}\\leqq\\frac6{\\sqrt{12}}=\\sqrt3$．\n逆にこの $x$ は $0<\\frac x3\\leqq\\frac{\\sqrt3}3<1$ をみたすので，$\\frac1x=n+\\frac x3$ の整数部分は $n$，小数部分は $\\frac x3$ である．\n$\\frac1x\\leqq4$ について：$n\\leqq3$ なら $\\frac1x<n+1\\leqq4$ で成立，$n=4$ なら $\\frac1x=4+\\frac x3>4$ で不適．\n$n=0,1,2,3$ として $\\boldsymbol{x=\\sqrt3,\\ \\dfrac{-3+\\sqrt{21}}2,\\ -3+2\\sqrt3,\\ \\dfrac{-9+\\sqrt{93}}2}$．"
+   }
+  ],
+  "idea": {
+   "tex": "$\\frac1x=n+\\frac x3$（$n$ は $\\frac1x$ の整数部分）とおいて2次方程式を解き，$n\\leqq\\frac1x<n+1$ を確かめる．$n=0$ も忘れない．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "$x$：{sqrt(3), (-3+sqrt(21))/2, -3+2sqrt(3), (-9+sqrt(93))/2}"
+  },
+  "methods": [],
+  "tags": [
+   "ガウス記号",
+   "小数部分",
+   "2次方程式"
+  ],
+  "provenance": {
+   "created": "2026-10-29"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "I-EXP-073",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "I-01",
+  "level": 3,
+  "minutes": 20,
+  "theme": "和・平方和・逆数和から3数を決める",
+  "topic": "和・平方和・逆数和から3数を決める",
+  "statement": {
+   "tex": "$a,b,c$ が $a+b+c=2$，$a^2+b^2+c^2=6$，$\\dfrac1a+\\dfrac1b+\\dfrac1c=\\dfrac12$ をみたすとき，次を求めよ．\n\\begin{enumerate}\n  \\item $ab+bc+ca$ と $abc$\n  \\item $\\dfrac1{a^2}+\\dfrac1{b^2}+\\dfrac1{c^2}$ と $a^3+b^3+c^3$\n  \\item $a,b,c$ の組（順序は問わない）\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $-1，\\ -2$　(2) $\\dfrac94，\\ 8$　(3) $\\{a,b,c\\}=\\{-1,1,2\\}$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) $ab+bc+ca=\\frac{4-6}2=\\boldsymbol{-1}$，$abc=\\frac{ab+bc+ca}{1/2}=\\boldsymbol{-2}$．\n\n(2) $\\frac{(ab+bc+ca)^2-2abc(a+b+c)}{(abc)^2}=\\frac{1+8}4=\\boldsymbol{\\dfrac94}$．\n$a^3+b^3+c^3=e_1^3-3e_1e_2+3e_3=8+6-6=\\boldsymbol8$．\n\n(3) $t^3-2t^2-t+2=(t-1)(t+1)(t-2)$．$\\boldsymbol{\\{a,b,c\\}=\\{-1,1,2\\}}$．"
+   }
+  ],
+  "idea": {
+   "tex": "$e_2=\\frac{(a+b+c)^2-(a^2+b^2+c^2)}2$，$e_3=\\frac{e_2}{\\frac1a+\\frac1b+\\frac1c}$．基本対称式がそろえば $a,b,c$ は3次方程式 $t^3-e_1t^2+e_2t-e_3=0$ の解．"
+  },
+  "methods": [],
+  "tags": [
+   "対称式",
+   "解と係数",
+   "3次方程式"
+  ],
+  "provenance": {
+   "created": "2026-10-29"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "I-EXP-074",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "I-01",
+  "level": 3,
+  "minutes": 25,
+  "theme": "2つの連立不等式の解が一致する条件",
+  "topic": "2つの連立不等式の解が一致する条件",
+  "statement": {
+   "tex": "$x$ についての2つの不等式\n\\[a<x-a<a^2-1,\\qquad a^2<x+8<3a+15\\]\nの解（$x$ の範囲）が一致するような定数 $a$ の値をすべて求めよ．"
+  },
+  "answer": {
+   "tex": "$a=-2,\\ 4$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "1つ目：$2a<x<a^2+a-1$．2つ目：$a^2-8<x<3a+7$．\n左端一致 $2a=a^2-8$，右端一致 $a^2+a-1=3a+7$．どちらも $a^2-2a-8=0$ で $a=4,-2$．\n$a=4$：$8<x<19$，$a=-2$：$-4<x<1$ でいずれも空でない．\n両方が空になるのは $a^2-a-1\\leqq0$ かつ $a^2-3a-15\\geqq0$ のときだが，$a^2-a-1\\leqq0$ なら $a\\geqq\\frac{1-\\sqrt5}2>-1$ で，$a^2-3a-15=(a^2-a-1)-2a-14<2-14<0$ となり，同時にはみたさない．\n$\\boldsymbol{a=-2,\\ 4}$．"
+   }
+  ],
+  "idea": {
+   "tex": "2つの解の区間が一致 $\\iff$ 左端どうし・右端どうしが等しい（ともに空でないとき）．両方が空集合になる場合がないかも確認する．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "$a$：{-2, 4}"
+  },
+  "methods": [],
+  "tags": [
+   "1次不等式",
+   "解の一致",
+   "空集合"
+  ],
+  "provenance": {
+   "created": "2026-10-29"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "I-EXP-075",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "I-01",
+  "level": 2,
+  "minutes": 15,
+  "theme": "絶対値不等式をみたす整数の個数",
+  "topic": "絶対値不等式をみたす整数の個数",
+  "statement": {
+   "tex": "$a$ を正の定数とする．不等式 $|3x-5|\\leqq a$ をみたす整数 $x$ の個数がちょうど6個となるような $a$ の値の範囲を求めよ．また，そのような $a$ の最小値を求めよ．"
+  },
+  "answer": {
+   "tex": "$8\\leqq a<10$，最小値 $8$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "$\\frac{5-a}3\\leqq x\\leqq\\frac{5+a}3$．$a$ を大きくしていくと整数は $x=2,1,3,0,4,-1,5,\\dots$ の順に加わり（$|3x-5|=1,2,4,5,7,8,10,\\dots$），6個目の $-1$ は $a=8$ で入る．7個目の $5$ は $a=10$．\n$\\boldsymbol{8\\leqq a<10}$，\\textbf{最小値 8}．"
+   }
+  ],
+  "idea": {
+   "tex": "$|3x-5|\\leqq a\\iff\\frac{5-a}3\\leqq x\\leqq\\frac{5+a}3$．区間の中心 $\\frac53$ から両側へ整数を数え，端点が整数になる値に注意．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "8<=a<10 ; 最小値：8"
+  },
+  "methods": [],
+  "tags": [
+   "絶対値",
+   "整数の個数",
+   "区間"
+  ],
+  "provenance": {
+   "created": "2026-10-29"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "I-EXP-076",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "I-01",
+  "level": 3,
+  "minutes": 25,
+  "theme": "集合の条件から $A$ を決め，$B$ の個数を数える",
+  "topic": "集合の条件から $A$ を決め，$B$ の個数を数える",
+  "statement": {
+   "tex": "1から40までの自然数全体を全体集合 $U$ とする．$U$ の要素のうち，30との最大公約数が1より大きいもの全体を $V$，偶数全体を $W$ とする．$U$ の部分集合 $A,B$ が\n\\[\\text{(i)}\\ A\\cup\\overline B=V,\\qquad\\text{(ii)}\\ \\overline A\\cap\\overline B=W\\]\nをみたすとする．\n\\begin{enumerate}\n  \\item 集合 $A$ の要素をすべて求めよ．\n  \\item 条件をみたす集合 $B$ は何通りあるか．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $A=\\{3,5,9,15,21,25,27,33,35,39\\}$　(2) $2^{10}=1024$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(ii) は $\\overline{A\\cup B}=W$，すなわち $A\\cup B=\\overline W$（奇数全体）．$A=(A\\cup B)\\cap(A\\cup\\overline B)=\\overline W\\cap V$．\n\n(1) 奇数で3または5の倍数：$\\boldsymbol{A=\\{3,5,9,15,21,25,27,33,35,39\\}}$．\n\n(2) $A\\cup B=\\overline W$ より $B\\subset\\overline W$ かつ $\\overline W\\setminus A\\subset B$．このとき $\\overline B\\supset W$ で，$A\\cup\\overline B=A\\cup W\\cup(\\overline W\\setminus B)=A\\cup W$．$V=A\\cup W$ が成り立つので (i) もみたす．\nよって $B=(\\overline W\\setminus A)\\cup S$（$S\\subset A$ は任意）．$\\boldsymbol{2^{10}=1024}$ 通り．"
+   }
+  ],
+  "idea": {
+   "tex": "$\\overline A\\cap\\overline B=W\\iff A\\cup B=\\overline W$．$A=(A\\cup B)\\cap(A\\cup\\overline B)=\\overline W\\cap V$．$B$ は「必ず入る要素」と「入っても入らなくてもよい要素」に分かれる．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) $A$：{3, 5, 9, 15, 21, 25, 27, 33, 35, 39}\n(2) 記述"
+  },
+  "methods": [],
+  "tags": [
+   "集合",
+   "ド・モルガン",
+   "補集合"
+  ],
+  "provenance": {
+   "created": "2026-10-29"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "I-EXP-077",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "I-01",
+  "level": 4,
+  "minutes": 25,
+  "theme": "根号が有理数になる組",
+  "topic": "根号が有理数になる組",
+  "statement": {
+   "tex": "$n$ を1以上の整数とする．次の命題の真偽を答え，真なら証明し，偽なら理由を述べよ．\n\\begin{enumerate}\n  \\item[$p$：] ある $n$ に対して，$\\sqrt n$ と $\\sqrt{n+2}$ はともに有理数である．\n  \\item[$q$：] すべての $n$ に対して，$\\sqrt{n+2}-\\sqrt n$ は無理数である．\n  \\item[$r$：] ある $n$ に対して，$\\sqrt[3]n$ と $\\sqrt[3]{n+7}$ はともに有理数である．（真の場合，そのような $n$ をすべて求めよ．）\n\\end{enumerate}\nただし，自然数 $m$ について $\\sqrt m$ が有理数なら $m$ は平方数，$\\sqrt[3]m$ が有理数なら $m$ は立方数であることは用いてよい．"
+  },
+  "answer": {
+   "tex": "$p$：偽，$q$：真，$r$：真（$n=1$）"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "$p$：\\textbf{偽}．$n=k^2$，$n+2=m^2$ とすると $(m-k)(m+k)=2$．$m-k$ と $m+k$ は偶奇が同じなので積が2になれない．\n\n$q$：\\textbf{真}．$\\sqrt{n+2}-\\sqrt n=r$（有理数，$r>0$）とすると $\\sqrt{n+2}+\\sqrt n=\\frac2r$ も有理数．両式から $\\sqrt n$，$\\sqrt{n+2}$ がともに有理数となり $p$ の否定に矛盾．\n\n$r$：\\textbf{真}．$n=k^3$，$n+7=m^3$ で $(m-k)(m^2+mk+k^2)=7$．$m^2+mk+k^2\\geqq3$ より $m-k=1$，$3k^2+3k+1=7$，$k=1$．$\\boldsymbol{n=1}$ のみ．"
+   }
+  ],
+  "idea": {
+   "tex": "自然数 $n$ について $\\sqrt n$（$\\sqrt[3]n$）が有理数 $\\iff n$ が平方数（立方数）．差が小さい平方数・立方数の組を因数分解で調べる．"
+  },
+  "methods": [],
+  "tags": [
+   "無理数",
+   "背理法",
+   "不定方程式"
+  ],
+  "provenance": {
+   "created": "2026-10-29"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "I-EXP-078",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "I-01",
+  "level": 3,
+  "minutes": 25,
+  "theme": "3数の最大と最小の差",
+  "topic": "3数の最大と最小の差",
+  "statement": {
+   "tex": "実数 $p,q$ が $|p|\\leqq1$，$|q|\\leqq1$，$|p-q|\\leqq1$ をみたすとする．$0,p,q$ のうち最大の値を $M$，最小の値を $m$ とする．\n\\begin{enumerate}\n  \\item 点 $(p,q)$ の存在する範囲の面積を求めよ．\n  \\item $M-m\\leqq1$ を示せ．\n  \\item $M+m$ のとり得る値の範囲を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $3$　(2) 証明　(3) $-1\\leqq M+m\\leqq1$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) 正方形 $[-1,1]^2$ から $|p-q|>1$ の2つの直角二等辺三角形（各面積 $\\frac12$）を除く．$\\boldsymbol3$．\n\n(2) $0\\leqq p\\leqq q$ なら $M-m=q\\leqq1$．$p\\leqq0\\leqq q$ なら $q-p\\leqq1$．他も同様（6通り，どれも $|p|,|q|,|p-q|$ のどれか）．$\\blacksquare$\n\n(3) $0,p,q$ はすべて $-1$ 以上 $1$ 以下なので $M\\leqq1$，$m\\geqq-1$，また $M\\geqq0\\geqq m$．よって $-1\\leqq m\\leqq M+m\\leqq M\\leqq1$．逆に $-1\\leqq c\\leqq1$ に対し $p=q=c$ は条件をみたし，$c\\geqq0$ なら $(M,m)=(c,0)$，$c<0$ なら $(M,m)=(0,c)$ で $M+m=c$．\\textbf{$-1\\leqq M+m\\leqq1$}．"
+   }
+  ],
+  "idea": {
+   "tex": "$0,p,q$ の大小の並びで場合分けする．条件 $|p|\\leqq1$，$|q|\\leqq1$，$|p-q|\\leqq1$ は $pq$ 平面の六角形．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) 3\n(2) 証明\n(3) -1<=M+m<=1"
+  },
+  "methods": [],
+  "tags": [
+   "場合分け",
+   "領域",
+   "最大最小"
+  ],
+  "provenance": {
+   "created": "2026-10-29"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "I-EXP-079",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "I-01",
+  "level": 3,
+  "minutes": 20,
+  "theme": "根号を含む4数の大小",
+  "topic": "根号を含む4数の大小",
+  "statement": {
+   "tex": "4つの数 $a=\\sqrt{30}$，$b=3+\\sqrt6$，$c=\\sqrt{10}+\\sqrt5$，$d=4+\\sqrt2$ の大小を比較せよ．"
+  },
+  "answer": {
+   "tex": "$a>b>d>c$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "$a^2=30$，$b^2=15+6\\sqrt6$，$c^2=15+10\\sqrt2$，$d^2=18+8\\sqrt2$．\n$a>b\\iff15>6\\sqrt6\\iff225>216$．$d>c\\iff3>2\\sqrt2$．\n$b>d\\iff6\\sqrt6-8\\sqrt2>3\\iff216>9+48\\sqrt2+128\\iff79>48\\sqrt2\\iff6241>4608$．\n$\\boldsymbol{a>b>d>c}$．"
+   }
+  ],
+  "idea": {
+   "tex": "正の数は2乗して比べる．2乗しても根号が残れば，整数部分を移項してもう一度2乗する．"
+  },
+  "methods": [],
+  "tags": [
+   "無理数の大小",
+   "2乗の比較",
+   "評価"
+  ],
+  "provenance": {
+   "created": "2026-10-29"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "I-EXP-080",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "I-01",
+  "level": 3,
+  "minutes": 20,
+  "theme": "和と逆数の和が等しい3数",
+  "topic": "和と逆数の和が等しい3数",
+  "statement": {
+   "tex": "実数 $x,y,z$ が $x+y+z=2$，$\\dfrac1x+\\dfrac1y+\\dfrac1z=\\dfrac12$ を満たす．\n\\begin{enumerate}\n  \\item $xyz-2(xy+yz+zx)+4(x+y+z)-8=0$ を示し，左辺を因数分解せよ．\n  \\item $x^5+y^5+z^5$ の値を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $(x-2)(y-2)(z-2)$　(2) $32$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) 条件②より $xy+yz+zx=\\frac{xyz}2$．よって $xyz-2(xy+yz+zx)=0$，$4(x+y+z)-8=0$．$\\blacksquare$\n左辺 $=\\boldsymbol{(x-2)(y-2)(z-2)}$．\n\n(2) どれか（例えば $x$）が2で，$y+z=0$．$x^5+y^5+z^5=32+y^5-y^5=\\boldsymbol{32}$．"
+   }
+  ],
+  "idea": {
+   "tex": "逆数の和の条件は $xy+yz+zx=\\frac{xyz}2$．$(x-2)(y-2)(z-2)$ を展開すると基本対称式で書け，条件から0．どれか1つが2．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) (x-2)(y-2)(z-2)\n(2) 32"
+  },
+  "methods": [],
+  "tags": [
+   "対称式",
+   "因数分解",
+   "条件式"
+  ],
+  "provenance": {
+   "created": "2026-10-29"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "I-EXP-081",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "I-01",
+  "level": 3,
+  "minutes": 25,
+  "theme": "2つの平方数の差で表せる数",
+  "topic": "2つの平方数の差で表せる数",
+  "statement": {
+   "tex": "集合 $A=\\{a^2-b^2\\mid a,b\\text{ は整数で }a>b\\geqq1\\}$ を考える．次を証明せよ．\n\\begin{enumerate}\n  \\item 3以上のすべての奇数は $A$ の要素であり，1は $A$ の要素でない．\n  \\item 偶数 $m$ が $A$ の要素であるための必要十分条件は，$m$ が4の倍数かつ $m\\geqq8$ であることである．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 証明　(2) 証明"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) $2k+1=(k+1)^2-k^2$（$k\\geqq1$）．$1=(a-b)(a+b)$ なら $a+b=1$ で $b\\geqq1$，$a>b$ に反する．$\\blacksquare$\n\n(2) $a-b$ と $a+b$ は偶奇が同じ．偶数 $m$ なら両方偶数で $m$ は4の倍数．$m=4$ なら $(a-b,a+b)=(2,2)$ で $b=0$ となり不可．\n逆に $m=4k$（$k\\geqq2$）は $(k+1)^2-(k-1)^2$ で $k-1\\geqq1$．$\\blacksquare$"
+   }
+  ],
+  "idea": {
+   "tex": "$a^2-b^2=(a-b)(a+b)$ で2つの因数は偶奇が同じ．$b\\geqq1$ の制限があると，$a-b=a+b$ になる表し方（$b=0$）が使えず，1と4が抜け落ちる．"
+  },
+  "methods": [],
+  "tags": [
+   "平方数の差",
+   "偶奇",
+   "必要十分条件"
+  ],
+  "provenance": {
+   "created": "2026-10-29"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "I-EXP-082",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "I-01",
+  "level": 3,
+  "minutes": 25,
+  "theme": "立方根の整数部分で割り切れる数",
+  "topic": "立方根の整数部分で割り切れる数",
+  "statement": {
+   "tex": "実数 $a$ に対して，$a$ を超えない最大の整数を $[a]$ で表す．1000以下の正の整数 $n$ で $[\\sqrt[3]n]$ が $n$ の約数となるものは何個あるか．"
+  },
+  "answer": {
+   "tex": "$172$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "$[\\sqrt[3]n]=k$ の範囲 $k^3\\leqq n\\leqq k^3+3k^2+3k$ にある $k$ の倍数は $3k+4$ 個．$k=1,\\dots,9$ で $3\\cdot45+36=171$．\n$k=10$ は $n=1000$ のみで1個．$\\boldsymbol{172}$ 個．"
+   }
+  ],
+  "idea": {
+   "tex": "$[\\sqrt[3]n]=k$ となる $n$ は $k^3\\leqq n\\leqq(k+1)^3-1$．その中の $k$ の倍数は $k^3,k^3+k,\\dots,k^3+3k^2+3k$ の $3k+4$ 個．最後の $k$ は範囲の端で切れる．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "172"
+  },
+  "methods": [],
+  "tags": [
+   "ガウス記号",
+   "区間ごとの数え上げ",
+   "倍数"
+  ],
+  "provenance": {
+   "created": "2026-10-29"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "I-EXP-083",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "I-01",
+  "level": 3,
+  "minutes": 20,
+  "theme": "1次方程式の解の位置と重解をもつ符号表",
+  "topic": "1次方程式の解の位置と重解をもつ符号表",
+  "statement": {
+   "tex": "$x$ の方程式 $ax+a^2-3a=0$ ……① について答えよ．\n\\begin{enumerate}\n  \\item ①が $1<x<4$ の範囲にただ1つの解をもつような実数 $a$ の範囲を求めよ．\n  \\item ①が $1\\leqq x\\leqq4$ の範囲にただ1つの解をもつような実数 $a$ の範囲を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $-1<a<2,\\ a\\neq0$　(2) $-1\\leqq a\\leqq2,\\ a\\neq0$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "$a=0$ のとき①は $0=0$ となり，すべての $x$ が解なので「ただ1つ」に反する．$a\\neq0$ では解は1つで，$f(x)=ax+a^2-3a$ とおく．\n$f(1)=a^2-2a=a(a-2)$，$f(4)=a^2+a=a(a+1)$．\n\n(1) $f(1)f(4)=a^2(a-2)(a+1)<0$．$a^2>0$ より $(a-2)(a+1)<0$．$\\boldsymbol{-1<a<2,\\ a\\neq0}$．\n\n(2) $f(1)f(4)\\leqq0$ かつ $a\\neq0$：$(a-2)(a+1)\\leqq0$．$\\boldsymbol{-1\\leqq a\\leqq2,\\ a\\neq0}$．（$a=2$ で解 $x=1$，$a=-1$ で解 $x=4$．）"
+   }
+  ],
+  "idea": {
+   "tex": "$f(x)=0$ の解が区間内にある $\\iff$ 直線 $y=f(x)$ が区間の両端で異符号（$f(\\alpha)f(\\beta)<0$）．$a$ の多項式の符号は，根を1つ飛び越すごとに入れ替わるが，2乗の因数の前後では入れ替わらない．係数が0になる退化も別に調べる．"
+  },
+  "methods": [],
+  "tags": [
+   "解の配置",
+   "符号の変化",
+   "退化"
+  ],
+  "provenance": {
+   "created": "2026-10-29"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "I-EXP-084",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "I-01",
+  "level": 4,
+  "minutes": 30,
+  "theme": "辺が $\\sqrt{x^2-xy+y^2}$，$p\\sqrt{xy}$，$x+y$ の三角形",
+  "topic": "辺が $\\sqrt{x^2-xy+y^2}$，$p\\sqrt{xy}$，$x+y$ の三角形",
+  "statement": {
+   "tex": "\\begin{enumerate}\n  \\item $s\\geqq2$ のとき，$\\varphi(s)=s-\\sqrt{s^2-3}$ の最大値と $\\psi(s)=s+\\sqrt{s^2-3}$ の最小値を求めよ．\n  \\item $a=\\sqrt{x^2-xy+y^2}$，$b=p\\sqrt{xy}$，$c=x+y$ とする．任意の正の数 $x,y$ に対して $a,b,c$ を3辺の長さとする三角形が存在するような定数 $p$ の範囲を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $\\varphi$ の最大値 $1$，$\\psi$ の最小値 $3$　(2) $1<p<3$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) $\\varphi(s)=\\frac3{s+\\sqrt{s^2-3}}$ は減少，$\\psi$ は増加．\\textbf{$\\varphi$ の最大値 $1$，$\\psi$ の最小値 $3$}（ともに $s=2$）．\n\n(2) $\\sqrt{xy}$ で割り $s=\\sqrt{\\frac xy}+\\sqrt{\\frac yx}$（$s\\geqq2$，等号は $x=y$）とすると $\\frac a{\\sqrt{xy}}=\\sqrt{s^2-3}$，$\\frac c{\\sqrt{xy}}=s$，$\\frac b{\\sqrt{xy}}=p$．\n$c>a$ なので三角形の条件は $c-a<b<c+a$，すなわち $\\varphi(s)<p<\\psi(s)$．これがすべての $s\\geqq2$ で成り立つ条件は (1) より $\\boldsymbol{1<p<3}$．"
+   }
+  ],
+  "idea": {
+   "tex": "$\\sqrt{xy}$ で割り，$s=\\sqrt{\\frac xy}+\\sqrt{\\frac yx}\\geqq2$ の1変数にする．三角形の条件 $|c-a|<b<c+a$ は $s-\\sqrt{s^2-3}<p<s+\\sqrt{s^2-3}$ で，両辺の単調性から $s=2$ での値が効く．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) 記述\n(2) 1<p<3"
+  },
+  "methods": [],
+  "tags": [
+   "三角形の成立条件",
+   "置き換え",
+   "単調性"
+  ],
+  "provenance": {
+   "created": "2026-10-29"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "I-EXP-085",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "I-01",
+  "level": 4,
+  "minutes": 25,
+  "theme": "3乗平均と2乗平均の最良定数",
+  "topic": "3乗平均と2乗平均の最良定数",
+  "statement": {
+   "tex": "$x,y$ を正の数とする．\n\\begin{enumerate}\n  \\item $l(x+y)\\leqq\\sqrt[3]{x^3+y^3}<k(x+y)$ がつねに成り立つような $l$ の最大値と $k$ の最小値を求めよ．\n  \\item $l'\\sqrt{x^2+y^2}\\leqq\\sqrt[3]{x^3+y^3}<k'\\sqrt{x^2+y^2}$ がつねに成り立つような $l'$ の最大値と $k'$ の最小値を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $l$ の最大値 $\\dfrac1{\\sqrt[3]4}$，$k$ の最小値 $1$　(2) $l'$ の最大値 $2^{-\\frac16}$，$k'$ の最小値 $1$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) $x+y=1$ として $x^3+y^3=1-3xy$，$0<xy\\leqq\\frac14$．$\\sqrt[3]{x^3+y^3}\\in\\left[\\frac1{\\sqrt[3]4},1\\right)$．\n\\textbf{$l$ の最大値 $\\dfrac1{\\sqrt[3]4}$，$k$ の最小値 $1$}．\n\n(2) $x^2+y^2=1$，$x=\\cos\\theta$，$y=\\sin\\theta$（$0<\\theta<\\frac\\pi2$），$u=\\cos\\theta+\\sin\\theta\\in(1,\\sqrt2]$．$x^3+y^3=u\\left(1-\\frac{u^2-1}2\\right)=\\frac{u(3-u^2)}2$ は $u>1$ で減少．値域 $\\left[\\frac{\\sqrt2}2,1\\right)$．\n\\textbf{$l'$ の最大値 $2^{-\\frac16}$，$k'$ の最小値 $1$}．"
+   }
+  ],
+  "idea": {
+   "tex": "同次なので $x+y=1$ や $x^2+y^2=1$ に正規化．$x=\\cos\\theta$，$y=\\sin\\theta$ とし $u=\\cos\\theta+\\sin\\theta\\in(1,\\sqrt2]$ で $x^3+y^3=\\frac{u(3-u^2)}2$．端点が除かれるので片方の不等号は等号不成立．"
+  },
+  "methods": [],
+  "tags": [
+   "最良定数",
+   "同次式",
+   "三角関数の置換"
+  ],
+  "provenance": {
+   "created": "2026-10-29"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "I-EXP-086",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "I-01",
+  "level": 3,
+  "minutes": 25,
+  "theme": "根号の和と差の有理性",
+  "topic": "根号の和と差の有理性",
+  "statement": {
+   "tex": "$n$ を1以上の整数とする．次の3つの命題はそれぞれ正しいか．正しいときは証明し，正しくないときは理由を述べよ．\n\\begin{itemize}\n  \\item 命題 $p$：ある $n$ に対して，$\\sqrt n$ と $\\sqrt{n+3}$ はともに有理数である．\n  \\item 命題 $q$：すべての $n$ に対して，$\\sqrt{n+1}+\\sqrt{n-1}$ は無理数である．\n  \\item 命題 $r$：すべての $n$ に対して，$\\sqrt n+\\sqrt{n+3}$ は無理数である．\n\\end{itemize}"
+  },
+  "answer": {
+   "tex": "$p$：正しい，$q$：正しい，$r$：正しくない（$n=1$ が反例）"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "\\textbf{$p$：正しい}．$n=1$ で $\\sqrt1=1$，$\\sqrt4=2$．\n\n\\textbf{$q$：正しい}．$s=\\sqrt{n+1}+\\sqrt{n-1}$ が有理数とすると $s>0$，$\\sqrt{n+1}-\\sqrt{n-1}=\\frac2s$ も有理数．よって $\\sqrt{n+1},\\sqrt{n-1}$ は有理数で，$n\\pm1$ は平方数（整数の平方根が有理数なら整数）．$u^2-v^2=2$ は $u-v,u+v$ が同じ偶奇で積が $2\\equiv2\\pmod4$ となり不可能．$\\blacksquare$\n\n\\textbf{$r$：正しくない}．$n=1$ で $1+2=3$ は有理数．"
+   }
+  ],
+  "idea": {
+   "tex": "$\\sqrt{n+1}+\\sqrt{n-1}$ が有理数なら，その逆数から差も有理数になり，両方が有理数．差が2の平方数はない．真偽の判定は「ある」は例1つ，「すべて」は反例1つで決まる．"
+  },
+  "methods": [],
+  "tags": [
+   "無理数",
+   "命題の真偽",
+   "平方数"
+  ],
+  "provenance": {
+   "created": "2026-10-29"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "I-EXP-087",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "I-01",
+  "level": 4,
+  "minutes": 30,
+  "theme": "3変数の対称2次形式の非負条件",
+  "topic": "3変数の対称2次形式の非負条件",
+  "statement": {
+   "tex": "実数 $a$ に対し $f(x,y,z)=a(x^2+y^2+z^2)+2(1-a)(xy+yz+zx)$ とする．次の条件をみたす $a$ の範囲をそれぞれ求めよ．\n\\begin{enumerate}\n  \\item すべての実数 $x,y,z$ に対して $f(x,y,z)\\geqq0$．\n  \\item $x+y+z=0$ をみたすすべての実数 $x,y,z$ に対して $f(x,y,z)\\geqq0$．\n  \\item $x\\geqq0$，$y\\geqq0$，$z\\geqq0$ をみたすすべての $x,y,z$ に対して $f(x,y,z)\\geqq0$．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $\\dfrac12\\leqq a\\leqq2$　(2) $a\\geqq\\dfrac12$　(3) $0\\leqq a\\leqq2$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "$S=x^2+y^2+z^2$，$P=xy+yz+zx$，$T=S-P=\\frac12\\{(x-y)^2+(y-z)^2+(z-x)^2\\}\\geqq0$，$U=(x+y+z)^2=S+2P$．\n$f=aS+2(1-a)P=\\frac{2-a}3U+(2a-1)\\frac{2T}3$（係数比較：$S$ の係数 $\\frac{2-a}3+\\frac{2(2a-1)}3=a$，$P$ の係数 $\\frac{2(2-a)}3-\\frac{2(2a-1)}3=2(1-a)$）．\n\n(1) $U\\geqq0$，$T\\geqq0$ なので $2-a\\geqq0$，$2a-1\\geqq0$ なら $f\\geqq0$．逆に $(1,1,1)$ で $T=0$，$f=3(2-a)$，$(1,-1,0)$ で $U=0$，$f=2(2a-1)$ なので，この2条件は必要．\\textbf{$\\dfrac12\\leqq a\\leqq2$}．\n\n(2) $U=0$ で $f=\\frac{2(2a-1)}3T$．\\textbf{$a\\geqq\\dfrac12$}．\n\n(3) $a<0$：$(1,0,0)$ で $f=a<0$．$a>2$：$(1,1,1)$ で $f=6-3a<0$．$0\\leqq a\\leqq1$：$S,P\\geqq0$ で $f\\geqq0$．$1<a\\leqq2$：(1) より $f\\geqq0$．\\textbf{$0\\leqq a\\leqq2$}．"
+   }
+  ],
+  "idea": {
+   "tex": "$S=x^2+y^2+z^2$，$P=xy+yz+zx$ とすると $f=aS+2(1-a)P$．$(x+y+z)^2=S+2P$ と $S-P=\\frac12\\{(x-y)^2+\\cdots\\}$ の2方向に分解する．非負の変数に限れば $P\\geqq0$ なので係数の符号で判定できる．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) 1/2<=a<=2\n(2) a>=1/2\n(3) 0<=a<=2"
+  },
+  "methods": [],
+  "tags": [
+   "2次形式",
+   "対称式",
+   "余正値"
+  ],
+  "provenance": {
+   "created": "2026-10-29"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "I-EXP-088",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "I-01",
+  "level": 4,
+  "minutes": 25,
+  "theme": "根号の和と重みつき和の最良定数",
+  "topic": "根号の和と重みつき和の最良定数",
+  "statement": {
+   "tex": "\\begin{enumerate}\n  \\item すべての正の実数 $x,y,z$ に対して $\\sqrt x+\\sqrt y+\\sqrt z\\leqq k\\sqrt{x+2y+3z}$ が成り立つような $k$ の最小値と，等号が成り立つときの $x:y:z$ を求めよ．\n  \\item すべての正の実数 $x,y$ に対して $\\sqrt[3]x+\\sqrt[3]y\\leqq k\\sqrt[3]{x+8y}$ が成り立つような $k$ の最小値を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 最小値 $\\sqrt{\\dfrac{11}6}$，$x:y:z=36:9:4$　(2) $\\left(1+\\dfrac{\\sqrt2}4\\right)^{\\frac23}$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) $(\\sqrt x+\\sqrt y+\\sqrt z)^2=\\left(1\\cdot\\sqrt x+\\tfrac1{\\sqrt2}\\sqrt{2y}+\\tfrac1{\\sqrt3}\\sqrt{3z}\\right)^2\\leqq\\left(1+\\tfrac12+\\tfrac13\\right)(x+2y+3z)$．\n\\textbf{最小値 $\\sqrt{\\dfrac{11}6}$，等号 $x:y:z=36:9:4$}（等号は $(\\sqrt x,\\sqrt{2y},\\sqrt{3z})$ と $\\left(1,\\frac1{\\sqrt2},\\frac1{\\sqrt3}\\right)$ が平行なとき，すなわち $x:2y:3z=1:\\frac12:\\frac13$，$y=\\frac x4$，$z=\\frac x9$ で成立するので，$k$ の最小値はこの値）．\n\n(2) 同次なので $x=1$，$y=s^3$（$s>0$）：$k^3\\geqq\\varphi(s)=\\frac{(1+s)^3}{1+8s^3}$．$\\varphi'(s)=\\frac{3(1+s)^2\\{1+8s^3-8s^2(1+s)\\}}{(1+8s^3)^2}=\\frac{3(1+s)^2(1-8s^2)}{(1+8s^3)^2}$ で，$\\varphi$ は $0<s\\leqq\\frac{\\sqrt2}4$ で増加，$s\\geqq\\frac{\\sqrt2}4$ で減少．\n$s=\\frac{\\sqrt2}4$ で $8s^3=s$ より最大値 $\\varphi=\\frac{(1+s)^3}{1+s}=(1+s)^2$．\\textbf{最小値 $\\left(1+\\dfrac{\\sqrt2}4\\right)^{\\frac23}$}．"
+   }
+  ],
+  "idea": {
+   "tex": "平方根はコーシー・シュワルツの係数の配分で決まり，最良定数は $\\sqrt{\\sum\\frac1{c_i}}$．3乗根では同次性から1変数 $s=\\sqrt[3]{y/x}$ の関数の最大値を求める．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) 記述\n(2) (1+sqrt(2)/4)^(2/3)"
+  },
+  "methods": [],
+  "tags": [
+   "コーシー・シュワルツ",
+   "最良定数",
+   "3乗根"
+  ],
+  "provenance": {
+   "created": "2026-10-29"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "I-EXP-089",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "I-01",
+  "level": 4,
+  "minutes": 30,
+  "theme": "重みつき絶対値和の最小（重みつき中央値）",
+  "topic": "重みつき絶対値和の最小（重みつき中央値）",
+  "statement": {
+   "tex": "$x$ を実数とする．関数\n\\[f(x)=\\sum_{k=1}^{100}k\\,|kx-1|=|x-1|+2|2x-1|+3|3x-1|+\\dots+100|100x-1|\\]\nを最小にする $x$ の値と最小値を求めよ．"
+  },
+  "answer": {
+   "tex": "$x=\\dfrac1{80}$ で最小値 $\\dfrac{10499}8$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "$f(x)=\\sum k^2\\left|x-\\frac1k\\right|$．$\\frac1{m+1}<x<\\frac1m$ での傾きは $\\sum_{k>m}k^2-\\sum_{k\\leqq m}k^2=338350-2\\sum_{k=1}^mk^2$．\n$\\sum_{k=1}^{79}k^2=167480$，$\\sum_{k=1}^{80}k^2=173880$．$m=79$ で傾き $3390>0$，$m=80$ で $-9410<0$．\n傾きは $m$ が増えるほど（$x$ が小さいほど）減るので，$x=\\frac1{80}$ で最小．\n$f\\left(\\frac1{80}\\right)=\\sum_{k=1}^{79}k\\left(1-\\frac k{80}\\right)+\\sum_{k=81}^{100}k\\left(\\frac k{80}-1\\right)=3160-\\frac{167480}{80}+\\frac{164470}{80}-1810$．\n\\textbf{$x=\\dfrac1{80}$ で最小値 $\\dfrac{10499}8$}．"
+   }
+  ],
+  "idea": {
+   "tex": "$k|kx-1|=k^2\\left|x-\\frac1k\\right|$ で，重み $k^2$ の点 $\\frac1k$ からの距離の和．傾きは「左の重みの和－右の重みの和」で，符号が変わる点で最小．"
+  },
+  "methods": [],
+  "tags": [
+   "絶対値",
+   "折れ線",
+   "重みつき中央値"
+  ],
+  "provenance": {
+   "created": "2026-10-29"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "I-EXP-090",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "I-01",
+  "level": 4,
+  "minutes": 30,
+  "theme": "積が1の正数とべき乗和の不等式",
+  "topic": "積が1の正数とべき乗和の不等式",
+  "statement": {
+   "tex": "$n\\geqq2$ とし，$x_1,x_2,\\dots,x_n$ は $x_1x_2\\cdots x_n=1$ をみたす正の数とする．\n\\begin{enumerate}\n  \\item $x_1+x_2+\\dots+x_n\\geqq n$ を数学的帰納法で示せ．\n  \\item (1) を用いて，正の数 $y_1,\\dots,y_m$ に対し $\\frac{y_1+\\dots+y_m}m\\geqq\\sqrt[m]{y_1\\cdots y_m}$ を示せ．\n  \\item $x_1^{n-1}+x_2^{n-1}+\\dots+x_n^{n-1}\\geqq\\dfrac1{x_1}+\\dfrac1{x_2}+\\dots+\\dfrac1{x_n}$ を示し，等号成立条件を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 証明　(2) 証明　(3) 証明．等号成立は $n=2$ のとき常に，$n\\geqq3$ のとき $x_1=x_2=\\dots=x_n=1$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) 等号が $x_1=\\dots=x_n=1$ のときに限り成り立つことも合わせて示す．\n$n=2$：$x_1+x_2-2=(\\sqrt{x_1}-\\sqrt{x_2})^2+2\\sqrt{x_1x_2}-2=(\\sqrt{x_1}-\\sqrt{x_2})^2\\geqq0$．等号は $x_1=x_2$，積が1より $x_1=x_2=1$ のとき．\n$n$ で成立とする．$n+1$ 個の積が1のとき，すべてが1より大なら積は1より大，すべてが1より小なら積は1より小となるので，1以上のものと1以下のものがある．1以上のものと1以下のものが同じ1個 $x_i$ だけなら，他の $n\\,(\\geqq2)$ 個は1以上でも1以下でもないことになり矛盾するので，番号を付け替えて $x_n\\geqq1\\geqq x_{n+1}$ としてよい．\n$(x_n-1)(x_{n+1}-1)\\leqq0$ より $x_n+x_{n+1}\\geqq1+x_nx_{n+1}$．$x_1,\\dots,x_{n-1},x_nx_{n+1}$ の $n$ 個は積が1なので仮定から和 $\\geqq n$．\n$\\sum_{i=1}^{n+1}x_i\\geqq n-x_nx_{n+1}+(1+x_nx_{n+1})=n+1$．\n等号のときは $(x_n-1)(x_{n+1}-1)=0$ かつ $x_1=\\dots=x_{n-1}=x_nx_{n+1}=1$ で，$x_n,x_{n+1}$ の一方が1なので他方も1．逆に全部1なら等号．$\\blacksquare$\n\n(2) $G=\\sqrt[m]{y_1\\cdots y_m}$ とし，$x_i=\\frac{y_i}G$（積1）に (1) を用いると $\\frac{y_1+\\dots+y_m}G\\geqq m$．$\\blacksquare$（$m=1$ は自明．）\nまた $m\\geqq2$ のとき等号は $x_1=\\dots=x_m=1$，すなわち $y_1=\\dots=y_m$ のときに限る．\n\n(3) $x_1x_2\\cdots x_n=1$ より $\\frac1{x_i}=\\prod_{j\\neq i}x_j$．\n$n=2$ のとき $\\frac1{x_1}=x_2$，$\\frac1{x_2}=x_1$ なので両辺はともに $x_1+x_2$ で，不等式は等号で常に成り立つ．\n$n\\geqq3$ のとき，(2) を $m=n-1\\,(\\geqq2)$ 個の数 $x_j^{n-1}$（$j\\neq1$）に用いて\n$\\frac1{x_1}=x_2x_3\\cdots x_n=\\sqrt[n-1]{x_2^{n-1}\\cdots x_n^{n-1}}\\leqq\\frac{x_2^{n-1}+\\dots+x_n^{n-1}}{n-1}$．\n同様の $n$ 個の不等式を加えると，各 $x_j^{n-1}$ は右辺に $n-1$ 回現れ，$\\sum\\frac1{x_i}\\leqq\\sum x_j^{n-1}$．$\\blacksquare$\n等号はこの $n$ 個の不等式がすべて等号のとき，すなわち各 $i$ について $x_j$（$j\\neq i$）がすべて等しいときである．$n\\geqq3$ なら $i=1$ から $x_2=\\dots=x_n$，$i=2$ から $x_1=x_3$ で全部等しく，積が1より \\textbf{$x_1=\\dots=x_n=1$}（逆にこのとき等号成立）．\n\\textbf{$n=2$ のときは常に等号}．"
+   }
+  ],
+  "idea": {
+   "tex": "積が1なら1以上と1以下の数が必ずあり，$(x_n-1)(x_{n+1}-1)\\leqq0$ で2つをまとめて帰納法が回る．これから相加相乗平均を出し，$\\frac1{x_1}=x_2\\cdots x_n$ に適用する．"
+  },
+  "methods": [],
+  "tags": [
+   "数学的帰納法",
+   "相加相乗平均",
+   "対称式の不等式"
+  ],
+  "provenance": {
+   "created": "2026-10-29"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "I-EXP-091",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "I-01",
+  "level": 4,
+  "minutes": 30,
+  "theme": "和の差がすべて小さい数の組",
+  "topic": "和の差がすべて小さい数の組",
+  "statement": {
+   "tex": "$n$ を2以上の整数とし，(1)〜(3) では $n\\geqq3$ とする．実数 $a_1,a_2,\\dots,a_n$ に対し $S=a_1+a_2+\\dots+a_n$ とおく．$k=1,2,\\dots,n$ について $-1<S-2a_k<1$ が成り立っているとする．\n\\begin{enumerate}\n  \\item $S$ と各 $a_k$ を $\\varepsilon_j=S-2a_j$ $(j=1,\\dots,n)$ を用いて表せ．\n  \\item すべての $k$ について $|a_k|<1$ が成り立つことを示せ．\n  \\item (2) の1は，これより小さい数に置き換えられないことを示せ．\n  \\item $n=2$ のときは，$|a_k|$ がいくらでも大きくなりうることを示せ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $S=\\dfrac{\\sum_j\\varepsilon_j}{n-2}，\\ a_k=\\dfrac{S-\\varepsilon_k}2$　(2) 証明　(3) 証明　(4) 証明"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) $\\sum_j\\varepsilon_j=nS-2S=(n-2)S$ より $\\boldsymbol{S=\\dfrac{\\sum_j\\varepsilon_j}{n-2}}$，$\\boldsymbol{a_k=\\dfrac{S-\\varepsilon_k}2}$．\n\n(2) $a_k=\\dfrac{\\sum_{j\\neq k}\\varepsilon_j-(n-3)\\varepsilon_k}{2(n-2)}$．$|\\varepsilon_j|<1$ より\n\\[|a_k|<\\frac{(n-1)+(n-3)}{2(n-2)}=1.\\]\n$\\blacksquare$\n\n(3) $0<\\delta<1$ に対し $\\varepsilon_j=1-\\delta$（$j\\neq1$），$\\varepsilon_1=-(1-\\delta)$ とし，$S=\\frac{\\sum\\varepsilon_j}{n-2}$，$a_j=\\frac{S-\\varepsilon_j}2$ と定める．$\\sum a_j=\\frac{nS-\\sum\\varepsilon_j}2=S$ なので $S-2a_j=\\varepsilon_j$ で条件をみたし，$a_1=\\frac{(n-1)(1-\\delta)+(n-3)(1-\\delta)}{2(n-2)}=1-\\delta$．$\\delta$ はいくらでも小さくとれる．$\\blacksquare$\n\n(4) $n=2$ では $S-2a_1=a_2-a_1$，$S-2a_2=a_1-a_2$ で，条件は $|a_1-a_2|<1$ だけ．$a_1=a_2=M$ は任意の $M$ で条件をみたす．$\\blacksquare$"
+   }
+  ],
+  "idea": {
+   "tex": "$\\varepsilon_k=S-2a_k$ を新しい変数にとると，$a_k$ と $S$ が $\\varepsilon$ の1次式で表せる．条件 $|\\varepsilon_k|<1$ のもとで $a_k$ の取りうる範囲は係数の絶対値の和で評価でき，逆に $\\varepsilon$ を与えれば $a$ が作れる（最良性）．"
+  },
+  "methods": [],
+  "tags": [
+   "変数変換",
+   "最良定数",
+   "全称証明"
+  ],
+  "provenance": {
+   "created": "2026-10-29"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "I-EXP-092",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "I-01",
+  "level": 3,
+  "minutes": 25,
+  "theme": "絶対値不等式の連立と解の長さ",
+  "topic": "絶対値不等式の連立と解の長さ",
+  "statement": {
+   "tex": "2つの不等式\n\\[\n|x-a|\\leqq a+3\\quad\\cdots\\text{①},\\qquad |x-2a|>3a-1\\quad\\cdots\\text{②}\n\\]\nについて考える．\n\\begin{enumerate}\n  \\item ①と②を同時に満たす実数 $x$ が存在するような定数 $a$ の範囲を求めよ．\n  \\item (1) の範囲の $a$ に対し，①と②を同時に満たす $x$ の範囲の長さの合計を $L(a)$ とする．$L(a)$ を求め，その最大値を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $-3\\leqq a<4$　(2) $L(a)=2a+6\\ \\left(-3\\leqq a\\leqq\\frac13\\right)，\\ 8-4a\\ \\left(\\frac13<a<\\frac43\\right)，\\ 4-a\\ \\left(\\frac43\\leqq a<4\\right)$，最大値 $\\dfrac{20}3\\ \\left(a=\\frac13\\right)$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "①：$a+3\\geqq0$ が必要で，そのとき $-3\\leqq x\\leqq2a+3$．\n②：$3a-1<0$ なら全実数，$a=\\frac13$ なら $x\\neq\\frac23$，$a>\\frac13$ なら $x<1-a$ または $x>5a-1$．\n\n(1) $-3\\leqq a\\leqq\\frac13$ では①の区間（$a=-3$ なら点 $x=-3$）がそのまま，または1点を除いて残るので存在する．\n$a>\\frac13$：$[-3,2a+3]$ と $x<1-a$ の共通部分は $1-a>-3$，すなわち $a<4$ で空でない．$x>5a-1$ との共通部分は $5a-1<2a+3$，すなわち $a<\\frac43$ で空でない．\nよって $\\boldsymbol{-3\\leqq a<4}$．\n\n(2) $a>\\frac13$ では $1-a<5a-1$ で2つの半直線は重ならず，$1-a\\leqq2a+3$ である．\n\\begin{itemize}\n  \\item $-3\\leqq a\\leqq\\frac13$：$L(a)=2a+6$（1点を除いても長さは変わらない）．\n  \\item $\\frac13<a<\\frac43$：$[-3,1-a)$ と $(5a-1,2a+3]$ で $L(a)=(4-a)+(4-3a)=8-4a$．\n  \\item $\\frac43\\leqq a<4$：$[-3,1-a)$ のみで $L(a)=4-a$．\n\\end{itemize}\n$L$ は $a\\leqq\\frac13$ で増加，$a\\geqq\\frac13$ で減少し，最大値は $L\\left(\\frac13\\right)=\\boldsymbol{\\dfrac{20}3}$（$a=\\frac13$）．"
+   }
+  ],
+  "idea": {
+   "tex": "$|x-a|\\leqq a+3$ は閉区間 $[-3,2a+3]$，$|x-2a|>3a-1$ は右辺の符号で全体か「2つの半直線」．区間と半直線の重なりを，端点の大小で場合分けする．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) -3<=a<4\n(2) 記述"
+  },
+  "methods": [],
+  "tags": [
+   "絶対値",
+   "場合分け",
+   "区間の長さ"
+  ],
+  "provenance": {
+   "created": "2026-10-29"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "I-EXP-093",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "I-01",
+  "level": 0,
+  "minutes": 5,
+  "theme": "式の計算／乗法公式による展開",
+  "unit": "式の計算",
+  "topic": "乗法公式による展開",
+  "statement": {
+   "tex": "\\begin{enumerate}\n  \\item $(2x-3y)^2$ を展開せよ．\n  \\item $(x+2)(x-2)(x^2+4)$ を展開せよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $4x^{2}-12x y+9y^{2}$　(2) $x^{4}-16$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) $(a-b)^2=a^2-2ab+b^2$ より $(2x-3y)^2=(2x)^2-2\\cdot2x\\cdot3y+(3y)^2=\\boldsymbol{4x^{2}-12x y+9y^{2}}$．\n(2) まず $(x+2)(x-2)=x^2-4$．次に $(x^2-4)(x^2+4)=(x^2)^2-4^2=\\boldsymbol{x^{4}-16}$．"
+   }
+  ],
+  "idea": {
+   "tex": "和と差の積 $(A+B)(A-B)=A^2-B^2$ を2回続けて使えるように，掛ける順番を選ぶ．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) 4*x^2 - 12*x*y + 9*y^2\n(2) x^4 - 16"
+  },
+  "methods": [],
+  "tags": [
+   "展開",
+   "乗法公式"
+  ],
+  "provenance": {
+   "created": "2026-10-30"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "I-EXP-094",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "I-01",
+  "level": 0,
+  "minutes": 6,
+  "theme": "式の計算／たすきがけの因数分解",
+  "unit": "式の計算",
+  "topic": "たすきがけの因数分解",
+  "statement": {
+   "tex": "\\begin{enumerate}\n  \\item $6x^2-x-12$ を因数分解せよ．\n  \\item $3x^2-10xy+8y^2$ を因数分解せよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $(2x-3)(3x+4)$　(2) $(x-2y)(3x-4y)$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) $6=2\\times3$，$-12=(-3)\\times4$ と分けると，たすきがけで $2\\cdot4+3\\cdot(-3)=-1$ となり $x$ の係数に一致する．\nよって $6x^2-x-12=\\boldsymbol{(2x-3)(3x+4)}$．\n(2) $x$ についての2次式とみる．$3=1\\times3$，$8y^2=(-2y)(-4y)$ とすると $1\\cdot(-4y)+3\\cdot(-2y)=-10y$．\nよって $3x^2-10xy+8y^2=\\boldsymbol{(x-2y)(3x-4y)}$．"
+   }
+  ],
+  "idea": {
+   "tex": "$x^2$ の係数と定数項を積に分け，交差させた積の和が $x$ の係数になる組を探す．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) (2x-3)(3x+4)\n(2) (x-2y)(3x-4y)"
+  },
+  "methods": [],
+  "tags": [
+   "因数分解",
+   "たすきがけ"
+  ],
+  "provenance": {
+   "created": "2026-10-30"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "I-EXP-095",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "I-01",
+  "level": 0,
+  "minutes": 6,
+  "theme": "式の計算／置き換えによる因数分解",
+  "unit": "式の計算",
+  "topic": "置き換えによる因数分解",
+  "statement": {
+   "tex": "$(x^2+x)^2-8(x^2+x)+12$ を因数分解せよ．"
+  },
+  "answer": {
+   "tex": "$(x-1)(x+2)(x-2)(x+3)$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "$x^2+x=A$ とおくと，与式 $=A^2-8A+12=(A-2)(A-6)$．\n$=(x^2+x-2)(x^2+x-6)=\\boldsymbol{(x-1)(x+2)(x-2)(x+3)}$．"
+   }
+  ],
+  "idea": {
+   "tex": "同じかたまり $x^2+x$ を1文字とみて2次式の因数分解に帰着し，最後に元に戻してさらに分解できないか確かめる．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(x-1)(x+2)(x-2)(x+3)"
+  },
+  "methods": [],
+  "tags": [
+   "因数分解",
+   "置き換え"
+  ],
+  "provenance": {
+   "created": "2026-10-30"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "I-EXP-096",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "I-01",
+  "level": 0,
+  "minutes": 5,
+  "theme": "実数／分母の有理化",
+  "unit": "実数",
+  "topic": "分母の有理化",
+  "statement": {
+   "tex": "\\begin{enumerate}\n  \\item $\\dfrac{2}{\\sqrt5-\\sqrt3}$ の分母を有理化せよ．\n  \\item $\\dfrac{\\sqrt3+1}{\\sqrt3-1}$ の分母を有理化せよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $\\sqrt5+\\sqrt3$　(2) $2+\\sqrt3$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) 分母・分子に $\\sqrt5+\\sqrt3$ を掛けると，分母は $(\\sqrt5)^2-(\\sqrt3)^2=2$．\nよって $\\dfrac{2(\\sqrt5+\\sqrt3)}{2}=\\boldsymbol{\\sqrt5+\\sqrt3}$．\n(2) 分母・分子に $\\sqrt3+1$ を掛けると，分母は $3-1=2$，分子は $(\\sqrt3+1)^2=4+2\\sqrt3$．\nよって $\\dfrac{4+2\\sqrt3}{2}=\\boldsymbol{2+\\sqrt3}$．"
+   }
+  ],
+  "idea": {
+   "tex": "$(\\sqrt p-\\sqrt q)(\\sqrt p+\\sqrt q)=p-q$ を使って分母から根号を消す．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) sqrt(5)+sqrt(3)\n(2) 2+sqrt(3)"
+  },
+  "methods": [],
+  "tags": [
+   "有理化",
+   "平方根"
+  ],
+  "provenance": {
+   "created": "2026-10-30"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "I-EXP-097",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "I-01",
+  "level": 0,
+  "minutes": 5,
+  "theme": "実数／根号を含む式の計算",
+  "unit": "実数",
+  "topic": "根号を含む式の計算",
+  "statement": {
+   "tex": "\\begin{enumerate}\n  \\item $\\sqrt{12}+\\sqrt{27}-\\sqrt{48}$ を計算せよ．\n  \\item $(\\sqrt6-\\sqrt2)^2$ を計算せよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $\\sqrt3$　(2) $8-4\\sqrt3$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) $\\sqrt{12}=2\\sqrt3$，$\\sqrt{27}=3\\sqrt3$，$\\sqrt{48}=4\\sqrt3$ より $2\\sqrt3+3\\sqrt3-4\\sqrt3=\\boldsymbol{\\sqrt3}$．\n(2) $(\\sqrt6)^2-2\\sqrt6\\sqrt2+(\\sqrt2)^2=6-2\\sqrt{12}+2=\\boldsymbol{8-4\\sqrt3}$．"
+   }
+  ],
+  "idea": {
+   "tex": "根号の中を「平方数×できるだけ小さい数」に分けて $\\sqrt{a^2b}=a\\sqrt b$ と整理する．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) sqrt(3)\n(2) 8-4sqrt(3)"
+  },
+  "methods": [],
+  "tags": [
+   "平方根",
+   "計算"
+  ],
+  "provenance": {
+   "created": "2026-10-30"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "I-EXP-098",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "I-01",
+  "level": 0,
+  "minutes": 5,
+  "theme": "実数／絶対値と $\\sqrt{A^2}=|A|$",
+  "unit": "実数",
+  "topic": "絶対値と $\\sqrt{A^2}=|A|$",
+  "statement": {
+   "tex": "\\begin{enumerate}\n  \\item $|\\sqrt3-2|+|\\sqrt3-1|$ の値を求めよ．\n  \\item $x<1$ のとき，$\\sqrt{x^2-2x+1}$ を根号と絶対値記号を使わずに表せ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $1$　(2) $1-x$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) $\\sqrt3\\fallingdotseq1.73$ より $\\sqrt3-2<0$，$\\sqrt3-1>0$．\nよって $|\\sqrt3-2|+|\\sqrt3-1|=(2-\\sqrt3)+(\\sqrt3-1)=\\boldsymbol{1}$．\n(2) $\\sqrt{x^2-2x+1}=\\sqrt{(x-1)^2}=|x-1|$．$x<1$ より $x-1<0$ なので $|x-1|=\\boldsymbol{1-x}$．"
+   }
+  ],
+  "idea": {
+   "tex": "絶対値は中身の符号を調べてから外す．$\\sqrt{A^2}$ は $A$ ではなく $|A|$ である．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) 1\n(2) 1-x"
+  },
+  "methods": [],
+  "tags": [
+   "絶対値",
+   "平方根"
+  ],
+  "provenance": {
+   "created": "2026-10-30"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "I-EXP-099",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "I-01",
+  "level": 0,
+  "minutes": 5,
+  "theme": "1次不等式／1次不等式の解法",
+  "unit": "1次不等式",
+  "topic": "1次不等式の解法",
+  "statement": {
+   "tex": "\\begin{enumerate}\n  \\item 不等式 $3x-5>5x+1$ を解け．\n  \\item 不等式 $\\dfrac{x-1}{2}-\\dfrac{2x+1}{3}\\leqq1$ を解け．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $x<-3$　(2) $x\\geqq-11$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) 移項して $3x-5x>1+5$，$-2x>6$．負の数で割るので不等号の向きが変わり $\\boldsymbol{x<-3}$．\n(2) 両辺に $6$ を掛けて $3(x-1)-2(2x+1)\\leqq6$．\n$3x-3-4x-2\\leqq6$ より $-x\\leqq11$，よって $\\boldsymbol{x\\geqq-11}$．"
+   }
+  ],
+  "idea": {
+   "tex": "分数は分母の最小公倍数を掛けて払う．負の数で両辺を割るときは不等号の向きが逆になる．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) x<-3\n(2) x>=-11"
+  },
+  "methods": [],
+  "tags": [
+   "1次不等式"
+  ],
+  "provenance": {
+   "created": "2026-10-30"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "I-EXP-100",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "I-01",
+  "level": 0,
+  "minutes": 6,
+  "theme": "1次不等式／連立不等式と整数解",
+  "unit": "1次不等式",
+  "topic": "連立不等式と整数解",
+  "statement": {
+   "tex": "\\begin{enumerate}\n  \\item 連立不等式 $\\begin{cases}2x+1>x-3\\\\3x-2\\leqq x+7\\end{cases}$ を解け．\n  \\item (1) の解を満たす整数 $x$ は何個あるか．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $-4<x\\leqq\\dfrac92$　(2) $8$ 個"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) $2x+1>x-3$ より $x>-4$．$3x-2\\leqq x+7$ より $2x\\leqq9$，$x\\leqq\\dfrac92$．\n共通部分をとって $\\boldsymbol{-4<x\\leqq\\dfrac92}$．\n(2) $\\dfrac92=4.5$ なので，整数は $-3,-2,\\dots,4$ の $\\boldsymbol{8}$ 個．"
+   }
+  ],
+  "idea": {
+   "tex": "連立不等式はそれぞれを解いて数直線上で共通部分をとる．端を含むかどうかに注意する．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) -4<x<=9/2\n(2) 8個"
+  },
+  "methods": [],
+  "tags": [
+   "連立不等式",
+   "整数解"
+  ],
+  "provenance": {
+   "created": "2026-10-30"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "I-EXP-101",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "I-01",
+  "level": 0,
+  "minutes": 6,
+  "theme": "1次不等式／絶対値を含む方程式・不等式",
+  "unit": "1次不等式",
+  "topic": "絶対値を含む方程式・不等式",
+  "statement": {
+   "tex": "\\begin{enumerate}\n  \\item 方程式 $|2x-1|=5$ を解け．\n  \\item 不等式 $|2x-3|\\leqq5$ を解け．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $x=3,\\ -2$　(2) $-1\\leqq x\\leqq4$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) $2x-1=\\pm5$ より $2x=6$ または $2x=-4$．よって $\\boldsymbol{x=3,\\ -2}$．\n(2) $-5\\leqq2x-3\\leqq5$ より $-2\\leqq2x\\leqq8$．よって $\\boldsymbol{-1\\leqq x\\leqq4}$．"
+   }
+  ],
+  "idea": {
+   "tex": "$c>0$ のとき $|X|=c\\iff X=\\pm c$，$|X|\\leqq c\\iff -c\\leqq X\\leqq c$ を使う．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) {3, -2}\n(2) -1<=x<=4"
+  },
+  "methods": [],
+  "tags": [
+   "絶対値",
+   "方程式",
+   "不等式"
+  ],
+  "provenance": {
+   "created": "2026-10-30"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "I-EXP-102",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "I-01",
+  "level": 0,
+  "minutes": 5,
+  "theme": "集合／共通部分・和集合・補集合",
+  "unit": "集合",
+  "topic": "共通部分・和集合・補集合",
+  "statement": {
+   "tex": "$U=\\{1,2,3,\\dots,12\\}$ を全体集合とし，$U$ の部分集合 $A$ を「$12$ の正の約数全体」，$B$ を「$3$ の倍数全体」とする．\n\\begin{enumerate}\n  \\item $A\\cap B$ を要素を書き並べて表せ．\n  \\item $\\overline{A\\cup B}$ を要素を書き並べて表せ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $\\{3,6,12\\}$　(2) $\\{5,7,8,10,11\\}$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "$A=\\{1,2,3,4,6,12\\}$，$B=\\{3,6,9,12\\}$．\n(1) 両方に属する要素を選んで $A\\cap B=\\boldsymbol{\\{3,6,12\\}}$．\n(2) $A\\cup B=\\{1,2,3,4,6,9,12\\}$ なので，$U$ の残りの要素で $\\overline{A\\cup B}=\\boldsymbol{\\{5,7,8,10,11\\}}$．"
+   }
+  ],
+  "idea": {
+   "tex": "まず $A$，$B$ を要素で書き出す．補集合は全体集合から除いた残り．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) {3, 6, 12}\n(2) {5, 7, 8, 10, 11}"
+  },
+  "methods": [],
+  "tags": [
+   "集合",
+   "補集合"
+  ],
+  "provenance": {
+   "created": "2026-10-30"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "I-EXP-103",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "I-01",
+  "level": 0,
+  "minutes": 6,
+  "theme": "集合／要素の個数（和集合）",
+  "unit": "集合",
+  "topic": "要素の個数（和集合）",
+  "statement": {
+   "tex": "\\begin{enumerate}\n  \\item $1$ から $100$ までの整数のうち，$3$ または $5$ で割り切れる数は何個あるか．\n  \\item $1$ から $100$ までの整数のうち，$3$ でも $5$ でも割り切れない数は何個あるか．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $47$ 個　(2) $53$ 個"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "$3$ の倍数の集合を $A$，$5$ の倍数の集合を $B$ とする．\n$n(A)=33$，$n(B)=20$，$A\\cap B$ は $15$ の倍数で $n(A\\cap B)=6$．\n(1) $n(A\\cup B)=33+20-6=\\boldsymbol{47}$ 個．\n(2) $n(\\overline{A\\cup B})=100-47=\\boldsymbol{53}$ 個．"
+   }
+  ],
+  "idea": {
+   "tex": "$n(A\\cup B)=n(A)+n(B)-n(A\\cap B)$．重なりの部分を二重に数えないようにする．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) 47個\n(2) 53個"
+  },
+  "methods": [],
+  "tags": [
+   "集合",
+   "要素の個数"
+  ],
+  "provenance": {
+   "created": "2026-10-30"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "I-EXP-104",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "I-01",
+  "level": 0,
+  "minutes": 5,
+  "theme": "集合と命題／必要条件・十分条件の判定",
+  "unit": "集合と命題",
+  "topic": "必要条件・十分条件の判定",
+  "statement": {
+   "tex": "$x$ は実数とする．次の空欄にあてはまるものを下の 1〜4 から選び，番号で答えよ．\n1：必要十分条件である　2：十分条件であるが必要条件でない　3：必要条件であるが十分条件でない　4：必要条件でも十分条件でもない\n\\begin{enumerate}\n  \\item $x=2$ は $x^2=4$ であるための［　］．\n  \\item $x>1$ は $x>3$ であるための［　］．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $2$　(2) $3$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) $x=2\\Rightarrow x^2=4$ は真．$x^2=4\\Rightarrow x=2$ は偽（反例 $x=-2$）．よって十分条件であるが必要条件でない：$\\boldsymbol{2}$．\n(2) $x>1\\Rightarrow x>3$ は偽（反例 $x=2$）．$x>3\\Rightarrow x>1$ は真．よって必要条件であるが十分条件でない：$\\boldsymbol{3}$．"
+   }
+  ],
+  "idea": {
+   "tex": "「$p\\Rightarrow q$ が真なら $p$ は $q$ の十分条件，$q$ は $p$ の必要条件」．両向きの真偽を反例で調べる．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) 2\n(2) 3"
+  },
+  "methods": [],
+  "tags": [
+   "必要条件",
+   "十分条件",
+   "命題"
+  ],
+  "provenance": {
+   "created": "2026-10-30"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "I-EXP-105",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "I-01",
+  "level": 0,
+  "minutes": 6,
+  "theme": "式の値／対称式の値（基本対称式で表す）",
+  "unit": "式の値",
+  "topic": "対称式の値（基本対称式で表す）",
+  "statement": {
+   "tex": "$x=\\sqrt3+\\sqrt2$，$y=\\sqrt3-\\sqrt2$ のとき，次の式の値を求めよ．\n\\begin{enumerate}\n  \\item $x^2+y^2$\n  \\item $x^3+y^3$\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $10$　(2) $18\\sqrt3$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "$x+y=2\\sqrt3$，$xy=(\\sqrt3)^2-(\\sqrt2)^2=1$．\n(1) $x^2+y^2=(x+y)^2-2xy=12-2=\\boldsymbol{10}$．\n(2) $x^3+y^3=(x+y)^3-3xy(x+y)=24\\sqrt3-6\\sqrt3=\\boldsymbol{18\\sqrt3}$．"
+   }
+  ],
+  "idea": {
+   "tex": "対称式は和 $x+y$ と積 $xy$ で表せる．先に和と積を計算しておく．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) 10\n(2) 18sqrt(3)"
+  },
+  "methods": [],
+  "tags": [
+   "対称式",
+   "式の値"
+  ],
+  "provenance": {
+   "created": "2026-10-30"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "I-EXP-106",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "I-01",
+  "level": 0,
+  "minutes": 5,
+  "theme": "式の値／$x+\\dfrac1x$ の値から求める",
+  "unit": "式の値",
+  "topic": "$x+\\dfrac1x$ の値から求める",
+  "statement": {
+   "tex": "$x+\\dfrac1x=3$ のとき，次の式の値を求めよ．\n\\begin{enumerate}\n  \\item $x^2+\\dfrac{1}{x^2}$\n  \\item $\\left(x-\\dfrac1x\\right)^2$\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $7$　(2) $5$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) $\\left(x+\\dfrac1x\\right)^2=x^2+2+\\dfrac1{x^2}$ より $x^2+\\dfrac1{x^2}=9-2=\\boldsymbol{7}$．\n(2) $\\left(x-\\dfrac1x\\right)^2=x^2-2+\\dfrac1{x^2}=7-2=\\boldsymbol{5}$．"
+   }
+  ],
+  "idea": {
+   "tex": "$x\\cdot\\dfrac1x=1$ なので，$x$ と $\\dfrac1x$ の和がわかれば2乗の和も計算できる．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) 7\n(2) 5"
+  },
+  "methods": [],
+  "tags": [
+   "式の値",
+   "対称式"
+  ],
+  "provenance": {
+   "created": "2026-10-30"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "I-EXP-107",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "I-01",
+  "level": 0,
+  "minutes": 6,
+  "theme": "1次不等式／1次不等式の文章題",
+  "unit": "1次不等式",
+  "topic": "1次不等式の文章題",
+  "statement": {
+   "tex": "1個 $120$ 円のりんごと1個 $80$ 円のみかんを合わせて $20$ 個買い，代金の合計を $2000$ 円以下にしたい．りんごをできるだけ多く買うとき，りんごは何個買えるか．"
+  },
+  "answer": {
+   "tex": "$10$ 個"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "りんごを $x$ 個買うとすると，みかんは $20-x$ 個（$x$ は $0\\leqq x\\leqq20$ の整数）．\n$120x+80(20-x)\\leqq2000$ より $40x+1600\\leqq2000$，$x\\leqq10$．\nよって，りんごは最大 $\\boldsymbol{10}$ 個．"
+   }
+  ],
+  "idea": {
+   "tex": "求めたい個数を $x$ とおき，代金の条件を1次不等式で表して，それを満たす最大の整数を選ぶ．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "10個"
+  },
+  "methods": [],
+  "tags": [
+   "1次不等式",
+   "文章題"
+  ],
+  "provenance": {
+   "created": "2026-10-30"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "I-EXP-108",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "I-01",
+  "level": 0,
+  "minutes": 8,
+  "theme": "式の値／和と積から差を求める",
+  "unit": "式の値",
+  "topic": "和と積から差を求める",
+  "statement": {
+   "tex": "$x+y=3$，$xy=1$，$x>y$ のとき，次の値を求めよ．\n\\begin{enumerate}\n  \\item $x-y$\n  \\item $x^2-y^2$\n  \\item $x^3-y^3$\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $\\sqrt5$　(2) $3\\sqrt5$　(3) $8\\sqrt5$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) $(x-y)^2=(x+y)^2-4xy=9-4=5$．$x>y$ より $x-y>0$ なので $x-y=\\boldsymbol{\\sqrt5}$．\n(2) $x^2-y^2=(x+y)(x-y)=\\boldsymbol{3\\sqrt5}$．\n(3) $x^3-y^3=(x-y)(x^2+xy+y^2)$．$x^2+y^2=(x+y)^2-2xy=7$ より $x^2+xy+y^2=8$．\nよって $x^3-y^3=\\boldsymbol{8\\sqrt5}$．"
+   }
+  ],
+  "idea": {
+   "tex": "差は対称式ではないが，$(x-y)^2$ は対称式なので和と積で計算でき，符号は条件 $x>y$ で決める．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) sqrt(5)\n(2) 3sqrt(5)\n(3) 8sqrt(5)"
+  },
+  "methods": [],
+  "tags": [
+   "対称式",
+   "式の値"
+  ],
+  "provenance": {
+   "created": "2026-10-30"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "I-EXP-109",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "I-01",
+  "level": 1,
+  "minutes": 10,
+  "theme": "式の計算／2文字の2次式の因数分解",
+  "unit": "式の計算",
+  "topic": "2文字の2次式の因数分解",
+  "statement": {
+   "tex": "\\begin{enumerate}\n  \\item $x^2+3xy+2y^2+2x+5y-3$ を因数分解せよ．\n  \\item $2x^2-xy-y^2+x+2y-1$ を因数分解せよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $(x+y+3)(x+2y-1)$　(2) $(2x+y-1)(x-y+1)$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) $x$ について整理すると $x^2+(3y+2)x+(2y^2+5y-3)$．\n定数項は $2y^2+5y-3=(y+3)(2y-1)$ で，$(y+3)+(2y-1)=3y+2$ が $x$ の係数に一致する．\nよって $\\boldsymbol{(x+y+3)(x+2y-1)}$．\n(2) $x$ について整理すると $2x^2-(y-1)x-(y^2-2y+1)=2x^2-(y-1)x-(y-1)^2$．\n$y-1=Y$ とおくと $2x^2-Yx-Y^2=(2x+Y)(x-Y)$．\nよって $(2x+y-1)(x-y+1)$，すなわち $\\boldsymbol{(2x+y-1)(x-y+1)}$．"
+   }
+  ],
+  "idea": {
+   "tex": "1つの文字（ここでは $x$）について降べきの順に整理し，定数項（他の文字の式）を先に因数分解してからたすきがけする．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) (x+y+3)(x+2y-1)\n(2) (2x+y-1)(x-y+1)"
+  },
+  "methods": [],
+  "tags": [
+   "因数分解",
+   "たすきがけ",
+   "1文字に着目"
+  ],
+  "provenance": {
+   "created": "2026-10-30"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "I-EXP-110",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "I-01",
+  "level": 1,
+  "minutes": 10,
+  "theme": "式の計算／複2次式の因数分解（平方の差）",
+  "unit": "式の計算",
+  "topic": "複2次式の因数分解（平方の差）",
+  "statement": {
+   "tex": "\\begin{enumerate}\n  \\item $x^4-6x^2+1$ を因数分解せよ．\n  \\item $x^4+4$ を因数分解せよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $(x^2+2x-1)(x^2-2x-1)$　(2) $(x^2+2x+2)(x^2-2x+2)$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) $x^2=X$ としても整数の範囲で因数分解できないので，平方の差を作る．\n$x^4-6x^2+1=(x^4-2x^2+1)-4x^2=(x^2-1)^2-(2x)^2$\n$=\\boldsymbol{(x^2+2x-1)(x^2-2x-1)}$．\n(2) $x^4+4=(x^4+4x^2+4)-4x^2=(x^2+2)^2-(2x)^2=\\boldsymbol{(x^2+2x+2)(x^2-2x+2)}$．"
+   }
+  ],
+  "idea": {
+   "tex": "$x^2$ の項を足し引きして「(2次式)$^2-$(1次式)$^2$」の形を作り，和と差の積に分ける．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) (x^2+2x-1)(x^2-2x-1)\n(2) (x^2+2x+2)(x^2-2x+2)"
+  },
+  "methods": [],
+  "tags": [
+   "因数分解",
+   "複2次式"
+  ],
+  "provenance": {
+   "created": "2026-10-30"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "I-EXP-111",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "I-01",
+  "level": 1,
+  "minutes": 10,
+  "theme": "式の計算／組合せを工夫する因数分解",
+  "unit": "式の計算",
+  "topic": "組合せを工夫する因数分解",
+  "statement": {
+   "tex": "$(x+1)(x+2)(x+3)(x+4)-24$ を因数分解せよ．"
+  },
+  "answer": {
+   "tex": "$x(x+5)(x^2+5x+10)$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "$1+4=2+3=5$ に着目して，$(x+1)(x+4)$ と $(x+2)(x+3)$ を組にする．\n$(x+1)(x+4)=x^2+5x+4$，$(x+2)(x+3)=x^2+5x+6$．\n$x^2+5x=A$ とおくと，与式 $=(A+4)(A+6)-24=A^2+10A=A(A+10)$．\nよって $\\boldsymbol{x(x+5)(x^2+5x+10)}$．"
+   }
+  ],
+  "idea": {
+   "tex": "定数項の和が等しくなるように2つずつ組んで展開すると，共通のかたまりが現れる．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "x(x+5)(x^2+5x+10)"
+  },
+  "methods": [],
+  "tags": [
+   "因数分解",
+   "置き換え"
+  ],
+  "provenance": {
+   "created": "2026-10-30"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "I-EXP-112",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "I-01",
+  "level": 1,
+  "minutes": 10,
+  "theme": "式の計算／展開の順序の工夫",
+  "unit": "式の計算",
+  "topic": "展開の順序の工夫",
+  "statement": {
+   "tex": "\\begin{enumerate}\n  \\item $(x^2+x+1)(x^2-x+1)(x^4-x^2+1)$ を展開せよ．\n  \\item $(x-1)(x+1)(x^2+1)(x^4+1)$ を展開せよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $x^8+x^4+1$　(2) $x^8-1$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) $(x^2+1+x)(x^2+1-x)=(x^2+1)^2-x^2=x^4+x^2+1$．\n次に $(x^4+1+x^2)(x^4+1-x^2)=(x^4+1)^2-x^4=\\boldsymbol{x^8+x^4+1}$．\n(2) $(x-1)(x+1)=x^2-1$，$(x^2-1)(x^2+1)=x^4-1$，$(x^4-1)(x^4+1)=\\boldsymbol{x^8-1}$．"
+   }
+  ],
+  "idea": {
+   "tex": "共通部分をもつ2つの因数を先に組み，$(A+B)(A-B)=A^2-B^2$ を繰り返し使う．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) x^8+x^4+1\n(2) x^8-1"
+  },
+  "methods": [],
+  "tags": [
+   "展開",
+   "乗法公式"
+  ],
+  "provenance": {
+   "created": "2026-10-30"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "I-EXP-113",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "I-01",
+  "level": 1,
+  "minutes": 10,
+  "theme": "実数／3つの項をもつ分母の有理化",
+  "unit": "実数",
+  "topic": "3つの項をもつ分母の有理化",
+  "statement": {
+   "tex": "$\\dfrac{1}{1+\\sqrt2+\\sqrt3}$ の分母を有理化せよ．"
+  },
+  "answer": {
+   "tex": "$\\dfrac{2+\\sqrt2-\\sqrt6}{4}$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "$(1+\\sqrt2)+\\sqrt3$ とみて，分母・分子に $(1+\\sqrt2)-\\sqrt3$ を掛ける．\n分母 $=(1+\\sqrt2)^2-3=3+2\\sqrt2-3=2\\sqrt2$．\nよって 与式 $=\\dfrac{1+\\sqrt2-\\sqrt3}{2\\sqrt2}=\\dfrac{\\sqrt2(1+\\sqrt2-\\sqrt3)}{4}=\\boldsymbol{\\dfrac{2+\\sqrt2-\\sqrt6}{4}}$．"
+   }
+  ],
+  "idea": {
+   "tex": "2項をひとまとめにして和と差の積を使い，根号を1つずつ消していく．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(2+sqrt(2)-sqrt(6))/4"
+  },
+  "methods": [],
+  "tags": [
+   "有理化",
+   "平方根"
+  ],
+  "provenance": {
+   "created": "2026-10-30"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "I-EXP-114",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "I-01",
+  "level": 1,
+  "minutes": 10,
+  "theme": "実数／二重根号をはずす",
+  "unit": "実数",
+  "topic": "二重根号をはずす",
+  "statement": {
+   "tex": "\\begin{enumerate}\n  \\item $\\sqrt{7-2\\sqrt{10}}$ を簡単にせよ．\n  \\item $\\sqrt{4+\\sqrt{15}}$ を簡単にせよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $\\sqrt5-\\sqrt2$　(2) $\\dfrac{\\sqrt{10}+\\sqrt6}{2}$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) 和が $7$，積が $10$ の2数は $5$ と $2$．$7-2\\sqrt{10}=(\\sqrt5-\\sqrt2)^2$ で，$\\sqrt5-\\sqrt2>0$ だから\n$\\sqrt{7-2\\sqrt{10}}=\\boldsymbol{\\sqrt5-\\sqrt2}$．\n(2) 中を「$2\\sqrt{\\ }$」の形にするため分母分子に $2$ を掛ける：$4+\\sqrt{15}=\\dfrac{8+2\\sqrt{15}}{2}$．\n和 $8$，積 $15$ の2数は $5,3$ なので $\\sqrt{8+2\\sqrt{15}}=\\sqrt5+\\sqrt3$．\nよって $\\dfrac{\\sqrt5+\\sqrt3}{\\sqrt2}=\\boldsymbol{\\dfrac{\\sqrt{10}+\\sqrt6}{2}}$．"
+   }
+  ],
+  "idea": {
+   "tex": "$\\sqrt{p+q\\pm2\\sqrt{pq}}=\\sqrt p\\pm\\sqrt q$（$p>q>0$）．中が $2\\sqrt{\\ }$ の形でなければ作ってから使う．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) sqrt(5)-sqrt(2)\n(2) (sqrt(10)+sqrt(6))/2"
+  },
+  "methods": [],
+  "tags": [
+   "二重根号",
+   "平方根"
+  ],
+  "provenance": {
+   "created": "2026-10-30"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "I-EXP-115",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "I-01",
+  "level": 1,
+  "minutes": 12,
+  "theme": "実数／整数部分と小数部分",
+  "unit": "実数",
+  "topic": "整数部分と小数部分",
+  "statement": {
+   "tex": "$\\dfrac{2}{3-\\sqrt5}$ の整数部分を $a$，小数部分を $b$ とする．\n\\begin{enumerate}\n  \\item $a$，$b$ の値を求めよ．\n  \\item $b^2+b$ の値を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $a=2$，$b=\\dfrac{\\sqrt5-1}{2}$　(2) $1$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) $\\dfrac{2}{3-\\sqrt5}=\\dfrac{2(3+\\sqrt5)}{9-5}=\\dfrac{3+\\sqrt5}{2}$．\n$2<\\sqrt5<3$ より $\\dfrac52<\\dfrac{3+\\sqrt5}{2}<3$ なので $a=\\boldsymbol{2}$．\n$b=\\dfrac{3+\\sqrt5}{2}-2=\\boldsymbol{\\dfrac{\\sqrt5-1}{2}}$．\n(2) $b^2=\\dfrac{6-2\\sqrt5}{4}=\\dfrac{3-\\sqrt5}{2}$ より $b^2+b=\\dfrac{3-\\sqrt5}{2}+\\dfrac{\\sqrt5-1}{2}=\\boldsymbol{1}$．"
+   }
+  ],
+  "idea": {
+   "tex": "有理化してから $\\sqrt{\\ }$ を整数ではさみ，整数部分を決める．小数部分は「元の数 $-$ 整数部分」．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) $a$：2 ; $b$：(sqrt(5)-1)/2\n(2) 1"
+  },
+  "methods": [],
+  "tags": [
+   "整数部分",
+   "小数部分",
+   "有理化"
+  ],
+  "provenance": {
+   "created": "2026-10-30"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "I-EXP-116",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "I-01",
+  "level": 1,
+  "minutes": 12,
+  "theme": "実数／有理数と無理数の相等",
+  "unit": "実数",
+  "topic": "有理数と無理数の相等",
+  "statement": {
+   "tex": "$\\sqrt3$ が無理数であることは用いてよい．\n\\begin{enumerate}\n  \\item 有理数 $p$，$q$ が $(p+2q)+(p-q)\\sqrt3=4+\\sqrt3$ を満たすとき，$p$，$q$ の値を求めよ．\n  \\item 有理数 $a$，$b$ について，$x=2+\\sqrt3$ が2次方程式 $x^2+ax+b=0$ の解であるとき，$a$，$b$ の値を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $p=2$，$q=1$　(2) $a=-4$，$b=1$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) $p+2q$，$p-q$ は有理数なので，両辺の有理数部分と $\\sqrt3$ の係数を比べて $p+2q=4$，$p-q=1$．\nこれを解いて $\\boldsymbol{p=2}$，$\\boldsymbol{q=1}$．\n(2) $x^2=(2+\\sqrt3)^2=7+4\\sqrt3$ を代入すると $7+4\\sqrt3+2a+a\\sqrt3+b=0$．\n$(7+2a+b)+(4+a)\\sqrt3=0$ で，$7+2a+b$，$4+a$ は有理数．\n$4+a\\neq0$ なら $\\sqrt3=-\\dfrac{7+2a+b}{4+a}$ が有理数となり矛盾するので $4+a=0$，$7+2a+b=0$．\nよって $\\boldsymbol{a=-4}$，$\\boldsymbol{b=1}$．"
+   }
+  ],
+  "idea": {
+   "tex": "$r,s$ が有理数のとき $r+s\\sqrt3=0\\iff r=s=0$．式を「有理数 $+$ 有理数 $\\times\\sqrt3$」の形に整理して係数を比べる．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) $p$：2 ; $q$：1\n(2) $a$：-4 ; $b$：1"
+  },
+  "methods": [],
+  "tags": [
+   "有理数",
+   "無理数",
+   "相等"
+  ],
+  "provenance": {
+   "created": "2026-10-30"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "I-EXP-117",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "I-01",
+  "level": 1,
+  "minutes": 12,
+  "theme": "1次不等式／文字係数の1次不等式",
+  "unit": "1次不等式",
+  "topic": "文字係数の1次不等式",
+  "statement": {
+   "tex": "$a$ を定数とする．$x$ についての不等式 $(a-2)x<a^2-4$ ……①について，次の問いに答えよ．\n\\begin{enumerate}\n  \\item $a=0$ のとき，① を解け．\n  \\item ① の解が $x>-1$ となるような $a$ の値を求めよ．\n  \\item ① を満たす実数 $x$ が存在しないような $a$ の値を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $x>2$　(2) $a=-3$　(3) $a=2$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "右辺は $a^2-4=(a-2)(a+2)$．\n・$a>2$ のとき $x<a+2$．・$a<2$ のとき $x>a+2$（負の数で割るので向きが変わる）．\n・$a=2$ のとき $0\\cdot x<0$ となり，これを満たす $x$ はない．\n(1) $a=0<2$ なので $x>0+2$，すなわち $\\boldsymbol{x>2}$．\n(2) 解が $x>\\cdots$ の形になるのは $a<2$ のときで，$a+2=-1$ より $a=-3$（$a<2$ を満たす）．よって $\\boldsymbol{a=-3}$．\n(3) 上の場合分けより $\\boldsymbol{a=2}$．"
+   }
+  ],
+  "idea": {
+   "tex": "$x$ の係数 $a-2$ の符号（正・$0$・負）で場合分けする．$0$ で割ることはできない．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) x>2\n(2) -3\n(3) 2"
+  },
+  "methods": [],
+  "tags": [
+   "1次不等式",
+   "文字係数",
+   "場合分け"
+  ],
+  "provenance": {
+   "created": "2026-10-30"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "I-EXP-118",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "I-01",
+  "level": 1,
+  "minutes": 12,
+  "theme": "1次不等式／連立不等式が解をもつ条件と整数解",
+  "unit": "1次不等式",
+  "topic": "連立不等式が解をもつ条件と整数解",
+  "statement": {
+   "tex": "$a$ を定数とし，連立不等式 $\\begin{cases}2x-1>x+a\\\\3x+2\\leqq x+8\\end{cases}$ を考える．\n\\begin{enumerate}\n  \\item この連立不等式が解をもつような $a$ の値の範囲を求めよ．\n  \\item この連立不等式を満たす整数 $x$ がちょうど $3$ 個となるような $a$ の値の範囲を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $a<2$　(2) $-1\\leqq a<0$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "第1式から $x>a+1$，第2式から $2x\\leqq6$ より $x\\leqq3$．\n(1) $a+1<x\\leqq3$ となる $x$ が存在する条件は $a+1<3$，すなわち $\\boldsymbol{a<2}$．\n(2) 解 $a+1<x\\leqq3$ に含まれる整数がちょうど3個なら，それは $3,2,1$ である．\nそのための条件は $0\\leqq a+1<1$（$a+1=0$ のとき $0$ は含まれない）．よって $\\boldsymbol{-1\\leqq a<0}$．"
+   }
+  ],
+  "idea": {
+   "tex": "数直線上に $x\\leqq3$ を固定して描き，左端 $a+1$ を動かして考える．端の等号は代入して確かめる．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) a<2\n(2) -1<=a<0"
+  },
+  "methods": [],
+  "tags": [
+   "連立不等式",
+   "整数解",
+   "文字定数"
+  ],
+  "provenance": {
+   "created": "2026-10-30"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "I-EXP-119",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "I-01",
+  "level": 1,
+  "minutes": 12,
+  "theme": "1次不等式／絶対値を2つ含む不等式・方程式",
+  "unit": "1次不等式",
+  "topic": "絶対値を2つ含む不等式・方程式",
+  "statement": {
+   "tex": "\\begin{enumerate}\n  \\item 不等式 $|x+1|+|x-2|<5$ を解け．\n  \\item 方程式 $|x+1|+|x-2|=3$ を満たす $x$ の値の範囲を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $-2<x<3$　(2) $-1\\leqq x\\leqq2$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "絶対値の中が $0$ になる $x=-1,\\ 2$ で場合分けする．$f(x)=|x+1|+|x-2|$ とおく．\n・$x<-1$ のとき $f(x)=-(x+1)-(x-2)=-2x+1$．\n・$-1\\leqq x<2$ のとき $f(x)=(x+1)-(x-2)=3$．\n・$x\\geqq2$ のとき $f(x)=(x+1)+(x-2)=2x-1$．\n(1) $x<-1$：$-2x+1<5$ より $x>-2$，よって $-2<x<-1$．$-1\\leqq x<2$：$3<5$ は常に成り立つ．$x\\geqq2$：$2x-1<5$ より $2\\leqq x<3$．\nまとめて $\\boldsymbol{-2<x<3}$．\n(2) $x<-1$ では $-2x+1>3$，$x\\geqq2$ で $f(x)=3$ となるのは $x=2$ のみ．$-1\\leqq x<2$ では常に $3$．\nよって $\\boldsymbol{-1\\leqq x\\leqq2}$．"
+   }
+  ],
+  "idea": {
+   "tex": "絶対値の中が $0$ になる点で区間を分け，各区間で絶対値をはずす．最後に各区間の解を合わせる．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) -2<x<3\n(2) -1<=x<=2"
+  },
+  "methods": [],
+  "tags": [
+   "絶対値",
+   "不等式",
+   "場合分け"
+  ],
+  "provenance": {
+   "created": "2026-10-30"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "I-EXP-120",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "I-01",
+  "level": 1,
+  "minutes": 12,
+  "theme": "1次不等式／右辺に $x$ を含む絶対値の方程式・不等式",
+  "unit": "1次不等式",
+  "topic": "右辺に $x$ を含む絶対値の方程式・不等式",
+  "statement": {
+   "tex": "\\begin{enumerate}\n  \\item 方程式 $|x-2|=2x+1$ を解け．\n  \\item 不等式 $|x-3|<2x$ を解け．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $x=\\dfrac13$　(2) $x>1$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) $x\\geqq2$ のとき $x-2=2x+1$ より $x=-3$ で，$x\\geqq2$ に反する．\n$x<2$ のとき $-(x-2)=2x+1$ より $x=\\dfrac13$ で，$x<2$ を満たす．よって $\\boldsymbol{x=\\dfrac13}$．\n(2) $x\\geqq3$ のとき $x-3<2x$ より $x>-3$．$x\\geqq3$ と合わせて $x\\geqq3$．\n$x<3$ のとき $3-x<2x$ より $x>1$．$x<3$ と合わせて $1<x<3$．\n合わせて $\\boldsymbol{x>1}$．"
+   }
+  ],
+  "idea": {
+   "tex": "右辺に $x$ があるので $\\pm$ で一気に外さず，中身の符号で場合分けし，得られた解がその場合の範囲に入るかを確かめる．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) 1/3\n(2) x>1"
+  },
+  "methods": [],
+  "tags": [
+   "絶対値",
+   "方程式",
+   "不等式",
+   "場合分け"
+  ],
+  "provenance": {
+   "created": "2026-10-30"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "I-EXP-121",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "I-01",
+  "level": 1,
+  "minutes": 12,
+  "theme": "集合／不等式で表された集合の包含関係",
+  "unit": "集合",
+  "topic": "不等式で表された集合の包含関係",
+  "statement": {
+   "tex": "実数全体を全体集合とし，$A=\\{x\\mid |x-2|<3\\}$，$B=\\{x\\mid a<x<a+4\\}$（$a$ は定数）とする．\n\\begin{enumerate}\n  \\item $B\\subset A$ となるような $a$ の値の範囲を求めよ．\n  \\item $A\\cap B=\\varnothing$ となるような $a$ の値の範囲を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $-1\\leqq a\\leqq1$　(2) $a\\leqq-5,\\ 5\\leqq a$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "$|x-2|<3$ より $-1<x<5$ なので $A=\\{x\\mid -1<x<5\\}$．\n(1) $B\\subset A$ となる条件は $-1\\leqq a$ かつ $a+4\\leqq5$（端は両方とも含まないので等号可）．\nよって $\\boldsymbol{-1\\leqq a\\leqq1}$．\n(2) 共通部分がない条件は，$B$ が $A$ の左にあって $a+4\\leqq-1$，または右にあって $a\\geqq5$．\nよって $\\boldsymbol{a\\leqq-5,\\ 5\\leqq a}$．"
+   }
+  ],
+  "idea": {
+   "tex": "集合を数直線上の区間で表し，端点の大小で包含・共通部分の条件を書く．端点を含むかどうかで等号を判断する．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) -1<=a<=1\n(2) a<=-5 または 5<=a"
+  },
+  "methods": [],
+  "tags": [
+   "集合",
+   "包含関係",
+   "不等式"
+  ],
+  "provenance": {
+   "created": "2026-10-30"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "I-EXP-122",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "I-01",
+  "level": 1,
+  "minutes": 12,
+  "theme": "集合と命題／必要条件・十分条件と定数の範囲",
+  "unit": "集合と命題",
+  "topic": "必要条件・十分条件と定数の範囲",
+  "statement": {
+   "tex": "$x$ についての条件 $p$，$q$，$r$ を次のように定める（$a$ は定数）．\n$p$：$x^2-4x+3<0$，　$q$：$|x-a|<2$，　$r$：$|x-a|<1$\n\\begin{enumerate}\n  \\item $p$ が $q$ であるための十分条件となるような $a$ の値の範囲を求めよ．\n  \\item $r$ が $p$ であるための十分条件となるような $a$ の値を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $1\\leqq a\\leqq3$　(2) $a=2$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "$p$：$(x-1)(x-3)<0$ より $1<x<3$．$q$：$a-2<x<a+2$．$r$：$a-1<x<a+1$．\n(1) $p\\Rightarrow q$ が真となる条件は，区間 $1<x<3$ が $a-2<x<a+2$ に含まれること．\n$a-2\\leqq1$ かつ $3\\leqq a+2$ より $\\boldsymbol{1\\leqq a\\leqq3}$．\n(2) $r\\Rightarrow p$ が真となる条件は，$a-1<x<a+1$ が $1<x<3$ に含まれること．\n$1\\leqq a-1$ かつ $a+1\\leqq3$ より $a\\geqq2$ かつ $a\\leqq2$．よって $\\boldsymbol{a=2}$．"
+   }
+  ],
+  "idea": {
+   "tex": "「$p$ が $q$ の十分条件」$\\iff$「$p\\Rightarrow q$」$\\iff$「$p$ を満たす集合 $\\subset$ $q$ を満たす集合」と言い換え，区間の包含で考える．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) 1<=a<=3\n(2) 2"
+  },
+  "methods": [],
+  "tags": [
+   "必要条件",
+   "十分条件",
+   "集合"
+  ],
+  "provenance": {
+   "created": "2026-10-30"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ }
+]

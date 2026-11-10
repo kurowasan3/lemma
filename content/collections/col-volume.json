@@ -1,0 +1,47 @@
+{
+ "id": "col-volume",
+ "schema": "lemma.collection/1",
+ "title": "回転体と体積",
+ "description": "回転体・断面積の体積を中心に。",
+ "order": 6,
+ "items": [
+  {
+   "id": "I-TRI-115"
+  },
+  {
+   "id": "A-GEO-087"
+  },
+  {
+   "id": "III-INT-442"
+  },
+  {
+   "id": "III-INT-033"
+  },
+  {
+   "id": "C-VEC-040"
+  },
+  {
+   "id": "I-TRI-050"
+  },
+  {
+   "id": "III-INT-034"
+  },
+  {
+   "id": "III-INT-093"
+  },
+  {
+   "id": "III-INT-129"
+  },
+  {
+   "id": "III-INT-133"
+  },
+  {
+   "id": "III-INT-149"
+  },
+  {
+   "id": "C-VEC-021"
+  }
+ ],
+ "visibility": "public",
+ "createdBy": "lemma"
+}

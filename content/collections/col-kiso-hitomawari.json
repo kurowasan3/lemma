@@ -1,0 +1,126 @@
+{
+ "id": "col-kiso-hitomawari",
+ "schema": "lemma.collection/1",
+ "title": "基礎ひとまわり",
+ "description": "全20分野の基礎問題を各分野2問ずつ。苦手分野を見つける最初の一周に。",
+ "level": 0,
+ "order": 1,
+ "items": [
+  {
+   "id": "I-EXP-101"
+  },
+  {
+   "id": "I-EXP-104"
+  },
+  {
+   "id": "I-QF-119"
+  },
+  {
+   "id": "I-QF-122"
+  },
+  {
+   "id": "I-TRI-096"
+  },
+  {
+   "id": "I-TRI-103"
+  },
+  {
+   "id": "I-DAT-009"
+  },
+  {
+   "id": "I-DAT-018"
+  },
+  {
+   "id": "A-COM-239"
+  },
+  {
+   "id": "A-COM-243"
+  },
+  {
+   "id": "A-GEO-063"
+  },
+  {
+   "id": "A-GEO-066"
+  },
+  {
+   "id": "A-INT-222"
+  },
+  {
+   "id": "A-INT-223"
+  },
+  {
+   "id": "II-EQ-162"
+  },
+  {
+   "id": "II-EQ-163"
+  },
+  {
+   "id": "II-GEO-189"
+  },
+  {
+   "id": "II-GEO-197"
+  },
+  {
+   "id": "II-TRI-096"
+  },
+  {
+   "id": "II-TRI-109"
+  },
+  {
+   "id": "II-LOG-057"
+  },
+  {
+   "id": "II-LOG-062"
+  },
+  {
+   "id": "II-CAL-216"
+  },
+  {
+   "id": "II-CAL-219"
+  },
+  {
+   "id": "B-SEQ-177"
+  },
+  {
+   "id": "B-SEQ-186"
+  },
+  {
+   "id": "B-STA-021"
+  },
+  {
+   "id": "B-STA-022"
+  },
+  {
+   "id": "III-LIM-169"
+  },
+  {
+   "id": "III-LIM-177"
+  },
+  {
+   "id": "III-DIF-213"
+  },
+  {
+   "id": "III-DIF-218"
+  },
+  {
+   "id": "III-INT-423"
+  },
+  {
+   "id": "III-INT-429"
+  },
+  {
+   "id": "C-VEC-265"
+  },
+  {
+   "id": "C-VEC-269"
+  },
+  {
+   "id": "C-CUR-284"
+  },
+  {
+   "id": "C-CUR-290"
+  }
+ ],
+ "visibility": "public",
+ "createdBy": "lemma"
+}

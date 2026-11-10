@@ -1,0 +1,47 @@
+{
+ "id": "col-induction",
+ "schema": "lemma.collection/1",
+ "title": "数学的帰納法",
+ "description": "帰納法を使う問題。基本の形から、強い帰納法まで。",
+ "order": 4,
+ "items": [
+  {
+   "id": "B-SEQ-038"
+  },
+  {
+   "id": "A-INT-063"
+  },
+  {
+   "id": "A-INT-077"
+  },
+  {
+   "id": "B-SEQ-014"
+  },
+  {
+   "id": "B-SEQ-027"
+  },
+  {
+   "id": "B-SEQ-047"
+  },
+  {
+   "id": "B-SEQ-059"
+  },
+  {
+   "id": "B-SEQ-079"
+  },
+  {
+   "id": "B-SEQ-080"
+  },
+  {
+   "id": "B-SEQ-083"
+  },
+  {
+   "id": "B-SEQ-084"
+  },
+  {
+   "id": "B-SEQ-090"
+  }
+ ],
+ "visibility": "public",
+ "createdBy": "lemma"
+}
