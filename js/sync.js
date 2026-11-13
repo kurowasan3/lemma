@@ -4,7 +4,7 @@
 //   ログインしなければ何も送らない（今まで通り端末の中だけ）。
 import { SUPABASE_URL, SUPABASE_KEY } from './config.js';
 
-export const FILE_VERSION = '0.9.0';
+export const FILE_VERSION = '0.10.0';
 const AUTH_KEY = 'lemma.auth';
 export const enabled = () => !!(SUPABASE_URL && SUPABASE_KEY);
 

@@ -21,7 +21,7 @@ import {
   subjectsWithFields, pool, pickPractice, pickReview, dueEntries, nextReviewTime,
 } from './catalog.js';
 
-const VERSION = '0.9.0';
+const VERSION = '0.10.0';
 const KEY = 'lemma.v2';
 let sync = null, syncApplying = false, syncStatus = null;   // アカウントと同期（initSync で用意）
 const $ = (sel, el = document) => el.querySelector(sel);
@@ -588,7 +588,16 @@ function metaChips(e) {
   return `<span class="chip">${esc(p.subject)}・${esc(p.fieldName)}</span>
         <span class="chip lv${p.level}">${p.levelName}</span>
         ${p.minutes ? `<span class="chip plain">目安 ${p.minutes}分</span>` : ''}
-        ${p.kind === 'written' ? `<span class="chip plain">${p.grading ? '入力して採点' : '自己採点'}</span>` : ''}`;
+        ${p.kind === 'written' ? `<span class="chip plain">${gradingLabel(e, p)}</span>` : ''}`;
+}
+// 解答の形式（設定）：input＝記述式（答えを入力して自動採点）・choice＝選択式・self＝自己採点（紙に解いて答え合わせ）
+const ANSWER_MODES = [['input', '記述式'], ['choice', '選択式'], ['self', '自己採点']];
+function answerMode() { return ['input', 'choice', 'self'].includes(state.settings.answer) ? state.settings.answer : 'input'; }
+function gradingLabel(e, p) {
+  const m = answerMode();
+  if (m === 'self' || !p.grading) return '自己採点';
+  if (m === 'choice' && e.ch) return '選択式';
+  return '入力して採点';
 }
 
 function recordResult(pid, grade, extra) {
@@ -866,11 +875,21 @@ function renderWritten(step, e) {
   if (!b) { showBanner('<b>問題本文がありません</b>' + esc(e.id)); nextStep(); return; }
   let spec = null;
   try { spec = b.in ? parseSpec(b.in) : null; } catch (err) { spec = null; }
+  const mode = answerMode();
+  if (mode === 'self') spec = null;                       // 自己採点：入力用の答えがあっても使わない
+  const useChoice = mode === 'choice' && !!spec && Array.isArray(b.ch) && b.ch.some(Boolean);
   const t0 = Date.now();
   const a = { conf: null, hint: false, revealed: false, sg: null, feel: null, log: null, min: null, attempts: 0, results: null, firstAllOk: null, disputes: [] };
   // 入力欄の状態：fields[k] = { f, part, mode: 'plain'|'cases', text, rows }
   const fields = [];
   if (spec) spec.parts.forEach((p, pi) => p.fields.forEach(f => fields.push({ f, part: p.n, pi, mode: 'plain', text: '', rows: [{ cond: '', val: '' }, { cond: '', val: '' }] })));
+  // 選択式：選択肢のある欄はボタンで選ぶ（b.ch[k] の先頭が正解。並びは毎回混ぜる）。選択肢のない欄は入力のまま
+  if (useChoice) fields.forEach((x, k) => {
+    const opts = b.ch[k];
+    if (opts && x.f.kind !== 'self') { x.mode = 'choice'; x.opts = opts; x.order = shuffle(opts.map((_, i) => i)); x.pick = null; }
+  });
+  const typedFields = fields.filter(x => x.f.kind !== 'self' && x.mode !== 'choice');
+  const inputNote = mode === 'choice' && spec && !useChoice ? '<p class="muted pen">この問題には選択肢がないので、答えを入力します。</p>' : '';
   const autoFields = fields.filter(x => x.f.kind !== 'self');
   const selfParts = spec ? [...new Set(fields.filter(x => x.f.kind === 'self').map(x => x.part))] : [];
   let focused = null;
@@ -884,7 +903,7 @@ function renderWritten(step, e) {
         <span class="count">${session.i + 1} / ${session.steps.length}</span>
       </div>
       <div class="question qhtml">${bigOps(b.q)}</div>
-      ${spec ? '<div id="inputs" class="inputs"></div>' : '<p class="muted pen">この問題は紙に解いてから、答え合わせで自己採点します。</p>'}
+      ${spec ? inputNote + '<div id="inputs" class="inputs"></div>' : '<p class="muted pen">この問題は紙に解いてから、答え合わせで自己採点します。</p>'}
       <div id="conf"><div class="label">${spec ? '判定の前に' : '答え合わせの前に'}：どのくらい自信がある？</div>
         <div class="segment conf">${CONF.map(c => `<button data-c="${c.id}">${ICON[CONF_ICON[c.id]]}<span>${c.label}</span></button>`).join('')}</div></div>
       <div class="btn-row" id="actions"></div>
@@ -913,13 +932,13 @@ function renderWritten(step, e) {
       <div class="part">
         ${n ? `<div class="pn">(${esc(n)})</div>` : ''}
         <div class="pf">${ks.map(k => fieldHTML(k)).join('')}</div>
-      </div>`).join('') + `<div class="keypad sticky" id="kp">${KEYS.map(k => `<button type="button" data-k="${esc(k)}">${esc(k)}</button>`).join('')}${extraKeys()}</div>`;
+      </div>`).join('') + (typedFields.length ? `<div class="keypad sticky" id="kp">${KEYS.map(k => `<button type="button" data-k="${esc(k)}">${esc(k)}</button>`).join('')}${extraKeys()}</div>` : '');
     math(box);
     bindInputs();
   }
   function extraKeys() {
     const letters = new Set();
-    for (const x of autoFields) for (const ch of (x.f.src || '').match(/[α-ω]/g) || []) letters.add(ch);
+    for (const x of typedFields) for (const ch of (x.f.src || '').match(/[α-ω]/g) || []) letters.add(ch);
     return [...letters].map(k => `<button type="button" data-k="${k}">${k}</button>`).join('') + '<button type="button" data-k="または" class="wide">または</button>';
   }
   function fieldHTML(k) {
@@ -929,6 +948,16 @@ function renderWritten(step, e) {
     const lab = f.label ? `<span class="flabel">${labelHTML(f.label)}</span>` : '';
     if (f.kind === 'self') {
       return `<div class="field self">${lab}<span class="selfnote">${ICON.self} ${esc(f.sub === '証明' ? '証明' : f.sub === '図示' ? '図示' : '記述')}：紙に書いて、答え合わせで自己採点</span></div>`;
+    }
+    if (x.mode === 'choice') {
+      const done = !!res || a.revealed;
+      return `<div class="field pick ${res ? (res.ok ? 'is-ok' : 'is-ng') : ''}" data-k="${k}">
+        ${lab || mark ? `<div class="frow">${lab}${mark}</div>` : ''}
+        <div class="choices opts">${x.order.map(i => {
+          const cls = done ? (i === 0 ? 'right' : i === x.pick ? 'wrong' : '') : (i === x.pick ? 'on' : '');
+          return `<button class="choice ${cls}" data-k="${k}" data-i="${i}" ${done ? 'disabled' : ''}>$\\displaystyle ${esc(x.opts[i])}$</button>`;
+        }).join('')}</div>
+      </div>`;
     }
     const canCases = f.kind === 'expr' || f.kind === 'cases';
     const unit = fieldUnit(f);
@@ -970,6 +999,14 @@ function renderWritten(step, e) {
     } catch { pv.textContent = '…'; pv.className = 'preview err'; }
   }
   function bindInputs() {
+    $$('#inputs .choice').forEach(btn => btn.addEventListener('click', () => {
+      const x = fields[+btn.dataset.k];
+      if (a.results || a.revealed) return;
+      x.pick = +btn.dataset.i;
+      $$(`#inputs .choice[data-k="${btn.dataset.k}"]`).forEach(o => o.classList.toggle('on', o === btn));
+      play('tap');
+      actions();
+    }));
     $$('#inputs input').forEach(inp => {
       const k = +inp.dataset.k, x = fields[k];
       inp.addEventListener('focus', () => { focused = inp; });
@@ -1014,7 +1051,7 @@ function renderWritten(step, e) {
   }));
 
   function filled() {
-    return autoFields.every(x => x.mode === 'cases' ? x.rows.some(r => r.cond.trim() && r.val.trim()) : x.text.trim());
+    return autoFields.every(x => x.mode === 'choice' ? x.pick !== null : x.mode === 'cases' ? x.rows.some(r => r.cond.trim() && r.val.trim()) : x.text.trim());
   }
   function actions() {
     const box = $('#actions');
@@ -1041,9 +1078,13 @@ function renderWritten(step, e) {
     });
   }
 
+  function checkOne(x) {
+    if (x.f.kind === 'self') return { ok: null };
+    if (x.mode === 'choice') return { ok: x.pick === 0, choice: true };
+    return checkField(x.f, x.mode === 'cases' ? { mode: 'cases', rows: x.rows } : { mode: 'plain', text: x.text });
+  }
   function judge() {
-    const res = fields.map(x => x.f.kind === 'self' ? { ok: null }
-      : checkField(x.f, x.mode === 'cases' ? { mode: 'cases', rows: x.rows } : { mode: 'plain', text: x.text }));
+    const res = fields.map(checkOne);
     // 書き方の誤りだけなら、試行に数えずに知らせる
     if (res.some(r => r.syntax)) {
       a.results = res.map(r => r.syntax ? r : null);
@@ -1058,6 +1099,7 @@ function renderWritten(step, e) {
     drawInputs();
     if (allOk) { play('correct'); reveal(); return; }
     play('wrong');
+    if (useChoice) { reveal(); return; }                    // 選択式はやり直しなし（当てずっぽうで正解にならないように）
     const fb = $('#feedback');
     const nOk = auto.filter(r => r.ok).length;
     fb.innerHTML = `<div class="result ng fade-in"><span class="mark">${ICON.ng}</span><div>${nOk ? `${auto.length}つのうち${nOk}つ正解` : '違うようです'}<small>×の欄を見直して、もう一度判定できます。</small></div></div>`;
@@ -1071,8 +1113,7 @@ function renderWritten(step, e) {
     $$('#conf button').forEach(x => x.disabled = true);
     if (spec) {
       // 判定していない欄は、いま判定する（答えを見る前の最終状態）
-      a.results = fields.map((x, k) => (a.results && a.results[k]) || (x.f.kind === 'self' ? { ok: null }
-        : checkField(x.f, x.mode === 'cases' ? { mode: 'cases', rows: x.rows } : { mode: 'plain', text: x.text })));
+      a.results = fields.map((x, k) => (a.results && a.results[k]) || checkOne(x));
       drawInputs();
     }
     actions();
@@ -1088,7 +1129,7 @@ function renderWritten(step, e) {
         ${answerKey}
         ${spec ? `<details class="orig"><summary>問題管理表の答えの表記</summary><div class="qhtml">${b.a}</div></details>` : ''}
       </div>
-      ${spec && autoRes.some(r => !r.ok) ? '<p class="muted dispute-note">自分の答えも正しいはずなのに×のときは、欄の横の「判定がおかしい？」を押してください。記録に残り、テスト記録のCSVにも出ます。</p>' : ''}
+      ${spec && autoRes.some(r => !r.ok && !r.choice) ? '<p class="muted dispute-note">自分の答えも正しいはずなのに×のときは、欄の横の「判定がおかしい？」を押してください。記録に残り、テスト記録のCSVにも出ます。</p>' : ''}
       ${needSelf ? solutionHTML() : ''}
       ${needSelf ? `<div class="label">${spec ? `解答と見比べて、自己採点の小問（${selfParts.map(n => n ? `(${n})` : '').join('')}）はどうだった？` : '解答と見比べて、自分の答案はどうだった？'}</div>
         <div class="segment self" id="self">${SELF.map(x => `<button data-g="${x.id}">${ICON[x.icon]}<span>${x.label}</span></button>`).join('')}</div>` : ''}
@@ -1121,7 +1162,7 @@ function renderWritten(step, e) {
     if (!spec || !a.results) return;
     fields.forEach((x, k) => {
       const r = a.results[k];
-      if (!r || r.ok !== false) return;
+      if (!r || r.ok !== false || x.mode === 'choice') return;
       const el = $(`#inputs .field[data-k="${k}"]`);
       if (!el || el.querySelector('.dispute')) return;
       const btn = document.createElement('button');
@@ -1157,7 +1198,7 @@ function renderWritten(step, e) {
   function autoBanner() {
     const autoRes = (a.results || []).filter(r => r && r.ok !== null);
     const autoAll = autoRes.every(r => r.ok);
-    return `<div class="result ${autoAll ? 'ok' : 'ng'} fade-in"><span class="mark">${autoAll ? ICON.ok : ICON.ng}</span><div>${autoAll ? (a.attempts > 1 ? '正解（2回目以降）' : '正解') : `入力した答え：${autoRes.filter(r => r.ok).length} / ${autoRes.length} 正解`}${a.hint ? '<small>ヒントあり</small>' : ''}</div></div>`;
+    return `<div class="result ${autoAll ? 'ok' : 'ng'} fade-in"><span class="mark">${autoAll ? ICON.ok : ICON.ng}</span><div>${autoAll ? (a.attempts > 1 ? '正解（2回目以降）' : '正解') : `${useChoice ? '答え' : '入力した答え'}：${autoRes.filter(r => r.ok).length} / ${autoRes.length} 正解`}${a.hint ? '<small>ヒントあり</small>' : ''}</div></div>`;
   }
   // 「判定がおかしい？」で採点が変わったとき：記録と表示を直す（復習の予定は、この回の前の状態から計算し直す）
   function regrade() {
@@ -1177,7 +1218,8 @@ function renderWritten(step, e) {
     }
   }
   function gradeOf(sg) {
-    return sg === 'full' ? (a.hint || a.attempts > 1 ? 2 : a.conf === 'high' ? 4 : 3) : sg === 'part' ? 2 : 1;
+    // 選択式で正解したときは、思い出して書けたときより定着が弱いとみて「確実」でも 3 まで
+    return sg === 'full' ? (a.hint || a.attempts > 1 ? 2 : a.conf === 'high' && !useChoice ? 4 : 3) : sg === 'part' ? 2 : 1;
   }
 
   function grade(selfSg) {
@@ -1188,7 +1230,7 @@ function renderWritten(step, e) {
     a.prevStat = state.pstat[e.id];
     $$('#self button').forEach(x => { x.disabled = true; x.classList.toggle('on', x.dataset.g === selfSg); });
     play(sg === 'full' ? 'full' : sg === 'part' ? 'part' : 'wrong');
-    a.log = recordResult(e.id, gradeOf(sg), { h: a.hint ? 1 : 0, c: a.conf, ok: sg === 'full', sg, min: a.min, in: spec ? 1 : 0, disp: a.disputes.length ? a.disputes.slice() : undefined });
+    a.log = recordResult(e.id, gradeOf(sg), { h: a.hint ? 1 : 0, c: a.conf, ok: sg === 'full', sg, min: a.min, in: spec ? 1 : 0, md: useChoice ? 'choice' : spec ? 'input' : 'self', disp: a.disputes.length ? a.disputes.slice() : undefined });
     const after = $('#after');
     after.innerHTML = `
       <div class="verdict v-${sg} fade-in">${ICON[sg]}<b>${SELF.find(x => x.id === sg).label}</b></div>
@@ -1560,6 +1602,16 @@ function renderSettings() {
       <div class="kicker">v${VERSION}</div>
       <h1>設定</h1>
       ${sync ? '<h2>アカウントと同期</h2><div class="panel" id="acct"></div>' : ''}
+      <h2>解答の形式</h2>
+      <div class="panel">
+        <div class="setting"><span>答え方</span>
+          <div class="segment amode" id="amode">${ANSWER_MODES.map(([k, v]) => `<button data-m="${k}" class="${answerMode() === k ? 'on' : ''}">${v}</button>`).join('')}</div></div>
+        <p class="muted" style="margin:8px 0 0">${{
+          input: '<b>記述式</b>：答えを入力して自動で採点します。証明・図示の小問と、入力用の答えがない問題は自己採点です。',
+          choice: '<b>選択式</b>：4つの選択肢から選びます（やり直しはなし）。選択肢のない欄は入力、証明・図示は自己採点です。',
+          self: '<b>自己採点</b>：紙に解いてから、答えと解説を見て自分で採点します。',
+        }[answerMode()]}</p>
+      </div>
       <h2>表示と音</h2>
       <div class="panel">
         <div class="setting"><span>画面のテーマ</span>
@@ -1596,6 +1648,9 @@ function renderSettings() {
       </div>
     </div>`;
   drawAccount();
+  $$('#amode button').forEach(b => b.addEventListener('click', () => {
+    state.settings.answer = b.dataset.m; save(); play('tap'); renderSettings();
+  }));
   $$('#theme button').forEach(b => b.addEventListener('click', () => {
     state.settings.theme = b.dataset.t; save(); applyTheme(b.dataset.t); renderSettings();
   }));

@@ -161,6 +161,10 @@ def run(src, content, data, new_fields=False):
         subprocess.run([node, str(TOOLS / 'builtin_to_content.mjs'), str(content)], check=True, capture_output=True)
     else:
         notes.append('node が無いので内蔵問題（builtin.json）は更新していません')
+    if node:
+        subprocess.run([node, str(TOOLS / 'make_choices.mjs'), str(content)], check=True, capture_output=True)
+    else:
+        notes.append('node が無いので選択式の選択肢（choices.json）は更新していません')
     import tags as TG
     _, added = TG.update(content)
     if added:
@@ -197,7 +201,7 @@ def main():
     except XC.ImportFailure as e:
         sys.exit(f'取り込みを中止しました（何も書き換えていません）：\n{e}')
     print(f'正規データ {n}問 → content/')
-    print(f"{r['count']}問を書き出しました（{r['fields']}分野、入力して採点できる問題 {r['auto']}問、非表示 {r['hidden']}問、"
+    print(f"{r['count']}問を書き出しました（{r['fields']}分野、入力して採点できる問題 {r['auto']}問、選択式 {r['choice']}問、非表示 {r['hidden']}問、"
           f"dataVersion {r['dataVersion']}） → {data}")
     print('検査： node tests/run.mjs')
     for x in notes:

@@ -2,7 +2,7 @@
 //   コード用  … VERSION（アプリを更新したら上げる）。古い版は activate で消す
 //   データ用  … lemma-data-<dataVersion>（data/ の中身の版。data/index.json を取り直して版が変わったら、古い問題データを捨てる）
 // どちらも「まずネットワーク、つながらなければキャッシュ」なので、更新はすぐ反映される。
-const VERSION = 'lemma-v0.9.0';
+const VERSION = 'lemma-v0.10.0';
 const FILES = [
   "./",
   "index.html",

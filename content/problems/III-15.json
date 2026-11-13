@@ -10507,6 +10507,10 @@
   "idea": {
    "tex": "逆数 $b_n=\\frac1{a_n}$ をとると，差 $b_{n+1}-b_n=\\frac1{\\log(1+a_n)}-\\frac1{a_n}$ は $\\frac12-\\frac{a_n}{12}$ に近い．まず粗い評価で $a_n$ が $\\frac2n$ 程度であることを出し，それを差の補正項に戻すと $\\sum a_k$ と $2\\log n$ の差が有界であることがわかり，$b_n-\\frac n2+\\frac{\\log n}6$ が有界になる．有界性は調和級数と $\\sum k^{-3/2}$ の積分による評価で示す．"
   },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) 証明\n(2) 2\n(3) 2/3"
+  },
   "methods": [],
   "tags": [
    "漸化式",
@@ -10554,6 +10558,10 @@
   "idea": {
    "tex": "$f_n(x)=x(x-1)\\cdots(x-n+1)$ は $f_n(n-1-x)=(-1)^nf_n(x)$ という対称性をもち，隣り合う零点の間に極値点がちょうど1つずつある．端の区間 $(0,1)$ の極値点 $c$ は対数微分 $\\dfrac{f'}{f}=\\displaystyle\\sum\\frac1{x-k}$ から $\\dfrac1c=\\displaystyle\\sum_{j=1}^{n-1}\\frac1{j-c}$ をみたし，右辺は調和数列の和 $\\displaystyle\\sum\\frac1j$ とほぼ等しい．和を積分ではさんで $\\dfrac1c\\approx\\log n$ を出し，$|f_n(c)|$ は $\\displaystyle\\Bigl(1-\\frac c1\\Bigr)\\Bigl(1-\\frac c2\\Bigr)\\cdots\\Bigl(1-\\frac c{n-1}\\Bigr)$ の対数を $-t-t^2\\leqq\\log(1-t)\\leqq-t$ で評価すると $c\\displaystyle\\sum\\frac1j\\to1$ から $e^{-1}$ が現れる．"
   },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) 証明\n(2) 記述\n(3) 1/e"
+  },
   "methods": [],
   "tags": [
    "平均値の定理",
@@ -10599,6 +10607,10 @@
   ],
   "idea": {
    "tex": "「$n$ 枚以上の段階まで進む」確率 $c_n=2^{-\\frac{n(n-1)}2}$ を先に求めると $p_n=c_n-c_{n+1}$．期待値 $\\sum np_n$ は部分和をずらして整理すると $\\sum_{n\\leqq m}c_n-mc_{m+1}$ となり（アーベルの総和の形），$\\sum c_n$ に等しい．延べ枚数 $\\frac{N(N+1)}2$ でも同様に $\\sum nc_n$．値の評価は，初めの数項をそのまま足し，残りは隣の項との比 $\\leqq\\frac1{32}$ などで等比級数に抑える．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) $c_n$：2^(-n(n-1)/2) ; $p_n$：2^(-n(n-1)/2)(1-2^(-n))\n(2) 証明\n(3) 証明\n(4) 証明"
   },
   "methods": [],
   "tags": [
@@ -10646,6 +10658,10 @@
   "idea": {
    "tex": "$f_n(x)=\\dfrac1{(2-x)^n}+\\dfrac{(-1)^{n-1}}{(2+x)^n}$ に重み $(1-x)^{n-1}$ をかけた積分 $I_n$ は，$\\log3$ の級数の部分和の余りを表す．原題では $f_n'=nf_{n+1}$ を使った部分積分で漸化式を作るが，捻りでは $u=\\dfrac{1-x}{2-x}$，$v=\\dfrac{1-x}{2+x}$ と置換すると $I_n=\\displaystyle\\int_0^{1/2}u^{n-1}\\Bigl(\\frac1{1-u}+\\frac{(-1)^{n-1}}{1+u}\\Bigr)du$ になり，余りが等比数列の和の余りとして見える．$\\dfrac1{1-u^2}$ を区間の端の値 $\\dfrac43$ で近似し，その誤差を評価して，余りがどれだけ速く $0$ に近づくかを求める．"
   },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) 証明\n(2) 証明\n(3) 2/3"
+  },
   "methods": [],
   "tags": [
    "置換積分",
@@ -10690,6 +10706,10 @@
   ],
   "idea": {
    "tex": "複素数 $w=a+bi$ の $|a|+|b|$ は $|w|\\bigl(|\\cos\\varphi|+|\\sin\\varphi|\\bigr)$（$\\varphi$ は偏角）で，摂動 $v$ を加えたときの変化は三角不等式で $2|v|$ 以下に抑えられる．原題は主要項が純虚数で絶対値の計算が単純だったが，捻りでは主要項 $k\\gamma^k$ が回転するため，係数 $|\\cos kh|+|\\sin kh|$ が周期 $N$ で振動する．周期数列 $c_k$ の平均 $C$ からのずれの部分和が有界であることをアーベルの変形（$\\sum k(D_k-D_{k-1})$）で使えば，$\\frac1{n^2}\\sum kc_k\\to\\frac C2$ が得られる．$C$ は 積和公式で隣り合う項を打ち消し合わせて閉じた形になる．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) 証明\n(2) 記述\n(3) 2/π"
   },
   "methods": [],
   "tags": [
@@ -10737,6 +10757,10 @@
   "idea": {
    "tex": "$r=t^k$ 型のらせんで速度が $y$ 軸に平行になる時刻は $\\tan t=\\dfrac kt$ の正の解．各区間 $\\bigl((n-1)\\pi,(n-1)\\pi+\\frac\\pi2\\bigr)$ にちょうど1つあり，$t_n=(n-1)\\pi+\\beta_n$（$\\tan\\beta_n=\\frac k{t_n}$）と書くと間隔の不足分は $\\pi-(t_{n+1}-t_n)=\\beta_n-\\beta_{n+1}$ に化ける．$\\tan\\beta-\\frac13\\tan^3\\beta\\leqq\\beta\\leqq\\tan\\beta$ ではさめば，$\\beta_n-\\beta_{n+1}$ の主要部は $\\frac k{t_n}-\\frac k{t_{n+1}}$ となり，$n^2$ 倍の極限が求まる．"
   },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) 証明\n(2) 証明\n(3) 3/π"
+  },
   "methods": [],
   "tags": [
    "媒介変数表示",
@@ -10782,6 +10806,10 @@
   ],
   "idea": {
    "tex": "2種類の三角形の面積和 $S_n(t)$ の導関数は，左端で標本をとる $\\varphi$ の和と右端で標本をとる $\\psi$ の和．目盛りの中点の集合が原点対称なので $\\Phi(u)=\\sum\\varphi(y_k+u)$ は奇関数になる．$\\omega=\\varphi-\\psi$ が増加することを対になる項どうしで使うと，最小点は半目盛りの幅の中に閉じ込められる．さらに平均値の定理で $\\Phi(u)=u\\cdot(\\text{区分求積の和})$ と線形化すると，最小点のずれの $n$ 倍の極限が $\\varphi,\\psi$ の端点の値で決まる．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) 記述\n(2) 証明\n(3) 1/6"
   },
   "methods": [],
   "tags": [
@@ -10829,6 +10857,10 @@
   "idea": {
    "tex": "弧長 $\\int\\sqrt{1+(f')^2}\\,dx$ を「主要項（横幅または高さ）$+$ 誤差」に分け，誤差の被積分関数を $\\sqrt{1+v}-1=\\dfrac{v}{\\sqrt{1+v}+1}$，$\\sqrt{1+u^2}-u=\\dfrac1{\\sqrt{1+u^2}+u}$ と有理化して，分母を $u\\leqq\\sqrt{1+u^2}\\leqq u+1$ などで上下から評価する．幅が広い極限では誤差は2次の小ささ，細長い極限では $\\int\\frac{du}{2u}$ 型の対数的な寄与が残る．"
   },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) $b$：3A/(2sqrt(c))\n(2) 3A^2/2\n(3) 1/(6A)"
+  },
   "methods": [],
   "tags": [
    "曲線の長さ",
@@ -10874,6 +10906,10 @@
   ],
   "idea": {
    "tex": "関数 $f$ の積分を区間ごとに区切った値を確率とするルーレット．確率 $p_i$ が「隣り合う値の差」の形なので，$\\sum g(i)p_i$ は和の順序を組み替えて（部分和分），$g$ の差分と三角関数の和に帰着する．三角関数の和は $2\\sin\\frac\\varphi2$ を掛けて差の形にする．$n^2$ の主要項の次の定数項は $\\dfrac1{\\sin^2\\theta}-\\dfrac1{\\theta^2}$ の極限で，$\\sin\\theta$ の多項式による評価から出る．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) 記述\n(2) $V(X)$：(n^2+1)/4-1/(2sin(π/(2n))^2)\n(3) $c$：1/4-2/π^2 ; $\\lim_{n\\to\\infty}\\{V(X)-cn^2\\}$：1/12"
   },
   "methods": [],
   "tags": [
@@ -10921,6 +10957,10 @@
   "idea": {
    "tex": "交点を $q=q_n$ だけで表すと $p_n=\\frac{e^{q}}n$ で，円の式は $(1-q)(1+q)=\\frac{(e^q-1)^2}{n^2}$．右辺の分子が有界なので $q\\to1$，さらに等式そのものから $n^2(1-q)$ の極限まで読める．面積も $q$ の式 $\\frac{e^q(q-1)+1}n$ に直せば，$nS_n-1=-e^{q}(1-q)$ となって同じ量に帰着する．"
   },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) 証明\n(2) (e-1)^2/2\n(3) -e(e-1)^2/2"
+  },
   "methods": [],
   "tags": [
    "交点の存在と一意性",
@@ -10965,6 +11005,10 @@
   ],
   "idea": {
    "tex": "2球の両方に外接する球の中心は，2球の中心を結ぶ直線を軸とする1つの円周上にある（大きさが異なるので中央の平面からずれる）．輪の条件は円周上の等間隔配置で $\\rho\\sin\\frac\\pi n=r$．$r_n$ が有理数 $\\iff$ $\\cos\\frac{2\\pi}n$ が有理数で，$2\\cos2\\theta=(2\\cos\\theta)^2-2$ を繰り返すと分母が増え続けることから $n=3,4,6$ に限られる．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) $r_n$：12(1-cos(2π/n))/(5+4cos(2π/n))\n(2) 記述\n(3) 8π^2/3"
   },
   "methods": [],
   "tags": [
@@ -11012,6 +11056,10 @@
   "idea": {
    "tex": "部分和 $g(k)$ は $f$ の値が負の間は減り，正の間は増えるので，最小の候補は符号の変わり目と右端だけ．和を積和で閉じた形にすると，$G_n$ は $n$ に比例する主要部と定数の補正項に分かれ，補正項の極限は $\\frac1\\varepsilon-\\frac{\\cos\\varepsilon}{\\sin\\varepsilon}\\to0$ の評価で求まる．"
   },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) 記述\n(2) $G_n$：n+1/2-(sqrt(3)/2) cos(π/(6n))/sin(π/(6n))\n(3) 1/2"
+  },
   "methods": [],
   "tags": [
    "三角関数の和",
@@ -11057,6 +11105,10 @@
   "idea": {
    "tex": "対称軸を固定すれば，弦の両端で円の接線に接する放物線は1つに決まり，弦との間の面積は「接線2本と弦でできる三角形の $\\frac23$」．多角形に $n$ 個の帽子を足した面積と $\\pi$ の差は $\\frac n{\\cos x}h(x)$，$h'(x)=\\sin x\\left(x-\\sin x\\cos x\\right)>0$ で符号が決まり，$\\sin$ を多項式ではさむ評価で $x^5$ の係数まで確定する．"
   },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) 証明\n(2) 証明\n(3) 2π^5/15"
+  },
   "methods": [],
   "tags": [
    "放物線",
@@ -11101,6 +11153,10 @@
   ],
   "idea": {
    "tex": "交点の $x$ 座標 $a_n$ は $t_n=na_n$ とおくと $e^{t_n}=e^{t_n/n}+1$ をみたし，$t_n\\to\\log2$．面積も $nS_n$ を $t_n$ と $u=\\dfrac{t_n}n$ だけで表す．$u$ が小さいことを使い，$e^u$ を多項式ではさむ不等式で次の項まで取り出す．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) 証明\n(2) 証明\n(3) log(2)/2\n(4) log(2)^2/2"
   },
   "methods": [],
   "tags": [

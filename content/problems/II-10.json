@@ -6935,6 +6935,10 @@
   "idea": {
    "tex": "角 $\\varphi$ の2辺に接する半径 $r$ の円の接点は頂点から $r\\cdot\\frac{1+\\cos\\varphi}{\\sin\\varphi}$．等しい円が1直線に接しながら外接して並ぶと接点の間隔は $2r$．斜辺の長さの式に $\\sin\\theta\\cos\\theta$ を掛けると $\\frac1r=1+\\sin\\theta+\\cos\\theta+(n-1)\\sin2\\theta$ となり，$u=\\sin\\theta+\\cos\\theta$ の増加関数になる．"
   },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) 記述\n(2) 1/(n+sqrt(2))<=r<1/2"
+  },
   "methods": [],
   "tags": [
    "接する円",

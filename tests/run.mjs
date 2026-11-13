@@ -36,12 +36,13 @@ for (const f of ['problems/builtin.json', 'methods.json']) {
 }
 process.exit(ok ? 0 : 1);`]],
   ['入力用の答え（読める・正解を入れると正解になる）', 'node', ['tools/check_answers.mjs', 'data']],
+  ['選択式の選択肢（content/choices.json）が入力用の答えと合っている', 'node', ['tools/make_choices.mjs', 'content', '--check']],
   ['すべての数式を KaTeX で描画できる', 'node', ['tools/check_katex.cjs']],
   ['自動採点の回帰テスト', 'node', ['tests/answer.test.mjs']],
   ['catalog.js の単体テスト（getProblem・v0.6 の学習記録）', 'node', ['tests/catalog.test.mjs']],
   ['同期の単体テスト（記録の合わせ方・にせ Supabase との通信）', 'node', ['tests/sync.test.mjs']],
 ];
-if (process.argv.includes('--e2e')) steps.push(['ブラウザでの通し操作', 'node', ['tests/e2e.mjs']]);
+if (process.argv.includes('--e2e')) steps.push(['ブラウザでの通し操作', 'node', ['tests/e2e.mjs']], ['解答の形式（記述式・選択式・自己採点）', 'node', ['tests/e2e_modes.mjs']]);
 
 let failed = 0;
 for (const [name, cmd, args] of steps) {

@@ -4,7 +4,7 @@
 
 import { parse, compile, splitRelation, freeVars } from './parser.js';
 
-export const FILE_VERSION = '0.9.0';
+export const FILE_VERSION = '0.10.0';
 export const COLORS = ['#2f6fdf', '#d9463b', '#2e9d5b', '#8e4fd6', '#e08a1e', '#1a9aa8'];
 const RESERVED = new Set(['x', 'y', 't', 'θ', 'r']);
 const TAU = Math.PI * 2;

@@ -1,5 +1,5 @@
 :root {
-  --lemma-version: '0.9.0';
+  --lemma-version: '0.10.0';
   --paper: #f6f4ee;
   --card: #ffffff;
   --ink: #1c1d21;
@@ -208,6 +208,12 @@ strong { font-weight: 700; }
 .choice.on { border-color: var(--accent); background: var(--accent-soft); }
 .choice.right { border-color: var(--good); background: var(--good-soft); }
 .choice.wrong { border-color: var(--bad); background: var(--bad-soft); }
+/* 選択式の欄：選択肢は2列（長い式は1列）。式がはみ出すときは横にスクロール */
+.field.pick { width: 100%; }
+.field.pick .frow { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; }
+.choices.opts { grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 8px; }
+.choices.opts .choice { padding: 10px 12px; overflow-x: auto; text-align: center; color: inherit; }
+.choices.opts .choice:disabled { opacity: 1; }
 
 .label { font-size: 13px; font-weight: 700; color: var(--ink-2); margin: 20px 0 8px; }
 .segment { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; }
@@ -463,8 +469,8 @@ details.orig summary { cursor: pointer; }
 .switch i { position: absolute; top: 3px; left: 3px; width: 24px; height: 24px; border-radius: 50%; background: #fff; box-shadow: 0 1px 3px rgba(0,0,0,.25); transition: left .15s; }
 .switch.on { background: var(--good); }
 .switch.on i { left: 23px; }
-.segment.theme { display: inline-grid; grid-template-columns: repeat(3, auto); gap: 4px; }
-.segment.theme button { min-height: 34px; padding: 0 12px; font-size: 13px; }
+.segment.theme, .segment.amode { display: inline-grid; grid-template-columns: repeat(3, auto); gap: 4px; }
+.segment.theme button, .segment.amode button { min-height: 34px; padding: 0 12px; font-size: 13px; }
 
 /* 鳥 */
 #bird { position: fixed; right: 12px; bottom: calc(var(--tabbar-h) + env(safe-area-inset-bottom) + 10px); z-index: 30; display: flex; align-items: flex-end; gap: 6px; pointer-events: none; }

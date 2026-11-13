@@ -15,7 +15,7 @@
 
 import { parse, compile, freeVars, toTeX, toPlain } from './parser.js';
 
-export const FILE_VERSION = '0.9.0';
+export const FILE_VERSION = '0.10.0';
 
 const SELF_WORDS = /^(証明|図示|記述|略|解答参照)/;
 const UNIT_RE = /(°|個|通り|桁|本|人|回|枚|組|点|色|日|番目|倍|秒|分|円|度|段|列|行|面|辺|頂点|種類)$/;

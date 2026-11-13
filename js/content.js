@@ -5,7 +5,7 @@
 //       nums（数の組・順不同）/ choice（choices[0] が正解）/ sketch（概形を描いて自己評価）
 
 const T = String.raw;
-export const FILE_VERSION = '0.9.0';
+export const FILE_VERSION = '0.10.0';
 
 export const SUBJECTS = [
   { id: 'I', name: '数学I' },

@@ -12,7 +12,7 @@ const CARD_ORDER = (() => {
   return out;
 })();
 
-export const FILE_VERSION = '0.9.0';
+export const FILE_VERSION = '0.10.0';
 const DAY = 86400000;
 const INIT_S = { 1: 0.4, 2: 1.2, 3: 3, 4: 8 }; // 初回の評価ごとの安定度（日）
 export const TARGET_R = 0.9;

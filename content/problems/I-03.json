@@ -5861,6 +5861,10 @@
   "idea": {
    "tex": "辺 BC のまわりの回転体は（鈍角の場合も含めて）$\\frac\\pi3h^2a=\\frac{4\\pi S^2}{3a}$．周の長さが2なら $S^2=(1-a)(1-b)(1-c)$ で，$x=1-a$，$y=1-b$，$z=1-c$ とおくと三角形の条件は $x,y,z>0$，$x+y+z=1$ だけになる．3つの体積の和は $xyz\\sum\\frac1{y+z}$ に比例し，$\\frac1{y+z}\\leqq\\frac14\\bigl(\\frac1y+\\frac1z\\bigr)$ で対称式に落とす．"
   },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) 証明\n(2) 最大値：7π/36\n(3) 最大値：2π/9"
+  },
   "methods": [],
   "tags": [
    "回転体",

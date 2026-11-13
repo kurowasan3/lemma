@@ -4,6 +4,7 @@
     python3 tools/build_app_data.py [content フォルダ] [data フォルダ]
 
 出力の形は v0.6 までと同じ（アプリは今の catalog.js のまま読める）。足したもの：
+  f-*.json の "ch"（選択式の選択肢。content/choices.json から。tools/make_choices.mjs で作る）
   index.json の "format"（データ形式の版）・"dataVersion"（中身から計算する版）・"builtinUnits"（内蔵問題の単元→分野）
   f-*.json の "_meta": {"dataVersion"}（一部のファイルだけ古いときに気づくため）
   タグはタグ辞書（content/tags.json）の正規名に置き換えて出す
@@ -39,7 +40,7 @@ def load_content(content):
 
 def data_version(files, tax_path):
     h = hashlib.sha256()
-    extra = [tax_path.parent / 'tags.json'] + sorted((tax_path.parent / 'collections').glob('*.json'))
+    extra = [tax_path.parent / 'tags.json', tax_path.parent / 'choices.json'] + sorted((tax_path.parent / 'collections').glob('*.json'))
     for p in [tax_path] + list(files) + [x for x in extra if x.exists()]:
         h.update(p.name.encode())
         h.update(p.read_bytes())
@@ -92,6 +93,8 @@ def build(content=ROOT / 'content', out=ROOT / 'data'):
     cmap = TG.canonical_map(tagdict) if tagdict else {}
     alias = {t['name']: t.get('aliases', []) for t in tagdict['tags']} if tagdict else {}
     fname = {f['key']: f['name'] for f in tax['fields']}
+    cpath = content / 'choices.json'
+    choices = json.loads(cpath.read_text(encoding='utf-8')) if cpath.exists() else {}
     index, bodies, hidden, search = [], {}, 0, []
     for p in problems:
         if p['quality']['status'] != 'published':
@@ -102,6 +105,10 @@ def build(content=ROOT / 'content', out=ROOT / 'data'):
             e['tg'] = list(dict.fromkeys(TG.to_canonical(t, cmap) for t in e['tg']))
         words = [p.get('theme', ''), fname.get(p['field'], '')] + e.get('tg', []) + [a for t in e.get('tg', []) for a in alias.get(t, [])]
         search.append([p['id'], TG.norm(plain(' '.join(words)) + ' ' + plain(p['statement']['tex']))])
+        ch = choices.get(p['id'])
+        if ch and b.get('in') == ch['spec']:
+            b['ch'] = ch['f']      # 選択式の選択肢（欄の順。先頭が正解、表示のときに混ぜる。null の欄は入力式）
+            e['ch'] = 1
         index.append(e)
         bodies.setdefault(p['field'], {'_meta': {'dataVersion': version}})[p['id']] = b
     fields = [{'key': f['key'], 'subject': f['subject'], 'name': f['name']}
@@ -130,7 +137,7 @@ def build(content=ROOT / 'content', out=ROOT / 'data'):
     cols.sort(key=lambda c: (c.get('order', 10 ** 6), c['id']))
     (out / 'collections.json').write_text(json.dumps({'dataVersion': version, 'collections': cols}, ensure_ascii=False,
                                                      separators=(',', ':')), encoding='utf-8')
-    return {'collections': len(cols), 'count': len(index), 'fields': len(fields), 'hidden': hidden, 'auto': sum(1 for e in index if e.get('in')),
+    return {'collections': len(cols), 'count': len(index), 'choice': sum(1 for e in index if e.get('ch')), 'fields': len(fields), 'hidden': hidden, 'auto': sum(1 for e in index if e.get('in')),
             'dataVersion': version, 'unknown': sorted(unknown), 'warn': list(WARN)}
 
 

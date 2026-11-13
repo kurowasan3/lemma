@@ -1756,6 +1756,10 @@
   "idea": {
    "tex": "独立な確率変数の積の期待値は期待値の積．係数を目の対称式で表して1つずつ期待値をとる．$x$ を固定すれば $E\\bigl(f(x)^2\\bigr)=E\\bigl((x-\\alpha)^2\\bigr)E\\bigl((x-\\beta)^2\\bigr)E\\bigl((x-\\gamma)^2\\bigr)$ と因数分解でき，係数の期待値は展開して読み取れる．"
   },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) $E(p)$：-21/2 ; $E(q)$：147/4 ; $E(r)$：-343/8\n(2) 記述\n(3) 記述"
+  },
   "methods": [],
   "tags": [
    "期待値",

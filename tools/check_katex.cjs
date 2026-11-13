@@ -10,7 +10,16 @@ let total = 0, bad = [];
 for (const f of fs.readdirSync(dir).filter((f) => f.startsWith('f-'))) {
   const data = JSON.parse(fs.readFileSync(path.join(dir, f), 'utf8'));
   for (const [id, b] of Object.entries(data)) {
+    // 選択式の選択肢（ch）：1つ1つが TeX の数式そのもの
+    for (const opts of Array.isArray(b.ch) ? b.ch : []) {
+      for (const t of opts || []) {
+        total++;
+        try { katex.renderToString(t, { throwOnError: true, displayMode: true, strict: false }); }
+        catch (e) { bad.push([id, 'ch', e.message.replace(/^KaTeX parse error: /, '').slice(0, 120), t.slice(0, 100)]); }
+      }
+    }
     for (const [k, html] of Object.entries(b)) {
+      if (k === 'ch') continue;
       // 表示数式 \[...\] と 行内 $...$ を取り出す（\text{} の中の $ を考慮）
       const segs = [];
       let s = html.replace(/\\\[([\s\S]*?)\\\]/g, (_, m) => { segs.push([m, true]); return ' '; });

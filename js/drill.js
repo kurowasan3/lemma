@@ -2,7 +2,7 @@
 import { parse, toTeX } from './parser.js';
 import { parseSpec, checkField } from './answer.js';
 
-export const FILE_VERSION = '0.9.0';
+export const FILE_VERSION = '0.10.0';
 
 // ---------------------------------------------------------------- 乱数・分数
 const ri = (a, b) => a + Math.floor(Math.random() * (b - a + 1));

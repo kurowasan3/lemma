@@ -2,7 +2,7 @@
 import { PROBLEMS as BUILTIN, cardById, problemById as builtinById, unitOf as builtinUnit } from './content.js';
 import { retrievability, dueAt, TARGET_R } from './scheduler.js';
 
-export const FILE_VERSION = '0.9.0';
+export const FILE_VERSION = '0.10.0';
 
 // 難易度（問題管理表と同じ6段階。0=基礎 は v0.6 で追加）
 export const LEVELS = { 0: '基礎', 1: '標準', 2: '2次基礎', 3: '国立2次', 4: '難関', 5: '最難関' };

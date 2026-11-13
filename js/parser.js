@@ -2,7 +2,7 @@
 // 対応：+ - * / ^、暗黙の積（2x, x(x+1), xe^x）、sin x のような括弧なし引数、
 //       sin^2 x、|x|、√、π、θ、{ } を括弧として扱う
 
-export const FILE_VERSION = '0.9.0';
+export const FILE_VERSION = '0.10.0';
 const FUNC_NAMES = ['arcsin', 'arccos', 'arctan', 'asin', 'acos', 'atan', 'sinh', 'cosh', 'tanh',
   'sin', 'cos', 'tan', 'exp', 'log', 'ln', 'sqrt', 'abs', 'floor', 'ceil', 'sign'];
 const CONST_NAMES = ['pi', 'e'];
@@ -275,7 +275,9 @@ export function toTeX(ast) {
         const la = wrap(toTeX(a), prec(a) < 2);
         const rb = wrap(toTeX(b), prec(b) < 2 || b.t === 'neg');
         const juxta = ast.implicit && !(b.t === 'num' || (b.t === 'bin' && b.op === '^' && b.a.t === 'num'));
-        return juxta ? `${la}${rb}` : `${la}\\cdot ${rb}`;
+        // \pi のあとに文字が続くと \pix のような1つの命令に読まれるので、間に空白を入れる
+        const sep = /\\[a-zA-Z]+$/.test(la) && /^[a-zA-Z]/.test(rb) ? ' ' : '';
+        return juxta ? `${la}${sep}${rb}` : `${la}\\cdot ${rb}`;
       }
       const rb = wrap(toTeX(b), op === '-' && prec(b) <= 1 || b.t === 'neg');
       return `${toTeX(a)}${op}${rb}`;
