@@ -37,7 +37,7 @@ data/                          … アプリ用（index.json・f-<分野ID>.json
 | `schema` | ○ | `"lemma.problem/1"` | — |
 | `kind` | ○ | `written`（管理表）／`interactive`（内蔵） | — |
 | `field` | ○ | 分野ID | C：科目＋D：分野（taxonomy.json で引く） |
-| `level` | ○ | 0=基礎 1=標準 2=2次基礎 3=入試標準 4=入試発展 5=数学探究 | F：難易度（数でなければ 3 にして `quality.issues` に `level-missing`） |
+| `level` | ○ | 0=基礎 1=標準 2=入試基礎 3=入試標準 4=入試発展 5=数学探究 | F：難易度（数でなければ 3 にして `quality.issues` に `level-missing`） |
 | `minutes` | | 想定時間（分） | G |
 | `theme` `unit` `topic` | | 「単元・テーマ」そのまま、と「／」で分けた前後 | E |
 | `statement.tex` | ○ | 問題文（LaTeX） | H |

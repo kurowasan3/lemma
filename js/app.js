@@ -22,7 +22,7 @@ import {
   subjectsWithFields, pool, pickPractice, pickReview, dueEntries, nextReviewTime,
 } from './catalog.js';
 
-const VERSION = '0.15.0';
+const VERSION = '0.15.1';
 const KEY = 'lemma.v2';
 let sync = null, syncApplying = false, syncStatus = null;   // アカウントと同期（initSync で用意）
 const $ = (sel, el = document) => el.querySelector(sel);

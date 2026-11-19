@@ -42,7 +42,7 @@
       "type": "integer",
       "minimum": 0,
       "maximum": 5,
-      "description": "0=基礎 1=標準 2=2次基礎 3=国立2次 4=難関 5=最難関"
+      "description": "0=基礎 1=標準 2=入試基礎 3=入試標準 4=入試発展 5=数学探究"
     },
     "minutes": {
       "type": "integer",
