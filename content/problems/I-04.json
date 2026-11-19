@@ -1491,5 +1491,53 @@
    },
    "verified": false
   }
+ },
+ {
+  "id": "I-DAT-032",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "I-04",
+  "level": 3,
+  "minutes": 25,
+  "theme": "1つの得点を変えたときの相関係数の最大",
+  "topic": "1つの得点を変えたときの相関係数の最大",
+  "statement": {
+   "tex": "5人が2つの科目 X，Y の試験を受け，得点は次の表のとおりであった．ただし $x$ は実数とする．\n\\begin{center}\n\\begin{tabular}{c|ccccc}\n & ① & ② & ③ & ④ & ⑤\\\\ \\hline\n科目 X の得点 & $x$ & 6 & 4 & 7 & 4\\\\\n科目 Y の得点 & 9 & 7 & 5 & 10 & 9\n\\end{tabular}\n\\end{center}\nX の得点と Y の得点の相関係数を $r$ とする．\n\\begin{enumerate}\n  \\item $r$ を $x$ で表せ．\n  \\item $x$ がすべての実数を動くとき，$r$ の最大値と，そのときの $x$ の値を求めよ．\n  \\item $x$ が0以上の整数を動くとき，$r$ を最大にする $x$ の値と，そのときの $r$ の値を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $r=\\dfrac{\\sqrt5\\,x}{4\\sqrt{4x^2-42x+144}}$　(2) 最大値 $\\dfrac1{\\sqrt3}$（$x=\\dfrac{48}7$）　(3) $x=7$，$r=\\dfrac{7\\sqrt{230}}{184}$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) X の平均は $\\bar x=\\dfrac{x+21}5$，Y の平均は $\\bar y=\\dfrac{40}5=8$．Y の偏差は $1,-1,-3,2,1$ で，偏差の2乗和は $1+1+9+4+1=16$．Y の偏差の和は0なので，偏差の積の和は\n\\[\n\\sum(x_k-\\bar x)(y_k-\\bar y)=\\sum x_k(y_k-\\bar y)=x-6-12+14+4=x .\n\\]\nX の偏差の2乗和は\n\\[\n\\sum x_k^2-5\\bar x^2=x^2+117-\\frac{(x+21)^2}5=\\frac{4x^2-42x+144}5\n\\]\n（$4x^2-42x+144=4\\left(x-\\frac{21}4\\right)^2+\\frac{135}4>0$）．よって\n\\[\nr=\\frac{x}{\\sqrt{\\frac{4x^2-42x+144}5}\\cdot\\sqrt{16}}=\\boldsymbol{\\frac{\\sqrt5\\,x}{4\\sqrt{4x^2-42x+144}}}.\n\\]\n\n(2) $x\\leqq0$ では $r\\leqq0$．$x>0$ のとき $u=\\dfrac1x>0$ とおくと\n\\[\nr=\\frac{\\sqrt5}{4\\sqrt{144u^2-42u+4}},\\qquad 144u^2-42u+4=144\\left(u-\\frac7{48}\\right)^2+\\frac{15}{16}.\n\\]\n$u>0$ で分母の2次式の最小値は $\\frac{15}{16}$（$u=\\frac7{48}$）なので，$r\\leqq\\dfrac{\\sqrt5}{4\\cdot\\frac{\\sqrt{15}}4}=\\dfrac1{\\sqrt3}$，等号は $x=\\dfrac{48}7$．これは $x\\leqq0$ での値（0以下）より大きい．最大値 $\\boldsymbol{\\dfrac1{\\sqrt3}}$（$\\boldsymbol{x=\\dfrac{48}7}$）．\n\n(3) $x=0$ なら $r=0$．$x\\geqq1$ の整数では，(2) の式から $r$ は $\\left|\\dfrac1x-\\dfrac7{48}\\right|$ が小さいほど大きい．\n\\[\nx=6:\\ \\left|\\frac16-\\frac7{48}\\right|=\\frac1{48},\\qquad x=7:\\ \\left|\\frac17-\\frac7{48}\\right|=\\frac1{336},\n\\]\n$x\\geqq8$ では $\\dfrac7{48}-\\dfrac1x\\geqq\\dfrac7{48}-\\dfrac18=\\dfrac1{48}$，$1\\leqq x\\leqq5$ では $\\dfrac1x-\\dfrac7{48}\\geqq\\dfrac15-\\dfrac7{48}=\\dfrac{13}{240}$ で，いずれも $\\dfrac1{336}$ より大きい．よって $r$ を最大にするのは $\\boldsymbol{x=7}$ のみで，\n\\[\nr=\\frac{7\\sqrt5}{4\\sqrt{196-294+144}}=\\frac{7\\sqrt5}{4\\sqrt{46}}=\\boldsymbol{\\frac{7\\sqrt{230}}{184}}.\n\\]"
+   }
+  ],
+  "idea": {
+   "tex": "1人分の得点 $x$ だけを変えると，偏差の積の和は $\\sum x_k(y_k-\\bar y)$ により $x$ の1次式，$x$ の偏差の2乗和は $x$ の2次式．相関係数 $r=\\dfrac{(\\text{1次式})}{\\sqrt{(\\text{2次式})}}$ は，分子が正の範囲で $u=\\dfrac1x$ とおくと分母の2次式の最小に帰着する．整数の候補の比較は $\\left|\\dfrac1x-u_0\\right|$ の大小で行う．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) $r$：sqrt(5)x/(4sqrt(4x^2-42x+144))\n(2) 最大値：1/sqrt(3)\n(3) $x$：7 ; $r$：7sqrt(230)/184"
+  },
+  "methods": [],
+  "tags": [
+   "相関係数",
+   "共分散の計算",
+   "逆数の置き換え"
+  ],
+  "provenance": {
+   "created": "2026-11-18"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
  }
 ]

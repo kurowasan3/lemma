@@ -4229,5 +4229,193 @@
    },
    "verified": false
   }
+ },
+ {
+  "id": "II-LOG-091",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-11",
+  "level": 4,
+  "minutes": 30,
+  "theme": "巡回する3つの対数とその逆数の和",
+  "topic": "巡回する3つの対数とその逆数の和",
+  "statement": {
+   "tex": "$l,\\ m,\\ n$ を2以上の相異なる整数とし，\n\\[ \\alpha=\\log_lm,\\quad \\beta=\\log_mn,\\quad \\gamma=\\log_nl,\\qquad a=\\alpha+\\beta+\\gamma,\\quad b=\\log_ml+\\log_nm+\\log_ln \\]\nとおく．\n\\begin{enumerate}\n  \\item $b-a=(1-\\alpha)(1-\\beta)(1-\\gamma)$ を示せ．\n  \\item $a<b$ となるための $l,\\ m,\\ n$ の大小関係についての必要十分条件を求めよ．\n  \\item $(l,\\ m,\\ n)=(2,\\ 3,\\ 5)$ のとき，$3<a<b<4$ を示せ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 証明　(2) $l<m<n$ または $m<n<l$ または $n<l<m$　(3) 証明"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) $l,m,n\\geqq2$ より $\\log l,\\log m,\\log n>0$ で，底の変換により\n\\[ \\alpha\\beta\\gamma=\\frac{\\log m}{\\log l}\\cdot\\frac{\\log n}{\\log m}\\cdot\\frac{\\log l}{\\log n}=1,\\qquad \\log_ml=\\frac1\\alpha,\\ \\log_nm=\\frac1\\beta,\\ \\log_ln=\\frac1\\gamma. \\]\nよって $b=\\dfrac1\\alpha+\\dfrac1\\beta+\\dfrac1\\gamma=\\dfrac{\\beta\\gamma+\\gamma\\alpha+\\alpha\\beta}{\\alpha\\beta\\gamma}=\\alpha\\beta+\\beta\\gamma+\\gamma\\alpha$ で，\n\\[ (1-\\alpha)(1-\\beta)(1-\\gamma)=1-(\\alpha+\\beta+\\gamma)+(\\alpha\\beta+\\beta\\gamma+\\gamma\\alpha)-\\alpha\\beta\\gamma=b-a. \\]\n\\hfill$\\square$\n\n(2) $\\alpha>1\\iff\\log m>\\log l\\iff m>l$，$\\alpha<1\\iff m<l$ で，$m\\neq l$ より $\\alpha\\neq1$．同様に $\\beta>1\\iff n>m$，$\\gamma>1\\iff l>n$ で，$\\beta,\\gamma\\neq1$．\n\n3つの条件「$m>l$」「$n>m$」「$l>n$」のうち成り立つものの個数を $k$ とする．すべて成り立つと $l<m<n<l$ となり矛盾，すべて成り立たないと $l>m>n>l$ となり矛盾なので $k=1$ または $2$．(1) より $b-a$ の符号は $(1-\\alpha)(1-\\beta)(1-\\gamma)$ の符号で，負の因数の個数は $k$ に等しい．よって\n\\[ a<b\\iff k=2. \\]\n$k=2$ となるのは，「$m>l,\\ n>m$」で $l>n$ でない（$l<m<n$），「$m>l,\\ l>n$」で $n>m$ でない（$n<l<m$），「$n>m,\\ l>n$」で $m>l$ でない（$m<n<l$）の3通りで，それぞれ確かに $k=2$ である．よって\n\\[ \\boldsymbol{l<m<n\\ \\text{または}\\ m<n<l\\ \\text{または}\\ n<l<m}. \\]\n\n(3) $2<3<5$ なので (2) より $a<b$．\n\n$a>3$ を示す．$X,Y,Z>0$ に対し\n\\[ X^3+Y^3+Z^3-3XYZ=\\frac12(X+Y+Z)\\{(X-Y)^2+(Y-Z)^2+(Z-X)^2\\}\\geqq0 \\]\nで，等号は $X=Y=Z$ のときに限る．$X=\\alpha^{\\frac13}$ などとおくと $\\alpha+\\beta+\\gamma\\geqq3(\\alpha\\beta\\gamma)^{\\frac13}=3$ で，等号は $\\alpha=\\beta=\\gamma=1$ のときに限る．$\\alpha=\\log_23\\neq1$ なので $a>3$．\n\n$b<4$ を示す．$8<9$ より $2^3<3^2$，$\\log_32<\\frac23$．$81<125$ より $3^4<5^3$，$\\log_53<\\frac34$．$125<128$ より $5^3<2^7$，$\\log_25<\\frac73$．よって\n\\[ b<\\frac23+\\frac34+\\frac73=\\frac{45}{12}<4. \\]\n以上より $3<a<b<4$．\\hfill$\\square$"
+   }
+  ],
+  "idea": {
+   "tex": "$\\alpha\\beta\\gamma=1$ なので逆数の和は $\\alpha\\beta+\\beta\\gamma+\\gamma\\alpha$ になり，$(1-\\alpha)(1-\\beta)(1-\\gamma)=b-a$．大小は「1より大きい対数がいくつあるか」で決まり，それは $l,m,n$ の巡回的な大小で決まる．整数部分は相加相乗平均と，整数の累乗の比較による上からの評価で．"
+  },
+  "methods": [],
+  "tags": [
+   "対数",
+   "底の変換",
+   "解と係数の関係",
+   "相加相乗平均",
+   "大小比較"
+  ],
+  "provenance": {
+   "created": "2026-11-18"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-LOG-092",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-11",
+  "level": 4,
+  "minutes": 30,
+  "theme": "2と5だけを素因数にもつ100桁の数で最高位が1のもの",
+  "topic": "2と5だけを素因数にもつ100桁の数で最高位が1のもの",
+  "statement": {
+   "tex": "$0.3010<\\log_{10}2<0.3011$ であることは用いてよい．100桁の自然数で，2と5以外の素因数をもたず，かつ最高位の数字が $1$ であるものの個数を求めよ．"
+  },
+  "answer": {
+   "tex": "$143$ 個"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "自然数 $N$ の桁数を $d(N)$ と書く．$N$ が $e$ 桁 $\\iff10^{e-1}\\leqq N<10^e$．\n\n\\textbf{形の整理．} 2と5以外の素因数をもたない自然数は $2^a5^b$（$a,b\\geqq0$）とただ1通りに表せる．$a\\geqq b$ なら $N=10^b\\cdot2^c$（$c=a-b\\geqq0$），$a<b$ なら $N=10^a\\cdot5^c$（$c=b-a\\geqq1$）．$10^e\\cdot L$ の桁数は $e+d(L)$，最高位の数字は $L$ と同じである．したがって条件をみたす $N$ は\n\\begin{itemize}\n  \\item (A) $c\\geqq0$，$d(2^c)\\leqq100$，$2^c$ の最高位が $1$ であるような $c$ に対する $10^{100-d(2^c)}\\cdot2^c$，\n  \\item (B) $c\\geqq1$，$d(5^c)\\leqq100$，$5^c$ の最高位が $1$ であるような $c$ に対する $10^{100-d(5^c)}\\cdot5^c$\n\\end{itemize}\nの全体で，異なる $c$ や (A)，(B) から同じ $N$ は生じない（素因数分解の一意性）．\n\n\\textbf{$c$ の範囲．} $d(2^c)\\leqq100\\iff2^c<10^{100}\\iff c\\log_{10}2<100$．$332\\times0.3011=99.9652<100$，$333\\times0.3010=100.233>100$ より $0\\leqq c\\leqq332$．$d(5^c)\\leqq100\\iff c(1-\\log_{10}2)<100$．$143\\times(1-0.3010)=99.957<100$，$144\\times(1-0.3011)=100.6416>100$ より $1\\leqq c\\leqq143$．\n\n\\textbf{補題．} 自然数 $L$ が $e$ 桁のとき，$2L$ は $L\\geqq5\\cdot10^{e-1}$（最高位が $5$ 以上）なら $e+1$ 桁で最高位が $1$，そうでなければ $e$ 桁で最高位が $2$ 以上．\n\n（証明）$L\\geqq5\\cdot10^{e-1}$ なら $10^e\\leqq2L<2\\cdot10^e$．$L<5\\cdot10^{e-1}$ なら $2\\cdot10^{e-1}\\leqq2L<10^e$．\\hfill$\\square$\n\n\\textbf{(A) の個数．} $c=0$（$N=10^{99}$）は適する．$c\\geqq1$ では，補題より「$2^c$ の最高位が $1$」$\\iff d(2^c)=d(2^{c-1})+1$ で，つねに $d(2^c)-d(2^{c-1})\\in\\{0,1\\}$．よって $1\\leqq c\\leqq332$ で適する $c$ の個数は $d(2^{332})-d(2^0)$．$332\\times0.3010=99.932$ より $99<332\\log_{10}2<100$，$d(2^{332})=100$．よって $100-1=99$ 個，$c=0$ と合わせて $100$ 個．\n\n\\textbf{(B) の個数．} $c\\geqq1$ とする．$5^c$ の最高位が $1$ $\\iff$ ある整数 $j\\geqq0$ で $10^j\\leqq5^c<2\\cdot10^j$ $\\iff$ $5\\cdot10^{c-j-1}<2^c\\leqq10^{c-j}$（$2^c=\\frac{10^c}{5^c}$）．$c\\geqq1$ では $2^c$ は $10$ の累乗でも $5\\cdot10^i$ の形でもない（$5$ で割り切れない）ので，これは「ある整数 $i$ で $5\\cdot10^i\\leqq2^c<10^{i+1}$」，すなわち「$2^c$ の最高位が $5$ 以上」と同値で，補題より $d(2^{c+1})=d(2^c)+1$ と同値である．よって $1\\leqq c\\leqq143$ で適する $c$ の個数は $d(2^{144})-d(2^1)$．$144\\times0.3010=43.344$，$144\\times0.3011=43.3584$ より $43<144\\log_{10}2<44$，$d(2^{144})=44$．よって $44-1=43$ 個．\n\n以上より，求める個数は $100+43=\\boldsymbol{143}$ 個．"
+   }
+  ],
+  "idea": {
+   "tex": "$2^a5^b$ は小さい方の指数で $10$ のべきをくくり出すと $10^b\\cdot2^c$ または $10^a\\cdot5^c$ となり，桁数は $10$ のべきの分だけずれ，最高位の数字は $2^c$，$5^c$ のものと一致する．$2^c$ の最高位が $1$ であることは「$2^{c-1}$ から桁が1つ増える」ことと同値，$5^c$ の最高位が $1$ であることは $10^c=2^c5^c$ により「$2^c$ の最高位が $5$ 以上」，すなわち「$2^c$ から $2^{c+1}$ で桁が増える」ことと同値．どちらも桁数の差で数えられる．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "143個"
+  },
+  "methods": [],
+  "tags": [
+   "常用対数",
+   "桁数",
+   "最高位の数字",
+   "素因数分解"
+  ],
+  "provenance": {
+   "created": "2026-11-14"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-LOG-093",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-11",
+  "level": 4,
+  "minutes": 35,
+  "theme": "9乗の和の桁数と上2桁",
+  "topic": "9乗の和の桁数と上2桁",
+  "statement": {
+   "tex": "\\[\nS=1^9+2^9+3^9+\\cdots+2025^9\n\\]\nとする．\n\\begin{enumerate}\n  \\item $n$ を2以上の整数とする．$x>0$ をみたす実数 $x$ に対して，不等式\n  \\[\n  nx^{n-1}<(x+1)^n-x^n<n(x+1)^{n-1}\n  \\]\n  が成り立つことを示せ．\n  \\item $2025^{10}<10S<2026^{10}$ を示せ．\n  \\item $S$ は何桁の整数か．また，$S$ の上2桁（最高位とその次の位の数字を並べた2桁の数）を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 証明　(2) 証明　(3) $33$ 桁，上2桁は $11$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "\\textbf{(1)}　$A=x+1$，$B=x$ とおくと $A-B=1$ なので\n\\[\n(x+1)^n-x^n=(A-B)\\sum_{j=0}^{n-1}A^jB^{n-1-j}=\\sum_{j=0}^{n-1}(x+1)^jx^{n-1-j}.\n\\]\n$0<x<x+1$ より，各項について $x^{n-1}\\leqq(x+1)^jx^{n-1-j}\\leqq(x+1)^{n-1}$ で，左の等号は $j=0$ のときだけ，右の等号は $j=n-1$ のときだけ成り立つ．$n\\geqq2$ より項は2つ以上あるので，和をとって\n\\[\nnx^{n-1}<(x+1)^n-x^n<n(x+1)^{n-1}.\n\\]\n\\hfill$\\square$\n\n\\medskip\n\\textbf{(2)}　(1) で $n=10$ とする．$k=1,2,\\dots,2025$ に対し $x=k$ とおくと $10k^9<(k+1)^{10}-k^{10}$．これを加えると右辺は打ち消し合って\n\\[\n10S<2026^{10}-1^{10}<2026^{10}.\n\\]\n$k=2,3,\\dots,2025$ に対し $x=k-1\\ (>0)$ とおくと $k^{10}-(k-1)^{10}<10k^9$．また $k=1$ では $1^{10}-0^{10}=1<10\\cdot1^9$．これらを加えて\n\\[\n2025^{10}=\\sum_{k=1}^{2025}\\left\\{k^{10}-(k-1)^{10}\\right\\}<10S .\n\\]\n\\hfill$\\square$\n\n\\medskip\n\\textbf{(3)}　\\emph{2つの不等式．}$h>0$，$n$ を正の整数とすると，二項定理より $(1+h)^n\\geqq1+nh$．また $0<h<1$ のとき $(1-h)^n\\geqq1-nh$ が成り立つ（$n=1$ で等号，$(1-h)^n\\geqq1-nh$ の両辺に正の数 $1-h$ を掛けて $(1-h)^{n+1}\\geqq1-(n+1)h+nh^2\\geqq1-(n+1)h$ となる帰納法による）．さらに $nh<1$ なら，$(1+h)^n(1-h)^n=(1-h^2)^n<1$ と合わせて\n\\[\n(1+h)^n<\\frac1{(1-h)^n}\\leqq\\frac1{1-nh}.\n\\]\n\\emph{下からの評価．}$2025=2000\\times1.0125$ で，$1.0125^{10}\\geqq1+10\\times0.0125=1.125$．$2^{10}=1024$ より\n\\[\n2025^{10}=1024\\times1.0125^{10}\\times10^{30}\\geqq1024\\times1.125\\times10^{30}=1152\\times10^{30}.\n\\]\n\\emph{上からの評価．}$2026=2000\\times1.013$ で，$10\\times0.013=0.13<1$ より $1.013^{10}<\\dfrac1{0.87}<1.15$（$0.87\\times1.15=1.0005>1$）．よって\n\\[\n2026^{10}=1024\\times1.013^{10}\\times10^{30}<1024\\times1.15\\times10^{30}=1177.6\\times10^{30}.\n\\]\n(2) と合わせて\n\\[\n1.152\\times10^{32}<S<1.1776\\times10^{32}.\n\\]\n$S$ は $1.1\\times10^{32}$ 以上 $1.2\\times10^{32}$ 未満の整数なので，$\\boldsymbol{33}$ 桁で，上2桁は $\\boldsymbol{11}$ である．"
+   }
+  ],
+  "idea": {
+   "tex": "$nx^{n-1}<(x+1)^n-x^n<n(x+1)^{n-1}$ は「1つの差のはさみうち」だが，これを $x=1,2,\\dots$ で足し合わせると左右が打ち消し合い，$\\sum k^9$ が $\\frac{m^{10}}{10}$ と $\\frac{(m+1)^{10}}{10}$ にはさまれる．上2桁まで決めるには対数の近似値では精度が足りず，$2025=2000\\times1.0125$ と分けて $(1+h)^{10}\\geqq1+10h$ と $(1+h)^{10}<\\frac1{1-10h}$（$(1-h)^{10}\\geqq1-10h$ との積から）を使う．原題の「1つの差 $2026^{10}-2025^{10}$ の桁数」を「9乗の和の桁数と上2桁」に変えた．"
+  },
+  "methods": [],
+  "tags": [
+   "桁数",
+   "階差による評価",
+   "和の評価",
+   "ベルヌーイの不等式",
+   "二項定理",
+   "累乗の差の因数分解"
+  ],
+  "provenance": {
+   "created": "2026-11-14"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-LOG-094",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-11",
+  "level": 4,
+  "minutes": 30,
+  "theme": "$1^1\\cdot2^3\\cdot3^5\\cdots100^{199}$ の大きさ",
+  "topic": "$1^1\\cdot2^3\\cdot3^5\\cdots100^{199}$ の大きさ",
+  "statement": {
+   "tex": "\\begin{enumerate}\n  \\item すべての自然数 $n$ に対して $2\\leqq\\left(1+\\dfrac1n\\right)^n<3$ が成り立つことを示せ．\n  \\item $2$ 以上の整数 $n$ に対して\n  \\[\n  \\left(1+\\frac11\\right)^{1^2}\\left(1+\\frac12\\right)^{2^2}\\cdots\\left(1+\\frac1{n-1}\\right)^{(n-1)^2}\n  =\\frac{n^{(n-1)^2}}{1^1\\cdot2^3\\cdot3^5\\cdots(n-1)^{2n-3}}\n  \\]\n  が成り立つことを示せ．\n  \\item $P=1^1\\cdot2^3\\cdot3^5\\cdots100^{199}$ とする．$P$ と $10^{17500}$，$P$ と $10^{18600}$ の大小をそれぞれ判定せよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 証明　(2) 証明　(3) $P>10^{17500}$，$P<10^{18600}$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) 二項定理より\n\\[\n\\left(1+\\frac1n\\right)^n=\\sum_{k=0}^{n}{}_n\\mathrm C_k\\frac1{n^k}.\n\\]\n各項は0以上で，$k=0,1$ の項の和は $1+n\\cdot\\dfrac1n=2$ なので，$\\left(1+\\dfrac1n\\right)^n\\geqq2$．\n\nまた $1\\leqq k\\leqq n$ のとき\n\\[\n{}_n\\mathrm C_k\\frac1{n^k}=\\frac1{k!}\\cdot\\frac nn\\cdot\\frac{n-1}n\\cdots\\frac{n-k+1}n\\leqq\\frac1{k!}\\leqq\\frac1{2^{k-1}}\n\\]\n（$k!=1\\cdot2\\cdot3\\cdots k$ の $2,3,\\dots,k$ はどれも $2$ 以上なので $k!\\geqq2^{k-1}$）．よって\n\\[\n\\left(1+\\frac1n\\right)^n\\leqq1+\\sum_{k=1}^{n}\\frac1{2^{k-1}}=1+2\\left(1-\\frac1{2^n}\\right)<3 .\n\\]\n\\hfill$\\square$\n\n(2) 左辺を $Q_n$，$1^1\\cdot2^3\\cdots(n-1)^{2n-3}$ を $R_n$ とおき，$Q_nR_n=n^{(n-1)^2}$ を $n$ についての帰納法で示す．\n\n$n=2$ のとき $Q_2=2$，$R_2=1^1=1$ で $Q_2R_2=2=2^{1}$．成り立つ．\n\n$n$ で成り立つとすると，$Q_{n+1}=Q_n\\left(\\dfrac{n+1}n\\right)^{n^2}$，$R_{n+1}=R_n\\cdot n^{2n-1}$ より\n\\[\nQ_{n+1}R_{n+1}=n^{(n-1)^2}\\cdot\\frac{(n+1)^{n^2}}{n^{n^2}}\\cdot n^{2n-1}=(n+1)^{n^2}\\cdot n^{(n-1)^2-n^2+2n-1}=(n+1)^{n^2}.\n\\]\nよって $n+1$ でも成り立つ．\\hfill$\\square$\n\n(3) (2) で $n=101$ とすると $R_{101}=P$ であり，\n\\[\nP=\\frac{101^{10000}}{Q_{101}},\\qquad Q_{101}=\\left(1+\\frac11\\right)^{1^2}\\cdots\\left(1+\\frac1{100}\\right)^{100^2}.\n\\]\n(1) より各 $k$ について $2^k\\leqq\\left\\{\\left(1+\\dfrac1k\\right)^k\\right\\}^k<3^k$ なので，$1+2+\\cdots+100=5050$ より\n\\[\n2^{5050}\\leqq Q_{101}<3^{5050},\\qquad\\text{よって}\\qquad \\frac{101^{10000}}{3^{5050}}<P\\leqq\\frac{101^{10000}}{2^{5050}} .\n\\]\n\n\\textbf{下からの評価．} $3^{25}=847288609443<10^{12}$ より $3^{5050}=(3^{25})^{202}<10^{2424}$．また $101^{10000}>100^{10000}=10^{20000}$．よって\n\\[\nP>\\frac{10^{20000}}{10^{2424}}=10^{17576}>10^{17500}.\n\\]\n\n\\textbf{上からの評価．} (1) で $n=100$ とすると $\\left(1+\\dfrac1{100}\\right)^{100}<3$ なので\n\\[\n101^{10000}=10^{20000}\\left\\{\\left(1+\\frac1{100}\\right)^{100}\\right\\}^{100}<10^{20000}\\cdot3^{100}=10^{20000}(3^{25})^4<10^{20048}.\n\\]\nまた $2^{10}=1024>10^3$ より $2^{5050}=(2^{10})^{505}>10^{1515}$．よって\n\\[\nP<\\frac{10^{20048}}{10^{1515}}=10^{18533}<10^{18600}.\n\\]\n以上より $\\boldsymbol{P>10^{17500}}$，$\\boldsymbol{P<10^{18600}}$．"
+   }
+  ],
+  "idea": {
+   "tex": "$\\left(1+\\frac1k\\right)^{k}=\\dfrac{(k+1)^k}{k^k}$ の積は望遠鏡式に縮み，$n^n$ と階乗のような積が現れる．各因子を $2\\leqq\\left(1+\\frac1k\\right)^k<3$ で挟めば，その積の大きさが $2$ のべきと $3$ のべきの間に定まる．指数を $k^2$ にすると $1^1\\cdot2^3\\cdot3^5\\cdots$ という積が現れ，$\\left(1+\\frac1k\\right)^{k^2}$ は $2^k$ と $3^k$ で挟まれる．"
+  },
+  "methods": [],
+  "tags": [
+   "二項定理",
+   "望遠鏡式の積",
+   "数学的帰納法",
+   "常用対数",
+   "不等式による評価"
+  ],
+  "provenance": {
+   "created": "2026-11-14"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
  }
 ]

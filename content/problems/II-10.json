@@ -7389,5 +7389,1256 @@
    },
    "verified": false
   }
+ },
+ {
+  "id": "II-TRI-159",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-10",
+  "level": 4,
+  "minutes": 30,
+  "theme": "直交する2直線への垂線の足",
+  "topic": "直交する2直線への垂線の足",
+  "statement": {
+   "tex": "座標平面上に2点 P$(1,4)$，R$(4,8)$ をとる．$0\\leqq\\theta<\\pi$ とし，原点 O を通り $\\vec u=(\\cos\\theta,\\sin\\theta)$ を方向ベクトルとする直線を $l$，O を通り $l$ に垂直な直線を $m$ とする．P から $l$ に下ろした垂線と $l$ の交点を Q，R から $m$ に下ろした垂線と $m$ の交点を S とする（P が $l$ 上にあるときは Q$=$P，R が $m$ 上にあるときは S$=$R とする）．\n\\begin{enumerate}\n  \\item Q，S の座標を $\\cos2\\theta$，$\\sin2\\theta$ を用いて表せ．\n  \\item 線分 QS の中点 M が描く図形を求めよ．\n  \\item 線分 QS の長さの最大値と最小値，およびそれらを与える $\\tan\\theta$ の値を求めよ．\n  \\item $\\mathrm{PQ}^2+\\mathrm{RS}^2$ の最大値と最小値を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $\\mathrm{Q}\\left(\\dfrac12+\\dfrac12\\cos2\\theta+2\\sin2\\theta,\\ 2-2\\cos2\\theta+\\dfrac12\\sin2\\theta\\right)$，$\\mathrm{S}(2-2\\cos2\\theta-4\\sin2\\theta,\\ 4+4\\cos2\\theta-2\\sin2\\theta)$　(2) 円 $\\left(x-\\dfrac54\\right)^2+(y-3)^2=\\dfrac{25}{16}$ 全体　(3) 最大値 $9$（$\\tan\\theta=-\\dfrac47$），最小値 $4$（$\\tan\\theta=\\dfrac74$）　(4) 最大値 $81$，最小値 $16$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "$\\vec p=\\overrightarrow{\\mathrm{OP}}=(1,4)$，$\\vec r=\\overrightarrow{\\mathrm{OR}}=(4,8)$，$\\vec v=(-\\sin\\theta,\\cos\\theta)$ とおく（$\\vec v$ は $m$ の方向ベクトル）．また $c=\\cos2\\theta$，$s=\\sin2\\theta$ と書く．\n\n\\textbf{(1)．} Q は $l$ 上なので $\\overrightarrow{\\mathrm{OQ}}=t\\vec u$ と書け，$\\overrightarrow{\\mathrm{QP}}\\perp\\vec u$ から $(\\vec p-t\\vec u)\\cdot\\vec u=0$，$t=\\vec p\\cdot\\vec u$（P が $l$ 上のときもこれで Q$=$P となる）．$\\vec p\\cdot\\vec u=\\cos\\theta+4\\sin\\theta$ なので\n\\[\n\\mathrm Q=\\bigl(\\cos^2\\theta+4\\sin\\theta\\cos\\theta,\\ \\sin\\theta\\cos\\theta+4\\sin^2\\theta\\bigr)=\\boldsymbol{\\left(\\frac12+\\frac12c+2s,\\ 2-2c+\\frac12s\\right)}.\n\\]\n同様に $\\overrightarrow{\\mathrm{OS}}=(\\vec r\\cdot\\vec v)\\vec v$，$\\vec r\\cdot\\vec v=8\\cos\\theta-4\\sin\\theta$ で\n\\[\n\\mathrm S=\\bigl(4\\sin^2\\theta-8\\sin\\theta\\cos\\theta,\\ 8\\cos^2\\theta-4\\sin\\theta\\cos\\theta\\bigr)=\\boldsymbol{(2-2c-4s,\\ 4+4c-2s)}.\n\\]\n\n\\textbf{(2)．} M$=\\left(\\frac54-\\frac34c-s,\\ 3+c-\\frac34s\\right)$．$X=-\\frac34c-s$，$Y=c-\\frac34s$ とおくと M$=\\left(\\frac54+X,\\ 3+Y\\right)$ で\n\\[\nX^2+Y^2=\\left(\\tfrac9{16}+1\\right)(c^2+s^2)=\\tfrac{25}{16}.\n\\]\nよって M は円 $\\left(x-\\frac54\\right)^2+(y-3)^2=\\frac{25}{16}$ 上にある．逆に，この円上の任意の点を $\\left(\\frac54+X,\\ 3+Y\\right)$（$X^2+Y^2=\\frac{25}{16}$）とし，\n\\[\nc_0=\\tfrac{16}{25}\\left(-\\tfrac34X+Y\\right),\\quad s_0=\\tfrac{16}{25}\\left(-X-\\tfrac34Y\\right)\n\\]\nとおくと，代入して $-\\frac34c_0-s_0=X$，$c_0-\\frac34s_0=Y$ が成り立ち，$c_0^2+s_0^2=\\left(\\frac{16}{25}\\right)^2\\cdot\\frac{25}{16}(X^2+Y^2)=1$．$2\\theta$ は $0\\leqq2\\theta<2\\pi$ を動くので，$(\\cos2\\theta,\\sin2\\theta)=(c_0,s_0)$ となる $\\theta\\in[0,\\pi)$ が存在し，そのとき M はこの点に一致する．\n\nよって M の描く図形は \\textbf{円} $\\boldsymbol{\\left(x-\\dfrac54\\right)^2+(y-3)^2=\\dfrac{25}{16}}$ \\textbf{全体}．\n\n\\textbf{(3)．} $\\overrightarrow{\\mathrm{OQ}}$ は $\\vec u$ の，$\\overrightarrow{\\mathrm{OS}}$ は $\\vec v$ の実数倍で $\\vec u\\cdot\\vec v=0$ だから，$\\overrightarrow{\\mathrm{OQ}}\\cdot\\overrightarrow{\\mathrm{OS}}=0$．したがって\n\\[\n\\begin{aligned}\n\\mathrm{QS}^2&=|\\overrightarrow{\\mathrm{OS}}-\\overrightarrow{\\mathrm{OQ}}|^2=\\mathrm{OQ}^2+\\mathrm{OS}^2=(\\cos\\theta+4\\sin\\theta)^2+(8\\cos\\theta-4\\sin\\theta)^2\\\\\n&=65\\cos^2\\theta-56\\sin\\theta\\cos\\theta+32\\sin^2\\theta.\n\\end{aligned}\n\\]\n半角の公式で $\\mathrm{QS}^2=\\frac{97}2+\\frac{33}2c-28s$．$33^2+56^2=4225=65^2$ なので，$\\cos\\beta=\\frac{33}{65}$，$\\sin\\beta=\\frac{56}{65}$ をみたす角 $\\beta$ をとると\n\\[\n\\mathrm{QS}^2=\\frac{97}2+\\frac{65}2\\cos(2\\theta+\\beta).\n\\]\n$2\\theta+\\beta$ は長さ $2\\pi$ の区間 $[\\beta,\\beta+2\\pi)$ を動くので，$\\cos(2\\theta+\\beta)$ は $1$ と $-1$ をともにとり，その範囲は $[-1,1]$．よって $16\\leqq\\mathrm{QS}^2\\leqq81$，すなわち $4\\leqq\\mathrm{QS}\\leqq9$ で，両端はとられる．\n\n$0<\\beta<\\dfrac\\pi2$ に注意する．最大のとき $2\\theta+\\beta=2\\pi$，すなわち $2\\theta=2\\pi-\\beta$ より $(c,s)=(\\cos\\beta,-\\sin\\beta)=\\left(\\frac{33}{65},-\\frac{56}{65}\\right)$．$c\\neq-1$ だから $\\cos\\theta\\neq0$ で，$\\tan\\theta=\\dfrac{\\sin2\\theta}{1+\\cos2\\theta}=\\dfrac{-56}{98}=-\\dfrac47$．\n最小のとき $2\\theta+\\beta=\\pi$，すなわち $2\\theta=\\pi-\\beta$ より $(c,s)=(-\\cos\\beta,\\sin\\beta)=\\left(-\\frac{33}{65},\\frac{56}{65}\\right)$ で $\\tan\\theta=\\dfrac{56}{32}=\\dfrac74$．\n\n\\textbf{最大値 $\\boldsymbol9$（$\\boldsymbol{\\tan\\theta=-\\frac47}$），最小値 $\\boldsymbol4$（$\\boldsymbol{\\tan\\theta=\\frac74}$）．}\n\n\\textbf{(4)．} $\\overrightarrow{\\mathrm{QP}}\\perp\\overrightarrow{\\mathrm{OQ}}$ だから $\\mathrm{OQ}^2+\\mathrm{PQ}^2=\\mathrm{OP}^2=17$．同様に $\\mathrm{OS}^2+\\mathrm{RS}^2=\\mathrm{OR}^2=80$．（3）の $\\mathrm{QS}^2=\\mathrm{OQ}^2+\\mathrm{OS}^2$ とあわせて\n\\[\n\\mathrm{PQ}^2+\\mathrm{RS}^2=97-\\mathrm{QS}^2 .\n\\]\n(3) より $16\\leqq\\mathrm{QS}^2\\leqq81$（両端とも達成）なので，\\textbf{最大値 $\\boldsymbol{81}$}（$\\tan\\theta=\\frac74$），\\textbf{最小値 $\\boldsymbol{16}$}（$\\tan\\theta=-\\frac47$）．\n\\hfill$\\square$"
+   }
+  ],
+  "idea": {
+   "tex": "原点を通る方向 $\\vec u=(\\cos\\theta,\\sin\\theta)$ の直線への垂線の足は $(\\overrightarrow{\\mathrm{OP}}\\cdot\\vec u)\\vec u$ で，座標は $\\cos2\\theta,\\ \\sin2\\theta$ の1次式（＝$\\theta$ の2倍の速さで回る円）になる．直交する2直線 $l\\perp m$ に別々の点から下ろした足 Q，S については $\\angle\\mathrm{QOS}=90^\\circ$ なので $\\mathrm{QS}^2=\\mathrm{OQ}^2+\\mathrm{OS}^2$ が $2\\theta$ の合成で処理でき，さらに $\\mathrm{PQ}^2+\\mathrm{RS}^2+\\mathrm{QS}^2=\\mathrm{OP}^2+\\mathrm{OR}^2$ が一定になる．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) 記述\n(2) 記述\n(3) 最大値：9 ; 最小値：4\n(4) 最大値：81 ; 最小値：16"
+  },
+  "methods": [],
+  "tags": [
+   "垂線の足",
+   "2倍角",
+   "三角関数の合成",
+   "軌跡"
+  ],
+  "provenance": {
+   "created": "2026-11-18"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-TRI-160",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-10",
+  "level": 4,
+  "minutes": 35,
+  "theme": "上半平面と下半平面で回転角が異なる点の移動",
+  "topic": "上半平面と下半平面で回転角が異なる点の移動",
+  "statement": {
+   "tex": "座標平面上の点 $(x_1,\\ y_1)$ に対して，点 $(x_2,\\ y_2),\\ (x_3,\\ y_3),\\ \\dots$ を次の規則で順に定める．\n\\[\n(x_{n+1},\\ y_{n+1})=\n\\begin{cases}\n(-y_n,\\ x_n) & (y_n\\geqq0\\ \\text{のとき})\\\\[4pt]\n\\left(-\\dfrac12x_n-\\dfrac{\\sqrt3}2y_n,\\ \\ \\dfrac{\\sqrt3}2x_n-\\dfrac12y_n\\right) & (y_n<0\\ \\text{のとき})\n\\end{cases}\n\\]\n\\begin{enumerate}\n  \\item $(x_1,\\ y_1)=(1,\\ \\sqrt3)$ のとき，$(x_4,\\ y_4)$ と $(x_8,\\ y_8)$ を求めよ．\n  \\item $(x_1,\\ y_1)=(r\\cos\\theta,\\ r\\sin\\theta)$，$r>0$，$0<\\theta\\leqq\\dfrac\\pi6$ のとき，$(x_8,\\ y_8)=(x_1,\\ y_1)$ となることを示せ．\n  \\item $(x_n,\\ y_n)=(x_1,\\ y_1)$ となる2以上の整数 $n$ が存在しないような点 $(x_1,\\ y_1)$ の範囲を，偏角を用いて答えよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $(x_4,y_4)=(2,\\ 0)$，$(x_8,y_8)=(\\sqrt3,\\ 1)$　(2) 証明　(3) 原点以外で，偏角 $\\theta$（$0\\leqq\\theta<2\\pi$）が $\\theta=0$ または $\\dfrac\\pi6<\\theta\\leqq\\dfrac\\pi3,\\ \\dfrac{2\\pi}3<\\theta\\leqq\\dfrac{5\\pi}6,\\ \\dfrac{7\\pi}6<\\theta\\leqq\\dfrac{4\\pi}3,\\ \\dfrac{3\\pi}2<\\theta\\leqq\\dfrac{5\\pi}3,\\ \\dfrac{11\\pi}6<\\theta<2\\pi$ をみたす点全体"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "点を $(r\\cos\\theta,\\ r\\sin\\theta)$ と表す．1つ目の規則は原点のまわりの $\\frac\\pi2$ 回転，2つ目は $\\frac{2\\pi}3$ 回転であり，原点からの距離は変わらない．原点は $(0,0)\\mapsto(0,0)$ で $(x_2,y_2)=(x_1,y_1)$．以下 $r>0$，偏角は $0\\leqq\\theta<2\\pi$ で表す．$y\\geqq0\\iff0\\leqq\\theta\\leqq\\pi$ だから，偏角の変化は\n\\[\nT(\\theta)=\\begin{cases}\\theta+\\frac\\pi2&(0\\leqq\\theta\\leqq\\pi)\\\\[2pt]\\theta+\\frac{2\\pi}3&(\\pi<\\theta<2\\pi)\\end{cases}\\qquad(2\\pi\\text{ 以上なら }2\\pi\\text{ を引く}).\n\\]\n\n(1) $r=2$，$\\theta_1=\\frac\\pi3$．$\\theta_2=\\frac{5\\pi}6$，$\\theta_3=\\frac{4\\pi}3$，$\\theta_4=2\\pi\\to0$．よって $(x_4,y_4)=\\boldsymbol{(2,\\ 0)}$．続いて $\\theta_5=\\frac\\pi2$，$\\theta_6=\\pi$（$y=0$），$\\theta_7=\\frac{3\\pi}2$，$\\theta_8=\\frac{3\\pi}2+\\frac{2\\pi}3-2\\pi=\\frac\\pi6$．よって $(x_8,y_8)=\\boldsymbol{(\\sqrt3,\\ 1)}$．\n\n(2) 次の区間を考える．\n\\[\nI_1=\\left(0,\\tfrac\\pi6\\right],\\ I_2=\\left(\\tfrac\\pi2,\\tfrac{2\\pi}3\\right],\\ I_3=\\left(\\pi,\\tfrac{7\\pi}6\\right],\\ I_4=\\left(\\tfrac{5\\pi}3,\\tfrac{11\\pi}6\\right],\\ I_5=\\left(\\tfrac\\pi3,\\tfrac\\pi2\\right],\\ I_6=\\left(\\tfrac{5\\pi}6,\\pi\\right],\\ I_7=\\left(\\tfrac{4\\pi}3,\\tfrac{3\\pi}2\\right].\n\\]\n$I_1,I_2\\subset[0,\\pi]$ なので $T$ は $+\\frac\\pi2$ で $I_1\\to I_2\\to I_3$．$I_3,I_4\\subset(\\pi,2\\pi)$ なので $+\\frac{2\\pi}3$ で $I_3\\to I_4$，$I_4\\to\\left(\\frac{7\\pi}3,\\frac{5\\pi}2\\right]-2\\pi=I_5$．$I_5,I_6\\subset[0,\\pi]$ で $I_5\\to I_6\\to I_7$．$I_7\\subset(\\pi,2\\pi)$ で $I_7\\to\\left(2\\pi,\\frac{13\\pi}6\\right]-2\\pi=I_1$．各段は区間の平行移動（1対1）で，7回の移動量の合計は $4\\cdot\\frac\\pi2+3\\cdot\\frac{2\\pi}3=4\\pi$．よって $\\theta_1\\in I_1$ なら $\\theta_8=\\theta_1+4\\pi-4\\pi=\\theta_1$，すなわち $(x_8,y_8)=(x_1,y_1)$．\\hfill$\\square$\n\n(3) $E=I_1\\cup\\dots\\cup I_7=\\left(0,\\frac\\pi6\\right]\\cup\\left(\\frac\\pi3,\\frac{2\\pi}3\\right]\\cup\\left(\\frac{5\\pi}6,\\frac{7\\pi}6\\right]\\cup\\left(\\frac{4\\pi}3,\\frac{3\\pi}2\\right]\\cup\\left(\\frac{5\\pi}3,\\frac{11\\pi}6\\right]$ とする．(2) の議論から，$\\theta_1\\in E$ なら（どの $I_j$ から始めても7回で一巡するので）$\\theta_8=\\theta_1$ で，戻る．また $T(E)\\subset E$．\n\n$E$ の補集合 $F=\\{0\\}\\cup\\left(\\frac\\pi6,\\frac\\pi3\\right]\\cup\\left(\\frac{2\\pi}3,\\frac{5\\pi}6\\right]\\cup\\left(\\frac{7\\pi}6,\\frac{4\\pi}3\\right]\\cup\\left(\\frac{3\\pi}2,\\frac{5\\pi}3\\right]\\cup\\left(\\frac{11\\pi}6,2\\pi\\right)$ の点は，次のように数回で $E$ に入る．\n\\begin{itemize}\n  \\item $0\\to\\frac\\pi2\\in I_5$．\n  \\item $\\left(\\frac{11\\pi}6,2\\pi\\right)\\to\\left(\\frac{5\\pi}2,\\frac{8\\pi}3\\right)-2\\pi=\\left(\\frac\\pi2,\\frac{2\\pi}3\\right)\\subset I_2$．\n  \\item $\\left(\\frac\\pi6,\\frac\\pi3\\right]\\to\\left(\\frac{2\\pi}3,\\frac{5\\pi}6\\right]\\to\\left(\\frac{7\\pi}6,\\frac{4\\pi}3\\right]\\to\\left(\\frac{11\\pi}6,2\\pi\\right]$ で，$2\\pi$ は $0$ と同じなので，上の2つの場合に帰着する．\n  \\item $\\left(\\frac{3\\pi}2,\\frac{5\\pi}3\\right]\\to\\left(\\frac{13\\pi}6,\\frac{7\\pi}3\\right]-2\\pi=\\left(\\frac\\pi6,\\frac\\pi3\\right]$ で，前の場合に帰着する．\n\\end{itemize}\nよって $\\theta_1\\in F$ なら，ある $k$ で $\\theta_k\\in E$ となり，$T(E)\\subset E$ より $n\\geqq k$ のすべてで $\\theta_n\\in E$．もし $\\theta_N=\\theta_1$（$N\\geqq2$）なら $\\theta_{1+j(N-1)}=\\theta_1$（$j=1,2,\\dots$）で，$1+j(N-1)\\geqq k$ となる $j$ をとれば $\\theta_1\\in E$ となり矛盾．したがって $F$ の点は戻らない．\n\n答：原点以外で，偏角 $\\theta$ が\n\\[\n\\boldsymbol{\\theta=0,\\ \\ \\tfrac\\pi6<\\theta\\leqq\\tfrac\\pi3,\\ \\ \\tfrac{2\\pi}3<\\theta\\leqq\\tfrac{5\\pi}6,\\ \\ \\tfrac{7\\pi}6<\\theta\\leqq\\tfrac{4\\pi}3,\\ \\ \\tfrac{3\\pi}2<\\theta\\leqq\\tfrac{5\\pi}3,\\ \\ \\tfrac{11\\pi}6<\\theta<2\\pi}\n\\]\nのいずれかをみたす点全体（原点を頂点とする5つの扇形状の領域（原点は除く）と $x$ 軸の正の部分）．"
+   }
+  ],
+  "idea": {
+   "tex": "原点からの距離は変わらないので偏角 $\\theta$ だけを追えばよい．$0\\leqq\\theta\\leqq\\pi$ では $+\\frac\\pi2$，$\\pi<\\theta<2\\pi$ では $+\\frac{2\\pi}3$．7回で合計 $4\\pi$ 回る閉じた巡回をなす偏角の集合 $E$ を見つけると，$E$ は写像で $E$ に移り，$E$ の外の点は数回で $E$ に入って二度と戻れない（入った後は $E$ の中にとどまる）．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) $(x_4,y_4)$：(2, 0) ; $(x_8,y_8)$：(sqrt(3), 1)\n(2) 証明\n(3) 記述"
+  },
+  "methods": [],
+  "tags": [
+   "回転",
+   "偏角",
+   "周期",
+   "区分的な写像",
+   "不変集合"
+  ],
+  "provenance": {
+   "created": "2026-11-18"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-TRI-161",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-10",
+  "level": 4,
+  "minutes": 35,
+  "theme": "一般のリサージュ曲線の自己交点の個数",
+  "topic": "一般のリサージュ曲線の自己交点の個数",
+  "statement": {
+   "tex": "$m,\\ n$ は互いに素な正の整数で，$m$ は偶数，$n$ は奇数とする．$0\\leqq\\theta<2\\pi$ に対して\n\\[C:\\ x=\\sin m\\theta,\\quad y=\\sin n\\theta\\]\nで表される曲線 $C$ を考える．$C$ 上の点のうち，2つ以上の異なる $\\theta$（$0\\leqq\\theta<2\\pi$）に対応する点を $C$ の自己交点とよぶ．\n\\begin{enumerate}\n  \\item $0\\leqq\\theta_1<2\\pi$，$0\\leqq\\theta_2<2\\pi$，$\\theta_1\\neq\\theta_2$ とする．$\\theta_1$ と $\\theta_2$ が $C$ 上の同じ点に対応するための必要十分条件は，次の (A)，(B) のいずれかが成り立つことであることを示せ．ただし $\\delta=\\theta_1-\\theta_2$，$\\sigma=\\theta_1+\\theta_2$ とする．\n  \\begin{center}\n  (A) $m\\delta$ が $2\\pi$ の整数倍で，$n\\sigma-\\pi$ が $2\\pi$ の整数倍．\\\\\n  (B) $n\\delta$ が $2\\pi$ の整数倍で，$m\\sigma-\\pi$ が $2\\pi$ の整数倍．\n  \\end{center}\n  \\item $C$ 上のどの点も，3つ以上の異なる $\\theta$ には対応しないことを示せ．\n  \\item $C$ の自己交点の個数を $m,\\ n$ で表せ．また，$(m,n)=(2,3)$，$(4,7)$ のときの個数を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 証明　(2) 証明　(3) $2mn-m-n$ 個；$(2,3)$ のとき $7$ 個，$(4,7)$ のとき $45$ 個"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "以下「$\\equiv$」は $2\\pi$ の整数倍の差を除いて等しいことを表す．\n\n(1) $\\sin A-\\sin B=2\\cos\\frac{A+B}2\\sin\\frac{A-B}2$ より\n\\[\\sin A=\\sin B\\iff A-B\\equiv0\\ \\text{または}\\ A+B\\equiv\\pi.\\]\nよって $\\theta_1,\\theta_2$ が同じ点に対応する $\\iff$ 「$m\\delta\\equiv0$ または $m\\sigma\\equiv\\pi$」かつ「$n\\delta\\equiv0$ または $n\\sigma\\equiv\\pi$」．組合せは4通り．\n\n(i) $m\\delta\\equiv0$ かつ $n\\delta\\equiv0$：$m,n$ は互いに素なので $um+vn=1$ となる整数 $u,v$ がある．$\\delta=u(m\\delta)+v(n\\delta)\\equiv0$．$0<|\\delta|<2\\pi$ に反し，起こらない．\n\n(ii) $m\\sigma\\equiv\\pi$ かつ $n\\sigma\\equiv\\pi$：$m\\sigma=\\pi+2\\pi k$ に奇数 $n$ を掛けて $mn\\sigma=n\\pi+2\\pi nk\\equiv\\pi$．一方 $n\\sigma=\\pi+2\\pi l$ に偶数 $m$ を掛けて $mn\\sigma=m\\pi+2\\pi ml\\equiv0$．矛盾し，起こらない．\n\n残りの2通りがそれぞれ (A)，(B) である．逆に (A) または (B) が成り立てば，上の同値関係から $\\sin m\\theta_1=\\sin m\\theta_2$，$\\sin n\\theta_1=\\sin n\\theta_2$．\\hfill$\\square$\n\n(2) 異なる $\\theta_1,\\theta_2,\\theta_3$ が同じ点に対応するとする．3つの組 $\\{\\theta_1,\\theta_2\\}$，$\\{\\theta_1,\\theta_3\\}$，$\\{\\theta_2,\\theta_3\\}$ はそれぞれ (A) か (B) をみたすので，2つの組が同じ型である．どの2組も1つの $\\theta$ を共有するので，番号を付けかえて $\\{\\theta_1,\\theta_2\\}$，$\\{\\theta_1,\\theta_3\\}$ がともに (A) をみたすとしてよい（(B) の場合は $m$ と $n$ の役割を入れかえれば同じ）．このとき\n\\[n(\\theta_1+\\theta_2)\\equiv\\pi\\equiv n(\\theta_1+\\theta_3)\\ \\Rightarrow\\ n(\\theta_2-\\theta_3)\\equiv0,\\qquad m(\\theta_1-\\theta_2)\\equiv0\\equiv m(\\theta_1-\\theta_3)\\ \\Rightarrow\\ m(\\theta_2-\\theta_3)\\equiv0.\\]\n(1) の (i) と同様に $\\theta_2-\\theta_3\\equiv0$ となり，$0\\leqq\\theta_2,\\theta_3<2\\pi$ から $\\theta_2=\\theta_3$．矛盾．\\hfill$\\square$\n\n(3) (2) より，自己交点と「同じ点に対応する $\\theta$ の組 $\\{\\theta_1,\\theta_2\\}$（$\\theta_1\\neq\\theta_2$）」は1対1に対応する．また (A) と (B) を同時にみたすと $m\\delta\\equiv n\\delta\\equiv0$ で (i) と同様に矛盾するから，型 (A) の組と型 (B) の組は重ならない．条件は $\\theta_1,\\theta_2$ について対称なので，順序をつけた組 $(\\theta_1,\\theta_2)$ を数えて2で割る．\n\n型 (A)：$m\\delta\\equiv0$，$\\delta\\not\\equiv0$ より $\\theta_1\\equiv\\theta_2+\\dfrac{2\\pi j}m$（$j=1,2,\\dots,m-1$）で，$\\theta_2$ と $j$ を決めると $\\theta_1\\in[0,2\\pi)$ はただ1つに決まり，$j$ が異なれば $\\theta_1$ も異なる．このとき $\\sigma\\equiv2\\theta_2+\\dfrac{2\\pi j}m$ で，条件 $n\\sigma\\equiv\\pi$ は\n\\[2n\\theta_2\\equiv\\pi-\\frac{2\\pi nj}m\\]\nとなる．右辺を $c$（定数）とすると，$2n\\theta_2=c+2\\pi l$（$l$ は整数）をみたす $\\theta_2\\in[0,2\\pi)$ は，$2n\\theta_2$ が長さ $4n\\pi$ の区間 $[0,4n\\pi)$ を動くので，ちょうど $2n$ 個．よって順序つきの組は $2n(m-1)$ 個，組は $n(m-1)$ 個．\n\n型 (B)：$m$ と $n$ を入れかえて同様に $m(n-1)$ 個．\n\n自己交点の個数は\n\\[n(m-1)+m(n-1)=\\boldsymbol{2mn-m-n}\\ \\text{個}.\\]\n$(m,n)=(2,3)$ のとき $\\boldsymbol7$ 個，$(4,7)$ のとき $56-11=\\boldsymbol{45}$ 個．"
+   }
+  ],
+  "idea": {
+   "tex": "$\\sin A=\\sin B\\iff$「$A-B$ が $2\\pi$ の整数倍」または「$A+B-\\pi$ が $2\\pi$ の整数倍」．2つの座標の条件の組合せ4通りのうち，互いに素であること（$um+vn=1$）と偶奇で2通りが消え，残りの2型それぞれで $\\theta$ の組を数える．同じ型の2組が添字を共有すると矛盾することから3重点がなく，自己交点と組が1対1に対応する．"
+  },
+  "methods": [],
+  "tags": [
+   "三角方程式",
+   "数え上げ",
+   "互いに素",
+   "媒介変数表示"
+  ],
+  "provenance": {
+   "created": "2026-11-18"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-TRI-162",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-10",
+  "level": 4,
+  "minutes": 30,
+  "theme": "格子点上の最小値と最小化の順序交換",
+  "topic": "格子点上の最小値と最小化の順序交換",
+  "statement": {
+   "tex": "$0\\leqq\\theta<2\\pi$ とする．整数 $x,\\ y$ に対して\n\\[\nf_\\theta(x,y)=x^2+xy+y^2+2x\\cos\\theta+2y\\sin\\theta\n\\]\nとおき，$x,\\ y$ が整数全体を動くときの $f_\\theta(x,y)$ の最小値を $m(\\theta)$ とする．\n\\begin{enumerate}\n  \\item 各 $\\theta$ に対して最小値 $m(\\theta)$ が存在することを示し，$m(0)$ を求めよ．\n  \\item $\\theta$ が $0\\leqq\\theta<2\\pi$ を動くときの $m(\\theta)$ の最小値と，それを与える $\\theta$ をすべて求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 存在は証明，$m(0)=-1$　(2) 最小値 $1-2\\sqrt2$，$\\theta=\\dfrac34\\pi,\\ \\dfrac74\\pi$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "$v=(x,y)$，$|v|=\\sqrt{x^2+y^2}$，$Q(v)=x^2+xy+y^2$ とおく．\n\\[\nQ(v)-\\frac{|v|^2}2=\\frac{(x+y)^2}2\\geqq0\n\\]\nより $Q(v)\\geqq\\frac12|v|^2$．また $2x\\cos\\theta+2y\\sin\\theta=2\\,(x,y)\\cdot(\\cos\\theta,\\sin\\theta)\\geqq-2|v|$（等号は $v=(0,0)$ または $(\\cos\\theta,\\sin\\theta)=-\\frac{v}{|v|}$ のとき）．よって\n\\[\nf_\\theta(v)\\geqq g(v),\\qquad g(v)=Q(v)-2|v|\\geqq\\frac12|v|^2-2|v|. \\tag{$*$}\n\\]\n\n(1) $|v|>4$ ならば $(*)$ より $f_\\theta(v)\\geqq\\frac12|v|(|v|-4)>0=f_\\theta(0,0)$．したがって最小値の候補は $|v|\\leqq4$ を満たす有限個の格子点に限られ，その中の最小値が $m(\\theta)$ として存在する．\n\n$\\theta=0$ のとき $f_0=x^2+xy+y^2+2x$ で，\n\\[\n4f_0+4=(2x+y+2)^2+3y^2-4y=(2x+y+2)^2+y(3y-4).\n\\]\n整数 $y$ について $y(3y-4)\\geqq0$ となるのは $y\\neq1$ のとき．$y=1$ のときは $4f_0+4=(2x+3)^2-1$ で，$2x+3$ は奇数だから $(2x+3)^2\\geqq1$．いずれにしても $f_0\\geqq-1$．また $f_0(-1,0)=1-2=-1$．よって $m(0)=\\boldsymbol{-1}$．\n\n(2) 格子点全体を $v$ が動くときの $g(v)$ の最小値を $\\mu$ とおく（その存在と，$\\mu<0=g(0,0)$ であることは下で具体的に示す）．$(*)$ より任意の $\\theta$ と $v$ で $f_\\theta(v)\\geqq g(v)\\geqq\\mu$ だから $m(\\theta)\\geqq\\mu$．逆に $g(v_0)=\\mu$ となる $v_0\\neq(0,0)$ をとり，$(\\cos\\theta_0,\\sin\\theta_0)=-\\frac{v_0}{|v_0|}$ となる $\\theta_0$ をとれば $m(\\theta_0)\\leqq f_{\\theta_0}(v_0)=g(v_0)=\\mu$．よって $m(\\theta)$ の最小値は $\\mu$ である．\n\n$\\mu$ を求める．$v=(1,-1)$ で $g=1-2\\sqrt2$．一方\n\\[\n\\frac12r^2-2r-(1-2\\sqrt2)=\\frac12\\bigl(r^2-4r+4\\sqrt2-2\\bigr)=\\frac12\\bigl(r-\\sqrt2\\bigr)\\bigl(r-(4-\\sqrt2)\\bigr)\n\\]\n（$\\sqrt2+(4-\\sqrt2)=4$，$\\sqrt2(4-\\sqrt2)=4\\sqrt2-2$ より）．よって $|v|\\leqq\\sqrt2$ または $|v|\\geqq4-\\sqrt2$ ならば $g(v)\\geqq1-2\\sqrt2$ であり，$|v|=4-\\sqrt2$ となる格子点はない（$|v|^2=18-8\\sqrt2$ は無理数）から，$|v|>\\sqrt2$ の範囲での等号は $\\sqrt2<|v|<4-\\sqrt2$ の中だけを調べればよい．\n\n$|v|^2$ は整数で，$|v|\\leqq\\sqrt2$ のとき $|v|^2\\in\\{0,1,2\\}$，$\\sqrt2<|v|<4-\\sqrt2$ のとき $2<|v|^2<18-8\\sqrt2<7$（$8\\sqrt2>11$ より）なので $|v|^2\\in\\{4,5\\}$（3，6は2つの平方数の和でない）．これらを調べる．\n\\begin{itemize}\n  \\item $|v|^2=0$：$g=0$．$|v|^2=1$：$Q=1$，$g=-1$．\n  \\item $|v|^2=2$：$v=\\pm(1,1)$ で $g=3-2\\sqrt2$，$v=\\pm(1,-1)$ で $g=1-2\\sqrt2$．\n  \\item $|v|^2=4$：$v=(\\pm2,0),(0,\\pm2)$ で $Q=4$，$g=0$．\n  \\item $|v|^2=5$：$Q=5\\pm2xy$ で $|xy|=2$ だから $Q\\geqq3$，$g\\geqq3-2\\sqrt5$．\n\\end{itemize}\nここで $-1>1-2\\sqrt2$（$2\\sqrt2>2$），$3-2\\sqrt5>1-2\\sqrt2$（$\\iff1+\\sqrt2>\\sqrt5\\iff3+2\\sqrt2>5\\iff\\sqrt2>1$）．したがって $\\mu=1-2\\sqrt2$ であり，$g(v)=\\mu$ となる格子点は $v=\\pm(1,-1)$ だけである．\n\n$m(\\theta)=\\mu$ となる $\\theta$：ある格子点 $v$ で $f_\\theta(v)=\\mu$ となることが必要十分で，$f_\\theta(v)\\geqq g(v)\\geqq\\mu$ の等号から $v=\\pm(1,-1)$ かつ $(\\cos\\theta,\\sin\\theta)=-\\frac{v}{|v|}=\\pm\\left(-\\frac1{\\sqrt2},\\frac1{\\sqrt2}\\right)$．よって最小値は $\\boldsymbol{1-2\\sqrt2}$，$\\boldsymbol{\\theta=\\frac34\\pi,\\ \\frac74\\pi}$．\\hfill$\\square$"
+   }
+  ],
+  "idea": {
+   "tex": "$\\theta$ と格子点 $(x,y)$ の2つについての最小値は，どちらを先に動かしてもよい．先に $\\theta$ を動かすと $2x\\cos\\theta+2y\\sin\\theta\\geqq-2\\sqrt{x^2+y^2}$ により1変数の評価 $Q(v)-2|v|$ になり，$Q(v)\\geqq\\frac12|v|^2$ で調べるべき格子点が有限個に絞られる．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) 記述\n(2) 最小値：1-2sqrt(2) ; $\\theta$：{(3/4)π, (7/4)π}"
+  },
+  "methods": [],
+  "tags": [
+   "格子点",
+   "2次式の最小",
+   "最小化の順序交換",
+   "内積と三角関数"
+  ],
+  "provenance": {
+   "created": "2026-11-18"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-TRI-163",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-10",
+  "level": 3,
+  "minutes": 25,
+  "theme": "角の二等分線で決まる角を10度刻みで挟む",
+  "topic": "角の二等分線で決まる角を10度刻みで挟む",
+  "statement": {
+   "tex": "$\\angle\\mathrm C=90^\\circ$ の直角三角形 ABC において，$\\angle\\mathrm A$ の二等分線と辺 BC の交点を D とする．$\\mathrm{BD}=5$，$\\mathrm{DC}=3$ であり，$\\angle\\mathrm A=\\theta$ とおく．\n\\begin{enumerate}\n  \\item $\\cos\\theta$ と $\\cos3\\theta$ の値を求めよ．\n  \\item $50^\\circ<\\theta<54^\\circ$ であることを示せ．ただし $\\cos36^\\circ=\\dfrac{1+\\sqrt5}4$ であることを用いてよい．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $\\cos\\theta=\\dfrac35$，$\\cos3\\theta=-\\dfrac{117}{125}$　(2) 証明"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) 二等分線の定理より $\\mathrm{AB}:\\mathrm{AC}=\\mathrm{BD}:\\mathrm{DC}=5:3$．$\\mathrm{AC}=3k$，$\\mathrm{AB}=5k$ とおくと，$\\mathrm{BC}=8$ と三平方の定理から $25k^2=9k^2+64$，$k=2$．よって $\\mathrm{AC}=6$，$\\mathrm{AB}=10$ で\n\\[\n\\cos\\theta=\\frac{\\mathrm{AC}}{\\mathrm{AB}}=\\boldsymbol{\\frac35},\\qquad\n\\cos3\\theta=4\\cos^3\\theta-3\\cos\\theta=\\frac{108}{125}-\\frac{225}{125}=\\boldsymbol{-\\frac{117}{125}}.\n\\]\n\n(2) $\\frac12<\\frac35<\\frac1{\\sqrt2}$（$\\frac9{25}<\\frac12$）で，$\\cos$ は $0^\\circ$ から $180^\\circ$ で減少するので $45^\\circ<\\theta<60^\\circ$，よって $135^\\circ<3\\theta<180^\\circ$．$150^\\circ,\\ 162^\\circ$ もこの区間にあり，この区間で $\\cos$ は減少する．\n\n\\textbf{$\\theta>50^\\circ$．} $\\cos150^\\circ=-\\frac{\\sqrt3}2$．$\\frac{117}{125}>\\frac{\\sqrt3}2\\iff234>125\\sqrt3\\iff234^2=54756>125^2\\cdot3=46875$ で成り立つ．よって $\\cos3\\theta<\\cos150^\\circ$，ゆえに $3\\theta>150^\\circ$，$\\theta>50^\\circ$．\n\n\\textbf{$\\theta<54^\\circ$．} $\\cos162^\\circ=-\\cos18^\\circ$ で，$\\cos^218^\\circ=\\dfrac{1+\\cos36^\\circ}2=\\dfrac{5+\\sqrt5}8$．$\\cos18^\\circ>0$ だから\n\\[\n\\cos18^\\circ>\\frac{117}{125}\\iff\\frac{5+\\sqrt5}8>\\frac{13689}{15625}\\iff15625\\sqrt5>31387\\iff15625^2\\cdot5>31387^2.\n\\]\n左辺 $=1220703125$，右辺 $=985143769$ で成り立つ．よって $\\cos3\\theta=-\\frac{117}{125}>-\\cos18^\\circ=\\cos162^\\circ$，ゆえに $3\\theta<162^\\circ$，$\\theta<54^\\circ$．\n\n以上より $50^\\circ<\\theta<54^\\circ$．\\hfill$\\square$"
+   }
+  ],
+  "idea": {
+   "tex": "二等分線の定理と三平方の定理で辺の比を決めて $\\cos\\theta$ を求める．$\\theta$ の位置を細かく決めるには，3倍角の公式で $\\cos3\\theta$ を計算し，$\\cos$ が単調な区間で既知の角（$150^\\circ$，$162^\\circ$）の余弦と比べる．無理数を含む比較は2乗して整数の比較に直す．"
+  },
+  "methods": [],
+  "tags": [
+   "角の二等分線の定理",
+   "3倍角の公式",
+   "角の評価",
+   "無理数の大小"
+  ],
+  "provenance": {
+   "created": "2026-11-18"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-TRI-164",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-10",
+  "level": 4,
+  "minutes": 30,
+  "theme": "円環に含まれる三角形の面積の最大",
+  "topic": "円環に含まれる三角形の面積の最大",
+  "statement": {
+   "tex": "不等式 $1\\leqq x^2+y^2\\leqq4$ の表す $xy$ 平面内の領域を $D$ とする．P を円 $x^2+y^2=1$ 上の点，Q，R を円 $x^2+y^2=4$ 上の異なる2点とし，三角形 PQR は内部も含めて考える．O は原点とする．\n\\begin{enumerate}\n  \\item 三角形 PQR が $D$ に含まれるための必要十分条件は\n  \\[\\overrightarrow{\\mathrm{OP}}\\cdot\\overrightarrow{\\mathrm{OQ}}\\geqq1\\quad\\text{かつ}\\quad\\overrightarrow{\\mathrm{OP}}\\cdot\\overrightarrow{\\mathrm{OR}}\\geqq1\\]\n  であることを示せ．\n  \\item 三角形 PQR が $D$ に含まれるとき，その面積の最大値を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 証明　(2) $\\dfrac{\\sqrt3}2$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) $\\vec e=\\overrightarrow{\\mathrm{OP}}$（$|\\vec e|=1$）とし，$H=\\{\\mathrm X\\mid\\overrightarrow{\\mathrm{OX}}\\cdot\\vec e\\geqq1\\}$ とおく．$H$ の点 X は $|\\overrightarrow{\\mathrm{OX}}|\\geqq\\overrightarrow{\\mathrm{OX}}\\cdot\\vec e\\geqq1$ をみたす．\n（十分性）$\\overrightarrow{\\mathrm{OP}}\\cdot\\vec e=1$ なので P，Q，R $\\in H$．三角形の点は $\\overrightarrow{\\mathrm{OX}}=a\\overrightarrow{\\mathrm{OP}}+b\\overrightarrow{\\mathrm{OQ}}+c\\overrightarrow{\\mathrm{OR}}$（$a,b,c\\geqq0$，$a+b+c=1$）と書け，$\\overrightarrow{\\mathrm{OX}}\\cdot\\vec e\\geqq a+b+c=1$，$|\\overrightarrow{\\mathrm{OX}}|\\leqq a+2b+2c\\leqq2$．よって三角形は $D$ に含まれる．\n（必要性）$\\overrightarrow{\\mathrm{OQ}}\\cdot\\vec e<1$ と仮定する．$0<\\varepsilon<1$ に対し辺 PQ 上の点 $\\overrightarrow{\\mathrm{OX_\\varepsilon}}=\\vec e+\\varepsilon(\\overrightarrow{\\mathrm{OQ}}-\\vec e)$ は\n\\[|\\overrightarrow{\\mathrm{OX_\\varepsilon}}|^2=1+2\\varepsilon(\\overrightarrow{\\mathrm{OQ}}\\cdot\\vec e-1)+\\varepsilon^2\\mathrm{PQ}^2\\]\nで，$\\varepsilon<\\dfrac{2(1-\\overrightarrow{\\mathrm{OQ}}\\cdot\\vec e)}{\\mathrm{PQ}^2}$ なら1未満となり $D$ に属さない．R についても同様．\\hfill$\\square$\n\n(2) 原点のまわりの回転は $D$ と面積を保つので P$(1,0)$ としてよい．(1) の条件は Q，R の $x$ 座標が1以上，すなわち Q$(2\\cos\\alpha,2\\sin\\alpha)$，R$(2\\cos\\beta,2\\sin\\beta)$，$-\\frac\\pi3\\leqq\\beta<\\alpha\\leqq\\frac\\pi3$ としてよい．\n\\[\\overrightarrow{\\mathrm{PQ}}=(2\\cos\\alpha-1,2\\sin\\alpha),\\quad \\overrightarrow{\\mathrm{PR}}=(2\\cos\\beta-1,2\\sin\\beta)\\]\nより面積 $S=\\frac12\\left|(2\\cos\\alpha-1)2\\sin\\beta-2\\sin\\alpha(2\\cos\\beta-1)\\right|=\\left|2\\sin(\\alpha-\\beta)-(\\sin\\alpha-\\sin\\beta)\\right|$．\n$d=\\frac{\\alpha-\\beta}2\\in\\left(0,\\frac\\pi3\\right]$，$m=\\frac{\\alpha+\\beta}2$ とおくと $\\sin(\\alpha-\\beta)=2\\sin d\\cos d$，$\\sin\\alpha-\\sin\\beta=2\\cos m\\sin d$ で\n\\[S=2\\sin d\\,|2\\cos d-\\cos m|=2\\sin d\\,(2\\cos d-\\cos m)\\]\n（$2\\cos d\\geqq2\\cos\\frac\\pi3=1\\geqq\\cos m$ による）．条件 $\\alpha\\leqq\\frac\\pi3$，$\\beta\\geqq-\\frac\\pi3$ は $|m|\\leqq\\frac\\pi3-d$ と同値で，$0\\leqq|m|\\leqq\\frac\\pi3-d<\\pi$ より $\\cos m\\geqq\\cos\\left(\\frac\\pi3-d\\right)$．よって\n\\[S\\leqq2\\sin d\\left(2\\cos d-\\tfrac12\\cos d-\\tfrac{\\sqrt3}2\\sin d\\right)=2\\sqrt3\\sin d\\cos\\left(d+\\tfrac\\pi6\\right)=\\sqrt3\\sin\\left(2d+\\tfrac\\pi6\\right)-\\tfrac{\\sqrt3}2\\leqq\\tfrac{\\sqrt3}2.\\]\n等号は $d=\\frac\\pi6$，$|m|=\\frac\\pi6$，例えば $(\\alpha,\\beta)=\\left(\\frac\\pi3,0\\right)$，すなわち Q$(1,\\sqrt3)$，R$(2,0)$ で成立（このとき $x$ 座標は1以上で(1)の条件をみたし，$S=\\frac12\\cdot\\sqrt3\\cdot1$）．最大値は $\\boldsymbol{\\dfrac{\\sqrt3}2}$．"
+   }
+  ],
+  "idea": {
+   "tex": "内円上の頂点 P をもつ三角形が穴に入り込まない条件は，他の頂点が P における内円の接線の外側（$\\overrightarrow{\\mathrm{OP}}\\cdot\\overrightarrow{\\mathrm{OX}}\\geqq1$）にあること．面積は和積公式で $2\\sin d(2\\cos d-\\cos m)$ と書け，制約 $|m|\\leqq\\frac\\pi3-d$ で $m$ を消してから $d$ で最大化する．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) 証明\n(2) sqrt(3)/2"
+  },
+  "methods": [],
+  "tags": [
+   "円環",
+   "接線の半平面",
+   "内積",
+   "和積公式",
+   "三角関数の最大"
+  ],
+  "provenance": {
+   "created": "2026-11-18"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-TRI-165",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-10",
+  "level": 4,
+  "minutes": 30,
+  "theme": "正五角形の頂点への距離の符号つき和を円周全体で調べる",
+  "topic": "正五角形の頂点への距離の符号つき和を円周全体で調べる",
+  "statement": {
+   "tex": "O を中心とする半径1の円に正五角形 ABCDE が内接している（頂点 A，B，C，D，E はこの順に円周上に並ぶ）．円周上の点 P に対して\n\\[\nf(\\mathrm P)=\\mathrm{PA}+\\mathrm{PC}+\\mathrm{PE}-\\mathrm{PB}-\\mathrm{PD}\n\\]\nとおく．ただし P が頂点に一致するときは，その頂点までの距離を0とする．\n\\begin{enumerate}\n  \\item P が弧 EA（B，C，D を含まない方の弧，両端を含む）の上にあるとき，$f(\\mathrm P)=0$ であることを示せ．\n  \\item P が円周全体を動くとき，$f(\\mathrm P)$ の最大値と最小値を求めよ．また，最大値を与える P，および最小値を与える P をすべて求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 証明　(2) 最大値 $\\sqrt{10-2\\sqrt5}$（P$=$B，D のとき），最小値 $0$（P が弧 EA（両端を含む）上にあるとき，かつそのときに限る）"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "\\textbf{準備（弦の長さ）}　円周上の2点 P，V について，P から V まで円周上を一方の向きにたどった弧の中心角を $\\varphi$（$0^\\circ\\leqq\\varphi\\leqq360^\\circ$）とすると，$\\mathrm{PV}=2\\sin\\dfrac\\varphi2$ である．実際，$\\varphi\\leqq180^\\circ$ なら二等辺三角形 OPV（P$=$V のときは長さ0）で O から PV に垂線を下ろせば $\\mathrm{PV}=2\\sin\\frac\\varphi2$ であり，$\\varphi>180^\\circ$ なら反対向きの弧の中心角 $360^\\circ-\\varphi$ に対して同じ式を使い，$\\sin\\left(180^\\circ-\\frac\\varphi2\\right)=\\sin\\frac\\varphi2$ を用いればよい．\n\n\\textbf{準備（$36^\\circ$，$72^\\circ$ の値）}　和積公式より\n\\[\n\\cos36^\\circ-\\cos72^\\circ=2\\sin54^\\circ\\sin18^\\circ=2\\cos36^\\circ\\sin18^\\circ .\n\\]\n両辺に $\\cos18^\\circ$ を掛けると，右辺は $\\cos36^\\circ\\sin36^\\circ=\\frac12\\sin72^\\circ=\\frac12\\cos18^\\circ$ となる．$\\cos18^\\circ\\neq0$ なので\n\\[\n\\cos36^\\circ-\\cos72^\\circ=\\frac12. \\tag{A}\n\\]\nまた $\\sin36^\\circ\\cos36^\\circ\\cos72^\\circ=\\frac12\\sin72^\\circ\\cos72^\\circ=\\frac14\\sin144^\\circ=\\frac14\\sin36^\\circ$ より $\\cos36^\\circ\\cos72^\\circ=\\frac14$．$c=\\cos72^\\circ>0$ とおくと (A) より $\\cos36^\\circ=c+\\frac12$ なので $c^2+\\frac c2-\\frac14=0$，よって $c=\\dfrac{\\sqrt5-1}4$．したがって\n\\[\n\\sin^236^\\circ=\\frac{1-\\cos72^\\circ}2=\\frac{5-\\sqrt5}8,\\qquad 4\\sin36^\\circ=\\sqrt{10-2\\sqrt5}. \\tag{B}\n\\]\n\n(1) P は弧 EA 上にあるので，$\\angle\\mathrm{AOP}=2\\theta$（$0^\\circ\\leqq\\theta\\leqq36^\\circ$）とおける．頂点は $72^\\circ$ おきに並ぶから，P から各頂点までの弧の中心角は，A へ（直接）$2\\theta$，E へ（直接）$72^\\circ-2\\theta$，B へ（A を経由）$72^\\circ+2\\theta$，D へ（E を経由）$144^\\circ-2\\theta$，C へ（A，B を経由）$144^\\circ+2\\theta$ である．準備より\n\\[\n\\mathrm{PA}=2\\sin\\theta,\\ \\mathrm{PE}=2\\sin(36^\\circ-\\theta),\\ \\mathrm{PB}=2\\sin(36^\\circ+\\theta),\\ \\mathrm{PD}=2\\sin(72^\\circ-\\theta),\\ \\mathrm{PC}=2\\sin(72^\\circ+\\theta).\n\\]\n和積公式より $\\sin(36^\\circ+\\theta)-\\sin(36^\\circ-\\theta)=2\\cos36^\\circ\\sin\\theta$，$\\sin(72^\\circ+\\theta)-\\sin(72^\\circ-\\theta)=2\\cos72^\\circ\\sin\\theta$ だから\n\\begin{align*}\n-\\frac{f(\\mathrm P)}2&=\\{\\sin(36^\\circ+\\theta)-\\sin(36^\\circ-\\theta)\\}-\\{\\sin(72^\\circ+\\theta)-\\sin(72^\\circ-\\theta)\\}-\\sin\\theta\\\\\n&=\\sin\\theta\\,(2\\cos36^\\circ-2\\cos72^\\circ-1).\n\\end{align*}\n(A) よりこれは0である．よって $f(\\mathrm P)=0$．\\hfill$\\square$\n\n(2) O のまわりの $72^\\circ$ の回転で A$\\to$B$\\to$C$\\to$D$\\to$E$\\to$A と移るものを $R$ とする．$R$ は距離を保ち，弧 EA を弧 AB に，弧 AB を弧 BC に，…と移す．P が弧 EA を $R^k$ で移した弧の上にあるとき，$\\mathrm P'=R^{-k}(\\mathrm P)$ は弧 EA 上にあり，任意の点 X について $\\mathrm{P'X}=\\mathrm{P}R^k(\\mathrm X)$ が成り立つ．(1) の等式 $\\mathrm{P'A}+\\mathrm{P'C}+\\mathrm{P'E}=\\mathrm{P'B}+\\mathrm{P'D}$ を書き換えると，次を得る．\n\\begin{itemize}\n  \\item $k=1$（P が弧 AB 上）：$\\mathrm{PB}+\\mathrm{PD}+\\mathrm{PA}=\\mathrm{PC}+\\mathrm{PE}$．\n  \\item $k=2$（P が弧 BC 上）：$\\mathrm{PC}+\\mathrm{PE}+\\mathrm{PB}=\\mathrm{PD}+\\mathrm{PA}$．\n  \\item $k=3$（P が弧 CD 上）：$\\mathrm{PD}+\\mathrm{PA}+\\mathrm{PC}=\\mathrm{PE}+\\mathrm{PB}$．\n  \\item $k=4$（P が弧 DE 上）：$\\mathrm{PE}+\\mathrm{PB}+\\mathrm{PD}=\\mathrm{PA}+\\mathrm{PC}$．\n\\end{itemize}\nこれらを $f$ に代入する．\n\n\\textbf{弧 AB 上}：$\\mathrm{PC}+\\mathrm{PE}=\\mathrm{PA}+\\mathrm{PB}+\\mathrm{PD}$ より $f(\\mathrm P)=2\\,\\mathrm{PA}$．$\\angle\\mathrm{AOP}=\\alpha$（$0^\\circ\\leqq\\alpha\\leqq72^\\circ$）とおくと $f(\\mathrm P)=4\\sin\\frac\\alpha2$ で，$0\\leqq\\frac\\alpha2\\leqq36^\\circ$ で増加するから $0\\leqq f(\\mathrm P)\\leqq4\\sin36^\\circ$．左の等号は P$=$A のみ，右の等号は P$=$B のみ．\n\n\\textbf{弧 BC 上}：$\\mathrm{PD}=\\mathrm{PB}+\\mathrm{PC}+\\mathrm{PE}-\\mathrm{PA}$ より $f(\\mathrm P)=2(\\mathrm{PA}-\\mathrm{PB})$．$\\angle\\mathrm{BOP}=\\beta$（$0^\\circ\\leqq\\beta\\leqq72^\\circ$）とおくと，P から A への（B を経由する）弧の中心角は $72^\\circ+\\beta$ だから\n\\[\nf(\\mathrm P)=4\\left\\{\\sin\\left(36^\\circ+\\frac\\beta2\\right)-\\sin\\frac\\beta2\\right\\}=8\\cos\\left(18^\\circ+\\frac\\beta2\\right)\\sin18^\\circ .\n\\]\n$18^\\circ\\leqq18^\\circ+\\frac\\beta2\\leqq54^\\circ$ で余弦は正かつ減少するので，$0<f(\\mathrm P)\\leqq8\\cos18^\\circ\\sin18^\\circ=4\\sin36^\\circ$，等号は $\\beta=0$（P$=$B）のみ．\n\n\\textbf{弧 CD 上}：$\\mathrm{PA}+\\mathrm{PC}=\\mathrm{PE}+\\mathrm{PB}-\\mathrm{PD}$ より $f(\\mathrm P)=2(\\mathrm{PE}-\\mathrm{PD})$．$\\angle\\mathrm{DOP}=\\delta$（$0^\\circ\\leqq\\delta\\leqq72^\\circ$）とおくと，P から E への（D を経由する）弧の中心角は $72^\\circ+\\delta$ だから，弧 BC と同様に\n\\[\nf(\\mathrm P)=8\\cos\\left(18^\\circ+\\frac\\delta2\\right)\\sin18^\\circ,\\qquad 0<f(\\mathrm P)\\leqq4\\sin36^\\circ,\n\\]\n右の等号は $\\delta=0$（P$=$D）のみ．\n\n\\textbf{弧 DE 上}：$\\mathrm{PA}+\\mathrm{PC}=\\mathrm{PE}+\\mathrm{PB}+\\mathrm{PD}$ より $f(\\mathrm P)=2\\,\\mathrm{PE}$．$\\angle\\mathrm{EOP}=\\varepsilon$（$0^\\circ\\leqq\\varepsilon\\leqq72^\\circ$）とおくと $f(\\mathrm P)=4\\sin\\frac\\varepsilon2$ で，$0\\leqq f(\\mathrm P)\\leqq4\\sin36^\\circ$．左の等号は P$=$E のみ，右の等号は P$=$D のみ．\n\n\\textbf{弧 EA 上}：(1) より $f(\\mathrm P)=0$．\n\n5つの弧で円周全体が覆われる．以上より $f(\\mathrm P)\\geqq0$ で，$f(\\mathrm P)=0$ となるのは P が弧 EA（両端を含む）上にあるときに限る（弧 AB 上の P$=$A，弧 DE 上の P$=$E はこの弧の端点）．また $f(\\mathrm P)\\leqq4\\sin36^\\circ$ で，等号は P$=$B，D のときに限る．(B) より\n\n最大値 $\\boldsymbol{\\sqrt{10-2\\sqrt5}}$（$\\boldsymbol{\\mathrm P=\\mathrm B,\\ \\mathrm D}$），最小値 $\\boldsymbol{0}$（\\textbf{P が弧 EA 上（両端を含む）にあるとき}）．"
+   }
+  ],
+  "idea": {
+   "tex": "弦の長さを中心角の正弦 $2\\sin\\frac\\varphi2$ で表すと，正五角形の頂点への距離の関係は和積公式と $\\cos36^\\circ-\\cos72^\\circ=\\frac12$ に帰着する．1つの弧の上で成り立つ等式を $72^\\circ$ 回転で各弧に移すと，符号つき和は弧ごとに「1つの距離の2倍」や「2つの距離の差の2倍」という簡単な形に変わる．"
+  },
+  "methods": [],
+  "tags": [
+   "正五角形",
+   "和積公式",
+   "回転対称",
+   "弦の長さ",
+   "最大最小"
+  ],
+  "provenance": {
+   "created": "2026-11-14"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-TRI-166",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-10",
+  "level": 5,
+  "minutes": 40,
+  "theme": "三角形 ABP の面積を固定したときの五角形の面積",
+  "topic": "三角形 ABP の面積を固定したときの五角形の面積",
+  "statement": {
+   "tex": "$xy$ 平面上の長さ $2$ の線分 AB を直径とする半円を $D$ とし，$D$ の内部（周を含まない）の点 P をとる．A と P を通る直線と $D$ の円弧の部分との交点を Q，B と P を通る直線と $D$ の円弧の部分との交点を R とし，五角形 ARPQB の面積を $S$ とする．$k$ を $0<k<1$ を満たす定数とし，三角形 ABP の面積が $k$ となるように点 P が $D$ の内部を動くとき，$S$ のとる値の範囲を $k$ を用いて表せ．"
+  },
+  "answer": {
+   "tex": "$0<k<\\dfrac{1}{\\sqrt3}$ のとき $k<S\\leqq\\sqrt{1+k^2}$，$\\dfrac{1}{\\sqrt3}\\leqq k<1$ のとき $k<S\\leqq\\dfrac{k(3-k^2)}{1+k^2}$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "AB の中点を O とし，$\\alpha=\\angle\\mathrm{PAB}$，$\\beta=\\angle\\mathrm{PBA}$，$\\varphi=\\alpha+\\beta$ とおく．$\\alpha>0,\\ \\beta>0$．\n\n\\textbf{$\\varphi$ の範囲．}ベクトルで $\\overrightarrow{\\mathrm{PA}}\\cdot\\overrightarrow{\\mathrm{PB}}=(\\overrightarrow{\\mathrm{OA}}-\\overrightarrow{\\mathrm{OP}})\\cdot(-\\overrightarrow{\\mathrm{OA}}-\\overrightarrow{\\mathrm{OP}})=|\\overrightarrow{\\mathrm{OP}}|^2-1$．P は円の内部にあるので負，すなわち $\\angle\\mathrm{APB}>\\frac\\pi2$ で，$\\varphi=\\pi-\\angle\\mathrm{APB}<\\frac\\pi2$．逆に，AB の上側の点 P で $\\angle\\mathrm{APB}>\\frac\\pi2$ ならば，同じ式から $|\\overrightarrow{\\mathrm{OP}}|<1$ で P は $D$ の内部にある．\n\n\\textbf{$S$ の式．}直径に対する円周角より $\\angle\\mathrm{AQB}=\\angle\\mathrm{ARB}=\\frac\\pi2$．$\\mathrm{AQ}=2\\cos\\alpha$，$\\mathrm{QB}=2\\sin\\alpha$ より $\\triangle\\mathrm{ABQ}=\\sin2\\alpha$，同様に $\\triangle\\mathrm{ABR}=\\sin2\\beta$．\nP は線分 AQ 上，線分 BR 上にあるので $\\triangle\\mathrm{ABQ}=\\triangle\\mathrm{APB}+\\triangle\\mathrm{PQB}$，$\\triangle\\mathrm{ABR}=\\triangle\\mathrm{APB}+\\triangle\\mathrm{ARP}$．五角形は三角形 ARP，APB，PQB に分割されるから\n\\[S=\\triangle\\mathrm{ABQ}+\\triangle\\mathrm{ABR}-\\triangle\\mathrm{ABP}.\\]\n三角形 ABP で正弦定理より $\\mathrm{AP}=\\frac{2\\sin\\beta}{\\sin(\\pi-\\varphi)}=\\frac{2\\sin\\beta}{\\sin\\varphi}$，$\\triangle\\mathrm{ABP}=\\frac12\\cdot2\\cdot\\mathrm{AP}\\sin\\alpha=\\frac{2\\sin\\alpha\\sin\\beta}{\\sin\\varphi}$．\n$c=\\cos(\\alpha-\\beta)$ とおくと $\\sin2\\alpha+\\sin2\\beta=2\\sin\\varphi\\cos(\\alpha-\\beta)=2c\\sin\\varphi$，$2\\sin\\alpha\\sin\\beta=c-\\cos\\varphi$ より\n\\[\\triangle\\mathrm{ABP}=\\frac{c-\\cos\\varphi}{\\sin\\varphi},\\qquad S=2c\\sin\\varphi-\\frac{c-\\cos\\varphi}{\\sin\\varphi}.\\]\n\n\\textbf{実現できる $(\\varphi,c)$．}P が $D$ の内部を動くとき $0<\\varphi<\\frac\\pi2$，$|\\alpha-\\beta|<\\varphi$ より $\\cos\\varphi<c\\leqq1$．逆に $0<\\varphi<\\frac\\pi2$，$\\cos\\varphi<c\\leqq1$ のとき，$\\cos\\varepsilon=c$，$0\\leqq\\varepsilon<\\varphi$ となる $\\varepsilon$ をとり $\\alpha=\\frac{\\varphi+\\varepsilon}2$，$\\beta=\\frac{\\varphi-\\varepsilon}2$（ともに正）とすれば，A，B からそれぞれ角 $\\alpha,\\beta$ で上側に引いた半直線の交点 P は $\\angle\\mathrm{APB}=\\pi-\\varphi>\\frac\\pi2$ を満たし $D$ の内部にある．\n\n\\textbf{条件 $\\triangle\\mathrm{ABP}=k$．}これは $c=\\cos\\varphi+k\\sin\\varphi$ と同値．このとき\n\\[S=2\\sin\\varphi(\\cos\\varphi+k\\sin\\varphi)-k=\\sin2\\varphi+k(1-\\cos2\\varphi)-k=\\sin2\\varphi-k\\cos2\\varphi.\\]\n$c>\\cos\\varphi$ は自動的に成り立ち，$c\\leqq1$ は\n\\[k\\sin\\varphi\\leqq1-\\cos\\varphi\\iff 2k\\sin\\frac\\varphi2\\cos\\frac\\varphi2\\leqq2\\sin^2\\frac\\varphi2\\iff k\\leqq\\tan\\frac\\varphi2 .\\]\n$\\tan\\delta=k$，$0<\\delta<\\frac\\pi4$ となる $\\delta$ をとると，条件は $2\\delta\\leqq\\varphi<\\frac\\pi2$．$\\cos\\delta=\\frac1{\\sqrt{1+k^2}}$，$\\sin\\delta=\\frac k{\\sqrt{1+k^2}}$ だから\n\\[S=\\sqrt{1+k^2}\\,\\sin(2\\varphi-\\delta),\\qquad \\psi=2\\varphi-\\delta\\ \\text{は}\\ 3\\delta\\leqq\\psi<\\pi-\\delta\\ \\text{を動く}.\\]\n$S$ は $\\psi$ の連続関数で，$\\psi\\to\\pi-\\delta$ のとき $S\\to\\sqrt{1+k^2}\\sin\\delta=k$（この値はとらない）．\n\n(ア) $3\\delta\\geqq\\frac\\pi2$，すなわち $k\\geqq\\tan\\frac\\pi6=\\frac1{\\sqrt3}$ のとき：$\\sin\\psi$ は $\\left[3\\delta,\\pi-\\delta\\right)\\subset\\left[\\frac\\pi2,\\pi\\right)$ で減少するので $k<S\\leqq\\sqrt{1+k^2}\\sin3\\delta$．ここで\n\\[\\sqrt{1+k^2}\\sin3\\delta=\\sqrt{1+k^2}\\sin\\delta(3-4\\sin^2\\delta)=k\\left(3-\\frac{4k^2}{1+k^2}\\right)=\\frac{k(3-k^2)}{1+k^2}.\\]\n(イ) $3\\delta<\\frac\\pi2$，すなわち $0<k<\\frac1{\\sqrt3}$ のとき：$\\psi=\\frac\\pi2$ が範囲に含まれ $S$ の最大値は $\\sqrt{1+k^2}$．$\\left[\\frac\\pi2,\\pi-\\delta\\right)$ で $\\sin\\psi$ は $1$ から減少して $\\sin\\delta$ に近づき（とらない），$\\left[3\\delta,\\frac\\pi2\\right]$ での値は $\\sin3\\delta\\ (>\\sin\\delta)$ 以上なので，$S$ のとる値は $k<S\\leqq\\sqrt{1+k^2}$．\n\n答：\n\\[\\boldsymbol{0<k<\\frac1{\\sqrt3}\\ \\text{のとき}\\ k<S\\leqq\\sqrt{1+k^2},\\qquad \\frac1{\\sqrt3}\\leqq k<1\\ \\text{のとき}\\ k<S\\leqq\\frac{k(3-k^2)}{1+k^2}}\\]"
+   }
+  ],
+  "idea": {
+   "tex": "$\\angle\\mathrm{PAB}=\\alpha$，$\\angle\\mathrm{PBA}=\\beta$ とおくと，直径の円周角が直角であることから $S=\\sin2\\alpha+\\sin2\\beta-\\frac{2\\sin\\alpha\\sin\\beta}{\\sin(\\alpha+\\beta)}$．和積で $\\varphi=\\alpha+\\beta$，$c=\\cos(\\alpha-\\beta)$ の式に直すと，$\\triangle\\mathrm{ABP}=k$ の条件で $c$ が消えて $S=\\sin2\\varphi-k\\cos2\\varphi$．$\\varphi$ の動く範囲 $[2\\delta,\\frac\\pi2)$（$\\tan\\delta=k$）と合成後の角の範囲の位置関係で場合が分かれる．"
+  },
+  "methods": [],
+  "tags": [
+   "円周角",
+   "加法定理",
+   "三角関数の合成",
+   "場合分け"
+  ],
+  "provenance": {
+   "created": "2026-11-14"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-TRI-167",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-10",
+  "level": 4,
+  "minutes": 35,
+  "theme": "周の長さが一定の平行四辺形の折り紙",
+  "topic": "周の長さが一定の平行四辺形の折り紙",
+  "statement": {
+   "tex": "周の長さが $6$ で，$\\mathrm{AB}>\\mathrm{BC}$ である平行四辺形の折り紙 ABCD がある．この折り紙を対角線 AC を折り目として折り曲げ，三角形 ACB と三角形 ACD が重なるようにする．折り曲げた後の頂点 D の位置を D$'$ とし，線分 AB と線分 CD$'$ の交点を E とする．三角形 AD$'$E の面積を $S$ とする．\n\\begin{enumerate}\n  \\item $\\mathrm{AB}=p,\\ \\mathrm{BC}=q,\\ \\angle\\mathrm{DAB}=\\varphi$ とするとき，E が線分 AB 上かつ線分 CD$'$ 上にあることを示し，$S$ を $p,\\ q,\\ \\varphi$ で表せ．\n  \\item 条件を満たすあらゆる平行四辺形の折り紙を考えるとき，$S$ の最大値と，そのときの AB，BC，$\\angle\\mathrm{DAB}$ を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $S=\\dfrac{q(p^2-q^2)\\sin\\varphi}{4(p+q\\cos\\varphi)}$　(2) 最大値 $\\dfrac{\\sqrt3}{4}$（$\\mathrm{AB}=2$，$\\mathrm{BC}=1$，$\\angle\\mathrm{DAB}=\\dfrac{2\\pi}3$）"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) A$(0,0)$，B$(p,0)$，D$(q\\cos\\varphi,q\\sin\\varphi)$，C$(p+q\\cos\\varphi,q\\sin\\varphi)$ とおく（$0<\\varphi<\\pi$，$p>q>0$）．\n\n折り返しで $\\angle\\mathrm{ACD'}=\\angle\\mathrm{ACD}$，$\\mathrm{CD'}=\\mathrm{CD}=p$，$\\mathrm{AD'}=q$ であり，D$'$ は直線 AC に関して B と同じ側にある．AB$\\parallel$DC より $\\angle\\mathrm{ACD}=\\angle\\mathrm{CAB}$（錯角）．三角形 ABC で $\\mathrm{AB}>\\mathrm{BC}$ より $\\angle\\mathrm{ACB}>\\angle\\mathrm{CAB}$，よって $2\\angle\\mathrm{CAB}<\\angle\\mathrm{CAB}+\\angle\\mathrm{ACB}<\\pi$．\n\nしたがって，A から半直線 AB，C から半直線 CD$'$ は直線 AC の同じ側に，AC と等しい角 $\\angle\\mathrm{CAB}$（和が $\\pi$ 未満）をなして引かれているので，この2本の半直線は交わり，交点 E は $\\mathrm{EA}=\\mathrm{EC}$ を満たす（底角の等しい二等辺三角形）．E$(e,0)$ とおくと $e^2=(p+q\\cos\\varphi-e)^2+q^2\\sin^2\\varphi$ より\n\\[e=\\frac{p^2+2pq\\cos\\varphi+q^2}{2(p+q\\cos\\varphi)}\\qquad(p+q\\cos\\varphi>p-q>0).\\]\n$e<p\\iff p^2+2pq\\cos\\varphi+q^2<2p^2+2pq\\cos\\varphi\\iff q^2<p^2$ で成り立つ．よって $0<\\mathrm{AE}=e<p=\\mathrm{AB}$，$\\mathrm{CE}=e<p=\\mathrm{CD'}$ となり，E は線分 AB 上かつ線分 CD$'$ 上にある．\n\nE が線分 CD$'$ 上にあるので $\\triangle\\mathrm{AD'E}=\\triangle\\mathrm{ACD'}-\\triangle\\mathrm{ACE}$．$\\triangle\\mathrm{ACD'}=\\triangle\\mathrm{ACD}=\\frac12pq\\sin\\varphi$，$\\triangle\\mathrm{ACE}=\\frac12e\\cdot q\\sin\\varphi$（C の高さ $q\\sin\\varphi$）．\n\\[p-e=\\frac{2p^2+2pq\\cos\\varphi-p^2-2pq\\cos\\varphi-q^2}{2(p+q\\cos\\varphi)}=\\frac{p^2-q^2}{2(p+q\\cos\\varphi)}\\]\nより\n\\[\\boldsymbol{S=\\frac12q\\sin\\varphi\\,(p-e)=\\frac{q(p^2-q^2)\\sin\\varphi}{4(p+q\\cos\\varphi)}}\\]\n\n(2) $p,q$ を固定し，$0<\\varphi<\\pi$ で $h(\\varphi)=\\dfrac{\\sin\\varphi}{p+q\\cos\\varphi}$ を考える（分母 $>p-q>0$ より $h(\\varphi)>0$）．$h=h(\\varphi)$ とおくと $\\sin\\varphi-hq\\cos\\varphi=hp$ であり，左辺を合成すると，ある角 $\\theta$ を用いて $\\sqrt{1+h^2q^2}\\sin(\\varphi-\\theta)$ と表せるので\n\\[hp\\leqq\\sqrt{1+h^2q^2}\\quad\\text{より}\\quad h^2p^2\\leqq1+h^2q^2,\\qquad h^2(p^2-q^2)\\leqq1,\\qquad h\\leqq\\frac1{\\sqrt{p^2-q^2}}.\\]\n一方，$\\cos\\varphi_0=-\\frac qp$（$\\frac\\pi2<\\varphi_0<\\pi$）とすると $\\sin\\varphi_0=\\frac{\\sqrt{p^2-q^2}}p$ で\n\\[h(\\varphi_0)=\\frac{\\frac{\\sqrt{p^2-q^2}}p}{p-\\frac{q^2}p}=\\frac1{\\sqrt{p^2-q^2}}\\]\nとなり等号が成り立つ．ゆえに $h$ の最大値は $\\dfrac1{\\sqrt{p^2-q^2}}$ である．\nよって $p,q$ を固定したときの $S$ の最大値は $\\dfrac{q\\sqrt{p^2-q^2}}4$．\n\n次に $p+q=3$，$p>q$ より $0<q<\\frac32$ で，\n\\[q^2(p^2-q^2)=q^2(p-q)(p+q)=3q^2(3-2q)=k(q)\\quad\\text{とおくと}\\quad k'(q)=18q(1-q).\\]\n$k$ は $0<q\\leqq1$ で増加，$1\\leqq q<\\frac32$ で減少し，最大値 $k(1)=3$．したがって $S\\leqq\\frac{\\sqrt{k(q)}}4\\leqq\\frac{\\sqrt3}4$ で，等号は $q=1,\\ p=2,\\ \\cos\\varphi=-\\frac12$ のとき成り立つ．\n\n答：最大値 $\\boldsymbol{\\dfrac{\\sqrt3}{4}}$（$\\boldsymbol{\\mathrm{AB}=2,\\ \\mathrm{BC}=1,\\ \\angle\\mathrm{DAB}=\\dfrac{2\\pi}3}$）．"
+   }
+  ],
+  "idea": {
+   "tex": "AC で折ると $\\angle\\mathrm{D'CA}=\\angle\\mathrm{DCA}=\\angle\\mathrm{CAB}$ なので $\\mathrm{EA}=\\mathrm{EC}$．$\\triangle\\mathrm{AD'E}=\\triangle\\mathrm{ACD'}-\\triangle\\mathrm{ACE}$ を辺 $p,q$ と角 $\\varphi$ で表すと $\\frac{q(p^2-q^2)\\sin\\varphi}{4(p+q\\cos\\varphi)}$．まず $\\varphi$ について最大化（$\\cos\\varphi=-\\frac qp$），次に $p+q=3$ の下で $q$ について最大化する．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) $S$：q(p^2-q^2) sin(φ)/(4(p+q cos(φ)))\n(2) 記述"
+  },
+  "methods": [],
+  "tags": [
+   "折り返し",
+   "二等辺三角形",
+   "最大値",
+   "2変数の最大"
+  ],
+  "provenance": {
+   "created": "2026-11-14"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-TRI-168",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-10",
+  "level": 4,
+  "minutes": 35,
+  "theme": "曲線 $y=\\tan\\pi x$ 上の有理点",
+  "topic": "曲線 $y=\\tan\\pi x$ 上の有理点",
+  "statement": {
+   "tex": "曲線 $y=\\tan\\pi x$ $\\left(0\\leqq x\\leqq1,\\ x\\neq\\dfrac12\\right)$ 上の有理点をすべて求めよ．なお，有理点とは $x$ 座標も $y$ 座標も有理数である点のことである．"
+  },
+  "answer": {
+   "tex": "$(0,0)$，$\\left(\\dfrac14,1\\right)$，$\\left(\\dfrac34,-1\\right)$，$(1,0)$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "\\textbf{補題}　$r$ が有理数で $\\cos r\\pi$ も有理数ならば，$2\\cos r\\pi$ は $0,\\pm1,\\pm2$ のいずれかである．\n\n（証明）$r=\\frac pq$（$p$ は整数，$q$ は正の整数），$\\theta=r\\pi$，$c_k=2\\cos2^k\\theta$（$k=0,1,2,\\dots$）とおく．2倍角の公式より $c_{k+1}=2(2\\cos^22^k\\theta-1)=c_k^2-2$．また $2^k\\theta=\\frac{2^kp}q\\pi$ で，$2^kp$ を $2q$ で割った余りを $e$ とすると $2^k\\theta$ と $\\frac eq\\pi$ の差は $2\\pi$ の整数倍だから $c_k=2\\cos\\frac eq\\pi$．$e$ は $2q$ 通りしかないので，数列 $\\{c_k\\}$ のとる値は有限個．\n\n$c_0=\\frac uv$（$u,v$ は互いに素な整数，$v\\geqq2$）と仮定する．$c_1=\\frac{u^2-2v^2}{v^2}$ で，素数 $\\ell$ が $v^2$ と $u^2-2v^2$ をともに割り切るなら $\\ell$ は $v$ を割り切り，$u^2=(u^2-2v^2)+2v^2$ も割り切るので $u$ も割り切り，矛盾．よって $c_1$ は分母 $v^2$ の既約分数．同様にくり返して，$c_k$ は分母 $v^{2^k}$ の既約分数で，$v\\geqq2$ より分母はすべて異なり，$c_k$ は無限に多くの異なる値をとる．これは上に反する．よって $c_0$ は整数で，$|c_0|\\leqq2$．\\hfill$\\square$\n\n\\textbf{本問}　$x$ が有理数，$0\\leqq x\\leqq1$，$x\\neq\\frac12$，$y=\\tan\\pi x$ が有理数とする．$\\theta=\\pi x$ とすると\n\\[\n\\cos2\\theta=\\frac{1-\\tan^2\\theta}{1+\\tan^2\\theta}=\\frac{1-y^2}{1+y^2}\n\\]\nは有理数で，$2\\theta=(2x)\\pi$，$2x$ は有理数．補題より $\\cos2\\theta\\in\\bigl\\{0,\\pm\\frac12,\\pm1\\bigr\\}$．$\\frac{1-y^2}{1+y^2}=\\gamma$ とおくと $\\gamma>-1$ で，$y^2=\\frac{1-\\gamma}{1+\\gamma}$．\n\\[\n\\gamma=1\\Rightarrow y=0,\\quad\\gamma=\\tfrac12\\Rightarrow y^2=\\tfrac13,\\quad\\gamma=0\\Rightarrow y^2=1,\\quad\\gamma=-\\tfrac12\\Rightarrow y^2=3 .\n\\]\n$y^2=\\frac13$，$3$ となる有理数 $y$ はない（$\\sqrt3$ は無理数）．よって $y\\in\\{0,1,-1\\}$．$0\\leqq x\\leqq1$，$x\\neq\\frac12$ で，$\\tan\\pi x=0\\iff x=0,1$，$\\tan\\pi x=1\\iff x=\\frac14$，$\\tan\\pi x=-1\\iff x=\\frac34$．これらはすべて有理点である．答は\n\\[\n\\boldsymbol{(0,0),\\ \\Bigl(\\frac14,1\\Bigr),\\ \\Bigl(\\frac34,-1\\Bigr),\\ (1,0)}.\n\\]"
+   }
+  ],
+  "idea": {
+   "tex": "$c_k=2\\cos2^k\\theta$ は $c_{k+1}=c_k^2-2$ をみたし，$\\theta$ が $\\pi$ の有理数倍なら $c_k$ は有限個の値しかとらない．$c_0$ が分母 $v\\geqq2$ の既約分数なら $c_k$ の分母は $v^{2^k}$ と増え続けて矛盾するので，$2\\cos\\theta\\in\\{0,\\pm1,\\pm2\\}$．正接は $\\cos2\\theta=\\frac{1-\\tan^2\\theta}{1+\\tan^2\\theta}$ で余弦に帰着させる．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(0, 0) ; (1/4, 1) ; (3/4, -1) ; (1, 0)"
+  },
+  "methods": [],
+  "tags": [
+   "有理数と三角関数",
+   "2倍角の反復",
+   "既約分数の分母",
+   "背理法",
+   "半角の正接"
+  ],
+  "provenance": {
+   "created": "2026-11-14"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-TRI-169",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-10",
+  "level": 5,
+  "minutes": 40,
+  "theme": "L字形の廊下で長方形を回す",
+  "topic": "L字形の廊下で長方形を回す",
+  "statement": {
+   "tex": "座標平面上の L 字形の領域\n\\[\nK=\\{(x,y)\\mid x\\geqq0,\\ 0\\leqq y\\leqq1\\}\\cup\\{(x,y)\\mid 0\\leqq x\\leqq1,\\ y\\geqq0\\}\n\\]\nを廊下とみなす．$0<h\\leqq\\dfrac{\\sqrt2}2$ とし，辺 BC の長さが $L$，辺 BB$'$ の長さが $h$ の長方形 $\\mathrm{BCC'B'}$（内部を含む）を，つねに $K$ に含まれるように連続的に動かす．\n\\begin{enumerate}\n  \\item $0\\leqq\\theta\\leqq\\dfrac\\pi2$ に対し，B$(L\\cos\\theta,\\,0)$，C$(0,\\,L\\sin\\theta)$ とし，長方形は直線 BC に関して原点と反対側にあるものとする．$\\theta$ を $0$ から $\\dfrac\\pi2$ まで変化させるとき，つねに長方形が $K$ に含まれるような $L$ の最大値を求めよ．\n  \\item B，C が壁（$x$ 軸，$y$ 軸）から離れる動かし方も許すとする．辺 BC が $x$ 軸に平行な位置から，$y$ 軸に平行な位置まで長方形を $K$ 内で連続的に動かせるならば，$L$ は (1) で求めた値以下であることを示せ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $2(\\sqrt2-h)$　(2) 証明"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "\\textbf{(1)}　$0\\leqq\\theta\\leqq\\dfrac\\pi2$ とし，$\\vec n=(\\sin\\theta,\\ \\cos\\theta)$，$f(x,y)=x\\sin\\theta+y\\cos\\theta$ とおく．直線 BC は $f=L\\sin\\theta\\cos\\theta$ で，$\\vec n$ は原点と反対側を向く単位法線なので，長方形の4頂点は B，C，$\\mathrm{B}'=\\mathrm{B}+h\\vec n$，$\\mathrm{C}'=\\mathrm{C}+h\\vec n$ であり，長方形上で $L\\sin\\theta\\cos\\theta\\leqq f\\leqq L\\sin\\theta\\cos\\theta+h$．4頂点の座標はすべて $0$ 以上なので長方形は第1象限（境界を含む）に含まれる．第1象限から $K$ を除いた部分は $Q=\\{(x,y)\\mid x>1,\\ y>1\\}$ なので，\n\\[\n\\text{長方形}\\subset K\\iff\\text{長方形と }Q\\text{ が共有点をもたない}.\n\\]\n\\begin{itemize}\n  \\item $f(1,1)\\geqq L\\sin\\theta\\cos\\theta+h$ ならば：$Q$ の点 $(x,y)$ では，$\\sin\\theta,\\cos\\theta\\geqq0$ で同時には $0$ でないから $f(x,y)>f(1,1)$ となり，長方形上の $f$ の最大値より大きいので長方形に属さない．\n  \\item $\\theta=\\dfrac\\pi4$ のとき：BC の中点は $\\Bigl(\\dfrac L{2\\sqrt2},\\dfrac L{2\\sqrt2}\\Bigr)$ で，そこから $h\\vec n$ 進んだ点 $\\Bigl(\\dfrac{L/2+h}{\\sqrt2},\\ \\dfrac{L/2+h}{\\sqrt2}\\Bigr)$ は長方形に属する．$L>2(\\sqrt2-h)$ ならこの点の座標は $1$ より大きく $Q$ に属するので，長方形は $K$ に含まれない．\n\\end{itemize}\nよって $L\\leqq2(\\sqrt2-h)$ が必要である．逆に $L\\leqq2(\\sqrt2-h)$ のとき，すべての $\\theta$ で $f(1,1)\\geqq L\\sin\\theta\\cos\\theta+h$ を示す．$u=\\sin\\theta+\\cos\\theta=\\sqrt2\\sin\\Bigl(\\theta+\\dfrac\\pi4\\Bigr)$ は $1\\leqq u\\leqq\\sqrt2$ をみたし，$\\sin\\theta\\cos\\theta=\\dfrac{u^2-1}2\\geqq0$ なので\n\\[\nf(1,1)-L\\sin\\theta\\cos\\theta-h\\geqq u-h-(\\sqrt2-h)(u^2-1).\n\\]\nこの右辺を $G(u)$ とおく．$G$ は上に凸な2次関数（$\\sqrt2-h>0$）で，$G(1)=1-h>0$，$G(\\sqrt2)=\\sqrt2-h-(\\sqrt2-h)=0$ なので，$1\\leqq u\\leqq\\sqrt2$ で $G(u)\\geqq0$．よって長方形はつねに $K$ に含まれる．以上より最大値は $\\boldsymbol{2(\\sqrt2-h)}$．\n\n\\medskip\n\\textbf{(2)}　\\textbf{向きが $45^\\circ$ になる瞬間}　動かし始めを時刻 $0$，終わりを時刻 $1$ とし，時刻 $t$ における単位ベクトル $\\dfrac1L\\overrightarrow{\\mathrm{BC}}$ を $(c(t),\\,s(t))$ とする．長方形は連続的に動くので，$c(t)$，$s(t)$ は $t$ の連続関数である．$g(t)=c(t)^2-s(t)^2$ とおくと，はじめ BC は $x$ 軸に平行なので $g(0)=1$，最後は $y$ 軸に平行なので $g(1)=-1$ である．中間値の定理より $g(t_0)=0$ となる $t_0$ $(0<t_0<1)$ があり，そのとき $|c(t_0)|=|s(t_0)|$ である．よって，ある瞬間に辺 BC は $(1,1)$ 方向か $(1,-1)$ 方向に平行である．\n\n\\textbf{$45^\\circ$ 回転した座標}　$U=\\dfrac{x+y}{\\sqrt2}$，$V=\\dfrac{x-y}{\\sqrt2}$ とおくと，これは回転なので長さは保たれる．$x=\\dfrac{U+V}{\\sqrt2}$，$y=\\dfrac{U-V}{\\sqrt2}$ より，$x\\geqq0$ かつ $y\\geqq0\\iff|V|\\leqq U$．また $x,y$ の小さい方は $\\dfrac{x+y-|x-y|}2=\\dfrac{U-|V|}{\\sqrt2}$ なので，「$x\\leqq1$ または $y\\leqq1$」$\\iff U-|V|\\leqq\\sqrt2$．よって\n\\[\nK=\\{(U,V)\\mid |V|\\leqq U\\leqq|V|+\\sqrt2\\}.\n\\]\n\n\\textbf{BC が $(1,1)$ 方向のとき}　長方形は $UV$ 座標で $U_0\\leqq U\\leqq U_0+L$，$V_0\\leqq V\\leqq V_0+h$ と表される．$V=V_0$ を固定すると，$U_0\\leqq U\\leqq U_0+L$ のすべてが $|V_0|\\leqq U\\leqq|V_0|+\\sqrt2$ をみたす必要があり，$L\\leqq\\sqrt2$．$h\\leqq\\dfrac{\\sqrt2}2$ より $\\sqrt2\\leqq2(\\sqrt2-h)$ なので $L\\leqq2(\\sqrt2-h)$．\n\n\\textbf{BC が $(1,-1)$ 方向のとき}　長方形は $U_0\\leqq U\\leqq U_0+h$，$V_0\\leqq V\\leqq V_0+L$ と表される．$L\\leqq\\sqrt2$ なら上と同様に $L\\leqq2(\\sqrt2-h)$．$L>\\sqrt2$ とする．もし $U_0+h>\\sqrt2$ なら，$U_1=U_0+h$ として，区間 $[V_0,V_0+L]$ のすべての $V$ が $U_1-\\sqrt2\\leqq|V|\\leqq U_1$ をみたす必要がある．$U_1-\\sqrt2>0$ なので，区間が正の数と負の数をともに含めば $V=0$ も含み $|0|<U_1-\\sqrt2$ となって不可．よって区間は $[U_1-\\sqrt2,\\,U_1]$ か $[-U_1,\\,-(U_1-\\sqrt2)]$ に含まれ，長さは $\\sqrt2$ 以下となり $L>\\sqrt2$ に反する．ゆえに $U_0+h\\leqq\\sqrt2$．このとき $U=U_0$ で $[V_0,V_0+L]\\subset[-U_0,U_0]$ が必要なので\n\\[\nL\\leqq2U_0\\leqq2(\\sqrt2-h).\n\\]\nいずれの場合も $L\\leqq2(\\sqrt2-h)$，すなわち (1) の値以下である．\\hfill$\\square$"
+   }
+  ],
+  "idea": {
+   "tex": "両端を外側の壁につけたまま回すとき，長方形が内側の角の領域に入らない条件は「内側の角 $(1,1)$ が奥の辺の直線より手前にない」という1次不等式になり，$u=\\sin\\theta+\\cos\\theta$ の2次式の符号に帰着する（$45^\\circ$ の位置が最も厳しい）．壁から離してよい場合も，向きが $45^\\circ$（または $135^\\circ$）になる瞬間が必ずあり，その瞬間を $45^\\circ$ 回転した座標で見ると廊下の断面の幅から同じ上限が出る．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) 2(sqrt(2)-h)\n(2) 証明"
+  },
+  "methods": [],
+  "tags": [
+   "最大最小",
+   "三角関数の合成",
+   "2次関数",
+   "回転した座標",
+   "中間値の定理"
+  ],
+  "provenance": {
+   "created": "2026-11-14"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-TRI-170",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-10",
+  "level": 4,
+  "minutes": 35,
+  "theme": "$\\sin n\\theta$ の展開と二項係数の恒等式",
+  "topic": "$\\sin n\\theta$ の展開と二項係数の恒等式",
+  "statement": {
+   "tex": "$n$ を自然数とする．\n\\begin{enumerate}\n  \\item $\\sin\\theta\\neq0$ をみたす実数 $\\theta$ に対し，次の等式を示せ．\n  \\[\n  \\frac{\\sin n\\theta}{\\sin\\theta}=\\sum_{l=0}^{[(n-1)/2]}(-1)^l\\,{}_{n-1-l}\\mathrm{C}_l\\,(2\\cos\\theta)^{n-1-2l}\n  \\]\n  \\item $0\\leqq k\\leqq\\dfrac{n-1}2$ をみたす整数 $k$ に対し，次の等式を示せ．\n  \\[\n  \\sum_{j=k}^{[(n-1)/2]}{}_n\\mathrm{C}_{2j+1}\\cdot{}_j\\mathrm{C}_k=2^{\\,n-2k-1}\\,{}_{n-k-1}\\mathrm{C}_k\n  \\]\n  \\item $\\displaystyle\\sum_{l=0}^{1012}(-1)^l\\,{}_{2025-l}\\mathrm{C}_l$ を求めよ．\n\\end{enumerate}\nただし $[x]$ は $x$ を超えない最大の整数を表す．"
+  },
+  "answer": {
+   "tex": "(1) 証明　(2) 証明　(3) $-1$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "二項係数は $0\\leqq r\\leqq m$ のときの通常の値とし，$r<0$ または $r>m$ のときは ${}_m\\mathrm{C}_r=0$ と約束する．このときパスカルの関係 ${}_m\\mathrm{C}_r={}_{m-1}\\mathrm{C}_r+{}_{m-1}\\mathrm{C}_{r-1}$ は $m\\geqq1$ のすべての整数 $r$ で成り立つ．\n\n\\textbf{(1)}　$x=2\\cos\\theta$ とし，自然数 $n$ に対し $V_n=\\displaystyle\\sum_{l=0}^{[(n-1)/2]}(-1)^l\\,{}_{n-1-l}\\mathrm{C}_l\\,x^{n-1-2l}$ とおく．$l>\\dfrac{n-1}2$ では $n-1-l<l$ より ${}_{n-1-l}\\mathrm{C}_l=0$ なので，和は $0\\leqq l\\leqq n-1$ のすべての $l$ でとってよい．\n\n$V_1=1$，$V_2=x$．$n\\geqq2$ のとき（以下の和の $l$ の範囲を明示する）\n\\[\nxV_n=\\sum_{l=0}^{n-1}(-1)^l\\,{}_{n-1-l}\\mathrm{C}_l\\,x^{n-2l},\\qquad\nV_{n-1}=\\sum_{l=0}^{n-2}(-1)^l\\,{}_{n-2-l}\\mathrm{C}_l\\,x^{n-2-2l}=-\\sum_{l=1}^{n-1}(-1)^{l}\\,{}_{n-1-l}\\mathrm{C}_{l-1}\\,x^{n-2l}\n\\]\n（後者は $l$ を $l-1$ にずらした）．${}_{n-1}\\mathrm{C}_{-1}=0$ と，$0\\leqq l\\leqq n-1$ で $n-l\\geqq1$ だからパスカルの関係が使えることから\n\\[\nxV_n-V_{n-1}=\\sum_{l=0}^{n-1}(-1)^l\\bigl({}_{n-1-l}\\mathrm{C}_l+{}_{n-1-l}\\mathrm{C}_{l-1}\\bigr)x^{n-2l}=\\sum_{l=0}^{n-1}(-1)^l\\,{}_{n-l}\\mathrm{C}_l\\,x^{n-2l}=V_{n+1}\n\\]\n（$V_{n+1}$ の $l=n$ の項は ${}_0\\mathrm{C}_n=0$ である）．\n一方 $W_n=\\dfrac{\\sin n\\theta}{\\sin\\theta}$ とおくと，$W_1=1$，$W_2=\\dfrac{2\\sin\\theta\\cos\\theta}{\\sin\\theta}=x$，和積の公式 $\\sin(n+1)\\theta+\\sin(n-1)\\theta=2\\sin n\\theta\\cos\\theta$ より $W_{n+1}=xW_n-W_{n-1}$．初めの2項と漸化式が一致するので，すべての $n$ で $W_n=V_n$．\\hfill$\\square$\n\n\\medskip\n\\textbf{(2)}　$c=\\cos\\theta$，$s=\\sin\\theta\\neq0$ とする．ド・モアブルの定理と二項定理より\n\\[\n\\cos n\\theta+i\\sin n\\theta=(c+is)^n=\\sum_{r=0}^n{}_n\\mathrm{C}_r\\,c^{n-r}(is)^r\n\\]\nで，虚部を比べると（$r=2j+1$ の項，$i^{2j+1}=(-1)^ji$）\n\\[\n\\sin n\\theta=\\sum_{j}(-1)^j\\,{}_n\\mathrm{C}_{2j+1}\\,c^{n-2j-1}s^{2j+1}.\n\\]\n$s$ で割り，$(-1)^js^{2j}=(c^2-1)^j=\\displaystyle\\sum_{k=0}^j{}_j\\mathrm{C}_k\\,c^{2j-2k}(-1)^k$ を代入すると\n\\[\n\\frac{\\sin n\\theta}{\\sin\\theta}=\\sum_{j=0}^{[(n-1)/2]}{}_n\\mathrm{C}_{2j+1}\\,c^{n-1-2j}\\sum_{k=0}^{j}(-1)^k\\,{}_j\\mathrm{C}_k\\,c^{2j-2k}\n=\\sum_{k=0}^{[(n-1)/2]}(-1)^k\\Bigl(\\sum_{j=k}^{[(n-1)/2]}{}_n\\mathrm{C}_{2j+1}\\,{}_j\\mathrm{C}_k\\Bigr)c^{n-1-2k}.\n\\]\n(1) より同じ量は $\\displaystyle\\sum_{k}(-1)^k\\,{}_{n-1-k}\\mathrm{C}_k\\,2^{n-1-2k}c^{n-1-2k}$ に等しい．両辺は $c$ の多項式で，$-1<c<1$ のすべての $c$（$\\sin\\theta\\neq0$ となる $\\theta$ で $c=\\cos\\theta$ と表せる）で値が一致する．差は無限個の値で $0$ となる多項式なので $0$ であり，係数がすべて一致する．$c^{n-1-2k}$ の係数を比べて\n\\[\n\\sum_{j=k}^{[(n-1)/2]}{}_n\\mathrm{C}_{2j+1}\\cdot{}_j\\mathrm{C}_k=2^{\\,n-2k-1}\\,{}_{n-k-1}\\mathrm{C}_k .\n\\]\n\\hfill$\\square$\n\n\\medskip\n\\textbf{(3)}　(1) で $n=2026$，$\\theta=\\dfrac\\pi3$（$2\\cos\\theta=1$）とすると，$[(n-1)/2]=1012$ で\n\\[\n\\sum_{l=0}^{1012}(-1)^l\\,{}_{2025-l}\\mathrm{C}_l=\\frac{\\sin\\frac{2026\\pi}3}{\\sin\\frac\\pi3}.\n\\]\n$2026=6\\cdot337+4$ より $\\sin\\dfrac{2026\\pi}3=\\sin\\dfrac{4\\pi}3=-\\dfrac{\\sqrt3}2$．よって値は $\\boldsymbol{-1}$．"
+   }
+  ],
+  "idea": {
+   "tex": "$\\dfrac{\\sin n\\theta}{\\sin\\theta}$ は $\\sin(n+1)\\theta+\\sin(n-1)\\theta=2\\cos\\theta\\sin n\\theta$ により3項間漸化式をみたし，二項係数の和もパスカルの関係で同じ漸化式をみたす．一方ド・モアブルの定理で $\\sin n\\theta$ を展開して $\\sin^2\\theta=1-\\cos^2\\theta$ を代入し $\\cos\\theta$ の多項式として係数を比べると，二項係数の二重和の恒等式が得られる．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) 証明\n(2) 証明\n(3) -1"
+  },
+  "methods": [],
+  "tags": [
+   "ド・モアブルの定理",
+   "二項定理",
+   "3項間漸化式",
+   "恒等式",
+   "係数比較"
+  ],
+  "provenance": {
+   "created": "2026-11-14"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-TRI-171",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-10",
+  "level": 5,
+  "minutes": 40,
+  "theme": "$\\dfrac{\\sin^2 lx}{\\sin^2 x}$ の等間隔な点での和",
+  "topic": "$\\dfrac{\\sin^2 lx}{\\sin^2 x}$ の等間隔な点での和",
+  "statement": {
+   "tex": "$l,\\ m$ を $2$ 以上の整数とする．\n\\[\n\\sum_{k=1}^{m-1}\\frac{\\sin^2\\dfrac{lk\\pi}{m}}{\\sin^2\\dfrac{k\\pi}{m}}\n\\]\nの値を求めよ．"
+  },
+  "answer": {
+   "tex": "$l$ を $m$ で割った余りを $r$ として $r(m-r)$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "\\textbf{恒等式．}$\\sin\\theta\\neq0$ のとき $F_l(\\theta)=\\dfrac{\\sin^2l\\theta}{\\sin^2\\theta}$（$l\\geqq0$）とおく．$\\sin^2x-\\sin^2y=\\sin(x+y)\\sin(x-y)$ より\n\\[\nF_{i+1}-F_i=\\frac{\\sin(2i+1)\\theta\\,\\sin\\theta}{\\sin^2\\theta}=\\frac{\\sin(2i+1)\\theta}{\\sin\\theta}.\n\\]\nまた $2\\sin\\theta\\cos2j\\theta=\\sin(2j+1)\\theta-\\sin(2j-1)\\theta$ を $j=1,\\dots,i$ で足すと $\\sin(2i+1)\\theta=\\sin\\theta\\,(1+2\\sum_{j=1}^{i}\\cos2j\\theta)$．よって $F_{i+1}-F_i=1+2\\sum_{j=1}^{i}\\cos2j\\theta$ で，$F_0=0$ から $i=0,\\dots,l-1$ について足すと\n\\[\n\\frac{\\sin^2l\\theta}{\\sin^2\\theta}=l+2\\sum_{j=1}^{l-1}(l-j)\\cos2j\\theta .\\qquad\\cdots\\cdots①\n\\]\n\\textbf{余弦の和．}整数 $j$ に対して $C_j=\\displaystyle\\sum_{k=1}^{m-1}\\cos\\frac{2jk\\pi}m$ とおく．$j$ が $m$ の倍数なら各項は $1$ で $C_j=m-1$．そうでないとき $\\sin\\frac{j\\pi}m\\neq0$ で，\n\\[\n2\\sin\\frac{j\\pi}m\\sum_{k=0}^{m-1}\\cos\\frac{2jk\\pi}m=\\sum_{k=0}^{m-1}\\left\\{\\sin\\frac{(2k+1)j\\pi}m-\\sin\\frac{(2k-1)j\\pi}m\\right\\}=\\sin\\left(2j\\pi-\\frac{j\\pi}m\\right)+\\sin\\frac{j\\pi}m=0\n\\]\nなので $\\sum_{k=0}^{m-1}\\cos\\frac{2jk\\pi}m=0$，$C_j=-1$．\n\n\\textbf{和の計算．}$\\theta=\\frac{k\\pi}m$（$1\\leqq k\\leqq m-1$）は $\\sin\\theta\\neq0$ なので ① が使え，求める和を $\\Sigma$ とすると\n\\[\n\\Sigma=(m-1)l+2\\sum_{j=1}^{l-1}(l-j)C_j=(m-1)l-2\\sum_{j=1}^{l-1}(l-j)+2m\\sum_{\\substack{1\\leqq j\\leqq l-1\\\\ j\\text{ は }m\\text{ の倍数}}}(l-j).\n\\]\n$2\\sum_{j=1}^{l-1}(l-j)=l(l-1)$ なので $\\Sigma=ml-l^2+2m\\sum(l-j)$．$l=qm+r$（$q\\geqq0$，$0\\leqq r\\leqq m-1$）とする．\n\n$r\\geqq1$ のとき，$1\\leqq j\\leqq l-1$ をみたす $m$ の倍数は $j=tm$（$t=1,\\dots,q$）で，和は $ql-\\frac{mq(q+1)}2$．よって\n\\[\n\\Sigma=ml-l^2+2mql-m^2q(q+1).\n\\]\n$l=qm+r$ を代入すると $ml=qm^2+mr$，$l^2=q^2m^2+2qmr+r^2$，$2mql=2q^2m^2+2qmr$ なので $\\Sigma=mr-r^2=r(m-r)$．\n\n$r=0$ のとき，$t=1,\\dots,q-1$ で和は $(q-1)l-\\frac{mq(q-1)}2$，$\\Sigma=ml-l^2+2m(q-1)l-m^2q(q-1)=m^2\\{q-q^2+2q(q-1)-q(q-1)\\}=0=r(m-r)$．\n\n答 $l$ を $m$ で割った余りを $r$ として $\\boldsymbol{r(m-r)}$"
+   }
+  ],
+  "idea": {
+   "tex": "$\\dfrac{\\sin^2(l+1)\\theta-\\sin^2l\\theta}{\\sin^2\\theta}=\\dfrac{\\sin(2l+1)\\theta}{\\sin\\theta}=1+2\\sum_{j=1}^{l}\\cos2j\\theta$ を積み上げると $\\dfrac{\\sin^2l\\theta}{\\sin^2\\theta}=l+2\\sum_{j=1}^{l-1}(l-j)\\cos2j\\theta$．$\\theta=\\frac{k\\pi}m$ として $k$ について足すと，$\\sum_{k=1}^{m-1}\\cos\\frac{2jk\\pi}m$ は $j$ が $m$ の倍数なら $m-1$，そうでなければ $-1$．"
+  },
+  "methods": [],
+  "tags": [
+   "三角関数",
+   "積和公式",
+   "和の計算",
+   "周期性"
+  ],
+  "provenance": {
+   "created": "2026-11-14"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-TRI-172",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-10",
+  "level": 5,
+  "minutes": 35,
+  "theme": "外接円と内接円の半径が決まった三角形の角と辺",
+  "topic": "外接円と内接円の半径が決まった三角形の角と辺",
+  "statement": {
+   "tex": "外接円の半径が $1$，内接円の半径が $\\dfrac49$ である三角形 ABC を考え，内角の大きさを $A,B,C$ とする．\n\\begin{enumerate}\n  \\item 外接円の半径が $1$ の任意の三角形について，内接円の半径は $4\\sin\\dfrac A2\\sin\\dfrac B2\\sin\\dfrac C2$ に等しいことを示せ．\n  \\item $\\cos A$ のとりうる値の範囲を求めよ．\n  \\item このような三角形はつねに鋭角三角形であることを示し，辺 BC の長さのとりうる値の範囲を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 証明　(2) $\\dfrac19\\leqq\\cos A\\leqq\\dfrac79$　(3) 証明，$\\dfrac{8\\sqrt2}{9}\\leqq\\mathrm{BC}\\leqq\\dfrac{8\\sqrt5}{9}$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "\\textbf{(1)}　内心を I，内接円の半径を $r$ とする．内接円と辺 BC の接点を D とすると，BI は $\\angle\\mathrm B$ の二等分線なので $\\mathrm{BD}=\\dfrac{r\\cos\\frac B2}{\\sin\\frac B2}$，同様に $\\mathrm{CD}=\\dfrac{r\\cos\\frac C2}{\\sin\\frac C2}$．よって\n\\[\n\\mathrm{BC}=r\\cdot\\frac{\\sin\\frac B2\\cos\\frac C2+\\cos\\frac B2\\sin\\frac C2}{\\sin\\frac B2\\sin\\frac C2}=\\frac{r\\sin\\frac{B+C}{2}}{\\sin\\frac B2\\sin\\frac C2}=\\frac{r\\cos\\frac A2}{\\sin\\frac B2\\sin\\frac C2}.\n\\]\n一方，正弦定理より $\\mathrm{BC}=2\\sin A=4\\sin\\frac A2\\cos\\frac A2$．$\\cos\\frac A2>0$ で割って $r=4\\sin\\frac A2\\sin\\frac B2\\sin\\frac C2$．\\hfill$\\square$\n\n\\medskip\n\\textbf{(2)}　$u=\\sin\\frac A2$（$0<u<1$），$\\delta=\\frac{B-C}{2}$ とおく．$\\cos\\frac{B+C}2=\\sin\\frac A2=u$ より\n\\[\n\\sin\\frac B2\\sin\\frac C2=\\frac12\\left(\\cos\\frac{B-C}2-\\cos\\frac{B+C}2\\right)=\\frac{\\cos\\delta-u}{2}\n\\]\nなので，(1) より条件は\n\\[\n2u(\\cos\\delta-u)=\\frac49\\qquad\\cdots①\n\\]\nである．また $|\\delta|<\\frac{B+C}2$ であり，$0<\\frac{B+C}{2}<\\frac\\pi2$ だから $u=\\cos\\frac{B+C}2<\\cos\\delta\\leqq1$．\n\n\\textbf{必要性．}① と $\\cos\\delta\\leqq1$ より $\\frac49\\leqq2u(1-u)$，すなわち $9u^2-9u+2\\leqq0$，$(3u-1)(3u-2)\\leqq0$ で $\\frac13\\leqq u\\leqq\\frac23$．\n\n\\textbf{十分性．}$\\frac13\\leqq u\\leqq\\frac23$ とし，$\\sin\\frac A2=u$ となる $A$（$0<A<\\pi$）をとる．$w=\\frac{2}{9u}+u$ とおくと $w>u$ で，$w\\leqq1\\iff9u^2-9u+2\\leqq0$ も成り立つ．$\\cos\\delta=w$，$0\\leqq\\delta<\\frac\\pi2$ となる $\\delta$ をとると，$\\cos\\delta=w>u=\\cos\\frac{\\pi-A}2$ から $\\delta<\\frac{\\pi-A}2$．そこで $B=\\frac{\\pi-A}2+\\delta$，$C=\\frac{\\pi-A}2-\\delta$ とすれば $B,C>0$，$A+B+C=\\pi$ で，これを内角とし単位円に内接する三角形は ① をみたし，内接円の半径は $\\frac49$ である．\n\nよって $u$ のとりうる範囲は $\\frac13\\leqq u\\leqq\\frac23$ で，$\\cos A=1-2u^2$ より\n\\[\n\\boldsymbol{\\frac19\\leqq\\cos A\\leqq\\frac79}.\n\\]\n\n\\medskip\n\\textbf{(3)}　(2) の議論はどの頂点についても同じだから，$\\cos A,\\cos B,\\cos C$ はすべて $\\frac19$ 以上で正．よってつねに鋭角三角形である．\n\n正弦定理より $\\mathrm{BC}=2\\sin A=4u\\sqrt{1-u^2}=4\\sqrt{u^2(1-u^2)}$．$v=u^2$ は $\\frac19\\leqq v\\leqq\\frac49$ を動き，$v(1-v)$ は $v\\leqq\\frac12$ で増加するから，BC は $u$ について増加し，(2) よりこの範囲の $u$ はすべて実現する．$u=\\frac13$ で $4\\cdot\\frac13\\cdot\\frac{2\\sqrt2}3=\\frac{8\\sqrt2}9$，$u=\\frac23$ で $4\\cdot\\frac23\\cdot\\frac{\\sqrt5}3=\\frac{8\\sqrt5}9$．よって\n\\[\n\\boldsymbol{\\frac{8\\sqrt2}{9}\\leqq\\mathrm{BC}\\leqq\\frac{8\\sqrt5}{9}}.\n\\]"
+   }
+  ],
+  "idea": {
+   "tex": "外接円の半径 $R$ と内接円の半径 $r$ の比は $\\frac rR=4\\sin\\frac A2\\sin\\frac B2\\sin\\frac C2$．$A$ を固定すると $\\frac rR=2\\sin\\frac A2\\left(\\cos\\frac{B-C}2-\\sin\\frac A2\\right)$ となり，$B-C$ を動かしたときの最大は $B=C$（二等辺三角形）で $2u(1-u)$（$u=\\sin\\frac A2$）．よって $A$ のとりうる範囲は $2u(1-u)\\geqq\\frac rR$ で決まる．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) 証明\n(2) 1/9<=cos(A)<=7/9\n(3) 記述"
+  },
+  "methods": [],
+  "tags": [
+   "内接円の半径",
+   "半角の積",
+   "和積公式",
+   "範囲",
+   "存在の確認"
+  ],
+  "provenance": {
+   "created": "2026-11-14"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-TRI-173",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-10",
+  "level": 4,
+  "minutes": 30,
+  "theme": "$\\dfrac{\\sin A+\\sin B+\\sin C}{\\cos A+\\cos B+\\cos C}$ と $60^\\circ$ の角",
+  "topic": "$\\dfrac{\\sin A+\\sin B+\\sin C}{\\cos A+\\cos B+\\cos C}$ と $60^\\circ$ の角",
+  "statement": {
+   "tex": "三角形の3つの内角の大きさを $A,B,C$ とし，$K=\\dfrac{\\sin A+\\sin B+\\sin C}{\\cos A+\\cos B+\\cos C}$ とおく．\n\\begin{enumerate}\n  \\item $K=\\sqrt3$ となるのは，$A,B,C$ のいずれかが $\\dfrac\\pi3$ であるとき，かつそのときに限ることを示せ．\n  \\item $C\\geqq\\dfrac\\pi2$ であるとき，$K$ のとりうる値の範囲を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 証明　(2) $0<K<2$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "$C$ を固定し，$s=\\sin\\frac C2$，$c=\\cos\\frac C2$，$t=\\cos\\frac{A-B}2$ とおく．$\\frac{A+B}2=\\frac\\pi2-\\frac C2$ より\n\\[\\sin A+\\sin B=2\\sin\\tfrac{A+B}2\\cos\\tfrac{A-B}2=2ct,\\quad\\cos A+\\cos B=2\\cos\\tfrac{A+B}2\\cos\\tfrac{A-B}2=2st.\\]\nまた $\\left|\\frac{A-B}2\\right|<\\frac{A+B}2=\\frac\\pi2-\\frac C2$ なので $s<t\\leqq1$．分母は $\\cos C+2st>\\cos C+2s^2=1>0$ で，\n\\[K=\\frac{\\sin C+2ct}{\\cos C+2st}.\\]\n\n(1) $K=\\sqrt3\\iff\\sin C-\\sqrt3\\cos C=2t(\\sqrt3s-c)\\iff2\\sin\\left(C-\\frac\\pi3\\right)=4t\\sin\\left(\\frac C2-\\frac\\pi6\\right)$．左辺 $=4\\sin\\left(\\frac C2-\\frac\\pi6\\right)\\cos\\left(\\frac C2-\\frac\\pi6\\right)$ なので\n\\[K=\\sqrt3\\iff\\sin\\left(\\tfrac C2-\\tfrac\\pi6\\right)=0\\ \\text{または}\\ \\cos\\tfrac{A-B}2=\\cos\\left(\\tfrac C2-\\tfrac\\pi6\\right).\\]\n前者は $-\\frac\\pi6<\\frac C2-\\frac\\pi6<\\frac\\pi3$ より $C=\\frac\\pi3$．後者では $\\frac{A-B}2$，$\\frac C2-\\frac\\pi6$ はともに $\\left(-\\frac\\pi2,\\frac\\pi2\\right)$ にあるので $A-B=\\pm\\left(C-\\frac\\pi3\\right)$．$A-B=C-\\frac\\pi3$ なら $A=B+C-\\frac\\pi3=\\pi-A-\\frac\\pi3$ で $A=\\frac\\pi3$．$A-B=-\\left(C-\\frac\\pi3\\right)$ なら同様に $B=\\frac\\pi3$．逆に $A,B,C$ のいずれかが $\\frac\\pi3$ なら（その角を $C$ とよびなおせば）$K=\\sqrt3$．\\hfill$\\square$\n\n(2) $C\\geqq\\frac\\pi2$ とする．分子は正なので $K>0$．また\n\\[2(\\cos C+2st)-(\\sin C+2ct)=2\\cos C-\\sin C+2t(2s-c).\\]\n$\\frac C2\\geqq\\frac\\pi4$ より $s\\geqq c$，$2s-c>0$ なので右辺は $t$ について増加し，$t>s$ より\n\\[>2(1-2s^2)-2sc+2s(2s-c)=2-4sc=2-2\\sin C\\geqq0.\\]\nよって $K<2$．\n\n逆に $(0,2)$ のすべての値をとること：$C=\\frac\\pi2$ のとき $K=\\frac{1+\\sqrt2t}{\\sqrt2t}=1+\\frac1{\\sqrt2t}$ で，$t$ が $\\frac1{\\sqrt2}<t\\leqq1$ を動くと $\\left[1+\\frac1{\\sqrt2},\\ 2\\right)$ のすべての値をとる．また二等辺三角形 $A=B$（$t=1$）で $C$ を $\\left[\\frac\\pi2,\\pi\\right)$ で動かすと $K=\\frac{\\sin C+2c}{\\cos C+2s}$ は $C$ の連続関数で，$C=\\frac\\pi2$ で $1+\\frac1{\\sqrt2}$，$C\\to\\pi$ で分子 $\\to0$，分母 $\\to-1+2=1$ より $K\\to0$ なので，$\\left(0,1+\\frac1{\\sqrt2}\\right]$ のすべての値をとる．以上より $\\boldsymbol{0<K<2}$．"
+   }
+  ],
+  "idea": {
+   "tex": "$C$ を固定し $t=\\cos\\frac{A-B}2$ とおくと，$\\sin A+\\sin B=2t\\cos\\frac C2$，$\\cos A+\\cos B=2t\\sin\\frac C2$ で，比は $t$ の1次分数関数になる．$t$ の範囲は $\\sin\\frac C2<t\\leqq1$．比が $\\sqrt3$ という条件は $\\sin\\left(\\frac C2-\\frac\\pi6\\right)\\left\\{\\cos\\left(\\frac C2-\\frac\\pi6\\right)-t\\right\\}=0$ に因数分解でき，どちらの因数からも「ある角が $60^\\circ$」が出る．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) 証明\n(2) 0<K<2"
+  },
+  "methods": [],
+  "tags": [
+   "和積公式",
+   "半角",
+   "1次分数関数",
+   "角の条件",
+   "値域"
+  ],
+  "provenance": {
+   "created": "2026-11-14"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-TRI-174",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-10",
+  "level": 4,
+  "minutes": 35,
+  "theme": "2辺と外接円に接する2円の半径の差",
+  "topic": "2辺と外接円に接する2円の半径の差",
+  "statement": {
+   "tex": "$\\theta$ を $0<\\theta<\\pi$ をみたす定数とし，$\\mathrm{BC}=1$，$\\angle\\mathrm A=\\theta$ である三角形 ABC を考える．半直線 AB，半直線 AC および三角形 ABC の外接円のすべてに接する円はちょうど2つあることが知られている．そのうち小さい方の半径を $r_1$，大きい方の半径を $r_2$ とする．\n\\begin{enumerate}\n  \\item $r_1$，$r_2$，$r_2-r_1$ のそれぞれについて，三角形の形（$\\angle\\mathrm B$ の大きさ）によらず一定かどうかを判定し，一定ならその値を $\\theta$ で表せ．\n  \\item $r_1$ のとりうる値の範囲を $\\theta$ で表せ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $r_1$，$r_2$ は一定でない．$r_2-r_1=\\dfrac{\\sin\\frac\\theta2}{\\cos^3\\frac\\theta2}$（一定）　(2) $0<r_1\\leqq\\dfrac{1-\\sin\\frac\\theta2}{2\\cos^3\\frac\\theta2}$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "$a=\\mathrm{BC}=1$，$b=\\mathrm{CA}$，$c=\\mathrm{AB}$，$\\sigma=\\sin\\frac\\theta2$，$\\kappa=\\cos\\frac\\theta2$，外接円の中心を O，半径を $R$ とする．A を原点，$\\angle\\mathrm A$ の二等分線方向の単位ベクトルを $\\vec e=(1,0)$ とし，$\\vec B=c(\\kappa,-\\sigma)$，$\\vec C=b(\\kappa,\\sigma)$ とおく．\n\n\\textbf{外心の成分．} $|\\vec O|=|\\vec O-\\vec B|$ より $2\\vec O\\cdot\\vec B=c^2$，同様に $2\\vec O\\cdot\\vec C=b^2$．$\\vec O=(X,Y)$ とすると $X\\kappa-Y\\sigma=\\frac c2$，$X\\kappa+Y\\sigma=\\frac b2$ で，$X=\\vec O\\cdot\\vec e=\\dfrac{b+c}{4\\kappa}$．また正弦定理より $R=\\dfrac a{2\\sin\\theta}=\\dfrac1{4\\sigma\\kappa}$．\n\n\\textbf{接する円．} 2本の半直線に接する円の中心は二等分線上の点 $d\\vec e\\ (d>0)$ で，半径 $\\rho=d\\sigma$．この円が外接円に接する $\\iff$ $|d\\vec e-\\vec O|=R+\\rho$ または $|R-\\rho|$ $\\iff$ $|d\\vec e-\\vec O|^2=(R\\pm\\rho)^2$．$|d\\vec e-\\vec O|^2=d^2-2dX+R^2$ なので\n\\[d^2-2dX=\\pm2Rd\\sigma+d^2\\sigma^2\\iff d\\kappa^2=2X\\pm2R\\sigma=\\frac{(b+c)\\pm1}{2\\kappa}.\\]\n$b+c>a=1$ より複号どちらも $d>0$ で，ちょうど2つの円があり，\n\\[r_1=\\frac{\\sigma(b+c-1)}{2\\kappa^3},\\qquad r_2=\\frac{\\sigma(b+c+1)}{2\\kappa^3}.\\]\n\n\\textbf{$b+c$ の範囲．} 正弦定理と和積公式より $b+c=2R(\\sin B+\\sin C)=\\dfrac1{2\\sigma\\kappa}\\cdot2\\kappa\\cos\\frac{B-C}2=\\dfrac{\\cos\\frac{B-C}2}{\\sigma}$．$\\left|\\frac{B-C}2\\right|<\\frac{B+C}2=\\frac\\pi2-\\frac\\theta2$ より $\\sigma<\\cos\\frac{B-C}2\\leqq1$ で，$b+c$ は $1<b+c\\leqq\\frac1\\sigma$ のすべての値をとる（$\\angle\\mathrm B$ を連続的に動かせばよい）．\n\n(1) $r_1,r_2$ は $b+c$ によって変わるので\\textbf{一定でない}．$r_2-r_1=\\dfrac{\\sigma}{\\kappa^3}=\\boldsymbol{\\dfrac{\\sin\\frac\\theta2}{\\cos^3\\frac\\theta2}}$ で\\textbf{一定}．\n\n(2) $r_1$ は $b+c$ の増加関数なので $\\boldsymbol{0<r_1\\leqq\\dfrac{1-\\sin\\frac\\theta2}{2\\cos^3\\frac\\theta2}}$（最大は $\\mathrm{AB}=\\mathrm{AC}$ のとき）．"
+   }
+  ],
+  "idea": {
+   "tex": "半直線 AB，AC に接する円の中心は二等分線上の点 $d\\vec e$ で半径 $d\\sin\\frac\\theta2$．外心 O の二等分線方向の成分は $\\dfrac{b+c}{4\\cos\\frac\\theta2}$ と辺だけで書け，外接円に接する条件 $\\mathrm{OP}^2=(R\\mp\\rho)^2$ が $d$ の1次方程式になる．2つの半径は $\\dfrac{\\sin\\frac\\theta2\\,(b+c\\mp a)}{2\\cos^3\\frac\\theta2}$ で，差は $a$ だけで決まる．"
+  },
+  "methods": [],
+  "tags": [
+   "角の二等分線上の中心",
+   "外心の座標",
+   "円の接する条件",
+   "半角",
+   "値域"
+  ],
+  "provenance": {
+   "created": "2026-11-14"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-TRI-175",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-10",
+  "level": 4,
+  "minutes": 30,
+  "theme": "直線上の点から見た2つの角の差の最大",
+  "topic": "直線上の点から見た2つの角の差の最大",
+  "statement": {
+   "tex": "$0<a\\leqq1$ とし，座標平面上に $\\mathrm O(0,0)$，$\\mathrm A(a,0)$，$\\mathrm B(-a,0)$ をとる．点 P が直線 $y=1$ 上を動くとき，$\\angle\\mathrm{OPA}-\\angle\\mathrm{OPB}$ の最大値を $M$ とする．$M$ を与える P の座標と $\\tan M$ を求めよ．"
+  },
+  "answer": {
+   "tex": "$\\mathrm P\\left(\\sqrt{\\dfrac{1+a^2}3},\\ 1\\right)$，$\\tan M=\\dfrac{3\\sqrt3\\,a^2}{(8-a^2)\\sqrt{1+a^2}}$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "$\\mathrm P(x,1)$ とし，点 $\\mathrm T(t,0)$ に対して，P から真下に向かう向きと $\\overrightarrow{\\mathrm{PT}}$ のなす角を，T が P の真下より右（$t>x$）にあるとき正，左にあるとき負として $\\varphi(t)$ とおく（$-\\frac\\pi2<\\varphi(t)<\\frac\\pi2$）．P と $x$ 軸の距離は1なので $\\tan\\varphi(t)=t-x$ で，$\\varphi(t)$ は $t$ について増加する．\n\n$a>0$ より $\\angle\\mathrm{OPA}=\\varphi(a)-\\varphi(0)\\in(0,\\pi)$ で，加法定理から\n\\[\\tan\\angle\\mathrm{OPA}=\\frac{(a-x)-(-x)}{1+(a-x)(-x)}=\\frac a{x^2-ax+1}.\\]\n$0<a\\leqq1$ より $x^2-ax+1=\\left(x-\\frac a2\\right)^2+1-\\frac{a^2}4>0$ なので $\\tan\\angle\\mathrm{OPA}>0$ で，$\\angle\\mathrm{OPA}$ は鋭角．同様に $\\angle\\mathrm{OPB}=\\varphi(0)-\\varphi(-a)$ で $\\tan\\angle\\mathrm{OPB}=\\dfrac a{x^2+ax+1}$（鋭角）．差 $\\delta=\\angle\\mathrm{OPA}-\\angle\\mathrm{OPB}$ は $\\left(-\\frac\\pi2,\\frac\\pi2\\right)$ にあり，\n\\[\\tan\\delta=\\frac{a\\{(x^2+ax+1)-(x^2-ax+1)\\}}{(x^2-ax+1)(x^2+ax+1)+a^2}=\\frac{2a^2x}{x^4+(2-a^2)x^2+1+a^2}.\\]\n分母は正なので，$x\\leqq0$ では $\\tan\\delta\\leqq0$ すなわち $\\delta\\leqq0$，$x>0$ では $\\delta>0$．$x>0$ で $h(x)=\\dfrac x{Q(x)}$，$Q(x)=x^4+(2-a^2)x^2+1+a^2\\ (>0)$ とおくと $h'(x)=\\dfrac{Q-xQ'}{Q^2}$ で\n\\[Q-xQ'=-3x^4-(2-a^2)x^2+1+a^2=-(3x^2-1-a^2)(x^2+1)\\]\nなので，$h$ は $0<x^2<\\frac{1+a^2}3$ で増加，$x^2>\\frac{1+a^2}3$ で減少し，$x=\\sqrt{\\frac{1+a^2}3}$ で最大．$\\tan$ は $\\left(-\\frac\\pi2,\\frac\\pi2\\right)$ で増加関数なので $\\delta$ もそこで最大．$m=\\frac{1+a^2}3$ とすると $a^2=3m-1$ で $Q=m^2+(3-3m)m+3m=2m(3-m)$，\n\\[\\tan M=\\frac{2(3m-1)\\sqrt m}{2m(3-m)}=\\frac{3m-1}{\\sqrt m(3-m)}=\\frac{a^2}{\\sqrt{\\frac{1+a^2}3}\\cdot\\frac{8-a^2}3}=\\boldsymbol{\\frac{3\\sqrt3\\,a^2}{(8-a^2)\\sqrt{1+a^2}}},\\]\nP の座標は $\\boldsymbol{\\left(\\sqrt{\\dfrac{1+a^2}3},\\ 1\\right)}$．"
+   }
+  ],
+  "idea": {
+   "tex": "P から真下に向かう向きと $x$ 軸上の点 $(t,0)$ への向きのなす角 $\\varphi(t)$ は $\\tan\\varphi(t)=t-x$ をみたすので，加法定理で $\\tan\\angle\\mathrm{OPA}=\\dfrac a{x^2-ax+1}$ と書ける．差の正接は $\\dfrac{2a^2x}{x^4+(2-a^2)x^2+1+a^2}$ で，分子・分母の比の増減は $3x^2-(1+a^2)$ の符号で決まる．"
+  },
+  "methods": [],
+  "tags": [
+   "正接の加法定理",
+   "外積と内積",
+   "有理関数の最大",
+   "置き換え"
+  ],
+  "provenance": {
+   "created": "2026-11-14"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-TRI-176",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-10",
+  "level": 5,
+  "minutes": 40,
+  "theme": "2つの三角形の余弦の積の和の最大と等号",
+  "topic": "2つの三角形の余弦の積の和の最大と等号",
+  "statement": {
+   "tex": "2つの三角形 $T_1,\\ T_2$ があり，$T_i$ の内角を $A_i,\\ B_i,\\ C_i$ とする（$i=1,\\ 2$）．\n\\begin{align*}\nF&=\\cos A_1\\cos B_1\\cos C_1+\\cos A_2\\cos B_1\\cos C_1+\\cos A_1\\cos B_2\\cos C_1+\\cos A_1\\cos B_1\\cos C_2,\\\\\nG&=\\sin B_1\\sin C_1\\cos A_2+\\sin C_1\\sin A_1\\cos B_2+\\sin A_1\\sin B_1\\cos C_2\n\\end{align*}\nとおく．必要ならば，$A+B+C=\\pi$ のとき $\\cos^2A+\\cos^2B+\\cos^2C+2\\cos A\\cos B\\cos C=1$ が成り立つことを証明なしに用いてよい．\n\\begin{enumerate}\n  \\item $G\\leqq1+\\cos A_1\\cos B_1\\cos C_1$ を示せ．また，等号が成り立つための $T_1,\\ T_2$ の条件を求めよ．\n  \\item $F\\leqq\\dfrac12$ を示せ．また，等号が成り立つための $T_1,\\ T_2$ の条件を求めよ．\n  \\item $T_1$ が $B_1=C_1=\\theta$ の二等辺三角形であるとする．$F=\\dfrac12$ となる三角形 $T_2$ が存在するような $\\cos\\theta$ の値の範囲を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 証明．等号は $A_1=A_2,\\ B_1=B_2,\\ C_1=C_2$ のときに限る　(2) 証明．等号は $T_1$ が鋭角三角形かつ $\\cos A_1:\\cos B_1:\\cos C_1=\\sin A_2:\\sin B_2:\\sin C_2$（$T_2$ の3辺の比が $\\cos A_1:\\cos B_1:\\cos C_1$）のときに限る　(3) $\\dfrac{\\sqrt3-1}2<\\cos\\theta<\\dfrac{\\sqrt2}2$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "\\textbf{補題．} 三角形の内角 $A,\\ B,\\ C$ と任意の実数 $x,\\ y,\\ z$ に対して\n\\[\nQ=x^2+y^2+z^2-2yz\\cos A-2zx\\cos B-2xy\\cos C\\geqq0\n\\]\nであり，等号は「ある実数 $k$ で $(x,\\ y,\\ z)=(k\\sin A,\\ k\\sin B,\\ k\\sin C)$」のときに限る．\n\n\\textbf{証明．}\n\\begin{align*}\n&(x-y\\cos C-z\\cos B)^2+(y\\sin C-z\\sin B)^2\\\\\n&=x^2+y^2(\\cos^2C+\\sin^2C)+z^2(\\cos^2B+\\sin^2B)\\\\\n&\\qquad-2xy\\cos C-2zx\\cos B+2yz(\\cos B\\cos C-\\sin B\\sin C)\\\\\n&=x^2+y^2+z^2-2xy\\cos C-2zx\\cos B+2yz\\cos(B+C)\n\\end{align*}\nで，$\\cos(B+C)=\\cos(\\pi-A)=-\\cos A$ だからこれは $Q$ に等しい．よって $Q\\geqq0$．等号は $x=y\\cos C+z\\cos B$ かつ $y\\sin C=z\\sin B$ のとき．$\\sin B,\\ \\sin C>0$ なので後者は $\\dfrac y{\\sin B}=\\dfrac z{\\sin C}$ と同値で，この値を $k$ とおくと $y=k\\sin B$，$z=k\\sin C$，$x=k(\\sin C\\cos B+\\sin B\\cos C)=k\\sin(B+C)=k\\sin A$．逆に $(x,\\ y,\\ z)=k(\\sin A,\\ \\sin B,\\ \\sin C)$ ならば $y\\sin C-z\\sin B=0$，$x-y\\cos C-z\\cos B=k\\{\\sin A-\\sin(B+C)\\}=0$ で $Q=0$．\\hfill$\\square$\n\n\\textbf{恒等式．} $A+B+C=\\pi$ のとき $\\cos C=-\\cos(A+B)=\\sin A\\sin B-\\cos A\\cos B$ より $(\\cos C+\\cos A\\cos B)^2=\\sin^2A\\sin^2B=(1-\\cos^2A)(1-\\cos^2B)$．展開して整理すると $\\cos^2A+\\cos^2B+\\cos^2C+2\\cos A\\cos B\\cos C=1$．これより\n\\[\n\\sin^2A+\\sin^2B+\\sin^2C=3-(\\cos^2A+\\cos^2B+\\cos^2C)=2+2\\cos A\\cos B\\cos C.\n\\]\n\n(1) 補題を $T_2$ の内角 $A_2,\\ B_2,\\ C_2$ と $(x,\\ y,\\ z)=(\\sin A_1,\\ \\sin B_1,\\ \\sin C_1)$ に用いると\n\\[\n\\begin{aligned}\n&\\sin^2A_1+\\sin^2B_1+\\sin^2C_1\\\\\n&\\geqq2\\left(\\sin B_1\\sin C_1\\cos A_2+\\sin C_1\\sin A_1\\cos B_2+\\sin A_1\\sin B_1\\cos C_2\\right)=2G.\n\\end{aligned}\n\\]\n左辺 $=2+2\\cos A_1\\cos B_1\\cos C_1$ だから $G\\leqq1+\\cos A_1\\cos B_1\\cos C_1$．\\hfill$\\square$\n\n等号は補題より $(\\sin A_1,\\ \\sin B_1,\\ \\sin C_1)=k(\\sin A_2,\\ \\sin B_2,\\ \\sin C_2)$ となる実数 $k$ があるときに限る（$k>0$ になる）．正弦定理より三角形の3辺の比は内角の正弦の比に等しいから，これは「$T_1$ と $T_2$ の3辺の比が，それぞれ $A_i,\\ B_i,\\ C_i$ の対辺どうしの順に等しい」ことと同値で，3辺の比が等しい三角形は相似だから $\\boldsymbol{A_1=A_2,\\ B_1=B_2,\\ C_1=C_2}$ のときに限る（逆にこのとき $\\sin$ の組は一致し，$k=1$ として等号が成り立つ）．\n\n(2) 補題を $T_2$ の内角と $(x,\\ y,\\ z)=(\\cos A_1,\\ \\cos B_1,\\ \\cos C_1)$ に用いると\n\\[\n\\begin{aligned}\n&\\cos^2A_1+\\cos^2B_1+\\cos^2C_1\\\\\n&\\geqq2\\left(\\cos B_1\\cos C_1\\cos A_2+\\cos C_1\\cos A_1\\cos B_2+\\cos A_1\\cos B_1\\cos C_2\\right).\n\\end{aligned}\n\\]\n右辺の括弧は $F-\\cos A_1\\cos B_1\\cos C_1$，左辺は恒等式より $1-2\\cos A_1\\cos B_1\\cos C_1$ だから\n\\[\n1-2\\cos A_1\\cos B_1\\cos C_1\\geqq2F-2\\cos A_1\\cos B_1\\cos C_1,\\qquad\\text{すなわち}\\quad F\\leqq\\frac12.\n\\]\n等号は補題より，$(\\cos A_1,\\ \\cos B_1,\\ \\cos C_1)=k(\\sin A_2,\\ \\sin B_2,\\ \\sin C_2)$ となる実数 $k$ があるときに限る．$A_1,\\ B_1,\\ C_1$ のうち $\\dfrac\\pi2$ 以上のものは高々1つ（2つあれば和が $\\pi$ 以上）なので，$\\cos A_1,\\ \\cos B_1,\\ \\cos C_1$ のうち少なくとも2つは正．$\\sin A_2,\\ \\sin B_2,\\ \\sin C_2>0$ だから $k>0$ であり，すると3つの余弦がすべて正，つまり $T_1$ は鋭角三角形．逆に $T_1$ が鋭角三角形で余弦の比が正弦の比に等しければ，そのような $k>0$ がとれる．正弦定理より正弦の比は $T_2$ の3辺の比だから，等号条件は\n\n\\textbf{$\\boldsymbol{T_1}$ が鋭角三角形で，}\n\\[\n\\boldsymbol{\\cos A_1:\\cos B_1:\\cos C_1=\\sin A_2:\\sin B_2:\\sin C_2}\n\\]\n（$T_2$ の $A_2,\\ B_2,\\ C_2$ の対辺の比が $\\cos A_1:\\cos B_1:\\cos C_1$）のときに限る．\n\n(3) $A_1=\\pi-2\\theta$，$c=\\cos\\theta$ とおく．(2) より，$F=\\dfrac12$ となる $T_2$ が存在する $\\iff$「$T_1$ が鋭角三角形」かつ「3辺の長さが $\\cos A_1,\\ c,\\ c$ である三角形が存在する」．実際，後者の三角形を $T_2$（長さ $\\cos A_1$ の辺の対角を $A_2$ など）とすれば正弦定理で正弦の比が $\\cos A_1:c:c$ になり，逆に $T_2$ があればその3辺がこの比をもつから，3辺を定数倍した三角形が存在する．\n\n$T_1$ が鋭角三角形 $\\iff$ $0<\\theta<\\dfrac\\pi2$ かつ $0<\\pi-2\\theta<\\dfrac\\pi2$ $\\iff$ $\\dfrac\\pi4<\\theta<\\dfrac\\pi2$ $\\iff$ $0<c<\\dfrac{\\sqrt2}2$．このとき $\\cos A_1=-\\cos2\\theta=1-2c^2>0$．\n長さ $1-2c^2,\\ c,\\ c$（いずれも正）の三角形が存在する条件は三角不等式で，$c<c+(1-2c^2)$ は成り立つから，残りは $1-2c^2<2c$，すなわち $2c^2+2c-1>0$．$c>0$ のもとでこれは $c>\\dfrac{-1+\\sqrt3}2$．\n\n$\\dfrac{\\sqrt3-1}2<\\dfrac{\\sqrt2}2$（$\\sqrt3-1<1<\\sqrt2$）だから，求める範囲は\n\\[\n\\boldsymbol{\\frac{\\sqrt3-1}2<\\cos\\theta<\\frac{\\sqrt2}2}.\n\\]"
+   }
+  ],
+  "idea": {
+   "tex": "三角形の内角 $A,\\ B,\\ C$ と任意の実数 $x,\\ y,\\ z$ について $x^2+y^2+z^2-2yz\\cos A-2zx\\cos B-2xy\\cos C=(x-y\\cos C-z\\cos B)^2+(y\\sin C-z\\sin B)^2\\geqq0$．もう一方の三角形の余弦（または正弦）を $(x,\\ y,\\ z)$ に代入し，$\\cos^2A+\\cos^2B+\\cos^2C+2\\cos A\\cos B\\cos C=1$ と組み合わせる．等号は $(x,\\ y,\\ z)$ が $(\\sin A,\\ \\sin B,\\ \\sin C)$ の定数倍のとき．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) 記述\n(2) 記述\n(3) (sqrt(3)-1)/2<cos(θ)<sqrt(2)/2"
+  },
+  "methods": [],
+  "tags": [
+   "三角形の内角",
+   "2次形式",
+   "平方の和",
+   "等号成立条件",
+   "正弦定理"
+  ],
+  "provenance": {
+   "created": "2026-11-14"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-TRI-177",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-10",
+  "level": 5,
+  "minutes": 40,
+  "theme": "縦1横2の長方形を含む正三角形",
+  "topic": "縦1横2の長方形を含む正三角形",
+  "statement": {
+   "tex": "縦の長さが $1$，横の長さが $2$ の長方形 $R$ を考える．平面上の正三角形 $T$ であって，$R$ を適当に平面上に置くと $R$ の $4$ つの頂点がすべて $T$ の内部または辺上にあるようにできるものについて，$T$ の $1$ 辺の長さの最小値を求めよ．"
+  },
+  "answer": {
+   "tex": "$2+\\dfrac{2\\sqrt3}3$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "正三角形 $T$ の1辺を $s$，高さを $h=\\dfrac{\\sqrt3}2s$ とし，$R$ の頂点がすべて $T$ の内部または辺上にあるとする．\n\n\\textbf{準備（距離の和）．}$T$ の内部または辺上の点 G から3辺（を含む直線）までの距離を $d_1,d_2,d_3$ とすると，$T$ を G と各辺を結ぶ3つの三角形（つぶれたものを含む）に分けて面積を比べ，$\\dfrac12s(d_1+d_2+d_3)=\\dfrac12sh$，すなわち $d_1+d_2+d_3=h$．\n\n\\textbf{下からの評価．}$R$ の中心を G とする．$T$ は凸なので G は $T$ の内部または辺上にある．$T$ の3辺を含む直線 $\\ell_i$ に対し，$T$ の外側を向く単位法線ベクトルを $\\vec n_i$ とすると，$\\ell_i$ 上の点 $\\mathrm X_i$ を用いて $T$ の点 X は $\\vec n_i\\cdot\\overrightarrow{\\mathrm{X_iX}}\\leqq0$ をみたし，$d_i=\\vec n_i\\cdot\\overrightarrow{\\mathrm{GX_i}}$ である．したがって $T$ の点 V について\n\\[\n\\vec n_i\\cdot\\overrightarrow{\\mathrm{GV}}=\\vec n_i\\cdot\\overrightarrow{\\mathrm{GX_i}}+\\vec n_i\\cdot\\overrightarrow{\\mathrm{X_iV}}\\leqq d_i .\n\\]\n$R$ の横の辺の向きの単位ベクトルを $\\vec e$，縦の辺の向きの単位ベクトルを $\\vec f$ とすると，$R$ の4頂点は $\\overrightarrow{\\mathrm{GV}}=\\pm\\vec e\\pm\\dfrac12\\vec f$（複号任意）．符号を $\\vec n_i\\cdot(\\pm\\vec e)=|\\vec n_i\\cdot\\vec e|$，$\\vec n_i\\cdot(\\pm\\frac12\\vec f)=\\frac12|\\vec n_i\\cdot\\vec f|$ となるように選んだ頂点を用いて\n\\[\nd_i\\geqq|\\vec n_i\\cdot\\vec e|+\\frac12|\\vec n_i\\cdot\\vec f|\\qquad(i=1,2,3).\n\\]\n$\\vec f$ は $\\vec e$ を $90^\\circ$ 回転したものとしてよい．$\\vec e$ から測った $\\vec n_i$ の向きの角を $\\theta_i$ とすると，$\\vec n_i\\cdot\\vec e=\\cos\\theta_i$，$\\vec n_i\\cdot\\vec f=\\cos(\\theta_i-90^\\circ)=\\sin\\theta_i$ であり，3本の外向き法線は $120^\\circ$ ずつずれているので $\\{\\theta_1,\\theta_2,\\theta_3\\}=\\{\\theta,\\theta+120^\\circ,\\theta+240^\\circ\\}$ と書ける．よって\n\\[\nh=d_1+d_2+d_3\\geqq\\sum_{i}|\\cos\\theta_i|+\\frac12\\sum_i|\\sin\\theta_i| .\n\\]\n$|\\cos|$，$|\\sin|$ は周期 $180^\\circ$ で，$\\theta+240^\\circ$ は $\\theta+60^\\circ$ に $180^\\circ$ を加えた角だから，3つの角を $\\theta,\\theta+60^\\circ,\\theta+120^\\circ$ に取りかえても $\\sum|\\cos\\theta_i|$，$\\sum|\\sin\\theta_i|$ は変わらない．さらに $\\theta$ を $60^\\circ$ ずらすと，この3つの角は（$180^\\circ$ の整数倍の差を除いて）同じ3つの角の並べかえになるので，$\\theta$ の代わりに $\\theta$ から $60^\\circ$ の整数倍を引いた $\\varphi\\ (-30^\\circ\\leqq\\varphi<30^\\circ)$ を用いて，3つの角は $\\varphi,\\varphi+60^\\circ,\\varphi+120^\\circ$ としてよい．このとき $\\varphi+60^\\circ\\in[30^\\circ,90^\\circ)$，$\\varphi+120^\\circ\\in[90^\\circ,150^\\circ)$ より\n\\begin{align*}\n\\sum|\\cos\\theta_i|&=\\cos\\varphi+\\cos(\\varphi+60^\\circ)-\\cos(\\varphi+120^\\circ)\\\\\n&=\\cos\\varphi+2\\sin(\\varphi+90^\\circ)\\sin30^\\circ=2\\cos\\varphi,\\\\\n\\sum|\\sin\\theta_i|&=|\\sin\\varphi|+\\sin(\\varphi+60^\\circ)+\\sin(\\varphi+120^\\circ)\\\\\n&=|\\sin\\varphi|+2\\sin(\\varphi+90^\\circ)\\cos30^\\circ=|\\sin\\varphi|+\\sqrt3\\cos\\varphi .\n\\end{align*}\nよって $\\psi=|\\varphi|\\ (0\\leqq\\psi\\leqq30^\\circ)$ として\n\\[\nh\\geqq g(\\psi),\\qquad g(\\psi)=\\left(2+\\frac{\\sqrt3}2\\right)\\cos\\psi+\\frac12\\sin\\psi .\n\\]\n\n\\textbf{$g$ の最小．}弧度法で $0\\leqq\\psi\\leqq\\dfrac\\pi6$ とする．$g''(\\psi)=-g(\\psi)<0$（この範囲で $g>0$）．$g(0)=2+\\dfrac{\\sqrt3}2$，$g\\!\\left(\\dfrac\\pi6\\right)=\\left(2+\\dfrac{\\sqrt3}2\\right)\\dfrac{\\sqrt3}2+\\dfrac14=1+\\sqrt3$ で，$g(0)-\\left(1+\\sqrt3\\right)=\\dfrac{2-\\sqrt3}2>0$．$m=1+\\sqrt3$ とし，$w(\\psi)=g(\\psi)-\\left\\{g(0)+\\dfrac{6\\psi}\\pi\\left(m-g(0)\\right)\\right\\}$（両端を結ぶ1次式との差）とおくと，$w(0)=w\\!\\left(\\dfrac\\pi6\\right)=0$，$w''=g''<0$．平均値の定理より $w'(c)=0$ となる $c\\in\\left(0,\\dfrac\\pi6\\right)$ があり，$w'$ は減少なので $w$ は $[0,c]$ で増加，$\\left[c,\\dfrac\\pi6\\right]$ で減少し，$w\\geqq0$．よって $g(\\psi)$ は両端を結ぶ1次式以上であり，その1次式は $m$ 以上なので $g(\\psi)\\geqq1+\\sqrt3$．ゆえに\n\\[\nh\\geqq1+\\sqrt3,\\qquad s=\\frac{2h}{\\sqrt3}\\geqq\\frac{2(1+\\sqrt3)}{\\sqrt3}=2+\\frac{2\\sqrt3}3 .\n\\]\n\n\\textbf{等号の実現．}$R$ を $0\\leqq x\\leqq2$，$0\\leqq y\\leqq1$ に置き，3頂点 $\\left(-\\dfrac1{\\sqrt3},0\\right)$，$\\left(2+\\dfrac1{\\sqrt3},0\\right)$，$\\left(1,\\,1+\\sqrt3\\right)$ の三角形を $T_0$ とする．底辺の長さは $2+\\dfrac2{\\sqrt3}$，頂点 $(1,1+\\sqrt3)$ は底辺の垂直二等分線上で高さ $1+\\sqrt3=\\dfrac{\\sqrt3}2\\left(2+\\dfrac2{\\sqrt3}\\right)$ にあるので $T_0$ は正三角形．左の辺は $y=\\sqrt3\\left(x+\\dfrac1{\\sqrt3}\\right)=\\sqrt3x+1$，右の辺は $y=-\\sqrt3x+2\\sqrt3+1$ で，$T_0=\\{y\\geqq0,\\ y\\leqq\\sqrt3x+1,\\ y\\leqq-\\sqrt3x+2\\sqrt3+1\\}$．$R$ の頂点 $(0,0),(2,0),(0,1),(2,1)$ はすべてこれをみたす（$(0,1)$，$(2,1)$ は辺上）．\n\n以上より，求める最小値は $\\boldsymbol{2+\\dfrac{2\\sqrt3}3}$ である．"
+   }
+  ],
+  "idea": {
+   "tex": "正三角形の内部の点から3辺までの距離の和は高さに等しい（面積の分割）．長方形の中心から各辺までの距離は，長方形の頂点が辺の内側にあることから「各辺の法線方向への長方形の張り出し」以上．3本の法線は $120^\\circ$ ずつずれるので，張り出しの和は1つの角 $\\varphi\\ (|\\varphi|\\leqq30^\\circ)$ の三角関数にまとまり，上に凸な関数の最小は区間の端でとる．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "2+2sqrt(3)/3"
+  },
+  "methods": [],
+  "tags": [
+   "ビビアーニの定理",
+   "点と直線の距離",
+   "内積",
+   "三角関数の和",
+   "上に凸",
+   "最小値"
+  ],
+  "provenance": {
+   "created": "2026-11-14"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-TRI-178",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-10",
+  "level": 4,
+  "minutes": 30,
+  "theme": "$\\sin^mx+\\cos^nx=1$ と指数1の例外",
+  "topic": "$\\sin^mx+\\cos^nx=1$ と指数1の例外",
+  "statement": {
+   "tex": "\\begin{enumerate}\n  \\item $m,n$ は $2$ 以上の整数で，$m=n=2$ ではないとする．$0\\leqq x<2\\pi$ の範囲で方程式 $\\sin^mx+\\cos^nx=1$ を解け．\n  \\item $0\\leqq x<2\\pi$ の範囲で，方程式 $\\sin x+\\cos^3x=1$ の解の個数を求めよ．また，解のうち $0,\\ \\dfrac\\pi2$ 以外のものを $\\alpha$ とするとき，$t=\\sin\\alpha$ がみたす整数係数の $3$ 次方程式を $1$ つ求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $x=0,\\ \\dfrac\\pi2$；さらに $n$ が偶数なら $x=\\pi$，$m$ が偶数なら $x=\\dfrac{3\\pi}2$ も解（それ以外の解はない）　(2) 解は $3$ 個；$t^3+2t^2-2=0$（$0<\\alpha<\\dfrac\\pi2$，$\\cos\\alpha=\\dfrac1{1+\\sin\\alpha}$）"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "\\textbf{(1)}　\\textbf{補題．}$|t|\\leqq1$，整数 $k\\geqq2$ のとき $t^k\\leqq|t|^k=t^2|t|^{k-2}\\leqq t^2$．等号 $t^k=t^2$ が成り立つのは，$k=2$ のとき（常に），$k\\geqq3$ のときは $t=0$，$t=1$，または $t=-1$ かつ $k$ が偶数のときに限る．（$k\\geqq3$ で $0<|t|<1$ なら $|t|^{k-2}<1$ より $|t|^k<t^2$．$t=-1$ では $t^k=(-1)^k$．）\n\n$s=\\sin x$，$c=\\cos x$ とすると補題より $s^m\\leqq s^2$，$c^n\\leqq c^2$ で，\n\\[\ns^m+c^n\\leqq s^2+c^2=1 .\n\\]\nよって方程式 $\\iff$ $s^m=s^2$ かつ $c^n=c^2$．\n\n$0\\leqq x<2\\pi$ で $(s,c)$ を調べる．$s=0$ のとき $x=0$（$c=1$）または $x=\\pi$（$c=-1$）．$s=\\pm1$ のとき $c=0$．\n\\begin{itemize}\n  \\item $x=0$：$s=0,\\ c=1$ で両等式成立．解．\n  \\item $x=\\dfrac\\pi2$：$s=1,\\ c=0$ で成立．解．\n  \\item $x=\\pi$：$s=0$，$c=-1$．$c^n=c^2=1\\iff n$ が偶数．\n  \\item $x=\\dfrac{3\\pi}2$：$s=-1$，$c=0$．$s^m=s^2=1\\iff m$ が偶数．\n  \\item その他の $x$ では $s\\notin\\{0,\\pm1\\}$ かつ $c\\notin\\{0,\\pm1\\}$．$m=n=2$ ではないので $m\\geqq3$ または $n\\geqq3$ であり，$m\\geqq3$ なら補題より $s^m<s^2$，$n\\geqq3$ なら $c^n<c^2$ となって解でない．\n\\end{itemize}\n（上の4点の判定は，指数が $2$ の場合も補題の等号条件「$k=2$ なら常に等号」と合っている．）よって解は\n\\[\n\\boldsymbol{x=0,\\ \\frac\\pi2}\\ \\text{（常に）},\\qquad \\boldsymbol{x=\\pi}\\ \\text{（$n$ が偶数のとき）},\\qquad \\boldsymbol{x=\\frac{3\\pi}2}\\ \\text{（$m$ が偶数のとき）}.\n\\]\n\n\\textbf{(2)}　$s=\\sin x$，$c=\\cos x$ とし，$s+c^3=1$ を解く．$c^3=1-s\\geqq0$ より $c\\geqq0$．\n\n$c=0$ のとき $s=1$：$x=\\dfrac\\pi2$ は解．\n\n$c>0$ のとき $s=1-c^3<1$．$c^2=1-s^2=(1-s)(1+s)=c^3(1+s)$ より $1=c(1+s)$，すなわち\n\\[\nc=\\frac1{1+s}.\\qquad\\cdots\\text{③}\n\\]\nこれを $s^2+c^2=1$ に代入して $(1-s^2)(1+s)^2=1$，すなわち $(1-s)(1+s)^3=1$．展開すると $1+2s-2s^3-s^4=1$，\n\\[\ns(s^3+2s^2-2)=0 .\n\\]\n逆に，$-1<s<1$ をみたす実数 $s$ がこれをみたすとき，③で $c>0$ を定めると $c^2=\\dfrac1{(1+s)^2}=1-s^2$（$(1-s^2)(1+s)^2=1$ による）なので $(s,c)$ は単位円上にあって $c>0$，さらに $c^3=c\\cdot c^2=\\dfrac{1-s^2}{1+s}=1-s$ で $s+c^3=1$ をみたす．\n\n$s=0$：$c=1$，$x=0$．\n\n$s^3+2s^2-2=0$：$p(s)=s^3+2s^2-2$ とおくと $p'(s)=s(3s+4)$．$p$ は $s\\leqq-\\frac43$ で増加，$-\\frac43\\leqq s\\leqq0$ で減少，$s\\geqq0$ で増加し，極大値 $p\\!\\left(-\\frac43\\right)=-\\frac{64}{27}+\\frac{32}9-2=-\\frac{22}{27}<0$．よって実数解はただ1つで，$p(0)=-2<0<1=p(1)$ よりそれは $0<s_0<1$ にある．$s=s_0$，$c=\\dfrac1{1+s_0}>0$ をみたす $x$ は $0<x<\\dfrac\\pi2$ にただ1つ．\n\n以上より解は $x=0,\\ \\dfrac\\pi2,\\ \\alpha$ の $\\boldsymbol3$ \\textbf{個}で，$t=\\sin\\alpha$ は\n\\[\n\\boldsymbol{t^3+2t^2-2=0}\n\\]\nをみたす（$0<\\alpha<\\dfrac\\pi2$，$\\cos\\alpha=\\dfrac1{1+\\sin\\alpha}$）．指数が1の項があると (1) の評価 $s\\leqq s^2$ が成り立たず，このような自明でない解が現れる．"
+   }
+  ],
+  "idea": {
+   "tex": "$|t|\\leqq1$ で指数 $k\\geqq2$ なら $t^k\\leqq|t|^k\\leqq t^2$．$\\sin^2x+\\cos^2x=1$ と比べると，等式は2つの不等式の等号が同時に成り立つときに限る（符号と偶奇に注意）．指数が1の項があるとこの比較が使えず，$\\cos x=\\dfrac1{1+\\sin x}$ に帰着して自明でない解が現れる．"
+  },
+  "methods": [],
+  "tags": [
+   "累乗の大小",
+   "等号成立条件",
+   "sin^2+cos^2=1",
+   "場合分け",
+   "3次方程式"
+  ],
+  "provenance": {
+   "created": "2026-11-14"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-TRI-179",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-10",
+  "level": 4,
+  "minutes": 35,
+  "theme": "$\\tan 11n$ の符号の並びと最大値",
+  "topic": "$\\tan 11n$ の符号の並びと最大値",
+  "statement": {
+   "tex": "$n=1,\\ 2,\\ 3,\\ \\cdots$ に対して $a_n=\\tan(11n)$ とおく．ただし，$\\pi=3.14159265\\cdots$ は円周率である．\n\\begin{enumerate}\n  \\item $\\delta=11-\\dfrac{7\\pi}2$ とおくとき，$\\dfrac{\\pi}{710}<\\delta<\\dfrac{\\pi}{709}$ を示せ．\n  \\item $1\\leqq n\\leqq 999$ の範囲で，$a_n>0$ かつ $a_{n+1}>0$ となる $n$ をすべて求めよ．\n  \\item $1\\leqq n\\leqq 1000$ の範囲で，$a_n$ が最大となる $n$ を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 証明　(2) $n=354,\\ 709$　(3) $n=709$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) $\\delta>\\dfrac{\\pi}{710}\\iff11>\\pi\\left(\\dfrac72+\\dfrac1{710}\\right)=\\dfrac{1243}{355}\\pi\\iff1243\\pi<3905$．$\\pi<3.14159266$ より\n\\[1243\\pi<1243\\times3.14159266=3904.99967638<3905．\\]\n$\\delta<\\dfrac{\\pi}{709}\\iff11<\\pi\\left(\\dfrac72+\\dfrac1{709}\\right)=\\dfrac{4965}{1418}\\pi\\iff4965\\pi>15598$．$\\pi>3.14159265$ より\n\\[4965\\pi>4965\\times3.14159265=15598.00750725>15598．\\]\nよって $\\dfrac{\\pi}{710}<\\delta<\\dfrac{\\pi}{709}$．\\hfill$\\square$\n\n\\medskip\n(2) $11n=\\dfrac{7n\\pi}2+n\\delta=3n\\pi+\\dfrac{n\\pi}2+n\\delta$ で，$\\tan$ は周期 $\\pi$ をもつから $a_n=\\tan\\left(n\\delta+\\dfrac{n\\pi}2\\right)$．\n\\begin{itemize}\n  \\item $n$ が偶数のとき，$\\dfrac{n\\pi}2$ は $\\pi$ の整数倍で $a_n=\\tan n\\delta$．\n  \\item $n$ が奇数のとき，$\\dfrac{n\\pi}2$ は $\\dfrac\\pi2$ と $\\pi$ の整数倍の和で $a_n=\\tan\\left(n\\delta+\\dfrac\\pi2\\right)=-\\dfrac{\\cos n\\delta}{\\sin n\\delta}$．\n\\end{itemize}\n(1) から $n\\delta$ の範囲は次のとおり．\n\\begin{itemize}\n  \\item $1\\leqq n\\leqq354$：$0<n\\delta\\leqq354\\delta<\\dfrac{354\\pi}{709}<\\dfrac\\pi2$．\n  \\item $355\\leqq n\\leqq709$：$\\dfrac\\pi2=\\dfrac{355\\pi}{710}<355\\delta\\leqq n\\delta\\leqq709\\delta<\\pi$．\n  \\item $710\\leqq n\\leqq1000$：$\\pi=\\dfrac{710\\pi}{710}<n\\delta\\leqq1000\\delta<\\dfrac{1000\\pi}{709}<\\dfrac{3\\pi}2$（$2000<2127$ による）．\n\\end{itemize}\nいずれも $n\\delta$ は $\\dfrac\\pi2$ の整数倍でないので，$\\sin n\\delta\\neq0$，$\\cos n\\delta\\neq0$ で $a_n$ は定義され $0$ でない．$\\sin n\\delta,\\ \\cos n\\delta$ の符号から\n\\begin{itemize}\n  \\item $1\\leqq n\\leqq354$：偶数なら $a_n>0$，奇数なら $a_n<0$．\n  \\item $355\\leqq n\\leqq709$：$\\sin n\\delta>0>\\cos n\\delta$ より，偶数なら $a_n<0$，奇数なら $a_n>0$．\n  \\item $710\\leqq n\\leqq1000$：$\\sin n\\delta<0$，$\\cos n\\delta<0$ より，偶数なら $a_n>0$，奇数なら $a_n<0$．\n\\end{itemize}\n$n$ と $n+1$ は偶奇が異なるので，同じ範囲にあれば一方は負である．両方正となるには $n$ と $n+1$ が異なる範囲にあることが必要で，$n=354$ または $n=709$．$a_{354}>0$（偶数，第1の範囲），$a_{355}>0$（奇数，第2の範囲），$a_{709}>0$（奇数，第2の範囲），$a_{710}>0$（偶数，第3の範囲）なので，いずれも条件をみたす．答えは $\\boldsymbol{n=354,\\ 709}$．\n\n\\medskip\n(3) 最大値は正なので，$a_n>0$ の $n$ だけ考えればよい．\n\\begin{itemize}\n  \\item 偶数 $n\\leqq354$：$a_n=\\tan n\\delta$，$0<n\\delta<\\dfrac\\pi2$．\n  \\item 奇数 $355\\leqq n\\leqq709$：$\\tan\\left(\\theta-\\dfrac\\pi2\\right)=-\\dfrac{\\cos\\theta}{\\sin\\theta}$ より $a_n=\\tan\\left(n\\delta-\\dfrac\\pi2\\right)$，$0<n\\delta-\\dfrac\\pi2<\\dfrac\\pi2$．\n  \\item 偶数 $710\\leqq n\\leqq1000$：$a_n=\\tan(n\\delta-\\pi)$，$0<n\\delta-\\pi<\\dfrac\\pi2$．\n\\end{itemize}\n$\\tan$ は $0<\\theta<\\dfrac\\pi2$ で増加し，各グループで角は $n$ について増加するから，各グループの最大はそれぞれ $n=354,\\ 709,\\ 1000$ でとり，角はそれぞれ $354\\delta$，$709\\delta-\\dfrac\\pi2$，$1000\\delta-\\pi$．\n\\[\\left(709\\delta-\\frac\\pi2\\right)-354\\delta=355\\delta-\\frac\\pi2>0,\\qquad\\left(709\\delta-\\frac\\pi2\\right)-(1000\\delta-\\pi)=\\frac\\pi2-291\\delta>\\frac\\pi2-\\frac{291\\pi}{709}>0\\]\n（$582<709$ による）．よって角が最も大きいのは $n=709$ で，$a_n$ を最大にする $n$ は $\\boldsymbol{n=709}$ のただ1つ．"
+   }
+  ],
+  "idea": {
+   "tex": "$11=\\dfrac{7\\pi}2+\\delta$（$\\delta$ は非常に小さい正の数）と分けると $\\tan11n=\\tan\\left(n\\delta+\\dfrac{n\\pi}2\\right)$ で，偶数番目は $\\tan n\\delta$，奇数番目は $-\\dfrac1{\\tan n\\delta}$．$n\\delta$ が $\\dfrac\\pi2$，$\\pi$ をまたぐ番号を円周率の評価で正確に決めると，符号の並びの乱れる位置と，正接が最も大きくなる番号が分かる．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) 証明\n(2) $n$：{354, 709}\n(3) $n$：709"
+  },
+  "methods": [],
+  "tags": [
+   "正接",
+   "周期",
+   "円周率の評価",
+   "単調性",
+   "符号"
+  ],
+  "provenance": {
+   "created": "2026-11-14"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-TRI-180",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-10",
+  "level": 4,
+  "minutes": 35,
+  "theme": "角の2倍の正弦の2乗の差の最大・最小",
+  "topic": "角の2倍の正弦の2乗の差の最大・最小",
+  "statement": {
+   "tex": "三角形 ABC の3つの内角を $A,\\ B,\\ C$ とし，\n\\[\nD=\\sin^22A-\\sin^22B-\\sin^22C\n\\]\nとおく．\n\\begin{enumerate}\n  \\item $D=2\\cos2A\\sin2B\\sin2C$ であることを示せ．\n  \\item $D$ の最小値と，最小値をとるときの $(A,\\ B,\\ C)$ をすべて求めよ．\n  \\item $D$ の最大値と，最大値をとるときの $(A,\\ B,\\ C)$ をすべて求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 証明　(2) 最小値 $-2$，$(A,B,C)=(90^\\circ,45^\\circ,45^\\circ)$　(3) 最大値 $\\dfrac14$，$(A,B,C)=(30^\\circ,75^\\circ,75^\\circ),\\ (150^\\circ,15^\\circ,15^\\circ),\\ (60^\\circ,105^\\circ,15^\\circ),\\ (60^\\circ,15^\\circ,105^\\circ)$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) 一般に\n\\[\n\\sin^2X-\\sin^2Y=\\frac{1-\\cos2X}2-\\frac{1-\\cos2Y}2=\\frac{\\cos2Y-\\cos2X}2=\\sin(X+Y)\\sin(X-Y)\n\\]\n（和積の公式）．$2A+2B=2\\pi-2C$ より $\\sin(2A+2B)=-\\sin2C$ なので\n\\[\n\\sin^22A-\\sin^22B=\\sin(2A+2B)\\sin(2A-2B)=-\\sin2C\\sin(2A-2B).\n\\]\nまた $\\sin2C=\\sin(2\\pi-2A-2B)=-\\sin(2A+2B)$ だから\n\\begin{align*}\nD&=-\\sin2C\\sin(2A-2B)-\\sin2C\\cdot\\sin2C=-\\sin2C\\{\\sin(2A-2B)-\\sin(2A+2B)\\}\\\\\n&=-\\sin2C\\cdot(-2\\cos2A\\sin2B)=2\\cos2A\\sin2B\\sin2C. \\tag*{$\\square$}\n\\end{align*}\n\n(2) (1)より $|D|\\leqq2|\\cos2A||\\sin2B||\\sin2C|\\leqq2$ で，$D\\geqq-2$．$D=-2$ となるには $|\\cos2A|=|\\sin2B|=|\\sin2C|=1$ が必要．$0<2A<2\\pi$ で $|\\cos2A|=1$ となるのは $2A=\\pi$，すなわち $A=90^\\circ$ で，このとき $\\cos2A=-1$ だから $\\sin2B\\sin2C=1$ が必要．$B+C=90^\\circ$ より $\\sin2C=\\sin(180^\\circ-2B)=\\sin2B$ で，$\\sin^22B=1$，$0<2B<180^\\circ$ より $B=45^\\circ$，$C=45^\\circ$．逆にこのとき $D=0-1-1=-2$．\n\nよって最小値 $\\boldsymbol{-2}$，$\\boldsymbol{(A,B,C)=(90^\\circ,45^\\circ,45^\\circ)}$．\n\n(3) 積和の公式と $\\cos(2B+2C)=\\cos(2\\pi-2A)=\\cos2A$ より\n\\[\n2\\sin2B\\sin2C=\\cos(2B-2C)-\\cos(2B+2C)=\\cos(2B-2C)-\\cos2A .\n\\]\n$x=\\cos2A$，$y=\\cos(2B-2C)$ とおくと $D=x(y-x)$，$-1\\leqq x\\leqq1$，$-1\\leqq y\\leqq1$．\n\\begin{itemize}\n  \\item $x\\geqq0$ のとき：$y\\leqq1$ より $D\\leqq x(1-x)=\\frac14-\\left(x-\\frac12\\right)^2\\leqq\\frac14$．等号は $x=\\frac12$ かつ $y=1$．\n  \\item $x<0$ のとき：$-x>0$，$x-y\\leqq x+1$ より $D=(-x)(x-y)\\leqq(-x)(x+1)=\\frac14-\\left(x+\\frac12\\right)^2\\leqq\\frac14$．等号は $x=-\\frac12$ かつ $y=-1$．\n\\end{itemize}\nよって $D\\leqq\\frac14$．等号の場合を調べる．$|B-C|<B+C<180^\\circ$ より $-2\\pi<2B-2C<2\\pi$．\n\\begin{itemize}\n  \\item $x=\\frac12,\\ y=1$：$0<2A<2\\pi$ より $2A=60^\\circ$ または $300^\\circ$，すなわち $A=30^\\circ$ または $150^\\circ$．$y=1$ より $2B-2C=0$，$B=C$．よって $(30^\\circ,75^\\circ,75^\\circ)$，$(150^\\circ,15^\\circ,15^\\circ)$．\n  \\item $x=-\\frac12,\\ y=-1$：$2A=120^\\circ$ または $240^\\circ$，すなわち $A=60^\\circ$ または $120^\\circ$．$y=-1$ より $2B-2C=\\pm180^\\circ$，$|B-C|=90^\\circ$．$A=120^\\circ$ なら $|B-C|<B+C=60^\\circ$ で不適．$A=60^\\circ$ なら $B+C=120^\\circ$，$B-C=\\pm90^\\circ$ より $(B,C)=(105^\\circ,15^\\circ),(15^\\circ,105^\\circ)$．\n\\end{itemize}\nこれらは確かに三角形の内角で，たとえば $(60^\\circ,105^\\circ,15^\\circ)$ では $D=\\frac34-\\frac14-\\frac14=\\frac14$，$(30^\\circ,75^\\circ,75^\\circ)$ では $D=\\frac34-\\frac14-\\frac14=\\frac14$ となる．\n\nよって最大値 $\\boldsymbol{\\dfrac14}$ で，最大値をとるのは\n\\[\n\\boldsymbol{(A,B,C)=(30^\\circ,75^\\circ,75^\\circ),\\ (150^\\circ,15^\\circ,15^\\circ),\\ (60^\\circ,105^\\circ,15^\\circ),\\ (60^\\circ,15^\\circ,105^\\circ)}.\n\\]"
+   }
+  ],
+  "idea": {
+   "tex": "$\\sin^2X-\\sin^2Y=\\sin(X+Y)\\sin(X-Y)$ と $A+B+C=\\pi$ を使うと，$\\sin^22A-\\sin^22B-\\sin^22C$ は $2\\cos2A\\sin2B\\sin2C$ と積の形になる．さらに積和の公式で $2\\sin2B\\sin2C=\\cos(2B-2C)-\\cos2A$ と直すと，$x=\\cos2A$，$y=\\cos(2B-2C)$ の2次式 $x(y-x)$ となり，$y$ の範囲 $[-1,1]$ と $x$ の符号で場合分けして最大を求める．等号の場合は角の条件に戻して三角形として実現できるかを確かめる．"
+  },
+  "methods": [],
+  "tags": [
+   "三角形の内角",
+   "和積の公式",
+   "積和の公式",
+   "因数分解",
+   "2次関数の最大",
+   "等号成立条件"
+  ],
+  "provenance": {
+   "created": "2026-11-14"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-TRI-181",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-10",
+  "level": 4,
+  "minutes": 30,
+  "theme": "サイコロで決まる3つの正弦の積を2項で表す確率",
+  "topic": "サイコロで決まる3つの正弦の積を2項で表す確率",
+  "statement": {
+   "tex": "サイコロを3回投げ，出た目を順に $a,\\ b,\\ c$ とする．\n\\[\ng(\\theta)=4\\sin a\\theta\\,\\sin b\\theta\\,\\sin c\\theta\n\\]\nとおく．\n\\begin{enumerate}\n  \\item $n$ を正の整数とする．相異なる正の整数 $k_1,\\dots,k_n$ と実数 $c_1,\\dots,c_n$ について，すべての実数 $\\theta$ で $\\displaystyle\\sum_{i=1}^n c_i\\sin k_i\\theta=0$ が成り立つならば，$c_1=c_2=\\cdots=c_n=0$ であることを示せ．\n  \\item 正の整数 $p,\\ q$ と実数 $A,\\ B$ をうまく選ぶと，すべての実数 $\\theta$ で\n  \\[\n  g(\\theta)=A\\sin p\\theta+B\\sin q\\theta\n  \\]\n  が成り立つようにできる確率を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 証明　(2) $\\dfrac{5}{72}$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) 正の整数 $m,k$ に対し，$\\sin m\\theta\\sin k\\theta=\\dfrac12\\{\\cos(m-k)\\theta-\\cos(m+k)\\theta\\}$ である．$m+k\\geqq2$ より $\\displaystyle\\int_0^{2\\pi}\\cos(m+k)\\theta\\,d\\theta=0$．また $m\\neq k$ なら同様に $\\displaystyle\\int_0^{2\\pi}\\cos(m-k)\\theta\\,d\\theta=0$，$m=k$ なら $\\displaystyle\\int_0^{2\\pi}1\\,d\\theta=2\\pi$．よって\n\\[\n\\int_0^{2\\pi}\\sin m\\theta\\sin k\\theta\\,d\\theta=\\begin{cases}\\pi&(m=k)\\\\0&(m\\neq k)\\end{cases}.\n\\]\n仮定の等式の両辺に $\\sin k_j\\theta$ を掛けて $0$ から $2\\pi$ まで積分すると，$k_i$ が相異なることから $j$ 番目の項だけが残り $\\pi c_j=0$．よって $c_j=0$（$j=1,\\dots,n$）．\\hfill$\\square$\n\n(2) 積和の公式 $2\\sin X\\sin Y=\\cos(X-Y)-\\cos(X+Y)$，$2\\cos X\\sin Y=\\sin(X+Y)-\\sin(X-Y)$ を用いると\n\\begin{align*}\ng(\\theta)&=2\\{\\cos(a-b)\\theta-\\cos(a+b)\\theta\\}\\sin c\\theta\\\\\n&=\\sin(c+a-b)\\theta+\\sin(c-a+b)\\theta-\\sin(a+b+c)\\theta+\\sin(a+b-c)\\theta .\n\\end{align*}\n$x=a+b-c$，$y=b+c-a$，$z=c+a-b$，$s=a+b+c$ とおくと $g(\\theta)=\\sin x\\theta+\\sin y\\theta+\\sin z\\theta-\\sin s\\theta$．\n\n\\textbf{表せるための条件．} $\\sin(-t)=-\\sin t$，$\\sin0=0$ を使って，$g(\\theta)=\\displaystyle\\sum_{k\\in K}d_k\\sin k\\theta$（$K$ は正の整数の有限集合，$d_k\\neq0$，$k$ は相異なる）の形に整理する．この形に整理したときの $K$ は一意である．実際，$g(\\theta)=A\\sin p\\theta+B\\sin q\\theta$ と表せたとすると，$\\sum_{k\\in K}d_k\\sin k\\theta-A\\sin p\\theta-B\\sin q\\theta=0$ が恒等的に成り立ち，周波数が等しい項をまとめて (1) を適用すると，各周波数の係数の和は $0$ である．$k\\in K$ が $p,q$ のどちらとも異なれば，その係数は $d_k\\neq0$ のままで矛盾．よって $K\\subset\\{p,q\\}$，特に $K$ の要素は2個以下．逆に $K$ の要素が2個以下なら（1個のときは $B=0$ として）明らかに表せる．よって「$K$ の要素が2個以下」が求める条件である．\n\n\\textbf{$K$ の決定．} $g$ は $a,b,c$ について対称なので，まず $a\\leqq b\\leqq c$ として調べ，最後に並べ方を数える．このとき\n$y-z=2(b-a)\\geqq0$，$z=a+(c-b)\\geqq a>0$ より $y\\geqq z>0$．また $s-y=2a>0$，$s-z=2b>0$，$x\\geqq0$ なら $s-x=2c>0$，$x<0$ なら $s-|x|=2(a+b)>0$．よって周波数 $s$ は他のどれとも異なり，$-\\sin s\\theta$ の項はそのまま残る．したがって $K$ の要素が2個以下 $\\iff$ $\\sin x\\theta+\\sin y\\theta+\\sin z\\theta$ を整理した結果が周波数1つ以下．\n\n・$x>0$ のとき：3項の係数はすべて $+1$ で打ち消し合わないから，周波数が1つ $\\iff$ $x=y=z$ $\\iff$ $a=b=c$（$x=y$ から $a=c$）．\n\n・$x=0$（$c=a+b$）のとき：$\\sin y\\theta+\\sin z\\theta=\\sin2b\\theta+\\sin2a\\theta$ で，周波数1つ $\\iff$ $a=b$．すなわち $(a,b,c)=(k,k,2k)$，$2k\\leqq6$ より $k=1,2,3$．\n\n・$x<0$ のとき：$|x|=c-a-b$ で，$z-|x|=2a>0$ だから $|x|<z\\leqq y$．$-\\sin|x|\\theta$ は $\\sin y\\theta,\\sin z\\theta$ と打ち消し合わず，$y$ の係数も正のまま残るので，周波数は2つ以上．\n\n\\textbf{数える．} $a=b=c$ は6通り．$\\{a,b,c\\}=\\{k,k,2k\\}$（$k=1,2,3$）の並べ方はそれぞれ3通りで計9通り．よって求める確率は $\\dfrac{6+9}{216}=\\boldsymbol{\\dfrac{5}{72}}$．\n\n（例：$a=b=c=1$ なら $g=3\\sin\\theta-\\sin3\\theta$，$(1,1,2)$ なら $g=2\\sin2\\theta-\\sin4\\theta$．）"
+   }
+  ],
+  "idea": {
+   "tex": "三角関数どうしが「すべての $\\theta$ で一致する」かどうかは，周波数（$\\theta$ の係数）ごとに係数を比べて判定する．その比較が正しいことは，$\\displaystyle\\int_0^{2\\pi}\\sin m\\theta\\sin k\\theta\\,d\\theta$ が $m\\neq k$ なら $0$ になることから保証される．積を積和の公式で正弦の和に展開し，周波数が重なって消える場合を，最大の周波数 $a+b+c$ が必ず残ることと大小関係から絞り込む．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) 証明\n(2) 5/72"
+  },
+  "methods": [],
+  "tags": [
+   "積和の公式",
+   "三角関数の恒等式",
+   "係数比較",
+   "定積分",
+   "確率"
+  ],
+  "provenance": {
+   "created": "2026-11-14"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-TRI-182",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-10",
+  "level": 5,
+  "minutes": 40,
+  "theme": "鋭角三角形の tan の和とその逆数の和",
+  "topic": "鋭角三角形の tan の和とその逆数の和",
+  "statement": {
+   "tex": "鋭角三角形 ABC において，$x=\\tan A$，$y=\\tan B$，$z=\\tan C$ とおく．\n\\begin{enumerate}\n  \\item $x+y+z=xyz$ を示せ．また逆に，$x+y+z=xyz$ をみたす任意の正の数 $x,\\ y,\\ z$ に対し，$\\tan A=x$，$\\tan B=y$，$\\tan C=z$ となる鋭角三角形 ABC が存在することを示せ．\n  \\item $\\tan A+\\tan B+\\tan C\\geqq3\\sqrt3$ を示せ．\n  \\item $\\tan A+\\tan B+\\tan C=\\dfrac{16}3$ のとき，$\\dfrac1{\\tan A}+\\dfrac1{\\tan B}+\\dfrac1{\\tan C}$ のとりうる値の範囲を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 証明　(2) 証明　(3) $\\dfrac{13\\sqrt{13}-5}{24}\\leqq\\dfrac1{\\tan A}+\\dfrac1{\\tan B}+\\dfrac1{\\tan C}\\leqq\\dfrac74$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) $A+B=\\pi-C$ で $0<C<\\frac\\pi2$ だから $\\tan(A+B)=-\\tan C$．加法定理より $\\dfrac{x+y}{1-xy}=-z$（$xy=1$ なら $A+B=\\frac\\pi2$ となり $C=\\frac\\pi2$ に反するので $xy\\neq1$）．分母を払って $x+y=-z+xyz$，すなわち $x+y+z=xyz$．\n\n逆に，正の数 $x,y,z$ が $x+y+z=xyz$ をみたすとする．$\\tan$ は $\\left(0,\\frac\\pi2\\right)$ で連続かつ増加し，$0$ から限りなく大きい値までのすべての正の値をとるので，$\\tan A=x$，$\\tan B=y$ となる $A,B\\in\\left(0,\\frac\\pi2\\right)$ がある．$z(xy-1)=x+y>0$ より $xy>1$ で，\n\\[\n\\tan(A+B)=\\frac{x+y}{1-xy}=\\frac{z(xy-1)}{1-xy}=-z<0 .\n\\]\n$0<A+B<\\pi$ で $\\tan(A+B)<0$ だから $\\frac\\pi2<A+B<\\pi$．$C=\\pi-A-B$ とおくと $0<C<\\frac\\pi2$，$\\tan C=-\\tan(A+B)=z$．角 $A,B,C$ はすべて正で和が $\\pi$ なので，これらを内角とする三角形（鋭角三角形）が存在する．\\hfill$\\square$\n\n(2) $a=x+y+z=xyz\\ (>0)$，$t=xy+yz+zx$ とおく．任意の実数 $p,q,r$ に対して\n\\[\n(p+q+r)^2-3(pq+qr+rp)=\\frac12\\left\\{(p-q)^2+(q-r)^2+(r-p)^2\\right\\}\\geqq0\n\\]\nである．$(p,q,r)=(x,y,z)$ とすると $a^2\\geqq3t$．$(p,q,r)=(xy,yz,zx)$ とすると $pq+qr+rp=xyz(x+y+z)$ なので $t^2\\geqq3xyz(x+y+z)=3a^2$．$t>0$ だから $a^4\\geqq9t^2\\geqq27a^2$，$a>0$ より $a^2\\geqq27$，$a\\geqq3\\sqrt3$．\\hfill$\\square$\n\n(3) $a=\\frac{16}3$ とする．求める値は\n\\[\n\\frac1x+\\frac1y+\\frac1z=\\frac{xy+yz+zx}{xyz}=\\frac3{16}(xy+yz+zx).\n\\]\n(1) より，正の数 $x,y,z$ で $x+y+z=xyz=a$ となるものの組全体を考えればよい．$z$ を固定すると $x+y=a-z$，$xy=\\frac az$ で，このような正の数 $x,y$ が存在する条件は，2次方程式 $u^2-(a-z)u+\\frac az=0$ が正の2解（重解を含む）をもつこと，すなわち\n\\[\na-z>0,\\qquad (a-z)^2-\\frac{4a}z\\geqq0\n\\]\n（2解の積 $\\frac az>0$ なので，和が正なら2解とも正）．第2式に $z$ をかけて整理すると $z(16-3z)^2\\geqq192$，つまり\n\\[\n9z^3-96z^2+256z-192=(3z-4)(3z^2-28z+48)\\geqq0 .\n\\]\n$3z^2-28z+48=0$ の解は $z=\\frac{14\\pm2\\sqrt{13}}3$ で，$\\frac43<\\frac{14-2\\sqrt{13}}3<\\frac{16}3<\\frac{14+2\\sqrt{13}}3$（$\\frac43<z_1\\iff\\sqrt{13}<5$）．よって $0<z<\\frac{16}3$ での条件は\n\\[\n\\frac43\\leqq z\\leqq z_1,\\qquad z_1=\\frac{14-2\\sqrt{13}}3 .\n\\]\nこのとき $xy+yz+zx=\\frac az+z(a-z)$ なので，求める値は\n\\[\nf(z)=\\frac3{16}\\left\\{\\frac{16}{3z}+\\frac{16}3z-z^2\\right\\}=\\frac1z+z-\\frac3{16}z^2\n\\]\nであり，$z$ がこの区間を動くときの $f(z)$ の値の範囲を求めればよい．\n\\[\nf'(z)=-\\frac1{z^2}+1-\\frac38z=-\\frac{3z^3-8z^2+8}{8z^2}=-\\frac{(z-2)(3z^2-2z-4)}{8z^2}.\n\\]\n$3z^2-2z-4=0$ の正の解は $z_0=\\frac{1+\\sqrt{13}}3$ で，$\\frac43<z_0<2<z_1$（$z_0<2\\iff\\sqrt{13}<5$，$2<z_1\\iff 2\\sqrt{13}<8$）．符号を調べると，$f$ は $\\left[\\frac43,z_0\\right]$ で減少，$[z_0,2]$ で増加，$[2,z_1]$ で減少する．\n\n最大値の候補は $f\\!\\left(\\frac43\\right)=\\frac34+\\frac43-\\frac13=\\frac74$，$f(2)=\\frac12+2-\\frac34=\\frac74$．\n\n最小値の候補は $f(z_0)$ と $f(z_1)$．$z_0^2=\\frac{14+2\\sqrt{13}}9$，$\\frac1{z_0}=\\frac3{1+\\sqrt{13}}=\\frac{\\sqrt{13}-1}4$ より\n\\[\nf(z_0)=\\frac{\\sqrt{13}-1}4+\\frac{1+\\sqrt{13}}3-\\frac{14+2\\sqrt{13}}{48}=\\frac{12\\sqrt{13}-12+16+16\\sqrt{13}-14-2\\sqrt{13}}{48}=\\frac{13\\sqrt{13}-5}{24}.\n\\]\n$f(z_1)$ について：$z=z_1$ では $(a-z)^2=\\frac{4a}z$ で $x=y=\\frac{a-z_1}2$ となる．$z_1$ は $3z^2-28z+48=0$ をみたすので $\\frac{a-z_1}2=\\frac{16-3z_1}6=\\frac{16-14+2\\sqrt{13}}6=z_0$．よって $z=z_1$ のときの組は $(x,y,z)=(z_0,z_0,z_1)$ であり，これは $z=z_0$ のときの組（$x,y$ の一方が $z_0$，他方が $z_1$）を並べかえたものなので，求める値は等しく $f(z_1)=f(z_0)$．\n\n$f$ は閉区間 $\\left[\\frac43,z_1\\right]$ で連続なので，その間のすべての値をとる．よって求める範囲は\n\\[\n\\boldsymbol{\\frac{13\\sqrt{13}-5}{24}\\leqq\\frac1{\\tan A}+\\frac1{\\tan B}+\\frac1{\\tan C}\\leqq\\frac74}.\n\\]"
+   }
+  ],
+  "idea": {
+   "tex": "鋭角三角形の正接 $x,y,z$ は $x+y+z=xyz$ をみたし，逆にこれをみたす正の数の組は鋭角三角形から得られる．$\\frac1x+\\frac1y+\\frac1z=\\frac{xy+yz+zx}{xyz}$．1つの正接 $z$ を固定すると $x+y,\\ xy$ が決まり，$x,y$ が正の実数である条件（判別式）で $z$ の範囲が区間になる．$\\frac1x+\\frac1y+\\frac1z$ は $z$ の1変数関数になり，その増減で範囲が決まる．"
+  },
+  "methods": [],
+  "tags": [
+   "加法定理",
+   "正接",
+   "3次方程式",
+   "解の存在条件",
+   "1文字固定",
+   "増減"
+  ],
+  "provenance": {
+   "created": "2026-11-14"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-TRI-183",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-10",
+  "level": 3,
+  "minutes": 25,
+  "theme": "円弧上の点から2点までの距離の積の最小",
+  "topic": "円弧上の点から2点までの距離の積の最小",
+  "statement": {
+   "tex": "O を頂点とする扇形 OAB があり，$\\mathrm{OA}=\\mathrm{OB}=1$，$\\angle\\mathrm{AOB}=\\dfrac\\pi2$ である．$r$ を $0<r<1$ なる定数とし，$\\mathrm{OC}=\\mathrm{OD}=r$ となる点 C，D をそれぞれ線分 OA，OB 上にとる．円弧 AB（端点 A，B を含む）上の動点 P に対し $\\angle\\mathrm{POA}=\\theta$ とし，\n\\[\nw=\\mathrm{CP}\\cdot\\mathrm{DP}\n\\]\nとおく．\n\\begin{enumerate}\n  \\item $s=\\sin\\theta+\\cos\\theta$ とおく．$w^2$ を $r,\\ s$ で表し，$s$ のとり得る値の範囲を求めよ．\n  \\item P を動かすとき，$w$ を最小にする P がちょうど2つ存在するような $r$ の条件を求めよ．\n  \\item $w$ の最小値を $r$ で表せ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $w^2=2r^2s^2-2r(1+r^2)s+(1+r^2)^2-2r^2$，$1\\leqq s\\leqq\\sqrt2$　(2) $\\sqrt2-1<r<1$　(3) $\\sqrt2-1<r<1$ のとき $\\dfrac{1-r^2}{\\sqrt2}$，$0<r\\leqq\\sqrt2-1$ のとき $1+r^2-\\sqrt2\\,r$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) O を原点，A$(1,0)$，B$(0,1)$ とすると C$(r,0)$，D$(0,r)$，P$(\\cos\\theta,\\sin\\theta)$（$0\\leqq\\theta\\leqq\\frac\\pi2$）．\n\\[\n\\mathrm{CP}^2=1+r^2-2r\\cos\\theta,\\qquad\\mathrm{DP}^2=1+r^2-2r\\sin\\theta .\n\\]\n$2\\sin\\theta\\cos\\theta=s^2-1$ を用いて\n\\[\nw^2=(1+r^2)^2-2r(1+r^2)s+4r^2\\sin\\theta\\cos\\theta=\\boldsymbol{2r^2s^2-2r(1+r^2)s+(1+r^2)^2-2r^2}.\n\\]\nまた $s=\\sqrt2\\sin\\left(\\theta+\\dfrac\\pi4\\right)$ で，$\\dfrac\\pi4\\leqq\\theta+\\dfrac\\pi4\\leqq\\dfrac{3\\pi}4$ より $\\boldsymbol{1\\leqq s\\leqq\\sqrt2}$．\n\n\\textbf{$\\theta$ と $s$ の対応．} $\\psi=\\theta+\\frac\\pi4$ とおく．$\\sin\\psi$ は $\\left[\\frac\\pi4,\\frac\\pi2\\right]$ で増加，$\\left[\\frac\\pi2,\\frac{3\\pi}4\\right]$ で減少し，$\\sin(\\pi-\\psi)=\\sin\\psi$ である．よって $1<s<\\sqrt2$ をみたす各 $s$ にはちょうど2つの $\\theta$（$\\frac\\pi4$ に関して対称）が対応し，$s=\\sqrt2$ には $\\theta=\\frac\\pi4$ だけ，$s=1$ には $\\theta=0,\\frac\\pi2$ の2つが対応する．\n\n(2)(3) $s_0=\\dfrac{1+r^2}{2r}$ とおくと\n\\[\nw^2=2r^2(s-s_0)^2+(1+r^2)^2-2r^2-\\frac{(1+r^2)^2}2=2r^2(s-s_0)^2+\\frac{(1-r^2)^2}2 .\n\\]\n$s_0-1=\\dfrac{(1-r)^2}{2r}>0$ より $s_0>1$．また $w>0$（$r<1$ より P は C，D と一致しない）なので，$w$ の最小と $w^2$ の最小は同じ P で起こる．\n\n\\textbf{$s_0<\\sqrt2$ のとき．} これは $r^2-2\\sqrt2r+1<0$，すなわち $\\sqrt2-1<r<\\sqrt2+1$ と同値で，$0<r<1$ とあわせて $\\sqrt2-1<r<1$．このとき $w^2$ は $s=s_0$ でのみ最小となり，$1<s_0<\\sqrt2$ なので対応する P はちょうど2つ．最小値は $w=\\sqrt{\\dfrac{(1-r^2)^2}2}=\\dfrac{1-r^2}{\\sqrt2}$．\n\n\\textbf{$s_0\\geqq\\sqrt2$ のとき（$0<r\\leqq\\sqrt2-1$）．} $w^2$ は $s\\leqq s_0$ で減少するから，$1\\leqq s\\leqq\\sqrt2$ では $s=\\sqrt2$ でのみ最小となり，P は $\\theta=\\frac\\pi4$ の1つだけ．最小値は\n\\[\nw^2=4r^2-2\\sqrt2r(1+r^2)+(1+r^2)^2-2r^2=(1+r^2-\\sqrt2r)^2\n\\]\nより，$1+r^2-\\sqrt2r=\\left(r-\\frac{\\sqrt2}2\\right)^2+\\frac12>0$ に注意して $w=1+r^2-\\sqrt2r$．\n\n以上より\n\n(2) $\\boldsymbol{\\sqrt2-1<r<1}$．\n\n(3) $\\boldsymbol{\\sqrt2-1<r<1}$ \\textbf{のとき最小値} $\\boldsymbol{\\dfrac{1-r^2}{\\sqrt2}}$，$\\boldsymbol{0<r\\leqq\\sqrt2-1}$ \\textbf{のとき最小値} $\\boldsymbol{1+r^2-\\sqrt2\\,r}$．"
+   }
+  ],
+  "idea": {
+   "tex": "$\\mathrm{CP}^2$，$\\mathrm{DP}^2$ はそれぞれ $\\cos\\theta$，$\\sin\\theta$ の1次式で，その積は $s=\\sin\\theta+\\cos\\theta$ の2次式になる．$\\theta$ と $s$ の対応は $\\theta=\\frac\\pi4$ に関して対称な2対1（端と中央は例外）なので，「最小を与える点が2つ」は「$s$ の2次関数の頂点が区間の内部にある」ことに言いかえられる．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) 記述\n(2) sqrt(2)-1<r<1\n(3) 場合分け{ sqrt(2)-1<r<1 → (1-r^2)/sqrt(2) | 0<r<=sqrt(2)-1 → 1+r^2-sqrt(2)r }"
+  },
+  "methods": [],
+  "tags": [
+   "余弦定理",
+   "三角関数の合成",
+   "置き換え",
+   "2次関数の最小",
+   "解の個数の対応"
+  ],
+  "provenance": {
+   "created": "2026-11-14"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-TRI-184",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-10",
+  "level": 4,
+  "minutes": 30,
+  "theme": "三角形内の点から頂点までの距離の積と辺までの距離の積",
+  "topic": "三角形内の点から頂点までの距離の積と辺までの距離の積",
+  "statement": {
+   "tex": "三角形 ABC の内部の点 P に対し，$\\mathrm{PA}=a$，$\\mathrm{PB}=b$，$\\mathrm{PC}=c$ とし，P から直線 BC，CA，AB までの距離をそれぞれ $x$，$y$，$z$ とする．また $\\angle\\mathrm{BPC}=2\\alpha$，$\\angle\\mathrm{CPA}=2\\beta$，$\\angle\\mathrm{APB}=2\\gamma$ とし，$\\angle\\mathrm{APB}$ の二等分線と辺 AB の交点を $\\mathrm X'$ とする．\n\\begin{enumerate}\n  \\item $\\mathrm{PX'}=\\dfrac{2ab\\cos\\gamma}{a+b}$ を示し，$z\\leqq\\sqrt{ab}\\cos\\gamma$ が成り立つことを示せ．\n  \\item $\\cos\\alpha\\cos\\beta\\cos\\gamma\\leqq\\dfrac18$ が成り立つことを示せ．\n  \\item $abc\\geqq8xyz$ が成り立つことを示せ．また，等号が成り立つのは三角形 ABC と点 P がどのようなときか答えよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 証明　(2) 証明　(3) 証明．等号は三角形 ABC が正三角形で P がその中心（重心）のときに限る"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "P は三角形の内部にあるので，$\\angle\\mathrm{BPC}$，$\\angle\\mathrm{CPA}$，$\\angle\\mathrm{APB}$ はいずれも $0$ より大きく $\\pi$ より小さく，この3つの角で P のまわりを1周するから $2\\alpha+2\\beta+2\\gamma=2\\pi$．よって\n\\[\n\\alpha+\\beta+\\gamma=\\pi,\\qquad 0<\\alpha,\\ \\beta,\\ \\gamma<\\frac\\pi2 .\n\\]\nまた $x,\\ y,\\ z>0$ である．\n\n(1) $\\triangle\\mathrm{APB}=\\triangle\\mathrm{APX'}+\\triangle\\mathrm{X'PB}$ より\n\\[\n\\frac12ab\\sin2\\gamma=\\frac12a\\cdot\\mathrm{PX'}\\sin\\gamma+\\frac12b\\cdot\\mathrm{PX'}\\sin\\gamma .\n\\]\n$\\sin2\\gamma=2\\sin\\gamma\\cos\\gamma$，$\\sin\\gamma>0$ より $\\mathrm{PX'}=\\dfrac{2ab\\cos\\gamma}{a+b}$．\n\n$z$ は P と直線 AB の距離で，$\\mathrm X'$ は直線 AB 上の点なので $z\\leqq\\mathrm{PX'}$．さらに $a+b\\geqq2\\sqrt{ab}$ と $\\cos\\gamma>0$ より $\\dfrac{2ab\\cos\\gamma}{a+b}\\leqq\\sqrt{ab}\\cos\\gamma$．よって $z\\leqq\\sqrt{ab}\\cos\\gamma$．\\hfill$\\square$\n\n(2) 積和の公式と $\\cos(\\alpha+\\beta)=\\cos(\\pi-\\gamma)=-\\cos\\gamma$ より\n\\[\n\\cos\\alpha\\cos\\beta=\\frac{\\cos(\\alpha-\\beta)+\\cos(\\alpha+\\beta)}2\\leqq\\frac{1-\\cos\\gamma}2 .\n\\]\n$\\cos\\gamma>0$ を掛けて\n\\[\n\\cos\\alpha\\cos\\beta\\cos\\gamma\\leqq\\frac{\\cos\\gamma(1-\\cos\\gamma)}2=\\frac{\\frac14-\\left(\\cos\\gamma-\\frac12\\right)^2}2\\leqq\\frac18 .\n\\]\n等号は $\\cos(\\alpha-\\beta)=1$ かつ $\\cos\\gamma=\\frac12$，すなわち $\\alpha=\\beta=\\gamma=\\frac\\pi3$ のときに限る．\\hfill$\\square$\n\n(3) (1) と同様にして $x\\leqq\\sqrt{bc}\\cos\\alpha$，$y\\leqq\\sqrt{ca}\\cos\\beta$，$z\\leqq\\sqrt{ab}\\cos\\gamma$．各辺は正なので掛け合わせて，(2) より\n\\[\nxyz\\leqq abc\\cos\\alpha\\cos\\beta\\cos\\gamma\\leqq\\frac{abc}8 .\n\\]\nよって $abc\\geqq8xyz$．\\hfill$\\square$\n\n\\textbf{等号条件．} 等号が成り立てば，$z=\\sqrt{ab}\\cos\\gamma$ などの3つがすべて等号で，$\\cos\\alpha\\cos\\beta\\cos\\gamma=\\frac18$ である．$z=\\sqrt{ab}\\cos\\gamma$ には $\\dfrac{2ab}{a+b}=\\sqrt{ab}$，すなわち $a=b$ が必要．同様に $b=c$．また (2) の等号条件から $\\alpha=\\beta=\\gamma=\\frac\\pi3$．このとき $\\mathrm{PA}=\\mathrm{PB}=\\mathrm{PC}=a$，3つの角がすべて $120^\\circ$ なので，余弦定理より $\\mathrm{AB}=\\mathrm{BC}=\\mathrm{CA}=\\sqrt3a$ となり，三角形 ABC は正三角形，P は3頂点から等距離な点，すなわちその中心（外心＝重心）である．\n\n逆に，ABC が正三角形で P がその中心のとき，$a=b=c$ で，P から各辺までの距離は中線の長さの $\\frac13$，P から頂点までの距離は $\\frac23$ なので $x=y=z=\\frac a2$．$abc=a^3=8\\left(\\frac a2\\right)^3=8xyz$ で等号が成り立つ．\n\nよって等号は，\\textbf{三角形 ABC が正三角形で，P がその中心（重心）であるとき}に限る．"
+   }
+  ],
+  "idea": {
+   "tex": "$\\angle\\mathrm{APB}$ の二等分線の長さは面積を2通りに表して $\\frac{2ab\\cos\\gamma}{a+b}$．辺までの距離はこれ以下で，さらに相加相乗平均で $\\sqrt{ab}\\cos\\gamma$ 以下．3辺分を掛け合わせると距離の積は $abc\\cos\\alpha\\cos\\beta\\cos\\gamma$ 以下になり，$\\alpha+\\beta+\\gamma=\\pi$ のもとで余弦の積は積和の公式で $\\frac18$ 以下．等号は各段階の等号条件をすべて満たすときに限る．"
+  },
+  "methods": [],
+  "tags": [
+   "角の二等分線の長さ",
+   "面積の分割",
+   "相加平均と相乗平均",
+   "積和の公式",
+   "等号成立条件"
+  ],
+  "provenance": {
+   "created": "2026-11-14"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
  }
 ]

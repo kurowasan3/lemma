@@ -6073,5 +6073,386 @@
    },
    "verified": false
   }
+ },
+ {
+  "id": "I-TRI-130",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "I-03",
+  "level": 5,
+  "minutes": 40,
+  "theme": "大きさの異なる円を円の周りに並べる",
+  "topic": "大きさの異なる円を円の周りに並べる",
+  "statement": {
+   "tex": "O を中心とする半径2の円を Q とする．半径3の円を\\textbf{大円}，半径1の円を\\textbf{小円}とよぶ．いくつかの大円と小円を，どれも Q に外接し，かつどの2つも内部が重ならない（接することは許す）ように配置する．\n\\begin{enumerate}\n  \\item Q に外接する2つの円について，O から2つの円の中心へ引いた2本の半直線のなす角を $\\varphi$（$0\\leqq\\varphi\\leqq\\pi$）とする．2つの円の内部が重ならないための条件を，(i) 2つとも大円，(ii) 2つとも小円，(iii) 大円と小円，のそれぞれの場合に $\\cos\\varphi$ の不等式で表せ．\n  \\item 小円だけを配置するとき，配置できる小円の最大個数を求めよ．\n  \\item 大円をちょうど2個配置するとき，配置できる小円の最大個数を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) (i) $\\cos\\varphi\\leqq\\frac{7}{25}$　(ii) $\\cos\\varphi\\leqq\\frac79$　(iii) $\\cos\\varphi\\leqq\\frac35$　(2) $9$ 個　(3) $5$ 個"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) 半径 $r_1,r_2$ の円が Q に外接するとき，中心は O から $2+r_1$，$2+r_2$ の距離にある．内部が重ならない $\\iff$ 中心間の距離 $\\geqq r_1+r_2$．余弦定理より\n\\[\n(2+r_1)^2+(2+r_2)^2-2(2+r_1)(2+r_2)\\cos\\varphi\\geqq(r_1+r_2)^2 .\n\\]\n(i) $r_1=r_2=3$：$50-50\\cos\\varphi\\geqq36$ より $\\boldsymbol{\\cos\\varphi\\leqq\\frac7{25}}$．\n(ii) $r_1=r_2=1$：$18-18\\cos\\varphi\\geqq4$ より $\\boldsymbol{\\cos\\varphi\\leqq\\frac79}$．\n(iii) $r_1=3,r_2=1$：$34-30\\cos\\varphi\\geqq16$ より $\\boldsymbol{\\cos\\varphi\\leqq\\frac35}$．\n\n以下，$0<\\alpha,\\beta,\\mu<\\frac\\pi2$ で $\\cos\\alpha=\\frac7{25}$，$\\cos\\beta=\\frac79$，$\\cos\\mu=\\frac35$ とおく（$\\sin\\alpha=\\frac{24}{25}$，$\\sin\\beta=\\frac{4\\sqrt2}9$，$\\sin\\mu=\\frac45$）．$\\cos$ は $[0,\\pi]$ で減少するので，条件は (i) $\\varphi\\geqq\\alpha$，(ii) $\\varphi\\geqq\\beta$，(iii) $\\varphi\\geqq\\mu$ と同値．$\\frac7{25}<\\frac35<\\frac79$ より $\\beta<\\mu<\\alpha$．\n\n\\textbf{隣り合う角の和}：配置された $N$ 個（$N\\geqq2$）の円の中心の偏角を $0\\leqq\\theta_1<\\theta_2<\\dots<\\theta_N<2\\pi$ と並べる（内部が重ならないので偏角は相異なる）．$g_i=\\theta_{i+1}-\\theta_i$（$i<N$），$g_N=\\theta_1+2\\pi-\\theta_N$ とおくと $g_1+\\dots+g_N=2\\pi$．隣り合う2円のなす角 $\\varphi_i$ は $g_i$ と $2\\pi-g_i$ の小さい方なので $g_i\\geqq\\varphi_i$ であり，$g_i$ は (1) の対応する限界角以上である．\\quad ($\\dagger$)\n\n(2) 小円が $N$ 個なら ($\\dagger$) より $2\\pi\\geqq N\\beta$．\n\\begin{itemize}\n  \\item $\\frac79<\\frac{1+\\sqrt5}4=\\cos\\frac\\pi5$（$\\iff19<9\\sqrt5\\iff361<405$）より $\\beta>\\frac\\pi5$．よって $10\\beta>2\\pi$ で，$N\\leqq9$．\n  \\item $\\cos3\\beta=4\\cos^3\\beta-3\\cos\\beta=\\frac{1372-1701}{729}=-\\frac{329}{729}>-\\frac12$ であり，$\\cos\\beta>\\frac12$ より $\\beta<\\frac\\pi3$，すなわち $0<3\\beta<\\pi$．よって $3\\beta<\\frac{2\\pi}3$，すなわち $\\beta<\\frac{2\\pi}9$．\n\\end{itemize}\n9個の小円を中心の偏角が $\\frac{2\\pi}9$ ずつ異なるように置けば，どの2つのなす角も $\\frac{2\\pi}9$ 以上で $\\beta$ 以上だから重ならない．最大個数は $\\boldsymbol{9}$ 個．\n\n(3) まず次の3つを示す．\n\\begin{itemize}\n  \\item[(a)] $\\mu+\\beta>\\frac\\pi2$：$\\cos(\\mu+\\beta)=\\frac35\\cdot\\frac79-\\frac45\\cdot\\frac{4\\sqrt2}9=\\frac{21-16\\sqrt2}{45}<0$（$16\\sqrt2=\\sqrt{512}>\\sqrt{441}=21$），$0<\\mu+\\beta<\\pi$ より．\n  \\item[(b)] $\\alpha+\\beta>2\\mu$：$\\cos2\\mu=2\\cdot\\frac9{25}-1=-\\frac7{25}$，$\\cos(\\alpha+\\beta)=\\frac7{25}\\cdot\\frac79-\\frac{24}{25}\\cdot\\frac{4\\sqrt2}9=\\frac{49-96\\sqrt2}{225}$．$49-96\\sqrt2<-63\\iff7<6\\sqrt2\\iff49<72$ より $\\cos(\\alpha+\\beta)<\\cos2\\mu$．$\\alpha+\\beta,\\,2\\mu\\in(0,\\pi)$ なので $\\alpha+\\beta>2\\mu$．\n  \\item[(c)] $4\\mu+3\\beta<2\\pi$：$\\cos2\\mu=-\\frac7{25}=-\\cos\\alpha=\\cos(\\pi-\\alpha)$ で $2\\mu,\\pi-\\alpha\\in(0,\\pi)$ より $2\\mu=\\pi-\\alpha$，$4\\mu=2\\pi-2\\alpha$．よって $3\\beta<2\\alpha$ を示せばよい．$\\cos3\\beta=-\\frac{329}{729}$，$\\cos2\\alpha=2\\cdot\\frac{49}{625}-1=-\\frac{527}{625}$ で，$329\\cdot625=205625<384183=527\\cdot729$ より $\\cos3\\beta>\\cos2\\alpha$．$3\\beta,2\\alpha\\in(0,\\pi)$ なので $3\\beta<2\\alpha$．\n\\end{itemize}\n\n\\textbf{6個は置けない}：大円2個と小円6個が置けたとする（$N=8$）．偏角の順に並べた円周上の並びで，\n\\begin{itemize}\n  \\item 2つの大円が隣り合わないとき：隣り合う組は計8組で，各大円の両隣は小円なので大小が4組，残る小小が4組．($\\dagger$) より $2\\pi\\geqq4\\mu+4\\beta=4(\\mu+\\beta)>2\\pi$（(a)）で矛盾．\n  \\item 2つの大円が隣り合うとき：大大が1組，大小が2組，小小が5組で，$2\\pi\\geqq\\alpha+2\\mu+5\\beta=(\\alpha+\\beta)+2\\mu+4\\beta>4\\mu+4\\beta>2\\pi$（(b)(a)）で矛盾．\n\\end{itemize}\n7個以上置けたなら小円を取り除いて6個にできるので，小円は5個以下．\n\n\\textbf{5個は置ける}：(c) より $\\delta=2\\pi-(4\\mu+3\\beta)>0$．偏角の順に「大，小，小，小，大，小，小」と並べ，隣り合う角を順に\n\\[\n\\mu+\\tfrac\\delta7,\\ \\beta+\\tfrac\\delta7,\\ \\beta+\\tfrac\\delta7,\\ \\mu+\\tfrac\\delta7,\\ \\mu+\\tfrac\\delta7,\\ \\beta+\\tfrac\\delta7,\\ \\mu+\\tfrac\\delta7\n\\]\nとする（和は $2\\pi$）．\n\\begin{itemize}\n  \\item 隣り合う2円：角 $g$ は限界角より大きく，反対側の弧 $2\\pi-g$ も残り6つの角の和で $6\\beta>\\alpha$ 以上なので，なす角（$g$ と $2\\pi-g$ の小さい方）は限界角以上．\n  \\item 隣り合わない2円：どちら側の弧も2つ以上の角を含むので，なす角は $2\\beta$ 以上．$\\cos2\\beta=2\\cdot\\frac{49}{81}-1=\\frac{17}{81}<\\frac7{25}$（$425<567$），$2\\beta<\\pi$ より $2\\beta>\\alpha$ で，$\\alpha$ は3つの限界角の最大だから重ならない．\n\\end{itemize}\nよって最大個数は $\\boldsymbol{5}$ 個．"
+   }
+  ],
+  "idea": {
+   "tex": "円 Q に外接する2円が重ならない条件は，O から見た中心のなす角 $\\varphi$ についての $\\cos\\varphi\\leqq(\\text{定数})$ で，その限界角は2円の大きさの組ごとに異なる（大円と小円の限界角は，それぞれの「接線のなす角の半分」の和より小さい）．円を偏角の順に並べると，隣り合う角の和が $2\\pi$ になることから個数の上限が出る．限界角どうしの大小は $\\cos$ の値の比較や3倍角の公式で厳密に判定する．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) 記述\n(2) 9個\n(3) 5個"
+  },
+  "methods": [],
+  "tags": [
+   "余弦定理",
+   "角の評価",
+   "3倍角の公式",
+   "配置の最大個数"
+  ],
+  "provenance": {
+   "created": "2026-11-18"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "I-TRI-131",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "I-03",
+  "level": 5,
+  "minutes": 40,
+  "theme": "垂心までの距離の重みつき和が最大値をもつ条件",
+  "topic": "垂心までの距離の重みつき和が最大値をもつ条件",
+  "statement": {
+   "tex": "単位円（半径1の円）に内接する鋭角三角形 ABC の垂心を H とし，内角の大きさを $A,B,C$ とする．$t$ を正の定数とし，\n\\[\nF=\\mathrm{HA}+2\\,\\mathrm{HB}+t\\,\\mathrm{HC}\n\\]\nとおく．\n\\begin{enumerate}\n  \\item $\\mathrm{HA}=2\\cos A$ を示せ．\n  \\item 任意の三角形の内角 $A,B,C$ と正の数 $x,y,z$ に対して\n  \\[x^2+y^2+z^2\\geqq 2yz\\cos A+2zx\\cos B+2xy\\cos C\\]\n  が成り立つことを示し，等号成立条件を求めよ．\n  \\item ABC が単位円に内接する鋭角三角形全体を動くとき，$F$ の最大値が存在するような $t$ の値の範囲と，そのときの最大値を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 証明　(2) 証明，等号は $x:y:z=\\sin A:\\sin B:\\sin C$　(3) $\\dfrac{2}{\\sqrt5}<t<\\dfrac{2}{\\sqrt3}$，最大値 $\\dfrac{5t}{2}+\\dfrac{2}{t}$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "\\textbf{(1)}　外心 O を原点とし，A，B，C の位置ベクトルを $\\vec a,\\vec b,\\vec c$（$|\\vec a|=|\\vec b|=|\\vec c|=1$）とする．$\\vec h=\\vec a+\\vec b+\\vec c$ とおくと\n\\[\n(\\vec h-\\vec a)\\cdot(\\vec c-\\vec b)=(\\vec b+\\vec c)\\cdot(\\vec c-\\vec b)=|\\vec c|^2-|\\vec b|^2=0\n\\]\nで，同様に $(\\vec h-\\vec b)\\cdot(\\vec a-\\vec c)=0$．よって $\\vec h$ の表す点は A から BC への垂線上と B から CA への垂線上にあり，垂心 H である．このとき $\\mathrm{HA}=|\\vec b+\\vec c|$．鋭角三角形では O は三角形の内部にあり，円周角の定理より $\\angle\\mathrm{BOC}=2A$ なので $\\vec b\\cdot\\vec c=\\cos2A$．したがって\n\\[\n\\mathrm{HA}^2=2+2\\cos2A=4\\cos^2A,\n\\]\n$\\cos A>0$ より $\\mathrm{HA}=2\\cos A$．\\hfill$\\square$\n\n\\medskip\n\\textbf{(2)}　$A+B+C=\\pi$ より $\\cos A=-\\cos(B+C)=\\sin B\\sin C-\\cos B\\cos C$．これを用いると\n\\begin{align*}\n&(x-z\\cos B-y\\cos C)^2+(z\\sin B-y\\sin C)^2\\\\\n&\\quad=x^2+y^2+z^2-2zx\\cos B-2xy\\cos C-2yz(\\sin B\\sin C-\\cos B\\cos C)\n\\end{align*}\nとなり，右辺は $x^2+y^2+z^2-2yz\\cos A-2zx\\cos B-2xy\\cos C$ に等しい．左辺は0以上なので不等式が成り立つ．\n\n等号は $x=z\\cos B+y\\cos C$ かつ $z\\sin B=y\\sin C$ のとき．$x:y:z=\\sin A:\\sin B:\\sin C$，すなわち $x=k\\sin A$，$y=k\\sin B$，$z=k\\sin C$（$k>0$）ならば $z\\sin B-y\\sin C=0$，$z\\cos B+y\\cos C=k\\sin(B+C)=k\\sin A=x$ で等号が成り立つ．逆に等号が成り立てば $y:z=\\sin B:\\sin C$ より $y=k\\sin B$，$z=k\\sin C$（$k>0$）と書け，$x=k(\\sin C\\cos B+\\sin B\\cos C)=k\\sin A$．よって等号成立条件は $\\boldsymbol{x:y:z=\\sin A:\\sin B:\\sin C}$．\\hfill$\\square$\n\n\\medskip\n\\textbf{(3)}　(1) より $F=2(\\cos A+2\\cos B+t\\cos C)$．(2) で $x=2t$，$y=t$，$z=2$ とおくと\n\\[\n5t^2+4\\geqq4t\\cos A+8t\\cos B+4t^2\\cos C=4t(\\cos A+2\\cos B+t\\cos C)\n\\]\nなので\n\\[\nF\\leqq\\frac{5t^2+4}{2t}=\\frac{5t}2+\\frac2t\\qquad\\cdots(*)\n\\]\nで，等号は $\\sin A:\\sin B:\\sin C=2t:t:2$，すなわち（正弦定理より）$\\mathrm{BC}:\\mathrm{CA}:\\mathrm{AB}=2t:t:2$ のとき．\n\n\\textbf{最大値が存在する場合．}$\\dfrac2{\\sqrt5}<t<\\dfrac2{\\sqrt3}$ とする．$\\frac2{\\sqrt5}>\\frac23$ なので $2t<t+2$，$2<2t+t$，$t<2t+2$ が成り立ち，3辺が $2t,t,2$ の三角形が存在する．さらに\n\\[\n(2t)^2<t^2+4\\iff t^2<\\tfrac43,\\qquad 2^2<(2t)^2+t^2\\iff t^2>\\tfrac45,\\qquad t^2<(2t)^2+4\n\\]\nがすべて成り立つから，余弦定理によりこの三角形は鋭角三角形である．これと相似で外接円の半径が1の三角形を単位円に内接させれば，$(*)$ の等号が成り立つ．よって最大値は $\\boldsymbol{\\dfrac{5t}{2}+\\dfrac{2}{t}}$．\n\n\\textbf{最大値が存在しない場合．}単位円に内接する鋭角三角形は，$0<A<\\frac\\pi2$，$0<B<\\frac\\pi2$，$A+B>\\frac\\pi2$ をみたす $(A,B)$ と1対1に対応し（$C=\\pi-A-B$），$F=f(A,B)=2\\{\\cos A+2\\cos B-t\\cos(A+B)\\}$．ある鋭角三角形 $(A_0,B_0)$ で $F$ が最大になったとする．$B=B_0$ を固定すると，$A$ の関数 $f(A,B_0)$ は開区間 $\\frac\\pi2-B_0<A<\\frac\\pi2$ の内部の点 $A_0$ で最大となるから，そこでの微分係数は0：\n\\[\n-2\\sin A_0+2t\\sin(A_0+B_0)=0\\quad\\text{すなわち}\\quad\\sin A_0=t\\sin C_0 .\n\\]\n同様に $A=A_0$ を固定して $B$ で微分すると $-4\\sin B_0+2t\\sin(A_0+B_0)=0$，すなわち $2\\sin B_0=t\\sin C_0$．よって $\\sin A_0:\\sin B_0:\\sin C_0=t:\\frac t2:1=2t:t:2$ で，この鋭角三角形の3辺の比は $2t:t:2$．鋭角であるから $(2t)^2<t^2+2^2$ かつ $2^2<(2t)^2+t^2$，すなわち $\\frac2{\\sqrt5}<t<\\frac2{\\sqrt3}$ でなければならない．したがって，この範囲外では最大値は存在しない．\n\n以上より，求める範囲は $\\boldsymbol{\\dfrac{2}{\\sqrt5}<t<\\dfrac{2}{\\sqrt3}}$，最大値は $\\boldsymbol{\\dfrac{5t}{2}+\\dfrac{2}{t}}$．"
+   }
+  ],
+  "idea": {
+   "tex": "外接円の半径が1の鋭角三角形では $\\mathrm{HA}=2\\cos A$．恒等式 $x^2+y^2+z^2-2yz\\cos A-2zx\\cos B-2xy\\cos C=(x-z\\cos B-y\\cos C)^2+(z\\sin B-y\\sin C)^2$ により重みつき和 $p\\cos A+q\\cos B+r\\cos C$ の上界が得られ，等号は辺の比が $\\frac1p:\\frac1q:\\frac1r$ の三角形．その三角形が鋭角でなければ，内部の最大点で成り立つべき「1変数ずつの導関数が0」の条件が満たせず最大値は存在しない．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) 証明\n(2) 記述\n(3) 2/sqrt(5)<t<2/sqrt(3) ; 最大値：5t/2+2/t"
+  },
+  "methods": [],
+  "tags": [
+   "垂心",
+   "余弦の重みつき和",
+   "平方完成",
+   "最大値の存在",
+   "1変数微分"
+  ],
+  "provenance": {
+   "created": "2026-11-14"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "I-TRI-132",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "I-03",
+  "level": 4,
+  "minutes": 30,
+  "theme": "相似な三角形が連なる四角形と正七角形の三角形",
+  "topic": "相似な三角形が連なる四角形と正七角形の三角形",
+  "statement": {
+   "tex": "四角形 ABCD が次の①，②，③の条件をすべてみたすとき，三角形 ABC の各頂点の内角の大きさを求めよ．\n\\begin{center}\n① $\\triangle\\mathrm{ABC}\\backsim\\triangle\\mathrm{ACD}$（頂点はこの順に対応する）\\quad\n② $\\mathrm{BC}+\\mathrm{CD}=\\mathrm{AC}$\\quad\n③ $\\mathrm{AD}=\\mathrm{AB}+\\mathrm{BC}$\n\\end{center}"
+  },
+  "answer": {
+   "tex": "$\\angle\\mathrm A=\\dfrac\\pi7$，$\\angle\\mathrm B=\\dfrac{4\\pi}7$，$\\angle\\mathrm C=\\dfrac{2\\pi}7$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "$a=\\mathrm{BC},\\ b=\\mathrm{CA},\\ c=\\mathrm{AB}$，$\\angle\\mathrm A,\\angle\\mathrm B,\\angle\\mathrm C$ を $A,B,C$ とする．①より相似比は $\\frac{\\mathrm{AC}}{\\mathrm{AB}}=\\frac bc$ で，$\\mathrm{CD}=\\frac{ab}c$，$\\mathrm{AD}=\\frac{b^2}c$．\n\n③ $\\iff\\frac{b^2}c=c+a\\iff b^2=c^2+ca$．正弦定理で $\\sin^2B-\\sin^2C=\\sin A\\sin C$．ここで\n\\begin{align*}\\sin^2B-\\sin^2C&=(\\sin B+\\sin C)(\\sin B-\\sin C)\\\\&=4\\sin\\tfrac{B+C}2\\cos\\tfrac{B-C}2\\cos\\tfrac{B+C}2\\sin\\tfrac{B-C}2=\\sin(B+C)\\sin(B-C)\\end{align*}\nで $\\sin(B+C)=\\sin A>0$ なので $\\sin(B-C)=\\sin C$．$-\\pi<B-C<\\pi$，$0<C<\\pi$ より $B-C=C$ または $B-C=\\pi-C$．後者は $B=\\pi$ で不適．よって $B=2C$，$A=\\pi-3C$，$0<C<\\frac\\pi3$．\n\n② $\\iff a+\\frac{ab}c=b\\iff ac+ab=bc\\iff\\sin A\\sin C+\\sin A\\sin B=\\sin B\\sin C$．$\\sin A=\\sin3C$，$\\sin B=\\sin2C=2\\sin C\\cos C$ を代入して $\\sin C\\ (>0)$ で割ると\n\\[\\sin3C+2\\sin3C\\cos C=\\sin2C\\iff\\sin3C+\\sin4C+\\sin2C=\\sin2C\\iff2\\sin\\tfrac{7C}2\\cos\\tfrac C2=0.\\]\n$\\cos\\frac C2>0$，$0<\\frac{7C}2<\\frac{7\\pi}6$ より $\\frac{7C}2=\\pi$，$C=\\frac{2\\pi}7$．以上の変形はすべて同値変形で，逆にこの三角形 ABC に対し①の相似となる D を AC に関して B と反対側にとれば（$\\angle\\mathrm{BAD}=2A<\\pi$），②③が成り立つ．答は $\\boldsymbol{\\angle\\mathrm A=\\dfrac\\pi7,\\ \\angle\\mathrm B=\\dfrac{4\\pi}7,\\ \\angle\\mathrm C=\\dfrac{2\\pi}7}$．"
+   }
+  ],
+  "idea": {
+   "tex": "$\\triangle\\mathrm{ABC}\\backsim\\triangle\\mathrm{ACD}$ から $\\mathrm{CD}=\\frac{ab}c$，$\\mathrm{AD}=\\frac{b^2}c$．条件 $\\mathrm{AD}=\\mathrm{AB}+\\mathrm{BC}$ は $b^2=c^2+ca$ となり，正弦定理と $\\sin^2B-\\sin^2C=\\sin(B+C)\\sin(B-C)$ から $B=2C$．これを $\\mathrm{BC}+\\mathrm{CD}=\\mathrm{AC}$ に入れると $\\sin3C+\\sin4C=0$ に帰着する．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "$\\angle\\mathrm A$：π/7 ; $\\angle\\mathrm B$：4π/7 ; $\\angle\\mathrm C$：2π/7"
+  },
+  "methods": [],
+  "tags": [
+   "相似比",
+   "正弦定理",
+   "和積公式",
+   "角の決定",
+   "正七角形"
+  ],
+  "provenance": {
+   "created": "2026-11-14"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "I-TRI-133",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "I-03",
+  "level": 4,
+  "minutes": 35,
+  "theme": "正三角形の内部の点までの3距離がつくる三角形",
+  "topic": "正三角形の内部の点までの3距離がつくる三角形",
+  "statement": {
+   "tex": "1辺の長さが $1$ の正三角形 ABC の内部（周を含まない）に点 P をとる．\n\\begin{enumerate}\n  \\item $\\angle\\mathrm{APB}>60^\\circ$ であることを示せ．さらに，$\\mathrm{PA},\\ \\mathrm{PB},\\ \\mathrm{PC}$ を3辺の長さとする三角形が存在し，その三角形において長さ $\\mathrm{PC}$ の辺の対角が $\\angle\\mathrm{APB}-60^\\circ$ に等しいことを示せ．\n  \\item $\\mathrm{PA}^2=\\mathrm{PB}^2+\\mathrm{PC}^2$ を満たす点 P の全体はどのような図形か．\n  \\item (2) の点 P について，$\\mathrm{PA}$ のとりうる値の範囲を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 証明　(2) A を直線 BC に関して折り返した点を中心とする半径 $1$ の円のうち，三角形 ABC の内部にある弧（両端 B，C を除く．$\\angle\\mathrm{BPC}=150^\\circ$ となる点の全体）　(3) $\\sqrt3-1\\leqq\\mathrm{PA}<1$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "座標を $\\mathrm B\\left(-\\dfrac12,0\\right)$，$\\mathrm C\\left(\\dfrac12,0\\right)$，$\\mathrm A\\left(0,\\dfrac{\\sqrt3}2\\right)$ とする．三角形の内部は\n\\[y>0,\\qquad y<\\sqrt3\\left(\\frac12-|x|\\right)\\]\nで表される．\n\n(1) \\textbf{$\\angle\\mathrm{APB}>60^\\circ$．} P は内部の点なので，直線 AP は辺 BC と端点以外の点 D で交わり，P は線分 AD 上（両端を除く）にある．$\\angle\\mathrm{APB}$ は三角形 PBD の P における外角なので\n\\[\\angle\\mathrm{APB}=\\angle\\mathrm{PBD}+\\angle\\mathrm{PDB}>\\angle\\mathrm{PDB}=\\angle\\mathrm{ADB}.\\]\n$\\angle\\mathrm{ADB}$ は三角形 ADC の D における外角なので $\\angle\\mathrm{ADB}=\\angle\\mathrm{DAC}+\\angle\\mathrm{DCA}>\\angle\\mathrm{DCA}=60^\\circ$．よって $\\angle\\mathrm{APB}>60^\\circ$．同様に $\\angle\\mathrm{BPC}>60^\\circ$，$\\angle\\mathrm{CPA}>60^\\circ$ である．\n\n\\textbf{補題．} 1辺 $1$ の正三角形 XYZ と，直線 XY に関して Z と同じ側にある点 P に対し，三角形 PXY の面積を $S$ とすると\n\\[\\mathrm{PZ}^2=\\frac{\\mathrm{PX}^2+\\mathrm{PY}^2+1}{2}-2\\sqrt3\\,S.\\]\n（証明）$\\mathrm X\\left(-\\frac12,0\\right)$，$\\mathrm Y\\left(\\frac12,0\\right)$，$\\mathrm Z\\left(0,\\frac{\\sqrt3}2\\right)$，$\\mathrm P(x,y)$（$y>0$）としてよい（右辺は X と Y について対称なので，向きはどちらでもよい）．$\\mathrm{PX}^2+\\mathrm{PY}^2=2x^2+2y^2+\\frac12$，$S=\\frac y2$ より\n\\[\\text{右辺}=x^2+y^2+\\frac14+\\frac12-\\sqrt3y=x^2+\\left(y-\\frac{\\sqrt3}2\\right)^2=\\mathrm{PZ}^2.\\qquad\\square\\]\n\n$\\theta=\\angle\\mathrm{APB}$ とおく．P は直線 AB 上にないので $0^\\circ<\\theta<180^\\circ$ で，$1=\\mathrm{AB}^2=\\mathrm{PA}^2+\\mathrm{PB}^2-2\\,\\mathrm{PA}\\cdot\\mathrm{PB}\\cos\\theta$，$S=\\frac12\\mathrm{PA}\\cdot\\mathrm{PB}\\sin\\theta$．補題（X$=$A，Y$=$B，Z$=$C）に代入して\n\\[\\mathrm{PC}^2=\\mathrm{PA}^2+\\mathrm{PB}^2-\\mathrm{PA}\\cdot\\mathrm{PB}\\cos\\theta-\\sqrt3\\,\\mathrm{PA}\\cdot\\mathrm{PB}\\sin\\theta=\\mathrm{PA}^2+\\mathrm{PB}^2-2\\,\\mathrm{PA}\\cdot\\mathrm{PB}\\cos(\\theta-60^\\circ).\\]\n$\\varphi=\\theta-60^\\circ$ とおくと $0^\\circ<\\varphi<120^\\circ$．長さ $\\mathrm{PA},\\mathrm{PB}$ の2辺とその間の角 $\\varphi$ をもつ三角形 T を作ると，余弦定理により T の第3の辺の長さは $\\mathrm{PC}$ であり，その対角は $\\varphi$ である．よって $\\mathrm{PA},\\mathrm{PB},\\mathrm{PC}$ を3辺とする三角形が存在し，長さ PC の辺の対角は $\\angle\\mathrm{APB}-60^\\circ$ である．\\hfill$\\square$\n\n（同様に，T において長さ PA の辺の対角は $\\angle\\mathrm{BPC}-60^\\circ$，長さ PB の辺の対角は $\\angle\\mathrm{CPA}-60^\\circ$ である．3辺が与えられた三角形の角は余弦定理の値と $0^\\circ$ から $180^\\circ$ の範囲で決まるからである．）\n\n(2) $\\mathrm P(x,y)$ について\n\\[\\mathrm{PA}^2=x^2+y^2-\\sqrt3y+\\frac34,\\qquad\\mathrm{PB}^2+\\mathrm{PC}^2=2x^2+2y^2+\\frac12\\]\nなので\n\\[\\mathrm{PA}^2=\\mathrm{PB}^2+\\mathrm{PC}^2\\iff x^2+y^2+\\sqrt3y-\\frac14=0\\iff x^2+\\left(y+\\frac{\\sqrt3}2\\right)^2=1.\\]\nこれは A を直線 BC に関して折り返した点 $\\mathrm A'\\left(0,-\\frac{\\sqrt3}2\\right)$ を中心とする半径 $1$ の円 $\\Gamma$ で，B，C を通る．\n\n$\\Gamma$ 上で $y>0$ の点は $y=\\sqrt{1-x^2}-\\frac{\\sqrt3}2>0$，すなわち $|x|<\\frac12$ の点で，$\\Gamma$ の弧 BC（A の側，両端を除く）である．この弧上の点が三角形の内部にあることを示す．$s=|x|$（$0\\leqq s<\\frac12$）とおくと，示すべき式は $\\sqrt{1-s^2}-\\frac{\\sqrt3}2<\\sqrt3\\left(\\frac12-s\\right)$，すなわち $\\sqrt{1-s^2}<\\sqrt3(1-s)$ である．両辺は正なので2乗して比べると\n\\[3(1-s)^2-(1-s^2)=4s^2-6s+2=2(2s-1)(s-1)>0\\quad\\left(0\\leqq s<\\tfrac12\\right)\\]\nとなり成り立つ．逆に内部の点は $y>0$ なので，条件を満たす P の全体は\n\\begin{center}\\textbf{A を BC に関して折り返した点を中心とする半径 $\\boldsymbol1$ の円の，}\\\\\\textbf{三角形の内部にある弧 BC（両端を除く）}\\end{center}\nである．（(1) より，これは T が PA を斜辺とする直角三角形になること，すなわち $\\angle\\mathrm{BPC}=150^\\circ$ となる点の全体でもある．）\n\n(3) (2) の点では $x^2=1-\\left(y+\\frac{\\sqrt3}2\\right)^2$ なので\n\\[\\mathrm{PA}^2=1-\\left(y+\\frac{\\sqrt3}2\\right)^2+\\left(y-\\frac{\\sqrt3}2\\right)^2=1-2\\sqrt3\\,y.\\]\n弧上で $y=\\sqrt{1-x^2}-\\frac{\\sqrt3}2$（$-\\frac12<x<\\frac12$）は $x$ の連続関数で，$x=0$ で最大値 $1-\\frac{\\sqrt3}2$ をとり，$|x|\\to\\frac12$ で $0$ に近づき，$0$ にはならない．よって $y$ のとりうる値は $0<y\\leqq1-\\frac{\\sqrt3}2$ のすべてで，\n\\[4-2\\sqrt3\\leqq\\mathrm{PA}^2<1.\\]\n$4-2\\sqrt3=(\\sqrt3-1)^2$ なので $\\boldsymbol{\\sqrt3-1\\leqq\\mathrm{PA}<1}$（左の等号は弧の中点 $x=0$ のとき）．\\hfill$\\square$"
+   }
+  ],
+  "idea": {
+   "tex": "正三角形 ABC の内部の点 P について，$\\mathrm{PC}^2=\\mathrm{PA}^2+\\mathrm{PB}^2-2\\,\\mathrm{PA}\\cdot\\mathrm{PB}\\cos(\\angle\\mathrm{APB}-60^\\circ)$ が成り立つ（B を中心とする $60^\\circ$ 回転で PA，PB，PC が1つの三角形に集まることの計算版）．よって PA，PB，PC を3辺とする三角形の内角は $\\angle\\mathrm{APB}-60^\\circ$ などになる．$\\mathrm{PA}^2=\\mathrm{PB}^2+\\mathrm{PC}^2$ は座標で書くと円の方程式になり，その円は A を BC に関して折り返した点を中心とする．"
+  },
+  "methods": [],
+  "tags": [
+   "正三角形",
+   "余弦定理",
+   "座標",
+   "軌跡",
+   "円"
+  ],
+  "provenance": {
+   "created": "2026-11-14"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "I-TRI-134",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "I-03",
+  "level": 5,
+  "minutes": 35,
+  "theme": "直角の位置を入れかえた2つの凸四角形の面積の大小",
+  "topic": "直角の位置を入れかえた2つの凸四角形の面積の大小",
+  "statement": {
+   "tex": "正の数 $a,\\ b,\\ c,\\ d$ に対し，$\\mathrm{AB}=a$，$\\mathrm{BC}=b$，$\\mathrm{CD}=c$，$\\mathrm{DA}=d$ である凸四角形 ABCD のうち，$\\angle\\mathrm B=90^\\circ$ であるものを $Q_B$，$\\angle\\mathrm D=90^\\circ$ であるものを $Q_D$ とし，存在するときそれぞれの面積を $S_B,\\ S_D$ とする．\n\\begin{enumerate}\n  \\item $a^2+b^2=c^2+d^2$ であり $Q_B$ が存在するとき，$Q_B$ は $\\angle\\mathrm D=90^\\circ$ もみたすことを示せ．\n  \\item $a^2+b^2\\neq c^2+d^2$ であり，$Q_B,\\ Q_D$ がともに存在するとき，\n  \\[ S_B>S_D\\iff ab<cd \\]\n  が成り立つことを示せ．\n  \\item $a=1,\\ b=4,\\ c=2$ とする．$Q_B,\\ Q_D$ がともに存在するような $d$ の値の範囲を求めよ．さらに，その範囲の各 $d$ について $S_B$ と $S_D$ の大小を判定せよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 証明　(2) 証明　(3) $2\\sqrt3-1<d<\\sqrt{21}$；$d=\\sqrt{13}$ のとき $S_B=S_D$，それ以外では $S_B>S_D$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "四角形 ABCD は凸なので，対角線 AC で $\\triangle\\mathrm{ABC}$ と $\\triangle\\mathrm{ACD}$ に分けられ，面積はその和である．辺 $x,\\ y$ と間の角 $\\gamma$，対辺 $z$ の三角形の面積 $T$ は，余弦定理 $\\cos\\gamma=\\dfrac{x^2+y^2-z^2}{2xy}$ より\n\\[ 16T^2=4x^2y^2\\sin^2\\gamma=4x^2y^2-(x^2+y^2-z^2)^2. \\tag{$*$} \\]\n以下 $p=a^2+b^2$，$q=c^2+d^2$ とおく．\n\n(1) $Q_B$ では三平方の定理より $\\mathrm{AC}^2=p=q=c^2+d^2$．三平方の定理の逆により $\\triangle\\mathrm{ACD}$ は $\\angle\\mathrm D=90^\\circ$ の直角三角形である．\\hfill$\\square$\n\n(2) $Q_B$ では $\\mathrm{AC}^2=p$ なので，$(*)$ より $16(\\triangle\\mathrm{ACD})^2=4c^2d^2-(q-p)^2$．$X=(p-q)^2>0$ とおくと\n\\[ 4S_B=2ab+\\sqrt{4c^2d^2-X}. \\]\n同様に $Q_D$ では $\\mathrm{AC}^2=q$ で $4S_D=2cd+\\sqrt{4a^2b^2-X}$．ここで根号の中は三角形の面積の16倍で正である．$f(w)=2w-\\sqrt{4w^2-X}$（$4w^2>X$，$w>0$）とおくと\n\\[ 4(S_B-S_D)=f(ab)-f(cd). \\]\n$0<w_1<w_2$（$4w_1^2>X$）のとき，$\\sqrt{4w_i^2-X}<2w_i$ に注意して\n\\[ f(w_1)-f(w_2)=-2(w_2-w_1)+\\frac{4(w_2^2-w_1^2)}{\\sqrt{4w_2^2-X}+\\sqrt{4w_1^2-X}}>-2(w_2-w_1)+\\frac{4(w_2^2-w_1^2)}{2w_2+2w_1}=0. \\]\nよって $f$ は狭義減少．したがって $ab<cd$ なら $S_B>S_D$，$ab>cd$ なら $S_B<S_D$，$ab=cd$ なら $S_B=S_D$．ゆえに $S_B>S_D\\iff ab<cd$．\\hfill$\\square$\n\n(3) 対角線 AC について B，D が反対側にある四角形 ABCD は，A での角 $\\angle\\mathrm{BAC}+\\angle\\mathrm{CAD}$ と C での角 $\\angle\\mathrm{BCA}+\\angle\\mathrm{ACD}$ がともに $\\pi$ 未満のとき，かつそのときに限り凸である．また $0<\\beta,\\ \\gamma<\\pi$ に対し $\\beta+\\gamma<\\pi\\iff\\cos\\gamma>\\cos(\\pi-\\beta)=-\\cos\\beta$ である．\n\n\\textbf{$Q_B$ の存在．} $\\triangle\\mathrm{ABC}$ は直角をはさむ2辺が1，4 で $\\mathrm{AC}=\\sqrt{17}$，$\\cos\\angle\\mathrm{BAC}=\\frac1{\\sqrt{17}}$，$\\cos\\angle\\mathrm{BCA}=\\frac4{\\sqrt{17}}$．$\\triangle\\mathrm{ACD}$（辺 $\\sqrt{17},\\ 2,\\ d$）が存在する条件は $|d-2|<\\sqrt{17}<d+2$，すなわち $\\sqrt{17}-2<d<\\sqrt{17}+2$．このとき\n\\[ \\cos\\angle\\mathrm{CAD}=\\frac{17+d^2-4}{2\\sqrt{17}\\,d}>0>-\\frac1{\\sqrt{17}} \\]\nで A の条件は常に成立．C の条件は $\\cos\\angle\\mathrm{ACD}=\\dfrac{21-d^2}{4\\sqrt{17}}>-\\dfrac4{\\sqrt{17}}\\iff d^2<37$．$(\\sqrt{17}+2)^2=21+4\\sqrt{17}>37$ なので，$Q_B$ が存在する条件は $\\sqrt{17}-2<d<\\sqrt{37}$．\n\n\\textbf{$Q_D$ の存在．} $\\triangle\\mathrm{ACD}$ は直角をはさむ2辺が $2,\\ d$ で $\\mathrm{AC}=\\sqrt{4+d^2}$，$\\cos\\angle\\mathrm{DAC}=\\frac d{\\sqrt{4+d^2}}$，$\\cos\\angle\\mathrm{DCA}=\\frac2{\\sqrt{4+d^2}}$．$\\triangle\\mathrm{ABC}$（辺 $1,\\ 4,\\ \\sqrt{4+d^2}$）の存在条件は $3<\\sqrt{4+d^2}<5\\iff 5<d^2<21$．このとき\n\\[ \\cos\\angle\\mathrm{CAB}=\\frac{1+(4+d^2)-16}{2\\sqrt{4+d^2}}=\\frac{d^2-11}{2\\sqrt{4+d^2}},\\qquad \\cos\\angle\\mathrm{ACB}=\\frac{16+(4+d^2)-1}{8\\sqrt{4+d^2}}>0. \\]\nC の条件は $\\cos\\angle\\mathrm{ACB}>0>-\\cos\\angle\\mathrm{DCA}$ で常に成立．A の条件は $\\dfrac{d^2-11}{2\\sqrt{4+d^2}}>-\\dfrac d{\\sqrt{4+d^2}}\\iff d^2+2d-11>0\\iff d>2\\sqrt3-1$．$(2\\sqrt3-1)^2=13-4\\sqrt3>5$ なので，$Q_D$ が存在する条件は $2\\sqrt3-1<d<\\sqrt{21}$．\n\n$2\\sqrt3-1>\\sqrt{17}-2$（$\\iff(2\\sqrt3+1)^2=13+4\\sqrt3>17$）と $\\sqrt{21}<\\sqrt{37}$ より，両方が存在する条件は\n\\[ \\boldsymbol{2\\sqrt3-1<d<\\sqrt{21}}. \\]\n\n\\textbf{大小．} $p=17$，$q=4+d^2$ で，$p=q\\iff d=\\sqrt{13}$（範囲内）．$d=\\sqrt{13}$ のときは(1)とその対称版により $Q_B,\\ Q_D$ はどちらも $\\angle\\mathrm B=\\angle\\mathrm D=90^\\circ$ で，直角三角形 $\\triangle\\mathrm{ABC}$（直角をはさむ辺 1, 4）と $\\triangle\\mathrm{ACD}$（直角をはさむ辺 $2,\\ \\sqrt{13}$）を AC で貼り合わせたものなので $S_B=S_D=2+\\sqrt{13}$．$d\\neq\\sqrt{13}$ のときは(2)より $S_B>S_D\\iff ab<cd\\iff4<2d\\iff d>2$ で，範囲内では $d>2\\sqrt3-1>2$．よって\n\\[ \\boldsymbol{d=\\sqrt{13}\\text{ のとき }S_B=S_D,\\quad\\text{それ以外では }S_B>S_D}. \\]\n\\hfill$\\square$"
+   }
+  ],
+  "idea": {
+   "tex": "対角線で2つの三角形に分け，直角でない側の三角形の面積を $16T^2=4c^2d^2-(c^2+d^2-e^2)^2$ と書くと，2つの面積の差は $f(u)=2u-\\sqrt{4u^2-X}$（$X=(a^2+b^2-c^2-d^2)^2$）の $u=ab$ と $u=cd$ での値の差になる．$X>0$ なら $f$ は狭義減少なので，大小は $ab$ と $cd$ の大小で決まる．$a^2+b^2=c^2+d^2$ のときは2つの四角形は同じ形になる．具体的な数値では，凸四角形が実際に存在するかどうか（三角形の成立条件と，対角線の両端の角の和が $\\pi$ 未満）を調べる必要がある．"
+  },
+  "methods": [],
+  "tags": [
+   "四角形の面積",
+   "余弦定理",
+   "単調性",
+   "凸性",
+   "存在条件"
+  ],
+  "provenance": {
+   "created": "2026-11-14"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "I-TRI-135",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "I-03",
+  "level": 4,
+  "minutes": 35,
+  "theme": "半周長だけ離れた点を結ぶ3直線",
+  "topic": "半周長だけ離れた点を結ぶ3直線",
+  "statement": {
+   "tex": "三角形 $\\mathrm{ABC}$ において $a=\\mathrm{BC}$，$b=\\mathrm{CA}$，$c=\\mathrm{AB}$，$s=\\dfrac{a+b+c}2$ とする．半直線 $\\mathrm{AC}$，$\\mathrm{AB}$ 上にそれぞれ $\\mathrm{AA}_1=s$，$\\mathrm{AA}_2=s$ となる点 $\\mathrm A_1,\\ \\mathrm A_2$ をとる．同様に，半直線 $\\mathrm{BA}$，$\\mathrm{BC}$ 上に $\\mathrm{BB}_1=\\mathrm{BB}_2=s$ となる点 $\\mathrm B_1,\\ \\mathrm B_2$ を，半直線 $\\mathrm{CB}$，$\\mathrm{CA}$ 上に $\\mathrm{CC}_1=\\mathrm{CC}_2=s$ となる点 $\\mathrm C_1,\\ \\mathrm C_2$ をとる．直線 $\\mathrm B_1\\mathrm B_2$ と直線 $\\mathrm C_1\\mathrm C_2$ の交点を $\\mathrm A_3$，直線 $\\mathrm C_1\\mathrm C_2$ と直線 $\\mathrm A_1\\mathrm A_2$ の交点を $\\mathrm B_3$，直線 $\\mathrm A_1\\mathrm A_2$ と直線 $\\mathrm B_1\\mathrm B_2$ の交点を $\\mathrm C_3$ とする．\n\\begin{enumerate}\n  \\item $\\mathrm A_3$ は，$\\mathrm A$ を通り直線 $\\mathrm{BC}$ に垂直な直線上の，直線 $\\mathrm{BC}$ に関して $\\mathrm A$ と同じ側で $\\mathrm A$ より遠い位置にあることを示せ．さらに，線分 $\\mathrm{AA}_3$ の長さは，辺 $\\mathrm{BC}$ および辺 $\\mathrm{AB}$，$\\mathrm{AC}$ の延長に接する円の半径 $r_a$ に等しいことを示せ．\n  \\item 3直線 $\\mathrm{AA}_3,\\ \\mathrm{BB}_3,\\ \\mathrm{CC}_3$ は1点で交わることを示し，その点は三角形 $\\mathrm{ABC}$ のどのような点か答えよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 証明（$\\mathrm{AA}_3=\\dfrac{(s-b)(s-c)}r=r_a$，$r$ は内接円の半径）　(2) 証明，三角形 $\\mathrm{ABC}$ の垂心"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "内接円の半径を $r$，面積を $S$ とする．$S=rs$，ヘロンの公式 $S^2=s(s-a)(s-b)(s-c)$ より $r^2s=(s-a)(s-b)(s-c)$．$s-a,\\ s-b,\\ s-c$ はいずれも正（三角形の成立条件）．\n\n\\textbf{半角の三角比．}内接円の中心 $\\mathrm I$ と辺 $\\mathrm{BC}$ との接点 $\\mathrm T$ について，$\\mathrm B$ から2接点までの距離は等しく，これを $\\beta$ とし同様に $\\gamma$（$\\mathrm C$），$\\alpha$（$\\mathrm A$）とすると $\\beta+\\gamma=a$，$\\gamma+\\alpha=b$，$\\alpha+\\beta=c$ より $\\mathrm{BT}=\\beta=s-b$．$\\mathrm{BI}$ は $\\angle\\mathrm B$ を2等分し $\\mathrm{IT}\\perp\\mathrm{BC}$ だから\n\\[\\frac{\\cos\\frac B2}{\\sin\\frac B2}=\\frac{\\mathrm{BT}}{\\mathrm{IT}}=\\frac{s-b}{r},\\qquad\\text{同様に}\\quad\\frac{\\cos\\frac C2}{\\sin\\frac C2}=\\frac{s-c}{r}.\\]\n\n(1) $\\mathrm B(0,0)$，$\\mathrm C(a,0)$，$\\mathrm A$ を $y>0$ の側にとる．$\\mathrm A(c\\cos B,\\ h)$，$h=c\\sin B=\\dfrac{2S}{a}=\\dfrac{2rs}{a}$．\n\n$\\vec u_{\\mathrm B}=\\left(\\cos\\frac B2,\\ \\sin\\frac B2\\right)$ は $\\angle\\mathrm B$ の二等分線方向の単位ベクトルで，$\\overrightarrow{\\mathrm{BC}}$，$\\overrightarrow{\\mathrm{BA}}$ の単位ベクトル $(1,0)$，$(\\cos B,\\sin B)$ とのなす角はともに $\\frac B2$．$\\mathrm B_2=(s,0)$，$\\mathrm B_1=s(\\cos B,\\sin B)$ で，\n\\[\\overrightarrow{\\mathrm{BB}_2}\\cdot\\vec u_{\\mathrm B}=\\overrightarrow{\\mathrm{BB}_1}\\cdot\\vec u_{\\mathrm B}=s\\cos\\frac B2,\\qquad\\overrightarrow{\\mathrm B_1\\mathrm B_2}\\cdot\\vec u_{\\mathrm B}=0.\\]\nよって直線 $\\mathrm B_1\\mathrm B_2$ は $\\vec u_{\\mathrm B}$ に垂直で，$\\{\\mathrm X\\mid\\overrightarrow{\\mathrm{BX}}\\cdot\\vec u_{\\mathrm B}=s\\cos\\frac B2\\}$ と表される．同様に $\\vec u_{\\mathrm C}=\\left(-\\cos\\frac C2,\\ \\sin\\frac C2\\right)$ とすると，直線 $\\mathrm C_1\\mathrm C_2$ は $\\{\\mathrm X\\mid\\overrightarrow{\\mathrm{CX}}\\cdot\\vec u_{\\mathrm C}=s\\cos\\frac C2\\}$．$\\vec u_{\\mathrm B}$ の偏角 $\\frac B2\\in(0,\\frac\\pi2)$ と $\\vec u_{\\mathrm C}$ の偏角 $\\pi-\\frac C2\\in(\\frac\\pi2,\\pi)$ は異なるので2直線は平行でなく，ただ1つの交点 $\\mathrm A_3$ をもつ．\n\n$\\mathrm A$ を通り $\\mathrm{BC}$ に垂直な直線 $\\ell:\\ x=c\\cos B$ 上の点 $\\mathrm X(c\\cos B,\\ y)$ を考える．\n\\[\\overrightarrow{\\mathrm{BX}}\\cdot\\vec u_{\\mathrm B}=s\\cos\\frac B2\\iff c\\cos B\\cos\\frac B2+y\\sin\\frac B2=s\\cos\\frac B2\\iff y=(s-c\\cos B)\\cdot\\frac{s-b}{r}.\\]\n$a-c\\cos B=b\\cos C$（$\\mathrm{BC}$ を垂線の足で分ける）より $\\overrightarrow{\\mathrm{CX}}=(-b\\cos C,\\ y)$ で，\n\\[\\overrightarrow{\\mathrm{CX}}\\cdot\\vec u_{\\mathrm C}=s\\cos\\frac C2\\iff b\\cos C\\cos\\frac C2+y\\sin\\frac C2=s\\cos\\frac C2\\iff y=(s-b\\cos C)\\cdot\\frac{s-c}{r}.\\]\n余弦定理から $c\\cos B=\\dfrac{a^2+c^2-b^2}{2a}$ で，\n\\[\\begin{aligned}s-c\\cos B&=\\frac{a(a+b+c)-a^2-c^2+b^2}{2a}=\\frac{a(b+c)+(b+c)(b-c)}{2a}\\\\&=\\frac{(b+c)(a+b-c)}{2a}=\\frac{(b+c)(s-c)}{a},\\end{aligned}\\]\n同様に $s-b\\cos C=\\dfrac{(b+c)(s-b)}{a}$．したがって2つの $y$ はともに\n\\[y_0=\\frac{(b+c)(s-b)(s-c)}{ar}\\]\nとなり，点 $(c\\cos B,\\ y_0)$ は2直線 $\\mathrm B_1\\mathrm B_2$，$\\mathrm C_1\\mathrm C_2$ の両方の上にある．交点はただ1つだから $\\mathrm A_3=(c\\cos B,\\ y_0)$ で，$\\mathrm A_3$ は $\\ell$ 上にある．さらに\n\\[\\begin{aligned}y_0-h&=\\frac{(b+c)(s-b)(s-c)-2r^2s}{ar}=\\frac{(s-b)(s-c)\\{(b+c)-2(s-a)\\}}{ar}\\\\&=\\frac{(s-b)(s-c)\\cdot a}{ar}=\\frac{(s-b)(s-c)}{r}>0\\end{aligned}\\]\n（$r^2s=(s-a)(s-b)(s-c)$ と $2(s-a)=b+c-a$ を用いた）．よって $\\mathrm A_3$ は $\\mathrm A$ と同じ側（$y>0$）で $\\mathrm A$ より $\\mathrm{BC}$ から遠く，$\\mathrm{AA}_3=\\dfrac{(s-b)(s-c)}{r}$．\n\n一方，問題の円（傍接円）の中心を $\\mathrm J$，半径を $r_a$ とすると，$\\mathrm J$ から直線 $\\mathrm{AB}$，$\\mathrm{AC}$，$\\mathrm{BC}$ までの距離はいずれも $r_a$ で，$\\mathrm J$ は角 $\\mathrm A$ の内部，直線 $\\mathrm{BC}$ に関して $\\mathrm A$ と反対側にあるから\n\\[S=\\triangle\\mathrm{JAB}+\\triangle\\mathrm{JAC}-\\triangle\\mathrm{JBC}=\\frac{r_a}2(c+b-a)=r_a(s-a).\\]\nよって $r_a=\\dfrac{S}{s-a}=\\dfrac{rs}{s-a}$ で，\n\\[\\mathrm{AA}_3=\\frac{(s-b)(s-c)}{r}=\\frac{r^2s}{(s-a)r}=\\frac{rs}{s-a}=r_a.\\]\n\\hfill$\\square$\n\n(2) (1) より $\\mathrm A_3\\neq\\mathrm A$ で，直線 $\\mathrm{AA}_3$ は $\\mathrm A$ から $\\mathrm{BC}$ への垂線（を含む直線）である．作図は3頂点について対称なので，同様に直線 $\\mathrm{BB}_3$，$\\mathrm{CC}_3$ はそれぞれ $\\mathrm B$ から $\\mathrm{CA}$，$\\mathrm C$ から $\\mathrm{AB}$ への垂線を含む直線である．\n\n三角形の3本の垂線は1点で交わる．実際，$\\mathrm B$，$\\mathrm C$ からの垂線の交点を $\\mathrm H$ とすると（$\\mathrm{CA}$ と $\\mathrm{AB}$ は平行でないので交わる）$\\overrightarrow{\\mathrm{BH}}\\cdot\\overrightarrow{\\mathrm{CA}}=0$，$\\overrightarrow{\\mathrm{CH}}\\cdot\\overrightarrow{\\mathrm{AB}}=0$．$\\mathrm A$ を始点に $\\vec h=\\overrightarrow{\\mathrm{AH}}$，$\\vec b=\\overrightarrow{\\mathrm{AB}}$，$\\vec c=\\overrightarrow{\\mathrm{AC}}$ とすると $(\\vec h-\\vec b)\\cdot\\vec c=0$，$(\\vec h-\\vec c)\\cdot\\vec b=0$ で，辺々引いて $\\vec h\\cdot(\\vec c-\\vec b)=0$，すなわち $\\mathrm{AH}\\perp\\mathrm{BC}$（$\\mathrm H=\\mathrm A$ の場合も含め $\\mathrm H$ は $\\mathrm A$ からの垂線上）．\n\nよって3直線 $\\mathrm{AA}_3,\\ \\mathrm{BB}_3,\\ \\mathrm{CC}_3$ は1点で交わり，その点は三角形 $\\mathrm{ABC}$ の\\textbf{垂心}である．\\hfill$\\square$"
+   }
+  ],
+  "idea": {
+   "tex": "頂点 $\\mathrm B$ から2辺上に等距離 $s$ の2点を結ぶ直線は $\\angle\\mathrm B$ の二等分線に垂直で，二等分線方向の単位ベクトル $\\vec u_{\\mathrm B}$ を使えば $\\overrightarrow{\\mathrm{BX}}\\cdot\\vec u_{\\mathrm B}=s\\cos\\frac B2$ と書ける．$\\mathrm A$ からの垂線上の点をこの式に代入すると高さが $(s-c\\cos B)\\cdot\\frac{\\cos\\frac B2}{\\sin\\frac B2}$ になり，$\\frac{\\cos\\frac B2}{\\sin\\frac B2}=\\frac{s-b}r$ と $s-c\\cos B=\\frac{(b+c)(s-c)}a$ から $\\mathrm B$ 側・$\\mathrm C$ 側の式が一致する．ヘロンの公式 $r^2s=(s-a)(s-b)(s-c)$ で $\\mathrm{AA}_3=\\frac{(s-b)(s-c)}r=r_a$．"
+  },
+  "methods": [],
+  "tags": [
+   "内接円",
+   "傍接円",
+   "半角",
+   "ヘロンの公式",
+   "垂心",
+   "座標"
+  ],
+  "provenance": {
+   "created": "2026-11-14"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "I-TRI-136",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "I-03",
+  "level": 4,
+  "minutes": 30,
+  "theme": "辺の三等分点が頂点で張る3つの角の大小",
+  "topic": "辺の三等分点が頂点で張る3つの角の大小",
+  "statement": {
+   "tex": "$\\triangle\\mathrm{ABC}$ において $\\mathrm{BC}=a$，$\\mathrm{CA}=b$，$\\mathrm{AB}=c$ とし，$c>b$ とする．辺 BC 上に点 M，N を $\\mathrm{BM}=\\mathrm{MN}=\\mathrm{NC}$ となるようにとり，\n\\[\n\\alpha=\\angle\\mathrm{BAM},\\qquad \\beta=\\angle\\mathrm{MAN},\\qquad \\gamma=\\angle\\mathrm{NAC}\n\\]\nとおく．\n\\begin{enumerate}\n  \\item $\\alpha<\\beta$ かつ $\\alpha<\\gamma$ であることを示せ．\n  \\item $\\beta$ と $\\gamma$ の大小を，$a,\\ b,\\ c$ の条件で判定せよ．\n  \\item $\\angle\\mathrm{BAC}=90^\\circ$ のとき，$\\beta$ と $\\gamma$ の大小を $b,\\ c$ の条件で判定せよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 証明　(2) $a^2>3(c^2-b^2)$ のとき $\\beta>\\gamma$，$a^2=3(c^2-b^2)$ のとき $\\beta=\\gamma$，$a^2<3(c^2-b^2)$ のとき $\\beta<\\gamma$　(3) $c<\\sqrt2\\,b$ のとき $\\beta>\\gamma$，$c=\\sqrt2\\,b$ のとき $\\beta=\\gamma$，$c>\\sqrt2\\,b$ のとき $\\beta<\\gamma$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "まず次の事実を示しておく．\n\n\\textbf{補題．} $x>0$，$y>0$，$x+y<\\pi$ のとき，$\\sin x-\\sin y$ と $x-y$ は同符号（一方が0なら他方も0）である．\n\n（証明）和積公式より $\\sin x-\\sin y=2\\cos\\dfrac{x+y}2\\sin\\dfrac{x-y}2$．$0<\\dfrac{x+y}2<\\dfrac\\pi2$ より $\\cos\\dfrac{x+y}2>0$．また $|x-y|<x+y<\\pi$ より $-\\dfrac\\pi2<\\dfrac{x-y}2<\\dfrac\\pi2$ なので，$\\sin\\dfrac{x-y}2$ は $x-y$ と同符号である．\\hfill$\\square$\n\n$\\alpha+\\beta=\\angle\\mathrm{BAN}$，$\\beta+\\gamma=\\angle\\mathrm{MAC}$，$\\alpha+\\gamma<\\alpha+\\beta+\\gamma=\\angle\\mathrm{BAC}$ はいずれも $\\pi$ 未満であるから，3つの角のどの2つにも補題が使える．\n\n\\textbf{面積の関係．} $\\triangle\\mathrm{ABM}$，$\\triangle\\mathrm{AMN}$，$\\triangle\\mathrm{ANC}$ は底辺の長さ $\\frac a3$ が等しく高さも共通なので，面積はどれも $\\triangle\\mathrm{ABC}$ の面積 $T$ の $\\frac13$ である．よって\n\\[\n\\frac12c\\cdot\\mathrm{AM}\\sin\\alpha=\\frac12\\mathrm{AM}\\cdot\\mathrm{AN}\\sin\\beta=\\frac12\\mathrm{AN}\\cdot b\\sin\\gamma=\\frac T3 .\\qquad\\cdots\\cdots①\n\\]\n\n\\textbf{長さ．} $\\vec{u}=\\overrightarrow{\\mathrm{AB}}$，$\\vec{v}=\\overrightarrow{\\mathrm{AC}}$ とおくと，$|\\vec u|=c$，$|\\vec v|=b$，$|\\vec v-\\vec u|=a$ より $\\vec u\\cdot\\vec v=\\dfrac{b^2+c^2-a^2}2$．$\\overrightarrow{\\mathrm{AM}}=\\dfrac{2\\vec u+\\vec v}3$，$\\overrightarrow{\\mathrm{AN}}=\\dfrac{\\vec u+2\\vec v}3$ だから\n\\begin{align*}\n\\mathrm{AM}^2&=\\frac{4c^2+4\\vec u\\cdot\\vec v+b^2}9=\\frac{6c^2+3b^2-2a^2}9,\\\\\n\\mathrm{AN}^2&=\\frac{c^2+4\\vec u\\cdot\\vec v+4b^2}9=\\frac{3c^2+6b^2-2a^2}9 .\n\\end{align*}\n\n(1) ①より $\\dfrac{\\sin\\alpha}{\\sin\\gamma}=\\dfrac{b\\cdot\\mathrm{AN}}{c\\cdot\\mathrm{AM}}$．ここで $c>b$，かつ\n\\[\n\\mathrm{AM}^2-\\mathrm{AN}^2=\\frac{3c^2-3b^2}9=\\frac{c^2-b^2}3>0\n\\]\nより $\\mathrm{AM}>\\mathrm{AN}$．よって $c\\cdot\\mathrm{AM}>b\\cdot\\mathrm{AN}$ で $\\sin\\alpha<\\sin\\gamma$．補題より $\\alpha<\\gamma$．\n\nまた①より $\\dfrac{\\sin\\alpha}{\\sin\\beta}=\\dfrac{\\mathrm{AN}}{c}$ であり，\n\\[\nc^2-\\mathrm{AN}^2=\\frac{9c^2-3c^2-6b^2+2a^2}9=\\frac{6(c^2-b^2)+2a^2}9>0\n\\]\nより $c>\\mathrm{AN}$．よって $\\sin\\alpha<\\sin\\beta$ で，補題より $\\alpha<\\beta$．\\hfill$\\square$\n\n(2) ①より $\\dfrac{\\sin\\beta}{\\sin\\gamma}=\\dfrac{b}{\\mathrm{AM}}$．\n\\[\nb^2-\\mathrm{AM}^2=\\frac{9b^2-6c^2-3b^2+2a^2}9=\\frac29\\left\\{a^2-3(c^2-b^2)\\right\\}.\n\\]\n$b>0$，$\\mathrm{AM}>0$ だから $b-\\mathrm{AM}$ は $b^2-\\mathrm{AM}^2$ と同符号，すなわち $a^2-3(c^2-b^2)$ と同符号であり，$\\sin\\beta-\\sin\\gamma=\\dfrac{\\sin\\gamma}{\\mathrm{AM}}(b-\\mathrm{AM})$ も同符号である．補題より $\\beta-\\gamma$ も同符号なので，\n\\begin{gather*}\n\\boldsymbol{a^2>3(c^2-b^2)\\text{ のとき }\\beta>\\gamma,\\qquad a^2=3(c^2-b^2)\\text{ のとき }\\beta=\\gamma,}\\\\\n\\boldsymbol{a^2<3(c^2-b^2)\\text{ のとき }\\beta<\\gamma .}\n\\end{gather*}\n\n(3) 三平方の定理より $a^2=b^2+c^2$．このとき\n\\[\na^2-3(c^2-b^2)=4b^2-2c^2=2(\\sqrt2\\,b-c)(\\sqrt2\\,b+c)\n\\]\nは $\\sqrt2\\,b-c$ と同符号．(2) より\n\\[\n\\boldsymbol{c<\\sqrt2\\,b\\text{ のとき }\\beta>\\gamma,\\quad c=\\sqrt2\\,b\\text{ のとき }\\beta=\\gamma,\\quad c>\\sqrt2\\,b\\text{ のとき }\\beta<\\gamma .}\n\\]"
+   }
+  ],
+  "idea": {
+   "tex": "BC の三等分点で三角形は面積の等しい3つの三角形に分かれるので，$\\frac12\\cdot(\\text{2辺})\\cdot\\sin(\\text{挟む角})$ が3つとも等しい．角の大小は「和が $\\pi$ 未満の2角では，正弦の大小と角の大小が一致する」（和積公式）で正弦の大小に移り，それは挟む2辺の積の大小に帰着する．AM，AN の長さはベクトル $\\overrightarrow{\\mathrm{AM}}=\\frac{2\\overrightarrow{\\mathrm{AB}}+\\overrightarrow{\\mathrm{AC}}}3$ などから $a,b,c$ で表せる．"
+  },
+  "methods": [],
+  "tags": [
+   "三角形の面積",
+   "正弦の大小",
+   "和積公式",
+   "ベクトルの内積",
+   "中線の長さ",
+   "場合分け"
+  ],
+  "provenance": {
+   "created": "2026-11-14"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "I-TRI-137",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "I-03",
+  "level": 4,
+  "minutes": 30,
+  "theme": "対角線の長さを指定した周の長さ一定の四角形",
+  "topic": "対角線の長さを指定した周の長さ一定の四角形",
+  "statement": {
+   "tex": "\\begin{enumerate}\n  \\item 底辺の長さが $a$，他の2辺の長さの和が $m\\ (m>a)$ である三角形の面積を $S$ とする．$S\\leqq\\dfrac a4\\sqrt{m^2-a^2}$ を示し，等号が成り立つのは二等辺三角形のときに限ることを示せ．\n  \\item $d$ を $0<d<2$ をみたす定数とする．周の長さが4で，対角線 AC の長さが $d$ である凸四角形 ABCD の面積の最大値 $F(d)$ を求めよ．また，最大となるのはどのような四角形のときか．\n  \\item 周の長さが4の凸四角形の面積の最大値と，最大となる四角形を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 証明　(2) $F(d)=\\dfrac d2\\sqrt{4-d^2}$，1辺の長さ1で対角線 AC が $d$ のひし形のとき　(3) 最大値 $1$，1辺の長さ1の正方形のとき"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) 底辺以外の2辺を $x,\\ m-x$ とする．三角形が存在するので $a<m$ かつ $|x-(m-x)|<a$，すなわち $|m-2x|<a$．$s=\\dfrac{a+m}2$ としてヘロンの公式を用いると\n\\begin{align*}\nS^2&=s(s-a)(s-x)\\{s-(m-x)\\}\\\\\n&=\\frac{a+m}2\\cdot\\frac{m-a}2\\cdot\\frac{a+m-2x}2\\cdot\\frac{a-m+2x}2\n=\\frac{(m^2-a^2)\\{a^2-(m-2x)^2\\}}{16}\\\\\n&\\leqq\\frac{(m^2-a^2)a^2}{16}.\n\\end{align*}\n$S>0$ より $S\\leqq\\dfrac a4\\sqrt{m^2-a^2}$．等号は $m-2x=0$，すなわち $x=m-x$（底辺以外の2辺が等しい二等辺三角形）のときに限り成り立つ．\\hfill$\\square$\n\n(2) $m_1=\\mathrm{AB}+\\mathrm{BC}$，$m_2=\\mathrm{CD}+\\mathrm{DA}$ とおくと $m_1+m_2=4$ であり，三角形の成立条件より $m_1>d$，$m_2>d$．凸四角形なので対角線 AC は四角形を $\\triangle\\mathrm{ABC}$ と $\\triangle\\mathrm{ACD}$ に分け，面積 $S$ は\n\\[\nS=\\triangle\\mathrm{ABC}+\\triangle\\mathrm{ACD}\\leqq\\frac d4\\left(\\sqrt{m_1^2-d^2}+\\sqrt{m_2^2-d^2}\\right)\\qquad\\cdots\\cdots①\n\\]\n（(1) を AC を底辺として2回用いた）．$m_1=2+u$，$m_2=2-u$ とおくと $|u|<2-d$ である．\n\n\\textbf{主張．} $\\sqrt{(2+u)^2-d^2}+\\sqrt{(2-u)^2-d^2}\\leqq2\\sqrt{4-d^2}$，等号は $u=0$ のときに限る．\n\n両辺は正なので2乗して比べる．左辺の2乗は\n\\[\n8+2u^2-2d^2+2\\sqrt{PQ},\\qquad P=(2+u)^2-d^2,\\ Q=(2-u)^2-d^2,\n\\]\n右辺の2乗は $16-4d^2$ であるから，示すべきは $\\sqrt{PQ}\\leqq4-u^2-d^2$ である．ここで $u^2<(2-d)^2$ より\n\\[\n4-u^2-d^2>4-(2-d)^2-d^2=2d(2-d)>0 .\n\\]\nさらに\n\\begin{align*}\nPQ&=(4-u^2)^2-d^2\\{(2+u)^2+(2-u)^2\\}+d^4=(4-u^2)^2-d^2(8+2u^2)+d^4,\\\\\n(4-u^2-d^2)^2&=(4-u^2)^2-2d^2(4-u^2)+d^4=(4-u^2)^2-d^2(8-2u^2)+d^4\n\\end{align*}\nより $(4-u^2-d^2)^2-PQ=4u^2d^2\\geqq0$．両辺正なので $\\sqrt{PQ}\\leqq4-u^2-d^2$ が成り立ち，等号は $u=0$ のときに限る．\\hfill$\\square$\n\n①と主張より $S\\leqq\\dfrac d4\\cdot2\\sqrt{4-d^2}=\\dfrac d2\\sqrt{4-d^2}$．等号は $m_1=m_2=2$ かつ2つの三角形がともに AC を底辺とする二等辺三角形，すなわち $\\mathrm{AB}=\\mathrm{BC}=\\mathrm{CD}=\\mathrm{DA}=1$ のときに限る．\n\n逆に，1辺の長さ1で対角線 AC の長さが $d$ のひし形は，$0<d<2$ のとき実際に存在し（もう一方の対角線の長さは $2\\sqrt{1-\\frac{d^2}4}=\\sqrt{4-d^2}>0$），凸四角形で周の長さ4，面積は $\\dfrac12\\cdot d\\cdot\\sqrt{4-d^2}$ である．よって\n\\[\n\\boldsymbol{F(d)=\\frac d2\\sqrt{4-d^2}}\n\\]\nで，最大となるのは \\textbf{1辺の長さ1で対角線 AC の長さが $d$ のひし形} のときである．\n\n(3) 周の長さ4の凸四角形 ABCD では，$2\\mathrm{AC}<(\\mathrm{AB}+\\mathrm{BC})+(\\mathrm{CD}+\\mathrm{DA})=4$ より $0<\\mathrm{AC}<2$．よって (2) から面積は $F(\\mathrm{AC})$ 以下である．相加平均・相乗平均の関係より\n\\[\nF(d)=\\frac12\\sqrt{d^2(4-d^2)}\\leqq\\frac12\\cdot\\frac{d^2+(4-d^2)}2=1,\n\\]\n等号は $d^2=4-d^2$，すなわち $d=\\sqrt2$ のとき．このとき (2) の最大を与える四角形は1辺1，対角線 $\\sqrt2$ のひし形で，$1^2+1^2=(\\sqrt2)^2$ より角が直角，すなわち正方形である．したがって面積はつねに1以下で，等号は (2)，(3) の等号条件がともに成り立つときに限るから，\n\\[\n\\boldsymbol{\\text{最大値 }1\\text{（1辺の長さ1の正方形のとき）}}.\n\\]"
+   }
+  ],
+  "idea": {
+   "tex": "底辺と他の2辺の和を固定した三角形の面積は，ヘロンの公式で $\\frac{1}{16}(m^2-a^2)\\{a^2-(m-2x)^2\\}$ の平方根となり二等辺で最大．凸四角形を対角線で2つの三角形に分けると，2つの「辺の和」$m_1,m_2$ の配分の問題になり，$\\sqrt{m^2-d^2}$ の和は $m_1=m_2$ で最大（2乗して差が $4u^2d^2$ の完全平方になる）．"
+  },
+  "methods": [],
+  "tags": [
+   "ヘロンの公式",
+   "面積の最大",
+   "楕円的発想",
+   "根号の不等式",
+   "凸四角形"
+  ],
+  "provenance": {
+   "created": "2026-11-14"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
  }
 ]

@@ -1,5 +1,5 @@
 // アイコン・効果音・テーマ・アプリの鳥「ルート」
-export const FILE_VERSION = '0.14.0';
+export const FILE_VERSION = '0.14.1';
 
 // ---------------------------------------------------------------- アイコン（線画、currentColor）
 const S = (body, extra = '') => `<svg class="ico" viewBox="0 0 24 24" aria-hidden="true" ${extra}>${body}</svg>`;

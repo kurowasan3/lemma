@@ -10605,5 +10605,1926 @@
    },
    "verified": false
   }
+ },
+ {
+  "id": "II-EQ-238",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-08",
+  "level": 5,
+  "minutes": 40,
+  "theme": "入れ子の根号の和が満たすただ1つの4次式",
+  "topic": "入れ子の根号の和が満たすただ1つの4次式",
+  "statement": {
+   "tex": "$u=\\sqrt{5+2\\sqrt5}$，$v=\\sqrt{5-2\\sqrt5}$ とし，$\\alpha=\\sqrt5+u+v$ とおく．\n\\begin{enumerate}\n  \\item 整数係数の4次多項式 $f(x)$ で，$x^4$ の係数が1であり $f(\\alpha)=0$ となるものを1つ求めよ．\n  \\item (1) で求めた $f(x)$ は，次数1以上の有理数係数の2つの多項式 $g(x),h(x)$ の積 $f(x)=g(x)h(x)$ として表すことはできないことを示せ．\n  \\item 有理数係数の多項式 $g(x)$ が $g(\\alpha)=0$ をみたすならば，$g(x)$ は $f(x)$ で割り切れることを示せ．\n  \\item 8個の実数 $\\pm\\sqrt5\\pm u\\pm v$（複号はすべての組合せ）のうちで，「$g(\\alpha)=0$ をみたす有理数係数の多項式 $g(x)$ すべてについて $g(\\beta)=0$」が成り立つような $\\beta$ をすべて求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $f(x)=x^4-30x^2-40x+5$　(2) 証明　(3) 証明　(4) $\\beta=\\sqrt5+u+v,\\ \\sqrt5-u-v,\\ -\\sqrt5+u-v,\\ -\\sqrt5-u+v$（符号の積が $+1$ の4個）"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) $r=\\sqrt5$，$w=u+v$ とおく．$u^2+v^2=10$，$uv=\\sqrt{(5+2\\sqrt5)(5-2\\sqrt5)}=\\sqrt{25-20}=\\sqrt5$ より\n\\[\nw^2=u^2+v^2+2uv=10+2\\sqrt5 .\n\\]\n$\\alpha=r+w$ より $(\\alpha-r)^2=w^2$，すなわち $\\alpha^2-2r\\alpha+5=10+2r$，よって $\\alpha^2-5=2r(\\alpha+1)$．両辺を2乗して $r^2=5$ を用いると\n\\[\n(\\alpha^2-5)^2=20(\\alpha+1)^2 .\n\\]\nしたがって\n\\[\n\\boldsymbol{f(x)=(x^2-5)^2-20(x+1)^2=x^4-30x^2-40x+5}\n\\]\nとすればよい．\n\n(2) 有理数係数の多項式 $g,h$（次数1以上）で $f=gh$ と書けたとする．$\\deg g+\\deg h=4$ なので，一方が1次（他方が3次）または両方が2次である．定数倍を調整して $g,h$ の最高次の係数を1としてよい（$f$ の最高次の係数が1だから，一方を1にすれば他方も1になる）．\n\n\\textbf{1次因数をもたないこと．}\\ 1次因数 $x-\\gamma$（$\\gamma$ 有理数）をもてば $f(\\gamma)=0$ である．$\\gamma=\\dfrac pq$（$p,q$ は互いに素な整数，$q\\geqq1$）とおくと，$f(\\gamma)=0$ に $q^4$ を掛けて\n\\[\np^4-30p^2q^2-40pq^3+5q^4=0,\\quad\\text{すなわち}\\quad p^4=q\\,(30p^2q+40pq^2-5q^3)\n\\]\nとなり，$q$ は $p^4$ を割り切る．$p,q$ は互いに素なので $q=1$，つまり $\\gamma$ は整数である．さらに $\\gamma(\\gamma^3-30\\gamma-40)=-5$ より $\\gamma$ は5の約数，すなわち $\\gamma\\in\\{\\pm1,\\pm5\\}$．ところが\n\\[\nf(1)=-64,\\quad f(-1)=16,\\quad f(5)=-320,\\quad f(-5)=80\n\\]\nはどれも0でない．よって $f$ は有理数係数の1次因数をもたない．\n\n\\textbf{2つの2次式の積でないこと．}\\ $f(x)=(x^2+px+q)(x^2+p'x+r)$（$p,p',q,r$ は有理数）とする．展開して係数を比べると\n\\[\np+p'=0,\\qquad q+r+pp'=-30,\\qquad pr+p'q=-40,\\qquad qr=5 .\n\\]\n$p'=-p$ より $q+r=p^2-30$，$p(r-q)=-40$．特に $p\\neq0$ で $r-q=-\\dfrac{40}p$．すると\n\\[\n20=4qr=(q+r)^2-(r-q)^2=(p^2-30)^2-\\frac{1600}{p^2}.\n\\]\n$P=p^2$（正の有理数）とおき $P$ を掛けると\n\\[\nP^3-60P^2+880P-1600=0,\\qquad\\text{すなわち}\\qquad (P-20)(P^2-40P+80)=0 .\n\\]\n$P^2-40P+80=0$ の解は $P=20\\pm8\\sqrt5$ で有理数でない．よって $P=20$．しかし $p^2=20$ をみたす有理数 $p$ は存在しない（$p=\\dfrac st$（既約）とすると $s^2=20t^2$，$s$ は偶数で $s=2s_1$，$s_1^2=5t^2$ から $s_1$ は5の倍数，$s_1=5s_2$ として $t^2=5s_2^2$ から $t$ も5の倍数となり，$s,t$ が互いに素であることに反する）．\n\n以上より $f$ は有理数係数の次数1以上の2つの多項式の積に表せない．\\hfill$\\square$\n\n(3) まず，$\\alpha$ を解にもつ0でない有理数係数の多項式で次数が3以下のものは存在しないことを示す．存在したとして，そのうち次数が最小のものを $k(x)$ とし，最高次の係数を1にしておく．定数は $\\alpha$ で0にならないので $1\\leqq\\deg k\\leqq3$．$f$ を $k$ で割り，$f(x)=k(x)Q(x)+R(x)$（$Q,R$ は有理数係数，$\\deg R<\\deg k$）とする．$x=\\alpha$ を代入すると $R(\\alpha)=0$ で，$R\\neq0$ なら $k$ の最小性に反するから $R=0$．よって $f=kQ$ で，$\\deg k\\geqq1$，$\\deg Q=4-\\deg k\\geqq1$ となり (2) に反する．\n\n次に有理数係数の $g(x)$ が $g(\\alpha)=0$ をみたすとする．$g$ を $f$ で割り $g(x)=f(x)S(x)+T(x)$（$\\deg T\\leqq3$ または $T=0$）とすると，$f(\\alpha)=0$ より $T(\\alpha)=0$．上で示したことから $T=0$．よって $g(x)$ は $f(x)$ で割り切れる．\\hfill$\\square$\n\n(4) $\\beta=\\varepsilon_1\\sqrt5+\\varepsilon_2u+\\varepsilon_3v$（$\\varepsilon_i=\\pm1$），$\\delta=\\varepsilon_1\\varepsilon_2\\varepsilon_3$ とおく．$r=\\varepsilon_1\\sqrt5$，$w=\\varepsilon_2u+\\varepsilon_3v$ とすると $r^2=5$ で，\n\\[\nw^2=10+2\\varepsilon_2\\varepsilon_3\\sqrt5=10+2\\varepsilon_1\\varepsilon_2\\varepsilon_3\\cdot\\varepsilon_1\\sqrt5=10+2\\delta r .\n\\]\n(1) と同様に $(\\beta-r)^2=w^2$ から $\\beta^2-5=2r(\\beta+\\delta)$，2乗して\n\\[\n(\\beta^2-5)^2=20(\\beta+\\delta)^2 .\n\\]\n$\\delta=1$ のときこれは $f(\\beta)=0$，$\\delta=-1$ のときは $(\\beta^2-5)^2-20(\\beta-1)^2=0$，すなわち $f(-\\beta)=0$ である．\n\n求める $\\beta$ の条件は「$f(\\beta)=0$」と同値である．実際，$g=f$ 自身が $g(\\alpha)=0$ をみたすので必要．逆に $f(\\beta)=0$ なら，(3) より $g(\\alpha)=0$ をみたす任意の $g$ は $g=fS$ と書けて $g(\\beta)=0$ となるので十分．\n\n$\\delta=1$ の4個は $f(\\beta)=0$ をみたす．$\\delta=-1$ の4個は $f(-\\beta)=0$ をみたすが，もし $f(\\beta)=0$ でもあれば，$f(\\beta)-f(-\\beta)=-80\\beta=0$ より $\\beta=0$ となり，$f(0)=5\\neq0$ に反する．よって $\\delta=-1$ の4個は条件をみたさない．\n\n以上より，求める $\\beta$ は符号の積が $+1$ の\n\\[\n\\boldsymbol{\\sqrt5+u+v,\\quad \\sqrt5-u-v,\\quad -\\sqrt5+u-v,\\quad -\\sqrt5-u+v}\n\\]\nの4個である．"
+   }
+  ],
+  "idea": {
+   "tex": "$u=\\sqrt{5+2\\sqrt5}$，$v=\\sqrt{5-2\\sqrt5}$ は $uv=\\sqrt5$ をみたすので，$\\varepsilon_1\\sqrt5+\\varepsilon_2u+\\varepsilon_3v$ の2乗計算では符号の積 $\\delta=\\varepsilon_1\\varepsilon_2\\varepsilon_3$ だけが残り，8個の数は $f(x)=0$ か $f(-x)=0$ に振り分けられる．さらに $f$ が有理数係数の範囲で1次・2次の因数をもたないことを（1次因数は整数解の候補，2次因数は係数比較から $p^2$ の3次方程式に落として）示すと，$\\alpha$ を解にもつ有理数係数の多項式はすべて $f$ で割り切れる．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) $f(x)$：x^4-30x^2-40x+5\n(2) 証明\n(3) 証明\n(4) $\\beta$：{sqrt(5)+u+v, sqrt(5)-u-v, -sqrt(5)+u-v, -sqrt(5)-u+v}"
+  },
+  "methods": [],
+  "tags": [
+   "二重根号",
+   "符号の組",
+   "4次方程式",
+   "有理数係数の因数分解",
+   "剰余の利用"
+  ],
+  "provenance": {
+   "created": "2026-11-18"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-EQ-214",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-08",
+  "level": 5,
+  "minutes": 45,
+  "theme": "係数が次の解になる3次式の列",
+  "topic": "係数が次の解になる3次式の列",
+  "statement": {
+   "tex": "整数からなる3つの数列 $\\{a_n\\}$，$\\{b_n\\}$，$\\{c_n\\}$ が，すべての正の整数 $n$ について\n\\[\nx^3+a_nx^2+b_nx+c_n=(x-a_{n+1})(x-b_{n+1})(x-c_{n+1})\\qquad(\\ast)\n\\]\nを $x$ についての恒等式としてみたしているとする．\n\\begin{enumerate}\n  \\item ある $n$ について $c_n\\neq0$ ならば，$c_{n+1}\\neq0$ かつ $|c_{n+1}|\\leqq|c_n|$ であることを示せ．\n  \\item すべての正の整数 $n$ について $c_n\\neq0$ であるような $(\\ast)$ をみたす数列の組 $\\{a_n\\},\\{b_n\\},\\{c_n\\}$ をすべて求めよ．\n  \\item $(\\ast)$ をみたす数列の組 $\\{a_n\\},\\{b_n\\},\\{c_n\\}$ をすべて求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 証明　(2) すべての $n$ で $(a_n,b_n,c_n)=(1,-1,-1)$　(3) すべての $n$ で $(a_n,b_n,c_n)=(1,-1,-1)$，すべての $n$ で $(a_n,b_n,c_n)=(1,-2,0)$，または整数 $k$ を用いて $(a_n,b_n,c_n)=\\bigl((-1)^{n-1}k,\\,0,\\,0\\bigr)$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "$(\\ast)$ の両辺の係数を比べると，すべての $n$ について\n\\[\na_n=-(a_{n+1}+b_{n+1}+c_{n+1}),\\quad b_n=a_{n+1}b_{n+1}+b_{n+1}c_{n+1}+c_{n+1}a_{n+1},\\quad c_n=-a_{n+1}b_{n+1}c_{n+1}. \\tag{A}\n\\]\nまた，$(a_{n+1},b_{n+1},c_{n+1})$ が与えられれば $(\\ast)$ の右辺を展開して $(a_n,b_n,c_n)$ は1通りに決まる．\\quad(B)\n\n(1) $c_n\\neq0$ なら (A) の第3式より $a_{n+1},b_{n+1},c_{n+1}$ はどれも0でない．特に $c_{n+1}\\neq0$．さらに $a_{n+1},b_{n+1}$ は0でない整数なので $|a_{n+1}b_{n+1}|\\geqq1$ で，$|c_n|=|a_{n+1}b_{n+1}|\\,|c_{n+1}|\\geqq|c_{n+1}|$．\\hfill$\\square$\n\n(2) まず次を示す．\n\n\\textbf{補題．}\\ 正の整数 $m_0$ があって，$n\\geqq m_0$ のすべてで $c_n\\neq0$ ならば，$n\\geqq m_0$ のすべてで $(a_n,b_n,c_n)=(1,-1,-1)$．\n\n\\textit{証明．}\\ (1) より $n\\geqq m_0$ で $|c_n|\\geqq|c_{n+1}|\\geqq1$．正の整数の単調非増加列なので，ある $N\\geqq m_0$ から先は一定である．$n\\geqq N$ で $|c_n|=|c_{n+1}|\\neq0$ より $|a_{n+1}b_{n+1}|=1$，すなわち $n\\geqq N+1$ で $a_n,b_n\\in\\{1,-1\\}$．\n\n$n\\geqq N+1$ とし，$u=a_{n+1}$，$v=b_{n+1}$（$\\pm1$），$w=c_{n+1}\\ (\\neq0)$ とおく．(A) より $b_n=uv+w(u+v)$．\n\\begin{itemize}\n  \\item $u=v$ のとき $b_n=1+2uw$．$b_n=\\pm1$ と $w\\neq0$ より $1+2uw=-1$，$w=-u$ で $b_n=-1$．\n  \\item $u=-v$ のとき $b_n=-1$．\n\\end{itemize}\nよって $n\\geqq N+1$ で $b_n=-1$．したがって $n\\geqq N+1$ では $v=b_{n+1}=-1$ であり，\n\\begin{itemize}\n  \\item $u=-1$（$u=v$）なら $w=1$ で，$(a_{n+1},b_{n+1},c_{n+1})=(-1,-1,1)$．\n  \\item $u=1$ なら (A) より $a_n=-w$，$a_n=\\pm1$ から $w=\\pm1$ で，$(a_{n+1},b_{n+1},c_{n+1})=(1,-1,\\pm1)$．\n\\end{itemize}\nゆえに $n\\geqq N+2$ では $(a_n,b_n,c_n)$ は $(-1,-1,1)$，$(1,-1,1)$，$(1,-1,-1)$ のいずれかである．\n\n$(\\ast)$ より $x^3+a_nx^2+b_nx+c_n$ は整数解 $a_{n+1}$ をもつ．$(1,-1,1)$ のとき $x^3+x^2-x+1$ の整数解 $\\gamma$ は $\\gamma(\\gamma^2+\\gamma-1)=-1$ より $\\pm1$ だが，$x=\\pm1$ での値はどちらも2で0でない．よって $n\\geqq N+2$ で $(1,-1,1)$ は現れない．$(-1,-1,1)$ のとき $x^3-x^2-x+1=(x-1)^2(x+1)$ なので $(a_{n+1},b_{n+1},c_{n+1})$ は $1,1,-1$ の並べかえで，$n+1\\geqq N+2$ における3つの候補のうちこれに当たるのは $(1,-1,1)$ だけであり，それは現れないから矛盾．よって $n\\geqq N+2$ で $(a_n,b_n,c_n)=(1,-1,-1)$．\n\n最後に，$(a_{n+1},b_{n+1},c_{n+1})=(1,-1,-1)$ なら (B) より $x^3+a_nx^2+b_nx+c_n=(x-1)(x+1)^2=x^3+x^2-x-1$ で $(a_n,b_n,c_n)=(1,-1,-1)$．これを $n=N+1$ から $n=m_0$ まで $n$ を1ずつ減らしながら順に適用すれば，$n\\geqq m_0$ のすべてで $(1,-1,-1)$．\\hfill$\\square$\n\n(2) の数列は補題（$m_0=1$）より，すべての $n$ で $(a_n,b_n,c_n)=(1,-1,-1)$ に限る．逆にこれは $(x-1)(x+1)^2=x^3+x^2-x-1$ より $(\\ast)$ をみたす．答は\n\\[\n\\boldsymbol{\\text{すべての }n\\text{ で }(a_n,b_n,c_n)=(1,-1,-1)}.\n\\]\n\n(3) \\textbf{ある $m$ で $c_m\\neq0$ の場合．}\\ (1) をくり返して $n\\geqq m$ で $c_n\\neq0$．補題より $n\\geqq m$ で $(1,-1,-1)$．$m\\geqq2$ なら (B) により $(a_{m-1},b_{m-1},c_{m-1})=(1,-1,-1)$ となるので，順にさかのぼってすべての $n$ で $(1,-1,-1)$（このとき $c_n\\neq0$）．\n\n\\textbf{すべての $n$ で $c_n=0$ の場合．}\\ $(\\ast)$ は $x(x^2+a_nx+b_n)=x(x-a_{n+1})(x-b_{n+1})$ となり，$x\\neq0$ で両辺を $x$ で割って多項式の恒等式\n\\[\nx^2+a_nx+b_n=(x-a_{n+1})(x-b_{n+1}),\\quad\\text{すなわち}\\quad a_n=-(a_{n+1}+b_{n+1}),\\ \\ b_n=a_{n+1}b_{n+1} \\tag{C}\n\\]\nを得る．(C) でも $(a_{n+1},b_{n+1})$ から $(a_n,b_n)$ は1通りに決まる．\n\\begin{itemize}\n  \\item ある $m$ で $b_m\\neq0$ のとき：(C) より $a_{m+1},b_{m+1}\\neq0$，$|b_{m+1}|\\leqq|b_m|$．くり返して $n\\geqq m$ で $b_n\\neq0$ かつ $|b_n|$ は単調非増加，ある $N\\geqq m$ 以降一定．$n\\geqq N$ で $|a_{n+1}|=1$．$n\\geqq N+1$ で $a_n,a_{n+1}\\in\\{\\pm1\\}$ かつ $b_{n+1}=-a_n-a_{n+1}\\neq0$ なので $a_n=a_{n+1}=\\varepsilon$，$b_{n+1}=-2\\varepsilon$，$b_n=a_{n+1}b_{n+1}=-2$．すると $b_{n+1}=-2$ でもあるから（$n+1\\geqq N+1$）$\\varepsilon=1$．よって $n\\geqq N+1$ で $(a_n,b_n)=(1,-2)$．$(a_{n+1},b_{n+1})=(1,-2)$ なら (C) より $(a_n,b_n)=(1,-2)$ なので，さかのぼってすべての $n$ で $(a_n,b_n,c_n)=(1,-2,0)$．\n  \\item すべての $n$ で $b_n=0$ のとき：(C) の $x$ の係数から $a_{n+1}=-a_n$．よって $a_n=(-1)^{n-1}a_1$．\n\\end{itemize}\n\n\\textbf{十分性．}\\ $x^3+x^2-x-1=(x-1)(x+1)^2$，$x^3+x^2-2x=(x-1)(x+2)x$，$x^3+kx^2=(x+k)x\\cdot x$ より，それぞれ $(\\ast)$ をみたす（3つ目は $(a_{n+1},b_{n+1},c_{n+1})=(-a_n,0,0)$）．\n\n以上より，求める数列の組は\n\\[\n\\boldsymbol{(a_n,b_n,c_n)=(1,-1,-1),\\quad (1,-2,0)\\ \\ (\\text{すべての }n),\\quad \\bigl((-1)^{n-1}k,0,0\\bigr)\\ (k\\text{ は任意の整数})}.\n\\]"
+   }
+  ],
+  "idea": {
+   "tex": "定数項の比較 $c_n=-a_{n+1}b_{n+1}c_{n+1}$ から，$c_n\\neq0$ なら以後ずっと $c\\neq0$ で $|c_n|$ は単調非増加，やがて一定となり $|a_{n+1}b_{n+1}|=1$．すると $a,b$ は $\\pm1$ に限られ，有限個の候補を調べると $(1,-1,-1)$ だけが残る．解が決まれば多項式（前の項）は一意に決まるので，後ろの項から逆にたどって全体が決まる．$c$ がすべて0の場合は2次式の問題に帰着し，同じ降下法をもう一段使う．"
+  },
+  "methods": [],
+  "tags": [
+   "解と係数の関係",
+   "整数",
+   "無限降下",
+   "定数項の絶対値",
+   "逆向きの一意性"
+  ],
+  "provenance": {
+   "created": "2026-11-18"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-EQ-215",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-08",
+  "level": 4,
+  "minutes": 30,
+  "theme": "$x^4$ を割る2次式の個数",
+  "topic": "$x^4$ を割る2次式の個数",
+  "statement": {
+   "tex": "\\begin{enumerate}\n  \\item $a$ を実数とする．整式 $x^4$ を2次式 $(x-a)^2$ で割ったときの余りを求めよ．\n  \\item 実数 $p,\\ q$ が与えられたとき，実数を係数とする2次式 $f(x)=x^2+\\alpha x+\\beta$ で整式 $x^4$ を割ったときの余りが $px+q$ となるような $f(x)$ の個数を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $4a^3x-3a^4$　(2) $(p,\\ q)=(0,\\ 0)$ のとき1個，それ以外のとき2個"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) $x=(x-a)+a$ とみて二項定理を用いると\n\\[ x^4=(x-a)^4+4a(x-a)^3+6a^2(x-a)^2+4a^3(x-a)+a^4. \\]\n右辺の初めの3項はいずれも $(x-a)^2$ で割り切れ，残りの $4a^3(x-a)+a^4=4a^3x-3a^4$ は1次以下なので，余りは $\\boldsymbol{4a^3x-3a^4}$．\n\n(2) $u=-\\alpha$，$v=\\beta$ とおくと $f(x)=x^2-ux+v$ で，実数の組 $(u,v)$ と $f$ は1対1に対応する．$x^2=f(x)+ux-v$ だから，$f(x)$ で割った余りが等しいことを $\\equiv$ で表すと\n\\[ x^2\\equiv ux-v,\\quad x^3\\equiv ux^2-vx\\equiv(u^2-v)x-uv,\\quad x^4\\equiv(u^2-v)x^2-uvx\\equiv(u^3-2uv)x-v(u^2-v). \\]\n最後の式は1次以下なので，これが余りである（余りは一意）．よって求める個数は\n\\[ u(u^2-2v)=p,\\qquad v^2-u^2v=q \\qquad\\cdots(*) \\]\nをみたす実数の組 $(u,v)$ の個数である．\n\n\\textbf{$u=0$ の場合：}$(*)$ は $p=0$，$v^2=q$．\n\n\\textbf{$u\\neq0$ の場合：}第1式より $v=\\dfrac{u^3-p}{2u}$，このとき $u^2-v=\\dfrac{u^3+p}{2u}$ で，第2式は\n\\[ q=-v(u^2-v)=-\\frac{(u^3-p)(u^3+p)}{4u^2}=\\frac{p^2}{4u^2}-\\frac{u^4}{4}. \\]\n逆にこの $u$ と $v=\\frac{u^3-p}{2u}$ は $(*)$ をみたす．$u\\neq0$ の解 $(u,v)$ は，$\\frac{p^2}{4u^2}-\\frac{u^4}4=q$ をみたす $u\\neq0$ と1対1に対応する．\n\n\\textbf{(i) $p\\neq0$ のとき．}$u=0$ の解はない．$w=u^2>0$ として $k(w)=\\dfrac{p^2}{4w}-\\dfrac{w^2}4$ は $w>0$ で連続かつ狭義減少で，$w\\to+0$ で $+\\infty$，$w\\to\\infty$ で $-\\infty$ に発散するので，$k(w)=q$ をみたす $w>0$ はただ1つ．それに対し $u=\\pm\\sqrt w$ の2つがあるので，解は2組．\n\n\\textbf{(ii) $p=0$ のとき．}$u\\neq0$ の解は $q=-\\frac{u^4}4$，$v=\\frac{u^2}2$ をみたすもので，$q<0$ のときに限り $u=\\pm(-4q)^{\\frac14}$ の2組，$q\\geqq0$ のときはない．$u=0$ の解は $v^2=q$ で，$q>0$ なら2組，$q=0$ なら1組，$q<0$ ならない．合わせて $q>0$ で2組，$q=0$ で1組（$f(x)=x^2$），$q<0$ で2組．\n\n以上より\n\\[ \\boldsymbol{(p,q)=(0,0)\\text{ のとき1個，それ以外のとき2個}}. \\]"
+   }
+  ],
+  "idea": {
+   "tex": "$f(x)=x^2-ux+v$ で $x^2\\equiv ux-v$ を繰り返し使うと $x^4$ の余りは $u(u^2-2v)x-v(u^2-v)$．$u\\neq0$ なら $v$ を消去して $q=\\dfrac{p^2}{4u^2}-\\dfrac{u^4}{4}$ となり，$w=u^2$ の狭義減少関数だから $w$ はただ1つ，$u=\\pm\\sqrt w$ の2通り．$p=0$ のときは $u=0$ の枝と合わせて場合分けする．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) 4a^3x-3a^4\n(2) 記述"
+  },
+  "methods": [],
+  "tags": [
+   "整式の除法",
+   "余り",
+   "単調性",
+   "場合分け",
+   "解の個数"
+  ],
+  "provenance": {
+   "created": "2026-11-18"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-EQ-216",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-08",
+  "level": 5,
+  "minutes": 40,
+  "theme": "$x^2-2$ で解の集合が移り合う3次方程式",
+  "topic": "$x^2-2$ で解の集合が移り合う3次方程式",
+  "statement": {
+   "tex": "実数 $a,\\ b,\\ c$ に対し，3次方程式 $x^3+ax^2+bx+c=0$ は異なる3つの実数解 $p,\\ q,\\ r$ をもち，さらに $p^2-2,\\ q^2-2,\\ r^2-2$ も同じ方程式の異なる3つの解であるとする．\n\\begin{enumerate}\n  \\item $|p|\\leqq2$，$|q|\\leqq2$，$|r|\\leqq2$ であることを示せ．\n  \\item $a,\\ b,\\ c$ の組をすべて求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 証明　(2) $(a,b,c)=(-1,-3,2),\\ (2,0,-1),\\ (1,-2,-1),\\ (0,-3,1)$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "$S=\\{p,q,r\\}$，$\\varphi(x)=x^2-2$ とする．$\\varphi(p),\\varphi(q),\\varphi(r)$ は $S$ の異なる3要素なので，$\\varphi$ は $S$ から $S$ への1対1対応（置換）である．\n\n(1) $|p|,|q|,|r|$ の最大値を $M$ とし，$|s|=M$（$s\\in S$）とする．$M>2$ と仮定すると $\\varphi(s)=M^2-2\\in S$ で，$(M^2-2)-M=(M-2)(M+1)>0$ より $|\\varphi(s)|>M$ となり $M$ の最大性に反する．よって $M\\leqq2$．\n\n(2) (1) より各 $s\\in S$ は $s=2\\cos\\theta$（$0\\leqq\\theta\\leqq\\pi$）とただ1通りに表せ，$\\varphi(2\\cos\\theta)=4\\cos^2\\theta-2=2\\cos2\\theta$．$\\varphi$ の固定点は $x^2-2=x$ より $x=2,\\,-1$．\n\n\\textbf{(ア) $S$ に $\\varphi$ の固定点があるとき．} 置換が固定点をもつので，恒等置換か，他の2要素 $u\\neq v$ を入れかえる置換．恒等置換なら $S$ の3要素がすべて固定点で，固定点は2つしかないので不可．よって $\\varphi(u)=v$，$\\varphi(v)=u$：\n\\[ u^2-2=v,\\ v^2-2=u\\ \\Longrightarrow\\ (u-v)(u+v+1)=0,\\quad u^2+v^2-4=u+v. \\]\n$u\\neq v$ より $u+v=-1$，$u^2+v^2=3$，$uv=\\frac{(u+v)^2-3}2=-1$．$u,v$ は $t^2+t-1=0$ の2解 $\\frac{-1\\pm\\sqrt5}2$．逆に $\\varphi\\left(\\frac{-1+\\sqrt5}2\\right)=\\frac{3-\\sqrt5}2-2=\\frac{-1-\\sqrt5}2$ などが成り立ち，これらは固定点でない．よって $S=\\left\\{2,\\frac{-1\\pm\\sqrt5}2\\right\\}$ または $\\left\\{-1,\\frac{-1\\pm\\sqrt5}2\\right\\}$ で，方程式は\n\\[ (x-2)(x^2+x-1)=x^3-x^2-3x+2,\\qquad (x+1)(x^2+x-1)=x^3+2x^2-1. \\]\n\n\\textbf{(イ) 固定点がないとき．} 置換は3要素を巡回させるので，各 $s\\in S$ で $\\varphi(\\varphi(\\varphi(s)))=s$．$s=2\\cos\\theta$ とおくと $2\\cos8\\theta=2\\cos\\theta$，よって $8\\theta=\\pm\\theta+2\\pi k$（$k$ は整数），$\\theta=\\frac{2\\pi k}7$ または $\\frac{2\\pi k}9$．$0\\leqq\\theta\\leqq\\pi$ で固定点（$\\theta=0$ の $2$，$\\theta=\\frac{2\\pi}3$ の $-1$）を除くと\n\\[ S\\subset A\\cup B,\\quad A=\\left\\{2\\cos\\tfrac{2\\pi}7,\\ 2\\cos\\tfrac{4\\pi}7,\\ 2\\cos\\tfrac{6\\pi}7\\right\\},\\quad B=\\left\\{2\\cos\\tfrac{2\\pi}9,\\ 2\\cos\\tfrac{4\\pi}9,\\ 2\\cos\\tfrac{8\\pi}9\\right\\}. \\]\n$\\varphi$ は $2\\cos\\frac{2\\pi}7\\to2\\cos\\frac{4\\pi}7\\to2\\cos\\frac{8\\pi}7=2\\cos\\frac{6\\pi}7\\to2\\cos\\frac{12\\pi}7=2\\cos\\frac{2\\pi}7$，$2\\cos\\frac{2\\pi}9\\to2\\cos\\frac{4\\pi}9\\to2\\cos\\frac{8\\pi}9\\to2\\cos\\frac{16\\pi}9=2\\cos\\frac{2\\pi}9$ と巡回する．$S$ は1つの要素から $\\varphi$ をくり返して得られる3要素なので，$S=A$ または $S=B$（各集合の3数は $\\cos$ が $[0,\\pi]$ で単調減少なので異なる）．\n\n$S=A$ のとき：$\\theta=\\frac{2\\pi k}7$ では $4\\theta=2\\pi k-3\\theta$ より $\\cos4\\theta=\\cos3\\theta$．$x=2\\cos\\theta$ とすると $2\\cos3\\theta=x^3-3x$，$2\\cos4\\theta=(x^2-2)^2-2=x^4-4x^2+2$ なので\n\\[ x^4-x^3-4x^2+3x+2=(x-2)(x^3+x^2-2x-1)=0. \\]\n$A$ の要素は $2$ でないので $x^3+x^2-2x-1=0$ の解で，異なる3つなのでその3解全体が $A$．\n\n$S=B$ のとき：$3\\theta=\\frac{2\\pi}3,\\frac{4\\pi}3,\\frac{8\\pi}3$ で $\\cos3\\theta=-\\frac12$．$x^3-3x=2\\cos3\\theta=-1$ より $B$ は $x^3-3x+1=0$ の3解全体．\n\n逆に (ア)(イ) の4つの方程式はいずれも異なる3実数解をもち，$\\varphi$ が解の集合の置換になるので条件をみたす．以上より\n\\[ \\boldsymbol{(a,b,c)=(-1,-3,2),\\ (2,0,-1),\\ (1,-2,-1),\\ (0,-3,1)}. \\]\n\\hfill$\\square$"
+   }
+  ],
+  "idea": {
+   "tex": "$\\varphi(x)=x^2-2$ は解の集合 $S$ の置換になる．絶対値最大の解を考えると $|x|\\leqq2$ が出て，$x=2\\cos\\theta$ とおけば $\\varphi$ は $\\theta\\mapsto2\\theta$ になる．置換は「固定点＋互換」か「3巡回」のどちらかで，3巡回なら $\\cos8\\theta=\\cos\\theta$ から $\\theta=\\frac{2\\pi m}7,\\frac{2\\pi m}9$．原題（2つの異なる変換 $2x^2-1$，$2x-1$）と違い，ここでは1つの2次写像の周期点の分類が中心になる．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) 証明\n(2) $(a,b,c)$：{(-1, -3, 2), (2, 0, -1), (1, -2, -1), (0, -3, 1)}"
+  },
+  "methods": [],
+  "tags": [
+   "3次方程式",
+   "置換",
+   "周期点",
+   "2倍角",
+   "3倍角",
+   "余弦"
+  ],
+  "provenance": {
+   "created": "2026-11-18"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-EQ-217",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-08",
+  "level": 4,
+  "minutes": 30,
+  "theme": "3次方程式の3つの解を3辺とする三角形",
+  "topic": "3次方程式の3つの解を3辺とする三角形",
+  "statement": {
+   "tex": "$p,q$ を実数とし，$x$ の3次方程式\n\\[\nx^3-2x^2+px-q=0\\qquad\\cdots(*)\n\\]\nを考える．\n\\begin{enumerate}\n  \\item $(*)$ が3つの実数解 $\\alpha,\\beta,\\gamma$（重解は重複して数える）をもつとする．$\\alpha,\\beta,\\gamma$ を3辺の長さとする三角形が存在するための必要十分条件は，$q>0$ かつ $p>q+1$ であることを示せ．\n  \\item $p=\\dfrac54$ とする．$(*)$ が3つの実数解をもち，それらを3辺の長さとする三角形が存在するような $q$ の値の範囲を求めよ．\n  \\item $(*)$ が3つの実数解をもち，それらを3辺の長さとする三角形が存在するとき，$p$ のとりうる値の範囲を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 証明　(2) $\\dfrac{25}{108}\\leqq q<\\dfrac14$　(3) $1<p\\leqq\\dfrac43$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "解と係数の関係から $\\alpha+\\beta+\\gamma=2$，$\\alpha\\beta+\\beta\\gamma+\\gamma\\alpha=p$，$\\alpha\\beta\\gamma=q$ であり，$F(x)=x^3-2x^2+px-q=(x-\\alpha)(x-\\beta)(x-\\gamma)$．\n\n(1) $\\alpha,\\beta,\\gamma$ を3辺とする三角形が存在する $\\iff$ $\\alpha,\\beta,\\gamma>0$ かつ各辺が他の2辺の和より小さい．$\\alpha<\\beta+\\gamma=2-\\alpha\\iff\\alpha<1$ などから，これは「$0<\\alpha,\\beta,\\gamma<1$」と同値．\n\n($\\Rightarrow$) $q=\\alpha\\beta\\gamma>0$．また $F(1)=(1-\\alpha)(1-\\beta)(1-\\gamma)>0$ で，$F(1)=1-2+p-q$ だから $p>q+1$．\n\n($\\Leftarrow$) $q>0$，$p>q+1$ とする．$(1-\\alpha)(1-\\beta)(1-\\gamma)=p-q-1>0$ なので3数 $1-\\alpha,1-\\beta,1-\\gamma$ は0でなく，負のものは0個か2個．2個，たとえば $\\beta>1$，$\\gamma>1$ なら $\\alpha=2-\\beta-\\gamma<0$ で $\\alpha\\beta\\gamma<0$ となり $q>0$ に反する．よって $\\alpha,\\beta,\\gamma<1$．次に $\\alpha\\beta\\gamma=q>0$ より3数は0でなく負のものは0個か2個．2個，たとえば $\\alpha,\\beta<0$ なら $\\gamma=2-\\alpha-\\beta>2$ となり $\\gamma<1$ に反する．よって $0<\\alpha,\\beta,\\gamma<1$．\\hfill$\\square$\n\n(2) $p=\\frac54$ のとき $(*)\\iff g(x)=q$，$g(x)=x^3-2x^2+\\frac54x$．\n\\[\ng'(x)=3x^2-4x+\\frac54=\\frac14(2x-1)(6x-5)\n\\]\nより $g$ は $x\\leqq\\frac12$ で増加，$\\frac12\\leqq x\\leqq\\frac56$ で減少，$x\\geqq\\frac56$ で増加し，\n\\[\ng\\Bigl(\\frac12\\Bigr)=\\frac18-\\frac12+\\frac58=\\frac14,\\qquad g\\Bigl(\\frac56\\Bigr)=\\frac{125}{216}-\\frac{50}{36}+\\frac{25}{24}=\\frac{125-300+225}{216}=\\frac{25}{108}.\n\\]\n$q>\\frac14$ または $q<\\frac{25}{108}$ なら，直線 $y=q$ と $y=g(x)$ の共有点は1個で，そのときの実数解 $x_0$ は単解（$g'(x_0)\\neq0$ である．実際 $g'(x_0)=0$ なら $x_0=\\frac12,\\frac56$ で $q=\\frac14,\\frac{25}{108}$ となる）なので，重複を込めても実数解は1個しかない．$\\frac{25}{108}<q<\\frac14$ なら各単調区間に1個ずつ，計3個の異なる実数解をもつ（中間値の定理）．$q=\\frac14$ なら $F(x)=\\bigl(x-\\frac12\\bigr)^2(x-1)$，$q=\\frac{25}{108}$ なら $F(x)=\\bigl(x-\\frac56\\bigr)^2\\bigl(x-\\frac13\\bigr)$ でいずれも3つの実数解をもつ．よって3つの実数解をもつ $\\iff\\frac{25}{108}\\leqq q\\leqq\\frac14$．\n\nこれと (1) の条件 $q>0$，$q<p-1=\\frac14$ を合わせて $\\boldsymbol{\\dfrac{25}{108}\\leqq q<\\dfrac14}$．（$q=\\frac14$ のときの3辺 $\\frac12,\\frac12,1$ は三角形をなさない．）\n\n(3) $\\alpha^2+\\beta^2+\\gamma^2=(\\alpha+\\beta+\\gamma)^2-2p=4-2p$．\n\n上からの評価：$3(\\alpha^2+\\beta^2+\\gamma^2)-(\\alpha+\\beta+\\gamma)^2=(\\alpha-\\beta)^2+(\\beta-\\gamma)^2+(\\gamma-\\alpha)^2\\geqq0$ より $4-2p\\geqq\\frac43$，$p\\leqq\\frac43$．\n\n下からの評価：(1) より $0<\\alpha<1$ なので $\\alpha^2<\\alpha$ などが成り立ち，$4-2p<\\alpha+\\beta+\\gamma=2$，$p>1$．\n\n逆に $1<p\\leqq\\frac43$ の任意の $p$ に対し $t=\\dfrac{2+\\sqrt{4-3p}}3$ とおくと $0\\leqq\\sqrt{4-3p}<1$ より $\\frac23\\leqq t<1$ で，$-3t^2+4t=p$ をみたす．$\\alpha=\\beta=t$，$\\gamma=2-2t$ とすると $\\alpha+\\beta+\\gamma=2$，$\\alpha\\beta+\\beta\\gamma+\\gamma\\alpha=t^2+2t(2-2t)=-3t^2+4t=p$ であり，$q=t^2(2-2t)$ とおけば $(*)$ は $(x-t)^2(x-2+2t)=0$ となって3つの実数解 $t,t,2-2t$ をもつ．$0<2-2t\\leqq\\frac23<1$，$0<t<1$ なので三角形が存在する．\n\nよって $\\boldsymbol{1<p\\leqq\\dfrac43}$．"
+   }
+  ],
+  "idea": {
+   "tex": "解の和が2なので，三角形の成立条件は「3解がすべて $0$ と $1$ の間」．これは $f(0)<0<f(1)$，すなわち $q>0$ と $(1-\\alpha)(1-\\beta)(1-\\gamma)=p-q-1>0$ に言い換えられる（符号の組合せと和の条件で逆も成立）．3つの実数解をもつ条件は $y=x^3-2x^2+px$ と直線 $y=q$ の共有点で見る．$p$ の範囲は2乗和 $4-2p$ の評価．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) 証明\n(2) 25/108<=q<1/4\n(3) 1<p<=4/3"
+  },
+  "methods": [],
+  "tags": [
+   "解と係数の関係",
+   "3次方程式の実数解",
+   "定数分離",
+   "三角形の成立条件"
+  ],
+  "provenance": {
+   "created": "2026-11-18"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-EQ-218",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-08",
+  "level": 4,
+  "minutes": 30,
+  "theme": "$g(x)g\\!\\left(\\frac1x\\right)$ の非負性とその逆問題",
+  "topic": "$g(x)g\\!\\left(\\frac1x\\right)$ の非負性とその逆問題",
+  "statement": {
+   "tex": "$g(x)$ を実数係数の $n$ 次式（$n\\geqq1$）とし，$x\\neq0$ に対して $u(x)=g(x)\\,g\\!\\left(\\dfrac1x\\right)$ とおく．\n\\begin{enumerate}\n  \\item $u(x)$ は $y=x+\\dfrac1x$ の $n$ 次以下の整式 $v(y)$ を用いて $u(x)=v\\!\\left(x+\\dfrac1x\\right)$ と表せることを示せ．\n  \\item $-2\\leqq y\\leqq2$ をみたすすべての $y$ に対して $v(y)\\geqq0$ であることを示せ．\n  \\item $g(x)=ax^2+bx+c$（$a,b,c$ は実数，$a\\neq0$）とする．すべての $x\\neq0$ に対して $u(x)=2y^2+9y+10$（$y=x+\\frac1x$）となるような $(a,b,c)$ をすべて求めよ．また，どのような実数係数の整式 $g(x)$ に対しても，すべての $x\\neq0$ で $u(x)=y^2+4y+3$ となることはないことを示せ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 証明　(2) 証明　(3) $(a,b,c)=(2,3,1),(1,3,2),(-2,-3,-1),(-1,-3,-2)$；後半は証明"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) $g(x)=\\sum_{j=0}^na_jx^j$（$a_j$ は実数，$a_n\\neq0$）とすると\n\\[\nu(x)=\\sum_{j=0}^n\\sum_{l=0}^na_ja_lx^{j-l}=\\sum_{m=-n}^{n}c_mx^m,\\qquad c_m=\\sum_{j-l=m}a_ja_l .\n\\]\n$j,l$ を入れかえると $c_{-m}=c_m$ なので $u(x)=c_0+\\sum_{m=1}^nc_m(x^m+x^{-m})$．\n$T_m=x^m+x^{-m}$ とおくと $T_0=2$，$T_1=y$，$T_{m+1}=yT_m-T_{m-1}$（$(x+x^{-1})(x^m+x^{-m})=T_{m+1}+T_{m-1}$）．帰納法により $T_m$ は $y$ の $m$ 次の整式である．よって $u(x)=v(y)$ となる $n$ 次以下の整式 $v$ がある．\\hfill$\\square$\n\n(2) (1) の $T_m$ に対応する $y$ の整式を $P_0=2$，$P_1(y)=y$，$P_{m+1}(y)=yP_m(y)-P_{m-1}(y)$ で定めると $T_m=P_m\\!\\left(x+\\frac1x\\right)$ であり，$v(y)=c_0+\\sum_{m=1}^nc_mP_m(y)$ である（$y=x+\\frac1x$ は $|y|\\geqq2$ の無数の値をとるので，$u(x)=v\\!\\left(x+\\frac1x\\right)$ をみたす整式 $v$ はこれ1つに限る）．\n\nまず，すべての実数 $\\theta$ と $m\\geqq0$ について $P_m(2\\cos\\theta)=2\\cos m\\theta$ を帰納法で示す．$m=0,1$ では明らかに成り立つ．$m-1,\\ m$ で成り立つとすると，加法定理から $\\cos(m+1)\\theta+\\cos(m-1)\\theta=2\\cos\\theta\\cos m\\theta$ なので\n\\[\nP_{m+1}(2\\cos\\theta)=2\\cos\\theta\\cdot2\\cos m\\theta-2\\cos(m-1)\\theta=2\\cos(m+1)\\theta\n\\]\nとなり，$m+1$ でも成り立つ．\n\n$-2\\leqq y\\leqq2$ なら $y=2\\cos\\theta$ となる $\\theta$ がある．$c_{-m}=c_m$，$\\cos(-m\\theta)=\\cos m\\theta$ と加法定理より\n\\begin{align*}\nv(2\\cos\\theta)&=c_0+\\sum_{m=1}^nc_m\\cdot2\\cos m\\theta=\\sum_{m=-n}^nc_m\\cos m\\theta=\\sum_{j=0}^n\\sum_{l=0}^na_ja_l\\cos(j-l)\\theta\\\\\n&=\\sum_{j=0}^n\\sum_{l=0}^na_ja_l(\\cos j\\theta\\cos l\\theta+\\sin j\\theta\\sin l\\theta)\n=\\Bigl(\\sum_{j=0}^na_j\\cos j\\theta\\Bigr)^2+\\Bigl(\\sum_{j=0}^na_j\\sin j\\theta\\Bigr)^2\\geqq0 .\\tag*{$\\square$}\n\\end{align*}\n\n(3) $u(x)=(ax^2+bx+c)\\left(\\frac a{x^2}+\\frac bx+c\\right)=ac\\left(x^2+\\frac1{x^2}\\right)+b(a+c)\\left(x+\\frac1x\\right)+a^2+b^2+c^2$ で，$x^2+\\frac1{x^2}=y^2-2$ より\n\\[\nv(y)=acy^2+b(a+c)y+(a-c)^2+b^2 .\n\\]\n$y=x+\\frac1x$ は $|y|\\geqq2$ の無数の値をとるから，$v(y)=2y^2+9y+10$ は係数の一致と同値：\n$ac=2$，$b(a+c)=9$，$(a-c)^2+b^2=10$．$s=a+c$ とおくと $s\\neq0$，$b=\\frac9s$，$(a-c)^2=s^2-8$ で\n\\[\ns^2-8+\\frac{81}{s^2}=10\\iff(s^2-9)^2=0\\iff s=\\pm3 .\n\\]\n$s=3$：$a,c$ は $t^2-3t+2=0$ の解で $\\{a,c\\}=\\{1,2\\}$，$b=3$．$s=-3$：$\\{a,c\\}=\\{-1,-2\\}$，$b=-3$．よって\n\\[\n\\boldsymbol{(a,b,c)=(2,3,1),\\ (1,3,2),\\ (-2,-3,-1),\\ (-1,-3,-2)}.\n\\]\n後半：実数係数の整式 $g(x)$（定数も含む）に対し，すべての $x\\neq0$ で $u(x)=y^2+4y+3$ が成り立つとする．$x=-1$ とすると $y=-2$ で，右辺は $4-8+3=-1<0$ である．一方，左辺は $u(-1)=g(-1)\\,g(-1)=\\{g(-1)\\}^2\\geqq0$ であり（これは (2) の $y=-2$ の場合），矛盾する．よってそのような $g$ はない．\\hfill$\\square$"
+   }
+  ],
+  "idea": {
+   "tex": "$g(x)g(\\frac1x)$ は $x^m+x^{-m}$ の1次結合で，$x^m+x^{-m}$ は $y=x+\\frac1x$ の $m$ 次式．$|y|\\leqq2$ は $x=\\cos\\theta+i\\sin\\theta$ に対応し，$\\frac1x=\\bar x$ なので $v(y)=|g(x)|^2\\geqq0$．逆に $v$ が与えられたら係数比較で $g$ を決め，$v(-2)<0$ なら $g$ は存在しない．"
+  },
+  "methods": [],
+  "tags": [
+   "相反式",
+   "複素数",
+   "係数比較"
+  ],
+  "provenance": {
+   "created": "2026-11-18"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-EQ-219",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-08",
+  "level": 4,
+  "minutes": 35,
+  "theme": "$x^m-1$ と $x^n-1$ の積で割り切れるための補正因子",
+  "topic": "$x^m-1$ と $x^n-1$ の積で割り切れるための補正因子",
+  "statement": {
+   "tex": "$m$，$n$ を正の整数とし，$m$ と $n$ の最大公約数を $d$ とする．また，複素数 $z$ で $z^m=1$ をみたすもの全体の集合を $U$，$z^n=1$ をみたすもの全体の集合を $V$ とする．以下で整式とは係数が複素数の $x$ の整式のことであり，「整式 $A(x)$ が整式 $B(x)$ で割り切れる」とは $A(x)=B(x)Q(x)$ をみたす整式 $Q(x)$ が存在することとする．\n\\begin{enumerate}\n  \\item $U\\cap V$ は，$z^d=1$ をみたす複素数 $z$ 全体の集合と一致することを示せ．\n  \\item $(x-1)(x^{mn}-1)$ が $(x^m-1)(x^n-1)$ で割り切れるための必要十分条件は $d=1$ であることを示せ．\n  \\item 最高次の係数が $1$ の整式 $G(x)$ で，$G(x)(x-1)(x^{mn}-1)$ が $(x^m-1)(x^n-1)$ で割り切れるもののうち，次数が最小のものはただ1つであることを示し，それを $d$ を用いて表せ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 証明　(2) 証明　(3) $G(x)=x^{d-1}+x^{d-2}+\\cdots+x+1$（$d=1$ のとき $G(x)=1$）"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "準備として次の2つを確かめておく．\n\n\\textbf{補題A．} 整式 $P(x)$ と相異なる複素数 $\\alpha_1,\\dots,\\alpha_r$ について，$P(\\alpha_1)=\\cdots=P(\\alpha_r)=0$ ならば $P(x)$ は $(x-\\alpha_1)\\cdots(x-\\alpha_r)$ で割り切れる．\n\n（証明）$r$ についての帰納法．$r=1$ は因数定理である．$r-1$ まで正しいとし，$P(x)=(x-\\alpha_1)\\cdots(x-\\alpha_{r-1})P_1(x)$ と書く．$x=\\alpha_r$ を代入すると $(\\alpha_r-\\alpha_1)\\cdots(\\alpha_r-\\alpha_{r-1})P_1(\\alpha_r)=0$ で，各因数 $\\alpha_r-\\alpha_j\\neq0$ だから $P_1(\\alpha_r)=0$．因数定理より $P_1(x)=(x-\\alpha_r)P_2(x)$ となり，$r$ のときも正しい．\\hfill$\\square$\n\n\\textbf{補題B．} 正の整数 $N$ に対し $\\omega_N=\\cos\\dfrac{2\\pi}N+i\\sin\\dfrac{2\\pi}N$ とおくと，$z^N=1$ をみたす複素数はちょうど $\\omega_N^{\\,k}$（$k=0,1,\\dots,N-1$）の $N$ 個で，これらは相異なり，\n\\[\nx^N-1=(x-1)(x-\\omega_N)(x-\\omega_N^{\\,2})\\cdots(x-\\omega_N^{\\,N-1})\n\\]\nが成り立つ．\n\n（証明）ド・モアブルの定理より $\\omega_N^{\\,k}=\\cos\\dfrac{2k\\pi}N+i\\sin\\dfrac{2k\\pi}N$ で，偏角 $\\dfrac{2k\\pi}N$（$0\\leqq k\\leqq N-1$）は $0$ 以上 $2\\pi$ 未満で相異なるから，これら $N$ 個は相異なり，$(\\omega_N^{\\,k})^N=\\cos2k\\pi+i\\sin2k\\pi=1$．補題Aより $x^N-1$ は $(x-1)(x-\\omega_N)\\cdots(x-\\omega_N^{\\,N-1})$ で割り切れ，両者はともに $N$ 次で最高次の係数が $1$ なので商は $1$，すなわち等式が成り立つ．さらに $z^N=1$ なら $(z-1)(z-\\omega_N)\\cdots(z-\\omega_N^{\\,N-1})=0$ よりある $k$ で $z=\\omega_N^{\\,k}$．\\hfill$\\square$\n\n(1) $z\\in U\\cap V$ とする．$z^m=1$ より $z\\neq0$．$d$ は $m$ と $n$ の最大公約数だから，$ms+nt=d$ をみたす整数 $s,t$ が存在する．よって\n\\[\nz^d=z^{ms+nt}=(z^m)^s(z^n)^t=1 .\n\\]\n逆に $z^d=1$ なら，$m=dm'$，$n=dn'$（$m',n'$ は正の整数）として $z^m=(z^d)^{m'}=1$，$z^n=(z^d)^{n'}=1$ なので $z\\in U\\cap V$．\\hfill$\\square$\n\n以下，$A(x)=(x^m-1)(x^n-1)$，$W=U\\cup V$ とおく．補題Bより $U$ は $m$ 個，$V$ は $n$ 個の要素をもち，(1) と補題Bより $U\\cap V$ はちょうど $d$ 個の要素をもつ．$U\\cap V$ の要素を $\\delta_1=1,\\ \\delta_2,\\ \\dots,\\ \\delta_d$，$U$ の要素で $V$ に属さないものを $\\alpha_1,\\dots,\\alpha_{m-d}$，$V$ の要素で $U$ に属さないものを $\\beta_1,\\dots,\\beta_{n-d}$ とする（$1\\in U\\cap V$ である）．$W$ の要素はこれら $m+n-d$ 個で，すべて相異なる．補題B（と (1)）により，個数が $0$ の積は $1$ と考えて\n\\[\n\\begin{aligned}\nx^m-1&=(x-\\alpha_1)\\cdots(x-\\alpha_{m-d})\\cdot(x-\\delta_1)\\cdots(x-\\delta_d),\\\\\nx^n-1&=(x-\\beta_1)\\cdots(x-\\beta_{n-d})\\cdot(x-\\delta_1)\\cdots(x-\\delta_d),\\\\\nx^d-1&=(x-\\delta_1)(x-\\delta_2)\\cdots(x-\\delta_d)\n\\end{aligned}\n\\]\nであるから\n\\[\nA(x)=C(x)\\,(x^d-1),\\qquad C(x)=(x-\\alpha_1)\\cdots(x-\\alpha_{m-d})(x-\\beta_1)\\cdots(x-\\beta_{n-d})(x-\\delta_1)\\cdots(x-\\delta_d)\n\\]\nと書ける（$C(x)$ は $W$ の各要素 $\\gamma$ についての1次式 $x-\\gamma$ をすべて掛けたもの）．$\\gamma\\in W$ なら $\\gamma^m=1$ または $\\gamma^n=1$ なので $\\gamma^{mn}=1$．$W$ の要素は相異なるから，補題Aにより $x^{mn}-1=C(x)H(x)$ となる整式 $H(x)$ がある．\n\n\\textbf{主張1（十分性）．} $G_0(x)=\\dfrac{x^d-1}{x-1}=x^{d-1}+x^{d-2}+\\cdots+x+1$ とおくと\n\\[\nG_0(x)(x-1)(x^{mn}-1)=(x^d-1)\\,C(x)H(x)=A(x)H(x)\n\\]\nであり，$G_0(x)(x-1)(x^{mn}-1)$ は $A(x)$ で割り切れる．\n\n\\textbf{主張2（必要性）．} 整式 $G(x)$ について $G(x)(x-1)(x^{mn}-1)=A(x)Q(x)$ となる整式 $Q(x)$ があるとする．このとき，$\\delta\\in U\\cap V$，$\\delta\\neq1$ をみたすすべての $\\delta$ について $G(\\delta)=0$ である．\n\n（証明）補題B（$N=mn$）より $x^{mn}-1$ は相異なる1次式 $x-\\omega_{mn}^{\\,k}$ の積で，$\\delta^{mn}=1$ だから $\\delta$ はそのうちちょうど1つの因数の解である．よって $x^{mn}-1=(x-\\delta)K(x)$，$K(x)$ は残りの因数の積で $K(\\delta)\\neq0$．また $\\delta^m=\\delta^n=1$ より，因数定理から $x^m-1=(x-\\delta)M_1(x)$，$x^n-1=(x-\\delta)M_2(x)$ と書ける．代入して\n\\[\n(x-\\delta)\\,G(x)(x-1)K(x)=(x-\\delta)^2M_1(x)M_2(x)Q(x).\n\\]\n$(x-\\delta)\\{G(x)(x-1)K(x)-(x-\\delta)M_1(x)M_2(x)Q(x)\\}=0$ であり，0 でない整式 $x-\\delta$ と整式の積が 0 ならその整式は 0（0 でなければ積の最高次の係数が 0 でない）だから\n\\[\nG(x)(x-1)K(x)=(x-\\delta)M_1(x)M_2(x)Q(x).\n\\]\n$x=\\delta$ を代入すると $G(\\delta)(\\delta-1)K(\\delta)=0$ で，$\\delta-1\\neq0$，$K(\\delta)\\neq0$ より $G(\\delta)=0$．\\hfill$\\square$\n\n(2) $d=1$ のとき $G_0(x)=1$ なので，主張1より $(x-1)(x^{mn}-1)$ は $A(x)$ で割り切れる．\n\n$d\\geqq2$ のとき，補題Bより $\\delta=\\omega_d\\ (\\neq1)$ は $\\delta^d=1$ をみたすので (1) より $\\delta\\in U\\cap V$．もし $(x-1)(x^{mn}-1)$ が $A(x)$ で割り切れるなら，主張2を $G(x)=1$ に適用して $1=G(\\delta)=0$ となり矛盾．よって割り切れない．\n\n以上より，割り切れるための必要十分条件は $d=1$ である．\\hfill$\\square$\n\n(3) 最高次の係数が $1$ の整式 $G(x)$ が条件をみたすとする．$d\\geqq2$ のとき，$U\\cap V$ の要素のうち $1$ 以外のもの $\\delta_2,\\dots,\\delta_d$ は相異なる $d-1$ 個の複素数であり，主張2よりそのすべてで $G$ の値は $0$．補題Aより $G(x)$ は\n\\[\n(x-\\delta_2)(x-\\delta_3)\\cdots(x-\\delta_d)=\\frac{x^d-1}{x-1}=G_0(x)\n\\]\nで割り切れる（等号は補題Bの分解から因数 $x-1$ を除いたもの）．$G(x)=G_0(x)S(x)$ と書くと，$G\\neq0$ より $S\\neq0$ で，$G$ の次数は $G_0$ の次数 $d-1$ 以上である．$d=1$ のときも，$G$ は $0$ でない整式だから次数は $0$（$=G_0$ の次数）以上である．\n\n一方，主張1より $G_0$ 自身は条件をみたし，次数は $d-1$ である．よって最小の次数は $d-1$ である．次数が $d-1$ の $G$ が条件をみたせば，$d\\geqq2$ のとき $G=G_0S$ で $S$ は0でない定数，最高次の係数を比べて $S=1$，すなわち $G=G_0$．$d=1$ のときは次数0で最高次の係数1の整式は $1=G_0$ に限る．したがって次数最小のものはただ1つで\n\\[\n\\boldsymbol{G(x)=x^{d-1}+x^{d-2}+\\cdots+x+1}\\qquad(d=1\\ \\text{のときは}\\ G(x)=1).\n\\]"
+   }
+  ],
+  "idea": {
+   "tex": "$x^m-1$ と $x^n-1$ の共通の解は $1$ の $d$ 乗根（$d$ は $m$ と $n$ の最大公約数）全体で，これは $ms+nt=d$ となる整数 $s,t$ から分かる．$(x^m-1)(x^n-1)$ では共通の解だけが2重解になり，$x^{mn}-1$ の解はすべて単純．したがって $(x-1)(x^{mn}-1)$ に足りないのは「$1$ 以外の共通解をもう1回ずつ」で，最小の補正因子は $\\dfrac{x^d-1}{x-1}$．とくに割り切れる $\\iff d=1$．"
+  },
+  "methods": [],
+  "tags": [
+   "整式の割り算",
+   "因数定理",
+   "1のn乗根",
+   "最大公約数",
+   "1次不定方程式",
+   "重解"
+  ],
+  "provenance": {
+   "created": "2026-11-18"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-EQ-220",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-08",
+  "level": 5,
+  "minutes": 40,
+  "theme": "解がすべて単位円上にある整数係数の4次式",
+  "topic": "解がすべて単位円上にある整数係数の4次式",
+  "statement": {
+   "tex": "整数 $a,b,c,d$ に対し $f(x)=x^4+ax^3+bx^2+cx+d$ とおく．方程式 $f(x)=0$ の4つの解（重解は重複して数える）の絶対値がすべて1であるとする．\n\\begin{enumerate}\n  \\item $d=1$ または $d=-1$ であることを示せ．さらに，$d=1$ ならば $c=a$，$d=-1$ ならば $b=0$ かつ $c=-a$ であることを示せ．\n  \\item このような整数の組 $(a,b,c,d)$ の個数を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 証明　(2) $24$ 個（$d=1$ が19個，$d=-1$ が5個）"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) 解を $r_1,r_2,r_3,r_4$ とする．係数が実数なので，解の集まり（重複込み）は共役をとっても変わらない．また $|r_k|=1$ より $\\dfrac1{r_k}=\\overline{r_k}$．$d=r_1r_2r_3r_4$ に注意して\n\\[\n\\begin{aligned}x^4f\\!\\left(\\frac1x\\right)&=(1-r_1x)(1-r_2x)(1-r_3x)(1-r_4x)\\\\\n&=r_1r_2r_3r_4\\left(x-\\frac1{r_1}\\right)\\left(x-\\frac1{r_2}\\right)\\left(x-\\frac1{r_3}\\right)\\left(x-\\frac1{r_4}\\right)\\\\\n&=d\\,(x-\\overline{r_1})(x-\\overline{r_2})(x-\\overline{r_3})(x-\\overline{r_4})=d\\,f(x).\\end{aligned}\n\\]\n左辺は $dx^4+cx^3+bx^2+ax+1$ なので係数を比べて\n\\[\n1=d^2,\\quad a=dc,\\quad b=db,\\quad c=da .\n\\]\nよって $d=\\pm1$．$d=1$ なら $c=a$．$d=-1$ なら $b=-b$ より $b=0$，$c=-a$．\\hfill$\\square$\n\n(2) \\textbf{$d=-1$ の場合．} $f(x)=x^4+ax^3-ax-1=(x^2-1)(x^2+ax+1)$．解 $\\pm1$ は条件をみたすので，$x^2+ax+1=0$ の2解の絶対値が1となる条件を調べる．$|a|<2$ なら共役な虚数解で積が1，絶対値は1．$|a|=2$ なら重解 $\\mp1$．$|a|>2$ なら積が1の相異なる2実数解で，一方の絶対値は1より大きい．よって $|a|\\leqq2$，整数 $a$ は5個．\n\n\\textbf{$d=1$ の場合．} $c=a$ で $f(x)=x^4+ax^3+bx^2+ax+1$．$g(w)=w^2+aw+(b-2)$ の2解を $w_1,w_2$（複素数でもよい）とすると，\n\\[\n(x^2-w_1x+1)(x^2-w_2x+1)=x^4-(w_1+w_2)x^3+(2+w_1w_2)x^2-(w_1+w_2)x+1=f(x).\n\\]\n\\textbf{主張：} $f$ の解がすべて絶対値1 $\\iff$ $w_1,w_2$ がともに $-2$ 以上2以下の実数．\n\n($\\Leftarrow$) $w$ が $[-2,2]$ の実数なら，$x^2-wx+1=0$ は $|w|<2$ で積1の共役な虚数解（絶対値1），$|w|=2$ で重解 $\\pm1$ をもつ．\n($\\Rightarrow$) $x^2-w_1x+1=0$ の解 $x$ は $f$ の解なので $|x|=1$．この2次方程式の2解は $x,\\frac1x$ で $w_1=x+\\frac1x=x+\\bar x$ は実数，$|w_1|\\leqq|x|+|\\bar x|=2$．$w_2$ も同様．\n\n$g$ の2解がともに $[-2,2]$ の実数 $\\iff$ 判別式 $a^2-4(b-2)\\geqq0$，軸 $-2\\leqq-\\frac a2\\leqq2$，$g(2)=2+2a+b\\geqq0$，$g(-2)=2-2a+b\\geqq0$．すなわち\n\\[\n|a|\\leqq4,\\qquad 2|a|-2\\leqq b\\leqq2+\\frac{a^2}4 .\n\\]\n整数の組を数えると\n\\begin{center}\n\\begin{tabular}{c|ccccc}\n$|a|$ & 0 & 1 & 2 & 3 & 4\\\\ \\hline\n$b$ の範囲 & $-2\\leqq b\\leqq2$ & $0\\leqq b\\leqq\\frac94$ & $2\\leqq b\\leqq3$ & $4\\leqq b\\leqq\\frac{17}4$ & $b=6$\\\\\n$b$ の個数 & 5 & 3 & 2 & 1 & 1\n\\end{tabular}\n\\end{center}\n$a\\neq0$ は符号の2通りがあるので $5+2(3+2+1+1)=19$ 個．\n\n合計 $19+5=\\boldsymbol{24}$ \\textbf{個}．\\hfill$\\square$"
+   }
+  ],
+  "idea": {
+   "tex": "実数係数で解の絶対値がすべて1なら $\\bar z=\\frac1z$ により解の集合は「逆数をとる操作」で閉じ，$x^4f\\!\\left(\\frac1x\\right)=d\\,f(x)$ が導ける．$d=1$ なら相反方程式で $w=x+\\frac1x$ の2次方程式の2解が $[-2,2]$ にある条件（解の配置），$d=-1$ なら $x^2-1$ を因数にもつ．最後は格子点を数える．"
+  },
+  "methods": [],
+  "tags": [
+   "複素数",
+   "相反方程式",
+   "解の配置",
+   "格子点の数え上げ"
+  ],
+  "provenance": {
+   "created": "2026-11-18"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-EQ-221",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-08",
+  "level": 4,
+  "minutes": 30,
+  "theme": "隣り合う2項の積が0になる3つの数のべき和",
+  "topic": "隣り合う2項の積が0になる3つの数のべき和",
+  "statement": {
+   "tex": "0でない複素数 $\\alpha,\\ \\beta,\\ \\gamma$ に対して\n\\[\np_n=\\alpha^n+\\beta^n+\\gamma^n\\qquad(n=0,1,2,\\dots)\n\\]\nとおき，$s=\\alpha+\\beta+\\gamma$，$t=\\alpha\\beta+\\beta\\gamma+\\gamma\\alpha$，$u=\\alpha\\beta\\gamma$ とする．\n\\begin{enumerate}\n  \\item すべての $n\\geqq0$ に対して $p_{n+3}=sp_{n+2}-tp_{n+1}+up_n$ が成り立つことを示し，$p_1,\\ p_2,\\ p_3$ を $s,\\ t,\\ u$ で表せ．\n  \\item 数列 $\\{p_n\\}$ が，すべての正の整数 $n$ に対して $p_np_{n+1}=0$ をみたすとする．このとき $p_1=0$ であることを示せ．\n  \\item (2) の条件をみたす $\\alpha,\\ \\beta,\\ \\gamma$ をすべて求め，そのときの $p_n$ を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $p_1=s$，$p_2=s^2-2t$，$p_3=s^3-3st+3u$　(2) 証明　(3) $c$ を0でない複素数，$\\omega=\\dfrac{-1+\\sqrt3\\,i}{2}$ として $\\{\\alpha,\\beta,\\gamma\\}=\\{c,\\ c\\omega,\\ c\\omega^2\\}$（順序は任意）．$p_n=3c^n$（$n$ が3の倍数），$p_n=0$（それ以外）"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) $(x-\\alpha)(x-\\beta)(x-\\gamma)=x^3-sx^2+tx-u$ なので，$\\alpha^3=s\\alpha^2-t\\alpha+u$．両辺に $\\alpha^n$ をかけて $\\alpha^{n+3}=s\\alpha^{n+2}-t\\alpha^{n+1}+u\\alpha^n$．$\\beta,\\ \\gamma$ についても同様の式を作って加えると\n\\[\np_{n+3}=sp_{n+2}-tp_{n+1}+up_n\\qquad(n\\geqq0).\n\\]\n$p_1=s$，$p_2=(\\alpha+\\beta+\\gamma)^2-2(\\alpha\\beta+\\beta\\gamma+\\gamma\\alpha)=s^2-2t$．$n=0$ として（$p_0=3$），\n\\[\np_3=sp_2-tp_1+3u=\\boldsymbol{s^3-3st+3u}.\n\\]\n\n(2) $p_1\\neq0$ と仮定する．$p_1p_2=0$ より $p_2=0$，すなわち $t=\\dfrac{s^2}2$ で，$s=p_1\\neq0$．このとき $p_3=s^3-\\dfrac32s^3+3u=-\\dfrac{s^3}2+3u$．\n\n(i) $p_3\\neq0$ のとき．$p_3p_4=0$ より $p_4=0$．漸化式より\n\\[\np_4=sp_3-tp_2+up_1=s\\left(-\\frac{s^3}2+3u\\right)+us=-\\frac s2\\,(s^3-8u)\n\\]\nで $s\\neq0$ だから $u=\\dfrac{s^3}8$．すると $p_3=-\\dfrac{s^3}8$，\n\\[\np_5=sp_4-tp_3+up_2=-\\frac{s^2}2\\cdot\\left(-\\frac{s^3}8\\right)=\\frac{s^5}{16},\\qquad\np_6=sp_5-tp_4+up_3=\\frac{s^6}{16}-\\frac{s^6}{64}=\\frac{3s^6}{64}\n\\]\nとなり，$p_5p_6\\neq0$ で条件に反する．\n\n(ii) $p_3=0$ のとき．$u=\\dfrac{s^3}6$ で，\n\\[\np_4=sp_3-tp_2+up_1=us=\\frac{s^4}6\\neq0,\\qquad p_5=sp_4-tp_3+up_2=\\frac{s^5}6\\neq0\n\\]\nとなり，$p_4p_5\\neq0$ で条件に反する．\n\nよって $p_1=0$ である．\\hfill$\\square$\n\n(3) $s=p_1=0$．$p_3=sp_2-tp_1+3u=3u$ で，$\\alpha\\beta\\gamma\\neq0$ より $p_3\\neq0$．$p_2p_3=0$ より $p_2=0$，すなわち $-2t=0$ で $t=0$．したがって $\\alpha,\\ \\beta,\\ \\gamma$ は $x^3-u=0$ の3つの解である．その1つを $c$ とすると $c\\neq0$，$u=c^3$ で，$\\omega=\\dfrac{-1+\\sqrt3\\,i}2$ について $\\omega^3=1$，$1+\\omega+\\omega^2=0$ だから\n\\[\nx^3-c^3=(x-c)(x-c\\omega)(x-c\\omega^2).\n\\]\nよって $\\{\\alpha,\\beta,\\gamma\\}=\\{c,\\ c\\omega,\\ c\\omega^2\\}$．\n\n逆に，このとき $s=c(1+\\omega+\\omega^2)=0$，$t=c^2(\\omega+\\omega^3+\\omega^2)=0$，$u=c^3$ であるから，漸化式は $p_{n+3}=c^3p_n$ となる．$p_0=3$，$p_1=p_2=0$ より\n\\[\np_n=\\begin{cases}3c^n&(n\\text{ が3の倍数})\\\\0&(\\text{それ以外})\\end{cases}\n\\]\nで，連続する2つの整数がともに3の倍数になることはないから，$p_np_{n+1}=0$ がすべての $n$ で成り立つ．\n\n答：$c$ を0でない任意の複素数として $\\boldsymbol{\\{\\alpha,\\beta,\\gamma\\}=\\{c,\\ c\\omega,\\ c\\omega^2\\}}$，$\\boldsymbol{p_n=3c^n}$（$n$ が3の倍数），$\\boldsymbol{p_n=0}$（それ以外）．"
+   }
+  ],
+  "idea": {
+   "tex": "$\\alpha,\\beta,\\gamma$ は $x^3-sx^2+tx-u=0$ の3解なので，べき和 $p_n$ は $p_{n+3}=sp_{n+2}-tp_{n+1}+up_n$ をみたす．条件 $p_np_{n+1}=0$ から「どこが0か」を場合分けし，$p_1\\neq0$ の枝は数項先で必ず隣り合う2項がともに0でなくなることを示して消す．残る $s=t=0$ は $x^3=u$ の3解，すなわち $c,\\ c\\omega,\\ c\\omega^2$．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) $p_1$：s ; $p_2$：s^2-2t ; $p_3$：s^3-3st+3u\n(2) 証明\n(3) 記述"
+  },
+  "methods": [],
+  "tags": [
+   "複素数",
+   "基本対称式",
+   "べき和の漸化式",
+   "場合分け",
+   "1の3乗根"
+  ],
+  "provenance": {
+   "created": "2026-11-18"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-EQ-222",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-08",
+  "level": 4,
+  "minutes": 30,
+  "theme": "2つの対称性をもつ6次以下の多項式",
+  "topic": "2つの対称性をもつ6次以下の多項式",
+  "statement": {
+   "tex": "多項式 $f(x)$ が次の2つの条件を満たすとする．\n\\[\n\\text{(i)}\\ \\ x^6f\\!\\left(\\frac1x\\right)=f(x)\\quad(x\\neq0\\ \\text{のすべての実数}\\ x),\\qquad\n\\text{(ii)}\\ \\ f(1-x)=f(x)\\quad(\\text{すべての実数}\\ x)\n\\]\n\\begin{enumerate}\n  \\item $f(x)$ の次数は6以下であることを示せ（$f(x)$ が0の場合を除く）．\n  \\item (i)，(ii) を満たす多項式 $f(x)$ は，定数 $p,\\ q$ を用いて $f(x)=p(x^2-x+1)^3+q\\,x^2(x-1)^2$ と表されることを示せ．また，逆にこの形の多項式は (i)，(ii) を満たすことを示せ．\n  \\item (i)，(ii) に加えて $f(0)=4$，$f(-1)=0$ を満たす $f(x)$ を求め，実数の範囲で因数分解せよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 証明　(2) 証明　(3) $f(x)=4(x^2-x+1)^3-27x^2(x-1)^2=(x+1)^2(x-2)^2(2x-1)^2$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) $f(x)=\\sum_{k=0}^dc_kx^k$（$c_d\\neq0$）とし，$d\\geqq7$ と仮定する．$x\\neq0$ で (i) の両辺に $x^{d-6}$ を掛けると $\\sum_{k=0}^dc_kx^{d-k}=x^{d-6}f(x)$．両辺は多項式で無数の $x$ で一致するから多項式として等しいが，左辺の定数項は $c_d\\neq0$，右辺の定数項は0（$d-6\\geqq1$）で矛盾．よって次数は6以下．\\hfill$\\square$\n\n(2) \\textbf{逆の確認．} $A(x)=(x^2-x+1)^3$，$B(x)=x^2(x-1)^2$ とする．$x\\neq0$ で\n\\[\nx^6A\\!\\left(\\tfrac1x\\right)=\\bigl(x^2(\\tfrac1{x^2}-\\tfrac1x+1)\\bigr)^3=(1-x+x^2)^3=A(x),\\quad\nx^6B\\!\\left(\\tfrac1x\\right)=x^4\\left(\\tfrac{1-x}x\\right)^2=B(x),\n\\]\nまた $(1-x)^2-(1-x)+1=x^2-x+1$，$(1-x)^2(-x)^2=B(x)$ より $A(1-x)=A(x)$，$B(1-x)=B(x)$．(i)，(ii) は和と定数倍で保たれるので，$pA+qB$ は (i)，(ii) を満たす．\n\n\\textbf{必要性．} $f$ が (i)，(ii) を満たすとし，$p=f(0)$，$g=f-pA$ とおく．$g$ も (i)，(ii) を満たし，$g(0)=0$．$g=x\\,h(x)$（$h$ は多項式）と書け，(ii) より $(1-x)h(1-x)=x\\,h(x)$．$x=0$ を代入して $h(1)=0$ なので $h(x)=(x-1)k(x)$，$g=x(x-1)k(x)$．\n\\begin{itemize}\n  \\item (ii)：$(1-x)(-x)k(1-x)=x(x-1)k(x)$ より $k(1-x)=k(x)$（多項式として $x(x-1)$ で割れる）．\n  \\item (i)：$x\\neq0$ で $x^6g(\\tfrac1x)=x^6\\cdot\\tfrac1x\\cdot\\tfrac{1-x}x\\,k(\\tfrac1x)=-x^4(x-1)k(\\tfrac1x)$ が $x(x-1)k(x)$ に等しいので，$x\\neq0,1$ で $k(x)=-x^3k(\\tfrac1x)$．\n\\end{itemize}\n(1) と同様に $g$ の次数は6以下だから $k$ の次数は4以下．$k=\\sum_{j=0}^4e_jx^j$ とすると $-x^3k(\\frac1x)=-\\sum e_jx^{3-j}$ が多項式に等しいことから，(1) と同じ議論で $e_4=0$．よって $k=e_0+e_1x+e_2x^2+e_3x^3$ で，係数比較により $e_3=-e_0$，$e_2=-e_1$．すなわち $k(x)=e_0(1-x^3)+e_1x(1-x)$．$k(1-x)=k(x)$ で $x=0$ とおくと $k(1)=k(0)$，すなわち $0=e_0$．よって $k=e_1x(1-x)$，$g=-e_1x^2(x-1)^2$．$q=-e_1$ とおいて $f=pA+qB$．\\hfill$\\square$\n\n(3) $f=pA+qB$ で $f(0)=p=4$，$f(-1)=27p+4q=0$ より $q=-27$．$u=x^2-x$ とおくと $A=(u+1)^3$，$B=u^2$ で\n\\[\nf=4(u+1)^3-27u^2=4u^3-15u^2+12u+4=(u-2)^2(4u+1).\n\\]\n（右辺を展開すると $(u^2-4u+4)(4u+1)=4u^3-15u^2+12u+4$．）$u-2=(x-2)(x+1)$，$4u+1=(2x-1)^2$ だから\n\\[\n\\boldsymbol{f(x)=4(x^2-x+1)^3-27x^2(x-1)^2=(x+1)^2(x-2)^2(2x-1)^2}.\n\\]"
+   }
+  ],
+  "idea": {
+   "tex": "$x^6f\\!\\left(\\frac1x\\right)=f(x)$ は「係数が左右対称な6次以下」を意味し，$f(1-x)=f(x)$ と合わせると2つの対称で不変な多項式に限られる．定数項を $(x^2-x+1)^3$ で消すと残りは $x$ で割り切れ，対称性から順に $x-1$，$x$，$1-x$ で割り切れて $x^2(x-1)^2$ の定数倍に決まる．$u=x^2-x$ とおくと両方の基本形が $u$ の式になる．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) 証明\n(2) 証明\n(3) $f(x)$：(x+1)^2(x-2)^2(2x-1)^2"
+  },
+  "methods": [],
+  "tags": [
+   "多項式の対称性",
+   "因数定理",
+   "係数比較",
+   "置き換えによる因数分解"
+  ],
+  "provenance": {
+   "created": "2026-11-18"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-EQ-223",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-08",
+  "level": 4,
+  "minutes": 35,
+  "theme": "$x^2+x+1$ で割った余りの世界",
+  "topic": "$x^2+x+1$ で割った余りの世界",
+  "statement": {
+   "tex": "実数を係数にもつ整式 $A(x)$ を $x^2+x+1$ で割った余りを $[A(x)]$ と表す．\n\\begin{enumerate}\n  \\item $[x^2]$，$[x^3]$，$[(x+1)^6]$ を求めよ．\n  \\item 整式 $A(x)$，$B(x)$ に対して $[A(x)B(x)]=\\bigl[[A(x)][B(x)]\\bigr]$ が成り立つことを示せ．\n  \\item 実数 $\\theta$ に対して\n  \\[u_\\theta(x)=\\frac{2}{\\sqrt3}\\sin\\theta\\cdot x+\\cos\\theta+\\frac1{\\sqrt3}\\sin\\theta\\]\n  とおく．すべての実数 $\\theta,\\varphi$ に対して $[u_\\theta(x)u_\\varphi(x)]=u_{\\theta+\\varphi}(x)$ が成り立つことを示せ．\n  \\item $[(ax+b)^4]=x$ をみたす実数の組 $(a,b)$ をすべて求めよ．\n  \\item $n$ を正の整数とする．$[(ax+b)^n]=1$ をみたす実数の組 $(a,b)$ の個数を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $[x^2]=-x-1$，$[x^3]=1$，$[(x+1)^6]=1$　(2) 証明　(3) 証明　(4) $(a,b)=\\left(\\dfrac1{\\sqrt3},\\dfrac2{\\sqrt3}\\right),(1,0),\\left(-\\dfrac1{\\sqrt3},-\\dfrac2{\\sqrt3}\\right),(-1,0)$　(5) $n$ 個"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "以下，$M(x)=x^2+x+1$ とし，割った余りは1次以下である．\n\n(1) $x^2=M(x)-x-1$ より $[x^2]=\\boldsymbol{-x-1}$．$x^3-1=(x-1)M(x)$ より $[x^3]=\\boldsymbol{1}$．\n$x+1=M(x)-x^2$ だから $(x+1)^6$ を展開すると $M(x)$ を因数にもつ項以外は $(-x^2)^6=x^{12}=(x^3)^4$ で，$x^3=(x-1)M(x)+1$ より $(x^3)^4$ を $M(x)$ で割った余りは $1$．よって $[(x+1)^6]=\\boldsymbol{1}$．\n\n(2) $A=MQ_1+R_1$，$B=MQ_2+R_2$（$R_1=[A]$，$R_2=[B]$）と書くと\n\\[AB=M(MQ_1Q_2+Q_1R_2+Q_2R_1)+R_1R_2\\]\nであり，$R_1R_2=MQ_3+R_3$（$R_3=[R_1R_2]$，1次以下）とすれば $AB=M(\\cdots+Q_3)+R_3$．余りの一意性より $[AB]=R_3=\\bigl[[A][B]\\bigr]$．\\hfill$\\square$\n\n(3) $s=\\sin\\theta,\\ c=\\cos\\theta,\\ s'=\\sin\\varphi,\\ c'=\\cos\\varphi$，$p=\\frac{2s}{\\sqrt3}$，$q=c+\\frac{s}{\\sqrt3}$，$p'=\\frac{2s'}{\\sqrt3}$，$q'=c'+\\frac{s'}{\\sqrt3}$ とおく．\n$(px+q)(p'x+q')=pp'x^2+(pq'+qp')x+qq'$ で，$x^2=M-x-1$ だから\n\\[[u_\\theta u_\\varphi]=(pq'+qp'-pp')x+(qq'-pp').\\]\n$x$ の係数は\n\\[\\frac2{\\sqrt3}\\Bigl\\{s\\Bigl(c'+\\frac{s'}{\\sqrt3}\\Bigr)+s'\\Bigl(c+\\frac{s}{\\sqrt3}\\Bigr)\\Bigr\\}-\\frac43ss'=\\frac2{\\sqrt3}(sc'+cs')=\\frac2{\\sqrt3}\\sin(\\theta+\\varphi),\\]\n定数項は\n\\[cc'+\\frac{sc'+cs'}{\\sqrt3}+\\frac{ss'}3-\\frac{4ss'}3=(cc'-ss')+\\frac{\\sin(\\theta+\\varphi)}{\\sqrt3}=\\cos(\\theta+\\varphi)+\\frac{\\sin(\\theta+\\varphi)}{\\sqrt3}.\\]\nよって $[u_\\theta u_\\varphi]=u_{\\theta+\\varphi}$．\\hfill$\\square$\n\n(4)(5) の準備．\\textbf{(i)} $(a,b)\\neq(0,0)$ に対し，$r>0$ と $\\theta$ で $ax+b=ru_\\theta(x)$ と書ける．実際，これは $a=\\frac{2r\\sin\\theta}{\\sqrt3}$，$b=r\\cos\\theta+\\frac{r\\sin\\theta}{\\sqrt3}$，すなわち\n\\[r\\sin\\theta=\\frac{\\sqrt3}2a,\\qquad r\\cos\\theta=b-\\frac a2\\]\nと同値で，$r=\\sqrt{\\frac34a^2+\\left(b-\\frac a2\\right)^2}=\\sqrt{a^2-ab+b^2}>0$（$(a,b)\\neq(0,0)$ のとき右辺の根号内の2つの平方の和は正）とし，$\\theta$ を点 $\\left(b-\\frac a2,\\ \\frac{\\sqrt3}2a\\right)$ の偏角にとればよい．また $(r,\\theta)$（$r>0$，$0\\leqq\\theta<2\\pi$）が決まれば $(a,b)$ はただ1つに決まり，逆も上の式から $(a,b)$ ごとにただ1組である．\n\n\\textbf{(ii)} 正の整数 $n$ に対し $[(ru_\\theta)^n]=r^nu_{n\\theta}$．$n=1$ は $ru_\\theta$ が1次以下だから成り立つ．$n$ で成り立てば (2)(3) より\n$[(ru_\\theta)^{n+1}]=\\bigl[[(ru_\\theta)^n][ru_\\theta]\\bigr]=[r^nu_{n\\theta}\\cdot ru_\\theta]=r^{n+1}u_{(n+1)\\theta}$．\n\n\\textbf{(iii)} 1次以下の整式どうしが等しいのは係数がすべて等しいときに限る．よって $r^nu_{n\\theta}=\\alpha x+\\beta$ は\n\\[r^n\\sin n\\theta=\\frac{\\sqrt3}2\\alpha,\\qquad r^n\\cos n\\theta=\\beta-\\frac\\alpha2\\]\nと同値．\n\n(4) $(a,b)=(0,0)$ なら $[0]=0\\neq x$ なので不適．(i)(ii)(iii) より，$\\alpha=1,\\beta=0$ として $r^4\\sin4\\theta=\\frac{\\sqrt3}2$，$r^4\\cos4\\theta=-\\frac12$．2乗して加えると $r^8=1$，$r=1$．$\\sin4\\theta=\\frac{\\sqrt3}2$，$\\cos4\\theta=-\\frac12$ より $4\\theta=\\frac{2\\pi}3+2k\\pi$，$0\\leqq\\theta<2\\pi$ では $\\theta=\\frac\\pi6,\\frac{2\\pi}3,\\frac{7\\pi}6,\\frac{5\\pi}3$．$a=\\frac{2\\sin\\theta}{\\sqrt3}$，$b=\\cos\\theta+\\frac{\\sin\\theta}{\\sqrt3}$ に代入して\n\\[\\boldsymbol{(a,b)=\\left(\\tfrac1{\\sqrt3},\\tfrac2{\\sqrt3}\\right),\\ (1,0),\\ \\left(-\\tfrac1{\\sqrt3},-\\tfrac2{\\sqrt3}\\right),\\ (-1,0)}.\\]\nこれらは上の同値変形によりすべて条件をみたす．（たとえば $(1,0)$ は $[x^4]=[x^3\\cdot x]=x$．）\n\n(5) 同様に $(a,b)\\neq(0,0)$ で，$\\alpha=0,\\beta=1$ として $r^n\\sin n\\theta=0$，$r^n\\cos n\\theta=1$．2乗して加えて $r=1$，よって $\\sin n\\theta=0,\\ \\cos n\\theta=1$，すなわち $\\theta=\\frac{2k\\pi}n$（$k=0,1,\\dots,n-1$）．これらは $[0,2\\pi)$ の相異なる $n$ 個の値で，(i) より $(r,\\theta)$ と $(a,b)$ は1対1に対応するから，求める個数は $\\boldsymbol{n}$ 個．\\hfill$\\square$"
+   }
+  ],
+  "idea": {
+   "tex": "$x^2+x+1$ で割った余りの積は「積をとってから余りをとる」で閉じた演算になり，$x^2\\equiv-x-1$ が基本関係．斜交する基底のもとで回転にあたる1次式 $u_\\theta$ を作ると，余りの積が角の和に対応し，$n$ 乗の方程式は「大きさ1，角が $n$ 倍」の条件に帰着する．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) 記述\n(2) 証明\n(3) 証明\n(4) $(a,b)$：{(1/sqrt(3), 2/sqrt(3)), (1, 0), (-1/sqrt(3), -2/sqrt(3)), (-1, 0)}\n(5) 記述"
+  },
+  "methods": [],
+  "tags": [
+   "整式の除法",
+   "剰余",
+   "加法定理",
+   "回転"
+  ],
+  "provenance": {
+   "created": "2026-11-18"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-EQ-224",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-08",
+  "level": 4,
+  "minutes": 30,
+  "theme": "$\\sum\\frac{\\alpha^n}{(\\alpha-\\beta)(\\alpha-\\gamma)}$ と2と3の順序つき和",
+  "topic": "$\\sum\\frac{\\alpha^n}{(\\alpha-\\beta)(\\alpha-\\gamma)}$ と2と3の順序つき和",
+  "statement": {
+   "tex": "3次方程式 $x^3-x-1=0$ の3つの解を $\\alpha,\\ \\beta,\\ \\gamma$ とする．\n\\begin{enumerate}\n  \\item $\\alpha,\\ \\beta,\\ \\gamma$ は互いに異なり，いずれも0でないことを示せ．\n  \\item すべての整数 $n$（負の整数，0を含む）に対して\n  \\[\n  a_n=\\frac{\\alpha^n}{(\\alpha-\\beta)(\\alpha-\\gamma)}+\\frac{\\beta^n}{(\\beta-\\gamma)(\\beta-\\alpha)}+\\frac{\\gamma^n}{(\\gamma-\\alpha)(\\gamma-\\beta)}\n  \\]\n  と定める．$a_0,\\ a_1,\\ a_2$ を求めよ．\n  \\item すべての整数 $n$ について $a_{n+3}=a_{n+1}+a_n$ が成り立つことを示し，$a_n$ はすべての整数 $n$ について整数であることを示せ．また $a_{-1},\\ a_{-2}$ を求めよ．\n  \\item $m$ を0以上の整数とし，$m$ を2と3だけの順序を区別した和として表す方法の数を $c_m$ とする（$c_0=1$ とする．例えば $7=2+2+3=2+3+2=3+2+2$ より $c_7=3$）．$n\\geqq2$ のとき $a_n=c_{n-2}$ であることを示し，$a_{20}$ を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 証明　(2) $a_0=0$，$a_1=0$，$a_2=1$　(3) 証明，$a_{-1}=1$，$a_{-2}=-1$　(4) 証明，$a_{20}=65$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "$f(x)=x^3-x-1$ とする．解と係数の関係から $\\alpha\\beta\\gamma=1$．\n\n(1) $\\alpha\\beta\\gamma=1$ よりどの解も0でない．2つの解が一致するとし，それを $\\alpha$，残りを $\\gamma$ とすると $x^3-x-1=(x-\\alpha)^2(x-\\gamma)$ が恒等的に成り立つ．右辺を展開して係数を比べると\n\\[\n2\\alpha+\\gamma=0,\\qquad \\alpha^2+2\\alpha\\gamma=-1,\\qquad \\alpha^2\\gamma=1 .\n\\]\n$\\gamma=-2\\alpha$ を代入すると $-3\\alpha^2=-1$，$-2\\alpha^3=1$．よって $\\alpha^2=\\frac13$ で，$\\alpha^3=\\alpha\\cdot\\alpha^2=\\frac\\alpha3=-\\frac12$ より $\\alpha=-\\frac32$．このとき $\\alpha^2=\\frac94\\neq\\frac13$ で矛盾．よって3解は互いに異なる．\n\n(2) $D=(\\alpha-\\beta)(\\beta-\\gamma)(\\gamma-\\alpha)\\ (\\neq0)$ とおく．$(\\alpha-\\beta)(\\alpha-\\gamma)(\\beta-\\gamma)=-D$，$(\\beta-\\gamma)(\\beta-\\alpha)(\\gamma-\\alpha)=-D$，$(\\gamma-\\alpha)(\\gamma-\\beta)(\\alpha-\\beta)=-D$ だから，各項の分母分子にそれぞれ $\\beta-\\gamma$，$\\gamma-\\alpha$，$\\alpha-\\beta$ を掛けて\n\\[\na_k=-\\frac{N_k}D,\\qquad N_k=\\alpha^k(\\beta-\\gamma)+\\beta^k(\\gamma-\\alpha)+\\gamma^k(\\alpha-\\beta).\n\\]\n$N_0=(\\beta-\\gamma)+(\\gamma-\\alpha)+(\\alpha-\\beta)=0$，$N_1=\\alpha\\beta-\\alpha\\gamma+\\beta\\gamma-\\beta\\alpha+\\gamma\\alpha-\\gamma\\beta=0$．\nまた $N_2$ を $\\alpha$ について整理すると\n\\[\nN_2=(\\beta-\\gamma)\\alpha^2-(\\beta^2-\\gamma^2)\\alpha+\\beta\\gamma(\\beta-\\gamma)=(\\beta-\\gamma)(\\alpha-\\beta)(\\alpha-\\gamma)=-D.\n\\]\nよって $\\boldsymbol{a_0=0,\\ a_1=0,\\ a_2=1}$．\n\n(3) $\\alpha^3=\\alpha+1$ の両辺に $\\alpha^n$（$n$ は任意の整数，$\\alpha\\neq0$）を掛けて $\\alpha^{n+3}=\\alpha^{n+1}+\\alpha^n$．$\\beta,\\gamma$ も同様．これらにそれぞれ $\\beta-\\gamma,\\ \\gamma-\\alpha,\\ \\alpha-\\beta$ を掛けて加えると $N_{n+3}=N_{n+1}+N_n$，両辺を $-D$ で割って $a_{n+3}=a_{n+1}+a_n$（すべての整数 $n$）．\n\n$a_0,a_1,a_2$ は整数なので，$a_{n+3}=a_{n+1}+a_n$ により $n\\geqq0$ の順に $a_3,a_4,\\dots$ はすべて整数．また $a_n=a_{n+3}-a_{n+1}$ により $n=-1,-2,\\dots$ の順に $a_{-1},a_{-2},\\dots$ も整数．よってすべての整数 $n$ で $a_n$ は整数．\n$a_{-1}=a_2-a_0=\\boldsymbol1$，$a_{-2}=a_1-a_{-1}=\\boldsymbol{-1}$．\n\n(4) $m\\geqq3$ のとき，$m$ の表し方は最初の項が2か3かで排他的に分かれ，残りはそれぞれ $m-2$，$m-3$ の表し方と1対1に対応するので $c_m=c_{m-2}+c_{m-3}$．また $c_0=1$，$c_1=0$（1は表せない），$c_2=1$．\n\n一方 $d_m=a_{m+2}$ とおくと，(3) より $d_m=d_{m-2}+d_{m-3}$（$m\\geqq3$），$d_0=a_2=1$，$d_1=a_3=a_1+a_0=0$，$d_2=a_4=a_2+a_1=1$．初めの3項と漸化式が一致するので，数学的帰納法によりすべての $m\\geqq0$ で $d_m=c_m$，すなわち $n\\geqq2$ で $a_n=c_{n-2}$．\n\n$c_m$ を順に計算すると $c_0,\\dots,c_{18}$ は\n\\[\n1,0,1,1,1,2,2,3,4,5,7,9,12,16,21,28,37,49,65\n\\]\n（たとえば $c_{18}=c_{16}+c_{15}=37+28$）．よって $a_{20}=c_{18}=\\boldsymbol{65}$．\\hfill$\\square$"
+   }
+  ],
+  "idea": {
+   "tex": "分母を $D=(\\alpha-\\beta)(\\beta-\\gamma)(\\gamma-\\alpha)$ にそろえると $a_k=-\\frac{N_k}D$，$N_k=\\alpha^k(\\beta-\\gamma)+\\beta^k(\\gamma-\\alpha)+\\gamma^k(\\alpha-\\beta)$．$N_0=N_1=0$，$N_2=-D$ から初期値 $0,0,1$ が決まり，$\\alpha^3=\\alpha+1$ を $\\alpha^n$ 倍した式から負の番号まで含めて漸化式が成り立つ．初期値 $0,0,1$ と漸化式 $a_{n+3}=a_{n+1}+a_n$ は「2と3の順序つき和の個数」と一致する．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) 証明\n(2) $a_0$：0 ; $a_1$：0 ; $a_2$：1\n(3) 記述\n(4) 記述"
+  },
+  "methods": [],
+  "tags": [
+   "解と係数の関係",
+   "交代式",
+   "3項間漸化式",
+   "数え上げ",
+   "整数"
+  ],
+  "provenance": {
+   "created": "2026-11-18"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-EQ-239",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-08",
+  "level": 4,
+  "minutes": 30,
+  "theme": "入れ子の根号の和を上からおさえる係数の範囲",
+  "topic": "入れ子の根号の和を上からおさえる係数の範囲",
+  "statement": {
+   "tex": "実数の組 $(\\alpha,\\beta)$ に対して，次の条件 (P) を考える．\n\\begin{center}\n(P)\\quad $x\\geqq0,\\ y\\geqq0$ をみたすすべての実数 $x,y$ に対して，$\\alpha x+\\beta y\\geqq0$ かつ\n\\[\\sqrt{x+y}+\\sqrt y\\leqq\\sqrt{\\alpha x+\\beta y}\\]\nが成り立つ．\n\\end{center}\n\\begin{enumerate}\n  \\item 条件 (P) をみたす $(\\alpha,\\beta)$ の範囲を求めよ．\n  \\item 条件 (P) をみたす $(\\alpha,\\beta)$ について，$\\alpha+\\beta$ の最小値と，それを与える $(\\alpha,\\beta)$ を求めよ．また，そのとき (P) の不等式で等号が成り立つような $(x,y)$ をすべて求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $1<\\alpha<2$ のとき $\\beta\\geqq\\alpha+1+\\dfrac{1}{\\alpha-1}$，$\\alpha\\geqq2$ のとき $\\beta\\geqq4$　(2) 最小値 $3+2\\sqrt2$，$(\\alpha,\\beta)=\\left(1+\\dfrac{\\sqrt2}2,\\ 2+\\dfrac{3\\sqrt2}2\\right)$，等号は $x=y\\ (\\geqq0)$ のとき"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) $x\\geqq0,\\ y\\geqq0$ とする．$\\sqrt{x+y}+\\sqrt y\\geqq0$ であるから，\n\\[\\alpha x+\\beta y\\geqq0\\ \\text{かつ}\\ \\sqrt{x+y}+\\sqrt y\\leqq\\sqrt{\\alpha x+\\beta y}\\iff\\left(\\sqrt{x+y}+\\sqrt y\\right)^2\\leqq\\alpha x+\\beta y\\]\nが成り立つ（右の不等式が成り立てば $\\alpha x+\\beta y\\geqq0$ であり，両辺とも0以上の数の大小は2乗の大小と一致する）．左辺を展開すると $x+2y+2\\sqrt{y(x+y)}$ であるから，(P) は\n\\[F(x,y)=(\\alpha-1)x+(\\beta-2)y-2\\sqrt{y(x+y)}\\geqq0\\quad(x\\geqq0,\\ y\\geqq0)\\]\nと同値である．\n\n$y=0$ のとき $F(x,0)=(\\alpha-1)x$ であり，これがすべての $x\\geqq0$ で0以上 $\\iff\\alpha\\geqq1$．\n\n$y>0$ のとき，$t=\\dfrac xy\\ (\\geqq0)$ とおくと $F(x,y)=y\\,G(t)$，$G(t)=(\\alpha-1)t+\\beta-2-2\\sqrt{1+t}$ であり，$(x,y)$ が $x\\geqq0,\\ y>0$ を動くとき $t$ は $t\\geqq0$ 全体を動く．よって\n\\[(\\mathrm P)\\iff\\alpha\\geqq1\\ \\text{かつ}\\ t\\geqq0\\ \\text{でつねに}\\ G(t)\\geqq0.\\]\n$u=\\sqrt{1+t}$ とおくと，$t\\geqq0$ と $u\\geqq1$ は $t=u^2-1$ で1対1に対応し，$A=\\alpha-1\\ (\\geqq0)$ として\n\\[G=A(u^2-1)+\\beta-2-2u=Au^2-2u+(\\beta-\\alpha-1).\\]\nこの右辺を $h(u)$ とおく．$A=0$ のとき $h(u)=-2u+\\beta-2$ は $u>\\frac{\\beta-2}2$ かつ $u\\geqq1$ で負になるので不適．よって $A>0$，すなわち $\\alpha>1$ が必要で，このとき\n\\[h(u)=A\\left(u-\\frac1A\\right)^2+\\beta-\\alpha-1-\\frac1A.\\]\n\n(i) $\\alpha\\geqq2$（$A\\geqq1$，$\\frac1A\\leqq1$）のとき，$h$ は $u\\geqq1$ で増加するから，最小値は $h(1)=A-2+\\beta-\\alpha-1=\\beta-4$．条件は $\\beta\\geqq4$．\n\n(ii) $1<\\alpha<2$（$0<A<1$，$\\frac1A>1$）のとき，$u\\geqq1$ での最小値は $h\\!\\left(\\frac1A\\right)=\\beta-\\alpha-1-\\dfrac1{\\alpha-1}$．条件は $\\beta\\geqq\\alpha+1+\\dfrac1{\\alpha-1}$．\n\n以上より，求める範囲は\n\\[\\boldsymbol{1<\\alpha<2\\ \\text{のとき}\\ \\beta\\geqq\\alpha+1+\\frac1{\\alpha-1},\\qquad \\alpha\\geqq2\\ \\text{のとき}\\ \\beta\\geqq4}.\\]\n\n(2) (i) $\\alpha\\geqq2$ のとき $\\alpha+\\beta\\geqq2+4=6$．\n\n(ii) $1<\\alpha<2$ のとき，$s=\\alpha-1\\ (0<s<1)$ とおくと，相加平均・相乗平均の関係から\n\\[\\alpha+\\beta\\geqq2\\alpha+1+\\frac1{\\alpha-1}=2s+\\frac1s+3\\geqq2\\sqrt{2s\\cdot\\frac1s}+3=3+2\\sqrt2.\\]\n等号は $2s=\\frac1s$，すなわち $s=\\frac1{\\sqrt2}$（$0<s<1$ をみたす）かつ $\\beta=\\alpha+1+\\frac1{\\alpha-1}$ のときに成り立つ．このとき $\\alpha=1+\\frac{\\sqrt2}2$，$\\beta=2+\\frac{\\sqrt2}2+\\sqrt2=2+\\frac{3\\sqrt2}2$ で，これは (1) の範囲に属する．\n\n$3+2\\sqrt2<3+2\\cdot1.5=6$ なので，最小値は $\\boldsymbol{3+2\\sqrt2}$，それを与えるのは $\\boldsymbol{(\\alpha,\\beta)=\\left(1+\\frac{\\sqrt2}2,\\ 2+\\frac{3\\sqrt2}2\\right)}$ である．\n\nこのとき $A=\\frac1{\\sqrt2}$，$\\frac1A=\\sqrt2$，$\\beta-\\alpha-1-\\frac1A=0$ だから $h(u)=\\frac1{\\sqrt2}(u-\\sqrt2)^2$．(1) の同値変形により，(P) の不等式の等号は $F(x,y)=0$ のときに限り成り立つ．$y=0$ のとき $F=(\\alpha-1)x=0\\iff x=0$．$y>0$ のとき $F=y\\,h(u)=0\\iff u=\\sqrt2\\iff t=1\\iff x=y$．よって等号が成り立つのは $\\boldsymbol{x=y}$（$x=y\\geqq0$）のときである．"
+   }
+  ],
+  "idea": {
+   "tex": "両辺とも0以上なので2乗して同値変形し，同次性から $y=1$，$x=t$ の1変数にする．交差項 $2\\sqrt{1+t}$ を $u=\\sqrt{1+t}\\ (u\\geqq1)$ とおくと「$u$ の2次式が $u\\geqq1$ でつねに0以上」という条件になり，軸 $u=\\frac1{\\alpha-1}$ と $1$ の位置で場合分けする．下からの評価（原題）では端 $x=0$ が最悪だったが，上からの評価では内部の点で接する．"
+  },
+  "methods": [],
+  "tags": [
+   "不等式",
+   "根号",
+   "同次式",
+   "2次関数の最小",
+   "相加相乗平均"
+  ],
+  "provenance": {
+   "created": "2026-11-14"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-EQ-240",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-08",
+  "level": 4,
+  "minutes": 30,
+  "theme": "$\\sqrt3+\\sqrt2$ と $\\sqrt3-\\sqrt2$ を入れかえる有理数係数の多項式",
+  "topic": "$\\sqrt3+\\sqrt2$ と $\\sqrt3-\\sqrt2$ を入れかえる有理数係数の多項式",
+  "statement": {
+   "tex": "$\\alpha=\\sqrt3+\\sqrt2$，$\\beta=\\sqrt3-\\sqrt2$ とする．ただし $\\sqrt2,\\sqrt3,\\sqrt6$ が無理数であることは用いてよい．\n\\begin{enumerate}\n  \\item 有理数 $p,q,r,s$ が $p+q\\sqrt2+r\\sqrt3+s\\sqrt6=0$ をみたすならば，$p=q=r=s=0$ であることを示せ．\n  \\item $f(x)$ を有理数を係数とする $x$ の多項式とし，$f(\\alpha)=u+v\\sqrt2+w\\sqrt3+z\\sqrt6$（$u,v,w,z$ は有理数）と表されているとする．このとき $f(\\beta)=u-v\\sqrt2+w\\sqrt3-z\\sqrt6$ であることを示せ．\n  \\item 有理数 $p,q$ に対して，有理数を係数とする多項式 $f(x)$ で\n  \\[f(\\alpha)=p\\sqrt2+q\\sqrt3\\quad\\text{かつ}\\quad f(\\beta)=\\sqrt2+\\sqrt3\\]\n  をみたすものが存在するような組 $(p,q)$ をすべて求めよ．さらに，そのような $f(x)$ のうち次数が最小のものをすべて求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 証明　(2) 証明　(3) $(p,q)=(-1,\\,1)$，次数最小のものは $f(x)=-x^3+10x$ のみ"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) $p+q\\sqrt2+r\\sqrt3+s\\sqrt6=0$ を\n\\[(p+r\\sqrt3)+(q+s\\sqrt3)\\sqrt2=0\\]\nと書く．$(q,s)\\neq(0,0)$ と仮定する．$q^2-3s^2=0$ とすると $s\\neq0$ で $\\sqrt3=\\left|\\frac qs\\right|$ が有理数となり矛盾するから，$q^2-3s^2\\neq0$ であり，$q+s\\sqrt3\\neq0$．よって\n\\[\\sqrt2=-\\frac{p+r\\sqrt3}{q+s\\sqrt3}=-\\frac{(p+r\\sqrt3)(q-s\\sqrt3)}{q^2-3s^2}=u+v\\sqrt3\\]\n（$u,v$ は有理数）と書ける．両辺を2乗して $2=u^2+3v^2+2uv\\sqrt3$．$uv\\neq0$ なら $\\sqrt3=\\frac{2-u^2-3v^2}{2uv}$ が有理数となり矛盾．$u=0$ なら $\\sqrt2=v\\sqrt3$ で $\\sqrt6=3v$ が有理数となり矛盾．$v=0$ なら $\\sqrt2=u$ が有理数で矛盾．よって $q=s=0$ であり，$p+r\\sqrt3=0$ から，$r\\neq0$ なら $\\sqrt3=-\\frac pr$ が有理数となり矛盾するので $r=0$，したがって $p=0$．\\hfill$\\square$\n\n(2) 有理数 $u,v,w,z$ を用いて $u+v\\sqrt2+w\\sqrt3+z\\sqrt6$ と表される数全体を $L$ とする．(1) より $L$ の数の表し方はただ1通りなので，$X=u+v\\sqrt2+w\\sqrt3+z\\sqrt6\\in L$ に対して\n\\[X^*=u-v\\sqrt2+w\\sqrt3-z\\sqrt6\\]\nが矛盾なく定まる．$X,Y\\in L$，$c$ を有理数とするとき，明らかに $(X+Y)^*=X^*+Y^*$，$(cX)^*=cX^*$ である．積については，$X=P_1+Q_1\\sqrt2$，$Y=P_2+Q_2\\sqrt2$（$P_j,Q_j$ は「有理数 $+$ 有理数 $\\times\\sqrt3$」の形）と書くと $X^*=P_1-Q_1\\sqrt2$，$Y^*=P_2-Q_2\\sqrt2$ であり，\n\\[XY=(P_1P_2+2Q_1Q_2)+(P_1Q_2+P_2Q_1)\\sqrt2\\]\nで $P_1P_2+2Q_1Q_2$，$P_1Q_2+P_2Q_1$ も「有理数 $+$ 有理数 $\\times\\sqrt3$」の形なので $XY\\in L$ かつ\n\\[(XY)^*=(P_1P_2+2Q_1Q_2)-(P_1Q_2+P_2Q_1)\\sqrt2=(P_1-Q_1\\sqrt2)(P_2-Q_2\\sqrt2)=X^*Y^*.\\]\n$\\alpha=\\sqrt3+\\sqrt2\\in L$ で $\\alpha^*=\\sqrt3-\\sqrt2=\\beta$．$1^*=1$ と積の性質から，数学的帰納法により $(\\alpha^k)^*=\\beta^k$（$k=0,1,2,\\cdots$）．$f(x)=\\sum_k c_kx^k$（$c_k$ は有理数）とすると，和と有理数倍の性質から\n\\[f(\\alpha)^*=\\sum_kc_k(\\alpha^k)^*=\\sum_kc_k\\beta^k=f(\\beta).\\]\n$f(\\alpha)=u+v\\sqrt2+w\\sqrt3+z\\sqrt6$ なら，$f(\\beta)=u-v\\sqrt2+w\\sqrt3-z\\sqrt6$ である．\\hfill$\\square$\n\n(3) 条件をみたす $f$ が存在すれば，(2) より\n\\[\\sqrt2+\\sqrt3=f(\\beta)=(p\\sqrt2+q\\sqrt3)^*=-p\\sqrt2+q\\sqrt3.\\]\n(1) より $-p=1$，$q=1$，すなわち $(p,q)=(-1,1)$ が必要である．このとき条件の第1式は $f(\\alpha)=\\sqrt3-\\sqrt2=\\beta$ であり，これをみたす $f$ があれば (2) より $f(\\beta)=\\beta^*=\\sqrt3+\\sqrt2$ となって第2式も成り立つ．よって $f(\\alpha)=\\beta$ をみたす次数最小の $f$ を求めればよい．\n\\[\\alpha^2=5+2\\sqrt6,\\qquad\\alpha^3=(\\sqrt3+\\sqrt2)(5+2\\sqrt6)=5\\sqrt3+5\\sqrt2+6\\sqrt2+4\\sqrt3=9\\sqrt3+11\\sqrt2.\\]\n$f(x)=c_0+c_1x+c_2x^2+c_3x^3$（有理数 $c_j$，次数3以下）とすると\n\\[f(\\alpha)=(c_0+5c_2)+(c_1+11c_3)\\sqrt2+(c_1+9c_3)\\sqrt3+2c_2\\sqrt6.\\]\nこれが $\\beta=-\\sqrt2+\\sqrt3$ に等しい条件は，(1) より\n\\[c_0+5c_2=0,\\quad c_1+11c_3=-1,\\quad c_1+9c_3=1,\\quad 2c_2=0\\]\nで，これを解くと $c_2=0$，$c_0=0$，$c_3=-1$，$c_1=10$．$c_3\\neq0$ なので次数2以下の $f$ は存在せず，次数3の $f$ は $f(x)=-x^3+10x$ ただ1つである．実際 $f(\\alpha)=-(9\\sqrt3+11\\sqrt2)+10(\\sqrt3+\\sqrt2)=\\sqrt3-\\sqrt2=\\beta$．よって\n\\[\\boldsymbol{(p,q)=(-1,\\,1)},\\qquad\\text{次数最小のものは}\\ \\boldsymbol{f(x)=-x^3+10x}\\ \\text{のみ}.\\]\n（$\\alpha\\beta=1$ であり，$f(x)=-x^3+10x$ は $\\alpha$ と $\\frac1\\alpha$ を入れかえる多項式になっている．）"
+   }
+  ],
+  "idea": {
+   "tex": "$1,\\sqrt2,\\sqrt3,\\sqrt6$ が有理数の範囲で一次独立なので，$u+v\\sqrt2+w\\sqrt3+z\\sqrt6$ の $\\sqrt2$ の符号を変える操作（$X$ を $X^*$ に移す）が矛盾なく定まり，和と積を保つ．$\\alpha=\\sqrt3+\\sqrt2$ は $\\beta=\\sqrt3-\\sqrt2$ に移るので，有理数係数の多項式 $f$ について $f(\\beta)=f(\\alpha)^*$ となり，$f(\\beta)$ は $f(\\alpha)$ だけで決まる．さらに $\\alpha^2,\\alpha^3$ を $1,\\sqrt2,\\sqrt3,\\sqrt6$ で表して係数比較すれば，$f(\\alpha)=\\beta\\,(=\\frac1\\alpha)$ となる最小次数の $f$ が決まる．"
+  },
+  "methods": [],
+  "tags": [
+   "有理数係数の多項式",
+   "無理数の一次独立性",
+   "共役",
+   "次数の最小性"
+  ],
+  "provenance": {
+   "created": "2026-11-14"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-EQ-241",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-08",
+  "level": 4,
+  "minutes": 30,
+  "theme": "「または」で結ばれた2つの積の最良定数",
+  "topic": "「または」で結ばれた2つの積の最良定数",
+  "statement": {
+   "tex": "$a,\\ b,\\ c,\\ d$ は $0\\leqq a,b,c,d\\leqq1$ をみたす実数とする．\n\\begin{enumerate}\n  \\item 次の不等式を証明せよ．\n  \\[(1-a^2)(1-b^2)(1-c^2)(1-d^2)\\leqq\\left(1-\\sqrt{abcd}\\right)^4\\]\n  \\item 定数 $K$ について，次の命題 $(*)$ を考える．\n  \\begin{quote}\n  $(*)$　$0\\leqq a,b,c,d\\leqq1$ をみたすすべての実数 $a,b,c,d$ に対して，\n  \\[abcd\\leqq K\\quad\\text{または}\\quad(1-a^2)(1-b^2)(1-c^2)(1-d^2)\\leqq K\\]\n  が成り立つ．\n  \\end{quote}\n  $(*)$ が成り立つような $K$ のうち最小のものを求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 証明　(2) $K=\\dfrac{7-3\\sqrt5}{2}$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) 0以上の実数 $X,Y,Z,W$ に対して\n\\[XYZW\\leqq\\left(\\frac{X+Y+Z+W}4\\right)^4\\quad\\cdots\\text{①}\\]\nを示す．2つの0以上の実数 $u,v$ について $uv\\leqq\\left(\\frac{u+v}2\\right)^2$（$\\Leftarrow\\left(\\frac{u+v}2\\right)^2-uv=\\left(\\frac{u-v}2\\right)^2\\geqq0$）であるから，\n\\[XY\\leqq\\left(\\frac{X+Y}2\\right)^2,\\quad ZW\\leqq\\left(\\frac{Z+W}2\\right)^2,\\quad \\frac{X+Y}2\\cdot\\frac{Z+W}2\\leqq\\left(\\frac{X+Y+Z+W}4\\right)^2.\\]\nいずれも両辺が0以上なので辺々掛けたり2乗したりでき，\n\\[XYZW\\leqq\\left(\\frac{X+Y}2\\cdot\\frac{Z+W}2\\right)^2\\leqq\\left(\\frac{X+Y+Z+W}4\\right)^4.\\]\n\n$X=1-a^2,\\ Y=1-b^2,\\ Z=1-c^2,\\ W=1-d^2$（いずれも $0$ 以上）に ① を用いると\n\\[(1-a^2)(1-b^2)(1-c^2)(1-d^2)\\leqq\\left(1-\\frac{a^2+b^2+c^2+d^2}4\\right)^4.\\quad\\cdots\\text{②}\\]\nまた ① を $a^2,b^2,c^2,d^2$ に用いると $(abcd)^2\\leqq\\left(\\frac{a^2+b^2+c^2+d^2}4\\right)^4$ で，両辺は0以上だから正の平方根を2回とって $\\sqrt{abcd}\\leqq\\frac{a^2+b^2+c^2+d^2}4$．よって\n\\[0\\leqq1-\\frac{a^2+b^2+c^2+d^2}4\\leqq1-\\sqrt{abcd}\\]\n（左の不等号は $a^2,\\dots,d^2\\leqq1$ による）．$0$ 以上の範囲で4乗は増加するので，② と合わせて\n\\[(1-a^2)(1-b^2)(1-c^2)(1-d^2)\\leqq\\left(1-\\sqrt{abcd}\\right)^4.\\tag*{$\\square$}\\]\n\n(2) $s_0=\\dfrac{3-\\sqrt5}2$ とおく．$s_0$ は $s^2-3s+1=0$ の解で，$0<s_0<1$，$(1-s_0)^2=1-2s_0+s_0^2=s_0$ をみたす．$K_0=s_0^2=\\dfrac{14-6\\sqrt5}4=\\dfrac{7-3\\sqrt5}2$ とおく．\n\n\\textbf{$K=K_0$ で $(*)$ が成り立つこと．} $s=\\sqrt{abcd}$（$0\\leqq s\\leqq1$）とおく．\n\\begin{itemize}\n  \\item $s\\leqq s_0$ のとき，$abcd=s^2\\leqq s_0^2=K_0$．\n  \\item $s>s_0$ のとき，$0\\leqq1-s<1-s_0$ なので (1) より\n  \\[(1-a^2)(1-b^2)(1-c^2)(1-d^2)\\leqq(1-s)^4<(1-s_0)^4=s_0^2=K_0.\\]\n\\end{itemize}\nいずれにせよ「$abcd\\leqq K_0$ または $(1-a^2)\\cdots(1-d^2)\\leqq K_0$」が成り立つ．\n\n\\textbf{$K<K_0$ では $(*)$ が成り立たないこと．} $a=b=c=d=\\varphi=\\dfrac{\\sqrt5-1}2$（$0<\\varphi<1$）とすると $\\varphi^2=\\dfrac{3-\\sqrt5}2=s_0$，$1-\\varphi^2=\\dfrac{\\sqrt5-1}2=\\varphi$ であるから\n\\[abcd=\\varphi^4=s_0^2=K_0,\\qquad(1-a^2)(1-b^2)(1-c^2)(1-d^2)=\\varphi^4=K_0.\\]\nよって $K<K_0$ ならば2つとも $K$ より大きく，$(*)$ は成り立たない．\n\n以上より，求める最小の $K$ は $\\boldsymbol{K=\\dfrac{7-3\\sqrt5}2}$．"
+   }
+  ],
+  "idea": {
+   "tex": "「$X\\leqq K$ または $Y\\leqq K$」は「$X,\\ Y$ の小さい方が $K$ 以下」と同じ．4変数の相加平均・相乗平均（2変数の不等式を2回使って導く）で $Y=(1-a^2)\\cdots(1-d^2)$ を $s=\\sqrt{abcd}$ だけの式 $(1-s)^4$ で上からおさえると，問題は $s^2$ と $(1-s)^4$ の小さい方の最大という1変数の問題になり，2つが等しくなる $s=(1-s)^2$ で最良定数が決まる．等号は $a=b=c=d=\\frac{\\sqrt5-1}2$ で同時に成立する．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) 証明\n(2) $K$：(7-3sqrt(5))/2"
+  },
+  "methods": [],
+  "tags": [
+   "相加平均と相乗平均",
+   "最良定数",
+   "黄金比",
+   "場合分け"
+  ],
+  "provenance": {
+   "created": "2026-11-14"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-EQ-242",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-08",
+  "level": 4,
+  "minutes": 35,
+  "theme": "4変数の巡回する差の積の最大・最小",
+  "topic": "4変数の巡回する差の積の最大・最小",
+  "statement": {
+   "tex": "実数 $x,\\ y,\\ z,\\ w$ が $x^2+y^2+z^2+w^2=1$ をみたしながら動くとき，\n\\[F=(x-y)(y-z)(z-w)(w-x)\\]\nの最大値と最小値を求めよ．また，それぞれを与える $(x,y,z,w)$ を1組ずつ答えよ．"
+  },
+  "answer": {
+   "tex": "最大値 $1$（例 $(x,y,z,w)=\\left(\\dfrac12,-\\dfrac12,\\dfrac12,-\\dfrac12\\right)$），最小値 $-\\dfrac18$（例 $(x,y,z,w)=\\left(\\dfrac{1+\\sqrt3}4,\\dfrac{\\sqrt3-1}4,\\dfrac{1-\\sqrt3}4,-\\dfrac{1+\\sqrt3}4\\right)$）"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "\\textbf{変数変換．} $s=x+z,\\ t=y+w,\\ p=x-z,\\ q=y-w$ とおくと $x=\\frac{s+p}2,\\ z=\\frac{s-p}2,\\ y=\\frac{t+q}2,\\ w=\\frac{t-q}2$ で，\n\\[x^2+y^2+z^2+w^2=\\frac{s^2+p^2+t^2+q^2}2.\\]\nさらに $m=\\frac{s-t}2,\\ \\alpha=\\frac{p-q}2,\\ \\beta=\\frac{p+q}2$ とおくと\n\\[x-y=m+\\alpha,\\quad z-w=m-\\alpha,\\quad y-z=-m+\\beta,\\quad w-x=-m-\\beta\\]\n（例えば $x-y=\\frac{s-t}2+\\frac{p-q}2$）であるから\n\\[F=(m+\\alpha)(m-\\alpha)(-m+\\beta)(-m-\\beta)=(m^2-\\alpha^2)(m^2-\\beta^2).\\]\n条件について，$s^2+t^2=\\frac{(s+t)^2+(s-t)^2}2\\geqq\\frac{(s-t)^2}2=2m^2$，$p^2+q^2=\\frac{(p+q)^2+(p-q)^2}2=2\\alpha^2+2\\beta^2$ より\n\\[1=\\frac{s^2+t^2+p^2+q^2}2\\geqq m^2+\\alpha^2+\\beta^2.\\]\n$M=m^2,\\ A=\\alpha^2,\\ B=\\beta^2$ とおくと $M,A,B\\geqq0$，$M+A+B\\leqq1$，$F=(M-A)(M-B)$．\n\n\\textbf{最大値．} $F\\leqq0$ の場合は $F\\leqq1$．$F>0$ のとき2つの因数は同符号である．\n\\begin{itemize}\n  \\item $M-A>0,\\ M-B>0$ のとき，$0<M-A\\leqq M$，$0<M-B\\leqq M$ より $F\\leqq M^2\\leqq1$．\n  \\item $M-A<0,\\ M-B<0$ のとき，$0<A-M\\leqq A$，$0<B-M\\leqq B$ より $F\\leqq AB\\leqq\\left(\\frac{A+B}2\\right)^2\\leqq\\frac14<1$．\n\\end{itemize}\nよって $F\\leqq1$．$(x,y,z,w)=\\left(\\frac12,-\\frac12,\\frac12,-\\frac12\\right)$ は条件をみたし，$F=1\\cdot(-1)\\cdot1\\cdot(-1)=1$．最大値は $\\boldsymbol1$．\n\n\\textbf{最小値．} $F\\geqq0$ の場合は $F>-\\frac18$．$F<0$ のとき，$M-A$ と $M-B$ は異符号で，$A,B$ の対称性から $A<M<B$ の場合を考えれば十分である．このとき $0<M-A\\leqq M$，$0<B-M$，$B\\leqq1-M-A\\leqq1-M$ より\n\\[-F=(M-A)(B-M)\\leqq M(1-2M)=\\frac18-2\\left(M-\\frac14\\right)^2\\leqq\\frac18\\]\n（$1-2M\\geqq B-M>0$ に注意）．よって $F\\geqq-\\frac18$．\n\n逆に $(x,y,z,w)=\\left(\\frac{1+\\sqrt3}4,\\ \\frac{\\sqrt3-1}4,\\ \\frac{1-\\sqrt3}4,\\ -\\frac{1+\\sqrt3}4\\right)$ とすると，\n\\[x^2+y^2+z^2+w^2=\\frac{2(4+2\\sqrt3)+2(4-2\\sqrt3)}{16}=1,\\]\n\\[x-y=\\frac12,\\quad y-z=\\frac{\\sqrt3-1}2,\\quad z-w=\\frac12,\\quad w-x=-\\frac{1+\\sqrt3}2\\]\nで，$F=\\frac14\\cdot\\frac{\\sqrt3-1}2\\cdot\\left(-\\frac{\\sqrt3+1}2\\right)=-\\frac14\\cdot\\frac{2}{4}=-\\frac18$．最小値は $\\boldsymbol{-\\dfrac18}$．\n\n（最小を与える点は，上の評価の等号条件 $A=0$，$M=\\frac14$，$B=\\frac34$，$s+t=0$ から，$m=\\frac12,\\ \\alpha=0,\\ \\beta=\\frac{\\sqrt3}2$ として $s=\\frac12,\\ t=-\\frac12,\\ p=q=\\frac{\\sqrt3}2$ と選んだものである．）"
+   }
+  ],
+  "idea": {
+   "tex": "差の積はすべての変数に同じ数を加えても変わらないので，和を $0$ にそろえると2乗和が最も小さくなる．$x,z$ と $y,w$ をそれぞれ和と差に分け，$m=\\frac{(x+z)-(y+w)}2$，$\\alpha=\\frac{(x-z)-(y-w)}2$，$\\beta=\\frac{(x-z)+(y-w)}2$ とおくと積は $(m^2-\\alpha^2)(m^2-\\beta^2)$，条件は $m^2+\\alpha^2+\\beta^2\\leqq1$ となり，3つの非負の量 $M,A,B$ についての評価に帰着する．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "最大値：1 ; 最小値：-1/8"
+  },
+  "methods": [],
+  "tags": [
+   "対称性",
+   "変数変換",
+   "平行移動",
+   "最大最小"
+  ],
+  "provenance": {
+   "created": "2026-11-14"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-EQ-243",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-08",
+  "level": 4,
+  "minutes": 30,
+  "theme": "合成した整式が $(x-1)^4$ で割り切れる3次式と2次式",
+  "topic": "合成した整式が $(x-1)^4$ で割り切れる3次式と2次式",
+  "statement": {
+   "tex": "$f(x)$，$g(x)$ は実数を係数とするそれぞれ3次，2次の整式で，ともに最高次の係数は1である．さらに，次の (i)，(ii) が成り立つとする．\n\\begin{itemize}\n  \\item[(i)] $f(g(x))$ は $(x-1)^4$ で割り切れる．\n  \\item[(ii)] $f(x)$ を $g(x)$ で割った余りと，$f(x)$ を $x-1$ で割った余りが等しい．\n\\end{itemize}\n\\begin{enumerate}\n  \\item $c=g(1)$ とおく．$g(x)=(x-1)^2+c$ であることを示せ．\n  \\item $f(x)$ は $(x-c)^2$ で割り切れることを示せ．\n  \\item $f(x)$，$g(x)$ を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 証明　(2) 証明　(3) $f(x)=x^3-\\dfrac32x^2$，$g(x)=x^2-2x+1$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "\\textbf{準備}　整式 $R(x)$ が $R(1)\\neq0$ を満たし，自然数 $k<m$ について $(x-1)^kR(x)$ が $(x-1)^m$ で割り切れるとすると，$(x-1)^kR(x)=(x-1)^mS(x)$（$S$ は整式）と書け，$(x-1)^k\\{R(x)-(x-1)^{m-k}S(x)\\}=0$ が整式として成り立つ．$(x-1)^k$ は 0 でない整式なので $R(x)=(x-1)^{m-k}S(x)$，よって $R(1)=0$ となり矛盾．すなわち\n\\begin{center}\n$R(1)\\neq0$，$k<m$ ならば $(x-1)^kR(x)$ は $(x-1)^m$ で割り切れない．\\quad$(*)$\n\\end{center}\n\n\\textbf{(1)}　(i) より $f(g(x))$ は $x=1$ で 0，すなわち $f(c)=f(g(1))=0$．因数定理により $f(y)$ は $y-c$ で割り切れる．$f(y)$ が $(y-c)^k$ で割り切れるような最大の自然数を $k$ とすると（$f$ は3次なので $1\\leqq k\\leqq3$），$f(y)=(y-c)^kh(y)$，$h(c)\\neq0$ と書ける．\n\nまた $g(x)-c$ は最高次の係数1の2次式で $x=1$ を解にもつので，$g(x)-c=(x-1)(x-d)$（$d$ は実数）と書ける．$d\\neq1$ と仮定すると\n\\[\nf(g(x))=(g(x)-c)^kh(g(x))=(x-1)^k\\cdot(x-d)^kh(g(x))\n\\]\nで，$R(x)=(x-d)^kh(g(x))$ とおくと $R(1)=(1-d)^kh(c)\\neq0$．$k\\leqq3<4$ だから $(*)$ により $f(g(x))$ は $(x-1)^4$ で割り切れず，(i) に反する．よって $d=1$ であり，$g(x)=(x-1)^2+c$．\\hfill$\\square$\n\n\\medskip\n\\textbf{(2)}　(1) より $g(x)-c=(x-1)^2$ なので $f(g(x))=(x-1)^{2k}h(g(x))$，$h(g(1))=h(c)\\neq0$．$k=1$ なら $2k=2<4$ で，$(*)$ により (i) に反する．よって $k\\geqq2$ であり，$f(x)$ は $(x-c)^2$ で割り切れる．\\hfill$\\square$\n\n\\medskip\n\\textbf{(3)}　(2) より，$f(x)=(x-c)^2(x-e)$（$e$ は実数）と書ける．逆に，この形の $f$ と $g=(x-1)^2+c$ について $f(g(x))=(x-1)^4(g(x)-e)$ なので (i) は成り立つ．以下 (ii) を調べる．\n\n$u=x-1$，$\\alpha=1-c$，$\\beta=1-e$ とおくと $x-c=u+\\alpha$，$x-e=u+\\beta$，$g=u^2+c$ で，\n\\[\nf=(u+\\alpha)^2(u+\\beta)=u^3+(2\\alpha+\\beta)u^2+(\\alpha^2+2\\alpha\\beta)u+\\alpha^2\\beta .\n\\]\n$u^2=g-c$，$u^3=u(g-c)$ を代入すると\n\\[\nf=g\\cdot\\{u+(2\\alpha+\\beta)\\}+(\\alpha^2+2\\alpha\\beta-c)u+\\alpha^2\\beta-c(2\\alpha+\\beta)\n\\]\nとなり，最後の部分は $u$（すなわち $x$）の1次以下の式だから，これが $f$ を $g$ で割った余りである．一方，$f$ を $x-1$ で割った余りは $f(1)=\\alpha^2\\beta$（$u=0$ を代入）．よって (ii) は\n\\[\n\\alpha^2+2\\alpha\\beta-c=0,\\qquad c(2\\alpha+\\beta)=0\n\\]\nと同値である．\n\\begin{itemize}\n  \\item $c=0$ のとき：$\\alpha=1$ で $1+2\\beta=0$，$\\beta=-\\dfrac12$，すなわち $e=\\dfrac32$．\n  \\item $\\beta=-2\\alpha$ のとき：$\\alpha^2-4\\alpha^2-c=0$ より $c=-3\\alpha^2$．$\\alpha=1-c=1+3\\alpha^2$ から $3\\alpha^2-\\alpha+1=0$ だが，判別式 $1-12<0$ より実数 $\\alpha$ は存在しない．\n\\end{itemize}\nしたがって $c=0$，$e=\\dfrac32$ で\n\\[\n\\boldsymbol{f(x)=x^3-\\frac32x^2,\\qquad g(x)=x^2-2x+1}.\n\\]\n（確認：$x^2\\equiv2x-1$ を用いると $f\\equiv(3x-2)-\\frac32(2x-1)=-\\frac12=f(1)$．）"
+   }
+  ],
+  "idea": {
+   "tex": "$f(g(x))$ が $(x-1)^4$ で割り切れるとき，$c=g(1)$ は $f$ の根．$g(x)-c=(x-1)(x-d)$ で $d\\neq1$ なら $x=1$ の重複度は $f$ における $c$ の重複度（3以下）にしかならないので $d=1$，すなわち $g=(x-1)^2+c$．すると重複度は2倍になり，$f$ は $(x-c)^2$ で割り切れる．あとは $u=x-1$ で書いて $u^2=g-c$ で次数を下げ，余りを係数比較する．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) 証明\n(2) 証明\n(3) $f(x)$：x^3-(3/2)x^2 ; $g(x)$：x^2-2x+1"
+  },
+  "methods": [],
+  "tags": [
+   "整式の割り算",
+   "因数定理",
+   "重解",
+   "合成",
+   "余りの比較"
+  ],
+  "provenance": {
+   "created": "2026-11-14"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-EQ-244",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-08",
+  "level": 5,
+  "minutes": 35,
+  "theme": "和と1次の重みつき和が0の数列に対する $k^2$ の重みつき和の最大値",
+  "topic": "和と1次の重みつき和が0の数列に対する $k^2$ の重みつき和の最大値",
+  "statement": {
+   "tex": "$n$ を3以上の整数とする．実数 $x_1,\\ x_2,\\ \\cdots,\\ x_n$ が\n\\[\n\\sum_{k=1}^n x_k=0,\\qquad \\sum_{k=1}^n kx_k=0,\\qquad \\sum_{k=1}^n |x_k|=1\n\\]\nを満たしながら動くとき，$\\displaystyle\\sum_{k=1}^n k^2x_k$ の最大値を求めよ．"
+  },
+  "answer": {
+   "tex": "$n$ が奇数のとき $\\dfrac{(n-1)^2}{8}$，$n$ が偶数のとき $\\dfrac{n(n-2)}{8}$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "\\textbf{上からの評価．}　条件 $\\sum x_k=0$，$\\sum kx_k=0$ より，任意の実数 $\\lambda,\\ \\mu$ に対して\n\\[\n\\sum_{k=1}^nk^2x_k=\\sum_{k=1}^n(k^2-\\mu k-\\lambda)x_k.\n\\]\n$g(k)=k^2-\\mu k-\\lambda$ とし，$1\\leqq k\\leqq n$ で $|g(k)|\\leqq E$ ならば\n\\[\n\\sum_{k=1}^nk^2x_k\\leqq\\sum_{k=1}^n|g(k)||x_k|\\leqq E\\sum_{k=1}^n|x_k|=E.\\tag{C}\n\\]\n\n\\textbf{$n=2m+1$（奇数，$m\\geqq1$）のとき．}　$g(k)=(k-m-1)^2-\\dfrac{m^2}2$ とする（$k^2$ の係数が1の2次式なので上の形）．$1\\leqq k\\leqq n$ で $0\\leqq(k-m-1)^2\\leqq m^2$ より $|g(k)|\\leqq\\dfrac{m^2}2$．(C) より $\\sum k^2x_k\\leqq\\dfrac{m^2}2$．\n\n$x_1=\\frac14$，$x_{m+1}=-\\frac12$，$x_n=\\frac14$，他は $0$ とすると（$1<m+1<n$），$\\sum x_k=0$，$\\sum kx_k=\\frac14-\\frac{m+1}2+\\frac{2m+1}4=0$，$\\sum|x_k|=1$ で，\n\\[\n\\sum k^2x_k=\\sum g(k)x_k=\\frac{m^2}2\\cdot\\frac14+\\left(-\\frac{m^2}2\\right)\\left(-\\frac12\\right)+\\frac{m^2}2\\cdot\\frac14=\\frac{m^2}2.\n\\]\nよって最大値は $\\dfrac{m^2}2=\\boldsymbol{\\dfrac{(n-1)^2}8}$．\n\n\\textbf{$n=2m$（偶数，$m\\geqq2$）のとき．}　$g(k)=(k-m)(k-m-1)-\\dfrac{m(m-1)}2$ とする．整数 $k$ に対し $(k-m)(k-m-1)$ は連続する2整数の積なので $0$ 以上で，$1\\leqq k\\leqq 2m$ では $\\left|k-m-\\frac12\\right|\\leqq m-\\frac12$ より\n\\[\n(k-m)(k-m-1)=\\left(k-m-\\frac12\\right)^2-\\frac14\\leqq\\left(m-\\frac12\\right)^2-\\frac14=m(m-1).\n\\]\nよって $|g(k)|\\leqq\\dfrac{m(m-1)}2$ で，(C) より $\\sum k^2x_k\\leqq\\dfrac{m(m-1)}2$．\n\n$x_1=\\dfrac{m}{2(2m-1)}$，$x_m=-\\dfrac12$，$x_{2m}=\\dfrac{m-1}{2(2m-1)}$，他は $0$ とすると（$1<m<2m$，$x_1>0$，$x_{2m}>0$），\n\\[\n\\sum x_k=\\frac{2m-1}{2(2m-1)}-\\frac12=0,\\qquad \\sum kx_k=\\frac{m+2m(m-1)}{2(2m-1)}-\\frac m2=\\frac{m(2m-1)}{2(2m-1)}-\\frac m2=0,\n\\]\n$\\sum|x_k|=\\frac12+\\frac12=1$．$g(1)=g(2m)=\\frac{m(m-1)}2$，$g(m)=-\\frac{m(m-1)}2$ なので\n\\[\n\\sum k^2x_k=\\sum g(k)x_k=\\frac{m(m-1)}2(x_1+x_{2m})+\\frac{m(m-1)}2\\cdot\\frac12=\\frac{m(m-1)}2.\n\\]\nよって最大値は $\\dfrac{m(m-1)}2=\\boldsymbol{\\dfrac{n(n-2)}8}$．\\hfill$\\square$"
+   }
+  ],
+  "idea": {
+   "tex": "$\\sum x_k=0$ なので重み $a_k$ から定数を引いても和は変わらない（原題：$a_k-\\frac{M+m}2$ を考えて $\\frac{M-m}2$ で抑える）．$\\sum kx_k=0$ も加わると重みから1次式 $\\lambda+\\mu k$ を引いてよく，$\\sum k^2x_k=\\sum g(k)x_k\\leqq(|g(k)|\\text{ の最大値})\\sum|x_k|$．$g(k)=k^2-\\mu k-\\lambda$ の絶対値の最大を最小にする（両端と中央で同じ大きさ・逆符号になる）ように $g$ を選び，両端と中央の3か所だけ $0$ でない $x$ で等号を実現する．$n$ の偶奇で中央の扱いが変わる．"
+  },
+  "methods": [],
+  "tags": [
+   "絶対値の不等式",
+   "条件式の利用",
+   "2次関数",
+   "最大値の到達",
+   "構成"
+  ],
+  "provenance": {
+   "created": "2026-11-14"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-EQ-245",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-08",
+  "level": 5,
+  "minutes": 45,
+  "theme": "重心が双曲線上にある三角形の面積の最小値",
+  "topic": "重心が双曲線上にある三角形の面積の最小値",
+  "statement": {
+   "tex": "座標平面上の曲線 $K:\\ y=\\dfrac1x$ 上に相異なる3点 A，B，C があり，三角形 ABC の重心 G が $K$ 上にある．A，B，C の $x$ 座標をそれぞれ $a$，$b$，$c$ とし，三角形 ABC の面積を $S$ とする．（$K$ 上の相異なる3点が同一直線上にないことは証明なしに用いてよい．）\n\\begin{enumerate}\n  \\item G の座標が $(1,\\ 1)$ であるとき，$a$，$b$，$c$ はある実数の定数 $k$ を用いて $x$ の3次方程式 $(x-1)^3+k(3x-1)=0$ の3つの解として表されることを示せ．また，このような $k$ のとりうる値の範囲を求めよ．\n  \\item G の座標が $(1,\\ 1)$ であるとき，$S$ を $k$ で表せ．\n  \\item G が $K$ 上を動くとき，$S$ の最小値を求めよ．また，G の座標が $(1,\\ 1)$ で $S$ が最小となるときの $a$，$b$，$c$ の値の組を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 証明，$k<-1$　(2) $S=\\dfrac{3\\sqrt3\\,(-k)}{\\sqrt{-k-1}}$　(3) 最小値 $6\\sqrt3$，そのとき $\\{a,b,c\\}=\\{-1,\\ 2+\\sqrt3,\\ 2-\\sqrt3\\}$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "\\emph{面積の式．}A$\\left(a,\\frac1a\\right)$，B$\\left(b,\\frac1b\\right)$，C$\\left(c,\\frac1c\\right)$ に対し\n\\begin{align*}\nS&=\\frac12\\left|(b-a)\\left(\\frac1c-\\frac1a\\right)-(c-a)\\left(\\frac1b-\\frac1a\\right)\\right|\n=\\frac12\\left|\\frac{(b-a)(a-c)}{ac}-\\frac{(c-a)(a-b)}{ab}\\right|\\\\\n&=\\frac{|(a-b)(b-c)(c-a)|}{2|abc|}.\\qquad\\cdots\\text{①}\n\\end{align*}\n（中央の式で $(a-b)(c-a)$ をくくると $\\frac1{ac}-\\frac1{ab}=\\frac{b-c}{abc}$ が残る．）\n\n\\textbf{(1)}　G$=(1,1)$ とすると $a+b+c=3$，$\\dfrac1a+\\dfrac1b+\\dfrac1c=3$，すなわち $ab+bc+ca=3abc$．$e=abc$ とおくと，$a,b,c$ は\n\\[\nx^3-3x^2+3ex-e=0\n\\]\nの3解である．$(x-1)^3=x^3-3x^2+3x-1$ より左辺は $(x-1)^3+(e-1)(3x-1)$ に等しいので，$k=e-1$ とおけば $a,b,c$ は $(x-1)^3+k(3x-1)=0$ の3解である．\n\n逆に，実数 $k$ に対し $(x-1)^3+k(3x-1)=0$ が相異なる3つの実数解をもち，どれも $0$ でなければ，それらを $x$ 座標とする $K$ 上の3点は相異なり，解と係数の関係から $a+b+c=3$，$ab+bc+ca=3(k+1)=3abc$ となって重心は $(1,1)$ である．解に $0$ があるのは $x=0$ を代入して $-1-k=0$，すなわち $k=-1$ のとき．\n\n$X=x-1$ とおくと方程式は $g(X)=X^3+3kX+2k=0$．$k\\geqq0$ なら $g'(X)=3X^2+3k\\geqq0$（等号は高々1点）で $g$ は狭義単調増加，実数解は1つだけ．$k<0$ のとき $\\sigma=\\sqrt{-k}$ とすると $g'(X)=3(X^2-\\sigma^2)$ で，$g$ は $X=-\\sigma$ で極大，$X=\\sigma$ で極小．\n\\[\ng(\\sigma)=\\sigma^3-3\\sigma^3+2k=-2\\sigma^3-2\\sigma^2<0,\\qquad g(-\\sigma)=-\\sigma^3+3\\sigma^3+2k=2\\sigma^2(\\sigma-1).\n\\]\n$g(X)\\to\\pm\\infty$（$X\\to\\pm\\infty$）なので，相異なる3実数解をもつ $\\iff g(-\\sigma)>0>g(\\sigma)\\iff\\sigma>1\\iff k<-1$．このとき $k\\neq-1$ で解はどれも $0$ でない．よって求める範囲は $\\boldsymbol{k<-1}$．\n\n\\medskip\n\\textbf{(2)}　$g(X)=X^3+PX+Q$（$P=3k$，$Q=2k$）の3解を $X_1,X_2,X_3$ とすると $X_i=x_i-1$ なので $(a-b)(b-c)(c-a)$ の2乗は $\\Delta=\\{(X_1-X_2)(X_2-X_3)(X_3-X_1)\\}^2$ に等しい．$k<-1$ より $P\\neq0$，$Q\\neq0$，また $g(0)=Q\\neq0$ より $X_i\\neq0$．解と係数の関係 $X_1+X_2+X_3=0$，$X_1X_2X_3=-Q$ より\n\\[\n(X_1-X_2)^2=(X_1+X_2)^2-4X_1X_2=X_3^2+\\frac{4Q}{X_3}=\\frac{X_3^3+4Q}{X_3}=\\frac{3Q-PX_3}{X_3}\n\\]\n（$X_3^3=-PX_3-Q$ を用いた）．同様の式を掛け合わせて\n\\[\n\\Delta=\\frac{(3Q-PX_1)(3Q-PX_2)(3Q-PX_3)}{X_1X_2X_3}=\\frac{P^3\\,g\\!\\left(\\frac{3Q}P\\right)}{-Q}\n=\\frac{27Q^3+3P^3Q+P^3Q}{-Q}=-4P^3-27Q^2 .\n\\]\n（$g(X)=(X-X_1)(X-X_2)(X-X_3)$ より $(3Q-PX_1)(3Q-PX_2)(3Q-PX_3)=P^3\\left(\\frac{3Q}P-X_1\\right)\\left(\\frac{3Q}P-X_2\\right)\\left(\\frac{3Q}P-X_3\\right)=P^3g\\left(\\frac{3Q}P\\right)$．）よって\n\\[\n\\Delta=-108k^3-108k^2=108k^2(-k-1).\n\\]\n$abc=e=k+1$ なので ① より\n\\[\nS^2=\\frac{\\Delta}{4(k+1)^2}=\\frac{27k^2}{-k-1},\\qquad \\boldsymbol{S=\\frac{3\\sqrt3\\,(-k)}{\\sqrt{-k-1}}}\\quad(k<-1).\n\\]\n\n\\medskip\n\\textbf{(3)}　G$=\\left(\\gamma,\\frac1\\gamma\\right)$（$\\gamma\\neq0$）とし，点 $(x,y)$ を点 $\\left(\\dfrac x\\gamma,\\ \\gamma y\\right)$ に移す移動 $\\Phi$ を考える．$\\Phi$ は $K$ 上の点 $\\left(t,\\frac1t\\right)$ を $K$ 上の点 $\\left(\\frac t\\gamma,\\frac\\gamma t\\right)$ に移し，1次式で表される移動なので3点の重心を重心に移す．また，ベクトル $(p,q)$，$(p',q')$ の張る平行四辺形の面積 $|pq'-p'q|$ は $\\left(\\frac p\\gamma,\\gamma q\\right)$，$\\left(\\frac{p'}\\gamma,\\gamma q'\\right)$ でも同じ値なので，三角形の面積を変えない．逆向きの移動（点 $(x,y)$ を点 $(\\gamma x,\\frac y\\gamma)$ に移す）も同じ性質をもつ．よって，G が $K$ 上を動くときの $S$ のとりうる値の集合は，G$=(1,1)$ のときの $S$ のとりうる値の集合と一致する．\n\nG$=(1,1)$ のとき，$\\mu=-k-1>0$ とおくと $-k=\\mu+1$ で\n\\[\nS^2=\\frac{27(\\mu+1)^2}{\\mu}=27\\left(\\mu+2+\\frac1\\mu\\right)\\geqq27(2+2)=108\n\\]\n（相加平均と相乗平均の関係．等号は $\\mu=1$）．(1) より $k<-1$ のすべての値が実現するので $\\mu=1$，すなわち $k=-2$ で等号が成り立つ．よって $S$ の最小値は $\\sqrt{108}=\\boldsymbol{6\\sqrt3}$．\n\nこのとき方程式は $(x-1)^3-2(3x-1)=x^3-3x^2-3x+1=(x+1)(x^2-4x+1)=0$ で，\n\\[\n\\boldsymbol{\\{a,\\ b,\\ c\\}=\\{-1,\\ 2+\\sqrt3,\\ 2-\\sqrt3\\}}.\n\\]\n（確認：和は $3$，逆数の和は $-1+\\frac{4}{1}=3$．）"
+   }
+  ],
+  "idea": {
+   "tex": "$y=\\frac1x$ 上の3点の重心が $y=\\frac1x$ 上にあるという条件は，面積を変えない変換（点 $(x,y)$ を点 $\\left(\\frac xg,\\ gy\\right)$ に移す）で重心を $(1,1)$ に移すと「$a+b+c=3$，$ab+bc+ca=3abc$」になり，3点の $x$ 座標は $(x-1)^3+k(3x-1)=0$ の3解になる．$X=x-1$ とずらすと $X^3+3kX+2k=0$ で，3実数解の条件は極値の積の符号，面積の2乗は差積の2乗 $\\{(X_1-X_2)(X_2-X_3)(X_3-X_1)\\}^2=-4P^3-27Q^2$（解と係数の関係だけで導ける）から $\\frac{27k^2}{-k-1}$ となる．原題の「三角形 OAB の面積」を「三角形 ABC 自身の面積」に変え，3点を対称に扱わせた．"
+  },
+  "methods": [],
+  "tags": [
+   "双曲線",
+   "重心",
+   "3次方程式",
+   "解と係数の関係",
+   "判別式",
+   "面積を保つ変換",
+   "相加平均と相乗平均"
+  ],
+  "provenance": {
+   "created": "2026-11-14"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-EQ-246",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-08",
+  "level": 4,
+  "minutes": 30,
+  "theme": "$f(\\alpha)=\\beta^2+\\lambda^2$ 型の巡回条件",
+  "topic": "$f(\\alpha)=\\beta^2+\\lambda^2$ 型の巡回条件",
+  "statement": {
+   "tex": "$a,\\ b$ を実数とし，$f(x)=x^2+ax+b$ とする．\n\\[f(\\alpha)=\\beta^2+\\lambda^2,\\qquad f(\\beta)=\\lambda^2+\\alpha^2,\\qquad f(\\lambda)=\\alpha^2+\\beta^2\\]\nを満たし，かつ $\\alpha\\neq\\beta$ である実数 $\\alpha,\\ \\beta,\\ \\lambda$ が存在するための，$a,\\ b$ の条件を求めよ．"
+  },
+  "answer": {
+   "tex": "$a^2\\leqq4b$ かつ $(a,b)\\neq(0,0)$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "\\textbf{必要条件．}第1式 $-$ 第2式：$f(\\alpha)-f(\\beta)=(\\alpha-\\beta)(\\alpha+\\beta+a)$，右辺の差は $\\beta^2-\\alpha^2=-(\\alpha-\\beta)(\\alpha+\\beta)$．$\\alpha\\neq\\beta$ で割って\n\\[\\alpha+\\beta=-\\frac a2.\\tag{A}\\]\n第2式 $-$ 第3式：$(\\beta-\\lambda)(\\beta+\\lambda+a)=\\lambda^2-\\beta^2=-(\\beta-\\lambda)(\\beta+\\lambda)$ より $(\\beta-\\lambda)\\{2(\\beta+\\lambda)+a\\}=0$．よって $\\lambda=\\beta$ または $\\beta+\\lambda=-\\frac a2$ で，後者と (A) から $\\lambda=\\alpha$．したがって $\\lambda\\in\\{\\alpha,\\beta\\}$．\n\n$\\lambda=\\beta$ のとき，3式は $f(\\alpha)=2\\beta^2$，$f(\\beta)=\\alpha^2+\\beta^2$（第3式は第2式と同じ）．(A) のもとで $f(\\beta)=f(\\alpha)-(\\alpha-\\beta)(\\alpha+\\beta+a)=f(\\alpha)+(\\alpha^2-\\beta^2)$ なので，第2式は $f(\\alpha)=2\\beta^2$ から従う．よって条件は「(A) かつ $f(\\alpha)=2\\beta^2$ かつ $\\alpha\\neq\\beta$」．\n$\\lambda=\\alpha$ のときは，3式は $f(\\beta)=2\\alpha^2$，$f(\\alpha)=\\alpha^2+\\beta^2$ となり，$\\alpha$ と $\\beta$ の役割を入れかえた同じ条件になる．\n\nしたがって求める条件は，「$\\alpha+\\beta=-\\frac a2$，$f(\\alpha)=2\\beta^2$，$\\alpha\\neq\\beta$ を満たす実数 $\\alpha,\\beta$ が存在すること」と同値である（十分性：そのような $\\alpha,\\beta$ に $\\lambda=\\beta$ を合わせれば3式が成り立つことを上で示した）．\n\n$\\beta=-\\frac a2-\\alpha$ を代入すると\n\\[\\alpha^2+a\\alpha+b=2\\left(\\alpha+\\frac a2\\right)^2\\iff\\alpha^2+a\\alpha+\\frac{a^2}2-b=0,\\tag{B}\\]\n$\\alpha\\neq\\beta\\iff\\alpha\\neq-\\frac a4$．よって条件は「(B) が $-\\frac a4$ 以外の実数解をもつ」こと．\n\n(B) の判別式は $a^2-2a^2+4b=4b-a^2$．\n\\begin{itemize}\n  \\item $4b-a^2<0$：実数解なし．\n  \\item $4b-a^2>0$：異なる2実数解があり，少なくとも一方は $-\\frac a4$ でない．\n  \\item $4b-a^2=0$：重解 $\\alpha=-\\frac a2$ で，$-\\frac a2\\neq-\\frac a4\\iff a\\neq0$．\n\\end{itemize}\n$a^2=4b$ かつ $a=0$ は $(a,b)=(0,0)$ のこと．答：$\\boldsymbol{a^2\\leqq4b\\ \\text{かつ}\\ (a,b)\\neq(0,0)}$．"
+   }
+  ],
+  "idea": {
+   "tex": "2式の差をとると $(\\alpha-\\beta)(\\alpha+\\beta+a)=-(\\alpha-\\beta)(\\alpha+\\beta)$ で，$\\alpha\\neq\\beta$ から $\\alpha+\\beta=-\\frac a2$．同様の差から $\\lambda=\\beta$ または $\\lambda=\\alpha$ に限られ（3つが相異なることは不可能），問題は1文字の2次方程式が「特定の値 $-\\frac a4$ 以外の実数解」をもつ条件になる．"
+  },
+  "methods": [],
+  "tags": [
+   "差をとる",
+   "因数分解",
+   "場合分け",
+   "解の存在条件"
+  ],
+  "provenance": {
+   "created": "2026-11-14"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-EQ-247",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-08",
+  "level": 5,
+  "minutes": 40,
+  "theme": "非対称な4次式をはさむ2つの整式の連立不等式",
+  "topic": "非対称な4次式をはさむ2つの整式の連立不等式",
+  "statement": {
+   "tex": "$P(x)$，$Q(x)$ は実数係数の整式，$c$ は実数の定数で，任意の実数 $x$ に対して\n\\[\nx^4-4x+P(x)\\geqq\\{Q(x)\\}^2+c,\\qquad x^4-4x+Q(x)\\geqq\\{P(x)\\}^2+c\n\\]\nがともに成り立つとする．\n\\begin{enumerate}\n  \\item $P(x)$，$Q(x)$ の次数はともに2以下であることを示し，$c$ としてありうる最大の値 $c_0$ を求めよ．\n  \\item $c=c_0$ のとき，$P(1)=Q(1)=\\dfrac12$ かつ $P'(1)=Q'(1)$ であることを示せ．\n  \\item $c=c_0$ かつ $P(x)=Q(x)$ のとき，$P(x)=p(x-1)^2+q(x-1)+\\dfrac12$（$p,q$ は実数）と表される．点 $(p,q)$ の存在範囲を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 証明，$c_0=-\\dfrac{11}4$　(2) 証明　(3) $(q-2p)^2+2p^2\\leqq2$（$pq$ 平面の楕円の周および内部）"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "以下，2つの不等式を順に (A)，(B) とよぶ．定数（0 を含む）の整式の次数は 0 とみなす．\n\n\\textbf{(1)}　$P,Q$ の次数を $m,k$ とし，$m,k$ の少なくとも一方が3以上であると仮定する．条件は $P$ と $Q$ を入れかえても同じなので $m\\geqq k$ としてよい．このとき $m\\geqq3$ で，$\\{P(x)\\}^2$ の次数 $2m$ は $2m\\geqq6>4$ かつ $2m>k$ を満たす．よって (B) の\n\\[\nx^4-4x+Q(x)-\\{P(x)\\}^2-c\n\\]\nは次数 $2m$，最高次の係数が（$P$ の最高次の係数の2乗に $-1$ をかけた）負の数の整式で，$x\\to\\infty$ のとき $-\\infty$ に発散する．これは (B) に反する．よって $m\\leqq2$，$k\\leqq2$．\n\n次に (A)，(B) を辺々加えると，$P-P^2=\\frac14-\\bigl(P-\\frac12\\bigr)^2$ などより\n\\[\n2(x^4-4x)+\\frac12-\\Bigl(P(x)-\\frac12\\Bigr)^2-\\Bigl(Q(x)-\\frac12\\Bigr)^2\\geqq2c .\\quad\\cdots\\text{(C)}\n\\]\n$x=1$ とおくと $-6+\\frac12-\\bigl(P(1)-\\frac12\\bigr)^2-\\bigl(Q(1)-\\frac12\\bigr)^2\\geqq2c$，よって $c\\leqq-\\frac{11}4$．\n\n逆に $c=-\\frac{11}4$，$P=Q=\\frac12$ とすると，(A)，(B) はともに\n\\[\nx^4-4x+\\frac12-\\frac14+\\frac{11}4=x^4-4x+3=(x-1)^2(x^2+2x+3)=(x-1)^2\\{(x+1)^2+2\\}\\geqq0\n\\]\nとなり成り立つ．よって $c_0=\\boldsymbol{-\\dfrac{11}4}$．\n\n\\medskip\n\\textbf{(2)}　$c=-\\frac{11}4$ のとき，(C) で $x=1$ とおくと $-\\frac{11}2-\\bigl(P(1)-\\frac12\\bigr)^2-\\bigl(Q(1)-\\frac12\\bigr)^2\\geqq-\\frac{11}2$ なので，$P(1)=Q(1)=\\frac12$．\n\n$s=x-1$ とおき，$u=P-\\frac12$，$v=Q-\\frac12$ とする．$u,v$ は $s$ の2次以下の整式で $s=0$ のとき 0 だから，$u=as+bs^2$，$v=ds+es^2$（$a,b,d,e$ は実数）と書ける．$P'(1)=a$，$Q'(1)=d$ である．また $x^2+2x+3=(s+1)^2+2(s+1)+3=s^2+4s+6$ より $x^4-4x+3=s^2(s^2+4s+6)$．$Q^2=v^2+v+\\frac14$ を用いると，(A) は\n\\[\nF(s)=s^2(s^2+4s+6)+u-v-v^2=(a-d)s+s^2G(s)\\geqq0\n\\]\n（$G(s)=s^2+4s+6+(b-e)-(d+es)^2$）がすべての実数 $s$ で成り立つことと同値である．\n\n$a\\neq d$ と仮定し，$\\delta=a-d$ とおく．$-1\\leqq s\\leqq1$ で $|G(s)|\\leqq|s|^2+4|s|+6+|b-e|+(|d|+|e|)^2\\leqq M$（$M=11+|b-e|+(|d|+|e|)^2>0$）である．$0<h\\leqq1$ かつ $h<\\frac{|\\delta|}M$ となる $h$ をとり，$s$ を $\\delta$ と逆符号で $|s|=h$ となるようにとると\n\\[\nF(s)=-|\\delta|h+h^2G(s)\\leqq-|\\delta|h+h^2M=h(hM-|\\delta|)<0\n\\]\nとなって矛盾．よって $a=d$，すなわち $P'(1)=Q'(1)$．\\hfill$\\square$\n\n\\medskip\n\\textbf{(3)}　$P=Q$ のとき (A) と (B) は同じ不等式である．(2) の記号で $u=v=qs+ps^2$ だから\n\\[\nF(s)=s^2(s^2+4s+6)-(qs+ps^2)^2=s^2h(s),\\quad h(s)=(1-p^2)s^2+(4-2pq)s+6-q^2 .\n\\]\n$F(s)\\geqq0$ がすべての $s$ で成り立つことは，$s\\neq0$ で $h(s)\\geqq0$ となることと同値で，$h$ は連続なので（$h(0)=\\lim_{s\\to0}h(s)\\geqq0$），これはすべての実数 $s$ で $h(s)\\geqq0$ となることと同値である．\n\\begin{itemize}\n  \\item $1-p^2<0$ のときは $s\\to\\infty$ で $h(s)\\to-\\infty$ なので不適．\n  \\item $1-p^2>0$ のとき：条件は判別式について\n  \\[\n  \\frac{D}4=(2-pq)^2-(1-p^2)(6-q^2)=q^2-4pq+6p^2-2=(q-2p)^2+2p^2-2\\leqq0 .\n  \\]\n  \\item $1-p^2=0$ のとき：$h$ は1次以下なので，条件は $4-2pq=0$ かつ $6-q^2\\geqq0$．$p=\\pm1$ より $q=\\frac2p=2p$ で，$6-4=2\\geqq0$．このとき $(q-2p)^2+2p^2=2$．\n\\end{itemize}\n逆に $(q-2p)^2+2p^2\\leqq2$ ならば $p^2\\leqq1$ で，$p^2<1$ なら第2の場合に，$p^2=1$ なら $(q-2p)^2\\leqq0$ より $q=2p$ で第3の場合に当たる．以上より求める範囲は\n\\[\n\\boldsymbol{(q-2p)^2+2p^2\\leqq2}\n\\]\n（$pq$ 平面上の楕円 $(q-2p)^2+2p^2=2$ の周および内部）．"
+   }
+  ],
+  "idea": {
+   "tex": "2式を足すと $P-P^2=\\frac14-\\bigl(P-\\frac12\\bigr)^2$ と平方完成でき，$x^4-4x$ の最小点 $x=1$ で評価すると $c$ の上限が出る．等号では $P(1)=Q(1)=\\frac12$ が強制され，$s=x-1$ で書き直すと 1 次の項の符号から $P'(1)=Q'(1)$，残りは $s^2$ をくくり出した2次式の非負条件（判別式）になる．次数は最高次の比較で2以下に絞られる．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) 記述\n(2) 証明\n(3) (q-2p)^2+2p^2<=2"
+  },
+  "methods": [],
+  "tags": [
+   "整式の次数",
+   "平方完成",
+   "最小点での評価",
+   "局所的な符号",
+   "判別式",
+   "楕円の内部"
+  ],
+  "provenance": {
+   "created": "2026-11-14"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-EQ-248",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-08",
+  "level": 4,
+  "minutes": 30,
+  "theme": "$abc=1$ のもとでの累乗和の比較と指数の範囲",
+  "topic": "$abc=1$ のもとでの累乗和の比較と指数の範囲",
+  "statement": {
+   "tex": "$k$ を整数とする．$abc=1$ を満たす任意の正の実数 $a$，$b$，$c$ に対して\n\\[\na^k+b^k+c^k\\geqq a^2+b^2+c^2\n\\]\nが成り立つような $k$ をすべて求めよ．"
+  },
+  "answer": {
+   "tex": "$k\\geqq2$ または $k\\leqq-4$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "\\textbf{準備}　正の数 $x,y,z$ と正の整数 $j$ について $S_j=x^j+y^j+z^j$ とおく．\n\\[\n3S_{j+1}-S_jS_1=(x^j-y^j)(x-y)+(y^j-z^j)(y-z)+(z^j-x^j)(z-x)\\geqq0\n\\]\n（右辺を展開すると $2S_{j+1}-\\sum_{\\text{異なる2文字}}x^jy$ となり左辺と一致する．各項は $x^j-y^j$ と $x-y$ が同符号なので 0 以上）．また $xyz=1$ のとき，$X=\\sqrt[3]x$，$Y=\\sqrt[3]y$，$Z=\\sqrt[3]z$ とおくと $XYZ=1$ で\n\\[\nS_1-3=X^3+Y^3+Z^3-3XYZ=\\frac12(X+Y+Z)\\{(X-Y)^2+(Y-Z)^2+(Z-X)^2\\}\\geqq0 .\n\\]\nよって $xyz=1$ のとき $S_{j+1}\\geqq\\frac13S_jS_1\\geqq S_j$ で，整数 $k\\geqq j\\geqq1$ に対し $S_k\\geqq S_j$．\\quad$(*)$\n\n\\textbf{$k\\geqq2$ のとき成り立つ}　$x,y,z=a,b,c$ として $(*)$ より $a^k+b^k+c^k\\geqq a^2+b^2+c^2$．\n\n\\textbf{$k\\leqq-4$ のとき成り立つ}　$m=-k\\geqq4$，$x=\\frac1a$，$y=\\frac1b$，$z=\\frac1c$ とおくと $xyz=1$，$a^k=x^m$ などで，$a^2=\\frac1{x^2}=(yz)^2$ などである．$(*)$ より\n\\[\na^k+b^k+c^k=S_m\\geqq S_4=x^4+y^4+z^4,\n\\]\n\\[\nx^4+y^4+z^4-(y^2z^2+z^2x^2+x^2y^2)=\\frac12\\{(x^2-y^2)^2+(y^2-z^2)^2+(z^2-x^2)^2\\}\\geqq0\n\\]\nだから $a^k+b^k+c^k\\geqq a^2+b^2+c^2$．\n\n\\textbf{$-3\\leqq k\\leqq1$ のとき成り立たない}　$(a,b,c)=\\bigl(\\frac12,\\frac12,4\\bigr)$（$abc=1$）とすると $a^2+b^2+c^2=\\frac{33}2=\\frac{1056}{64}$ で，\n\\[\na^k+b^k+c^k=\\begin{cases}5&(k=1)\\\\3&(k=0)\\\\\\frac{17}4&(k=-1)\\\\\\frac{129}{16}&(k=-2)\\\\\\frac{1025}{64}&(k=-3)\\end{cases}\n\\]\nはいずれも $\\frac{1056}{64}$ より小さい．\n\n以上より $\\boldsymbol{k\\geqq2\\ \\text{または}\\ k\\leqq-4}$．"
+   }
+  ],
+  "idea": {
+   "tex": "$3\\sum x^{j+1}-\\sum x^j\\sum x=\\sum_{\\text{2数の組}}(x^j-y^j)(x-y)\\geqq0$ と $x+y+z\\geqq3$（$xyz=1$）から，$xyz=1$ のとき累乗和 $\\sum x^j$ は $j$ について単調に増える．負の指数は逆数 $x=\\frac1a$ に置き換え，$\\sum a^2=\\sum y^2z^2\\leqq\\sum x^4$ に帰着させる．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "k>=2 または k<=-4"
+  },
+  "methods": [],
+  "tags": [
+   "不等式の証明",
+   "チェビシェフ型の不等式",
+   "相加相乗平均",
+   "逆数への置き換え",
+   "反例"
+  ],
+  "provenance": {
+   "created": "2026-11-14"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-EQ-249",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-08",
+  "level": 4,
+  "minutes": 30,
+  "theme": "分母が $x_k^2+x_kx_{k+1}+x_{k+1}^2$ の巡回和",
+  "topic": "分母が $x_k^2+x_kx_{k+1}+x_{k+1}^2$ の巡回和",
+  "statement": {
+   "tex": "$n$ を $2$ 以上の整数とし，$x_1,x_2,\\dots,x_n$ を正の実数，$x_{n+1}=x_1$ とする．$D_k=x_k^2+x_kx_{k+1}+x_{k+1}^2$（$k=1,2,\\dots,n$）とおく．\n\\begin{enumerate}\n  \\item $\\displaystyle\\sum_{k=1}^{n}\\frac{x_k^3}{D_k}=\\sum_{k=1}^{n}\\frac{x_{k+1}^3}{D_k}$ を示せ．\n  \\item $\\displaystyle\\sum_{k=1}^{n}\\frac{x_{k+1}^3}{D_k}\\geqq\\frac13\\sum_{k=1}^{n}x_k$ を示し，等号が成り立つ条件を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 証明　(2) 証明，等号は $x_1=x_2=\\dots=x_n$ のときに限る"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) $x_k^3-x_{k+1}^3=(x_k-x_{k+1})D_k$ なので\n\\[\n\\sum_{k=1}^n\\frac{x_k^3}{D_k}-\\sum_{k=1}^n\\frac{x_{k+1}^3}{D_k}=\\sum_{k=1}^n(x_k-x_{k+1})=x_1-x_{n+1}=0 .\\qquad\\square\n\\]\n(2) 正の数 $a,b$ に対して\n\\[\n3a^3-(2a-b)(a^2+ab+b^2)=a^3-a^2b-ab^2+b^3=(a+b)(a-b)^2\\geqq0\n\\]\nなので $\\dfrac{a^3}{a^2+ab+b^2}\\geqq\\dfrac{2a-b}3$（等号は $a=b$ のときに限る）．$a=x_{k+1}$，$b=x_k$ として $k=1,\\dots,n$ で足すと\n\\[\n\\sum_{k=1}^n\\frac{x_{k+1}^3}{D_k}\\geqq\\frac13\\sum_{k=1}^n(2x_{k+1}-x_k)=\\frac13\\sum_{k=1}^nx_k\n\\]\n（$\\sum x_{k+1}=\\sum x_k$）．等号はすべての $k$ で $x_{k+1}=x_k$，すなわち $\\boldsymbol{x_1=x_2=\\dots=x_n}$ のときに限る．\\hfill$\\square$"
+   }
+  ],
+  "idea": {
+   "tex": "$x_k^3-x_{k+1}^3$ が分母で割り切れるので，分子を入れかえた2つの巡回和は等しい．$\\dfrac{a^3}{a^2+ab+b^2}\\geqq\\dfrac{2a-b}3$（差は $\\dfrac{(a+b)(a-b)^2}{3(a^2+ab+b^2)}$）で各項を1次式に置き換えると，巡回和で打ち消し合う．"
+  },
+  "methods": [],
+  "tags": [
+   "不等式",
+   "巡回和",
+   "1次式による評価",
+   "等号条件"
+  ],
+  "provenance": {
+   "created": "2026-11-14"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-EQ-250",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-08",
+  "level": 4,
+  "minutes": 30,
+  "theme": "奇数のべき乗和の因数",
+  "topic": "奇数のべき乗和の因数",
+  "statement": {
+   "tex": "$k$ を正の整数とする．$\\displaystyle\\sum_{i=1}^{n}(2i-1)^k$ は $n$ の整式で表される（これは用いてよい）．それを $P(n)$ とおく．\n\\begin{enumerate}\n  \\item $P(x)-P(x-1)=(2x-1)^k$ が $x$ についての恒等式であること，および $P(0)=0$ を示せ．\n  \\item $k$ が奇数ならば $P(n)$ は $n^2$ で割り切れることを示せ．\n  \\item $k$ が偶数ならば $P(n)$ は $n(2n-1)(2n+1)$ で割り切れることを示せ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 証明　(2) 証明　(3) 証明"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "\\textbf{(1)}　$n\\geqq2$ の整数で $P(n)-P(n-1)=(2n-1)^k$ が成り立つ．左辺と右辺は $x$ の整式で，無数の値で一致するから恒等式である（差の整式が無数の根をもつ）．$x=1$ を代入すると $P(1)-P(0)=1$，$P(1)=1$ より $P(0)=0$．\\hfill$\\square$\n\n\\medskip\n次の事実を使う：整式 $R(x)$ が $R(x)-R(x-1)=0$ を恒等的にみたせば，$R(x)-R(0)$ は $x=0,1,2,\\dots$ を根にもつので $R$ は定数．\n\n$Q(x)=-P(-x)$ とおくと，(1) より\n\\[\nQ(x)-Q(x-1)=P(1-x)-P(-x)=(2(1-x)-1)^k=(-1)^k(2x-1)^k .\n\\]\n\n\\textbf{(2)}　$k$ が奇数なら $Q(x)-Q(x-1)=-(2x-1)^k$ なので $R=P+Q$ は $R(x)-R(x-1)=0$ をみたし，定数 $R(0)=P(0)-P(0)=0$．よって $P(-x)=P(x)$ で，$P$ は偶数次の項だけからなる．$P(0)=0$ より定数項も0なので，$P(x)$ は $x^2$ で割り切れる．\\hfill$\\square$\n\n\\medskip\n\\textbf{(3)}　$k$ が偶数なら $R=P-Q$ について $R(x)-R(x-1)=0$ で，$R$ は定数 $R(0)=0$．よって $P(-x)=-P(x)$．また (1) の恒等式に $x=\\frac12$ を代入すると $P\\left(\\frac12\\right)-P\\left(-\\frac12\\right)=0$ で，$P\\left(-\\frac12\\right)=-P\\left(\\frac12\\right)$ より $P\\left(\\frac12\\right)=P\\left(-\\frac12\\right)=0$．$P(0)=0$ とあわせ，因数定理より $P(x)$ は $x\\left(x-\\frac12\\right)\\left(x+\\frac12\\right)$，したがって $x(2x-1)(2x+1)$ で割り切れる．\\hfill$\\square$"
+   }
+  ],
+  "idea": {
+   "tex": "和 $P(n)$ を整式とみると $P(x)-P(x-1)=(2x-1)^k$ が恒等式として成り立つ．$x\\to-x$ と置きかえた $-P(-x)$ の差分は $(-1)^k(2x-1)^k$ なので，$k$ の偶奇に応じて $P$ は偶関数または奇関数．さらに $x=\\frac12$ を代入して根 $\\pm\\frac12$ を得る．"
+  },
+  "methods": [],
+  "tags": [
+   "整式",
+   "恒等式",
+   "差分",
+   "偶関数・奇関数",
+   "因数定理"
+  ],
+  "provenance": {
+   "created": "2026-11-14"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-EQ-251",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-08",
+  "level": 4,
+  "minutes": 35,
+  "theme": "円や球の一部で0になる整式",
+  "topic": "円や球の一部で0になる整式",
+  "statement": {
+   "tex": "整式はすべて実数を係数とするものとする．\n\\begin{enumerate}\n  \\item $F(x,y)$ を $x,y$ の整式とする．$0<t<\\dfrac\\pi2$ をみたすすべての実数 $t$ について $F(\\cos t,\\sin t)=0$ が成り立つならば，ある整式 $G(x,y)$ が存在して $F(x,y)=(x^2+y^2-1)G(x,y)$ となることを証明せよ．\n  \\item $F(x,y,z)$ を $x,y,z$ の整式とする．$x^2+y^2+z^2=1$，$z>0$ をみたすすべての実数 $x,y,z$ について $F(x,y,z)=0$ が成り立つならば，ある整式 $G(x,y,z)$ が存在して $F(x,y,z)=(x^2+y^2+z^2-1)G(x,y,z)$ となることを証明せよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 証明　(2) 証明"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "\\textbf{(1)}　$D(x,y)=x^2+y^2-1$ とする．$F$ を $y$ について整理し，$y^j$（$j\\geqq2$）を $y^{j-2}\\{D-(x^2-1)\\}$ で置きかえることをくり返すと，$y$ についての次数が下がっていくので，\n\\[\nF(x,y)=D(x,y)G(x,y)+A(x)\\,y+B(x)\\qquad(G\\text{ は整式，}A,B\\text{ は }x\\text{ の整式})\n\\]\nと書ける．$0<t<\\frac\\pi2$ で $x=\\cos t$ は $0<x<1$ のすべての値をとり，$\\sin t=\\sqrt{1-x^2}$ なので\n\\[\nA(x)\\sqrt{1-x^2}+B(x)=0\\qquad(0<x<1)\n\\]\nこれより $A(x)^2(1-x^2)=B(x)^2$ が $0<x<1$ のすべての $x$ で成り立ち，両辺は整式だから恒等式である．$A$ が0でない整式だとし，その次数を $d$，最高次の係数を $\\alpha\\,(\\neq0)$ とすると，左辺は次数 $2d+2$，最高次の係数 $-\\alpha^2<0$ の整式．右辺は，$B=0$ なら0，$B\\neq0$ なら最高次の係数が正の平方．いずれも左辺と一致しえない．よって $A=0$，すると $B^2=0$ より $B=0$．したがって $F=(x^2+y^2-1)G$．\\hfill$\\square$\n\n\\medskip\n\\textbf{(2)}　(1) と同様に $z^j$（$j\\geqq2$）を $z^{j-2}\\{(x^2+y^2+z^2-1)-(x^2+y^2-1)\\}$ で置きかえて\n\\[\nF=(x^2+y^2+z^2-1)G(x,y,z)+A(x,y)\\,z+B(x,y)\n\\]\nと書ける．$x^2+y^2<1$ のとき $z=\\sqrt{1-x^2-y^2}>0$ とおけば仮定が使えて，$A\\sqrt{1-x^2-y^2}+B=0$，したがって\n\\[\nA(x,y)^2(1-x^2-y^2)=B(x,y)^2\\qquad(x^2+y^2<1).\n\\]\n$-1<c<1$ を固定し，$\\alpha(x)=A(x,c)$，$\\beta(x)=B(x,c)$ とおくと $\\alpha(x)^2(1-c^2-x^2)=\\beta(x)^2$ が $|x|<\\sqrt{1-c^2}$ で成り立つので恒等式．$1-c^2-x^2$ の最高次の係数は $-1$ だから，(1) と同じ議論で $\\alpha=\\beta=0$（$x$ の整式として）．\n\n$A(x,y)=\\sum_ja_j(y)x^j$ と書くと，各 $c\\in(-1,1)$ について $a_j(c)=0$．整式 $a_j(y)$ は無数の根をもつので $a_j=0$，よって $A=0$．同様に $B=0$．したがって $F=(x^2+y^2+z^2-1)G$．\\hfill$\\square$"
+   }
+  ],
+  "idea": {
+   "tex": "$x^2+y^2-1$（または $x^2+y^2+z^2-1$）で割った余りは，$y$（または $z$）について1次以下の形 $A\\,y+B$ にできる．円（球面）の一部の上で0なら $A\\sqrt{1-x^2}+B=0$ となり，2乗して得る $A^2(1-x^2)=B^2$ が恒等式になる．両辺の最高次の係数の符号が逆になることから $A=B=0$．「点の対称性」を使わないので，円の一部だけの条件でも結論が出る．"
+  },
+  "methods": [],
+  "tags": [
+   "整式の割り算",
+   "恒等式",
+   "最高次の係数",
+   "多変数の整式"
+  ],
+  "provenance": {
+   "created": "2026-11-14"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-EQ-252",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-08",
+  "level": 4,
+  "minutes": 30,
+  "theme": "$ab+bc+ca+abc=4$ のもとでの不等式",
+  "topic": "$ab+bc+ca+abc=4$ のもとでの不等式",
+  "statement": {
+   "tex": "正の実数 $a,b,c$ が $ab+bc+ca+abc=4$ をみたすとき，\n\\[a+b+c\\geqq ab+bc+ca\\]\nが成り立つことを示せ．また，等号が成り立つ $(a,b,c)$ をすべて求めよ．"
+  },
+  "answer": {
+   "tex": "証明（等号は $a=b=c=1$ のときのみ）"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "$p=a+b+c$，$q=ab+bc+ca$，$r=abc$ とおくと，条件は $q+r=4$．\n\n\\textbf{シューアの不等式．} $a\\geqq b\\geqq c$ としても一般性を失わない．\n\\[a(a-b)(a-c)+b(b-a)(b-c)+c(c-a)(c-b)=(a-b)\\{a(a-c)-b(b-c)\\}+c(a-c)(b-c)\\geqq0\\]\n（$a(a-c)\\geqq b(b-c)\\geqq0$，$c(a-c)(b-c)\\geqq0$ による）．左辺を展開すると $p^3-4pq+9r$ になるので $p^3-4pq+9r\\geqq0$．\n\n\\textbf{証明．} $p\\leqq q$ と仮定する（等号の場合も同時に扱う）．$p^2-3q=\\frac12\\{(a-b)^2+(b-c)^2+(c-a)^2\\}\\geqq0$ より $q\\leqq\\frac{p^2}3$．よって $p\\leqq\\frac{p^2}3$，$p\\geqq3$．次に $r=4-q$ をシューアに代入すると $p^3-4pq+36-9q\\geqq0$，すなわち $q(4p+9)\\leqq p^3+36$．$q\\geqq p$ より $p(4p+9)\\leqq p^3+36$，\n\\[p^3-4p^2-9p+36=(p-4)(p-3)(p+3)\\geqq0.\\]\n$p\\geqq3$ なので $p=3$ または $p\\geqq4$．$p\\geqq4$ なら $q\\geqq p\\geqq4$ で $q+r>4$ となり矛盾．よって $p=3$ で，$3\\leqq q\\leqq\\frac{p^2}3=3$ より $q=3$，$q=\\frac{p^2}3$ から $a=b=c=1$．\n\n以上より，$p<q$ となることはなく（$p<q$ なら上の議論で $p=q=3$ となり矛盾），$p\\geqq q$ が成り立つ．等号 $p=q$ のときは $a=b=c=1$ で，これは $3+1=4$ をみたす．\\textbf{等号は $a=b=c=1$ のときのみ}．\\hfill$\\square$"
+   }
+  ],
+  "idea": {
+   "tex": "$p=a+b+c$，$q=ab+bc+ca$，$r=abc$ とおくと条件は $q+r=4$．シューアの不等式 $p^3-4pq+9r\\geqq0$ で $r$ を下からおさえ，$p<q$ と仮定すると $q\\leqq\\frac{p^2}3$ から $p>3$，さらに $(p-4)(p-3)(p+3)>0$ から $p>4$ となるが，そのとき $q+r>4$ で矛盾する．"
+  },
+  "methods": [],
+  "tags": [
+   "基本対称式",
+   "シューアの不等式",
+   "背理法",
+   "等号条件"
+  ],
+  "provenance": {
+   "created": "2026-11-14"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-EQ-253",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-08",
+  "level": 4,
+  "minutes": 35,
+  "theme": "4つの根号の和の大小と係数の条件",
+  "topic": "4つの根号の和の大小と係数の条件",
+  "statement": {
+   "tex": "$a,\\ b$ を正の実数の定数とし，$0$ 以上の実数 $x,\\ y$ に対して\n\\[\nL=\\sqrt{xy+ax+b}+\\sqrt{xy+ay+b},\\qquad R=\\sqrt{xy}+\\sqrt{(x+a)(y+a)}\n\\]\nとおく．\n\\begin{enumerate}\n  \\item すべての $0$ 以上の実数 $x,\\ y$ について $L\\geqq R$ が成り立つような $(a,\\ b)$ の条件を求めよ．\n  \\item (1) の条件のもとで，$L=R$ となるような $a,\\ b,\\ x,\\ y$ をすべて求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $a^2\\leqq4b$　(2) $a^2=4b$ かつ $x=y$（$x\\geqq0$ は任意）のときに限る"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "$A=xy+ax+b$，$B=xy+ay+b$，$C=xy$，$D=(x+a)(y+a)$ とおく．$x,\\ y\\geqq0$，$a,\\ b>0$ より $A,\\ B>0$，$C,\\ D\\geqq0$ で，$L=\\sqrt A+\\sqrt B$，$R=\\sqrt C+\\sqrt D$ はともに $0$ 以上．\n\n\\textbf{準備．}\n\\[\nA+B-(C+D)=(2xy+ax+ay+2b)-(2xy+ax+ay+a^2)=2b-a^2.\n\\]\nまた $AB=(xy+b)^2+a(x+y)(xy+b)+a^2xy$，$CD=xy\\{xy+a(x+y)+a^2\\}=x^2y^2+axy(x+y)+a^2xy$ より\n\\[\nAB-CD=b^2+2bxy+ab(x+y).\\tag{$*$}\n\\]\nさらに $M=xy+\\dfrac a2(x+y)\\ (\\geqq0)$ とおくと\n\\[\nM^2-CD=x^2y^2+axy(x+y)+\\frac{a^2}4(x+y)^2-x^2y^2-axy(x+y)-a^2xy=\\frac{a^2}4(x-y)^2\\geqq0\n\\]\nで，$M\\geqq0$，$\\sqrt{CD}\\geqq0$ だから $M\\geqq\\sqrt{CD}$．等号は $x=y$ のときに限る．\\quad$(**)$\n\n$L,\\ R\\geqq0$ だから $L\\geqq R\\iff L^2\\geqq R^2$ であり，\n\\[\nL^2-R^2=(A+B-C-D)+2\\left(\\sqrt{AB}-\\sqrt{CD}\\right)=2b-a^2+2\\left(\\sqrt{AB}-\\sqrt{CD}\\right).\n\\]\n\n(1) \\textbf{必要性．} $x=y=0$ とすると $L=2\\sqrt b$，$R=0+a=a$ だから，$L\\geqq R$ より $a\\leqq2\\sqrt b$，すなわち $a^2\\leqq4b$ が必要．\n\n\\textbf{十分性．} $a^2\\leqq4b$ とし，$m=\\dfrac{a^2-2b}2$ とおく．$L^2-R^2=2\\left(\\sqrt{AB}-\\sqrt{CD}-m\\right)$ である．\n\n(i) $m\\leqq0$ のとき．$(*)$ より $AB-CD\\geqq b^2>0$ なので $\\sqrt{AB}>\\sqrt{CD}$．よって $\\sqrt{AB}-\\sqrt{CD}-m>0$ で $L>R$．\n\n(ii) $m>0$ のとき．$a^2\\leqq4b$ より $m\\leqq\\dfrac{4b-2b}2=b$．$(*)$ を用いて\n\\begin{align*}\nAB-\\left(\\sqrt{CD}+m\\right)^2&=b^2-m^2+2bxy+ab(x+y)-2m\\sqrt{CD}\\\\\n&=(b^2-m^2)+2b\\left(M-\\sqrt{CD}\\right)+2(b-m)\\sqrt{CD}.\n\\end{align*}\n$0<m\\leqq b$ と $(**)$ より各項は $0$ 以上なので $AB\\geqq\\left(\\sqrt{CD}+m\\right)^2$．両辺の $0$ 以上の平方根をとって $\\sqrt{AB}\\geqq\\sqrt{CD}+m$，よって $L\\geqq R$．\n\n以上より，求める条件は $\\boldsymbol{a^2\\leqq4b}$．\n\n(2) $a^2\\leqq4b$ のもとで考える．(1) の (i) の場合は常に $L>R$．(ii) の場合，$L=R\\iff\\sqrt{AB}=\\sqrt{CD}+m\\iff AB=\\left(\\sqrt{CD}+m\\right)^2$（両辺 $0$ 以上）であり，これは上の3つの $0$ 以上の項がすべて $0$ になることと同値．$b^2-m^2=0$ と $m>0$，$b>0$ より $m=b$，すなわち $a^2=4b$ が必要で，このとき第3項は $0$，第2項が $0$ になるのは $(**)$ より $x=y$ のとき．逆に $a^2=4b$（このとき $m=b>0$ で (ii) の場合にあたる）かつ $x=y$ ならば3項とも $0$ で $L=R$．実際，$A=B=x^2+ax+\\dfrac{a^2}4=\\left(x+\\dfrac a2\\right)^2$ より $L=2x+a$，$R=x+(x+a)=2x+a$ である．\n\nよって $L=R$ となるのは $\\boldsymbol{a^2=4b}$ \\textbf{かつ} $\\boldsymbol{x=y}$（$x\\geqq0$ は任意）のときに限る．"
+   }
+  ],
+  "idea": {
+   "tex": "$\\sqrt A+\\sqrt B\\geqq\\sqrt C+\\sqrt D$（両辺 $0$ 以上）は2乗して比べる．根号の中の和の差 $A+B-C-D$ は定数になり，積の差 $AB-CD$ も簡単になるので，残りは $\\sqrt{AB}$ と $\\sqrt{CD}$ の比較．$\\sqrt{CD}=\\sqrt{xy(x+a)(y+a)}$ は $xy+\\frac a2(x+y)$ で上から押さえられ，その差の2乗は $\\frac{a^2}4(x-y)^2$ という完全平方になる．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) a^2<=4b\n(2) 記述"
+  },
+  "methods": [],
+  "tags": [
+   "根号を含む不等式",
+   "2乗して比較",
+   "積の根号",
+   "完全平方",
+   "等号成立条件"
+  ],
+  "provenance": {
+   "created": "2026-11-14"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-EQ-254",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-08",
+  "level": 4,
+  "minutes": 35,
+  "theme": "整式の最大公約数・最小公倍数と指数の表",
+  "topic": "整式の最大公約数・最小公倍数と指数の表",
+  "statement": {
+   "tex": "最高次の係数が1である実数係数の整式 $f(x),\\ g(x),\\ h(x)$ について，次の2つの条件を考える．ただし，最大公約数・最小公倍数は最高次の係数を1にとるものとする．\n\\begin{itemize}\n  \\item[(i)] $f(x),\\ g(x),\\ h(x)$ の最大公約数は $x-1$ である．\n  \\item[(ii)] $f(x),\\ g(x),\\ h(x)$ の最小公倍数は $x^6+x^5-x^4-2x^3-x^2+x+1$ である．\n\\end{itemize}\n\\begin{enumerate}\n  \\item $f(x),\\ g(x),\\ h(x)$ の次数がそれぞれ $2,\\ 3,\\ 4$ であるとき，条件 (i)，(ii) をみたす組 $(f(x),\\ g(x),\\ h(x))$ をすべて求めよ．\n  \\item 条件 (i)，(ii) をみたす，互いに異なる3つの整式からなる集合 $\\{f(x),\\ g(x),\\ h(x)\\}$ はいくつあるか．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $(f,g,h)=(x^2-1,\\ x^3-1,\\ x^4-2x^2+1)$，$(x^2-1,\\ x^3+x^2-x-1,\\ x^4-x^3-x+1)$，$(x^2-2x+1,\\ x^3-1,\\ x^4-2x^2+1)$，$(x^2-2x+1,\\ x^3+x^2-x-1,\\ x^4+x^3-x-1)$，$(x^2-2x+1,\\ x^3+x^2-x-1,\\ x^4-x^3-x+1)$ の5組　(2) $68$ 個"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "$Q(x)=x^2+x+1$，$L(x)=x^6+x^5-x^4-2x^3-x^2+x+1$ とおく．\n\\[\n(x-1)^2(x+1)^2Q(x)=(x^4-2x^2+1)(x^2+x+1)=x^6+x^5-x^4-2x^3-x^2+x+1\n\\]\nなので $L(x)=(x-1)^2(x+1)^2Q(x)$．$Q(x)=0$ の解は $\\omega=\\dfrac{-1+\\sqrt3i}2$ と $\\overline\\omega=\\dfrac{-1-\\sqrt3i}2$ で，実数ではない．\n\n\\medskip\n\\textbf{補題．}\\ $0\\leqq p\\leqq2$，$0\\leqq q\\leqq2$，$0\\leqq r\\leqq1$ をみたす整数 $p,q,r$ に対し $N(x)=(x-1)^p(x+1)^qQ(x)^r$ とする．最高次の係数が1の実数係数の整式 $F$ と実数係数の整式 $G$ が $N=FG$ をみたすならば，\n\\[\nF=(x-1)^a(x+1)^bQ(x)^c\\qquad(0\\leqq a\\leqq p,\\ 0\\leqq b\\leqq q,\\ 0\\leqq c\\leqq r)\n\\]\nと表される．\n\n\\textit{証明．}\\ $N$ の次数 $p+q+2r$（$\\leqq6$）に関する帰納法で示す．$F$ の次数が0なら $F=1$ で成り立つ（$N$ の次数が0のときはこの場合しかない）．$F$ の次数が1以上とする．$F$，$G$ の次数の和は6以下である．\n\\begin{itemize}\n  \\item $F$ の次数が1以上3以下なら，$F(x)=0$ は複素数の範囲に解 $\\beta$ をもつ（1次・2次は解の公式から．3次なら，$F(x)$ は連続で $x\\to\\infty$ のとき $+\\infty$，$x\\to-\\infty$ のとき $-\\infty$ に発散するので，中間値の定理により実数解をもつ）．このとき $H=F$ とする．\n  \\item $F$ の次数が4以上なら $G$ の次数は2以下．$G$ が定数なら最高次の係数を比べて $G=1$，$F=N$ で成り立つ．$G$ の次数が1か2なら，$G(x)=0$ は複素数の範囲に解 $\\beta$ をもつ．このとき $H=G$ とする．\n\\end{itemize}\nいずれの場合も $N(\\beta)=F(\\beta)G(\\beta)=0$，すなわち $(\\beta-1)^p(\\beta+1)^q(\\beta^2+\\beta+1)^r=0$．複素数の積が0ならいずれかの因数が0なので，$\\beta=1$（このとき $p\\geqq1$），$\\beta=-1$（$q\\geqq1$），$\\beta=\\omega$ または $\\overline\\omega$（$r\\geqq1$）のいずれか．\n\n$\\beta=\\pm1$ の場合，因数定理により $H=(x-\\beta)H_1$（$H_1$ は実数係数）と書け，$N=(x-\\beta)N_1$ である．すると $(x-\\beta)\\{N_1-F'G'\\}=0$（$F',G'$ は $F,G$ のうち $H$ を $H_1$ に置きかえたもの）が整式として成り立ち，最高次の係数を比べて $N_1=F'G'$．$\\beta=\\omega,\\overline\\omega$ の場合，$H$ を $Q$ で割った余りを $sx+t$（$s,t$ は実数）とすると，$H(\\beta)=0$，$Q(\\beta)=0$ より $s\\beta+t=0$．$\\beta$ の虚部 $\\pm\\dfrac{\\sqrt3}2$ を比べて $s=0$，よって $t=0$．したがって $H=QH_1$（$H_1$ は実数係数）で，同様に $N=QN_1$ と $N_1=F'G'$ を得る．どちらの場合も $N_1$ は $N$ より次数が低く同じ形（指数が1つ減る）なので，帰納法の仮定から $F'$ は指数の条件つきで同じ形に表され，$F=F'$ または $F=(x-\\beta)F'$，$QF'$ も同じ形になる（指数は $p,q,r$ を超えない）．\\hfill$\\square$\n\nまた，$(x-1)^a(x+1)^bQ^c$ の形の整式は指数の組 $(a,b,c)$ が異なれば異なる．実際，等しい2つの整式から共通の因数を約すと，一方は $x=1$（または $-1$，$\\omega$）を解にもち他方はもたない形になり矛盾する．\n\n\\medskip\n\\textbf{条件の言いかえ．}\\ $f,g,h$ は最小公倍数 $L$ を割り切るので，補題より\n\\[\nf=(x-1)^{a_1}(x+1)^{b_1}Q^{c_1},\\quad g=(x-1)^{a_2}(x+1)^{b_2}Q^{c_2},\\quad h=(x-1)^{a_3}(x+1)^{b_3}Q^{c_3}\n\\]\n（$0\\leqq a_i\\leqq2$，$0\\leqq b_i\\leqq2$，$0\\leqq c_i\\leqq1$）と表される．$a_i$ の最小値・最大値を $\\underline a,\\ \\overline a$ などと書く．\n\n\\textit{最大公約数．}\\ 最高次の係数が1の共通の約数 $D$ は $f$ を割り切るので，補題（$N=f$ として）により $(x-1)^a(x+1)^bQ^c$ の形で，同様に $g,h$ も割り切ることから $a\\leqq\\underline a$，$b\\leqq\\underline b$，$c\\leqq\\underline c$．逆にこの形のものは共通の約数である．よって最大公約数は $(x-1)^{\\underline a}(x+1)^{\\underline b}Q^{\\underline c}$．\n\n\\textit{最小公倍数．}\\ $M_0=(x-1)^{\\overline a}(x+1)^{\\overline b}Q^{\\overline c}$ は共通の倍数である．一方，任意の共通の倍数 $M$ は $(x-1)^{\\overline a}$，$(x+1)^{\\overline b}$，$Q^{\\overline c}$ でそれぞれ割り切れる．$M=(x-1)^{\\overline a}M_1=(x+1)^{\\overline b}K$ と書けば，$\\overline b\\geqq1$ のとき $x=-1$ を代入して $M_1(-1)=0$，因数定理で $M_1=(x+1)M_2$ とし両辺を $x+1$ で約す，という操作を $\\overline b$ 回くり返して $M$ が $(x-1)^{\\overline a}(x+1)^{\\overline b}$ で割り切れることがわかる．$Q^{\\overline c}$ についても $x=\\omega$ を代入し，補題の証明と同様に $Q$ で割り切れることを使えば，$M$ は $M_0$ で割り切れる．よって $M$ の次数は $M_0$ の次数以上で，最小公倍数は $M_0$．\n\nよって条件 (i)，(ii) は\n\\[\n\\begin{aligned}\n&\\text{$a_1,a_2,a_3$ の最小値が $1$，最大値が $2$},\\\\\n&\\text{$b_1,b_2,b_3$ の最小値が $0$，最大値が $2$},\\\\\n&\\text{$c_1,c_2,c_3$ の最小値が $0$，最大値が $1$}\n\\end{aligned}\n\\]\nと同値である．特に $a_i\\in\\{1,2\\}$．以下，整式を指数の組 $(a,b,c)$ で表す．\n\n\\medskip\n(1) 次数は $a+b+2c$ である．$a\\geqq1$ に注意して候補を挙げると\n\\[\nf\\in\\{(2,0,0),\\ (1,1,0)\\},\\quad g\\in\\{(2,1,0),\\ (1,2,0),\\ (1,0,1)\\},\\quad h\\in\\{(2,2,0),\\ (2,0,1),\\ (1,1,1)\\}.\n\\]\n$f$ の $c$ は $0$ なので，$c$ の最小値 $0$ は常にみたされる．\n\n\\begin{itemize}\n  \\item $f=(1,1,0)$ のとき：$g,h$ で「$a=2$」「$b=0$」「$b=2$」「$c=1$」をすべて実現する必要がある．\n  \\begin{itemize}\n    \\item $g=(2,1,0)$：$h$ 1つで $b=0$ と $b=2$ を両方実現できず，不適．\n    \\item $g=(1,2,0)$：$h$ が $a=2,\\ b=0,\\ c=1$ をもつ必要があり $h=(2,0,1)$．適する．\n    \\item $g=(1,0,1)$：$h$ が $a=2,\\ b=2$ をもつ必要があり $h=(2,2,0)$．適する．\n  \\end{itemize}\n  \\item $f=(2,0,0)$ のとき：$a=2$，$b=0$ は実現済みで，$g,h$ で「$a=1$」「$b=2$」「$c=1$」を実現する必要がある．\n  \\begin{itemize}\n    \\item $g=(2,1,0)$：$h$ が $a=1,\\ b=2,\\ c=1$ をもつ必要があるが候補にない．不適．\n    \\item $g=(1,2,0)$：$h$ が $c=1$ をもてばよく $h=(2,0,1),\\ (1,1,1)$．ともに適する．\n    \\item $g=(1,0,1)$：$h$ が $b=2$ をもてばよく $h=(2,2,0)$．適する．\n  \\end{itemize}\n\\end{itemize}\n各組で $a$ の最小値1・最大値2，$b$ の最小値0・最大値2，$c$ の最小値0・最大値1 がみたされることも確かめられる．展開すると\n\\[\n\\begin{aligned}\n&(1,1,0)=x^2-1,\\quad (2,0,0)=x^2-2x+1,\\quad (1,2,0)=x^3+x^2-x-1,\\quad (1,0,1)=x^3-1,\\\\\n&(2,2,0)=x^4-2x^2+1,\\quad (2,0,1)=x^4-x^3-x+1,\\quad (1,1,1)=x^4+x^3-x-1\n\\end{aligned}\n\\]\nなので，求める組は次の $\\boldsymbol5$ 組である．\n\\[\n\\begin{aligned}\n&\\boldsymbol{(x^2-1,\\ x^3-1,\\ x^4-2x^2+1)},\\\\\n&\\boldsymbol{(x^2-1,\\ x^3+x^2-x-1,\\ x^4-x^3-x+1)},\\\\\n&\\boldsymbol{(x^2-2x+1,\\ x^3-1,\\ x^4-2x^2+1)},\\\\\n&\\boldsymbol{(x^2-2x+1,\\ x^3+x^2-x-1,\\ x^4+x^3-x-1)},\\\\\n&\\boldsymbol{(x^2-2x+1,\\ x^3+x^2-x-1,\\ x^4-x^3-x+1)}.\n\\end{aligned}\n\\]\n\n\\medskip\n(2) まず，等しいものを含んでもよい\\textbf{順序つき}の組 $(f,g,h)$ で条件をみたすものを数える．指数の組 $(a_i)$，$(b_i)$，$(c_i)$ への条件は互いに独立なので，個数はそれぞれの個数の積である．\n\\begin{itemize}\n  \\item $(a_1,a_2,a_3)\\in\\{1,2\\}^3$ で $1$ と $2$ がともに現れるもの：$2^3-2=6$ 通り．\n  \\item $(b_1,b_2,b_3)\\in\\{0,1,2\\}^3$ で $0$ と $2$ がともに現れるもの：全体 $27$ から，$0$ を含まない $2^3=8$ 通りと $2$ を含まない $8$ 通りを除き，両方を含まない（すべて1の）$1$ 通りを戻して $27-8-8+1=12$ 通り．\n  \\item $(c_1,c_2,c_3)\\in\\{0,1\\}^3$ で $0$ と $1$ がともに現れるもの：$6$ 通り．\n\\end{itemize}\nよって順序つきの組は $6\\times12\\times6=432$ 通り．\n\nこのうち2つ以上が等しいものを数える．3つすべてが等しいと $a$ の最小値と最大値が一致して不適．$f=g$ の場合は $(f,h)$ の2つで条件をみたせばよく，各指数は $a:(1,2),(2,1)$，$b:(0,2),(2,0)$，$c:(0,1),(1,0)$ のいずれかで $2^3=8$ 通り（このとき $f\\neq h$）．$g=h$，$h=f$ の場合も同様に8通りずつで，これらは重ならない（重なれば3つすべて等しい）．よって2つだけが等しい順序つきの組は $24$ 通り．\n\nしたがって，互いに異なる3つからなる順序つきの組は $432-24=408$ 通りで，集合 $\\{f,g,h\\}$ 1つにつき並べ方が $3!=6$ 通りあるから，求める個数は\n\\[\n\\frac{408}{6}=\\boldsymbol{68}\\ \\text{個}.\n\\]\n\\hfill$\\square$"
+   }
+  ],
+  "idea": {
+   "tex": "最小公倍数を割り切る整式は，その因数分解に現れる因数（1次式と，実数の範囲で分解できない2次式）の積に限られる（割り切る整式の解は最小公倍数の解であることと，実数係数の整式が虚数解 $\\omega$ をもてば $\\overline{\\omega}$ も解で2次因数ごと割り切れることから）．各因数の指数について「最小値＝最大公約数の指数，最大値＝最小公倍数の指数」となり，因数ごとに独立に条件を処理できる．順序つきの組は因数ごとの個数の積で数え，等しいものを含む組を除いて $3!$ で割る．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) 記述\n(2) 68個"
+  },
+  "methods": [],
+  "tags": [
+   "整式の最大公約数",
+   "最小公倍数",
+   "因数定理",
+   "複素数の解",
+   "指数の最小と最大",
+   "数え上げ"
+  ],
+  "provenance": {
+   "created": "2026-11-14"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-EQ-255",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-08",
+  "level": 4,
+  "minutes": 35,
+  "theme": "$a+b\\sqrt[3]{n}+c\\sqrt[3]{n^2}$ をみたす3次方程式の一意性",
+  "topic": "$a+b\\sqrt[3]{n}+c\\sqrt[3]{n^2}$ をみたす3次方程式の一意性",
+  "statement": {
+   "tex": "$n$ を，どの整数の3乗とも等しくない正の整数とし，$\\theta=\\sqrt[3]n$（3乗すると $n$ になる実数）とおく．\n\\begin{enumerate}\n  \\item $\\theta$ は無理数であることを示せ．さらに，有理数 $p,\\ q,\\ r$ が $p+q\\theta+r\\theta^2=0$ をみたすならば $p=q=r=0$ であることを示せ．\n  \\item $a,\\ b,\\ c$ は有理数で，$b,\\ c$ の少なくとも一方は $0$ でないとし，$x=a+b\\theta+c\\theta^2$ とおく．$x^3+px^2+qx+r=0$ が成り立つような有理数 $p,\\ q,\\ r$ を $a,\\ b,\\ c,\\ n$ で表せ．また，そのような有理数の組 $(p,\\ q,\\ r)$ はただ1つに限ることを示せ．\n  \\item $a,\\ b,\\ c$ を有理数とし，$x=a+b\\theta+c\\theta^2$ とおく．$x^2$ が有理数となるような $(a,\\ b,\\ c)$，および $x^3$ が有理数となるような $(a,\\ b,\\ c)$ をそれぞれすべて求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 証明　(2) $p=-3a$，$q=3(a^2-bcn)$，$r=-(a^3+b^3n+c^3n^2-3abcn)$，一意性は証明　(3) $x^2$ が有理数 $\\iff$ $b=c=0$（$a$ は任意）；$x^3$ が有理数 $\\iff$ $a,\\ b,\\ c$ のうち少なくとも2つが $0$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) $\\theta$ が有理数であるとすると，$\\theta>0$ より互いに素な正の整数 $u,v$ を用いて $\\theta=\\dfrac uv$ と書け，$u^3=nv^3$．$v\\geqq2$ とし，$v$ を割り切る素数 $\\ell$ をとると，$u^3=nv^3$ は $\\ell$ の倍数なので $u$ は $\\ell$ の倍数となり，$u,v$ が互いに素であることに反する．よって $v=1$ で $n=u^3$ となり，$n$ が整数の3乗でないことに反する．ゆえに $\\theta$ は無理数．\n\n次に，有理数 $p,q,r$ が $p+q\\theta+r\\theta^2=0$ をみたすとする．\n\n$r\\neq0$ と仮定し，$\\sigma=\\dfrac qr$，$\\tau=\\dfrac pr$ とおくと $\\theta^2=-\\sigma\\theta-\\tau$．両辺に $\\theta$ を掛けて $\\theta^3=n$ を使うと\n\\[\nn=-\\sigma\\theta^2-\\tau\\theta=-\\sigma(-\\sigma\\theta-\\tau)-\\tau\\theta=(\\sigma^2-\\tau)\\theta+\\sigma\\tau.\n\\]\n$\\sigma^2-\\tau\\neq0$ なら $\\theta=\\dfrac{n-\\sigma\\tau}{\\sigma^2-\\tau}$ は有理数となり矛盾．よって $\\tau=\\sigma^2$ で，$n=\\sigma\\tau=\\sigma^3$．このとき $\\theta^3=\\sigma^3$ で，$\\theta^3-\\sigma^3=(\\theta-\\sigma)\\left\\{\\left(\\theta+\\dfrac\\sigma2\\right)^2+\\dfrac34\\sigma^2\\right\\}$ の第2因数は $\\theta>0$ より正なので $\\theta=\\sigma$ は有理数となり，矛盾．ゆえに $r=0$．\n\nすると $p+q\\theta=0$．$q\\neq0$ なら $\\theta=-\\dfrac pq$ が有理数で矛盾するので $q=0$，したがって $p=0$．\\hfill$\\square$\n\n(2) $y=x-a=b\\theta+c\\theta^2$ とおく．$\\theta^3=n$，$\\theta^4=n\\theta$，$\\theta^5=n\\theta^2$，$\\theta^6=n^2$ より\n\\[\ny^3=b^3\\theta^3+3b^2c\\theta^4+3bc^2\\theta^5+c^3\\theta^6=b^3n+c^3n^2+3bcn(b\\theta+c\\theta^2)=b^3n+c^3n^2+3bcn\\,y.\n\\]\nよって $(x-a)^3-3bcn(x-a)-(b^3n+c^3n^2)=0$ で，展開すると\n\\[\nx^3-3ax^2+3(a^2-bcn)x-(a^3+b^3n+c^3n^2-3abcn)=0.\n\\]\nしたがって\n\\[\n\\boldsymbol{p=-3a,\\quad q=3(a^2-bcn),\\quad r=-(a^3+b^3n+c^3n^2-3abcn)}\n\\]\nとすればよい（いずれも有理数）．\n\n【一意性】まず次を示す．\n\n\\textbf{主張}：有理数 $\\lambda,\\mu,\\nu$ が $\\lambda x^2+\\mu x+\\nu=0$ をみたすならば $\\lambda=\\mu=\\nu=0$．\n\n\\textbf{証明}．$\\lambda=0$ のとき，$\\mu\\neq0$ なら $x=-\\dfrac\\nu\\mu$ は有理数で，$y=x-a$ も有理数．$y=y_0$（有理数）とすると $-y_0+b\\theta+c\\theta^2=0$ なので (1) より $b=c=0$ となり仮定に反する．よって $\\mu=0$，さらに $\\nu=0$．\n\n$\\lambda\\neq0$ のとき，$\\lambda$ で割り $x=y+a$ を代入して整理すると，有理数 $\\sigma,\\tau$ を用いて $y^2+\\sigma y+\\tau=0$ と書ける（$\\sigma=\\frac\\mu\\lambda+2a$，$\\tau=a^2+\\frac\\mu\\lambda a+\\frac\\nu\\lambda$）．ここで\n\\[\ny^2=b^2\\theta^2+2bc\\theta^3+c^2\\theta^4=2bcn+c^2n\\theta+b^2\\theta^2\n\\]\nより\n\\[\n(2bcn+\\tau)+(c^2n+\\sigma b)\\theta+(b^2+\\sigma c)\\theta^2=0.\n\\]\n(1) より $b^2+\\sigma c=0$，$c^2n+\\sigma b=0$．$c=0$ なら第1式から $b=0$ となり仮定に反するので $c\\neq0$，$\\sigma=-\\dfrac{b^2}c$．第2式に代入して $c^2n-\\dfrac{b^3}c=0$，すなわち $b^3=c^3n$．$b=0$ なら $c=0$ となり矛盾するので $b\\neq0$，$n=\\left(\\dfrac bc\\right)^3$．$\\rho=\\dfrac bc$ は有理数で $\\theta^3=\\rho^3$ となり，(1) の議論と同様に $\\theta^3-\\rho^3=(\\theta-\\rho)\\left\\{\\left(\\theta+\\dfrac\\rho2\\right)^2+\\dfrac34\\rho^2\\right\\}$ の第2因数は正なので $\\theta=\\rho$ が有理数となり矛盾．よって $\\lambda\\neq0$ は起こらない．\\hfill$\\square$\n\nさて，有理数の組 $(p,q,r)$，$(p',q',r')$ がともに条件をみたすとすると，2式の差から $(p-p')x^2+(q-q')x+(r-r')=0$．主張より $p=p'$，$q=q'$，$r=r'$．よって組はただ1つである．\\hfill$\\square$\n\n(3) 【$x^2$ が有理数となる場合】$b=c=0$ なら $x=a$ で $x^2$ は有理数．$b,c$ の少なくとも一方が $0$ でないとき，$x^2=w$（有理数）とすると $1\\cdot x^2+0\\cdot x-w=0$ となり，(2) の主張で $\\lambda=1\\neq0$ に反する．よって $x^2$ が有理数 $\\iff$ $\\boldsymbol{b=c=0}$（$a$ は任意の有理数）．\n\n【$x^3$ が有理数となる場合】$b=c=0$ なら $x^3=a^3$ は有理数．$b,c$ の少なくとも一方が $0$ でないとき，$x^3=w$（有理数）とすると，$(p,q,r)=(0,0,-w)$ は $x^3+px^2+qx+r=0$ をみたす有理数の組である．(2) の一意性より，これは $(-3a,\\ 3(a^2-bcn),\\ \\cdots)$ と一致し，$-3a=0$，$3(a^2-bcn)=0$．よって $a=0$，$bcn=0$，$n>0$ より $bc=0$．\n\n逆に $a=0$，$c=0$ なら $x^3=b^3n$，$a=0$，$b=0$ なら $x^3=c^3n^2$ で，いずれも有理数．\n\n以上より，$x^3$ が有理数となるのは，$b=c=0$，または $a=c=0$，または $a=b=0$ のとき，すなわち $\\boldsymbol{a,\\ b,\\ c\\text{ のうち少なくとも2つが }0}$ のときである．"
+   }
+  ],
+  "idea": {
+   "tex": "$\\theta=\\sqrt[3]n$ が無理数のとき，「$p+q\\theta+r\\theta^2=0$（$p,q,r$ 有理数）ならば $p=q=r=0$」．これは $\\theta$ が有理数係数の2次以下の方程式をみたさないことと同じで，$\\theta^3=n$ で次数を下げて示す．$y=b\\theta+c\\theta^2$ の3乗は $\\theta^3=n$ により再び $1,\\theta,\\theta^2$ の結合になり，$y^3-3bcn\\,y-(b^3n+c^3n^2)=0$．$y$ が2次以下の有理数係数の方程式をみたさないことを $1,\\theta,\\theta^2$ の係数比較で示せば，3次方程式の一意性が従い，「$x^3$ や $x^2$ が有理数になる」条件は係数比較だけで決まる．"
+  },
+  "methods": [],
+  "tags": [
+   "立方根",
+   "無理数",
+   "有理数係数の方程式",
+   "整式の除法",
+   "一意性"
+  ],
+  "provenance": {
+   "created": "2026-11-14"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-EQ-256",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-08",
+  "level": 4,
+  "minutes": 35,
+  "theme": "$g(x)g\\!\\left(\\frac1x\\right)$ の表す2次式全体",
+  "topic": "$g(x)g\\!\\left(\\frac1x\\right)$ の表す2次式全体",
+  "statement": {
+   "tex": "実数 $a,b,c$ に対し $g(x)=ax^2+bx+c$ とし，$x\\neq0$ に対して $u(x)=g(x)\\,g\\!\\left(\\dfrac1x\\right)$ とおく．\n\\begin{enumerate}\n  \\item $u(x)=v\\!\\left(x+\\dfrac1x\\right)$ がすべての $x\\neq0$ で成り立つような $y$ の整式 $v(y)$ を $a,b,c$ で表せ．\n  \\item $-2\\leqq y\\leqq2$ をみたすすべての $y$ に対して $v(y)\\geqq0$ であることを示せ．\n  \\item 実数 $q,r$ について，次の2条件を考える．\n  \\begin{itemize}\n    \\item[(P)] $ac=1$ をみたすある実数 $a,b,c$ について，(1) の $v(y)$ が $y$ の整式として $y^2+qy+r$ に一致する．\n    \\item[(Q)] $-2\\leqq y\\leqq2$ をみたすすべての $y$ に対して $y^2+qy+r\\geqq0$ である．\n  \\end{itemize}\n  (P) をみたす点 $(q,r)$ の範囲を求めて $qr$ 平面に図示し，(P) と (Q) が同値であることを示せ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $v(y)=acy^2+b(a+c)y+(a-c)^2+b^2$　(2) 証明　(3) $|q|\\leqq4$ の部分では $r\\geqq\\dfrac{q^2}4$，$|q|\\geqq4$ の部分では $r\\geqq2|q|-4$（境界を含む；放物線 $r=\\dfrac{q^2}4$ とその点 $(\\pm4,4)$ での接線で囲まれた上側），同値の証明"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "\\textbf{(1)}　$x\\neq0$ のとき\n\\begin{align*}\nu(x)&=(ax^2+bx+c)\\left(\\frac a{x^2}+\\frac bx+c\\right)\\\\\n&=ac\\left(x^2+\\frac1{x^2}\\right)+(ab+bc)\\left(x+\\frac1x\\right)+a^2+b^2+c^2 .\n\\end{align*}\n$y=x+\\dfrac1x$ とおくと $x^2+\\dfrac1{x^2}=y^2-2$ なので\n\\[\n\\boldsymbol{v(y)=acy^2+b(a+c)y+(a-c)^2+b^2}\n\\]\nとすればよい（$a^2+b^2+c^2-2ac=(a-c)^2+b^2$）．\n\n\\textbf{(2)}　$-2\\leqq y\\leqq2$ のとき $y=2\\cos\\theta$ をみたす実数 $\\theta$ がある．$y^2-2=4\\cos^2\\theta-2=2\\cos2\\theta$ より\n\\[\nv(2\\cos\\theta)=2ac\\cos2\\theta+2b(a+c)\\cos\\theta+a^2+b^2+c^2 .\n\\]\n一方，加法定理 $\\cos2\\theta\\cos\\theta+\\sin2\\theta\\sin\\theta=\\cos\\theta$ を用いると\n\\begin{align*}\n&(a\\cos2\\theta+b\\cos\\theta+c)^2+(a\\sin2\\theta+b\\sin\\theta)^2\\\\\n&=a^2+b^2+c^2+2ab(\\cos2\\theta\\cos\\theta+\\sin2\\theta\\sin\\theta)+2ac\\cos2\\theta+2bc\\cos\\theta\\\\\n&=a^2+b^2+c^2+2b(a+c)\\cos\\theta+2ac\\cos2\\theta .\n\\end{align*}\nよって $v(2\\cos\\theta)$ は実数の2乗の和に等しく，$v(y)\\geqq0$ である．\\hfill$\\square$\n\n\\textbf{(3)}　\\textbf{(P) の言いかえ．}(1) より，(P) は「$ac=1$，$b(a+c)=q$，$(a-c)^2+b^2=r$ をみたす実数 $a,b,c$ が存在する」ことである．$s=a+c$，$t=a-c$ とおくと $ac=\\dfrac{s^2-t^2}4$ であり，実数 $s,t$ を与えれば $a=\\dfrac{s+t}2$，$c=\\dfrac{s-t}2$ が実数として定まる．したがって (P) は\n\\[\ns^2=t^2+4,\\quad bs=q,\\quad t^2+b^2=r\n\\]\nをみたす実数 $b,s,t$ が存在することと同値である．\n\nこれらをみたす $b,s,t$ があれば，$B=b^2$，$T=t^2$ について $B\\geqq0$，$T=r-B\\geqq0$，$q^2=b^2s^2=B(T+4)=B(r+4-B)$．逆に $0\\leqq B\\leqq r$ かつ $q^2=B(r+4-B)$ をみたす実数 $B$ があれば，$b=\\sqrt B$，$t=\\sqrt{r-B}$ とし，$q\\geqq0$ なら $s=\\sqrt{r+4-B}$，$q<0$ なら $s=-\\sqrt{r+4-B}$ と定める．すると $s^2=t^2+4$，$t^2+b^2=r$ であり，$bs$ と $q$ は同符号（または $0$）で $(bs)^2=B(r+4-B)=q^2$ だから $bs=q$．\n\nよって (P) は\n\\[\n\\text{(P$'$)}\\quad r\\geqq0\\ \\text{かつ}\\ 0\\leqq B\\leqq r,\\ q^2=B(r+4-B)\\ \\text{をみたす実数 $B$ が存在する}\n\\]\nと同値である．$h(B)=B(r+4-B)$ は $0\\leqq B\\leqq\\dfrac{r+4}2$ で増加し，$h(0)=0$ で連続である．\n\\begin{itemize}\n  \\item $0\\leqq r\\leqq4$ のとき $r\\leqq\\dfrac{r+4}2$ なので，$h$ は区間 $0\\leqq B\\leqq r$ で増加し，その値域は $0\\leqq h\\leqq h(r)=4r$．よって (P$'$) $\\iff q^2\\leqq4r$．\n  \\item $r>4$ のとき $\\dfrac{r+4}2<r$ なので，区間 $0\\leqq B\\leqq r$ での $h$ の値は $0$ から最大値 $h\\!\\left(\\dfrac{r+4}2\\right)=\\dfrac{(r+4)^2}4$ までのすべての値をとり（中間値の定理），それより大きい値はとらない．よって (P$'$) $\\iff |q|\\leqq\\dfrac{r+4}2$．\n\\end{itemize}\n$r<0$ では (P) は成り立たない．以上より (P) をみたす点 $(q,r)$ の範囲 $D$ は\n\\[\n\\boldsymbol{D:\\ \\bigl(0\\leqq r\\leqq4\\ \\text{かつ}\\ q^2\\leqq4r\\bigr)\\ \\text{または}\\ \\bigl(r>4\\ \\text{かつ}\\ |q|\\leqq\\tfrac{r+4}2\\bigr)}\n\\]\nである．これを $q$ で整理すると，$|q|\\leqq4$ の部分では $r\\geqq\\dfrac{q^2}4$，$|q|\\geqq4$ の部分では $r\\geqq2|q|-4$ となる（下の同値性の証明の中で確かめる）．図示すると，放物線 $r=\\dfrac{q^2}4\\ (|q|\\leqq4)$ と，その点 $(\\pm4,4)$ における接線 $r=\\pm2q-4\\ (|q|\\geqq4)$ をつないだ曲線の上側（境界を含む）である．\n\n\\textbf{(Q) の言いかえ．}$k(y)=y^2+qy+r=\\left(y+\\dfrac q2\\right)^2+r-\\dfrac{q^2}4$．\n\\begin{itemize}\n  \\item $|q|\\leqq4$ のとき，軸 $y=-\\dfrac q2$ は区間 $[-2,2]$ 内にあり，区間での最小値は $r-\\dfrac{q^2}4$．よって (Q) $\\iff r\\geqq\\dfrac{q^2}4$．\n  \\item $q>4$ のとき軸は $-2$ より左にあり，$k$ は区間で増加，最小値は $k(-2)=4-2q+r$．$q<-4$ のときは同様に最小値 $k(2)=4+2q+r$．よって (Q) $\\iff r\\geqq2|q|-4$．\n\\end{itemize}\n\n\\textbf{同値性．}(P)$\\Rightarrow$(Q)：$0\\leqq r\\leqq4$，$q^2\\leqq4r$ なら $q^2\\leqq16$ より $|q|\\leqq4$ で $r\\geqq\\dfrac{q^2}4$，よって (Q)．$r>4$，$|q|\\leqq\\dfrac{r+4}2$ のとき，$|q|\\leqq4$ なら $\\dfrac{q^2}4\\leqq4<r$ で (Q)，$|q|>4$ なら $r\\geqq2|q|-4$ で (Q)．\n\n(Q)$\\Rightarrow$(P)：$|q|\\leqq4$，$r\\geqq\\dfrac{q^2}4$ のとき，$r\\leqq4$ なら $q^2\\leqq4r$ で $D$ に属し，$r>4$ なら $\\dfrac{r+4}2>4\\geqq|q|$ で $D$ に属する．$|q|>4$，$r\\geqq2|q|-4$ のとき，$r\\geqq2|q|-4>4$ かつ $|q|\\leqq\\dfrac{r+4}2$ なので $D$ に属する．\n\nよって (P) と (Q) は同値であり，上の $D$ の $q$ による表示も示された．\\hfill$\\square$"
+   }
+  ],
+  "idea": {
+   "tex": "$g(x)g\\!\\left(\\frac1x\\right)$ は $y=x+\\frac1x$ の整式 $v(y)$ で，$y=2\\cos\\theta$ とおくと $v=(a\\cos2\\theta+b\\cos\\theta+c)^2+(a\\sin2\\theta+b\\sin\\theta)^2\\geqq0$．逆向きに「$[-2,2]$ で非負な2次式はすべてこの形に書けるか」を，係数の連立方程式の実数解の存在条件として調べる．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) $v(y)$：acy^2+b(a+c)y+(a-c)^2+b^2\n(2) 証明\n(3) 記述"
+  },
+  "methods": [],
+  "tags": [
+   "相反式",
+   "x+1/xの置換",
+   "2乗の和",
+   "存在条件",
+   "区間での非負条件"
+  ],
+  "provenance": {
+   "created": "2026-11-14"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-EQ-257",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-08",
+  "level": 4,
+  "minutes": 35,
+  "theme": "$k^2P(k)=1$ をみたす整式の外挿値と定数項",
+  "topic": "$k^2P(k)=1$ をみたす整式の外挿値と定数項",
+  "statement": {
+   "tex": "$n$ を正の整数とし，$H=\\displaystyle\\sum_{k=1}^{n+1}\\frac1k$，$K=\\displaystyle\\sum_{k=1}^{n+1}\\frac1{k^2}$ とおく．\n\\begin{enumerate}\n  \\item 次数が $n$ 以下の整式 $P(x)$ で\n  \\[P(k)=\\frac1{k^2}\\qquad(k=1,\\ 2,\\ \\cdots,\\ n+1)\\]\n  をみたすものがただ1つ存在し，その次数はちょうど $n$ であることを示せ．\n  \\item (1) の $P(x)$ について，$P(n+2)$ を $n$ と $H$ を用いて表せ．\n  \\item (1) の $P(x)$ について，$P(0)$ を $H$ と $K$ を用いて表せ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 証明　(2) $P(n+2)=\\dfrac{1+(-1)^n\\{(n+2)H+1\\}}{(n+2)^2}$（$n$ が偶数なら $\\dfrac{H}{n+2}+\\dfrac{2}{(n+2)^2}$，$n$ が奇数なら $-\\dfrac{H}{n+2}$）　(3) $P(0)=\\dfrac{H^2+K}{2}$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "$W(x)=(x-1)(x-2)\\cdots(x-n-1)$ とし，$W(x)=w_0+w_1x+w_2x^2+\\cdots$ と展開する．\n\n\\textbf{$W$ の低次の係数．} $w_0=W(0)=(-1)(-2)\\cdots(-(n+1))=(-1)^{n+1}(n+1)!$．$x$ の係数は，$n+1$ 個の因数のうち1つから $x$ を，残りから定数を選んだものの和なので\n\\[w_1=\\sum_{i=1}^{n+1}\\frac{w_0}{-i}=-w_0H．\\]\n$x^2$ の係数は，2つの因数 $(x-i),\\ (x-j)$（$i<j$）から $x$ を選んだものの和なので\n\\[w_2=\\sum_{1\\leqq i<j\\leqq n+1}\\frac{w_0}{(-i)(-j)}=w_0\\sum_{i<j}\\frac1{ij}=w_0\\cdot\\frac{H^2-K}{2}\\]\n（$H^2=K+2\\sum_{i<j}\\frac1{ij}$ による）．\n\n\\medskip\n(1) \\textbf{一意性．} $P_1,\\ P_2$ がともに条件をみたせば，$P_1-P_2$ は次数 $n$ 以下で $n+1$ 個の相異なる解 $1,\\ \\cdots,\\ n+1$ をもつので，恒等的に $0$ である．\n\n\\textbf{存在．} $b=\\dfrac{(-1)^n}{(n+1)!}$，$a=bH$ とし，$F(x)=(ax+b)W(x)$ とおく．$F(x)$ の定数項は $bw_0=-1$，$x$ の係数は\n\\[aw_0+bw_1=bHw_0-bHw_0=0\\]\nである．よって $F(x)+1$ は定数項も $x$ の係数も $0$ なので $F(x)+1=x^2P(x)$ をみたす整式 $P(x)$ がある．$F$ は $n+2$ 次で最高次の係数は $a=bH\\neq0$ だから，$P(x)$ は次数がちょうど $n$，最高次の係数 $a$ である．$k=1,\\ \\cdots,\\ n+1$ では $W(k)=0$ より $k^2P(k)=F(k)+1=1$，すなわち $P(k)=\\dfrac1{k^2}$．\n\n一意性から，条件をみたす $P(x)$ はこれに限り，その次数はちょうど $n$ である．\\hfill$\\square$\n\n\\medskip\n(2) $W(n+2)=(n+1)!$ より\n\\begin{align*}(n+2)^2P(n+2)&=1+F(n+2)=1+\\{a(n+2)+b\\}(n+1)!\\\\&=1+b(n+1)!\\{(n+2)H+1\\}=1+(-1)^n\\{(n+2)H+1\\}．\\end{align*}\nよって\n\\[\\boldsymbol{P(n+2)=\\frac{1+(-1)^n\\{(n+2)H+1\\}}{(n+2)^2}}\\]\nで，$n$ が偶数なら $\\dfrac{H}{n+2}+\\dfrac2{(n+2)^2}$，$n$ が奇数なら $-\\dfrac{H}{n+2}$．（例：$n=1$ で $P(x)=\\dfrac{7-3x}{4}$，$P(3)=-\\dfrac12=-\\dfrac{3/2}{3}$．）\n\n\\medskip\n(3) $x^2P(x)=F(x)+1$ の $x^2$ の係数を比べると，$P(0)$ は $F(x)$ の $x^2$ の係数に等しい：\n\\[P(0)=aw_1+bw_2=bH(-w_0H)+bw_0\\cdot\\frac{H^2-K}2=bw_0\\left(-H^2+\\frac{H^2-K}2\\right)=-bw_0\\cdot\\frac{H^2+K}2．\\]\n$bw_0=-1$ より $\\boldsymbol{P(0)=\\dfrac{H^2+K}{2}}$．（$n=1$ で $H=\\frac32$，$K=\\frac54$ より $\\frac74$，上の $P(x)$ と一致．）"
+   }
+  ],
+  "idea": {
+   "tex": "$x^2P(x)-1$ は $x=1,\\ 2,\\ \\cdots,\\ n+1$ を解にもつ $n+2$ 次式なので $(ax+b)(x-1)\\cdots(x-n-1)$ の形．「$x^2$ で割ると余りが $-1$」すなわち定数項が $-1$ で $x$ の係数が $0$ という2条件で $a,\\ b$ が決まる．$x$ の係数・$x^2$ の係数は解の逆数の和・2つずつの積の和で表される．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) 証明\n(2) 記述\n(3) $P(0)$：(H^2+K)/2"
+  },
+  "methods": [],
+  "tags": [
+   "整式",
+   "因数定理",
+   "係数比較",
+   "調和数",
+   "補間"
+  ],
+  "provenance": {
+   "created": "2026-11-14"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-EQ-258",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-08",
+  "level": 4,
+  "minutes": 30,
+  "theme": "$\\sum(1+x)^k$ の係数が等差数列になるすべての場合",
+  "topic": "$\\sum(1+x)^k$ の係数が等差数列になるすべての場合",
+  "statement": {
+   "tex": "$n$ を $2$ 以上の整数とし，$x$ の多項式\n\\[\nS_n(x)=\\sum_{k=1}^{n}(1+x)^k\n\\]\nの $x^r$ の係数を $a_r$（$r=0,1,\\dots,n$）とする．\n\\begin{enumerate}\n  \\item $a_r$ を $n,\\ r$ で表せ．\n  \\item $0\\leqq r\\leqq n-2$ をみたす整数 $r$ で，$a_r,\\ a_{r+1},\\ a_{r+2}$ がこの順に等差数列をなすような整数の組 $(n,r)$ をすべて求めよ．\n  \\item $n\\geqq3$ とする．$0\\leqq r\\leqq n-3$ をみたすどの整数 $r$ についても，$a_r,\\ a_{r+1},\\ a_{r+2},\\ a_{r+3}$ がこの順に等差数列をなすことはないことを示せ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $a_0=n$，$a_r={}_{n+1}\\mathrm{C}_{r+1}\\ (1\\leqq r\\leqq n)$　(2) $(n,r)=\\left(m^2-3,\\ \\dfrac{(m+3)(m-2)}{2}\\right)\\ (m\\geqq3)$，$\\left(m^2-3,\\ \\dfrac{(m-3)(m+2)}{2}\\right)\\ (m\\geqq4)$（$m$ は整数；$(6,3),(13,3),(13,7),(22,7),(22,12),\\dots$）　(3) 証明"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) $S_n(x)$ に $x=(1+x)-1$ をかけると，\n\\[\nxS_n(x)=\\sum_{k=1}^{n}(1+x)^{k+1}-\\sum_{k=1}^{n}(1+x)^k=(1+x)^{n+1}-(1+x)\n\\]\nとなる．これは多項式としての恒等式である．$0\\leqq r\\leqq n$ として両辺の $x^{r+1}$ の係数を比べる．左辺の $x^{r+1}$ の係数は $a_r$ である．右辺の $x^{r+1}$ の係数は，$(1+x)^{n+1}$ からの ${}_{n+1}\\mathrm C_{r+1}$ と，$r+1=1$ のときに限り $-(1+x)$ からの $-1$ である．よって\n\\[\n\\boldsymbol{a_0=(n+1)-1=n,\\qquad a_r={}_{n+1}\\mathrm C_{r+1}\\ \\ (1\\leqq r\\leqq n)} .\n\\]\n\n\\medskip\n(2) \\textbf{$r=0$ の場合．}\\ $a_0=n$，$a_1={}_{n+1}\\mathrm C_2=\\dfrac{(n+1)n}2$，$a_2={}_{n+1}\\mathrm C_3=\\dfrac{(n+1)n(n-1)}6$ である．$2a_1=a_0+a_2$ は\n\\[\n(n+1)n=n+\\frac{(n+1)n(n-1)}6\n\\]\nであり，$n>0$ で割って $n+1=1+\\dfrac{n^2-1}6$，すなわち $n^2-6n-1=0$ となる．その解は $n=3\\pm\\sqrt{10}$ で整数でないから，$r=0$ では条件をみたさない．\n\n\\medskip\n\\textbf{$r\\geqq1$ の場合．}\\ $N=n+1$，$k=r+2$ とおくと，(1) より\n\\[\na_r={}_N\\mathrm C_{k-1},\\qquad a_{r+1}={}_N\\mathrm C_k,\\qquad a_{r+2}={}_N\\mathrm C_{k+1}\n\\]\nであり，$1\\leqq r\\leqq n-2$ は $3\\leqq k\\leqq N-1$ と同値である．\n\\[\n{}_N\\mathrm C_{k-1}=\\frac{k}{N-k+1}\\,{}_N\\mathrm C_k,\\qquad {}_N\\mathrm C_{k+1}=\\frac{N-k}{k+1}\\,{}_N\\mathrm C_k\n\\]\nであり ${}_N\\mathrm C_k>0$ だから，$2a_{r+1}=a_r+a_{r+2}$ は\n\\[\n2=\\frac{k}{N-k+1}+\\frac{N-k}{k+1}\n\\iff 2(N-k+1)(k+1)=k(k+1)+(N-k)(N-k+1)\n\\]\nと同値である．展開すると\n\\[\n2(N-k+1)(k+1)-k(k+1)-(N-k)(N-k+1)=-N^2+4Nk-4k^2+N+2=-(N-2k)^2+(N+2)\n\\]\nであるから，条件は\n\\[\n(N-2k)^2=N+2\\qquad\\cdots\\cdots①\n\\]\nと同値である．\n\n① が成り立つとき，$m=|N-2k|$ は $0$ 以上の整数で $N=m^2-2$ である．$N=n+1\\geqq3$ より $m^2\\geqq5$，よって $m\\geqq3$．また $N-2k=m$ または $N-2k=-m$ であるから\n\\[\nk=\\frac{N-m}2=\\frac{(m-2)(m+1)}2\\quad\\text{または}\\quad k=\\frac{N+m}2=\\frac{(m+2)(m-1)}2\n\\]\n（$m^2-m=m(m-1)$ は偶数なので，いずれも整数）．逆に，整数 $m\\geqq3$ に対して $N=m^2-2$ とし $k$ をこのどちらかにとれば ① が成り立つ．あとは $3\\leqq k\\leqq N-1$ を調べればよい．$N-1=m^2-3$ である．\n\n\\begin{itemize}\n  \\item $k=\\dfrac{(m+2)(m-1)}2$ のとき：$m\\geqq3$ で $k\\geqq\\dfrac{5\\cdot2}2=5\\geqq3$．また $N-1-k=\\dfrac{2m^2-6-m^2-m+2}2=\\dfrac{m^2-m-4}2=\\dfrac{m(m-1)-4}2\\geqq\\dfrac{6-4}2>0$．よって $m\\geqq3$ のすべてで適する．\n  \\item $k=\\dfrac{(m-2)(m+1)}2$ のとき：$m=3$ では $k=2<3$ で不適（これは $r=0$ にあたり，上で見たように $a_0$ だけが ${}_{n+1}\\mathrm C_1$ と $1$ ずれているため実際に条件をみたさない）．$m\\geqq4$ では $k\\geqq\\dfrac{2\\cdot5}2=5$，また $N-1-k=\\dfrac{m^2+m-4}2>0$ で適する．\n\\end{itemize}\n\n$n=N-1=m^2-3$，$r=k-2$ に戻すと，$\\dfrac{(m+2)(m-1)}2-2=\\dfrac{m^2+m-6}2=\\dfrac{(m+3)(m-2)}2$，$\\dfrac{(m-2)(m+1)}2-2=\\dfrac{m^2-m-6}2=\\dfrac{(m-3)(m+2)}2$ であるから，求める組は\n\\[\n\\boldsymbol{(n,r)=\\left(m^2-3,\\ \\frac{(m+3)(m-2)}2\\right)\\ (m\\geqq3),\\qquad \\left(m^2-3,\\ \\frac{(m-3)(m+2)}2\\right)\\ (m\\geqq4)}\n\\]\n（$m$ は整数）である．小さい方から $(6,3),\\ (13,3),\\ (13,7),\\ (22,7),\\ (22,12),\\ \\dots$ となる．\n\n\\medskip\n(3) $a_r,a_{r+1},a_{r+2},a_{r+3}$ がこの順に等差数列をなすとすると，$(a_r,a_{r+1},a_{r+2})$ と $(a_{r+1},a_{r+2},a_{r+3})$ がともにこの順に等差数列をなす．\n\n$r=0$ のときは，前者が (2) の $r=0$ の場合に反する．\n\n$r\\geqq1$ のときは，$r$ と $r+1$ はともに $1$ 以上で，$r+2\\leqq n$，$r+3\\leqq n$ をみたすから，(2) の $r\\geqq1$ の場合の議論が両方に使える．$N=n+1$，$k=r+2$ とおくと，① とその $k$ を $k+1$ にかえた式から\n\\[\n(N-2k)^2=N+2,\\qquad (N-2k-2)^2=N+2 .\n\\]\n$s=N-2k$ とおくと $s^2=(s-2)^2$，すなわち $4s-4=0$ で $s=1$．すると $N+2=s^2=1$ より $N=-1$ となり，$N=n+1\\geqq4$ に矛盾する．\n\n以上より，連続する4つの係数がこの順に等差数列をなすことはない．\\hfill$\\square$"
+   }
+  ],
+  "idea": {
+   "tex": "$x\\sum_{k=1}^n(1+x)^k=(1+x)^{n+1}-(1+x)$ により，$x^r$ の係数は「左下が動く二項係数の和」${}_{n+1}\\mathrm C_{r+1}$ にまとまる（定数項だけは $1$ ずれる）．隣り合う3つの二項係数 ${}_N\\mathrm C_{k-1},{}_N\\mathrm C_k,{}_N\\mathrm C_{k+1}$ が等差数列をなす条件は，比をとって整理すると $(N-2k)^2=N+2$ という平方数の条件になり，すべての解が1つの整数 $m$ で表される．4項では2つの条件が両立しない．"
+  },
+  "methods": [],
+  "tags": [
+   "二項係数",
+   "ホッケースティック",
+   "等差数列",
+   "不定方程式",
+   "平方数"
+  ],
+  "provenance": {
+   "created": "2026-11-14"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-EQ-259",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-08",
+  "level": 4,
+  "minutes": 30,
+  "theme": "逆数の重みつき和が1のときの積の最小値と上限つきの条件",
+  "topic": "逆数の重みつき和が1のときの積の最小値と上限つきの条件",
+  "statement": {
+   "tex": "$t$ を $1$ より大きい実数とする．正の実数 $x,\\ y,\\ z$ が\n\\[\\frac1x+\\frac2y+\\frac3z=1,\\qquad x\\leqq t\\]\nを満たして動くとき，$Q=(x-1)(y-2)(z-3)$ について次の問いに答えよ．\n\\begin{enumerate}\n  \\item $Q$ の最小値 $m(t)$ を求めよ．\n  \\item $Q=m(t)$ となる $(x,y,z)$ を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $t\\geqq3$ のとき $m(t)=48$，$1<t<3$ のとき $m(t)=6(t-1)+\\dfrac{24t}{t-1}$　(2) $t\\geqq3$ のとき $(x,y,z)=(3,6,9)$，$1<t<3$ のとき $(x,y,z)=\\left(t,\\ \\dfrac{4t}{t-1},\\ \\dfrac{6t}{t-1}\\right)$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "$u=\\dfrac1x,\\ v=\\dfrac2y,\\ w=\\dfrac3z$ とおく．$x,y,z$ が正の実数全体を動くことと $u,v,w$ が正の実数全体を動くことは同じで，条件は\n\\[u+v+w=1,\\qquad u\\geqq\\frac1t\\]\nとなる．このとき $u,v,w$ はどれも $0$ と $1$ の間にある．\n\\[x-1=\\frac{1-u}u,\\quad y-2=\\frac{2(1-v)}v,\\quad z-3=\\frac{3(1-w)}w\\]\nより $Q=6\\cdot\\dfrac{(1-u)(1-v)(1-w)}{uvw}$ である．$v+w=1-u$ を用いると\n\\[(1-v)(1-w)=1-(v+w)+vw=u+vw\\]\nなので\n\\[Q=6\\cdot\\frac{1-u}{u}\\cdot\\frac{u+vw}{vw}=6\\cdot\\frac{1-u}{u}\\left(1+\\frac{u}{vw}\\right).\\]\n\n\\textbf{$u$ を固定したときの最小．} $u$ を固定すると $v+w=1-u$ は一定で，相加平均・相乗平均の関係から $vw\\leqq\\dfrac{(1-u)^2}4$，等号は $v=w=\\dfrac{1-u}2$ のときに限る．$\\dfrac{1-u}u>0$ なので\n\\[Q\\geqq6\\cdot\\frac{1-u}{u}\\left(1+\\frac{4u}{(1-u)^2}\\right)=6\\left(\\frac{1-u}{u}+\\frac4{1-u}\\right)=6g(u)\\]\nで，等号は $v=w=\\dfrac{1-u}2$ のときに成り立つ．ここで $g(u)=\\dfrac1u-1+\\dfrac4{1-u}$ である．したがって $m(t)$ は，$g(u)$ の $\\dfrac1t\\leqq u<1$ における最小値の6倍であり，最小値をとる点は $u$ が $g$ の最小値をとる点で $v=w=\\dfrac{1-u}2$ のものである．\n\n\\textbf{$g$ の増減．}\n\\[g'(u)=-\\frac1{u^2}+\\frac4{(1-u)^2}=\\frac{4u^2-(1-u)^2}{u^2(1-u)^2}=\\frac{(3u-1)(u+1)}{u^2(1-u)^2}\\]\nより，$0<u<1$ で $g$ は $u\\leqq\\dfrac13$ で減少，$u\\geqq\\dfrac13$ で増加する．\n\n(1)(2)\n\\begin{itemize}\n  \\item $t\\geqq3$ のとき，$\\dfrac1t\\leqq\\dfrac13<1$ なので区間に $u=\\dfrac13$ が含まれ，最小値は $g\\!\\left(\\dfrac13\\right)=3-1+6=8$．よって $m(t)=\\boldsymbol{48}$．このとき $u=v=w=\\dfrac13$，すなわち $\\boldsymbol{(x,y,z)=(3,6,9)}$（$x=3\\leqq t$ を満たす）．\n  \\item $1<t<3$ のとき，$\\dfrac13<\\dfrac1t<1$ で，区間 $\\dfrac1t\\leqq u<1$ では $g$ は増加するから，最小値は $g\\!\\left(\\dfrac1t\\right)=t-1+\\dfrac{4t}{t-1}$．よって\n  \\[m(t)=\\boldsymbol{6(t-1)+\\dfrac{24t}{t-1}}.\\]\n  このとき $u=\\dfrac1t$，$v=w=\\dfrac{t-1}{2t}$ で，$\\boldsymbol{(x,y,z)=\\left(t,\\ \\dfrac{4t}{t-1},\\ \\dfrac{6t}{t-1}\\right)}$．\n\\end{itemize}\nいずれの場合も等号を満たす $(x,y,z)$ が実際に存在するので，これらは最小値である．（$t=3$ では2つの式は一致して $48$ になる．）\\hfill$\\square$"
+   }
+  ],
+  "idea": {
+   "tex": "$u=\\dfrac1x,\\ v=\\dfrac2y,\\ w=\\dfrac3z$ とおくと条件は $u+v+w=1$ で，$1-u=v+w$ などから積は $6\\cdot\\dfrac{(1-u)(1-v)(1-w)}{uvw}$ という対称な式になる．$u$ を固定すると $(1-v)(1-w)=u+vw$ なので $vw$ が最大（$v=w$）のときに最小となり，1変数関数 $\\dfrac{1-u}{u}+\\dfrac{4}{1-u}$ の区間での最小に帰着する．上限 $x\\leqq t$ は $u\\geqq\\dfrac1t$ という区間の制限になり，$u=\\dfrac13$ が区間に入るかどうかで場合が分かれる．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) 場合分け{ t>=3 → 48 | 1<t<3 → 6(t-1)+24t/(t-1) }\n(2) 記述"
+  },
+  "methods": [],
+  "tags": [
+   "相加相乗平均",
+   "置き換え",
+   "1文字固定",
+   "微分による増減",
+   "場合分け"
+  ],
+  "provenance": {
+   "created": "2026-11-14"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-EQ-260",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-08",
+  "level": 5,
+  "minutes": 40,
+  "theme": "符号の決まる2次式と「逆向きの三角不等式」",
+  "topic": "符号の決まる2次式と「逆向きの三角不等式」",
+  "statement": {
+   "tex": "実数の組 $\\mathrm P=(x_1,\\ y_1,\\ z_1)$，$\\mathrm Q=(x_2,\\ y_2,\\ z_2)$ に対して\n\\[\n\\langle\\mathrm P,\\mathrm Q\\rangle=x_1x_2-y_1y_2-z_1z_2,\\qquad N(\\mathrm P)=\\langle\\mathrm P,\\mathrm P\\rangle=x_1^2-y_1^2-z_1^2\n\\]\nと定める．また，実数の組の和と実数倍は成分ごとに定め，$\\mathrm O=(0,\\ 0,\\ 0)$ とする．さらに，$x>0$ かつ $N\\bigl((x,\\ y,\\ z)\\bigr)=1$ をみたす実数の組 $(x,\\ y,\\ z)$ 全体の集合を $H$ とする．\n\\begin{enumerate}\n  \\item $\\mathrm A=(a,\\ b,\\ c)$ は $N(\\mathrm A)>0$ をみたし，$\\mathrm P=(x,\\ y,\\ z)$ は $\\mathrm P\\neq\\mathrm O$ かつ $N(\\mathrm P)\\geqq0$ をみたすとする．このとき $ax\\neq0$ であり，$\\langle\\mathrm A,\\mathrm P\\rangle$ は $ax$ と同じ符号をもつ（とくに $0$ でない）ことを示せ．\n  \\item $\\mathrm A=(a,\\ b,\\ c)$ は $a>0$ かつ $N(\\mathrm A)>0$ をみたすとする．$H$ に属するすべての $\\mathrm P$ に対して $\\langle\\mathrm A,\\mathrm P\\rangle\\geqq\\sqrt{N(\\mathrm A)}$ が成り立つことを示せ．また，等号が成り立つような $\\mathrm P$ をすべて求めよ．\n  \\item $\\mathrm P,\\ \\mathrm R,\\ \\mathrm T$ が $H$ に属するとき，$X=\\langle\\mathrm P,\\mathrm R\\rangle$，$Y=\\langle\\mathrm R,\\mathrm T\\rangle$ とおくと\n  \\[\n  \\langle\\mathrm P,\\mathrm T\\rangle\\leqq XY+\\sqrt{(X^2-1)(Y^2-1)}\n  \\]\n  が成り立つことを示せ（(2) により $X\\geqq1$，$Y\\geqq1$ である）．\n  \\item $\\mathrm P=(3,\\ 2,\\ 2)$，$\\mathrm T=(9,\\ 4,\\ 8)$ とする．$\\mathrm R$ が $H$ 全体を動くとき，$\\langle\\mathrm P,\\mathrm R\\rangle\\langle\\mathrm R,\\mathrm T\\rangle$ の最小値と，最小値をとる $\\mathrm R$ をすべて求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 証明　(2) 証明．等号は $\\mathrm P=\\dfrac{1}{\\sqrt{N(\\mathrm A)}}\\mathrm A$ のときに限る　(3) 証明　(4) 最小値 $2$，最小値をとる $\\mathrm R$ は $\\left(3\\sqrt2,\\ \\dfrac{3\\sqrt2}{2},\\ \\dfrac{5\\sqrt2}{2}\\right)$ のみ"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "$\\langle\\ ,\\ \\rangle$ の定義から，実数の組 $\\mathrm P,\\ \\mathrm Q,\\ \\mathrm S$ と実数 $s,\\ t$ に対して\n\\[\n\\langle\\mathrm P,\\mathrm Q\\rangle=\\langle\\mathrm Q,\\mathrm P\\rangle,\\qquad\n\\langle s\\mathrm P+t\\mathrm Q,\\ \\mathrm S\\rangle=s\\langle\\mathrm P,\\mathrm S\\rangle+t\\langle\\mathrm Q,\\mathrm S\\rangle\n\\]\nが成り立つ（成分を書けば直ちにわかる）．以下これを自由に用いる．\n\nまた，実数 $b,\\ c,\\ y,\\ z$ について\n\\[\n(b^2+c^2)(y^2+z^2)-(by+cz)^2=(bz-cy)^2\\geqq0\n\\]\nであるから\n\\[\n|by+cz|\\leqq\\sqrt{b^2+c^2}\\,\\sqrt{y^2+z^2}\\qquad\\cdots\\cdots\\text{①}\n\\]\nが成り立つ．\n\n\\medskip\n\\textbf{(1)}　$N(\\mathrm A)>0$ より $a^2>b^2+c^2\\geqq0$ なので $a\\neq0$ かつ $\\sqrt{b^2+c^2}<|a|$．\n$N(\\mathrm P)\\geqq0$ より $x^2\\geqq y^2+z^2$．もし $x=0$ なら $y^2+z^2\\leqq0$ から $y=z=0$ となり $\\mathrm P=\\mathrm O$ に反する．よって $x\\neq0$，したがって $ax\\neq0$ であり，$\\sqrt{y^2+z^2}\\leqq|x|$．\n\n①と合わせて\n\\[\n|by+cz|\\leqq\\sqrt{b^2+c^2}\\,\\sqrt{y^2+z^2}\\leqq\\sqrt{b^2+c^2}\\,|x|<|a|\\,|x|=|ax|.\n\\]\n最後の不等号は $|x|>0$ と $\\sqrt{b^2+c^2}<|a|$ による．$\\langle\\mathrm A,\\mathrm P\\rangle=ax-(by+cz)$ であるから，\n\\begin{itemize}\n  \\item $ax>0$ のとき $\\langle\\mathrm A,\\mathrm P\\rangle\\geqq ax-|by+cz|>0$，\n  \\item $ax<0$ のとき $\\langle\\mathrm A,\\mathrm P\\rangle\\leqq ax+|by+cz|<0$．\n\\end{itemize}\nよって $\\langle\\mathrm A,\\mathrm P\\rangle$ は $ax$ と同符号である．\\hfill$\\square$\n\n\\medskip\n\\textbf{(1) の帰結．}$N(\\mathrm A)>0$ のとき，$\\langle\\mathrm A,\\mathrm S\\rangle=0$ をみたす実数の組 $\\mathrm S$ は，$\\mathrm S=\\mathrm O$ であるか $N(\\mathrm S)<0$ である．実際，$\\mathrm S\\neq\\mathrm O$ かつ $N(\\mathrm S)\\geqq0$ なら (1) より $\\langle\\mathrm A,\\mathrm S\\rangle\\neq0$ となり矛盾する．とくに，いずれの場合も $N(\\mathrm S)\\leqq0$ である．$\\cdots\\cdots$②\n\n\\medskip\n\\textbf{(2)}　$k=\\sqrt{N(\\mathrm A)}>0$，$\\mathrm A'=\\dfrac1k\\mathrm A=(a',\\ b',\\ c')$ とおくと，$a'=\\dfrac ak>0$，$N(\\mathrm A')=\\dfrac{N(\\mathrm A)}{k^2}=1$，すなわち $a'^2=1+b'^2+c'^2$ である．よって $a'\\geqq1$，$\\sqrt{b'^2+c'^2}=\\sqrt{a'^2-1}$．\n\n$\\mathrm P=(x,\\ y,\\ z)\\in H$ とすると，同様に $x\\geqq1$，$\\sqrt{y^2+z^2}=\\sqrt{x^2-1}$．①より\n\\[\n\\langle\\mathrm A',\\mathrm P\\rangle=a'x-(b'y+c'z)\\geqq a'x-\\sqrt{b'^2+c'^2}\\sqrt{y^2+z^2}=a'x-\\sqrt{(a'^2-1)(x^2-1)}.\\qquad\\cdots\\cdots\\text{③}\n\\]\nここで\n\\[\n(a'x-1)^2-(a'^2-1)(x^2-1)=a'^2-2a'x+x^2=(a'-x)^2\\geqq0\n\\]\nであり，$a'x-1\\geqq0$ だから\n\\[\na'x-1\\geqq\\sqrt{(a'^2-1)(x^2-1)}.\\qquad\\cdots\\cdots\\text{④}\n\\]\n③④より $\\langle\\mathrm A',\\mathrm P\\rangle\\geqq1$，両辺に $k$ を掛けて $\\langle\\mathrm A,\\mathrm P\\rangle\\geqq k=\\sqrt{N(\\mathrm A)}$．\n\n\\textbf{等号成立．}等号が成り立つのは③と④がともに等号のときである．④の等号から $a'=x$．すると $y^2+z^2=x^2-1=a'^2-1=b'^2+c'^2$ であり，③の等号 $b'y+c'z=\\sqrt{b'^2+c'^2}\\sqrt{y^2+z^2}=b'^2+c'^2$ と合わせて\n\\[\n(y-b')^2+(z-c')^2=(y^2+z^2)-2(b'y+c'z)+(b'^2+c'^2)=0,\n\\]\nすなわち $y=b'$，$z=c'$．よって $\\mathrm P=\\mathrm A'$．逆に $\\mathrm A'\\in H$ であり（$a'>0$，$N(\\mathrm A')=1$），$\\langle\\mathrm A',\\mathrm A'\\rangle=1$ だから $\\mathrm P=\\mathrm A'$ で等号が成り立つ．\n\n以上より，等号が成り立つ $\\mathrm P$ は\n\\[\n\\boldsymbol{\\mathrm P=\\frac{1}{\\sqrt{N(\\mathrm A)}}\\,\\mathrm A}\n\\]\nのみである．\\hfill$\\square$\n\n\\medskip\n\\textbf{(3)}　$\\mathrm R\\in H$ は $x$ 成分が正で $N(\\mathrm R)=1>0$ だから，(2) を $\\mathrm A=\\mathrm R$ に用いて $X=\\langle\\mathrm R,\\mathrm P\\rangle\\geqq1$，$Y=\\langle\\mathrm R,\\mathrm T\\rangle\\geqq1$．\n\n$\\mathrm P'=\\mathrm P-X\\mathrm R$，$\\mathrm T'=\\mathrm T-Y\\mathrm R$ とおく．$N(\\mathrm P)=N(\\mathrm R)=N(\\mathrm T)=1$ を用いると\n\\begin{align*}\n\\langle\\mathrm P',\\mathrm R\\rangle&=X-X\\cdot1=0,\\qquad \\langle\\mathrm T',\\mathrm R\\rangle=Y-Y\\cdot1=0,\\\\\nN(\\mathrm P')&=N(\\mathrm P)-2X\\langle\\mathrm P,\\mathrm R\\rangle+X^2N(\\mathrm R)=1-X^2,\\\\\nN(\\mathrm T')&=1-Y^2,\\\\\n\\langle\\mathrm P',\\mathrm T'\\rangle&=\\langle\\mathrm P,\\mathrm T\\rangle-Y\\langle\\mathrm P,\\mathrm R\\rangle-X\\langle\\mathrm R,\\mathrm T\\rangle+XY\\,N(\\mathrm R)=\\langle\\mathrm P,\\mathrm T\\rangle-XY.\n\\end{align*}\n実数 $t$ に対して $\\mathrm S_t=\\mathrm P'+t\\mathrm T'$ とおくと $\\langle\\mathrm R,\\mathrm S_t\\rangle=0$ であり，$N(\\mathrm R)>0$ だから②より $N(\\mathrm S_t)\\leqq0$．すなわち，$u=\\langle\\mathrm P',\\mathrm T'\\rangle$ とおくと，すべての実数 $t$ について\n\\[\nf(t)=N(\\mathrm S_t)=(1-X^2)+2ut+(1-Y^2)t^2\\leqq0.\\qquad\\cdots\\cdots\\text{⑤}\n\\]\n\n\\textbf{(i) $Y>1$ のとき．}$1-Y^2<0$ なので，$f(t)=(1-Y^2)\\left(t+\\dfrac{u}{1-Y^2}\\right)^2+(1-X^2)-\\dfrac{u^2}{1-Y^2}$．⑤で $t=-\\dfrac{u}{1-Y^2}$ とすると\n\\[\n(1-X^2)-\\frac{u^2}{1-Y^2}\\leqq0.\n\\]\n両辺に正の数 $Y^2-1$ を掛けて $-(X^2-1)(Y^2-1)+u^2\\leqq0$，すなわち $u^2\\leqq(X^2-1)(Y^2-1)$．\n\n\\textbf{(ii) $Y=1$ のとき．}$N(\\mathrm T')=0$ かつ $\\langle\\mathrm R,\\mathrm T'\\rangle=0$ である．$\\mathrm T'\\neq\\mathrm O$ とすると (1)（$\\mathrm A=\\mathrm R$）より $\\langle\\mathrm R,\\mathrm T'\\rangle\\neq0$ となり矛盾するので $\\mathrm T'=\\mathrm O$．よって $u=0$ で，$u^2\\leqq(X^2-1)(Y^2-1)=0$ が成り立つ．\n\nいずれの場合も $|u|\\leqq\\sqrt{(X^2-1)(Y^2-1)}$ であるから\n\\[\n\\langle\\mathrm P,\\mathrm T\\rangle=XY+u\\leqq XY+\\sqrt{(X^2-1)(Y^2-1)}.\n\\]\n\\hfill$\\square$\n\n\\medskip\n\\textbf{(4)}　$N(\\mathrm P)=9-4-4=1$，$N(\\mathrm T)=81-16-64=1$ で $x$ 成分はともに正だから $\\mathrm P,\\ \\mathrm T\\in H$．また $\\langle\\mathrm P,\\mathrm T\\rangle=27-8-16=3$．\n\n$\\mathrm R\\in H$ とし，$X=\\langle\\mathrm P,\\mathrm R\\rangle$，$Y=\\langle\\mathrm R,\\mathrm T\\rangle$ とおく（$X,\\ Y\\geqq1$）．\n\n\\textbf{下からの評価．}\n\\[\n(XY-1)^2-(X^2-1)(Y^2-1)=X^2-2XY+Y^2=(X-Y)^2\\geqq0\n\\]\nかつ $XY-1\\geqq0$ だから $\\sqrt{(X^2-1)(Y^2-1)}\\leqq XY-1$．(3) と合わせて\n\\[\n3=\\langle\\mathrm P,\\mathrm T\\rangle\\leqq XY+\\sqrt{(X^2-1)(Y^2-1)}\\leqq 2XY-1,\n\\]\nよって $XY\\geqq2$．\n\n\\textbf{等号の条件．}$XY=2$ とすると，上の2つの不等号はともに等号であり，とくに $(X-Y)^2=0$，すなわち $X=Y$．$X,\\ Y>0$ と $XY=2$ から $X=Y=\\sqrt2$．このとき\n\\[\n\\langle\\mathrm P+\\mathrm T,\\ \\mathrm R\\rangle=X+Y=2\\sqrt2.\n\\]\n一方，$\\mathrm A=\\mathrm P+\\mathrm T=(12,\\ 6,\\ 10)$ は $x$ 成分 $12>0$，$N(\\mathrm A)=144-36-100=8>0$ をみたすので，(2) より $\\langle\\mathrm A,\\mathrm R\\rangle\\geqq\\sqrt8=2\\sqrt2$ であり，等号は $\\mathrm R=\\dfrac1{2\\sqrt2}\\mathrm A$ のときに限る．したがって $XY=2$ となる $\\mathrm R$ は\n\\[\n\\mathrm R_0=\\frac{1}{2\\sqrt2}(12,\\ 6,\\ 10)=\\left(3\\sqrt2,\\ \\frac{3\\sqrt2}{2},\\ \\frac{5\\sqrt2}{2}\\right)\n\\]\n以外にない．\n\n\\textbf{実際に最小値をとること．}$\\mathrm R_0$ は $x$ 成分が正で $N(\\mathrm R_0)=18-\\dfrac92-\\dfrac{25}2=1$ だから $\\mathrm R_0\\in H$．さらに\n\\[\n\\langle\\mathrm P,\\mathrm R_0\\rangle=\\frac{36-12-20}{2\\sqrt2}=\\sqrt2,\\qquad\n\\langle\\mathrm R_0,\\mathrm T\\rangle=\\frac{108-24-80}{2\\sqrt2}=\\sqrt2\n\\]\nより $\\langle\\mathrm P,\\mathrm R_0\\rangle\\langle\\mathrm R_0,\\mathrm T\\rangle=2$．\n\n以上より，最小値は $\\boldsymbol{2}$，最小値をとる $\\mathrm R$ は\n\\[\n\\boldsymbol{\\mathrm R=\\left(3\\sqrt2,\\ \\frac{3\\sqrt2}{2},\\ \\frac{5\\sqrt2}{2}\\right)}\n\\]\nのみである．"
+   }
+  ],
+  "idea": {
+   "tex": "$a^2>b^2+c^2$，$x^2\\geqq y^2+z^2$（$(x,y,z)\\neq(0,0,0)$）なら $|by+cz|\\leqq\\sqrt{b^2+c^2}\\sqrt{y^2+z^2}<|ax|$ より $ax-by-cz$ は $ax$ と同符号で $0$ にならない（原題の核）．したがって $\\langle\\mathrm R,\\mathrm S\\rangle=0$ をみたす $\\mathrm S\\neq\\mathrm O$ では $N(\\mathrm S)<0$ となり，$\\mathrm R$ に「直交」する方向では $N$ が負の値をとる2次式になる．$\\mathrm P,\\ \\mathrm T$ から $\\mathrm R$ 方向の成分を引いた $\\mathrm P',\\ \\mathrm T'$ について $N(\\mathrm P'+t\\mathrm T')\\leqq0$（すべての $t$）の判別式を考えると，ふつうとは向きの逆の三角不等式型の評価が出る．"
+  },
+  "methods": [],
+  "tags": [
+   "2次形式",
+   "コーシー・シュワルツの不等式",
+   "判別式",
+   "背理法",
+   "等号成立条件",
+   "不等式の証明"
+  ],
+  "provenance": {
+   "created": "2026-11-14"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-EQ-261",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-08",
+  "level": 4,
+  "minutes": 35,
+  "theme": "和から2つを除いた値がそろっている数の組",
+  "topic": "和から2つを除いた値がそろっている数の組",
+  "statement": {
+   "tex": "$n$ を3以上の整数とする．実数 $a_1,\\ a_2,\\ \\cdots,\\ a_n$ に対し $S=a_1+a_2+\\cdots+a_n$ とおく．$1\\leqq i<j\\leqq n$ をみたすすべての整数の組 $(i,\\ j)$ について\n\\[\n-1<S-a_i-a_j<1\n\\]\nが成り立っているとする．\n\\begin{enumerate}\n  \\item $|S|<\\dfrac{n}{n-2}$ であることを示せ．\n  \\item 上の条件をみたすどのような $a_1,\\ \\cdots,\\ a_n$ に対しても「すべての $k$ について $|a_k|<M$」が成り立つような定数 $M$ の最小値を，$n$ で表せ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 証明　(2) $\\dfrac{2n-5}{n-2}$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "$T_{ij}=S-a_i-a_j\\ (i<j)$ とおくと $|T_{ij}|<1$．\n\n(1) 各 $a_i$ は $n-1$ 個の組 $(i,j)$ に現れるので，組は全部で $\\frac{n(n-1)}2$ 個あり，\n\\[\n\\sum_{i<j}T_{ij}=\\frac{n(n-1)}2S-(n-1)S=\\frac{(n-1)(n-2)}2S .\n\\]\nよって $\\dfrac{(n-1)(n-2)}2|S|\\leqq\\sum_{i<j}|T_{ij}|<\\dfrac{n(n-1)}2$ で，$|S|<\\boldsymbol{\\dfrac n{n-2}}$．\\hfill$\\square$\n\n(2) $a_1$ について考える（他の $a_k$ も添え字をつけかえれば同じ）．$a_1$ を含む組の和は\n\\[\n\\sum_{j=2}^nT_{1j}=(n-1)S-(n-1)a_1-(S-a_1)=(n-2)(S-a_1)\n\\]\nなので $a_1=S-\\dfrac1{n-2}\\sum_{j=2}^nT_{1j}$．(1)の式から $S=\\dfrac{2}{(n-1)(n-2)}\\sum_{i<j}T_{ij}$ であり，$\\displaystyle\\sum_{i<j}T_{ij}=\\sum_{j=2}^nT_{1j}+\\sum_{2\\leqq i<j}T_{ij}$ と分けると\n\\[\na_1=\\frac{2}{(n-1)(n-2)}\\sum_{2\\leqq i<j}T_{ij}-\\frac{n-3}{(n-1)(n-2)}\\sum_{j=2}^nT_{1j}.\n\\]\n$\\displaystyle\\sum_{2\\leqq i<j}$ の項は $\\frac{(n-1)(n-2)}2$ 個，$\\displaystyle\\sum_{j=2}^n$ の項は $n-1$ 個あるので，$|T_{ij}|<1$ より\n\\[\n|a_1|<\\frac{2}{(n-1)(n-2)}\\cdot\\frac{(n-1)(n-2)}2+\\frac{n-3}{(n-1)(n-2)}\\cdot(n-1)=1+\\frac{n-3}{n-2}=\\frac{2n-5}{n-2}.\n\\]\n（$n=3$ のとき第2項の係数は0で，第1項は1個の $T_{23}$ だけなので，やはり $|a_1|=|T_{23}|<1$．）よって $M=\\dfrac{2n-5}{n-2}$ とすれば常に $|a_k|<M$ が成り立つ．\n\n次に，$M<\\dfrac{2n-5}{n-2}$ では成り立たない例を示す．$0<\\lambda<1$ として\n\\[\na_1=\\lambda\\cdot\\frac{2n-5}{n-2},\\qquad a_2=a_3=\\cdots=a_n=-\\frac{\\lambda}{n-2}\n\\]\nとおく．$S=\\lambda\\cdot\\dfrac{2n-5-(n-1)}{n-2}=\\lambda\\cdot\\dfrac{n-4}{n-2}$ で，\n\\[\nT_{1j}=S-a_1+\\frac{\\lambda}{n-2}=\\lambda\\cdot\\frac{(n-4)-(2n-5)+1}{n-2}=-\\lambda,\\qquad\nT_{ij}=S+\\frac{2\\lambda}{n-2}=\\lambda\\ \\ (2\\leqq i<j)\n\\]\nとなり，すべて $-1<T_{ij}<1$ をみたす．$\\lambda$ を1に十分近くとれば，任意の $M<\\frac{2n-5}{n-2}$ に対して $a_1=\\lambda\\frac{2n-5}{n-2}>M$ とできるので，そのような $M$ は条件をみたさない．\n\nよって $M$ の最小値は $\\boldsymbol{\\dfrac{2n-5}{n-2}}$．"
+   }
+  ],
+  "idea": {
+   "tex": "条件の式 $T_{ij}=S-a_i-a_j$ たちの和をとると $S$ が，$a_1$ を含むものだけの和をとると $S-a_1$ が表せるので，$a_1$ は $T_{ij}$ の1次結合でかける．$|T_{ij}|<1$ から，係数の絶対値の和が $|a_1|$ の評価を与える．係数の符号に合わせて $T_{ij}$ を $\\pm1$ に近づける具体例をつくれば，その評価が最良であることもわかる．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) 証明\n(2) (2n-5)/(n-2)"
+  },
+  "methods": [],
+  "tags": [
+   "不等式",
+   "1次式の組合せ",
+   "三角不等式",
+   "和の計算",
+   "最良定数",
+   "上限の評価"
+  ],
+  "provenance": {
+   "created": "2026-11-14"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-EQ-262",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-08",
+  "level": 4,
+  "minutes": 40,
+  "theme": "係数の絶対値の和が1未満のときの2次方程式の解の大きさ",
+  "topic": "係数の絶対値の和が1未満のときの2次方程式の解の大きさ",
+  "statement": {
+   "tex": "実数 $a,\\ b,\\ c,\\ d$ は $|a|+|b|<1$，$|c|+|d|<1$ をみたすとする．\n\\begin{enumerate}\n  \\item 複素数 $\\lambda,\\ u,\\ v$ が $(u,\\ v)\\neq(0,\\ 0)$ かつ\n  \\[ au+bv=\\lambda u,\\qquad cu+dv=\\lambda v \\]\n  をみたすならば，$|\\lambda|<1$ であることを示せ．\n  \\item $x$ の2次方程式 $x^2-(a+d)x+ad-bc=0$ の2つの解（虚数解でもよい）の絶対値はともに1未満であることを示せ．\n  \\item $a,\\ b,\\ c,\\ d$ が上の条件をみたして動くとき，座標平面上の点 $(a+d,\\ ad-bc)$ の存在範囲を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 証明　(2) 証明　(3) $-2<X<2$ かつ $|X|-1<Y<1-|X|+\\dfrac{X^2}{2}$（点を $(X,\\ Y)$ とする．境界は含まない）"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) $M$ を $|u|,\\ |v|$ のうち大きい方（等しければその値）とすると，$(u,v)\\neq(0,0)$ より $M>0$．$\\kappa$ を $|a|+|b|,\\ |c|+|d|$ のうち大きい方とすると $\\kappa<1$ である．\n\\[ |\\lambda||u|=|au+bv|\\leqq|a||u|+|b||v|\\leqq(|a|+|b|)M\\leqq\\kappa M, \\]\n同様に $|\\lambda||v|=|cu+dv|\\leqq(|c|+|d|)M\\leqq\\kappa M$．$|u|,\\ |v|$ のうち $M$ に等しい方について $|\\lambda|M\\leqq\\kappa M$ が成り立ち，$M>0$ で割って $|\\lambda|\\leqq\\kappa<1$．\\hfill$\\square$\n\n(2) $\\lambda$ を $\\lambda^2-(a+d)\\lambda+ad-bc=0$ の解とする．$au+bv=\\lambda u$，$cu+dv=\\lambda v$ をみたす $(u,v)\\neq(0,0)$ を作れば (1) から $|\\lambda|<1$ がいえる．\n\\begin{itemize}\n  \\item $b\\neq0$ のとき：$(u,v)=(b,\\ \\lambda-a)$ とおく．$u\\neq0$ であり，$au+bv=ab+b(\\lambda-a)=\\lambda b=\\lambda u$．また\n  $cu+dv-\\lambda v=cb+(d-\\lambda)(\\lambda-a)=-\\{\\lambda^2-(a+d)\\lambda+ad-bc\\}=0$．\n  \\item $b=0$ のとき：方程式は $(\\lambda-a)(\\lambda-d)=0$ である．$\\lambda=d$ なら $(u,v)=(0,1)$ とすると $au+bv=0=\\lambda u$，$cu+dv=d=\\lambda v$．$\\lambda=a\\neq d$ なら $(u,v)=(\\lambda-d,\\ c)$ とすると $u\\neq0$ で，$au+bv=a(\\lambda-d)=\\lambda(\\lambda-d)=\\lambda u$（$\\lambda=a$ より），$cu+dv=c(\\lambda-d)+dc=\\lambda c=\\lambda v$．\n\\end{itemize}\nいずれの場合も条件をみたす $(u,v)$ があるので，2解の絶対値はともに1未満．\\hfill$\\square$\n\n(3) $X=a+d$，$Y=ad-bc$ とおく．\n\n\\textbf{必要性．}まず $|X|\\leqq|a|+|d|<2$．\n2解を $\\alpha,\\ \\beta$ とする．実数解のとき，(2) より $-1<\\alpha<1$，$-1<\\beta<1$ なので $(1-\\alpha)(1-\\beta)>0$，$(1+\\alpha)(1+\\beta)>0$．虚数解のとき $\\beta=\\overline{\\alpha}$ で，$(1-\\alpha)(1-\\beta)=|1-\\alpha|^2>0$，$(1+\\alpha)(1+\\beta)=|1+\\alpha|^2>0$．いずれにせよ解と係数の関係から\n\\[ 1-X+Y>0,\\qquad 1+X+Y>0\\quad\\text{すなわち}\\quad Y>|X|-1. \\]\n次に，$|b|<1-|a|$，$|c|<1-|d|$ で右辺はともに正だから $|b||c|\\leqq|b|(1-|d|)<(1-|a|)(1-|d|)$．よって\n\\[ Y\\leqq ad+|b||c|<ad+(1-|a|)(1-|d|)=U. \\]\n$ad\\geqq0$ のとき $|a|+|d|=|X|$，$|a||d|=ad$ なので $U=1-|X|+2ad\\leqq1-|X|+\\dfrac{(a+d)^2}2=1-|X|+\\dfrac{X^2}2$（$4ad\\leqq(a+d)^2$ による）．\n$ad<0$ のとき $|a||d|=-ad$ なので $U=1-(|a|+|d|)\\leqq1-|X|\\leqq1-|X|+\\dfrac{X^2}2$．\nゆえに $Y<1-|X|+\\dfrac{X^2}2$．\n\n\\textbf{十分性．}$-2<X<2$，$|X|-1<Y<1-|X|+\\dfrac{X^2}2$ とする．$a=d=\\dfrac X2$，$m=1-\\dfrac{|X|}2\\ (>0)$ とおくと\n\\[ \\frac{X^2}4-m^2=|X|-1,\\qquad \\frac{X^2}4+m^2=1-|X|+\\frac{X^2}2 \\]\nであるから $\\left|Y-\\dfrac{X^2}4\\right|<m^2$．$w=\\dfrac{\\sqrt{|Y-X^2/4|}}{m}$ とおくと $0\\leqq w<1$．$Y\\geqq\\dfrac{X^2}4$ なら $b=mw$，$c=-mw$，$Y<\\dfrac{X^2}4$ なら $b=c=mw$ とすると，$ad-bc=\\dfrac{X^2}4\\pm m^2w^2=Y$，$a+d=X$ であり，$|a|+|b|=|c|+|d|=\\dfrac{|X|}2+mw<\\dfrac{|X|}2+m=1$．\n\n以上より存在範囲は\n\\[ \\boldsymbol{-2<X<2,\\quad |X|-1<Y<1-|X|+\\frac{X^2}{2}} \\]\n（境界を含まない）．"
+   }
+  ],
+  "idea": {
+   "tex": "$|a|+|b|<1$，$|c|+|d|<1$ のとき，$(u,\\ v)$ を $(au+bv,\\ cu+dv)$ に移すと「$|u|,\\ |v|$ の大きい方」が必ず真に縮む．そのため $au+bv=\\lambda u$，$cu+dv=\\lambda v$ が $(u,v)\\neq(0,0)$ の解をもつ $\\lambda$（$x^2-(a+d)x+ad-bc=0$ の解）は $|\\lambda|<1$ となる．これが $(1\\mp\\alpha)(1\\mp\\beta)>0$ を通して $a+d$ と $ad-bc$ の関係を縛る．上側の限界は別に直接評価し，両方の限界に近づく例を作って存在範囲を確定する．"
+  },
+  "methods": [],
+  "tags": [
+   "絶対値の大きい方で評価",
+   "複素数の連立1次方程式",
+   "解の絶対値",
+   "解と係数の関係",
+   "存在範囲"
+  ],
+  "provenance": {
+   "created": "2026-11-14"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-EQ-263",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-08",
+  "level": 5,
+  "minutes": 40,
+  "theme": "正値な2変数2次式から作る $F^*$ と大小の逆転・平均の不等式",
+  "topic": "正値な2変数2次式から作る $F^*$ と大小の逆転・平均の不等式",
+  "statement": {
+   "tex": "実数 $a,\\ b,\\ c$ が $a>0,\\ ac-b^2>0$ をみたすとき，$F(x,y)=ax^2+2bxy+cy^2$ を\\textbf{正値形式}とよび，\n\\[\nF^*(u,v)=\\frac{cu^2-2buv+av^2}{ac-b^2}\n\\]\nと定める．以下，2つの正値形式 $F,\\ G$ が等しいとは，3つの係数がそれぞれ等しいことをいう．\n\\begin{enumerate}\n  \\item $(x,y)\\neq(0,0)$ ならば $F(x,y)>0$ であること，および $F^*$ も正値形式であることを示せ．さらに，すべての実数 $x,\\ y,\\ u,\\ v$ に対して\n  \\[\n  2(ux+vy)-F(x,y)\\leqq F^*(u,v)\n  \\]\n  が成り立ち，等号は $ax+by=u$ かつ $bx+cy=v$ のときに限ることを示せ．\n  \\item $F,\\ G$ は正値形式で，すべての実数 $x,\\ y$ に対して $F(x,y)\\geqq G(x,y)$ が成り立つとする．このとき，すべての実数 $u,\\ v$ に対して $G^*(u,v)\\geqq F^*(u,v)$ が成り立つことを示せ．\n  \\item $F,\\ G$ を正値形式，$0\\leqq t\\leqq1$ とし，$H(x,y)=(1-t)F(x,y)+tG(x,y)$ とおく．$H$ も正値形式であることを示し，すべての実数 $u,\\ v$ に対して\n  \\[\n  H^*(u,v)\\leqq(1-t)F^*(u,v)+tG^*(u,v)\n  \\]\n  が成り立つことを示せ．\n  \\item (3) において $0<t<1$ とし，すべての実数 $u,\\ v$ に対して (3) の不等式の等号が成り立つとする．このとき $F$ と $G$ は等しいことを示せ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 証明　(2) 証明　(3) 証明　(4) 証明"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "以下 $D=ac-b^2>0$ とする．\n\n(1) $aF(x,y)=a^2x^2+2abxy+acy^2=(ax+by)^2+Dy^2$．$(x,y)\\neq(0,0)$ のとき，$y\\neq0$ なら $Dy^2>0$，$y=0$ なら $x\\neq0$ で $(ax)^2>0$．よって $aF>0$，$a>0$ より $F(x,y)>0$．\n\n$F^*(u,v)=\\dfrac cDu^2+2\\cdot\\dfrac{-b}Duv+\\dfrac aDv^2$ の係数について，$ac>b^2\\geqq0$，$a>0$ より $c>0$ なので $\\dfrac cD>0$，また $\\dfrac cD\\cdot\\dfrac aD-\\left(\\dfrac{-b}D\\right)^2=\\dfrac{D}{D^2}=\\dfrac1D>0$．よって $F^*$ も正値形式．\n\n次に，$x_0=\\dfrac{cu-bv}D$，$y_0=\\dfrac{av-bu}D$ とおくと\n\\[\nax_0+by_0=\\frac{acu-abv+abv-b^2u}D=u,\\qquad bx_0+cy_0=\\frac{bcu-b^2v+acv-bcu}D=v .\n\\]\n$D\\neq0$ より連立方程式 $ax+by=u,\\ bx+cy=v$ の解は $(x_0,y_0)$ ただ1つである．$F$ を展開すると\n\\[\nF(x-x_0,y-y_0)=F(x,y)-2\\{x(ax_0+by_0)+y(bx_0+cy_0)\\}+F(x_0,y_0)=F(x,y)-2(ux+vy)+F(x_0,y_0),\n\\]\n\\[\nF(x_0,y_0)=x_0(ax_0+by_0)+y_0(bx_0+cy_0)=ux_0+vy_0=\\frac{cu^2-buv+av^2-buv}D=F^*(u,v).\n\\]\nしたがって\n\\[\nF^*(u,v)-\\{2(ux+vy)-F(x,y)\\}=F(x-x_0,y-y_0)\\geqq0\n\\]\nで，前半より等号は $(x,y)=(x_0,y_0)$，すなわち $ax+by=u$ かつ $bx+cy=v$ のときに限る．\\hfill$\\square$\n\n(2) 任意の $(u,v)$ を固定する．すべての $(x,y)$ で，仮定と (1)（$G$ に適用）より\n\\[\n2(ux+vy)-F(x,y)\\leqq2(ux+vy)-G(x,y)\\leqq G^*(u,v).\n\\]\n左辺は (1) より，$F$ の連立方程式の解 $(x,y)=(x_0,y_0)$ で $F^*(u,v)$ に等しいから，$F^*(u,v)\\leqq G^*(u,v)$．\\hfill$\\square$\n\n(3) まず次を示す：「$A,B,C$ が実数で，$(x,y)\\neq(0,0)$ のとき常に $Ax^2+2Bxy+Cy^2>0$ ならば $A>0,\\ AC-B^2>0$」．実際 $(x,y)=(1,0)$ で $A>0$，$(x,y)=(-B,A)\\neq(0,0)$ で $AB^2-2AB^2+CA^2=A(AC-B^2)>0$ より $AC-B^2>0$．\n\n$H$ は $x^2,xy,y^2$ の係数がそれぞれ $F,G$ の係数の $(1-t):t$ の重み付き和である2次式で，$(x,y)\\neq(0,0)$ のとき (1) より $F,G>0$，$1-t,t\\geqq0$ で同時には0にならないから $H(x,y)>0$．よって上の事実より $H$ は正値形式．\n\n任意の $(u,v)$ を固定する．すべての $(x,y)$ で，(1) より\n\\begin{align*}\n2(ux+vy)-H(x,y)&=(1-t)\\{2(ux+vy)-F(x,y)\\}+t\\{2(ux+vy)-G(x,y)\\}\\\\\n&\\leqq(1-t)F^*(u,v)+tG^*(u,v).\n\\end{align*}\n$(x,y)$ を $H$ の連立方程式の解にとれば，(1) より左辺は $H^*(u,v)$ に等しい．よって $H^*(u,v)\\leqq(1-t)F^*(u,v)+tG^*(u,v)$．\\hfill$\\square$\n\n(4) $H$ の係数を $a_H,b_H,c_H$ などと書く．任意の実数 $x_1,y_1$ をとり，$u=a_Hx_1+b_Hy_1$，$v=b_Hx_1+c_Hy_1$ とおく．(1) より $2(ux_1+vy_1)-H(x_1,y_1)=H^*(u,v)$ であり，(3) の計算から\n\\begin{align*}\nH^*(u,v)&=(1-t)\\{2(ux_1+vy_1)-F(x_1,y_1)\\}\\\\\n&\\quad+t\\{2(ux_1+vy_1)-G(x_1,y_1)\\}.\n\\end{align*}\n仮定よりこれが $(1-t)F^*(u,v)+tG^*(u,v)$ に等しい．各中かっこはそれぞれ $F^*(u,v)$，$G^*(u,v)$ 以下で，$1-t>0,\\ t>0$ だから，両方とも等号が成り立つ．(1) の等号条件より $(x_1,y_1)$ は $F$ の連立方程式 $a_Fx+b_Fy=u,\\ b_Fx+c_Fy=v$ をみたす．すなわち\n\\[\na_Fx_1+b_Fy_1=a_Hx_1+b_Hy_1,\\qquad b_Fx_1+c_Fy_1=b_Hx_1+c_Hy_1\n\\]\nがすべての $(x_1,y_1)$ で成り立つ．$(x_1,y_1)=(1,0),(0,1)$ を代入して $a_F=a_H,\\ b_F=b_H,\\ c_F=c_H$．$H=(1-t)F+tG$ より各係数で $t(a_G-a_F)=0$ などが成り立ち，$t>0$ から $a_G=a_F,\\ b_G=b_F,\\ c_G=c_F$．よって $F$ と $G$ は等しい．\\hfill$\\square$"
+   }
+  ],
+  "idea": {
+   "tex": "正値形式 $F$ に対し，$F^*(u,v)=\\dfrac{cu^2-2buv+av^2}{ac-b^2}$ は「$2(ux+vy)-F(x,y)$ の $(x,y)$ についての最大値」になる（平方完成 $F^*(u,v)-2(ux+vy)+F(x,y)=F(x-x_0,y-y_0)\\geqq0$）．この最大値表示を使うと，$F\\geqq G$ から $F^*\\leqq G^*$（大小の逆転）が，$F$ と $G$ の平均 $H$ について $H^*\\leqq(1-t)F^*+tG^*$ が，計算なしに出る．等号は最大を与える点が一致するときに限る．係数だけで述べ，大小の逆転に加えて平均についての不等式とその等号条件まで調べる．"
+  },
+  "methods": [],
+  "tags": [
+   "2次形式",
+   "平方完成",
+   "不等式の証明",
+   "最大値",
+   "連立1次方程式",
+   "凸性"
+  ],
+  "provenance": {
+   "created": "2026-11-14"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-EQ-264",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-08",
+  "level": 4,
+  "minutes": 30,
+  "theme": "和が一定の3数に対する積の不等式が成り立つ定数の最大・最小",
+  "topic": "和が一定の3数に対する積の不等式が成り立つ定数の最大・最小",
+  "statement": {
+   "tex": "実数 $a,\\ b,\\ c$ は $a\\geqq1,\\ b\\geqq1,\\ c\\geqq1,\\ a+b+c=6$ をみたしながら動く．\n\\begin{enumerate}\n  \\item 不等式 $ab+bc+ca+a+b+c+1\\leqq k\\,abc$ がこのようなすべての $a,\\ b,\\ c$ で成り立つような実数 $k$ の最小値を求めよ．\n  \\item 不等式 $ab+bc+ca+a+b+c+1\\geqq m\\,abc$ がこのようなすべての $a,\\ b,\\ c$ で成り立つような実数 $m$ の最大値を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $k=4$　(2) $m=\\dfrac{19}{8}$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "$ab+bc+ca+a+b+c+1+abc=(a+1)(b+1)(c+1)$ であり $abc>0$ なので，\n\\[\nF=\\left(1+\\frac1a\\right)\\left(1+\\frac1b\\right)\\left(1+\\frac1c\\right)\n\\]\nとおくと，(1) の不等式は $F\\leqq k+1$，(2) の不等式は $F\\geqq m+1$ と同値．よって $k$ の最小値は $F$ の最大値 $-1$，$m$ の最大値は $F$ の最小値 $-1$ である（最大値・最小値が存在すれば）．\n\n\\textbf{(1)}\\quad $a$ を固定し $\\sigma=b+c=6-a$ とおく．$b,c\\geqq1$ より $a\\leqq4$，$\\sigma\\geqq2$．\n\\[\n\\left(1+\\frac1b\\right)\\left(1+\\frac1c\\right)=1+\\frac{\\sigma+1}{bc},\\qquad bc=(b-1)(c-1)+\\sigma-1\\geqq\\sigma-1>0\n\\]\n（等号は $b=1$ または $c=1$）．よって\n\\[\nF\\leqq\\left(1+\\frac1a\\right)\\left(1+\\frac{\\sigma+1}{\\sigma-1}\\right)=\\frac{a+1}a\\cdot\\frac{2(6-a)}{5-a}.\n\\]\n$1\\leqq a\\leqq4$ では $a(5-a)>0$ で，\n\\[\n\\frac{2(a+1)(6-a)}{a(5-a)}\\leqq5\\iff 2(-a^2+5a+6)\\leqq25a-5a^2\\iff 3(a-1)(a-4)\\leqq0\n\\]\nが成り立つ．よって $F\\leqq5$ で，$(a,b,c)=(1,1,4)$ のとき $F=2\\cdot2\\cdot\\frac54=5$．したがって $F$ の最大値は5で，$k$ の最小値は $\\boldsymbol{4}$．\n\n\\textbf{(2)}\\quad (1) と同様に $a$ を固定し $\\sigma=b+c=6-a$（$1\\leqq a\\leqq4$）とおく．相加平均と相乗平均の関係より $bc\\leqq\\dfrac{\\sigma^2}4$（等号は $b=c$）なので\n\\[\n\\left(1+\\frac1b\\right)\\left(1+\\frac1c\\right)=1+\\frac{\\sigma+1}{bc}\\geqq1+\\frac{4(\\sigma+1)}{\\sigma^2}=\\frac{(\\sigma+2)^2}{\\sigma^2}.\n\\]\nよって\n\\[\nF\\geqq\\frac{a+1}a\\cdot\\frac{(8-a)^2}{(6-a)^2}.\n\\]\n$1\\leqq a\\leqq4$ では $a(6-a)^2>0$ であり，\n\\[\n8(a+1)(8-a)^2-27a(6-a)^2=-19a^3+204a^2-588a+512=(a-2)^2(128-19a)\\geqq0\n\\]\n（$128-19a\\geqq128-76>0$）なので $F\\geqq\\dfrac{27}8$．$a=b=c=2$（条件をみたす）のとき $F=\\left(\\frac32\\right)^3=\\frac{27}8$ で等号が成り立つ．したがって $F$ の最小値は $\\dfrac{27}8$ で，$m$ の最大値は $\\dfrac{27}8-1=\\boldsymbol{\\dfrac{19}8}$．"
+   }
+  ],
+  "idea": {
+   "tex": "原題の核「左辺に $abc$ を加えると $(a+1)(b+1)(c+1)$ と因数分解でき，問題は $\\left(1+\\frac1a\\right)\\left(1+\\frac1b\\right)\\left(1+\\frac1c\\right)$ の最大・最小に帰着する」に，和が一定という連動した条件を加える．2数の和を固定すると積だけの減少関数になるので最大は端の点，最小は2数の相加平均と相乗平均の関係で $b=c$ の場合に帰着させ，1変数の3次式の因数分解 $(a-2)^2(128-19a)\\geqq0$ から等号 $a=b=c=2$ を得る．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) $k$：4\n(2) $m$：19/8"
+  },
+  "methods": [],
+  "tags": [
+   "不等式",
+   "因数分解",
+   "相加平均と相乗平均",
+   "変数の固定",
+   "最大・最小"
+  ],
+  "provenance": {
+   "created": "2026-11-14"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-EQ-265",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-08",
+  "level": 4,
+  "minutes": 30,
+  "theme": "和が0の4数の積と4乗和の範囲",
+  "topic": "和が0の4数の積と4乗和の範囲",
+  "statement": {
+   "tex": "実数 $p,q,r,s$ が $p+q+r+s=0$，$p^2+q^2+r^2+s^2=12$ をみたしながら動く．\n\\begin{enumerate}\n  \\item $x=p+q$，$y=pq$ とおく．点 $(x,y)$ の動く範囲を求めよ．\n  \\item $pqrs$ の最大値と最小値を求めよ．\n  \\item $p^4+q^4+r^4+s^4$ の最大値と最小値を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $\\dfrac34x^2-6\\leqq y\\leqq\\dfrac14x^2$（$-2\\sqrt3\\leqq x\\leqq2\\sqrt3$）　(2) 最大値 $9$，最小値 $-3$　(3) 最大値 $84$，最小値 $36$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) $r+s=-x$，$r^2+s^2=12-(p^2+q^2)=12-x^2+2y$ より $rs=\\dfrac{(r+s)^2-(r^2+s^2)}2=x^2-y-6$．$p,q$ は $t^2-xt+y=0$，$r,s$ は $t^2+xt+x^2-y-6=0$ の2解なので，実数である条件は\n\\[\nx^2-4y\\geqq0,\\qquad x^2-4(x^2-y-6)\\geqq0 .\n\\]\n逆にこれをみたす $(x,y)$ に対し2つの2次方程式の実数解を $p,q$，$r,s$ とすれば，和は0，平方の和は $(x^2-2y)+(x^2-2(x^2-y-6))=12$．よって範囲は $\\boldsymbol{\\dfrac34x^2-6\\leqq y\\leqq\\dfrac14x^2}$（この範囲が空でない条件から $x^2\\leqq12$）．\n\n(2) $X=x^2$（$0\\leqq X\\leqq12$）とおくと $pqrs=P(y)=y(X-6-y)$，$y$ の範囲は $\\left[\\frac34X-6,\\ \\frac X4\\right]$．$P$ は $y$ の上に凸な2次式．\n\\begin{itemize}\n  \\item 最小：区間の端でとり，$P\\left(\\frac X4\\right)=\\frac X4\\left(\\frac34X-6\\right)$，$P\\left(\\frac34X-6\\right)=\\left(\\frac34X-6\\right)\\frac X4$ は等しく $\\frac3{16}X(X-8)=\\frac3{16}\\{(X-4)^2-16\\}\\geqq-3$．等号は $X=4$，$y=1$：たとえば $p=q=1$，$r,s$ は $t^2+2t-3=0$ の解 $1,-3$．$(1,1,1,-3)$ で $pqrs=-3$．\n  \\item 最大：頂点 $y=\\frac{X-6}2$ は $\\frac34X-6\\leqq\\frac{X-6}2\\leqq\\frac X4$（ともに $X\\leqq12$ と同値）をみたすので，$P\\leqq\\frac{(X-6)^2}4\\leqq9$．等号は $X=0$ または $12$：$(\\sqrt3,\\sqrt3,-\\sqrt3,-\\sqrt3)$ で $9$．\n\\end{itemize}\n最大値 $\\boldsymbol9$，最小値 $\\boldsymbol{-3}$．\n\n(3) $w=p^2+q^2=x^2-2y$ とおくと $r^2+s^2=12-w$，$y=\\frac{x^2-w}2$，$z=rs=\\frac{x^2+w}2-6$．\n\\[\n\\sum p^4=w^2-2y^2+(12-w)^2-2z^2 .\n\\]\n$2y^2+2z^2=x^4-12x^2+w^2-12w+72$，$4yz=x^4-12x^2-w^2+12w$ を用いると\n\\[\n\\begin{aligned}\\sum p^4&=2w^2-24w+144-(x^4-12x^2+w^2-12w+72)\\\\&=72-(x^4-12x^2-w^2+12w)=72-4yz=72-4pqrs .\\end{aligned}\n\\]\n(2) より最大値 $72+12=\\boldsymbol{84}$（$(1,1,1,-3)$），最小値 $72-36=\\boldsymbol{36}$（$(\\sqrt3,\\sqrt3,-\\sqrt3,-\\sqrt3)$）．"
+   }
+  ],
+  "idea": {
+   "tex": "4数を2つずつ組にして $x=p+q$，$y=pq$ とおくと，$r+s=-x$，$rs=x^2-y-6$ も $x,y$ で決まり，実数条件は2つの判別式．$pqrs=y(x^2-y-6)$ は $X=x^2$ を固定すると $y$ の上に凸な2次式で，最小は区間の端，最大は頂点．4乗和は $pqrs$ の1次式に帰着する．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) (3/4)x^2-6<=y<=(1/4)x^2\n(2) 最大値：9 ; 最小値：-3\n(3) 最大値：84 ; 最小値：36"
+  },
+  "methods": [],
+  "tags": [
+   "対称式",
+   "2数ずつの組",
+   "存在条件",
+   "2変数の最大最小"
+  ],
+  "provenance": {
+   "created": "2026-11-14"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-EQ-266",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-08",
+  "level": 4,
+  "minutes": 35,
+  "theme": "最高次の係数が1の多項式の $n+1$ 個の値の大きさ",
+  "topic": "最高次の係数が1の多項式の $n+1$ 個の値の大きさ",
+  "statement": {
+   "tex": "$n$ を正の整数とし，$f(x)$ を $x^n$ の係数が1である実数係数の $n$ 次式とする．\n\\begin{enumerate}\n  \\item すべての実数 $x$ について\n  \\[\n  \\sum_{j=0}^{n}(-1)^{n-j}\\,{}_n\\mathrm C_j\\,f(x+j)=n!\n  \\]\n  が成り立つことを示せ．\n  \\item $f(1),\\ f(2),\\ \\dots,\\ f(n+1)$ がすべて整数であり，ある正の整数 $a$ の倍数であるとき，$a$ は $n!$ の約数であることを示せ．\n  \\item $f(1),\\ f(2),\\ \\dots,\\ f(n+1)$ の絶対値の最大値を $M$ とするとき，$M\\geqq\\dfrac{n!}{2^n}$ であることを示せ．\n  \\item $n=3$ のとき，(3) で等号が成り立つような $f(x)$ をすべて求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 証明　(2) 証明　(3) 証明　(4) $f(x)=x^3-\\dfrac{15}2x^2+17x-\\dfrac{45}4$（$=\\left(x-\\frac52\\right)^3-\\frac74\\left(x-\\frac52\\right)$）のみ"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) 整式 $g$ に対し $\\Delta g(x)=g(x+1)-g(x)$ とする．$g(x)=cx^m+(\\text{$m-1$ 次以下})$（$m\\geqq1$）なら，二項定理より $(x+1)^k-x^k$ は $k-1$ 次以下で，$(x+1)^m-x^m=mx^{m-1}+(\\text{$m-2$ 次以下})$ だから\n\\[\n\\Delta g(x)=cm\\,x^{m-1}+(\\text{$m-2$ 次以下}).\n\\]\n$g$ が定数なら $\\Delta g=0$．$\\Delta^0f=f$，$\\Delta^{k}f=\\Delta(\\Delta^{k-1}f)$ と定めると，$k$ についての帰納法で $\\Delta^kf$ は最高次の係数 $n(n-1)\\cdots(n-k+1)$ の $n-k$ 次式（$k\\leqq n$）．特に $\\Delta^nf(x)=n!$（定数）．\n\n次に，$\\Delta^kf(x)=\\displaystyle\\sum_{j=0}^k(-1)^{k-j}{}_k\\mathrm C_jf(x+j)$ を $k$ についての帰納法で示す．$k=0$ では両辺とも $f(x)$ である．$k$ で成り立てば\n\\[\n\\begin{aligned}\\Delta^{k+1}f(x)&=\\sum_{j=0}^k(-1)^{k-j}{}_k\\mathrm C_jf(x+j+1)-\\sum_{j=0}^k(-1)^{k-j}{}_k\\mathrm C_jf(x+j)\\\\&=\\sum_{j=0}^{k+1}(-1)^{k+1-j}\\left({}_k\\mathrm C_{j-1}+{}_k\\mathrm C_j\\right)f(x+j)\\end{aligned}\n\\]\n（${}_k\\mathrm C_{-1}={}_k\\mathrm C_{k+1}=0$）で，${}_k\\mathrm C_{j-1}+{}_k\\mathrm C_j={}_{k+1}\\mathrm C_j$ より $k+1$ でも成り立つ．$k=n$ とあわせて求める等式を得る．\\hfill$\\square$\n\n(2) (1) で $x=1$ とすると $n!=\\displaystyle\\sum_{j=0}^n(-1)^{n-j}{}_n\\mathrm C_jf(1+j)$．右辺の各項は整数 ${}_n\\mathrm C_j$ と $a$ の倍数の積なので，右辺は $a$ の倍数．よって $a$ は $n!$ の約数．\\hfill$\\square$\n\n(3) (1) で $x=1$ とし，三角不等式と $|f(1+j)|\\leqq M$ を使うと\n\\[\nn!=\\left|\\sum_{j=0}^n(-1)^{n-j}{}_n\\mathrm C_jf(1+j)\\right|\\leqq\\sum_{j=0}^n{}_n\\mathrm C_j|f(1+j)|\\leqq M\\sum_{j=0}^n{}_n\\mathrm C_j=2^nM.\n\\]\nよって $M\\geqq\\dfrac{n!}{2^n}$．\\hfill$\\square$\n\n(4) 等号 $M=\\frac{n!}{2^n}$ が成り立つとする．(3) の式で $\\displaystyle\\sum_j{}_n\\mathrm C_j\\left\\{M-(-1)^{n-j}f(1+j)\\right\\}=2^nM-n!=0$ であり，各項は ${}_n\\mathrm C_j>0$ と $M-(-1)^{n-j}f(1+j)\\geqq M-|f(1+j)|\\geqq0$ の積で0以上だから，すべて0：$(-1)^{n-j}f(1+j)=M$（$j=0,\\dots,n$）．$n=3$，$M=\\frac34$ では\n\\[\nf(1)=-\\frac34,\\quad f(2)=\\frac34,\\quad f(3)=-\\frac34,\\quad f(4)=\\frac34.\n\\]\nこのような $x^3$ の係数1の3次式は高々1つである：2つあれば差は2次以下で4個の解 $1,2,3,4$ をもつので恒等的に0．$f(x)=\\left(x-\\frac52\\right)^3-\\frac74\\left(x-\\frac52\\right)$ とすると，$x-\\frac52=\\mp\\frac32,\\mp\\frac12$ で\n\\[\n\\left(\\pm\\tfrac32\\right)^3-\\tfrac74\\left(\\pm\\tfrac32\\right)=\\pm\\left(\\tfrac{27}8-\\tfrac{21}8\\right)=\\pm\\tfrac34,\\qquad \\left(\\pm\\tfrac12\\right)^3-\\tfrac74\\left(\\pm\\tfrac12\\right)=\\pm\\left(\\tfrac18-\\tfrac78\\right)=\\mp\\tfrac34\n\\]\nとなり上の4つの値をとる．逆にこの $f$ では $M=\\frac34=\\frac{3!}{2^3}$ で等号が成り立つ．よって\n\\[\n\\boldsymbol{f(x)=x^3-\\frac{15}2x^2+17x-\\frac{45}4}.\n\\]\n\\hfill$\\square$"
+   }
+  ],
+  "idea": {
+   "tex": "$\\Delta g(x)=g(x+1)-g(x)$ は次数を1下げ，最高次の係数に次数を掛ける．$n$ 回くり返すと最高次の係数1の $n$ 次式は定数 $n!$ になり，それは二項係数を係数とする $f(x),f(x+1),\\dots,f(x+n)$ の1次結合で書ける．この「値の整数係数の結合が $n!$」から，値の公約数が $n!$ を割り切ることも，値の最大の絶対値が $\\dfrac{n!}{2^n}$ 以上であることも出る．等号は符号が交互にそろうときに限り，次数の低い多項式の零点の個数から多項式が1つに決まる．"
+  },
+  "methods": [],
+  "tags": [
+   "差分",
+   "二項係数",
+   "多項式の値",
+   "整除",
+   "三角不等式",
+   "補間の一意性",
+   "等号成立"
+  ],
+  "provenance": {
+   "created": "2026-11-14"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
  }
 ]

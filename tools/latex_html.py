@@ -422,7 +422,17 @@ def tidy(h):
     return h
 
 
+def centerline(s):
+    """\\centerline{…} を \\begin{center}…\\end{center} に置き換える"""
+    out, i = [], 0
+    while (j := s.find('\\centerline{', i)) >= 0:
+        body, k = read_group(s, j + len('\\centerline'))
+        out.append(s[i:j] + '\\begin{center}' + body + '\\end{center}')
+        i = k
+    return ''.join(out) + s[i:]
+
+
 def render(src, ctx):
-    toks = tokenize(str(src).replace('\r\n', '\n').replace('\r', '\n'))
+    toks = tokenize(centerline(str(src).replace('\r\n', '\n').replace('\r', '\n')))
     sub = {'pos': 0, 'id': ctx['id'], 'unknown': ctx['unknown']}
     return tidy(build(toks, sub))

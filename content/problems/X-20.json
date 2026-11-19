@@ -2703,5 +2703,796 @@
    },
    "verified": false
   }
+ },
+ {
+  "id": "X-MIX-058",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "X-20",
+  "level": 5,
+  "minutes": 35,
+  "theme": "一定角で回る弦の一部分が通過する領域",
+  "topic": "一定角で回る弦の一部分が通過する領域",
+  "statement": {
+   "tex": "原点 O を中心とする半径3の半円 $C:\\ x^2+y^2=9\\ (y\\geqq0)$ を考える．$0\\leqq t\\leqq\\dfrac\\pi3$ に対し，$C$ 上の2点\n\\[\\mathrm P(3\\cos t,\\ 3\\sin t),\\qquad \\mathrm Q\\left(3\\cos\\left(t+\\frac{2\\pi}3\\right),\\ 3\\sin\\left(t+\\frac{2\\pi}3\\right)\\right)\\]\nをとり，線分 PQ を $2:1$ に内分する点を R とする．\n\\begin{enumerate}\n  \\item 線分 PR 上の点と O との距離の最小値，および線分 OR の長さを求めよ．\n  \\item $t$ が $0$ から $\\dfrac\\pi3$ まで動くとき，線分 PR が通過してできる図形の面積を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 最小値 $\\dfrac32$，$\\mathrm{OR}=\\sqrt3$　(2) $\\dfrac{13}{8}\\pi-\\dfrac{3\\sqrt3}{4}$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "\\textbf{準備．} $t=0$ のときの図形を考え，$\\boldsymbol u=\\left(\\cos\\frac\\pi3,\\sin\\frac\\pi3\\right)$，$\\boldsymbol v=\\left(\\cos\\frac{5\\pi}6,\\sin\\frac{5\\pi}6\\right)$（$\\boldsymbol u$ を $\\frac\\pi2$ 回転したもの）とする．$\\mathrm P_0(3,0)$，$\\mathrm Q_0\\left(-\\frac32,\\frac{3\\sqrt3}2\\right)$ の中点 $\\mathrm M_0=\\frac32\\boldsymbol u$ で，$\\overrightarrow{\\mathrm M_0\\mathrm Q_0}=\\frac{3\\sqrt3}2\\boldsymbol v$，$\\overrightarrow{\\mathrm M_0\\mathrm P_0}=-\\frac{3\\sqrt3}2\\boldsymbol v$（実際 $\\frac32\\boldsymbol u-\\frac{3\\sqrt3}2\\boldsymbol v=\\left(\\frac34+\\frac94,\\ \\frac{3\\sqrt3}4-\\frac{3\\sqrt3}4\\right)=(3,0)$）．$\\mathrm R_0=\\frac{\\mathrm P_0+2\\mathrm Q_0}3=\\mathrm M_0+\\frac{\\sqrt3}2\\boldsymbol v$．よって\n線分 $\\mathrm P_0\\mathrm R_0$ は，点 $\\frac32\\boldsymbol u+s\\boldsymbol v$（$-\\frac{3\\sqrt3}2\\leqq s\\leqq\\frac{\\sqrt3}2$）全体である．\n時刻 $t$ の P，Q，R は $\\mathrm P_0,\\mathrm Q_0,\\mathrm R_0$ を O のまわりに $t$ 回転した点であるから，線分 PR は線分 $\\mathrm P_0\\mathrm R_0$ を $t$ 回転したものである．\n\n(1) $\\left|\\frac32\\boldsymbol u+s\\boldsymbol v\\right|^2=\\frac94+s^2$（$\\boldsymbol u\\perp\\boldsymbol v$）．$s=0$ は範囲内なので最小値は $\\boldsymbol{\\dfrac32}$（M で達成）．$\\mathrm{OR}^2=\\frac94+\\frac34=3$ より $\\boldsymbol{\\mathrm{OR}=\\sqrt3}$．\n\n(2) \\textbf{距離 $r$ の円周上での様子．} $\\frac32\\leqq r$ に対し，$0\\leqq\\gamma(r)<\\frac\\pi2$，$\\cos\\gamma(r)=\\frac3{2r}$ で $\\gamma(r)$ を定める．$s=\\pm\\sqrt{r^2-\\frac94}=\\pm r\\sin\\gamma$ とすると\n\\[\\frac32\\boldsymbol u\\pm r\\sin\\gamma\\,\\boldsymbol v=r(\\cos\\gamma\\,\\boldsymbol u\\pm\\sin\\gamma\\,\\boldsymbol v)\\]\nは O から距離 $r$，偏角 $\\frac\\pi3\\pm\\gamma$ の点．線分 $\\mathrm P_0\\mathrm R_0$ 上で O から距離 $r$ の点は，$s<0$ 側（P 側）では $\\frac32\\leqq r\\leqq3$ のとき偏角 $\\frac\\pi3-\\gamma(r)$ の1点，$s>0$ 側（R 側）では $\\frac32\\leqq r\\leqq\\sqrt3$ のとき偏角 $\\frac\\pi3+\\gamma(r)$ の1点であり，これ以外にはない．$t$ 回転すると偏角に $t$ が加わる．$0\\leqq\\gamma\\leqq\\frac\\pi3$ なので偏角はすべて $0$ 以上 $\\pi$ 未満で，$2\\pi$ の周回は起こらない．したがって通過領域 $U$ は，極形式 $r(\\cos\\theta,\\sin\\theta)$ で\n\\[U=\\underbrace{\\left\\{\\tfrac32\\leqq r\\leqq3,\\ \\tfrac\\pi3-\\gamma\\leqq\\theta\\leqq\\tfrac{2\\pi}3-\\gamma\\right\\}}_{U_1}\\cup\\left\\{\\tfrac32\\leqq r\\leqq\\sqrt3,\\ \\tfrac\\pi3+\\gamma\\leqq\\theta\\leqq\\tfrac{2\\pi}3+\\gamma\\right\\}\\]\n（$\\gamma=\\gamma(r)$）．$r\\leqq\\sqrt3$ のとき $\\cos\\gamma=\\frac3{2r}\\geqq\\frac{\\sqrt3}2$ より $\\gamma\\leqq\\frac\\pi6$，よって $\\frac\\pi3+\\gamma\\leqq\\frac{2\\pi}3-\\gamma$ で，2つ目の集合は $U_1$ と合わせると\n\\[U=U_1\\cup U_2,\\qquad U_2=\\left\\{\\tfrac32\\leqq r\\leqq\\sqrt3,\\ \\tfrac{2\\pi}3-\\gamma<\\theta\\leqq\\tfrac{2\\pi}3+\\gamma\\right\\}\\]\nとなり，$U_1$ と $U_2$ は共通部分をもたない．\n\n\\textbf{$U_1$ の面積．} 扇環 $A=\\left\\{\\frac32\\leqq r\\leqq3,\\ \\frac\\pi3\\leqq\\theta\\leqq\\frac{2\\pi}3\\right\\}$ の面積は $\\frac12\\cdot\\frac\\pi3\\left(9-\\frac94\\right)=\\frac{9\\pi}8$．\n$W_0=\\left\\{\\frac32\\leqq r\\leqq3,\\ \\frac\\pi3-\\gamma\\leqq\\theta<\\frac\\pi3\\right\\}$，$W_1=\\left\\{\\frac32\\leqq r\\leqq3,\\ \\frac{2\\pi}3-\\gamma<\\theta\\leqq\\frac{2\\pi}3\\right\\}$ とおく．$\\gamma\\leqq\\frac\\pi3$ より $W_1\\subset A$，$W_0$ は $A$ と共通部分をもたず，\n$U_1$ は，$W_0$ と「$A$ から $W_1$ を除いた部分」を合わせた図形であり，この2つは共通部分をもたない．\n$W_1$ は $W_0$ を O のまわりに $\\frac\\pi3$ 回転した図形だから面積は等しい（$W_0$ は，中心角 $\\frac\\pi3$ の扇形 $\\left\\{r\\leqq3,\\ 0\\leqq\\theta\\leqq\\frac\\pi3\\right\\}$ から三角形 $\\mathrm{OM_0P_0}$ を除いた図形であり，面積は確定している）．よって $U_1$ の面積は $A$ の面積 $\\dfrac{9\\pi}8$ に等しい．\n\n\\textbf{$U_2$ の面積．} 偏角 $\\frac{2\\pi}3$ の向きの単位ベクトルを $\\boldsymbol e$ とする．距離 $r$，偏角 $\\theta$ の点 X について，$|\\theta-\\frac{2\\pi}3|\\leqq\\gamma(r)\\iff\\cos\\left(\\theta-\\frac{2\\pi}3\\right)\\geqq\\frac3{2r}\\iff\\overrightarrow{\\mathrm{OX}}\\cdot\\boldsymbol e\\geqq\\frac32$（$|\\theta-\\frac{2\\pi}3|<\\frac\\pi2$ の範囲で $\\cos$ は減少）．したがって $U_2$ は（境界の一部を除き）半径 $\\sqrt3$ の円板のうち，O からの距離 $\\frac32$ の直線（$t=\\frac\\pi3$ のときの直線 PQ）より外側の部分，すなわち円の切片である．弦の両端は O から見て $\\boldsymbol e$ の両側 $\\gamma(\\sqrt3)=\\frac\\pi6$ の向きにあるので中心角は $\\frac\\pi3$ で，\n\\[U_2\\text{ の面積}=\\frac12\\cdot3\\cdot\\frac\\pi3-\\frac12\\cdot3\\cdot\\sin\\frac\\pi3=\\frac\\pi2-\\frac{3\\sqrt3}4.\\]\n（境界の線分・弧は面積に影響しない．）\n\n以上より求める面積は\n\\[\\frac{9\\pi}8+\\frac\\pi2-\\frac{3\\sqrt3}4=\\boldsymbol{\\frac{13}8\\pi-\\frac{3\\sqrt3}4}.\\]"
+   }
+  ],
+  "idea": {
+   "tex": "弦 PQ の一部分 PR は原点のまわりの回転で動くので，原点から距離 $r$ の円周上で線分が占める点の偏角を $r$ ごとに求める．垂線の足 M の両側で偏角は $\\pm\\gamma(r)$（$\\cos\\gamma=\\frac dr$）だけずれ，P 側の通過部分は「はじめの欠け」と「終わりの出っ張り」が回転で合同なので扇環と等積．R 側のはみ出しは最終位置の弦が切り取る円の切片になる．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) 最小値：3/2 ; $\\mathrm{OR}$：sqrt(3)\n(2) (13/8)π-3sqrt(3)/4"
+  },
+  "methods": [],
+  "tags": [
+   "回転移動",
+   "通過領域",
+   "扇形",
+   "円の切片",
+   "面積の等積変形"
+  ],
+  "provenance": {
+   "created": "2026-11-18"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "X-MIX-059",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "X-20",
+  "level": 4,
+  "minutes": 30,
+  "theme": "面積を保つ移動で変わらないベクトルの式",
+  "topic": "面積を保つ移動で変わらないベクトルの式",
+  "statement": {
+   "tex": "実数 $a,b,c,d$ に対し，平面ベクトル $\\vec u=(x_1,y_1)$，$\\vec v=(x_2,y_2)$ の関数\n\\[\n\\Phi(\\vec u,\\vec v)=ax_1x_2+bx_1y_2+cy_1x_2+dy_1y_2\n\\]\nを考える．$\\alpha\\delta-\\beta\\gamma=1$ をみたす実数 $\\alpha,\\beta,\\gamma,\\delta$ に対し，ベクトル $(x,y)$ をベクトル $(\\alpha x+\\beta y,\\ \\gamma x+\\delta y)$ に移す対応を $T$ と書き，$(x,y)$ の移り先を $T(x,y)$ と表す．すべての $\\vec u,\\vec v$ について $\\Phi(T\\vec u,T\\vec v)=\\Phi(\\vec u,\\vec v)$ となるとき，$\\Phi$ は $T$ で不変であるという．\n\\begin{enumerate}\n  \\item すべての実数 $\\theta$ について，$\\alpha=\\delta=\\cos\\theta$，$\\beta=-\\sin\\theta$，$\\gamma=\\sin\\theta$ とした $T$ で $\\Phi$ が不変となるための $a,b,c,d$ の条件を求めよ．\n  \\item すべての正の数 $k$ について，$\\alpha=k$，$\\delta=\\dfrac1k$，$\\beta=\\gamma=0$ とした $T$ で $\\Phi$ が不変となるための $a,b,c,d$ の条件を求めよ．\n  \\item $\\alpha\\delta-\\beta\\gamma=1$ をみたすすべての $T$ で $\\Phi$ が不変であるための必要十分条件は $a=d=0$ かつ $c=-b$ であることを示せ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $a=d$ かつ $c=-b$　(2) $a=d=0$　(3) 証明"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "$\\vec e_1=(1,0)$，$\\vec e_2=(0,1)$ とする．\n\n(1) 回転を $T_\\theta$ とする．$T_\\theta\\vec e_1=(\\cos\\theta,\\sin\\theta)$ なので，不変性から\n\\[\n\\Phi(T_\\theta\\vec e_1,T_\\theta\\vec e_1)=a\\cos^2\\theta+(b+c)\\sin\\theta\\cos\\theta+d\\sin^2\\theta=\\Phi(\\vec e_1,\\vec e_1)=a .\n\\]\n$\\theta=\\frac\\pi2$ で $d=a$，すると $(b+c)\\sin\\theta\\cos\\theta=0$ で $\\theta=\\frac\\pi4$ として $c=-b$．\n逆に $a=d$，$c=-b$ なら $\\Phi=a(x_1x_2+y_1y_2)+b(x_1y_2-y_1x_2)$．$T_\\theta$ で $(x,y)\\mapsto(x\\cos\\theta-y\\sin\\theta,\\ x\\sin\\theta+y\\cos\\theta)$ だから，直接計算して\n\\[\nx_1'x_2'+y_1'y_2'=x_1x_2+y_1y_2,\\qquad x_1'y_2'-y_1'x_2'=(\\cos^2\\theta+\\sin^2\\theta)(x_1y_2-y_1x_2)\n\\]\nとなり不変．よって条件は $\\boldsymbol{a=d\\ \\text{かつ}\\ c=-b}$．\n\n(2) $\\vec u=\\vec v=\\vec e_1$ で $ak^2=a$，$\\vec u=\\vec v=\\vec e_2$ で $\\frac d{k^2}=d$．$k=2$ として $a=d=0$．逆に $a=d=0$ なら $\\Phi=bx_1y_2+cy_1x_2$ は $(kx_1)\\left(\\frac{y_2}k\\right)=x_1y_2$ などにより不変．条件は $\\boldsymbol{a=d=0}$（$b,c$ は任意）．\n\n(3) 必要性：(1)，(2) の $T$ はいずれも $\\alpha\\delta-\\beta\\gamma=1$ をみたすので，(1)(2) の条件がともに必要で $a=d=0$，$c=-b$．\n十分性：$\\Phi=b(x_1y_2-y_1x_2)$ のとき，$x_i'=\\alpha x_i+\\beta y_i$，$y_i'=\\gamma x_i+\\delta y_i$ とすると\n\\[\nx_1'y_2'-y_1'x_2'=(\\alpha x_1+\\beta y_1)(\\gamma x_2+\\delta y_2)-(\\gamma x_1+\\delta y_1)(\\alpha x_2+\\beta y_2)=(\\alpha\\delta-\\beta\\gamma)(x_1y_2-y_1x_2)\n\\]\n（$x_1x_2$，$y_1y_2$ の項は打ち消し合う）．$\\alpha\\delta-\\beta\\gamma=1$ より不変．\\hfill$\\square$"
+   }
+  ],
+  "idea": {
+   "tex": "「すべての移動で不変」は，特別な移動（回転・$x$ 方向と $y$ 方向の逆比の拡大）を代入して必要条件をしぼる．回転で $a=d$，$c=-b$，拡大で $a=d=0$ が出て，残る $b(x_1y_2-y_1x_2)$ は $\\alpha\\delta-\\beta\\gamma$ 倍されるだけなので十分．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) 記述\n(2) $a$：0 ; $d$：0\n(3) 証明"
+  },
+  "methods": [],
+  "tags": [
+   "成分計算",
+   "恒等式",
+   "回転",
+   "係数比較"
+  ],
+  "provenance": {
+   "created": "2026-11-18"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "X-MIX-071",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "X-20",
+  "level": 4,
+  "minutes": 30,
+  "theme": "重みの異なる1次式と分散型の平方根の和の最大",
+  "topic": "重みの異なる1次式と分散型の平方根の和の最大",
+  "statement": {
+   "tex": "実数 $x,y,z$ が $0\\leqq x\\leqq1$，$0\\leqq y\\leqq1$，$0\\leqq z\\leqq1$ をみたして動くとき，\n\\[\nF=x+\\frac y2+\\frac z3+\\sqrt{x(1-x)+y(1-y)+z(1-z)}\n\\]\nの最大値と，最大値を与える $(x,y,z)$ を求めよ．"
+  },
+  "answer": {
+   "tex": "最大値 $\\dfrac{17+7\\sqrt2}{12}$，$(x,y,z)=\\left(1,\\ \\dfrac{7+3\\sqrt2}{14},\\ \\dfrac{7+2\\sqrt2}{14}\\right)$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "$x=\\frac12+X$，$y=\\frac12+Y$，$z=\\frac12+Z$ とおくと，$X,Y,Z$ は $-\\frac12\\leqq X,Y,Z\\leqq\\frac12$ を動き，$x(1-x)=\\frac14-X^2$ などより\n\\[\nF=\\frac{11}{12}+X+\\frac Y2+\\frac Z3+\\sqrt{\\frac34-X^2-Y^2-Z^2}.\n\\]\n$X$ を固定し，$S=\\dfrac34-X^2$（$\\frac12\\leqq S\\leqq\\frac34$），$W=\\sqrt{S-Y^2-Z^2}\\ (\\geqq0)$ とおく．空間ベクトル $\\vec m=\\left(\\frac12,\\frac13,1\\right)$，$\\vec v=(Y,Z,W)$ について $\\vec m\\cdot\\vec v\\leqq|\\vec m||\\vec v|$ であり，$|\\vec m|=\\sqrt{\\frac14+\\frac19+1}=\\frac76$，$|\\vec v|=\\sqrt{Y^2+Z^2+W^2}=\\sqrt S$ だから\n\\[\n\\frac Y2+\\frac Z3+W\\leqq\\frac76\\sqrt S .\n\\]\nよって\n\\[\nF\\leqq\\frac{11}{12}+\\varphi(X),\\qquad \\varphi(X)=X+\\frac76\\sqrt{\\frac34-X^2}\\quad\\left(-\\frac12\\leqq X\\leqq\\frac12\\right).\n\\]\n$\\varphi$ の増減を調べる．\n\\[\n\\varphi'(X)=1-\\frac{7X}{6\\sqrt{\\frac34-X^2}}.\n\\]\n$X\\leqq0$ では $\\varphi'(X)\\geqq1>0$．$0<X\\leqq\\frac12$ では，$\\varphi'(X)>0\\iff6\\sqrt{\\frac34-X^2}>7X\\iff36\\left(\\frac34-X^2\\right)>49X^2\\iff X^2<\\frac{27}{85}$ であり（両辺は正なので2乗して同値），$X^2\\leqq\\frac14<\\frac{27}{85}$ だから $\\varphi'(X)>0$．したがって $\\varphi$ は $-\\frac12\\leqq X\\leqq\\frac12$ で増加し，\n\\[\n\\varphi(X)\\leqq\\varphi\\left(\\frac12\\right)=\\frac12+\\frac76\\cdot\\frac1{\\sqrt2}=\\frac12+\\frac{7\\sqrt2}{12},\n\\]\n等号は $X=\\frac12$ のときに限る．以上より\n\\[\nF\\leqq\\frac{11}{12}+\\frac12+\\frac{7\\sqrt2}{12}=\\frac{17+7\\sqrt2}{12}.\n\\]\n\n\\textbf{等号の成立}　等号には $X=\\frac12$（$S=\\frac12$）と，$\\vec v$ が $\\vec m$ と同じ向き，すなわち $(Y,Z,W)=k\\left(\\frac12,\\frac13,1\\right)$（$k\\geqq0$）が必要である．このとき $|\\vec v|^2=S$ より $\\frac{49}{36}k^2=\\frac12$，$k=\\dfrac{6}{7\\sqrt2}=\\dfrac{3\\sqrt2}7$ で，\n\\[\nY=\\frac{3\\sqrt2}{14},\\qquad Z=\\frac{\\sqrt2}7,\\qquad W=\\frac{3\\sqrt2}7 .\n\\]\n$\\frac{3\\sqrt2}{14}<\\frac{3\\cdot1.5}{14}<\\frac12$，$\\frac{\\sqrt2}7<\\frac12$ なので $Y,Z$ は範囲内にあり，$Y^2+Z^2+W^2=\\frac{18+8+72}{196}=\\frac12=S$ だから $W=\\sqrt{S-Y^2-Z^2}$ も成り立つ．逆にこの $(X,Y,Z)$ では上の2つの不等式がともに等号になるので，$F=\\frac{17+7\\sqrt2}{12}$ となる．また等号が成り立つための条件から，最大値を与える点はこの1点に限る．\n\n$(x,y,z)=\\left(\\frac12+X,\\frac12+Y,\\frac12+Z\\right)$ に戻して，\n\n最大値 $\\boldsymbol{\\dfrac{17+7\\sqrt2}{12}}$，そのとき $\\boldsymbol{(x,y,z)=\\left(1,\\ \\dfrac{7+3\\sqrt2}{14},\\ \\dfrac{7+2\\sqrt2}{14}\\right)}$．\n\n（注）3つの文字すべてで同時にコーシー・シュワルツの不等式の等号を成立させようとすると $X=\\frac{\\sqrt3}2\\cdot\\frac{6}{\\sqrt{85}}=\\frac{3\\sqrt3}{\\sqrt{85}}>\\frac12$ となり，範囲外である．そのため $x$ だけは境界 $x=1$ で最大をとる．"
+   }
+  ],
+  "idea": {
+   "tex": "$x=\\frac12+X$ とずらすと $x(1-x)=\\frac14-X^2$ となり，式は「1次式 $+\\sqrt{\\text{定数}-(\\text{2乗和})}$」になってコーシー・シュワルツの不等式でまとめられる．ただし重みが偏ると，すべての文字で同時に等号を成立させる点が範囲 $0\\leqq x\\leqq1$ からはみ出す．そこで重みの最も大きい文字だけを残して他の文字をまとめ，残った1変数関数の単調性から最大は境界でとると判断する．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "最大値：(17+7sqrt(2))/12 ; $(x,y,z)$：(1, (7+3sqrt(2))/14, (7+2sqrt(2))/14)"
+  },
+  "methods": [],
+  "tags": [
+   "最大最小",
+   "平行移動",
+   "コーシー・シュワルツの不等式",
+   "境界での最大",
+   "微分"
+  ],
+  "provenance": {
+   "created": "2026-11-14"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "X-MIX-072",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "X-20",
+  "level": 4,
+  "minutes": 30,
+  "theme": "2倍すると $x^2$ だけ増え得る関数の増大度",
+  "topic": "2倍すると $x^2$ だけ増え得る関数の増大度",
+  "statement": {
+   "tex": "実数全体で定義された関数 $\\varphi(x)$ が条件 (C) をみたすとは，次が成り立つことをいう．\n\n\\smallskip\n条件 (C)：任意の実数 $u<v$ に対して正の実数 $\\rho$ が存在し，$u\\leqq x\\leqq v$ のとき $|\\varphi(x)|<\\rho$ が成り立つ．\n\n\\smallskip\n条件 (C) をみたし，かつすべての実数 $x$ に対して\n\\[f(2x)<2f(x)+x^2\\qquad\\cdots(*)\\]\nが成り立つような関数 $f(x)$ 全体の集合を $\\mathcal F$ とする．\n\\begin{enumerate}\n  \\item $f(x)$ は $\\mathcal F$ に属するとする．すべての正の整数 $n$ とすべての実数 $x$ に対して\n  \\[f(x)<2^nf\\!\\left(\\frac{x}{2^n}\\right)+\\left(1-\\frac1{2^n}\\right)\\frac{x^2}{2}\\]\n  が成り立つことを示せ．\n  \\item 実数 $k$ についての次の性質 (P) を考える．\n\n  (P)：$\\mathcal F$ に属するどの関数 $f(x)$ に対しても，（$f$ に応じて）正の実数 $p,\\ q$ を適当にとれば，すべての実数 $x$ に対して $f(x)<kx^2+p|x|+q$ が成り立つ．\n\n  性質 (P) をもつような実数 $k$ の範囲を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 証明　(2) $k\\geqq\\dfrac12$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) $n$ についての数学的帰納法で示す．\n\n$n=1$ のとき：$(*)$ で $x$ を $\\dfrac x2$ におきかえると\n\\[f(x)<2f\\!\\left(\\frac x2\\right)+\\frac{x^2}4=2f\\!\\left(\\frac x2\\right)+\\left(1-\\frac12\\right)\\frac{x^2}2.\\]\n\n$n$ で成り立つとする．$(*)$ で $x$ を $\\dfrac{x}{2^{n+1}}$ におきかえると\n\\[f\\!\\left(\\frac x{2^n}\\right)<2f\\!\\left(\\frac x{2^{n+1}}\\right)+\\frac{x^2}{4^{n+1}}.\\]\n両辺に $2^n\\ (>0)$ を掛けて $2^nf\\!\\left(\\dfrac x{2^n}\\right)<2^{n+1}f\\!\\left(\\dfrac x{2^{n+1}}\\right)+\\dfrac{x^2}{2^{n+2}}$．これと帰納法の仮定から\n\\[f(x)<2^{n+1}f\\!\\left(\\frac x{2^{n+1}}\\right)+\\frac{x^2}{2^{n+2}}+\\frac{x^2}2-\\frac{x^2}{2^{n+1}}=2^{n+1}f\\!\\left(\\frac x{2^{n+1}}\\right)+\\left(1-\\frac1{2^{n+1}}\\right)\\frac{x^2}2\\]\nとなり，$n+1$ でも成り立つ．\\hfill$\\square$\n\n\\medskip\n(2) \\textbf{$k\\geqq\\dfrac12$ のとき (P) をもつこと．} $f$ を $\\mathcal F$ に属する関数とする．条件 (C) で $u=-1,\\ v=1$ とすると，正の実数 $\\rho$ で，$-1\\leqq x\\leqq1$ のとき $|f(x)|<\\rho$ となるものがある．$p=2\\rho,\\ q=\\rho$ とおき，すべての実数 $x$ で $f(x)<kx^2+p|x|+q$ を示す．\n\n$|x|\\leqq1$ のとき：$f(x)<\\rho=q\\leqq kx^2+p|x|+q$．\n\n$|x|>1$ のとき：$2^n\\geqq|x|$ をみたす最小の正の整数を $n$ とする．$|x|>1=2^0$ であるから $2^{n-1}<|x|\\leqq2^n$ が成り立つ．$\\left|\\dfrac x{2^n}\\right|\\leqq1$ より $f\\!\\left(\\dfrac x{2^n}\\right)<\\rho$ なので，(1) より\n\\[f(x)<2^n\\rho+\\left(1-\\frac1{2^n}\\right)\\frac{x^2}2<2|x|\\rho+\\frac{x^2}2\\leqq kx^2+p|x|+q\\]\n（$2^n<2|x|$，$k\\geqq\\frac12$ を用いた）．よって $k\\geqq\\frac12$ は (P) をもつ．\n\n\\textbf{$k<\\dfrac12$ のとき (P) をもたないこと．} $f_0(x)=\\dfrac{x^2}2+1$ とおく．$u\\leqq x\\leqq v$ のとき $|f_0(x)|\\leqq\\dfrac{u^2+v^2}2+1<\\dfrac{u^2+v^2}2+2$ であるから $f_0$ は条件 (C) をみたし，\n\\[f_0(2x)=2x^2+1<2x^2+2=2f_0(x)+x^2\\]\nであるから $f_0$ は $\\mathcal F$ に属する．もし正の実数 $p,\\ q$ ですべての実数 $x$ に対し $f_0(x)<kx^2+p|x|+q$ となるものがあったとすると，$x=t>0$ として\n\\[\\left(\\frac12-k\\right)t^2-pt-q+1<0\\quad(t>0)\\]\nがつねに成り立つ．ところが $t=\\dfrac{p+q}{\\frac12-k}+1$ とすると $t\\geqq1$ かつ $\\left(\\dfrac12-k\\right)t>p+q$ なので\n\\[\\left(\\frac12-k\\right)t^2>(p+q)t\\geqq pt+q\\]\nとなり，左辺 $>1>0$ となって矛盾する．よって $k<\\frac12$ は (P) をもたない．\n\n以上より，求める範囲は $\\boldsymbol{k\\geqq\\dfrac12}$．"
+   }
+  ],
+  "idea": {
+   "tex": "$f(2x)<2f(x)+x^2$ を $x,\\ \\frac x2,\\ \\frac x4,\\ \\cdots$ と半分の点に繰り返し使うと $f(x)<2^nf\\!\\left(\\frac x{2^n}\\right)+\\left(1-\\frac1{2^n}\\right)\\frac{x^2}2$．$2^{n-1}<|x|\\leqq2^n$ となる $n$ を選べば $\\frac x{2^n}$ は有界な区間 $[-1,1]$ に入り，$2^n<2|x|$ から1次の項に収まる．係数 $\\frac12$ は $f(x)=\\frac{x^2}2+1$ がぎりぎり条件をみたすことから最良．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) 証明\n(2) k>=1/2"
+  },
+  "methods": [],
+  "tags": [
+   "関数不等式",
+   "数学的帰納法",
+   "有界性",
+   "最良定数"
+  ],
+  "provenance": {
+   "created": "2026-11-14"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "X-MIX-073",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "X-20",
+  "level": 4,
+  "minutes": 30,
+  "theme": "円形に並んだ数の対称な平均が元の並べかえになる条件",
+  "topic": "円形に並んだ数の対称な平均が元の並べかえになる条件",
+  "statement": {
+   "tex": "$n$ を3以上の整数，$a_1,\\ a_2,\\ \\dots,\\ a_n$ を実数とし，添字は $n$ ごとに繰り返すものとする（すべての整数 $k$ について $a_{k+n}=a_k$）．\n\\begin{enumerate}\n  \\item $c_k=\\dfrac{a_k+a_{k+1}}{2}$（$k=1,2,\\dots,n$）とおく．$c_1,\\ c_2,\\ \\dots,\\ c_n$ を適当な順に並べると $a_1,\\ a_2,\\ \\dots,\\ a_n$ に一致するならば，$a_1=a_2=\\cdots=a_n$ であることを示せ．\n  \\item $j$ を $1\\leqq j\\leqq n-1$ をみたす整数とし，$d_k=\\dfrac{a_{k-j}+a_{k+j}}{2}$（$k=1,2,\\dots,n$）とおく．$n$ と $2j$ の最大公約数を $g$ とする．$d_1,\\ d_2,\\ \\dots,\\ d_n$ を適当な順に並べると $a_1,\\ a_2,\\ \\dots,\\ a_n$ に一致するための必要十分条件は，すべての整数 $k$ について $a_{k+g}=a_k$ が成り立つことであることを示せ．\n  \\item $n=12$ とする．$j=1,2,\\dots,11$ のうち，(2) の $d_1,\\dots,d_{12}$ を並べかえると $a_1,\\dots,a_{12}$ に一致し，かつ $a_1,\\dots,a_{12}$ の中に相異なる値がちょうど4種類あるような $a_1,\\dots,a_{12}$ が存在するものをすべて求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 証明　(2) 証明　(3) $j=2,\\ 3,\\ 4,\\ 6,\\ 8,\\ 9,\\ 10$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "並べかえで2乗の和は変わらない．また実数 $x,y$ について\n\\[\n\\frac{x^2+y^2}{2}-\\left(\\frac{x+y}{2}\\right)^2=\\frac{(x-y)^2}{4}\\geqq0\\qquad(\\text{等号は }x=y\\text{ のとき})\\qquad\\cdots(\\ast)\n\\]\n\n(1) $(\\ast)$ を $k=1,\\dots,n$ について足すと\n\\[\n\\sum_{k=1}^{n}c_k^2\\leqq\\sum_{k=1}^{n}\\frac{a_k^2+a_{k+1}^2}{2}=\\sum_{k=1}^na_k^2\n\\]\n（$a_{n+1}=a_1$ より $a_2,\\dots,a_{n+1}$ は $a_1,\\dots,a_n$ の並べかえ）．仮定より左辺と右辺は等しいので，すべての $k$ で等号が成り立ち $a_k=a_{k+1}$．よって $a_1=a_2=\\cdots=a_n$．\\hfill$\\square$\n\n(2) \\textbf{必要性．}$k$ が $1,\\dots,n$ を動くとき，$k-j$ も $k+j$ も $n$ で割った余りがすべて異なるので，$a_{k-j}$，$a_{k+j}$ はそれぞれ $a_1,\\dots,a_n$ の並べかえである．$(\\ast)$ を足して\n\\[\n\\sum_{k=1}^nd_k^2\\leqq\\sum_{k=1}^n\\frac{a_{k-j}^2+a_{k+j}^2}{2}=\\sum_{k=1}^na_k^2 .\n\\]\n仮定より等号が成り立つので，すべての $k$ で $a_{k-j}=a_{k+j}$，すなわちすべての整数 $l$ で $a_{l+2j}=a_l$．これを繰り返して，0以上の整数 $u$ について $a_{l+2ju}=a_l$．また，すべての整数 $v$ について $a_{l+nv}=a_l$．\n\n$g$ は $n$ と $2j$ の最大公約数なので，$\\frac{2j}{g}$ と $\\frac ng$ は互いに素であり，$\\frac{2j}{g}u+\\frac ngv=1$ をみたす整数 $u,v$ が存在する．$(u+nt,\\ v-2jt)$ も解なので $t$ を十分大きくとって $u\\geqq0$ としてよい．このとき $2ju+nv=g$ で\n\\[\na_{l+g}=a_{(l+2ju)+nv}=a_{l+2ju}=a_l .\n\\]\n\n\\textbf{十分性．}すべての $k$ で $a_{k+g}=a_k$ とする．$2j$ は $g$ の倍数なので $a_{k-j}=a_{k-j+2j}=a_{k+j}$，よって $d_k=a_{k+j}$．$(d_1,\\dots,d_n)=(a_{1+j},\\dots,a_{n+j})$ は $(a_1,\\dots,a_n)$ を回したもので，並べかえになっている．\\hfill$\\square$\n\n(3) (2) より，条件は $a_{k+g}=a_k$ であり，このとき $a_1,\\dots,a_{12}$ は $a_1,\\dots,a_g$ で決まるので相異なる値は高々 $g$ 種類．逆に $g\\geqq4$ なら，$a_1=1,a_2=2,a_3=3$，$a_4=\\cdots=a_g=4$ とし $a_{k+g}=a_k$ で延ばせば（$g$ は12の約数），ちょうど4種類の値をもつ例ができる．よって $g\\geqq4$ となる $j$ を求めればよい．12 と $2j$ の最大公約数は\n\\[\n\\begin{array}{c|ccccccccccc}\nj&1&2&3&4&5&6&7&8&9&10&11\\\\\\hline\ng&2&4&6&4&2&12&2&4&6&4&2\n\\end{array}\n\\]\nしたがって $\\boldsymbol{j=2,\\ 3,\\ 4,\\ 6,\\ 8,\\ 9,\\ 10}$．"
+   }
+  ],
+  "idea": {
+   "tex": "並べかえでは2乗和が変わらない．一方 $\\left(\\frac{x+y}2\\right)^2\\leqq\\frac{x^2+y^2}2$ を足し合わせると平均をとった列の2乗和はもとの2乗和以下なので，すべての等号が必要になる．等号条件 $a_{k-j}=a_{k+j}$ は「添字を $2j$ 進めても値が変わらない」ことで，$n$ と $2j$ の最大公約数 $g$ について $2jx+ny=g$ の整数解を使うと周期は $g$ まで縮む．逆に周期 $g$ なら平均をとった列はもとの列を回しただけになる．原題の「先頭からの平均」（最大値・最小値に注目する）を「円形に並んだ数の両側の平均」に変え，答えが $n$ と $2j$ の最大公約数で決まる形にした．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) 証明\n(2) 証明\n(3) $j$：{2, 3, 4, 6, 8, 9, 10}"
+  },
+  "methods": [],
+  "tags": [
+   "並べかえ",
+   "2乗和",
+   "等号条件",
+   "最大公約数",
+   "1次不定方程式"
+  ],
+  "provenance": {
+   "created": "2026-11-14"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "X-MIX-074",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "X-20",
+  "level": 4,
+  "minutes": 35,
+  "theme": "鞍形の面と放物面のあいだに入る球",
+  "topic": "鞍形の面と放物面のあいだに入る球",
+  "statement": {
+   "tex": "$a$ を正の定数とする．$xyz$ 空間において，不等式\n\\[|xy|\\leqq z\\leqq a-x^2-y^2\\]\nを満たす点 $(x,y,z)$ 全体からなる領域を $K$ とする．$K$ に含まれ，$z$ 軸上に中心をもつ球面 $S$ の半径の最大値を $a$ を用いて表せ．"
+  },
+  "answer": {
+   "tex": "$0<a\\leqq1$ のとき $\\dfrac a2$，$1\\leqq a\\leqq\\dfrac94$ のとき $\\sqrt a-\\dfrac12$，$a\\geqq\\dfrac94$ のとき $\\sqrt{\\dfrac{4a-3}{6}}$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "中心を $\\mathrm C(0,0,c)$，半径を $\\rho>0$ とし，$K_1=\\{z\\geqq|xy|\\}$，$K_2=\\{z\\leqq a-x^2-y^2\\}$ とおく（$K=K_1\\cap K_2$）．球面 $S$ で囲まれた球（内部を含む）を $B$ とする．\n\n\\textbf{$S\\subset K\\iff B\\subset K$．} $\\Leftarrow$ は明らか．$S\\subset K$ とし，$B$ の点 X をとる．X を通り $z$ 軸に平行な直線と $B$ の共通部分は線分で，その両端 $\\mathrm Y_1$（下），$\\mathrm Y_2$（上）は $S$ 上にある（X が $S$ 上にあるときは X 自身を含む）．X，$\\mathrm Y_1$，$\\mathrm Y_2$ の $x,y$ 座標は共通なので，$|xy|\\leqq z_{\\mathrm Y_1}\\leqq z_{\\mathrm X}\\leqq z_{\\mathrm Y_2}\\leqq a-x^2-y^2$ となり X$\\in K$．\n\nよって $B\\subset K$ となる $(c,\\rho)$ を考えればよい．C$\\in K$ が必要なので $0\\leqq c\\leqq a$．\n\n\\textbf{$K_1$ への距離．} 曲面 $\\Sigma_1:z=|xy|$ 上の点と C の距離の2乗は $x^2+y^2+(|xy|-c)^2$．$u=|xy|$ とおくと $x^2+y^2\\geqq2u$ で，\n\\[x^2+y^2+(u-c)^2\\geqq2u+(u-c)^2=\\{u-(c-1)\\}^2+2c-1=u^2+2(1-c)u+c^2.\\]\n$c\\geqq1$ なら最小値 $2c-1$（$x=y=\\sqrt{c-1}$ でとる），$0\\leqq c<1$ なら $u\\geqq0$ で $u^2+2(1-c)u+c^2\\geqq c^2$ より最小値 $c^2$（$x=y=0$ でとる）．これを $L(c)$ とする：\n\\[L(c)=c^2\\ (0\\leqq c\\leqq1),\\qquad L(c)=2c-1\\ (c\\geqq1).\\]\n\\textbf{$K_2$ への距離．} 曲面 $\\Sigma_2:z=a-x^2-y^2$ 上で $s=x^2+y^2\\geqq0$，$k=a-c\\geqq0$ とおくと距離の2乗は $s+(k-s)^2=\\left\\{s-\\left(k-\\frac12\\right)\\right\\}^2+k-\\frac14$．これを $U(c)$ とすると\n\\[U(c)=(a-c)^2\\ \\left(a-c\\leqq\\tfrac12\\right),\\qquad U(c)=a-c-\\tfrac14\\ \\left(a-c\\geqq\\tfrac12\\right)\\]\n（前者は $s\\geqq0$ で $s^2-(2k-1)s+k^2\\geqq k^2$，後者は $s=k-\\frac12$ でとる）．\n\n\\textbf{$B\\subset K_1\\iff\\rho^2\\leqq L(c)$．} $\\rho^2\\leqq L(c)$ とし，$B$ の点 X が $K_1$ に属さないとする．線分 CX 上で $\\phi=z-|xy|$ は連続で，C で $\\phi=c\\geqq0$，X で $\\phi<0$ だから，$\\phi=0$ となる点 Z が線分 CX 上にある（Z$\\neq$X）．Z$\\in\\Sigma_1$ で $\\mathrm{CZ}<\\mathrm{CX}\\leqq\\rho$，一方 $\\mathrm{CZ}^2\\geqq L(c)\\geqq\\rho^2$ となり矛盾．逆に $\\rho^2>L(c)$ なら，距離の2乗が $L(c)$ となる $\\Sigma_1$ 上の点 Z をとると $\\mathrm{CZ}<\\rho$ で，Z の真下の点 $\\mathrm Z-(0,0,\\varepsilon)$ は十分小さい $\\varepsilon>0$ で $B$ に属し $K_1$ に属さない．同様に $B\\subset K_2\\iff\\rho^2\\leqq U(c)$．\n\nよって求める最大値の2乗は，$0\\leqq c\\leqq a$ における「$L(c)$ と $U(c)$ のうち大きくない方」$m(c)$ の最大値である．$L$ は連続で狭義に増加（$c=1$ で両式とも1），$U$ は連続で狭義に減少（$a-c=\\frac12$ で両式とも $\\frac14$）し，$L(0)=0\\leqq U(0)$，$L(a)\\geqq0=U(a)$．よって $L(c^*)=U(c^*)$ となる $c^*\\in[0,a]$ がただ1つあり，$c<c^*$ では $m(c)=L(c)<L(c^*)$，$c>c^*$ では $m(c)=U(c)<U(c^*)$，$m(c^*)=L(c^*)$ なので，最大値は $L(c^*)$ である．$c^*$ を求める．\n\n\\textbf{(i) $0<a\\leqq1$．} $c=\\frac a2$ とすると $c\\leqq\\frac12<1$，$a-c=\\frac a2\\leqq\\frac12$ で $L=U=\\frac{a^2}4$．半径の最大値 $\\boldsymbol{\\dfrac a2}$．\n\n\\textbf{(ii) $1\\leqq a\\leqq\\frac94$．} $c=\\sqrt a-\\frac12$ とすると $\\frac12\\leqq c\\leqq1$ で $L=c^2$．$a-c=a-\\sqrt a+\\frac12\\geqq\\frac12$（$a\\geqq1$ で $a\\geqq\\sqrt a$）なので $U=a-\\sqrt a+\\frac14=\\left(\\sqrt a-\\frac12\\right)^2=L$．半径の最大値 $\\boldsymbol{\\sqrt a-\\dfrac12}$．\n\n\\textbf{(iii) $a\\geqq\\frac94$．} $c=\\frac{4a+3}{12}$ とすると $c\\geqq1\\iff a\\geqq\\frac94$，$a-c=\\frac{8a-3}{12}\\geqq\\frac12$，$c\\leqq a$ で，$L=2c-1=\\frac{4a-3}6$，$U=\\frac{8a-3}{12}-\\frac14=\\frac{4a-3}{6}$．半径の最大値 $\\boldsymbol{\\sqrt{\\dfrac{4a-3}{6}}}$．\n\n（$a=1$ で (i)(ii) はともに $\\frac12$，$a=\\frac94$ で (ii)(iii) はともに1となり一致する．）"
+   }
+  ],
+  "idea": {
+   "tex": "$z$ 軸上の点 $(0,0,c)$ から曲面 $z=|xy|$ までの距離は，$u=|xy|$ と $x^2+y^2\\geqq2u$ により $u$ だけの2次関数の最小値に帰着する．捻りでは上側の境界を放物面 $z=a-x^2-y^2$ に変え，下側・上側それぞれへの距離の2乗 $L(c)$（増加），$U(c)$（減少）の小さい方を最大にする．最大は $L=U$ となる $c$ で，その $c$ がどの式の範囲にあるかで3通りに分かれる．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "場合分け{ 0<a<=1 → a/2 | 1<=a<=9/4 → sqrt(a)-1/2 | a>=9/4 → sqrt((4a-3)/6) }"
+  },
+  "methods": [],
+  "tags": [
+   "球と曲面の距離",
+   "1文字固定",
+   "相加相乗平均",
+   "単調性",
+   "場合分け"
+  ],
+  "provenance": {
+   "created": "2026-11-14"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "X-MIX-075",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "X-20",
+  "level": 4,
+  "minutes": 30,
+  "theme": "和か差の絶対値のどちらかが属する正の数の集合",
+  "topic": "和か差の絶対値のどちらかが属する正の数の集合",
+  "statement": {
+   "tex": "$n$ を3以上の整数とする．互いに異なる $n$ 個の正の実数からなる集合 $S$ が，次の性質をもつとする．\n\\begin{center}\n「$S$ の相異なる2つの要素 $x,y$ をどのようにとっても，$x+y$ と $|x-y|$ の少なくとも一方は $S$ に属する．」\n\\end{center}\n\\begin{enumerate}\n  \\item $n=3$ のとき，このような $S$ をすべて求めよ．\n  \\item $n\\geqq4$ のとき，ある正の数 $d$ を用いて $S=\\{d,2d,3d,\\cdots,nd\\}$ と表されることを示せ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $S=\\{p,\\ q,\\ p+q\\}$（$p,q$ は $0<p<q$ を満たす任意の実数）　(2) 証明"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) $S=\\{p,q,r\\}$，$0<p<q<r$ とする．$p+r>r$ は $S$ に属さないので $r-p\\in S$ で，$0<r-p<r$ より $r-p\\in\\{p,q\\}$．同様に $r-q\\in\\{p,q\\}$．\n\\begin{itemize}[leftmargin=1.5em]\n  \\item $r-p=p$ のとき $r=2p$ で，$r-q=2p-q$ が $p$ なら $q=p$，$q$ なら $q=p$ となり，いずれも $p<q$ に反する．\n  \\item よって $r-p=q$，すなわち $r=p+q$．\n\\end{itemize}\n逆に $S=\\{p,q,p+q\\}$（$0<p<q$）は，$(p,q)$ では $p+q\\in S$，$(p,p+q)$ では差 $q\\in S$，$(q,p+q)$ では差 $p\\in S$ で条件を満たす．よって $\\boldsymbol{S=\\{p,\\ q,\\ p+q\\}}$（$0<p<q$ は任意）．\n\n(2) $n\\geqq4$ とし，$S=\\{a_1,\\cdots,a_n\\}$，$a_1<a_2<\\cdots<a_n$ とする．\n\n\\textbf{対称性．} $i<n$ のとき $a_i+a_n>a_n$ は $S$ に属さないので $a_n-a_i\\in S$．$0<a_n-a_i<a_n$ だから $a_n-a_i\\in\\{a_1,\\cdots,a_{n-1}\\}$ である．ここで $a_n-a_1>a_n-a_2>\\cdots>a_n-a_{n-1}$ は互いに異なる $n-1$ 個の数で，いずれも $n-1$ 個の要素からなる集合 $\\{a_1,\\cdots,a_{n-1}\\}$ に属するから，これらはちょうど $a_{n-1},a_{n-2},\\cdots,a_1$ に（大きい順に）一致する．すなわち\n\\[a_n-a_i=a_{n-i}\\qquad(i=1,\\cdots,n-1).\\qquad\\cdots\\text{①}\\]\n$d=a_1$ とおくと $a_{n-1}=a_n-d$．\n\n\\textbf{2番目に大きい要素との差．} $2\\leqq i\\leqq n-2$ のとき，$a_i+a_{n-1}>a_{n-1}$ が $S$ に属するなら $a_i+a_{n-1}=a_n$，すなわち $a_i=a_n-a_{n-1}=a_1$ となり $i\\geqq2$ に反する．よって $a_{n-1}-a_i\\in S$．① より $a_{n-1}-a_i=a_n-d-a_i=a_{n-i}-d$．$i$ が $2,\\cdots,n-2$ を動くとき $j=n-i$ も $2,\\cdots,n-2$ を動くので\n\\[a_j-d\\in S\\qquad(2\\leqq j\\leqq n-2).\\qquad\\cdots\\text{②}\\]\n\n\\textbf{帰納法．} $a_j=jd$（$1\\leqq j\\leqq n-2$）を示す．$j=1$ は定義．$j=2$：② より $a_2-d\\in S$ で $0<a_2-d<a_2$ だから $a_2-d=a_1=d$，$a_2=2d$．$3\\leqq j\\leqq n-2$ で $a_k=kd$（$k<j$）とすると，② より $a_j-d\\in S$ で\n\\[a_{j-2}=(j-2)d=a_{j-1}-d<a_j-d<a_j.\\]\n$S$ の要素で $a_{j-2}$ と $a_j$ の間にあるのは $a_{j-1}$ のみなので $a_j-d=a_{j-1}$，$a_j=jd$．\n\n最後に ① で $i=2$ とすると $a_n=a_{n-2}+a_2=(n-2)d+2d=nd$（$n-2\\geqq2$ より $a_{n-2}=(n-2)d$），$a_{n-1}=a_n-d=(n-1)d$．よって $S=\\{d,2d,\\cdots,nd\\}$．（逆にこの $S$ では，異なる2要素の差の絶対値は $d,\\cdots,(n-1)d$ のいずれかで $S$ に属する．）\\hfill$\\square$"
+   }
+  ],
+  "idea": {
+   "tex": "最大要素 $M$ との和は $S$ に入れないので差 $M-x$ が必ず入り，$M$ 以外の要素 $x$ に $M-x$ を対応させると，大小の順が逆になって $M$ 以外の要素がちょうど1つずつ対応するになる（$S$ は $\\frac M2$ に関して対称）．次に2番目に大きい要素との差を見て，小さい方から順に「すぐ下の要素との差が最小要素 $d$」であることを帰納的に示す．$n=3$ では例外 $\\{p,q,p+q\\}$ が生じる．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) $S$：{p, q, p+q}\n(2) 証明"
+  },
+  "methods": [],
+  "tags": [
+   "集合",
+   "最大要素",
+   "対称性",
+   "帰納法",
+   "等差数列"
+  ],
+  "provenance": {
+   "created": "2026-11-14"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "X-MIX-076",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "X-20",
+  "level": 5,
+  "minutes": 40,
+  "theme": "頂点を中心とする3つの円板の和集合",
+  "topic": "頂点を中心とする3つの円板の和集合",
+  "statement": {
+   "tex": "鋭角三角形または直角三角形 ABC があり，$\\angle\\mathrm A=\\alpha$，$\\angle\\mathrm B=\\beta$，$\\angle\\mathrm C=\\gamma$，面積を $S$ とする．三角形 ABC の内部の点 P に対し，A，B，C を中心としそれぞれ P を通る円の周および内部を $D_1,D_2,D_3$ とし，$D_1\\cup D_2\\cup D_3$ の面積を $U(\\mathrm P)$ とする．\n\\begin{enumerate}\n  \\item $U(\\mathrm P)=(\\pi-\\alpha)\\mathrm{PA}^2+(\\pi-\\beta)\\mathrm{PB}^2+(\\pi-\\gamma)\\mathrm{PC}^2+2S$ を示せ．\n  \\item $U(\\mathrm P)$ を最小にする P を $\\mathrm P_0$ とし，$\\mathrm P_0$ と直線 BC，CA，AB の距離を $h_{\\mathrm A},h_{\\mathrm B},h_{\\mathrm C}$ とする．$h_{\\mathrm A}:h_{\\mathrm B}:h_{\\mathrm C}$ を $\\alpha,\\beta,\\gamma$ で表せ．\n  \\item $\\angle\\mathrm A=\\dfrac\\pi2$，$\\mathrm{AB}=\\mathrm{AC}=1$ のとき，$U(\\mathrm P)$ の最小値を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 証明　(2) $\\dfrac{\\pi-\\alpha}{\\sin\\alpha}:\\dfrac{\\pi-\\beta}{\\sin\\beta}:\\dfrac{\\pi-\\gamma}{\\sin\\gamma}$　(3) $1+\\dfrac{15\\pi}{16}$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) まず3つの円板の共通部分は P だけ：P は内部の点なので正の数 $\\lambda,\\mu,\\nu$ で $\\lambda\\overrightarrow{\\mathrm{PA}}+\\mu\\overrightarrow{\\mathrm{PB}}+\\nu\\overrightarrow{\\mathrm{PC}}=\\vec0$．X$\\neq$P が $D_1$ に属するとき $|\\overrightarrow{\\mathrm{PX}}-\\overrightarrow{\\mathrm{PA}}|^2\\leqq|\\overrightarrow{\\mathrm{PA}}|^2$ より $\\overrightarrow{\\mathrm{PX}}\\cdot\\overrightarrow{\\mathrm{PA}}\\geqq\\frac12\\mathrm{PX}^2>0$．3つすべてに属すると $0=\\overrightarrow{\\mathrm{PX}}\\cdot(\\lambda\\overrightarrow{\\mathrm{PA}}+\\mu\\overrightarrow{\\mathrm{PB}}+\\nu\\overrightarrow{\\mathrm{PC}})>0$ で矛盾．よって $U=\\pi(\\mathrm{PA}^2+\\mathrm{PB}^2+\\mathrm{PC}^2)-L_{\\mathrm{AB}}-L_{\\mathrm{BC}}-L_{\\mathrm{CA}}$（$L_{\\mathrm{AB}}$ は $D_1\\cap D_2$ の面積など）．\nP の直線 AB に関する対称点を P$'$ とすると，2円は P，P$'$ で交わり，AB は PP$'$ の垂直二等分線．$\\theta_1=\\angle\\mathrm{PAB}<\\alpha\\leqq\\frac\\pi2$，$\\theta_2=\\angle\\mathrm{PBA}<\\frac\\pi2$ なので PP$'$ と AB の交点は線分 AB 上にあり，$D_1\\cap D_2$ は弦 PP$'$ で，円 A の B 側の弓形（中心角 $2\\theta_1$）と円 B の A 側の弓形（中心角 $2\\theta_2$）に分かれる．\n\\[L_{\\mathrm{AB}}=\\left(\\mathrm{PA}^2\\theta_1-\\triangle\\mathrm{APP'}\\right)+\\left(\\mathrm{PB}^2\\theta_2-\\triangle\\mathrm{BPP'}\\right)=\\mathrm{PA}^2\\angle\\mathrm{PAB}+\\mathrm{PB}^2\\angle\\mathrm{PBA}-2\\triangle\\mathrm{PAB}\\]\n（$\\triangle\\mathrm{APP'}+\\triangle\\mathrm{BPP'}$ は四角形 APBP$'$ で $\\triangle\\mathrm{PAB}$ の2倍）．3つを加えると $\\angle\\mathrm{PAB}+\\angle\\mathrm{PAC}=\\alpha$ などにより\n$L_{\\mathrm{AB}}+L_{\\mathrm{BC}}+L_{\\mathrm{CA}}=\\alpha\\mathrm{PA}^2+\\beta\\mathrm{PB}^2+\\gamma\\mathrm{PC}^2-2S$．よって示された．\\hfill$\\square$\n\n(2) $w_{\\mathrm A}=\\pi-\\alpha$ など（正），$w=w_{\\mathrm A}+w_{\\mathrm B}+w_{\\mathrm C}$，$\\vec g=\\frac{w_{\\mathrm A}\\vec a+w_{\\mathrm B}\\vec b+w_{\\mathrm C}\\vec c}w$ とすると\n$\\sum w_{\\mathrm A}|\\vec p-\\vec a|^2=w|\\vec p-\\vec g|^2+\\sum w_{\\mathrm A}|\\vec a|^2-w|\\vec g|^2$．正の重みの平均 $\\mathrm G$ は三角形の内部にあるので，$U$ を最小にする点は $\\mathrm P_0=\\mathrm G$．\n$\\mathrm G$ と BC の距離は A と BC の距離の $\\frac{w_{\\mathrm A}}w$ 倍なので $\\triangle\\mathrm{GBC}=\\frac{w_{\\mathrm A}}wS$，$h_{\\mathrm A}=\\frac{2w_{\\mathrm A}S}{w\\cdot\\mathrm{BC}}$．正弦定理 $\\mathrm{BC}:\\mathrm{CA}:\\mathrm{AB}=\\sin\\alpha:\\sin\\beta:\\sin\\gamma$ より\n\\[h_{\\mathrm A}:h_{\\mathrm B}:h_{\\mathrm C}=\\boldsymbol{\\frac{\\pi-\\alpha}{\\sin\\alpha}:\\frac{\\pi-\\beta}{\\sin\\beta}:\\frac{\\pi-\\gamma}{\\sin\\gamma}}.\\]\n\n(3) A$(0,0)$，B$(1,0)$，C$(0,1)$，P$(x,y)$ とする．重みは $\\frac\\pi2,\\frac{3\\pi}4,\\frac{3\\pi}4$ で\n\\[\\tfrac\\pi2(x^2+y^2)+\\tfrac{3\\pi}4\\{(x-1)^2+y^2\\}+\\tfrac{3\\pi}4\\{x^2+(y-1)^2\\}=2\\pi\\left(x-\\tfrac38\\right)^2+2\\pi\\left(y-\\tfrac38\\right)^2+\\tfrac{15\\pi}{16}.\\]\n$\\left(\\frac38,\\frac38\\right)$ は内部の点．$2S=1$ より最小値 $\\boldsymbol{1+\\dfrac{15\\pi}{16}}$．"
+   }
+  ],
+  "idea": {
+   "tex": "A，B を中心とし P を通る2円の共通部分は，共通弦 PP$'$（P の AB に関する対称点）で2つの弓形に分かれ，面積は $\\mathrm{PA}^2\\angle\\mathrm{PAB}+\\mathrm{PB}^2\\angle\\mathrm{PBA}-2\\triangle\\mathrm{PAB}$．3つの和をとると角が頂角にまとまり，面積は $\\sum(\\text{重み})\\cdot\\mathrm{PA}^2+(\\text{定数})$ になって重み付き重心で最小．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) 証明\n(2) 記述\n(3) 1+15π/16"
+  },
+  "methods": [],
+  "tags": [
+   "レンズ形の面積",
+   "扇形",
+   "重み付き重心",
+   "2次式の最小"
+  ],
+  "provenance": {
+   "created": "2026-11-14"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "X-MIX-077",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "X-20",
+  "level": 4,
+  "minutes": 30,
+  "theme": "ずらし変換を回転と拡大の合成で表す",
+  "topic": "ずらし変換を回転と拡大の合成で表す",
+  "statement": {
+   "tex": "座標平面上の点の移動を次のように定める．実数 $k$ と角 $\\theta$ に対し，\n$f_k$ は点 $(x,y)$ を点 $(kx,\\ ky)$ に移す移動，$g_k$ は点 $(x,y)$ を点 $(x,\\ ky)$ に移す移動，$r_\\theta$ は点 $(x,y)$ を点 $(x\\cos\\theta-y\\sin\\theta,\\ x\\sin\\theta+y\\cos\\theta)$ に移す移動とし，$h$ は点 $(x,y)$ を点 $(x+y,\\ y)$ に移す移動とする．移動の合成 $u\\circ v$ は「$v$ のあとに $u$」を表す．\n\\begin{enumerate}\n  \\item $h$ は，有限個の $f_k$（$k\\neq0$）と $r_\\theta$ の合成としては表せないことを示せ．\n  \\item $h=r_\\alpha\\circ f_a\\circ g_b\\circ r_\\beta$ をみたす実数の組 $(\\alpha,\\ a,\\ b,\\ \\beta)$ で，$0<\\alpha<\\dfrac\\pi2$，$a>0$，$0<b<1$，$-\\pi<\\beta\\leqq\\pi$ をみたすものをすべて求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 証明　(2) $a=\\dfrac{1+\\sqrt5}2$，$b=\\dfrac{3-\\sqrt5}2$，$\\tan\\alpha=\\dfrac{\\sqrt5-1}2$ をみたす $\\alpha$，$\\beta=\\alpha-\\dfrac\\pi2$ の1組のみ"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "すべての移動は $T(x_1+x_2,\\,y_1+y_2)=T(x_1,y_1)+T(x_2,y_2)$，$T(\\lambda x,\\lambda y)=\\lambda T(x,y)$ をみたす（式の形から明らか）ので，その合成もこの性質をもつ．以下，点と位置ベクトルを同一視する．\n\n(1) $f_k$ はすべての2点間の距離を $|k|$ 倍し，$r_\\theta$ は距離を変えない．よって $f_k$（$k\\neq0$）と $r_\\theta$ の合成 $T$ には正の定数 $\\kappa$ があって，任意の2点 X，Y について $|T(\\mathrm X)-T(\\mathrm Y)|=\\kappa|\\mathrm X-\\mathrm Y|$．一方 $h(0,0)=(0,0)$，$h(1,0)=(1,0)$，$h(0,1)=(1,1)$ で，長さ1の2つの線分の像の長さが $1$ と $\\sqrt2$ になるので，$h$ はこのような $T$ ではない．\\hfill$\\square$\n\n(2) 黄金比 $\\tau=\\frac{1+\\sqrt5}2$（$\\tau^2=\\tau+1$）を用いる．\n\n\\textbf{必要条件．}単位ベクトル $\\vec v=(\\cos\\varphi,\\sin\\varphi)$ に対し\n\\[\n|h(\\vec v)|^2=(\\cos\\varphi+\\sin\\varphi)^2+\\sin^2\\varphi=\\frac32+\\sin2\\varphi-\\frac12\\cos2\\varphi=\\frac32+\\frac{\\sqrt5}2\\sin(2\\varphi-\\gamma)\n\\]\n（$\\gamma$ は $\\cos\\gamma=\\frac2{\\sqrt5}$，$\\sin\\gamma=\\frac1{\\sqrt5}$ をみたす角）．よって $|h(\\vec v)|^2$ の最大値は $\\frac{3+\\sqrt5}2=\\tau^2$，最小値は $\\frac{3-\\sqrt5}2=\\tau^{-2}$ で，最大値をとる $\\vec v$ はちょうど2つ（互いに逆向き）である．$\\vec v_0=\\frac1{\\sqrt{1+\\tau^2}}(1,\\tau)$ とすると $|h(\\vec v_0)|^2=\\frac{(1+\\tau)^2+\\tau^2}{1+\\tau^2}=\\frac{\\tau^4+\\tau^2}{1+\\tau^2}=\\tau^2$ なので，最大値をとるのは $\\pm\\vec v_0$ である．\n\n一方 $T=r_\\alpha\\circ f_a\\circ g_b\\circ r_\\beta$ では，$r_\\beta(\\vec v)=(\\cos\\psi,\\sin\\psi)$ とおくと $|T(\\vec v)|^2=a^2\\cos^2\\psi+a^2b^2\\sin^2\\psi$．$\\vec v$ が単位円上を一周すると $\\psi$ もすべての角をとるので，$0<b<1$ より最大値 $a^2$（$r_\\beta(\\vec v)=(\\pm1,0)$ のときに限る），最小値 $a^2b^2$．$h=T$ なら $a^2=\\tau^2$，$a^2b^2=\\tau^{-2}$ で，$a>0$，$b>0$ より $a=\\tau=\\frac{1+\\sqrt5}2$，$b=\\tau^{-2}=\\frac{3-\\sqrt5}2$．\n\nまた最大値をとる向きどうしが一致するので $r_\\beta(\\vec v_0)=(\\pm1,0)$．このとき $h(\\vec v_0)=T(\\vec v_0)=r_\\alpha(\\pm a,0)=\\pm\\tau(\\cos\\alpha,\\sin\\alpha)$．他方 $h(\\vec v_0)=\\frac{(1+\\tau,\\tau)}{\\sqrt{1+\\tau^2}}=\\frac{\\tau(\\tau,1)}{\\sqrt{1+\\tau^2}}$ で，$0<\\alpha<\\frac\\pi2$ より $\\cos\\alpha>0$ だから符号は $+$ であり\n\\[\n\\cos\\alpha=\\frac{\\tau}{\\sqrt{1+\\tau^2}},\\quad\\sin\\alpha=\\frac1{\\sqrt{1+\\tau^2}},\\quad\\tan\\alpha=\\frac1\\tau=\\frac{\\sqrt5-1}2,\n\\]\nさらに $r_\\beta(\\vec v_0)=(1,0)$．$\\vec v_0=(\\sin\\alpha,\\cos\\alpha)$ は偏角 $\\frac\\pi2-\\alpha$ の単位ベクトルなので，$\\beta\\equiv-\\left(\\frac\\pi2-\\alpha\\right)\\pmod{2\\pi}$，$-\\pi<\\beta\\leqq\\pi$ より $\\beta=\\alpha-\\frac\\pi2$．\n\n\\textbf{十分性．}$\\kappa=\\frac1{\\sqrt{1+\\tau^2}}$ とおくと $\\cos\\alpha=\\tau\\kappa$，$\\sin\\alpha=\\kappa$，$\\cos\\beta=\\sin\\alpha=\\kappa$，$\\sin\\beta=-\\cos\\alpha=-\\tau\\kappa$，$ab=\\frac1\\tau$，$\\kappa^2(1+\\tau^2)=1$．\n\\[\n(1,0)\\xrightarrow{r_\\beta}(\\kappa,-\\tau\\kappa)\\xrightarrow{f_a\\circ g_b}(\\tau\\kappa,-\\kappa)\\xrightarrow{r_\\alpha}\\bigl(\\tau^2\\kappa^2+\\kappa^2,\\ \\tau\\kappa^2-\\tau\\kappa^2\\bigr)=(1,0)=h(1,0),\n\\]\n\\[\n(0,1)\\xrightarrow{r_\\beta}(\\tau\\kappa,\\kappa)\\xrightarrow{f_a\\circ g_b}\\left(\\tau^2\\kappa,\\frac\\kappa\\tau\\right)\\xrightarrow{r_\\alpha}\\left(\\kappa^2\\Bigl(\\tau^3-\\frac1\\tau\\Bigr),\\ \\kappa^2(\\tau^2+1)\\right)=(1,1)=h(0,1).\n\\]\nここで $\\tau^3-\\frac1\\tau=\\frac{(\\tau^2-1)(\\tau^2+1)}\\tau=\\tau^2+1$（$\\tau^2-1=\\tau$）を用いた．両辺とも冒頭の性質をもつので，すべての点で $T=h$．\n\n以上より求める組はただ1つで，\n\\[\n\\boldsymbol{a=\\frac{1+\\sqrt5}2,\\quad b=\\frac{3-\\sqrt5}2,\\quad \\tan\\alpha=\\frac{\\sqrt5-1}2\\ \\left(0<\\alpha<\\frac\\pi2\\right),\\quad \\beta=\\alpha-\\frac\\pi2}.\n\\]"
+   }
+  ],
+  "idea": {
+   "tex": "回転は長さを変えず，点 $(x,y)$ を点 $(ax,aby)$ に移す移動は単位円上の点の長さを最大 $a$，最小 $ab$ にする．よって「回転・拡大・回転」の合成で表すなら，その係数は元の移動が単位円上の点の長さをどこまで伸ばし縮めるか（最大・最小）で決まり，回転角は最大を与える向きとその像の向きで決まる．点 $(x,y)$ を点 $(x+y,y)$ に移すずらしでは黄金比が現れる．"
+  },
+  "methods": [],
+  "tags": [
+   "点の移動",
+   "回転",
+   "拡大",
+   "三角関数の合成",
+   "最大最小",
+   "黄金比"
+  ],
+  "provenance": {
+   "created": "2026-11-14"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "X-MIX-078",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "X-20",
+  "level": 4,
+  "minutes": 40,
+  "theme": "正方形の4頂点を中心とする4枚の円板の重なりの枚数",
+  "topic": "正方形の4頂点を中心とする4枚の円板の重なりの枚数",
+  "statement": {
+   "tex": "座標平面上に $4$ 点 $\\mathrm{A}(0,\\ 0)$，$\\mathrm{B}(1,\\ 0)$，$\\mathrm{C}(1,\\ 1)$，$\\mathrm{D}(0,\\ 1)$ をとり，これらをそれぞれ中心とする半径 $1$ の円の周および内部を $K_{\\mathrm A},\\ K_{\\mathrm B},\\ K_{\\mathrm C},\\ K_{\\mathrm D}$ とする．$j=1,\\ 2,\\ 3,\\ 4$ に対し，$K_{\\mathrm A},\\ K_{\\mathrm B},\\ K_{\\mathrm C},\\ K_{\\mathrm D}$ のうちちょうど $j$ 個に含まれる点全体のつくる図形の面積を $N_j$ とする．\n\\begin{enumerate}\n  \\item $N_4$ を求めよ．\n  \\item $K_{\\mathrm A}\\cap K_{\\mathrm B}\\cap K_{\\mathrm C}$ の面積を求め，$N_3$ を求めよ．\n  \\item $N_2$ と $N_1$ を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $N_4=1+\\dfrac{\\pi}{3}-\\sqrt3$　(2) 面積 $\\dfrac{5}{12}\\pi-\\dfrac{\\sqrt3}{2}$，$N_3=\\dfrac{\\pi}{3}+2\\sqrt3-4$　(3) $N_2=\\dfrac{2}{3}\\pi-2\\sqrt3+4$，$N_1=\\dfrac{\\pi}{3}+2\\sqrt3$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "\\textbf{準備．}\n\\begin{itemize}\n  \\item 半径 $1$ の円で中心角 $\\theta$ $(0<\\theta<\\pi)$ の弧と弦で囲まれる弓形の面積は，扇形から三角形を除いて $\\dfrac{\\theta}{2}-\\dfrac{\\sin\\theta}{2}$ である．また，この弓形は弧の上の点全体を含む最小の凸図形（弧の両端と弧上の点を結ぶ線分全体）に等しい．\n  \\item 円板は凸図形であり，凸図形の共通部分は凸図形である．\n  \\item 平面上の点 X が $K_{\\mathrm A},\\cdots,K_{\\mathrm D}$ のうちちょうど $j$ 個に含まれるとき $k(\\mathrm X)=j$ と書く．4つの円板のうち2つずつの共通部分 $6$ 個の面積の和を $s_2$，3つずつの共通部分 $4$ 個の面積の和を $s_3$，4つの共通部分の面積を $s_4$ とする．\n\\end{itemize}\n\n\\textbf{重なりの枚数と $s_2,\\ s_3$ の関係．} 円板の集合 $U$（空でない）に対し，「ちょうど $U$ に属する円板に含まれ，他の円板には含まれない点」全体を $R_U$ とすると，平面上の（少なくとも1つの円板に含まれる）点は，ちょうど1つの $R_U$ に属する．2つの円板 $K,\\ K'$ の共通部分は，$K,\\ K'$ をともに含む $U$ についての $R_U$ を重ならずに合わせたものである．$U$ が $j$ 個の円板からなるとき，$U$ に含まれる2つの円板の組は ${}_j\\mathrm C_2$ 個，3つの組は ${}_j\\mathrm C_3$ 個あるから，各 $R_U$ は $s_2$ の中で ${}_j\\mathrm C_2$ 回，$s_3$ の中で ${}_j\\mathrm C_3$ 回数えられる．$N_j$ は $j$ 個からなる $U$ についての $R_U$ の面積の和であるから\n\\[\ns_2=N_2+3N_3+6N_4,\\qquad s_3=N_3+4N_4,\\qquad s_4=N_4,\n\\]\n同様に，円板の面積の和について $4\\pi=N_1+2N_2+3N_3+4N_4$ である．\n\n\\medskip\n(1) $F=K_{\\mathrm A}\\cap K_{\\mathrm B}\\cap K_{\\mathrm C}\\cap K_{\\mathrm D}$ とする．$F$ の境界上の点はいずれかの円周上にあり，しかもすべての円板に含まれる．\n\n円 A 上の点 $(\\cos t,\\ \\sin t)$ $(-\\pi<t\\leqq\\pi)$ について，\n\\begin{align*}\n&K_{\\mathrm B}\\text{ に含まれる}\\iff(\\cos t-1)^2+\\sin^2t\\leqq1\\iff\\cos t\\geqq\\tfrac12,\\\\\n&K_{\\mathrm D}\\text{ に含まれる}\\iff\\cos^2t+(\\sin t-1)^2\\leqq1\\iff\\sin t\\geqq\\tfrac12,\\\\\n&K_{\\mathrm C}\\text{ に含まれる}\\iff(\\cos t-1)^2+(\\sin t-1)^2\\leqq1\\iff\\cos t+\\sin t\\geqq1 .\n\\end{align*}\nはじめの2つから $\\dfrac{\\pi}{6}\\leqq t\\leqq\\dfrac{\\pi}{3}$ で，このとき $\\cos t+\\sin t=\\sqrt2\\sin\\left(t+\\dfrac\\pi4\\right)\\geqq\\sqrt2\\sin\\dfrac{7}{12}\\pi$，$\\sin\\dfrac{7}{12}\\pi>\\sin\\dfrac34\\pi=\\dfrac{1}{\\sqrt2}$ だから3つ目もみたされる．よって円 A のうち $F$ に含まれるのは $\\dfrac{\\pi}{6}\\leqq t\\leqq\\dfrac{\\pi}{3}$ の弧（中心角 $\\dfrac{\\pi}{6}$）で，端点は $\\mathrm P_1\\left(\\dfrac{\\sqrt3}{2},\\dfrac12\\right)$，$\\mathrm P_2\\left(\\dfrac12,\\dfrac{\\sqrt3}{2}\\right)$ である．図形全体は直線 $x=\\frac12$，$y=\\frac12$，$y=x$ に関する対称移動で $\\mathrm{A,B,C,D}$ が入れかわり $F$ は自分自身に移るから，他の円についても同様で，$F$ の境界は中心角 $\\dfrac{\\pi}{6}$ の4つの弧からなり，その端点は\n\\[\n\\mathrm P_1\\left(\\tfrac{\\sqrt3}{2},\\tfrac12\\right),\\ \\mathrm P_2\\left(\\tfrac12,\\tfrac{\\sqrt3}{2}\\right),\\ \\mathrm P_3\\left(1-\\tfrac{\\sqrt3}{2},\\tfrac12\\right),\\ \\mathrm P_4\\left(\\tfrac12,1-\\tfrac{\\sqrt3}{2}\\right)\n\\]\nである（弧 $\\mathrm P_1\\mathrm P_2$ は円 A，$\\mathrm P_2\\mathrm P_3$ は円 B，$\\mathrm P_3\\mathrm P_4$ は円 C，$\\mathrm P_4\\mathrm P_1$ は円 D 上）．\n\n$F$ は凸図形で $\\mathrm P_1,\\cdots,\\mathrm P_4$ を含むから四角形 $\\mathrm P_1\\mathrm P_2\\mathrm P_3\\mathrm P_4$ を含む．また弧 $\\mathrm P_1\\mathrm P_2$ は $K_{\\mathrm A},\\cdots,K_{\\mathrm D}$ のすべてに含まれ，各円板は凸だから，準備よりこの弧の弓形も $F$ に含まれる．逆に，$F$ のうち直線 $\\mathrm P_1\\mathrm P_2$ に関して四角形と反対側にある部分は，$K_{\\mathrm A}$ のうち弦 $\\mathrm P_1\\mathrm P_2$ の外側の部分，すなわちこの弓形に含まれる．他の3辺も同様である．また，これら4つの弓形は互いに端点以外を共有しない．したがって $F$ は，四角形 $\\mathrm P_1\\mathrm P_2\\mathrm P_3\\mathrm P_4$ と中心角 $\\frac{\\pi}{6}$ の弓形4つを重ならずに合わせたものである．\n\n四角形 $\\mathrm P_1\\mathrm P_2\\mathrm P_3\\mathrm P_4$ は対角線 $\\mathrm P_1\\mathrm P_3$（水平），$\\mathrm P_2\\mathrm P_4$（垂直）がともに長さ $\\sqrt3-1$ で直交するので，面積は $\\dfrac{(\\sqrt3-1)^2}{2}=2-\\sqrt3$．弓形1つの面積は $\\dfrac{\\pi}{12}-\\dfrac14$ だから\n\\[\nN_4=s_4=2-\\sqrt3+4\\left(\\frac{\\pi}{12}-\\frac14\\right)=\\boldsymbol{1+\\frac{\\pi}{3}-\\sqrt3}.\n\\]\n\n\\medskip\n(2) $G=K_{\\mathrm A}\\cap K_{\\mathrm B}\\cap K_{\\mathrm C}$ とし，(1) と同様に境界の弧を求める．\n\\begin{itemize}\n  \\item 円 A 上の点 $(\\cos t,\\sin t)$：$K_{\\mathrm B}$ に含まれる $\\iff\\cos t\\geqq\\frac12$，$K_{\\mathrm C}$ に含まれる $\\iff\\sqrt2\\sin\\left(t+\\frac\\pi4\\right)\\geqq1$．$-\\pi<t\\leqq\\pi$ で前者は $-\\frac\\pi3\\leqq t\\leqq\\frac\\pi3$，後者は $0\\leqq t\\leqq\\frac\\pi2$ だから，$0\\leqq t\\leqq\\frac{\\pi}{3}$（中心角 $\\frac\\pi3$）．\n  \\item 円 B 上の点 $(1+\\cos s,\\sin s)$ $(0\\leqq s<2\\pi)$：$K_{\\mathrm A}$ に含まれる $\\iff 2+2\\cos s\\leqq1\\iff\\cos s\\leqq-\\frac12$，$K_{\\mathrm C}$ に含まれる $\\iff 2-2\\sin s\\leqq1\\iff\\sin s\\geqq\\frac12$．よって $\\frac{2}{3}\\pi\\leqq s\\leqq\\frac{5}{6}\\pi$（中心角 $\\frac\\pi6$）．\n  \\item 円 C 上の点 $(1+\\cos u,1+\\sin u)$ $(0\\leqq u<2\\pi)$：$K_{\\mathrm A}$ に含まれる $\\iff 3+2(\\cos u+\\sin u)\\leqq1\\iff\\sqrt2\\sin\\left(u+\\frac\\pi4\\right)\\leqq-1\\iff\\pi\\leqq u\\leqq\\frac32\\pi$，$K_{\\mathrm B}$ に含まれる $\\iff 2+2\\sin u\\leqq1\\iff\\sin u\\leqq-\\frac12\\iff\\frac76\\pi\\leqq u\\leqq\\frac{11}{6}\\pi$．よって $\\frac76\\pi\\leqq u\\leqq\\frac32\\pi$（中心角 $\\frac\\pi3$）．\n\\end{itemize}\nこれらの弧の端点は $\\mathrm V_1=\\mathrm B(1,0)$（$t=0$，$u=\\frac32\\pi$），$\\mathrm V_2\\left(\\frac12,\\frac{\\sqrt3}{2}\\right)$（$t=\\frac\\pi3$，$s=\\frac23\\pi$），$\\mathrm V_3\\left(1-\\frac{\\sqrt3}{2},\\frac12\\right)$（$s=\\frac56\\pi$，$u=\\frac76\\pi$）である．(1) と同じ理由で，$G$ は三角形 $\\mathrm V_1\\mathrm V_2\\mathrm V_3$ と，中心角 $\\frac\\pi3,\\ \\frac\\pi6,\\ \\frac\\pi3$ の3つの弓形を重ならずに合わせたものである．\n\\[\n\\triangle\\mathrm V_1\\mathrm V_2\\mathrm V_3=\\frac12\\left|\\left(-\\frac12\\right)\\cdot\\frac12-\\frac{\\sqrt3}{2}\\cdot\\left(-\\frac{\\sqrt3}{2}\\right)\\right|=\\frac14\n\\]\n（$\\overrightarrow{\\mathrm V_1\\mathrm V_2}=\\left(-\\frac12,\\frac{\\sqrt3}{2}\\right)$，$\\overrightarrow{\\mathrm V_1\\mathrm V_3}=\\left(-\\frac{\\sqrt3}{2},\\frac12\\right)$）．弓形の面積は $\\frac\\pi6-\\frac{\\sqrt3}{4}$（2つ）と $\\frac{\\pi}{12}-\\frac14$ だから\n\\[\nG\\text{ の面積}=\\frac14+2\\left(\\frac\\pi6-\\frac{\\sqrt3}{4}\\right)+\\frac{\\pi}{12}-\\frac14=\\boldsymbol{\\frac{5}{12}\\pi-\\frac{\\sqrt3}{2}}.\n\\]\n4つの円板から3つを選ぶ選び方は，正方形の隣り合う3頂点 $\\{\\mathrm{A,B,C}\\},\\{\\mathrm{B,C,D}\\},\\{\\mathrm{C,D,A}\\},\\{\\mathrm{D,A,B}\\}$ の4通りで，正方形の中心のまわりの $90^\\circ$ 回転で互いに移り合うから，共通部分の面積はすべて等しい．よって $s_3=\\dfrac53\\pi-2\\sqrt3$ で，\n\\[\nN_3=s_3-4N_4=\\frac53\\pi-2\\sqrt3-4-\\frac43\\pi+4\\sqrt3=\\boldsymbol{\\frac{\\pi}{3}+2\\sqrt3-4}.\n\\]\n\n\\medskip\n(3) 2つの円板の共通部分は，2円の交点を結ぶ共通弦で2つの弓形に分かれる．\n\\begin{itemize}\n  \\item 隣り合う頂点（例えば A，B，中心間距離 $1$）：交点は $\\left(\\frac12,\\pm\\frac{\\sqrt3}{2}\\right)$ で，各中心から見た中心角は $\\frac23\\pi$．面積は $2\\left(\\frac\\pi3-\\frac{\\sqrt3}{4}\\right)=\\frac23\\pi-\\frac{\\sqrt3}{2}$．このような組は4組．\n  \\item 対角の頂点（A，C または B，D，中心間距離 $\\sqrt2$）：A，C の円の交点は B，D で，$\\angle\\mathrm{BAD}=\\angle\\mathrm{BCD}=\\frac\\pi2$．面積は $2\\left(\\frac\\pi4-\\frac12\\right)=\\frac\\pi2-1$．このような組は2組．\n\\end{itemize}\nよって\n\\[\ns_2=4\\left(\\frac23\\pi-\\frac{\\sqrt3}{2}\\right)+2\\left(\\frac\\pi2-1\\right)=\\frac{11}{3}\\pi-2\\sqrt3-2 .\n\\]\nしたがって\n\\[\n\\begin{aligned}N_2&=s_2-3N_3-6N_4\\\\&=\\frac{11}{3}\\pi-2\\sqrt3-2-\\left(\\pi+6\\sqrt3-12\\right)-\\left(6+2\\pi-6\\sqrt3\\right)=\\boldsymbol{\\frac23\\pi-2\\sqrt3+4},\\end{aligned}\n\\]\n\\[\n\\begin{aligned}\nN_1&=4\\pi-2N_2-3N_3-4N_4\\\\\n&=4\\pi-\\left(\\frac43\\pi-4\\sqrt3+8\\right)-\\left(\\pi+6\\sqrt3-12\\right)-\\left(4+\\frac43\\pi-4\\sqrt3\\right)=\\boldsymbol{\\frac{\\pi}{3}+2\\sqrt3}.\n\\end{aligned}\n\\]\n\\hfill$\\square$"
+   }
+  ],
+  "idea": {
+   "tex": "「ちょうど $j$ 枚に覆われる部分の面積」$N_j$ は直接求めにくいが，$j$ 枚に覆われる点は2枚の共通部分にちょうど ${}_j\\mathrm{C}_2$ 回，3枚の共通部分に ${}_j\\mathrm{C}_3$ 回数えられるので，2枚・3枚・4枚の共通部分の面積の和から連立して求まる．共通部分は凸図形で，境界の弧を円上の点の条件（$\\cos t\\geqq\\frac12$ など）で切り出せば，多角形と弓形に分けて計算できる．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) $N_4$：1+π/3-sqrt(3)\n(2) 面積：(5/12)π-sqrt(3)/2 ; $N_3$：π/3+2sqrt(3)-4\n(3) $N_2$：(2/3)π-2sqrt(3)+4 ; $N_1$：π/3+2sqrt(3)"
+  },
+  "methods": [],
+  "tags": [
+   "円の共通部分",
+   "扇形と弓形",
+   "包含と排除",
+   "重なりの枚数",
+   "凸図形"
+  ],
+  "provenance": {
+   "created": "2026-11-14"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "X-MIX-052",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "X-20",
+  "level": 5,
+  "minutes": 40,
+  "theme": "2つがそろうまでに出た他の2種類のカードの枚数の積",
+  "topic": "2つがそろうまでに出た他の2種類のカードの枚数の積",
+  "statement": {
+   "tex": "箱の中に，ス，ミ，テ，ン と書かれたカードがそれぞれ1枚ずつ合計4枚入っている．箱の中からでたらめに1枚取り出し，書かれた文字を見た上で箱に戻すという試行を，最高 $n$ 回まで繰り返す（$n\\geqq2$）．$r$ 回目（$2\\leqq r\\leqq n$）の試行が終わったとき，スおよびミのカードをそれぞれ少なくとも1回取り出していたら，ゲームは終了とし（それ以後の試行は行わない），それまでにテを取り出した回数とンを取り出した回数の積を得点とする．$n$ 回目まで行っても終了しない場合の得点は $0$ とする．\n\\begin{enumerate}\n  \\item $0$ 以上の整数 $a,\\ b$ が $a+b\\leqq r-2$ を満たすとする．ちょうど $r$ 回目の試行でゲームが終了し，その時点までにテを $a$ 回，ンを $b$ 回取り出している確率を求めよ．\n  \\item 得点の期待値 $E_n$ を $n$ の式で表せ．\n  \\item $\\displaystyle\\lim_{n\\to\\infty}E_n$ を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $\\dfrac{2\\,(r-1)!}{a!\\,b!\\,(r-1-a-b)!}\\left(\\dfrac14\\right)^r$　(2) $E_n=\\dfrac72-\\dfrac29(n^2+5n+18)\\left(\\dfrac34\\right)^n+\\dfrac{n^2+n+2}{2^{n+2}}$　(3) $\\dfrac72$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "ス，ミのうち一方を X，他方を Y と書く．\n\n(1) ちょうど $r$ 回目にゲームが終了する $\\iff$ 最初の $r-1$ 回でス・ミの両方はそろわず，$r$ 回で両方がそろう $\\iff$ 最初の $r-1$ 回にス・ミの一方 X だけが1回以上出て（Y は出ず），$r$ 回目に Y が出る．\nX の選び方は2通り．最初の $r-1$ 回が X を $c$ 回，テを $a$ 回，ンを $b$ 回（$c=r-1-a-b\\geqq1$）含む並びは $\\dfrac{(r-1)!}{a!\\,b!\\,c!}$ 通りで，各並びの確率は $\\left(\\frac14\\right)^{r-1}$，$r$ 回目に Y が出る確率は $\\frac14$．よって\n\\[\\boldsymbol{\\frac{2\\,(r-1)!}{a!\\,b!\\,(r-1-a-b)!}\\left(\\frac14\\right)^r}.\\]\n\n(2) $m=r-1$ とおく．文字 X，テ，ン からなる長さ $m$ の列で X を少なくとも1個含むもの全体について，（テの個数）$\\times$（ンの個数）の総和を $W(m)$ とする．(1) より\n\\[E_n=\\sum_{r=2}^n2\\left(\\frac14\\right)^rW(r-1)\\]\nである（(1) の確率の分子の $\\frac{(r-1)!}{a!b!c!}$ は対応する列の個数なので，$ab$ を掛けて和をとると $W(r-1)$ になる）．\n\n列の（テの個数）$\\times$（ンの個数）は，「$i$ 番目がテで $j$ 番目がンである位置の組 $(i,j)$」の個数に等しい（このとき自動的に $i\\neq j$）．よって長さ $m$ の列すべてについての総和は，$i\\neq j$ である組 $(i,j)$ の選び方 $m(m-1)$ 通りと，残り $m-2$ か所の文字 $3^{m-2}$ 通りから $m(m-1)3^{m-2}$（$m\\geqq2$）．X を含まない列（テ，ンだけの列）についての総和は同様に $m(m-1)2^{m-2}$．したがって $m\\geqq2$ で $W(m)=m(m-1)(3^{m-2}-2^{m-2})$，また $W(1)=0$．ゆえに\n\\[E_n=S_n-U_n,\\quad S_n=\\sum_{r=3}^n\\frac{2(r-1)(r-2)3^{r-3}}{4^r},\\quad U_n=\\sum_{r=3}^n\\frac{2(r-1)(r-2)2^{r-3}}{4^r}\\]\n（$n=2$ ではどれも空の和で $0$）．\n\n\\textbf{主張．} $n\\geqq2$ に対し\n\\[S_n=4-\\frac29(n^2+5n+18)\\left(\\frac34\\right)^n,\\qquad U_n=\\frac12-\\frac{n^2+n+2}{2^{n+2}}.\\]\n（証明）$n$ に関する数学的帰納法．$n=2$ では $4-\\frac29\\cdot32\\cdot\\frac9{16}=0$，$\\frac12-\\frac8{16}=0$ で成り立つ．$n-1$（$n\\geqq3$）で成り立つとすると，右辺の差は\n\\begin{align*}&\\frac29\\left(\\frac34\\right)^n\\left\\{\\frac43\\left((n-1)^2+5(n-1)+18\\right)-(n^2+5n+18)\\right\\}\\\\&\\quad=\\frac29\\left(\\frac34\\right)^n\\cdot\\frac{n^2-3n+2}3=\\frac{2(n-1)(n-2)3^{n-3}}{4^n},\\end{align*}\n\\begin{align*}&\\frac{(n-1)^2+(n-1)+2}{2^{n+1}}-\\frac{n^2+n+2}{2^{n+2}}=\\frac{2(n^2-n+2)-(n^2+n+2)}{2^{n+2}}\\\\&\\quad=\\frac{(n-1)(n-2)}{2^{n+2}}=\\frac{2(n-1)(n-2)2^{n-3}}{4^n}\\end{align*}\nで，それぞれ $S_n,U_n$ の第 $n$ 項に一致する．よって $n$ でも成り立つ．\\hfill$\\square$\n\nしたがって\n\\[\\boldsymbol{E_n=\\frac72-\\frac29(n^2+5n+18)\\left(\\frac34\\right)^n+\\frac{n^2+n+2}{2^{n+2}}}.\\]\n（確認：$n=6$ で $E_6=\\frac{179}{512}$ となり，(1) から直接 $r=4,5,6$ の項 $\\frac3{64}+\\frac{15}{128}+\\frac{95}{512}$ を足した値と一致する．）\n\n(3) $n\\geqq3$ で，二項定理より $\\left(\\frac43\\right)^n=\\left(1+\\frac13\\right)^n\\geqq{}_n\\mathrm C_3\\left(\\frac13\\right)^3$，$2^n\\geqq{}_n\\mathrm C_3$ なので\n\\[0<n^2\\left(\\frac34\\right)^n\\leqq\\frac{27\\cdot6\\,n^2}{n(n-1)(n-2)}\\to0,\\qquad0<\\frac{n^2}{2^n}\\leqq\\frac{6n^2}{n(n-1)(n-2)}\\to0.\\]\n同様に $n\\left(\\frac34\\right)^n$，$\\left(\\frac34\\right)^n$，$\\frac n{2^n}$，$\\frac1{2^n}$ も $0$ に収束する．よって $\\displaystyle\\lim_{n\\to\\infty}E_n=\\boldsymbol{\\frac72}$．\\hfill$\\square$"
+   }
+  ],
+  "idea": {
+   "tex": "ちょうど $r$ 回目に終わるのは「最初の $r-1$ 回にスかミの一方だけが（1回以上）出て，$r$ 回目に他方が出る」とき．得点の期待値は回数 $r$ ごとに，長さ $r-1$ の列にわたる（テの個数）$\\times$（ンの個数）の総和を求めればよく，それは「テの位置とンの位置の組」を数えて $m(m-1)3^{m-2}$（ス・ミを含まない列の分 $m(m-1)2^{m-2}$ を引く）になる．和の閉じた式は帰納法で確かめ，$n^2\\left(\\frac34\\right)^n\\to0$ を二項定理で示して極限を求める．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) 記述\n(2) $E_n$：7/2-(2/9)(n^2+5n+18)(3/4)^n+(n^2+n+2)/2^(n+2)\n(3) 7/2"
+  },
+  "methods": [],
+  "tags": [
+   "確率",
+   "期待値",
+   "数え上げ",
+   "二重に数える",
+   "数学的帰納法",
+   "数列の極限"
+  ],
+  "provenance": {
+   "created": "2026-11-14"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "X-MIX-053",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "X-20",
+  "level": 5,
+  "minutes": 40,
+  "theme": "長方形の周を内部の点のまわりに1回転させたときの通過回数",
+  "topic": "長方形の周を内部の点のまわりに1回転させたときの通過回数",
+  "statement": {
+   "tex": "座標平面上の長方形 $[-2,2]\\times[-1,1]$ の周から4頂点を除いたものを $m$ とし，点 $\\mathrm X(t,0)\\ (0\\leqq t<2)$ を中心として $m$ を1回転させる（回転角 $\\theta$ は $0\\leqq\\theta<2\\pi$ を動く）．$m$ が少なくとも1回通過する点全体の面積を $S(t)$，ちょうど $k$ 回通過する点全体の面積を $S_k(t)$ とする．\n\\begin{enumerate}\n  \\item $S(t)$ を求めよ．\n  \\item $S_2(t)$ と $S_4(t)$ を求めよ．\n  \\item $S_2(t)=S_4(t)$ となる $t$ をすべて求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $0\\leqq t\\leqq1$ のとき $S=\\pi(t+2)^2$，$1<t<2$ のとき $S=\\pi(8t+1)$　(2) $S_2=0\\ \\left(0\\leqq t\\leqq\\dfrac18\\right)$，$\\pi(8t-1)\\ \\left(\\dfrac18<t\\leqq1\\right)$，$\\pi(-t^2+12t-4)\\ (1<t<2)$；$S_4=\\pi(t^2+4t+3)\\ \\left(0\\leqq t\\leqq\\dfrac18\\right)$，$\\pi(2-t)^2\\ \\left(\\dfrac18<t\\leqq1\\right)$，$\\pi\\ (1<t<2)$　(3) $t=6-\\sqrt{31}$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "X からの距離が $\\rho>0$ の点 Y を考える．Y が回転角 $\\theta$ の $m$ に含まれるのは，Y を X のまわりに $-\\theta$ 回転した点が $m$ 上にあるときで，$\\theta$ が $[0,2\\pi)$ を動くとその点は X 中心半径 $\\rho$ の円 $\\Gamma_\\rho$ をちょうど1周する．よって Y が通過される回数は $N(\\rho)=(\\Gamma_\\rho\\text{ と }m\\text{ の共有点の個数})$ で，Y の向きによらない．したがって $N(\\rho)=k$ となる $\\rho$ が区間 $(\\rho_1,\\rho_2)$ をなせば，その部分の面積は $\\pi(\\rho_2^2-\\rho_1^2)$ で，有限個の $\\rho$（円周，面積0）は無視してよい．\n\n$R=\\sqrt{(2+t)^2+1}$，$R'=\\sqrt{(2-t)^2+1}$ とおく（$R'\\leqq R$）．各辺（頂点を除く）と $\\Gamma_\\rho$ の共有点を数える．\n\\begin{itemize}\n  \\item 上の辺 $y=1,\\ -2<x<2$：$x=t\\pm\\sqrt{\\rho^2-1}$（$\\rho>1$）．$t+\\sqrt{\\rho^2-1}<2\\iff\\rho<R'$，$t-\\sqrt{\\rho^2-1}>-2\\iff\\rho<R$．よって $1<\\rho<R'$ で2個，$R'<\\rho<R$ で1個，それ以外0個．下の辺も同じ．\n  \\item 右の辺 $x=2,\\ -1<y<1$：$y=\\pm\\sqrt{\\rho^2-(2-t)^2}$ で，$2-t<\\rho<R'$ のとき2個，それ以外0個．\n  \\item 左の辺：$2+t<\\rho<R$ のとき2個，それ以外0個．\n\\end{itemize}\n$R'^2-(2+t)^2=1-8t$ に注意して場合分けする．\n\n\\textbf{(ア) $0\\leqq t\\leqq\\frac18$}：$1\\leqq2-t\\leqq2+t\\leqq R'<R$．$N$ は区間 $(1,2-t),\\ (2-t,2+t),\\ (2+t,R'),\\ (R',R)$ でそれぞれ $4,6,8,4$，$\\rho<1$ と $\\rho>R$ で0．\n\n\\textbf{(イ) $\\frac18<t\\leqq1$}：$1\\leqq2-t<R'<2+t<R$．区間 $(1,2-t),\\ (2-t,R'),\\ (R',2+t),\\ (2+t,R)$ で $4,6,2,4$．\n\n\\textbf{(ウ) $1<t<2$}：$0<2-t<1<R'<2+t<R$．区間 $(2-t,1),\\ (1,R'),\\ (R',2+t),\\ (2+t,R)$ で $2,6,2,4$．\n\n(1) 通過される点の $\\rho$ の範囲は $t\\leqq1$ で $(1,R)$，$t>1$ で $(2-t,R)$．よって\n\\[ \\boldsymbol{0\\leqq t\\leqq1:\\ S=\\pi(R^2-1)=\\pi(t+2)^2}, \\]\n\\[ \\boldsymbol{1<t<2:\\ S=\\pi\\{R^2-(2-t)^2\\}=\\pi(8t+1)}. \\]\n\n(2) (ア)：$S_2=0$，$S_4=\\pi\\{(2-t)^2-1\\}+\\pi(R^2-R'^2)=\\pi(t^2-4t+3+8t)=\\pi(t^2+4t+3)$．\n\n(イ)：$S_2=\\pi\\{(2+t)^2-R'^2\\}=\\pi(8t-1)$，$S_4=\\pi\\{(2-t)^2-1\\}+\\pi\\{R^2-(2+t)^2\\}=\\pi(2-t)^2$．\n\n(ウ)：$S_2=\\pi\\{1-(2-t)^2\\}+\\pi(8t-1)=\\pi(-t^2+12t-4)$，$S_4=\\pi\\{R^2-(2+t)^2\\}=\\pi$．\n\n\\[ \\boldsymbol{S_2=\\begin{cases}0&(0\\leqq t\\leqq\\frac18)\\\\ \\pi(8t-1)&(\\frac18<t\\leqq1)\\\\ \\pi(-t^2+12t-4)&(1<t<2)\\end{cases}}\\]\n\\[ \\boldsymbol{S_4=\\begin{cases}\\pi(t^2+4t+3)&(0\\leqq t\\leqq\\frac18)\\\\ \\pi(2-t)^2&(\\frac18<t\\leqq1)\\\\ \\pi&(1<t<2)\\end{cases}} \\]\n\n(3) (ア)では $S_2=0<S_4$．(イ)では $8t-1=(2-t)^2\\iff t^2-12t+5=0\\iff t=6\\pm\\sqrt{31}$．$\\frac18<6-\\sqrt{31}\\leqq1$（$5\\leqq\\sqrt{31}<\\frac{47}8$ は $25\\leqq31<\\frac{2209}{64}$ から）で，$6+\\sqrt{31}>1$．(ウ)では $-t^2+12t-4=1\\iff t^2-12t+5=0$ で，解 $6\\pm\\sqrt{31}$ はどちらも $(1,2)$ にない．よって $\\boldsymbol{t=6-\\sqrt{31}}$．\\hfill$\\square$"
+   }
+  ],
+  "idea": {
+   "tex": "X から距離 $\\rho$ の点が通過される回数は，X を中心とする半径 $\\rho$ の円と図形の周との交点の個数に等しい．辺ごとに「交点が2個・1個・0個になる $\\rho$ の区間」を求めて足し合わせると，回数は $\\rho$ の区間ごとに一定で，回数ごとの領域は円環の和になる．区間の端点（足までの距離と頂点までの距離）の大小が $t$ によって入れかわるので，$t=\\frac18,\\ 1$ で場合分けが生じる．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) 場合分け{ 0<=t<=1 → π(t+2)^2 | 1<t<2 → π(8t+1) }\n(2) 記述\n(3) $t$：6-sqrt(31)"
+  },
+  "methods": [],
+  "tags": [
+   "回転",
+   "通過領域",
+   "円環",
+   "場合分け",
+   "面積"
+  ],
+  "provenance": {
+   "created": "2026-11-14"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "X-MIX-054",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "X-20",
+  "level": 5,
+  "minutes": 45,
+  "theme": "円のまわりを平行移動で1周する三角形の通過領域",
+  "topic": "円のまわりを平行移動で1周する三角形の通過領域",
+  "statement": {
+   "tex": "平面上に，原点 O を中心とする半径 $r$ の円 $C$ がある．周の長さ $l$，面積 $S$ の三角形 $P$（周および内部）が，次の2条件をみたしながら，向きを変えずに（平行移動だけで）$C$ のまわりを1周する．ただし，2条件をみたす $P$ の位置はすべて通るものとする．\n\\begin{itemize}\n  \\item $P$ と $C$（円周）の共有点はちょうど1個である．\n  \\item $P$ 全体が $C$ の外部または周上にある．\n\\end{itemize}\n$P$ が通過する領域を $E$ とする．\n\\begin{enumerate}\n  \\item $E$ の面積は $r,l,S$ のみにより定まることを示し，その値を求めよ．\n  \\item $r,l$ を固定して三角形 $P$ の形を変えるとき，$E$ の面積の最大値を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $2rl+6S$　(2) $2rl+\\dfrac{\\sqrt3}{6}l^2$（$P$ が正三角形のとき）"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "平行移動 $\\vec v$ で $P$ を移した図形を $P+\\vec v$ と書く．$P$ 上の点 U，V に対するベクトル $\\overrightarrow{\\mathrm{VU}}$ 全体の終点（O を始点とする）の集合を $H$，$C$ の周および内部（円板）を $\\overline C$，$C$ の内部を $C^\\circ$ とする．\n\n\\textbf{許される位置．}$P+\\vec v$ が $\\overline C$ と共有点をもち $C^\\circ$ と共有点をもたないとき，共有点はちょうど1個である．実際，円周上の異なる2点を含めば凸な $P+\\vec v$ はその2点を結ぶ弦を含み，弦の端点以外の点は $C^\\circ$ にあるから矛盾．逆に問題の2条件をみたす位置はこの条件をみたす．よって $E$ は「$P+\\vec v$ が $\\overline C$ と交わり $C^\\circ$ と交わらない」ような $P+\\vec v$ 全体の和集合である．\n\n\\textbf{$E$ の特徴づけ．}点 X について\n\\[\n\\mathrm X\\in E\\iff \\mathrm{OX}\\geqq r\\ \\text{かつ}\\ \\overrightarrow{\\mathrm{OX}}=\\overrightarrow{\\mathrm{OY}}+\\overrightarrow{\\mathrm{VU}}\\ (\\mathrm Y\\in\\overline C,\\ \\mathrm U,\\mathrm V\\in P)\\ \\text{と表せる}\n\\]\nを示す．\n\n($\\Rightarrow$) X が許される位置の $P+\\vec v$ 上にあれば，$C^\\circ$ に入らないので $\\mathrm{OX}\\geqq r$．また $P+\\vec v$ と $\\overline C$ の共有点 Y は $\\overrightarrow{\\mathrm{OY}}=\\overrightarrow{\\mathrm{OV}}+\\vec v$（$\\mathrm V\\in P$），X は $\\overrightarrow{\\mathrm{OX}}=\\overrightarrow{\\mathrm{OU}}+\\vec v$（$\\mathrm U\\in P$）と書けるので $\\overrightarrow{\\mathrm{OX}}=\\overrightarrow{\\mathrm{OY}}+\\overrightarrow{\\mathrm{VU}}$．\n\n($\\Leftarrow$) $\\vec n=\\dfrac{\\overrightarrow{\\mathrm{XO}}}{\\mathrm{XO}}$ とし，$P$ 上で内積 $\\overrightarrow{\\mathrm{OW}}\\cdot\\vec n$ を最大にする点 W をとる（$P$ の点 W は3頂点の位置ベクトルの重みの和が $1$ の重みつき平均（重みは $0$ 以上）で表されるので，$\\overrightarrow{\\mathrm{OW}}\\cdot\\vec n$ は3頂点での値の重みつき平均であり，その最大値は3頂点のいずれかでとられる）．$0\\leqq\\lambda\\leqq1$ に対し $\\overrightarrow{\\mathrm{OU}_\\lambda}=(1-\\lambda)\\overrightarrow{\\mathrm{OU}}+\\lambda\\overrightarrow{\\mathrm{OW}}$（$P$ は凸なので $\\mathrm U_\\lambda\\in P$），$\\vec v_\\lambda=\\overrightarrow{\\mathrm{OX}}-\\overrightarrow{\\mathrm{OU}_\\lambda}$ とおくと，つねに $\\mathrm X\\in P+\\vec v_\\lambda$．$g(\\lambda)$ を O と $P+\\vec v_\\lambda$ の距離（$P+\\vec v_\\lambda$ の点と O の距離の最小値）とする．$\\vec v_\\lambda$ は $\\lambda$ の1次式で，平行移動の差の大きさだけ距離の最小値も高々変わるので $|g(\\lambda)-g(\\lambda')|\\leqq|\\vec v_\\lambda-\\vec v_{\\lambda'}|$ となり，$g$ は連続．\n\\begin{itemize}\n  \\item $\\lambda=0$：$P+\\vec v_0$ は $\\overrightarrow{\\mathrm{OV}}+\\vec v_0=\\overrightarrow{\\mathrm{OY}}$ をみたす点 Y を含むので $g(0)\\leqq\\mathrm{OY}\\leqq r$．\n  \\item $\\lambda=1$：$P+\\vec v_1$ の点 Z は $\\overrightarrow{\\mathrm{OZ}}=\\overrightarrow{\\mathrm{OX}}+\\overrightarrow{\\mathrm{WT}}$（$\\mathrm T\\in P$）で，W の選び方から $\\overrightarrow{\\mathrm{XZ}}\\cdot\\vec n=\\overrightarrow{\\mathrm{WT}}\\cdot\\vec n\\leqq0$．よって $\\overrightarrow{\\mathrm{ZO}}\\cdot\\vec n=\\overrightarrow{\\mathrm{XO}}\\cdot\\vec n-\\overrightarrow{\\mathrm{XZ}}\\cdot\\vec n\\geqq\\mathrm{XO}\\geqq r$ となり $\\mathrm{OZ}\\geqq r$．したがって $g(1)\\geqq r$．\n\\end{itemize}\n中間値の定理より $g(\\lambda_0)=r$ となる $\\lambda_0$ がある．このとき $P+\\vec v_{\\lambda_0}$ は $\\overline C$ と交わり（距離 $r$ を与える点は周上），$C^\\circ$ とは交わらない．すなわち許される位置で，X を含む．よって $\\mathrm X\\in E$．\n\n\\textbf{$H$ の形．}$\\vec u=\\overrightarrow{\\mathrm{AB}}$，$\\vec w=\\overrightarrow{\\mathrm{AC}}$（$P=\\triangle\\mathrm{ABC}$）とすると，$P$ の点は $\\overrightarrow{\\mathrm{AU}}=\\beta\\vec u+\\gamma\\vec w$（$\\beta,\\gamma\\geqq0$，$\\beta+\\gamma\\leqq1$）．したがって $H$ の点は $s\\vec u+t\\vec w$，$s=\\beta-\\beta'$，$t=\\gamma-\\gamma'$ と書け，\n$|s|\\leqq1$，$|t|\\leqq1$，$|s+t|=|(\\beta+\\gamma)-(\\beta'+\\gamma')|\\leqq1$．\n逆にこの3条件をみたす $(s,t)$ に対し，$s\\geqq0$ なら $\\beta=s$，$\\beta'=0$，$s<0$ なら $\\beta=0$，$\\beta'=-s$ とし，$t$ についても同様に $\\gamma,\\gamma'$ を定めれば（いずれも $0$ 以上で $\\beta-\\beta'=s$，$\\gamma-\\gamma'=t$），$s,t$ の符号で分けて $\\beta+\\gamma\\leqq1$，$\\beta'+\\gamma'\\leqq1$ が確かめられる（例えば $s,t\\geqq0$ なら $\\beta+\\gamma=s+t\\leqq1$，$\\beta'+\\gamma'=0$；$s\\geqq0>t$ なら $\\beta+\\gamma=s\\leqq1$，$\\beta'+\\gamma'=-t\\leqq1$）．よって\n\\[\nH=\\{s\\vec u+t\\vec w\\mid |s|\\leqq1,\\ |t|\\leqq1,\\ |s+t|\\leqq1\\}.\n\\]\n$H$ は凸である．実際，$\\vec h_1=\\overrightarrow{\\mathrm V_1\\mathrm U_1}$，$\\vec h_2=\\overrightarrow{\\mathrm V_2\\mathrm U_2}$（$\\mathrm U_i,\\mathrm V_i\\in P$），$0\\leqq\\lambda\\leqq1$ に対し $(1-\\lambda)\\vec h_1+\\lambda\\vec h_2=\\overrightarrow{\\mathrm{OU}}-\\overrightarrow{\\mathrm{OV}}$（$\\overrightarrow{\\mathrm{OU}}=(1-\\lambda)\\overrightarrow{\\mathrm{OU}_1}+\\lambda\\overrightarrow{\\mathrm{OU}_2}$，$\\overrightarrow{\\mathrm{OV}}$ も同様）で，$P$ は凸だから U，V $\\in P$．\n\n$\\vec u,\\vec w$ は平行でないので，$(s,t)$ と $s\\vec u+t\\vec w$ は1対1に対応する．$st$ 平面で上の範囲は頂点 $\\mathrm E_1(1,0)$，$\\mathrm E_2(0,1)$，$\\mathrm E_3(-1,1)$，$\\mathrm E_4(-1,0)$，$\\mathrm E_5(0,-1)$，$\\mathrm E_6(1,-1)$ の凸六角形で，原点と隣り合う2頂点を結ぶ6つの三角形 $\\{\\alpha\\mathrm E_i+\\alpha'\\mathrm E_{i+1}\\mid\\alpha,\\alpha'\\geqq0,\\ \\alpha+\\alpha'\\leqq1\\}$（$\\mathrm E_7=\\mathrm E_1$）に重なりなく分かれる．$\\mathrm E_i$ に対応するベクトルを\n\\[\n\\vec e_1=\\vec u,\\ \\vec e_2=\\vec w,\\ \\vec e_3=\\vec w-\\vec u,\\ \\vec e_4=-\\vec u,\\ \\vec e_5=-\\vec w,\\ \\vec e_6=\\vec u-\\vec w\n\\]\nとすると，$\\alpha\\mathrm E_i+\\alpha'\\mathrm E_{i+1}$ には $\\alpha\\vec e_i+\\alpha'\\vec e_{i+1}$ が対応するので，$H$ はこれらの終点を順に結ぶ六角形で，6つの三角形（O と $\\vec e_i,\\vec e_{i+1}$ の終点を頂点とする）に重なりなく分かれる．$\\vec u=(u_1,u_2)$，$\\vec w=(w_1,w_2)$，$D=u_1w_2-u_2w_1$ とおくと $S=\\frac12|D|$．$\\vec e_i=(x_i,y_i)$ について $x_iy_{i+1}-x_{i+1}y_i$ を計算すると\n\\[\n(\\vec e_1,\\vec e_2):\\ D,\\quad (\\vec e_2,\\vec e_3):\\ w_1(w_2-u_2)-w_2(w_1-u_1)=D,\\quad (\\vec e_3,\\vec e_4):\\ -(w_1-u_1)u_2+(w_2-u_2)u_1=D\n\\]\nで，$\\vec e_{i+3}=-\\vec e_i$ より残りの3つも $D$．よって6つの三角形の面積はどれも $\\frac12|D|=S$ で，$H$ は面積 $6S$ の凸六角形．また辺を表すベクトル $\\vec e_{i+1}-\\vec e_i$ は順に $\\vec w-\\vec u,\\ -\\vec u,\\ -\\vec w,\\ \\vec u-\\vec w,\\ \\vec u,\\ \\vec w$ なので，$H$ の周は $2(\\mathrm{AB}+\\mathrm{BC}+\\mathrm{CA})=2l$．\n\n\\textbf{面積．}$\\overrightarrow{\\mathrm{OX}}=\\overrightarrow{\\mathrm{OY}}+\\vec h$（$\\mathrm Y\\in\\overline C$，$\\vec h\\in H$）と表せる $\\iff$ X と $H$ の距離が $r$ 以下．この範囲 $N$ は，$H$ 自身，$H$ の各辺の外側に幅 $r$ で立てた長方形，各頂点を中心とする半径 $r$ の扇形（中心角は外角）に重なりなく分かれる（$H$ の外の点 X に最も近い $H$ の点が辺の内部の点なら X はその辺の長方形に，頂点ならその頂点の扇形に入る）．外角の和は $2\\pi$ なので\n\\[\n(N\\text{ の面積})=6S+r\\cdot2l+\\pi r^2.\n\\]\n$\\vec 0\\in H$ より $\\overline C\\subset N$ で，$E=N$ から $C^\\circ$ を除いたものだから\n\\[\n(E\\text{ の面積})=\\boldsymbol{2rl+6S}\n\\]\nとなり，$r,l,S$ のみで定まる．\n\n(2) 3辺を $a,b,c$（$a+b+c=l$）とし，$x=\\frac{l-2a}2$，$y=\\frac{l-2b}2$，$z=\\frac{l-2c}2$ とおくと，三角形の成立条件より $x,y,z>0$，$x+y+z=\\frac l2$ で，ヘロンの公式より $S^2=\\frac l2xyz$．$\\tau=\\frac{x+y}2$ とおくと $0<\\tau<\\frac l4$，$z=\\frac l2-2\\tau$ で，$xy\\leqq\\tau^2$（等号は $x=y$）より\n\\[\nxyz\\leqq g(\\tau)=\\tau^2\\left(\\frac l2-2\\tau\\right),\\qquad g'(\\tau)=l\\tau-6\\tau^2=\\tau(l-6\\tau).\n\\]\n$g$ は $0<\\tau\\leqq\\frac l6$ で増加，$\\frac l6\\leqq\\tau<\\frac l4$ で減少するので $g(\\tau)\\leqq g\\left(\\frac l6\\right)=\\frac{l^3}{216}$．よって\n\\[\nS^2\\leqq\\frac l2\\cdot\\frac{l^3}{216}=\\frac{l^4}{432},\n\\]\n等号は $x=y$ かつ $\\tau=\\frac l6$，すなわち $x=y=z=\\frac l6$，$a=b=c$ のとき．よって $S\\leqq\\dfrac{\\sqrt3}{36}l^2$ で，最大値は $\\boldsymbol{2rl+\\dfrac{\\sqrt3}{6}l^2}$（正三角形のとき）．\\hfill$\\square$"
+   }
+  ],
+  "idea": {
+   "tex": "点 X が通過領域に入る $\\iff$ 「X は円の内部になく，X$=\\mathrm Y+\\mathrm U-\\mathrm V$（Y は円板上，U，V は三角形上）と表せる」．十分性は，三角形を X を含むように平行移動する位置を円板と交わる位置から円の内部を避ける位置まで連続的に動かし，中間値の定理で接する位置をとる．$\\{\\mathrm U-\\mathrm V\\}$ は面積 $6S$，周 $2l$ の六角形 $H$ で，通過領域は「$H$ から距離 $r$ 以内の点全体」から円の内部を除いたもの．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) 記述\n(2) 2rl+(sqrt(3)/6)l^2"
+  },
+  "methods": [],
+  "tags": [
+   "通過領域",
+   "平行移動",
+   "中間値の定理",
+   "平行領域の面積"
+  ],
+  "provenance": {
+   "created": "2026-11-14"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "X-MIX-055",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "X-20",
+  "level": 4,
+  "minutes": 35,
+  "theme": "ランダムな順列のサイクルと期待値",
+  "topic": "ランダムな順列のサイクルと期待値",
+  "statement": {
+   "tex": "正の整数 $n$ に対し，$1,2,\\cdots,n$ を一列に並べた順列 $(a_1,a_2,\\cdots,a_n)$ を $n!$ 個の中から等確率で1つ選ぶ．各 $i$ について $i\\to a_i\\to a_{a_i}\\to\\cdots$ と番号をたどると，いつか必ず $i$ に戻る．このとき現れる相異なる番号の集合を $i$ を含むサイクル，その要素の個数をサイクルの長さといい，$i$ を含むサイクルの長さを $L_i$ と書く．また，相異なるサイクルの個数を $X$ とする．（例：$(a_1,\\cdots,a_5)=(3,5,1,4,2)$ では，サイクルは $\\{1,3\\}$，$\\{2,5\\}$，$\\{4\\}$ で，$L_1=2$，$L_4=1$，$X=3$．）\n\\begin{enumerate}\n  \\item $k=1,2,\\cdots,n$ に対し，$L_1=k$ となる確率は $\\dfrac1n$ であることを示せ．\n  \\item $n\\geqq2$ のとき，1 と 2 が同じサイクルに属する確率を求めよ．\n  \\item $X$ の期待値 $E(X)$ を $n$ で表せ．また $n=4$ のときの値を求めよ．\n  \\item $\\log(n+1)<E(X)\\leqq1+\\log n$ を示せ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 証明　(2) $\\dfrac12$　(3) $E(X)=\\displaystyle\\sum_{k=1}^{n}\\frac1k$，$n=4$ のとき $\\dfrac{25}{12}$　(4) 証明"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) $L_1=k$ となる順列では，$1\\to a_1=j_1\\to a_{j_1}=j_2\\to\\cdots\\to j_{k-1}\\to a_{j_{k-1}}=1$ となり，$j_1,\\cdots,j_{k-1}$ は $2,\\cdots,n$ のうちの相異なる $k-1$ 個を並べたものである．逆に，そのような並び $(j_1,\\cdots,j_{k-1})$ を1つ決め，$a_1=j_1,\\ a_{j_1}=j_2,\\ \\cdots,\\ a_{j_{k-1}}=1$ と定めると，値 $1,j_1,\\cdots,j_{k-1}$ はすでに使われたので，残りの $n-k$ 個の番号の位置には残りの $n-k$ 個の値を1対1に割り当てるしかなく，その方法は $(n-k)!$ 通りで，どれも $L_1=k$ をみたす順列になる．異なる $(j_1,\\cdots)$ や割り当てからは異なる順列が得られるので，$L_1=k$ となる順列の個数は\n\\[\n\\frac{(n-1)!}{(n-k)!}\\times(n-k)!=(n-1)!\n\\]\nであり，確率は $\\dfrac{(n-1)!}{n!}=\\dfrac1n$．\\hfill$\\square$\n\n(2) (1) の数え方で，$L_1=k$ かつ並び $(j_1,\\cdots,j_{k-1})$ に 2 が含まれるものを数える．2 の位置が $k-1$ 通り，残りの $k-2$ か所に $3,\\cdots,n$ のうち相異なるものを並べる方法が $\\dfrac{(n-2)!}{(n-k)!}$ 通り，残りの割り当てが $(n-k)!$ 通りで，計 $(k-1)(n-2)!$ 個．$k=1,\\cdots,n$ で和をとると\n\\[\n(n-2)!\\sum_{k=1}^n(k-1)=(n-2)!\\cdot\\frac{n(n-1)}2=\\frac{n!}2.\n\\]\nよって求める確率は $\\boldsymbol{\\dfrac12}$．\n\n(3) 長さ $L$ のサイクルに属する $L$ 個の番号 $i$ について $\\dfrac1{L_i}=\\dfrac1L$ なので，その和は1．よってどの順列についても\n\\[\nX=\\sum_{i=1}^n\\frac1{L_i}.\n\\]\n(1) の議論で 1 を任意の番号 $i$ に置きかえると，$L_i=k$ となる順列は $(n-1)!$ 個．したがって，すべての順列にわたる $X$ の総和は\n\\[\n\\sum_{i=1}^n\\sum_{k=1}^n\\frac1k\\times(n-1)!=n\\cdot(n-1)!\\sum_{k=1}^n\\frac1k=n!\\sum_{k=1}^n\\frac1k\n\\]\nで，\n\\[\n\\boldsymbol{E(X)=\\sum_{k=1}^n\\frac1k},\\qquad n=4\\text{ のとき }1+\\frac12+\\frac13+\\frac14=\\boldsymbol{\\frac{25}{12}}.\n\\]\n\n(4) $k\\leqq x\\leqq k+1$ で $\\dfrac1x\\leqq\\dfrac1k$ であり，等号は $x=k$ のときだけなので $\\displaystyle\\int_k^{k+1}\\frac{dx}x<\\frac1k$．$k=1,\\cdots,n$ で加えて\n\\[\n\\log(n+1)=\\int_1^{n+1}\\frac{dx}x<\\sum_{k=1}^n\\frac1k=E(X).\n\\]\nまた $n\\geqq2$ のとき，$k\\geqq2$ に対して $k-1\\leqq x\\leqq k$ で $\\dfrac1x\\geqq\\dfrac1k$（等号は $x=k$ のみ）より $\\dfrac1k<\\displaystyle\\int_{k-1}^k\\frac{dx}x$．$k=2,\\cdots,n$ で加えて $E(X)-1<\\log n$．$n=1$ のときは $E(X)=1=1+\\log1$．よって $E(X)\\leqq1+\\log n$．\\hfill$\\square$"
+   }
+  ],
+  "idea": {
+   "tex": "1 を含むサイクルは「1 から順にたどる相異なる番号の列」で決まるので，長さが $k$ になる順列の個数は $\\frac{(n-1)!}{(n-k)!}\\times(n-k)!=(n-1)!$ で $k$ によらない．サイクルの個数は「各番号に，その番号を含むサイクルの長さの逆数を割り当てた和」と書け，総和の順序を入れかえると期待値が調和数になり，対数で上下からはさめる．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) 証明\n(2) 1/2\n(3) 記述\n(4) 証明"
+  },
+  "methods": [],
+  "tags": [
+   "順列",
+   "サイクル",
+   "数え上げ",
+   "確率",
+   "期待値",
+   "区分求積",
+   "対数の評価"
+  ],
+  "provenance": {
+   "created": "2026-11-14"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "X-MIX-056",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "X-20",
+  "level": 5,
+  "minutes": 40,
+  "theme": "平方因子の分解による素数の逆数和の発散",
+  "topic": "平方因子の分解による素数の逆数和の発散",
+  "statement": {
+   "tex": "すべての素数を小さい順に $p_1=2,\\ p_2=3,\\ p_3=5,\\ \\cdots$ と並べ，$S_m=\\displaystyle\\sum_{k=1}^{m}\\frac1{p_k}$ とおく．\n\\begin{enumerate}\n  \\item すべての自然数 $n$ は，自然数 $a,\\ b$ を用いて $n=a^2b$ と表せることを示せ．ただし $b$ は，1より大きいどの平方数でも割り切れないものとする．\n  \\item $K,\\ N$ を自然数とする．$N$ 以下の自然数のうち，素因数がすべて $p_1,\\ p_2,\\ \\cdots,\\ p_K$ のいずれかであるもの（1も含める）の個数を $A$ とする．$A\\leqq2^K\\sqrt N$ を示せ．\n  \\item $K$ を自然数とし，$N=2^{2K+2}$ とおく．$N$ 以下の素数で $p_{K+1}$ 以上のものが少なくとも1つ存在し，それら全体の逆数の和は $\\dfrac12$ 以上であることを示せ．\n  \\item $\\displaystyle\\lim_{m\\to\\infty}S_m=\\infty$ であることを示せ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 証明　(2) 証明　(3) 証明　(4) 証明（正の無限大に発散）"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) $a^2$ が $n$ を割り切るような自然数 $a$ は $a=1$ を含み，$a\\leqq a^2\\leqq n$ より有限個なので，その最大のものを $a$ とし，$b=\\dfrac n{a^2}$ とおく．$b$ がある平方数 $c^2\\ (c\\geqq2)$ で割り切れるとすると，$n=a^2b$ は $(ac)^2$ で割り切れ，$ac>a$ が $a$ の最大性に反する．よって $n=a^2b$ は条件をみたす表し方である．\\hfill$\\square$\n\n(2) 数える対象の $n$ を (1) のように $n=a^2b$ と表す．$b$ は $n$ の約数なので，その素因数も $p_1,\\cdots,p_K$ のいずれかである．また $b$ はどの素数 $p$ についても $p^2$ で割り切れないので，$b$ の素因数分解で各 $p_i$ の指数は0か1である．よって $b$ は「$p_1,\\cdots,p_K$ のうちいくつか（0個も可）の積」であり，その候補は $2^K$ 個以下．また $a^2\\leqq n\\leqq N$ より $a\\leqq\\sqrt N$ で，$a$ の候補は $\\sqrt N$ 個以下．$n$ は組 $(a,b)$ から $n=a^2b$ で決まるので，異なる $n$ には異なる組が対応する．よって\n\\[\nA\\leqq2^K\\sqrt N .\\qquad\\square\n\\]\n\n(3) $N=2^{2K+2}$ のとき $\\sqrt N=2^{K+1}$ で，(2) より $A\\leqq2^K\\cdot2^{K+1}=\\dfrac N2$．\n\n$N$ 以下の素数で $p_{K+1}$ 以上のもの全体を $q_1,\\cdots,q_r$（$r\\geqq0$）とする．1以上 $N$ 以下の自然数 $n$ は，次のいずれかに当てはまる．\n\\begin{itemize}\n  \\item 素因数がすべて $p_1,\\cdots,p_K$ のいずれか（$n=1$ を含む）．このような $n$ は $A$ 個．\n  \\item $p_{K+1}$ 以上の素因数 $q$ をもつ．このとき $q\\leqq n\\leqq N$ だから $q$ は $q_1,\\cdots,q_r$ のどれかである．\n\\end{itemize}\n$N$ 以下で $q_i$ の倍数であるものは $\\left[\\dfrac N{q_i}\\right]\\leqq\\dfrac N{q_i}$ 個だから，\n\\[\nN\\leqq A+\\sum_{i=1}^{r}\\frac N{q_i}\\leqq\\frac N2+N\\sum_{i=1}^{r}\\frac1{q_i}\n\\qquad\\text{（}r=0\\text{ のとき和は0）}.\n\\]\nよって $\\displaystyle\\sum_{i=1}^{r}\\frac1{q_i}\\geqq\\frac12$．とくに和が0ではないので $r\\geqq1$，すなわち該当する素数は少なくとも1つ存在する．\\hfill$\\square$\n\n(4) 自然数 $K$ に対し，$2^{2K+2}$ 以下の素数の個数を $g(K)$ とする．(3) の $q_1,\\cdots,q_r$ はちょうど $p_{K+1},\\cdots,p_{g(K)}$ であり，$r\\geqq1$ より $g(K)\\geqq K+1$，さらに\n\\[\nS_{g(K)}-S_K=\\sum_{k=K+1}^{g(K)}\\frac1{p_k}\\geqq\\frac12 .\n\\]\n$K_1=1$，$K_{j+1}=g(K_j)$（$j=1,2,\\cdots$）と定めると，$K_1<K_2<\\cdots$ であり，$S_{K_{j+1}}-S_{K_j}\\geqq\\dfrac12$ を $j=1,\\cdots,J-1$ について加えて\n\\[\nS_{K_J}\\geqq S_1+\\frac{J-1}2>\\frac{J-1}2 .\n\\]\n任意の正の数 $L$ に対し，$\\dfrac{J-1}2>L$ となる自然数 $J$ をとる．$S_m$ は $m$ について増加するから，$m\\geqq K_J$ ならば $S_m\\geqq S_{K_J}>L$．したがって $\\displaystyle\\lim_{m\\to\\infty}S_m=\\infty$ である．\\hfill$\\square$"
+   }
+  ],
+  "idea": {
+   "tex": "$n=a^2b$（$b$ は平方因子をもたない）と分解すると，素因数が小さい $K$ 個の素数に限られる $N$ 以下の数は $b$ が $2^K$ 通り，$a$ が $\\sqrt N$ 通り以下なので高々 $2^K\\sqrt N$ 個．残りの数は $p_{K+1}$ 以上の素数のどれかの倍数で，その個数は $N\\sum\\frac1{p}$ 以下．$N=2^{2K+2}$ とすれば「$p_{K+1}$ から先の逆数の和は $\\frac12$ 以上」が出て，これを繰り返して発散．"
+  },
+  "methods": [],
+  "tags": [
+   "素数",
+   "素因数分解",
+   "数え上げ",
+   "ガウス記号",
+   "無限級数の発散",
+   "背理法を使わない評価"
+  ],
+  "provenance": {
+   "created": "2026-11-14"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "X-MIX-057",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "X-20",
+  "level": 4,
+  "minutes": 35,
+  "theme": "有限回のさいころでは作れない等確率の選び方と円周率の推定の誤差",
+  "topic": "有限回のさいころでは作れない等確率の選び方と円周率の推定の誤差",
+  "statement": {
+   "tex": "1から6までの目が同じ確率で出るさいころを用いる．\n\\begin{enumerate}\n  \\item $k$ を自然数とする．さいころをちょうど $k$ 回振り，出た目の列に応じて1から10までの整数を1つ定める．目の列からの定め方をどのように工夫しても，1から10までの整数がすべて同じ確率で得られることはないことを示せ．\n  \\item $N$ を2以上の整数とし，1から $N$ までの整数から $X,\\ Y$ を独立に，それぞれ等確率で選ぶ．$X^2+Y^2\\leqq N^2$ となる確率を $p_N$ とするとき，\n  \\[\n  \\frac\\pi4\\left(1-\\frac{\\sqrt2}{N}\\right)^2\\leqq p_N\\leqq\\frac\\pi4\n  \\]\n  を示せ．また，$\\displaystyle\\lim_{N\\to\\infty}p_N$ を求めよ．\n  \\item $N=100$ とし，(2) の $X,\\ Y$ の組を独立に $M$ 組作って，そのうち $X^2+Y^2\\leqq N^2$ をみたす組の個数を $Z$ とする．$T=\\dfrac{4Z}{M}$ とおくとき，$T$ の期待値 $E(T)$ について $|E(T)-\\pi|<0.09$ を示せ．さらに，$T$ の標準偏差 $\\sigma(T)$ について $\\sigma(T)\\leqq\\dfrac2{\\sqrt M}$ を示し，$M\\geqq40000$ ならば $\\sigma(T)\\leqq0.01$ であることを示せ．ただし $3.14<\\pi<3.15$ を用いてよい．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 証明　(2) 証明，$\\displaystyle\\lim_{N\\to\\infty}p_N=\\dfrac\\pi4$　(3) 証明"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) 目の列は $6^k$ 通りあり，どれも確率 $\\dfrac1{6^k}$ で起こる．整数 $1$ が定まるような目の列が $s$ 通りあるとすると，$1$ が得られる確率は $\\dfrac{s}{6^k}$．これが $\\dfrac1{10}$ に等しいとすると $6^k=10s$ となり，左辺 $6^k=2^k3^k$ は5で割り切れないのに右辺は5で割り切れて矛盾．よって1から10がすべて確率 $\\dfrac1{10}$ で得られることはない．\\hfill$\\square$\n\n（振る回数が途中の目によって変わり，多くとも $k$ 回で終わる方法も，終了後に残りを振って捨てることにすれば「ちょうど $k$ 回振る方法」に含まれるので，同様に不可能である．）\n\n(2) $X^2+Y^2\\leqq N^2$ をみたす組 $(X,Y)$ の個数を $L$ とすると $p_N=\\dfrac L{N^2}$．条件をみたす各格子点 $(x,y)$（$1\\leqq x,y\\leqq N$）に正方形 $Q(x,y)=\\{(u,v)\\mid x-1\\leqq u\\leqq x,\\ y-1\\leqq v\\leqq y\\}$ を対応させる．これらは面積1で互いに内部を共有しないから，その合併の面積は $L$ である．また半径 $r$ の四分円を $D_r=\\{(u,v)\\mid u\\geqq0,\\ v\\geqq0,\\ u^2+v^2\\leqq r^2\\}$ とする．\n\n\\textbf{上からの評価．} $(u,v)\\in Q(x,y)$ ならば $0\\leqq u\\leqq x$，$0\\leqq v\\leqq y$ より $u^2+v^2\\leqq x^2+y^2\\leqq N^2$．よって各 $Q(x,y)$ は $D_N$ に含まれ，$L\\leqq\\dfrac{\\pi N^2}4$，すなわち $p_N\\leqq\\dfrac\\pi4$．\n\n\\textbf{下からの評価．} $N\\geqq2$ より $N-\\sqrt2>0$．$(u,v)\\in D_{N-\\sqrt2}$ をとり，$\\rho=\\sqrt{u^2+v^2}\\leqq N-\\sqrt2$ とする．$x=[u]+1$，$y=[v]+1$ とおくと $x,y\\geqq1$，$(u,v)\\in Q(x,y)$，$x\\leqq u+1$，$y\\leqq v+1$．$(u+v)^2\\leqq2(u^2+v^2)$ より $u+v\\leqq\\sqrt2\\rho$ なので\n\\[\nx^2+y^2\\leqq(u+1)^2+(v+1)^2=\\rho^2+2(u+v)+2\\leqq\\rho^2+2\\sqrt2\\rho+2=(\\rho+\\sqrt2)^2\\leqq N^2 .\n\\]\nまた $x\\leqq u+1\\leqq\\rho+1<N$，同様に $y<N$．よって $(x,y)$ は数える対象の格子点であり，$D_{N-\\sqrt2}$ は正方形 $Q(x,y)$ たちの合併に含まれる．ゆえに $\\dfrac\\pi4(N-\\sqrt2)^2\\leqq L$，すなわち\n\\[\n\\frac\\pi4\\left(1-\\frac{\\sqrt2}N\\right)^2\\leqq p_N\\leqq\\frac\\pi4 .\n\\]\n$N\\to\\infty$ で左辺は $\\dfrac\\pi4$ に収束するので，はさみうちの原理より $\\displaystyle\\lim_{N\\to\\infty}p_N=\\boldsymbol{\\frac\\pi4}$．\\hfill$\\square$\n\n(3) 各組が条件をみたす確率は $p=p_{100}$ で，$M$ 組は独立だから $Z$ は二項分布 $B(M,p)$ に従う．よって $E(Z)=Mp$，$V(Z)=Mp(1-p)$ で\n\\[\nE(T)=4p,\\qquad V(T)=\\frac{16}{M^2}V(Z)=\\frac{16p(1-p)}M .\n\\]\n(2) と $\\left(1-\\frac{\\sqrt2}N\\right)^2\\geqq1-\\frac{2\\sqrt2}N$ より\n\\[\n\\pi-\\frac{2\\sqrt2\\,\\pi}{100}\\leqq E(T)\\leqq\\pi .\n\\]\n$\\sqrt2<1.415$，$\\pi<3.15$ より $2\\sqrt2\\,\\pi<2\\cdot1.415\\cdot3.15=8.9145<9$ なので $\\dfrac{2\\sqrt2\\,\\pi}{100}<0.09$．よって $|E(T)-\\pi|<0.09$．\n\nまた $p(1-p)=\\dfrac14-\\left(p-\\dfrac12\\right)^2\\leqq\\dfrac14$ より $V(T)\\leqq\\dfrac4M$，すなわち $\\sigma(T)\\leqq\\dfrac2{\\sqrt M}$．$M\\geqq40000$ ならば $\\sqrt M\\geqq200$ で $\\sigma(T)\\leqq\\dfrac2{200}=0.01$．\\hfill$\\square$"
+   }
+  ],
+  "idea": {
+   "tex": "ちょうど $k$ 回振って決める方法では，どの事象の確率も $\\frac{(\\text{整数})}{6^k}$ の形で，$\\frac1{10}$ にはなれない（$6^k$ は5で割り切れない）．格子点 $(x,y)$ に正方形 $[x-1,x]\\times[y-1,y]$ を対応させると，個数が面積になり，四分円（半径 $N$）に含まれ，半径 $N-\\sqrt2$ の四分円を覆う．これで $p_N$ が $\\frac\\pi4$ に収束する速さが $\\frac1N$ の程度とわかり，推定量のかたよりとばらつきを評価できる．"
+  },
+  "methods": [],
+  "tags": [
+   "確率",
+   "整除",
+   "格子点",
+   "面積の比較",
+   "円周率",
+   "二項分布",
+   "標準偏差"
+  ],
+  "provenance": {
+   "created": "2026-11-14"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
  }
 ]
