@@ -67,10 +67,12 @@ try {
   {
     const page = await newPage();
     await page.goto(U + '#today'); await page.waitForTimeout(1200);
-    ok(await page.locator('#lv button').count() === 6, '難易度ボタンが6つ（基礎〜最難関）');
+    ok(await page.locator('#lv button').count() === 6, '難易度ボタンが6つ（基礎〜数学探究）');
+    ok((await page.locator('#lv').innerText()).includes('数学探究') && (await page.locator('#lv').innerText()).includes('入試発展'), '新しい難易度名');
     ok(await page.locator('.banner').count() === 0, '起動時に警告が出ない');
     await page.evaluate("__lemma.open(['I-EXP-001', 'A-INT-005', 'q01'])"); await page.waitForTimeout(800);
     ok((await page.locator('.chip').allInnerTexts()).some(t => t.includes('入力して採点')), '入力して採点のチップ');
+    ok((await page.locator('.chip.val').allInnerTexts()).some(t => /価値 [高中低]/.test(t)), '教育的価値のチップ');
     await page.locator('#conf button').nth(2).click();
     const inputs = page.locator('#inputs input');
     const vals = ['1', '0', '-10', '0', '9', '-16', '-16<k<9'];

@@ -1,5 +1,5 @@
 :root {
-  --lemma-version: '0.14.1';
+  --lemma-version: '0.15.0';
   --paper: #f6f4ee;
   --card: #ffffff;
   --ink: #1c1d21;
@@ -601,3 +601,8 @@ body.sheet-open { overflow: hidden; }
 .chip.gbtn.fig { color: var(--accent); border-color: color-mix(in srgb, var(--accent) 45%, var(--line)); }
 .chip.gbtn.fig.locked { opacity: .5; }
 .fig-note { font-size: 13px; margin: 0 0 10px; line-height: 1.6; }
+
+/* 教育的価値（難易度とは別） */
+.chip.val { background: transparent; border: 1px solid var(--line); color: var(--ink-2); }
+.chip.val.v3 { border-color: var(--accent); color: var(--accent); font-weight: 600; }
+.chip.val.v1 { opacity: .75; }

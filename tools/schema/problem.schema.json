@@ -296,6 +296,12 @@
           "description": "true＝答え合わせのあとで見せる、false＝最初から、null＝問題文から判断"
         }
       }
+    },
+    "value": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 3,
+      "description": "教育的価値（管理表の「教育的価値」列。1=低 2=中 3=高）。無いときは content/values.json の自動判定"
     }
   }
 }

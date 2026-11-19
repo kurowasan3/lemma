@@ -31,6 +31,18 @@ const st = JSON.parse(fs.readFileSync(path.join(root, 'tests/fixtures/state-v0.6
 ok(CAT.pickPractice(st, { size: 8 }).length === 8, 'pickPractice()');
 ok(Array.isArray(CAT.pickReview(st, { size: 5 })), 'pickReview()');
 
+// 教育的価値：1〜3 だけが入り、出題では価値の高い問題が多めに選ばれること
+ok(CAT.ENTRIES.every(e => e.v === undefined || e.v === 1 || e.v === 3), '教育的価値は 1 か 3 だけが書かれる（2 は既定）');
+ok(CAT.ENTRIES.some(e => e.v === 3) && CAT.ENTRIES.some(e => e.v === 1), '教育的価値の高・低がどちらもある');
+{
+  const empty = { attempts: {}, problems: {} };
+  const hi = CAT.pool({ levels: [3] }).filter(e => CAT.valueOf(e) === 3).length / CAT.pool({ levels: [3] }).length;
+  const byId = new Map(CAT.ENTRIES.map(e => [e.id, e]));
+  let n = 0, h = 0;
+  for (let i = 0; i < 40; i++) for (const it of CAT.pickPractice(empty, { size: 10, levels: [3] })) { n++; if (CAT.valueOf(byId.get(it.pid)) === 3) h++; }
+  ok(h / n > hi, `価値の高い問題が多めに出る（出題 ${(h / n).toFixed(2)} > 全体 ${hi.toFixed(2)}）`);
+}
+
 // 全問の本文を読み、共通ビューが作れること
 await CAT.ensureBodies(CAT.ENTRIES.map(e => e.id));
 ok(CAT.staleDataFiles().length === 0, `本文ファイルの版が揃っていること ${CAT.staleDataFiles()}`);

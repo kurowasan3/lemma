@@ -105,7 +105,7 @@ def legacy(argv):
         except (TypeError, ValueError):
             lv = 3
             WARN.append(f'{pid}: 難易度が数でないので 3 にしました')
-        lv = min(5, max(0, lv))   # 0=基礎 1=標準 2=2次基礎 3=国立2次 4=難関 5=最難関
+        lv = min(5, max(0, lv))   # 0=基礎 1=標準 2=2次基礎 3=入試標準 4=入試発展 5=数学探究
         try:
             mins = int(rec['minutes']) if rec['minutes'] else None
         except (TypeError, ValueError):

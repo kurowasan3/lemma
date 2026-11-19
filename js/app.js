@@ -22,7 +22,7 @@ import {
   subjectsWithFields, pool, pickPractice, pickReview, dueEntries, nextReviewTime,
 } from './catalog.js';
 
-const VERSION = '0.14.1';
+const VERSION = '0.15.0';
 const KEY = 'lemma.v2';
 let sync = null, syncApplying = false, syncStatus = null;   // アカウントと同期（initSync で用意）
 const $ = (sel, el = document) => el.querySelector(sel);
@@ -630,10 +630,17 @@ function problemView(e) {
   return { id: e.id, kind: e.kind === 'bank' ? 'written' : 'interactive', subject: f.subject, fieldName: f.name,
     level: e.lv, levelName: LEVELS[e.lv], minutes: e.t || null, grading: e.in ? {} : null };
 }
+// 教育的価値（難易度とは別。高・中・低。付いていない問題は中）
+const VALUE_NAMES = { 1: '低', 2: '中', 3: '高' };
+function valueChip(e) {
+  const v = (e && e.v) || 2;
+  return `<span class="chip val v${v}" title="教育的価値：他の問題に広く使える考え方を学べるほど高い">価値 ${VALUE_NAMES[v]}</span>`;
+}
 function metaChips(e) {
   const p = problemView(e);
   return `<span class="chip">${esc(p.subject)}・${esc(p.fieldName)}</span>
         <span class="chip lv${p.level}">${p.levelName}</span>
+        ${e.kind === 'builtin' ? '' : valueChip(e)}
         ${p.minutes ? `<span class="chip plain">目安 ${p.minutes}分</span>` : ''}
         ${p.kind === 'written' ? `<span class="chip plain">${gradingLabel(e, p)}</span>` : ''}`;
 }
@@ -1886,7 +1893,7 @@ function renderSettings() {
           <li><strong>交互練習</strong>：中学1年787人の無作為化試験で、1か月後のテストが 61% 対 38%。<a href="https://www.structural-learning.com/research-briefings/mix-it-up" target="_blank" rel="noopener">Rohrer ほか 2020</a></li>
           <li><strong>答えを出さないヒント</strong>：制限なしのAIで練習した生徒は、AIなしの試験で成績が下がった。<a href="https://papers.ssrn.com/abstract=4895486" target="_blank" rel="noopener">Bastani ほか 2025</a></li>
         </ul>
-        <p class="muted" style="margin:10px 0 0">復習間隔は FSRS の考え方を簡略化したモデルで推定しています。難関・最難関レベルでの効果は未検証です。</p>
+        <p class="muted" style="margin:10px 0 0">復習間隔は FSRS の考え方を簡略化したモデルで推定しています。入試発展・数学探究レベルでの効果は未検証です。</p>
       </div>
     </div>`;
   drawAccount();

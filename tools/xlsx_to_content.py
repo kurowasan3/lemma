@@ -28,7 +28,7 @@ HEADERS = {'ID': 'id', '作成日': 'date', '科目': 'subject', '分野': 'fiel
            '想定時間(分)': 'minutes', '問題文（LaTeX）': 'q', '答え': 'answer', '解答・解説': 'solution',
            '核となるアイデア': 'idea', '参考元（非公開）': 'source', '作成方法': 'method', '検証:二重解答': 'v1',
            '検証:SymPy等': 'v2', '検証:人間確認': 'v3', '検証済み': 'verified', 'タグ': 'tags', 'メモ': 'memo',
-           '入力用の答え': 'input', '図の式': 'figure'}
+           '入力用の答え': 'input', '図の式': 'figure', '教育的価値': 'value'}
 PRIVATE = {'source', 'memo'}          # 決して書き出さない列
 INCLUDE_METHOD = False                # 「作成方法」を公開データに入れるか（未決定のため入れない）
 SCHEMA = 'lemma.problem/1'
@@ -87,6 +87,19 @@ def parse_figure(raw):
     if not exprs:
         return None
     return {'mode': mode, 'exprs': exprs, 'after': after}
+
+
+VALUE_WORDS = {'1': 1, '2': 2, '3': 3, '低': 1, '中': 2, '高': 3, '★': 1, '★★': 2, '★★★': 3}
+
+
+def parse_value(raw):
+    """「教育的価値」列：1〜3（または 低・中・高、★〜★★★）。空欄は None（自動判定を使う）"""
+    if raw is None or str(raw).strip() == '':
+        return None
+    key = str(raw).strip().replace('.0', '')
+    if key not in VALUE_WORDS:
+        raise ImportFailure(f'「教育的価値」は 1〜3（または 低・中・高）で書いてください：{raw}')
+    return VALUE_WORDS[key]
 
 
 def split_tags(raw):
@@ -174,6 +187,9 @@ def to_problem(rec, key, issues):
     fig = parse_figure(rec.get('figure'))
     if fig:
         p['figure'] = fig
+    val = parse_value(rec.get('value'))
+    if val:
+        p['value'] = val
     p['methods'] = []
     p['tags'] = [t for t in split_tags(raw_tags) if t != '非表示']
     prov = {}

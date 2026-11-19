@@ -41,7 +41,7 @@ def load_content(content):
 
 def data_version(files, tax_path):
     h = hashlib.sha256()
-    extra = [tax_path.parent / 'tags.json', tax_path.parent / 'choices.json', tax_path.parent / 'figures.json'] + sorted((tax_path.parent / 'collections').glob('*.json'))
+    extra = [tax_path.parent / 'tags.json', tax_path.parent / 'choices.json', tax_path.parent / 'figures.json', tax_path.parent / 'values.json'] + sorted((tax_path.parent / 'collections').glob('*.json'))
     for p in [tax_path] + list(files) + [x for x in extra if x.exists()]:
         h.update(p.name.encode())
         h.update(p.read_bytes())
@@ -101,6 +101,8 @@ def build(content=ROOT / 'content', out=ROOT / 'data'):
     choices = json.loads(cpath.read_text(encoding='utf-8')) if cpath.exists() else {}
     fpath = content / 'figures.json'
     figures = json.loads(fpath.read_text(encoding='utf-8')) if fpath.exists() else {}
+    vpath = content / 'values.json'
+    values = json.loads(vpath.read_text(encoding='utf-8')) if vpath.exists() else {}
     index, bodies, hidden, search = [], {}, 0, []
     for p in problems:
         if p['quality']['status'] != 'published':
@@ -122,6 +124,14 @@ def build(content=ROOT / 'content', out=ROOT / 'data'):
             af = figures.get(p['id'])
             if af and af['h'] == hashlib.sha1(p['statement']['tex'].encode('utf-8')).hexdigest()[:12]:
                 b['fg'] = {'m': af['mode'], 'e': af['exprs'], 'a': 1 if af['after'] else 0, 's': 'auto'}
+        # 教育的価値：管理表の「教育的価値」列、なければ判定済みのもの（問題文が同じときだけ）。2（中）は書かない
+        v = p.get('value')
+        if not v:
+            jv = values.get(p['id'])
+            if jv and jv['h'] == hashlib.sha1(p['statement']['tex'].encode('utf-8')).hexdigest()[:12]:
+                v = jv['v']
+        if v and v != 2:
+            e['v'] = v
         ch = choices.get(p['id'])
         if ch and b.get('in') == ch['spec']:
             b['ch'] = ch['f']      # 選択式の選択肢（欄の順。先頭が正解、表示のときに混ぜる。null の欄は入力式）

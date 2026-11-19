@@ -1,11 +1,11 @@
 // 教材データ：科目・単元・解法カード・問題
-// 難易度の目安：2 = 標準 / 3 = 国立2次（旧帝大）級 / 4 = 最難関（東大・京大）級
+// 難易度の目安：2 = 標準 / 3 = 入試標準 / 4 = 数学探究
 // 文章中の数式は $...$（KaTeX）。String.raw でバックスラッシュをそのまま書く。
 // type: num（数値）/ expr（文字式・vars の範囲で乱数代入して判定。[lo, hi, 'int'] は整数のみ）
 //       nums（数の組・順不同）/ choice（choices[0] が正解）/ sketch（概形を描いて自己評価）
 
 const T = String.raw;
-export const FILE_VERSION = '0.14.1';
+export const FILE_VERSION = '0.15.0';
 
 export const SUBJECTS = [
   { id: 'I', name: '数学I' },
@@ -38,7 +38,7 @@ export const UNITS = [
   { id: 'c-conic', subject: 'C', name: '2次曲線・極座標' },
 ];
 
-export const LEVELS = { 2: '標準', 3: '国立2次', 4: '最難関' };
+export const LEVELS = { 2: '標準', 3: '入試標準', 4: '数学探究' };
 
 export const CARDS = [
   // ---- 数学I ----
