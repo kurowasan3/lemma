@@ -4,7 +4,7 @@
 //   ログインしなければ何も送らない（今まで通り端末の中だけ）。
 import { SUPABASE_URL, SUPABASE_KEY } from './config.js';
 
-export const FILE_VERSION = '0.10.0';
+export const FILE_VERSION = '0.11.0';
 const AUTH_KEY = 'lemma.auth';
 export const enabled = () => !!(SUPABASE_URL && SUPABASE_KEY);
 
@@ -14,9 +14,29 @@ export const LWW_KEYS = ['settings', 'practice', 'graphExprs', 'graph3Exprs'];
 const entryKey = (l) => `${l.p}|${l.t}`;
 const nkeys = (o) => Object.keys(o || {}).length;
 
+// 記録を消した印（resetAt）：「すべて消す」「バックアップで置き換える」をした時刻（ms）。
+//   印の新しい側は、その時刻より前の記録も含めて全部が正しい。印の古い側（まだ消したことを知らない端末・サーバー）からは、
+//   その時刻より前の記録を持ち込まない（持ち込むと消した記録がよみがえる）。
+function dropBefore(S, at) {
+  const keep = (o) => Object.fromEntries(Object.entries(o || {}).filter(([, v]) => v && (v.last || v.t || 0) >= at));
+  const day = new Date(at); day.setHours(0, 0, 0, 0);
+  const dk = `${day.getFullYear()}-${String(day.getMonth() + 1).padStart(2, '0')}-${String(day.getDate()).padStart(2, '0')}`;
+  return {
+    ...S,
+    log: (S.log || []).filter(l => l.t >= at),
+    pstat: keep(S.pstat), cards: keep(S.cards), problems: keep(S.problems), bookmarks: keep(S.bookmarks),
+    explains: Object.fromEntries(Object.entries(S.explains || {}).map(([k, v]) => [k, (v || []).filter(e => e.t >= at)]).filter(([, v]) => v.length)),
+    streak: S.streak && (S.streak.last || '') > dk ? S.streak : { last: '', count: 0 },
+    drill: S.drill ? { ...S.drill, best: {} } : undefined,   // 自己ベストも記録のうち
+  };
+}
+
 export function mergeState(L, R) {
   if (!R) return L;
   if (!L) return R;
+  const resetAt = Math.max(L.resetAt || 0, R.resetAt || 0);
+  if ((L.resetAt || 0) < resetAt) L = dropBefore(L, resetAt);
+  if ((R.resetAt || 0) < resetAt) R = dropBefore(R, resetAt);
   const out = { ...R, ...L };
   // 解答の記録：両方を足す（同じ回＝同じ問題・同じ時刻は1つに。項目の多い方に、足りない項目を補う）
   const m = new Map();
@@ -32,6 +52,9 @@ export function mergeState(L, R) {
   const newer = (a, b) => { const o = { ...(b || {}) }; for (const [k, v] of Object.entries(a || {})) if (!o[k] || (v && v.last >= o[k].last)) o[k] = v; return o; };
   out.pstat = newer(L.pstat, R.pstat);
   out.cards = newer(L.cards, R.cards);
+  // ブックマーク：問題ごとに、最後に付け外しした方（外した印 on:false も残して、よみがえらないようにする）
+  const bmNewer = (a, b) => { const o = { ...(b || {}) }; for (const [k, v] of Object.entries(a || {})) if (!o[k] || (v && v.t >= o[k].t)) o[k] = v; return o; };
+  out.bookmarks = bmNewer(L.bookmarks, R.bookmarks);
   // 解いた問題：最後に解いた時刻は新しい方、回数は多い方（記録の数より少なくはしない）
   const count = {};
   for (const l of out.log) count[l.p] = (count[l.p] || 0) + 1;
@@ -49,6 +72,7 @@ export function mergeState(L, R) {
   }
   // 計算トレーニングの自己ベスト：正答率が高い方、同じなら速い方
   const dl = L.drill || {}, dr = R.drill || {};
+  if (!L.drill && !R.drill) delete out.drill;
   if (L.drill || R.drill) {
     const best = { ...(dr.best || {}) };
     for (const [k, v] of Object.entries(dl.best || {})) {
@@ -67,6 +91,7 @@ export function mergeState(L, R) {
   for (const k of LWW_KEYS) { if (k in lw) out[k] = lw[k]; else delete out[k]; }
   out.settingsAt = Math.max(L.settingsAt || 0, R.settingsAt || 0);
   out.schema = L.schema;
+  if (resetAt) out.resetAt = resetAt; else delete out.resetAt;
   return out;
 }
 
@@ -185,11 +210,20 @@ export function createSync({ getState, applyState, onStatus = () => {} }) {
     async sendCode(email) {
       await call('/auth/v1/otp', { method: 'POST', body: { email: String(email).trim(), create_user: true } });
     },
-    async verify(email, code) {
+    // autoSync:false のときは同期せずに戻る（アプリが、端末とサーバーの記録を合わせるかを先に聞くため）
+    async verify(email, code, { autoSync = true } = {}) {
       const d = await call('/auth/v1/verify', { method: 'POST', body: { type: 'email', email: String(email).trim(), token: String(code).replace(/\s/g, '') } });
       if (!d || !d.access_token) throw new SyncError('ログインできませんでした', 'no_session');
       setSession(d); st.status = 'idle'; st.error = null; emit();
-      return syncNow();
+      return autoSync ? syncNow() : null;
+    },
+    // サーバーの記録の概要（無ければ null）：{ n: 解答の数, last: 最後に解いた時刻 }
+    async peek() {
+      await fresh();
+      const rows = await call(`/rest/v1/lemma_state?select=state,rev&user_id=eq.${session.user.id}`, { auth: true });
+      if (!rows.length) return null;
+      const log = (rows[0].state && rows[0].state.log) || [];
+      return { n: log.length, last: log.length ? log[log.length - 1].t : 0 };
     },
     syncNow,
     // 問題を解いたあとなど：20秒まとめてから同期

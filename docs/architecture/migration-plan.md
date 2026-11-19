@@ -2,6 +2,21 @@
 
 各段階は「既存の機能・テストを壊さない」「戻せる」ことを条件にする。各段階の完了条件には必ず `node tests/run.mjs --e2e` が全部通ることを含める。
 
+## 進捗（2026-11-19、v0.11）
+
+| 項目 | 状態 |
+| --- | --- |
+| P0 CI の復活 | ✓ `.github/workflows/ci.yml`（検査＋Cloudflare Pages への配置。配置は変数を登録したときだけ） |
+| P0 ドメイン・屋号・Supabase の確認 | 未（運営者の作業） |
+| P1 配信用ビルド・CSP・noindex・robots.txt | ✓ `tools/build_dist.py`、`tests/e2e_dist.mjs` |
+| P1 利用規約（転載・再配布・機械的な収集の禁止） | ✓ `terms.html` |
+| P1 Cloudflare への配置・レート制限 | 未（アカウントとドメインが必要。README「公開する」の手順） |
+| P1 引き継ぎコード | 未（Edge Function が必要） |
+| P2 ブックマーク・ログイン中の消去・ログイン時の確認・読み込みの検査・ログアウト時の消去 | ✓ アプリ側（JSONB のまま、`resetAt` と `bookmarks` を追加） |
+| P2 `study_state`・`study_events` への移行 | 未 |
+
+リポジトリは非公開にする方針（2026-11-19）。GitHub の無料プランでは非公開リポジトリから Pages を配信できないので、**非公開にする前に Cloudflare Pages への配置（P1）を済ませる**こと。
+
 ## 0. 依存関係
 
 ```

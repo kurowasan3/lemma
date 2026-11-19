@@ -1,0 +1,63 @@
+# 検査と配信
+#   push・プルリクエストのたびに node tests/run.mjs --e2e（データの監査・採点・同期・ブラウザでの通し操作・CSP つきの dist）を実行する。
+#   main への push で、検査が通ったら dist/（アプリ本体と data/ だけ）を Cloudflare Pages に配置する。
+#   配置を有効にするには、リポジトリの Settings → Secrets and variables → Actions で次を登録する：
+#     Variables：CF_PAGES_PROJECT（Cloudflare Pages のプロジェクト名）
+#     Secrets  ：CLOUDFLARE_API_TOKEN（Pages の編集権限だけを付けたトークン）、CLOUDFLARE_ACCOUNT_ID
+#   登録していない間は、検査だけが動く（配置はとばす）。
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: 依存（Python・Playwright）
+        run: |
+          pip install openpyxl jsonschema sympy antlr4-python3-runtime==4.11
+          npm install --no-save --no-package-lock playwright
+          npx playwright install --with-deps chromium
+      - name: 検査（node tests/run.mjs --e2e）
+        run: node tests/run.mjs --e2e
+      - name: 配信用 dist/ を作る
+        run: python3 tools/build_dist.py dist
+      - uses: actions/upload-artifact@v4
+        with:
+          name: dist
+          path: dist
+          retention-days: 7
+
+  deploy:
+    needs: test
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push' && vars.CF_PAGES_PROJECT != ''
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: dist
+          path: dist
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Cloudflare Pages に配置
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: npx --yes wrangler@3 pages deploy dist --project-name "${{ vars.CF_PAGES_PROJECT }}" --branch main

@@ -1,6 +1,9 @@
 # Lemma 受験数学
 
-答えを見せるのではなく、自力で解ける頭をつくる大学受験数学アプリ（試作版 v0.10）。
+答えを見せるのではなく、自力で解ける頭をつくる大学受験数学アプリ（試作版 v0.11）。
+
+**理念**：お金がなく参考書すら買えない受験生でも、登録なしで十分に使えること。運営は、余裕のある人の有料会員（広告非表示など）で成り立たせる。
+基礎・標準の少ない問題は周回し、難関の問題は量をこなす。演習・復習・ヒント・解説は誰でも無料。
 iPhone・iPad のブラウザで動き、ホーム画面に追加するとアプリとして使えます（PWA）。
 
 ## できること
@@ -23,7 +26,10 @@ iPhone・iPad のブラウザで動き、ホーム画面に追加するとアプ
 - **定着度**：科目のレーダー図と分野ごとの色分けで得意・苦手がひと目でわかる（タップでその分野を演習）。自信と結果のズレも
 - **検索**：テーマ・タグ・問題文の言葉で問題を探す（表記ゆれ・言い換えはタグ辞書でまとめて検索）。結果からそのまま演習
 - **問題セット**：「基礎ひとまわり」などのセットを順番に。`#set=<ID>`（セット）・`#ids=<問題ID,…>`（問題）・`#search=<言葉>`（検索）のリンクで共有できる
-- オフライン動作、記録の書き出し・読み込み
+- **ブックマーク**：問題画面の ☆ で付け外し。ホームの「ブックマークした問題」から混ぜて出題。同期すると端末どうしで揃う
+- **記録の消去**：ログイン中は「この端末とアカウントの記録を消す」か「ログアウトしてこの端末の記録だけ消す」を選べる（消した印 `resetAt` で、ほかの端末の古い記録がよみがえらない）
+- **ログイン時の確認**：端末とアカウントの両方に記録があるときだけ、合わせるか・アカウントの記録だけを使うか（端末の分は書き出してから消す）を聞く。ログアウト時に端末の記録を消すこともできる（共用の端末向け）
+- オフライン動作、記録の書き出し・読み込み（読み込みは形を確かめてから、今の記録と合わせるか置き換えるかを選ぶ）
 
 収録範囲：問題管理表の 4,236問（20分野）＋ 自動判定つきの内蔵問題 61問。難易度は 0=基礎・1=標準・2=2次基礎・3=国立2次・4=難関・5=最難関 の6段階（「今日」の難易度ボタンで絞り込める。基礎だけを選べば易しいセットになる）。
 
@@ -42,7 +48,7 @@ node tests/run.mjs                                       # 検査（全部 ✓ �
 1. いまのリポジトリの zip と管理表を、日付を付けて保存しておく（戻すとき用）
 2. 上の2行を実行。`--check` を付けると、書き出さずに「今のファイルと違うか」だけ確かめられる
 3. `content`・`data`・`tests` フォルダごとリポジトリにアップロード（一部だけだと「問題データの版が揃っていません」と表示されます）
-4. GitHub の「Actions」タブで ✓ になっているか確認
+4. GitHub の「Actions」タブで ✓ になっているか確認（`.github/workflows/ci.yml`。`node tests/run.mjs --e2e` と同じ検査）
 
 - **管理表（xlsx）はリポジトリに入れない**（参考元を含むため）。「参考元」「メモ」は content/・data/ に出しません。`python3 tools/audit_data.py --xlsx Lemma問題管理表.xlsx` で漏れがないか確かめられます
 - 分野ID（`I-01` など）は `content/taxonomy.json` で固定されていて、「分野一覧」シートの並びを変えても変わりません。新しい分野を足すときは `--new-fields` を付けて取り込みます
@@ -101,24 +107,32 @@ python3 tools/build_app_data.py    # data/ に反映
 - 記録の合わせ方：解答の記録は両方を足し合わせ、復習の予定は問題ごとに新しい方、設定は最後に変えた方（`js/sync.js` の `mergeState`）。2台が同時に書いても、版番号で取り直して合わせ直す
 - Supabase の標準のメール送信は、プロジェクトのメンバーのアドレスにしか送れず、1時間に数通まで。ほかの人に使ってもらうときは Authentication → Emails → SMTP Settings で外部のメール送信サービスを設定する
 
-## GitHub Pages で公開する
+## 公開する（配信用の dist/）
 
-1. GitHub で新しいリポジトリを作る（例：`lemma-math`、Public）
-2. このフォルダの中身を**そのまま**リポジトリの直下にアップロード
-   - Web から：「Add file」→「Upload files」に、フォルダの中身（`index.html` など）をまとめてドラッグ
-   - ターミナルから：
-     ```sh
-     cd lemma
-     git init && git add . && git commit -m "Lemma v0.1"
-     git branch -M main
-     git remote add origin https://github.com/<ユーザー名>/lemma-math.git
-     git push -u origin main
-     ```
-3. リポジトリの「Settings」→「Pages」→ Source を「Deploy from a branch」、Branch を `main` / `/ (root)` にして Save
-4. 1〜2分後に `https://<ユーザー名>.github.io/lemma-math/` で開ける
+リポジトリは非公開にし、**アプリが動くのに必要なファイルだけ**を配信します。GitHub Pages はリポジトリ全体（`content/`・`tools/`・`tests/` も）を配信してしまい、無料プランでは非公開のリポジトリから配信できないため使いません。
+
+```sh
+python3 tools/build_dist.py        # dist/ を作る（index.html・privacy.html・terms.html・sw.js・css/・js/・vendor/・icons/・data/ だけ）
+```
+
+- `dist/_headers`：CSP などのセキュリティヘッダー（Cloudflare Pages の書式）。外部のスクリプトを読めないようにする。
+  `script-src` の `'unsafe-eval'` は、`js/parser.js` が式を関数にする（`new Function`）ために必要
+- `dist/robots.txt`：検索・収集ツールに読ませない。アプリの HTML にも `noindex`
+- 配信してはいけないもの（`content/`・`tools/`・`.py`・`.md` など）が入っていたら、`build_dist.py` が失敗する
+- `node tests/e2e_dist.mjs`：dist を CSP つきで配信して、採点・グラフ・KaTeX が動くこと、`content/` などが取れないことを確かめる
+
+### Cloudflare Pages に自動で配置する
+
+1. Cloudflare で Pages のプロジェクトを作る（Git 連携ではなく「Direct Upload」）。独自ドメインを付ける
+2. GitHub のリポジトリの Settings → Secrets and variables → Actions に登録：
+   Variables `CF_PAGES_PROJECT`（プロジェクト名）、Secrets `CLOUDFLARE_API_TOKEN`（Pages の編集権限だけ）・`CLOUDFLARE_ACCOUNT_ID`
+3. 以後、main に push すると、検査が通ったときだけ dist/ が配置される（`.github/workflows/ci.yml`）
+4. Cloudflare の Security → WAF → Rate limiting で、`/data/` への短時間の大量アクセスを制限する（例：同じ IP から 10秒に 60回まで）
 5. iPhone の Safari で開き、共有ボタン →「ホーム画面に追加」
 
 更新したときは `sw.js` の `VERSION` を上げると、端末のキャッシュも入れ替わります。
+URL（ドメイン）を変えると、ログインしていない人の端末の記録は新しい URL から見えなくなります（記録はブラウザの中で URL ごとに分かれるため）。
+移る前に、設定 →「学習記録のバックアップ」で書き出し、新しい URL で読み込んでもらってください（ログインしている人は、新しい URL でログインすれば戻ります）。
 
 ## 問題を追加する
 
@@ -161,12 +175,16 @@ js/ui.js              アイコン・効果音・テーマ・鳥のルート
 js/sync.js            アカウント（メールのコードでログイン）と学習記録の同期
 js/config.js          同期の接続先（公開してよい値だけ）
 privacy.html          プライバシーポリシー
+terms.html            利用規約（転載・再配布・機械的な収集の禁止など）
 supabase/schema.sql   同期用のデータベースの定義
 content/              正規データ（LaTeX のまま。taxonomy.json＝分野ID、problems/＝問題、methods.json＝解法）
 data/                 アプリ用データ（content/ から tools/build_app_data.py で生成）
 docs/data-spec.md     データ仕様
 tools/                取り込み・変換・検査スクリプト（import_xlsx.py が入口）、schema/＝JSON Schema
-tests/                検査（run.mjs がまとめ役、e2e.mjs＝ブラウザでの通し操作、golden/＝問題ID の台帳）
+tests/                検査（run.mjs がまとめ役、e2e.mjs＝ブラウザでの通し操作、e2e_dist.mjs＝配信用 dist を CSP つきで、golden/＝問題ID の台帳）
+tools/build_dist.py   配信用の dist/ を作る（必要なファイルだけ＋_headers＋robots.txt）
+.github/workflows/    検査と Cloudflare Pages への配置
+docs/architecture/    Web サービス化の設計書（監査・DB・匿名性・収益化・移行計画）
 content/tags.json     タグ辞書（正規名と別名。手で直してよい）
 content/collections/  問題セット（1セット1ファイル。order＝表示順）
 js/scheduler.js       復習間隔の推定（FSRSを簡略化）と出題の組み立て

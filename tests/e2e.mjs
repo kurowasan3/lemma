@@ -219,6 +219,9 @@ try {
       await page.fill('#acct-code', '000000'); await page.click('#acct-verify'); await page.waitForTimeout(500);
       const wrong = await page.locator('#acct-err').innerText();
       await page.fill('#acct-code', '123456'); await page.click('#acct-verify'); await page.waitForTimeout(1500);
+      // 端末とアカウントの両方に記録があるときは、合わせるかを聞かれる
+      page.asked = await page.locator('.chooser').count() > 0;
+      if (page.asked) { await page.click('.chooser [data-k="merge"]'); await page.waitForTimeout(1500); }
       return wrong;
     };
     const A = await newPage({ state: { ...old, log: old.log.slice(0, 25) } });
@@ -227,6 +230,7 @@ try {
     ok((await A.locator('#acct').innerText()).includes('me@example.com') && (await A.locator('#acct-state').innerText()).includes('最後の同期'), '端末A：ログインして同期できる');
     const B = await newPage({ state: { ...old, log: old.log.slice(20) } });
     await login(B);
+    ok(!A.asked && B.asked, 'ログイン時：アカウントにも端末にも記録があるときだけ、合わせるかを聞く');
     const nB = await B.evaluate(() => JSON.parse(localStorage.getItem('lemma.v2')).log.length);
     ok(nB === old.log.length, `端末B：両方の端末の記録が合わさる（${nB}件）`);
     await A.click('#acct-now'); await A.waitForTimeout(1500);
@@ -243,13 +247,87 @@ try {
     const srv = [...mock.rows.values()][0].state.log.map(l => l.p);
     ok(srv.includes('I-QF-109'), 'アプリを閉じるときに、解いた結果がサーバーに送られる');
     await A.goto(U + '#settings'); await A.waitForTimeout(1200);
-    await A.click('#acct-out'); await A.waitForTimeout(1200);
+    await A.click('#acct-out'); await A.waitForTimeout(300);
+    await A.click('.chooser [data-k="keep"]'); await A.waitForTimeout(1200);
     ok(await A.locator('#acct-email').count() === 1 && (await A.evaluate(() => JSON.parse(localStorage.getItem('lemma.v2')).log.length)) > 0, 'ログアウトしても端末の記録は残る');
     await B.goto(U + '#settings'); await B.waitForTimeout(1200);
     await B.click('#acct-del'); await B.waitForTimeout(1200);
     ok(mock.rows.size === 0 && mock.users.size === 0, '退会でサーバーの記録とアカウントが消える');
     const real = (es) => es.filter(e => !/status of 403/.test(e));   // わざと違うコードを入れたときの 403 は除く
     ok(real(A.errors).length === 0 && real(B.errors).length === 0, `ページのエラーなし ${A.errors} ${B.errors}`);
+  }
+  // 9. ブックマーク・記録の消去（ログイン中も効く）・バックアップの読み込み・ログイン時に端末の記録を使わない
+  {
+    mock.users.clear(); mock.rows.clear();
+    const old = JSON.parse(fs.readFileSync(path.join(root, 'tests/fixtures/state-v0.6.json'), 'utf8'));
+    const P = await newPage();
+    await P.goto(U + '#today'); await P.waitForTimeout(1500);
+    await P.evaluate("__lemma.open(['I-EXP-001'])"); await P.waitForTimeout(1000);
+    await P.click('[data-bm="I-EXP-001"]'); await P.waitForTimeout(200);
+    ok(await P.locator('[data-bm="I-EXP-001"].on').count() === 1, 'ブックマーク：問題画面で付けられる');
+    await P.goto(U + '#today'); await P.reload(); await P.waitForTimeout(1500);   // 解いている途中のセットを閉じる
+    ok((await P.locator('#bmset').innerText()).includes('1問'), 'ブックマーク：ホームに「ブックマークした問題 1問」');
+    await P.click('#bmset'); await P.waitForTimeout(1000);
+    ok(await P.locator('[data-bm="I-EXP-001"]').count() === 1, 'ブックマーク：そこから出題できる');
+    await P.click('[data-bm="I-EXP-001"]'); await P.waitForTimeout(200);
+    const bm = await P.evaluate(() => JSON.parse(localStorage.getItem('lemma.v2')).bookmarks['I-EXP-001']);
+    ok(bm && bm.on === false && bm.t > 0, 'ブックマーク：外すと on:false の印が残る（同期でよみがえらない）');
+    // バックアップの読み込み：形の違うファイルは断る・置き換えでファイルの記録になる
+    await P.goto(U + '#settings'); await P.waitForTimeout(1000);
+    await P.setInputFiles('#imp', { name: 'x.json', mimeType: 'application/json', buffer: Buffer.from('{"hello":1}') });
+    await P.waitForTimeout(400);
+    ok((await P.locator('.toast').innerText()).includes('Lemma の学習記録のファイルではありません'), '読み込み：別のファイルは断る');
+    await P.setInputFiles('#imp', { name: 'b.json', mimeType: 'application/json', buffer: Buffer.from(JSON.stringify(old)) });
+    await P.waitForTimeout(400);
+    const askedImp = await P.locator('.chooser').count();
+    if (askedImp) await P.click('.chooser [data-k="replace"]');
+    await P.waitForTimeout(800);
+    const st = await P.evaluate(() => JSON.parse(localStorage.getItem('lemma.v2')));
+    ok(st.log.length === old.log.length && st.resetAt > 0, `読み込み：置き換えるとファイルの記録になり、消した印が付く（${st.log.length}件）`);
+    // ログインして同期 → 「記録をすべて消す」でアカウントの記録も消える
+    const login = async (page, email) => {
+      await page.goto(U + '#settings'); await page.waitForTimeout(1200);
+      await page.fill('#acct-email', email); await page.click('#acct-send'); await page.waitForTimeout(400);
+      await page.fill('#acct-code', '123456'); await page.click('#acct-verify'); await page.waitForTimeout(1500);
+    };
+    await login(P, 'reset@example.com');
+    const srvN = () => { const r = [...mock.rows.values()][0]; return r ? r.state.log.length : -1; };
+    ok(srvN() === old.log.length, `同期：アカウントに記録が上がる（${srvN()}件）`);
+    const Q = await newPage({ state: { ...old, log: old.log.slice(0, 10) } });
+    await login(Q, 'reset@example.com');
+    if (await Q.locator('.chooser').count()) { await Q.click('.chooser [data-k="merge"]'); await Q.waitForTimeout(1500); }
+    await P.goto(U + '#settings'); await P.waitForTimeout(1000);
+    await P.click('#reset'); await P.waitForTimeout(300);
+    ok(await P.locator('.chooser [data-k="all"]').count() === 1 && await P.locator('.chooser [data-k="device"]').count() === 1, '消去：ログイン中は「アカウントも」「この端末だけ」を選べる');
+    await P.click('.chooser [data-k="all"]'); await P.waitForTimeout(1500);
+    ok(srvN() === 0, `消去：アカウントの記録も消える（${srvN()}件）`);
+    await Q.goto(U + '#settings'); await Q.waitForTimeout(800);
+    await Q.click('#acct-now'); await Q.waitForTimeout(1500);
+    const nQ = await Q.evaluate(() => JSON.parse(localStorage.getItem('lemma.v2')).log.length);
+    ok(nQ === 0 && srvN() === 0, `消去：ほかの端末の古い記録も、同期で消える（端末 ${nQ}件・サーバー ${srvN()}件）`);
+    // ログイン時に「アカウントの記録だけを使う」：端末の記録は書き出してから消える
+    await P.evaluate("__lemma.open(['I-EXP-001'])"); await P.waitForTimeout(800);
+    await P.goto(U + '#settings'); await P.waitForTimeout(800);
+    await P.click('#acct-now'); await P.waitForTimeout(1500);
+    const R = await newPage({ state: { ...old, log: old.log.slice(0, 5) } });
+    await R.goto(U + '#settings'); await R.waitForTimeout(1200);
+    await R.fill('#acct-email', 'reset@example.com'); await R.click('#acct-send'); await R.waitForTimeout(400);
+    // 先にサーバーへ1件入れておく（P の端末の解答）
+    const r0 = [...mock.rows.values()][0];
+    r0.state.log = [{ p: 'I-EXP-001', t: Date.now(), g: 3 }]; r0.rev += 1;
+    await R.fill('#acct-code', '123456'); await R.click('#acct-verify'); await R.waitForTimeout(1200);
+    const [dl] = await Promise.all([R.waitForEvent('download', { timeout: 5000 }).catch(() => null), R.click('.chooser [data-k="remote"]')]);
+    await R.waitForTimeout(1500);
+    const nR = await R.evaluate(() => JSON.parse(localStorage.getItem('lemma.v2')).log.map(l => l.p));
+    ok(dl && JSON.stringify(nR) === '["I-EXP-001"]', `ログイン時「アカウントの記録だけ」：端末の記録を書き出してから、アカウントの記録になる（${nR}）`);
+    // ログアウトで端末の記録も消す
+    await R.goto(U + '#settings'); await R.waitForTimeout(800);
+    await R.click('#acct-out'); await R.waitForTimeout(300);
+    await R.click('.chooser [data-k="wipe"]'); await R.waitForTimeout(1500);
+    const nR2 = await R.evaluate(() => JSON.parse(localStorage.getItem('lemma.v2')).log.length);
+    ok(nR2 === 0 && await R.locator('#acct-email').count() === 1, 'ログアウト時に端末の記録も消せる');
+    const errs = [...P.errors, ...Q.errors, ...R.errors].filter(e => !/status of 40[13]/.test(e));
+    ok(errs.length === 0, `ページのエラーなし ${errs}`);
   }
 } finally {
   await browser.close();

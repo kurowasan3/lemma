@@ -10,6 +10,14 @@
 | [migration-plan.md](migration-plan.md) | 移行手順と実装順序 |
 | [mathel-integration.md](mathel-integration.md) | 他サービスとの共通化 |
 
+## 0. 理念（すべての設計判断の前提）
+
+1. **お金がなく参考書すら買えない受験生でも、登録なしで十分に使えること。** 演習・復習・ヒント・解説・解答形式・オフライン動作は、ずっと無料で、ログインも要らない。
+2. **運営は、余裕のある人の有料会員（広告非表示など）で成り立たせる。** 有料にするのは「便利さ・見える化・広告が出ないこと」で、学習の効果そのものではない。
+3. **基礎・標準の少ない問題は周回し、難関の問題は量をこなす。** 出題・復習・問題セットの設計はこの考え方に合わせる（基礎・標準は復習の対象として繰り返し、難関は新しい問題を多く供給する）。
+
+迷ったときは、この3つに照らして決める。
+
 ## 1. 守ること（最重要方針の言い換え）
 
 1. アプリは HTML/CSS/Vanilla JS・ビルドなしのまま。新しいライブラリは原則入れない（Stripe も**ブラウザ側には入れない**。決済はリダイレクト）。
@@ -54,8 +62,11 @@
 | **C. Cloudflare Pages＋独自ドメイン** | 小〜中（CI でデプロイ） | ドメイン代のみ（無料枠） | ○ `_headers` で CSP・HSTS を設定できる | ○（Web Analytics は Cookie なし） | **推奨** |
 | D. Vercel／Netlify | 小〜中 | 無料枠あり | ○ | ○ | C と同等。Cloudflare の方が DNS と一体で手間が少ない |
 
-**推奨：C**。理由は、(1) S1・S3 を両方解消できる、(2) AdSense は `ads.txt` をドメインのルートに置く必要があり、`<user>.github.io/<repo>/` では置けない、(3) ドメインを先に決めると、後で URL を変えたときのゲストの記録消失（F7）が1回で済む。
-GitHub はソースの置き場のまま残し、GitHub Actions で検査→ビルド→`wrangler pages deploy` する（現在消えている CI もここで復活させる）。
+**推奨：C**（2026-11-19 決定：リポジトリは非公開にし、GitHub Pages での配信をやめる。GitHub の無料プランでは非公開リポジトリから Pages を配信できないため、どのみち配信先を移す必要がある）。理由は、(1) S1・S3 を両方解消できる、(2) AdSense は `ads.txt` をドメインのルートに置く必要があり、`<user>.github.io/<repo>/` では置けない、(3) ドメインを先に決めると、後で URL を変えたときのゲストの記録消失（F7）が1回で済む。
+GitHub は（非公開の）ソースの置き場のまま残し、GitHub Actions で検査→`tools/build_dist.py`→`wrangler pages deploy` する。
+配信するのは `dist/`（アプリ本体と `data/` だけ）。`content/`・`tools/`・`tests/`・`docs/` は配信しない。【確認】v0.11 で `tools/build_dist.py` と `.github/workflows/ci.yml` を追加済み。
+
+`data/` はアプリが問題を表示するために必ず配信するので、**取得を完全に防ぐことはできない**（暗号化しても鍵はアプリに入る）。一括取得への対策は、Cloudflare のレート制限・`robots.txt`・利用規約（`terms.html`）の禁止条項にとどめ、ログイン必須にはしない（理念1に反するため）。
 
 【要検証】Cloudflare Pages の無料枠（ファイル数・ビルド回数）。SEO ページを含めると約5,000ファイルになり、Free の上限（2万ファイル/デプロイ）には収まる見込み。
 
@@ -127,12 +138,13 @@ GitHub はソースの置き場のまま残し、GitHub Actions で検査→ビ�
 CSP の案（アプリ側）：
 
 ```
-Content-Security-Policy: default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline';
-  img-src 'self' data:; font-src 'self'; connect-src 'self' https://<project>.supabase.co;
-  frame-ancestors 'none'; base-uri 'self'; form-action 'self'
+Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-eval'; style-src 'self' 'unsafe-inline';
+  img-src 'self' data: blob:; font-src 'self'; connect-src 'self' https://<project>.supabase.co;
+  manifest-src 'self'; worker-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; object-src 'none'
 ```
 
-【要検証】KaTeX と既存のインライン `style` 属性の扱い（`style-src 'unsafe-inline'` は必要。インラインの `<script>` は現状ないので `script-src 'self'` で動く見込み）。ログイン画面に Turnstile を入れるときは `script-src` と `frame-src` に `https://challenges.cloudflare.com` を足す。
+【確認】v0.11 の `tools/build_dist.py` が `dist/_headers` にこの CSP を書き、`tests/e2e_dist.mjs` で採点・グラフ・KaTeX が動くことを確かめている。
+`'unsafe-eval'` は `js/parser.js` `compile()` が `new Function` で式を関数にしているため必要（監査時の想定 `script-src 'self'` だけでは動かない）。外部スクリプトとインラインスクリプトは禁止できている。将来 `compile()` を木をたどる評価器に置き換えれば `'unsafe-eval'` を外せる。ログイン画面に Turnstile を入れるときは `script-src` と `frame-src` に `https://challenges.cloudflare.com` を足す。
 
 ## 6. 推奨の要約
 

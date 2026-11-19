@@ -1,6 +1,6 @@
 # 現行アーキテクチャ（v0.10.0 時点の監査）
 
-対象：`kurowasan3/lemma` main（コミット `0a2fb0d`、2026-11-13）。この文書はコードを読んで確かめた事実を中心にまとめる。
+対象：`kurowasan3/lemma` main（コミット `0a2fb0d`、2026-11-13、v0.10.0）。v0.11 で対応した項目は末尾の「v0.11 での変化」にまとめる（本文は v0.10 時点の監査として残す）。この文書はコードを読んで確かめた事実を中心にまとめる。
 
 表記：
 - **【確認】** … コード・設定・実行結果で確かめた事実（ファイル名と行番号を付ける）
@@ -189,3 +189,18 @@ recordResult() ─► state（メモリ）─► save() ─► localStorage['lem
 - GitHub Pages の設定（カスタムドメインの有無。API が使えず未確認）
 - 実際の利用者数・記録の大きさの分布
 - Mathel・ぶつりばの実装（このリポジトリの外）
+
+## v0.11 での変化（2026-11-19）
+
+| 監査の項目 | 対応 |
+| --- | --- |
+| S3 ヘッダーなし | `tools/build_dist.py` が `_headers`（CSP・HSTS など）を出力。Cloudflare Pages に配置すると有効になる（GitHub Pages では効かない） |
+| S6 読み込みの検証なし | 形を検査し、「今の記録と合わせる／置き換える」を選ばせる（`app.js` `checkBackup()`） |
+| F1 ログイン中の消去が効かない | 消した印 `resetAt` を同期で伝える。「この端末とアカウント」「ログアウトしてこの端末だけ」を選べる |
+| F5 文言の不一致 | ログイン状態で出し分け。Safari の7日ルールの注意も追加 |
+| 7 CI が無い | `.github/workflows/ci.yml` を追加 |
+| 配信範囲 | `dist/` はアプリ本体と `data/` だけ。`content/`・`tools/`・`tests/` は配信しない（`tests/e2e_dist.mjs` で確認） |
+| ログイン直後の確認なしの合算 | 端末とアカウントの両方に記録があるときだけ確認（`firstSyncAfterLogin()`） |
+| 保存の失敗が黙って起きる | 1回だけ知らせる。初めて解いたときに `navigator.storage.persist()` を要求 |
+
+新しく分かったこと：`js/parser.js` の `compile()` が `new Function` を使うため、CSP に `'unsafe-eval'` が必要（system-design §5 を修正）。

@@ -1,5 +1,5 @@
 :root {
-  --lemma-version: '0.10.0';
+  --lemma-version: '0.11.0';
   --paper: #f6f4ee;
   --card: #ffffff;
   --ink: #1c1d21;
@@ -566,3 +566,16 @@ body[data-tab="graph"] #bird:not(.talk) { opacity: .0; }
 .acct-err:empty { display: none; }
 .btn.danger { color: var(--bad); }
 .muted.small, .small { font-size: 12px; }
+
+/* ---------- 選択肢つきの確認（choose()） ---------- */
+.chooser { position: fixed; inset: 0; z-index: 60; background: rgb(0 0 0 / .45); display: flex; align-items: center; justify-content: center; padding: 20px; }
+.chooser-box { background: var(--card); color: var(--ink); border-radius: 16px; padding: 20px; width: min(420px, 100%); box-shadow: 0 12px 40px rgb(0 0 0 / .25); }
+.chooser-box h3 { margin: 0 0 8px; font-size: 17px; }
+.chooser-box p { margin: 0 0 14px; color: var(--ink-2); font-size: 14px; line-height: 1.6; }
+.chooser-btns { display: grid; gap: 8px; }
+.chooser-btns .btn.danger { color: var(--bad); border-color: var(--bad); }
+
+/* ---------- ブックマーク ---------- */
+.chip.bm { cursor: pointer; border: 1px solid var(--line); background: transparent; color: var(--ink-2); font: inherit; font-size: 12px; }
+.chip.bm.on { color: var(--warn); border-color: var(--warn); background: var(--warn-soft); }
+@media (max-width: 420px) { .chip.bm span { display: none; } }

@@ -50,6 +50,38 @@ const base = JSON.parse(fs.readFileSync(path.join(root, 'tests/fixtures/state-v0
   ok(M3.log.includes(ref) && ref.note === 'あとで書いた', '手元の記録オブジェクトを使い、相手にしかない項目は補う');
   ok(S.stable({ b: 1, a: [1, { d: 2, c: 3 }] }) === S.stable({ a: [1, { c: 3, d: 2 }], b: 1 }), 'stable() はキーの順番によらない');
 }
+// 記録を消した印（resetAt）とブックマーク（v0.11）
+{
+  const T = 2000000000000;
+  const old = clone(base);                                   // まだ消したことを知らない端末（またはサーバー）
+  old.log.push({ p: 'I-QF-109', t: T - 1000, g: 3 }, { p: 'q01', t: T + 5000, g: 4 });
+  old.pstat['I-QF-109'] = { S: 3, D: 4, last: T - 1000, reps: 1, lapses: 0 };
+  old.pstat['q01'] = { S: 2, D: 4, last: T + 5000, reps: 1, lapses: 0 };
+  old.explains = { 'I-QF-109': [{ t: T - 2000, text: '古いメモ' }] };
+  old.bookmarks = { 'I-QF-109': { on: true, t: T - 3000 } };
+  old.drill = { size: 10, best: { diff: { ok: 9, n: 10, ms: 1 } } };
+  old.settings = { ...old.settings, theme: 'dark' }; old.settingsAt = 50;
+  const wiped = { log: [], pstat: {}, problems: {}, cards: {}, explains: {}, bookmarks: {}, streak: { last: null, count: 0 },
+    settings: { theme: 'light' }, settingsAt: 10, schema: 4, resetAt: T };
+  const M = S.mergeState(wiped, old);
+  ok(M.resetAt === T, '消した印は新しい方');
+  ok(M.log.length === 1 && M.log[0].p === 'q01', '消した時刻より前の記録は持ち込まず、後の記録は残す');
+  ok(!M.pstat['I-QF-109'] && M.pstat.q01, '復習状態も、消した時刻より前のものは持ち込まない');
+  ok(!M.explains['I-QF-109'] && !M.bookmarks['I-QF-109'], 'メモ・ブックマークも同じ');
+  ok(!M.drill || !Object.keys(M.drill.best || {}).length, '計算の自己ベストも消える');
+  ok(M.settings.theme === 'dark', '設定は消さない（最後に変えた方）');
+  const M2 = S.mergeState(old, wiped);
+  ok(S.stable(M2.log) === S.stable(M.log) && S.stable(M2.pstat) === S.stable(M.pstat), '向きを逆にしても同じ');
+  const imported = { ...clone(base), resetAt: T + 10000 };   // 置き換えで読み込んだ記録：古い解答も消さない
+  const M3 = S.mergeState(imported, old);
+  ok(M3.log.length === base.log.length, '印の新しい側の記録は、印より古くても残す（バックアップで置き換えたとき）');
+  // ブックマーク：付け外しの新しい方。外した印でよみがえらない
+  const a = { ...clone(base), bookmarks: { x: { on: true, t: 1 }, y: { on: false, t: 9 } } };
+  const b = { ...clone(base), bookmarks: { x: { on: false, t: 5 }, y: { on: true, t: 3 }, z: { on: true, t: 2 } } };
+  const MB = S.mergeState(a, b);
+  ok(MB.bookmarks.x.on === false && MB.bookmarks.y.on === false && MB.bookmarks.z.on === true, 'ブックマークは問題ごとに最後に付け外しした方');
+  ok(!('resetAt' in S.mergeState(clone(base), clone(base))), '消した印が無ければ項目を作らない');
+}
 
 // ---------------------------------------------------------------- にせ Supabase を相手にした流れ
 {

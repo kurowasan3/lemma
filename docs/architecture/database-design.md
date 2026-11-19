@@ -168,6 +168,10 @@ create trigger lemma_state_insert instead of insert on public.lemma_state
 
 ## 5. 削除の表し方（D3）
 
+【確認】v0.11 で、`study_events` を待たずに **JSONB のままで** 消去が効くようにした：`state.resetAt`（消した時刻、ms）を持たせ、`js/sync.js` の `mergeState` が「印の古い側からは、その時刻より前の記録（解答・復習状態・メモ・ブックマーク・自己ベスト）を持ち込まない」。
+ブックマークは `state.bookmarks = { 問題ID: { on, t } }` で、外した印（`on:false`）を残して和集合でよみがえらないようにした。
+下の表は `study_events` を導入したあとの、サーバー側での対応。
+
 | 操作 | 実装 |
 | --- | --- |
 | 記録をすべて消す（ログイン中） | `rpc('reset_my_study', {service})`：`study_events` の本人・サービスの行を消し、`study_state` を初期値にして `reset_at = 現在時刻` にする。各端末は同期時に `reset_at` を見て、それより前の手元の `log`・`pstat` を捨てる（クライアントの `mergeState` に1項目足す） |

@@ -21,7 +21,7 @@ import {
   subjectsWithFields, pool, pickPractice, pickReview, dueEntries, nextReviewTime,
 } from './catalog.js';
 
-const VERSION = '0.10.0';
+const VERSION = '0.11.0';
 const KEY = 'lemma.v2';
 let sync = null, syncApplying = false, syncStatus = null;   // アカウントと同期（initSync で用意）
 const $ = (sel, el = document) => el.querySelector(sel);
@@ -30,7 +30,7 @@ const $$ = (sel, el = document) => [...el.querySelectorAll(sel)];
 // ---------- 保存 ----------
 function freshState() {
   return {
-    cards: {}, problems: {}, pstat: {}, log: [], explains: {},
+    cards: {}, problems: {}, pstat: {}, log: [], explains: {}, bookmarks: {},
     settings: { size: 6, newPerDay: 3 },
     practice: { fields: null, levels: [0, 1, 2, 3, 4, 5], size: 8 }, lv0: 1,
     schema: 4,
@@ -61,11 +61,16 @@ function load() {
 }
 // 設定・選んだ分野などが変わった時刻（端末どうしで食い違ったら新しい方を採る）
 let lwwSig = null;
+let saveWarned = false;
+let persistAsked = false;
 function save() {
   const sig = JSON.stringify([state.settings, state.practice, state.graphExprs, state.graph3Exprs]);
   if (lwwSig !== null && sig !== lwwSig) state.settingsAt = Date.now();
   lwwSig = sig;
-  try { localStorage.setItem(KEY, JSON.stringify(state)); } catch (e) { /* 保存できない環境 */ }
+  try { localStorage.setItem(KEY, JSON.stringify(state)); }
+  catch (e) {   // 容量がいっぱい・プライベートモードなど。黙って失うと気づけないので、1回だけ知らせる
+    if (!saveWarned) { saveWarned = true; setTimeout(() => toast('この端末に記録を保存できませんでした。設定から書き出しておいてください。'), 0); }
+  }
   if (sync && !syncApplying) sync.schedule();
 }
 
@@ -94,6 +99,27 @@ function initSync() {
     window.addEventListener('online', () => sync.syncNow());
   }).catch(() => { /* 同期なし */ });
 }
+// ログイン直後：端末とアカウントの両方に記録があるときだけ、合わせるかを聞く（共用の端末で他人の記録が混ざらないように）
+async function firstSyncAfterLogin() {
+  let remote = null;
+  try { remote = await sync.peek(); } catch { /* 取れなければいつもの同期に任せる */ }
+  if (remote && remote.n && hasRecords(state)) {
+    const ln = state.log.length, last = remote.last ? new Date(remote.last).toLocaleDateString('ja-JP') : '';
+    const k = await choose({ title: 'この端末の記録をアカウントに合わせますか？',
+      body: `この端末に解答の記録が ${ln}件、アカウントに ${remote.n}件（最後は ${esc(last)}）あります。`,
+      options: [{ key: 'merge', label: '合わせる（両方の記録を残す）', cls: 'primary' },
+        { key: 'remote', label: 'アカウントの記録だけを使う（この端末の分は書き出してから消す）' }] });
+    if (k === 'remote') {
+      download(`lemma-この端末の記録-${dayKey()}.json`, JSON.stringify(state, null, 1), 'application/json');
+      // 端末の記録を空にしてから同期すると、アカウントの記録だけになる（設定は端末のまま）
+      state = { ...freshState(), settings: state.settings, practice: state.practice, settingsAt: state.settingsAt, graphExprs: state.graphExprs, graph3Exprs: state.graph3Exprs };
+      save(); session = null;
+      await sync.syncNow(); toast('アカウントの記録に切り替えました'); route(); return;
+    }
+    if (!k) { await sync.logout(); toast('ログインを取りやめました'); return; }
+  }
+  await sync.syncNow(); toast('ログインしました'); route();
+}
 function drawAccount() {
   const box = $('#acct');
   if (!box) return;
@@ -113,7 +139,7 @@ function drawAccount() {
         <button class="linkbtn" id="acct-back" style="margin-top:6px">メールアドレスを入れ直す</button>
       </div>
       <p class="acct-err" id="acct-err">${s.error ? esc(s.error) : ''}</p>
-      <p class="muted small" style="margin:6px 0 0">保存するのはメールアドレスと学習記録だけです。<a href="privacy.html">プライバシーポリシー</a></p>`;
+      <p class="muted small" style="margin:6px 0 0">保存するのはメールアドレスと学習記録だけです。<a href="privacy.html">プライバシーポリシー</a>・<a href="terms.html">利用規約</a></p>`;
     const err = (m) => { $('#acct-err').textContent = m || ''; };
     $('#acct-send').addEventListener('click', async (ev) => {
       const email = $('#acct-email').value.trim();
@@ -131,8 +157,11 @@ function drawAccount() {
     $('#acct-back').addEventListener('click', () => { $('#acct-step1').hidden = false; $('#acct-step2').hidden = true; err(''); });
     $('#acct-verify').addEventListener('click', async (ev) => {
       ev.target.disabled = true; err('');
-      try { await sync.verify($('#acct-email').value.trim(), $('#acct-code').value); toast('ログインしました'); drawAccount(); }
-      catch (e) { err(e.message); ev.target.disabled = false; }
+      try {
+        await sync.verify($('#acct-email').value.trim(), $('#acct-code').value, { autoSync: false });
+        await firstSyncAfterLogin();
+        drawAccount();
+      } catch (e) { err(e.message); ev.target.disabled = false; }
     });
     return;
   }
@@ -144,11 +173,15 @@ function drawAccount() {
     ${s.error && s.status !== 'offline' ? `<p class="acct-err">${esc(s.error)}</p>` : ''}
     <p class="muted small" style="margin:8px 0">この端末の記録とサーバーの記録は、解答の記録を足し合わせ、復習の予定は新しい方を使って合わせます。</p>
     <div class="btn-row" style="margin-top:4px"><button class="btn ghost" id="acct-out">ログアウト</button><button class="btn ghost danger" id="acct-del">退会する</button></div>
-    <p class="muted small" style="margin:6px 0 0"><a href="privacy.html">プライバシーポリシー</a></p>`;
+    <p class="muted small" style="margin:6px 0 0"><a href="privacy.html">プライバシーポリシー</a>・<a href="terms.html">利用規約</a></p>`;
   $('#acct-now').addEventListener('click', () => sync.syncNow());
   $('#acct-out').addEventListener('click', async () => {
-    if (!confirm('ログアウトします。この端末の記録はそのまま残ります。')) return;
-    await sync.syncNow(); await sync.logout(); toast('ログアウトしました'); drawAccount();
+    const k = await choose({ title: 'ログアウト', body: 'サーバーの記録はそのまま残ります。この端末の記録をどうしますか？（家族や学校の共用の端末なら、消すのがおすすめです）',
+      options: [{ key: 'keep', label: 'この端末の記録は残してログアウト', cls: 'primary' }, { key: 'wipe', label: 'この端末の記録も消してログアウト' }] });
+    if (!k) return;
+    await sync.syncNow(); await sync.logout();
+    if (k === 'wipe') { state = { ...freshState(), settings: state.settings }; save(); session = null; }
+    toast(k === 'wipe' ? 'ログアウトし、この端末の記録を消しました' : 'ログアウトしました'); route();
   });
   $('#acct-del').addEventListener('click', async () => {
     if (!confirm('退会すると、アカウントとサーバーに保存した学習記録がすべて消えます（この端末の記録は残ります）。元に戻せません。')) return;
@@ -305,6 +338,7 @@ function renderToday() {
   const all = pool({ levels: pr.levels });
   const due = dueEntries(state).length;
   const doneToday = state.streak.last === dayKey();
+  const marked = markedIds();
   const bar = levelToolbar(pr, renderToday);
   view.innerHTML = `
     <div class="fade-in">
@@ -317,6 +351,7 @@ function renderToday() {
         <span>数I〜数C・融合の全${FIELDS.length}分野から ${Math.min(pr.size, all.length)}問。分野を混ぜて出すので、どの解法を使うかを見抜く練習になります。</span>
       </button>
       ${due ? `<button class="btn block" id="review" style="margin-top:10px">復習：忘れかけた問題 ${due}問</button>` : ''}
+      ${marked.length ? `<button class="btn block" id="bmset" style="margin-top:10px">★ ブックマークした問題 ${marked.length}問</button>` : ''}
       <form class="search" id="sform" role="search">
         <input type="search" id="sq" placeholder="問題を探す（例：漸化式 確率、回転体）" enterkeyhint="search" autocomplete="off">
         <button class="btn" type="submit">検索</button>
@@ -366,6 +401,8 @@ function renderToday() {
     const st = pickReview(state, { size: pr.size });
     if (st.length) startSession(st, { review: true, size: pr.size });
   });
+  // ブックマーク：混ぜて最大30問（交互練習になるように、付けた順ではなく混ぜる）
+  $('#bmset')?.addEventListener('click', () => openIds(shuffle(marked).slice(0, 30)));
 }
 
 // ---------- 問題セット・共有リンク・検索 ----------
@@ -590,6 +627,51 @@ function metaChips(e) {
         ${p.minutes ? `<span class="chip plain">目安 ${p.minutes}分</span>` : ''}
         ${p.kind === 'written' ? `<span class="chip plain">${gradingLabel(e, p)}</span>` : ''}`;
 }
+// ---------- ブックマーク：{ 問題ID: { on, t } }（外したときも on:false で残し、同期でよみがえらないようにする）
+function isMarked(id) { const b = (state.bookmarks || {})[id]; return !!(b && b.on); }
+function markedIds() {
+  return Object.entries(state.bookmarks || {}).filter(([id, b]) => b && b.on && entryById.has(id)).sort((a, b) => b[1].t - a[1].t).map(([id]) => id);
+}
+function bmButton(id) {
+  const on = isMarked(id);
+  return `<button class="chip bm ${on ? 'on' : ''}" data-bm="${esc(id)}" aria-pressed="${on}" title="ブックマーク">${on ? '★' : '☆'}<span> ブックマーク</span></button>`;
+}
+document.addEventListener('click', (ev) => {
+  const b = ev.target.closest && ev.target.closest('[data-bm]');
+  if (!b) return;
+  const id = b.dataset.bm, on = !isMarked(id);
+  state.bookmarks = { ...(state.bookmarks || {}), [id]: { on, t: Date.now() } };
+  save(); play('tap');
+  b.classList.toggle('on', on); b.setAttribute('aria-pressed', on); b.firstChild.textContent = on ? '★' : '☆';
+  toast(on ? 'ブックマークしました' : 'ブックマークを外しました');
+});
+
+// ---------- 選択肢つきの確認（confirm の代わり。ボタンの文言で何が起きるかを書けるように）
+// choose({ title, body, options: [{ key, label, cls }] }) → 押したボタンの key（閉じたら null）
+function choose({ title, body, options }) {
+  return new Promise((resolve) => {
+    const wrap = document.createElement('div');
+    wrap.className = 'chooser';
+    wrap.innerHTML = `<div class="chooser-box" role="dialog" aria-modal="true" aria-labelledby="ch-title">
+        <h3 id="ch-title">${esc(title)}</h3>
+        ${body ? `<p>${body}</p>` : ''}
+        <div class="chooser-btns">${options.map(o => `<button class="btn block ${o.cls || ''}" data-k="${esc(o.key)}">${esc(o.label)}</button>`).join('')}
+          <button class="btn ghost block" data-k="">キャンセル</button></div>
+      </div>`;
+    const done = (k) => { wrap.remove(); document.removeEventListener('keydown', onKey); resolve(k || null); };
+    const onKey = (e) => { if (e.key === 'Escape') done(null); };
+    wrap.addEventListener('click', (e) => {
+      if (e.target === wrap) return done(null);
+      const btn = e.target.closest('button[data-k]');
+      if (btn) done(btn.dataset.k);
+    });
+    document.addEventListener('keydown', onKey);
+    document.body.appendChild(wrap);
+    wrap.querySelector('button')?.focus();
+  });
+}
+const hasRecords = (st) => !!(st && ((st.log || []).length || Object.keys(st.pstat || {}).length));
+
 // 解答の形式（設定）：input＝記述式（答えを入力して自動採点）・choice＝選択式・self＝自己採点（紙に解いて答え合わせ）
 const ANSWER_MODES = [['input', '記述式'], ['choice', '選択式'], ['self', '自己採点']];
 function answerMode() { return ['input', 'choice', 'self'].includes(state.settings.answer) ? state.settings.answer : 'input'; }
@@ -601,6 +683,8 @@ function gradingLabel(e, p) {
 }
 
 function recordResult(pid, grade, extra) {
+  // 初めて解いたとき：ブラウザに「この記録を勝手に消さないで」と頼む（対応していない環境では何もしない）
+  if (!persistAsked) { persistAsked = true; try { navigator.storage?.persist?.(); } catch { /* なし */ } }
   const now = Date.now();
   state.pstat[pid] = review(state.pstat[pid], grade, now);
   state.problems[pid] = { last: now, n: ((state.problems[pid] || {}).n || 0) + 1 };
@@ -629,7 +713,7 @@ function renderProblem(step) {
     <div class="fade-in">
       ${topBar()}
       <div class="meta">
-        ${metaChips(entry)}<span class="chip plain">自動判定</span>
+        ${metaChips(entry)}<span class="chip plain">自動判定</span>${bmButton(entry.id)}
         <span class="count">${session.i + 1} / ${session.steps.length}</span>
       </div>
       <div class="question">${rich(p.q)}</div>
@@ -899,7 +983,7 @@ function renderWritten(step, e) {
       ${topBar()}
       <div class="meta">
         ${metaChips(e)}
-        <span class="chip plain timer" id="clock">0:00</span>
+        <span class="chip plain timer" id="clock">0:00</span>${bmButton(e.id)}
         <span class="count">${session.i + 1} / ${session.steps.length}</span>
       </div>
       <div class="question qhtml">${bigOps(b.q)}</div>
@@ -1594,6 +1678,27 @@ function download(name, text, type) {
   setTimeout(() => URL.revokeObjectURL(a.href), 1000);
 }
 
+// バックアップの形を確かめる（壊れたファイル・別アプリのファイルで記録を上書きしないように）
+function checkBackup(d) {
+  const obj = (v) => v && typeof v === 'object' && !Array.isArray(v);
+  if (!obj(d) || !Array.isArray(d.log) || !obj(d.problems)) throw new Error('Lemma の学習記録のファイルではありません');
+  if (d.log.length > 100000) throw new Error('記録が多すぎるファイルです');
+  const okLog = d.log.every(l => obj(l) && typeof l.p === 'string' && l.p.length <= 40 && Number.isFinite(l.t));
+  if (!okLog) throw new Error('解答の記録の形が正しくありません');
+  for (const k of ['pstat', 'cards', 'explains', 'bookmarks']) if (k in d && !obj(d[k])) throw new Error('記録の形が正しくありません');
+  const out = { ...d };
+  delete out.settingsAt; delete out.resetAt;
+  return out;
+}
+// 手元どうしで合わせる（同期と同じ規則。sync.js を読めない版でも動くよう、読めなければ単純に足す）
+let mergeFn = null;
+import('./sync.js').then(M => { mergeFn = M.mergeState; }).catch(() => {});
+function mergeLocal(a, b) {
+  if (mergeFn) return mergeFn(a, b);
+  const seen = new Set(a.log.map(l => `${l.p}|${l.t}`));
+  return { ...a, log: [...a.log, ...b.log.filter(l => !seen.has(`${l.p}|${l.t}`))].sort((x, y) => x.t - y.t).slice(-5000) };
+}
+
 function renderSettings() {
   const since = state.csvExportedAt || 0;
   const newCount = state.log.filter(l => l.t > since).length;
@@ -1629,7 +1734,7 @@ function renderSettings() {
       </div>
       <h2>学習記録のバックアップ</h2>
       <div class="panel">
-        <p class="muted" style="margin:0 0 10px">学習記録はこの端末のブラウザ内だけに保存されます。機種変更の前に書き出してください。</p>
+        <p class="muted" style="margin:0 0 10px">${sync && sync.loggedIn() ? '学習記録はこの端末とアカウント（サーバー）に保存されています。手元にも残したいときは書き出してください。' : '学習記録はこの端末のブラウザ内だけに保存されます。機種変更の前に書き出してください。Safari で使っていて7日以上開かないと、記録が消えることがあります（ホーム画面に追加すると消えにくくなります）。'}</p>
         <div class="btn-row" style="margin-top:0">
           <button class="btn" id="exp">書き出す</button>
           <label class="btn" for="imp">読み込む</label>
@@ -1670,16 +1775,39 @@ function renderSettings() {
   $('#csvall').addEventListener('click', () => csv(0));
   $('#exp').addEventListener('click', () => download(`lemma-${dayKey()}.json`, JSON.stringify(state, null, 1), 'application/json'));
   $('#imp').addEventListener('change', async (e) => {
-    const f = e.target.files[0]; if (!f) return;
+    const f = e.target.files[0]; e.target.value = ''; if (!f) return;
+    let data;
     try {
-      const data = JSON.parse(await f.text());
-      if (!data.problems || !data.log) throw new Error();
-      state = { ...freshState(), ...data, pstat: data.pstat || {}, schema: 4 }; save(); toast('読み込みました'); route();
-    } catch { toast('読み込めないファイルです'); }
+      if (f.size > 20e6) throw new Error('大きすぎるファイルです');
+      data = checkBackup(JSON.parse(await f.text()));
+    } catch (err) { toast(err && err.message && err.message !== 'x' ? err.message : '読み込めないファイルです'); return; }
+    const k = hasRecords(state) ? await choose({ title: 'バックアップを読み込む',
+      body: `ファイルには解答の記録が ${data.log.length}件あります。今の記録（${state.log.length}件）をどうしますか？`,
+      options: [{ key: 'merge', label: '今の記録と合わせる', cls: 'primary' }, { key: 'replace', label: '今の記録を消して、ファイルの記録に置き換える' }] }) : 'replace';
+    if (!k) return;
+    const keep = { settings: state.settings, practice: state.practice, settingsAt: state.settingsAt };
+    if (k === 'merge') {
+      state = mergeLocal(state, { ...data, resetAt: state.resetAt });
+    } else {
+      // 置き換え：ログイン中でもサーバーの古い記録が戻らないよう、消した印を付ける
+      state = { ...freshState(), ...data, ...keep, schema: 4, resetAt: Date.now() };
+    }
+    save(); session = null; toast('読み込みました'); route();
+    if (sync && sync.loggedIn()) sync.syncNow();
   });
-  $('#reset').addEventListener('click', () => {
-    if (!confirm(sync && sync.loggedIn() ? 'この端末の学習記録を消します（ログイン中なので、次の同期でサーバーの記録が戻ります。サーバーの記録も消すには「退会する」）。' : '学習記録をすべて消します。元に戻せません。')) return;
-    state = freshState(); save(); session = null; toast('消去しました'); route();
+  $('#reset').addEventListener('click', async () => {
+    const logged = sync && sync.loggedIn();
+    const k = await choose({ title: '記録をすべて消す',
+      body: logged ? '解答の記録・復習の予定・ブックマーク・メモを消します（設定は残ります）。元に戻せません。' : '学習記録をすべて消します（設定は残ります）。元に戻せません。',
+      options: logged
+        ? [{ key: 'all', label: 'この端末とアカウントの記録を消す', cls: 'danger' }, { key: 'device', label: 'ログアウトして、この端末の記録だけ消す' }]
+        : [{ key: 'all', label: '消す', cls: 'danger' }] });
+    if (!k) return;
+    const keep = { settings: state.settings, practice: state.practice, settingsAt: state.settingsAt, graphExprs: state.graphExprs, graph3Exprs: state.graph3Exprs };
+    if (k === 'device') { await sync.logout(); state = { ...freshState(), ...keep }; }
+    else state = { ...freshState(), ...keep, resetAt: Date.now() };   // 消した印：同期で、ほかの端末・サーバーの古い記録を持ち込まない
+    save(); session = null; toast('消去しました'); route();
+    if (k === 'all' && logged) sync.syncNow();
   });
 }
 
