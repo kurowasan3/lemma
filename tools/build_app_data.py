@@ -124,7 +124,7 @@ def build(content=ROOT / 'content', out=ROOT / 'data'):
             af = figures.get(p['id'])
             if af and af['h'] == hashlib.sha1(p['statement']['tex'].encode('utf-8')).hexdigest()[:12]:
                 b['fg'] = {'m': af['mode'], 'e': af['exprs'], 'a': 1 if af['after'] else 0, 's': 'auto'}
-        # 教育的価値：管理表の「教育的価値」列、なければ判定済みのもの（問題文が同じときだけ）。2（中）は書かない
+        # 頻出度：管理表の「頻出度」列、なければ判定済みのもの（問題文が同じときだけ）。2（中）は書かない
         v = p.get('value')
         if not v:
             jv = values.get(p['id'])

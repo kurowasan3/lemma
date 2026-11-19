@@ -22,7 +22,7 @@ import {
   subjectsWithFields, pool, pickPractice, pickReview, dueEntries, nextReviewTime,
 } from './catalog.js';
 
-const VERSION = '0.15.1';
+const VERSION = '0.15.2';
 const KEY = 'lemma.v2';
 let sync = null, syncApplying = false, syncStatus = null;   // アカウントと同期（initSync で用意）
 const $ = (sel, el = document) => el.querySelector(sel);
@@ -630,11 +630,11 @@ function problemView(e) {
   return { id: e.id, kind: e.kind === 'bank' ? 'written' : 'interactive', subject: f.subject, fieldName: f.name,
     level: e.lv, levelName: LEVELS[e.lv], minutes: e.t || null, grading: e.in ? {} : null };
 }
-// 教育的価値（難易度とは別。高・中・低。付いていない問題は中）
+// 頻出度（難易度とは別。高・中・低。付いていない問題は中）
 const VALUE_NAMES = { 1: '低', 2: '中', 3: '高' };
 function valueChip(e) {
   const v = (e && e.v) || 2;
-  return `<span class="chip val v${v}" title="教育的価値：他の問題に広く使える考え方を学べるほど高い">価値 ${VALUE_NAMES[v]}</span>`;
+  return `<span class="chip val v${v}" title="頻出度：入試で繰り返し使われる考え方を扱う問題ほど高い">頻出度 ${VALUE_NAMES[v]}</span>`;
 }
 function metaChips(e) {
   const p = problemView(e);

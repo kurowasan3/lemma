@@ -2,11 +2,11 @@
 import { PROBLEMS as BUILTIN, cardById, problemById as builtinById, unitOf as builtinUnit } from './content.js';
 import { retrievability, dueAt, TARGET_R } from './scheduler.js';
 
-export const FILE_VERSION = '0.15.1';
+export const FILE_VERSION = '0.15.2';
 
 // 難易度（問題管理表と同じ6段階。0=基礎 は v0.6 で追加。v0.15 で 3〜5 の名前を変更）
 export const LEVELS = { 0: '基礎', 1: '標準', 2: '入試基礎', 3: '入試標準', 4: '入試発展', 5: '数学探究' };
-// 教育的価値（難易度とは別。1=低 2=中 3=高。付いていない問題は 2）
+// 頻出度（難易度とは別。1=低 2=中 3=高。付いていない問題は 2）
 export const VALUES = { 1: '低', 2: '中', 3: '高' };
 export const valueOf = (e) => (e && e.v) || 2;
 export const SUBJECT_ORDER = ['数I', '数A', '数II', '数B', '数III', '数C', '融合'];
@@ -138,7 +138,7 @@ function interleave(list) {
 }
 
 // 演習：まだ解いていない問題を無作為に、次に久しぶりの問題を優先
-// まだ解いていない問題は、教育的価値の高いものほど先に選ばれやすい（重み 1・2・4 の重みつき無作為抽出）
+// まだ解いていない問題は、頻出度の高いものほど先に選ばれやすい（重み 1・2・4 の重みつき無作為抽出）
 const VALUE_WEIGHT = { 1: 1, 2: 2, 3: 4 };
 export function pickPractice(state, { fields = null, levels = null, size = 8 } = {}) {
   const cand = pool({ fields, levels }).map(e => {

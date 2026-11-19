@@ -72,7 +72,7 @@ try {
     ok(await page.locator('.banner').count() === 0, '起動時に警告が出ない');
     await page.evaluate("__lemma.open(['I-EXP-001', 'A-INT-005', 'q01'])"); await page.waitForTimeout(800);
     ok((await page.locator('.chip').allInnerTexts()).some(t => t.includes('入力して採点')), '入力して採点のチップ');
-    ok((await page.locator('.chip.val').allInnerTexts()).some(t => /価値 [高中低]/.test(t)), '教育的価値のチップ');
+    ok((await page.locator('.chip.val').allInnerTexts()).some(t => /頻出度 [高中低]/.test(t)), '頻出度のチップ');
     await page.locator('#conf button').nth(2).click();
     const inputs = page.locator('#inputs input');
     const vals = ['1', '0', '-10', '0', '9', '-16', '-16<k<9'];
