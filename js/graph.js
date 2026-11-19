@@ -1,12 +1,12 @@
 // グラフ描画エンジン（Canvas 2D）
 // 陽関数 y=f(x) / x=g(y)、陰関数 F(x,y)=0、不等式の領域（連立も可）、
 // 媒介変数 (f(t), g(t))、極座標 r=f(θ)、点、パラメータ（スライダー）、予想描画（スケッチ）
-// mode：'xy'（ふつうの座標平面）・'complex'（複素平面）・'vector'（ベクトル）。後の2つは plane.js が式を解析する
+// mode：'xy'（座標平面。ベクトルの書き方の行は plane.js の vector で読む）・'complex'（複素数平面）・'vector'（ベクトルだけ。旧版との互換）
 
 import { parse, compile, splitRelation, freeVars } from './parser.js';
 import { analyzePlane, solveRoots, fmtComplex, fmtNum, holds as holdsEq } from './plane.js';
 
-export const FILE_VERSION = '0.13.0';
+export const FILE_VERSION = '0.14.0';
 export const COLORS = ['#2f6fdf', '#d9463b', '#2e9d5b', '#8e4fd6', '#e08a1e', '#1a9aa8'];
 const RESERVED = new Set(['x', 'y', 't', 'θ', 'r']);
 const TAU = Math.PI * 2;
@@ -107,6 +107,34 @@ function fmt(v, step) {
   return s === '-0' ? '0' : s;
 }
 
+// 座標平面の式の一覧を読む：ベクトルの書き方の行（p を使う・A=(1,2) のように名前に (…, …) を入れる・その名前を使う・内積 · や外積 ×）は
+// plane.js の vector で、それ以外（y=x^2、x^2+y^2=4、(cos t, sin t)、点 (1,2) など）は今まで通り analyze で読む
+const VDEF2 = /^\s*([A-Za-zα-ωΑ-Ω])\s*=\s*\(/;
+const NOT_VEC = ['x', 'y', 't', 'p', 's', 'r', 'θ', 'e'];
+export function analyzeFlat(srcs) {
+  const vnames = new Set();
+  for (const src of srcs) {
+    const m = String(src || '').match(VDEF2);
+    if (m && !NOT_VEC.includes(m[1])) vnames.add(m[1]);
+  }
+  const isVec = (src) => {
+    const t = String(src || '');
+    if (!t.trim()) return false;
+    const m = t.match(VDEF2);
+    if (m && vnames.has(m[1])) return true;
+    if (/[·×]|\bdot\(|\bcross\(/.test(t)) return true;
+    const letters = t.replace(/\b(sin|cos|tan|log|exp|sqrt|abs|pi|dot|cross|norm)\b/g, ' ').match(/[A-Za-zα-ωΑ-Ω]/g) || [];
+    return letters.some(c => c === 'p' || vnames.has(c));
+  };
+  const vecIdx = srcs.map((s, i) => isVec(s) ? i : -1).filter(i => i >= 0);
+  const vres = vecIdx.length ? analyzePlane(vecIdx.map(i => srcs[i]), 'vector') : [];
+  return srcs.map((src, i) => {
+    const k = vecIdx.indexOf(i);
+    if (k >= 0) return vres[k];
+    try { return { a: analyze(src), error: null }; } catch (e) { return { a: null, error: e.message }; }
+  });
+}
+
 export class Graph {
   constructor(host, opts = {}) {
     this.host = host;
@@ -179,15 +207,12 @@ export class Graph {
         return { ...it, color, a: r.a, error: r.error };
       });
     } else {
+      const res = analyzeFlat(list.map(it => it.src));
       this.items = list.map((it, i) => {
         const color = it.color || COLORS[i % COLORS.length];
-        try {
-          const a = analyze(it.src);
-          if (a.kind === 'param') defs[a.name] = a.value;
-          return { ...it, color, a, error: null };
-        } catch (e) {
-          return { ...it, color, a: null, error: e.message };
-        }
+        const r = res[i];
+        if (r.a && r.a.kind === 'param') defs[r.a.name] = r.a.value;
+        return { ...it, color, a: r.a, error: r.error };
       });
     }
     this.lastDefs = this.lastDefs || {};
@@ -384,7 +409,7 @@ export class Graph {
     }
     ctx.textAlign = 'right';
     if (ax > 0 && ax < W && ay > 0 && ay < H) ctx.fillText('O', ax - 4, ay + 14);
-    if (this.mode === 'complex' || this.mode === 'vector') {   // 軸の名前（複素平面は 実軸・虚軸）
+    if (this.mode === 'complex' || this.mode === 'vector') {   // 軸の名前（複素数平面は 実軸・虚軸）
       const [nx, ny] = this.mode === 'complex' ? ['実軸', '虚軸'] : ['x', 'y'];
       ctx.font = '600 12px -apple-system, "Hiragino Sans", system-ui, sans-serif';
       ctx.fillStyle = col.axis;

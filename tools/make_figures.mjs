@@ -2,7 +2,7 @@
 //   node tools/make_figures.mjs [content フォルダ]          … content/figures.json を作り直す
 //   node tools/make_figures.mjs [content] --check           … 書き出さずに、今の figures.json と同じか調べる
 //
-// figures.json：{ 問題ID: { h: 問題文のハッシュ, mode: '2d'|'complex'|'vector'|'3d', exprs: [式…], after: 答え合わせのあとで見せるか } }
+// figures.json：{ 問題ID: { h: 問題文のハッシュ, mode: '2d'|'complex'|'3d'（ベクトルの式は 2d に入る）, exprs: [式…], after: 答え合わせのあとで見せるか } }
 // 管理表の「図の式」列に書いた問題は、こちらではなくそれ（content の figure）を使う（build_app_data.py が選ぶ）。
 // 問題文が変わると h が合わなくなるので、build_app_data.py はその問題の自動の図を使わない（ここを実行し直す）。
 import fs from 'fs';
@@ -110,9 +110,10 @@ for (const id of Object.keys(cands).sort()) {
   // 2D の点だけ（関数のない問題）は図にしない（点を並べても状況は分からない）
   if (best.mode === '2d' && best.ok.every(k => POINTISH.has(k.kind))) continue;
   exprs = exprs.slice(0, MAX);
-  out[id] = { h, mode: best.mode, exprs, after: !!after };
+  const outMode = best.mode === 'vector' ? '2d' : best.mode;   // アプリの「平面」はベクトルの書き方も読む
+  out[id] = { h, mode: outMode, exprs, after: !!after };
   nProb++;
-  byMode[best.mode] = (byMode[best.mode] || 0) + 1;
+  byMode[outMode] = (byMode[outMode] || 0) + 1;
 }
 
 const ids = Object.keys(out).sort();

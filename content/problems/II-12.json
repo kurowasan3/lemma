@@ -12519,5 +12519,768 @@
    },
    "verified": false
   }
+ },
+ {
+  "id": "II-CAL-276",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-12",
+  "level": 4,
+  "minutes": 30,
+  "theme": "4つの値だけで決まる微分係数",
+  "topic": "4つの値だけで決まる微分係数",
+  "statement": {
+   "tex": "\\begin{enumerate}\n  \\item 次数が4以下のすべての整式 $f(x)$ に対して\n  \\[\n  f'(0)=p\\{f(1)-f(-1)\\}+q\\{f(2)-f(-2)\\}\n  \\]\n  が成り立つような定数 $p,q$ がただ1組存在することを示し，それを求めよ．\n  \\item (1) の $p,q$ を用いる．次数が5以下の整式 $f(x)$ について，$f'(0)-\\bigl[p\\{f(1)-f(-1)\\}+q\\{f(2)-f(-2)\\}\\bigr]$ は $f(x)$ の $x^5$ の係数の定数倍であることを示し，その定数を求めよ．\n  \\item 次数が5以下の整式 $f(x)$ が $f(k)=k^3$（$k=-2,-1,0,1,2$）および $\\displaystyle\\int_{-2}^{2}xf(x)\\,dx=0$ をみたすとき，$f'(0)$ を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $p=\\dfrac23$，$q=-\\dfrac1{12}$　(2) 定数は $4$　(3) $f'(0)=\\dfrac{42}{5}$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "$f(x)=\\sum c_kx^k$ と書く．$f(h)-f(-h)=2\\sum_{k\\text{ 奇数}}c_kh^k$ で，$f'(0)=c_1$．\n\n(1) 次数4以下なら $f(1)-f(-1)=2(c_1+c_3)$，$f(2)-f(-2)=2(2c_1+8c_3)$．よって\n\\[\np\\{f(1)-f(-1)\\}+q\\{f(2)-f(-2)\\}=(2p+4q)c_1+(2p+16q)c_3 .\n\\]\nこれがすべての $c_1,c_3$ で $c_1$ に等しいための条件は，$f=x$，$f=x^3$ を考えて $2p+4q=1$，$2p+16q=0$ が必要であり，逆にこれが成り立てば常に等しい．この連立方程式の解はただ1組で，$\\boldsymbol{p=\\frac23,\\ q=-\\frac1{12}}$．\n\n(2) 次数5以下なら，上の式に $c_5$ の項 $(2p+64q)c_5=\\left(\\frac43-\\frac{16}3\\right)c_5=-4c_5$ が加わり，\n\\[\np\\{f(1)-f(-1)\\}+q\\{f(2)-f(-2)\\}=c_1-4c_5 .\n\\]\nよって $f'(0)-\\bigl[p\\{f(1)-f(-1)\\}+q\\{f(2)-f(-2)\\}\\bigr]=4c_5$ で，定数は $\\boldsymbol{4}$．\n\n(3) $g(x)=f(x)-x^3$ は次数5以下で $g(0)=g(\\pm1)=g(\\pm2)=0$．因数定理により $g(x)$ は5次式 $x(x^2-1)(x^2-4)$ で割り切れ，商は定数 $\\lambda$ だから\n\\[\nf(x)=x^3+\\lambda(x^5-5x^3+4x).\n\\]\n$\\displaystyle\\int_{-2}^2x^4dx=\\frac{64}5$，$\\displaystyle\\int_{-2}^2x^6dx=\\frac{256}7$，$\\displaystyle\\int_{-2}^2x^2dx=\\frac{16}3$ より\n\\[\n\\int_{-2}^2xf(x)\\,dx=\\frac{64}5+\\lambda\\Bigl(\\frac{256}7-64+\\frac{64}3\\Bigr)=\\frac{64}5-\\frac{128}{21}\\lambda=0,\\qquad \\lambda=\\frac{21}{10}.\n\\]\n$f'(0)=4\\lambda=\\boldsymbol{\\frac{42}5}$．\n（(2) による確認：$f(1)-f(-1)=2$，$f(2)-f(-2)=16$ で $\\frac23\\cdot2-\\frac1{12}\\cdot16=0$，$x^5$ の係数は $\\lambda$ なので $f'(0)=0+4\\lambda$．）\n\\hfill$\\square$"
+   }
+  ],
+  "idea": {
+   "tex": "$f(h)-f(-h)$ は $f$ の奇数次の部分だけで決まり，$f'(0)$ は1次の係数．次数4以下なら1次・3次の係数の2つしかないので，$f(\\pm1)$，$f(\\pm2)$ の差の1次結合で $f'(0)$ がちょうど表せる．5次の項があると誤差は $x^5$ の係数だけに比例する．5点の値をそろえた整式の差は $x(x^2-1)(x^2-4)$ の定数倍．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) $p$：2/3 ; $q$：-1/12\n(2) 記述\n(3) 記述"
+  },
+  "methods": [],
+  "tags": [
+   "整式の微分",
+   "奇関数部分",
+   "係数比較",
+   "因数定理",
+   "定積分"
+  ],
+  "provenance": {
+   "created": "2026-11-19"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-CAL-277",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-12",
+  "level": 3,
+  "minutes": 25,
+  "theme": "3次関数から1次関数を引いたときの振れ幅",
+  "topic": "3次関数から1次関数を引いたときの振れ幅",
+  "statement": {
+   "tex": "実数 $a$ に対し，$0\\leqq x\\leqq2$ における関数 $\\varphi(x)=x^3-ax$ の最大値から最小値を引いた値を $V(a)$ とする．\n\\begin{enumerate}\n  \\item $V(a)$ を $a$ の式で表せ．\n  \\item $a$ がすべての実数を動くとき，$V(a)$ の最小値と，それを与える $a$ を求めよ．\n  \\item 実数 $a,b$ に対し，$0\\leqq x\\leqq2$ における $|x^3-ax-b|$ の最大値を $M(a,b)$ とする．$a,b$ がすべての実数を動くとき，$M(a,b)$ の最小値と，それを与える $a,b$ を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $a\\leqq0$ で $8-2a$，$0\\leqq a\\leqq4$ で $8-2a+\\dfrac{2a}3\\sqrt{\\dfrac a3}$，$4\\leqq a\\leqq12$ で $\\dfrac{2a}3\\sqrt{\\dfrac a3}$，$a\\geqq12$ で $2a-8$　(2) 最小値 $\\dfrac{16\\sqrt3}9$（$a=4$）　(3) 最小値 $\\dfrac{8\\sqrt3}9$（$a=4$，$b=-\\dfrac{8\\sqrt3}9$）"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) $\\varphi'(x)=3x^2-a$，$\\varphi(0)=0$，$\\varphi(2)=8-2a$．\n\\begin{itemize}\n  \\item $a\\leqq0$：$\\varphi'\\geqq0$ で増加．$V=\\varphi(2)-\\varphi(0)=8-2a$．\n  \\item $a\\geqq12$：$0\\leqq x\\leqq2$ で $\\varphi'\\leqq12-a\\leqq0$ で減少．$V=0-(8-2a)=2a-8$．\n  \\item $0<a<12$：$s=\\sqrt{\\frac a3}$（$0<s<2$）で極小かつ最小，$\\varphi(s)=s^3-3s^2\\cdot s=-2s^3=-\\frac{2a}3\\sqrt{\\frac a3}$．最大は $\\varphi(0)=0$ と $\\varphi(2)=8-2a$ の小さくない方で，$a\\leqq4$ なら $8-2a$，$a\\geqq4$ なら0．\n\\end{itemize}\nよって\n\\[V(a)=\\begin{cases}8-2a&(a\\leqq0)\\\\[2pt] 8-2a+\\dfrac{2a}3\\sqrt{\\dfrac a3}&(0\\leqq a\\leqq4)\\\\[6pt] \\dfrac{2a}3\\sqrt{\\dfrac a3}&(4\\leqq a\\leqq12)\\\\[6pt] 2a-8&(a\\geqq12)\\end{cases}\\]\n（境界で値は一致する）．\n\n(2) $a\\leqq0$ で $V\\geqq8$，$a\\geqq12$ で $V\\geqq16$．$0\\leqq a\\leqq12$ では $a=3s^2$（$0\\leqq s\\leqq2$）とおくと，$0\\leqq s\\leqq\\frac2{\\sqrt3}$ で $V=8-6s^2+2s^3$，$\\frac2{\\sqrt3}\\leqq s\\leqq2$ で $V=2s^3$．前者は $\\frac{d}{ds}(8-6s^2+2s^3)=6s(s-2)<0\\ (0<s<2)$ で減少，後者は増加．よって最小は $s=\\frac2{\\sqrt3}$（$a=4$）で\n\\[V(4)=2\\left(\\frac2{\\sqrt3}\\right)^3=\\frac{16}{3\\sqrt3}=\\boldsymbol{\\frac{16\\sqrt3}9}\\quad(\\boldsymbol{a=4}).\\]\n$8>\\frac{16\\sqrt3}9$ だから，これが全体の最小値で，$a\\neq4$ では $V(a)>V(4)$．\n\n(3) $\\varphi$ の最大値を $A$，最小値を $B$ とすると，$x$ をそれぞれをとる点にとって\n\\[M(a,b)\\geqq A-b,\\quad M(a,b)\\geqq b-B\\quad\\text{より}\\quad 2M(a,b)\\geqq A-B=V(a)\\geqq\\frac{16\\sqrt3}9.\\]\nよって $M(a,b)\\geqq\\frac{8\\sqrt3}9$．等号には $a=4$ かつ $A-b=b-B$ が必要で，$a=4$ のとき $A=0$，$B=-\\frac{16\\sqrt3}9$ だから $b=-\\frac{8\\sqrt3}9$．このとき $0\\leqq x\\leqq2$ で $B-b\\leqq\\varphi(x)-b\\leqq A-b$，すなわち $|\\varphi(x)-b|\\leqq\\frac{8\\sqrt3}9$ で等号は $x=0$ で成立．\n\n最小値 $\\boldsymbol{\\dfrac{8\\sqrt3}9}$（$\\boldsymbol{a=4,\\ b=-\\dfrac{8\\sqrt3}9}$）．"
+   }
+  ],
+  "idea": {
+   "tex": "$x^3-ax$ の区間 $0\\leqq x\\leqq2$ での（最大値）$-$（最小値）を $a$ の関数として，増減と端点の大小で場合分けして表す．最小になるのは両端の値がそろい，内部の極小との差が最も小さくなるとき．さらに定数 $b$ をずらすと，$|x^3-ax-b|$ の最大値は振れ幅の半分以上で，中央にそろえたときに等号．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) 記述\n(2) 最小値：16sqrt(3)/9\n(3) 記述"
+  },
+  "methods": [],
+  "tags": [
+   "最大最小",
+   "場合分け",
+   "振れ幅",
+   "置き換え"
+  ],
+  "provenance": {
+   "created": "2026-11-19"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-CAL-278",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-12",
+  "level": 4,
+  "minutes": 35,
+  "theme": "2つの放物線の内部と点対称な領域の交わり",
+  "topic": "2つの放物線の内部と点対称な領域の交わり",
+  "statement": {
+   "tex": "$xy$ 平面において，不等式 $y\\geqq x^2$ の表す領域を $D$，不等式 $y\\geqq4(x-3)^2$ の表す領域を $E$ とする．点 P$(a,b)$ に関して $D$ と対称な領域を $U$ とするとき，次の3つの条件を同時にみたす点 P 全体の集合を求めて図示し，その面積を求めよ．\n\\begin{center}\n$D\\cap U$ は空集合でない，\\quad $E\\cap U$ は空集合でない，\\quad $D\\cap E\\cap U$ は空集合である．\n\\end{center}"
+  },
+  "answer": {
+   "tex": "$-1<a<2$ で「$b\\geqq a^2$ かつ $b\\geqq\\frac25(2a-3)^2$ かつ $b<2(a-1)^2+2$」，$6<a<9$ で「$b\\geqq a^2$ かつ $b\\geqq\\frac25(2a-3)^2$ かつ $b<2(a-3)^2+18$」の2つの部分（上側の境界は含まない）；面積 $28-8\\sqrt{10}$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "\\textbf{中点への言いかえ．}点 Q に P に関して対称な点は $2\\mathrm P-\\mathrm Q$（位置ベクトルで）であるから，集合 $K$ について\n\\begin{align*}\nU\\cap K\\ \\text{が空集合でない}&\\iff \\text{$K$ の点 Q で $2\\mathrm P-\\mathrm Q\\in D$ となるものがある}\\\\\n&\\iff \\text{P は $D$ の点と $K$ の点を結ぶ線分の中点になりうる．}\n\\end{align*}\nこの中点全体を $M(K)$ と書く．$K$ が「点 $(t,\\beta)$ を含めば $\\beta'\\geqq\\beta$ の $(t,\\beta')$ も含み，$K$ と直線 $x=t$ の共通部分が $y\\geqq h(t)$ の形」の集合であるとき，$D$ の点 $(s,\\alpha)$（$\\alpha\\geqq s^2$）と $K$ の点 $(t,\\beta)$（$\\beta\\geqq h(t)$）の中点は $\\left(\\frac{s+t}2,\\frac{\\alpha+\\beta}2\\right)$ で，$s+t=2X$ を固定すると $\\alpha+\\beta$ は $s^2+h(t)$ 以上のすべての値をとる．よって，$\\varphi_X(t)=(2X-t)^2+h(t)$ の最小値 $\\mu(X)$ が存在すれば\n\\[\\text{$M(K)$ のうち直線 $x=X$ 上にある点全体}=\\text{点 $(X,Y)$ で $Y\\geqq\\tfrac12\\mu(X)$ をみたすもの全体}\\tag{$*$}\\]\nである（$Y\\geqq\\frac12\\mu(X)$ なら，最小を与える $t$ と $s=2X-t$ をとり，$\\beta=h(t)+2Y-\\mu(X)$ とすればよい）．$D$，$E$，$D\\cap E$ はすべてこの形の集合である．\n\n\\textbf{(i) $K=D$．}$h(t)=t^2$ で $(2X-t)^2+t^2=2(t-X)^2+2X^2\\geqq2X^2$（等号 $t=X$）．よって $M(D)=D$ で，条件は $b\\geqq a^2$．\n\n\\textbf{(ii) $K=E$．}$h(t)=4(t-3)^2$．$S=2X-3$，$w=t-3$ とおくと $(2X-t)^2=(S-w)^2$ で\n\\[(S-w)^2+4w^2=5\\left(w-\\tfrac S5\\right)^2+\\tfrac45S^2\\geqq\\tfrac45S^2 .\\]\nよって条件は $b\\geqq\\frac25(2a-3)^2$．\n\n\\textbf{(iii) $K=D\\cap E$．}$t^2\\geqq4(t-3)^2\\iff(6-t)(3t-6)\\geqq0\\iff2\\leqq t\\leqq6$ なので，$h(t)$ は $2\\leqq t\\leqq6$ で $t^2$，それ以外で $4(t-3)^2$．(i)(ii) の計算から，すべての $t$ で\n\\[\\varphi_X(t)\\geqq2X^2,\\qquad \\varphi_X(t)\\geqq\\tfrac45(2X-3)^2 \\tag{1}\\]\nである．また $[2,6]$ では $\\varphi_X(t)=2(t-X)^2+2X^2$，$t\\leqq2$ と $t\\geqq6$ では $\\varphi_X(t)=5(t-t_0)^2+\\frac45(2X-3)^2$（$t_0=\\frac{2X+12}5$）である．\n\\begin{itemize}\n  \\item $X\\leqq-1$ のとき $t_0\\leqq2$ で，$t=t_0$ で $\\varphi=\\frac45(2X-3)^2$．(1) より $\\mu=\\frac45(2X-3)^2$．$X\\geqq9$ のときも $t_0\\geqq6$ で同様．\n  \\item $2\\leqq X\\leqq6$ のとき $t=X$ で $\\varphi=2X^2$．(1) より $\\mu=2X^2$．\n  \\item $-1<X<2$ のとき．$t\\leqq2$ では $t_0>2$ より $\\varphi$ は減少で最小は $\\varphi(2)$．$[2,6]$ では頂点 $X<2$ より増加で最小は $\\varphi(2)$．$t\\geqq6$ では $\\varphi(t)\\geqq\\varphi(6)=(2X-6)^2+36$ で，$\\{(2X-6)^2+36\\}-\\{(2X-2)^2+4\\}=16(4-X)>0$．よって $\\mu=\\varphi(2)=(2X-2)^2+4$．\n  \\item $6<X<9$ のとき．同様に $t\\geqq6$ と $[2,6]$ での最小は $\\varphi(6)$，$t\\leqq2$ では $\\varphi\\geqq\\varphi(2)$ で，$\\varphi(2)-\\varphi(6)=16X-64>0$．よって $\\mu=\\varphi(6)=(2X-6)^2+36$．\n\\end{itemize}\nしたがって $M(D\\cap E)$ の下側の境界 $y=g(x)$ は\n\\[g(x)=\\begin{cases}\\frac25(2x-3)^2&(x\\leqq-1,\\ x\\geqq9)\\\\ 2(x-1)^2+2&(-1<x<2)\\\\ x^2&(2\\leqq x\\leqq6)\\\\ 2(x-3)^2+18&(6<x<9)\\end{cases}\\]\nで，$D\\cap E\\cap U$ が空集合 $\\iff$ P$\\notin M(D\\cap E)\\iff b<g(a)$．\n\n\\textbf{まとめ．}条件は $b\\geqq a^2$，$b\\geqq\\frac25(2a-3)^2$，$b<g(a)$．$a\\leqq-1$，$a\\geqq9$ では $g(a)=\\frac25(2a-3)^2\\leqq b$，$2\\leqq a\\leqq6$ では $g(a)=a^2\\leqq b$ となり不適．$-1<a<2$ では\n\\[2(a-1)^2+2-a^2=(a-2)^2>0,\\qquad 2(a-1)^2+2-\\tfrac25(2a-3)^2=\\tfrac25(a+1)^2>0\\]\nで，$6<a<9$ では\n\\[2(a-3)^2+18-a^2=(a-6)^2>0,\\qquad 2(a-3)^2+18-\\tfrac25(2a-3)^2=\\tfrac25(a-9)^2>0\\]\nなので，いずれも区間が空でない．下側の2曲線の大小は $\\frac25(2a-3)^2-a^2=\\frac35(a^2-8a+6)$ で，$a=4\\pm\\sqrt{10}$ で入れかわる（$0<4-\\sqrt{10}<1$，$7<4+\\sqrt{10}<8$）．求める集合は\n\\begin{align*}\n&\\boldsymbol{-1<a<2:\\ \\ b\\geqq a^2,\\ b\\geqq\\tfrac25(2a-3)^2,\\ b<2(a-1)^2+2},\\\\\n&\\boldsymbol{6<a<9:\\ \\ b\\geqq a^2,\\ b\\geqq\\tfrac25(2a-3)^2,\\ b<2(a-3)^2+18}\n\\end{align*}\nで，図は放物線 $y=x^2$，$y=\\frac25(2x-3)^2$ の上側（境界を含む）で，$y=2(x-1)^2+2$（点 $(-1,10)$ と $(2,4)$ で下の2曲線に接する）と $y=2(x-3)^2+18$（点 $(6,36)$ と $(9,90)$ で接する）の下側（境界を含まない）にある2つの部分である．\n\n面積は，$c=4-\\sqrt{10}$，$d=4+\\sqrt{10}$ として\n\\begin{align*}\nS_1&=\\int_{-1}^c\\tfrac25(a+1)^2da+\\int_c^2(a-2)^2da=\\tfrac2{15}(5-\\sqrt{10})^3+\\tfrac13(\\sqrt{10}-2)^3,\\\\\nS_2&=\\int_6^d(a-6)^2da+\\int_d^9\\tfrac25(a-9)^2da=\\tfrac13(\\sqrt{10}-2)^3+\\tfrac2{15}(5-\\sqrt{10})^3 .\n\\end{align*}\n$(\\sqrt{10}-2)^3=22\\sqrt{10}-68$，$(5-\\sqrt{10})^3=275-85\\sqrt{10}$ より $S_1=S_2=\\frac{110\\sqrt{10}-340+550-170\\sqrt{10}}{15}=14-4\\sqrt{10}$．面積は $\\boldsymbol{28-8\\sqrt{10}}$．"
+   }
+  ],
+  "idea": {
+   "tex": "点 P に関して $D$ と対称な領域 $U$ が集合 $K$ と交わる $\\iff$ P が「$D$ の点と $K$ の点の中点」になる．各 $x$ 座標ごとに，中点の $y$ 座標の最小値は「$x$ 座標の和を固定した2次式の最小値」で求まり，$K=D$ なら $D$ 自身，$K=E$ なら幅の異なる放物線，$K=D\\cap E$ なら境界の折れ目で式が切り替わる区分的な曲線になる．"
+  },
+  "methods": [],
+  "tags": [
+   "点対称",
+   "中点の集合",
+   "2次関数の最小",
+   "面積"
+  ],
+  "provenance": {
+   "created": "2026-11-19"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-CAL-279",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-12",
+  "level": 4,
+  "minutes": 30,
+  "theme": "端点を含む3点で4次式まで正しい積分公式",
+  "topic": "端点を含む3点で4次式まで正しい積分公式",
+  "statement": {
+   "tex": "\\begin{enumerate}\n  \\item 4次以下の任意の整式 $f(x)$ に対して，つねに\n  \\[\\int_{-1}^1f(x)\\,dx=uf(-1)+vf(s)+wf(t)\\]\n  が成り立つような定数 $u,v,w,s,t$ をすべて求めよ．ただし $s<t$ で，$s,t$ はいずれも $-1$ と異なるとする．\n  \\item 5次以下の任意の整式 $f(x)$ に対して (1) の形の等式がつねに成り立つような定数 $u,v,w,s,t$（$s<t$，$s\\neq-1$，$t\\neq-1$）は存在しないことを示せ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $s=\\dfrac{1-\\sqrt6}5$，$t=\\dfrac{1+\\sqrt6}5$，$u=\\dfrac29$，$v=\\dfrac{16+\\sqrt6}{18}$，$w=\\dfrac{16-\\sqrt6}{18}$　(2) 証明"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "$\\sigma=s+t$，$\\pi=st$，$q(x)=(x+1)(x-s)(x-t)=(x+1)(x^2-\\sigma x+\\pi)$ とおく．\n\n(1) \\textbf{必要条件．}$f=q$（3次）と $f=xq$（4次）は右辺が0なので，左辺も0：\n\\begin{align*}\n\\int_{-1}^1q\\,dx&=\\int_{-1}^1\\{x^3+(1-\\sigma)x^2+(\\pi-\\sigma)x+\\pi\\}dx=\\tfrac23(1-\\sigma)+2\\pi=0,\\\\\n\\int_{-1}^1xq\\,dx&=\\int_{-1}^1\\{x^4+(1-\\sigma)x^3+(\\pi-\\sigma)x^2+\\pi x\\}dx=\\tfrac25+\\tfrac23(\\pi-\\sigma)=0 .\n\\end{align*}\n第1式より $\\pi=\\frac{\\sigma-1}3$，第2式に代入して $\\frac{\\sigma-1}3-\\sigma=-\\frac35$，$\\sigma=\\frac25$，$\\pi=-\\frac15$．$s,t$ は $x^2-\\frac25x-\\frac15=0$ の解で，$s=\\frac{1-\\sqrt6}5$，$t=\\frac{1+\\sqrt6}5$（ともに $-1$ と異なる）．\n次に $L_0(x)=\\dfrac{(x-s)(x-t)}{(-1-s)(-1-t)}$，$L_1(x)=\\dfrac{(x+1)(x-t)}{(s+1)(s-t)}$，$L_2(x)=\\dfrac{(x+1)(x-s)}{(t+1)(t-s)}$ を代入すると，$u=\\int_{-1}^1L_0$，$v=\\int_{-1}^1L_1$，$w=\\int_{-1}^1L_2$ でなければならない．\n\\[u=\\frac{\\frac23+2\\pi}{1+\\sigma+\\pi}=\\frac{\\frac4{15}}{\\frac65}=\\frac29 .\\]\n$v$：$\\int_{-1}^1(x+1)(x-t)dx=\\frac23-2t=\\frac{4-6\\sqrt6}{15}$，$(s+1)(s-t)=\\frac{6-\\sqrt6}5\\cdot\\left(-\\frac{2\\sqrt6}5\\right)=\\frac{12(1-\\sqrt6)}{25}$ より\n\\[v=\\frac{5(2-3\\sqrt6)}{18(1-\\sqrt6)}=\\frac{5(2-3\\sqrt6)(1+\\sqrt6)}{18\\cdot(-5)}=\\frac{16+\\sqrt6}{18}.\\]\n$f=1$ より $u+v+w=2$ なので $w=\\frac{16-\\sqrt6}{18}$．\n\n\\textbf{十分性．}4次以下の $f$ を $q$ で割り $f=q\\cdot(\\lambda x+\\mu)+R$（$R$ は2次以下）とする．$q(\\lambda x+\\mu)$ は上の2式から積分が0，右辺も0．$R$ と $R(-1)L_0+R(s)L_1+R(t)L_2$ はともに2次以下で3点 $-1,s,t$ で値が一致するので等しく，積分すると $\\int R=uR(-1)+vR(s)+wR(t)$．よって等式が成り立つ．\n\\[\\boldsymbol{s=\\tfrac{1-\\sqrt6}5,\\ t=\\tfrac{1+\\sqrt6}5,\\ u=\\tfrac29,\\ v=\\tfrac{16+\\sqrt6}{18},\\ w=\\tfrac{16-\\sqrt6}{18}}.\\]\n\n(2) そのような定数があれば，4次以下でも成り立つので (1) の値に限る．$f(x)=(x+1)(x-s)^2(x-t)^2$（5次）では右辺は0だが，$-1<x\\leqq1$ で $f(x)\\geqq0$ であり，$f(x)=0$ となるのは $x=s,t$ だけなので，$s<0$，また $\\sqrt6<\\frac{11}4$（$6<\\frac{121}{16}$）より $t=\\frac{1+\\sqrt6}5<\\frac34$ なので，区間 $\\left[\\frac34,1\\right]$ は $s,t$ を含まず，そこで $f>0$ となり $\\int_{-1}^1f\\,dx\\geqq\\int_{\\frac34}^1f\\,dx>0$．矛盾．よって存在しない．\\hfill$\\square$"
+   }
+  ],
+  "idea": {
+   "tex": "公式の右辺が0になる整式（$x=-1,s,t$ をすべて解にもつもの）を代入すると，$s+t$，$st$ についての1次の条件が2つ得られる．十分性は，$f$ を $(x+1)(x-s)(x-t)$ で割った商と余りに分け，余り（2次以下）は3点での値で決まることを使う．5次では $(x+1)(x-s)^2(x-t)^2$ が反例になる．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) $s$：(1-sqrt(6))/5 ; $t$：(1+sqrt(6))/5 ; $u$：2/9 ; $v$：(16+sqrt(6))/18 ; $w$：(16-sqrt(6))/18\n(2) 証明"
+  },
+  "methods": [],
+  "tags": [
+   "定積分",
+   "整式の割り算",
+   "恒等式",
+   "補間"
+  ],
+  "provenance": {
+   "created": "2026-11-19"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-CAL-280",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-12",
+  "level": 4,
+  "minutes": 35,
+  "theme": "$x$ の項のない4次関数の極値の位置と整数係数",
+  "topic": "$x$ の項のない4次関数の極値の位置と整数係数",
+  "statement": {
+   "tex": "$a,b,c$ を整数とし，$f(x)=x^4+ax^3+bx^2+c$ とする．$f(x)$ が次の条件 (i)，(ii) をみたすように $a,b,c$ を定め，そのときの $p,q,r$ を求めよ．\n\\begin{itemize}\n  \\item[(i)] 方程式 $f(x)=0$ は4個の相異なる実数解をもつ．\n  \\item[(ii)] 関数 $f(x)$ は $x=p,\\ q,\\ r$ において極値をとり，$p,q,r$ は $-1<p<q<1<r<2$ をみたす．\n\\end{itemize}"
+  },
+  "answer": {
+   "tex": "$a=-1$，$b=-3$，$c=1$，$p=\\dfrac{3-\\sqrt{105}}8$，$q=0$，$r=\\dfrac{3+\\sqrt{105}}8$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "$f'(x)=4x^3+3ax^2+2bx=x\\,g(x)$，$g(x)=4x^2+3ax+2b$．$f$ が3点で極値をとる $\\iff$ $f'$ が3点で符号を変える $\\iff$ $g$ が0でない相異なる2つの実数解 $\\alpha<\\beta$ をもつ（このとき $f'(x)=4x(x-\\alpha)(x-\\beta)$）．よって $\\{p,q,r\\}=\\{0,\\alpha,\\beta\\}$ で，$r>1$ より $0$ は $p$ か $q$．\n$f$ は $x$ の小さい方から減少・増加・減少・増加をくり返すので，各単調区間に実数解は高々1個であり，(i) $\\iff$ $f(p)<0<f(q)$ かつ $f(r)<0$．\n\n\\textbf{$p=0$ の場合．}$q,r$ が $g$ の解で $0<q<1<r<2$ $\\iff$ $g(0)=2b>0$，$g(1)=4+3a+2b<0$，$g(2)=16+6a+2b>0$．$-16-6a<2b<-4-3a$，$2b>0$ より $a>-4$，$a<-\\frac43$．$a=-3$ なら $2<2b<5$ で $b=2$，$a=-2$ なら $0<2b<2$ で整数 $b$ はない．$f(x)=x^4-3x^3+2x^2+c$ で，$c=f(0)=f(p)<0$ より $c\\leqq-1$．一方 $0<q<1$ より\n\\[f(q)-c=q^2(1-q)(2-q)=\\{q(1-q)\\}\\{q(2-q)\\}\\leqq\\frac14\\cdot1,\\]\nよって $f(q)\\leqq\\frac14-1<0$ となり不適．\n\n\\textbf{$q=0$ の場合．}$-1<p<0$，$1<r<2$ $\\iff$ $g(-1)=4-3a+2b>0$，$g(0)=2b<0$，$g(1)=4+3a+2b<0$，$g(2)=16+6a+2b>0$．$3a-4<2b<-4-3a$ より $a<0$，$-16-6a<2b<0$ より $a>-\\frac83$．$a=-1$：$-7<2b<-1$ で $b=-3,-2,-1$．$a=-2$：$-4<2b<0$ で $b=-1$．\n極値をとる点 $x=p,r$ では $4x^2=-3ax-2b$ より $x^2+ax+b=\\dfrac{ax+2b}4$ なので\n\\[f(x)=c+x^2(x^2+ax+b)=c+\\frac{x^2(ax+2b)}4 .\\]\n(i) は $c=f(0)>0$ かつ $f(p)<0$，$f(r)<0$．$-1<p<0$ では $0<p^2<1$．\n\\begin{itemize}\n  \\item $(a,b)=(-1,-2)$：$f(p)=c-\\frac{p^2(p+4)}4>c-1$，$(-1,-1)$：$f(p)=c-\\frac{p^2(p+2)}4>c-\\frac12$，$(-2,-1)$：$f(p)=c-\\frac{p^2(p+1)}2>c-\\frac12$．いずれも $c\\geqq1$ では $f(p)>0$ で不適．\n  \\item $(a,b)=(-1,-3)$：$g(x)=4x^2-3x-6$，$p=\\frac{3-\\sqrt{105}}8$，$r=\\frac{3+\\sqrt{105}}8$．$f(p)=c-\\frac{p^2(p+6)}4$，$f(r)=c-\\frac{r^2(r+6)}4$．$\\frac{p^2(p+6)}4<\\frac64<2$ なので $c\\geqq2$ は不適．$c=1$ を調べる．$4p^2=3p+6$ より\n  \\[p^2(p+6)=\\frac{(3p+6)(p+6)}4=\\frac{3p^2+24p+36}4=\\frac{105p+162}{16}.\\]\n  $g$ は $x<\\frac38$ で減少し $g\\!\\left(-\\frac{14}{15}\\right)=\\frac{784+630-1350}{225}=\\frac{64}{225}>0=g(p)$ だから $p>-\\frac{14}{15}$，よって $105p+162>64$，$\\frac{p^2(p+6)}4>1$ で $f(p)<0$．また $r>1$ より $\\frac{r^2(r+6)}4>\\frac74>1$ で $f(r)<0$．\n\\end{itemize}\n以上より $\\boldsymbol{a=-1,\\ b=-3,\\ c=1}$，$\\boldsymbol{p=\\frac{3-\\sqrt{105}}8,\\ q=0,\\ r=\\frac{3+\\sqrt{105}}8}$．"
+   }
+  ],
+  "idea": {
+   "tex": "$f'(x)=x(4x^2+3ax+2b)$ なので極値をとる点の1つは $x=0$ で，残り2つは2次式の解．区間の端での2次式の符号から整数 $a,b$ の候補を有限個に絞る．4個の実数解の条件は「極小値 $<0<$ 極大値」で，極値は $4x^2=-3ax-2b$ を使った次数下げにより $f(x)=c+\\frac{x^2(ax+2b)}4$ と表せるので，整数 $c$ の評価に持ち込める．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "$a$：-1 ; $b$：-3 ; $c$：1 ; $p$：(3-sqrt(105))/8 ; $q$：0 ; $r$：(3+sqrt(105))/8"
+  },
+  "methods": [],
+  "tags": [
+   "4次関数",
+   "極値",
+   "解の存在範囲",
+   "整数",
+   "次数下げ"
+  ],
+  "provenance": {
+   "created": "2026-11-19"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-CAL-281",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-12",
+  "level": 4,
+  "minutes": 30,
+  "theme": "3次曲線の接線がもう一度交わる点と原点での接線による角の二等分",
+  "topic": "3次曲線の接線がもう一度交わる点と原点での接線による角の二等分",
+  "statement": {
+   "tex": "$a>0$ とし，曲線 $C:y=-x^3+ax$ を考える．$C$ 上の点 $\\mathrm P(t,\\,-t^3+at)$（$t>0$）における $C$ の接線が，$\\mathrm P$ 以外で $C$ と交わる点を $\\mathrm R$ とする．また，原点 O における $C$ の接線を $\\ell$ とする．\n\\begin{enumerate}\n  \\item $\\ell$ が $\\angle\\mathrm{ROP}$ を二等分するための必要十分条件は $t^2=\\dfrac{5(a^2+1)}{8a}$ であることを示せ．\n  \\item (1) の条件のもとで，三角形 ROP の面積を $S(a)$ とする．$a$ が正の実数全体を動くとき，$S(a)$ の最小値と，それを与える $a$ の値を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 証明　(2) 最小値 $\\dfrac{75}{16}$（$a=1$）"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) $y'=-3x^2+a$ より P における接線は $y=(a-3t^2)(x-t)-t^3+at$．これと $C$ の式の差は\n\\[\n-x^3+ax-\\{(a-3t^2)(x-t)-t^3+at\\}=-x^3+3t^2x-2t^3=-(x-t)^2(x+2t)\n\\]\nであるから，R の $x$ 座標は $-2t$（$t>0$ より $-2t\\neq t$）で，$\\mathrm R(-2t,\\ 8t^3-2at)$．$u=t^2$ とおくと $\\mathrm P(t,\\ t(a-u))$，$\\mathrm R(-2t,\\ 2t(4u-a))$ であり，直線 OP，OR の傾き $a-u$，$a-4u$ は異なるので R，O，P は一直線上になく，$\\angle\\mathrm{ROP}$ は $0$ より大きく $\\pi$ より小さい．\n\n$\\ell$ は直線 $y=ax$ である．O を頂点とする2本の半直線 OR，OP に対し，O を通る直線 $\\ell$ が $\\angle\\mathrm{ROP}$ を二等分することは，$\\ell$ に関する対称移動で半直線 OR が半直線 OP に移ること，すなわち R の $\\ell$ に関する対称点 $\\mathrm R'$ が半直線 OP 上（O を除く）にあることと同値である（二等分線は2本の半直線の対称軸であり，逆に対称移動で移り合えば $\\ell$ と2本の半直線のなす角が等しく，$\\ell$ は角の内部を通る）．\n\n点 $(x_0,y_0)$ の $\\ell$ に関する対称点を $(x',y')$ とすると，2点の中点が $\\ell$ 上にあり，2点を結ぶ直線が $\\ell$ に垂直であるから\n\\[\n\\frac{y'+y_0}2=a\\cdot\\frac{x'+x_0}2,\\qquad (x'-x_0)+a(y'-y_0)=0,\n\\]\nすなわち $y'-ax'=ax_0-y_0$，$x'+ay'=x_0+ay_0$．これを解いて\n\\[\nx'=\\frac{(1-a^2)x_0+2ay_0}{1+a^2},\\qquad y'=\\frac{2ax_0+(a^2-1)y_0}{1+a^2}.\n\\]\nこれは $(x_0,y_0)$ について1次の同次式なので，$\\mathrm R=2t\\cdot(-1,\\ 4u-a)$ の対称点は $\\mathrm R'(2tX,\\ 2tY)$ で，\n\\[\nX=\\frac{-(1-a^2)+2a(4u-a)}{1+a^2}=\\frac{8au-1-a^2}{1+a^2},\n\\]\n\\[\nY=\\frac{-2a+(a^2-1)(4u-a)}{1+a^2}=\\frac{-a(1+a^2)+4u(a^2-1)}{1+a^2}.\n\\]\n条件は「$(X,Y)$ が $(1,a-u)$ の正の実数倍」，すなわち $X>0$ かつ $Y=(a-u)X$ である．\n\\[\n(1+a^2)\\{Y-(a-u)X\\}=-a(1+a^2)+4u(a^2-1)-(a-u)(8au-1-a^2).\n\\]\n$(a-u)(8au-1-a^2)=8a^2u-a-a^3-8au^2+u+a^2u$ を代入して整理すると，右辺 $=u(8au-5a^2-5)$．$u>0$ より $Y=(a-u)X\\iff 8au=5(a^2+1)$．このとき $X=\\dfrac{5a^2+5-1-a^2}{1+a^2}=4>0$ も成り立つ．よって条件は $\\boldsymbol{t^2=\\dfrac{5(a^2+1)}{8a}}$ と同値である．\\hfill$\\square$\n\n(2) 三角形 ROP の面積は\n\\[\nS=\\frac12\\left|t(8t^3-2at)-(-2t)(-t^3+at)\\right|=\\frac12\\left|6t^4\\right|=3t^4 .\n\\]\n(1) より\n\\[\nS(a)=3\\left\\{\\frac{5(a^2+1)}{8a}\\right\\}^2=\\frac{75}{64}\\left(a+\\frac1a\\right)^2 .\n\\]\n$a>0$ より相加平均・相乗平均の関係から $a+\\dfrac1a\\geqq2$（等号は $a=1$ のときのみ）．よって $S(a)\\geqq\\dfrac{75}{64}\\cdot4=\\dfrac{75}{16}$ で，$a=1$（このとき $t^2=\\frac54$，$t=\\frac{\\sqrt5}2$）で等号が成り立つ．\n\\[\n\\text{最小値 }\\boldsymbol{\\dfrac{75}{16}}\\quad(\\boldsymbol{a=1}).\n\\]"
+   }
+  ],
+  "idea": {
+   "tex": "「原点を通る直線 $\\ell$ が $\\angle\\mathrm{ROP}$ を二等分する」は「R の $\\ell$ に関する対称点が半直線 OP 上にある」と言いかえられる．直線 $y=ax$ に関する対称点は「中点が $\\ell$ 上」「結ぶ直線が $\\ell$ に垂直」の連立方程式で求まり，向き（正の実数倍）まで含めて条件にすれば外角の二等分を排除できる．接線がもう一度交わる点は $-(x-t)^2(x+2t)$ の因数分解で求まる．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) 証明\n(2) 最小値：75/16"
+  },
+  "methods": [],
+  "tags": [
+   "3次関数の接線",
+   "対称移動",
+   "角の二等分",
+   "相加平均と相乗平均"
+  ],
+  "provenance": {
+   "created": "2026-11-19"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-CAL-282",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-12",
+  "level": 3,
+  "minutes": 30,
+  "theme": "動く三角形の面積の幅1の区間での最大値の最小",
+  "topic": "動く三角形の面積の幅1の区間での最大値の最小",
+  "statement": {
+   "tex": "時刻0に原点を出発した2点 A，B が $xy$ 平面上を動く．点 A の時刻 $t$ での座標は $(2t,0)$ で与えられる．点 B は，最初は $y$ 軸上を $y$ 座標が増加する方向に一定の速さ1で動くが，点 C$(0,3)$ に到達した後は，その点から $x$ 軸に平行な直線上を $x$ 座標が増加する方向に同じ速さ1で動く．$t>0$ のとき，三角形 ABC の面積を $S(t)$ とおく（$t=3$ のときは $S(3)=0$ とする）．\n\\begin{enumerate}\n  \\item $S(t)$ を $t$ の式で表せ．\n  \\item $u$ を正の実数とするとき，$u\\leqq t\\leqq u+1$ における $S(t)$ の最大値を $W(u)$ とおく．$u$ が正の実数全体を動くとき，$W(u)$ の最小値と，それを与える $u$ の値を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $0<t\\leqq3$ で $S(t)=t(3-t)$，$t\\geqq3$ で $S(t)=\\dfrac32(t-3)$　(2) 最小値 $\\dfrac{3(\\sqrt{57}-5)}{8}$（$u=\\dfrac{3+\\sqrt{57}}4$）"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) $0<t\\leqq3$ のとき B$(0,t)$ で，辺 BC は $y$ 軸上の長さ $3-t$ の線分，A と $y$ 軸の距離は $2t$ なので $S(t)=\\frac12(3-t)\\cdot2t=\\boldsymbol{t(3-t)}$（$t=3$ で $0$ とも一致）．$t\\geqq3$ のとき B$(t-3,3)$ で，辺 CB は直線 $y=3$ 上の長さ $t-3$ の線分，A と直線 $y=3$ の距離は $3$ なので $S(t)=\\boldsymbol{\\dfrac32(t-3)}$．\n\n(2) $S(t)$ は $0<t\\leqq\\frac32$ で増加，$\\frac32\\leqq t\\leqq3$ で減少，$t\\geqq3$ で増加し，$S\\left(\\frac32\\right)=\\frac94$，$S(2)=2$，$S(3)=0$．\n\\begin{itemize}\n  \\item $0<u\\leqq\\frac12$：$[u,u+1]\\subset\\left(0,\\frac32\\right]$ なので $W(u)=S(u+1)=(u+1)(2-u)=2+u-u^2>2$．\n  \\item $\\frac12\\leqq u\\leqq\\frac32$：区間が $t=\\frac32$ を含むので $W(u)=\\frac94$．\n  \\item $\\frac32\\leqq u\\leqq2$：$[u,u+1]\\subset\\left[\\frac32,3\\right]$ で $S$ は減少なので $W(u)=S(u)=u(3-u)\\geqq S(2)=2$．\n  \\item $2\\leqq u\\leqq3$：区間は $t=3$ を含み，$[u,3]$ で減少，$[3,u+1]$ で増加なので $W(u)$ は $S(u)=u(3-u)$ と $S(u+1)=\\frac32(u-2)$ の小さくない方．前者は減少して $2$ から $0$ へ，後者は増加して $0$ から $\\frac32$ へ変わるので，両者が等しくなる $u$ がこの範囲にただ1つあり，\n  \\[\n  u(3-u)=\\tfrac32(u-2)\\iff2u^2-3u-6=0\\iff u=\\tfrac{3+\\sqrt{57}}4\n  \\]\n  （$7<\\sqrt{57}<8$ よりこれは $2$ と $3$ の間にある）．この $u_0$ 以下では $W(u)=u(3-u)$ で減少，$u_0$ 以上では $W(u)=\\frac32(u-2)$ で増加．よってこの範囲での最小値は $W(u_0)=\\frac32(u_0-2)=\\frac{3(\\sqrt{57}-5)}8$．\n  \\item $u\\geqq3$：$W(u)=S(u+1)=\\frac32(u-2)\\geqq\\frac32$．\n\\end{itemize}\n$\\sqrt{57}<8$ より $\\frac{3(\\sqrt{57}-5)}8<\\frac98<\\frac32<2$ なので，$W(u)$ の最小値は $\\boldsymbol{\\dfrac{3(\\sqrt{57}-5)}8}$（$\\boldsymbol{u=\\dfrac{3+\\sqrt{57}}4}$）．"
+   }
+  ],
+  "idea": {
+   "tex": "折れ線上を動く点で面積関数 $S(t)$ が区間ごとに別の式になる．「ある範囲の $t$ での $S(t)$ の最大値」を，その範囲が $S$ の増減の境目を含むかどうかで場合分けして求める．原題は $0<t\\leqq u$ での最大値だったが，ここでは幅1の区間 $u\\leqq t\\leqq u+1$ での最大値なので，減少する枝と増加する枝の値がつり合う点で最小になる．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) 記述\n(2) 最小値：3(sqrt(57)-5)/8"
+  },
+  "methods": [],
+  "tags": [
+   "動点",
+   "面積関数",
+   "区間での最大値",
+   "場合分け",
+   "2次方程式"
+  ],
+  "provenance": {
+   "created": "2026-11-19"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-CAL-283",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-12",
+  "level": 4,
+  "minutes": 30,
+  "theme": "折れ目の位置も選べる折れ線による導関数の2乗誤差",
+  "topic": "折れ目の位置も選べる折れ線による導関数の2乗誤差",
+  "statement": {
+   "tex": "$f(x)=x^3+x^2$ とする．$-1<t<1$ をみたす実数 $t$ と実数 $q,\\ s$ に対し，$-1\\leqq x\\leqq1$ で定義された関数 $g(x)$ を\n\\[\ng(x)=\\begin{cases}f(-1)+q(x+1)&(-1\\leqq x\\leqq t)\\\\[2pt] f(-1)+q(t+1)+s(x-t)&(t<x\\leqq1)\\end{cases}\n\\]\nで定め，\n\\[\nI=\\int_{-1}^t\\{f'(x)-q\\}^2dx+\\int_t^1\\{f'(x)-s\\}^2dx\n\\]\nとおく．\n\\begin{enumerate}\n  \\item $t$ を固定して $q,\\ s$ を動かすとき，$I$ を最小にする $q,\\ s$ を $t$ で表せ．また，そのとき $g(t)=f(t)$，$g(1)=f(1)$ となることを示せ．\n  \\item (1) の $I$ の最小値を $m(t)$ とする．$m(t)$ を $t$ の式で表せ．\n  \\item $t$ が $-1<t<1$ の範囲を動くとき，$m(t)$ の最小値と，そのときの $t$ の値を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $q=t^2$，$s=t^2+2t+2$，後半は証明　(2) $m(t)=2t^4+4t^3-4t+\\dfrac{34}{15}$　(3) $t=\\dfrac12$ のとき最小値 $\\dfrac{107}{120}$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) 区間 $[\\alpha,\\beta]$（$\\alpha<\\beta$）と定数 $q$ について，$Q=\\dfrac{f(\\beta)-f(\\alpha)}{\\beta-\\alpha}$ とおくと $\\int_\\alpha^\\beta f'(x)\\,dx=f(\\beta)-f(\\alpha)=(\\beta-\\alpha)Q$ より\n\\[\n\\int_\\alpha^\\beta\\{f'(x)-q\\}^2dx=\\int_\\alpha^\\beta f'(x)^2dx-2q(\\beta-\\alpha)Q+(\\beta-\\alpha)q^2\n=\\int_\\alpha^\\beta f'(x)^2dx-(\\beta-\\alpha)Q^2+(\\beta-\\alpha)(q-Q)^2.\n\\]\n$I$ の第1項は $q$ だけ，第2項は $s$ だけを含むので，$I$ は $q=Q_1$，$s=Q_2$ のときに限り最小となる．ここで $f(-1)=0$，$f(t)=t^2(t+1)$，$f(1)=2$ より\n\\[\nQ_1=\\frac{f(t)-f(-1)}{t+1}=t^2,\\qquad Q_2=\\frac{f(1)-f(t)}{1-t}=\\frac{2-t^3-t^2}{1-t}=t^2+2t+2\n\\]\n（$(1-t)(t^2+2t+2)=2-t^3-t^2$）．よって $\\boldsymbol{q=t^2,\\ s=t^2+2t+2}$．このとき\n\\[\ng(t)=f(-1)+Q_1(t+1)=f(t),\\qquad g(1)=g(t)+Q_2(1-t)=f(t)+\\{f(1)-f(t)\\}=f(1).\\qquad\\square\n\\]\n\n(2) (1) より $m(t)=\\displaystyle\\int_{-1}^1f'(x)^2dx-(t+1)Q_1^2-(1-t)Q_2^2$．\n\\[\n\\int_{-1}^1(3x^2+2x)^2dx=\\int_{-1}^1(9x^4+12x^3+4x^2)\\,dx=\\frac{18}5+0+\\frac83=\\frac{94}{15}.\n\\]\n$(t+1)t^4=t^5+t^4$，$(t^2+2t+2)^2=t^4+4t^3+8t^2+8t+4$ より\n\\[\n(1-t)(t^2+2t+2)^2=-t^5-3t^4-4t^3+4t+4,\n\\]\n\\[\n(t+1)Q_1^2+(1-t)Q_2^2=-2t^4-4t^3+4t+4.\n\\]\nよって $m(t)=\\boldsymbol{2t^4+4t^3-4t+\\dfrac{34}{15}}$．\n\n(3) $m'(t)=8t^3+12t^2-4=4(2t^3+3t^2-1)=4(t+1)^2(2t-1)$．$-1<t<1$ で $(t+1)^2>0$ なので，$m(t)$ は $-1<t\\leqq\\frac12$ で減少，$\\frac12\\leqq t<1$ で増加する．よって $t=\\boldsymbol{\\dfrac12}$ で最小となり，最小値は\n\\[\nm\\left(\\frac12\\right)=\\frac18+\\frac12-2+\\frac{34}{15}=\\frac{15+60-240+272}{120}=\\boldsymbol{\\frac{107}{120}}.\n\\]"
+   }
+  ],
+  "idea": {
+   "tex": "区間 $[\\alpha,\\beta]$ で $\\int_\\alpha^\\beta\\{f'(x)-q\\}^2dx$ を定数 $q$ について最小にすると，$q$ は平均の傾き $\\dfrac{f(\\beta)-f(\\alpha)}{\\beta-\\alpha}$ になり，最適な折れ線は分点で $f$ と一致する（原題の $g(\\pm1)=f(\\pm1)$）．最小値は $\\int f'^2dx-\\sum\\dfrac{(\\text{$f$ の増分})^2}{\\text{区間の幅}}$ で，折れ目 $t$ の関数としてさらに最小化する．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) 記述\n(2) $m(t)$：2t^4+4t^3-4t+34/15\n(3) 記述"
+  },
+  "methods": [],
+  "tags": [
+   "定積分",
+   "平均の傾き",
+   "2次関数の最小",
+   "4次関数の増減"
+  ],
+  "provenance": {
+   "created": "2026-11-19"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-CAL-284",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-12",
+  "level": 3,
+  "minutes": 25,
+  "theme": "直交する2本の弦と5つの長さの積",
+  "topic": "直交する2本の弦と5つの長さの積",
+  "statement": {
+   "tex": "$a$ は $0<a<1$ をみたす定数とする．点 O を中心とする半径1の円の弦 AB の長さは $2a$ である．線分 AB 上（両端を除く）の動点 P に対し，P を通り AB に垂直な弦を CD とする．\n\\[\n  T=\\mathrm{OP}\\cdot\\mathrm{PA}\\cdot\\mathrm{PB}\\cdot\\mathrm{PC}\\cdot\\mathrm{PD}\n\\]\nの最大値 $M$ を求めよ．また，最大値を与えるときの OP の長さを求めよ．"
+  },
+  "answer": {
+   "tex": "$a\\geqq\\dfrac{2}{\\sqrt5}$ のとき $M=\\dfrac{16\\sqrt5}{125}$，$\\mathrm{OP}=\\dfrac{\\sqrt5}{5}$；$0<a<\\dfrac2{\\sqrt5}$ のとき $M=a^4\\sqrt{1-a^2}$，$\\mathrm{OP}=\\sqrt{1-a^2}$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "\\textbf{方べき．} 円の内部の点 P を通る弦 XY について，O から直線 XY に下ろした垂線の足を H，$d=\\mathrm{OH}$ とすると，H は XY の中点で $\\mathrm{HX}=\\mathrm{HY}=\\sqrt{1-d^2}$．P が線分 HX 上にあるとすると（HY 上でも同様）\n\\[\n  \\mathrm{PX}\\cdot\\mathrm{PY}=(\\mathrm{HX}-\\mathrm{HP})(\\mathrm{HY}+\\mathrm{HP})=\\mathrm{HX}^2-\\mathrm{HP}^2=(1-d^2)-(\\mathrm{OP}^2-d^2)=1-\\mathrm{OP}^2.\n\\]\n\nAB の中点を M，$h=\\mathrm{OM}=\\sqrt{1-a^2}$（$0<h<1$），$r=\\mathrm{OP}$ とする．上の結果を弦 AB，CD に用いると $\\mathrm{PA}\\cdot\\mathrm{PB}=\\mathrm{PC}\\cdot\\mathrm{PD}=1-r^2$ なので\n\\[\n  T=\\varphi(r),\\qquad \\varphi(r)=r(1-r^2)^2.\n\\]\n$\\mathrm{MP}=s$ とおくと $0\\leqq s<a$，$r^2=h^2+s^2$ で，P が線分 AB 上（両端を除く）を動くとき $r$ は $h\\leqq r<\\sqrt{h^2+a^2}=1$ の範囲のすべての値をとる．\n$\\varphi(r)=r-2r^3+r^5$ より\n\\[\n  \\varphi'(r)=1-6r^2+5r^4=(1-r^2)(1-5r^2)\n\\]\nで，$0<r<1$ では $1-r^2>0$ だから，$\\varphi$ は $0\\leqq r\\leqq\\frac1{\\sqrt5}$ で増加，$\\frac1{\\sqrt5}\\leqq r<1$ で減少する．\n\n\\begin{itemize}\n  \\item $h\\leqq\\frac1{\\sqrt5}$，すなわち $a^2\\geqq\\frac45$，$a\\geqq\\frac2{\\sqrt5}$ のとき：$r=\\frac1{\\sqrt5}$ は範囲内にあり，最大値は $\\varphi\\left(\\frac1{\\sqrt5}\\right)=\\frac1{\\sqrt5}\\cdot\\frac{16}{25}=\\boldsymbol{\\dfrac{16\\sqrt5}{125}}$，$\\boldsymbol{\\mathrm{OP}=\\dfrac{\\sqrt5}5}$．\n  \\item $h>\\frac1{\\sqrt5}$，すなわち $0<a<\\frac2{\\sqrt5}$ のとき：$\\varphi$ は $h\\leqq r<1$ で減少するので，最大値は $r=h$（P$=$M）での $\\varphi(h)=h(1-h^2)^2=\\boldsymbol{a^4\\sqrt{1-a^2}}$，$\\boldsymbol{\\mathrm{OP}=\\sqrt{1-a^2}}$．\n\\end{itemize}\n\\hfill$\\square$"
+   }
+  ],
+  "idea": {
+   "tex": "円の内部の点 P を通る弦 XY では，どの向きの弦でも $\\mathrm{PX}\\cdot\\mathrm{PY}=1-\\mathrm{OP}^2$（方べき）．2本の弦の4つの長さの積は $(1-\\mathrm{OP}^2)^2$ となり，積は $r=\\mathrm{OP}$ だけの関数 $r(1-r^2)^2$ に帰着する．$r$ の動く範囲 $\\sqrt{1-a^2}\\leqq r<1$ と極大点 $r=\\frac1{\\sqrt5}$ の位置関係で場合分けする．"
+  },
+  "methods": [],
+  "tags": [
+   "方べきの定理",
+   "3次以上の関数の最大",
+   "場合分け"
+  ],
+  "provenance": {
+   "created": "2026-11-19"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-CAL-269",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-12",
+  "level": 4,
+  "minutes": 35,
+  "theme": "片側だけ開いた区間で最大値と最小値をともにもつ条件",
+  "topic": "片側だけ開いた区間で最大値と最小値をともにもつ条件",
+  "statement": {
+   "tex": "$a$，$b$ は実数の定数とする．$\\theta$ が $0\\leqq\\theta<\\pi$ をみたして動くとき，\n\\[\n  y=\\cos3\\theta+a\\cos2\\theta+b\\cos\\theta\n\\]\nが最大値と最小値をともにもつような $a$，$b$ の条件を求め，点 $(a,b)$ の存在範囲を図示せよ．また，その存在範囲のうち $-2\\leqq a\\leqq6$ をみたす部分の面積を求めよ．"
+  },
+  "answer": {
+   "tex": "条件：$4t^2+(2a-4)t+1-2a+b=0$ が $-1<t\\leqq1$ に解をもつこと．すなわち $a<-2$ のとき $4a-9<b\\leqq-1$，$-2\\leqq a<2$ のとき $4a-9<b\\leqq\\dfrac{a(a+4)}4$，$2\\leqq a<6$ のとき $-1\\leqq b\\leqq\\dfrac{a(a+4)}4$，$a\\geqq6$ のとき $-1\\leqq b<4a-9$．面積 $\\dfrac{224}{3}$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "$t=\\cos\\theta$ とおくと，$\\theta$ が $0\\leqq\\theta<\\pi$ を動くとき $t$ は $-1<t\\leqq1$ のすべての値をちょうど1回ずつとる．$\\cos3\\theta=4t^3-3t$，$\\cos2\\theta=2t^2-1$ より\n\\[\n  y=f(t)=4t^3+2at^2+(b-3)t-a\\qquad(-1<t\\leqq1).\n\\]\n$L=f(-1)=a-b-1$ とおくと\n\\[\n  f(t)-L=4(t^3+1)+2a(t^2-1)+(b-3)(t+1)=(t+1)q(t),\\quad q(t)=4t^2+(2a-4)t+1-2a+b.\n\\]\n$-1<t\\leqq1$ では $t+1>0$ なので，$f(t)-L$ と $q(t)$ は同符号．\n\n\\textbf{最大値について．} 最大値が存在する $\\iff$ $q(t)\\geqq0$ となる $t\\in(-1,1]$ が存在する，を示す．\n($\\Leftarrow$) $f$ は閉区間 $[-1,1]$ で連続なので最大値 $M$ をとる．$M$ をとる点が $(-1,1]$ にあれば，それが $(-1,1]$ での最大値．$M$ をとる点が $t=-1$ だけなら，$(-1,1]$ のすべての $t$ で $f(t)<f(-1)=L$，すなわち $q(t)<0$ となり仮定に反する．\n($\\Rightarrow$) $(-1,1]$ のすべての $t$ で $q(t)<0$ とする．任意の $t_0\\in(-1,1]$ に対し $f(t_0)<L$ であり，$f(t)\\to L$（$t\\to-1$）なので，$t_0$ より $-1$ に近い $t$ で $f(t)>f(t_0)$ となるものがある．よって $f(t_0)$ は最大値でなく，最大値は存在しない．\n\n\\textbf{最小値について．} 同様に，最小値が存在する $\\iff$ $q(t)\\leqq0$ となる $t\\in(-1,1]$ が存在する．\n\n\\textbf{両方．} $q(t_1)\\geqq0$，$q(t_2)\\leqq0$ となる $t_1,t_2\\in(-1,1]$ があれば，中間値の定理により $t_1$ と $t_2$ の間（$(-1,1]$ に含まれる）に $q(t)=0$ の解がある．逆に $q(t_3)=0$ なら $t_1=t_2=t_3$ とできる．よって求める条件は\n\\[\n  \\boldsymbol{q(t)=0\\ \\text{が}\\ -1<t\\leqq1\\ \\text{に解をもつこと}}.\n\\]\n\n\\textbf{図示．} $q(t)=0\\iff b=h(t)$，\n\\[\n  h(t)=-4t^2+(4-2a)t+2a-1=-4\\left(t-\\frac{2-a}4\\right)^2+\\frac{a(a+4)}4.\n\\]\n$h(1)=-1$（とる値），$h(-1)=4a-9$（$t=-1$ は区間外なのでとらない値）．$a$ を固定して $h$ の $(-1,1]$ での値域を求める．頂点の $t$ 座標 $\\frac{2-a}4$ が $(-1,1]$ にある $\\iff$ $-2\\leqq a<6$．\n\\begin{itemize}\n  \\item $a<-2$：頂点が $t>1$ にあり $h$ は増加．値域 $4a-9<b\\leqq-1$．\n  \\item $-2\\leqq a<6$：最大値 $\\frac{a(a+4)}4$（頂点）．最小側は $h(1)=-1$ と $h(-1)=4a-9$ の比較で，$a<2$ なら $4a-9<b$（等号なし），$a\\geqq2$ なら $-1\\leqq b$．よって $-2\\leqq a<2$ で $4a-9<b\\leqq\\frac{a(a+4)}4$，$2\\leqq a<6$ で $-1\\leqq b\\leqq\\frac{a(a+4)}4$．\n  \\item $a\\geqq6$：頂点が $t\\leqq-1$ にあり $h$ は減少．値域 $-1\\leqq b<4a-9$．\n\\end{itemize}\n図示すると，存在範囲は\n上側の境界が「$a\\leqq-2$ で直線 $b=-1$，$-2\\leqq a\\leqq6$ で放物線 $b=\\frac{a(a+4)}4$，$a\\geqq6$ で直線 $b=4a-9$」，\n下側の境界が「$a\\leqq2$ で直線 $b=4a-9$，$a\\geqq2$ で直線 $b=-1$」\nである帯状の部分である．放物線は点 $(-2,-1)$ で直線 $b=-1$ に，点 $(6,15)$ で直線 $b=4a-9$ に接し，2直線は点 $(2,-1)$ で交わる．境界のうち直線 $b=4a-9$ 上の点（$a<2$ の部分と $a\\geqq6$ の部分）は含まず，それ以外の境界は含む（とくに点 $(2,-1)$ は含み，点 $(6,15)$ は含まない）．\n\n\\textbf{面積．}\n\\[\n  \\int_{-2}^{2}\\left\\{\\frac{a(a+4)}4-(4a-9)\\right\\}da+\\int_{2}^{6}\\left\\{\\frac{a(a+4)}4+1\\right\\}da\n  =\\left(\\frac43+36\\right)+\\left(\\frac{52}3+16+4\\right)=\\boldsymbol{\\frac{224}{3}}.\n\\]\n（第1項は $\\int_{-2}^2\\left(\\frac{a^2}4-3a+9\\right)da=\\frac{4}{3}+36$，第2項は $\\left[\\frac{a^3}{12}+\\frac{a^2}2+a\\right]_2^6=\\frac{208}{12}+16+4$．）\\hfill$\\square$"
+   }
+  ],
+  "idea": {
+   "tex": "$t=\\cos\\theta$ とおくと，$0\\leqq\\theta<\\pi$ は $-1<t\\leqq1$ となり，区間の一方の端だけが開いている．閉じた端 $t=1$ では値が実際にとられるので，最大・最小の存在を妨げるのは開いた端での極限値 $L=f(-1)$ だけ．$f(t)-L=(t+1)q(t)$ と因数分解すると，「最大値がない $\\iff$ $q<0$ が区間全体」「最小値がない $\\iff$ $q>0$ が区間全体」となり，両方存在 $\\iff$ $q(t)=0$ が $-1<t\\leqq1$ に解をもつ．これを $b=h(t)$ と分離して $h$ の値域を $a$ ごとに求める．"
+  },
+  "methods": [],
+  "tags": [
+   "3倍角",
+   "開いた区間の最大最小",
+   "因数定理",
+   "存在範囲",
+   "面積"
+  ],
+  "provenance": {
+   "created": "2026-11-19"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-CAL-270",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-12",
+  "level": 4,
+  "minutes": 30,
+  "theme": "接線と直線のなす角が一定のときの面積の最小",
+  "topic": "接線と直線のなす角が一定のときの面積の最小",
+  "statement": {
+   "tex": "$\\varphi$ は $0<\\varphi<\\dfrac\\pi2$ をみたす定数とする．曲線 $C:y=x^3-ax$ と直線 $l:y=bx$ が原点以外の2つの交点をもち，その交点における $C$ の接線と $l$ のなす角が $\\varphi$ であるように実数の定数 $a$，$b$ が動く．$C$ と $l$ で囲まれる2つの部分の面積の和 $S$ の最小値を $\\varphi$ で表せ．また，最小値を与える $a$，$b$ を求めよ．"
+  },
+  "answer": {
+   "tex": "最小値 $\\dfrac12\\tan^2\\dfrac\\varphi2$（$=\\dfrac{1-\\cos\\varphi}{2(1+\\cos\\varphi)}$），このとき $a=2\\tan\\dfrac\\varphi2$，$b=-\\tan\\dfrac\\varphi2$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "$C$ と $l$ の交点の $x$ 座標は $x^3-ax=bx$，$x(x^2-a-b)=0$ の解．原点以外に2交点をもつ条件は $u=a+b>0$ で，交点は $x=\\pm\\sqrt u$．$C$ は原点対称なので $x=\\pm\\sqrt u$ での接線の傾きはともに\n\\[\n  k=3u-a=3u-(u-b)=2u+b.\n\\]\n\\textbf{面積．} $0\\leqq x\\leqq\\sqrt u$ で $bx-(x^3-ax)=ux-x^3=x(u-x^2)\\geqq0$ なので，原点対称性より\n\\[\n  S=2\\int_0^{\\sqrt u}(ux-x^3)dx=2\\left(\\frac{u^2}2-\\frac{u^2}4\\right)=\\frac{u^2}2.\n\\]\nよって $u$ の最小値を求めればよい．\n\n\\textbf{角の条件．} $T=\\tan\\varphi>0$ とする．傾き $k$，$b$ の2直線のなす角が $\\varphi$（$\\ne\\frac\\pi2$）であることは，$1+kb\\neq0$ かつ $\\left|\\dfrac{k-b}{1+kb}\\right|=T$ と同値．$k-b=2u>0$ だから条件は\n\\[\n  2u=T|1+kb|=T\\left|b^2+2ub+1\\right|\n  \\iff b^2+2ub+1=\\frac{2u}T\\ \\ \\text{または}\\ \\ b^2+2ub+1=-\\frac{2u}T\n\\]\n（このとき $1+kb=\\pm\\frac{2u}T\\neq0$ は自動的にみたされる）．\n\n\\textbf{逆手流．} $u>0$ を固定したとき，条件をみたす実数 $b$ が存在する（そのとき $a=u-b$ と定めればよい）ための条件は，2つの2次方程式の少なくとも一方が実数解をもつこと：\n\\[\n  u^2-1+\\frac{2u}T\\geqq0\\quad\\text{または}\\quad u^2-1-\\frac{2u}T\\geqq0.\n\\]\n$u>0$ では後者が成り立てば前者も成り立つので，条件は $u^2+\\frac2Tu-1\\geqq0$．$u>0$ と合わせて\n\\[\n  u\\geqq-\\frac1T+\\sqrt{\\frac1{T^2}+1}=\\frac{\\sqrt{1+T^2}-1}{T}=\\frac{\\frac1{\\cos\\varphi}-1}{\\frac{\\sin\\varphi}{\\cos\\varphi}}=\\frac{1-\\cos\\varphi}{\\sin\\varphi}=\\tan\\frac\\varphi2\n\\]\n（最後は $1-\\cos\\varphi=2\\sin^2\\frac\\varphi2$，$\\sin\\varphi=2\\sin\\frac\\varphi2\\cos\\frac\\varphi2$）．\nよって $u$ の最小値は $\\tan\\frac\\varphi2$ で，\n\\[\n  S\\ \\text{の最小値}=\\boldsymbol{\\frac12\\tan^2\\frac\\varphi2}\\ \\left(=\\frac{1-\\cos\\varphi}{2(1+\\cos\\varphi)}\\right).\n\\]\nこのとき $u=\\tan\\frac\\varphi2$ で $b^2+2ub+1-\\frac{2u}T=0$ は重解 $b=-u$ をもつので $\\boldsymbol{b=-\\tan\\dfrac\\varphi2}$，$\\boldsymbol{a=u-b=2\\tan\\dfrac\\varphi2}$．\n（確認：$k=2u+b=u$，$\\frac{k-b}{1+kb}=\\frac{2u}{1-u^2}=\\tan\\varphi$．）\\hfill$\\square$"
+   }
+  ],
+  "idea": {
+   "tex": "面積は $u=a+b$ だけで決まる（$S=\\frac{u^2}2$）ので，$u$ を固定して「条件をみたす $b$ が存在するか」を問う（逆手流）．なす角の条件 $\\tan\\varphi=\\left|\\frac{k-b}{1+kb}\\right|$ は絶対値のため $b$ の2次方程式2本に分かれ，どちらかが実数解をもてばよい．弱い方の判別式条件から $u\\geqq\\tan\\frac\\varphi2$ が出る．"
+  },
+  "methods": [],
+  "tags": [
+   "逆手流",
+   "2直線のなす角",
+   "判別式",
+   "3次関数と直線の面積"
+  ],
+  "provenance": {
+   "created": "2026-11-19"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-CAL-271",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-12",
+  "level": 4,
+  "minutes": 35,
+  "theme": "3次曲線の共有点すべてと定点を通る直線",
+  "topic": "3次曲線の共有点すべてと定点を通る直線",
+  "statement": {
+   "tex": "$xy$ 平面上に2曲線\n\\[\nC_1:\\ y=x^3-3x,\\qquad C_2:\\ y=-x^3+3ax^2+3x+b\n\\]\nがある（$a,b$ は実数の定数）．$C_1$ と $C_2$ の共有点すべてと点 $(1,-2)$ を通る直線が存在するための $a,b$ の条件を求めよ．"
+  },
+  "answer": {
+   "tex": "$(2b+a^3+6a)^2>(a^2+4)^3$，または $(a,b)=(0,-4),\\ \\left(-\\dfrac83,\\ 36\\right)$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "共有点の $x$ 座標は\n\\[\nF(x)=(x^3-3x)-(-x^3+3ax^2+3x+b)=2x^3-3ax^2-6x-b=0\n\\]\nの実数解である．共有点 $(x,y)$ では $2x^3=3ax^2+6x+b$ だから $y=x^3-3x=\\dfrac{3a}2x^2+3x+\\dfrac b2-3x$，すなわち\n\\[\ny=Q(x),\\qquad Q(x)=Ax^2+B,\\quad A=\\frac{3a}2,\\ B=\\frac b2\n\\]\nとなり，共有点はすべて曲線 $K:\\ y=Q(x)$ 上にある．共有点の個数は $F(x)=0$ の相異なる実数解の個数 $N$ に等しい．\n\n\\textbf{$N$ の判定．}\\ $F'(x)=6(x^2-ax-1)$ は判別式 $a^2+4>0$ より相異なる2解 $\\alpha<\\beta$ をもち，$\\alpha\\beta=-1$ より $\\alpha<0<\\beta$，$\\alpha+\\beta=a$，$\\beta-\\alpha=\\sqrt{a^2+4}$．$f(x)=2x^3-3ax^2-6x$（$F=f-b$）は $x=\\alpha$ で極大，$x=\\beta$ で極小をとる．$t$ が $t^2-at-1=0$ をみたすとき $a=t-\\dfrac1t$ で\n\\[\nf(t)=2t^3-3\\left(t-\\frac1t\\right)t^2-6t=-t^3-3t .\n\\]\nよって $f(\\alpha)+f(\\beta)=-(\\alpha^3+\\beta^3)-3(\\alpha+\\beta)=-(a^3+3a)-3a=-a^3-6a$，\n$f(\\alpha)-f(\\beta)=(\\beta-\\alpha)(\\alpha^2+\\alpha\\beta+\\beta^2+3)=(\\beta-\\alpha)(a^2+4)=(a^2+4)^{\\frac32}$．\nしたがって\n\\begin{itemize}\n  \\item $N=1\\iff b>f(\\alpha)$ または $b<f(\\beta)\\iff|2b+a^3+6a|>(a^2+4)^{\\frac32}\\iff(2b+a^3+6a)^2>(a^2+4)^3$，\n  \\item $N=3\\iff f(\\beta)<b<f(\\alpha)$，\n  \\item $N=2\\iff b=f(\\alpha)$ または $b=f(\\beta)$，すなわち $F$ が重解 $t$ をもつ場合で，このとき $t\\neq0$，$a=t-\\dfrac1t$，$b=-t^3-3t$．\n\\end{itemize}\n\n\\textbf{$N=1$ のとき．}\\ 共有点はただ1つなので，それと $(1,-2)$ を通る直線は存在する（2点が一致すればその点を通る任意の直線でよい）．\n\n\\textbf{$N=3$ のとき．}\\ $a\\neq0$ なら $K$ は放物線で，直線と $K$ の共有点は高々2個（$x$ 軸に垂直な直線とは1個，それ以外の直線 $y=ux+v$ とは2次方程式 $Ax^2-ux+B-v=0$ の解の個数）なので，3つの共有点を通る直線はない．$a=0$ なら共有点はすべて直線 $y=\\frac b2$ 上にあり，3点を通る直線はこれだけで，$(1,-2)$ を通るのは $b=-4$ のときに限る．しかし $a=0$，$b=-4$ では $F(x)=2x^3-6x+4=2(x-1)^2(x+2)$ で $N=2$ となり矛盾．よって $N=3$ の場合は条件をみたさない．\n\n\\textbf{$N=2$ のとき．}\\ 重解を $t$，他の解を $\\gamma$ とすると $F(x)=2(x-t)^2(x-\\gamma)$ で，解と係数の関係から $2t+\\gamma=\\dfrac{3a}2$，\n\\[\n\\gamma=\\frac32\\left(t-\\frac1t\\right)-2t=-\\frac{t^2+3}{2t},\\qquad \\gamma-t=-\\frac{3(t^2+1)}{2t}\\neq0 .\n\\]\n共有点は $K$ 上の $x$ 座標 $t,\\gamma$ の2点で，それらを通る直線は傾き $\\dfrac{Q(\\gamma)-Q(t)}{\\gamma-t}=A(t+\\gamma)$ より\n$y=A(t+\\gamma)x-At\\gamma+B$．これが $(1,-2)$ を通る条件は $A(t+\\gamma)-At\\gamma+B+2=0$．ここで\n\\[\nA=\\frac{3(t^2-1)}{2t},\\quad B=-\\frac{t^3+3t}2,\\quad t+\\gamma=\\frac{t^2-3}{2t},\\quad t\\gamma=-\\frac{t^2+3}2\n\\]\nを代入して $4t^2$ 倍すると\n\\[\n3(t^2-1)(t^2-3)+3t(t^2-1)(t^2+3)-2t^2(t^3+3t-4)=0,\n\\]\n展開して $t^5+3t^4-4t^2-9t+9=0$，すなわち\n\\[\n(t-1)^2(t+3)(t^2+2t+3)=0 .\n\\]\n$t^2+2t+3=(t+1)^2+2>0$ より $t=1$ または $t=-3$．$t=1$ のとき $(a,b)=(0,-4)$，$t=-3$ のとき $(a,b)=\\left(-\\dfrac83,36\\right)$．\n（確認：$t=-3$ では $\\gamma=2$，$Q(x)=-4x^2+18$ で2点 $(-3,-18)$，$(2,2)$ を通る直線 $y=4x-6$ は $(1,-2)$ を通る．）\n\n以上より求める条件は\n\\[\n\\boldsymbol{(2b+a^3+6a)^2>(a^2+4)^3}\\ \\ \\text{または}\\ \\ \\boldsymbol{(a,b)=(0,-4),\\ \\left(-\\tfrac83,\\ 36\\right)}.\n\\]\n\\hfill$\\square$"
+   }
+  ],
+  "idea": {
+   "tex": "共有点では2つの式が等しいので，$x^3$ を消去すると共有点はすべてある放物線 $y=\\frac{3a}2x^2+\\frac b2$ 上にある．放物線上の相異なる3点は一直線上にないから，共有点の個数（3次方程式の相異なる実数解の個数）で場合分けする．重解をもつ場合は重解 $t$ で $a,b$ を媒介変数表示し，2つの共有点と定点の共線条件を $t$ の方程式にする．"
+  },
+  "methods": [],
+  "tags": [
+   "共有点",
+   "次数下げ",
+   "重解",
+   "3次方程式の実数解の個数",
+   "共線条件"
+  ],
+  "provenance": {
+   "created": "2026-11-19"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-CAL-272",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-12",
+  "level": 5,
+  "minutes": 40,
+  "theme": "外接円と内接円の半径から決まる三角形の面積の範囲",
+  "topic": "外接円と内接円の半径から決まる三角形の面積の範囲",
+  "statement": {
+   "tex": "三角形 ABC の3辺の長さを $a,b,c$，半周長を $s=\\dfrac{a+b+c}2$，面積を $S$，外接円の半径を $R$，内接円の半径を $r$ とする．\n\\begin{enumerate}\n  \\item $ab+bc+ca=s^2+r^2+4Rr$ を示せ．\n  \\item $R=9$，$r=4$ である三角形の面積 $S$ のとりうる値の範囲を求めよ．また，$S$ が最大となる三角形と最小となる三角形の3辺の長さをそれぞれ求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 証明　(2) $40\\sqrt5\\leqq S\\leqq64\\sqrt2$；最大は3辺 $12\\sqrt2,\\ 12\\sqrt2,\\ 8\\sqrt2$，最小は3辺 $6\\sqrt5,\\ 6\\sqrt5,\\ 8\\sqrt5$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) $x=s-a$，$y=s-b$，$z=s-c$ とおく（三角形の成立条件よりすべて正）．ヘロンの公式 $S^2=sxyz$ と $S=rs$ から $xyz=r^2s$．また $S=\\frac12ab\\sin C$，正弦定理 $\\sin C=\\frac c{2R}$ より $abc=4RS=4Rrs$．\n\\[\nxyz=(s-a)(s-b)(s-c)=s^3-(a+b+c)s^2+(ab+bc+ca)s-abc=-s^3+(ab+bc+ca)s-4Rrs\n\\]\nを $r^2s$ とおいて $s>0$ で割ると $ab+bc+ca=s^2+r^2+4Rr$．\n\\hfill$\\square$\n\n(2) (1) より $x+y+z=s$，\n$xy+yz+zx=3s^2-2s(a+b+c)+(ab+bc+ca)=r^2+4Rr$，$xyz=r^2s$．$R=9$，$r=4$ では $x,y,z$ は\n\\[\ng(t)=t^3-st^2+160t-16s\n\\]\nの3解（重解は重複して数える）である．\n\n逆に，$s>0$ に対して $g(t)=0$ が3つの実数解 $x,y,z$（重複を許す）をもてば，$t\\leqq0$ で $g(t)<0$ だから3解はすべて正で，$a=y+z$，$b=z+x$，$c=x+y$ は三角形の3辺をなし（$a<b+c$ など），半周長は $s$，$S=\\sqrt{sxyz}=\\sqrt{16s^2}=4s$ より $r=\\frac Ss=4$，$abc=(s-x)(s-y)(s-z)=s^3-s^3+160s-16s=144s$ より $R=\\frac{abc}{4S}=9$．\n\nよって求めるのは「$g(t)=0$ が重複を含めて3つの実数解をもつ」ような $s>0$ の範囲である．$g'(t)=3t^2-2st+160$．\n\\begin{itemize}\n  \\item $s^2\\leqq480$ のとき $g'(t)\\geqq0$ で $g$ は増加し，実数解は1つ．3重解となるには $s^2=480$ かつ $g\\left(\\frac s3\\right)=0$ が必要だが，$g\\left(\\frac s3\\right)=s\\left(-\\frac{2s^2}{27}+\\frac{112}3\\right)=\\frac{48s}{27}\\neq0$．よって不適．\n  \\item $s^2>480$ のとき $g'$ の2解を $\\alpha<\\beta$ とすると，$g$ は $\\alpha$ で極大，$\\beta$ で極小をとり（$g(\\alpha)>g(\\beta)$），3実数解をもつ $\\iff g(\\alpha)\\geqq0\\geqq g(\\beta)\\iff g(\\alpha)g(\\beta)\\leqq0$．\n\\end{itemize}\n$g(t)=g'(t)\\left(\\dfrac t3-\\dfrac s9\\right)+\\dfrac29\\{(480-s^2)t+8s\\}$ より，$\\alpha+\\beta=\\frac{2s}3$，$\\alpha\\beta=\\frac{160}3$ を用いて\n\\[\ng(\\alpha)g(\\beta)=\\frac4{81}\\left\\{(480-s^2)^2\\alpha\\beta+8s(480-s^2)(\\alpha+\\beta)+64s^2\\right\\}\n=\\frac{64}{27}(s^2-500)(s^2-512).\n\\]\n（$u=s^2$ として $160(480-u)^2+16u(480-u)+192u=144(u^2-1012u+256000)=144(u-500)(u-512)$．）\nよって $500\\leqq s^2\\leqq512$（これは $s^2>480$ をみたす），$10\\sqrt5\\leqq s\\leqq16\\sqrt2$ で，$S=4s$ より\n\\[\n\\boldsymbol{40\\sqrt5\\leqq S\\leqq64\\sqrt2}.\n\\]\n端では $g$ が重解をもつ．$s=16\\sqrt2$ のとき $g(t)=(t-4\\sqrt2)^2(t-8\\sqrt2)$（展開して係数が $-16\\sqrt2,\\ 160,\\ -256\\sqrt2$ となることで確かめられる）で $(x,y,z)=(4\\sqrt2,4\\sqrt2,8\\sqrt2)$，3辺は $\\boldsymbol{12\\sqrt2,\\ 12\\sqrt2,\\ 8\\sqrt2}$（最大）．$s=10\\sqrt5$ のとき $g(t)=(t-4\\sqrt5)^2(t-2\\sqrt5)$ で $(x,y,z)=(4\\sqrt5,4\\sqrt5,2\\sqrt5)$，3辺は $\\boldsymbol{6\\sqrt5,\\ 6\\sqrt5,\\ 8\\sqrt5}$（最小）．\n\\hfill$\\square$"
+   }
+  ],
+  "idea": {
+   "tex": "$s$ を半周長とすると $a+b+c=2s$，$abc=4RS=4Rrs$，$ab+bc+ca=s^2+r^2+4Rr$．$x=s-a$ などは $t^3-st^2+(r^2+4Rr)t-r^2s=0$ の3つの正の解で，逆に3つの正の解から三角形が復元できる．よって $R,r$ を固定したときの $s$ の範囲は「3次方程式が3実解をもつ条件」＝極大値と極小値の積が0以下，になる．"
+  },
+  "methods": [],
+  "tags": [
+   "ヘロンの公式",
+   "基本対称式",
+   "3次方程式の実数解",
+   "極値の積",
+   "三角形の存在条件"
+  ],
+  "provenance": {
+   "created": "2026-11-19"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-CAL-273",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-12",
+  "level": 4,
+  "minutes": 30,
+  "theme": "3次関数と2直線の6通りの大小関係",
+  "topic": "3次関数と2直線の6通りの大小関係",
+  "statement": {
+   "tex": "$k$ を実数とし，$f(x)=x^3-3x$，$g(x)=x+k$，$h(x)=-x$ とする．$x$ が全実数を動くとき，$f(x),g(x),h(x)$ について次の6通りの大小関係\n\\begin{center}\n\\begin{tabular}{lll}\nア\\ $f(x)<g(x)<h(x)$ & イ\\ $g(x)<h(x)<f(x)$ & ウ\\ $h(x)<f(x)<g(x)$\\\\\nエ\\ $g(x)<f(x)<h(x)$ & オ\\ $f(x)<h(x)<g(x)$ & カ\\ $h(x)<g(x)<f(x)$\n\\end{tabular}\n\\end{center}\nを考える．\n\\begin{enumerate}\n  \\item 6通りの大小関係がすべて実現できるような $k$ の範囲を求めよ．\n  \\item $k=3$ のとき，実現できる大小関係をすべて答えよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $-2\\sqrt2<k<2\\sqrt2$　(2) ア，ウ，オ，カ"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "$D_1=f-g=x^3-4x-k$，$D_2=f-h=x(x^2-2)$，$D_3=g-h=2x+k$ とおく．大小関係は3つの差の符号で決まり，$c=-\\frac k2$ とすると $g>h\\iff x>c$．\n$x>c$ で現れうるのは カ（$D_1>0$），ウ（$D_1<0<D_2$），オ（$D_2<0$），$x<c$ で現れうるのは イ（$D_2>0$），エ（$D_1>0>D_2$），ア（$D_1<0$）である．\n\n\\textbf{対称性．}\\ $f,h$ は奇関数で，$k$ を $-k$ にした $g$ を $g_{-k}$ とすると $g_{-k}(-x)=-(x+k)=-g(x)$．よって $(x,k)$ での3つの値の符号を変えたものが $(-x,-k)$ での値となり，大小関係は逆順になる．逆順にする対応は6通りの間の1対1対応なので，「6通りすべて実現」は $k$ と $-k$ で同時に成り立つ．以下 $k\\geqq0$（$c\\leqq0$）とする．\n\n\\textbf{$x>c$ の側．}\\ $x\\to\\infty$ で $D_1>0$ よりカ．$0<x<\\sqrt2$ では $D_2<0$ かつ $x>0\\geqq c$ よりオ．$D_1(\\sqrt2)=-2\\sqrt2-k<0$ と連続性から $\\sqrt2$ より少し大きい $x$ で $D_1<0<D_2$，$x>c$ でウ．よって カ，ウ，オ はつねに実現する．また $x\\to-\\infty$ で $D_1<0$，$x<c$ よりアもつねに実現する．\n\n\\textbf{イ．}\\ $x<c\\leqq0$ で $D_2>0$ となるのは $-\\sqrt2<x<0$ の部分なので，イが実現する $\\iff$ $-\\sqrt2<c$ $\\iff$ $k<2\\sqrt2$．\n\n\\textbf{エ．}\\ $x<c\\leqq0$ で $D_2<0$ となるのは $x<-\\sqrt2$ の部分．$k<2\\sqrt2$ なら $c>-\\sqrt2$ で，$D_1(-\\sqrt2)=2\\sqrt2-k>0$ と連続性から $-\\sqrt2$ より少し小さい $x$ で $D_1>0>D_2$，$x<c$ となりエが実現する．\n\nよって $k\\geqq0$ では，6通りすべて実現 $\\iff 0\\leqq k<2\\sqrt2$．対称性と合わせて $\\boldsymbol{-2\\sqrt2<k<2\\sqrt2}$．\n\n(2) $k=3$ では $c=-\\frac32<-\\sqrt2$ なのでイは実現しない．エには $x<-\\frac32$ で $D_1>0$ となる $x$ が必要だが，$D_1'=3x^2-4>0$（$x<-\\frac32$）より $D_1$ は $x<-\\frac32$ で増加し $D_1<D_1\\left(-\\frac32\\right)=-\\frac{27}8+6-3=-\\frac38<0$．よってエも実現しない．ア，ウ，オ，カは上で示したとおり実現するので，答えは \\textbf{ア，ウ，オ，カ}．\n\\hfill$\\square$"
+   }
+  ],
+  "idea": {
+   "tex": "3つの大小関係は差 $f-g$，$f-h$，$g-h$ の符号の組で決まる．まず1次式 $g-h$ の符号で $x$ を2つの範囲に分け，それぞれの範囲で残り2つの差の符号の組が3通りとも現れるかを調べる．3次式の差は交点が多いので「交点の個数$+1$」の議論では足りず，符号の区間の位置関係（$-\\frac k2$ と $\\pm\\sqrt2$ の大小）が効く．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) -2 sqrt(2)<k<2sqrt(2)\n(2) 記述"
+  },
+  "methods": [],
+  "tags": [
+   "大小関係",
+   "符号の表",
+   "3次関数のグラフ",
+   "対称性",
+   "存在証明"
+  ],
+  "provenance": {
+   "created": "2026-11-19"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-CAL-274",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-12",
+  "level": 4,
+  "minutes": 30,
+  "theme": "区間 $[x,1-x]$ 上の積分を含む関数方程式",
+  "topic": "区間 $[x,1-x]$ 上の積分を含む関数方程式",
+  "statement": {
+   "tex": "$a$ を実数の定数とする．多項式で表される関数 $f(x)$ と定数 $c$ が，すべての実数 $x$ に対して\n\\[\nx\\int_x^{1-x}f(t)\\,dt=f(x)+x^3+ax^2+c\n\\]\nをみたしているとする．$h(x)=\\displaystyle\\int_x^{1-x}f(t)\\,dt$ とおく．\n\\begin{enumerate}\n  \\item $h(1-x)=-h(x)$ を示し，$h'(x)+(2x-1)h(x)$ を $a,c,x$ で表せ．\n  \\item $h(x)$ は定数 $m$ を用いて $h(x)=m(1-2x)$ と表せることを示せ．\n  \\item このような $f(x)$ と $c$ の組がすべての実数 $a$ に対してただ1組存在することを示し，それを $a$ で表せ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $h'(x)+(2x-1)h(x)=(3+2a)x^2-(3+2a)x+1+a+2c$　(2) 証明　(3) $f(x)=-x^3+\\dfrac32x^2-\\dfrac{3+2a}4x-\\dfrac{5+2a}8$，$c=\\dfrac{5+2a}8$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "$P(x)=x^3+ax^2+c$ とおくと，条件は $xh(x)=f(x)+P(x)$，すなわち $f(x)=xh(x)-P(x)$．$f$ の原始関数の1つを $F$ とすると $h(x)=F(1-x)-F(x)$．\n\n(1) $h(1-x)=\\displaystyle\\int_{1-x}^{x}f(t)\\,dt=-\\int_x^{1-x}f(t)\\,dt=-h(x)$．また，正の整数 $n$ に対し，二項定理と $j\\,{}_n\\mathrm C_j=n\\,{}_{n-1}\\mathrm C_{j-1}$（$1\\leqq j\\leqq n$）より\n\\[\n\\{(1-x)^n\\}'=\\sum_{j=1}^{n}j\\,{}_n\\mathrm C_j(-1)^jx^{j-1}=-n\\sum_{j=1}^{n}{}_{n-1}\\mathrm C_{j-1}(-x)^{j-1}=-n(1-x)^{n-1}\n\\]\nである．$F(x)=\\displaystyle\\sum_k\\gamma_kx^k$ と書くと $F(1-x)=\\displaystyle\\sum_k\\gamma_k(1-x)^k$ なので，$x$ で微分して $\\{F(1-x)\\}'=-\\displaystyle\\sum_k k\\gamma_k(1-x)^{k-1}=-F'(1-x)=-f(1-x)$．よって $h'(x)=-f(1-x)-f(x)$．ここで\n\\[\nf(1-x)=(1-x)h(1-x)-P(1-x)=-(1-x)h(x)-P(1-x)\n\\]\nなので\n\\[\nh'(x)=(1-x)h(x)+P(1-x)-xh(x)+P(x)=(1-2x)h(x)+P(x)+P(1-x).\n\\]\n$P(x)+P(1-x)=x^3+(1-x)^3+a\\{x^2+(1-x)^2\\}+2c=(1-3x+3x^2)+a(2x^2-2x+1)+2c$ より\n\\[\n\\boldsymbol{h'(x)+(2x-1)h(x)=(3+2a)x^2-(3+2a)x+1+a+2c}.\n\\]\n\n(2) $h(x)$ は多項式である．$h$ が恒等的に0でないとし，その次数を $k\\ (\\geqq0)$，最高次の係数を $e\\ (\\ne0)$ とすると，$(2x-1)h(x)$ は $k+1$ 次で最高次の係数 $2e$，$h'(x)$ は $k$ 次未満なので，左辺は $k+1$ 次．右辺は2次以下なので $k+1\\leqq2$，$k\\leqq1$．よって $h$ は1次以下（恒等的に0の場合も含む）．さらに (1) で $x=\\frac12$ とすると $h(\\frac12)=-h(\\frac12)$，$h(\\frac12)=0$．1次以下の多項式で $x=\\frac12$ で0になるものは $m(1-2x)$ の形である．\\hfill$\\square$\n\n(3) （必要条件）$h(x)=m(1-2x)$ を (1) の左辺に代入すると\n\\[\n-2m+(2x-1)m(1-2x)=-2m-m(4x^2-4x+1)=-4mx^2+4mx-3m .\n\\]\n右辺と係数を比べて $-4m=3+2a$，$4m=-(3+2a)$，$-3m=1+a+2c$．よって\n\\[\nm=-\\frac{3+2a}4,\\qquad c=\\frac{-3m-1-a}2=\\frac{5+2a}8,\n\\]\n\\[\nf(x)=xh(x)-P(x)=mx-2mx^2-x^3-ax^2-c=-x^3+\\frac32x^2-\\frac{3+2a}4x-\\frac{5+2a}8 .\n\\]\n（$-2m-a=\\frac{3+2a}2-a=\\frac32$．）\n\n（十分性）この $f,c$ が条件をみたすことを確かめる．$t=v+\\frac12$ とおくと\n\\[\nf\\!\\left(v+\\tfrac12\\right)=-\\left(v^3+\\tfrac32v^2+\\tfrac34v+\\tfrac18\\right)+\\tfrac32\\left(v^2+v+\\tfrac14\\right)-\\tfrac{3+2a}4\\left(v+\\tfrac12\\right)-\\tfrac{5+2a}8\n=-v^3-\\frac a2v-\\frac{3+2a}4 .\n\\]\n$t$ が $x$ から $1-x$ まで動くとき $v$ は $-w$ から $w$（$w=\\frac12-x$）まで動き，$-v^3-\\frac a2v$ は奇関数なので\n\\[\n\\int_x^{1-x}f(t)\\,dt=\\int_{-w}^{w}\\left(-v^3-\\frac a2v-\\frac{3+2a}4\\right)dv=-\\frac{3+2a}4\\cdot2w=m(1-2x).\n\\]\nよって $x\\int_x^{1-x}f(t)\\,dt=mx(1-2x)$ で，$f(x)+P(x)=mx(1-2x)$（$f$ の定め方そのもの）と一致する．したがって，すべての実数 $a$ に対してただ1組\n\\[\n\\boldsymbol{f(x)=-x^3+\\frac32x^2-\\frac{3+2a}4x-\\frac{5+2a}8,\\qquad c=\\frac{5+2a}8}\n\\]\nが存在する．"
+   }
+  ],
+  "idea": {
+   "tex": "原題は $\\int_{-x}^x$ が奇関数になることを使い，$x$ と $-x$ の式を足して $f(x)+f(-x)$ を導関数に置きかえ，次数を比べる．捻りでは積分区間が $[x,1-x]$ で，$h(x)=\\int_x^{1-x}f$ は $h(1-x)=-h(x)$ をみたす．$x$ と $1-x$ の式から $f(x)+f(1-x)=-h'(x)$ を作ると $h'+(2x-1)h$ が既知の多項式になり，次数比較で $h$ は1次以下，さらに $h(\\frac12)=0$．最後に得た $f$ が実際に条件をみたすことを確かめる．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) 記述\n(2) 証明\n(3) $f(x)$：-x^3+(3/2)x^2-((3+2a)/4)x-(5+2a)/8 ; $c$：(5+2a)/8"
+  },
+  "methods": [],
+  "tags": [
+   "積分方程式",
+   "対称性",
+   "次数比較",
+   "十分性の確認"
+  ],
+  "provenance": {
+   "created": "2026-11-19"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-CAL-275",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-12",
+  "level": 4,
+  "minutes": 40,
+  "theme": "最大の実数解がとびうつる3次方程式",
+  "topic": "最大の実数解がとびうつる3次方程式",
+  "statement": {
+   "tex": "$s=\\sqrt2-1$，$u=\\dfrac{7-\\sqrt{17}}2$ とおく（$0<s<1<u<2$ である）．$s\\leqq t\\leqq u$ をみたす実数 $t$ に対し，$x$ の3次方程式\n\\[\nx^3-3t^2x+t^3+t=0\n\\]\nの実数解のうち最大のものを $M(t)$ とする．\n\\begin{enumerate}\n  \\item $s\\leqq t<1$ のときこの方程式の実数解はただ1つであり，$1<t\\leqq u$ のとき相異なる3つの実数解をもつことを示せ．\n  \\item $t$ が $s\\leqq t\\leqq u$ を動くとき，$M(t)$ のとりうる値の範囲を求めよ．また，$M(t)$ の最大値と最小値は存在するか．存在するならばその値を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 証明　(2) 値の範囲は $-2<M(t)\\leqq-1$ または $1\\leqq M(t)\\leqq2$；最大値 $2$（$t=u$），最小値は存在しない"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "$f(x)=x^3-3t^2x+t^3+t$ とおく．$f'(x)=3(x-t)(x+t)$ より（$t>0$），$f$ は $x\\leqq-t$ で増加，$-t\\leqq x\\leqq t$ で減少，$x\\geqq t$ で増加し，\n\\[\nf(-t)=3t^3+t>0,\\qquad f(t)=t-t^3=t(1-t)(1+t).\n\\]\nまた $s^2=3-2\\sqrt2$，$s^3=5\\sqrt2-7$ であり，$\\sqrt{17}>3$ から $u<2$，$\\sqrt{17}<5$ から $u>1$，さらに $u$ は $t^2-7t+8=0$ の小さい方の解である．\n\n(1) $s\\leqq t<1$ のとき $f(t)>0$．$x\\geqq-t$ では $f(x)\\geqq f(t)>0$（$-t\\leqq x\\leqq t$ で $f(x)\\geqq f(t)$，$x\\geqq t$ で $f(x)\\geqq f(t)$）なので解はない．$x<-t$ では $f$ は増加で，$x\\to-\\infty$ のとき $f(x)\\to-\\infty$，$f(-t)>0$ だから解はちょうど1つ．よって実数解はただ1つ．\n\n$1<t\\leqq u$ のとき $f(t)<0<f(-t)$ で，$f$ の増減から $(-\\infty,-t)$，$(-t,t)$，$(t,\\infty)$ に1つずつ，計3つの相異なる実数解をもつ．\\hfill$\\square$\n\n（$t=1$ では $f(x)=x^3-3x+2=(x-1)^2(x+2)$ で $M(1)=1$．）\n\n(2) \\textbf{$s\\leqq t<1$ の部分}．$M(t)$ はただ1つの実数解で $M(t)<-t$．\n\\[\nf(-1)=t^3+3t^2+t-1=(t+1)(t^2+2t-1)=(t+1)\\{(t+1)^2-2\\}\\geqq0\\quad(t\\geqq s),\n\\]\n\\[\nf(-2)=t^3+6t^2+t-8=(t-1)(t^2+7t+8)<0\\quad(t<1).\n\\]\n$-2<-1<-t$ で $f$ は $x\\leqq-t$ で増加なので $-2<M(t)\\leqq-1$．\n\n逆に $-2<x_0\\leqq-1$ を任意にとり，$H(t)=t^3-3x_0t^2+t+x_0^3$（$x=x_0$ での $f$ の値を $t$ の式とみたもの）とおく．$H(1)=x_0^3-3x_0+2=(x_0-1)^2(x_0+2)>0$．また\n\\[\nH(s)=x_0^3-3s^2x_0+s^3+s=x_0^3-3(3-2\\sqrt2)x_0+6\\sqrt2-8=k(x_0)\n\\]\nで，$k(-1)=-1+9-6\\sqrt2+6\\sqrt2-8=0$，$k'(x)=3(x^2-s^2)>0$（$x\\leqq-1$）より $k$ は $x\\leqq-1$ で増加し $k(x_0)\\leqq0$．$H$ は $t$ の多項式なので中間値の定理により $s\\leqq t_1<1$ で $H(t_1)=0$ となる $t_1$ がある．このとき $x_0$ は $t=t_1$ での唯一の実数解で $M(t_1)=x_0$．よってこの部分の値の範囲は $-2<M(t)\\leqq-1$ のすべて．\n\n\\textbf{$1\\leqq t\\leqq u$ の部分}．$t>1$ では $M(t)$ は $(t,\\infty)$ にある解で $M(t)>t>1$，$t=1$ では $M=1$．\n\\[\nf(2)=t^3-6t^2+t+8=(t+1)(t^2-7t+8)\\geqq0\\quad(t\\leqq u)\n\\]\nで，$2>u\\geqq t$，$f$ は $x\\geqq t$ で増加なので $M(t)\\leqq2$．よって $1\\leqq M(t)\\leqq2$．\n\n逆に $1\\leqq x_0\\leqq2$ をとり，同じ $H(t)$ を考える．$H(1)=(x_0-1)^2(x_0+2)\\geqq0$．$H(u)=k_2(x_0)$，$k_2(x)=x^3-3u^2x+u^3+u$（$t=u$ のときの $f$）について，$k_2$ は $-u\\leqq x\\leqq u$ で減少，$x\\geqq u$ で増加し，\n\\[\nk_2(1)=u^3-3u^2+u+1=(u-1)\\{(u-1)^2-2\\}<0\\quad(1<u<1+\\sqrt2),\\qquad k_2(2)=0 .\n\\]\nよって $1\\leqq x\\leqq u$ では $k_2(x)\\leqq k_2(1)<0$，$u\\leqq x\\leqq2$ では $k_2(x)\\leqq k_2(2)=0$．ゆえに $H(u)\\leqq0$ で，中間値の定理により $1\\leqq t_1\\leqq u$ で $H(t_1)=0$ となる $t_1$ がある．$t_1=1$ なら解は $1,-2$ で $x_0=1=M(1)$．$t_1>1$ なら $f(1)=(t_1-1)(t_1^2-2t_1-1)<0$ で，$f$ は $[-t_1,t_1]$ で減少だから $1\\leqq x\\leqq t_1$ では $f(x)\\leqq f(1)<0$；よって $x_0>t_1$ で，$x_0$ は最大の解，$M(t_1)=x_0$．よってこの部分の値の範囲は $1\\leqq M(t)\\leqq2$ のすべて．\n\n以上より，$M(t)$ のとりうる値の範囲は\n\\[\n\\boldsymbol{-2<M(t)\\leqq-1\\ \\ \\text{または}\\ \\ 1\\leqq M(t)\\leqq2}.\n\\]\n最大値は $\\boldsymbol2$（$t=u$ のとき）．最小値については，とりうる値 $m$ を任意にとると，$m\\leqq-1$ なら $m'=\\dfrac{m-2}2$ が $-2<m'<m$，$m'\\leqq-1$ をみたし，$m\\geqq1$ なら $m'=-\\dfrac32$ が $m'<m$ をみたす．どちらの $m'$ もとりうる値で $m$ より小さいので，\\textbf{最小値は存在しない}．"
+   }
+  ],
+  "idea": {
+   "tex": "原題は係数に $t,t^2$ を含む3次方程式の最大解を，$x$ を固定して $t$ の関数とみたときの符号（$t$ が増えると $f$ が減る）で単調性を示し，端点で最大・最小を得る．捻りでは $t$ の範囲が「極小値が0になる $t=1$」をまたぐので，$t<1$ では実数解が1つ（負）で，$t=1$ で右側に重解が生じて最大解が正の側へとびうつる．値域は2つの区間に分かれ，各値が実際にとられることは $t$ についての方程式の中間値の定理で示す．"
+  },
+  "methods": [],
+  "tags": [
+   "3次方程式",
+   "極値",
+   "解の個数",
+   "パラメータの単調性",
+   "中間値の定理"
+  ],
+  "provenance": {
+   "created": "2026-11-19"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
  }
 ]

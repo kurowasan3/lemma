@@ -1,6 +1,6 @@
-// 複素平面とベクトルの式 → グラフの描き方（graph.js の Graph が描く）
+// 複素数平面とベクトルの式 → グラフの描き方（graph.js の Graph が描く）
 //
-// 複素平面（mode 'complex'）：z = x + yi を動く点とする
+// 複素数平面（mode 'complex'）：z = x + yi を動く点とする
 //   |z-1|=2（円）  arg(z)=π/4（半直線）  |z-1|=|z+i|（垂直二等分線）  Re(z)>=0, |z|<=2（領域）
 //   z^3=1（解を点で）  α=1+2i（点。以後 α として使える）  e^(it) t:0..π（曲線）  |z|=1, Im(z)>=0（条件つき）
 // ベクトル（mode 'vector'）：p = (x, y) を動く点の位置ベクトルとする
@@ -13,7 +13,7 @@
 // 値：数は複素数 {re, im}（ベクトルのモードでも数は複素数として持ち、成分は実数）、ベクトルは実数の配列 [x, y]
 // 1行の解析結果（graph.js の analyze() と同じ形に、矢印 arrow・解の点 roots・条件つき陰関数 implicitc を加えたもの）
 
-export const FILE_VERSION = '0.13.0';
+export const FILE_VERSION = '0.14.0';
 const TAU = Math.PI * 2;
 
 // ---------------------------------------------------------------- 複素数
@@ -429,7 +429,7 @@ function defItem(p, defs, mode, params) {
   if (Array.isArray(v)) {
     if (mode === 'vector' && v.length !== 2) throw new Error('平面のベクトルは2成分 (x, y) で書きます（空間ベクトルは「空間」のモードで）');
     if (mode === 'vector3' && v.length !== 3) throw new Error('空間のベクトルは3成分 (x, y, z) で書きます');
-    if (mode === 'complex') throw new Error('複素平面ではベクトルは使えません（点は α=1+2i のように書きます）');
+    if (mode === 'complex') throw new Error('複素数平面ではベクトルは使えません（点は α=1+2i のように書きます）');
     // 大文字は点（位置ベクトルの終点）、小文字は原点からの矢印
     if (/^[A-ZΑ-Ω]$/.test(p.name)) return { kind: 'vpoint', name: p.name, f: val, params, defName: p.name };
     return { kind: 'arrow', name: p.name, f: val, params, defName: p.name };

@@ -6,7 +6,7 @@
 import { parse, compile, splitRelation, freeVars } from './parser.js';
 import { COLORS } from './graph.js';
 
-export const FILE_VERSION = '0.13.0';
+export const FILE_VERSION = '0.14.0';
 import { analyzePlane } from './plane.js';
 const RESERVED = new Set(['x', 'y', 'z', 't', 'u', 'v']);
 const TAU = Math.PI * 2;

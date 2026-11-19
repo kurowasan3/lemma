@@ -22,7 +22,7 @@ import {
   subjectsWithFields, pool, pickPractice, pickReview, dueEntries, nextReviewTime,
 } from './catalog.js';
 
-const VERSION = '0.13.0';
+const VERSION = '0.14.0';
 const KEY = 'lemma.v2';
 let sync = null, syncApplying = false, syncStatus = null;   // アカウントと同期（initSync で用意）
 const $ = (sel, el = document) => el.querySelector(sel);
@@ -1422,7 +1422,7 @@ const PRESETS3 = [
   { name: 'ベクトル：外積', exprs: ['a=(2,0,1)', 'b=(0,2,1)', 'a×b', 'p=sa+tb, 0<=s<=1, 0<=t<=1', '|a×b|'] },
 ];
 
-// 複素平面・ベクトルの例（plane.js が解析する）
+// 複素数平面・ベクトルの例（plane.js が解析する）
 const PRESETS_C = [
   { name: '円・アポロニウス', exprs: ['|z-1|=2', '|z+1|=2|z-1|', 'α=1+i', '|z-α|=k', 'k=1'] },
   { name: '垂直二等分線', exprs: ['α=2+i', 'β=-1+2i', '|z-α|=|z-β|'] },
@@ -1440,13 +1440,18 @@ const PRESETS_V = [
   { name: '法線ベクトル', exprs: ['n=(1,2)', 'A=(2,1)', 'n·(p-A)=0', 'n·A'] },
   { name: '内分点', exprs: ['A=(0,3)', 'B=(5,0)', 'P=(2A+3B)/5', 'p=A+t(B-A), 0<=t<=1'] },
 ];
-const GMODES = [['2d', '平面'], ['complex', '複素平面'], ['vector', 'ベクトル'], ['3d', '空間']];
+// グラフのモードは3つ：平面（ベクトルを含む）・空間（ベクトルを含む）・複素数平面。旧版の「ベクトル」は平面に入った
+const GMODES = [['2d', '平面'], ['3d', '空間'], ['complex', '複素数平面']];
+const gmodeOf = (m) => (m === 'vector' ? '2d' : GKEYS[m] ? m : '2d');
 const GKEYS = { '2d': 'graphExprs', complex: 'graphCExprs', vector: 'graphVExprs', '3d': 'graph3Exprs' };
 const GSYNTAX = {
   '2d': `<code>y=x^2-2x</code> 関数　<code>x^2+y^2=4</code> 陰関数　<code>y&gt;=x^2</code> 領域<br>
         <code>x^2&lt;=y&lt;=x+2</code> 連立不等式　<code>(cos t, sin t)</code> 媒介変数　<code>r=1+cos θ</code> 極座標<br>
         <code>(1,2)</code> 点　<code>a=2</code> などの文字はスライダーになります。<code>(t, t^2) t:-1..2</code> で t の範囲。<br>
-        関数：sin cos tan log（自然対数）exp sqrt abs、定数 pi e。グラフをタップすると座標を表示。`,
+        関数：sin cos tan log（自然対数）exp sqrt abs、定数 pi e。グラフをタップすると座標を表示。<br>
+        <b>ベクトル</b>（p が動く点の位置ベクトル）：小文字 <code>a=(2,1)</code> は矢印、大文字 <code>A=(1,3)</code> は点。<br>
+        <code>p=A+t(B-A)</code> 直線　<code>…, 0&lt;=t&lt;=1</code> 線分　<code>|p-A|=2</code> 円　<code>(p-A)·(p-B)=0</code> AB が直径の円<br>
+        <code>p=sa+tb, s&gt;=0, t&gt;=0, s+t&lt;=1</code> 領域　<code>n·(p-A)=0</code> 法線ベクトルと直線　<code>a·b</code> 内積の値`,
   complex: `z が動く点（z = x + yi）。<code>|z-1|=2</code> 円　<code>arg(z)=π/4</code> 半直線　<code>|z-α|=|z-β|</code> 垂直二等分線<br>
         <code>1&lt;=|z|&lt;=2, Re(z)&gt;=0</code> 領域（カンマで「かつ」）　<code>|z|=1, Im(z)&gt;=0</code> 条件つきの曲線<br>
         <code>z^3=1</code> 方程式の解を点で　<code>α=1+2i</code> 点（以後 α として使える）　<code>z=e^(it) t:0..π</code> 曲線<br>
@@ -1467,11 +1472,12 @@ const GSYNTAX = {
 // 戻り値の destroy() で、グラフを片付ける（シートを閉じるとき）
 // figure：問題の図（{ m: モード, e: [式], s: 'auto'|'manual' }）を渡すと、その式で開く（保存はしない。モードの切り替えもなし）
 function graphWorkspace(root, { compact = false, figure = null } = {}) {
-  const mode = figure ? figure.m : (GKEYS[state.graphMode] ? state.graphMode : '2d');
+  migrateVectorGraphs();
+  const mode = gmodeOf(figure ? figure.m : state.graphMode);
   const is3 = mode === '3d';
   const key = figure ? null : GKEYS[mode];
-  const presets = { '2d': PRESETS, complex: PRESETS_C, vector: PRESETS_V, '3d': PRESETS3 }[mode];
-  const defaults = is3 ? PRESETS3[1].exprs : mode === 'complex' ? PRESETS_C[0].exprs.slice(0, 2) : mode === 'vector' ? PRESETS_V[0].exprs : DEFAULT_EXPRS;
+  const presets = { '2d': [...PRESETS, ...PRESETS_V.map(p => ({ ...p, name: `ベクトル：${p.name}` }))], complex: PRESETS_C, '3d': PRESETS3 }[mode];
+  const defaults = is3 ? PRESETS3[1].exprs : mode === 'complex' ? PRESETS_C[0].exprs.slice(0, 2) : DEFAULT_EXPRS;
   const exprs = figure ? figure.e.map(src => ({ src })) : state[key] && state[key].length ? state[key] : defaults.map(src => ({ src }));
   const modeName = (GMODES.find(([m]) => m === mode) || [, ''])[1];
   root.innerHTML = `
@@ -1555,6 +1561,19 @@ function graphWorkspace(root, { compact = false, figure = null } = {}) {
   });
   const api = { get graph() { return api.inner ? api.inner.graph : g; }, destroy() { if (api.inner) api.inner.destroy(); else destroy(); }, inner: null };
   return api;
+}
+
+// 旧版（v0.12〜0.13）の「ベクトル」モードの式は、平面の式の後ろに移す（1回だけ）
+function migrateVectorGraphs() {
+  if (state.graphMode === 'vector') state.graphMode = '2d';
+  const v = state.graphVExprs;
+  if (Array.isArray(v) && v.length) {
+    const base = state.graphExprs && state.graphExprs.length ? state.graphExprs : DEFAULT_EXPRS.map(src => ({ src }));
+    const have = new Set(base.map(e => e.src));
+    state.graphExprs = [...base, ...v.filter(e => e.src && !have.has(e.src))];
+    state.graphVExprs = null;
+    save();
+  }
 }
 
 function renderGraphPage() {

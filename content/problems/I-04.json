@@ -1442,5 +1442,54 @@
    },
    "verified": false
   }
+ },
+ {
+  "id": "I-DAT-031",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "I-04",
+  "level": 4,
+  "minutes": 30,
+  "theme": "環状に並ぶ学校の台数をならす最小の移動",
+  "topic": "環状に並ぶ学校の台数をならす最小の移動",
+  "statement": {
+   "tex": "$n$ を正の整数とし，環状道路に沿って $2n+1$ 校の学校 $\\mathrm S_1,\\mathrm S_2,\\cdots,\\mathrm S_{2n+1}$ がこの順に並んでいる（$\\mathrm S_{2n+1}$ の次は $\\mathrm S_1$）．はじめ $\\mathrm S_k$ には $k$ 台の顕微鏡がある（$k=1,2,\\cdots,2n+1$）．\n各 $k$ について整数 $x_k$ を定め，「$\\mathrm S_k$ から次の学校へ $x_k$ 台移す」（$x_k<0$ のときは次の学校から $\\mathrm S_k$ へ $-x_k$ 台移すことを表す）という移し方で，すべての学校の台数を等しくしたい．このとき移動する総台数は $|x_1|+|x_2|+\\cdots+|x_{2n+1}|$ である．\n\\begin{enumerate}\n  \\item $n=3$ のとき，移動する総台数の最小値と，そのときの $x_1,x_2,\\cdots,x_7$ を求めよ．\n  \\item 一般の $n$ について，移動する総台数の最小値を求めよ．また，最小となる移し方はただ1通りであることを示し，そのときの $x_{2n+1}$ を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 最小値 $11$，$(x_1,\\cdots,x_7)=(2,0,-1,-1,0,2,5)$　(2) $n=2m$ のとき $\\dfrac{m(4m^2+3m+1)}{2}$，$n=2m-1$ のとき $\\dfrac{m(4m^2-3m+1)}{2}$（$m$ は正の整数）；ただ1通り（証明），$x_{2n+1}$ は $n=2m$ のとき $\\dfrac{m(3m+1)}2$，$n=2m-1$ のとき $\\dfrac{m(3m-1)}2$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "$N=2n+1$ とおき，$x_0=x_N$ と約束する．移したあとの $\\mathrm S_k$ の台数は $k-x_k+x_{k-1}$ であり，総数は $\\frac{N(N+1)}2$ なので，そろえた台数は $\\frac{N+1}2=n+1$ である．よって条件は\n\\[\nx_k=x_{k-1}+k-(n+1)\\quad(k=1,2,\\cdots,N)\n\\]\nである．$c=x_N$ とおいて順に足すと，$k=1,2,\\cdots,N$ に対して\n\\[\nx_k=c+\\sum_{j=1}^{k}(j-n-1)=c-T_k,\\qquad T_k=\\frac{k(2n+1-k)}{2}\n\\]\nとなる．$k=N$ のとき $T_N=0$ なので $x_N=c$ と矛盾しない．逆に任意の整数 $c$ に対し $x_k=c-T_k$ と定めれば（$k$ と $2n+1-k$ の一方は偶数なので $T_k$ は整数）条件をみたす．したがって，移し方は整数 $c$ と1対1に対応し，総台数は\n\\[\nF(c)=\\sum_{k=1}^{N}|c-T_k|\n\\]\nである．$T_{N-k}=T_k$（$1\\leqq k\\leqq 2n$）であり，$1\\leqq k\\leqq n-1$ のとき $T_{k+1}-T_k=n-k>0$ なので\n\\[\n0=T_N<T_1<T_2<\\cdots<T_n .\n\\]\nよって $N$ 個の値 $T_1,\\cdots,T_N$ を小さい順に並べたもの $v_1\\leqq v_2\\leqq\\cdots\\leqq v_N$ は\n\\[\nv_1=0,\\qquad v_{2i}=v_{2i+1}=T_i\\quad(i=1,2,\\cdots,n)\n\\]\nである．\n\n\\textbf{補題}　$v_1\\leqq\\cdots\\leqq v_{2n+1}$ のとき，$G(c)=\\sum_{i=1}^{2n+1}|c-v_i|$ は $c=v_{n+1}$ のときに限り最小値 $\\sum_{i=1}^{n}(v_{2n+2-i}-v_i)$ をとる．\n\n（証明）$i=1,\\cdots,n$ に対し $|c-v_i|+|c-v_{2n+2-i}|\\geqq v_{2n+2-i}-v_i$（三角不等式）であり，また $|c-v_{n+1}|\\geqq0$．足すと $G(c)\\geqq\\sum_{i=1}^n(v_{2n+2-i}-v_i)$．$c=v_{n+1}$ のときは $v_i\\leqq c\\leqq v_{2n+2-i}$ なので各不等式で等号が成り立つ．逆に等号が成り立てば $|c-v_{n+1}|=0$ である．\\hfill$\\square$\n\n$n+1$ を $2i$ または $2i+1$ と書くと $i=m$，ただし $n=2m$ または $n=2m-1$（$m$ は正の整数）．よって $v_{n+1}=T_m$ であり，最小となる移し方は $c=T_m$ のただ1通り，そのとき $x_{2n+1}=c=T_m$．\n\n最小値は，$T_k$ の大小に注意して\n\\[\nF(T_m)=T_m+2\\left\\{\\sum_{k=1}^{m-1}(T_m-T_k)+\\sum_{k=m+1}^{n}(T_k-T_m)\\right\\}\n=\\bigl(1+2(m-1)-2(n-m)\\bigr)T_m+2(B-A)\n\\]\nここで $A=\\sum_{k=1}^{m-1}T_k$，$B=\\sum_{k=m+1}^{n}T_k$．また $\\sum_{k=1}^{n}T_k=\\frac12\\left\\{(2n+1)\\frac{n(n+1)}2-\\frac{n(n+1)(2n+1)}6\\right\\}=\\frac{n(n+1)(2n+1)}6$ である．\n\n\\textbf{(ア) $n=2m$ のとき}　$T_k=\\frac{k(4m+1-k)}2$，$T_m=\\frac{m(3m+1)}2$．\n\\[\nA=\\frac12\\left\\{(4m+1)\\frac{(m-1)m}2-\\frac{(m-1)m(2m-1)}6\\right\\}=\\frac{(m-1)m(5m+2)}6 ,\n\\]\n$B=\\frac{2m(2m+1)(4m+1)}6-A-T_m=\\frac{m(11m^2+6m+1)}6$．よって $B-A=\\frac{m(6m^2+9m+3)}6=\\frac{m(m+1)(2m+1)}2$．係数は $1+2(m-1)-2m=-1$ なので\n\\[\nF(T_m)=-\\frac{m(3m+1)}2+m(m+1)(2m+1)=\\frac{m(4m^2+3m+1)}2 .\n\\]\n\n\\textbf{(イ) $n=2m-1$ のとき}　$T_k=\\frac{k(4m-1-k)}2$，$T_m=\\frac{m(3m-1)}2$．\n\\[\nA=\\frac12\\left\\{(4m-1)\\frac{(m-1)m}2-\\frac{(m-1)m(2m-1)}6\\right\\}=\\frac{(m-1)m(5m-1)}6 ,\n\\]\n$B=\\frac{(2m-1)2m(4m-1)}6-A-T_m=\\frac{m(m-1)(11m-4)}6$．よって $B-A=\\frac{m(m-1)(6m-3)}6=\\frac{m(m-1)(2m-1)}2$．係数は $1+2(m-1)-2(m-1)=1$ なので\n\\[\nF(T_m)=\\frac{m(3m-1)}2+m(m-1)(2m-1)=\\frac{m(4m^2-3m+1)}2 .\n\\]\n\n(1) $n=3$ は $m=2$ の(イ)．$(T_1,\\cdots,T_7)=(3,5,6,6,5,3,0)$，$c=T_2=5$ で $(x_1,\\cdots,x_7)=\\boldsymbol{(2,0,-1,-1,0,2,5)}$，最小値は $\\frac{2(16-6+1)}2=\\boldsymbol{11}$（実際 $2+0+1+1+0+2+5=11$）．\n\n(2) 最小値は\n\\[\n\\boldsymbol{n=2m\\ \\text{のとき}\\ \\dfrac{m(4m^2+3m+1)}2,\\qquad n=2m-1\\ \\text{のとき}\\ \\dfrac{m(4m^2-3m+1)}2}\n\\]\nである．最小となる移し方は $c=T_m$ のただ1通りで，$\\boldsymbol{x_{2n+1}=T_m}$，すなわち $n=2m$ のとき $\\frac{m(3m+1)}2$，$n=2m-1$ のとき $\\frac{m(3m-1)}2$．"
+   }
+  ],
+  "idea": {
+   "tex": "隣どうしの移動量を $x_k$（向きつき）とおくと，各校の台数がそろう条件から $x_k=c-T_k$ と1つの未知数 $c$ だけで表せる．総移動数 $\\sum|c-T_k|$ は，値 $T_k$ の中央値で最小となり，奇数個ならその $c$ はただ1つ．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) 最小値：11 ; $(x_1,\\cdots,x_7)$：(2, 0, -1, -1, 0, 2, 5)\n(2) 記述"
+  },
+  "methods": [],
+  "tags": [
+   "中央値",
+   "絶対値の和",
+   "環状",
+   "数列の和"
+  ],
+  "provenance": {
+   "created": "2026-11-19"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
  }
 ]

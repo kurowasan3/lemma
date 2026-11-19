@@ -57,12 +57,12 @@ def read_sheet(src):
     return recs
 
 
-FIG_MODES = {'平面': '2d', '2d': '2d', '2D': '2d', '複素平面': 'complex', 'complex': 'complex', 'ベクトル': 'vector', 'vector': 'vector',
+FIG_MODES = {'平面': '2d', '2d': '2d', '2D': '2d', '複素平面': 'complex', '複素数平面': 'complex', 'complex': 'complex', 'ベクトル': '2d', 'vector': '2d',
              '空間': '3d', '3d': '3d', '3D': '3d'}
 
 
 def parse_figure(raw):
-    """「図の式」列：1行に1つの式。先頭に「モード：平面／複素平面／ベクトル／空間」（省略すると平面）、
+    """「図の式」列：1行に1つの式。先頭に「モード：平面／空間／複素数平面」（ベクトルは平面・空間にそのまま書ける）（省略すると平面）、
     「表示：答え合わせのあと／最初から」（省略すると、問題文が「図示せよ」などなら答え合わせのあと）を書ける"""
     if raw is None or not str(raw).strip():
         return None
@@ -75,7 +75,7 @@ def parse_figure(raw):
         if m:
             key = m.group(1).strip()
             if key not in FIG_MODES:
-                raise ImportFailure(f'「図の式」のモード「{key}」は使えません（平面・複素平面・ベクトル・空間）')
+                raise ImportFailure(f'「図の式」のモード「{key}」は使えません（平面・空間・複素数平面）')
             mode = FIG_MODES[key]
             continue
         m = re.match(r'^(?:表示|show)\s*[:：]\s*(.+)$', t)

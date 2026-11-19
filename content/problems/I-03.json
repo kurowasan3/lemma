@@ -5884,5 +5884,194 @@
    },
    "verified": false
   }
+ },
+ {
+  "id": "I-TRI-126",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "I-03",
+  "level": 4,
+  "minutes": 30,
+  "theme": "等角点までの距離の比と角の3次方程式",
+  "topic": "等角点までの距離の比と角の3次方程式",
+  "statement": {
+   "tex": "$\\triangle$ABC において $a=\\mathrm{BC}$，$b=\\mathrm{CA}$，$c=\\mathrm{AB}$，$A=\\angle\\mathrm{BAC}$，$B=\\angle\\mathrm{ABC}$，$C=\\angle\\mathrm{BCA}$ とする．$\\triangle$ABC の内部の点 P と角 $\\theta$ が\n\\[\\angle\\mathrm{PAB}=\\angle\\mathrm{PBC}=\\angle\\mathrm{PCA}=\\theta\\]\nをみたすとする．\n\\begin{enumerate}\n  \\item $\\mathrm{PA}:\\mathrm{PB}:\\mathrm{PC}=b^2c:c^2a:a^2b$ を示せ．\n  \\item $\\sin^3\\theta=\\sin(A-\\theta)\\sin(B-\\theta)\\sin(C-\\theta)$ を示せ．\n  \\item $a=7$，$b=5$，$c=3$ のとき，$\\tan\\theta$ の値と PA$:$PB$:$PC を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 証明　(2) 証明　(3) $\\tan\\theta=\\dfrac{15\\sqrt3}{83}$，$\\mathrm{PA}:\\mathrm{PB}:\\mathrm{PC}=75:63:245$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "P は三角形の内部にあるので，半直線 BP は $\\angle$ABC の内部にあり $\\angle\\mathrm{PBA}=B-\\theta>0$．同様に $\\angle\\mathrm{PCB}=C-\\theta>0$，$\\angle\\mathrm{PAC}=A-\\theta>0$．\n\n$\\triangle$PAB の内角は $\\angle\\mathrm{PAB}=\\theta$，$\\angle\\mathrm{PBA}=B-\\theta$，$\\angle\\mathrm{APB}=180^\\circ-B$．同様に $\\triangle$PBC の内角は $\\theta$（B），$C-\\theta$（C），$180^\\circ-C$（P），$\\triangle$PCA の内角は $\\theta$（C），$A-\\theta$（A），$180^\\circ-A$（P）である．\n\n(1) 正弦定理より\n\\[\\mathrm{PB}=\\frac{c\\sin\\theta}{\\sin(180^\\circ-B)}=\\frac{c\\sin\\theta}{\\sin B},\\quad \\mathrm{PC}=\\frac{a\\sin\\theta}{\\sin C},\\quad \\mathrm{PA}=\\frac{b\\sin\\theta}{\\sin A}\\]\n（$\\triangle$PAB，$\\triangle$PBC，$\\triangle$PCA でそれぞれ角 $\\theta$ の対辺が PB，PC，PA）．外接円の半径を $R$ とすると $\\sin A=\\frac a{2R}$ などより\n\\[\\mathrm{PA}:\\mathrm{PB}:\\mathrm{PC}=\\frac ba:\\frac cb:\\frac ac=b^2c:c^2a:a^2b\\]\n（各項に $abc$ を掛けた）．\\hfill$\\square$\n\n(2) $\\triangle$PAB の正弦定理で $\\dfrac{\\mathrm{PA}}{\\mathrm{PB}}=\\dfrac{\\sin(B-\\theta)}{\\sin\\theta}$．同様に $\\dfrac{\\mathrm{PB}}{\\mathrm{PC}}=\\dfrac{\\sin(C-\\theta)}{\\sin\\theta}$，$\\dfrac{\\mathrm{PC}}{\\mathrm{PA}}=\\dfrac{\\sin(A-\\theta)}{\\sin\\theta}$．3式を掛けると左辺は1で\n\\[\\sin^3\\theta=\\sin(A-\\theta)\\sin(B-\\theta)\\sin(C-\\theta).\\]\n\\hfill$\\square$\n\n(3) 余弦定理より\n\\[\\cos A=\\frac{25+9-49}{30}=-\\frac12,\\quad \\cos B=\\frac{49+9-25}{42}=\\frac{11}{14},\\quad\\cos C=\\frac{49+25-9}{70}=\\frac{13}{14}\\]\nで，$\\sin A=\\frac{\\sqrt3}2$，$\\sin B=\\frac{5\\sqrt3}{14}$，$\\sin C=\\frac{3\\sqrt3}{14}$．$0<\\theta<C<90^\\circ$ より $\\cos\\theta>0$．(2) の両辺を $\\cos^3\\theta$ で割り，$t=\\tan\\theta\\ (>0)$ とおくと，$\\dfrac{\\sin(X-\\theta)}{\\cos\\theta}=\\sin X-t\\cos X$ より\n\\[t^3=\\left(\\frac{\\sqrt3}2+\\frac t2\\right)\\left(\\frac{5\\sqrt3}{14}-\\frac{11t}{14}\\right)\\left(\\frac{3\\sqrt3}{14}-\\frac{13t}{14}\\right).\\]\n$(5\\sqrt3-11t)(3\\sqrt3-13t)=143t^2-98\\sqrt3\\,t+45$，これに $(\\sqrt3+t)$ を掛けると $143t^3+45\\sqrt3\\,t^2-249t+45\\sqrt3$．分母は $2\\cdot14\\cdot14=392$ だから\n\\[392t^3=143t^3+45\\sqrt3\\,t^2-249t+45\\sqrt3,\\qquad 249t^3-45\\sqrt3\\,t^2+249t-45\\sqrt3=0,\\]\n\\[(249t-45\\sqrt3)(t^2+1)=0.\\]\n$t^2+1>0$ より $t=\\dfrac{45\\sqrt3}{249}=\\dfrac{15\\sqrt3}{83}$．また (1) より $b^2c=75$，$c^2a=63$，$a^2b=245$．\n\\[\\boldsymbol{\\tan\\theta=\\frac{15\\sqrt3}{83},\\qquad\\mathrm{PA}:\\mathrm{PB}:\\mathrm{PC}=75:63:245}\\]\n\\hfill$\\square$"
+   }
+  ],
+  "idea": {
+   "tex": "$\\angle\\mathrm{PAB}=\\angle\\mathrm{PBC}=\\angle\\mathrm{PCA}=\\theta$ なら $\\angle\\mathrm{APB}=180^\\circ-B$ などとなり，3つの小三角形の正弦定理で PA，PB，PC が辺と $\\sin\\theta$ で表せる．比 $\\frac{\\mathrm{PA}}{\\mathrm{PB}}$ などを掛け合わせると $\\sin^3\\theta=\\sin(A-\\theta)\\sin(B-\\theta)\\sin(C-\\theta)$ となり，$\\tan\\theta$ の3次方程式は $t^2+1$ を因数にもつ．"
+  },
+  "methods": [],
+  "tags": [
+   "ブロカール点",
+   "正弦定理",
+   "三角形の内部の点",
+   "3次方程式"
+  ],
+  "provenance": {
+   "created": "2026-11-19"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "I-TRI-127",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "I-03",
+  "level": 4,
+  "minutes": 30,
+  "theme": "角の和が直角になる三等分点",
+  "topic": "角の和が直角になる三等分点",
+  "statement": {
+   "tex": "$\\triangle$ABC の辺 BC 上に点 D を $\\mathrm{BD}:\\mathrm{DC}=1:2$ となるようにとる．$\\angle\\mathrm{BAD}+\\angle\\mathrm{ACB}=90^\\circ$ が成り立つとし，$\\triangle$ABC の外接円の中心を O とする．以下 $B=\\angle\\mathrm{ABC}$，$C=\\angle\\mathrm{ACB}$ と書く．\n\\begin{enumerate}\n  \\item $B,C$ はともに鋭角であり，O は直線 AD 上にあって，$\\sin2B=2\\sin2C$ が成り立つことを示せ．\n  \\item $C$ のとりうる値の範囲を求めよ．\n  \\item $\\angle\\mathrm{BAC}=45^\\circ$ のとき，$\\tan B$，$\\tan C$ の値を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 証明　(2) $0^\\circ<C\\leqq15^\\circ$ または $75^\\circ\\leqq C<90^\\circ$　(3) $\\tan B=\\dfrac{1+\\sqrt5}2$，$\\tan C=2+\\sqrt5$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "$A=\\angle\\mathrm{BAC}$ とし，外接円の半径を $R$ とする．\n\n(1) $\\angle\\mathrm{BAD}>0^\\circ$ なので $C<90^\\circ$．D は辺 BC の内部の点なので半直線 AD は $\\angle$BAC の内部にあり，$\\angle\\mathrm{DAC}=A-\\angle\\mathrm{BAD}=A-(90^\\circ-C)=90^\\circ-B>0^\\circ$．よって $B<90^\\circ$．\n\n$C$ が鋭角なので，円周角の定理より $\\angle\\mathrm{AOB}=2C$ で，O は直線 AB に関して C と同じ側にある．$\\triangle$OAB は $\\mathrm{OA}=\\mathrm{OB}$ の二等辺三角形なので $\\angle\\mathrm{OAB}=\\dfrac{180^\\circ-2C}2=90^\\circ-C$．一方，D も直線 AB に関して C と同じ側にあり $\\angle\\mathrm{BAD}=90^\\circ-C$．直線 AB の同じ側にあって半直線 AB と同じ角をなす A からの半直線は1本しかないので，半直線 AO と半直線 AD は一致し，O は直線 AD 上にある．\n\nB，C は直線 AD に関して反対側にあり，B，C から直線 AD に下ろした垂線の長さの比は BD:DC に等しい（2つの直角三角形が D を共有する対頂角で相似）．$\\triangle$OAB と $\\triangle$OAC は底辺 OA を共有するので\n\\[\n\\triangle\\mathrm{OAB}:\\triangle\\mathrm{OAC}=\\mathrm{BD}:\\mathrm{DC}=1:2.\n\\]\n$B$ も鋭角なので同様に $\\angle\\mathrm{AOC}=2B$．$\\triangle\\mathrm{OAB}=\\frac12R^2\\sin2C$，$\\triangle\\mathrm{OAC}=\\frac12R^2\\sin2B$ より $\\sin2B=2\\sin2C$．\\hfill$\\square$\n\n(2) \\emph{必要条件}．$\\sin2B\\leqq1$ より $\\sin2C\\leqq\\dfrac12$，$0^\\circ<2C<180^\\circ$ なので $2C\\leqq30^\\circ$ または $2C\\geqq150^\\circ$．すなわち $0^\\circ<C\\leqq15^\\circ$ または $75^\\circ\\leqq C<90^\\circ$．\n\n\\emph{十分条件}．この範囲の $C$ に対し $0<2\\sin2C\\leqq1$ なので，$\\sin2B=2\\sin2C$ をみたす $B$（$0^\\circ<B\\leqq45^\\circ$）がとれる．$B+C<180^\\circ$ なので $A=180^\\circ-B-C>0^\\circ$ として三角形 ABC が存在する．$B,C$ は鋭角なので (1) と同様に $\\angle\\mathrm{OAB}=90^\\circ-C$，$\\angle\\mathrm{OAC}=90^\\circ-B$ がともに正で O は直線 AB に関して C 側，直線 AC に関して B 側にあり，和は $180^\\circ-B-C=A$．よって半直線 AO は $\\angle$BAC の内部にあり，辺 BC の内部の点 D$'$ で BC と交わる．(1) と同じ面積の計算で $\\mathrm{BD'}:\\mathrm{D'C}=\\sin2C:\\sin2B=1:2$ なので D$'$=D，そして $\\angle\\mathrm{BAD}=\\angle\\mathrm{OAB}=90^\\circ-C$．条件をみたす．\n\n以上より $\\boldsymbol{0^\\circ<C\\leqq15^\\circ\\ \\text{または}\\ 75^\\circ\\leqq C<90^\\circ}$．\n\n(3) $A=45^\\circ$ のとき $B=135^\\circ-C$．$B,C$ は鋭角なので $45^\\circ<C<90^\\circ$，$90^\\circ<2C<180^\\circ$．\n\\[\n\\sin2B=\\sin(270^\\circ-2C)=-\\cos2C\n\\]\nなので $\\sin2B=2\\sin2C$ は $-\\cos2C=2\\sin2C$．$\\cos2C\\neq0$（$\\cos2C=0$ なら $\\sin2C=0$ となり $\\sin^22C+\\cos^22C=1$ に反する）だから $\\tan2C=-\\dfrac12$．$t=\\tan C$（$t>1$）とおくと $\\dfrac{2t}{1-t^2}=-\\dfrac12$，$t^2-4t-1=0$，$t>1$ より $t=2+\\sqrt5$．このとき $2C$ は $90^\\circ$ と $180^\\circ$ の間で $\\tan2C=-\\frac12$ をみたす唯一の角であり，$C>75^\\circ$ は (2) の範囲に入る（$\\tan75^\\circ=2+\\sqrt3<2+\\sqrt5$）．\n\\[\n\\tan B=\\tan(135^\\circ-C)=\\frac{-1-t}{1-t}=\\frac{t+1}{t-1}=\\frac{3+\\sqrt5}{1+\\sqrt5}=\\frac{(3+\\sqrt5)(\\sqrt5-1)}4=\\frac{1+\\sqrt5}2.\n\\]\n逆に，この $B,C$ は鋭角で $A=45^\\circ$，$\\sin2B=-\\cos2C=2\\sin2C$ をみたすので，(2) の十分性の議論により条件をみたす三角形になる．\n\\[\n\\boldsymbol{\\tan B=\\frac{1+\\sqrt5}2,\\qquad\\tan C=2+\\sqrt5}.\n\\]"
+   }
+  ],
+  "idea": {
+   "tex": "$\\angle\\mathrm C$ が鋭角なら $\\angle\\mathrm{OAB}=90^\\circ-\\angle\\mathrm C$（O は外心）．したがって「$\\angle\\mathrm{BAD}+\\angle\\mathrm C=90^\\circ$」は「O が直線 AD 上にある」と同じ．直線 AO が辺 BC を分ける比は $\\triangle\\mathrm{OAB}:\\triangle\\mathrm{OAC}=\\sin2C:\\sin2B$．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) 証明\n(2) 記述\n(3) $\\tan B$：(1+sqrt(5))/2 ; $\\tan C$：2+sqrt(5)"
+  },
+  "methods": [],
+  "tags": [
+   "外心",
+   "中心角",
+   "面積比",
+   "正弦の2倍角",
+   "三角形の決定"
+  ],
+  "provenance": {
+   "created": "2026-11-19"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "I-TRI-128",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "I-03",
+  "level": 4,
+  "minutes": 35,
+  "theme": "辺からの距離が $t,2t,3t$ の内側の三角形",
+  "topic": "辺からの距離が $t,2t,3t$ の内側の三角形",
+  "statement": {
+   "tex": "$\\mathrm{BC}=13$，$\\mathrm{CA}=14$，$\\mathrm{AB}=15$ の三角形 ABC がある．正の数 $t$ に対し，三角形 ABC の内部に三角形 A$'$B$'$C$'$ を\n\\[\n\\mathrm B'\\mathrm C'\\parallel\\mathrm{BC},\\quad \\mathrm C'\\mathrm A'\\parallel\\mathrm{CA},\\quad \\mathrm A'\\mathrm B'\\parallel\\mathrm{AB}\n\\]\nで，平行な2直線 B$'$C$'$ と BC，C$'$A$'$ と CA，A$'$B$'$ と AB の距離がそれぞれ $t$，$2t$，$3t$ となるようにとる．ただし，A$'$ は直線 B$'$C$'$ に関して A と同じ側に，B$'$ は直線 C$'$A$'$ に関して B と同じ側に，C$'$ は直線 A$'$B$'$ に関して C と同じ側にあるものとする．\n\\begin{enumerate}\n  \\item このような三角形 A$'$B$'$C$'$ が存在するための $t$ の範囲を求め，そのとき三角形 A$'$B$'$C$'$ は $t$ に対してただ1つに定まり，三角形 ABC と相似であることを示して，相似比 $k=\\dfrac{\\mathrm B'\\mathrm C'}{\\mathrm{BC}}$ を $t$ で表せ．\n  \\item 三角形 A$'$B$'$C$'$ の周の長さが三角形 ABC の周の長さの $\\dfrac12$ となる $t$ を求めよ．\n  \\item $t$ が (1) の範囲を動くとき，三角形 A$'$B$'$C$'$ の内心 I$'$ が動く範囲は線分（端点を除く）であることを示し，その長さを求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $0<t<\\dfrac{84}{43}$，$k=1-\\dfrac{43}{84}t$　(2) $t=\\dfrac{42}{43}$　(3) 長さ $\\dfrac{5\\sqrt{377}}{43}$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "$a=\\mathrm{BC}=13$，$b=\\mathrm{CA}=14$，$c=\\mathrm{AB}=15$ とし，面積を $S$ とする．ヘロンの公式で $S=\\sqrt{21\\cdot8\\cdot7\\cdot6}=84$．A，B，C から対辺までの距離（高さ）を $h_a,h_b,h_c$ とする．\n\n\\textbf{準備．}三角形 ABC の周または内部の点 X から直線 BC，CA，AB までの距離を $x,y,z$ とすると，三角形 XBC，XCA，XAB の面積の和が $S$ なので $ax+by+cz=2S$，すなわち $13x+14y+15z=168$．\n\n\\textbf{(1)} 直線 BC に平行で距離 $t$ の直線は2本あるが，B$'$，C$'$ は三角形の内部にあるので，直線 B$'$C$'$ はそのうち A の側の直線 $\\ell_a$ であり，$\\ell_a$ は三角形の内部を通るから $t<h_a$．よって $\\ell_a$ に関して A と同じ側にある点は，直線 BC に関して A と同じ側にあって BC からの距離が $t$ より大きい点である．同様に直線 C$'$A$'$，A$'$B$'$ は，CA から B の側へ距離 $2t$ の直線 $\\ell_b$，AB から C の側へ距離 $3t$ の直線 $\\ell_c$ で，$2t<h_b$，$3t<h_c$．3頂点は $\\ell_a,\\ell_b,\\ell_c$ の交点だから，三角形 A$'$B$'$C$'$ は存在すれば $t$ によりただ1つに定まる．\n\n\\emph{必要条件．}三角形 A$'$B$'$C$'$ の周および内部の点 X は，$\\ell_a$ 上または $\\ell_a$ に関して A$'$ と同じ側，すなわち（ただし書きより）A と同じ側にあるので BC までの距離 $x\\geqq t$．同様に $y\\geqq2t$，$z\\geqq3t$．準備の式より $168=13x+14y+15z\\geqq(13+28+45)t=86t$，よって $t\\leqq\\frac{84}{43}$．$t=\\frac{84}{43}$ なら等号から $x=t$，$y=2t$，$z=3t$ となり，X は $\\ell_a$ と $\\ell_b$ の交点のただ1点に限られ，三角形にならない．ゆえに $t<\\frac{84}{43}$ が必要．\n\n\\emph{十分条件．}辺 BC を $45:28$ に内分する点を E，線分 AE を $73:13$ に内分する点を Z とする（Z は三角形の内部の点）．$\\mathrm{ZE}:\\mathrm{AE}=13:86$ より三角形 ZBC の面積は $\\frac{13}{86}S$，$\\mathrm{AZ}:\\mathrm{AE}=73:86$ より三角形 ZCA，ZAB の面積はそれぞれ三角形 AEC，AEB の $\\frac{73}{86}$ 倍で，$\\frac{73}{86}\\cdot\\frac{28}{73}S=\\frac{28}{86}S$，$\\frac{73}{86}\\cdot\\frac{45}{73}S=\\frac{45}{86}S$．よって Z から BC までの距離は $d=\\frac{2}{13}\\cdot\\frac{13}{86}\\cdot84=\\frac{84}{43}$．同様に CA までは $\\frac2{14}\\cdot\\frac{28}{86}\\cdot84=2d$，AB までは $\\frac2{15}\\cdot\\frac{45}{86}\\cdot84=3d$．\n\n$0<t<\\frac{84}{43}=d$ のとき $k=1-\\frac td$ とおくと $0<k<1$．各点 X に対し，線分 ZX 上の点で $\\mathrm{ZX}_k=k\\,\\mathrm{ZX}$ となる点を $\\mathrm X_k$ とする（Z を中心とする $k$ 倍の縮小）．Z から BC に下ろした垂線の足を H とすると，BC 上の点 X について平行線と線分の比より $\\mathrm X_k$ は $\\mathrm H_k$ を通り BC に平行な直線上にあり，その直線は BC から A の側へ距離 $d-kd=(1-k)d=t$，すなわち $\\ell_a$ である．同様に CA 上の点は $\\ell_b$ 上に，AB 上の点は $\\ell_c$ 上に移るので，三角形 $\\mathrm A_k\\mathrm B_k\\mathrm C_k$ の3辺は $\\ell_a,\\ell_b,\\ell_c$ 上にある．また $\\mathrm A_k,\\mathrm B_k,\\mathrm C_k$ は Z と A，B，C を結ぶ線分上の点なので三角形 ABC の内部にある．さらに，$h_a=\\frac{168}{13}$，$h_b=12$，$h_c=\\frac{56}5$ はいずれも $3d=\\frac{252}{43}$ より大きいので，Z と A の BC からの距離 $d$，$h_a$ はともに $t$ より大きく，線分 ZA 上の点 $\\mathrm A_k$ も BC からの距離が $t$ より大きく，$\\ell_a$ に関して A と同じ側にある．同様に $\\mathrm B_k$ は $\\ell_b$ に関して B と，$\\mathrm C_k$ は $\\ell_c$ に関して C と同じ側にある．\n以上より $0<t<\\frac{84}{43}$ のとき三角形 A$'$B$'$C$'$ は存在して，三角形 $\\mathrm A_k\\mathrm B_k\\mathrm C_k$ に一致する．これは三角形 ABC と Z を相似の中心とする相似の位置にあるので相似で，相似比は\n\\[\n\\boldsymbol{0<t<\\tfrac{84}{43}},\\qquad \\boldsymbol{k=1-\\tfrac{43}{84}t}.\n\\]\n\n\\textbf{(2)} 周の長さの比は $k$ なので $k=\\frac12$，$\\boldsymbol{t=\\frac{42}{43}}$．\n\n\\textbf{(3)} 三角形 ABC の内接円（中心 I，半径 $r$）上の点は，この縮小で中心 $\\mathrm I_k$，半径 $kr$ の円上に移り，この円は3辺 $\\ell_a,\\ell_b,\\ell_c$ に接し三角形 A$'$B$'$C$'$ の内部にあるので，その内接円である．よって $\\mathrm I'=\\mathrm I_k$，すなわち I$'$ は線分 ZI 上で $\\mathrm{ZI}'=k\\,\\mathrm{ZI}$ をみたす点．$t$ が $0<t<\\frac{84}{43}$ を動くと $k$ は $0<k<1$ のすべての値をとるから，I$'$ の動く範囲は線分 ZI から両端を除いたものであり，長さは ZI である．\n\nB$(0,0)$，C$(13,0)$ とおくと，A$(x,y)$（$y>0$）は $x^2+y^2=225$，$(x-13)^2+y^2=196$ より $x=\\frac{99}{13}$，$y=\\frac{168}{13}$．\n内接円の半径は $\\frac{S}{(a+b+c)/2}=\\frac{84}{21}=4$，BC との接点は B から $\\frac{a+b+c}2-b=7$ の位置なので I$(7,4)$．\nE $=\\left(\\frac{45\\cdot13}{73},0\\right)=\\left(\\frac{585}{73},0\\right)$，Z $=\\frac{13\\mathrm A+73\\mathrm E}{86}=\\left(\\frac{99+585}{86},\\frac{168}{86}\\right)=\\left(\\frac{342}{43},\\frac{84}{43}\\right)$．\n\\[\n\\mathrm{ZI}=\\sqrt{\\Bigl(7-\\tfrac{342}{43}\\Bigr)^2+\\Bigl(4-\\tfrac{84}{43}\\Bigr)^2}=\\frac{\\sqrt{41^2+88^2}}{43}=\\frac{\\sqrt{9425}}{43}=\\boldsymbol{\\frac{5\\sqrt{377}}{43}}.\n\\]\n\\hfill$\\square$"
+   }
+  ],
+  "idea": {
+   "tex": "三角形の内部の点 X から3辺までの距離 $x,y,z$ は $ax+by+cz=2S$ をみたす．各辺に平行に内側へずらした3直線が作る三角形は，3辺までの距離の比がずらし幅の比に等しい点 Z を中心とする相似の中心（拡大・縮小）による像であり，その比は $1-\\dfrac{(\\text{ずらし幅の重み付き和})}{2S}$．内心も同じ縮小で移るので，内側の三角形の内心は Z と I を結ぶ線分上を動く．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) 0<t<84/43 ; $k$：1-(43/84)t\n(2) $t$：42/43\n(3) 長さ：5sqrt(377)/43"
+  },
+  "methods": [],
+  "tags": [
+   "相似の中心",
+   "面積と距離",
+   "内心",
+   "三角形の内部の点"
+  ],
+  "provenance": {
+   "created": "2026-11-19"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "I-TRI-129",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "I-03",
+  "level": 4,
+  "minutes": 30,
+  "theme": "角の三等分線が対辺を切る比",
+  "topic": "角の三等分線が対辺を切る比",
+  "statement": {
+   "tex": "三角形 ABC の辺 BC 上に，B に近い方から順に2点 D，E があり，\n\\[\\angle\\mathrm{BAD}=\\angle\\mathrm{DAE}=\\angle\\mathrm{EAC}=\\theta\\]\nが成り立っている．$\\mathrm{BD}:\\mathrm{DE}:\\mathrm{EC}=p:q:r$（$p,q,r$ は正の実数）とする．\n\\begin{enumerate}\n  \\item $\\cos^2\\theta$ と $\\dfrac{\\mathrm{AB}}{\\mathrm{AC}}$ を $p,q,r$ で表せ．\n  \\item 正の実数 $p,q,r$ が与えられたとき，$\\mathrm{BD}:\\mathrm{DE}:\\mathrm{EC}=p:q:r$ となるこのような三角形 ABC が存在するための，$p,q,r$ についての必要十分条件を求めよ．\n  \\item $\\mathrm{BD}=\\mathrm{DE}=\\mathrm{EC}$ となることはないことを示せ．また，$\\mathrm{BD}:\\mathrm{DE}:\\mathrm{EC}=2:1:2$ のとき $\\cos\\angle\\mathrm{BAC}$ を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $\\cos^2\\theta=\\dfrac{(p+q)(q+r)}{4pr}$，$\\dfrac{\\mathrm{AB}}{\\mathrm{AC}}=\\sqrt{\\dfrac{p(p+q)}{r(q+r)}}$　(2) $(p+q)(q+r)<4pr$　(3) 証明；$\\cos\\angle\\mathrm{BAC}=-\\dfrac9{16}$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "$x=\\dfrac{\\mathrm{AB}}{\\mathrm{AC}}$，$u=2\\cos\\theta$ とおく．$\\angle\\mathrm{BAC}=3\\theta<180^\\circ$ より $0<\\theta<60^\\circ$ で，$1<u<2$．また $\\sin2\\theta=u\\sin\\theta$．\n\n(1) D は辺 BC 上にあるので，$\\triangle$ABD と $\\triangle$ADC は高さ（A から直線 BC までの距離）が共通で\n\\[\\frac{\\mathrm{BD}}{\\mathrm{DC}}=\\frac{\\triangle\\mathrm{ABD}}{\\triangle\\mathrm{ADC}}=\\frac{\\frac12\\mathrm{AB}\\cdot\\mathrm{AD}\\sin\\theta}{\\frac12\\mathrm{AD}\\cdot\\mathrm{AC}\\sin2\\theta}=\\frac x u.\\]\n同様に $\\angle\\mathrm{BAE}=2\\theta$，$\\angle\\mathrm{EAC}=\\theta$ から\n\\[\\frac{\\mathrm{BE}}{\\mathrm{EC}}=\\frac{\\mathrm{AB}\\sin2\\theta}{\\mathrm{AC}\\sin\\theta}=xu.\\]\n$\\mathrm{BD}:\\mathrm{DC}=p:(q+r)$，$\\mathrm{BE}:\\mathrm{EC}=(p+q):r$ だから\n\\[\\frac xu=\\frac p{q+r},\\qquad xu=\\frac{p+q}r.\\qquad\\cdots(*)\\]\n辺々掛けて $x^2=\\dfrac{p(p+q)}{r(q+r)}$，辺々割って $u^2=\\dfrac{(p+q)(q+r)}{pr}$．$x,u>0$ より\n\\[\\boldsymbol{\\cos^2\\theta=\\frac{(p+q)(q+r)}{4pr}},\\qquad\\boldsymbol{\\frac{\\mathrm{AB}}{\\mathrm{AC}}=\\sqrt{\\frac{p(p+q)}{r(q+r)}}}.\\]\n\n(2) \\textbf{必要性．} $0<\\theta<60^\\circ$ より $\\cos^2\\theta<1$，すなわち $(p+q)(q+r)<4pr$．\n\n\\textbf{十分性．} $(p+q)(q+r)<4pr$ とする．$(p+q)(q+r)>pr$ も成り立つから $c_0=\\sqrt{\\dfrac{(p+q)(q+r)}{4pr}}$ は $\\dfrac12<c_0<1$ を満たし，$\\cos\\theta=c_0$ となる $\\theta$ が $0<\\theta<60^\\circ$ にただ1つある．$x=\\sqrt{\\dfrac{p(p+q)}{r(q+r)}}$，$u=2c_0$ とおくと，$\\dfrac xu=\\sqrt{\\dfrac{p(p+q)}{r(q+r)}\\cdot\\dfrac{pr}{(p+q)(q+r)}}=\\dfrac p{q+r}$，$xu=\\sqrt{\\dfrac{p(p+q)}{r(q+r)}\\cdot\\dfrac{(p+q)(q+r)}{pr}}=\\dfrac{p+q}r$ で $(*)$ が成り立つ．\n\n点 A から，なす角 $3\\theta\\ (<180^\\circ)$ の2本の半直線を引き，その上に $\\mathrm{AB}=x$，$\\mathrm{AC}=1$ となる B，C をとって三角形 ABC を作る．$\\angle$BAC の内部の半直線で $\\angle\\mathrm{BAD}=\\theta$，$\\angle\\mathrm{BAE}=2\\theta$ となるものは線分 BC とそれぞれ両端以外の1点 D，E で交わる．E が線分 BD 上にあれば半直線 AE は $\\angle$BAD の内部または周上にあり $2\\theta\\leqq\\theta$ となって矛盾するので，B，D，E，C の順に並ぶ．(1) と同じ計算で $\\dfrac{\\mathrm{BD}}{\\mathrm{DC}}=\\dfrac xu=\\dfrac p{q+r}$，$\\dfrac{\\mathrm{BE}}{\\mathrm{EC}}=xu=\\dfrac{p+q}r$ となるので，$\\mathrm{BC}=p+q+r$ の長さを単位にとれば $\\mathrm{BD}=p$，$\\mathrm{BE}=p+q$，すなわち $\\mathrm{BD}:\\mathrm{DE}:\\mathrm{EC}=p:q:r$ である．\n\n以上より求める条件は $\\boldsymbol{(p+q)(q+r)<4pr}$．\n\n(3) $p=q=r$ なら $(p+q)(q+r)=4p^2=4pr$ で (2) の条件をみたさないので，$\\mathrm{BD}=\\mathrm{DE}=\\mathrm{EC}$ となる三角形はない．\n\n$p=r=2$，$q=1$ のとき $(p+q)(q+r)=9<16=4pr$ で存在し，$\\cos^2\\theta=\\dfrac9{16}$，$\\cos\\theta=\\dfrac34$（$\\theta$ は鋭角）．\n\\[\\cos\\angle\\mathrm{BAC}=\\cos3\\theta=4\\cos^3\\theta-3\\cos\\theta=\\frac{27}{16}-\\frac{36}{16}=\\boldsymbol{-\\frac9{16}}.\\]\n\\hfill$\\square$"
+   }
+  ],
+  "idea": {
+   "tex": "頂点から引いた線分が対辺を分ける比は，2つの三角形の面積比 $\\frac12\\cdot(\\text{2辺})\\cdot\\sin(\\text{角})$ で「辺の比 $\\times$ 角の正弦の比」になる．三等分線では $\\sin2\\theta=2\\cos\\theta\\sin\\theta$ により比が $\\mathrm{AB}/\\mathrm{AC}$ と $2\\cos\\theta$ の積・商で書け，2式を掛け・割りして2つの未知数を分離する．角の範囲 $0<3\\theta<\\pi$ が存在条件を与える．"
+  },
+  "methods": [],
+  "tags": [
+   "正弦定理",
+   "面積比",
+   "三等分線",
+   "存在条件"
+  ],
+  "provenance": {
+   "created": "2026-11-19"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
  }
 ]

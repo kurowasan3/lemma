@@ -1,5 +1,5 @@
 :root {
-  --lemma-version: '0.13.0';
+  --lemma-version: '0.14.0';
   --paper: #f6f4ee;
   --card: #ffffff;
   --ink: #1c1d21;
@@ -321,7 +321,7 @@ textarea.explain:focus { outline: none; border-color: var(--accent); }
 .keypoint { margin-top: 12px; padding-top: 12px; border-top: 1px dashed var(--line); font-size: 14.5px; color: var(--ink-2); }
 .keypoint b { display: block; font-size: 12px; color: var(--ink-3); letter-spacing: .08em; margin-bottom: 2px; }
 .mode-switch { grid-template-columns: 1fr 1fr; margin-bottom: 12px; }
-.mode-switch.gmode { grid-template-columns: repeat(4, 1fr); }
+.mode-switch.gmode { grid-template-columns: repeat(3, 1fr); }
 .mode-switch.gmode button { padding-left: 2px; padding-right: 2px; font-size: 13px; }
 
 /* ---------- today ---------- */

@@ -256,29 +256,36 @@ try {
     const real = (es) => es.filter(e => !/status of 403/.test(e));   // わざと違うコードを入れたときの 403 は除く
     ok(real(A.errors).length === 0 && real(B.errors).length === 0, `ページのエラーなし ${A.errors} ${B.errors}`);
   }
-  // 10. グラフ：複素平面・ベクトルのモード、問題を解きながら開くシート
+  // 10. グラフ：平面（ベクトルを含む）・空間・複素数平面のモード、問題を解きながら開くシート
   {
     const G = await newPage();
-    await G.goto(U + '#graph'); await G.waitForTimeout(1200);
-    ok(await G.locator('.gmode button').count() === 4, 'グラフ：平面・複素平面・ベクトル・空間の4モード');
+    // 旧版の「ベクトル」モードの式は、平面の式へ移る
+    await G.goto(U + '#today'); await G.waitForTimeout(600);
+    await G.evaluate(() => { const s = JSON.parse(localStorage.getItem('lemma.v2') || '{}'); s.graphMode = 'vector'; s.graphVExprs = [{ src: 'Q=(3,3)' }]; localStorage.setItem('lemma.v2', JSON.stringify(s)); });
+    await G.reload(); await G.goto(U + '#graph'); await G.waitForTimeout(1200);
+    ok(await G.locator('.gmode button').count() === 3, 'グラフ：平面・空間・複素数平面の3モード');
+    ok((await G.locator('.gmode button').allInnerTexts()).join() === '平面,空間,複素数平面', 'グラフ：モードの名前');
+    ok(await G.locator('.gmode button.on').innerText() === '平面', '旧版のベクトルモードは平面で開く');
+    const mig = await G.evaluate(() => JSON.parse(localStorage.getItem('lemma.v2')));
+    ok(mig.graphExprs.some(e => e.src === 'Q=(3,3)') && !(mig.graphVExprs && mig.graphVExprs.length), '旧版のベクトルの式は平面の式へ移る');
     const ink = async () => G.evaluate(() => {   // グラフに色の付いた線・点があるか（背景と格子以外の画素）
       const c = document.querySelector('.gp canvas'); const d = c.getContext('2d').getImageData(0, 0, c.width, c.height).data;
       let n = 0; for (let i = 0; i < d.length; i += 4) { const [r, g, b] = [d[i], d[i + 1], d[i + 2]]; if (Math.max(r, g, b) - Math.min(r, g, b) > 80) n++; } return n;
     });
-    for (const [m, n] of [['complex', 7], ['vector', 6]]) {
+    for (const [m, from, n] of [['complex', 0, 7], ['2d', 0, 12]]) {
       await G.click(`.gmode button[data-m="${m}"]`); await G.waitForTimeout(400);
-      for (let i = 0; i < n; i++) {
+      for (let i = from; i < n; i++) {
         await G.click(`.gpre button[data-i="${i}"]`); await G.waitForTimeout(250);
         const errs = await G.$$eval('.expr-err', xs => xs.filter(x => !x.classList.contains('note')).map(x => x.textContent).filter(Boolean));
         ok(errs.length === 0, `グラフ（${m}）の例 ${i + 1}：式のエラーなし ${errs}`);
         ok(await ink() > 200, `グラフ（${m}）の例 ${i + 1}：描かれている`);
       }
     }
-    await G.click('.gmode button[data-m="vector"]'); await G.waitForTimeout(300);
-    await G.click('.gpre button[data-i="4"]'); await G.waitForTimeout(300);
-    ok((await G.locator('.expr-err.note').allInnerTexts()).includes('= 4'), 'ベクトル：内積 n·A の値を表示');
-    const saved = await G.evaluate(() => JSON.parse(localStorage.getItem('lemma.v2')).graphVExprs.map(e => e.src));
-    ok(saved.includes('n·(p-A)=0'), 'ベクトルの式も保存される（同期の対象）');
+    await G.click('.gmode button[data-m="2d"]'); await G.waitForTimeout(300);
+    await G.click('.gpre button[data-i="10"]'); await G.waitForTimeout(300);
+    ok((await G.locator('.expr-err.note').allInnerTexts()).includes('= 4'), '平面のベクトル：内積 n·A の値を表示');
+    const saved = await G.evaluate(() => JSON.parse(localStorage.getItem('lemma.v2')).graphExprs.map(e => e.src));
+    ok(saved.includes('n·(p-A)=0'), 'ベクトルの式も平面の式として保存される（同期の対象）');
     await G.click('.gmode button[data-m="2d"]'); await G.waitForTimeout(300);
     // 問題を解きながら：シートを開いて閉じても、入力中の答え・経過時間はそのまま
     await G.goto(U + '#today'); await G.waitForTimeout(800);
@@ -288,7 +295,7 @@ try {
     await G.click('[data-graph-sheet]'); await G.waitForTimeout(700);
     ok(await G.locator('.gsheet canvas').count() === 1, 'シート：問題の画面からグラフを開ける');
     await G.click('.gsheet .gmode button[data-m="complex"]'); await G.waitForTimeout(400);
-    ok(await G.locator('.gsheet .gmode button.on').innerText() === '複素平面', 'シート：モードを切り替えられる');
+    ok(await G.locator('.gsheet .gmode button.on').innerText() === '複素数平面', 'シート：モードを切り替えられる');
     await G.keyboard.press('Escape'); await G.waitForTimeout(300);
     ok(await G.locator('.gsheet').count() === 0, 'シート：Esc で閉じる');
     ok(await G.locator('#inputs input').nth(0).inputValue() === 'x^2-8x+10', 'シートを閉じても、入力中の答えが残る');

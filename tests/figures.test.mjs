@@ -53,7 +53,7 @@ import sys, json; sys.path.insert(0, ${JSON.stringify(path.join(root, 'tools'))}
 import xlsx_to_content as X
 print(json.dumps(X.parse_figure(sys.argv[1]), ensure_ascii=False))`, raw]).toString());
 const m1 = parse('モード：ベクトル\nA=(0,0)\nB=(4,0)\nC=(1,3)\np=A+t(B-A), 0<=t<=1\n表示：答え合わせのあと');
-ok(m1.mode === 'vector' && m1.exprs.length === 4 && m1.after === true, '「図の式」：モード・表示・式');
+ok(m1.mode === '2d' && m1.exprs.length === 4 && m1.after === true, '「図の式」：モード・表示・式');
 const m2 = parse('y=x^2\ny=2x');
 ok(m2.mode === '2d' && m2.after === null, '「図の式」：モードを省略すると平面、表示は問題文から判断');
 ok(parse('') === null, '「図の式」：空なら図なし');

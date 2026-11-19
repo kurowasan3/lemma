@@ -16384,5 +16384,576 @@
    },
    "verified": false
   }
+ },
+ {
+  "id": "C-CUR-413",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "C-19",
+  "level": 4,
+  "minutes": 30,
+  "theme": "4辺が与えられた凸四角形の対角線の積の最大値",
+  "topic": "4辺が与えられた凸四角形の対角線の積の最大値",
+  "statement": {
+   "tex": "AB$=3$，BC$=4$，CD$=5$，DA$=6$ である凸四角形 ABCD を考える．\n\\begin{enumerate}\n  \\item AC$\\cdot$BD の最大値を求めよ．\n  \\item AC$\\cdot$BD が最大となるときの対角線 AC，BD の長さを求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $39$　(2) $\\mathrm{AC}=\\dfrac{\\sqrt{1729}}7$，$\\mathrm{BD}=\\dfrac{3\\sqrt{1729}}{19}$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) \\textbf{不等式}　複素数平面上に凸四角形 ABCD を，頂点が反時計回りに並ぶように置き，A，B，C，D を表す複素数を $a,b,c,d$ とする．展開して確かめられる恒等式\n\\[(a-c)(b-d)=(a-b)(c-d)+(a-d)(b-c)\\]\nにおいて $z=(a-b)(c-d)$，$w=(a-d)(b-c)$ とおくと，$z\\neq0$，$w\\neq0$ で，三角不等式 $|z+w|\\leqq|z|+|w|$ より\n\\[\\mathrm{AC}\\cdot\\mathrm{BD}\\leqq\\mathrm{AB}\\cdot\\mathrm{CD}+\\mathrm{AD}\\cdot\\mathrm{BC}=3\\cdot5+6\\cdot4=39.\\]\n等号は $\\dfrac wz$ が正の実数のとき，かつそのときに限る．\n\n\\textbf{等号の条件}　頂点が反時計回りに並ぶ凸四角形では，A において半直線 AB を反時計回りに $\\angle\\mathrm{DAB}$ だけ回すと半直線 AD に重なり，C において半直線 CD を反時計回りに $\\angle\\mathrm{BCD}$ だけ回すと半直線 CB に重なる．$\\angle\\mathrm{DAB}=\\alpha$，$\\angle\\mathrm{BCD}=\\gamma$ とおくと\n\\[\\frac{d-a}{b-a}=\\frac{\\mathrm{AD}}{\\mathrm{AB}}(\\cos\\alpha+i\\sin\\alpha),\\qquad\\frac{b-c}{d-c}=\\frac{\\mathrm{CB}}{\\mathrm{CD}}(\\cos\\gamma+i\\sin\\gamma).\\]\n$a-d=-(d-a)$，$a-b=-(b-a)$，$c-d=-(d-c)$ に注意すると\n\\[\\frac wz=\\frac{(a-d)(b-c)}{(a-b)(c-d)}=-\\frac{d-a}{b-a}\\cdot\\frac{b-c}{d-c}=-\\frac{\\mathrm{AD}\\cdot\\mathrm{CB}}{\\mathrm{AB}\\cdot\\mathrm{CD}}\\{\\cos(\\alpha+\\gamma)+i\\sin(\\alpha+\\gamma)\\}.\\]\n$0^\\circ<\\alpha+\\gamma<360^\\circ$ なので，これが正の実数 $\\iff\\cos(\\alpha+\\gamma)=-1\\iff\\alpha+\\gamma=180^\\circ$．\n\n\\textbf{最大値の到達}　$\\cos\\beta=-\\dfrac37$ となる $\\beta$（$0^\\circ<\\beta<180^\\circ$）をとり，AB$=3$，BC$=4$，$\\angle\\mathrm{ABC}=\\beta$ の $\\triangle$ABC をつくる．余弦定理より\n\\[\\mathrm{AC}^2=9+16-24\\cos\\beta=25+\\frac{72}7=\\frac{247}7.\\]\n$1<\\frac{247}7<121$ より $1<\\mathrm{AC}<11$ なので，CD$=5$，DA$=6$ の $\\triangle$ACD を直線 AC に関して B と反対側につくれる．このとき\n\\[\\cos\\angle\\mathrm{ADC}=\\frac{25+36-\\frac{247}7}{60}=\\frac{180}{7\\cdot60}=\\frac37=-\\cos\\beta\\]\nより $\\angle\\mathrm{ABC}+\\angle\\mathrm{ADC}=180^\\circ$．B，D は直線 AC の両側にあるので，四角形 ABCD は円に内接し，頂点がこの順に円周上に並ぶから凸四角形である．円に内接する四角形の向かい合う角の和は $180^\\circ$ なので $\\alpha+\\gamma=180^\\circ$ となり，等号が成り立つ．よって最大値は $\\boldsymbol{39}$．\n\n\\medskip\n(2) 最大のときは等号が成り立つので $\\alpha+\\gamma=180^\\circ$，したがって $\\angle\\mathrm B+\\angle\\mathrm D=180^\\circ$（四角形の内角の和は $360^\\circ$）．$\\angle\\mathrm B=\\beta'$ とおくと $\\cos\\angle\\mathrm D=-\\cos\\beta'$ で，AC$^2$ を $\\triangle$ABC と $\\triangle$ACD で表すと\n\\[25-24\\cos\\beta'=61+60\\cos\\beta',\\qquad\\cos\\beta'=-\\frac{36}{84}=-\\frac37.\\]\nよって $\\mathrm{AC}^2=\\dfrac{247}7=\\dfrac{1729}{49}$，$\\mathrm{AC}=\\dfrac{\\sqrt{1729}}7$．さらに $\\mathrm{BD}=\\dfrac{39}{\\mathrm{AC}}=\\dfrac{273}{\\sqrt{1729}}=\\dfrac{273\\sqrt{1729}}{1729}=\\dfrac{3\\sqrt{1729}}{19}$（$1729=7\\cdot13\\cdot19$，$273=3\\cdot7\\cdot13$）．\n\\[\\boldsymbol{\\mathrm{AC}=\\frac{\\sqrt{1729}}7,\\qquad\\mathrm{BD}=\\frac{3\\sqrt{1729}}{19}}\\]\n\\hfill$\\square$"
+   }
+  ],
+  "idea": {
+   "tex": "複素数の恒等式 $(a-c)(b-d)=(a-b)(c-d)+(a-d)(b-c)$ と三角不等式で $\\mathrm{AC}\\cdot\\mathrm{BD}\\leqq\\mathrm{AB}\\cdot\\mathrm{CD}+\\mathrm{AD}\\cdot\\mathrm{BC}$．等号は2つの積の比が正の実数のときで，凸四角形では偏角が $\\angle\\mathrm A+\\angle\\mathrm C$ と結びつき「向かい合う角の和が $180^\\circ$」と同値．その四角形を余弦定理で実際に作って最大値の到達を示す．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) 39\n(2) $\\mathrm{AC}$：sqrt(1729)/7 ; $\\mathrm{BD}$：3sqrt(1729)/19"
+  },
+  "methods": [],
+  "tags": [
+   "トレミーの不等式",
+   "複素数平面",
+   "三角不等式",
+   "円に内接する四角形"
+  ],
+  "provenance": {
+   "created": "2026-11-19"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "C-CUR-414",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "C-19",
+  "level": 4,
+  "minutes": 30,
+  "theme": "2回の回転がつくる点対称移動と三角形の面積",
+  "topic": "2回の回転がつくる点対称移動と三角形の面積",
+  "statement": {
+   "tex": "複素数平面上に A$(0)$，B$(6)$ をとる．点 P$(p)$ を A のまわりに正の向きに $60^\\circ$ 回転した点を P$'$，P$'$ を B のまわりに正の向きに $120^\\circ$ 回転した点を P$''$ とする．\n\\begin{enumerate}\n  \\item P$''$ は P をある定点 M に関して点対称移動した点であることを示し，M を表す複素数を求めよ．\n  \\item P が A を中心とする半径 $6$ の円周上を動くとき，三角形 PP$'$P$''$ の面積 $S$（3点が一直線上にあるときは $S=0$ とする）の最大値と最小値，およびそれらを与える $p$ を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) M は $\\dfrac92-\\dfrac{3\\sqrt3}2i$　(2) 最大値 $36\\sqrt3$（$p=-3+3\\sqrt3\\,i$），最小値 $0$（$p=3-3\\sqrt3\\,i$）"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "$\\alpha=\\cos60^\\circ+i\\sin60^\\circ=\\dfrac{1+\\sqrt3\\,i}2$，$\\beta=\\cos120^\\circ+i\\sin120^\\circ=\\dfrac{-1+\\sqrt3\\,i}2$ とおく．\n\n(1) P$'$ を表す複素数は $p'=\\alpha p$，P$''$ は $p''=6+\\beta(p'-6)=\\alpha\\beta\\,p+6(1-\\beta)$．\n$\\alpha\\beta=\\cos180^\\circ+i\\sin180^\\circ=-1$，$6(1-\\beta)=6\\Bigl(\\dfrac32-\\dfrac{\\sqrt3}2i\\Bigr)=9-3\\sqrt3\\,i$ であるから\n\\[\np''=-p+9-3\\sqrt3\\,i,\\qquad \\frac{p+p''}2=\\frac{9-3\\sqrt3\\,i}2 .\n\\]\n右辺は $p$ によらないので，$m=\\dfrac{9-3\\sqrt3\\,i}2$ の表す点 M は常に線分 PP$''$ の中点であり（P$=$M のときは P$''=$P$=$M），P$''$ は P を M に関して点対称移動した点である．M は $\\boldsymbol{\\dfrac92-\\dfrac{3\\sqrt3}2i}$．\n\n(2) $p=6(\\cos\\varphi+i\\sin\\varphi)$ とおく．$u=p'-p$，$v=p''-p$ とし，$u=u_1+u_2i$，$v=v_1+v_2i$（$u_1,u_2,v_1,v_2$ は実数）と書くと\n$S=\\dfrac12|u_1v_2-u_2v_1|$ であり，$u_1v_2-u_2v_1$ は $\\bar u\\,v=(u_1v_1+u_2v_2)+(u_1v_2-u_2v_1)i$ の虚部である．\n\n$\\alpha-1=\\dfrac{-1+\\sqrt3\\,i}2=\\beta$ より $u=\\beta p$，また $v=2m-2p$．よって\n\\[\n\\bar u\\,v=2\\bar\\beta\\,\\bar p\\,m-2\\bar\\beta\\,|p|^2 .\n\\]\n$|p|^2=36$，$\\bar\\beta=\\dfrac{-1-\\sqrt3\\,i}2$ より $-2\\bar\\beta|p|^2=36+36\\sqrt3\\,i$ で，その虚部は $36\\sqrt3$．\n\n次に $m=3\\sqrt3\\bigl(\\cos(-30^\\circ)+i\\sin(-30^\\circ)\\bigr)$（実際 $3\\sqrt3\\cdot\\frac{\\sqrt3}2=\\frac92$，$3\\sqrt3\\cdot(-\\frac12)=-\\frac{3\\sqrt3}2$），$\\bar\\beta=\\cos(-120^\\circ)+i\\sin(-120^\\circ)$，$\\bar p=6\\bigl(\\cos(-\\varphi)+i\\sin(-\\varphi)\\bigr)$ であるから，ド・モアブルの定理より\n\\[\n2\\bar\\beta\\,\\bar p\\,m=36\\sqrt3\\bigl\\{\\cos(-\\varphi-150^\\circ)+i\\sin(-\\varphi-150^\\circ)\\bigr\\},\n\\]\nその虚部は $-36\\sqrt3\\sin(\\varphi+150^\\circ)$．したがって $\\bar u v$ の虚部は $36\\sqrt3\\{1-\\sin(\\varphi+150^\\circ)\\}\\geqq0$ で，\n\\[\nS=18\\sqrt3\\,\\{1-\\sin(\\varphi+150^\\circ)\\}.\n\\]\n$\\sin(\\varphi+150^\\circ)$ は $-1$ 以上 $1$ 以下のすべての値をとるので，\n$S$ の最大値は $\\boldsymbol{36\\sqrt3}$ で，$\\varphi+150^\\circ=270^\\circ$，すなわち $\\varphi=120^\\circ$，$p=\\boldsymbol{-3+3\\sqrt3\\,i}$ のとき．\n最小値は $\\boldsymbol 0$ で，$\\varphi=-60^\\circ$，$p=\\boldsymbol{3-3\\sqrt3\\,i}$ のとき（このとき $p'=\\alpha p=6$，$p''=-p+9-3\\sqrt3\\,i=6$ で，P$'$ と P$''$ がともに B に一致する）．\\hfill$\\square$"
+   }
+  ],
+  "idea": {
+   "tex": "点 A のまわりの $60^\\circ$ 回転と点 B のまわりの $120^\\circ$ 回転を続けて行うと，回転角の和が $180^\\circ$ なので，合成は1つの定点に関する点対称移動になる．複素数で $z\\to\\alpha z$，$w\\to6+\\beta(w-6)$ と書けば $\\alpha\\beta=-1$ から中心が直ちに出る．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) 記述\n(2) 最大値：36sqrt(3) ; 最小値：0"
+  },
+  "methods": [],
+  "tags": [
+   "複素数平面",
+   "回転",
+   "点対称",
+   "三角形の面積"
+  ],
+  "provenance": {
+   "created": "2026-11-19"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "C-CUR-415",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "C-19",
+  "level": 4,
+  "minutes": 30,
+  "theme": "円の水平な弦を中点のまわりに回転させる",
+  "topic": "円の水平な弦を中点のまわりに回転させる",
+  "statement": {
+   "tex": "円 $x^2+y^2=1$ と直線 $y=k$（$-1<k<1$）の2つの交点を両端とする弦を，その中点のまわりに正の向きに $60^\\circ$ 回転した線分の両端を P$'$，Q$'$ とする．\n\\begin{enumerate}\n  \\item P$'$，Q$'$ は曲線 $E:\\ 7x^2-2\\sqrt3\\,xy+y^2=1$ 上にあることを示せ．また，$E$ 上の点で，どの $k$ に対しても P$'$ にも Q$'$ にもならない点をすべて求めよ．\n  \\item $E$ で囲まれた部分の面積を求めよ．\n  \\item $k$ が $-1<k<1$ を動くとき，P$'$，Q$'$ の $y$ 座標がとりうる値の最大値と，そのときの $k$ を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 証明，除外点は $(0,1)$，$(0,-1)$　(2) $\\dfrac\\pi2$　(3) 最大値 $\\dfrac{\\sqrt7}2$（$k=\\dfrac2{\\sqrt7}$）"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "弦 $y=k$（$-1<k<1$）の中点は $(0,k)$，半分の長さは $\\sigma=\\sqrt{1-k^2}>0$ で，両端は $(\\pm\\sigma,k)$．中点のまわりに $60^\\circ$ 回転すると，両端は\n\\[\n\\Bigl(\\pm\\frac\\sigma2,\\ k\\pm\\frac{\\sqrt3}2\\sigma\\Bigr)\\quad(\\text{複号同順}).\n\\]\n\n(1) $(x,y)=\\bigl(\\varepsilon\\frac\\sigma2,\\ k+\\varepsilon\\frac{\\sqrt3}2\\sigma\\bigr)$（$\\varepsilon=\\pm1$）とおくと $2x=\\varepsilon\\sigma$，$y-\\sqrt3x=k$ だから\n\\[\n4x^2+(y-\\sqrt3x)^2=\\sigma^2+k^2=1,\\qquad\\text{すなわち}\\qquad 7x^2-2\\sqrt3\\,xy+y^2=1 .\n\\]\nよって P$'$，Q$'$ は $E$ 上にある．\n\n逆に $(x,y)$ を $E$ 上の点とする．$x\\neq0$ のとき，$k=y-\\sqrt3x$，$\\sigma=2|x|>0$ とおくと $k^2+\\sigma^2=1$ より $-1<k<1$，$\\sigma=\\sqrt{1-k^2}$ であり，$\\varepsilon$ を $x$ の符号にとれば $(x,y)$ はこの $k$ に対する回転後の端点である．$x=0$ のとき，回転後の端点の $x$ 座標は $\\pm\\frac\\sigma2\\neq0$ なので端点にはならない．$E$ 上で $x=0$ の点は $y^2=1$ より $\\boldsymbol{(0,1),\\ (0,-1)}$ で，これらが求める点である．\n\n(2) $E$ の式を $(y-\\sqrt3x)^2=1-4x^2$ と書くと，$E$ 上の点は $|x|\\leqq\\frac12$ にあり，各 $x$ に対して $y=\\sqrt3x\\pm\\sqrt{1-4x^2}$．$E$ で囲まれた部分は $|x|\\leqq\\frac12$，$\\sqrt3x-\\sqrt{1-4x^2}\\leqq y\\leqq\\sqrt3x+\\sqrt{1-4x^2}$ で，面積は\n\\[\n\\int_{-1/2}^{1/2}2\\sqrt{1-4x^2}\\,dx=\\int_{-1}^{1}\\sqrt{1-u^2}\\,du\\quad(u=2x)=\\boldsymbol{\\frac\\pi2}\n\\]\n（最後の積分は半径 $1$ の半円の面積）．\n\n(3) P$'$，Q$'$ の $y$ 座標は $k\\pm\\frac{\\sqrt3}2\\sigma$ で，大きい方 $k+\\frac{\\sqrt3}2\\sigma$ を考えればよい．$k^2+\\sigma^2=1$ より\n\\[\n\\Bigl(k+\\frac{\\sqrt3}2\\sigma\\Bigr)^2\\leqq\\Bigl(1+\\frac34\\Bigr)(k^2+\\sigma^2)=\\frac74\n\\]\n（$\\bigl(1+\\frac34\\bigr)(k^2+\\sigma^2)-\\bigl(k+\\frac{\\sqrt3}2\\sigma\\bigr)^2=\\bigl(\\frac{\\sqrt3}2k-\\sigma\\bigr)^2\\geqq0$）で，$k+\\frac{\\sqrt3}2\\sigma\\leqq\\frac{\\sqrt7}2$．等号は $\\sigma=\\frac{\\sqrt3}2k$ かつ $k+\\frac{\\sqrt3}2\\sigma>0$ のとき，すなわち $k^2\\bigl(1+\\frac34\\bigr)=1$，$k>0$ から $k=\\frac2{\\sqrt7}$，$\\sigma=\\frac{\\sqrt3}{\\sqrt7}$ のときで，これは $-1<k<1$，$\\sigma=\\sqrt{1-k^2}$ をみたす．よって最大値は $\\boldsymbol{\\dfrac{\\sqrt7}2}$，そのとき $k=\\boldsymbol{\\dfrac2{\\sqrt7}}$．\\hfill$\\square$"
+   }
+  ],
+  "idea": {
+   "tex": "弦を「中点」と「半分の長さ」で表し，回転後の端点を中点＋（半分の長さ）×（回転した単位ベクトル）と書いてパラメータを消去する．逆に曲線上の点から弦を復元できるかを調べると，除外点が見つかる．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) 記述\n(2) π/2\n(3) 最大値：sqrt(7)/2"
+  },
+  "methods": [],
+  "tags": [
+   "軌跡",
+   "媒介変数",
+   "定積分",
+   "コーシー・シュワルツ"
+  ],
+  "provenance": {
+   "created": "2026-11-19"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "C-CUR-416",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "C-19",
+  "level": 4,
+  "minutes": 30,
+  "theme": "楕円の定長の弦の中点が最も右に寄る位置",
+  "topic": "楕円の定長の弦の中点が最も右に寄る位置",
+  "statement": {
+   "tex": "楕円 $E:\\dfrac{x^2}4+\\dfrac{y^2}3=1$ 上に両端をもつ長さ $l$ の線分（$0<l\\leqq4$）を考え，その中点の $x$ 座標の最大値を $X(l)$ とする．\n\\begin{enumerate}\n  \\item $0<l\\leqq3$ のとき，$X(l)$ を求めよ．\n  \\item $3\\leqq l\\leqq4$ のとき，$X(l)$ を求めよ．また，このとき中点の $x$ 座標を最大にする線分は，どれも点 $\\mathrm F(1,0)$ を通ることを示せ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $X(l)=\\sqrt{4-\\dfrac{l^2}3}$　(2) $X(l)=4-l$，焦点を通ることは証明"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "線分の両端を P，R，中点を $\\mathrm M(X,Y)$ とし，$\\overrightarrow{\\mathrm{MR}}=(c,s)$ とおく（$c^2+s^2=\\frac{l^2}4$）．P，R が $E$ 上にある条件は\n\\[\n3(X+c)^2+4(Y+s)^2=12,\\qquad 3(X-c)^2+4(Y-s)^2=12\n\\]\nであり，これは2式の和の半分と差の $\\frac14$ をとった\n\\[\n\\text{(i)}\\ \\ 3X^2+4Y^2+3c^2+4s^2=12,\\qquad \\text{(ii)}\\ \\ 3Xc+4Ys=0\n\\]\nと同値である（和と差から元の2式が戻る）．$(X,Y)$ と $(-X,-Y)$ は同時に条件をみたすので，$X\\geqq0$ の範囲で考えてよい．\n\n$s=0$ のとき $c\\neq0$ だから (ii) より $X=0$．\n\n$s\\neq0$ のとき，(ii) より $Y=-\\dfrac{3Xc}{4s}$．これを (i) に代入して\n\\[\n3X^2\\cdot\\frac{4s^2+3c^2}{4s^2}=12-3c^2-4s^2,\\qquad X^2=\\frac{4s^2(12-3c^2-4s^2)}{3(4s^2+3c^2)}.\n\\]\n$L=\\dfrac{l^2}4$，$w=\\dfrac{s^2}{L}$（$0<w\\leqq1$）とおくと $s^2=Lw$，$c^2=L(1-w)$ で，\n\\[\nX^2=\\frac43F(w),\\qquad F(w)=\\frac{w(A-Lw)}{3+w},\\quad A=12-3L.\n\\]\n逆に，$0<w\\leqq1$ で $F(w)\\geqq0$ のとき，$X=\\sqrt{\\frac43F(w)}$，$s=\\sqrt{Lw}$，$c=\\sqrt{L(1-w)}$，$Y=-\\frac{3Xc}{4s}$ とおけば (i)，(ii) が成り立ち，中点の $x$ 座標が $X$ である長さ $l$ の線分が得られる．よって $X(l)^2$ は $0<w\\leqq1$ における $\\frac43F(w)$ の最大値（それが正のとき）である．\n\\[\nF'(w)=\\frac{(A-2Lw)(3+w)-w(A-Lw)}{(3+w)^2}=\\frac{3A-6Lw-Lw^2}{(3+w)^2}\n\\]\nで，分子 $H(w)=3A-6Lw-Lw^2$ は $w>0$ で減少する．\n\n(1) $0<l\\leqq3$ のとき $L\\leqq\\frac94$ で，$H(1)=3A-7L=36-16L\\geqq0$．よって $0<w<1$ で $H(w)>H(1)\\geqq0$，$F$ は $0<w\\leqq1$ で増加し，最大値は $F(1)=\\dfrac{A-L}4=3-L>0$．したがって\n\\[\nX(l)^2=\\frac43(3-L)=4-\\frac{l^2}3,\\qquad X(l)=\\boldsymbol{\\sqrt{4-\\dfrac{l^2}3}}\n\\]\n（$w=1$，すなわち $y$ 軸に平行な線分のとき）．\n\n(2) $E$ 上の点 $(x,y)$ について $y^2=3-\\frac34x^2$ だから\n\\[\n(x-1)^2+y^2=\\frac{x^2}4-2x+4=\\left(2-\\frac x2\\right)^2,\n\\]\n$x\\leqq2$ より F までの距離は $2-\\dfrac x2$．長さ $l$ の線分 PR（P，R の $x$ 座標を $x_1,x_2$）について，三角形の不等式から\n\\[\nl=\\mathrm{PR}\\leqq\\mathrm{PF}+\\mathrm{FR}=4-\\frac{x_1+x_2}2=4-X,\n\\]\nすなわち $X\\leqq4-l$ で，等号は F が線分 PR 上にあるときに限る．\n\n逆に，$3\\leqq l\\leqq4$ なら F を通る長さ $l$ の線分がある．実際，F を通り向き $(\\cos\\varphi,\\sin\\varphi)$ の直線上の点 $(1+r\\cos\\varphi,\\ r\\sin\\varphi)$ が $E$ 上にある条件は，$k=\\cos\\varphi$ として\n\\[\n3(1+rk)^2+4r^2(1-k^2)=12\\iff(4-k^2)r^2+6kr-9=0\n\\]\nで，判別式の $\\frac14$ は $9k^2+9(4-k^2)=36>0$，2解 $r_1>0>r_2$ の差（弦の長さ）は $\\dfrac{2\\cdot6}{4-k^2}=\\dfrac{12}{4-k^2}$．$k^2$ が $0$ から $1$ まで動くとき，これは $3$ から $4$ までのすべての値をとる．F は2解の間（$r=0$）にあるので F は弦上にある．このとき $X=4-l$．\n\n以上より $X(l)=\\boldsymbol{4-l}$ で，最大を与える線分は等号条件から F を通る．\\hfill$\\square$\n\n（(1) の範囲でも $X\\leqq4-l$ は成り立つが，$l<3$ の F を通る弦は存在しないので等号は起こらず，最大は縦の弦で与えられる．$l=3$ では2つの答えは一致し，縦の弦 $x=1$ は F を通る．）"
+   }
+  ],
+  "idea": {
+   "tex": "弦の中点を $(X,Y)$，向きを $(\\cos\\varphi,\\sin\\varphi)$ として両端を $(X,Y)\\pm\\frac l2(\\cos\\varphi,\\sin\\varphi)$ と表すと，両端が楕円上にある条件は2式の「和」と「差」に分かれる．差の式で $Y$ を消すと $X^2$ は $w=\\sin^2\\varphi$ の分数関数になり，その増減が $l=3$ を境に変わる．$l\\geqq3$ では焦点までの距離 $\\mathrm{AF}=2-\\frac{x}2$ を使うと $X\\leqq4-l$ が一挙に出て，等号は焦点を通る弦．最大を与える弦が「縦の弦」から「焦点を通る弦」へ切り替わる．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) $X(l)$：sqrt(4-l^2/3)\n(2) 記述"
+  },
+  "methods": [],
+  "tags": [
+   "弦の中点",
+   "向きの媒介変数",
+   "焦点を通る弦",
+   "分数関数の増減"
+  ],
+  "provenance": {
+   "created": "2026-11-19"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "C-CUR-417",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "C-19",
+  "level": 3,
+  "minutes": 30,
+  "theme": "回転拡大を繰り返す点の比がすべて異なること",
+  "topic": "回転拡大を繰り返す点の比がすべて異なること",
+  "statement": {
+   "tex": "実数 $\\alpha$ に対して，数列 $\\{p_n\\}$，$\\{q_n\\}$ を\n\\[\np_0=\\alpha,\\quad q_0=1,\\qquad p_{n+1}=3p_n-4q_n,\\quad q_{n+1}=4p_n+3q_n\\quad(n=0,1,2,\\cdots)\n\\]\nで定める．$q_n\\neq0$ である $n$ に対して $a_n=\\dfrac{p_n}{q_n}$ とおく．\n\\begin{enumerate}\n  \\item $q_2=0$ となる $\\alpha$ を求めよ．\n  \\item どのような実数 $\\alpha$ に対しても，$q_n=0$ となる正の整数 $n$ は高々1つであり，さらに $a_n$（$n\\geqq1$，$q_n\\neq0$）はすべて互いに異なる値であることを示せ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $\\alpha=\\dfrac{7}{24}$　(2) 証明"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "$z_n=p_n+q_ni$，$w=3+4i$ とおくと\n\\[\nwz_n=(3p_n-4q_n)+(4p_n+3q_n)i=z_{n+1}\n\\]\nなので $z_n=(\\alpha+i)w^n$．$\\alpha+i\\neq0$ である．\n\n(1) $w^2=-7+24i$ より $z_2=(\\alpha+i)(-7+24i)=(-7\\alpha-24)+(24\\alpha-7)i$．$q_2=24\\alpha-7=0$ より $\\boldsymbol{\\alpha=\\dfrac7{24}}$．\n\n(2) \\textbf{補題}　$w^k=X_k+Y_ki$（$X_k,Y_k$ は整数）とおくと，すべての正の整数 $k$ について $X_k$ を5で割った余りは3，$Y_k$ を5で割った余りは4．特に $Y_k\\neq0$，すなわち $w^k$ は実数でない．\n\n（証明）$X_1=3$，$Y_1=4$ で成り立つ．$X_{k+1}=3X_k-4Y_k$，$Y_{k+1}=4X_k+3Y_k$ である．$X_k=5s+3$，$Y_k=5u+4$（$s,u$ は整数）なら\n\\[\nX_{k+1}=15s-20u+9-16=5(3s-4u-2)+3,\\qquad Y_{k+1}=20s+15u+12+12=5(4s+3u+4)+4 .\n\\]\n数学的帰納法により成り立つ．\\hfill$\\square$\n\n$1\\leqq m<n$ とし，$q_m\\neq0$，$q_n\\neq0$，$a_m=a_n$ と仮定する．このとき $z_m=q_m(a_m+i)$，$z_n=q_n(a_n+i)=\\frac{q_n}{q_m}z_m$．一方 $z_n=w^{n-m}z_m$ で $z_m\\neq0$ だから $w^{n-m}=\\frac{q_n}{q_m}$ は実数となり，補題に反する．よって $a_n$ はすべて異なる．\n\nまた $1\\leqq m<n$ で $q_m=q_n=0$ とすると，$z_m,z_n$ は $0$ でない実数で $w^{n-m}=\\frac{z_n}{z_m}$ が実数となり，やはり補題に反する．よって $q_n=0$ となる $n\\geqq1$ は高々1つ．\\hfill$\\square$"
+   }
+  ],
+  "idea": {
+   "tex": "$(p_n,q_n)$ の漸化式を複素数 $z_n=p_n+q_ni$ の掛け算 $z_{n+1}=wz_n$ と読む．$\\dfrac{p_n}{q_n}$ が2つの $n$ で一致することは $w^{k}$ が実数になることと同じ．$w=3+4i$ の累乗の実部・虚部を5で割った余りが一定であることから，$w^k$ は決して実数にならない．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) $\\alpha$：7/24\n(2) 証明"
+  },
+  "methods": [],
+  "tags": [
+   "複素数平面",
+   "合同式",
+   "漸化式",
+   "偏角"
+  ],
+  "provenance": {
+   "created": "2026-11-19"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "C-CUR-418",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "C-19",
+  "level": 4,
+  "minutes": 35,
+  "theme": "$-\\dfrac1{z+p}$ をくり返して元に戻る条件",
+  "topic": "$-\\dfrac1{z+p}$ をくり返して元に戻る条件",
+  "statement": {
+   "tex": "虚部が正である複素数全体の集合を $H$ とする．$p$ を実数の定数とし，$H$ に属する複素数 $z$ に対して $f(z)=-\\dfrac1{z+p}$ とおく．\n\\begin{enumerate}\n  \\item $z$ が $H$ に属するとき $f(z)$ も $H$ に属することを示せ．また，$H$ に属する任意の $w$ に対して，$f(z)=w$ となる $z$ が $H$ の中にあることを示せ．\n  \\item $f_1(z)=f(z)$，$f_n(z)=f(f_{n-1}(z))$（$n=2,3,\\dots$）とおく．数列 $\\{a_n\\}$ を $a_{-1}=0$，$a_0=1$，$a_{n+1}=pa_n-a_{n-1}$（$n=0,1,2,\\dots$）で定めるとき，$n\\geqq1$ に対して\n  \\[f_n(z)=-\\frac{a_{n-2}z+a_{n-1}}{a_{n-1}z+a_n}\\]\n  であることを示せ．ただし右辺の分母は $H$ の $z$ に対して0にならないことも示せ．\n  \\item $H$ のすべての $z$ に対して $f_{10}(z)=f_4(z)$ が成り立つような $p$ をすべて求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 証明　(2) 証明　(3) $p=0,\\ \\pm1,\\ \\pm\\sqrt3$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) $z=x+iy$（$y>0$）とすると $z+p=(x+p)+iy\\neq0$ で\n\\[f(z)=-\\frac{(x+p)-iy}{(x+p)^2+y^2}\\]\nの虚部は $\\dfrac y{(x+p)^2+y^2}>0$．また $w\\in H$ に対し $z=-\\dfrac1w-p$ とおくと，$-\\dfrac1w=-\\dfrac{\\bar w}{|w|^2}$ の虚部は $\\dfrac{(w\\text{ の虚部})}{|w|^2}>0$ なので $z\\in H$ で，$z+p=-\\dfrac1w$ より $f(z)=w$．\\hfill$\\square$\n\n(2) まず分母について．$a_{n-1}z+a_n=0$ で $a_{n-1}\\neq0$ なら $z=-\\frac{a_n}{a_{n-1}}$ は実数となり $z\\in H$ に反する．$a_{n-1}=0$ なら $a_n=0$ となるが，$a_{k-1}=pa_k-a_{k+1}$ により順に $a_{n-2}=\\cdots=a_0=0$ となり $a_0=1$ に反する．よって分母は0でない．\n\n式は帰納法で示す．$n=1$ では右辺 $=-\\dfrac{0\\cdot z+1}{z+p}=f(z)$．$n$ で成り立てば，$f_n(z)\\in H$ なので\n\\[f_n(z)+p=\\frac{-(a_{n-2}z+a_{n-1})+p(a_{n-1}z+a_n)}{a_{n-1}z+a_n}=\\frac{a_nz+a_{n+1}}{a_{n-1}z+a_n}\\]\nより $f_{n+1}(z)=-\\dfrac1{f_n(z)+p}=-\\dfrac{a_{n-1}z+a_n}{a_nz+a_{n+1}}$．\\hfill$\\square$\n\n(3) 定義から $f_{10}(z)=f_6(f_4(z))$．(1) をくり返し使うと，$f_4(z)$ は $z$ が $H$ を動くとき $H$ のすべての値をとる．よって「$H$ のすべての $z$ で $f_{10}(z)=f_4(z)$」$\\iff$「$H$ のすべての $w$ で $f_6(w)=w$」．(2) より $f_6(w)=w$ は\n\\[a_5w^2+(a_4+a_6)w+a_5=0\\]\nと同値．これが $H$ のすべての $w$（たとえば $w=i,2i,3i$ の相異なる3点）で成り立つ $\\iff$ 係数がすべて0．$a_6=pa_5-a_4$ だから，$a_5=0$ なら $a_4+a_6=0$ も成り立つ．よって条件は $a_5=0$．\n\\[a_1=p,\\ a_2=p^2-1,\\ a_3=p^3-2p,\\ a_4=p^4-3p^2+1,\\ a_5=p^5-4p^3+3p=p(p^2-1)(p^2-3).\\]\n求める $p$ は $\\boldsymbol{p=0,\\ \\pm1,\\ \\pm\\sqrt3}$．"
+   }
+  ],
+  "idea": {
+   "tex": "$f$ は虚部が正の複素数全体 $H$ をそれ自身の上に移す（逆向きの式も $H$ に入る）．$n$ 回の合成は $\\dfrac{\\text{1次式}}{\\text{1次式}}$ で，係数は3項間漸化式 $a_{n+1}=pa_n-a_{n-1}$ に従う．$f_{10}=f_4$ は $f_4$ が $H$ 全体を動くことから $f_6$ が恒等的であることと同値で，それは2次式が無数の点で0になること，すなわち $a_5=0$ に帰着する．"
+  },
+  "methods": [],
+  "tags": [
+   "複素数",
+   "分数変換",
+   "漸化式",
+   "恒等式"
+  ],
+  "provenance": {
+   "created": "2026-11-19"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "C-CUR-419",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "C-19",
+  "level": 4,
+  "minutes": 30,
+  "theme": "正多角形の頂点を単位円上に移す $\\alpha z+\\beta\\bar z$",
+  "topic": "正多角形の頂点を単位円上に移す $\\alpha z+\\beta\\bar z$",
+  "statement": {
+   "tex": "$n\\geqq3$ とし，$\\omega=\\cos\\dfrac{2\\pi}n+i\\sin\\dfrac{2\\pi}n$，$V_n=\\{1,\\omega,\\omega^2,\\cdots,\\omega^{n-1}\\}$ とする．複素数 $\\alpha,\\beta$ に対し $f(z)=\\alpha z+\\beta\\bar z$ とおく．\n\\begin{enumerate}\n  \\item $n\\neq4$ とする．$V_n$ のすべての点 $v$ について $|f(v)|=1$ が成り立つならば，「$\\alpha=0$ かつ $|\\beta|=1$」または「$\\beta=0$ かつ $|\\alpha|=1$」であることを示せ．\n  \\item $n=4$ とする．$V_4$ のすべての点 $v$ について $|f(v)|=1$ が成り立つための $\\alpha,\\beta$ の条件を求めよ．また，このとき4点 $f(1),f(i),f(-1),f(-i)$ を順に結んでできる四角形の面積を $\\alpha,\\beta$ で表せ．\n  \\item $n=6$ とする．$f(1),f(\\omega),\\cdots,f(\\omega^5)$ を集めた集合が $V_6$ と一致する $f$ をすべて求めよ．さらに，それらすべての $f$ についての $f(w)$ の和を求めよ（$w$ は任意の複素数）．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 証明　(2) $|\\alpha|^2+|\\beta|^2=1$ かつ $\\alpha\\bar\\beta+\\bar\\alpha\\beta=0$；面積 $2\\bigl||\\alpha|^2-|\\beta|^2\\bigr|$　(3) $f(z)=\\omega^kz,\\ \\omega^k\\bar z$ $(k=0,1,\\cdots,5)$ の12個；和は $0$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "$|v|=1$ なら $\\bar v=\\dfrac1v$ で，$\\gamma=\\alpha\\bar\\beta$ とおくと\n\\[|f(v)|^2=(\\alpha v+\\beta\\bar v)(\\bar\\alpha\\bar v+\\bar\\beta v)=|\\alpha|^2+|\\beta|^2+\\gamma v^2+\\bar\\gamma\\,\\bar v^2.\\qquad(*)\\]\n$\\gamma v^2+\\overline{\\gamma v^2}$ は実数で，$\\gamma v^2$ の実部の2倍である．\n\n\\textbf{(1)}　$|f(v)|=1$ が $V_n$ 全体で成り立てば，$\\gamma v^2+\\bar\\gamma\\bar v^2$ は $v\\in V_n$ によらず一定．$v=1,\\omega,\\omega^{-1}$（$\\omega^{-1}=\\omega^{n-1}\\in V_n$）とし，$\\gamma=s+ti$（$s,t$ 実数），$\\phi=\\dfrac{4\\pi}n$ とすると，$\\gamma v^2$ の実部はそれぞれ $s$，$s\\cos\\phi-t\\sin\\phi$，$s\\cos\\phi+t\\sin\\phi$．これらが等しいので $t\\sin\\phi=0$，$s(1-\\cos\\phi)=0$．$n=3$ なら $\\phi=\\dfrac{4\\pi}3$，$n\\geqq5$ なら $0<\\phi<\\pi$ で，いずれも $\\sin\\phi\\neq0$，$\\cos\\phi\\neq1$．よって $s=t=0$，$\\alpha\\bar\\beta=0$ で $\\alpha=0$ または $\\beta=0$．$(*)$ で $v=1$ として $|\\alpha|^2+|\\beta|^2=1$ なので，「$\\alpha=0,\\ |\\beta|=1$」または「$\\beta=0,\\ |\\alpha|=1$」．\\hfill$\\square$\n\n\\textbf{(2)}　$V_4=\\{\\pm1,\\pm i\\}$ で $v^2=\\pm1$ だから，条件は $|\\alpha|^2+|\\beta|^2\\pm(\\gamma+\\bar\\gamma)=1$（両方）すなわち\n\\[\\boldsymbol{|\\alpha|^2+|\\beta|^2=1,\\quad\\alpha\\bar\\beta+\\bar\\alpha\\beta=0}.\\]\nこのとき $u=f(1)=\\alpha+\\beta$，$w=f(i)=i(\\alpha-\\beta)$ で $f(-1)=-u$，$f(-i)=-w$．四角形 $u,w,-u,-w$ は対角線が原点で互いに2等分されるので平行四辺形で，面積は三角形 $0,u,w$ の4倍．$u=x_1+y_1i$，$w=x_2+y_2i$ とすると三角形の面積は $\\dfrac12|x_1y_2-x_2y_1|$ で，$x_1y_2-x_2y_1$ は $\\bar uw$ の虚部．\n\\[\\bar uw=i(\\bar\\alpha+\\bar\\beta)(\\alpha-\\beta)=i\\bigl(|\\alpha|^2-|\\beta|^2\\bigr)+i(\\alpha\\bar\\beta-\\bar\\alpha\\beta),\\]\n$\\alpha\\bar\\beta-\\bar\\alpha\\beta$ は純虚数なので $i(\\alpha\\bar\\beta-\\bar\\alpha\\beta)$ は実数．よって虚部は $|\\alpha|^2-|\\beta|^2$，面積は $\\boldsymbol{2\\bigl||\\alpha|^2-|\\beta|^2\\bigr|}$．（$|u|=|w|=1$ なので対角線の長さが等しく，長方形である．）\n\n\\textbf{(3)}　条件をみたせば $|f(v)|=1$ $(v\\in V_6)$ なので (1) より $f(z)=\\alpha z$ または $f(z)=\\beta\\bar z$（$|\\alpha|=1$ または $|\\beta|=1$）．$f(1)\\in V_6$ より $\\alpha$（または $\\beta$）$=\\omega^k$．逆に $f(z)=\\omega^kz$ は $\\omega^j\\mapsto\\omega^{j+k}$，$f(z)=\\omega^k\\bar z$ は $\\omega^j\\mapsto\\omega^{k-j}$ で，いずれも $V_6$ を $V_6$ 全体に移す．よって\n\\[\\boldsymbol{f(z)=\\omega^kz,\\ \\ \\omega^k\\bar z\\quad(k=0,1,\\cdots,5)\\ \\text{の12個}}.\\]\n$1+\\omega+\\cdots+\\omega^5=\\dfrac{1-\\omega^6}{1-\\omega}=0$ より和は $(1+\\omega+\\cdots+\\omega^5)(w+\\bar w)=\\boldsymbol0$．"
+   }
+  ],
+  "idea": {
+   "tex": "$|v|=1$ のとき $|\\alpha v+\\beta\\bar v|^2=|\\alpha|^2+|\\beta|^2+\\gamma v^2+\\bar\\gamma\\,\\bar v^2$（$\\gamma=\\alpha\\bar\\beta$）．これが $v\\in V_n$ によらず一定であることを $v=1,\\omega,\\omega^{-1}$ で使うと，$v^2$ が実数でない向きをとれる $n\\neq4$ では $\\gamma=0$．$n=4$ では $v^2=\\pm1$ しかなく，長さを保たない移動が残る．"
+  },
+  "methods": [],
+  "tags": [
+   "複素数平面",
+   "共役複素数",
+   "正多角形",
+   "ド・モアブル"
+  ],
+  "provenance": {
+   "created": "2026-11-19"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "C-CUR-420",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "C-19",
+  "level": 4,
+  "minutes": 35,
+  "theme": "複素数列の2項の差が $r$ 以下となる組の個数",
+  "topic": "複素数列の2項の差が $r$ 以下となる組の個数",
+  "statement": {
+   "tex": "複素数の数列 $\\{z_n\\}$ を\n\\[\nz_1=1,\\qquad z_{n+1}=(3+4i)z_n-4\\quad(n=1,2,3,\\dots)\n\\]\nで定める．ただし $i$ は虚数単位，$\\log$ は自然対数である．\n\\begin{enumerate}\n  \\item すべての正の整数 $n$ について $|z_n-c|=5^{n-1}$ となる複素数 $c$ がただ1つ存在することを示し，$c$ を求めよ．\n  \\item 実数 $r>0$ に対し，$1\\leqq m<n$ かつ $|z_n-z_m|\\leqq r$ をみたす整数の組 $(m,n)$ の個数を $F(r)$ とする．極限 $\\displaystyle\\lim_{r\\to\\infty}\\frac{F(r)}{(\\log r)^2}$ を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $c=\\dfrac{2-4i}{5}$　(2) $\\dfrac{1}{2(\\log 5)^2}$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "$\\alpha=3+4i$ とおく．$|\\alpha|=5$ である．\n\n(1) $c=\\dfrac{2-4i}5$ とおくと，$\\alpha c=\\dfrac{(3+4i)(2-4i)}5=\\dfrac{22-4i}5$ より $\\alpha c-4=\\dfrac{2-4i}5=c$．よって\n\\[\nz_{n+1}-c=\\alpha z_n-4-(\\alpha c-4)=\\alpha(z_n-c)\n\\]\nとなり，$z_n-c=\\alpha^{n-1}(z_1-c)$．$z_1-c=1-c=\\dfrac{3+4i}5$ で $|1-c|=1$ だから，$|z_n-c|=5^{n-1}$ がすべての $n$ で成り立つ．\n\n一意性：$c'$ もすべての $n$ で $|z_n-c'|=5^{n-1}$ をみたし，$c'\\neq c$ とする．$|z_n-c|=|z_n-c'|$ より，$z_1,z_2,z_3$ はすべて線分 $cc'$ の垂直二等分線上にあり，一直線上にある．ところが $z_1=1$，$z_2=-1+4i$，$z_3=(3+4i)(-1+4i)-4=-23+8i$ で，$z_2-z_1=-2+4i$，$z_3-z_1=-24+8i$ について $(-2)\\cdot8-4\\cdot(-24)=80\\neq0$ だから，これらは平行でなく3点は一直線上にない．矛盾．よって $c$ はただ1つで，$\\boldsymbol{c=\\dfrac{2-4i}5}$．\n\n(2) $1\\leqq m<n$，$k=n-m\\geqq1$ とすると，(1) より\n\\[\nz_n-z_m=(1-c)(\\alpha^{n-1}-\\alpha^{m-1})=(1-c)\\alpha^{m-1}(\\alpha^{k}-1),\\qquad |z_n-z_m|=5^{m-1}|\\alpha^k-1|.\n\\]\n三角不等式より $5^k-1\\leqq|\\alpha^k-1|\\leqq5^k+1$ で，$5^k\\geqq5$ より $5^k-1\\geqq\\frac45\\cdot5^k$，$5^k+1\\leqq\\frac65\\cdot5^k$．したがって\n\\[\n\\frac45\\cdot5^{n-1}\\leqq|z_n-z_m|\\leqq\\frac65\\cdot5^{n-1}\\qquad(1\\leqq m<n).\\tag{$*$}\n\\]\n$r>\\frac65$ とし，$\\frac65\\cdot5^{n-1}\\leqq r$ をみたす正の整数 $n$ の個数を $p$，$\\frac45\\cdot5^{n-1}\\leqq r$ をみたす正の整数 $n$ の個数を $q$ とする．$5^{n-1}$ は $n$ について増加なので，前者をみたす $n$ は $1,2,\\dots,p$，後者は $1,2,\\dots,q$ である．$(*)$ より，$n\\leqq p$ ならすべての $m<n$ について $(m,n)$ は数えられ，$n>q$ ならどの $m$ についても数えられない．よって\n\\[\n\\sum_{n=1}^{p}(n-1)\\leqq F(r)\\leqq\\sum_{n=1}^{q}(n-1),\\qquad\\text{すなわち}\\qquad \\frac{p(p-1)}2\\leqq F(r)\\leqq\\frac{q(q-1)}2.\n\\]\nここで $\\frac65\\cdot5^{n-1}\\leqq r\\iff n\\leqq1+\\dfrac{\\log\\frac{5r}6}{\\log5}$ だから，$p$ は $1+\\dfrac{\\log\\frac{5r}6}{\\log5}$ 以下の最大の整数で，\n\\[\n\\frac{\\log\\frac{5r}6}{\\log5}<p\\leqq1+\\frac{\\log\\frac{5r}6}{\\log5}.\n\\]\n同様に $\\dfrac{\\log\\frac{5r}4}{\\log5}<q\\leqq1+\\dfrac{\\log\\frac{5r}4}{\\log5}$．$r\\to\\infty$ のとき $\\dfrac{\\log\\frac{5r}6}{\\log r}\\to1$，$\\dfrac{\\log\\frac{5r}4}{\\log r}\\to1$ なので，はさみうちにより $\\dfrac p{\\log r}\\to\\dfrac1{\\log5}$，$\\dfrac q{\\log r}\\to\\dfrac1{\\log5}$．よって\n\\[\n\\frac{p(p-1)}{2(\\log r)^2}\\to\\frac1{2(\\log5)^2},\\qquad\\frac{q(q-1)}{2(\\log r)^2}\\to\\frac1{2(\\log5)^2}\n\\]\nとなり，はさみうちにより $\\displaystyle\\lim_{r\\to\\infty}\\frac{F(r)}{(\\log r)^2}=\\boldsymbol{\\frac1{2(\\log5)^2}}$．"
+   }
+  ],
+  "idea": {
+   "tex": "$z_{n+1}=\\alpha z_n+\\beta$ は不動点 $c$ を引くと $z_n-c=\\alpha^{n-1}(z_1-c)$．絶対値は三角不等式で $5^{n}$ の定数倍ではさめ，条件をみたす番号の個数が $\\log r$ の何倍かで決まる．原題は「$|z_n|\\leqq r$ となる $n$ の個数」だったが，ここでは2項の差を考え，数える対象が番号の組になるので $(\\log r)^2$ に比例して増える．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) 記述\n(2) 1/(2log(5)^2)"
+  },
+  "methods": [],
+  "tags": [
+   "複素数の漸化式",
+   "不動点",
+   "三角不等式",
+   "個数の評価",
+   "極限"
+  ],
+  "provenance": {
+   "created": "2026-11-19"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "C-CUR-421",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "C-19",
+  "level": 5,
+  "minutes": 45,
+  "theme": "135°ずつ回る相似な四角形がちょうど3重に覆う条件",
+  "topic": "135°ずつ回る相似な四角形がちょうど3重に覆う条件",
+  "statement": {
+   "tex": "座標平面上の点 $(x,y)$ を複素数 $x+yi$ と同一視する．座標平面上の2つの四角形 ABCD と A$'$B$'$C$'$D$'$ が相似であるとは，対応する4つの頂点における内角がそれぞれ等しく，かつ対応する辺の長さの比がすべて等しいこととし，このとき $\\square\\mathrm{ABCD}\\backsim\\square\\mathrm{A'B'C'D'}$ と書く．ただし，四角形 ABCD と書くときには，4つの頂点 A，B，C，D は反時計回りに並んでいるものとし，また四角形は周および内部を込めて考えるものとする．\n\n点 A$_0(1,0)$，B$_0(16,0)$ をとり，半直線 $\\ell:\\ y=-x\\ (x<0)$ 上に点 C$_0$ をとる．点 A$_0$ を通り直線 B$_0$C$_0$ に平行な直線と $\\ell$ の交点を D$_0$ とする．四角形 A$_0$B$_0$C$_0$D$_0$ から出発して，任意の整数 $n$ に対して四角形 A$_n$B$_n$C$_n$D$_n$ を次のように帰納的に定め，それを $K_n$ と書く．\n\\begin{itemize}\n  \\item $n>0$ のときは，A$_n=$D$_{n-1}$，B$_n=$C$_{n-1}$ かつ $\\square\\mathrm A_n\\mathrm B_n\\mathrm C_n\\mathrm D_n\\backsim\\square\\mathrm A_{n-1}\\mathrm B_{n-1}\\mathrm C_{n-1}\\mathrm D_{n-1}$ となる四角形とする．\n  \\item $n<0$ のときは，D$_n=$A$_{n+1}$，C$_n=$B$_{n+1}$ かつ $\\square\\mathrm A_n\\mathrm B_n\\mathrm C_n\\mathrm D_n\\backsim\\square\\mathrm A_{n+1}\\mathrm B_{n+1}\\mathrm C_{n+1}\\mathrm D_{n+1}$ となる四角形とする．\n\\end{itemize}\n\\begin{enumerate}\n  \\item $r=\\dfrac{\\mathrm{OC_0}}{16}$ とおく．$w=r(\\cos135^\\circ+i\\sin135^\\circ)$ とするとき，すべての整数 $n$ について，$K_n$ は $K_0$ を写す移動 $z\\to w^nz$ による像であることを示せ．\n  \\item 原点 O と，いずれかの $K_n$ の辺の上にある点とを除いた平面上のすべての点が，$K_n$（$n$ は整数）のうちちょうど3つに含まれるという．このような点 C$_0$ をすべて求めよ．\n  \\item (2) で求めたそれぞれの C$_0$ について，点 $(100,50)$ が $K_n$ に含まれるような整数 $n$ をすべて求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 証明　(2) $\\mathrm C_0(-16,16)$，$(-8,8)$　(3) $\\mathrm C_0(-16,16)$ のとき $n=8,10,13$；$\\mathrm C_0(-8,8)$ のとき $n=-14,-11,-8$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "\\textbf{(1)} 直線 B$_0$C$_0$ と A$_0$D$_0$ は平行なので，三角形 OA$_0$D$_0$ と OB$_0$C$_0$ は相似で，$\\mathrm{OD_0}=r\\cdot\\mathrm{OA_0}=r$．D$_0$，C$_0$ は O から見て偏角 $135^\\circ$ の方向にあるので，複素数で D$_0=w\\cdot1$，C$_0=w\\cdot16$．移動 $T:z\\to wz$ は O を中心とする $135^\\circ$ の回転と $r$ 倍の拡大の合成で，角の大きさと向き（反時計回り）を保ち，長さを一律に $r$ 倍する．\n\nまず，2頂点 A，B が与えられたとき，与えられた四角形と相似な四角形 ABCD はただ1つに決まる：C は「$\\angle\\mathrm{ABC}$ が与えられた内角で，反時計回りの向き，BC$=$AB$\\times$（辺の比）」で決まり，D も A での内角と AD の長さで同様に決まるからである．\n\n$T(K_0)$ は $K_0$ と相似で，その頂点 $T(\\mathrm A_0)=\\mathrm D_0$，$T(\\mathrm B_0)=\\mathrm C_0$ は $K_1$ の A$_1$，B$_1$ と一致するから，$K_1=T(K_0)$．$K_{n-1}=T^{n-1}(K_0)$（$n\\geqq2$）と仮定すると，$T(K_{n-1})$ は $K_{n-1}$ と相似で，その頂点は $T(\\mathrm A_{n-1})=T^{n-1}(T(\\mathrm A_0))=T^{n-1}(\\mathrm D_0)=\\mathrm D_{n-1}=\\mathrm A_n$，同様に $T(\\mathrm B_{n-1})=\\mathrm C_{n-1}=\\mathrm B_n$．よって $K_n=T(K_{n-1})=T^n(K_0)$．$n<0$ についても，$T^{-1}:z\\to w^{-1}z$ を用いて，$T^{-1}(K_{n+1})$ が $K_{n+1}$ と相似で頂点 $T^{-1}(\\mathrm D_{n+1})=\\mathrm A_{n+1}=\\mathrm D_n$，$T^{-1}(\\mathrm C_{n+1})=\\mathrm B_{n+1}=\\mathrm C_n$ をもつことから同様に $K_n=T^{n}(K_0)$．\\hfill$\\square$\n\n\\textbf{(2)} 直線 A$_0$D$_0$ は A$_0(1,0)$ を通り，D$_0\\left(-\\frac r{\\sqrt2},\\frac r{\\sqrt2}\\right)$ を通るので $x+\\mu y=1$（$\\mu=1+\\frac{\\sqrt2}r>1$）と表せ，これに平行で B$_0$ を通る直線 B$_0$C$_0$ は $x+\\mu y=16$．$\\lambda(\\psi)=\\cos\\psi+\\mu\\sin\\psi$ とおくと，$0^\\circ\\leqq\\psi\\leqq135^\\circ$ で $\\lambda(\\psi)>0$（$\\psi=0^\\circ$ では $\\lambda=1$，$0^\\circ<\\psi\\leqq135^\\circ$ では $\\sin\\psi>0$ と $\\mu>1$ より $\\lambda(\\psi)>\\cos\\psi+\\sin\\psi\\geqq0$）．よって\n\\[\nK_0=\\{\\rho(\\cos\\psi,\\sin\\psi)\\mid 0^\\circ\\leqq\\psi\\leqq135^\\circ,\\ 1\\leqq\\rho\\lambda(\\psi)\\leqq16\\}\n\\]\nであり，(1) より，偏角を実数 $\\psi$ で表して\n\\[\nK_n=\\{\\rho(\\cos\\psi,\\sin\\psi)\\mid 135^\\circ n\\leqq\\psi\\leqq135^\\circ(n+1),\\ r^n\\leqq\\rho\\lambda(\\psi-135^\\circ n)\\leqq16r^n\\}.\n\\]\n辺 A$_n$B$_n$，C$_n$D$_n$ は偏角 $135^\\circ n$，$135^\\circ(n+1)$ の半直線上にあり，辺 A$_n$D$_n$，B$_n$C$_n$ は上の不等式の等号の部分である．\n\n\\emph{半直線上の点．}偏角が $45^\\circ$ の倍数の方向の半直線は，ある $n_0$（$0\\leqq n_0\\leqq7$）について偏角 $135^\\circ n$（$n\\equiv n_0\\pmod 8$）の半直線であり，そこにある辺 A$_n$B$_n=T^n(\\mathrm A_0\\mathrm B_0)$ は O からの距離が $r^n$ 以上 $16r^n$ 以下の部分である．$r^8=16$ または $r^8=\\frac1{16}$ のときは，$n=n_0+8j$（$j$ は整数）についてこれらが半直線全体をおおうので，この半直線上の点はすべて辺の上にある．\n\n\\emph{一般の方向．}偏角 $\\varphi$（$0^\\circ\\leqq\\varphi<360^\\circ$，$\\varphi$ は $45^\\circ$ の倍数でない）の方向の点 Z$=\\rho(\\cos\\varphi,\\sin\\varphi)$ を考える．$\\psi_m=\\varphi+360^\\circ m$（$m$ は整数）とおくと，$\\psi_m$ は $135^\\circ$ の倍数でないので，$135^\\circ n<\\psi_m<135^\\circ(n+1)$ となる整数 $n=n_m$ がただ1つあり，$\\psi_m$ は互いに $360^\\circ$ 以上離れているので $m\\neq m'$ なら $n_m\\neq n_{m'}$．Z$\\in K_n$ となるのは $n=n_m$ となる $m$ があって\n\\[\nG_m\\leqq\\rho\\leqq16G_m,\\qquad G_m=\\frac{r^{n_m}}{\\lambda(\\psi_m-135^\\circ n_m)}\n\\]\nのときに限る．等号のときは Z は辺 A$_n$D$_n$ または B$_n$C$_n$ の上にある．よって，Z が辺の上にないとき，Z を含む $K_n$ の個数は「$G_m<\\rho<16G_m$ となる整数 $m$ の個数」に等しい．\n\n$\\psi_{m+3}=\\psi_m+1080^\\circ=\\psi_m+135^\\circ\\times8$ なので $n_{m+3}=n_m+8$ で，$\\lambda$ に入る角は等しく，$G_{m+3}=r^8G_m$．そこで $Q=r^8$，$g_j=G_j$（$j=0,1,2$）とおくと，$m\\equiv j\\pmod3$ の $m$ に対応する区間は $[Q^ig_j,\\ 16Q^ig_j]$（$i$ は整数）である．\n\n\\emph{十分性．}$Q=16$ のとき，各 $j$ について区間 $[16^ig_j,16^{i+1}g_j]$ は端点だけを共有して正の実数全体をおおうので，端点以外の $\\rho$ はちょうど1つの区間の内部にある．$Q=\\frac1{16}$ のときも区間は $[16^{-i}g_j,16^{-i+1}g_j]$ で同様．よって，辺の上にない点 Z はちょうど3つの $K_n$ に含まれる．\n\n\\emph{必要性．}条件が成り立つとして，$\\varphi=10^\\circ$ の方向で考える．$Q=1$ なら区間は $[g_j,16g_j]$（$j=0,1,2$）の3種類だけで，$\\rho>16(g_0+g_1+g_2)$ の点はどの $K_n$ にも含まれず，しかも辺の上にないので矛盾．よって $Q\\neq1$．$s=Q$（$Q>1$ のとき），$s=\\frac1Q$（$Q<1$ のとき）とおくと $s>1$ で，各 $j$ の区間は $[s^ig_j,16s^ig_j]$（$i$ は整数）と書ける．どの有界な区間 $[\\alpha,\\beta]$（$0<\\alpha<\\beta$）にも，これらの区間の端点は有限個しかない．\n\\begin{itemize}\n  \\item $s<16$ のとき：各 $j$ について隣り合う区間が重なるので，各 $j$ の区間の和集合は正の実数全体である．$\\rho$ を開区間 $(sg_0,16g_0)$ の中から，どの区間の端点でもないようにとると，$\\rho$ は $j=0$ の2つの区間 $[g_0,16g_0]$，$[sg_0,16sg_0]$ の内部にあり，$j=1,2$ の区間の内部にも少なくとも1つずつあるので，4つ以上の $K_n$ に含まれる．矛盾．\n  \\item $s>16$ のとき：各 $j$ の区間は互いに交わらないので，端点でない $\\rho$ は各 $j$ について高々1つの区間の内部にある．開区間 $(16g_0,sg_0)$ は $j=0$ のどの区間とも交わらない（$i\\leqq-1$ の区間は $16s^{-1}g_0<g_0$ 以下，$i\\geqq1$ の区間は $sg_0$ 以上）．そこから端点でない $\\rho$ をとると，含まれる $K_n$ は高々2つ．矛盾．\n\\end{itemize}\nよって $s=16$，すなわち $r^8=16$ または $r^8=\\frac1{16}$ で，$r=\\sqrt2$ または $r=\\frac1{\\sqrt2}$．$\\mathrm{OC_0}=16r=16\\sqrt2$ または $8\\sqrt2$ だから，$\\boldsymbol{\\mathrm C_0(-16,16)}$，$\\boldsymbol{(-8,8)}$．\n\n\\textbf{(3)} Z$=100+50i$ とする．Z$\\in K_n\\iff w^{-n}\\mathrm Z\\in K_0$．\n\n\\emph{C$_0(-16,16)$ のとき．}$r=\\sqrt2$，$w=-1+i$，$\\mu=2$ で，$K_0$ は4つの半平面の共通部分\n\\[\nK_0=\\{X+Yi\\mid Y\\geqq0,\\ X+Y\\geqq0,\\ 1\\leqq X+2Y\\leqq16\\}\n\\]\n（$Y\\geqq0$ かつ $X+Y\\geqq0$ が偏角 $0^\\circ$ 以上 $135^\\circ$ 以下を表す）．$w^{-1}=\\frac{-1-i}2$，$w^8=(-2i)^4=16$．$n=8j+e$（$j$ は整数，$e=0,1,\\dots,7$）と書くと $w^{-n}\\mathrm Z=16^{-j}w^{-e}\\mathrm Z$ で，正の実数倍は $Y\\geqq0$，$X+Y\\geqq0$ を変えない．$w^{-e}\\mathrm Z$ を順に計算すると\n\\[\n100+50i,\\ \\ -25-75i,\\ \\ -25+50i,\\ \\ \\tfrac{75-25i}2,\\ \\ -25-\\tfrac{25}2i,\\ \\ \\tfrac{25+75i}4,\\ \\ \\tfrac{25}4-\\tfrac{25}2i,\\ \\ \\tfrac{-75+25i}8\n\\]\n（$e=0,\\dots,7$）．$Y\\geqq0$ かつ $X+Y\\geqq0$ をみたすのは $e=0,2,5$ だけで，そのときの $X+2Y$ は $200$，$75$，$\\frac{175}4$．$1\\leqq16^{-j}(X+2Y)\\leqq16$ をみたす $j$ は，それぞれ $j=1$（$\\frac{200}{16}=\\frac{25}2$），$j=1$（$\\frac{75}{16}$），$j=1$（$\\frac{175}{64}$）だけ．よって $\\boldsymbol{n=8,10,13}$．\n\n\\emph{C$_0(-8,8)$ のとき．}$r=\\frac1{\\sqrt2}$，$w'=\\frac{-1+i}2$，$\\mu=3$ で，$K_0=\\{X+Yi\\mid Y\\geqq0,\\ X+Y\\geqq0,\\ 1\\leqq X+3Y\\leqq16\\}$（D$_0\\left(-\\frac12,\\frac12\\right)$）．$w'^{-1}=-1-i=2w^{-1}$ なので，$n=8j+e$ と書くと $w'^{-n}\\mathrm Z=16^{j}\\cdot2^{e}w^{-e}\\mathrm Z$（$(-1-i)^8=16$）．偏角の条件をみたすのは上と同じく $e=0,2,5$ で，$2^ew^{-e}\\mathrm Z=100+50i,\\ -100+200i,\\ 200+600i$，$X+3Y=250,\\ 500,\\ 2000$．$1\\leqq16^{j}(X+3Y)\\leqq16$ をみたすのは，$j=-1$（$\\frac{250}{16}$），$j=-2$（$\\frac{500}{256}$），$j=-2$（$\\frac{2000}{256}$）だけ．よって $\\boldsymbol{n=-8,-14,-11}$，すなわち $n=-14,-11,-8$．\n\n（どちらの場合も，各 $e$ について $16^{\\pm j}$ 倍は16倍ずつ変わるので，区間 $[1,16]$ に入る $j$ は端点を除いて高々1つであり，上の値はどれも端点 $1,16$ と異なるのでちょうど1つずつ．Z はどの辺の上にもなく，(2) の通りちょうど3つの $K_n$ に含まれている．）"
+   }
+  ],
+  "idea": {
+   "tex": "「隣の四角形の1辺を自分の1辺とする相似な四角形」をつないでいくと，O を中心とする回転と拡大の合成 $z\\mapsto wz$ をくり返し施したものになる．O から見た各方向で，四角形が占める動径の区間が等比的に並ぶので，被覆の重なり方は「1周ぶんで何倍になるか」だけで決まる．原題は 45° 回転で平面をちょうど1重に覆う条件だったが，ここでは 135° 回転なので3周で初めて同じ向きにもどり，偏角を 360° ずつずらした3つの系列それぞれが1重に覆う．"
+  },
+  "methods": [],
+  "tags": [
+   "回転と拡大",
+   "複素数平面",
+   "相似",
+   "被覆の重なり",
+   "背理法"
+  ],
+  "provenance": {
+   "created": "2026-11-19"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "C-CUR-422",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "C-19",
+  "level": 4,
+  "minutes": 30,
+  "theme": "定数項を固定した4次方程式の虚数解の存在範囲",
+  "topic": "定数項を固定した4次方程式の虚数解の存在範囲",
+  "statement": {
+   "tex": "$z$ についての4次方程式\n\\[\n  z^4-4z^3+az^2+bz+4=0\n\\]\nの解がすべて虚数であるように実数 $a$，$b$ が動くとき，この虚数解が複素数平面上で存在する範囲を，$z=x+yi$（$x$，$y$ は実数）として $x$，$y$ の不等式で表し，図示せよ．"
+  },
+  "answer": {
+   "tex": "$(x^2+y^2)(x-2)^2<4$ かつ $y\\neq0$．すなわち $x=2$ のとき $y\\neq0$，$1-\\sqrt3<x<1+\\sqrt3$，$x\\neq2$ のとき $0<y^2<\\dfrac4{(x-2)^2}-x^2$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "\\textbf{必要性．} 係数は実数なので，虚数解 $z_0=p+qi$（$q\\neq0$）があれば $\\bar z_0$ も解．4つの解がすべて虚数なので，解は（重複を込めて）$z_0,\\bar z_0,w,\\bar w$（$w=r+si$，$s\\neq0$）と書ける．解と係数の関係から\n\\[\n  z_0+\\bar z_0+w+\\bar w=2p+2r=4,\\qquad z_0\\bar z_0w\\bar w=|z_0|^2|w|^2=4.\n\\]\nよって $r=2-p$，$|w|^2=\\frac4{|z_0|^2}$．$s\\neq0$ より $|w|^2=r^2+s^2>r^2$，すなわち\n\\[\n  \\frac4{p^2+q^2}>(2-p)^2\\iff (p^2+q^2)(p-2)^2<4.\n\\]\n\n\\textbf{十分性．} $z_0=p+qi$ が $q\\neq0$，$(p^2+q^2)(p-2)^2<4$ をみたすとする．$r=2-p$，$s=\\sqrt{\\frac4{p^2+q^2}-r^2}>0$，$w=r+si$ とおき\n\\[\n  (z^2-2pz+p^2+q^2)(z^2-2rz+r^2+s^2)\n\\]\nを展開すると，係数はすべて実数，$z^3$ の係数は $-2p-2r=-4$，定数項は $(p^2+q^2)(r^2+s^2)=4$．よって $z^2$，$z$ の係数を $a$，$b$ とすれば与えられた形の方程式で，解 $z_0,\\bar z_0,w,\\bar w$ はすべて虚数．\n\n以上より求める範囲は\n\\[\n  \\boldsymbol{(x^2+y^2)(x-2)^2<4,\\ \\ y\\neq0}.\n\\]\n\\textbf{図示．} $x=2$ のときは $y\\neq0$ のすべての $y$．$x\\neq2$ のときは $y^2<\\frac4{(x-2)^2}-x^2=\\frac{(2+2x-x^2)(x^2-2x+2)}{(x-2)^2}$ で，$x^2-2x+2>0$ だから右辺が正 $\\iff$ $1-\\sqrt3<x<1+\\sqrt3$．よって範囲は，曲線 $y=\\pm\\sqrt{\\frac4{(x-2)^2}-x^2}$（$1-\\sqrt3\\leqq x\\leqq1+\\sqrt3$，$x\\neq2$）で囲まれた部分から実軸を除いたもの（境界は含まない）．この曲線は実軸と $x=1\\pm\\sqrt3$ で交わり，$y$ 軸と $y=\\pm1$ で交わり，$x\\to2$ で $|y|\\to\\infty$ となって直線 $x=2$ を漸近線にもつ．\\hfill$\\square$"
+   }
+  ],
+  "idea": {
+   "tex": "実数係数で解がすべて虚数なら，解は共役な2組 $z_0,\\bar z_0,w,\\bar w$．固定された係数は「解の和 $=4$」と「解の積 $=4$」の2つで，これが相手の組の実部 $2-p$（$z_0=p+qi$）と絶対値 $\\frac2{|z_0|}$ を決める．相手が虚数であるための条件「絶対値 $>$ 実部の絶対値」が $z_0$ の存在範囲．残りの係数は自由なので十分性はそのまま組み立てられる．"
+  },
+  "methods": [],
+  "tags": [
+   "実数係数の方程式",
+   "共役な虚数解",
+   "解と係数の関係",
+   "存在範囲"
+  ],
+  "provenance": {
+   "created": "2026-11-19"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "C-CUR-423",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "C-19",
+  "level": 4,
+  "minutes": 30,
+  "theme": "2つの解の絶対値が1と2であるための条件",
+  "topic": "2つの解の絶対値が1と2であるための条件",
+  "statement": {
+   "tex": "$a$，$b$ は複素数とする．$z$ についての2次方程式\n\\[\n  z^2+az+b=0\n\\]\nの2解を $\\alpha$，$\\beta$ とする（重解のときは $\\alpha=\\beta$ とする）．\n\\begin{enumerate}\n  \\item 任意の複素数 $\\alpha$，$\\beta$ について $|\\alpha+\\beta|^2+|\\alpha-\\beta|^2=2\\left(|\\alpha|^2+|\\beta|^2\\right)$ を示せ．\n  \\item 2解の一方の絶対値が1，他方の絶対値が2であるための，$a$，$b$ の満たす必要十分条件を絶対値を用いた等式で表せ．\n  \\item $a$ が正の実数であるとき，(2) の条件をみたす $b$ が存在するような $a$ の範囲を求めよ．また $a=2$ のとき，条件をみたす $b$ をすべて求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 証明　(2) $|b|=2$ かつ $|a|^2+|a^2-4b|=10$　(3) $1\\leqq a\\leqq3$；$a=2$ のとき $b=\\dfrac{11\\pm3\\sqrt{15}\\,i}{8}$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) $|\\alpha+\\beta|^2+|\\alpha-\\beta|^2=(\\alpha+\\beta)(\\bar\\alpha+\\bar\\beta)+(\\alpha-\\beta)(\\bar\\alpha-\\bar\\beta)=2\\alpha\\bar\\alpha+2\\beta\\bar\\beta=2(|\\alpha|^2+|\\beta|^2)$．\\hfill$\\square$\n\n(2) 解と係数の関係より $\\alpha+\\beta=-a$，$\\alpha\\beta=b$，$(\\alpha-\\beta)^2=(\\alpha+\\beta)^2-4\\alpha\\beta=a^2-4b$．よって\n\\[\n  |\\alpha||\\beta|=|b|,\\qquad |\\alpha|^2+|\\beta|^2=\\frac12\\left(|a|^2+|a^2-4b|\\right)\\quad(\\text{(1) より}).\n\\]\n\\textbf{必要性．} $\\{|\\alpha|,|\\beta|\\}=\\{1,2\\}$ なら $|b|=2$，$|a|^2+|a^2-4b|=2(1+4)=10$．\n\n\\textbf{十分性．} $|b|=2$，$|a|^2+|a^2-4b|=10$ なら $|\\alpha|^2|\\beta|^2=4$，$|\\alpha|^2+|\\beta|^2=5$ なので，$|\\alpha|^2$，$|\\beta|^2$ は $X^2-5X+4=0$ の2解 $1,4$．よって $\\{|\\alpha|,|\\beta|\\}=\\{1,2\\}$．\n\n求める条件は $\\boldsymbol{|b|=2\\ \\text{かつ}\\ |a|^2+|a^2-4b|=10}$．\n\n(3) $a>0$ のとき，条件は $|b|=2$ かつ $|4b-a^2|=10-a^2$．$b$ が $|b|=2$ を動くとき，$4b$ は原点中心半径8の円周上を動き，$|4b-a^2|$ は（$4b=8$ のとき）最小値 $|8-a^2|$，（$4b=-8$ のとき）最大値 $a^2+8$ をとり，連続的に動くのでその間のすべての値をとる．よって $b$ が存在する条件は\n\\[\n  |a^2-8|\\leqq10-a^2\\leqq a^2+8.\n\\]\n右の不等式は $a^2\\geqq1$．左は，$a^2\\leqq8$ なら $8-a^2\\leqq10-a^2$ で常に成立，$a^2>8$ なら $a^2-8\\leqq10-a^2\\iff a^2\\leqq9$．合わせて $1\\leqq a^2\\leqq9$，$\\boldsymbol{1\\leqq a\\leqq3}$．\n\n$a=2$ のとき，$|b|=2$，$|4-4b|=6$，すなわち $|1-b|=\\frac32$．$b=2(\\cos\\phi+i\\sin\\phi)$ とおくと $|1-b|^2=5-4\\cos\\phi=\\frac94$ より $\\cos\\phi=\\frac{11}{16}$，$\\sin\\phi=\\pm\\frac{3\\sqrt{15}}{16}$．\n\\[\n  \\boldsymbol{b=\\frac{11\\pm3\\sqrt{15}\\,i}8}.\n\\]\n（確認：$b=\\frac{11+3\\sqrt{15}i}8$ のとき $z^2+2z+b=0$ の解の絶対値は $1$ と $2$．）\\hfill$\\square$"
+   }
+  ],
+  "idea": {
+   "tex": "$|\\alpha+\\beta|^2+|\\alpha-\\beta|^2=2(|\\alpha|^2+|\\beta|^2)$（複素数の平行四辺形の等式）で，$\\alpha+\\beta=-a$，$(\\alpha-\\beta)^2=a^2-4b$ から $|\\alpha|^2+|\\beta|^2$ が係数で表せる．積の絶対値 $|\\alpha||\\beta|=|b|$ と合わせると $|\\alpha|^2$，$|\\beta|^2$ は2次方程式の2解として決まり，必要十分条件が2つの等式になる．"
+  },
+  "methods": [],
+  "tags": [
+   "複素数の絶対値",
+   "中線定理",
+   "解と係数の関係",
+   "必要十分条件"
+  ],
+  "provenance": {
+   "created": "2026-11-19"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "C-CUR-424",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "C-19",
+  "level": 5,
+  "minutes": 45,
+  "theme": "解の2乗がまた解になる実数係数の4次方程式",
+  "topic": "解の2乗がまた解になる実数係数の4次方程式",
+  "statement": {
+   "tex": "$p,q,r,s$ を実数とする．4次方程式\n\\[\nx^4+px^3+qx^2+rx+s=0\\qquad\\cdots(*)\n\\]\nは相異なる4つの解をもち，そのうち少なくとも1つは虚数である．さらに，「$w$ が $(*)$ の解ならば $w^2$ も $(*)$ の解である」が成り立つとする．\n\\begin{enumerate}\n  \\item $(*)$ のどの解 $w$ も，$|w|=0$ または $|w|=1$ をみたすことを示せ．\n  \\item $(*)$ の解 $w$ で $|w|=1$ のものは，ある正の整数 $N$ について $w^N=1$ をみたすことを示せ．\n  \\item $(p,q,r,s)$ をすべて求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 証明　(2) 証明　(3) $(p,q,r,s)=(0,0,-1,0),\\ (1,0,-1,-1),\\ (0,1,0,1),\\ (0,0,0,-1),\\ (1,1,1,1)$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "$(*)$ の解全体の集合を $S$ とする（4個の相異なる複素数）．係数が実数なので，$w\\in S$ なら $\\bar w\\in S$．また $w\\in S$ なら $w^2,w^4,w^8,\\dots$ もすべて $S$ に属する．\n\n(1) $w\\in S$，$\\rho=|w|$ とし，$\\rho\\ne0,1$ と仮定する．$w^{2^k}$（$k=0,1,2,\\dots$）の絶対値は $\\rho^{2^k}$ で，$\\rho>1$ なら狭義増加，$0<\\rho<1$ なら狭義減少なので，これらはすべて異なる．$S$ が無数の要素をもつことになり矛盾．\\hfill$\\square$\n\n(2) $|w|=1$ とする．$w,w^2,w^4,w^8,w^{16}$ の5個はどれも $S$ の要素で，$S$ は4個しか要素をもたないので，$0\\leqq i<j\\leqq4$ で $w^{2^i}=w^{2^j}$ となるものがある．$w\\ne0$ なので $w^{2^j-2^i}=1$，$N=2^j-2^i$ とすればよい．\\hfill$\\square$\n\n(3) 実数 $\\theta$ に対し $E(\\theta)=\\cos2\\pi\\theta+i\\sin2\\pi\\theta$ と書く．ド・モアブルの定理より $E(\\theta)^k=E(k\\theta)$，$\\overline{E(\\theta)}=E(-\\theta)$，また $E(\\theta)=E(\\theta')\\iff\\theta-\\theta'$ は整数．\n\n$|w|=1$ の $w\\in S$ は (2) より $w^N=1$ で，$w=E(\\theta)$ とおくと $N\\theta$ は整数，よって $\\theta$ は有理数で，$w=E\\!\\left(\\frac uv\\right)$（$v\\geqq1$，$0\\leqq u<v$，$u$ と $v$ は互いに素）とただ1通りに書ける．この $v$ を $w$ の「分母」とよぶ．$w$ が実数 $\\iff\\sin\\frac{2\\pi u}v=0\\iff\\frac uv\\in\\{0,\\frac12\\}\\iff v\\leqq2$．\n\\begin{itemize}\n\\item $\\bar w=E\\!\\left(\\frac{v-u}v\\right)$ で，$v-u$ と $v$ は互いに素なので，$\\bar w$ の分母も $v$．\n\\item $v$ が奇数のとき，$2u$ と $v$ は互いに素なので $w^2=E\\!\\left(\\frac{2u}v\\right)$ の分母は $v$．$v$ が偶数のとき，$u$ は奇数で $u$ と $\\frac v2$ は互いに素，$w^2=E\\!\\left(\\frac u{v/2}\\right)$ の分母は $\\frac v2$．\n\\end{itemize}\n異なる分母をもつ要素は異なる．\n\n\\textbf{虚数解の分母は 3，4，5，6 のいずれか}．$z\\in S$ を虚数，その分母を $v\\ (\\geqq3)$，$z=E(\\frac uv)$ とする．\n\n(i) $v$ が奇数で $v\\geqq7$ のとき：$z,\\bar z,z^2,\\overline{z^2},z^4,\\overline{z^4}$ はすべて $S$ に属し，$E\\!\\left(\\frac{\\pm u}v\\right),E\\!\\left(\\frac{\\pm2u}v\\right),E\\!\\left(\\frac{\\pm4u}v\\right)$ である．このうち2つが等しいと，分子の差（または和）$ku$ が $v$ の倍数になる．ここで $k$ は $1,2,3,4,5,6,8$ のいずれか（$\\pm u,\\pm2u,\\pm4u$ の15組の差を調べると，$|k|$ はこれらに限られる）．$u$ と $v$ は互いに素なので $k$ が $v$ の倍数となり，$v\\geqq7$ の奇数では不可能．よって6個が相異なり矛盾．\n\n(ii) $v$ が偶数で $v\\geqq8$ のとき：$z^2$ の分母は $\\frac v2\\geqq4$ で $z^2$ も虚数．$z,\\bar z$（分母 $v$），$z^2,\\overline{z^2}$（分母 $\\frac v2$）は相異なる4個で，$S$ はちょうどこの4個からなる．すると $z^4\\in S$ の分母は $v$ か $\\frac v2$ でなければならないが，$\\frac v2$ が偶数なら $z^4$ の分母は $\\frac v4$ で矛盾．$\\frac v2$ が奇数なら，$z^2$ は分母が5以上の奇数の虚数解で，(i) から分母7以上は矛盾，分母5なら下の (iii) により分母5の要素が4個 $S$ に含まれ，分母 $v=10$ の $z$ と合わせて5個以上となり矛盾．\n\n(iii) $v=5$ のとき：$z,z^2,z^4,z^8$ の分子は $u,2u,4u,8u$ を5で割った余りで，$u$ が5と互いに素なので $1,2,3,4$ がすべて現れる．よって $S=\\{E(\\frac15),E(\\frac25),E(\\frac35),E(\\frac45)\\}$ で，これは $x^5-1=(x-1)(x^4+x^3+x^2+x+1)$ の1以外の解だから $(*)$ は $x^4+x^3+x^2+x+1=0$．\n\n(iv) $v=4$ のとき：$z=\\pm i$，$z^2=-1$，$z^4=1$ と $\\bar z$ で $S=\\{i,-i,-1,1\\}$，$(*)$ は $x^4-1=0$．\n\n(v) $v=6$ のとき：$z^2$ の分母は3．$\\omega=E(\\frac13)$ とすると分母3の要素は $\\omega,\\bar\\omega$ のみで，$S\\supset\\{z,\\bar z,\\omega,\\bar\\omega\\}$（分母 $6,6,3,3$ で相異なる）．よって $S=\\{E(\\frac16),E(\\frac56),\\omega,\\bar\\omega\\}=\\{-\\bar\\omega,-\\omega,\\omega,\\bar\\omega\\}$．$\\omega,\\bar\\omega$ は $x^2+x+1=0$，$-\\omega,-\\bar\\omega$ は $x^2-x+1=0$ の解で，$(*)$ は $(x^2+x+1)(x^2-x+1)=x^4+x^2+1=0$．\n\n(vi) 虚数解の分母がすべて3のとき：虚数解は $\\omega,\\bar\\omega$ のちょうど2つ（$z$ と $\\bar z$ が属する）．残りの2解は実数で，(1) より $0,1,-1$ のいずれか．$-1\\in S$ なら $(-1)^2=1\\in S$．よって残り2解は $\\{0,1\\}$ または $\\{1,-1\\}$．それぞれ $(*)$ は\n\\[\nx(x-1)(x^2+x+1)=x^4-x=0,\\qquad (x^2-1)(x^2+x+1)=x^4+x^3-x-1=0 .\n\\]\n\n逆に，5つの方程式はどれも相異なる4解をもち，虚数解を含み，条件をみたす：$\\{0,1,\\omega,\\bar\\omega\\}$ と $\\{1,-1,\\omega,\\bar\\omega\\}$ は $\\omega^2=\\bar\\omega$，$\\bar\\omega^2=\\omega$ より2乗で閉じ，$\\{\\pm i,\\pm1\\}$，$\\{\\pm\\omega,\\pm\\bar\\omega\\}$（$(-\\omega)^2=\\bar\\omega$，$(-\\bar\\omega)^2=\\omega$），1の原始5乗根の集合（2乗しても1の原始5乗根）も同様．よって\n\\[\n\\boldsymbol{(p,q,r,s)=(0,0,-1,0),\\ (1,0,-1,-1),\\ (0,1,0,1),\\ (0,0,0,-1),\\ (1,1,1,1)}.\n\\]"
+   }
+  ],
+  "idea": {
+   "tex": "原題は「虚数解 $z$ に対して $kz^2$ も解」を，実数係数ゆえ $z,\\bar z$ がともに解であることと組み合わせて $kz^2=\\bar z$ か $kz^2$ が実数解かに分ける．捻りでは「すべての解 $w$ について $w^2$ も解」という閉じた条件にする．解は有限個なので $|w|$ は0か1，さらに $w^{2^i}=w^{2^j}$ から $w$ は1のべき根．偏角を既約分数 $\\frac uv$ で表すと，2乗で分母は $v$（奇数）のままか $\\frac v2$（偶数）になり，共役で分母は変わらない．4個しかないことから分母は $3,4,5,6$ に限られる．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) 証明\n(2) 証明\n(3) $(p,q,r,s)$：{(0, 0, -1, 0), (1, 0, -1, -1), (0, 1, 0, 1), (0, 0, 0, -1), (1, 1, 1, 1)}"
+  },
+  "methods": [],
+  "tags": [
+   "複素数",
+   "共役",
+   "ド・モアブルの定理",
+   "1のべき根",
+   "場合分け"
+  ],
+  "provenance": {
+   "created": "2026-11-19"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
  }
 ]

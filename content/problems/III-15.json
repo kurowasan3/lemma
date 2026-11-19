@@ -11177,5 +11177,443 @@
    },
    "verified": false
   }
+ },
+ {
+  "id": "III-LIM-271",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "III-15",
+  "level": 4,
+  "minutes": 35,
+  "theme": "相加平均と相乗平均をくり返す数列の差の桁数",
+  "topic": "相加平均と相乗平均をくり返す数列の差の桁数",
+  "statement": {
+   "tex": "数列 $\\{a_n\\}$，$\\{b_n\\}$ を\n\\[\na_1=2,\\quad b_1=1,\\qquad a_{n+1}=\\frac{a_n+b_n}{2},\\quad b_{n+1}=\\sqrt{a_nb_n}\\qquad(n=1,2,3,\\ldots)\n\\]\nで定め，$d_n=a_n-b_n$ とおく．\n\\begin{enumerate}\n  \\item すべての正の整数 $n$ に対して $1\\leqq b_n<b_{n+1}<a_{n+1}<a_n\\leqq2$ が成り立つことを示せ．\n  \\item すべての正の整数 $n$ に対して $\\dfrac{d_n^{\\,2}}{16}<d_{n+1}<\\dfrac{d_n^{\\,2}}{8}$ が成り立つことを示せ．\n  \\item $d_n<10^{-100}$ となる最小の正の整数 $n$ を求めよ．ただし $0.301<\\log_{10}2<0.302$ を用いてよい．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 証明　(2) 証明　(3) $n=8$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) 「$1\\leqq b_n<a_n\\leqq2$」$\\cdots$(＊) を仮定して，$b_n<b_{n+1}<a_{n+1}<a_n$ と，$n+1$ に対する(＊)を導く．$n=1$ のとき $b_1=1<2=a_1$ で(＊)は成り立つ．\n\n(＊)のもとで $a_n,b_n>0$ であり，\n\\[\na_{n+1}-b_{n+1}=\\frac{a_n-2\\sqrt{a_nb_n}+b_n}{2}=\\frac{(\\sqrt{a_n}-\\sqrt{b_n})^2}{2}>0\n\\]\n（$a_n\\neq b_n$ より $\\sqrt{a_n}\\neq\\sqrt{b_n}$）．また $b_n<a_n$ から\n\\[\na_{n+1}=\\frac{a_n+b_n}2<\\frac{a_n+a_n}2=a_n,\\qquad b_{n+1}=\\sqrt{a_nb_n}>\\sqrt{b_n\\cdot b_n}=b_n .\n\\]\nよって $b_n<b_{n+1}<a_{n+1}<a_n$ であり，$1\\leqq b_n<b_{n+1}$，$a_{n+1}<a_n\\leqq2$ から $n+1$ に対しても(＊)が成り立つ．数学的帰納法により，すべての $n$ で $1\\leqq b_n<b_{n+1}<a_{n+1}<a_n\\leqq2$ が成り立つ．\\hfill$\\square$\n\n(2) (1)の計算と $a_n-b_n=(\\sqrt{a_n}+\\sqrt{b_n})(\\sqrt{a_n}-\\sqrt{b_n})$ より\n\\[\nd_{n+1}=\\frac{(\\sqrt{a_n}-\\sqrt{b_n})^2}{2}=\\frac{d_n^{\\,2}}{2(\\sqrt{a_n}+\\sqrt{b_n})^2}.\n\\]\n$0<b_n<a_n$ より $\\sqrt{b_n}<\\sqrt{a_n}$ なので $2\\sqrt{b_n}<\\sqrt{a_n}+\\sqrt{b_n}<2\\sqrt{a_n}$，各辺正だから2乗して\n\\[\n4b_n<(\\sqrt{a_n}+\\sqrt{b_n})^2<4a_n .\n\\]\n(1)より $b_n\\geqq1$，$a_n\\leqq2$ なので $4\\leqq4b_n$，$4a_n\\leqq8$．よって $4<(\\sqrt{a_n}+\\sqrt{b_n})^2<8$ であり，$d_n^{\\,2}>0$ とあわせて\n\\[\n\\frac{d_n^{\\,2}}{16}<d_{n+1}<\\frac{d_n^{\\,2}}{8}.\n\\]\n\\hfill$\\square$\n\n(3) \\textbf{上からの評価．} $e_n=\\dfrac{d_n}8$ とおくと，(2)より $e_{n+1}<\\dfrac{d_n^{\\,2}}{64}=e_n^{\\,2}$．\n「$0<e_n\\leqq\\left(\\dfrac18\\right)^{2^{n-1}}$」を帰納法で示す．$n=1$ では $e_1=\\dfrac18$ で等号．$n$ で成り立てば，$e_{n+1}>0$ かつ $e_{n+1}<e_n^{\\,2}\\leqq\\left(\\dfrac18\\right)^{2^{n}}$．よって\n\\[\nd_n\\leqq8\\cdot8^{-2^{n-1}}=8^{\\,1-2^{n-1}}=2^{\\,3-3\\cdot2^{n-1}}.\n\\]\n\n\\textbf{下からの評価．} $f_n=\\dfrac{d_n}{16}$ とおくと，(2)より $f_{n+1}>\\dfrac{d_n^{\\,2}}{256}=f_n^{\\,2}$．\n「$f_n\\geqq\\left(\\dfrac1{16}\\right)^{2^{n-1}}$」を帰納法で示す．$n=1$ では $f_1=\\dfrac1{16}$ で等号．$n$ で成り立てば，両辺正なので2乗して $f_{n+1}>f_n^{\\,2}\\geqq\\left(\\dfrac1{16}\\right)^{2^{n}}$．よって\n\\[\nd_n\\geqq16^{\\,1-2^{n-1}}=2^{\\,4-4\\cdot2^{n-1}}.\n\\]\n\n\\textbf{単調性．} $d_1=1$ であり，$0<d_n\\leqq1$ ならば(2)より $0<d_{n+1}<\\dfrac{d_n^{\\,2}}8\\leqq\\dfrac{d_n}8<d_n\\leqq1$．帰納法により $0<d_n\\leqq1$ がすべての $n$ で成り立ち，同時に $d_{n+1}<d_n$，すなわち $\\{d_n\\}$ は減少する．\n\n\\textbf{$n=8$ と $n=7$．} 上からの評価で $n=8$ とすると $d_8\\leqq2^{3-384}=2^{-381}$ であり，\n\\[\n\\log_{10}2^{-381}=-381\\log_{10}2<-381\\times0.301=-114.681<-100\n\\]\nだから $d_8<10^{-100}$．下からの評価で $n=7$ とすると $d_7\\geqq2^{4-256}=2^{-252}$ であり，\n\\[\n\\log_{10}2^{-252}=-252\\log_{10}2>-252\\times0.302=-76.104>-100\n\\]\nだから $d_7>10^{-100}$．\n\n$\\{d_n\\}$ は減少するので，$n\\leqq7$ では $d_n\\geqq d_7>10^{-100}$，$n\\geqq8$ では $d_n\\leqq d_8<10^{-100}$．したがって求める最小の $n$ は\n\\[\n\\boldsymbol{n=8}.\n\\]"
+   }
+  ],
+  "idea": {
+   "tex": "差 $d_n=a_n-b_n$ は $d_{n+1}=\\dfrac{(\\sqrt{a_n}-\\sqrt{b_n})^2}{2}=\\dfrac{d_n^{\\,2}}{2(\\sqrt{a_n}+\\sqrt{b_n})^2}$ と「前の差の2乗」で書ける．$(\\sqrt{a_n}+\\sqrt{b_n})^2$ を $4b_n$ と $4a_n$ ではさむと $\\dfrac{d_n^{\\,2}}{16}<d_{n+1}<\\dfrac{d_n^{\\,2}}8$ となり，$\\dfrac{d_n}{8}$，$\\dfrac{d_n}{16}$ を考えると指数 $2^{n-1}$ の両側評価が得られる．上下の評価がともに使えるので，差が初めて指定の大きさを下回る番号が確定する．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) 証明\n(2) 証明\n(3) $n$：8"
+  },
+  "methods": [],
+  "tags": [
+   "数列の極限",
+   "相加相乗平均",
+   "2乗で減る誤差",
+   "両側評価",
+   "常用対数"
+  ],
+  "provenance": {
+   "created": "2026-11-19"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "III-LIM-272",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "III-15",
+  "level": 4,
+  "minutes": 30,
+  "theme": "井戸の深さの2つの近似とその誤差",
+  "topic": "井戸の深さの2つの近似とその誤差",
+  "statement": {
+   "tex": "井戸の口から小石を静かに落としたところ，小石が水面に達した音が $t$ 秒後に聞こえた．重力加速度を $g$，音の速さを $c$（$g,c$ は正の定数），井戸の口から水面までの距離を $d$ とし，小石は $\\frac12g\\tau^2$ の距離を時間 $\\tau$ で落ち，音は一定の速さ $c$ で伝わるものとする．\n\\begin{enumerate}\n  \\item $d$ を $g,c,t$ で表せ．\n  \\item $d_1=\\dfrac12gt^2$，$d_2=\\dfrac12gt^2\\left(1-\\dfrac{gt}c\\right)$ とおく．すべての $t>0$ に対して $d_2<d<d_1$ が成り立つことを示せ．\n  \\item 極限 $\\displaystyle\\lim_{t\\to+0}\\frac{d-d_2}{t^4}$ を $g,c$ で表せ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $d=\\dfrac{c^2}{g}\\left(1+\\dfrac{gt}{c}-\\sqrt{1+\\dfrac{2gt}{c}}\\right)$　(2) 証明　(3) $\\dfrac{5g^3}{8c^2}$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "小石が水面に達するまでの時間を $t_1$ とすると $d=\\frac12gt_1^2$ より $t_1=\\sqrt{\\frac{2d}g}$，音が上がってくる時間は $\\frac dc$．よって $t=\\sqrt{\\frac{2d}g}+\\frac dc$．右辺は $d>0$ について増加し，$d\\to+0$ で $0$，$d\\to\\infty$ で限りなく大きくなる連続関数なので，各 $t>0$ に対し $d$ はただ1つ定まる．\n\\[\nw=\\frac{\\sqrt{2gd}}c\\ (>0),\\qquad \\tau=\\frac{gt}c\\ (>0)\n\\]\nとおくと，$\\frac gc\\sqrt{\\frac{2d}g}=w$，$\\frac gc\\cdot\\frac dc=\\frac{gd}{c^2}=\\frac{w^2}2$ だから\n\\[\n\\tau=w+\\frac{w^2}2,\\qquad d=\\frac{c^2}{2g}w^2 .\n\\]\n\n(1) $(w+1)^2=1+2\\tau$，$w>0$ より $w=\\sqrt{1+2\\tau}-1$．よって\n\\[\nd=\\frac{c^2}{2g}\\bigl(\\sqrt{1+2\\tau}-1\\bigr)^2=\\frac{c^2}g\\bigl(1+\\tau-\\sqrt{1+2\\tau}\\bigr)=\\boldsymbol{\\frac{c^2}{g}\\left(1+\\frac{gt}{c}-\\sqrt{1+\\frac{2gt}{c}}\\right)}.\n\\]\n\n(2) $t=\\frac{c\\tau}g$ より $d_1=\\frac{c^2}{2g}\\tau^2$，$d_2=\\frac{c^2}{2g}\\tau^2(1-\\tau)$．\n$\\tau=w+\\frac{w^2}2>w>0$ なので $d_1-d=\\frac{c^2}{2g}(\\tau^2-w^2)>0$．\n次に $\\tau^2=w^2+w^3+\\frac{w^4}4$，$\\tau^3=w^3+\\frac32w^4+\\frac34w^5+\\frac18w^6$ より\n\\[\nw^2-\\tau^2(1-\\tau)=w^2-\\tau^2+\\tau^3=\\frac54w^4+\\frac34w^5+\\frac18w^6=\\frac{w^4(w^2+6w+10)}8>0 .\n\\]\nよって $d-d_2=\\dfrac{c^2}{2g}\\cdot\\dfrac{w^4(w^2+6w+10)}8>0$．以上で $d_2<d<d_1$．\\hfill$\\square$\n\n(3) $t^4=\\frac{c^4}{g^4}\\tau^4=\\frac{c^4}{g^4}w^4\\left(1+\\frac w2\\right)^4$ だから\n\\[\n\\frac{d-d_2}{t^4}=\\frac{c^2}{16g}w^4(w^2+6w+10)\\cdot\\frac{g^4}{c^4w^4(1+\\frac w2)^4}=\\frac{g^3}{16c^2}\\cdot\\frac{w^2+6w+10}{(1+\\frac w2)^4}.\n\\]\n$t\\to+0$ のとき $\\tau\\to0$ で $w=\\sqrt{1+2\\tau}-1\\to0$ だから，極限は $\\dfrac{g^3}{16c^2}\\cdot10=\\boldsymbol{\\dfrac{5g^3}{8c^2}}$．\n\\hfill$\\square$"
+   }
+  ],
+  "idea": {
+   "tex": "落下時間と音の伝わる時間の和 $t=\\sqrt{\\frac{2d}g}+\\frac dc$ は $\\sqrt d$ の2次式．$w=\\frac{\\sqrt{2gd}}c$，$\\tau=\\frac{gt}c$ と無次元化すると $\\tau=w+\\frac{w^2}2$ となり，近似式との差が $w$ の整式で書けて符号も極限も一目でわかる．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) $d$：(c^2/g)(1+gt/c-sqrt(1+2gt/c))\n(2) 証明\n(3) 5g^3/(8c^2)"
+  },
+  "methods": [],
+  "tags": [
+   "無理式",
+   "有理化",
+   "大小比較",
+   "関数の極限",
+   "無次元化"
+  ],
+  "provenance": {
+   "created": "2026-11-19"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "III-LIM-273",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "III-15",
+  "level": 3,
+  "minutes": 25,
+  "theme": "台形の中に次々つくる調和平均の線分",
+  "topic": "台形の中に次々つくる調和平均の線分",
+  "statement": {
+   "tex": "AD$\\parallel$BC，AD$=a$，BC$=b$（$a\\neq b$）の台形 ABCD がある．P$_0=$B，Q$_0=$C とし，$n=0,1,2,\\cdots$ に対して次のように P$_{n+1}$，Q$_{n+1}$ を定める：台形 AP$_n$Q$_n$D の2本の対角線の交点を通り AD に平行な直線が，辺 AB，CD と交わる点をそれぞれ P$_{n+1}$，Q$_{n+1}$ とする．$x_n=\\mathrm P_n\\mathrm Q_n$ とおく．\n\\begin{enumerate}\n  \\item $x_n$ を $a,b,n$ で表せ．\n  \\item $\\displaystyle\\lim_{n\\to\\infty}2^n(x_n-a)$ を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $x_n=\\dfrac{2^nab}{2^nb+a-b}$　(2) $\\dfrac{a(b-a)}b$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "\\textbf{補題．} AD$\\parallel$XY，AD$=p$，XY$=q$ の台形 AXYD（X は A の側，Y は D の側）の対角線 AY，DX の交点 O を通り AD に平行な直線が辺 AX，DY と交わる点を U，V とすると，UV$=\\dfrac{2pq}{p+q}$．\n\n（証明）AD$\\parallel$XY より $\\triangle\\mathrm{OAD}\\sim\\triangle\\mathrm{OYX}$（相似比 $p:q$）で，AO$:$OY$=$DO$:$OX$=p:q$．$\\triangle$AXY で UO$\\parallel$XY だから UO$=$XY$\\cdot\\dfrac{\\mathrm{AO}}{\\mathrm{AY}}=\\dfrac{pq}{p+q}$．同様に $\\triangle$DYX で OV$=\\dfrac{pq}{p+q}$．よって UV$=\\dfrac{2pq}{p+q}$．\\hfill$\\square$\n\n(1) P$_n$ が辺 AB 上（A と異なる点），Q$_n$ が辺 CD 上にあって P$_n$Q$_n\\parallel$AD，$x_n\\neq a$ ならば，台形 AP$_n$Q$_n$D に補題を使って P$_{n+1}$ は線分 AP$_n$（$\\subset$ 辺 AB）上，Q$_{n+1}$ は線分 DQ$_n$ 上にあり\n\\[\nx_{n+1}=\\frac{2ax_n}{a+x_n},\\qquad\\text{すなわち}\\qquad \\frac1{x_{n+1}}-\\frac1a=\\frac12\\Bigl(\\frac1{x_n}-\\frac1a\\Bigr).\n\\]\n$n=0$ では $x_0=b\\neq a$．帰納的に $\\dfrac1{x_n}-\\dfrac1a=\\dfrac1{2^n}\\Bigl(\\dfrac1b-\\dfrac1a\\Bigr)\\neq0$ となるので，各段階で $x_n\\neq a$（P$_n\\neq$A）が保たれ，作図は続けられる．よって\n\\[\n\\frac1{x_n}=\\frac1a+\\frac{a-b}{2^nab}=\\frac{2^nb+a-b}{2^nab},\\qquad x_n=\\boldsymbol{\\frac{2^nab}{2^nb+a-b}}\n\\]\n（分母 $2^nb+a-b=(2^n-1)b+a>0$）．\n\n(2)\n\\[\n2^n(x_n-a)=2^n\\cdot\\frac{2^nab-a(2^nb+a-b)}{2^nb+a-b}=\\frac{2^na(b-a)}{2^nb+a-b}=\\frac{a(b-a)}{b+\\frac{a-b}{2^n}}\\ \\longrightarrow\\ \\boldsymbol{\\frac{a(b-a)}b}\\quad(n\\to\\infty).\n\\]\n\\hfill$\\square$"
+   }
+  ],
+  "idea": {
+   "tex": "台形の対角線の交点を通り底辺に平行な線分の長さは，2つの底辺の調和平均 $\\frac{2pq}{p+q}$．逆数をとると $\\frac1{x_{n+1}}-\\frac1a=\\frac12\\bigl(\\frac1{x_n}-\\frac1a\\bigr)$ で，$\\frac1{x_n}-\\frac1a$ が等比数列になる．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) $x_n$：2^nab/(2^nb+a-b)\n(2) a(b-a)/b"
+  },
+  "methods": [],
+  "tags": [
+   "台形",
+   "相似",
+   "調和平均",
+   "漸化式",
+   "極限"
+  ],
+  "provenance": {
+   "created": "2026-11-19"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "III-LIM-274",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "III-15",
+  "level": 4,
+  "minutes": 35,
+  "theme": "正弦の反復が0に近づく速さ",
+  "topic": "正弦の反復が0に近づく速さ",
+  "statement": {
+   "tex": "$a_1=1$，$a_{n+1}=\\sin a_n\\ (n=1,2,3,\\cdots)$ で数列 $\\{a_n\\}$ を定める．\n\\begin{enumerate}\n  \\item $x\\geqq0$ のとき，$x-\\dfrac{x^3}6\\leqq\\sin x\\leqq x-\\dfrac{x^3}6+\\dfrac{x^5}{120}$ を示せ．\n  \\item すべての $n$ について $0<a_{n+1}<a_n\\leqq1$ を示せ．\n  \\item $0<\\varepsilon<1$ とする．$a_n<\\varepsilon$ となる正の整数 $n$ が存在することを示し，そのような $n$ のうち最小のものを $N$ とするとき，$N<1+\\dfrac{120}{19\\varepsilon^3}$ を示せ．\n  \\item すべての $n$ について $a_n\\geqq\\dfrac1{\\sqrt n}$ を示せ．また，(3) の $N$ について $N>\\dfrac1{\\varepsilon^2}$ を示せ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 証明　(2) 証明　(3) 証明　(4) 証明"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) $x\\geqq0$ で順に次の関数を考える．\n\\begin{itemize}\n  \\item $p(x)=x-\\sin x$：$p'(x)=1-\\cos x\\geqq0$，$p(0)=0$ より $p(x)\\geqq0$．\n  \\item $q(x)=\\cos x-1+\\frac{x^2}2$：$q'(x)=x-\\sin x=p(x)\\geqq0$，$q(0)=0$ より $q(x)\\geqq0$．\n  \\item $r(x)=\\sin x-x+\\frac{x^3}6$：$r'(x)=q(x)\\geqq0$，$r(0)=0$ より $r(x)\\geqq0$．\n  \\item $s(x)=1-\\frac{x^2}2+\\frac{x^4}{24}-\\cos x$：$s'(x)=r(x)\\geqq0$，$s(0)=0$ より $s(x)\\geqq0$．\n  \\item $w(x)=x-\\frac{x^3}6+\\frac{x^5}{120}-\\sin x$：$w'(x)=s(x)\\geqq0$，$w(0)=0$ より $w(x)\\geqq0$．\n\\end{itemize}\n$r\\geqq0$，$w\\geqq0$ が示すべき2つの不等式である．\\hfill$\\square$\n\n(2) $0<x\\leqq1$ のとき，$p'(x)=1-\\cos x>0$（$0<x<2\\pi$）より $p$ は $0\\leqq x\\leqq1$ で狭義に増加し $p(x)>0$，すなわち $\\sin x<x$．また $0<x\\leqq1<\\pi$ より $\\sin x>0$．$a_1=1$ から帰納的に $0<a_n\\leqq1$ が成り立ち，$0<a_{n+1}=\\sin a_n<a_n$．\\hfill$\\square$\n\n(3) $g(x)=\\dfrac{x^3}6-\\dfrac{x^5}{120}$ とおく．$g'(x)=\\dfrac{x^2(12-x^2)}{24}>0\\ (0<x\\leqq1)$ で $g$ は増加する．(1) より $a_k-a_{k+1}=a_k-\\sin a_k\\geqq g(a_k)$．\n\n自然数 $m\\geqq2$ について $a_1,\\cdots,a_{m-1}$ がすべて $\\varepsilon$ 以上ならば，$k=1,\\cdots,m-1$ で $a_k-a_{k+1}\\geqq g(a_k)\\geqq g(\\varepsilon)$ で，\n\\[g(\\varepsilon)=\\frac{\\varepsilon^3(20-\\varepsilon^2)}{120}>\\frac{19\\varepsilon^3}{120}.\\]\nこれらを足すと $a_1-a_m>(m-1)\\dfrac{19\\varepsilon^3}{120}$．$a_1-a_m<1$ より\n\\[m<1+\\frac{120}{19\\varepsilon^3}.\\tag{$*$}\\]\nもし $a_n<\\varepsilon$ となる $n$ がなければ，$1+\\frac{120}{19\\varepsilon^3}$ 以上の整数 $m$ に対して $(*)$ が成り立つことになり矛盾．よってそのような $n$ が存在し，最小の $N$ をとれる．$a_1=1>\\varepsilon$ より $N\\geqq2$ で，$a_1,\\cdots,a_{N-1}\\geqq\\varepsilon$ だから $m=N$ として $(*)$ より $N<1+\\dfrac{120}{19\\varepsilon^3}$．\\hfill$\\square$\n\n(4) 帰納法．$a_1=1$ で成り立つ．$a_n\\geqq\\frac1{\\sqrt n}$ とする．$k(x)=x-\\frac{x^3}6$ は $k'(x)=1-\\frac{x^2}2>0\\ (0\\leqq x\\leqq1)$ で増加し，$\\frac1{\\sqrt n}\\leqq a_n\\leqq1$ だから，(1) より\n\\[a_{n+1}=\\sin a_n\\geqq k(a_n)\\geqq k\\!\\left(\\frac1{\\sqrt n}\\right)=\\frac1{\\sqrt n}\\left(1-\\frac1{6n}\\right)>0.\\]\nここで\n\\[\\left(1-\\frac1{6n}\\right)^2=1-\\frac1{3n}+\\frac1{36n^2}>1-\\frac1{3n}\\geqq1-\\frac1{n+1}=\\frac n{n+1}\\]\n（$3n\\geqq n+1$ による）だから，$\\frac1{\\sqrt n}\\left(1-\\frac1{6n}\\right)>\\frac1{\\sqrt n}\\cdot\\sqrt{\\frac n{n+1}}=\\frac1{\\sqrt{n+1}}$．よって $a_{n+1}\\geqq\\frac1{\\sqrt{n+1}}$．\n\n$N$ について $\\varepsilon>a_N\\geqq\\frac1{\\sqrt N}$ だから $\\sqrt N>\\frac1\\varepsilon$，すなわち $\\boldsymbol{N>\\dfrac1{\\varepsilon^2}}$．\\hfill$\\square$"
+   }
+  ],
+  "idea": {
+   "tex": "不動点で傾きがちょうど1になる反復は，1回の変化量が「不動点からの距離」のべきで下から押さえられ，その距離が $\\varepsilon$ 以上である間は1回ごとに一定量以上動く．変化量を足し合わせると，$\\varepsilon$ まで近づくのに必要な回数の上からの評価が得られる．逆向きの評価は，下からの不等式を1回ずつ帰納法でつなぐ．"
+  },
+  "methods": [],
+  "tags": [
+   "漸化式",
+   "不等式の証明",
+   "微分による評価",
+   "望遠鏡和"
+  ],
+  "provenance": {
+   "created": "2026-11-19"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "III-LIM-275",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "III-15",
+  "level": 4,
+  "minutes": 35,
+  "theme": "2人のサイコロの目を並べた小数の和",
+  "topic": "2人のサイコロの目を並べた小数の和",
+  "statement": {
+   "tex": "2人がそれぞれ1つのサイコロを $n$ 回投げ，最初の人が出した目を順に小数点以下に並べてできる実数を $a_n$，2人目が出した目を同様に並べてできる実数を $b_n$ とする．たとえば最初の人の目が $5,2,6$ ならば $a_3=0.526$ である．\n\\begin{enumerate}\n  \\item $a_n+b_n\\leqq1$ となる確率 $q_n$ を $n$ で表し，$\\displaystyle\\lim_{n\\to\\infty}q_n$ を求めよ．\n  \\item $a_n+b_n\\leqq\\dfrac9{10}$ となる確率を $r_n$ とするとき，$\\displaystyle\\lim_{n\\to\\infty}r_n$ を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $q_n=\\dfrac{13}{16}+\\dfrac5{48}\\left(\\dfrac19\\right)^{n-1}$，極限 $\\dfrac{13}{16}$　(2) $\\dfrac{401}{576}$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "2人の第 $k$ 回の目を $d_k,e_k$，$s_k=d_k+e_k$（$2\\leqq s_k\\leqq12$）とすると $a_n+b_n=\\sum_{k=1}^n\\dfrac{s_k}{10^k}$．$s_1$ の分布は $P(s_1=j)=\\dfrac{6-|j-7|}{36}$ で\n\\[P(s_1\\leqq7)=\\frac{21}{36},\\quad P(s_1=8)=\\frac5{36},\\quad P(s_1\\leqq8)=\\frac{26}{36},\\quad P(s_1=9)=\\frac4{36}=\\frac19 .\\]\n$n\\geqq2$ のとき，第2回以降の目からつくった小数を $a',b'$（それぞれ $n-1$ 回分）とすると $a_n+b_n=\\dfrac{s_1}{10}+\\dfrac{a'+b'}{10}$ で，$a'+b'$ は $s_1$ と独立に $a_{n-1}+b_{n-1}$ と同じ分布をもつ．また\n\\[0<\\frac{a'+b'}{10}\\leqq12\\left(\\frac1{10^2}+\\cdots+\\frac1{10^n}\\right)<\\frac{12}{90}=\\frac2{15}.\\]\n\n(1) $n\\geqq2$ とする．$s_1\\leqq8$ なら $a_n+b_n<0.8+\\frac2{15}<1$．$s_1\\geqq10$ なら $a_n+b_n>1$．$s_1=9$ なら $a_n+b_n\\leqq1\\iff a'+b'\\leqq1$．よって\n\\[q_n=\\frac{13}{18}+\\frac19q_{n-1}\\quad(n\\geqq2),\\qquad q_1=P(s_1\\leqq10)=\\frac{33}{36}=\\frac{11}{12}.\\]\n$q_n-\\frac{13}{16}=\\frac19\\left(q_{n-1}-\\frac{13}{16}\\right)$，$q_1-\\frac{13}{16}=\\frac5{48}$ より\n\\[\\boldsymbol{q_n=\\frac{13}{16}+\\frac5{48}\\left(\\frac19\\right)^{n-1}},\\qquad \\lim_{n\\to\\infty}q_n=\\boldsymbol{\\frac{13}{16}}.\\]\n(2) $n\\geqq2$ とする．$s_1\\leqq7$ なら $a_n+b_n<0.7+\\frac2{15}<0.9$．$s_1\\geqq9$ なら $a_n+b_n>0.9$．$s_1=8$ なら $a_n+b_n\\leqq0.9\\iff a'+b'\\leqq1$．よって\n\\[r_n=\\frac{21}{36}+\\frac5{36}q_{n-1}\\ \\longrightarrow\\ \\frac7{12}+\\frac5{36}\\cdot\\frac{13}{16}=\\frac{336+65}{576}=\\boldsymbol{\\frac{401}{576}}.\\]"
+   }
+  ],
+  "idea": {
+   "tex": "2つの小数の和は各位の目の和 $s_k$（2〜12）を並べたもので，繰り上がりがあるため位ごとには比べられない．第1位の和 $s_1$ で場合を分けると，残りの位の寄与は $\\frac2{15}$ 未満なので $s_1$ がほぼ大小を決め，境目の値のときだけ「残りの位がつくる同じ形の問題」に帰着する．これが漸化式を与える．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) $q_n$：13/16+(5/48)(1/9)^(n-1) ; 極限：13/16\n(2) 401/576"
+  },
+  "methods": [],
+  "tags": [
+   "確率",
+   "漸化式",
+   "数列の極限",
+   "小数",
+   "自己相似"
+  ],
+  "provenance": {
+   "created": "2026-11-19"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "III-LIM-276",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "III-15",
+  "level": 4,
+  "minutes": 40,
+  "theme": "指数関数で巻きつく点が弧に入る時間の割合",
+  "topic": "指数関数で巻きつく点が弧に入る時間の割合",
+  "statement": {
+   "tex": "実数 $x$ に対し，座標平面上の単位円 $C$ 上の点 $P(x)$ を\n\\[\nP(x)=\\bigl(\\cos(2\\pi\\cdot2^x),\\ \\sin(2\\pi\\cdot2^x)\\bigr)\n\\]\nによって定める．$C$ の弧 $I$（端点を含む）で長さが $L$（$0<L<2\\pi$）であるものを固定する．そのとき各正の整数 $k$ に対して区間 $[k,k+1]$ の部分集合\n\\[\n\\{x\\mid k\\leqq x\\leqq k+1,\\ P(x)\\in I\\}\n\\]\nは互いに交わらない有限個の区間の和集合になっているので，それらの区間の長さの総和を $T_k$ で表す．\n\\begin{enumerate}\n  \\item $I$ が $C$ のうち $y\\geqq0$ の部分であるとき，$N=2^k$ として $T_k$ を $N$ を用いた和の形で表せ．\n  \\item 一般の弧 $I$ について，$\\displaystyle\\lim_{k\\to\\infty}T_k=\\frac{L}{2\\pi}$ を証明せよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $T_k=\\displaystyle\\sum_{m=N}^{2N-1}\\log_2\\frac{2m+1}{2m}$　(2) 証明"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "$\\log$ は自然対数とする．区間 $[p,q]$（$0<p<q$）について，$2^x\\in[p,q]$ となる $x$ の範囲は $[\\log_2p,\\log_2q]$ で，その長さは\n\\[\n\\log_2\\frac qp=\\frac1{\\log2}\\int_p^q\\frac{du}u.\n\\]\n$N=2^k$ とおく．$k\\leqq x\\leqq k+1\\iff N\\leqq2^x\\leqq2N$．\n\n(1) $P(x)$ が $y\\geqq0$ の部分にある $\\iff$ $2\\pi\\cdot2^x$ が，$2\\pi$ の整数倍 $2\\pi m$ に対して $2\\pi m\\leqq2\\pi\\cdot2^x\\leqq2\\pi m+\\pi$ $\\iff$ $m\\leqq2^x\\leqq m+\\frac12$（$m$ は整数）．$N\\leqq2^x\\leqq2N$ と合わせると $m=N,N+1,\\dots,2N-1$（と1点 $2^x=2N$）なので\n\\[\nT_k=\\sum_{m=N}^{2N-1}\\log_2\\frac{m+\\frac12}m=\\boldsymbol{\\sum_{m=N}^{2N-1}\\log_2\\frac{2m+1}{2m}}.\n\\]\n\n(2) $I$ を偏角が $2\\pi\\alpha$ から $2\\pi\\alpha+L$ までの弧（$0\\leqq\\alpha<1$）とし，$\\ell=\\frac L{2\\pi}$（$0<\\ell<1$）とおく．$P(x)$ が $I$ 上にあるのは，$2^x$ がある整数 $m$ に対する区間 $m+\\alpha\\leqq t\\leqq m+\\alpha+\\ell$ のいずれかに入るときであり，$\\ell<1$ よりこれらの区間は互いに交わらない．\n\n$k\\geqq1$（$N\\geqq2$）とする．$m=N,N+1,\\dots,2N-2$ では $N\\leqq m+\\alpha$，$m+\\alpha+\\ell<m+2\\leqq2N$ なので区間 $[m+\\alpha,m+\\alpha+\\ell]$ は $[N,2N]$ に含まれ，その寄与は $c_m=\\log_2\\frac{m+\\alpha+\\ell}{m+\\alpha}$．$m\\leqq N-2$ の区間は右端が $N$ より小さく，$m\\geqq2N$ の区間は左端が $2N$ 以上なので（共有点は高々1点で長さに影響しない），残りは $m=N-1$ と $m=2N-1$ の区間と $[N,2N]$ の共通部分だけである．前者は $[N,N+1]$ に，後者は $[2N-1,2N]$ に含まれるので，それぞれの寄与は $\\log_2\\frac{N+1}N\\leqq\\frac1{N\\log2}$，$\\log_2\\frac{2N}{2N-1}\\leqq\\frac1{(2N-1)\\log2}\\leqq\\frac1{N\\log2}$ 以下（$\\log(1+t)\\leqq t$）．よって\n\\[\n\\sum_{m=N}^{2N-2}c_m\\leqq T_k\\leqq\\sum_{m=N}^{2N-2}c_m+\\frac2{N\\log2}.\n\\]\n$c_m=\\frac1{\\log2}\\int_{m+\\alpha}^{m+\\alpha+\\ell}\\frac{du}u$ で，積分区間は $[m,m+2]$ に含まれるので $\\frac{\\ell}{(m+2)\\log2}\\leqq c_m\\leqq\\frac{\\ell}{m\\log2}$．また，$\\frac1j$ は $\\frac1u$ の $[j-1,j]$ での最小値，$[j,j+1]$ での最大値なので\n\\[\n\\sum_{m=N}^{2N-2}\\frac1m\\leqq\\int_{N-1}^{2N-2}\\frac{du}u=\\log2,\\qquad\n\\sum_{m=N}^{2N-2}\\frac1{m+2}=\\sum_{j=N+2}^{2N}\\frac1j\\geqq\\int_{N+2}^{2N+1}\\frac{du}u=\\log\\frac{2N+1}{N+2}.\n\\]\n以上より\n\\[\n\\frac{\\ell}{\\log2}\\log\\frac{2N+1}{N+2}\\leqq T_k\\leqq\\ell+\\frac2{N\\log2}.\n\\]\n$k\\to\\infty$ のとき $N\\to\\infty$，$\\frac{2N+1}{N+2}\\to2$ なので，両辺とも $\\ell$ に収束し，はさみうちにより $\\displaystyle\\lim_{k\\to\\infty}T_k=\\ell=\\frac L{2\\pi}$．\\hfill$\\square$"
+   }
+  ],
+  "idea": {
+   "tex": "$P(x)$ が弧 $I$ に入る条件を $u=f(x)$ の小数部分の条件に直し，$x$ の長さを $u$ の積分 $\\int\\frac{du}{f'(x)}$ として周期ごとに評価する．原題の $f$ は整数係数の2次式で，区間 $[k,k+1]$ 上の $f'$ がほぼ一定であることを使ったが，ここでは $f(x)=2^x$ で区間内の $f'$ が2倍も変わるため，各周期の寄与 $\\frac{\\ell}{u\\log2}$ を足し合わせた和 $\\sum\\frac1m$ と $\\log2$ の比較が必要になる．"
+  },
+  "methods": [],
+  "tags": [
+   "置換",
+   "区分ごとの評価",
+   "和と積分の比較",
+   "はさみうち",
+   "対数"
+  ],
+  "provenance": {
+   "created": "2026-11-19"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "III-LIM-277",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "III-15",
+  "level": 5,
+  "minutes": 40,
+  "theme": "接する2円板の間に入り込めない円板とすき間の面積",
+  "topic": "接する2円板の間に入り込めない円板とすき間の面積",
+  "statement": {
+   "tex": "座標平面上に，点 $\\mathrm A(-1,0)$，$\\mathrm B(1,0)$ をそれぞれ中心とする半径1の円板 $D$，$E$ がある．$r$ を正の数とし，半径 $r$ の円板 $F$ を，$D$ の内部とも $E$ の内部とも共有点をもたないように平面上に置く．$F$ はこの条件をみたす位置ならどこにでも置けるものとし，そのように置いた $F$ のどれかに含まれる点全体を $W$ とする．$D$ にも $E$ にも $W$ にも含まれない点全体の面積を $S(r)$ とする．また，$0<\\alpha<\\dfrac\\pi2$，$\\cos\\alpha=\\dfrac1{1+r}$ をみたす角 $\\alpha$ をとる．\n\\begin{enumerate}\n  \\item $S(r)$ を $r$ と $\\alpha$ で表せ．\n  \\item $S(1)$ を求めよ．\n  \\item 極限 $\\displaystyle\\lim_{r\\to+0}\\frac{S(r)}{r\\sqrt r}$ を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $S(r)=2\\sqrt{r^2+2r}-2\\alpha-(\\pi-2\\alpha)r^2$　(2) $S(1)=2\\sqrt3-\\pi$　(3) $\\dfrac{4\\sqrt2}3$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "$F$ の中心を Q とすると，$F$ が $D$ の内部と共有点をもたない $\\iff\\mathrm{QA}\\geqq1+r$（$E$ も同様）．よって，$\\mathrm{QA}\\geqq1+r$ かつ $\\mathrm{QB}\\geqq1+r$ をみたす点 Q 全体を $K$ として，点 P が $W$ に属する $\\iff$ $\\mathrm{PQ}\\leqq r$ となる $\\mathrm Q\\in K$ がある．$h=\\sqrt{(1+r)^2-1}=\\sqrt{r^2+2r}$，$\\mathrm C(0,h)$ とすると $\\mathrm{CA}=\\mathrm{CB}=1+r$，$\\mathrm C\\in K$ で，$\\angle\\mathrm{CAB}=\\angle\\mathrm{CBA}=\\alpha$（$\\cos\\angle\\mathrm{CAB}=\\frac{1}{1+r}$），$\\angle\\mathrm{ACB}=\\pi-2\\alpha$，$\\tan\\alpha=h$．\n\n図形は $x$ 軸に関して対称なので，$y\\geqq0$ の部分 $H$ で考える．$K$ の点 Q の $y$ 座標が負なら，$x$ 軸に関する対称点 Q$'$ も $K$ に属し，$\\mathrm P\\in H$ に対して $\\mathrm{PQ}'\\leqq\\mathrm{PQ}$ である．よって $\\mathrm P\\in H$ については $K\\cap H$ の点だけ考えればよい．\n\n三角形 ABC（周と内部）を $\\Delta$ とする．$\\Delta$ は $H$ と，直線 AC に関して B 側の閉半平面 $H_1$，直線 BC に関して A 側の閉半平面 $H_2$ の共通部分である．\n\n\\textbf{[1] $K\\cap\\Delta=\\{\\mathrm C\\}$．} O を原点とし，三角形 AOC の点 X を $\\mathrm X=\\lambda\\mathrm A+\\mu\\mathrm O+\\nu\\mathrm C$（$\\lambda,\\mu,\\nu\\geqq0$，$\\lambda+\\mu+\\nu=1$）と表すと\n\\[\n\\mathrm{XA}=\\left|\\mu\\overrightarrow{\\mathrm{AO}}+\\nu\\overrightarrow{\\mathrm{AC}}\\right|\\leqq\\mu+\\nu(1+r)\\leqq1+r\n\\]\nで，等号は $\\mu=0$，$\\nu=1$，すなわち $\\mathrm X=\\mathrm C$ のときに限る．三角形 OBC の点も B について同様．よって $\\Delta$ の点で $K$ に属するのは C だけ．\n\n\\textbf{[2] P $\\in\\Delta$ なら，任意の $\\mathrm Q\\in K\\cap H$ に対し $\\mathrm{PQ}\\geqq\\mathrm{PC}$．} $\\mathrm Q=\\mathrm C$ なら等号が成り立つので，$\\mathrm Q\\neq\\mathrm C$ とすると，[1] より $\\mathrm Q\\notin\\Delta$．線分 PQ 上で P から Q に向かって最後に $\\Delta$ に属する点を X とする（$\\Delta$ は閉じた集合）．X は $\\Delta$ の周上にある．X が辺 AB 上で A，B と異なれば，X の近くの $H$ の点はすべて $\\Delta$ に属し，線分 PQ は $H$ に含まれるので，X より先の点も $\\Delta$ に属して X の取り方に反する．よって X は辺 AC 上または辺 BC 上にある．X が辺 AC 上なら $\\mathrm{XA}+\\mathrm{XC}=1+r$ で，$\\mathrm{QA}\\geqq1+r$ より\n\\[\n\\mathrm{PQ}=\\mathrm{PX}+\\mathrm{XQ}\\geqq\\mathrm{PX}+(\\mathrm{QA}-\\mathrm{XA})\\geqq\\mathrm{PX}+(1+r-\\mathrm{XA})=\\mathrm{PX}+\\mathrm{XC}\\geqq\\mathrm{PC}.\n\\]\n辺 BC 上でも同様．したがって $\\mathrm P\\in\\Delta$ について，$\\mathrm P\\in W\\iff\\mathrm{PC}\\leqq r$．\n\n\\textbf{[3] P $\\in H$，$\\mathrm P\\notin\\Delta$，P が $D,E$ に含まれないなら $\\mathrm P\\in W$．} $\\mathrm{PA}>1$，$\\mathrm{PB}>1$ で，$\\mathrm P\\notin H_1$ または $\\mathrm P\\notin H_2$．$y$ 軸に関する対称性から $\\mathrm P\\notin H_2$ としてよい．このとき P は直線 BC に関して A と反対側にあり，$\\theta=\\angle\\mathrm{ABP}$ は $\\alpha<\\theta\\leqq\\pi$ をみたす．\n\\begin{itemize}\n  \\item $\\mathrm{PA}\\geqq1+r$ かつ $\\mathrm{PB}\\geqq1+r$ なら $\\mathrm P\\in K$ で，P を中心に $F$ を置けばよい．\n  \\item $\\mathrm{PB}<1+r$ のとき，$\\mathrm Q=\\mathrm B+\\dfrac{1+r}{\\mathrm{PB}}\\overrightarrow{\\mathrm{BP}}$ とすると $\\mathrm{QB}=1+r$，$\\mathrm{PQ}=1+r-\\mathrm{PB}<r$，$\\angle\\mathrm{ABQ}=\\theta$ で，余弦定理と $\\cos\\theta<\\cos\\alpha=\\dfrac1{1+r}$ より\n  \\[\n  \\mathrm{QA}^2=(1+r)^2+4-4(1+r)\\cos\\theta>(1+r)^2.\n  \\]\n  よって $\\mathrm Q\\in K$．\n  \\item $\\mathrm{PB}\\geqq1+r>\\mathrm{PA}$ のとき，P は B より A に近いので P$(x,y)$ は $x<0$．P が直線 BC $:\\ x+\\dfrac yh=1$ に関して A と反対側にあることから $y>h(1-x)$．$\\varphi=\\angle\\mathrm{BAP}$ とすると，$x\\leqq-1$ なら $\\varphi\\geqq\\dfrac\\pi2>\\alpha$，$-1<x<0$ なら $\\dfrac y{x+1}>\\dfrac{h(1-x)}{1+x}>h=\\tan\\alpha$ より $\\varphi>\\alpha$．そこで $\\mathrm Q=\\mathrm A+\\dfrac{1+r}{\\mathrm{PA}}\\overrightarrow{\\mathrm{AP}}$ とすると，上と同様に $\\mathrm{QA}=1+r$，$\\mathrm{PQ}<r$，$\\mathrm{QB}^2=(1+r)^2+4-4(1+r)\\cos\\varphi>(1+r)^2$ で $\\mathrm Q\\in K$．\n\\end{itemize}\n\n\\textbf{面積．} [2]，[3] より，$H$ で $D,E,W$ のどれにも含まれない点全体は\n「$\\Delta$ の点 P で $\\mathrm{PA}>1$，$\\mathrm{PB}>1$，$\\mathrm{PC}>r$ をみたすもの」全体 $U$ である．$\\Delta$ の中の $D$ の部分は，A を中心とする半径1，中心角 $\\alpha$ の扇形（辺 AB，AC の間）に一致する．実際，辺 BC 上の点 $\\mathrm Y=(1-\\tau)\\mathrm B+\\tau\\mathrm C\\ (0\\leqq\\tau\\leqq1)$ は $\\mathrm{AY}^2=(2-\\tau)^2+\\tau^2h^2>1$ をみたす（$\\tau<1$ なら $(2-\\tau)^2>1$，$\\tau=1$ なら $1+h^2>1$）ので，この扇形の点 X が直線 BC を越えると線分 AX が辺 BC と交わり，その交点 Y で $\\mathrm{AY}\\leqq\\mathrm{AX}\\leqq1$ となって矛盾する．$E$ も同様で中心角 $\\alpha$．C を中心とする半径 $r$ の円板の $\\Delta$ の中の部分は，C から辺 AB への距離が $h>r$ であることから同様に中心角 $\\pi-2\\alpha$ の扇形である．これら3つの扇形は，$D$ と $E$ が O で接し，$\\mathrm{CA}=\\mathrm{CB}=1+r$ より半径 $r$ の円板が $D$，$E$ と接するので，周上の点以外は重ならない．$\\Delta$ の面積は $\\frac12\\cdot2\\cdot h=h$ なので\n\\[\n(U\\text{ の面積})=h-\\frac\\alpha2-\\frac\\alpha2-\\frac{(\\pi-2\\alpha)r^2}2.\n\\]\n$x$ 軸上の点の面積は0なので，対称性から\n\\[\n\\text{(1)}\\qquad S(r)=\\boldsymbol{2\\sqrt{r^2+2r}-2\\alpha-(\\pi-2\\alpha)r^2}.\n\\]\n\n(2) $r=1$ のとき $\\cos\\alpha=\\frac12$ より $\\alpha=\\frac\\pi3$，$h=\\sqrt3$ で，$S(1)=2\\sqrt3-\\dfrac{2\\pi}3-\\dfrac\\pi3=\\boldsymbol{2\\sqrt3-\\pi}$．\n\n(3) $0<\\tau<\\frac\\pi2$ で $T=\\tan\\tau$ とおくと $\\dfrac{dT}{d\\tau}=1+T^2$．\n\\[\ng(\\tau)=\\tau-T+\\frac{T^3}3,\\qquad k(\\tau)=T-\\frac{T^3}3+\\frac{T^5}5-\\tau\n\\]\nとおくと\n\\[\ng'(\\tau)=1-(1+T^2)+T^2(1+T^2)=T^4\\geqq0,\\qquad k'(\\tau)=(1+T^2)(1-T^2+T^4)-1=T^6\\geqq0,\n\\]\n$g(0)=k(0)=0$ より $g(\\tau)\\geqq0$，$k(\\tau)\\geqq0$．$\\tau=\\alpha$（$T=h$）として\n\\[\n\\frac{h^3}3-\\frac{h^5}5\\leqq h-\\alpha\\leqq\\frac{h^3}3.\n\\]\n$h^2=r(r+2)$ より $\\dfrac{h^3}{r\\sqrt r}=(r+2)^{\\frac32}$，$\\dfrac{h^5}{r\\sqrt r}=r(r+2)^{\\frac52}$．よって\n\\[\n\\frac{2}{3}(r+2)^{\\frac32}-\\frac25r(r+2)^{\\frac52}\\leqq\\frac{2(h-\\alpha)}{r\\sqrt r}\\leqq\\frac23(r+2)^{\\frac32}\n\\]\nで，$r\\to+0$ のとき両端は $\\dfrac23\\cdot2\\sqrt2=\\dfrac{4\\sqrt2}3$ に近づく．また $0<(\\pi-2\\alpha)\\dfrac{r^2}{r\\sqrt r}<\\pi\\sqrt r\\to0$．したがって\n\\[\n\\lim_{r\\to+0}\\frac{S(r)}{r\\sqrt r}=\\lim_{r\\to+0}\\left\\{\\frac{2(h-\\alpha)}{r\\sqrt r}-(\\pi-2\\alpha)\\sqrt r\\right\\}=\\boldsymbol{\\frac{4\\sqrt2}3}.\n\\]"
+   }
+  ],
+  "idea": {
+   "tex": "動く円板 F（半径 $r$）の中心の置ける範囲 $K$ は「$\\mathrm A$，$\\mathrm B$ からの距離がともに $1+r$ 以上」で，点 P が覆われる $\\iff$ P から $K$ の点までの距離が $r$ 以下．原題の「2円に同時に接して入り込む位置」は中心 $\\mathrm C(0,h)$ で，三角形 ABC の中の点からは $K$ への最短距離が PC に等しい（線分 PQ が辺 AC を横切る点で三角不等式）．三角形の外では A か B から放射状に押し出した点が $K$ に入る．すき間は三角形から3つの扇形を除いた形で，$r\\to0$ では $\\tan\\alpha-\\alpha$ を $\\tan$ の多項式ではさむ評価が効く．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) $S(r)$：2sqrt(r^2+2r)-2α-(π-2α)r^2\n(2) $S(1)$：2sqrt(3)-π\n(3) 4sqrt(2)/3"
+  },
+  "methods": [],
+  "tags": [
+   "領域",
+   "距離",
+   "円の接触",
+   "三角不等式",
+   "不等式による評価",
+   "極限"
+  ],
+  "provenance": {
+   "created": "2026-11-19"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "III-LIM-278",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "III-15",
+  "level": 4,
+  "minutes": 30,
+  "theme": "二項係数の逆数の交代和と和の精密な極限",
+  "topic": "二項係数の逆数の交代和と和の精密な極限",
+  "statement": {
+   "tex": "自然数 $n$ に対して $f(n)=\\displaystyle\\sum_{k=0}^{n}\\frac{1}{{}_n\\mathrm C_k}$ とおく．\n\\begin{enumerate}\n  \\item 自然数 $m$ に対して，$\\displaystyle\\sum_{k=0}^{2m}\\frac{(-1)^k}{{}_{2m}\\mathrm C_k}$ を $m$ の式で表せ．\n  \\item 極限 $\\displaystyle\\lim_{n\\to\\infty}n^2\\left\\{f(n)-2-\\frac2n\\right\\}$ を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $\\dfrac{2m+1}{m+1}$　(2) $4$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "まず，$0\\leqq k\\leqq n$ に対して\n\\begin{align*}\n\\frac1{{}_{n+1}\\mathrm C_k}+\\frac1{{}_{n+1}\\mathrm C_{k+1}}\n&=\\frac{k!\\,(n+1-k)!+(k+1)!\\,(n-k)!}{(n+1)!}\\\\\n&=\\frac{k!\\,(n-k)!\\,(n+2)}{(n+1)!}\n=\\frac{n+2}{n+1}\\cdot\\frac1{{}_n\\mathrm C_k}.\n\\end{align*}\nすなわち $\\dfrac1{{}_n\\mathrm C_k}=\\dfrac{n+1}{n+2}\\left(u_k+u_{k+1}\\right)$，$u_j=\\dfrac1{{}_{n+1}\\mathrm C_j}$．\n\n(1) $n=2m$ として\n\\begin{align*}\n\\sum_{k=0}^{n}\\frac{(-1)^k}{{}_n\\mathrm C_k}\n&=\\frac{n+1}{n+2}\\sum_{k=0}^{n}\\left\\{(-1)^ku_k-(-1)^{k+1}u_{k+1}\\right\\}\\\\\n&=\\frac{n+1}{n+2}\\left\\{u_0-(-1)^{n+1}u_{n+1}\\right\\}\n=\\frac{n+1}{n+2}\\left\\{1+(-1)^n\\right\\}.\n\\end{align*}\n$n=2m$ では $\\dfrac{2(2m+1)}{2m+2}=\\boldsymbol{\\dfrac{2m+1}{m+1}}$．\n\n\n(2) $n\\geqq8$ とする．${}_n\\mathrm C_{k+1}\\div{}_n\\mathrm C_k=\\dfrac{n-k}{k+1}$ は $k\\leqq\\frac{n-1}2$ のとき1以上なので，${}_n\\mathrm C_k$ は $0\\leqq k\\leqq\\frac n2$ で $k$ について増加し，${}_n\\mathrm C_k={}_n\\mathrm C_{n-k}$ と合わせて，$4\\leqq k\\leqq n-4$ では ${}_n\\mathrm C_k\\geqq{}_n\\mathrm C_4$ である．$k=0,n$ の2項の和は $2$，$k=1,n-1$ の和は $\\dfrac2n$，$k=2,n-2$ の和は $\\dfrac{4}{n(n-1)}$，$k=3,n-3$ の和は $\\dfrac{12}{n(n-1)(n-2)}$ で，残りの $n-7$ 個の項はそれぞれ $\\dfrac1{{}_n\\mathrm C_4}=\\dfrac{24}{n(n-1)(n-2)(n-3)}$ 以下で正である．よって\n\\[\n0<f(n)-2-\\frac2n-\\frac{4}{n(n-1)}-\\frac{12}{n(n-1)(n-2)}\\leqq\\frac{24(n-7)}{n(n-1)(n-2)(n-3)}.\n\\]\n各辺に $n^2$ を掛けると\n\\[\n0<n^2\\left\\{f(n)-2-\\frac2n\\right\\}-\\frac{4n}{n-1}-\\frac{12n}{(n-1)(n-2)}\\leqq\\frac{24n(n-7)}{(n-1)(n-2)(n-3)}.\n\\]\n$n\\to\\infty$ で $\\dfrac{4n}{n-1}\\to4$，$\\dfrac{12n}{(n-1)(n-2)}\\to0$，右辺 $\\to0$ なので，はさみうちの原理により\n\\[\n\\lim_{n\\to\\infty}n^2\\left\\{f(n)-2-\\frac2n\\right\\}=\\boldsymbol4.\n\\]\n\\hfill$\\square$"
+   }
+  ],
+  "idea": {
+   "tex": "$\\dfrac{1}{{}_{n+1}\\mathrm C_k}+\\dfrac{1}{{}_{n+1}\\mathrm C_{k+1}}=\\dfrac{n+2}{n+1}\\cdot\\dfrac{1}{{}_n\\mathrm C_k}$ を自分で見つけると，符号を交互につけた和は隣り合う項が打ち消し合って両端だけが残る．和そのものの極限は，両端から4項ずつ（$k=0,1,2,3$ と $k=n,n-1,n-2,n-3$）を取り出し，残りの $n-7$ 項を $\\dfrac{1}{{}_n\\mathrm C_4}$ で一様に上から抑えてはさみうちにする．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) (2m+1)/(m+1)\n(2) 4"
+  },
+  "methods": [],
+  "tags": [
+   "二項係数",
+   "望遠鏡和",
+   "交代和",
+   "はさみうち",
+   "極限"
+  ],
+  "provenance": {
+   "created": "2026-11-19"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "III-LIM-279",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "III-15",
+  "level": 4,
+  "minutes": 30,
+  "theme": "4次曲線の2接線の交点が弦のどこに来るか",
+  "topic": "4次曲線の2接線の交点が弦のどこに来るか",
+  "statement": {
+   "tex": "$f(x)=x^4-4x^3$ とし，曲線 $C:y=f(x)$ 上に2点 $\\mathrm A(a,f(a))$，$\\mathrm B(b,f(b))$（$a<b$）をとる．$b$ が $a$ に十分近いとき，A における $C$ の接線と B における $C$ の接線は1点で交わる．その交点の $x$ 座標を $p$ とする．\n\\begin{enumerate}\n  \\item 各実数 $a$ に対して，$\\alpha(a)=\\displaystyle\\lim_{b\\to a+0}\\frac{p-a}{b-a}$ を求めよ．\n  \\item 各実数 $a$ に対して，$\\beta(a)=\\displaystyle\\lim_{b\\to a+0}\\frac{1}{b-a}\\left\\{\\frac{p-a}{b-a}-\\alpha(a)\\right\\}$ を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $a\\neq0,2$ のとき $\\alpha(a)=\\dfrac12$，$a=0,2$ のとき $\\alpha(a)=\\dfrac23$　(2) $a\\neq0,2$ のとき $\\beta(a)=\\dfrac{a-1}{6a(a-2)}$，$\\beta(0)=-\\dfrac1{36}$，$\\beta(2)=\\dfrac1{36}$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "A，B における接線は $y=f'(a)(x-a)+f(a)$，$y=f'(b)(x-b)+f(b)$．$x=p$ で値が等しい条件は\n\\[\n\\{f'(a)-f'(b)\\}(p-a)=f(b)-f(a)-f'(b)(b-a).\n\\]\n$b=a+h$（$h>0$），$f'(x)=4x^3-12x^2$ として計算する．\n\\[\nf(b)-f(a)=4a^3h+6a^2h^2+4ah^3+h^4-4(3a^2h+3ah^2+h^3),\n\\]\n\\[\nf'(b)h=4h(a^3+3a^2h+3ah^2+h^3)-12h(a^2+2ah+h^2)\n\\]\nより\n\\[\nf(b)-f(a)-f'(b)h=-h^2(6a^2-12a+8ah-8h+3h^2),\n\\]\n\\[\nf'(a)-f'(b)=-4\\{(3a^2h+3ah^2+h^3)-3(2ah+h^2)\\}=-4h(3a^2-6a+3ah-3h+h^2).\n\\]\n$A=6a(a-2)$ とおくと\n\\[\nf'(a)-f'(b)=-2h\\{A+(6a-6)h+2h^2\\}.\n\\]\n右辺の $\\{\\ \\}$ は $A\\neq0$ なら $h\\to0$ で $A\\neq0$ に近づき，$a=0$ では $-6h+2h^2=-2h(3-h)$，$a=2$ では $6h+2h^2$ で，いずれも $h$ が十分小さい正の数なら0でない．このとき接線は1点で交わり，\n\\[\nR(h)=\\frac{p-a}{h}=\\frac{A+(8a-8)h+3h^2}{2\\{A+(6a-6)h+2h^2\\}}.\n\\]\n\n(1)・(2) \\textbf{$a\\neq0,2$（$A\\neq0$）のとき．}$R(h)\\to\\dfrac A{2A}=\\dfrac12$．また\n\\[\nR(h)-\\frac12=\\frac{(8a-8)h+3h^2-(6a-6)h-2h^2}{2\\{A+(6a-6)h+2h^2\\}}=\\frac{h\\{(2a-2)+h\\}}{2\\{A+(6a-6)h+2h^2\\}}\n\\]\nより $\\dfrac1h\\left\\{R(h)-\\dfrac12\\right\\}\\to\\dfrac{2a-2}{2A}=\\dfrac{a-1}{6a(a-2)}$．\n\n\\textbf{$a=0$ のとき．}$A=0$ で $R(h)=\\dfrac{-8h+3h^2}{2(-6h+2h^2)}=\\dfrac{8-3h}{4(3-h)}\\to\\dfrac23$．\n\\[\nR(h)-\\frac23=\\frac{3(8-3h)-8(3-h)}{12(3-h)}=\\frac{-h}{12(3-h)}\n\\]\nより $\\dfrac1h\\left\\{R(h)-\\dfrac23\\right\\}\\to-\\dfrac1{36}$．\n\n\\textbf{$a=2$ のとき．}$A=0$ で $R(h)=\\dfrac{8h+3h^2}{2(6h+2h^2)}=\\dfrac{8+3h}{4(3+h)}\\to\\dfrac23$．\n\\[\nR(h)-\\frac23=\\frac{3(8+3h)-8(3+h)}{12(3+h)}=\\frac{h}{12(3+h)}\n\\]\nより $\\dfrac1h\\left\\{R(h)-\\dfrac23\\right\\}\\to\\dfrac1{36}$．\n\n以上より\n\\[\n\\boldsymbol{\\alpha(a)=\\frac12\\ (a\\neq0,2),\\quad \\alpha(0)=\\alpha(2)=\\frac23},\n\\]\n\\[\n\\boldsymbol{\\beta(a)=\\frac{a-1}{6a(a-2)}\\ (a\\neq0,2),\\quad\\beta(0)=-\\frac1{36},\\quad\\beta(2)=\\frac1{36}}.\n\\]\n（$x=0,2$ は $f''(x)=12x(x-2)=0$ となる変曲点であり，そこで比の極限が $\\frac12$ から $\\frac23$ に変わる．）\\hfill$\\square$"
+   }
+  ],
+  "idea": {
+   "tex": "2接線の交点は $(f'(a)-f'(b))(p-a)=f(b)-f(a)-f'(b)(b-a)$ で，$b=a+h$ として $h$ で展開すると比 $\\frac{p-a}{h}$ は $h$ の分数式．$f''(a)\\neq0$ なら極限 $\\frac12$，変曲点（$f''(a)=0$，$f'''(a)\\neq0$）では分子分母の最低次がずれて $\\frac23$ になり，次の項の極限も場合ごとに変わる．"
+  },
+  "methods": [],
+  "tags": [
+   "接線",
+   "交点",
+   "極限",
+   "変曲点",
+   "場合分け"
+  ],
+  "provenance": {
+   "created": "2026-11-19"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
  }
 ]

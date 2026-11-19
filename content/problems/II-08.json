@@ -9983,5 +9983,627 @@
    },
    "verified": false
   }
+ },
+ {
+  "id": "II-EQ-225",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-08",
+  "level": 4,
+  "minutes": 35,
+  "theme": "差の積で割った和と交代符号つき二項係数の和",
+  "topic": "差の積で割った和と交代符号つき二項係数の和",
+  "statement": {
+   "tex": "$n$ を2以上の整数とし，$a_1,a_2,\\dots,a_n$ を相異なる実数とする．各 $k$（$1\\leqq k\\leqq n$）に対し，$n-1$ 個の1次式 $x-a_j$（$j\\neq k$）をすべて掛け合わせた多項式を $P_k(x)$ とし，$D_k=P_k(a_k)$ とおく．\n\\begin{enumerate}\n  \\item 次数が $n-1$ 以下の任意の多項式 $f(x)$ に対して\n  \\[f(x)=\\sum_{k=1}^n\\frac{f(a_k)}{D_k}P_k(x)\\]\n  が恒等的に成り立つことを示せ．さらに，整数 $m$（$0\\leqq m\\leqq n-1$）に対して $\\displaystyle\\sum_{k=1}^n\\frac{a_k^{\\,m}}{D_k}$ を求めよ．\n  \\item $\\displaystyle\\sum_{k=1}^n\\frac{a_k^{\\,n}}{D_k}=a_1+a_2+\\cdots+a_n$ を示せ．\n  \\item 正の整数 $N$ に対して，$\\displaystyle\\sum_{j=0}^N(-1)^j\\,{}_N\\mathrm C_j\\,j^{N+1}$ を $N$ の式で表せ．\n  \\item $a,b,c$ を相異なる0でない実数とするとき，\n  \\[\\frac1{a^2(a-b)(a-c)}+\\frac1{b^2(b-c)(b-a)}+\\frac1{c^2(c-a)(c-b)}\\]\n  を $a,b,c$ の式で簡単に表せ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 証明；$0\\leqq m\\leqq n-2$ のとき $0$，$m=n-1$ のとき $1$　(2) 証明　(3) $(-1)^N\\cdot N!\\cdot\\dfrac{N(N+1)}2$　(4) $\\dfrac{ab+bc+ca}{a^2b^2c^2}$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) $g(x)=\\displaystyle\\sum_{k=1}^n\\frac{f(a_k)}{D_k}P_k(x)$ とおく．$D_k$ は0でない $n-1$ 個の数 $a_k-a_j$ の積なので $D_k\\neq0$ で，$g(x)$ は次数 $n-1$ 以下の多項式である．\n$i\\neq k$ のとき $P_k(x)$ は因数 $x-a_i$ を含むので $P_k(a_i)=0$，また $P_i(a_i)=D_i$．よって $g(a_i)=f(a_i)$（$1\\leqq i\\leqq n$）．\n$h(x)=f(x)-g(x)$ は次数 $n-1$ 以下で，相異なる $n$ 個の値 $a_1,\\dots,a_n$ で0になる．$h$ が0でない多項式なら，因数定理により $h(x)$ は $(x-a_1)(x-a_2)\\cdots(x-a_n)$ で割り切れ，その次数は $n$ 以上となって矛盾する．よって $h(x)$ は恒等的に0で，$f(x)=g(x)$ が恒等的に成り立つ．\n\n各 $P_k(x)$ は $x^{n-1}$ の係数が1の $n-1$ 次式なので，$g(x)$ の $x^{n-1}$ の係数は $\\displaystyle\\sum_{k=1}^n\\frac{f(a_k)}{D_k}$ である．$f(x)=x^m$（$0\\leqq m\\leqq n-1$）に適用して両辺の $x^{n-1}$ の係数を比べると\n\\[\\boldsymbol{\\sum_{k=1}^n\\frac{a_k^{\\,m}}{D_k}=0\\ (0\\leqq m\\leqq n-2),\\qquad \\sum_{k=1}^n\\frac{a_k^{\\,n-1}}{D_k}=1}.\\]\n\n(2) $(x-a_1)(x-a_2)\\cdots(x-a_n)=x^n-(a_1+\\cdots+a_n)x^{n-1}+(\\text{次数 }n-2\\text{ 以下の項})$ であるから，\n$f(x)=x^n-(x-a_1)(x-a_2)\\cdots(x-a_n)$ は次数 $n-1$ 以下で，$x^{n-1}$ の係数は $a_1+\\cdots+a_n$，また $f(a_k)=a_k^{\\,n}$ である．\n(1) の恒等式の両辺の $x^{n-1}$ の係数を比べて $\\displaystyle\\sum_{k=1}^n\\frac{a_k^{\\,n}}{D_k}=a_1+\\cdots+a_n$．\\hfill$\\square$\n\n(3) $N+1$（$\\geqq2$）個の相異なる数 $0,1,\\dots,N$ に (2) を用いる．数 $j$ に対応する $D$ を $E_j$ とすると，$E_j$ は $i\\neq j$（$0\\leqq i\\leqq N$）にわたる $j-i$ の積で，\n\\[E_j=\\{j(j-1)\\cdots1\\}\\cdot\\{(-1)(-2)\\cdots(-(N-j))\\}=(-1)^{N-j}\\,j!\\,(N-j)!\\]\n（$j=0$ のとき前の積，$j=N$ のとき後の積は1とする）．(2) より\n\\[\\sum_{j=0}^N\\frac{(-1)^{N-j}j^{N+1}}{j!\\,(N-j)!}=0+1+\\cdots+N=\\frac{N(N+1)}2.\\]\n両辺に $(-1)^NN!$ を掛けると，$(-1)^{N-j}(-1)^N=(-1)^j$，$\\dfrac{N!}{j!(N-j)!}={}_N\\mathrm C_j$ より\n\\[\\boldsymbol{\\sum_{j=0}^N(-1)^j\\,{}_N\\mathrm C_j\\,j^{N+1}=(-1)^N\\cdot N!\\cdot\\frac{N(N+1)}2}.\\]\n\n(4) $u=\\dfrac1a$，$v=\\dfrac1b$，$w=\\dfrac1c$ とおくと，$u,v,w$ は相異なる0でない実数である．$a-b=\\dfrac{v-u}{uv}$，$a-c=\\dfrac{w-u}{uw}$ より\n\\[a^2(a-b)(a-c)=\\frac1{u^2}\\cdot\\frac{(v-u)(w-u)}{u^2vw}=\\frac{(u-v)(u-w)}{u^4vw},\\quad\n\\frac1{a^2(a-b)(a-c)}=uvw\\cdot\\frac{u^3}{(u-v)(u-w)}.\\]\n他の2項も同様なので，与式 $=uvw\\left\\{\\dfrac{u^3}{(u-v)(u-w)}+\\dfrac{v^3}{(v-w)(v-u)}+\\dfrac{w^3}{(w-u)(w-v)}\\right\\}$．\n括弧内は (2) で $n=3$，$(a_1,a_2,a_3)=(u,v,w)$ とした和で，$u+v+w$ に等しい．よって\n\\[\\text{与式}=uvw(u+v+w)=\\frac1{abc}\\cdot\\frac{ab+bc+ca}{abc}=\\boldsymbol{\\frac{ab+bc+ca}{a^2b^2c^2}}.\\]"
+   }
+  ],
+  "idea": {
+   "tex": "$\\dfrac{a^m}{(a-b)(a-c)}+\\cdots$ 型の和は，「次数 $n-1$ 以下の多項式は $n$ 点の値で決まる」ことから作った補間の式の $x^{n-1}$ の係数である．$x^n$ には $x^n-(x-a_1)\\cdots(x-a_n)$ を使うと和は $a_1+\\cdots+a_n$ になる．節点を $0,1,\\dots,N$ にとると交代符号つき二項係数の和，逆数 $\\dfrac1a$ に置き換えると分母に $a^2$ を含む和が計算できる．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) 記述\n(2) 証明\n(3) 記述\n(4) (ab+bc+ca)/(a^2b^2c^2)"
+  },
+  "methods": [],
+  "tags": [
+   "恒等式",
+   "補間多項式",
+   "係数比較",
+   "二項係数",
+   "逆数の置き換え"
+  ],
+  "provenance": {
+   "created": "2026-11-19"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-EQ-226",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-08",
+  "level": 4,
+  "minutes": 35,
+  "theme": "立方根のはさみうちと差の逆数の整数部分",
+  "topic": "立方根のはさみうちと差の逆数の整数部分",
+  "statement": {
+   "tex": "$a,b$ を $b<3a^2-3a+1$ をみたす正の整数とする．\n\\begin{enumerate}\n  \\item $a-\\dfrac b{3a^2-3a+1}<\\sqrt[3]{a^3-b}<a-\\dfrac b{3a^2}$ が成り立つことを示せ．\n  \\item $k$ を2以上の整数とする．$\\dfrac1{k-\\sqrt[3]{k^3-1}}$ 以下の最大の整数を求めよ．\n  \\item $k$ を2以上の整数とする．$\\dfrac k{k-\\sqrt[3]{k^3-k}}$ 以下の最大の整数を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 証明　(2) $3k^2-1$　(3) $3k^2-2$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "$M=3a^2-3a+1$ とおく．$M=a^3-(a-1)^3\\leqq a^3$ なので $0<b<M\\leqq a^3$ で，$a^3-b>0$．正の数 $y$ の関数 $y^3$ は増加するので，正の数 $s$ について $s^3>a^3-b\\iff s>\\sqrt[3]{a^3-b}$ である．\n\n(1) 右側：$t=\\dfrac b{3a^2}$ とおくと $0<t<\\dfrac{M}{3a^2}<1\\leqq a$ で $a-t>0$．\n\\[(a-t)^3-(a^3-b)=-3a^2t+3at^2-t^3+b=3at^2-t^3=t^2(3a-t)>0\\]\nより $a-t>\\sqrt[3]{a^3-b}$．\n\n左側：$s=\\dfrac bM$ とおくと $0<s<1$ で $a-s>0$．$b=Ms$ より\n\\[(a-s)^3-(a^3-b)=s\\{-3a^2+3as-s^2+3a^2-3a+1\\}=s(3as-s^2-3a+1)=-s(1-s)(3a-1-s).\\]\n$3a-1-s>3a-2>0$ なのでこれは負で，$a-s<\\sqrt[3]{a^3-b}$．\\hfill$\\square$\n\n以下 $g(t)=k^2+kt+t^2$ とおく．$t>0$ で $g$ は増加する．また $k>x>0$，$k^3-x^3=b$ のとき，$k^3-x^3=(k-x)g(x)$ より $\\dfrac b{k-x}=g(x)$．さらに $e>0$ に対し $g(k-e)=3k^2-3ke+e^2$．\n\n(2) $x=\\sqrt[3]{k^3-1}$，$N=3k^2-3k+1$ とする．$N-1=3k(k-1)>0$ なので (1)（$a=k$，$b=1$）が使え，$k-\\dfrac1N<x<k-\\dfrac1{3k^2}$．また $k-\\dfrac1N>0$．\n上から：$g(x)<g\\left(k-\\dfrac1{3k^2}\\right)=3k^2-\\dfrac1k+\\dfrac1{9k^4}<3k^2$．\n下から：$g(x)>g\\left(k-\\dfrac1N\\right)=3k^2-\\dfrac{3k}N+\\dfrac1{N^2}>3k^2-\\dfrac{3k}N$．$N-3k=3k(k-2)+1>0$ より $\\dfrac{3k}N<1$ で，$g(x)>3k^2-1$．\n$\\dfrac1{k-x}=g(x)$ なので $3k^2-1<\\dfrac1{k-x}<3k^2$．求める整数は $\\boldsymbol{3k^2-1}$．\n\n(3) $x=\\sqrt[3]{k^3-k}$ とする．$N-k=3k^2-4k+1=(3k-1)(k-1)>0$ なので (1)（$a=k$，$b=k$）が使える．$\\dfrac k{k-x}=g(x)$．\n\n下から：$x>k-\\dfrac kN>0$ より $g(x)>3k^2-\\dfrac{3k^2}N$．$2N-3k^2=3k(k-2)+2>0$ より $\\dfrac{3k^2}N<2$ で，$g(x)>3k^2-2$．\n\n上から：(1) の上の評価では $g(x)<3k^2-1+\\dfrac1{9k^2}$ しか出ないので精密にする．$e=\\dfrac1{3k}+\\dfrac1{9k^3}=\\dfrac{3k^2+1}{9k^3}$，$y=k-e$ とおく．$0<e<1<k$ で $y>0$．$3k^2e=k+\\dfrac1{3k}$ より\n\\[y^3-(k^3-k)=k-3k^2e+3ke^2-e^3=-\\frac1{3k}+e^2(3k-e).\\]\n$e^2=\\dfrac{(3k^2+1)^2}{81k^6}$，$3k-e=\\dfrac{27k^4-3k^2-1}{9k^3}$ で，\n\\[(3k^2+1)^2(27k^4-3k^2-1)=(9k^4+6k^2+1)(27k^4-3k^2-1)=243k^8+135k^6-9k^2-1\\]\nであるから\n\\[y^3-(k^3-k)=\\frac{243k^8+135k^6-9k^2-1-243k^8}{729k^9}=\\frac{135k^6-9k^2-1}{729k^9}>0.\\]\nよって $y>x$ で，\n\\[g(x)<g(y)=3k^2-3ke+e^2=3k^2-1-\\frac1{3k^2}+\\frac{(3k^2+1)^2}{81k^6}.\\]\n$\\dfrac1{3k^2}-\\dfrac{(3k^2+1)^2}{81k^6}=\\dfrac{27k^4-(9k^4+6k^2+1)}{81k^6}=\\dfrac{18k^4-6k^2-1}{81k^6}>0$ より $g(x)<3k^2-1$．\n以上より $3k^2-2<\\dfrac k{k-x}<3k^2-1$．求める整数は $\\boldsymbol{3k^2-2}$．"
+   }
+  ],
+  "idea": {
+   "tex": "$\\sqrt{a^2-b}$ を $a-\\dfrac b{2a-1}$ と $a-\\dfrac b{2a}$ ではさむアルキメデスの方法を立方根に移すと，分母は $3a^2$（接線側）と $a^3-(a-1)^3=3a^2-3a+1$（弦側）になる．$k^3-x^3=b$ から $\\dfrac b{k-x}=k^2+kx+x^2$ と差の逆数が $x$ の増加関数に変わり，はさみうちで整数部分が決まる．評価が足りないときは1次の上の評価を2次まで精密にする．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) 証明\n(2) 3k^2-1\n(3) 3k^2-2"
+  },
+  "methods": [],
+  "tags": [
+   "不等式の証明",
+   "立方根",
+   "近似",
+   "整数部分",
+   "3乗の差"
+  ],
+  "provenance": {
+   "created": "2026-11-19"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-EQ-227",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-08",
+  "level": 3,
+  "minutes": 30,
+  "theme": "実数の組の積で積が0になる組",
+  "topic": "実数の組の積で積が0になる組",
+  "statement": {
+   "tex": "$k$ を実数の定数とする．実数の組 $(a,b)$，$(c,d)$ に対して，積 $(a,b)*(c,d)$ を\n\\[(a,b)*(c,d)=(ac+kbd,\\ ad+bc)\\]\nで定める．\n\\begin{enumerate}\n  \\item $(ac+kbd)^2-k(ad+bc)^2=(a^2-kb^2)(c^2-kd^2)$ を示せ．また，$k<0$ のとき，$(a,b)*(c,d)=(0,0)$ ならば $(a,b)=(0,0)$ または $(c,d)=(0,0)$ であることを示せ．\n  \\item $k>0$ とする．$(a,b)\\neq(0,0)$，$(c,d)\\neq(0,0)$ かつ $(a,b)*(c,d)=(0,0)$ となる $(a,b)$，$(c,d)$ をすべて求めよ．\n  \\item $(a,b)*(a,b)=(a,b)$ をみたす組 $(a,b)$ の個数，および $(a,b)*(a,b)=(0,0)$ をみたす組 $(a,b)$ の個数を，$k$ の値によって答えよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 証明　(2) $(a,b)=s(\\varepsilon\\sqrt k,\\,1)$，$(c,d)=t(-\\varepsilon\\sqrt k,\\,1)$（$s,t$ は0でない実数，$\\varepsilon=1$ または $-1$）　(3) $(a,b)*(a,b)=(a,b)$：$k>0$ のとき4個，$k\\leqq0$ のとき2個；$(a,b)*(a,b)=(0,0)$：$k\\neq0$ のとき1個，$k=0$ のとき無数"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) 左辺 $=a^2c^2+2kabcd+k^2b^2d^2-k(a^2d^2+2abcd+b^2c^2)=a^2c^2-ka^2d^2-kb^2c^2+k^2b^2d^2=(a^2-kb^2)(c^2-kd^2)$．\n\n$(a,b)*(c,d)=(0,0)$ なら $ac+kbd=ad+bc=0$ で，左辺 $=0$ より $(a^2-kb^2)(c^2-kd^2)=0$．\n$k<0$ のとき $a^2-kb^2=a^2+|k|b^2$ は $(a,b)=(0,0)$ のときに限り0，$c^2-kd^2$ も同様．よって $(a,b)=(0,0)$ または $(c,d)=(0,0)$．\\hfill$\\square$\n\n(2) (1) の恒等式より $a^2=kb^2$ または $c^2=kd^2$．\n\n$a^2=kb^2$ のとき：$b=0$ なら $a=0$ となり $(a,b)\\neq(0,0)$ に反するので $b\\neq0$，$a=\\varepsilon\\sqrt k\\,b$（$\\varepsilon=1$ または $-1$）．\n$ac+kbd=b(\\varepsilon\\sqrt k\\,c+kd)=0$ より $\\varepsilon\\sqrt k\\,c=-kd$，すなわち $c=-\\varepsilon\\sqrt k\\,d$．$(c,d)\\neq(0,0)$ より $d\\neq0$．\nこのとき $ad+bc=\\varepsilon\\sqrt k\\,bd-\\varepsilon\\sqrt k\\,bd=0$ も成り立つ．よって $(a,b)=b(\\varepsilon\\sqrt k,1)$，$(c,d)=d(-\\varepsilon\\sqrt k,1)$（$b,d\\neq0$）．\n\n$c^2=kd^2$ のとき：同様に $d\\neq0$，$c=\\varepsilon'\\sqrt k\\,d$，$a=-\\varepsilon'\\sqrt k\\,b$，$b\\neq0$ となり，$\\varepsilon=-\\varepsilon'$ とおけば上と同じ形．\n\n逆に $(a,b)=s(\\varepsilon\\sqrt k,1)$，$(c,d)=t(-\\varepsilon\\sqrt k,1)$（$st\\neq0$）なら $ac+kbd=st(-k+k)=0$，$ad+bc=st(\\varepsilon\\sqrt k-\\varepsilon\\sqrt k)=0$．\n答：$\\boldsymbol{(a,b)=s(\\varepsilon\\sqrt k,\\,1),\\ (c,d)=t(-\\varepsilon\\sqrt k,\\,1)}$（$s,t$ は0でない実数，$\\varepsilon=\\pm1$）．\n\n(3) $(a,b)*(a,b)=(a^2+kb^2,\\ 2ab)$．\n\n$(a,b)*(a,b)=(a,b)$：$a^2+kb^2=a$，$2ab=b$．$b=0$ なら $a^2=a$ で $a=0,1$．$b\\neq0$ なら $a=\\dfrac12$，$kb^2=\\dfrac14$．\n$k>0$ ならこれは $b=\\pm\\dfrac1{2\\sqrt k}$ の2つ，$k\\leqq0$ なら $kb^2\\leqq0$ で解なし．\nよって $k>0$ のとき $(0,0),(1,0),\\left(\\frac12,\\pm\\frac1{2\\sqrt k}\\right)$ の $\\boldsymbol4$ 個，$k\\leqq0$ のとき $(0,0),(1,0)$ の $\\boldsymbol2$ 個．\n\n$(a,b)*(a,b)=(0,0)$：$a^2+kb^2=0$，$ab=0$．\n$a=0$ なら $kb^2=0$，$b=0$ なら $a^2=0$．よって $k\\neq0$ のとき $(0,0)$ の $\\boldsymbol1$ 個，$k=0$ のとき $(0,b)$（$b$ は任意）で \\textbf{無数}．"
+   }
+  ],
+  "idea": {
+   "tex": "複素数の積で $zw=0\\Rightarrow z=0$ または $w=0$ を示すには，実部・虚部の式を $(ac-bd)^2+(ad+bc)^2=(a^2+b^2)(c^2+d^2)$ でまとめる．積の規則を $i^2=-1$ から $\\omega^2=k$ に変えた実数の組の積では，同じ恒等式が $(a^2-kb^2)(c^2-kd^2)$ になり，$k>0$ のときだけ「0でない組どうしの積が0」が起こる．その形と，2乗して自分自身や0になる組を $k$ で分類する．"
+  },
+  "methods": [],
+  "tags": [
+   "複素数の積",
+   "恒等式",
+   "簡約法則",
+   "場合分け"
+  ],
+  "provenance": {
+   "created": "2026-11-19"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-EQ-228",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-08",
+  "level": 4,
+  "minutes": 30,
+  "theme": "$2^k$ を通る多項式の外側の値",
+  "topic": "$2^k$ を通る多項式の外側の値",
+  "statement": {
+   "tex": "$n$ を0以上の整数とする．次数が $n$ 以下の実数係数の多項式 $f(x)$（定数も含む）で\n\\[\n  f(k)=2^k\\qquad(k=0,1,2,\\dots,n)\n\\]\nをみたすものを考える．\n\\begin{enumerate}\n  \\item このような $f(x)$ はただ1つ存在することを示せ．\n  \\item $f(n+1)$，$f(n+2)$ を $n$ で表せ．\n  \\item $f(-2)$ を $n$ で表せ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 証明　(2) $f(n+1)=2^{n+1}-1$，$f(n+2)=2^{n+2}-n-3$　(3) $n$ が偶数のとき $\\dfrac{n+2}2$，$n$ が奇数のとき $-\\dfrac{n+1}2$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "以下，$j=0,1,2,\\dots$ に対して\n\\[\n  P_0(x)=1,\\qquad P_j(x)=\\frac{x(x-1)\\cdots(x-j+1)}{j!}\\quad(j\\geqq1)\n\\]\nとおく．$P_j(x)$ は $j$ 次の多項式である．\n\n(1) \\textbf{存在．} $g(x)=P_0(x)+P_1(x)+\\cdots+P_n(x)$ とおくと，$g(x)$ は次数 $n$ 以下の多項式である．$0\\leqq k\\leqq n$ をみたす整数 $k$ をとる．\n\\begin{itemize}\n  \\item $j\\leqq k$ のとき，$P_j(k)=\\dfrac{k(k-1)\\cdots(k-j+1)}{j!}={}_k\\mathrm C_j$．\n  \\item $j>k$ のとき，$0\\leqq k\\leqq j-1$ なので $P_j(x)$ の因数 $x,x-1,\\dots,x-j+1$ の中に $x-k$ があり，$P_j(k)=0$．\n\\end{itemize}\nよって二項定理により $g(k)={}_k\\mathrm C_0+{}_k\\mathrm C_1+\\cdots+{}_k\\mathrm C_k=(1+1)^k=2^k$．したがって $g(x)$ は条件をみたす．\n\n\\textbf{一意性．} $f(x),h(x)$ がともに条件をみたすとすると，$d(x)=f(x)-h(x)$ は次数 $n$ 以下の多項式で $d(0)=d(1)=\\cdots=d(n)=0$．$d(x)$ が0でない多項式なら，因数定理により $x(x-1)\\cdots(x-n)$ で割り切れて次数が $n+1$ 以上となり矛盾．よって $d(x)$ は0で $f=h$．以上より $f(x)=g(x)$ がただ1つの多項式である．\\hfill$\\square$\n\n(2) 整数 $m\\geqq j$ に対しては $P_j(m)={}_m\\mathrm C_j$ である（$j=0$ でも成立）．$j\\leqq n<n+1<n+2$ なので\n\\[\n  f(n+1)=\\sum_{j=0}^{n}{}_{n+1}\\mathrm C_j=2^{n+1}-{}_{n+1}\\mathrm C_{n+1}=\\boldsymbol{2^{n+1}-1},\n\\]\n\\[\n  f(n+2)=\\sum_{j=0}^{n}{}_{n+2}\\mathrm C_j=2^{n+2}-{}_{n+2}\\mathrm C_{n+1}-{}_{n+2}\\mathrm C_{n+2}=\\boldsymbol{2^{n+2}-n-3}.\n\\]\n\n(3) $j\\geqq1$ のとき\n\\[\n  P_j(-2)=\\frac{(-2)(-3)\\cdots(-(j+1))}{j!}=(-1)^j\\frac{(j+1)!}{j!}=(-1)^j(j+1)\n\\]\nであり，$j=0$ でも $P_0(-2)=1=(-1)^0\\cdot1$．よって $f(-2)=\\displaystyle\\sum_{j=0}^{n}(-1)^j(j+1)$．\n\\begin{itemize}\n  \\item $n=2m$（$m\\geqq0$）のとき：$j=2i,\\,2i+1$（$0\\leqq i\\leqq m-1$）の2項ずつの和は $(2i+1)-(2i+2)=-1$ で，最後に $j=2m$ の項 $2m+1$ が残るので，$f(-2)=-m+2m+1=m+1=\\boldsymbol{\\dfrac{n+2}2}$．\n  \\item $n=2m+1$（$m\\geqq0$）のとき：$j=2i,\\,2i+1$（$0\\leqq i\\leqq m$）の2項ずつの和がすべて $-1$ なので，$f(-2)=-(m+1)=\\boldsymbol{-\\dfrac{n+1}2}$．\n\\end{itemize}"
+   }
+  ],
+  "idea": {
+   "tex": "次数 $n$ 以下の多項式は $n+1$ 個の点での値で1つに決まる（差が $n+1$ 個の解をもつので因数定理により0）．条件をみたす多項式を1つ具体的に作れば，それが答えのすべて．$x=k$ で「途中から0になる」多項式 $\\dfrac{x(x-1)\\cdots(x-j+1)}{j!}$ を並べると，二項定理で $2^k$ が出る．"
+  },
+  "methods": [],
+  "tags": [
+   "一致の定理",
+   "因数定理",
+   "二項定理",
+   "補間"
+  ],
+  "provenance": {
+   "created": "2026-11-19"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-EQ-229",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-08",
+  "level": 4,
+  "minutes": 30,
+  "theme": "べきを右辺にもつ連立方程式と割り算の余り",
+  "topic": "べきを右辺にもつ連立方程式と割り算の余り",
+  "statement": {
+   "tex": "$a,b,c$ は相異なる複素数とする．$x,y,z$ についての連立方程式\n\\[\nx+ay+a^2z=a^5,\\qquad x+by+b^2z=b^5,\\qquad x+cy+c^2z=c^5\n\\]\nを考える．$p=a+b+c$，$q=ab+bc+ca$，$r=abc$ とおく．\n\\begin{enumerate}\n  \\item この連立方程式はただ1組の解 $(x,y,z)$ をもち，整式 $x+yt+zt^2$ は $t^5$ を $(t-a)(t-b)(t-c)$ で割った余りに等しいことを示せ．\n  \\item $x,y,z$ を $p,q,r$ で表せ．\n  \\item $a,b,c$ が方程式 $t^3-t-1=0$ の3つの解であるとき，$a,b,c$ が相異なることを示し，$x,y,z$ および $a^5+b^5+c^5$ の値を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 証明　(2) $x=r(p^2-q)$，$y=q^2-p^2q+pr$，$z=p^3-2pq+r$　(3) $x=y=z=1$，$a^5+b^5+c^5=5$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "$h(t)=(t-a)(t-b)(t-c)=t^3-pt^2+qt-r$ とおく．\n\n(1) $t^5$ を3次式 $h(t)$ で割った商を $Q(t)$，余りを $R(t)=x_0+y_0t+z_0t^2$ とする（余りは2次以下）．$t^5=h(t)Q(t)+R(t)$ に $t=a,b,c$ を代入すると $h(a)=h(b)=h(c)=0$ より $R(a)=a^5$，$R(b)=b^5$，$R(c)=c^5$．よって $(x_0,y_0,z_0)$ は解である．\n\n逆に $(x,y,z)$ を任意の解とすると，$D(t)=(x-x_0)+(y-y_0)t+(z-z_0)t^2$ は $D(a)=D(b)=D(c)=0$ をみたす．$D$ が恒等的に $0$ でないとすると，2次以下の整式が相異なる3つの値 $a,b,c$ を根にもつことになり，因数定理から $(t-a)(t-b)(t-c)$ で割り切れて次数が3以上となり矛盾．よって $D(t)$ は恒等的に $0$，すなわち $(x,y,z)=(x_0,y_0,z_0)$．解はただ1組で，$x+yt+zt^2=R(t)$ である．\\hfill$\\square$\n\n(2) 実際に割り算を行うと\n\\[\nt^5=h(t)\\bigl(t^2+pt+p^2-q\\bigr)+(p^3-2pq+r)t^2+(q^2-p^2q+pr)t+r(p^2-q)\n\\]\nである（右辺を展開して確かめられる：$h(t)(t^2+pt+p^2-q)$ の $t^4,t^3$ の係数は $p-p=0$，$(p^2-q)-p^2+q=0$ となり，$t^2,t,1$ の係数は $-p(p^2-q)+qp-r$，$q(p^2-q)-rp$，$-r(p^2-q)$ で，余りと足すと $0$ になる）．(1) より\n\\[\n\\boldsymbol{x=r(p^2-q)},\\qquad \\boldsymbol{y=q^2-p^2q+pr},\\qquad \\boldsymbol{z=p^3-2pq+r}.\n\\]\n\n(3) $t^3-t-1=0$ が重解 $\\alpha$ をもつとし，3解を $\\alpha,\\alpha,\\gamma$ とすると，解と係数の関係より $2\\alpha+\\gamma=0$，$\\alpha^2+2\\alpha\\gamma=-1$，$\\alpha^2\\gamma=1$．$\\gamma=-2\\alpha$ を代入して $-3\\alpha^2=-1$，$\\alpha^2=\\frac13$，さらに $\\alpha^2\\gamma=-2\\alpha^3=1$ より $\\alpha^3=-\\frac12$，よって $\\alpha=\\frac{\\alpha^3}{\\alpha^2}=-\\frac32$ となるが $\\alpha^2=\\frac94\\neq\\frac13$ で矛盾．よって3解は相異なる．\n\nこのとき $p=0$，$q=-1$，$r=1$ だから (2) より $x=1\\cdot(0+1)=\\boldsymbol1$，$y=1-0+0=\\boldsymbol1$，$z=0-0+1=\\boldsymbol1$．\n（実際 $t^3=t+1$ のもとで $t^5=t^2\\cdot t^3=t^3+t^2=t^2+t+1$．）\nさらに $a^5=1+a+a^2$ などを加えて\n\\[\na^5+b^5+c^5=3+p+(p^2-2q)=3+0+2=\\boldsymbol5 .\n\\]\n\\hfill$\\square$"
+   }
+  ],
+  "idea": {
+   "tex": "$x+ay+a^2z=a^5$ が $a,b,c$ で成り立つことは，2次以下の整式 $x+yt+z t^2$ が3点で $t^5$ と一致すること．$t^5$ を $(t-a)(t-b)(t-c)$ で割った余りがそれであり，一意性は「2次以下の整式が異なる3つの根をもてば恒等的に0」から従う．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) 証明\n(2) $x$：r(p^2-q) ; $y$：q^2-p^2q+pr ; $z$：p^3-2pq+r\n(3) 記述"
+  },
+  "methods": [],
+  "tags": [
+   "連立方程式",
+   "剰余",
+   "解と係数の関係",
+   "恒等式"
+  ],
+  "provenance": {
+   "created": "2026-11-19"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-EQ-230",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-08",
+  "level": 5,
+  "minutes": 35,
+  "theme": "3つの解がすべて $0$ と $1$ の間にある整数係数の3次方程式",
+  "topic": "3つの解がすべて $0$ と $1$ の間にある整数係数の3次方程式",
+  "statement": {
+   "tex": "$a,b,c,d$ を正の整数とし，$x$ の3次方程式\n\\[\nax^3-bx^2+cx-d=0\\qquad\\cdots(*)\n\\]\nを考える．\n\\begin{enumerate}\n  \\item $(*)$ の3つの解（重解は重複して数える）がすべて実数で $0<x<1$ の範囲にあるような $(a,b,c,d)$ のうち，$a$ の最小値を求めよ．\n  \\item $(*)$ が $0<x<1$ の範囲に相異なる3つの実数解をもつような $(a,b,c,d)$ のうち，$a$ の最小値を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $8$　(2) $10$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "$f(x)=ax^3-bx^2+cx-d$ の3解を $\\alpha,\\beta,\\gamma$（$0<\\alpha,\\beta,\\gamma<1$）とすると $f(x)=a(x-\\alpha)(x-\\beta)(x-\\gamma)$．\n\\[\nd=-f(0)=a\\alpha\\beta\\gamma,\\qquad f(1)=a(1-\\alpha)(1-\\beta)(1-\\gamma)>0.\n\\]\n$f(1)=a-b+c-d$ は整数で正なので $f(1)\\geqq1$，また $d\\geqq1$．よって\n\\[\n1\\leqq d\\cdot f(1)=a^2\\cdot\\alpha(1-\\alpha)\\cdot\\beta(1-\\beta)\\cdot\\gamma(1-\\gamma).\\qquad\\cdots\\text{①}\n\\]\n$0<t<1$ で $t(1-t)=\\frac14-\\left(t-\\frac12\\right)^2\\leqq\\frac14$（等号は $t=\\frac12$ のときのみ）なので，①の右辺は $\\frac{a^2}{64}$ 以下で，等号は $\\alpha=\\beta=\\gamma=\\frac12$ のときのみ．\n\n(1) $a^2\\geqq64$ より $a\\geqq8$．$a=8$ のとき $8x^3-12x^2+6x-1=(2x-1)^3$ で，$(a,b,c,d)=(8,12,6,1)$ は3解がすべて $\\frac12$．よって最小値は $\\boldsymbol8$．\n\n(2) 解が相異なれば①の右辺 $<\\frac{a^2}{64}$ なので $a^2>64$，$a\\geqq9$．\n\n\\textbf{$a=9$ は不可能}．$a=9$ とすると $1\\leqq d\\cdot f(1)<\\frac{81}{64}<2$ より $d=f(1)=1$，すなわち $9-b+c-1=1$，$c=b-7$．よって\n\\[\nf(x)=9x^3-bx^2+(b-7)x-1,\\quad \\alpha+\\beta+\\gamma=\\frac b9,\\quad \\alpha\\beta+\\beta\\gamma+\\gamma\\alpha=\\frac{b-7}9,\\quad \\alpha\\beta\\gamma=\\frac19.\n\\]\n実数 $p,q,r$ について $(p+q+r)^2-3(pq+qr+rp)=\\frac12\\{(p-q)^2+(q-r)^2+(r-p)^2\\}\\geqq0$．$p=\\alpha\\beta$，$q=\\beta\\gamma$，$r=\\gamma\\alpha$ とすると $pq+qr+rp=\\alpha\\beta\\gamma(\\alpha+\\beta+\\gamma)$ なので\n\\[\n(\\alpha\\beta+\\beta\\gamma+\\gamma\\alpha)^2\\geqq3\\alpha\\beta\\gamma(\\alpha+\\beta+\\gamma).\\qquad\\cdots\\text{②}\n\\]\n②に代入して $\\left(\\frac{b-7}9\\right)^2\\geqq\\frac{3b}{81}$，すなわち $b^2-17b+49\\geqq0$．ここで $c=b-7>0$ より $b>7>\\frac{17-\\sqrt{93}}2$ なので\n\\[\nb\\geqq\\frac{17+\\sqrt{93}}{2}.\\qquad\\cdots\\text{③}\n\\]\n次に $f(1-x)$ を計算すると\n\\[\nf(1-x)=-\\bigl\\{9x^3-(27-b)x^2+(20-b)x-1\\bigr\\}\n\\]\nで，$1-\\alpha,1-\\beta,1-\\gamma$（いずれも $0$ と $1$ の間）がこの $\\{\\ \\}$ 内の3次式の3解である．$b'=27-b$ とおくとこれは $9x^3-b'x^2+(b'-7)x-1$ という同じ形で，2次の基本対称式 $\\frac{b'-7}{9}=(1-\\alpha)(1-\\beta)+(1-\\beta)(1-\\gamma)+(1-\\gamma)(1-\\alpha)>0$ より $b'>7$．よって同じ議論で $b'\\geqq\\frac{17+\\sqrt{93}}2$，すなわち\n\\[\nb\\leqq27-\\frac{17+\\sqrt{93}}2=\\frac{37-\\sqrt{93}}2.\\qquad\\cdots\\text{④}\n\\]\n$9<\\sqrt{93}<10$ より，③④から $13<\\frac{17+\\sqrt{93}}2\\leqq b\\leqq\\frac{37-\\sqrt{93}}2<14$ となり，整数 $b$ は存在しない．よって $a=9$ は不可能．\n\n\\textbf{$a=10$ は可能}．$(a,b,c,d)=(10,15,7,1)$ とすると\n\\[\n10x^3-15x^2+7x-1=(2x-1)(5x^2-5x+1)\n\\]\nで，解は $\\frac12$，$\\frac{5\\pm\\sqrt5}{10}$．$0<\\sqrt5<5$ よりいずれも $0<x<1$ にあり，$\\frac{5-\\sqrt5}{10}<\\frac12<\\frac{5+\\sqrt5}{10}$ で相異なる．\n\n以上より最小値は $\\boldsymbol{10}$．"
+   }
+  ],
+  "idea": {
+   "tex": "$d$ と $f(1)$ はともに正の整数なので $d\\cdot f(1)\\geqq1$．一方 $d\\cdot f(1)=a^2\\alpha(1-\\alpha)\\beta(1-\\beta)\\gamma(1-\\gamma)\\leqq\\frac{a^2}{64}$．解が相異なる場合は $a=9$ で $d=f(1)=1$ に絞られ，$(\\alpha\\beta+\\beta\\gamma+\\gamma\\alpha)^2\\geqq3\\alpha\\beta\\gamma(\\alpha+\\beta+\\gamma)$ を元の解と $1-\\alpha,1-\\beta,1-\\gamma$ の両方に使うと $b$ が2つの整数の間に挟まれて矛盾する．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) 8\n(2) 10"
+  },
+  "methods": [],
+  "tags": [
+   "解と係数の関係",
+   "整数",
+   "不等式",
+   "対称性"
+  ],
+  "provenance": {
+   "created": "2026-11-19"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-EQ-231",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-08",
+  "level": 3,
+  "minutes": 25,
+  "theme": "0, 1, 2, 3 だけをとる数の累乗和",
+  "topic": "0, 1, 2, 3 だけをとる数の累乗和",
+  "statement": {
+   "tex": "$n$ を正の整数とし，$x_1,x_2,\\cdots,x_n$ はおのおの $0,1,2,3$ のいずれかの値をとるとする．正の整数 $k$ に対して $f_k=\\displaystyle\\sum_{i=1}^nx_i^{\\,k}$ とおく．\n\\begin{enumerate}\n  \\item $f_k\\ (k=1,2,3,\\cdots)$ を $f_1,f_2,f_3$ と $k$ を用いて表せ．\n  \\item $3f_2-2f_1\\leqq f_3\\leqq4f_2-3f_1$ が成り立つことを示し，それぞれの等号が成り立つための $x_1,\\cdots,x_n$ についての条件を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $f_k=\\dfrac{f_3-5f_2+6f_1}2-2^{k-1}(f_3-4f_2+3f_1)+\\dfrac{3^{k-1}(f_3-3f_2+2f_1)}2$　(2) 証明；左の等号は値3をとる $x_i$ がないとき，右の等号は値2をとる $x_i$ がないとき"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) 値 $v$ をとる $x_i$ の個数を $n_v$ とすると，$k\\geqq1$ で $f_k=n_1+2^kn_2+3^kn_3$（$0^k=0$）．\n$x(x-2)(x-3)=x^3-5x^2+6x$ は $x=0,2,3$ で0，$x=1$ で2．よって\n\\[\\sum_{i}x_i(x_i-2)(x_i-3)=f_3-5f_2+6f_1=2n_1.\\]\n同様に $x(x-1)(x-3)=x^3-4x^2+3x$ は $x=2$ でだけ0でなく値 $-2$，$x(x-1)(x-2)=x^3-3x^2+2x$ は $x=3$ でだけ0でなく値6だから\n\\[f_3-4f_2+3f_1=-2n_2,\\qquad f_3-3f_2+2f_1=6n_3.\\]\nよって\n\\[\\boldsymbol{f_k=\\frac{f_3-5f_2+6f_1}2-2^{k-1}(f_3-4f_2+3f_1)+\\frac{3^{k-1}(f_3-3f_2+2f_1)}2}.\\]\n\n(2) $n_3\\geqq0$ より $f_3-3f_2+2f_1\\geqq0$，$n_2\\geqq0$ より $f_3-4f_2+3f_1\\leqq0$．すなわち $3f_2-2f_1\\leqq f_3\\leqq4f_2-3f_1$．\n左の等号 $\\iff n_3=0\\iff$ \\textbf{値3をとる $x_i$ がない}．右の等号 $\\iff n_2=0\\iff$ \\textbf{値2をとる $x_i$ がない}．\\hfill$\\square$"
+   }
+  ],
+  "idea": {
+   "tex": "各 $x_i$ がとる値が有限個なら，それらを根とする整式 $x(x-1)(x-2)(x-3)$ が0になるので，高い累乗は低い累乗の組合せで書ける．とくに $x(x-2)(x-3)$ などは「ちょうど1つの値でだけ0でない」ので，その和から各値をとる個数が取り出せ，個数が0以上であることがそのまま累乗和の不等式になる．"
+  },
+  "methods": [],
+  "tags": [
+   "累乗和",
+   "因数定理",
+   "連立方程式",
+   "不等式"
+  ],
+  "provenance": {
+   "created": "2026-11-19"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-EQ-232",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-08",
+  "level": 3,
+  "minutes": 35,
+  "theme": "相反方程式の近似解から係数と真の解を確定する",
+  "topic": "相反方程式の近似解から係数と真の解を確定する",
+  "statement": {
+   "tex": "$a,b$ は整数とし，$x$ の4次方程式\n\\[\nx^4+ax^3+bx^2+ax+1=0\n\\]\nは4つの異なる実数解 $\\alpha_1<\\alpha_2<\\alpha_3<\\alpha_4$ をもつとする．さらに\n\\[\n|\\alpha_1+2.76|\\leqq0.05,\\quad |\\alpha_2+0.39|\\leqq0.05,\\quad |\\alpha_3-0.29|\\leqq0.05,\\quad |\\alpha_4-3.85|\\leqq0.05\n\\]\nであることがわかっている．\n\\begin{enumerate}\n  \\item $a,b$ の値を求めよ．\n  \\item $\\alpha_1,\\alpha_2,\\alpha_3,\\alpha_4$ のそれぞれについて，小数第3位を四捨五入した値を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $a=-1$，$b=-11$　(2) $\\alpha_1\\fallingdotseq-2.78$，$\\alpha_2\\fallingdotseq-0.36$，$\\alpha_3\\fallingdotseq0.26$，$\\alpha_4\\fallingdotseq3.88$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) 定数項が1なので $x=0$ は解でない．$x\\neq0$ が解なら両辺を $x^4$ で割って $\\frac1x$ も解である．\n\n$\\alpha_4\\in[3.80,\\,3.90]$ より $\\frac1{\\alpha_4}\\in\\left[\\frac1{3.9},\\frac1{3.8}\\right]$ で，$0.25<\\frac1{3.9}$，$\\frac1{3.8}<0.27$．これは $\\alpha_3$ の範囲 $[0.24,0.34]$ に含まれ，他の3つの範囲 $[-2.81,-2.71]$，$[-0.44,-0.34]$，$[3.80,3.90]$ とは共通部分をもたない．$\\frac1{\\alpha_4}$ は4つの解のどれかだから $\\frac1{\\alpha_4}=\\alpha_3$．同様に $\\alpha_1\\in[-2.81,-2.71]$ より $\\frac1{\\alpha_1}\\in\\left[-\\frac1{2.71},-\\frac1{2.81}\\right]\\subset[-0.37,-0.35]$ で，これは $\\alpha_2$ の範囲にのみ含まれるから $\\frac1{\\alpha_1}=\\alpha_2$．\n\n$t_1=\\alpha_3+\\alpha_4$，$t_2=\\alpha_1+\\alpha_2$ とおくと $\\alpha_3\\alpha_4=\\alpha_1\\alpha_2=1$ より\n\\[\nx^4+ax^3+bx^2+ax+1=(x^2-t_1x+1)(x^2-t_2x+1)=x^4-(t_1+t_2)x^3+(t_1t_2+2)x^2-(t_1+t_2)x+1 .\n\\]\nよって $a=-(t_1+t_2)$，$b=t_1t_2+2$．\n\n$t_1+t_2=\\alpha_1+\\alpha_2+\\alpha_3+\\alpha_4$ は $-2.76-0.39+0.29+3.85=0.99$ との差が $0.2$ 以下なので $0.79\\leqq -a\\leqq1.19$．$a$ は整数だから $\\boldsymbol{a=-1}$，$t_2=1-t_1$．\n\n$h(x)=x+\\frac1x$ は $h(x)-h(y)=(x-y)\\left(1-\\frac1{xy}\\right)$ より，$x,y>1$ の範囲でも $x,y<-1$ の範囲でも増加する．$t_1=h(\\alpha_4)$ だから\n\\[\n\\frac{386}{95}=h(3.8)\\leqq t_1\\leqq h(3.9)=\\frac{1621}{390}.\n\\]\n$t(1-t)$ は $t>\\frac12$ で減少するので\n\\[\n-13.2<-\\frac{1995451}{152100}=\\frac{1621}{390}\\cdot\\left(-\\frac{1231}{390}\\right)\\leqq t_1(1-t_1)\\leqq\\frac{386}{95}\\cdot\\left(-\\frac{291}{95}\\right)=-\\frac{112326}{9025}<-12.4 .\n\\]\n$b-2=t_1t_2=t_1(1-t_1)$ は整数なので $b-2=-13$，$\\boldsymbol{b=-11}$．\n\n（このとき実際に $x^4-x^3-11x^2-x+1=0$ は(2)で求める4つの異なる実数解をもち，条件をみたす．）\n\n(2) $t_1,t_2$ は $t^2-t-13=0$ の2解で，$t_1>0>t_2$ だから $t_1=\\frac{1+\\sqrt{53}}2$，$t_2=\\frac{1-\\sqrt{53}}2$．\n\n$\\alpha_4>1$ と $h$ の増加性から，$3.875<\\alpha_4<3.885 \\iff h(3.875)<t_1<h(3.885)\\iff 2h(3.875)-1<\\sqrt{53}<2h(3.885)-1$．\n\\[\n2h(3.875)-1=\\frac{901}{124},\\qquad 2h(3.885)-1=\\frac{566029}{77700}\n\\]\nであり，$901^2=811801<814928=53\\cdot124^2$，$53\\cdot77700^2=319976370000<320388828841=566029^2$．よって $3.875<\\alpha_4<3.885$．\nさらに $\\alpha_3=\\frac1{\\alpha_4}$ で $0.255<\\frac1{3.885}$，$\\frac1{3.875}<0.265$ だから $0.255<\\alpha_3<0.265$．\n\n$\\alpha_1<-1$ と $h$ の増加性から，$-2.785<\\alpha_1<-2.775\\iff h(-2.785)<t_2<h(-2.775)\\iff 1-2h(-2.775)<\\sqrt{53}<1-2h(-2.785)$．\n\\[\n1-2h(-2.775)=\\frac{16141}{2220},\\qquad 1-2h(-2.785)=\\frac{405949}{55700}\n\\]\nであり，$16141^2=260531881<261205200=53\\cdot2220^2$，$53\\cdot55700^2=164431970000<164794590601=405949^2$．よって $-2.785<\\alpha_1<-2.775$．\nさらに $\\alpha_2=\\frac1{\\alpha_1}$ で $-0.365<-\\frac1{2.775}$，$-\\frac1{2.785}<-0.355$ だから $-0.365<\\alpha_2<-0.355$．\n\n以上より $\\boldsymbol{\\alpha_1\\fallingdotseq-2.78,\\ \\alpha_2\\fallingdotseq-0.36,\\ \\alpha_3\\fallingdotseq0.26,\\ \\alpha_4\\fallingdotseq3.88}$．"
+   }
+  ],
+  "idea": {
+   "tex": "近似値の誤差の範囲と「係数が整数」を組み合わせて係数を確定する．相反方程式では解が $x,\\frac1x$ の組になり，どの近似解どうしが組になるかを区間で判定してから $t=x+\\frac1x$ に置き換える．真の解の桁は，単調な $x+\\frac1x$ の値と無理数の大小を，有理数の2乗の比較に直して確定する．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) $a$：-1 ; $b$：-11\n(2) 記述"
+  },
+  "methods": [],
+  "tags": [
+   "相反方程式",
+   "解と係数の関係",
+   "評価",
+   "整数"
+  ],
+  "provenance": {
+   "created": "2026-11-19"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-EQ-233",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-08",
+  "level": 4,
+  "minutes": 30,
+  "theme": "3次方程式のすべての解の実部が負となる条件",
+  "topic": "3次方程式のすべての解の実部が負となる条件",
+  "statement": {
+   "tex": "\\begin{enumerate}\n  \\item 実数 $a,b,c$ に対し，$x$ の3次方程式 $x^3+ax^2+bx+c=0$ のすべての解（虚数解を含む）の実部が負であるための必要十分条件は\n  \\[a>0,\\quad b>0,\\quad c>0,\\quad ab>c\\]\n  であることを示せ．\n  \\item $x$ の3次方程式 $x^3+px^2+qx+q-p=0$ のすべての解の実部が負となるような実数の組 $(p,q)$ の範囲を $pq$ 平面上に図示せよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 証明　(2) 「$0<p<1$ かつ $p<q<\\dfrac p{1-p}$」または「$p\\geqq1$ かつ $q>p$」（境界を含まない）"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "\\textbf{(1)}　3つの解を $\\alpha,\\beta,\\gamma$（重解は重複して数える）とすると，解と係数の関係より $\\alpha+\\beta+\\gamma=-a$，$\\alpha\\beta+\\beta\\gamma+\\gamma\\alpha=b$，$\\alpha\\beta\\gamma=-c$．また\n\\[(\\alpha+\\beta)(\\beta+\\gamma)(\\gamma+\\alpha)=(\\alpha+\\beta+\\gamma)(\\alpha\\beta+\\beta\\gamma+\\gamma\\alpha)-\\alpha\\beta\\gamma=-ab+c.\\qquad(*)\\]\n実数係数なので，解は「3つとも実数」か「実数 $r$ と虚数 $u\\pm vi$（$u,v$ は実数，$v\\neq0$）」のどちらか．後者のとき\n\\[(*)\\text{ の左辺}=2u\\cdot(r+u+vi)(r+u-vi)=2u\\{(r+u)^2+v^2\\},\\]\n$a=-(r+2u)$，$b=u^2+v^2+2ur$，$c=-r(u^2+v^2)$．\n\n必要性：3つとも負の実数なら，$a>0$，$b>0$（負の数どうしの積の和），$c>0$，$(*)$ の左辺は負の数3つの積で負だから $ab>c$．虚数を含むとき $r<0$，$u<0$ なので $a>0$，$b>0$，$c>0$，$(*)$ の左辺 $=2u\\{\\cdots\\}<0$（$\\{\\cdots\\}\\geqq v^2>0$）より $ab>c$．\n\n十分性：$a,b,c>0$，$ab>c$ とする．$x\\geqq0$ なら $x^3+ax^2+bx+c\\geqq c>0$ なので実数解はすべて負．3つとも実数なら終わり．虚数を含むときは $r<0$ であり，$ab>c$ より $(*)$ の左辺 $2u\\{(r+u)^2+v^2\\}<0$，$\\{\\cdots\\}>0$ だから $u<0$．よってすべての解の実部は負．\\hfill$\\square$\n\n\\textbf{(2)}　(1) で $a=p$，$b=q$，$c=q-p$ として，条件は\n\\[p>0,\\quad q>0,\\quad q>p,\\quad pq>q-p.\\]\n$q>p>0$ なら $q>0$ は自動的．$pq>q-p\\iff q(1-p)<p$．$p\\geqq1$ なら左辺 $\\leqq0<p$ で常に成立．$0<p<1$ なら $q<\\dfrac p{1-p}$（$\\dfrac p{1-p}-p=\\dfrac{p^2}{1-p}>0$ なので $p<q<\\dfrac p{1-p}$ は空でない）．よって求める範囲は\n\\[\\boldsymbol{0<p<1,\\ p<q<\\frac p{1-p}\\quad\\text{または}\\quad p\\geqq1,\\ q>p}\\]\nで，図示すると直線 $q=p$ の上側で，$0<p<1$ の部分では双曲線 $q=\\dfrac p{1-p}$（漸近線 $p=1$）の下側に限られる領域（境界はすべて含まない）．"
+   }
+  ],
+  "idea": {
+   "tex": "解 $\\alpha,\\beta,\\gamma$ について $(\\alpha+\\beta)(\\beta+\\gamma)(\\gamma+\\alpha)=c-ab$（$x^3+ax^2+bx+c$）．虚数解 $u\\pm vi$ と実数解 $r$ のときこの積は $2u\\{(r+u)^2+v^2\\}$ となり，符号が $u$ の符号を決める．実数解は係数がすべて正なら負．"
+  },
+  "methods": [],
+  "tags": [
+   "解と係数の関係",
+   "共役複素数",
+   "領域"
+  ],
+  "provenance": {
+   "created": "2026-11-19"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-EQ-234",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-08",
+  "level": 4,
+  "minutes": 30,
+  "theme": "$P_n(x^k)$ が $1+x+\\cdots+x^{m-1}$ で割り切れる条件",
+  "topic": "$P_n(x^k)$ が $1+x+\\cdots+x^{m-1}$ で割り切れる条件",
+  "statement": {
+   "tex": "多項式 $P_n(x)=1+x+x^2+\\cdots+x^{n-1}$ $(n=1,2,\\cdots)$ を考える．\n\\begin{enumerate}\n  \\item $m\\geqq2$，$n\\geqq1$，$k\\geqq1$ を整数とする．$P_n(x^k)$ が $P_m(x)$ で割り切れるための必要十分条件は，「$m$ と $k$ が互いに素であり，かつ $n$ が $m$ の倍数である」ことを示せ．\n  \\item $2\\leqq m\\leqq100$，$1\\leqq n\\leqq100$ をみたす整数の組 $(m,n)$ のうち，$P_n(x^6)$ が $P_m(x)$ で割り切れるものの個数を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 証明　(2) $102$ 個"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "\\textbf{(1)}　$x^m-1=(x-1)P_m(x)$．整数 $j\\geqq0$ を $j=qm+s$ $(0\\leqq s<m)$ とすると $x^j-x^s=x^s(x^{qm}-1)$ は $x^m-1$ で割り切れる．よって $P_n(x^k)=\\sum_{j=0}^{n-1}x^{kj}$ を $x^m-1$ で割った余りは\n\\[R(x)=\\sum_{s=0}^{m-1}N_sx^s,\\qquad N_s=(kj\\ \\text{を}\\ m\\ \\text{で割った余りが}\\ s\\ \\text{となる}\\ j\\ (0\\leqq j\\leqq n-1)\\ \\text{の個数})\\]\nである．$P_n(x^k)-R(x)$ は $x^m-1$，したがって $P_m(x)$ で割り切れるから，「$P_n(x^k)$ が $P_m(x)$ で割り切れる」と「$R$ が $P_m$ で割り切れる」は同値．$R$ の次数は $m-1$ 以下，$P_m$ の次数は $m-1$ なので，$R$ が $P_m$ で割り切れる $\\iff$ $R$ が $P_m$ の定数倍 $\\iff$ $N_0=N_1=\\cdots=N_{m-1}$．また $N_0+\\cdots+N_{m-1}=n\\geqq1$．\n\n$m$ と $k$ の最大公約数 $e$ が2以上のとき：$kj=mQ+1$ となる整数 $j,Q$ があれば，$e$ が $kj-mQ=1$ を割り切って矛盾．よって $N_1=0$ で，全部等しければすべて0となり $\\sum N_s=n\\geqq1$ に反する．割り切れない．\n\n$m$ と $k$ が互いに素のとき：$0\\leqq j<j'$，$j'-j<m$ で $kj$ と $kj'$ の $m$ で割った余りが等しければ，$m$ が $k(j'-j)$ を割り切り，$m$ と $k$ は互いに素なので $m$ が $j'-j$ を割り切って矛盾．よって連続する $m$ 個の $j$ に対する余りは相異なり，$0,1,\\cdots,m-1$ を1回ずつとる．$n=qm+s$ $(0\\leqq s<m)$ とすると，最初の $qm$ 個で各 $N_s$ に $q$ ずつ，残りの $s$ 個で相異なる $s$ 個の余りに1ずつ加わる．全部等しい $\\iff$ $s=0$ $\\iff$ $n$ が $m$ の倍数．\\hfill$\\square$\n\n\\textbf{(2)}　(1) より条件は「$m$ が 6 と互いに素（2でも3でも割り切れない）かつ $n$ が $m$ の倍数」．そのような $m$ ごとに $n$ は $\\left[\\dfrac{100}m\\right]$ 個．$m=5,7$ で $20+14$，$m=11,13,17,19$ で $9+7+5+5$，$m=23,25$ で $4+4$，$m=29,31$ で $3+3$，$35\\leqq m\\leqq49$ の $m=35,37,41,43,47,49$ で各2，$50<m\\leqq100$ で6と互いに素な $m$（$m=53,55,\\cdots,97$ の16個）で各1．合計\n\\[34+26+8+6+12+16=\\boldsymbol{102}\\ \\text{個}.\\]"
+   }
+  ],
+  "idea": {
+   "tex": "$x^j-x^s$（$s$ は $j$ を $m$ で割った余り）は $x^m-1$ で割り切れるので，$x^m-1$ で割った余りを考えるときは $x^j$ を $x^s$ に置きかえてよい．$P_m$ は $x^m-1$ の因数で次数 $m-1$ なので，次数 $m-1$ 以下の余り $R$ が $P_m$ で割り切れる $\\iff$ $R$ の係数がすべて等しい．係数は「$kj$ を $m$ で割った余り」の出現回数．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) 証明\n(2) 102個"
+  },
+  "methods": [],
+  "tags": [
+   "整式の割り算",
+   "剰余",
+   "互いに素",
+   "数え上げ"
+  ],
+  "provenance": {
+   "created": "2026-11-19"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-EQ-235",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-08",
+  "level": 4,
+  "minutes": 30,
+  "theme": "絶対値の大小で縛られた3次式",
+  "topic": "絶対値の大小で縛られた3次式",
+  "statement": {
+   "tex": "$f(x)$ は $x^3$ の係数が $1$ である実数係数の3次式で，すべての実数 $x$ に対して\n\\[|f(x)|\\leqq|x^3-3x^2+4x-2|\\]\nが成り立つとする．\n\\begin{enumerate}\n  \\item このような $f(x)$ をすべて求めよ．\n  \\item (1) の $f(x)$ のうち，方程式 $f(x)=0$ が異なる3つの実数解をもつものについて，最大の解と最小の解の差がとり得る値の範囲を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $f(x)=(x-1)\\{(x-1)^2+1-c\\}=x^3-3x^2+(4-c)x+c-2$（$c$ は $0\\leqq c\\leqq2$ の定数）　(2) $0$ より大きく $2$ 以下（差の最大値 $2$ は $c=2$，$f(x)=x(x-1)(x-2)$ のとき）"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "$g(x)=x^3-3x^2+4x-2=(x-1)G(x)$，$G(x)=x^2-2x+2=(x-1)^2+1>0$ と因数分解できる．\n\n(1) \\textbf{必要条件．} $x=1$ とすると $|f(1)|\\leqq0$ より $f(1)=0$．因数定理より $f(x)=(x-1)Q(x)$ で，$Q(x)$ は $x^2$ の係数1の2次式．$x\\neq1$ では $|x-1|>0$ で割って\n\\[|Q(x)|\\leqq G(x)\\qquad(x\\neq1).\\qquad\\cdots(*)\\]\n$G(x)-Q(x)$ は $x^2$ の項が消えて1次以下の式 $\\alpha x+\\beta$ になる．$(*)$ より $x\\neq1$ で $\\alpha x+\\beta\\geqq0$．もし $\\alpha>0$ なら $x=-\\dfrac{|\\beta|+1}\\alpha$（$<0$ で $\\neq1$）で $\\alpha x+\\beta=-|\\beta|-1+\\beta<0$，$\\alpha<0$ なら $x=\\dfrac{|\\beta|+1}{|\\alpha|}+1$（$>1$）で $\\alpha x+\\beta=-|\\beta|-1-|\\alpha|+\\beta<0$ となり矛盾．よって $\\alpha=0$ で，$c=\\beta$ とおくと $Q(x)=G(x)-c$，また $x=0$ で $c\\geqq0$．\n\nさらに $(*)$ から $G(x)+Q(x)=2(x-1)^2+2-c\\geqq0$（$x\\neq1$）．もし $c>2$ なら $x=1+\\dfrac{\\sqrt{c-2}}2$（$\\neq1$）で $2\\cdot\\dfrac{c-2}4+2-c=-\\dfrac{c-2}2<0$ となり矛盾．よって $0\\leqq c\\leqq2$．\n\n\\textbf{十分条件．} $0\\leqq c\\leqq2$ のとき，すべての $x$ で $G(x)\\geqq1$ だから\n\\[G(x)-c\\leqq G(x),\\qquad G(x)-c\\geqq-G(x)\\ \\ (\\because\\ 2G(x)\\geqq2\\geqq c).\\]\nよって $|G(x)-c|\\leqq G(x)$，両辺に $|x-1|$ を掛けて $|f(x)|\\leqq|g(x)|$．\n\n以上より\n\\[\\boldsymbol{f(x)=(x-1)\\{(x-1)^2+1-c\\}=x^3-3x^2+(4-c)x+c-2\\quad(0\\leqq c\\leqq2)}.\\]\n\n(2) $f(x)=0$ の解は $x=1$ と $(x-1)^2=c-1$ の解．$c<1$ なら後者は実数解をもたず，$c=1$ なら $x=1$ のみ．$1<c\\leqq2$ なら $x=1\\pm\\sqrt{c-1}$ で，$1$ と異なるので異なる3つの実数解 $1-\\sqrt{c-1}<1<1+\\sqrt{c-1}$ をもつ．最大と最小の解の差は $2\\sqrt{c-1}$ で，$1<c\\leqq2$ を動くとき $0<2\\sqrt{c-1}\\leqq2$ のすべての値をとる．よって求める範囲は\n\\[\\boldsymbol{0<(\\text{差})\\leqq2}\\]\n（最大値 $2$ は $c=2$，$f(x)=(x-1)\\{(x-1)^2-1\\}=x(x-1)(x-2)$ のとき）．\n\\hfill$\\square$"
+   }
+  ],
+  "idea": {
+   "tex": "$|f|\\leqq|g|$ がすべての $x$ で成り立てば，$g$ の実数解は $f$ の解でもある．共通の1次因数で割ると，$x^3$ の係数がそろっているので $g$ 側の商と $f$ 側の商の差は1次以下の式になり，「すべての $x$（1点を除く）で0以上の1次以下の式は定数」から差が定数 $c$ に決まる．残る条件 $2G-c\\geqq0$ は除いた1点のまわりの値で判定する．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) $f(x)$：x^3-3x^2+(4-c)x+c-2\n(2) 記述"
+  },
+  "methods": [],
+  "tags": [
+   "整式",
+   "因数定理",
+   "恒等的な不等式",
+   "1次式の符号"
+  ],
+  "provenance": {
+   "created": "2026-11-19"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-EQ-236",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-08",
+  "level": 4,
+  "minutes": 35,
+  "theme": "隣どうしの積を加えた4変数の2次式の非負条件",
+  "topic": "隣どうしの積を加えた4変数の2次式の非負条件",
+  "statement": {
+   "tex": "実数の定数 $\\alpha$ に対して，実数 $x_1,x_2,x_3,x_4$ の式\n\\[\nQ=x_1^2+x_2^2+x_3^2+x_4^2+\\alpha\\,(x_1x_2+x_2x_3+x_3x_4)\n\\]\nを考える．\n\\begin{enumerate}\n  \\item $\\alpha=1$ のとき，すべての実数 $x_1,x_2,x_3,x_4$ に対して $Q\\geqq0$ であることを示し，等号が成り立つ条件を求めよ．\n  \\item すべての実数 $x_1,x_2,x_3,x_4$ に対して $Q\\geqq0$ が成り立つような $\\alpha$ の値の範囲を求めよ．\n  \\item $\\alpha$ が (2) で求めた範囲の端の値であるとき，$Q=0$ となる条件を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 証明；等号は $x_1=x_2=x_3=x_4=0$ のときに限る　(2) $1-\\sqrt5\\leqq\\alpha\\leqq\\sqrt5-1$　(3) $\\varphi=\\dfrac{1+\\sqrt5}2$ として，$\\alpha=\\sqrt5-1$ のとき $(x_1,x_2,x_3,x_4)=k(1,-\\varphi,\\varphi,-1)$，$\\alpha=1-\\sqrt5$ のとき $(x_1,x_2,x_3,x_4)=k(1,\\varphi,\\varphi,1)$（$k$ は実数）"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "$\\beta=\\dfrac{\\alpha^2}4$ とおく．$x_1$ から順に平方完成する．\n\\[\nx_1^2+\\alpha x_1x_2=\\left(x_1+\\frac\\alpha2x_2\\right)^2-\\beta x_2^2\n\\]\nより $Q=\\left(x_1+\\frac\\alpha2x_2\\right)^2+(1-\\beta)x_2^2+\\alpha x_2x_3+x_3^2+\\alpha x_3x_4+x_4^2$．$d_2=1-\\beta>0$ のとき\n\\[\nd_2x_2^2+\\alpha x_2x_3=d_2\\left(x_2+\\frac\\alpha{2d_2}x_3\\right)^2-\\frac\\beta{d_2}x_3^2,\n\\]\n$x_3^2$ の係数は $d_3=1-\\dfrac\\beta{1-\\beta}=\\dfrac{1-2\\beta}{1-\\beta}$．$d_3>0$ のとき同様に $x_4^2$ の係数は $d_4=1-\\dfrac\\beta{d_3}=\\dfrac{1-3\\beta+\\beta^2}{1-2\\beta}$．よって $\\beta<\\frac12$ のとき\n\\[\nQ=\\left(x_1+\\frac\\alpha2x_2\\right)^2+d_2\\left(x_2+\\frac\\alpha{2d_2}x_3\\right)^2+d_3\\left(x_3+\\frac\\alpha{2d_3}x_4\\right)^2+d_4x_4^2 .\\qquad(\\dagger)\n\\]\n\n(1) $\\alpha=1$ では $\\beta=\\frac14$，$d_2=\\frac34$，$d_3=\\frac23$，$d_4=\\frac58$ で\n\\[\nQ=\\left(x_1+\\frac12x_2\\right)^2+\\frac34\\left(x_2+\\frac23x_3\\right)^2+\\frac23\\left(x_3+\\frac34x_4\\right)^2+\\frac58x_4^2\\geqq0 .\n\\]\n等号は4つの平方がすべて0のとき，すなわち $x_4=0$，$x_3=0$，$x_2=0$，$x_1=0$ のときに限る．\\hfill$\\square$\n\n(2) $\\beta_0=\\dfrac{3-\\sqrt5}2$ とおく．$\\beta^2-3\\beta+1=(\\beta-\\beta_0)\\left(\\beta-\\frac{3+\\sqrt5}2\\right)$ である．また $|\\alpha|\\leqq\\sqrt5-1\\iff\\beta\\leqq\\dfrac{(\\sqrt5-1)^2}4=\\dfrac{6-2\\sqrt5}4=\\beta_0$．\n\n（十分性）$|\\alpha|\\leqq\\sqrt5-1$ なら $\\beta\\leqq\\beta_0<\\frac12$ で $d_2>0$，$d_3>0$，$d_4=\\dfrac{(\\beta_0-\\beta)\\left(\\frac{3+\\sqrt5}2-\\beta\\right)}{1-2\\beta}\\geqq0$．$(\\dagger)$ より $Q\\geqq0$．\n\n（必要性）$\\varphi=\\dfrac{1+\\sqrt5}2$ とおくと $\\varphi^2=\\varphi+1$．\n\\[\nQ(1,\\varphi,\\varphi,1)=2+2\\varphi^2+\\alpha(2\\varphi+\\varphi^2)=4+2\\varphi+\\alpha(3\\varphi+1)=(5+\\sqrt5)+\\alpha\\cdot\\frac{5+3\\sqrt5}2,\n\\]\n\\[\nQ(1,-\\varphi,\\varphi,-1)=(5+\\sqrt5)-\\alpha\\cdot\\frac{5+3\\sqrt5}2 .\n\\]\n$\\dfrac{2(5+\\sqrt5)}{5+3\\sqrt5}=\\dfrac{2(5+\\sqrt5)(3\\sqrt5-5)}{45-25}=\\dfrac{2(10\\sqrt5-10)}{20}=\\sqrt5-1$ なので，$\\alpha<1-\\sqrt5$ なら前者が，$\\alpha>\\sqrt5-1$ なら後者が負になる．\n\nよって求める範囲は\n\\[\n\\boldsymbol{1-\\sqrt5\\leqq\\alpha\\leqq\\sqrt5-1}.\n\\]\n\n(3) $|\\alpha|=\\sqrt5-1$ では $\\beta=\\beta_0$，$d_4=0$ で，$(\\dagger)$ より\n\\[\nQ=0\\iff x_1+\\frac\\alpha2x_2=0,\\quad x_2+\\frac\\alpha{2d_2}x_3=0,\\quad x_3+\\frac\\alpha{2d_3}x_4=0 .\n\\]\n$x_4=k$ は自由に選べ，$x_3,x_2,x_1$ が順に決まる．$\\beta_0^2=3\\beta_0-1$ に注意して，$d_2=1-\\beta_0=\\dfrac{\\sqrt5-1}2=\\dfrac1\\varphi$，$d_3=\\dfrac{1-2\\beta_0}{1-\\beta_0}=\\dfrac{\\sqrt5-2}{\\frac{\\sqrt5-1}2}=\\dfrac{2(\\sqrt5-2)(\\sqrt5+1)}4=\\dfrac{3-\\sqrt5}2=\\dfrac1{\\varphi^2}$．\n\n$\\alpha=1-\\sqrt5=-\\dfrac2\\varphi$ のとき：$\\dfrac\\alpha{2d_3}=-\\dfrac1\\varphi\\cdot\\varphi^2=-\\varphi$，$\\dfrac\\alpha{2d_2}=-\\dfrac1\\varphi\\cdot\\varphi=-1$，$\\dfrac\\alpha2=-\\dfrac1\\varphi$ なので $x_3=\\varphi k$，$x_2=\\varphi k$，$x_1=\\dfrac1\\varphi\\cdot\\varphi k=k$．\n\n$\\alpha=\\sqrt5-1=\\dfrac2\\varphi$ のとき：符号が逆になり $x_3=-\\varphi k$，$x_2=\\varphi k$，$x_1=-k$，すなわち $(x_1,x_2,x_3,x_4)=-k(1,-\\varphi,\\varphi,-1)$．\n\nしたがって，$\\varphi=\\dfrac{1+\\sqrt5}2$ として\n\\[\n\\begin{gathered}\\boldsymbol{\\alpha=\\sqrt5-1\\text{ のとき }(x_1,x_2,x_3,x_4)=k(1,-\\varphi,\\varphi,-1),}\\\\ \\boldsymbol{\\alpha=1-\\sqrt5\\text{ のとき }(x_1,x_2,x_3,x_4)=k(1,\\varphi,\\varphi,1)}\\end{gathered}\n\\]\n（$k$ は任意の実数）．"
+   }
+  ],
+  "idea": {
+   "tex": "原題は部分和 $S_k=x_1+\\cdots+x_k$ を使って式を $S_4^2+\\frac{\\alpha-1}2(S_3^2+\\cdots)$ の形にまとめ，非負の条件を読む．捻りでは「隣どうしの積」だけを含む式で，部分和ではまとまらない．$x_1$ から順に平方完成をくり返すと，係数が $d_2=1-\\beta$，$d_3=1-\\frac\\beta{d_2}$，$d_4=1-\\frac\\beta{d_3}$（$\\beta=\\frac{\\alpha^2}4$）と連分数のように決まり，すべて0以上になる条件が $\\beta^2-3\\beta+1\\geqq0$．境界では黄金比の成分をもつベクトルで等号が成立し，それより外ではそのベクトルで負になる．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) 記述\n(2) 1-sqrt(5)<=α<=sqrt(5)-1\n(3) 記述"
+  },
+  "methods": [],
+  "tags": [
+   "不等式の証明",
+   "平方完成",
+   "絶対不等式",
+   "等号成立条件"
+  ],
+  "provenance": {
+   "created": "2026-11-19"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-EQ-237",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-08",
+  "level": 4,
+  "minutes": 30,
+  "theme": "4乗した多項式の係数とその偶奇・4で割った余り",
+  "topic": "4乗した多項式の係数とその偶奇・4で割った余り",
+  "statement": {
+   "tex": "$g(x)=1+x+x^2+\\cdots+x^{20}$ とし，$g(x)^4=\\displaystyle\\sum_{n=0}^{80}c_nx^n$ と表す．\n\\begin{enumerate}\n  \\item $c_{40}$ を求めよ．\n  \\item $c_n$（$0\\leqq n\\leqq80$）のうち奇数であるものの個数を求めよ．\n  \\item $c_n$（$0\\leqq n\\leqq80$）のうち4で割った余りが3であるものの個数を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $c_{40}=6181$　(2) $21$ 個　(3) $10$ 個"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "$c_n$ は $k_1+k_2+k_3+k_4=n$，$0\\leqq k_i\\leqq20$ をみたす整数の組 $(k_1,k_2,k_3,k_4)$ の個数である．\n\n(1) 上限を考えないと $k_1+\\cdots+k_4=40$ の非負整数解は ${}_{43}\\mathrm C_3=12341$ 個．$k_1\\geqq21$ のものは $k_1-21$ に置き換えて和19の非負整数解 ${}_{22}\\mathrm C_3=1540$ 個，他も同様．2つ以上が21以上になると和が42以上となり不可能．よって $c_{40}=12341-4\\cdot1540=\\boldsymbol{6181}$．\n\n(2) $h(x)=\\displaystyle\\sum_{0\\leqq i<j\\leqq20}x^{i+j}$ とおくと，$g(x)^2=\\displaystyle\\sum_{i=0}^{20}x^{2i}+2h(x)=g(x^2)+2h(x)$．同じ式の $x$ を $x^2$ にすると $g(x^2)^2=g(x^4)+2h(x^2)$．よって\n\\[g(x)^4=\\bigl(g(x^2)+2h(x)\\bigr)^2=g(x^4)+2h(x^2)+4\\bigl(h(x)g(x^2)+h(x)^2\\bigr).\\]\n$h(x)g(x^2)+h(x)^2$ は整数係数なので，$c_n$ は「$g(x^4)$ の $x^n$ の係数」$+2\\times$「$h(x^2)$ の $x^n$ の係数」に4の倍数を加えたもの．$g(x^4)$ の $x^n$ の係数は $n$ が80以下の4の倍数なら1，そうでなければ0．よって $c_n$ が奇数 $\\iff$ $n=0,4,\\dots,80$ で，$\\boldsymbol{21}$ 個．\n\n(3) $c_n\\equiv3\\pmod4$ となるには $c_n$ が奇数で $n=4m$（$0\\leqq m\\leqq20$）．このとき $c_n\\equiv1+2p_m\\pmod 4$，ただし $p_m$ は $h(x^2)$ の $x^{4m}$ の係数，すなわち $h(x)$ の $x^{2m}$ の係数で，$0\\leqq i<j\\leqq20$，$i+j=2m$ をみたす $(i,j)$ の個数．$c_n\\equiv3\\iff p_m$ が奇数．\n\\begin{itemize}\n  \\item $m\\leqq10$：$j=2m-i\\leqq20$ は常に成り立ち，$i<j\\iff i<m$．$p_m=m$．\n  \\item $m\\geqq10$：$j\\leqq20\\iff i\\geqq2m-20$ で，$2m-20\\leqq i\\leqq m-1$ より $p_m=20-m$．\n\\end{itemize}\n$p_m$ が奇数となるのは $m=1,3,5,7,9$ と $m=11,13,15,17,19$ の $\\boldsymbol{10}$ 個．\\hfill$\\square$"
+   }
+  ],
+  "idea": {
+   "tex": "係数は「上限つきの和の分け方」の個数で，上限を超える分を引いて数える．偶奇と4で割った余りは，$g(x)^2=g(x^2)+2h(x)$（$h$ は異なる2項の積の和）を2回使って，係数を「余りが見える部分」と4の倍数に分けて調べる．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) $c_{40}$：6181\n(2) 21個\n(3) 10個"
+  },
+  "methods": [],
+  "tags": [
+   "多項式の係数",
+   "重複組合せ",
+   "包除原理",
+   "係数の偶奇"
+  ],
+  "provenance": {
+   "created": "2026-11-19"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
  }
 ]

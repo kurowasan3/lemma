@@ -2182,5 +2182,526 @@
    },
    "verified": false
   }
+ },
+ {
+  "id": "X-MIX-060",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "X-20",
+  "level": 4,
+  "minutes": 35,
+  "theme": "係数が $-1,0,1$ の方程式の実数解の最大値",
+  "topic": "係数が $-1,0,1$ の方程式の実数解の最大値",
+  "statement": {
+   "tex": "$n$ を2以上の整数とする．\n\\begin{enumerate}\n  \\item 方程式 $x^n=x^{n-1}+x^{n-2}+\\cdots+x+1$ はただ1つの正の解 $\\beta_n$ をもち，$1<\\beta_n<2$ であることを示せ．\n  \\item 各 $a_k$（$0\\leqq k\\leqq n-1$）が $-1,0,1$ のいずれかである方程式 $x^n+a_{n-1}x^{n-1}+\\cdots+a_1x+a_0=0$ の実数解 $\\alpha$ は，つねに $|\\alpha|\\leqq\\beta_n$ をみたすことを示せ．\n  \\item $2-\\dfrac1{2^{n-1}}<\\beta_n<2-\\dfrac1{2^n}$ を示せ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 証明（$\\beta_2=\\dfrac{1+\\sqrt5}2$）　(2) 証明（最大値 $\\beta_n$ は $a_k=-1$ ですべて達成）　(3) 証明"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "$g_n(x)=x^n-(x^{n-1}+\\cdots+x+1)$ とおく．\n\n(1) $x>0$ で $\\dfrac{g_n(x)}{x^n}=1-\\left(\\dfrac1x+\\dfrac1{x^2}+\\cdots+\\dfrac1{x^n}\\right)$ は各項 $\\dfrac1{x^j}$ が減少するので狭義増加である．よって $g_n(x)=0$ の正の解は高々1つ．\n$g_n(1)=1-n<0$，$g_n(2)=2^n-(2^n-1)=1>0$ で $g_n$ は連続なので $1<x<2$ に解があり，これが正の解 $\\beta_n$ のすべてである．$\\dfrac{g_n(x)}{x^n}$ が増加することから，$0<x<\\beta_n$ で $g_n(x)<0$，$x>\\beta_n$ で $g_n(x)>0$ である．\\hfill$\\square$\n\nまた $(x-1)(x^{n-1}+\\cdots+1)=x^n-1$ より $(x-1)g_n(x)=x^{n+1}-2x^n+1$ で，$\\beta_n\\neq1$ から\n\\[\\beta_n^{\\,n}(2-\\beta_n)=1\\qquad\\cdots\\text{①}\\]\n\n(2) $\\alpha=0$ なら $|\\alpha|=0<\\beta_n$．$\\alpha\\neq0$ とすると $\\alpha^n=-(a_{n-1}\\alpha^{n-1}+\\cdots+a_0)$ で，三角不等式と $|a_k|\\leqq1$ より\n\\[|\\alpha|^n\\leqq|a_{n-1}||\\alpha|^{n-1}+\\cdots+|a_0|\\leqq|\\alpha|^{n-1}+\\cdots+|\\alpha|+1,\\]\nすなわち $g_n(|\\alpha|)\\leqq0$．(1) の符号の結果より $|\\alpha|\\leqq\\beta_n$．\\hfill$\\square$\n\n（$a_k=-1$ がすべての $k$ で成り立つ方程式は解 $\\beta_n$ をもつので，$\\beta_n$ は実数解の絶対値の最大値である．）\n\n(3) まず $\\beta_{n+1}>\\beta_n$ を示す．$g_{n+1}(x)=x^{n+1}-(x^n+\\cdots+x)-1=xg_n(x)-1$ より $g_{n+1}(\\beta_n)=-1<0$．(1) の符号の結果（$n+1$ の場合）から $\\beta_n<\\beta_{n+1}$．\n$\\beta_2$ は $x^2-x-1=0$ の正の解 $\\varphi=\\dfrac{1+\\sqrt5}2$ なので，$n\\geqq2$ で $\\beta_n\\geqq\\varphi$．\n\n右側：$\\beta_n<2$ と ① より $2-\\beta_n=\\dfrac1{\\beta_n^{\\,n}}>\\dfrac1{2^n}$．\n\n左側：まず $\\varphi^n>n$（$n\\geqq2$）を帰納法で示す．$\\varphi^2=\\varphi+1=\\dfrac{3+\\sqrt5}2>2$．$\\varphi^m>m$（$m\\geqq2$）なら $\\varphi^{m+1}>m\\varphi=m+m(\\varphi-1)\\geqq m+2(\\varphi-1)=m+\\sqrt5-1>m+1$．\nよって $\\beta_n^{\\,n}\\geqq\\varphi^n>n$．\n\n次に $0\\leqq\\varepsilon\\leqq1$ のとき $(1-\\varepsilon)^m\\geqq1-m\\varepsilon$（$m\\geqq1$）を帰納法で示す．$m=1$ は等号．$m$ で成り立てば，$1-\\varepsilon\\geqq0$ を掛けて $(1-\\varepsilon)^{m+1}\\geqq(1-m\\varepsilon)(1-\\varepsilon)=1-(m+1)\\varepsilon+m\\varepsilon^2\\geqq1-(m+1)\\varepsilon$．\n\n$\\varepsilon=\\dfrac{2-\\beta_n}2$ とおくと ① より $\\varepsilon=\\dfrac1{2\\beta_n^{\\,n}}$ で，$0<\\varepsilon<\\dfrac1{2n}<1$．$\\dfrac{\\beta_n}2=1-\\varepsilon$ より\n\\[\\left(\\frac{\\beta_n}2\\right)^n\\geqq1-n\\varepsilon>1-\\frac12=\\frac12,\\quad\\text{よって}\\quad\\beta_n^{\\,n}>2^{n-1}.\\]\n① より $2-\\beta_n=\\dfrac1{\\beta_n^{\\,n}}<\\dfrac1{2^{n-1}}$．以上で $2-\\dfrac1{2^{n-1}}<\\beta_n<2-\\dfrac1{2^n}$．\\hfill$\\square$"
+   }
+  ],
+  "idea": {
+   "tex": "$\\alpha^n=-(a_{n-1}\\alpha^{n-1}+\\cdots+a_0)$ の絶対値を三角不等式で評価すると $|\\alpha|^n\\leqq|\\alpha|^{n-1}+\\cdots+1$ となり，解の絶対値は「すべての係数が $-1$ の方程式」の正の解 $\\beta_n$ で上からおさえられ，それが最大値になる．$(x-1)$ を掛けると $\\beta_n^{\\,n}(2-\\beta_n)=1$ となり，$\\beta_n$ の増加性と $\\beta_n^{\\,n}>n$ から $2$ との差が $2^{-n}$ と $2^{1-n}$ の間に決まる．"
+  },
+  "methods": [],
+  "tags": [
+   "高次方程式",
+   "解の評価",
+   "三角不等式",
+   "数列の単調性",
+   "ベルヌーイの不等式"
+  ],
+  "provenance": {
+   "created": "2026-11-19"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "X-MIX-061",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "X-20",
+  "level": 4,
+  "minutes": 35,
+  "theme": "差の積の重みつき和が負にならない条件",
+  "topic": "差の積の重みつき和が負にならない条件",
+  "statement": {
+   "tex": "$u,v,w$ を実数の定数とし，実数 $x,y,z$ に対して\n\\[F(x,y,z)=u(x-y)(x-z)+v(y-z)(y-x)+w(z-x)(z-y)\\]\nとおく．\n\\begin{enumerate}\n  \\item 「すべての実数 $x,y,z$ に対して $F(x,y,z)\\geqq0$」であるための必要十分条件は，\n  \\[u\\geqq0,\\quad v\\geqq0,\\quad w\\geqq0,\\quad \\sqrt u\\leqq\\sqrt v+\\sqrt w,\\quad \\sqrt v\\leqq\\sqrt w+\\sqrt u,\\quad \\sqrt w\\leqq\\sqrt u+\\sqrt v\\]\n  であることを示せ．\n  \\item すべての実数 $x,y,z$ に対して $(x-y)(x-z)+t(y-z)(y-x)+t^2(z-x)(z-y)\\geqq0$ が成り立つような実数 $t$ の範囲を求めよ．\n  \\item $\\triangle\\mathrm{ABC}$ において，任意の実数 $X,Y,Z$ に対して\n  \\[X^2+Y^2+Z^2\\geqq2YZ\\cos A+2ZX\\cos B+2XY\\cos C\\]\n  が成り立つことを示し，等号が成り立つ条件を $\\mathrm{BC}=a$，$\\mathrm{CA}=b$，$\\mathrm{AB}=c$ を用いて答えよ．\n  \\item $\\triangle\\mathrm{ABC}$ が動くとき，$6\\cos A+4\\cos B+3\\cos C$ の最大値と，最大値をとるときの $a:b:c$ を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 証明　(2) $\\dfrac{3-\\sqrt5}2\\leqq t\\leqq\\dfrac{3+\\sqrt5}2$　(3) 証明；等号は $\\dfrac Xa=\\dfrac Yb=\\dfrac Zc$ のときに限る　(4) 最大値 $\\dfrac{29}4$，$a:b:c=2:3:4$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) $p=x-y$，$q=y-z$ とおくと $x-z=p+q$ で，\n\\[(x-y)(x-z)=p(p+q),\\quad (y-z)(y-x)=-pq,\\quad (z-x)(z-y)=(p+q)q\\]\nより\n\\[F=up^2+spq+wq^2,\\qquad s=u-v+w.\\]\n$(x,y,z)=(p+q,q,0)$ とすれば任意の実数の組 $(p,q)$ が現れるので，条件は「すべての実数 $p,q$ で $Q(p,q)=up^2+spq+wq^2\\geqq0$」と同値である．\n\n[補題] $Q\\geqq0$（すべての $p,q$）$\\iff u\\geqq0,\\ w\\geqq0,\\ s^2\\leqq4uw$．\n\n($\\Rightarrow$) $Q(1,0)=u\\geqq0$，$Q(0,1)=w\\geqq0$．$u>0$ なら $Q(p,1)=up^2+sp+w\\geqq0$ がすべての $p$ で成り立つので判別式 $s^2-4uw\\leqq0$．$u=0$ なら $Q(p,1)=sp+w\\geqq0$ がすべての $p$ で成り立つので $s=0$ で，$s^2\\leqq0=4uw$．\n($\\Leftarrow$) $u>0$ なら $uQ=\\left(up+\\dfrac s2q\\right)^2+\\left(uw-\\dfrac{s^2}4\\right)q^2\\geqq0$ より $Q\\geqq0$．$u=0$ なら $s^2\\leqq0$ より $s=0$ で $Q=wq^2\\geqq0$．\n\n$u,w\\geqq0$ のもとで $s^2\\leqq4uw\\iff-2\\sqrt{uw}\\leqq u+w-v\\leqq2\\sqrt{uw}\\iff(\\sqrt u-\\sqrt w)^2\\leqq v\\leqq(\\sqrt u+\\sqrt w)^2$．\nこのとき $v\\geqq0$ で，最後の条件は $|\\sqrt u-\\sqrt w|\\leqq\\sqrt v\\leqq\\sqrt u+\\sqrt w$，すなわち $\\sqrt u\\leqq\\sqrt v+\\sqrt w$，$\\sqrt w\\leqq\\sqrt u+\\sqrt v$，$\\sqrt v\\leqq\\sqrt w+\\sqrt u$ と同値．\n逆に $u,v,w\\geqq0$ とこの3つの不等式が成り立てば，$|\\sqrt u-\\sqrt w|\\leqq\\sqrt v\\leqq\\sqrt u+\\sqrt w$ を2乗して $s^2\\leqq4uw$ が得られる．以上で示された．\\hfill$\\square$\n\n[注] 3つの不等式がすべて等号なしで成り立つとする．$u=0$ なら $\\sqrt v<\\sqrt w$ かつ $\\sqrt w<\\sqrt v$ となり矛盾するので $u>0$．また $|\\sqrt u-\\sqrt w|<\\sqrt v<\\sqrt u+\\sqrt w$ を2乗すると $(\\sqrt u-\\sqrt w)^2<v<(\\sqrt u+\\sqrt w)^2$，すなわち $-2\\sqrt{uw}<u+w-v<2\\sqrt{uw}$ で $s^2<4uw$．よって $uQ=\\left(up+\\dfrac s2q\\right)^2+\\left(uw-\\dfrac{s^2}4\\right)q^2$ が0になるのは $q=0$ かつ $up=0$ のときに限り，$Q=0\\iff p=q=0\\iff x=y=z$．\n\n(2) $u=1$，$v=t$，$w=t^2$ に (1) を使う．条件は $t\\geqq0$ かつ，$r=\\sqrt t$ として\n\\[1\\leqq r+r^2,\\qquad r\\leqq r^2+1,\\qquad r^2\\leqq1+r.\\]\n2番目は $r^2-r+1=\\left(r-\\frac12\\right)^2+\\frac34>0$ で常に成立．1番目は $r\\geqq\\dfrac{\\sqrt5-1}2$，3番目は $r\\leqq\\dfrac{1+\\sqrt5}2$（$r\\geqq0$）と同値．\n$t=r^2$ より $\\boldsymbol{\\dfrac{3-\\sqrt5}2\\leqq t\\leqq\\dfrac{3+\\sqrt5}2}$．\n\n(3) $u=a^2$，$v=b^2$，$w=c^2$ とすると $\\sqrt u=a$ などは三角形の3辺で，3つの不等式は等号なしで成り立つ．(1) と注より，すべての実数 $x,y,z$ で\n\\[G=a^2(x-y)(x-z)+b^2(y-z)(y-x)+c^2(z-x)(z-y)\\geqq0,\\quad\\text{等号}\\iff x=y=z.\\]\n展開すると $(x-y)(x-z)=x^2-xy-zx+yz$，$(y-z)(y-x)=y^2-yz-xy+zx$，$(z-x)(z-y)=z^2-zx-yz+xy$ より\n\\[G=a^2x^2+b^2y^2+c^2z^2-(a^2+b^2-c^2)xy-(b^2+c^2-a^2)yz-(c^2+a^2-b^2)zx.\\]\n余弦定理 $a^2+b^2-c^2=2ab\\cos C$ などを代入すると\n\\[G=(ax)^2+(by)^2+(cz)^2-2(ax)(by)\\cos C-2(by)(cz)\\cos A-2(cz)(ax)\\cos B.\\]\n任意の実数 $X,Y,Z$ に対し $x=\\dfrac Xa$，$y=\\dfrac Yb$，$z=\\dfrac Zc$ とおけば $G=X^2+Y^2+Z^2-2YZ\\cos A-2ZX\\cos B-2XY\\cos C\\geqq0$．\n等号は $x=y=z$，すなわち $\\boldsymbol{\\dfrac Xa=\\dfrac Yb=\\dfrac Zc}$ のときに限る．\\hfill$\\square$\n\n(4) (3) で $(X,Y,Z)=(2,3,4)$ とおくと $YZ=12$，$ZX=8$，$XY=6$ より\n\\[29\\geqq2(12\\cos A+8\\cos B+6\\cos C)=4(6\\cos A+4\\cos B+3\\cos C).\\]\nよって $6\\cos A+4\\cos B+3\\cos C\\leqq\\dfrac{29}4$ で，等号は $a:b:c=2:3:4$ のときに限る．$2+3>4$ より3辺の比が $2:3:4$ の三角形は存在するので，最大値 $\\boldsymbol{\\dfrac{29}4}$（$\\boldsymbol{a:b:c=2:3:4}$）．"
+   }
+  ],
+  "idea": {
+   "tex": "シューア型の和 $u(x-y)(x-z)+v(y-z)(y-x)+w(z-x)(z-y)$ は，差 $p=x-y$，$q=y-z$ の2次式 $up^2+(u-v+w)pq+wq^2$ になる．これが常に0以上である条件を判別式で書くと「$\\sqrt u,\\sqrt v,\\sqrt w$ が三角形の3辺の条件（等号つき）をみたす」という対称な形になる．重みを辺の長さの2乗にとり余弦定理を使うと $X^2+Y^2+Z^2\\geqq2YZ\\cos A+2ZX\\cos B+2XY\\cos C$ が得られ，余弦の1次結合の最大値が求まる．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) 証明\n(2) (3-sqrt(5))/2<=t<=(3+sqrt(5))/2\n(3) 記述\n(4) 記述"
+  },
+  "methods": [],
+  "tags": [
+   "2変数の2次式",
+   "判別式",
+   "三角形の成立条件",
+   "余弦定理",
+   "最大値"
+  ],
+  "provenance": {
+   "created": "2026-11-19"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "X-MIX-062",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "X-20",
+  "level": 4,
+  "minutes": 35,
+  "theme": "$a+b\\sqrt5\\,i$ 型の数の公約数と最大のものの不在",
+  "topic": "$a+b\\sqrt5\\,i$ 型の数の公約数と最大のものの不在",
+  "statement": {
+   "tex": "$a,b$ を整数として $a+b\\sqrt5\\,i$ と表される複素数全体の集合を $R$ とし，$\\alpha=a+b\\sqrt5\\,i\\in R$ に対して $N(\\alpha)=a^2+5b^2$ とおく．$\\alpha,\\delta\\in R$ について，$\\alpha=\\delta\\gamma$ となる $\\gamma\\in R$ が存在するとき「$\\alpha$ は $\\delta$ で割り切れる」という．\n\\begin{enumerate}\n  \\item $\\alpha,\\beta\\in R$ に対して $N(\\alpha\\beta)=N(\\alpha)N(\\beta)$ を示せ．また，$\\alpha$ が $\\delta$ で割り切れるならば，整数 $N(\\alpha)$ は整数 $N(\\delta)$ の倍数であることを示せ．\n  \\item $6$ と $2+2\\sqrt5\\,i$ のどちらも割り切る $R$ の要素（公約数）をすべて求めよ．\n  \\item (2) で求めた公約数のうちに，「(2) のすべての公約数で割り切れる」ものは存在しないことを示せ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 証明　(2) $\\pm1$，$\\pm2$，$\\pm(1+\\sqrt5\\,i)$ の6個　(3) 証明"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) $\\alpha=a+b\\sqrt5\\,i$，$\\beta=c+d\\sqrt5\\,i$ とすると $\\alpha\\beta=(ac-5bd)+(ad+bc)\\sqrt5\\,i\\in R$ で，\n\\[N(\\alpha\\beta)=(ac-5bd)^2+5(ad+bc)^2=a^2c^2+25b^2d^2+5a^2d^2+5b^2c^2=(a^2+5b^2)(c^2+5d^2).\\]\n$\\alpha=\\delta\\gamma$（$\\gamma\\in R$）なら $N(\\alpha)=N(\\delta)N(\\gamma)$ で，$N(\\gamma)$ は整数だから $N(\\alpha)$ は $N(\\delta)$ の倍数．\\hfill$\\square$\n\n(2) $\\delta=a+b\\sqrt5\\,i\\neq0$ について，$\\alpha$ が $\\delta$ で割り切れる $\\iff\\dfrac\\alpha\\delta=\\dfrac{\\alpha\\,\\overline\\delta}{N(\\delta)}\\in R$ である．\n\n$\\delta$ が公約数なら (1) より $N(\\delta)$ は $N(6)=36$ と $N(2+2\\sqrt5\\,i)=4+20=24$ の公約数で，$N(\\delta)\\in\\{1,2,3,4,6,12\\}$．\n$|b|\\geqq2$ なら $N(\\delta)\\geqq20$ で不適．$b=0$ なら $a^2\\in\\{1,4\\}$ で $\\delta=\\pm1,\\pm2$．$|b|=1$ なら $a^2+5\\in\\{6,12\\}$ で $a^2=1$，$\\delta=\\pm1\\pm\\sqrt5\\,i$．\n\n各候補を調べる．$\\pm1$：明らかに公約数．$\\pm2$：$6=2\\cdot3$，$2+2\\sqrt5\\,i=2(1+\\sqrt5\\,i)$ で公約数．\n$\\pm(1+\\sqrt5\\,i)$：$6=(1+\\sqrt5\\,i)(1-\\sqrt5\\,i)$，$2+2\\sqrt5\\,i=(1+\\sqrt5\\,i)\\cdot2$ で公約数．\n$\\pm(1-\\sqrt5\\,i)$：$\\dfrac{2+2\\sqrt5\\,i}{1-\\sqrt5\\,i}=\\dfrac{(2+2\\sqrt5\\,i)(1+\\sqrt5\\,i)}6=\\dfrac{-8+4\\sqrt5\\,i}6\\notin R$ で公約数でない．\n答：$\\boldsymbol{\\pm1,\\ \\pm2,\\ \\pm(1+\\sqrt5\\,i)}$ の6個．\n\n(3) そのような公約数 $\\delta$ があったとする．$\\delta$ は $2$ と $1+\\sqrt5\\,i$ で割り切れるので，(1) より $N(\\delta)$ は $N(2)=4$ の倍数かつ $N(1+\\sqrt5\\,i)=6$ の倍数，よって12の倍数である．\n一方，(2) より $N(\\delta)$ は $1,4,6$ のいずれかで，12の倍数ではない．矛盾．よってそのような公約数は存在しない．\\hfill$\\square$"
+   }
+  ],
+  "idea": {
+   "tex": "$a+b\\sqrt5\\,i$（$a,b$ は整数）の形の数では $N(a+b\\sqrt5\\,i)=a^2+5b^2$ が積を保つので，「$\\delta$ で割り切れる」から「$N(\\delta)$ が整数として約数」が出て，候補が有限個に絞れる．$6$ と $2+2\\sqrt5\\,i$ の公約数には $2$ と $1+\\sqrt5\\,i$ がともに入るが，両方で割り切れる公約数があればそのノルムは $12$ の倍数かつ $12$ の約数で $12$ となり，$a^2+5b^2=12$ に解がないので矛盾する．"
+  },
+  "methods": [],
+  "tags": [
+   "複素数",
+   "ノルム",
+   "約数",
+   "整数の性質",
+   "背理法"
+  ],
+  "provenance": {
+   "created": "2026-11-19"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "X-MIX-063",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "X-20",
+  "level": 4,
+  "minutes": 35,
+  "theme": "3次方程式の解の差の2乗を解とする方程式",
+  "topic": "3次方程式の解の差の2乗を解とする方程式",
+  "statement": {
+   "tex": "$p,q$ を実数とし，3次方程式 $x^3+3px+2q=0$ の3つの解（重解は重複して数える）を $\\alpha,\\beta,\\gamma$ とする．\n\\begin{enumerate}\n  \\item $(\\beta-\\gamma)^2=-3(\\alpha^2+4p)$ を示せ．\n  \\item $(\\beta-\\gamma)^2$，$(\\gamma-\\alpha)^2$，$(\\alpha-\\beta)^2$ を3つの解とする $u$ の3次方程式 $u^3+Au^2+Bu+C=0$ の係数 $A,B,C$ を $p,q$ で表せ．\n  \\item 方程式 $x^3-3x+1=0$ は3つの相異なる実数解をもつ．それらを $\\alpha<\\beta<\\gamma$ とするとき，3つの数 $(\\beta-\\gamma)^2$，$(\\gamma-\\alpha)^2$，$(\\alpha-\\beta)^2$ はそれぞれ $6-3\\alpha$，$6-3\\beta$，$6-3\\gamma$ のどれに等しいか．理由をつけて答えよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 証明　(2) $A=18p$，$B=81p^2$，$C=108(p^3+q^2)$　(3) $(\\gamma-\\alpha)^2=6-3\\alpha$，$(\\alpha-\\beta)^2=6-3\\beta$，$(\\beta-\\gamma)^2=6-3\\gamma$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "解と係数の関係より $\\alpha+\\beta+\\gamma=0$，$\\alpha\\beta+\\beta\\gamma+\\gamma\\alpha=3p$，$\\alpha\\beta\\gamma=-2q$．\n\n(1) $\\beta+\\gamma=-\\alpha$，$\\beta\\gamma=3p-\\alpha(\\beta+\\gamma)=3p+\\alpha^2$ より\n\\[(\\beta-\\gamma)^2=(\\beta+\\gamma)^2-4\\beta\\gamma=\\alpha^2-12p-4\\alpha^2=-3(\\alpha^2+4p).\\qquad\\square\\]\n\n(2) $U_1=(\\beta-\\gamma)^2$，$U_2=(\\gamma-\\alpha)^2$，$U_3=(\\alpha-\\beta)^2$ とする．(1) と同様に $U_1=-3(\\alpha^2+4p)$，$U_2=-3(\\beta^2+4p)$，$U_3=-3(\\gamma^2+4p)$．\n\\[\\alpha^2+\\beta^2+\\gamma^2=0^2-2\\cdot3p=-6p,\\quad \\alpha^2\\beta^2+\\beta^2\\gamma^2+\\gamma^2\\alpha^2=(3p)^2-2\\alpha\\beta\\gamma(\\alpha+\\beta+\\gamma)=9p^2.\\]\nよって\n\\[U_1+U_2+U_3=-3(-6p+12p)=-18p,\\]\n\\[U_1U_2+U_2U_3+U_3U_1=9\\{9p^2+8p(-6p)+3\\cdot16p^2\\}=81p^2,\\]\n\\[U_1U_2U_3=-27\\{(\\alpha\\beta\\gamma)^2+4p\\cdot9p^2+16p^2(-6p)+64p^3\\}=-27(4q^2+4p^3)=-108(p^3+q^2).\\]\n$U_1,U_2,U_3$ を解とする方程式は $u^3-(U_1+U_2+U_3)u^2+(U_1U_2+U_2U_3+U_3U_1)u-U_1U_2U_3=0$ なので\n\\[\\boldsymbol{A=18p,\\quad B=81p^2,\\quad C=108(p^3+q^2)}.\\]\n\n(3) $f(x)=x^3-3x+1$ とすると $f(-2)=-1$，$f(-1)=3$，$f(0)=1$，$f(1)=-1$，$f(2)=3$．符号の変化から $(-2,-1)$，$(0,1)$，$(1,2)$ に1つずつ解があり，3次方程式の解は高々3個なので，これが $\\alpha,\\beta,\\gamma$ で $-2<\\alpha<-1$，$0<\\beta<1$，$1<\\gamma<2$．\n\n$p=-1$，$q=\\frac12$ なので (2) より $U_1,U_2,U_3$ は $h(u)=u^3-18u^2+81u-81=0$ の3つの解（重複込み）である．一方，$u=6-3x$ とおくと $x=\\dfrac{6-u}3$ で\n\\[27f(x)=(6-u)^3-27(6-u)+27=-u^3+18u^2-81u+81=-h(u).\\]\nよって $6-3\\alpha,\\ 6-3\\beta,\\ 6-3\\gamma$ は $h(u)=0$ の相異なる3解で，$h(u)=0$ の解はこれですべてである．したがって $\\{U_1,U_2,U_3\\}=\\{6-3\\alpha,6-3\\beta,6-3\\gamma\\}$ で，大小は $6-3\\alpha>6-3\\beta>6-3\\gamma$．\n\n$\\gamma-\\alpha=(\\gamma-\\beta)+(\\beta-\\alpha)$ は正の数 $\\gamma-\\beta$，$\\beta-\\alpha$ のどちらよりも大きいので $U_2$ が最大．\nまた $(\\beta-\\alpha)-(\\gamma-\\beta)=2\\beta-(\\alpha+\\gamma)=3\\beta>0$ より $U_3>U_1$．\nよって $U_2>U_3>U_1$ で，\n\\[\\boldsymbol{(\\gamma-\\alpha)^2=6-3\\alpha,\\quad(\\alpha-\\beta)^2=6-3\\beta,\\quad(\\beta-\\gamma)^2=6-3\\gamma}.\\]"
+   }
+  ],
+  "idea": {
+   "tex": "$x^3+3px+2q=0$ では $\\beta+\\gamma=-\\alpha$，$\\beta\\gamma=\\alpha^2+3p$ となるので，差の2乗 $(\\beta-\\gamma)^2=-3(\\alpha^2+4p)$ が1つの解 $\\alpha$ だけで書ける．これと解と係数の関係から差の2乗を解とする3次方程式が作れ，定数項は判別式 $-108(p^3+q^2)$ を与える．$x^3-3x+1=0$ ではこの方程式が $u=6-3x$ のおき換えでもとの方程式に戻り，差の2乗の集合が $\\{6-3\\alpha,6-3\\beta,6-3\\gamma\\}$ と一致する．どれとどれが等しいかは大小で決める．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) 証明\n(2) $A$：18p ; $B$：81p^2 ; $C$：108(p^3+q^2)\n(3) 記述"
+  },
+  "methods": [],
+  "tags": [
+   "解と係数の関係",
+   "対称式",
+   "3次方程式",
+   "解の大小",
+   "判別式"
+  ],
+  "provenance": {
+   "created": "2026-11-19"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "X-MIX-064",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "X-20",
+  "level": 5,
+  "minutes": 40,
+  "theme": "交代累乗和を表す多項式の対称性と符号",
+  "topic": "交代累乗和を表す多項式の対称性と符号",
+  "statement": {
+   "tex": "$m$ を正の整数とする．\n\\begin{enumerate}\n  \\item すべての実数 $x$ について $Q(x)+Q(x-1)=x^m$ をみたす多項式 $Q(x)$ がただ1つ存在することを示せ．以下，これを $Q_m(x)$ とする．\n  \\item $Q_m(-x-1)=(-1)^mQ_m(x)$ を示せ．また，$m$ が偶数ならば $Q_m(x)$ は $x(x+1)$ で割り切れ，$m$ が奇数ならば $Q_m(x)$ は $2x+1$ で割り切れることを示せ．\n  \\item 正の整数 $n$ に対して $A_m(n)=\\displaystyle\\sum_{k=1}^{n}(-1)^{n-k}k^m$ とおく．$A_m(n)$ を $Q_m(n)$，$Q_m(0)$，$n$ を用いて表せ．また，$A_4(n)$ を $n$ の多項式として因数分解した形で求めよ．\n  \\item $m\\geqq2$ のとき $Q_m'(x)=mQ_{m-1}(x)$ を示せ．さらに，$m$ が奇数ならば $Q_m(0)\\neq0$ であること，$m$ が偶数ならば $Q_m(x)$ は $x^2$ で割り切れないことを示せ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 証明　(2) 証明　(3) $A_m(n)=Q_m(n)-(-1)^nQ_m(0)$，$A_4(n)=\\dfrac{n(n+1)(n^2+n-1)}{2}$　(4) 証明"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) \\textbf{存在．} 0以上の整数 $j$ について「$P_j(x)+P_j(x-1)=x^j$ をみたす，最高次の係数が $\\frac12$ の $j$ 次多項式 $P_j(x)$ が存在する」ことを $j$ についての帰納法で示す．$j=0$ では $P_0(x)=\\frac12$ でよい．$0,1,\\cdots,k-1$ について成り立つとする．二項定理より\n\\[\n(x-1)^k=x^k+\\sum_{i=0}^{k-1}{}_k\\mathrm C_i(-1)^{k-i}x^i\n\\]\nであるから，\n\\[\nP_k(x)=\\frac12x^k-\\frac12\\sum_{i=0}^{k-1}{}_k\\mathrm C_i(-1)^{k-i}P_i(x)\n\\]\nとおくと，$P_k$ は最高次の係数 $\\frac12$ の $k$ 次多項式で\n\\[\nP_k(x)+P_k(x-1)=\\frac12\\{x^k+(x-1)^k\\}-\\frac12\\sum_{i=0}^{k-1}{}_k\\mathrm C_i(-1)^{k-i}x^i=x^k\n\\]\nとなる．よって $j=k$ でも成り立つ．$P_m$ が条件をみたす．\n\n\\textbf{一意性．} $Q,\\ \\tilde Q$ がともに条件をみたすとし，$H=Q-\\tilde Q$ とおくと $H(x)=-H(x-1)$ がすべての $x$ で成り立つ．よって0以上の整数 $n$ について $H(n)=(-1)^nH(0)$，したがって $H(n)^2=H(0)^2$．多項式 $H(x)^2-H(0)^2$ は無限個の解をもつので恒等的に0，すなわち $H(x)^2$ は定数である．$H$ が1次以上なら $H^2$ は2次以上となり矛盾するから，$H$ は定数 $c$ で，$c=-c$ より $c=0$．よって $Q=\\tilde Q$．\\hfill$\\square$\n\nなお，以上から $Q_m$ は最高次の係数 $\\frac12$ の $m$ 次多項式である．\n\n(2) $R(x)=(-1)^mQ_m(-x-1)$ とおく．$Q_m$ の等式で $x$ を $-x$ にすると $Q_m(-x)+Q_m(-x-1)=(-x)^m$ であるから\n\\[\nR(x)+R(x-1)=(-1)^m\\{Q_m(-x-1)+Q_m(-x)\\}=(-1)^m(-x)^m=x^m.\n\\]\n(1) の一意性より $R=Q_m$，すなわち $Q_m(-x-1)=(-1)^mQ_m(x)$．\n\n$m$ が偶数のとき：定義の等式で $x=0$ として $Q_m(0)+Q_m(-1)=0$，対称性で $x=0$ として $Q_m(-1)=Q_m(0)$．よって $Q_m(0)=Q_m(-1)=0$ で，因数定理より $Q_m(x)$ は $x(x+1)$ で割り切れる．\n\n$m$ が奇数のとき：対称性で $x=-\\frac12$ とすると $Q_m\\!\\left(-\\frac12\\right)=-Q_m\\!\\left(-\\frac12\\right)$，よって $Q_m\\!\\left(-\\frac12\\right)=0$ で，$Q_m(x)$ は $2x+1$ で割り切れる．\\hfill$\\square$\n\n(3) $A_m(1)=1$，$n\\geqq2$ で $A_m(n)=n^m-A_m(n-1)$ である．$B(n)=Q_m(n)-A_m(n)$ とおくと，$n\\geqq2$ で $B(n)+B(n-1)=n^m-n^m=0$．また $Q_m(1)+Q_m(0)=1$ より $B(1)=Q_m(1)-1=-Q_m(0)$．よって\n\\[\nB(n)=(-1)^{n-1}B(1)=(-1)^nQ_m(0),\\qquad \\boldsymbol{A_m(n)=Q_m(n)-(-1)^nQ_m(0)}.\n\\]\n$m=4$ のとき (2) より $Q_4(0)=0$ なので $A_4(n)=Q_4(n)$．$P(y)=Q_4\\!\\left(y-\\frac12\\right)$ とおくと，対称性から $P(-y)=Q_4\\!\\left(-y-\\frac12\\right)=Q_4\\!\\left(y-\\frac12\\right)=P(y)$．$P(y)-P(-y)$ は $P$ の奇数次の項の2倍であり，これが恒等的に0なので $P$ は偶数次の項だけからなる4次式 $e_2y^4+e_1y^2+e_0$ である．$u=x(x+1)$ とおくと $\\left(x+\\frac12\\right)^2=u+\\frac14$ なので，$Q_4(x)=P\\!\\left(x+\\frac12\\right)$ は $u$ の2次以下の多項式 $c_2u^2+c_1u+c_0$ と書ける．$x^4$ の係数を比べて $c_2=\\frac12$，$Q_4(0)=0$ から $c_0=0$．さらに $Q_4(1)=1-Q_4(0)=1$ で，$x=1$ のとき $u=2$ だから $2+2c_1=1$，$c_1=-\\frac12$．よって\n\\[\nQ_4(x)=\\frac{u(u-1)}2=\\frac{x(x+1)(x^2+x-1)}2,\\qquad\n\\boldsymbol{A_4(n)=\\frac{n(n+1)(n^2+n-1)}{2}}.\n\\]\n\n(4) 定義の等式を微分する．合成関数の微分により $\\{Q_m(x-1)\\}'=Q_m'(x-1)$ であるから\n\\[\nQ_m'(x)+Q_m'(x-1)=mx^{m-1}.\n\\]\nよって $\\frac1mQ_m'(x)$ は $m-1$ に対する (1) の条件をみたし，一意性から $Q_m'(x)=mQ_{m-1}(x)$．\n\n次に，すべての正の整数 $j$ について次の (\\textasteriskcentered) を $j$ についての帰納法で示す．\n\\begin{itemize}\n  \\item $j$ が奇数なら，$-\\frac12<x\\leqq0$ で $(-1)^{\\frac{j-1}2}Q_j(x)>0$．\n  \\item $j$ が偶数なら，$-1<x<0$ で $(-1)^{\\frac j2}Q_j(x)>0$．\n\\end{itemize}\n$j=1$：$Q(x)=ax+b$ とおくと $Q(x)+Q(x-1)=2ax-a+2b=x$ より $a=\\frac12$，$b=\\frac14$，$Q_1(x)=\\frac{2x+1}4$ で，$-\\frac12<x\\leqq0$ で正．\n\n$j$（奇数）で成り立つとき $j+1$（偶数）：(2) より $Q_{j+1}(0)=0$ なので，$-\\frac12\\leqq x<0$ に対し\n\\[\nQ_{j+1}(x)=-\\int_x^0Q_{j+1}'(t)\\,dt=-(j+1)\\int_x^0Q_j(t)\\,dt.\n\\]\n$x<t\\leqq0$ では $t>-\\frac12$ だから $(-1)^{\\frac{j-1}2}Q_j(t)>0$ で，積分は区間の幅が正なので $(-1)^{\\frac{j-1}2}\\int_x^0Q_j(t)\\,dt>0$．よって $(-1)^{\\frac{j+1}2}Q_{j+1}(x)=(j+1)(-1)^{\\frac{j-1}2}\\int_x^0Q_j(t)\\,dt>0$．$-1<x<-\\frac12$ では (2) の対称性 $Q_{j+1}(x)=Q_{j+1}(-1-x)$ と $-\\frac12<-1-x<0$ から同じ符号である．\n\n$j$（偶数）で成り立つとき $j+1$（奇数）：(2) より $Q_{j+1}\\!\\left(-\\frac12\\right)=0$ なので，$-\\frac12<x\\leqq0$ に対し\n\\[\nQ_{j+1}(x)=(j+1)\\int_{-\\frac12}^{x}Q_j(t)\\,dt.\n\\]\n$-\\frac12<t<x\\leqq0$ では $(-1)^{\\frac j2}Q_j(t)>0$ だから $(-1)^{\\frac j2}Q_{j+1}(x)>0$，すなわち $(-1)^{\\frac{(j+1)-1}2}Q_{j+1}(x)>0$．\n\n以上で (\\textasteriskcentered) が示された．特に $m$ が奇数なら $x=0$ として $(-1)^{\\frac{m-1}2}Q_m(0)>0$，よって $Q_m(0)\\neq0$．\n\n$m$ が偶数なら $m-1$ は奇数で，$Q_m'(0)=mQ_{m-1}(0)\\neq0$．もし $Q_m(x)=x^2S(x)$（$S$ は多項式）と書けたとすると $Q_m'(x)=2xS(x)+x^2S'(x)$ より $Q_m'(0)=0$ となり矛盾する．よって $Q_m(x)$ は $x^2$ で割り切れない．\\hfill$\\square$"
+   }
+  ],
+  "idea": {
+   "tex": "多項式の関数等式 $Q(x)+Q(x-1)=x^m$ は初期条件なしで解がただ1つに決まる（差 $H$ は $H(n)=(-1)^nH(0)$ で有界になり定数，さらに $0$）．一意性から，$x\\to-x-1$ と置きかえた式も解であることが対称性 $Q(-x-1)=(-1)^mQ(x)$ を生み，微分した式も解になることが $Q_m'=mQ_{m-1}$ を生む．後者と対称性による零点（$0$ または $-\\frac12$）から積分で符号を順に決める．"
+  },
+  "methods": [],
+  "tags": [
+   "差分方程式",
+   "多項式の一意性",
+   "対称性",
+   "因数定理",
+   "微分と積分"
+  ],
+  "provenance": {
+   "created": "2026-11-19"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "X-MIX-065",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "X-20",
+  "level": 3,
+  "minutes": 30,
+  "theme": "点の移動で自分自身に移る直線",
+  "topic": "点の移動で自分自身に移る直線",
+  "statement": {
+   "tex": "$a,b,c,d$ を実数の定数とし，座標平面上の点 $(x,y)$ を点 $(ax+by,\\ cx+dy)$ に移す移動を $T$ とする．\n\\begin{enumerate}\n  \\item 次の2条件は同値であることを示せ．\n  \\begin{itemize}\n    \\item[(i)] 原点を通らない直線 $l$ で，$l$ 上のどの点も $T$ によって $l$ 上の点に移るものが存在する．\n    \\item[(ii)] 原点以外の点 P で，$T$ によって P 自身に移るものが存在する．\n  \\end{itemize}\n  \\item $T$ が点 $(x,y)$ を点 $(sx+y,\\ -x+ty)$ に移す移動（$s,t$ は実数）であるとき，(i)の条件をみたす $(s,t)$ の範囲を $st$ 平面上に図示せよ．また，そのとき(i)の直線 $l$ をすべて求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 証明　(2) 双曲線 $(s-1)(t-1)=-1$ 上の点全体；$l$ は $x+(s-1)y=r$（$r$ は $0$ でない任意の実数）のすべて"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) 原点を通らない直線は，$(p,q)\\neq(0,0)$ を用いて $px+qy=1$ と表せる（両辺を定数項で割る）．$T$ で $(x,y)$ が移る点 $(ax+by,cx+dy)$ について\n\\[\np(ax+by)+q(cx+dy)=p'x+q'y,\\qquad p'=ap+cq,\\quad q'=bp+dq\n\\]\nである．\n\n\\textbf{補題}　$l:\\ px+qy=1$ 上のすべての点で $p'x+q'y=1$ が成り立つ $\\iff$ $(p',q')=(p,q)$．\n\n（証明）$\\Leftarrow$：$(p',q')=(p,q)$ なら $l$ 上で $p'x+q'y=px+qy=1$．$\\Rightarrow$：$l$ 上に異なる2点 $(x_1,y_1)$，$(x_2,y_2)$ をとる．$(p'-p)x+(q'-q)y$ は両点で0．もし $x_1y_2-x_2y_1=0$ なら，$(x_1,y_1)\\neq(0,0)$ より $(x_2,y_2)=k(x_1,y_1)$ と書け，$l$ の式に代入して $k=1$ となり2点が異なることに反する．よって $x_1y_2-x_2y_1\\neq0$ で，連立方程式 $(p'-p)x_i+(q'-q)y_i=0$（$i=1,2$）から $p'-p=q'-q=0$．\\hfill$\\square$\n\nよって (i) $\\iff$ $(p,q)\\neq(0,0)$ で\n\\[\n(a-1)p+cq=0,\\qquad bp+(d-1)q=0 \\tag{$*$}\n\\]\nをみたすものが存在する．一方 (ii) $\\iff$ $(x,y)\\neq(0,0)$ で\n\\[\n(a-1)x+by=0,\\qquad cx+(d-1)y=0 \\tag{$**$}\n\\]\nをみたすものが存在する．\n\n$\\alpha\\beta-\\gamma\\delta=0$ のとき連立方程式 $\\alpha u+\\gamma v=0,\\ \\delta u+\\beta v=0$ が $(u,v)\\neq(0,0)$ の解をもつことを示す：4数がすべて0なら $(1,0)$ が解．そうでなければ，$(\\alpha,\\gamma)\\neq(0,0)$ なら $(u,v)=(\\gamma,-\\alpha)$ が第1式をみたし，第2式は $\\delta\\gamma-\\beta\\alpha=0$ でみたされる．$(\\delta,\\beta)\\neq(0,0)$ なら $(u,v)=(\\beta,-\\delta)$ が同様に解．逆に $\\alpha\\beta-\\gamma\\delta\\neq0$ なら，第1式に $\\beta$，第2式に $\\gamma$ を掛けて引くと $(\\alpha\\beta-\\gamma\\delta)u=0$，同様に $v=0$ となり，$(0,0)$ 以外の解はない．\n\nよって $(*)$ が $(0,0)$ 以外の解をもつ $\\iff (a-1)(d-1)-cb=0$，$(**)$ が $(0,0)$ 以外の解をもつ $\\iff (a-1)(d-1)-bc=0$．両者は同じ条件なので (i) と (ii) は同値．\\hfill$\\square$\n\n(2) $a=s$，$b=1$，$c=-1$，$d=t$ の場合で，(1)より条件は $(s-1)(t-1)=-1\\cdot1$，すなわち\n\\[\n\\boldsymbol{(s-1)(t-1)=-1}\n\\]\nで，図示すると $st$ 平面上の，直線 $s=1$，$t=1$ を漸近線とする双曲線（第2・第4象限の向きの2本の曲線で，$(0,2)$，$(2,0)$ を通る）である．\n\nこのとき $(*)$ は $(s-1)p-q=0$，$p+(t-1)q=0$．第1式より $q=(s-1)p$，これを第2式に代入すると $p\\{1+(s-1)(t-1)\\}=0$ で常に成り立つ．$(p,q)\\neq(0,0)$ より $p\\neq0$．よって $l$ は $px+(s-1)py=1$，すなわち\n\\[\n\\boldsymbol{x+(s-1)y=r\\quad(r\\ \\text{は}\\ 0\\ \\text{でない任意の実数})}\n\\]\nのすべてである（確かめ：$(sx+y)+(s-1)(-x+ty)=x+\\{1+(s-1)t\\}y=x+(s-1)y$ で，最後の等号は $1+(s-1)t=s-1\\iff(s-1)(t-1)=-1$ による）．"
+   }
+  ],
+  "idea": {
+   "tex": "原点を通らない直線 $px+qy=r$ が移動で自分自身の中へ移ることは，2つの1次式 $px+qy$ と $p(ax+by)+q(cx+dy)$ が直線上で一致すること．原点を通らない直線上の2点は1次独立なので係数が一致し，条件は $(p,q)$ についての同次連立方程式が自明でない解をもつこと，すなわち $(a-1)(d-1)=bc$ になる．これは原点以外の点が動かないことと同値．"
+  },
+  "methods": [],
+  "tags": [
+   "直線の方程式",
+   "連立1次方程式",
+   "恒等式",
+   "不動点"
+  ],
+  "provenance": {
+   "created": "2026-11-19"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "X-MIX-066",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "X-20",
+  "level": 4,
+  "minutes": 35,
+  "theme": "最初に欠陥のあった工程からやり直す工事の日数の偶奇",
+  "topic": "最初に欠陥のあった工程からやり直す工事の日数の偶奇",
+  "statement": {
+   "tex": "ある工事は第1工程，第2工程，第3工程，検査をこの順に行う．どの工程も検査もそれぞれちょうど1日かかる．検査では各工程に欠陥があるかどうかがわかり，欠陥のある工程があれば，そのうち番号の最も小さい工程を第 $j$ 工程として，第 $j$ 工程から第3工程までをすべてやり直してからふたたび検査をする．欠陥のある工程がなければ工事は終了する．どの工程も行うたびに，それまでの経過とは独立に確率 $p$ $(0<p<1)$ で欠陥が生じる．工事開始から終了までにかかる日数を $T$ とする．\n\\begin{enumerate}\n  \\item $T\\leqq7$ となる確率を求めよ．\n  \\item 工事が確率1で終了することを示し，$T$ が偶数となる確率を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $(1-p)^3(1+2p)$　(2) 証明，$\\dfrac1{1+p}$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "第 $j$ 工程から始めて検査までを行う一連の作業を「状態 $j$ のラウンド」とよぶ．所要日数は状態1，2，3でそれぞれ $4,3,2$ 日．状態 $j$ のラウンドの結果は，番号 $i\\geqq j$ の工程が最初の欠陥である確率 $(1-p)^{i-j}p$ で状態 $i$ へ，欠陥なしの確率 $(1-p)^{4-j}$ で終了．\n\n\\textbf{(1)}　$T\\leqq7$ となるのは：1回目で終了（$T=4$，確率 $(1-p)^3$）；1回目で第3工程のみ欠陥，次の状態3のラウンドで終了（$T=6$，確率 $(1-p)^2p\\cdot(1-p)$）；1回目で最初の欠陥が第2工程，次の状態2のラウンドで終了（$T=7$，確率 $(1-p)p\\cdot(1-p)^2$）．それ以外は $T\\geqq8$（状態1が2回なら8日以上，状態3が2回なら8日，状態2の後さらにラウンドがあれば9日以上）．よって\n\\[P(T\\leqq7)=(1-p)^3+2p(1-p)^3=\\boldsymbol{(1-p)^3(1+2p)}.\\]\n\n\\textbf{(2)}　状態は $1\\to\\cdots\\to2\\to\\cdots\\to3\\to\\cdots$ と番号が減らない向きにしか移らない．状態1，2，3のラウンドの回数を $R_1\\ (\\geqq1),R_2,R_3\\ (\\geqq0)$ とすると $T=4R_1+3R_2+2R_3$．状態1にとどまる確率は $p$，状態1を出るときの行き先は条件つきで「終了」$(1-p)^2$，「状態2」$p$，「状態3」$(1-p)p$（$(1-p)$ で割った値）である．状態2にとどまる確率は $p$，出るとき「終了」$1-p$，「状態3」$p$．状態3にとどまる確率は $p$．\n$R_1=a$，$R_2=b$，$R_3=c$ で終了する確率は\n\\begin{itemize}\n  \\item $b=c=0$：$p^{a-1}(1-p)^3$\n  \\item $b=0,\\ c\\geqq1$：$p^{a-1}(1-p)^2p\\cdot p^{c-1}(1-p)$\n  \\item $b\\geqq1,\\ c=0$：$p^{a-1}(1-p)p\\cdot p^{b-1}(1-p)^2$\n  \\item $b\\geqq1,\\ c\\geqq1$：$p^{a-1}(1-p)p\\cdot p^{b-1}(1-p)p\\cdot p^{c-1}(1-p)$\n\\end{itemize}\n$\\sum_{a\\geqq1}p^{a-1}=\\dfrac1{1-p}$，$\\sum_{c\\geqq1}p^{c-1}(1-p)=1$（無限等比級数，$0<p<1$）を用いると，$b=0$ の確率の和は $(1-p)^2+(1-p)p=1-p$，$b\\ (\\geqq1)$ を固定した確率は\n\\[\\frac{(1-p)p}{1-p}\\cdot p^{b-1}(1-p)\\{(1-p)+p\\}=p^b(1-p).\\]\n終了する確率の総和は $1-p+\\sum_{b\\geqq1}p^b(1-p)=1-p+p=1$ なので，工事は確率1で終了する．\n$T$ の偶奇は $3R_2$ すなわち $R_2$ の偶奇と一致するので\n\\[P(T\\ \\text{が偶数})=(1-p)+\\sum_{b=2,4,\\cdots}p^b(1-p)=(1-p)+\\frac{p^2(1-p)}{1-p^2}=1-p+\\frac{p^2}{1+p}=\\boldsymbol{\\frac1{1+p}}.\\]"
+   }
+  ],
+  "idea": {
+   "tex": "日数は「各状態から始めたラウンドの回数」の1次式 $4R_1+3R_2+2R_3$ で，偶奇は $R_2$ の偶奇だけで決まる．$R_2$ は「工程2に入る」確率 $p$ と，その後の幾何分布で表され，無限等比級数で偶奇の確率が出る．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) (1-p)^3(1+2p)\n(2) 記述"
+  },
+  "methods": [],
+  "tags": [
+   "確率",
+   "無限等比級数",
+   "場合分け"
+  ],
+  "provenance": {
+   "created": "2026-11-19"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "X-MIX-067",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "X-20",
+  "level": 4,
+  "minutes": 35,
+  "theme": "3乗根の和を解にもつ方程式の実数解のとりうる値",
+  "topic": "3乗根の和を解にもつ方程式の実数解のとりうる値",
+  "statement": {
+   "tex": "0以上の実数 $s,\\ t$ が $s^2+t^2=1$ をみたしながら動くとき，$x$ についての方程式\n\\[\n(x^3-s-t)^3=27st\\,x^3\n\\]\nを考える．\n\\begin{enumerate}\n  \\item $s,\\ t$ を固定する．この方程式の実数解は $x=\\sqrt[3]s+\\sqrt[3]t$ であり，これ以外の実数解は $s=t$ のときの $x=-\\sqrt[3]s$ だけであることを示せ．\n  \\item $s,\\ t$ が動くとき，この方程式の実数解のとりうる値の範囲を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 証明　(2) $1\\leqq x\\leqq2^{\\frac56}$ または $x=-2^{-\\frac16}$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) 実数 $A,B$ について $A^3-B^3=(A-B)\\left\\{\\left(A+\\frac B2\\right)^2+\\frac34B^2\\right\\}$ で，中かっこは $A=B=0$ のとき以外は正なので，$A^3=B^3\\iff A=B$．\n\n$u=\\sqrt[3]s$，$v=\\sqrt[3]t$（$u,v\\geqq0$）とおくと $27st\\,x^3=(3uvx)^3$ なので，$x$ が実数のとき\n\\[\n(x^3-s-t)^3=(3uvx)^3\\iff x^3-s-t=3uvx\\iff x^3-3uvx-(u^3+v^3)=0.\n\\]\n展開して確かめられるように\n\\[\nx^3-3uvx-(u^3+v^3)=(x-u-v)\\left\\{x^2+(u+v)x+u^2-uv+v^2\\right\\}.\n\\]\n2次式の判別式は $(u+v)^2-4(u^2-uv+v^2)=-3(u-v)^2$．$u\\neq v$ なら負で実数解はなく，$u=v$ なら重解 $x=-\\dfrac{u+v}2=-u$ をもつ．$u=v\\iff s=t$ なので，実数解は $x=u+v=\\sqrt[3]s+\\sqrt[3]t$ と，$s=t$ のときの $x=-\\sqrt[3]s$ だけである．\\hfill$\\square$\n\n(2) $u^6+v^6=s^2+t^2=1$，$u,v\\geqq0$ のもとで $u+v$ のとりうる値を調べる．\n\n$0\\leqq u\\leqq1$ より $u^5\\leqq1$ で $u\\geqq u^6$．同様に $v\\geqq v^6$．よって $u+v\\geqq u^6+v^6=1$．\n\n$w=\\dfrac{u+v}2$，$e=\\dfrac{u-v}2$ とおくと $u=w+e$，$v=w-e$ で\n\\[\nu^6+v^6=2\\left(w^6+15w^4e^2+15w^2e^4+e^6\\right)\\geqq2w^6\n\\]\nより $w^6\\leqq\\dfrac12$，$u+v=2w\\leqq2\\cdot2^{-\\frac16}=2^{\\frac56}$．\n\n$s=\\cos\\varphi$，$t=\\sin\\varphi$（$0\\leqq\\varphi\\leqq\\frac\\pi4$）とおくと $u+v=\\sqrt[3]{\\cos\\varphi}+\\sqrt[3]{\\sin\\varphi}$ は $\\varphi$ の連続関数で，$\\varphi=0$ で1，$\\varphi=\\frac\\pi4$ で $2\\cdot\\left(2^{-\\frac12}\\right)^{\\frac13}=2^{\\frac56}$．中間値の定理より，$1$ 以上 $2^{\\frac56}$ 以下のすべての値をとる．\n\nまた $s=t$ となるのは $s=t=\\dfrac1{\\sqrt2}$ のときだけで，そのとき (1) のもう1つの実数解は $-\\left(2^{-\\frac12}\\right)^{\\frac13}=-2^{-\\frac16}$．\n\n以上より，実数解のとりうる値の範囲は\n\\[\n\\boldsymbol{1\\leqq x\\leqq2^{\\frac56}\\ \\text{または}\\ x=-2^{-\\frac16}}.\n\\]"
+   }
+  ],
+  "idea": {
+   "tex": "原題の4次方程式は $(x^2-s-t)^2=4st$ と見ると解が $\\pm\\sqrt s\\pm\\sqrt t$ になる．3乗根版では，実数の範囲で $A^3=B^3\\iff A=B$ を使うと $(x^3-s-t)^3=27stx^3$ が $x^3-s-t=3\\sqrt[3]{st}\\,x$ に次数が下がり，$u=\\sqrt[3]s$，$v=\\sqrt[3]t$ で $x^3-3uvx-(u^3+v^3)=(x-u-v)(x^2+(u+v)x+u^2-uv+v^2)$．2次因数の判別式は $-3(u-v)^2$ で，実数解をもつのは $u=v$ のときだけ．あとは $u^6+v^6=1$ のもとでの $u+v$ の範囲．"
+  },
+  "methods": [],
+  "tags": [
+   "3乗根",
+   "因数分解",
+   "判別式",
+   "不等式",
+   "中間値の定理"
+  ],
+  "provenance": {
+   "created": "2026-11-19"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "X-MIX-068",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "X-20",
+  "level": 4,
+  "minutes": 30,
+  "theme": "接点を中点とする接線の線分が掃く領域",
+  "topic": "接点を中点とする接線の線分が掃く領域",
+  "statement": {
+   "tex": "$xy$ 平面上に四分円 $C:x^2+y^2=1$（$x\\geqq0$，$y\\geqq0$）がある．$C$ 上の点 T に対し，T における $C$ の接線上にあって T を中点とする長さ2の線分を $L_{\\mathrm T}$ とする．T が $C$ 上全体（両端を含む）を動くとき，線分 $L_{\\mathrm T}$ が通過する領域の面積を求めよ．"
+  },
+  "answer": {
+   "tex": "$\\dfrac{3}{4}\\pi-1$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "T$(\\cos t,\\sin t)$（$0\\leqq t\\leqq\\frac\\pi2$）とすると，接線の向きの単位ベクトルは $(-\\sin t,\\cos t)$ で，$L_{\\mathrm T}$ は点 $(\\cos t-s\\sin t,\\ \\sin t+s\\cos t)$（$-1\\leqq s\\leqq1$）全体である．\n$s$ に対して $\\alpha$ を $\\cos\\alpha=\\dfrac1{\\sqrt{1+s^2}}$，$\\sin\\alpha=\\dfrac s{\\sqrt{1+s^2}}$，$-\\frac\\pi4\\leqq\\alpha\\leqq\\frac\\pi4$ で定めると，加法定理より\n\\[\n(\\cos t-s\\sin t,\\ \\sin t+s\\cos t)=\\sqrt{1+s^2}\\,\\bigl(\\cos(t+\\alpha),\\ \\sin(t+\\alpha)\\bigr).\n\\]\n\n\\textbf{点を固定して条件を求める．}点 X の原点からの距離を $\\rho$，X の方向の角を $\\psi$（$-\\pi<\\psi\\leqq\\pi$）とする．X がある $L_{\\mathrm T}$ 上にあるための条件は，$\\rho=\\sqrt{1+s^2}$，$\\psi=t+\\alpha$ をみたす $-1\\leqq s\\leqq1$，$0\\leqq t\\leqq\\frac\\pi2$ があることである（$t+\\alpha$ は $-\\frac\\pi4$ 以上 $\\frac{3\\pi}4$ 以下なので，角の一致は $2\\pi$ の整数倍のずれを考えなくてよい）．これは $1\\leqq\\rho\\leqq\\sqrt2$ であり，$\\alpha_0$ を $\\cos\\alpha_0=\\frac1\\rho$，$0\\leqq\\alpha_0\\leqq\\frac\\pi4$ で定めると $\\alpha=\\pm\\alpha_0$ だから，\n\\[\n\\psi-\\alpha_0\\in\\left[0,\\tfrac\\pi2\\right]\\ \\text{または}\\ \\psi+\\alpha_0\\in\\left[0,\\tfrac\\pi2\\right]\n\\iff -\\alpha_0\\leqq\\psi\\leqq\\frac\\pi2+\\alpha_0\n\\]\n（$\\alpha_0\\leqq\\frac\\pi4$ より2つの区間 $[\\alpha_0,\\frac\\pi2+\\alpha_0]$，$[-\\alpha_0,\\frac\\pi2-\\alpha_0]$ はつながる）．\n\n\\textbf{領域の形．}通過領域 $W$ を $\\psi$ の範囲で3つに分ける．\n\\begin{itemize}\n  \\item $0\\leqq\\psi\\leqq\\frac\\pi2$：$1\\leqq\\rho\\leqq\\sqrt2$ の円環の4分の1で，面積 $\\frac14\\pi(2-1)=\\frac\\pi4$．\n  \\item $-\\alpha_0\\leqq\\psi<0$：$-\\frac\\pi2<\\psi<0$ では $\\cos\\psi\\geqq\\cos\\alpha_0=\\frac1\\rho\\iff\\rho\\cos\\psi\\geqq1$，すなわち $x\\geqq1$．よってこの部分は $\\{x\\geqq1,\\ y<0,\\ x^2+y^2\\leqq2\\}$（$x\\geqq1$ なら $\\rho\\geqq1$ は自動的）．これは中心角 $\\frac\\pi4$，半径 $\\sqrt2$ の扇形（$(\\sqrt2,0)$ から $(1,-1)$ まで）から，原点，$(1,0)$，$(1,-1)$ の直角三角形を除いたもので，面積 $\\frac12\\cdot2\\cdot\\frac\\pi4-\\frac12=\\frac\\pi4-\\frac12$．\n  \\item $\\frac\\pi2<\\psi\\leqq\\frac\\pi2+\\alpha_0$：直線 $y=x$ に関する対称性より，$\\{y\\geqq1,\\ x<0,\\ x^2+y^2\\leqq2\\}$ で面積 $\\frac\\pi4-\\frac12$．\n\\end{itemize}\nよって求める面積は\n\\[\n\\frac\\pi4+2\\left(\\frac\\pi4-\\frac12\\right)=\\boldsymbol{\\frac34\\pi-1}.\n\\]\n\\hfill$\\square$"
+   }
+  ],
+  "idea": {
+   "tex": "線分を動かす代わりに点 X を固定し，「X を通る接線の接点が弧の上にあり，接点から X までの長さが1以下」と言い換える．X の原点からの距離を $\\rho$ とすると接線の長さは $\\sqrt{\\rho^2-1}$，接点の方向は X の方向から $\\pm\\alpha$（$\\cos\\alpha=\\frac1\\rho$）ずれる．2つの向きの条件を合わせると，弧の両端の外側に「接線 $x=1$，$y=1$ と半径 $\\sqrt2$ の円で囲まれた角」が付け加わる．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(3/4)π-1"
+  },
+  "methods": [],
+  "tags": [
+   "通過領域",
+   "接線",
+   "点を固定する",
+   "扇形",
+   "弓形"
+  ],
+  "provenance": {
+   "created": "2026-11-19"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "X-MIX-069",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "X-20",
+  "level": 4,
+  "minutes": 35,
+  "theme": "少数派が勝つ投票で最後に投票する人",
+  "topic": "少数派が勝つ投票で最後に投票する人",
+  "statement": {
+   "tex": "$n$ を2以上の整数とする．$2n$ 人が順に，Yes と書かれたカードか No と書かれたカードのどちらかに投票し，人数が少ない方に投票した人を勝者とする．ただし，どちらかが0人のとき，またはどちらも同じ人数のときは勝者なし（引き分け）とする．最初の $2n-1$ 人は，それぞれ独立に確率 $\\dfrac12$ ずつで Yes，No を選ぶ．最後の1人は，それまでの $2n-1$ 人の投票結果をすべて見てから投票する．\n\\begin{enumerate}\n  \\item 最後の人が，見た結果に応じて自分が勝者となる確率が最も大きくなるように投票するとき，最後の人が勝者となる確率 $p_n$ を求めよ．\n  \\item 最後の人が，結果を見ずに確率 $\\dfrac12$ ずつで Yes，No を選ぶとき，最後の人が勝者となる確率を $q_n$ とする．$p_n=2q_n$ を示せ．\n  \\item $p_n<p_{n+1}$ を示し，$\\displaystyle\\lim_{n\\to\\infty}p_n$ を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $p_n=1-\\dfrac{{}_{2n}\\mathrm C_n}{2^{2n-1}}$　(2) 証明　(3) 証明，$\\displaystyle\\lim_{n\\to\\infty}p_n=1$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "最初の $2n-1$ 人のうち Yes に投票した人数を $Y$ とする．$Y=y$ となる確率は $\\dfrac{{}_{2n-1}\\mathrm C_y}{2^{2n-1}}$ で，${}_{2n-1}\\mathrm C_y={}_{2n-1}\\mathrm C_{2n-1-y}$ より $Y=y$ と $Y=2n-1-y$ の確率は等しい．最後の人が Yes に投票すると Yes は $Y+1$ 人（1人以上），No は $2n-1-Y$ 人．Yes が勝つ $\\iff Y+1<2n-1-Y$ かつ $2n-1-Y\\geqq1$ $\\iff Y\\leqq n-2$．同様に No に投票して勝つ $\\iff$ $2n-Y<Y$ かつ $Y\\geqq1$ $\\iff Y\\geqq n+1$．\n\n(1) $Y\\leqq n-2$ なら Yes，$Y\\geqq n+1$ なら No に投票すれば必ず勝ち，$Y=n-1,n$ のときはどちらに投票しても勝てない．よって $Y$ の各値で勝てるときに必ず勝つこの選び方が最善で，\n\\[p_n=1-P(Y=n-1)-P(Y=n)=1-\\frac{2\\,{}_{2n-1}\\mathrm C_{n-1}}{2^{2n-1}}=\\boldsymbol{1-\\frac{{}_{2n}\\mathrm C_n}{2^{2n-1}}}\\]\n（${}_{2n}\\mathrm C_n={}_{2n-1}\\mathrm C_{n-1}+{}_{2n-1}\\mathrm C_n=2\\,{}_{2n-1}\\mathrm C_{n-1}$）．\n\n(2) 最後の人の選択は $Y$ と独立なので $q_n=\\frac12P(Y\\leqq n-2)+\\frac12P(Y\\geqq n+1)$．対称性より $P(Y\\geqq n+1)=P(Y\\leqq n-2)$ だから $q_n=P(Y\\leqq n-2)$．一方 (1) より $p_n=P(Y\\leqq n-2)+P(Y\\geqq n+1)=2P(Y\\leqq n-2)$．よって $p_n=2q_n$．\n\n(3) $c_n=\\dfrac{{}_{2n}\\mathrm C_n}{4^n}$ とおくと $p_n=1-2c_n$，$\\dfrac{c_{n+1}}{c_n}=\\dfrac{(2n+2)(2n+1)}{4(n+1)^2}=\\dfrac{2n+1}{2n+2}<1$．よって $c_{n+1}<c_n$，$p_n<p_{n+1}$．\n\n次に $c_n\\leqq\\dfrac1{\\sqrt{3n+1}}$ を帰納法で示す．$n=1$ では $c_1=\\frac12=\\frac1{\\sqrt4}$．$n$ で成り立てば\n\\[c_{n+1}^2=c_n^2\\frac{(2n+1)^2}{(2n+2)^2}\\leqq\\frac{(2n+1)^2}{(3n+1)(2n+2)^2}\\]\nで，$(2n+1)^2(3n+4)=12n^3+28n^2+19n+4<12n^3+28n^2+20n+4=(3n+1)(2n+2)^2$ より右辺 $<\\dfrac1{3n+4}$．よって $n+1$ でも成り立つ．$0<c_n\\leqq\\dfrac1{\\sqrt{3n+1}}\\to0$ より，はさみうちの原理で $c_n\\to0$，$\\displaystyle\\lim_{n\\to\\infty}p_n=\\boldsymbol1$．\\hfill$\\square$"
+   }
+  ],
+  "idea": {
+   "tex": "最後の人の勝敗は，それまでの $2n-1$ 人の Yes の人数 $Y$ だけで決まる．最善の選び方では負けるのは $Y=n-1,n$ のときだけ．でたらめに選ぶ場合は，Yes を選んで勝つ確率と No を選んで勝つ確率が $Y$ の分布の対称性で等しく，最善の場合のちょうど半分になる．極限は $\\dfrac{{}_{2n}\\mathrm C_n}{4^n}\\leqq\\dfrac1{\\sqrt{3n+1}}$ の帰納法による評価で求める．"
+  },
+  "methods": [],
+  "tags": [
+   "確率",
+   "二項係数の対称性",
+   "最適な選び方",
+   "極限"
+  ],
+  "provenance": {
+   "created": "2026-11-19"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "X-MIX-070",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "X-20",
+  "level": 5,
+  "minutes": 40,
+  "theme": "微分と積分をコインで選ぶ指数関数の列",
+  "topic": "微分と積分をコインで選ぶ指数関数の列",
+  "statement": {
+   "tex": "表と裏が等確率で出る硬貨がある．$f_0(x)=e^x$ とし，自然数 $n$ に対して $f_n(x)$ を\n\\begin{center}\n硬貨を投げて表が出たら $f_n(x)=f_{n-1}{}'(x)$，\\qquad 裏が出たら $f_n(x)=\\displaystyle\\int_0^xf_{n-1}(t)\\,dt$\n\\end{center}\nと定める．また $T_0(x)=0$，$T_m(x)=\\displaystyle\\sum_{k=0}^{m-1}\\frac{x^k}{k!}$（$m\\geqq1$）とおく．\n\\begin{enumerate}\n  \\item 各 $n$ に対して $f_n(x)=e^x-T_{m}(x)$ となる0以上の整数 $m=m_n$ がただ1つ定まることを示し，$m_n$ を $m_{n-1}$ と $n$ 回目の硬貨の結果で表せ．\n  \\item $f_{10}(x)=e^x$ となる確率を求めよ．\n  \\item $f_{10}(x)=e^x-1-x$ となる確率を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 証明，表なら $m_n=m_{n-1}-1$（ただし $m_{n-1}=0$ なら $m_n=0$），裏なら $m_n=m_{n-1}+1$　(2) $\\dfrac{63}{256}$　(3) $\\dfrac{105}{512}$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) $m\\geqq1$ のとき $T_m'(x)=\\sum_{k=1}^{m-1}\\frac{x^{k-1}}{(k-1)!}=T_{m-1}(x)$，また $T_1'=0=T_0$，$T_0'=0$．さらに $\\int_0^xT_m(t)\\,dt=\\sum_{k=0}^{m-1}\\frac{x^{k+1}}{(k+1)!}=T_{m+1}(x)-1$．よって\n\\[(e^x-T_m)'=\\begin{cases}e^x-T_{m-1}&(m\\geqq1)\\\\ e^x&(m=0)\\end{cases},\\qquad \\int_0^x\\bigl(e^t-T_m(t)\\bigr)dt=(e^x-1)-(T_{m+1}(x)-1)=e^x-T_{m+1}(x).\\]\n$f_0=e^x-T_0$ から帰納的に，各 $f_n$ は $e^x-T_m$ の形で，表なら $\\boldsymbol{m_n=m_{n-1}-1}$（ただし $\\boldsymbol{m_{n-1}=0}$ なら $\\boldsymbol{m_n=0}$），裏なら $\\boldsymbol{m_n=m_{n-1}+1}$．また $m\\neq m'$ なら $T_m$ と $T_{m'}$ は次数（$T_0=0$ を含む）が異なる別の多項式なので $e^x-T_m\\neq e^x-T_{m'}$ で，$m_n$ はただ1つに定まる．\n\n(2) $n$ 回目が裏なら $\\varepsilon_n=1$，表なら $\\varepsilon_n=-1$ とおく．(1) は $m_n=$「$m_{n-1}+\\varepsilon_n$ と $0$ のうち小さくない方」と書ける．$n$ 以下の各 $j$（$0\\leqq j\\leqq n$）に対する後ろの和 $\\varepsilon_{j+1}+\\cdots+\\varepsilon_n$（$j=n$ のときは0）のうち最大のものを $M_n$ とすると $m_n=M_n$ である．実際 $n=0$ で $m_0=0=M_0$ であり，$m_{n-1}=M_{n-1}$ なら，後ろの和の最大値に $\\varepsilon_n$ を加えたものと $0$（$j=n$ の分）のうち小さくない方が $M_n$ となるので $m_n=M_n$．\n\n$\\delta_i=\\varepsilon_{11-i}$，$R_0=0$，$R_i=\\delta_1+\\cdots+\\delta_i$ とおくと $m_{10}$ は $R_0,R_1,\\dots,R_{10}$ の最大値で，$(\\delta_1,\\dots,\\delta_{10})$ の $2^{10}$ 通りは同様に確からしい．以下，$\\pm1$ の列を折れ線 $(i,R_i)$ とみる．\n\n$j\\geqq1$ に対し，最大値が $j$ 以上で $R_{10}<j$ の折れ線と，$R_{10}>j$ の折れ線は1対1に対応する．初めて $R_i=j$ となる $i$ 以降の部分を直線 $R=j$ に関して折り返せばよい（折り返した後も初めて $j$ に達する位置は同じなので逆の操作で戻る；$R_{10}>j$ の折れ線は必ず $j$ を通る）．よって最大値が $j$ 以上の折れ線の数を $A_j$，$R_{10}=s$ の折れ線の数を $B_s$ とすると\n\\[A_j=\\sum_{s\\geqq j}B_s+\\sum_{s>j}B_s\\quad(j\\geqq1).\\]\n$B_s={}_{10}\\mathrm C_{\\frac{10+s}2}$（$s$ が偶数のとき），$s$ が奇数なら $B_s=0$．$m_{10}=0$ の個数は $2^{10}-A_1=\\sum_sB_s-\\sum_{s\\geqq1}B_s-\\sum_{s\\geqq2}B_s$．$B_s=B_{-s}$ より $\\sum_{s\\geqq2}B_s=\\sum_{s\\leqq-2}B_s$ なので，これは $B_0+B_{-1}=252$．確率は $\\dfrac{252}{1024}=\\boldsymbol{\\dfrac{63}{256}}$．\n\n(3) $f_{10}=e^x-1-x=e^x-T_2$ $\\iff m_{10}=2$．その個数は $A_2-A_3=B_2+B_3={}_{10}\\mathrm C_6+0=210$．確率は $\\dfrac{210}{1024}=\\boldsymbol{\\dfrac{105}{512}}$．\\hfill$\\square$"
+   }
+  ],
+  "idea": {
+   "tex": "$f_n=e^x-T_m(x)$（$T_m$ は $e^x$ の展開の最初の $m$ 項）の形が保たれ，積分は $m$ を1増やし，微分は $m$ を1減らす（ただし $m=0$ のときは $0$ のまま）．$0$ で止まる移動の位置は「後ろから数えた部分和の最大値」に等しく，順序を逆にした移動の最大値の分布を鏡像の原理で数える．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) 記述\n(2) 63/256\n(3) 105/512"
+  },
+  "methods": [],
+  "tags": [
+   "確率",
+   "指数関数の微分と積分",
+   "0で止まる移動",
+   "鏡像の原理"
+  ],
+  "provenance": {
+   "created": "2026-11-19"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
  }
 ]

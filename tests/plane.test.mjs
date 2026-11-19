@@ -1,4 +1,4 @@
-// 複素平面・ベクトルの式（js/plane.js）の単体テスト
+// 複素数平面・ベクトルの式（js/plane.js）の単体テスト
 //   node tests/plane.test.mjs
 import { analyzePlane, solveRoots, fmtComplex, parsePlane, compilePlane } from '../js/plane.js';
 
@@ -30,7 +30,7 @@ const at = (g, x, y, extra = {}) => g({ x, y, ...extra });
   ok(fmtComplex(-0.5, -0.8660254) === '-0.5-0.866i' && fmtComplex(0, 1) === 'i' && fmtComplex(2, 0) === '2', '複素数の表示');
 }
 
-// ---------------------------------------------------------------- 複素平面
+// ---------------------------------------------------------------- 複素数平面
 {
   const c = one('complex', ['|z-1|=2']);
   ok(c.a.kind === 'implicitc' && near(at(c.a.g, 3, 0), 0) && near(at(c.a.g, 1, 2), 0) && at(c.a.g, 1, 0) < 0, '|z-1|=2 は中心1・半径2の円');

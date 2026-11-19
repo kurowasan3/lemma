@@ -10809,5 +10809,486 @@
    },
    "verified": false
   }
+ },
+ {
+  "id": "B-SEQ-252",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "B-13",
+  "level": 4,
+  "minutes": 35,
+  "theme": "番号が3以上離れた項の和としての一意的な表示",
+  "topic": "番号が3以上離れた項の和としての一意的な表示",
+  "statement": {
+   "tex": "数列 $\\{b_n\\}$ を\n\\[\nb_1=1,\\quad b_2=2,\\quad b_3=3,\\quad b_{n+3}=b_{n+2}+b_n\\ \\ (n=1,2,3,\\dots)\n\\]\nで定める．正の整数 $N$ を，$\\{b_n\\}$ の相異なる項であって，どの2つも番号の差が3以上であるものの和として表すことを，$N$ の「表示」とよぶ（項が1つだけの場合も表示とみなし，項の順序の違いは区別しない）．\n\\begin{enumerate}\n  \\item すべての正の整数 $N$ は表示をもつことを示せ．\n  \\item すべての正の整数 $N$ の表示はただ1通りであることを示せ．\n  \\item 2026 の表示を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 証明　(2) 証明　(3) $2026=b_{20}+b_{13}+b_8+b_4+b_1$（$=1873+129+19+4+1$）"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "まず $\\{b_n\\}$ の性質を確かめる．$b_2-b_1=b_3-b_2=1$，また $m\\geqq3$ のとき $b_{m+1}-b_m=b_{m-2}$ である．帰納法ですべての項が正の整数であることがわかり，したがって $b_{m+1}-b_m\\geqq1$ が常に成り立つ．よって $\\{b_n\\}$ は狭義単調増加で，$b_n\\geqq n$．ゆえに任意の正の整数 $N$ に対し，$b_m\\leqq N<b_{m+1}$ をみたす正の整数 $m$ がただ1つ存在する．この $m$ を $m(N)$ と書く．\n\\[\nb_1,\\dots,b_{21}=1,2,3,4,6,9,13,19,28,41,60,88,129,189,277,406,595,872,1278,1873,2745 .\n\\]\n\n(1) $N$ に関する累積帰納法で示す．$N=1,2,3$ はそれぞれ $b_1,b_2,b_3$ そのもので表示をもつ．$N\\geqq4$ とし，$N$ 未満のすべての正の整数が表示をもつと仮定する．$m=m(N)$ とおくと，$b_4=4\\leqq N$ より $m\\geqq4$．\n\\begin{itemize}\n  \\item $N=b_m$ のときは，$b_m$ そのものが表示である．\n  \\item $N>b_m$ のとき，$0<N-b_m<b_{m+1}-b_m=b_{m-2}$．仮定より $N-b_m$ は表示をもつ．その表示に現れる項はどれも $N-b_m$ 以下，したがって $b_{m-2}$ 未満なので，単調性から番号は $m-3$ 以下である．この表示に $b_m$ を加えると，$b_m$ と他の項の番号の差は3以上だから，$N$ の表示が得られる．\n\\end{itemize}\nよってすべての正の整数は表示をもつ．\\hfill$\\square$\n\n(2) 補題：$i_1>i_2>\\cdots>i_r\\geqq1$ で，隣り合う番号の差 $i_s-i_{s+1}$ がすべて3以上ならば\n\\[\nb_{i_1}+b_{i_2}+\\cdots+b_{i_r}<b_{i_1+1}.\n\\]\n証明は $i_1$ に関する累積帰納法による．$r=1$ なら $\\{b_n\\}$ が狭義単調増加であることから成り立つ．$r\\geqq2$ のとき $i_2\\leqq i_1-3$ かつ $i_2\\geqq1$ より $i_1\\geqq4$．帰納法の仮定（最大の番号が $i_2<i_1$ の場合）より $b_{i_2}+\\cdots+b_{i_r}<b_{i_2+1}\\leqq b_{i_1-2}$（$i_2+1\\leqq i_1-2$ と単調性による）．よって和は $b_{i_1}+b_{i_1-2}=b_{i_1+1}$ より小さい（$i_1\\geqq4$ なので漸化式が使える）．補題が示された．\n\nさて，$N$ の任意の表示の最大の項を $b_{i_1}$ とすると，和は $b_{i_1}$ 以上で，補題より $b_{i_1+1}$ 未満．つまり $b_{i_1}\\leqq N<b_{i_1+1}$ であり，$i_1=m(N)$ と決まる．\n\nこの事実を用いて，$N$ に関する累積帰納法で一意性を示す．$N$ の2つの表示をとると，どちらも最大の項は $b_m$（$m=m(N)$）である．\n\\begin{itemize}\n  \\item $N=b_m$ のとき：残りの項は正なので，どちらの表示も $b_m$ のみからなり一致する．\n  \\item $N>b_m$ のとき：どちらの表示も $b_m$ 以外の項をもち，それらを取り出したものは $N-b_m$（$1\\leqq N-b_m<N$）の表示である．帰納法の仮定よりそれらは一致するので，もとの2つの表示も一致する．\n\\end{itemize}\n$N=1$ は前者の場合に含まれるので帰納法の出発点も成り立つ．よって表示はただ1通りである．\\hfill$\\square$\n\n(3) (2) より，(1) の手順（最大の $b_m\\leqq N$ を引くことのくり返し）で得られるものが唯一の表示である．\n$b_{20}=1873\\leqq2026<2745=b_{21}$，$2026-1873=153$．\n$b_{13}=129\\leqq153<189=b_{14}$，$153-129=24$．\n$b_8=19\\leqq24<28=b_9$，$24-19=5$．\n$b_4=4\\leqq5<6=b_5$，$5-4=1=b_1$．\n番号 $20,13,8,4,1$ の差は $7,5,4,3$ でいずれも3以上．よって\n\\[\n\\boldsymbol{2026=b_{20}+b_{13}+b_8+b_4+b_1}\\quad(=1873+129+19+4+1).\n\\]"
+   }
+  ],
+  "idea": {
+   "tex": "$b_{n+3}=b_{n+2}+b_n$ から $b_{m+1}-b_m=b_{m-2}$．$b_m\\leqq N<b_{m+1}$ のとき残り $N-b_m$ は $b_{m-2}$ 未満なので番号 $m-3$ 以下の項だけで表せ，累積帰納法で表示が作れる（ゼッケンドルフの定理の「番号の差3以上」版）．一意性は「最大の番号が $i$ の表示の和は $b_{i+1}$ 未満」という評価から，最大の項がただ1つに決まることによる．"
+  },
+  "methods": [],
+  "tags": [
+   "数学的帰納法",
+   "累積帰納法",
+   "貪欲法",
+   "一意性"
+  ],
+  "provenance": {
+   "created": "2026-11-19"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "B-SEQ-253",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "B-13",
+  "level": 4,
+  "minutes": 35,
+  "theme": "円周上の点を結ぶ直線による平面の分割",
+  "topic": "円周上の点を結ぶ直線による平面の分割",
+  "statement": {
+   "tex": "$n\\geqq3$ とし，円周上に相異なる $n$ 個の点 $\\mathrm P_1,\\ \\mathrm P_2,\\ \\cdots,\\ \\mathrm P_n$ をとる．このうち2点を通る直線を ${}_n\\mathrm C_2$ 本すべて引く．ただし，どの2本も平行でなく，$\\mathrm P_1,\\ \\cdots,\\ \\mathrm P_n$ 以外の点では3本以上の直線が1点で交わらないとする．\n\\begin{enumerate}\n  \\item 平面がこれらの直線によって分けられてできる部分の個数 $R_n$ を求めよ．\n  \\item (1) の $R_n$ 個の部分のうち，円の内部（周を含まない）と共有点をもたないものの個数 $T_n$ を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $R_n=1+{}_n\\mathrm C_2+n(n-2)+3\\,{}_n\\mathrm C_4=\\dfrac{(n-1)(n^3-5n^2+18n-8)}{8}$　(2) $T_n=n(n-2)+2\\,{}_n\\mathrm C_4=\\dfrac{n(n-2)(n^2-4n+15)}{12}$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "直線の本数を $L={}_n\\mathrm C_2$ とする．\n\n\\textbf{準備（部分の個数の公式）．} 直線を1本ずつ $\\ell_1,\\ell_2,\\cdots,\\ell_L$ の順に引いていく．どの段階でも各部分はいくつかの開いた半平面の共通部分なので凸である．$\\ell_j$ を引くとき，それまでの直線と $\\ell_j$ の相異なる交点が $k_j$ 個あれば，$\\ell_j$ は $k_j+1$ 個の部分（線分または半直線）に分かれる．それまでの部分 $D$ と $\\ell_j$ が共有点をもつとき，$D$ は凸なので $\\ell_j\\cap D$ は1つの区間で，その端は $D$ の境界，すなわちそれまでの直線上にある．よって $\\ell_j\\cap D$ はちょうど $\\ell_j$ の1つの部分であり，$D$ は開集合なので $\\ell_j$ の両側に点をもち，$\\ell_j$ によって2つに分かれる．$\\ell_j$ と交わらない部分はそのまま残る．したがって部分は $k_j+1$ 個増え，\n\\[\n(\\text{部分の個数})=1+\\sum_{j=1}^{L}(k_j+1)=1+L+\\sum_{j=1}^Lk_j.\n\\]\n交点 X を $r_{\\mathrm X}$ 本の直線が通るとき，X はそのうち最初に引いた直線以外の $r_{\\mathrm X}-1$ 本で1回ずつ数えられるので，$\\displaystyle\\sum_jk_j=\\sum_{\\mathrm X}(r_{\\mathrm X}-1)$（X はすべての交点を動く）．\n\n(1) 交点を分類する．\n\\begin{itemize}\n  \\item 直線は円と高々2点で交わるので，$\\mathrm P_i$ を通る直線は $\\mathrm P_i\\mathrm P_j$（$j\\neq i$）の $n-1$ 本だけである．よって $r_{\\mathrm P_i}=n-1$．\n  \\item $\\mathrm P_i$ を共有する2直線は $\\mathrm P_i$ だけで交わる．端点を共有しない2直線 $\\mathrm P_a\\mathrm P_b$，$\\mathrm P_c\\mathrm P_d$（$a,b,c,d$ は相異なる）の交点は，$\\mathrm P_i$ であれば $i\\in\\{a,b\\}$ かつ $i\\in\\{c,d\\}$ となり不可能なので，$\\mathrm P_1,\\cdots,\\mathrm P_n$ のどれでもない．仮定よりこの交点を通る直線はちょうど2本であり，異なる組が同じ点を与えることもない．\n\\end{itemize}\n端点を共有しない2直線の組は，4点を選び（${}_n\\mathrm C_4$ 通り），それを2点ずつの2組に分ける（3通り）ことで1回ずつ得られるので $3\\,{}_n\\mathrm C_4$ 個．よって\n\\[\nR_n=1+L+n(n-2)+3\\,{}_n\\mathrm C_4=\\boldsymbol{1+{}_n\\mathrm C_2+n(n-2)+3\\,{}_n\\mathrm C_4=\\frac{(n-1)(n^3-5n^2+18n-8)}{8}}.\n\\]\n（$n=3$ で $7$，$n=4$ で $18$．）\n\n(2) 円の内部を $K$ とする．直線と円で囲まれた閉じた円板の共通部分はその弦なので，各直線と $K$ の共通部分は，両端を除いた弦である．$K$ をこれらの弦で分けた部分の個数を $M_n$ とする．\n\n\\textbf{対応．} 平面の部分 $D$ が $K$ と共有点をもつとき，$D\\cap K$ は凸（したがってひと続き）でどの弦とも交わらないので，$K$ の部分のどれか1つに含まれる．逆に $K$ の部分 $E$ はひと続きでどの直線とも交わらないので，平面の部分のどれか1つに含まれる．$D\\cap K\\subset E\\subset D'$ なら $D\\cap D'\\neq\\varnothing$ より $D=D'$ で，$E\\subset D\\cap K$ でもあるから $E=D\\cap K$．よって「$K$ と交わる平面の部分」と「$K$ の部分」は1対1に対応し，$T_n=R_n-M_n$．\n\n\\textbf{$M_n$ の計算．} 4点を円周上の順に $\\mathrm Q_1,\\mathrm Q_2,\\mathrm Q_3,\\mathrm Q_4$ とすると，四角形 $\\mathrm Q_1\\mathrm Q_2\\mathrm Q_3\\mathrm Q_4$ は凸で，対角線 $\\mathrm Q_1\\mathrm Q_3$，$\\mathrm Q_2\\mathrm Q_4$ は内部で交わり，対辺どうしは共有点をもたない．2直線の交点が閉じた円板に入れば両方の弦の上にあるから，3通りの組分けのうち交点が $K$ に入るのは対角線の組だけで，残り2組の交点は円の外部にある．よって $K$ 内の交点は ${}_n\\mathrm C_4$ 個で，どれもちょうど2本の弦の交点である．準備と同じ議論（$K$ の部分も凸）を弦について行うと\n\\[\nM_n=1+{}_n\\mathrm C_2+{}_n\\mathrm C_4.\n\\]\nしたがって\n\\[\nT_n=R_n-M_n=\\boldsymbol{n(n-2)+2\\,{}_n\\mathrm C_4=\\frac{n(n-2)(n^2-4n+15)}{12}}.\n\\]\n（$n=3$ で $3$，$n=4$ で $10$．）"
+   }
+  ],
+  "idea": {
+   "tex": "直線を1本ずつ加えると，新しい直線上の（相異なる）交点の個数 $+1$ だけ部分が増える．何本もの直線が通る点では「通る本数 $-1$」回だけ数えられるので，部分の個数は $1+(\\text{直線の数})+\\sum(r_p-1)$．円周上の点ではちょうど $n-1$ 本が集まり，残りの交点は「4点の組の3通りの組分け」から数えられ，そのうち円の内部にあるのは対角線の組の1通りだけ．円の内部と交わる部分は，凸性によって円内の弦による分割の部分と1対1に対応する．"
+  },
+  "methods": [],
+  "tags": [
+   "領域の個数",
+   "共点な直線",
+   "数え上げ",
+   "凸性"
+  ],
+  "provenance": {
+   "created": "2026-11-19"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "B-SEQ-254",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "B-13",
+  "level": 5,
+  "minutes": 40,
+  "theme": "隣の棒にしか移せないハノイの塔",
+  "topic": "隣の棒にしか移せないハノイの塔",
+  "statement": {
+   "tex": "3本の棒 A，B，C がこの順に一列に立っており，A に半径の異なる $n$ 枚の円盤が，下から半径の大きい順に通されている．1回の操作では，ある棒の最も上にある円盤1枚を，\\textbf{隣り合う}棒（A と B，または B と C）の最も上に移す．A と C の間で直接移すことはできず，また，どの段階でも小さい円盤の上に大きい円盤を置いてはならない．\n\\begin{enumerate}\n  \\item $n$ 枚すべてを C に移すのに必要な操作の回数の最小値 $f_n$ を求めよ．\n  \\item $n$ 枚すべてを B に移すのに必要な操作の回数の最小値 $g_n$ を求めよ．\n  \\item $n$ 枚すべてを A から C に $f_n$ 回の操作で移すとする．各円盤がどの棒にあるかを「配置」とよぶ．規則に反しない配置はすべて，この $f_n$ 回の操作の途中（最初と最後の配置も含める）にちょうど1回ずつ現れることを示せ．\n  \\item (3) のとき，小さい方から $k$ 番目の円盤（$1\\leqq k\\leqq n$）が動く回数を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $f_n=3^n-1$　(2) $g_n=\\dfrac{3^n-1}{2}$　(3) 証明　(4) $2\\cdot3^{n-k}$ 回"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "円盤を小さい方から $1,2,\\cdots,n$ 番とよぶ．基本的な観察を2つ挙げる．\n\\begin{itemize}\n  \\item[(i)] 最大の円盤 $n$ が棒 $X$ から棒 $Y$ に動くとき，$n$ の上には何もなく，$Y$ に円盤があればそれは $n$ より小さいので置けない．よって残りの $n-1$ 枚はすべて第3の棒にある．\n  \\item[(ii)] 円盤 $n$ はどの円盤の上にも置かれず，その上には何を置いてもよいので，円盤 $1,\\cdots,n-1$ の動きだけを取り出すと，$n-1$ 枚についての規則に従った手順になる．\n\\end{itemize}\nまた，A と C の役割を入れかえても規則は同じなので，C から A へ $n$ 枚を移す最小回数も $f_n$，C から B へ移す最小回数も $g_n$ である．$f_0=g_0=0$ とする．\n\n(1) \\textbf{下からの評価．} $n\\geqq1$ とし，A から C へ移す任意の手順を考える．円盤 $n$ は A から出て C で終わるが，A の隣は B だけ，C の隣も B だけなので，円盤 $n$ の最初の移動は A$\\to$B，最後の移動は B$\\to$C で，これらは別の操作である．(i) より最初の移動の直前には残りがすべて C に，最後の移動の直前には残りがすべて A にある．(ii) より，円盤 $1,\\cdots,n-1$ の動きは\n\\begin{itemize}\n  \\item 最初から円盤 $n$ の最初の移動まで：A から C へ移す手順で $f_{n-1}$ 回以上，\n  \\item 円盤 $n$ の最初の移動から最後の移動まで：C から A へ移す手順で $f_{n-1}$ 回以上，\n  \\item 円盤 $n$ の最後の移動のあと：A から C へ移す手順で $f_{n-1}$ 回以上\n\\end{itemize}\nを含み，円盤 $n$ 自身も2回以上動く．よって $f_n\\geqq3f_{n-1}+2$．\n\n\\textbf{実現．} 上の $n-1$ 枚を最小回数で A$\\to$C，円盤 $n$ を A$\\to$B，$n-1$ 枚を C$\\to$A，円盤 $n$ を B$\\to$C，$n-1$ 枚を A$\\to$C と動かせば $3f_{n-1}+2$ 回で済む．よって $f_n=3f_{n-1}+2$，$f_n+1=3(f_{n-1}+1)$，$f_0+1=1$ より $\\boldsymbol{f_n=3^n-1}$．\n\n(2) A から B へ移す任意の手順で，円盤 $n$ の最初の移動は A$\\to$B であり，その直前には残りがすべて C にある．それまでに円盤 $1,\\cdots,n-1$ は A から C へ移るので $f_{n-1}$ 回以上，その後，C にある $n-1$ 枚が最終的にすべて B に移るので $g_{n-1}$ 回以上動く．よって $g_n\\geqq f_{n-1}+1+g_{n-1}$．逆に「$n-1$ 枚を A$\\to$C，円盤 $n$ を A$\\to$B，$n-1$ 枚を C$\\to$B」で等号が実現する．よって\n\\[\ng_n=g_{n-1}+3^{n-1},\\qquad g_n=\\sum_{i=1}^{n}3^{i-1}=\\boldsymbol{\\frac{3^n-1}2}.\n\\]\n\n(3) 規則に反しない配置は，各円盤がどの棒にあるかを決めれば（各棒の上では大きい順に並ぶしかないので）ただ1つに定まり，逆にどの決め方も許される．よって配置は全部で $3^n$ 個ある．\n\n$f_n$ 回の手順で現れる配置を順に $C_0,C_1,\\cdots,C_{f_n}$ とする（$f_n+1=3^n$ 個）．もし $i<j$ で $C_i=C_j$ なら，$i+1$ 回目から $j$ 回目までの操作を省いても，$C_i$ のあとに $j+1$ 回目以降の操作をそのまま続けられ，$f_n-(j-i)<f_n$ 回で A から C に移せてしまい，$f_n$ の最小性に反する．よって $C_0,\\cdots,C_{f_n}$ はすべて異なり，個数が $3^n$ に等しいので，すべての配置がちょうど1回ずつ現れる．\\hfill$\\square$\n\n(4) 「A から C（または C から A）へ $n$ 枚を $f_n$ 回で移す任意の手順で，$k$ 番目の円盤はちょうど $2\\cdot3^{n-k}$ 回動く」ことを $n$ についての帰納法で示す．$n=1$ では円盤は A$\\to$B$\\to$C と2回動く．$n-1$ で正しいとする．$f_n$ 回の手順では (1) の評価がすべて等号なので，円盤 $n$ はちょうど2回動き，3つの区間での円盤 $1,\\cdots,n-1$ の動きはそれぞれ A と C の間の $f_{n-1}$ 回の手順になっている．よって円盤 $n$ は $2=2\\cdot3^0$ 回，$k<n$ の円盤 $k$ は帰納法の仮定より $3\\cdot2\\cdot3^{(n-1)-k}=2\\cdot3^{n-k}$ 回動く．答えは $\\boldsymbol{2\\cdot3^{n-k}}$ 回．（和は $\\sum_{k=1}^n2\\cdot3^{n-k}=3^n-1=f_n$ で確かに合う．）"
+   }
+  ],
+  "idea": {
+   "tex": "最大の円盤が $X$ から $Y$ に動く瞬間，残りはすべて第3の棒に積まれている．隣にしか動けないので，A から C への移動では最大の円盤は「A$\\to$B」と「B$\\to$C」を必ず含み，その前・間・後の3区間で小さい円盤の塔が丸ごと移る．これで $f_n\\geqq3f_{n-1}+2$．最小の手順では同じ配置が2度現れない（現れたら間を省ける）ので，$3^n-1$ 手で $3^n$ 個の配置をすべて1回ずつ通る．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) $f_n$：3^n-1\n(2) $g_n$：(3^n-1)/2\n(3) 証明\n(4) 記述"
+  },
+  "methods": [],
+  "tags": [
+   "漸化式",
+   "最小値の下からの評価",
+   "状態の数え上げ",
+   "数学的帰納法"
+  ],
+  "provenance": {
+   "created": "2026-11-19"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "B-SEQ-255",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "B-13",
+  "level": 4,
+  "minutes": 30,
+  "theme": "3点の平均をとる操作の繰り返し",
+  "topic": "3点の平均をとる操作の繰り返し",
+  "statement": {
+   "tex": "実数全体で定義された関数の列 $f_1(x),f_2(x),\\cdots,f_7(x)$ が，すべての実数 $x$ について\n\\[f_{j+1}(x)=\\frac13\\{f_j(x-1)+f_j(x)+f_j(x+1)\\}\\qquad(j=1,2,\\cdots,6)\\]\nをみたしている．\n\\begin{enumerate}\n  \\item $f_1(x)=\\cos\\dfrac{\\pi x}3$ のとき，$f_7(1)$ を求めよ．\n  \\item どのような関数 $f_1(x)$ に対しても，すべての $x$ について\n  \\[f_7(x)=\\sum_{k=-6}^{6}c_kf_1(x+k)\\]\n  が成り立つような定数 $c_{-6},\\cdots,c_6$ がただ1組存在することを示し，$c_0$，$c_1$，$c_6$ を求めよ．\n  \\item (2) の $c_k$ について，$\\displaystyle\\sum_{k=-6}^{6}k^2c_k$ と $\\displaystyle\\sum_{k=-6}^{6}k^4c_k$ を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $f_7(1)=\\dfrac{32}{729}$　(2) 証明；$c_0=\\dfrac{47}{243}$，$c_1=\\dfrac{14}{81}$，$c_6=\\dfrac1{729}$　(3) $\\sum k^2c_k=4$，$\\sum k^4c_k=44$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) $\\theta=\\frac\\pi3$ とおく．加法定理より $\\cos\\theta(x-1)+\\cos\\theta(x+1)=2\\cos\\theta x\\cos\\theta=\\cos\\theta x$．よって $f_1(x)=\\cos\\theta x$ のとき\n\\[f_2(x)=\\frac13(\\cos\\theta x+\\cos\\theta x)=\\frac23\\cos\\theta x.\\]\n漸化式は $f_j$ について1次（定数倍と和を保つ）だから，帰納的に $f_j(x)=\\left(\\frac23\\right)^{j-1}\\cos\\theta x$．\n$f_7(1)=\\left(\\frac23\\right)^6\\cos\\frac\\pi3=\\dfrac{64}{729}\\cdot\\dfrac12=\\boldsymbol{\\dfrac{32}{729}}$．\n\n(2) 存在：$(1+t+t^2)^{j-1}$ の $t^{\\,m}$ の係数を $e_{j,m}$（$0\\leqq m\\leqq2j-2$，範囲外は0）とし，\n\\[f_j(x)=\\frac1{3^{j-1}}\\sum_{k=-(j-1)}^{j-1}e_{j,k+j-1}\\,f_1(x+k)\\tag{$\\dagger$}\\]\nを $j$ についての帰納法で示す．$j=1$ は明らか．$j$ で成り立つとすると，$f_{j+1}(x)=\\frac13\\{f_j(x-1)+f_j(x)+f_j(x+1)\\}$ において $f_1(x+k)$ の係数は $\\frac1{3^j}(e_{j,k+j}+e_{j,k+j-1}+e_{j,k+j-2})$ となる．一方 $(1+t+t^2)^{j}=(1+t+t^2)^{j-1}(1+t+t^2)$ より $e_{j+1,m}=e_{j,m}+e_{j,m-1}+e_{j,m-2}$ で，$m=k+j$ とおけば一致する．よって $(\\dagger)$ が成り立ち，$c_k=\\dfrac{e_{7,k+6}}{3^6}$ とすればよい．\n\n一意性：$c_k,c'_k$ がともに条件をみたすとする．整数 $m$（$|m|\\leqq6$）に対し，$f_1(x)$ を $x=m$ で1，それ以外で0となる関数にとると，$x=0$ で $\\sum c_kf_1(k)=c_m$，$\\sum c'_kf_1(k)=c'_m$ がともに $f_7(0)$ に等しいので $c_m=c'_m$．\n\n係数：$(1+t+t^2)^6$ で，6個の因数のうち $t^2$ を $i$ 個，$t$ を $l$ 個選ぶと $t^{2i+l}$ で，選び方は $\\frac{6!}{i!\\,l!\\,(6-i-l)!}$．\n$t^6$：$(i,l)=(0,6),(1,4),(2,2),(3,0)$ で $1+30+90+20=141$．\n$t^7$：$(i,l)=(1,5),(2,3),(3,1)$ で $6+60+60=126$．\n$t^{12}$：$(i,l)=(6,0)$ で1．\nよって $\\boldsymbol{c_0=\\dfrac{141}{729}=\\dfrac{47}{243}}$，$\\boldsymbol{c_1=\\dfrac{126}{729}=\\dfrac{14}{81}}$，$\\boldsymbol{c_6=\\dfrac1{729}}$．\n\n(3) (2) の式で $x=0$ とすると $f_7(0)=\\sum c_kf_1(k)$．\n\n$f_1(x)=x^2$ のとき：$\\frac13\\{(x-1)^2+x^2+(x+1)^2\\}=x^2+\\frac23$，定数は変わらないから，帰納的に $f_j(x)=x^2+\\frac23(j-1)$．よって $\\sum k^2c_k=f_7(0)=\\boldsymbol4$．\n\n$f_1(x)=x^4$ のとき：$\\frac13\\{(x-1)^4+x^4+(x+1)^4\\}=x^4+4x^2+\\frac23$．$f_j(x)=x^4+\\alpha_jx^2+\\beta_j$ の形が保たれ，\n\\[\\alpha_{j+1}=\\alpha_j+4,\\qquad\\beta_{j+1}=\\beta_j+\\frac23+\\frac23\\alpha_j,\\qquad\\alpha_1=\\beta_1=0.\\]\n$\\alpha_j=4(j-1)$ で，$\\beta_7=\\sum_{j=1}^6\\left\\{\\frac23+\\frac83(j-1)\\right\\}=4+\\frac83\\cdot15=44$．よって $\\sum k^4c_k=f_7(0)=\\boldsymbol{44}$．"
+   }
+  ],
+  "idea": {
+   "tex": "「$x-1,x,x+1$ での値の平均をとる」操作を繰り返すと，もとの関数のずらし $f_1(x+k)$ の重みは $(t^{-1}+1+t)$ のべきの展開係数（3項係数）になる．$\\cos$ 型の関数はこの操作で定数倍されるだけであり，$x^2$，$x^4$ に施した結果を $x=0$ で見ると重みの2次・4次のモーメントが求まる．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) $f_7(1)$：32/729\n(2) 記述\n(3) $\\sum k^2c_k$：4 ; $\\sum k^4c_k$：44"
+  },
+  "methods": [],
+  "tags": [
+   "関数の漸化式",
+   "三項係数",
+   "加法定理",
+   "帰納法"
+  ],
+  "provenance": {
+   "created": "2026-11-19"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "B-SEQ-256",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "B-13",
+  "level": 3,
+  "minutes": 35,
+  "theme": "3通りの移動を選べる点列と点の個数",
+  "topic": "3通りの移動を選べる点列と点の個数",
+  "statement": {
+   "tex": "座標平面上の点 $(x,y)$ に対して，3つの点\n\\[\nf(x,y)=\\left(\\frac{x-y}2,\\ y\\right),\\quad g(x,y)=\\left(x,\\ \\frac{y-x}2\\right),\\quad h(x,y)=\\left(\\frac{3x+y}2,\\ -x\\right)\n\\]\nを考える．点 $\\mathrm P_0=(1,1)$ から始めて，点列 $\\mathrm P_0,\\mathrm P_1,\\mathrm P_2,\\cdots$ を次の規則でつくる．$\\mathrm P_n=(x_n,y_n)$ とする．\n\\begin{itemize}\n  \\item $x_n+y_n\\geqq\\dfrac1{100}$ のときは，$\\mathrm P_{n+1}$ を $f(x_n,y_n)$，$g(x_n,y_n)$，$h(x_n,y_n)$ のいずれかとする．\n  \\item $x_n+y_n<\\dfrac1{100}$ のときは，$\\mathrm P_{n+1}=f(x_n,y_n)$ とする．\n\\end{itemize}\n\\begin{enumerate}\n  \\item $x_n+y_n$ を $n$ で表せ．\n  \\item $\\mathrm P_{10}$ として可能な点は何個あるか．\n  \\item (2)の点のうち，$x$ 座標が正であるものは何個あるか．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $x_n+y_n=2^{1-n}$　(2) $511$ 個　(3) $383$ 個"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) $f,g,h$ のどれで移っても，移った点の座標の和は\n\\[\n\\frac{x-y}2+y=\\frac{x+y}2,\\qquad x+\\frac{y-x}2=\\frac{x+y}2,\\qquad\\frac{3x+y}2-x=\\frac{x+y}2\n\\]\nとなる．$x_0+y_0=2$ なので $\\boldsymbol{x_n+y_n=2^{1-n}}$．\n\n(2) $c_n=2^{1-n}$，$u_n=\\frac{x_n}{c_n}$ とおくと $\\mathrm P_n=(c_nu_n,\\ c_n(1-u_n))$ であり，$c_n$ は $n$ だけで決まるので，$\\mathrm P_n$ の異なる可能性と $u_n$ の異なる値は1対1に対応する．$c_{n+1}=\\frac{c_n}2$ より\n\\[\nf:\\ u_{n+1}=\\frac{x_n-y_n}{c_n}=2u_n-1,\\qquad g:\\ u_{n+1}=\\frac{x_n}{c_n/2}=2u_n,\\qquad h:\\ u_{n+1}=\\frac{2x_n+c_n}{c_n}=2u_n+1 .\n\\]\n$c_n\\geqq\\frac1{100}\\iff 2^{n-1}\\leqq100\\iff n\\leqq7$．よって $\\mathrm P_1,\\cdots,\\mathrm P_8$ は自由に3通りから選べ，$\\mathrm P_9=f(\\mathrm P_8)$，$\\mathrm P_{10}=f(\\mathrm P_9)$ と決まる．\n\n$k$ 回目（$k=1,\\cdots,8$）の選択に応じて $\\varepsilon_k=-1,0,1$ とおくと $u_{k}=2u_{k-1}+\\varepsilon_k$ で，$u_0=\\frac12$ より\n\\[\nu_8=128+M,\\qquad M=\\sum_{k=1}^{8}\\varepsilon_k2^{8-k} .\n\\]\n$|M|\\leqq\\sum_{k=1}^82^{8-k}=255$．逆に $0\\leqq M\\leqq255$ の整数は2進法で $M=\\sum\\varepsilon_k2^{8-k}$（$\\varepsilon_k\\in\\{0,1\\}$）と表せ，負の $M$ はすべての $\\varepsilon_k$ の符号を変えればよいので，$M$ のとりうる値は $-255$ 以上 $255$ 以下のすべての整数で $511$ 個．\n$u_{10}=2(2u_8-1)-1=4u_8-3$ は $u_8$ について単調だから，$\\mathrm P_{10}$ として可能な点は $\\boldsymbol{511}$ 個．\n\n(3) $x_{10}=c_{10}u_{10}=2^{-9}\\{4(128+M)-3\\}=2^{-9}(509+4M)$．$x_{10}>0\\iff M>-\\frac{509}4\\iff M\\geqq-127$．$-127\\leqq M\\leqq255$ の整数は $\\boldsymbol{383}$ 個．"
+   }
+  ],
+  "idea": {
+   "tex": "3つの移動はどれも $x+y$ を半分にするので，点は直線 $x+y=c_n$ 上を動く．位置を $u=\\frac{x}{x+y}$ で表すと移動は $u\\to2u-1,\\ 2u,\\ 2u+1$ となり，$u_n$ は「各桁が $-1,0,1$ の2進表示」の和で決まる．とりうる値は区間内のすべての整数になる．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) 記述\n(2) 511個\n(3) 383個"
+  },
+  "methods": [],
+  "tags": [
+   "点列",
+   "2進法",
+   "漸化式",
+   "場合の数"
+  ],
+  "provenance": {
+   "created": "2026-11-19"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "B-SEQ-257",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "B-13",
+  "level": 4,
+  "minutes": 40,
+  "theme": "差が2以上のときだけ一緒に進む2点",
+  "topic": "差が2以上のときだけ一緒に進む2点",
+  "statement": {
+   "tex": "コインを投げる試行の結果によって，数直線上にある2点 A，B を次のように動かす．\n\\begin{itemize}\n  \\item 表が出た場合：点 A の座標が点 B の座標より2以上大きいときは，A と B を共に正の方向に1動かす．そうでないときは，A のみ正の方向に1動かす．\n  \\item 裏が出た場合：点 B の座標が点 A の座標より2以上大きいときは，A と B を共に正の方向に1動かす．そうでないときは，B のみ正の方向に1動かす．\n\\end{itemize}\n最初2点 A，B は原点にあるものとし，上の試行を $n$ 回繰り返したときの A，B の座標をそれぞれ $a$，$b$ とする．\n\\begin{enumerate}\n  \\item $n$ 回コインを投げたときの表裏の出方 $2^n$ 通りのうち，$a=b$ となるものの数を $X_n$ とする．すべての正の整数 $n$ について $X_{n+3}=X_{n+2}+3X_{n+1}-2X_n$ が成り立つことを示せ．\n  \\item 極限 $\\displaystyle\\lim_{n\\to\\infty}\\frac{X_n}{2^n}$ を求めよ．\n  \\item 表裏の出方 $2^n$ 通りについての $a$ の値の平均を $E_n$ とする．極限 $\\displaystyle\\lim_{n\\to\\infty}\\left(E_n-\\frac{3n}5\\right)$ を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 証明　(2) $\\dfrac15$　(3) $-\\dfrac15$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "$d=a-b$ とおく．規則を $d$ で書くと：表のとき，$d\\geqq2$ なら $d$ は変わらず，$d\\leqq1$ なら $d$ は $1$ 増える．裏のとき，$d\\leqq-2$ なら変わらず，$d\\geqq-1$ なら $1$ 減る．$d=0$ から始めると，帰納的に常に $-2\\leqq d\\leqq2$ である（$d=2$ で表なら $d=2$ のまま，$d=-2$ で裏なら $-2$ のまま）．\n\n$n$ 回後に $d=0$，$|d|=1$，$|d|=2$ となる出方の数を $u_n,v_n,w_n$ とする（$u_0=1$，$v_0=w_0=0$，$X_n=u_n$）．1回の試行で，$d=0$ からは2通りとも $|d|=1$ へ；$|d|=1$ からは1通りで $0$ へ，1通りで $|d|=2$ へ；$|d|=2$ からは1通りで $|d|=2$ のまま，1通りで $|d|=1$ へ移る．よって\n\\[\nu_{n+1}=v_n,\\qquad v_{n+1}=2u_n+w_n,\\qquad w_{n+1}=v_n+w_n\\qquad(n\\geqq0).\n\\]\n\n(1) $u_{n+3}=v_{n+2}=2u_{n+1}+w_{n+1}$，$w_{n+1}=v_n+w_n=u_{n+1}+w_n$，$w_n=v_{n+1}-2u_n=u_{n+2}-2u_n$ を順に代入して\n\\[\nu_{n+3}=2u_{n+1}+u_{n+1}+u_{n+2}-2u_n=u_{n+2}+3u_{n+1}-2u_n.\n\\]\nこれは $n\\geqq0$ で成り立つので，$X_{n+3}=X_{n+2}+3X_{n+1}-2X_n$．\\hfill$\\square$\n\n(2) 確率 $P_n=\\frac{u_n}{2^n}$，$Q_n=\\frac{v_n}{2^n}$，$R_n=\\frac{w_n}{2^n}$ は $P_n+Q_n+R_n=1$ をみたし，\n\\[\nP_{n+1}=\\tfrac12Q_n,\\qquad Q_{n+1}=P_n+\\tfrac12R_n,\\qquad R_{n+1}=\\tfrac12(Q_n+R_n).\n\\]\n$(P,Q,R)=\\left(\\frac15,\\frac25,\\frac25\\right)$ はこれらの式で不変（$\\frac15=\\frac12\\cdot\\frac25$，$\\frac25=\\frac15+\\frac15$，$\\frac25=\\frac12\\left(\\frac25+\\frac25\\right)$）なので，$p_n=P_n-\\frac15$，$q_n=Q_n-\\frac25$，$s_n=R_n-\\frac25$ も同じ式をみたし，$p_n+q_n+s_n=0$．よって\n\\[\nq_{n+1}=p_n+\\tfrac12s_n=-q_n-\\tfrac12s_n,\\qquad s_{n+1}=\\tfrac12(q_n+s_n).\n\\]\n第2式より $q_n=2s_{n+1}-s_n$．これを使うと $s_{n+2}=\\frac12(q_{n+1}+s_{n+1})=\\frac12\\left(-q_n-\\frac12s_n+\\frac12q_n+\\frac12s_n\\right)=-\\frac14q_n$ なので\n\\[\ns_{n+2}=-\\tfrac12s_{n+1}+\\tfrac14s_n.\n\\]\n$t^2+\\frac12t-\\frac14=0$ の解 $\\alpha=\\frac{-1+\\sqrt5}4$，$\\beta=\\frac{-1-\\sqrt5}4$ を用いると，$s_{n+2}-\\alpha s_{n+1}=\\beta(s_{n+1}-\\alpha s_n)$，$s_{n+2}-\\beta s_{n+1}=\\alpha(s_{n+1}-\\beta s_n)$ から\n\\[\ns_n=\\frac{(s_1-\\beta s_0)\\alpha^n-(s_1-\\alpha s_0)\\beta^n}{\\alpha-\\beta}.\n\\]\n$\\sqrt5<3$ より $|\\alpha|<1$，$|\\beta|=\\frac{1+\\sqrt5}4<1$ なので $s_n\\to0$，$q_n=2s_{n+1}-s_n\\to0$，$p_n=-q_n-s_n\\to0$．よって $\\displaystyle\\lim_{n\\to\\infty}\\frac{X_n}{2^n}=\\boldsymbol{\\frac15}$．\n\n(3) 1回の試行で $a+b$ は，$|d|=2$ で「両方動く」側の面が出たとき（その状態から確率 $\\frac12$）に $2$，それ以外は $1$ 増える．よって出方 $2^n$ 通りについての $a+b$ の平均は $n+\\frac12\\sum_{k=0}^{n-1}R_k$．また，表と裏をすべて入れかえると規則が A と B で入れかわるので $(a,b)$ が $(b,a)$ に移り，この対応は $2^n$ 通りの出方の1対1対応だから $a-b$ の平均は $0$．よって\n\\[\nE_n=\\frac n2+\\frac14\\sum_{k=0}^{n-1}R_k=\\frac n2+\\frac14\\sum_{k=0}^{n-1}\\left(\\frac25+s_k\\right)=\\frac{3n}5+\\frac14\\sum_{k=0}^{n-1}s_k.\n\\]\n(2) の一般項より $\\displaystyle\\sum_{k=0}^{n-1}s_k=\\frac{(s_1-\\beta s_0)\\frac{1-\\alpha^n}{1-\\alpha}-(s_1-\\alpha s_0)\\frac{1-\\beta^n}{1-\\beta}}{\\alpha-\\beta}$ は $n\\to\\infty$ で収束する．その極限を $\\Sigma$ とし，$\\sigma_N=\\sum_{k=0}^{N}s_k$ とおく．$s_{k+2}+\\frac12s_{k+1}-\\frac14s_k=0$ を $k=0,\\dots,N-2$ で加えると\n\\[\n(\\sigma_N-s_0-s_1)+\\tfrac12(\\sigma_{N-1}-s_0)-\\tfrac14\\sigma_{N-2}=0.\n\\]\n$N\\to\\infty$ として $\\frac54\\Sigma=\\frac32s_0+s_1$．$R_0=0$，1回後は必ず $|d|=1$ なので $R_1=0$，よって $s_0=s_1=-\\frac25$ で $\\frac54\\Sigma=-1$，$\\Sigma=-\\frac45$．したがって\n\\[\n\\lim_{n\\to\\infty}\\left(E_n-\\frac{3n}5\\right)=\\frac14\\Sigma=\\boldsymbol{-\\frac15}.\n\\]"
+   }
+  ],
+  "idea": {
+   "tex": "2点の位置の差 $d=a-b$ だけを状態として追うと，$d$ は有限個の値しか取らず，状態ごとの場合の数が連立漸化式に従う．原題は差が $-1,0,1$ に限られ2状態の簡単な漸化式だったが，ここでは「差が2以上なら一緒に進む」ので $|d|=0,1,2$ の3状態になり，3項間漸化式・極限分布・期待値のずれの和まで扱う．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) 証明\n(2) 1/5\n(3) -1/5"
+  },
+  "methods": [],
+  "tags": [
+   "確率漸化式",
+   "状態の分類",
+   "3項間漸化式",
+   "極限",
+   "期待値"
+  ],
+  "provenance": {
+   "created": "2026-11-19"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "B-SEQ-258",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "B-13",
+  "level": 5,
+  "minutes": 40,
+  "theme": "両端を1に固定した3項間漸化式と両端からの減衰",
+  "topic": "両端を1に固定した3項間漸化式と両端からの減衰",
+  "statement": {
+   "tex": "$m$ を2以上の整数とし，実数 $a_1,a_2,\\dots,a_{m-1}$ はすべて2以上であるとする．数列 $x_0,x_1,\\dots,x_m$ についての条件\n\\[\n\\text{(A)}\\qquad x_{n+1}-a_nx_n+x_{n-1}=0\\quad(n=1,2,\\dots,m-1),\\qquad x_0=x_m=1\n\\]\nを考える．\n\\begin{enumerate}\n  \\item (A) をみたす数列がただ1つ存在することを示せ．また，その数列は $0<x_n\\leqq1\\ (n=0,1,\\dots,m)$ をみたすことを示せ．\n  \\item 定数 $c>2$ があって，すべての $n$ で $a_n\\geqq c$ であるとする．$r+\\dfrac1r=c$，$0<r<1$ をみたす実数 $r$ をとるとき，(A) をみたす数列について\n  \\[\n  x_n\\leqq\\frac{r^n+r^{m-n}}{1+r^m}\\qquad(n=0,1,\\dots,m)\n  \\]\n  が成り立つことを示せ．\n  \\item すべての $n$ で $a_n\\geqq\\dfrac52$ であるとき，$S=\\displaystyle\\sum_{n=0}^mx_n$ は $S<4$ をみたすことを示せ．さらに，どのような正の数 $\\varepsilon$ に対しても，$m$ と $a_1,\\dots,a_{m-1}$（すべて $\\frac52$ 以上）をうまく選べば $S>4-\\varepsilon$ とできることを示せ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 証明　(2) 証明　(3) 証明"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) \\textbf{存在と一意性．} 数列 $u_n,\\ v_n\\ (0\\leqq n\\leqq m)$ を $u_0=0,\\ u_1=1$，$v_0=1,\\ v_1=0$ と，$n=1,\\dots,m-1$ に対する漸化式 $u_{n+1}=a_nu_n-u_{n-1}$，$v_{n+1}=a_nv_n-v_{n-1}$ で定める．\n\nまず $n=1,\\dots,m$ で $u_n-u_{n-1}\\geqq1$ かつ $u_n\\geqq n$ を帰納法で示す．$n=1$ では $u_1-u_0=1$，$u_1=1$．$n$ で成り立てば $u_n>0$，$a_n-2\\geqq0$ より\n\\[\nu_{n+1}-u_n=(a_n-2)u_n+(u_n-u_{n-1})\\geqq1,\\qquad u_{n+1}\\geqq u_n+1\\geqq n+1.\n\\]\nよって $u_m\\geqq m>0$．\n\n漸化式をみたし $x_0=1$，$x_1=\\tau$ である数列は，$x_n=v_n+\\tau u_n$ と一致する（両者は同じ漸化式をみたし，初めの2項が等しいので，帰納法ですべての項が等しい）．したがって (A) をみたす数列は $v_m+\\tau u_m=1$ となる $\\tau$ に対応するものに限られ，$u_m\\neq0$ より $\\tau=\\dfrac{1-v_m}{u_m}$ がただ1つ定まる．逆にこの $\\tau$ による数列は (A) をみたす．よって (A) をみたす数列はただ1つ存在する．\n\n\\textbf{$x_n\\leqq1$．} ある $x_n>1$ と仮定し，$x_0,\\dots,x_m$ のうちの最大値を $\\mu\\ (>1)$，$x_k=\\mu$ となる最小の番号を $k$ とする．$x_0=x_m=1<\\mu$ より $1\\leqq k\\leqq m-1$ で，$x_{k-1}<\\mu$，$x_{k+1}\\leqq\\mu$．すると $a_kx_k=x_{k+1}+x_{k-1}<2\\mu$．一方 $\\mu>0$，$a_k\\geqq2$ より $a_kx_k\\geqq2\\mu$．矛盾．\n\n\\textbf{$x_n>0$．} ある $x_n\\leqq0$ と仮定し，最小値を $\\nu\\ (\\leqq0)$，$x_k=\\nu$ となる最小の番号を $k$ とすると $1\\leqq k\\leqq m-1$，$x_{k-1}>\\nu$，$x_{k+1}\\geqq\\nu$．よって $a_k\\nu=x_{k+1}+x_{k-1}>2\\nu$．一方 $\\nu\\leqq0$，$a_k\\geqq2$ より $a_k\\nu\\leqq2\\nu$．矛盾．\n\n以上で $0<x_n\\leqq1$．\\hfill$\\square$\n\n(2) $r$ は $r^2-cr+1=0$ の解 $r=\\dfrac{c-\\sqrt{c^2-4}}2$ で，2解の積が1なので $0<r<1$ のものはこれだけである．\n\\[\ne_n=\\frac{r^n+r^{m-n}}{1+r^m}\\qquad(0\\leqq n\\leqq m)\n\\]\nとおくと $e_0=e_m=1$，$e_n>0$ で，$r^{n+1}+r^{n-1}=r^n\\left(r+\\frac1r\\right)=cr^n$，$r^{m-n-1}+r^{m-n+1}=cr^{m-n}$ より $e_{n+1}+e_{n-1}=ce_n$．\n\n$d_n=e_n-x_n$ とおくと $d_0=d_m=0$ で，$1\\leqq n\\leqq m-1$ に対し\n\\[\nd_{n+1}+d_{n-1}=ce_n-a_nx_n=a_nd_n+(c-a_n)e_n\\leqq a_nd_n\\qquad(\\because\\ c\\leqq a_n,\\ e_n>0).\n\\]\nある $d_n<0$ と仮定し，最小値を $\\nu\\ (<0)$，$d_k=\\nu$ となる最小の番号を $k$ とすると $1\\leqq k\\leqq m-1$，$d_{k-1}>\\nu$，$d_{k+1}\\geqq\\nu$ なので\n\\[\n2\\nu<d_{k+1}+d_{k-1}\\leqq a_k\\nu\\leqq2\\nu\\qquad(\\because\\ \\nu<0,\\ a_k\\geqq2)\n\\]\nとなり矛盾．よってすべての $n$ で $d_n\\geqq0$，すなわち $x_n\\leqq e_n$．\\hfill$\\square$\n\n(3) $c=\\dfrac52$ のとき $r=\\dfrac12$．(2) より\n\\[\nS\\leqq\\sum_{n=0}^me_n=\\frac1{1+r^m}\\left(\\sum_{n=0}^mr^n+\\sum_{n=0}^mr^{m-n}\\right)=\\frac{2(1-r^{m+1})}{(1-r)(1+r^m)}=\\frac{4\\left(1-2^{-m-1}\\right)}{1+2^{-m}}<4.\n\\]\n次に，すべての $n$ で $a_n=\\dfrac52$ とする．このとき $e_n$ 自身が (A) をみたす（$e_{n+1}+e_{n-1}=\\frac52e_n$，$e_0=e_m=1$）ので，(1) の一意性より $x_n=e_n$ で，\n\\[\nS=\\frac{4\\left(1-2^{-m-1}\\right)}{1+2^{-m}}\\geqq4\\left(1-2^{-m-1}\\right)\\left(1-2^{-m}\\right)\\geqq4\\left(1-2^{-m-1}-2^{-m}\\right)=4-\\frac6{2^m}.\n\\]\n（$y>0$ で $\\frac1{1+y}\\geqq1-y$ を用いた．）よって $\\dfrac6{2^m}<\\varepsilon$ となる $m$ をとれば $S>4-\\varepsilon$．\\hfill$\\square$"
+   }
+  ],
+  "idea": {
+   "tex": "$x_{n+1}+x_{n-1}=a_nx_n$（$a_n\\geqq2$）では，内部の番号で最大値（正）や最小値（0以下）をとると両隣との大小から矛盾し，最大・最小は両端でとる．定数 $c$ の場合の解 $e_n=\\dfrac{r^n+r^{m-n}}{1+r^m}$（$r+\\frac1r=c$）との差 $d_n=e_n-x_n$ は $d_{n+1}+d_{n-1}\\leqq a_nd_n$ をみたし，両端で0なので負になれない．原題の「片側を0に固定した解の単調性」を，両端固定の比較原理に置きかえる．"
+  },
+  "methods": [],
+  "tags": [
+   "3項間漸化式",
+   "最大値と最小値の位置",
+   "比較",
+   "背理法"
+  ],
+  "provenance": {
+   "created": "2026-11-19"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "B-SEQ-259",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "B-13",
+  "level": 4,
+  "minutes": 25,
+  "theme": "二項係数の二重和と折り返しの対称性",
+  "topic": "二項係数の二重和と折り返しの対称性",
+  "statement": {
+   "tex": "$n$ を正の整数とし，$\\dbinom nk$ は二項係数を表す．\n\\begin{enumerate}\n  \\item $\\displaystyle S_n=\\sum_{k=0}^{n}\\binom nk\\left(\\sum_{l=0}^{k}\\binom{n+1}{l}\\right)$ を $n$ で表せ．\n  \\item $\\displaystyle T_n=\\sum_{k=0}^{n}\\binom nk\\left(\\sum_{l=0}^{k}\\binom{n}{l}\\right)$ を $n$ で表せ．ただし $\\dbinom{2n}{n}$ を用いてよい．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $S_n=4^n$　(2) $T_n=\\dfrac{4^n+\\binom{2n}{n}}2$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) $A_k=\\displaystyle\\sum_{l=0}^{k}\\binom{n+1}l$ とおく．$\\dbinom{n+1}l=\\dbinom{n+1}{n+1-l}$ より，$j=n+1-l$ とおいて\n\\[\nA_{n-k}=\\sum_{l=0}^{n-k}\\binom{n+1}{n+1-l}=\\sum_{j=k+1}^{n+1}\\binom{n+1}{j}\\qquad(0\\leqq k\\leqq n),\n\\]\nよって $A_k+A_{n-k}=\\displaystyle\\sum_{l=0}^{n+1}\\binom{n+1}l=2^{n+1}$．外側で $k$ を $n-k$ に付け替え，$\\dbinom n{n-k}=\\dbinom nk$ を用いると\n$S_n=\\displaystyle\\sum_{k=0}^n\\binom nkA_{n-k}$．元の式と足して\n\\[\n2S_n=\\sum_{k=0}^n\\binom nk\\left(A_k+A_{n-k}\\right)=2^{n+1}\\cdot2^n,\\qquad S_n=\\boldsymbol{4^n}.\n\\]\n\n(2) $B_k=\\displaystyle\\sum_{l=0}^k\\binom nl$ とおくと，同様に $B_{n-k}=\\displaystyle\\sum_{j=k}^{n}\\binom nj$ で，今度は $l=k$ の項が重なるので $B_k+B_{n-k}=2^n+\\dbinom nk$．よって\n\\[\n2T_n=\\sum_{k=0}^n\\binom nk\\left\\{2^n+\\binom nk\\right\\}=4^n+\\sum_{k=0}^n\\binom nk^2 .\n\\]\n$(1+x)^n(1+x)^n=(1+x)^{2n}$ の $x^n$ の係数を比べると，左辺では $\\displaystyle\\sum_{k=0}^n\\binom nk\\binom n{n-k}=\\sum_{k=0}^n\\binom nk^2$，右辺では $\\dbinom{2n}n$．したがって\n$T_n=\\boldsymbol{\\dfrac{4^n+\\binom{2n}n}2}$．\n\\hfill$\\square$"
+   }
+  ],
+  "idea": {
+   "tex": "内側の和 $A_k=\\sum_{l=0}^kc_l$ について，係数の対称性 $c_l=c_{N-l}$ から $A_{n-k}$ は「$c_l$ の後ろ側の和」になる．外側の係数も $k\\to n-k$ で対称なので，元の和と付け替えた和を足すと内側が全和（または全和＋1項）になり，二重和が単純な積に化ける．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) $S_n$：4^n\n(2) 記述"
+  },
+  "methods": [],
+  "tags": [
+   "二項係数",
+   "和の対称性",
+   "添字の付け替え",
+   "二重和",
+   "ヴァンデルモンドの等式"
+  ],
+  "provenance": {
+   "created": "2026-11-19"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "B-SEQ-260",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "B-13",
+  "level": 4,
+  "minutes": 35,
+  "theme": "絶対値つき漸化式の符号の切り替わりと偶奇",
+  "topic": "絶対値つき漸化式の符号の切り替わりと偶奇",
+  "statement": {
+   "tex": "数列 $\\{a_n\\}$ を\n\\[\na_{n+1}=-\\frac{17}{12}|a_n|-\\frac{19}{12}a_n+4\\qquad(n=1,2,3,\\dots)\n\\]\nで定める．\n\\begin{enumerate}\n  \\item $a_1=1+\\dfrac1{3^{10}}$ のとき，$a_n<0$ となる最小の $n$ を求めよ．\n  \\item (1) のとき，一般項 $a_n$ を求めよ．\n  \\item $a_1=c$（$c$ は実数）とするとき，極限 $\\displaystyle\\lim_{n\\to\\infty}a_{2n}$ を $c$ の値で分類して求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $n=12$　(2) $1\\leqq n\\leqq11$ のとき $a_n=1+\\dfrac{(-3)^{n-1}}{3^{10}}$；$m\\geqq0$ として $a_{12+2m}=-16+\\dfrac{14}{2^m}$，$a_{13+2m}=\\dfrac{20}3-\\dfrac7{3\\cdot2^m}$　(3) $c>1$ のとき $-16$，$c=1$ のとき $1$，$c<1$ のとき $\\dfrac{20}3$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "漸化式は\n\\[\na_n\\geqq0\\ \\text{のとき}\\ a_{n+1}=4-3a_n,\\qquad a_n<0\\ \\text{のとき}\\ a_{n+1}=4-\\frac{a_n}6\n\\]\nである（$|a_n|=a_n$ なら係数は $-\\frac{17}{12}-\\frac{19}{12}=-3$，$|a_n|=-a_n$ なら $\\frac{17}{12}-\\frac{19}{12}=-\\frac16$）．\n\n\\textbf{補題．}\\ ある番号 $N$ で $a_N<0$ なら，$m\\geqq0$ について $a_{N+2m}<0<a_{N+2m+1}$ で\n\\[\na_{N+2m}=-16+\\frac{a_N+16}{2^m},\\qquad a_{N+2m+1}=4-\\frac{a_{N+2m}}6 .\n\\]\n実際 $u=a_{N+2m}<0$ なら $a_{N+2m+1}=4-\\frac u6>4>0$，$a_{N+2m+2}=4-3\\left(4-\\frac u6\\right)=\\frac u2-8<0$ で，$a_{N+2m+2}+16=\\frac12(u+16)$．帰納法で従う．\n\n\\textbf{正の間の挙動．}\\ $a_1,\\dots,a_{n-1}\\geqq0$ なら $a_{j+1}-1=-3(a_j-1)$ より $a_n=1+(-3)^{n-1}(a_1-1)$．\n\n(1) $a_1-1=3^{-10}$ で，$n\\leqq11$ では $|(-3)^{n-1}3^{-10}|=3^{n-11}\\leqq1$ より上の式の値は0以上．よって帰納的に $a_1,\\dots,a_{11}\\geqq0$ で $a_n=1+\\dfrac{(-3)^{n-1}}{3^{10}}$（$n\\leqq12$）．$a_{12}=1-3=-2<0$．最小の $n$ は $\\boldsymbol{12}$．\n\n(2) $1\\leqq n\\leqq11$ で $a_n=\\boldsymbol{1+\\dfrac{(-3)^{n-1}}{3^{10}}}$．補題で $N=12$，$a_{12}=-2$ として，$m\\geqq0$ について\n\\[\na_{12+2m}=\\boldsymbol{-16+\\frac{14}{2^m}},\\qquad a_{13+2m}=4+\\frac{16}6-\\frac{14}{6\\cdot2^m}=\\boldsymbol{\\frac{20}3-\\frac{7}{3\\cdot2^m}}.\n\\]\n\n(3) $c=1$ なら $a_n=1$（すべての $n$）で極限は $\\boldsymbol1$．\n$c\\neq1$ とする．$e_n=1+(-3)^{n-1}(c-1)$ とおくと，$3^{n-1}\\geqq n$ より，$n>\\dfrac1{|c-1|}$ なら $3^{n-1}|c-1|\\geqq n|c-1|>1$ である．よって $c>1$ なら $n-1$ が奇数で $n>\\dfrac1{|c-1|}$ のとき $e_n=1-3^{n-1}(c-1)<0$，$c<1$ なら $n-1$ が偶数で $n>\\dfrac1{|c-1|}$ のとき $e_n=1-3^{n-1}(1-c)<0$ となり，$e_n<0$ となる $n$ が存在する．$e_n<0$ となる最小の $n$ を $N$ とすると，$n<N$ で $e_n\\geqq0$ だから帰納的に $a_n=e_n\\geqq0$（$n<N$），$a_N=e_N<0$．$e_N<0$ より $(-3)^{N-1}(c-1)<-1<0$ なので，$(-3)^{N-1}$ と $c-1$ は異符号：\n\\begin{itemize}\n  \\item $c>1$ なら $N-1$ は奇数，$N$ は偶数．補題より偶数番目 $a_{N+2m}\\to-16$ で，$\\displaystyle\\lim_{n\\to\\infty}a_{2n}=\\boldsymbol{-16}$．\n  \\item $c<1$ なら $N$ は奇数．偶数番目は $a_{N+2m+1}=4-\\frac{a_{N+2m}}6\\to4+\\frac{16}6=\\frac{20}3$ で，$\\displaystyle\\lim_{n\\to\\infty}a_{2n}=\\boldsymbol{\\frac{20}3}$．\n\\end{itemize}\n（$c<0$ のときは $N=1$ で，これも後者に含まれる．）\n\\hfill$\\square$"
+   }
+  ],
+  "idea": {
+   "tex": "$a_n\\geqq0$ と $a_n<0$ で1次の漸化式が切り替わる．正の間は不動点 1 から $(-3)$ 倍ずつ離れていき，初めて負になる番号の偶奇は $a_1-1$ の符号で決まる．いったん負になると「負→正→負」をくり返し，1つおきの漸化式 $a_{n+2}+16=\\frac12(a_n+16)$ で $-16$ に近づく．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) $n$：12\n(2) 記述\n(3) 場合分け{ c>1 → -16 | c=1 → 1 | c<1 → 20/3 }"
+  },
+  "methods": [],
+  "tags": [
+   "漸化式",
+   "絶対値",
+   "場合分け",
+   "1つおきの漸化式",
+   "極限",
+   "偶奇"
+  ],
+  "provenance": {
+   "created": "2026-11-19"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "B-SEQ-261",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "B-13",
+  "level": 4,
+  "minutes": 35,
+  "theme": "和が初めて2以上になるまで並ぶ分数の群",
+  "topic": "和が初めて2以上になるまで並ぶ分数の群",
+  "statement": {
+   "tex": "次のように分数を並べた数列がある．第 $m$ 群（$m=1,2,3,\\dots$）には，分母が $m$ で分子が $1,2,3,\\dots$ の分数が順に，第 $m$ 群の数の和 $S_m$ が初めて $2$ 以上になるまで並ぶ．たとえば第1群は $\\dfrac11,\\dfrac21$，第2群は $\\dfrac12,\\dfrac22,\\dfrac32$ である．\n\\begin{enumerate}\n  \\item 自然数 $r$ に対し，ちょうど $r$ 個の項からなる群は第何群から第何群までか．$r$ を4で割った余りで場合を分けて答えよ（そのような群がないときはそう答えよ）．\n  \\item この数列の第2026項を求めよ．\n  \\item $1\\leqq m\\leqq1000$ のうち，$S_m=2$ となる $m$ の個数を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $r=1$ はなし．$r=4k$ のとき第 $4k^2-k+1$ 群から第 $4k^2+k$ 群，$r=4k+1$ のとき第 $4k^2+k+1$ 群から第 $4k^2+3k$ 群（$k\\geqq1$），$r=4k+2$ のとき第 $4k^2+3k+1$ 群から第 $4k^2+5k+1$ 群，$r=4k+3$ のとき第 $4k^2+5k+2$ 群から第 $4k^2+7k+3$ 群　(2) $\\dfrac{19}{132}$　(3) $30$ 個"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "第 $m$ 群の最初の $r$ 項の和は $\\dfrac{1+2+\\cdots+r}{m}=\\dfrac{r(r+1)}{2m}$ で，これが2以上 $\\iff r(r+1)\\geqq4m$．$r(r+1)$ は $r$ について増加するので，第 $m$ 群の項数 $r_m$ は $r(r+1)\\geqq4m$ をみたす最小の自然数 $r$ である．$1\\cdot2=2<4m$ なので $r_m\\geqq2$ で，\n\\[r_m=r\\iff (r-1)r<4m\\leqq r(r+1)\\iff \\frac{r(r-1)}4<m\\leqq\\frac{r(r+1)}4.\\]\n\n(1) 項数 $r$ の群の番号は $\\left[\\dfrac{r(r-1)}4\\right]+1$ から $\\left[\\dfrac{r(r+1)}4\\right]$ まで（$[\\ ]$ はガウス記号）．$r=1$ のときは $0<m\\leqq\\frac12$ をみたす自然数がなく，該当する群はない．$k$ を整数として\n\\begin{itemize}\n  \\item $r=4k$（$k\\geqq1$）：$\\frac{r(r-1)}4=4k^2-k$，$\\frac{r(r+1)}4=4k^2+k$ はともに整数で，\\textbf{第 $\\boldsymbol{4k^2-k+1}$ 群から第 $\\boldsymbol{4k^2+k}$ 群}（$2k$ 個）．\n  \\item $r=4k+1$（$k\\geqq1$）：$\\frac{r(r-1)}4=4k^2+k$，$\\frac{r(r+1)}4=\\frac{(4k+1)(2k+1)}2=4k^2+3k+\\frac12$ で，\\textbf{第 $\\boldsymbol{4k^2+k+1}$ 群から第 $\\boldsymbol{4k^2+3k}$ 群}（$2k$ 個）．\n  \\item $r=4k+2$（$k\\geqq0$）：$\\frac{r(r-1)}4=\\frac{(2k+1)(4k+1)}2=4k^2+3k+\\frac12$，$\\frac{r(r+1)}4=\\frac{(2k+1)(4k+3)}2=4k^2+5k+\\frac32$ で，\\textbf{第 $\\boldsymbol{4k^2+3k+1}$ 群から第 $\\boldsymbol{4k^2+5k+1}$ 群}（$2k+1$ 個）．\n  \\item $r=4k+3$（$k\\geqq0$）：$\\frac{r(r-1)}4=4k^2+5k+\\frac32$，$\\frac{r(r+1)}4=(4k+3)(k+1)=4k^2+7k+3$ で，\\textbf{第 $\\boldsymbol{4k^2+5k+2}$ 群から第 $\\boldsymbol{4k^2+7k+3}$ 群}（$2k+2$ 個）．\n\\end{itemize}\n\n(2) (1) より，項数 $4k,4k+1,4k+2,4k+3$ の群に含まれる項の個数の合計は\n\\[4k\\cdot2k+(4k+1)\\cdot2k+(4k+2)(2k+1)+(4k+3)(2k+2)=32k^2+24k+8\\]\n（$k=0$ のときは項数2，3の群の分で $2+6=8$ と一致）．よって項数19以下の群の項の総数は\n\\[\\sum_{k=0}^{4}(32k^2+24k+8)=32\\cdot30+24\\cdot10+40=1240\\]\nで，最後の群は第 $4\\cdot16+28+3=95$ 群．続いて項数20の群は第96〜105群（10個，200項），項数21の群は第106〜115群（10個，210項），項数22の群は第116〜126群（11個，242項）で，第126群までで $1240+200+210+242=1892$ 項．項数23の群は第127群から始まり，$2026-1892=134=23\\cdot5+19$ なので，第2026項は第 $127+5=132$ 群の第19項．答えは $\\boldsymbol{\\dfrac{19}{132}}$．\n\n(3) $S_m=\\dfrac{r_m(r_m+1)}{2m}=2\\iff r_m(r_m+1)=4m$．逆に $r(r+1)=4m$ となる自然数 $r$ があれば，$r_m=r$（$r-1$ では $(r-1)r<4m$）なので $S_m=2$．よって $S_m=2$ となる $m$ は，$r(r+1)$ が4の倍数となる $r$ に対する $m=\\frac{r(r+1)}4$ と1対1に対応する．$r(r+1)$ が4の倍数 $\\iff$ $r$ または $r+1$ が4の倍数（$r,r+1$ の一方は奇数）$\\iff r\\equiv0,3\\pmod4$．$m\\leqq1000\\iff r(r+1)\\leqq4000\\iff r\\leqq62$（$62\\cdot63=3906$，$63\\cdot64=4032$）．$r=4,8,\\dots,60$ の15個と $r=3,7,\\dots,59$ の15個で，$\\boldsymbol{30}$ 個．\\hfill$\\square$"
+   }
+  ],
+  "idea": {
+   "tex": "群の長さは「和の条件を初めてみたす項数」として不等式 $r(r-1)<4m\\leqq r(r+1)$ で決まる．長さ $r$ の群の番号の範囲と個数は $r$ を4で割った余りで変わり，それを積み上げて項の位置を特定する．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) 記述\n(2) 19/132\n(3) 30個"
+  },
+  "methods": [],
+  "tags": [
+   "群数列",
+   "不等式で決まる群の長さ",
+   "4で割った余りの場合分け"
+  ],
+  "provenance": {
+   "created": "2026-11-19"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
  }
 ]

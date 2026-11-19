@@ -4449,5 +4449,190 @@
    },
    "verified": false
   }
+ },
+ {
+  "id": "A-GEO-096",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "A-06",
+  "level": 4,
+  "minutes": 30,
+  "theme": "頂点ごとに等しい角をもつ外側の三角形と3直線の共点",
+  "topic": "頂点ごとに等しい角をもつ外側の三角形と3直線の共点",
+  "statement": {
+   "tex": "$\\triangle$ABC の内角を $A=\\angle\\mathrm{BAC}$，$B=\\angle\\mathrm{ABC}$，$C=\\angle\\mathrm{BCA}$ とする．$\\triangle$ABC の外側に，3つの三角形 A$'$BC，B$'$CA，C$'$AB を\n\\[\\angle\\mathrm{C'AB}=\\angle\\mathrm{B'AC}=x,\\quad \\angle\\mathrm{A'BC}=\\angle\\mathrm{C'BA}=y,\\quad \\angle\\mathrm{B'CA}=\\angle\\mathrm{A'CB}=z\\]\nとなるようにつくる．ただし $x,y,z$ は正で，$x+y$，$y+z$，$z+x$，$A+x$，$B+y$，$C+z$ はいずれも $180^\\circ$ 未満とする．直線 AA$'$ と直線 BC の交点を P，直線 BB$'$ と直線 CA の交点を Q とする．\n\\begin{enumerate}\n  \\item 3直線 AA$'$，BB$'$，CC$'$ は1点で交わることを示せ．\n  \\item $\\triangle$ABC が正三角形で，$x=15^\\circ$，$y=30^\\circ$，$z=45^\\circ$ のとき，BP$:$PC および CQ$:$QA を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 証明　(2) $\\mathrm{BP}:\\mathrm{PC}=2(\\sqrt3-1):1$，$\\mathrm{CQ}:\\mathrm{QA}=(\\sqrt3-1):2$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) $a=\\mathrm{BC}$，$b=\\mathrm{CA}$，$c=\\mathrm{AB}$ とする．\n\n\\textbf{P は辺 BC の内部の点}　A と A$'$ は直線 BC に関して反対側にあるので $\\angle\\mathrm{ABA'}=\\angle\\mathrm{ABC}+\\angle\\mathrm{CBA'}=B+y$ であり，$0^\\circ<B+y<180^\\circ$．よって半直線 BC は $\\angle$ABA$'$ の内部にあり，線分 AA$'$ と交わる．同様に $\\angle\\mathrm{ACA'}=C+z<180^\\circ$ から半直線 CB も線分 AA$'$ と交わる．線分 AA$'$ は直線 BC 上にないので直線 BC との共有点はただ1つで，それが P である．P は半直線 BC と半直線 CB の両方の上にあるので線分 BC 上にあり，A，B，A$'$ は同一直線上にないから P$\\neq$B，同様に P$\\neq$C．また P は線分 AA$'$ 上にある．\n\n\\textbf{比の計算}　B，C から直線 AA$'$ までの距離の比は BP$:$PC に等しい（B，P，C は一直線上で P は直線 AA$'$ 上）．よって\n\\[\\frac{\\mathrm{BP}}{\\mathrm{PC}}=\\frac{\\triangle\\mathrm{ABA'}}{\\triangle\\mathrm{ACA'}}=\\frac{\\frac12c\\cdot\\mathrm{BA'}\\sin(B+y)}{\\frac12b\\cdot\\mathrm{CA'}\\sin(C+z)}.\\]\n$\\triangle$A$'$BC で $\\angle\\mathrm{A'BC}=y$，$\\angle\\mathrm{A'CB}=z$ だから正弦定理より $\\dfrac{\\mathrm{BA'}}{\\mathrm{CA'}}=\\dfrac{\\sin z}{\\sin y}$．したがって\n\\[\\frac{\\mathrm{BP}}{\\mathrm{PC}}=\\frac{c\\sin z\\sin(B+y)}{b\\sin y\\sin(C+z)}.\\]\n直線 BB$'$ と CA の交点 Q，直線 CC$'$ と AB の交点 R についても全く同様に，Q，R はそれぞれ辺 CA，AB の内部の点で\n\\[\\frac{\\mathrm{CQ}}{\\mathrm{QA}}=\\frac{a\\cdot\\mathrm{CB'}\\sin(C+z)}{c\\cdot\\mathrm{AB'}\\sin(A+x)}=\\frac{a\\sin x\\sin(C+z)}{c\\sin z\\sin(A+x)},\\qquad\n\\frac{\\mathrm{AR}}{\\mathrm{RB}}=\\frac{b\\sin y\\sin(A+x)}{a\\sin x\\sin(B+y)}\\]\n（$\\triangle$B$'$CA の正弦定理で $\\frac{\\mathrm{CB'}}{\\mathrm{AB'}}=\\frac{\\sin x}{\\sin z}$，$\\triangle$C$'$AB で $\\frac{\\mathrm{AC'}}{\\mathrm{BC'}}=\\frac{\\sin y}{\\sin x}$）．3式を掛けると\n\\[\\frac{\\mathrm{BP}}{\\mathrm{PC}}\\cdot\\frac{\\mathrm{CQ}}{\\mathrm{QA}}\\cdot\\frac{\\mathrm{AR}}{\\mathrm{RB}}=1.\\]\n\n\\textbf{共点}　P，Q はそれぞれ辺 BC，CA の内部の点だから，線分 AP と BQ は三角形の内部の点 K で交わる．直線 CK と辺 AB の交点を R$'$ とすると，チェバの定理より\n$\\dfrac{\\mathrm{BP}}{\\mathrm{PC}}\\cdot\\dfrac{\\mathrm{CQ}}{\\mathrm{QA}}\\cdot\\dfrac{\\mathrm{AR'}}{\\mathrm{R'B}}=1$．上式と比べて $\\dfrac{\\mathrm{AR'}}{\\mathrm{R'B}}=\\dfrac{\\mathrm{AR}}{\\mathrm{RB}}$ で，R，R$'$ はともに辺 AB の内部の点だから R$'=$R．直線 AA$'$，BB$'$，CC$'$ はそれぞれ直線 AP，BQ，CR と一致するので，3直線は点 K で交わる．\\hfill$\\square$\n\n\\medskip\n(2) $a=b=c$，$A=B=C=60^\\circ$ で，条件 $A+x=75^\\circ$，$B+y=90^\\circ$，$C+z=105^\\circ$，$x+y=45^\\circ$，$y+z=75^\\circ$，$z+x=60^\\circ$ はすべて $180^\\circ$ 未満．$\\sin105^\\circ=\\sin75^\\circ=\\dfrac{\\sqrt6+\\sqrt2}4$，$\\sin15^\\circ=\\dfrac{\\sqrt6-\\sqrt2}4$ を用いる．\n\\[\\frac{\\mathrm{BP}}{\\mathrm{PC}}=\\frac{\\sin45^\\circ\\sin90^\\circ}{\\sin30^\\circ\\sin105^\\circ}=\\frac{\\frac{\\sqrt2}2}{\\frac12\\cdot\\frac{\\sqrt6+\\sqrt2}4}=\\frac{4\\sqrt2}{\\sqrt6+\\sqrt2}=\\frac4{\\sqrt3+1}=2(\\sqrt3-1).\\]\n\\[\\frac{\\mathrm{CQ}}{\\mathrm{QA}}=\\frac{\\sin15^\\circ\\sin105^\\circ}{\\sin45^\\circ\\sin75^\\circ}=\\frac{\\sin15^\\circ}{\\sin45^\\circ}=\\frac{\\frac{\\sqrt6-\\sqrt2}4}{\\frac{\\sqrt2}2}=\\frac{\\sqrt3-1}2.\\]\nよって $\\boldsymbol{\\mathrm{BP}:\\mathrm{PC}=2(\\sqrt3-1):1}$，$\\boldsymbol{\\mathrm{CQ}:\\mathrm{QA}=(\\sqrt3-1):2}$．"
+   }
+  ],
+  "idea": {
+   "tex": "BP$:$PC$=\\triangle$ABA$'$$:\\triangle$ACA$'$ を2辺と挟む角 $B+y$，$C+z$ で表し，$\\mathrm{BA'}:\\mathrm{CA'}$ は $\\triangle$A$'$BC の正弦定理で角だけの比にする．各頂点で両側の角が等しいので，3つの比の積で辺も正弦もすべて約分されて1になり，チェバの定理の逆が使える．P が辺 BC の内部にあることは角の和が $180^\\circ$ 未満であることから示す．"
+  },
+  "methods": [],
+  "tags": [
+   "チェバの定理",
+   "面積比",
+   "正弦定理",
+   "共点"
+  ],
+  "provenance": {
+   "created": "2026-11-19"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "A-GEO-097",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "A-06",
+  "level": 4,
+  "minutes": 30,
+  "theme": "目盛り付き定規による角の三等分",
+  "topic": "目盛り付き定規による角の三等分",
+  "statement": {
+   "tex": "座標平面上で，原点 O を中心とする半径1の円を $K$ とし，$0<\\theta<\\dfrac\\pi2$ をみたす $\\theta$ に対して A$(\\cos\\theta,\\sin\\theta)$，D$(1,0)$ とおく．$x>1$ として点 C$(-x,0)$ をとり，線分 CA が A 以外の点 B で $K$ と交わり，かつ $\\mathrm{CB}=1$ となっているとする．\n\\begin{enumerate}\n  \\item $x^3-3x-2\\cos\\theta=0$ であることを示せ．\n  \\item $\\angle\\mathrm{OCA}=\\dfrac\\theta3$ を示し，$x$ を $\\theta$ で表せ．また逆に，C$\\left(-2\\cos\\dfrac\\theta3,\\,0\\right)$ とすると上の条件をみたす点 B が存在することを示せ．\n  \\item $\\theta=\\dfrac\\pi3$ のとき，$\\cos\\dfrac\\pi9$ は無理数であることを示せ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 証明　(2) $\\angle\\mathrm{OCA}=\\dfrac\\theta3$，$x=2\\cos\\dfrac\\theta3$（逆も証明）　(3) 証明"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) $\\mathrm{CO}=x>1$ なので C は $K$ の外部にある．C を通る直線 $x$ 軸は $K$ と $(-1,0)$，$(1,0)$ で交わり，C からの距離はそれぞれ $x-1$，$x+1$．直線 CA は $K$ と B，A で交わるので，方べきの定理により\n\\[\n  \\mathrm{CB}\\cdot\\mathrm{CA}=(x-1)(x+1)\\quad\\text{すなわち}\\quad \\mathrm{CA}=x^2-1.\n\\]\n一方 $\\mathrm{CA}^2=(\\cos\\theta+x)^2+\\sin^2\\theta=x^2+2x\\cos\\theta+1$ なので\n\\[\n  (x^2-1)^2=x^2+2x\\cos\\theta+1\\iff x^4-3x^2-2x\\cos\\theta=0\\iff x(x^3-3x-2\\cos\\theta)=0.\n\\]\n$x>0$ より $x^3-3x-2\\cos\\theta=0$．\\hfill$\\square$\n\n(2) A の $y$ 座標 $\\sin\\theta$ は正なので直線 CA は $x$ 軸と異なり，O，B，C および O，A，B はそれぞれ同一直線上にない（O，A，B が同一直線上なら直線 AB は O を通り，C，O を通る直線 CA は $x$ 軸になってしまう）．$\\varphi=\\angle\\mathrm{OCA}$ とおく．B は線分 CA 上で B$\\neq$A，また $\\mathrm{CB}=1>0$ より B$\\neq$C なので，$\\angle\\mathrm{OCB}=\\varphi$．\n\n$\\triangle\\mathrm{OBC}$ は $\\mathrm{OB}=\\mathrm{BC}=1$ の二等辺三角形なので $\\angle\\mathrm{BOC}=\\varphi$．$\\angle\\mathrm{OBA}$ は $\\triangle\\mathrm{OBC}$ の B における外角なので $\\angle\\mathrm{OBA}=2\\varphi$．$\\triangle\\mathrm{OAB}$ は $\\mathrm{OA}=\\mathrm{OB}$ の二等辺三角形なので $\\angle\\mathrm{OAC}=\\angle\\mathrm{OAB}=2\\varphi$．\n\nC，O，D は $x$ 軸上にこの順に並ぶので，$\\angle\\mathrm{AOD}$ は $\\triangle\\mathrm{OCA}$ の O における外角で，$\\angle\\mathrm{AOD}=\\angle\\mathrm{OCA}+\\angle\\mathrm{OAC}=3\\varphi$．$0<\\theta<\\dfrac\\pi2$ より $\\angle\\mathrm{AOD}=\\theta$ なので $\\boldsymbol{\\angle\\mathrm{OCA}=\\dfrac\\theta3}$．\n\nまた二等辺三角形 OBC で B から OC に下ろした垂線の足は OC の中点で，$\\dfrac x2=\\mathrm{CB}\\cos\\varphi=\\cos\\varphi$．よって $\\boldsymbol{x=2\\cos\\dfrac\\theta3}$．\n\n\\textbf{逆．} $\\varphi=\\dfrac\\theta3$ とおくと $0<\\varphi<\\dfrac\\pi6$ なので $\\cos\\varphi>\\dfrac{\\sqrt3}2$，$x=2\\cos\\varphi>\\sqrt3>1$．C から向き $(\\cos\\varphi,\\sin\\varphi)$ に進む半直線上の点 $\\mathrm R(s)=(-2\\cos\\varphi+s\\cos\\varphi,\\ s\\sin\\varphi)$（$s\\geqq0$）について\n\\[\n  |\\overrightarrow{\\mathrm{OR}(s)}|^2=1\\iff s^2-4s\\cos^2\\varphi+4\\cos^2\\varphi-1=0\\iff (s-1)\\{s-(4\\cos^2\\varphi-1)\\}=0.\n\\]\n$s_0=4\\cos^2\\varphi-1$ のとき，3倍角の公式により\n\\[\n  \\mathrm R(s_0)=\\bigl(\\cos\\varphi(4\\cos^2\\varphi-3),\\ \\sin\\varphi(3-4\\sin^2\\varphi)\\bigr)=(\\cos3\\varphi,\\ \\sin3\\varphi)=\\mathrm A.\n\\]\n$\\cos^2\\varphi>\\dfrac34$ より $s_0>2>1$ なので，B$=\\mathrm R(1)$ は線分 CA 上の A と異なる $K$ 上の点で $\\mathrm{CB}=1$．よって条件をみたす B が存在する．\\hfill$\\square$\n\n(3) $\\theta=\\dfrac\\pi3$ のとき (1)(2) より $x=2\\cos\\dfrac\\pi9$ は $x^3-3x-1=0$ をみたす．$x$ が有理数であると仮定し，$x=\\dfrac pq$（$p,q$ は互いに素な整数，$q\\geqq1$）とすると $p^3-3pq^2-q^3=0$．\n\\begin{itemize}\n  \\item $p^3=q^2(3p+q)$ より $q$ は $p^3$ を割り切る．$q\\geqq2$ なら $q$ の素因数は $p^3$ を，よって $p$ を割り切り，互いに素に反する．よって $q=1$．\n  \\item すると $p(p^2-3)=1$ で，$p$ は1を割り切るから $p=\\pm1$．\n\\end{itemize}\nしかし $1-3-1=-3\\neq0$，$-1+3-1=1\\neq0$ で矛盾．よって $x$ は無理数で，$\\cos\\dfrac\\pi9=\\dfrac x2$ も無理数である．\\hfill$\\square$"
+   }
+  ],
+  "idea": {
+   "tex": "目盛り（長さ1）を使って作る点の位置 $x$ を，相似・方べき・三平方で $x$ の方程式にすると4次方程式が現れ，因数をくくると本質的な3次方程式が残る．図形側では二等辺三角形の外角を2回使うと角が3倍になり，方程式は3倍角の公式そのものになる．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) 証明\n(2) $\\angle\\mathrm{OCA}$：θ/3 ; $x$：2cos(θ/3)\n(3) 証明"
+  },
+  "methods": [],
+  "tags": [
+   "方べきの定理",
+   "外角",
+   "3倍角",
+   "有理数解"
+  ],
+  "provenance": {
+   "created": "2026-11-19"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "A-GEO-098",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "A-06",
+  "level": 4,
+  "minutes": 35,
+  "theme": "各辺の延長が弦を同じ比に分ける凸多角形",
+  "topic": "各辺の延長が弦を同じ比に分ける凸多角形",
+  "statement": {
+   "tex": "O を中心とする半径1の円 $C$ の内部に，凸 $n$ 角形 $\\mathrm V_1\\mathrm V_2\\cdots\\mathrm V_n$（$n\\geqq3$）がある．$\\mathrm V_{n+1}=\\mathrm V_1$，$\\mathrm V_0=\\mathrm V_n$ とする．各 $i=1,2,\\dots,n$ について，直線 $\\mathrm V_i\\mathrm V_{i+1}$ と $C$ の2交点を $\\mathrm P_i$，$\\mathrm Q_i$ とし，直線上で $\\mathrm P_i,\\ \\mathrm V_i,\\ \\mathrm V_{i+1},\\ \\mathrm Q_i$ がこの順に並ぶようにする．正の定数 $p,q,r$ があって，すべての $i$ について\n\\[\n\\mathrm P_i\\mathrm V_i:\\mathrm V_i\\mathrm V_{i+1}:\\mathrm V_{i+1}\\mathrm Q_i=p:q:r\n\\]\nが成り立つとする．\n\\begin{enumerate}\n  \\item $p=r$ であることを示せ．\n  \\item この $n$ 角形は O を中心とする正 $n$ 角形であることを示せ．\n  \\item $n=6$ とする．12個の点 $\\mathrm P_1,\\mathrm Q_1,\\mathrm P_2,\\mathrm Q_2,\\dots,\\mathrm P_6,\\mathrm Q_6$ が正十二角形の12個の頂点となるような $\\dfrac qp$ の値をすべて求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 証明　(2) 証明　(3) $\\dfrac qp=1+\\sqrt3,\\ \\dfrac{\\sqrt3-1}2$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "$\\sigma=p+q+r$，$L_i=\\mathrm P_i\\mathrm Q_i$ とおくと\n\\[\n\\mathrm P_i\\mathrm V_i=\\frac{p}{\\sigma}L_i,\\quad \\mathrm V_i\\mathrm V_{i+1}=\\frac q\\sigma L_i,\\quad \\mathrm V_{i+1}\\mathrm Q_i=\\frac r\\sigma L_i.\n\\]\n頂点は $C$ の内部にあるので，$C$ の弦が頂点 $\\mathrm V_i$ を通るとき，方べきの定理により2つの部分の長さの積は $1-\\mathrm{OV}_i^{\\,2}$ に等しい．\n\n(1) $\\mathrm V_i$ は弦 $\\mathrm P_i\\mathrm Q_i$ と弦 $\\mathrm P_{i-1}\\mathrm Q_{i-1}$ の上にある（$i=1$ では $\\mathrm P_0\\mathrm Q_0=\\mathrm P_n\\mathrm Q_n$ と読む）．弦 $\\mathrm P_i\\mathrm Q_i$ 上では $\\mathrm V_i\\mathrm P_i=\\frac p\\sigma L_i$，$\\mathrm V_i\\mathrm Q_i=\\frac{q+r}\\sigma L_i$．弦 $\\mathrm P_{i-1}\\mathrm Q_{i-1}$ 上では $\\mathrm V_i$ は $\\mathrm V_{(i-1)+1}$ の位置にあり，$\\mathrm V_i\\mathrm P_{i-1}=\\frac{p+q}\\sigma L_{i-1}$，$\\mathrm V_i\\mathrm Q_{i-1}=\\frac r\\sigma L_{i-1}$．方べきの定理より\n\\[\np(q+r)L_i^{\\,2}=r(p+q)L_{i-1}^{\\,2}\\qquad(i=1,2,\\dots,n).\n\\]\n$\\kappa=\\dfrac{r(p+q)}{p(q+r)}>0$ とおくと $L_i^{\\,2}=\\kappa L_{i-1}^{\\,2}$．これを $i=1,2,\\dots,n$ について辺々掛けると $L_n^{\\,2}L_1^{\\,2}\\cdots L_{n-1}^{\\,2}$ が両辺に共通に現れ（いずれも正），$\\kappa^n=1$．$\\kappa>0$ なので $\\kappa=1$．よって $p(q+r)=r(p+q)$，すなわち $q(p-r)=0$ で，$q>0$ より $\\boldsymbol{p=r}$．\\hfill$\\square$\n\n(2) (1) より $\\kappa=1$ で $L_1=L_2=\\cdots=L_n$（$=L$ とおく）．また $p=r$ より $\\mathrm P_i\\mathrm V_i=\\mathrm V_{i+1}\\mathrm Q_i$ なので，弦 $\\mathrm P_i\\mathrm Q_i$ の中点 $\\mathrm M_i$ は線分 $\\mathrm V_i\\mathrm V_{i+1}$ の中点でもある．O は弦 $\\mathrm P_i\\mathrm Q_i$ の垂直二等分線上にある（$\\mathrm{OP}_i=\\mathrm{OQ}_i=1$）から，O は線分 $\\mathrm V_i\\mathrm V_{i+1}$ の垂直二等分線上にあり，$\\mathrm{OV}_i=\\mathrm{OV}_{i+1}$．これがすべての $i$ で成り立つので，$\\mathrm{OV}_1=\\cdots=\\mathrm{OV}_n=\\rho$（$\\rho>0$）とおけ，すべての頂点は O を中心とする半径 $\\rho$ の円 $C'$ 上にある．また各辺の長さは $\\frac q\\sigma L$ で等しい．\n\n凸多角形の頂点が同一円周上にあるとき，頂点は辺の順に円周上に並ぶ．$C'$ を $n$ 個の頂点で分けた弧のうち $\\mathrm V_i$ と $\\mathrm V_{i+1}$ を結ぶもの（他の頂点を含まない方）の中心角を $\\theta_i$ とすると $\\theta_1+\\cdots+\\theta_n=360^\\circ$，$0^\\circ<\\theta_i<360^\\circ$ で，辺の長さは $2\\rho\\sin\\dfrac{\\theta_i}2$．これがすべて等しいから，ある $\\theta$（$0^\\circ<\\theta\\leqq180^\\circ$）があって各 $\\theta_i$ は $\\theta$ か $360^\\circ-\\theta$ である．$\\theta=180^\\circ$ ならすべて $180^\\circ$ で和が $360^\\circ$ より $n=2$ となり不適，よって $\\theta<180^\\circ$．$360^\\circ-\\theta>180^\\circ$ となる弧が2つ以上あれば和が $360^\\circ$ を超えるので高々1つ．ちょうど1つなら和は $(360^\\circ-\\theta)+(n-1)\\theta=360^\\circ+(n-2)\\theta>360^\\circ$ で矛盾．よってすべての $\\theta_i=\\theta=\\dfrac{360^\\circ}n$ で，この $n$ 角形は O を中心とする正 $n$ 角形である．\\hfill$\\square$\n\n(3) $n=6$ で，(2) より O を中心とする正六角形．O から辺 $\\mathrm V_i\\mathrm V_{i+1}$ までの距離を $d$ とする（$0<d<1$．O は正六角形の内部にあり，各辺の直線は円の弦をつくるから）．$\\cos\\psi=d$，$0^\\circ<\\psi<90^\\circ$ で $\\psi$ を定めると，弦 $\\mathrm P_i\\mathrm Q_i$ の両端は O から見て半直線 $\\mathrm{OM}_i$ の向きから $\\pm\\psi$ の向きにある．$\\mathrm{OM}_i$ の向きの角は $\\varphi+60^\\circ(i-1)$（$\\varphi$ は定数）だから，12点の向きの角（$360^\\circ$ を法として）の集合は\n\\[\nS=\\{\\varphi+\\psi+60^\\circ k\\}\\cup\\{\\varphi-\\psi+60^\\circ k\\}\\qquad(k=0,1,\\dots,5).\n\\]\nまた $\\mathrm V_{i+1}$ は線分 $\\mathrm M_i\\mathrm Q_i$ 上（両端を除く）にあり，O から見た向きの角は $\\mathrm{OM}_i$ から $30^\\circ$．線分 $\\mathrm M_i\\mathrm Q_i$ 上の点の向きの角は $\\mathrm M_i$ から $\\mathrm Q_i$ へ進むにつれて $0^\\circ$ から $\\psi$ まで単調に増える（$\\mathrm M_i$ から距離 $t$ の点は $\\mathrm{OM}_i$ と角 $\\theta$，$\\tan\\theta=\\frac td$ をなす）ので，$\\psi>30^\\circ$．\n\n\\emph{必要条件}．12点が正十二角形の頂点なら，12点は相異なり，向きの角はある $\\theta_0$ により $\\theta_0+30^\\circ m$（$m=0,\\dots,11$）となる．とくに $\\varphi+\\psi$ と $\\varphi-\\psi$ の差 $2\\psi$ は $30^\\circ$ の倍数で，$60^\\circ<2\\psi<180^\\circ$ より $2\\psi=90^\\circ,120^\\circ,150^\\circ$．$2\\psi=120^\\circ$ なら $\\varphi+\\psi=\\varphi-\\psi+120^\\circ$ となり 弦 $\\mathrm P_1\\mathrm Q_1$ の端点の1つと弦 $\\mathrm P_3\\mathrm Q_3$ の端点の1つが一致して12点が相異ならないので不適．よって $\\psi=45^\\circ$ または $75^\\circ$．\n\n\\emph{十分条件}．$\\psi=45^\\circ$ なら $S=\\{\\varphi+45^\\circ+60^\\circ k\\}\\cup\\{\\varphi-45^\\circ+60^\\circ k\\}=\\{\\varphi+15^\\circ+30^\\circ m\\}$，$\\psi=75^\\circ$ なら $\\varphi-75^\\circ\\equiv\\varphi+45^\\circ-120^\\circ$ に注意して $S=\\{\\varphi+75^\\circ+60^\\circ k\\}\\cup\\{\\varphi+45^\\circ+60^\\circ k\\}=\\{\\varphi+15^\\circ+30^\\circ m\\}$．いずれも12個の相異なる向きが $30^\\circ$ おきに並ぶので，12点は正十二角形の頂点である．逆にこれらの $\\psi$（$>30^\\circ$）に対し，O からの距離 $d=\\cos\\psi$ の6本の弦を $60^\\circ$ おきに引けば，その内側に O を中心とする正六角形ができ（頂点は O から距離 $\\frac d{\\cos30^\\circ}<\\frac{\\cos30^\\circ}{\\cos30^\\circ}=1$ で円の内部），条件の配置が実現する．\n\n比を求める．正六角形の辺の長さは $2d\\tan30^\\circ$，弦の半分の長さは $\\sin\\psi$ なので\n\\[\n\\frac qp=\\frac{\\mathrm V_i\\mathrm V_{i+1}}{\\mathrm P_i\\mathrm V_i}=\\frac{2d\\tan30^\\circ}{\\sin\\psi-d\\tan30^\\circ}=\\frac{2}{\\sqrt3\\tan\\psi-1}.\n\\]\n$\\tan45^\\circ=1$ で $\\dfrac2{\\sqrt3-1}=\\sqrt3+1$．$\\tan75^\\circ=2+\\sqrt3$ で $\\dfrac2{2\\sqrt3+3-1}=\\dfrac1{\\sqrt3+1}=\\dfrac{\\sqrt3-1}2$．\n\\[\n\\boldsymbol{\\frac qp=1+\\sqrt3,\\quad \\frac{\\sqrt3-1}2}.\n\\]"
+   }
+  ],
+  "idea": {
+   "tex": "頂点 V は2本の弦の交点なので，方べきの定理により2本の弦の分け方の積が等しい．比の条件を代入すると隣り合う弦の長さの比が一定になり，一周して元に戻ることから比の対称性と弦の長さの一致が出る．弦の中点＝辺の中点から，中心が各辺の垂直二等分線上にあることがわかる．"
+  },
+  "methods": [],
+  "tags": [
+   "方べきの定理",
+   "弦",
+   "正多角形",
+   "円周角",
+   "剰余で角をそろえる"
+  ],
+  "provenance": {
+   "created": "2026-11-19"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "A-GEO-099",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "A-06",
+  "level": 4,
+  "minutes": 30,
+  "theme": "内角がすべて異なる整数の凸多角形と鋭角の個数",
+  "topic": "内角がすべて異なる整数の凸多角形と鋭角の個数",
+  "statement": {
+   "tex": "この問題では，すべての内角が $180^\\circ$ より小さい多角形を凸多角形という．凸 $n$ 角形（$n\\geqq3$）があり，その内角の大きさを度数法で表すと，どれも整数で互いに異なり，しかも直角は1つもないとする．内角のうち鋭角であるものの個数を $m$ とする．\n\\begin{enumerate}\n  \\item $m\\leqq3$ であることを示せ．\n  \\item $m=0,1,2,3$ のそれぞれについて，$n$ の最大値を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 証明　(2) $m=0$ のとき $26$，$m=1$ のとき $23$，$m=2$ のとき $20$，$m=3$ のとき $15$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "各頂点の外角を $e=180-(\\text{内角})$（度）とする．内角が $180^\\circ$ 未満なので $e>0$ で，外角の和は $360$ である（内角の和 $180(n-2)$ より $\\sum e=180n-180(n-2)=360$）．内角が互いに異なる整数 $\\iff$ 外角が互いに異なる整数．内角が鋭角 $\\iff e>90$，すなわち $91\\leqq e\\leqq179$．直角がないので，鋭角でない内角は鈍角で，$1\\leqq e\\leqq89$．\n\n(1) $m\\geqq4$ なら，鋭角の頂点の外角だけで和が $4\\cdot91>360$ となり矛盾．よって $m\\leqq3$．\\hfill$\\square$\n\n(2) \\textbf{上からの評価．} 鋭角の頂点の外角は相異なる91以上の整数なので，その和は $91+92+\\dots+(90+m)=91m+\\dfrac{m(m-1)}2$ 以上．残りの $j=n-m$ 個は相異なる正の整数なので和は $1+2+\\dots+j=\\dfrac{j(j+1)}2$ 以上．よって\n\\[\\frac{j(j+1)}2\\leqq360-91m-\\frac{m(m-1)}2.\\]\n右辺は $m=0,1,2,3$ でそれぞれ $360,269,177,84$．$\\dfrac{j(j+1)}2$ は $j$ について増加し，\n\\[\\tfrac{26\\cdot27}2=351\\leqq360<378=\\tfrac{27\\cdot28}2,\\qquad \\tfrac{22\\cdot23}2=253\\leqq269<276=\\tfrac{23\\cdot24}2,\\]\n\\[\\tfrac{18\\cdot19}2=171\\leqq177<190=\\tfrac{19\\cdot20}2,\\qquad \\tfrac{12\\cdot13}2=78\\leqq84<91=\\tfrac{13\\cdot14}2\\]\nだから $j\\leqq26,22,18,12$，すなわち $n\\leqq26,23,20,15$．\n\n\\textbf{実現．} 次の外角の組はどれも相異なる整数で，鋭角用は $91$ 以上 $179$ 以下，他は $1$ 以上 $89$ 以下，和は $360$ である．\n\\begin{itemize}\n  \\item $m=0$：$1,2,\\dots,25$ と $35$（和 $325+35$），$n=26$．\n  \\item $m=1$：$1,2,\\dots,22$ と $107$（和 $253+107$），$n=23$．\n  \\item $m=2$：$1,2,\\dots,18$ と $91,98$（和 $171+189$），$n=20$．\n  \\item $m=3$：$1,2,\\dots,12$ と $91,92,99$（和 $78+282$），$n=15$．\n\\end{itemize}\nあとは次を示せばよい．\n\n\\textbf{補題．} $n\\geqq3$ とし，正の数 $e_1,\\dots,e_n$ はどれも $180$ 未満で和が $360$ とする．このとき，外角が順に $e_1,\\dots,e_n$ である凸 $n$ 角形が存在する．\n\n（証明）中心 O，半径1の円周上に，偏角 $\\varphi_i=e_1+\\dots+e_i$（$i=0,1,\\dots,n$，$\\varphi_0=0$，$\\varphi_n=360$ で $\\mathrm T_n=\\mathrm T_0$）の点 $\\mathrm T_i$ をとり，$\\mathrm T_i$ での接線を $\\ell_i$ とする．$i=1,\\dots,n$ に対し，$\\ell_{i-1}$ と $\\ell_i$ は $\\angle\\mathrm T_{i-1}\\mathrm{OT}_i=e_i<180^\\circ$ なので平行でなく，交点 $\\mathrm V_i$ は $\\angle\\mathrm T_{i-1}\\mathrm{OT}_i$ の二等分線上で，$\\triangle\\mathrm{OT}_{i-1}\\mathrm V_i\\equiv\\triangle\\mathrm{OT}_i\\mathrm V_i$（直角三角形で斜辺共通，$\\mathrm{OT}_{i-1}=\\mathrm{OT}_i$）．したがって $\\angle\\mathrm{OV}_i\\mathrm T_{i-1}=\\angle\\mathrm{OV}_i\\mathrm T_i=90^\\circ-\\dfrac{e_i}2$．\n\n$\\ell_i$ 上で $\\mathrm V_i$ と $\\mathrm V_{i+1}$（$\\mathrm V_{n+1}=\\mathrm V_1$）は $\\mathrm T_i$ をはさんで反対側にある（$\\mathrm V_i$ は O から見て $\\mathrm T_i$ より偏角の小さい側，$\\mathrm V_{i+1}$ は大きい側）ので，線分 $\\mathrm V_i\\mathrm V_{i+1}$ は $\\mathrm T_i$ を含む．多角形 $\\mathrm V_1\\mathrm V_2\\cdots\\mathrm V_n$ は，O から見て偏角の区間 $\\left[\\varphi_{i-1}+\\tfrac{e_i}2,\\varphi_i\\right]$ と $\\left[\\varphi_i,\\varphi_i+\\tfrac{e_{i+1}}2\\right]$ を占める直角三角形 $\\mathrm{OV}_i\\mathrm T_i$，$\\mathrm{OT}_i\\mathrm V_{i+1}$ を偏角の順に重なりなく並べたもので，これらの偏角の区間は合わせてちょうど一周 $360^\\circ$ を覆う．よって辺が交わらない $n$ 角形であり，頂点 $\\mathrm V_i$ での内角は\n\\[\\angle\\mathrm{OV}_i\\mathrm T_{i-1}+\\angle\\mathrm{OV}_i\\mathrm T_i=180^\\circ-e_i<180^\\circ.\\]\nしたがって凸 $n$ 角形で，外角は $e_1,\\dots,e_n$ である．\\hfill$\\square$\n\n補題を上の4組に用いると，内角（$180-e$）はどれも整数で互いに異なり，直角はなく，鋭角はちょうど $m$ 個である．以上より，$n$ の最大値は\n\\[\\boldsymbol{m=0:\\ 26,\\qquad m=1:\\ 23,\\qquad m=2:\\ 20,\\qquad m=3:\\ 15}.\\]\n\\hfill$\\square$"
+   }
+  ],
+  "idea": {
+   "tex": "内角の条件は外角に直すと「正の外角の和が $360^\\circ$」．鋭角の内角は外角が $90^\\circ$ を超えるので高々3個．外角が互いに異なる整数なら，その和は小さい方から並べた和以上になり，頂点数が上から抑えられる．逆に，和が $360^\\circ$ で各々 $180^\\circ$ 未満の外角は，円に外接する多角形として実現できる．"
+  },
+  "methods": [],
+  "tags": [
+   "外角の和",
+   "整数",
+   "最大値",
+   "作図"
+  ],
+  "provenance": {
+   "created": "2026-11-19"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
  }
 ]
