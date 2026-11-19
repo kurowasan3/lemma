@@ -256,6 +256,51 @@ try {
     const real = (es) => es.filter(e => !/status of 403/.test(e));   // わざと違うコードを入れたときの 403 は除く
     ok(real(A.errors).length === 0 && real(B.errors).length === 0, `ページのエラーなし ${A.errors} ${B.errors}`);
   }
+  // 10. グラフ：複素平面・ベクトルのモード、問題を解きながら開くシート
+  {
+    const G = await newPage();
+    await G.goto(U + '#graph'); await G.waitForTimeout(1200);
+    ok(await G.locator('.gmode button').count() === 4, 'グラフ：平面・複素平面・ベクトル・空間の4モード');
+    const ink = async () => G.evaluate(() => {   // グラフに色の付いた線・点があるか（背景と格子以外の画素）
+      const c = document.querySelector('.gp canvas'); const d = c.getContext('2d').getImageData(0, 0, c.width, c.height).data;
+      let n = 0; for (let i = 0; i < d.length; i += 4) { const [r, g, b] = [d[i], d[i + 1], d[i + 2]]; if (Math.max(r, g, b) - Math.min(r, g, b) > 80) n++; } return n;
+    });
+    for (const [m, n] of [['complex', 7], ['vector', 6]]) {
+      await G.click(`.gmode button[data-m="${m}"]`); await G.waitForTimeout(400);
+      for (let i = 0; i < n; i++) {
+        await G.click(`.gpre button[data-i="${i}"]`); await G.waitForTimeout(250);
+        const errs = await G.$$eval('.expr-err', xs => xs.filter(x => !x.classList.contains('note')).map(x => x.textContent).filter(Boolean));
+        ok(errs.length === 0, `グラフ（${m}）の例 ${i + 1}：式のエラーなし ${errs}`);
+        ok(await ink() > 200, `グラフ（${m}）の例 ${i + 1}：描かれている`);
+      }
+    }
+    await G.click('.gmode button[data-m="vector"]'); await G.waitForTimeout(300);
+    await G.click('.gpre button[data-i="4"]'); await G.waitForTimeout(300);
+    ok((await G.locator('.expr-err.note').allInnerTexts()).includes('= 4'), 'ベクトル：内積 n·A の値を表示');
+    const saved = await G.evaluate(() => JSON.parse(localStorage.getItem('lemma.v2')).graphVExprs.map(e => e.src));
+    ok(saved.includes('n·(p-A)=0'), 'ベクトルの式も保存される（同期の対象）');
+    await G.click('.gmode button[data-m="2d"]'); await G.waitForTimeout(300);
+    // 問題を解きながら：シートを開いて閉じても、入力中の答え・経過時間はそのまま
+    await G.goto(U + '#today'); await G.waitForTimeout(800);
+    await G.evaluate("__lemma.open(['I-QF-109'])"); await G.waitForTimeout(1000);
+    await G.locator('#conf button').nth(1).click();
+    await G.locator('#inputs input').nth(0).fill('x^2-8x+10');
+    await G.click('[data-graph-sheet]'); await G.waitForTimeout(700);
+    ok(await G.locator('.gsheet canvas').count() === 1, 'シート：問題の画面からグラフを開ける');
+    await G.click('.gsheet .gmode button[data-m="complex"]'); await G.waitForTimeout(400);
+    ok(await G.locator('.gsheet .gmode button.on').innerText() === '複素平面', 'シート：モードを切り替えられる');
+    await G.keyboard.press('Escape'); await G.waitForTimeout(300);
+    ok(await G.locator('.gsheet').count() === 0, 'シート：Esc で閉じる');
+    ok(await G.locator('#inputs input').nth(0).inputValue() === 'x^2-8x+10', 'シートを閉じても、入力中の答えが残る');
+    await G.click('[data-graph-sheet]'); await G.waitForTimeout(500);
+    await G.click('.gsheet-close'); await G.waitForTimeout(300);
+    const inp = G.locator('#inputs input');
+    await inp.nth(1).fill('4'); await inp.nth(2).fill('-3');
+    await G.click('#judge'); await G.waitForTimeout(500);
+    ok(await G.locator('#inputs .is-ok').count() >= 1, 'シートを使ったあとも、そのまま採点できる');
+    ok(G.errors.length === 0, `ページのエラーなし ${G.errors}`);
+    await G.evaluate(() => { const s = JSON.parse(localStorage.getItem('lemma.v2')); s.graphMode = '2d'; localStorage.setItem('lemma.v2', JSON.stringify(s)); });
+  }
   // 9. ブックマーク・記録の消去（ログイン中も効く）・バックアップの読み込み・ログイン時に端末の記録を使わない
   {
     mock.users.clear(); mock.rows.clear();

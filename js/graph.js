@@ -1,10 +1,12 @@
 // グラフ描画エンジン（Canvas 2D）
 // 陽関数 y=f(x) / x=g(y)、陰関数 F(x,y)=0、不等式の領域（連立も可）、
 // 媒介変数 (f(t), g(t))、極座標 r=f(θ)、点、パラメータ（スライダー）、予想描画（スケッチ）
+// mode：'xy'（ふつうの座標平面）・'complex'（複素平面）・'vector'（ベクトル）。後の2つは plane.js が式を解析する
 
 import { parse, compile, splitRelation, freeVars } from './parser.js';
+import { analyzePlane, solveRoots, fmtComplex, fmtNum, holds as holdsEq } from './plane.js';
 
-export const FILE_VERSION = '0.11.0';
+export const FILE_VERSION = '0.12.0';
 export const COLORS = ['#2f6fdf', '#d9463b', '#2e9d5b', '#8e4fd6', '#e08a1e', '#1a9aa8'];
 const RESERVED = new Set(['x', 'y', 't', 'θ', 'r']);
 const TAU = Math.PI * 2;
@@ -109,6 +111,7 @@ export class Graph {
   constructor(host, opts = {}) {
     this.host = host;
     this.opts = opts;
+    this.mode = opts.mode || 'xy';
     host.classList.add('graph-host');
     this.canvas = document.createElement('canvas');
     this.canvas.className = 'graph-canvas';
@@ -162,19 +165,31 @@ export class Graph {
   wx(px) { return this.view.cx + (px - this.W / 2) / this.view.scale; }
   wy(py) { return this.view.cy - (py - this.H / 2) / this.view.scale; }
 
+  setMode(mode) { this.mode = mode || 'xy'; this.trace = null; }
+
   // items: [{src, color, hidden}]
   setExpressions(list) {
     const defs = {};
-    this.items = list.map((it, i) => {
-      const color = it.color || COLORS[i % COLORS.length];
-      try {
-        const a = analyze(it.src);
-        if (a.kind === 'param') defs[a.name] = a.value;
-        return { ...it, color, a, error: null };
-      } catch (e) {
-        return { ...it, color, a: null, error: e.message };
-      }
-    });
+    if (this.mode === 'complex' || this.mode === 'vector') {
+      const res = analyzePlane(list.map(it => it.src), this.mode);
+      this.items = list.map((it, i) => {
+        const color = it.color || COLORS[i % COLORS.length];
+        const r = res[i];
+        if (r.a && r.a.kind === 'param') defs[r.a.name] = r.a.value;
+        return { ...it, color, a: r.a, error: r.error };
+      });
+    } else {
+      this.items = list.map((it, i) => {
+        const color = it.color || COLORS[i % COLORS.length];
+        try {
+          const a = analyze(it.src);
+          if (a.kind === 'param') defs[a.name] = a.value;
+          return { ...it, color, a, error: null };
+        } catch (e) {
+          return { ...it, color, a: null, error: e.message };
+        }
+      });
+    }
     this.lastDefs = this.lastDefs || {};
     for (const [k, v] of Object.entries(defs)) {
       if (!(k in this.params) || this.lastDefs[k] !== v) this.params[k] = v; // 「a=2」を書き換えたら反映
@@ -195,6 +210,13 @@ export class Graph {
     return [...s].sort();
   }
   setParam(name, v) { this.params[name] = v; this.draw(); }
+
+  // 式の行の横に出す値（ベクトルの内積など、描かずに値だけ見せるもの）
+  noteOf(it) {
+    if (!it || !it.a || it.a.kind !== 'note') return '';
+    try { const v = it.a.f({ ...this.params }); return Array.isArray(v) ? '' : `= ${this.mode === 'complex' ? fmtComplex(v.re, v.im) : fmtNum(v.re)}`; }
+    catch (e) { return ''; }
+  }
 
   setSketchMode(on) { this.sketchMode = on; this.host.classList.toggle('sketching', on); }
   setRevealed(on) { this.revealed = on; this.draw(); }
@@ -362,6 +384,13 @@ export class Graph {
     }
     ctx.textAlign = 'right';
     if (ax > 0 && ax < W && ay > 0 && ay < H) ctx.fillText('O', ax - 4, ay + 14);
+    if (this.mode === 'complex' || this.mode === 'vector') {   // 軸の名前（複素平面は 実軸・虚軸）
+      const [nx, ny] = this.mode === 'complex' ? ['実軸', '虚軸'] : ['x', 'y'];
+      ctx.font = '600 12px -apple-system, "Hiragino Sans", system-ui, sans-serif';
+      ctx.fillStyle = col.axis;
+      if (ay > 12 && ay < H - 4) { ctx.textAlign = 'right'; ctx.fillText(nx, W - 6, ay - 6); }
+      if (ax > 4 && ax < W - 30) { ctx.textAlign = 'left'; ctx.fillText(ny, ax + 6, 14); }
+    }
   }
 
   strokePath(color, dashed, width = 2.25) {
@@ -405,7 +434,9 @@ export class Graph {
     }
   }
 
-  pathImplicit(g, s) {
+  // opts.keep：[{ g, op }] を満たす所だけ描く（|z|=1, Im(z)>=0 のような条件つき）
+  // opts.verify：符号が変わっても値が0に近くない所（arg の不連続など）は描かない
+  pathImplicit(g, s, opts = null) {
     const { ctx, W, H } = this;
     const cell = 5;
     const nx = Math.ceil(W / cell) + 1, ny = Math.ceil(H / cell) + 1;
@@ -430,6 +461,12 @@ export class Graph {
         // 符号が逆でも値が大きく跳ぶ所（1/x の極など）は境界でない
         const m = Math.max(Math.abs(a), Math.abs(b), Math.abs(c), Math.abs(d));
         if (m > 1e3 * (1 + Math.min(Math.abs(a), Math.abs(b), Math.abs(c), Math.abs(d)))) continue;
+        if (opts) {
+          const mx = (pts[0][0] + pts[1][0]) / 2, my = (pts[0][1] + pts[1][1]) / 2;
+          s.x = this.wx(mx); s.y = this.wy(my);
+          if (opts.verify) { const gv = g(s); if (!Number.isFinite(gv) || Math.abs(gv) > 0.2 * m + 1e-12) continue; }
+          if (opts.keep && opts.keep.length && !opts.keep.every(c => { const v = c.g(s); return Number.isFinite(v) && holdsEq(v + (c.op.startsWith('<') ? -1e-7 : c.op.startsWith('>') ? 1e-7 : 0), c.op); })) continue;
+        }
         ctx.moveTo(pts[0][0], pts[0][1]); ctx.lineTo(pts[1][0], pts[1][1]);
         if (pts.length === 4) { ctx.moveTo(pts[2][0], pts[2][1]); ctx.lineTo(pts[3][0], pts[3][1]); }
       }
@@ -468,11 +505,55 @@ export class Graph {
       case 'implicit': this.pathImplicit(a.g, s); this.strokePath(it.color); break;
       case 'region':
         this.fillRegion(a.conds, s, it.color);
-        for (const b of a.bounds) {
-          if (b.type === 'fx') this.pathFx(b.f, s); else this.pathImplicit(b.g, s);
+        a.bounds.forEach((b, k) => {
+          if (b.type === 'fx') this.pathFx(b.f, s);
+          else if (a.verify) this.pathImplicit(b.g, s, { verify: true, keep: a.conds.filter((_, j) => j !== k) });   // 境界は、ほかの条件を満たす部分だけ
+          else this.pathImplicit(b.g, s);
           this.strokePath(it.color, b.strict, 1.75);
-        }
+        });
         break;
+      case 'implicitc': this.pathImplicit(a.g, s, { verify: true, keep: a.mask }); this.strokePath(it.color); break;
+      case 'pcurve2': {
+        const [t0, t1] = a.trange;
+        const N = 1500;
+        ctx.beginPath();
+        let pen = false;
+        for (let k = 0; k <= N; k++) {
+          s[a.tv] = t0 + (t1 - t0) * k / N;
+          let xy;
+          try { xy = (!a.mask || a.mask(s)) ? a.xy(s) : null; } catch (e) { xy = null; }
+          if (!xy || !Number.isFinite(xy[0]) || !Number.isFinite(xy[1])) { pen = false; continue; }
+          const px = this.sx(xy[0]), py = this.sy(xy[1]);
+          if (pen) ctx.lineTo(px, py); else { ctx.moveTo(px, py); pen = true; }
+        }
+        this.strokePath(it.color);
+        break;
+      }
+      case 'roots': {
+        const box = { xmin: this.wx(0), xmax: this.wx(this.W), ymin: this.wy(this.H), ymax: this.wy(0) };
+        const pts = solveRoots(a.g1, a.g2, s, box, a.mask);
+        for (const [x, y] of pts) this.dot(x, y, it.color, a.complexLabel ? fmtComplex(x, y) : `(${fmtNum(x)}, ${fmtNum(y)})`);
+        break;
+      }
+      case 'cpoint': {
+        const v = a.f(s);
+        if (!v || Array.isArray(v)) break;
+        const val = fmtComplex(v.re, v.im);
+        this.dot(v.re, v.im, it.color, a.name && a.name !== val ? `${a.name} = ${val}` : val);
+        break;
+      }
+      case 'vpoint': {
+        const v = a.f(s);
+        if (!Array.isArray(v)) break;
+        this.dot(v[0], v[1], it.color, `${a.name}(${fmtNum(v[0])}, ${fmtNum(v[1])})`);
+        break;
+      }
+      case 'arrow': {
+        const v = a.f(s);
+        if (!Array.isArray(v) || !Number.isFinite(v[0]) || !Number.isFinite(v[1])) break;
+        this.arrow(0, 0, v[0], v[1], it.color, a.name);
+        break;
+      }
       case 'pcurve':
       case 'polar': {
         const [t0, t1] = a.trange;
@@ -504,6 +585,48 @@ export class Graph {
     }
   }
 
+  dot(x, y, color, label) {
+    if (!Number.isFinite(x) || !Number.isFinite(y)) return;
+    const { ctx } = this;
+    ctx.fillStyle = color;
+    ctx.beginPath(); ctx.arc(this.sx(x), this.sy(y), 4.5, 0, TAU); ctx.fill();
+    if (label) {
+      ctx.font = '12px -apple-system, "Hiragino Sans", system-ui, sans-serif';
+      ctx.textAlign = 'left';
+      ctx.fillText(label, this.sx(x) + 8, this.sy(y) - 8);
+    }
+  }
+
+  arrow(x0, y0, x1, y1, color, label) {
+    const { ctx } = this;
+    const ax = this.sx(x0), ay = this.sy(y0), bx = this.sx(x1), by = this.sy(y1);
+    const len = Math.hypot(bx - ax, by - ay);
+    if (len < 1) return;
+    const ux = (bx - ax) / len, uy = (by - ay) / len, head = Math.min(12, len * 0.4);
+    ctx.beginPath(); ctx.moveTo(ax, ay); ctx.lineTo(bx - ux * head * 0.6, by - uy * head * 0.6);
+    this.strokePath(color, false, 2.5);
+    ctx.fillStyle = color;
+    ctx.beginPath();
+    ctx.moveTo(bx, by);
+    ctx.lineTo(bx - ux * head - uy * head * 0.5, by - uy * head + ux * head * 0.5);
+    ctx.lineTo(bx - ux * head + uy * head * 0.5, by - uy * head - ux * head * 0.5);
+    ctx.closePath(); ctx.fill();
+    if (label) {
+      ctx.font = 'italic 600 13px "Times New Roman", serif';
+      ctx.textAlign = 'center';
+      // 矢印の中ほど、左側に名前（ベクトルの記号として上に矢印を付ける）
+      const lx = (ax + bx) / 2 - uy * 12, ly = (ay + by) / 2 + ux * 12 + 4;
+      ctx.fillText(label, lx, ly);
+      if (/^[a-zα-ω]$/.test(label)) {
+        const w = ctx.measureText(label).width;
+        ctx.lineWidth = 1; ctx.strokeStyle = color; ctx.beginPath();
+        ctx.moveTo(lx - w / 2 - 1, ly - 12); ctx.lineTo(lx + w / 2 + 2, ly - 12);
+        ctx.moveTo(lx + w / 2 - 1, ly - 14); ctx.lineTo(lx + w / 2 + 2, ly - 12); ctx.lineTo(lx + w / 2 - 1, ly - 10);
+        ctx.stroke();
+      }
+    }
+  }
+
   drawStrokes(color) {
     const { ctx } = this;
     for (const st of this.strokes) {
@@ -525,7 +648,7 @@ export class Graph {
     const step = niceStep(70 / this.view.scale) / 100;
     ctx.fillStyle = color || col.axis;
     ctx.beginPath(); ctx.arc(px, py, 5, 0, TAU); ctx.fill();
-    const label = `(${fmt(x, step)}, ${fmt(y, step)})`;
+    const label = this.mode === 'complex' ? fmtComplex(+fmt(x, step), +fmt(y, step)) : `(${fmt(x, step)}, ${fmt(y, step)})`;
     ctx.font = '600 12px -apple-system, "Hiragino Sans", system-ui, sans-serif';
     const w = ctx.measureText(label).width + 12;
     const bx = Math.min(this.W - w - 4, px + 10), by = Math.max(4, py - 30);

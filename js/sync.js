@@ -4,13 +4,13 @@
 //   ログインしなければ何も送らない（今まで通り端末の中だけ）。
 import { SUPABASE_URL, SUPABASE_KEY } from './config.js';
 
-export const FILE_VERSION = '0.11.0';
+export const FILE_VERSION = '0.12.0';
 const AUTH_KEY = 'lemma.auth';
 export const enabled = () => !!(SUPABASE_URL && SUPABASE_KEY);
 
 // ---------------------------------------------------------------- 記録の合わせ方（端末どうしで食い違ったとき）
 // 設定のように「最後に変えた方」を採るもの
-export const LWW_KEYS = ['settings', 'practice', 'graphExprs', 'graph3Exprs'];
+export const LWW_KEYS = ['settings', 'practice', 'graphExprs', 'graph3Exprs', 'graphCExprs', 'graphVExprs'];
 const entryKey = (l) => `${l.p}|${l.t}`;
 const nkeys = (o) => Object.keys(o || {}).length;
 

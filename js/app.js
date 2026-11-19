@@ -6,6 +6,7 @@ import * as M_G3 from './graph3d.js';
 import * as M_CONTENT from './content.js';
 import * as M_SCHED from './scheduler.js';
 import * as M_GRAPH from './graph.js';
+import * as M_PLANE from './plane.js';
 import * as M_PARSER from './parser.js';
 import * as M_CAT from './catalog.js';
 import * as M_ANS from './answer.js';
@@ -21,7 +22,7 @@ import {
   subjectsWithFields, pool, pickPractice, pickReview, dueEntries, nextReviewTime,
 } from './catalog.js';
 
-const VERSION = '0.11.0';
+const VERSION = '0.12.0';
 const KEY = 'lemma.v2';
 let sync = null, syncApplying = false, syncStatus = null;   // アカウントと同期（initSync で用意）
 const $ = (sel, el = document) => el.querySelector(sel);
@@ -35,7 +36,7 @@ function freshState() {
     practice: { fields: null, levels: [0, 1, 2, 3, 4, 5], size: 8 }, lv0: 1,
     schema: 4,
     newIntroduced: null, streak: { last: null, count: 0 },
-    graphExprs: null,
+    graphExprs: null, graphCExprs: null, graphVExprs: null,
   };
 }
 let state = load();
@@ -64,7 +65,7 @@ let lwwSig = null;
 let saveWarned = false;
 let persistAsked = false;
 function save() {
-  const sig = JSON.stringify([state.settings, state.practice, state.graphExprs, state.graph3Exprs]);
+  const sig = JSON.stringify([state.settings, state.practice, state.graphExprs, state.graph3Exprs, state.graphCExprs, state.graphVExprs]);
   if (lwwSig !== null && sig !== lwwSig) state.settingsAt = Date.now();
   lwwSig = sig;
   try { localStorage.setItem(KEY, JSON.stringify(state)); }
@@ -112,7 +113,7 @@ async function firstSyncAfterLogin() {
     if (k === 'remote') {
       download(`lemma-この端末の記録-${dayKey()}.json`, JSON.stringify(state, null, 1), 'application/json');
       // 端末の記録を空にしてから同期すると、アカウントの記録だけになる（設定は端末のまま）
-      state = { ...freshState(), settings: state.settings, practice: state.practice, settingsAt: state.settingsAt, graphExprs: state.graphExprs, graph3Exprs: state.graph3Exprs };
+      state = { ...freshState(), settings: state.settings, practice: state.practice, settingsAt: state.settingsAt, graphExprs: state.graphExprs, graph3Exprs: state.graph3Exprs, graphCExprs: state.graphCExprs, graphVExprs: state.graphVExprs };
       save(); session = null;
       await sync.syncNow(); toast('アカウントの記録に切り替えました'); route(); return;
     }
@@ -226,10 +227,10 @@ let activeGraphs = [];
 function clearGraphs() { activeGraphs.forEach(g => g.destroy()); activeGraphs = []; }
 
 // グラフ部品（ツールボタンとスライダー付き）
-function mountGraph(host, exprs, { view: bounds, sliders, sketch = false, hidden = false, height, three = false } = {}) {
+function mountGraph(host, exprs, { view: bounds, sliders, sketch = false, hidden = false, height, three = false, mode } = {}) {
   if (height) host.style.height = height + 'px';
   let g;
-  try { g = three ? new Graph3D(host) : new Graph(host, {}); }
+  try { g = three ? new Graph3D(host) : new Graph(host, { mode }); }
   catch (e) { host.innerHTML = `<p class="graph-error">グラフを表示できませんでした：${esc(e.message)}</p>`; throw e; }
   activeGraphs.push(g);
   g.setExpressions(exprs.map((src, i) => ({ src, color: COLORS[i % COLORS.length] })));
@@ -253,7 +254,7 @@ function mountGraph(host, exprs, { view: bounds, sliders, sketch = false, hidden
   return g;
 }
 
-function renderSliders(box, g) {
+function renderSliders(box, g, onChange = null) {
   const names = g.paramNames();
   box.innerHTML = names.map(n => {
     const v = g.params[n];
@@ -266,13 +267,22 @@ function renderSliders(box, g) {
   $$('.slider', box).forEach(row => {
     const n = row.dataset.p;
     const [range, num] = $$('input', row);
-    range.addEventListener('input', () => { g.setParam(n, +range.value); num.value = (+range.value).toFixed(2); });
+    range.addEventListener('input', () => { g.setParam(n, +range.value); num.value = (+range.value).toFixed(2); onChange && refreshNotes(); });
     num.addEventListener('change', () => {
       const v = parseFloat(num.value); if (!Number.isFinite(v)) return;
       if (v > +range.max) range.max = Math.ceil(v); if (v < +range.min) range.min = Math.floor(v);
-      range.value = v; g.setParam(n, v);
+      range.value = v; g.setParam(n, v); onChange && refreshNotes();
     });
   });
+  // スライダーを動かしたら、値だけ表示する式（内積など）も更新
+  function refreshNotes() {
+    const list = box.parentElement && box.parentElement.querySelector('.expr-list');
+    if (!list || !g.noteOf) return;
+    $$('.expr', list).forEach((row, i) => {
+      const err = row.nextElementSibling;
+      if (err && err.classList.contains('note')) err.textContent = g.noteOf(g.items[i]) || '';
+    });
+  }
 }
 
 // ---------- ルーティング ----------
@@ -713,7 +723,7 @@ function renderProblem(step) {
     <div class="fade-in">
       ${topBar()}
       <div class="meta">
-        ${metaChips(entry)}<span class="chip plain">自動判定</span>${bmButton(entry.id)}
+        ${metaChips(entry)}<span class="chip plain">自動判定</span>${bmButton(entry.id)}${graphButton()}
         <span class="count">${session.i + 1} / ${session.steps.length}</span>
       </div>
       <div class="question">${rich(p.q)}</div>
@@ -983,7 +993,7 @@ function renderWritten(step, e) {
       ${topBar()}
       <div class="meta">
         ${metaChips(e)}
-        <span class="chip plain timer" id="clock">0:00</span>${bmButton(e.id)}
+        <span class="chip plain timer" id="clock">0:00</span>${bmButton(e.id)}${graphButton()}
         <span class="count">${session.i + 1} / ${session.steps.length}</span>
       </div>
       <div class="question qhtml">${bigOps(b.q)}</div>
@@ -1405,61 +1415,100 @@ const PRESETS3 = [
   { name: '曲面と接平面', exprs: ['z=x^2+y^2', 'z=2a(x-a)+a^2', 'a=1'] },
 ];
 
-function renderGraphPage() {
-  const mode = state.graphMode === '3d' ? '3d' : '2d';
-  const is3 = mode === '3d';
-  const key = is3 ? 'graph3Exprs' : 'graphExprs';
-  const presets = is3 ? PRESETS3 : PRESETS;
-  const defaults = is3 ? PRESETS3[1].exprs : DEFAULT_EXPRS;
-  const exprs = state[key] && state[key].length ? state[key] : defaults.map(src => ({ src }));
-  view.innerHTML = `
-    <div class="graph-page fade-in">
-      <div class="segment mode-switch" id="gmode">
-        <button data-m="2d" class="${is3 ? '' : 'on'}">平面 2D</button><button data-m="3d" class="${is3 ? 'on' : ''}">空間 3D</button>
-      </div>
-      <div id="gp"></div>
-      <div class="expr-list" id="el"></div>
-      <div class="btn-row" style="margin-top:10px">
-        <button class="btn" id="add">＋ 式を追加</button>
-        ${is3 ? '' : '<button class="btn" id="sk">予想を描く</button>'}
-      </div>
-      <div class="sliders" id="gsl"></div>
-      <h2>例</h2>
-      <div class="presets" id="pre">${presets.map((p, i) => `<button data-i="${i}">${esc(p.name)}</button>`).join('')}</div>
-      <h2>書き方</h2>
-      <div class="panel syntax">${is3 ? `
-        <code>z=x^2-y^2</code> 曲面　<code>x+2y+3z=6</code> 平面　<code>x^2+y^2+z^2=4</code> 球（z について2次までの式）<br>
-        <code>(cos t, sin t, t/4) t:0..12</code> 空間曲線　<code>(cos u, sin u, v) u:0..2pi v:-2..2</code> 媒介変数曲面<br>
-        <code>(1,2,3)</code> 点　<code>a=2</code> などの文字はスライダー。1本指で回転、2本指・＋−で表示範囲を変更。` : `
-        <code>y=x^2-2x</code> 関数　<code>x^2+y^2=4</code> 陰関数　<code>y&gt;=x^2</code> 領域<br>
+// 複素平面・ベクトルの例（plane.js が解析する）
+const PRESETS_C = [
+  { name: '円・アポロニウス', exprs: ['|z-1|=2', '|z+1|=2|z-1|', 'α=1+i', '|z-α|=k', 'k=1'] },
+  { name: '垂直二等分線', exprs: ['α=2+i', 'β=-1+2i', '|z-α|=|z-β|'] },
+  { name: '偏角', exprs: ['arg(z)=π/4', 'arg((z-1)/(z+1))=π/2'] },
+  { name: '1の3乗根', exprs: ['z^3=1', '|z|=1'] },
+  { name: '領域', exprs: ['1<=|z|<=2, Re(z)>=0'] },
+  { name: '回転', exprs: ['α=2+i', 'β=α(cos(θ)+i sin(θ))', 'θ=1', '|z|=|α|'] },
+  { name: '曲線 z(t)', exprs: ['z=e^(it)+e^(3it)/3 t:0..2π'] },
+];
+const PRESETS_V = [
+  { name: '直線と線分', exprs: ['A=(1,3)', 'B=(4,1)', 'p=A+t(B-A)', 'p=A+t(B-A), 0<=t<=1'] },
+  { name: '円', exprs: ['A=(1,1)', 'B=(4,3)', '|p-A|=2', '(p-A)·(p-B)=0'] },
+  { name: '三角形の内部', exprs: ['a=(3,1)', 'b=(1,2)', 'p=sa+tb, s>=0, t>=0, s+t<=1'] },
+  { name: '平行四辺形', exprs: ['a=(3,0)', 'b=(1,2)', 'p=sa+tb, 0<=s<=1, 0<=t<=1', 'a+b'] },
+  { name: '法線ベクトル', exprs: ['n=(1,2)', 'A=(2,1)', 'n·(p-A)=0', 'n·A'] },
+  { name: '内分点', exprs: ['A=(0,3)', 'B=(5,0)', 'P=(2A+3B)/5', 'p=A+t(B-A), 0<=t<=1'] },
+];
+const GMODES = [['2d', '平面'], ['complex', '複素平面'], ['vector', 'ベクトル'], ['3d', '空間']];
+const GKEYS = { '2d': 'graphExprs', complex: 'graphCExprs', vector: 'graphVExprs', '3d': 'graph3Exprs' };
+const GSYNTAX = {
+  '2d': `<code>y=x^2-2x</code> 関数　<code>x^2+y^2=4</code> 陰関数　<code>y&gt;=x^2</code> 領域<br>
         <code>x^2&lt;=y&lt;=x+2</code> 連立不等式　<code>(cos t, sin t)</code> 媒介変数　<code>r=1+cos θ</code> 極座標<br>
         <code>(1,2)</code> 点　<code>a=2</code> などの文字はスライダーになります。<code>(t, t^2) t:-1..2</code> で t の範囲。<br>
-        関数：sin cos tan log（自然対数）exp sqrt abs、定数 pi e。グラフをタップすると座標を表示。`}
+        関数：sin cos tan log（自然対数）exp sqrt abs、定数 pi e。グラフをタップすると座標を表示。`,
+  complex: `z が動く点（z = x + yi）。<code>|z-1|=2</code> 円　<code>arg(z)=π/4</code> 半直線　<code>|z-α|=|z-β|</code> 垂直二等分線<br>
+        <code>1&lt;=|z|&lt;=2, Re(z)&gt;=0</code> 領域（カンマで「かつ」）　<code>|z|=1, Im(z)&gt;=0</code> 条件つきの曲線<br>
+        <code>z^3=1</code> 方程式の解を点で　<code>α=1+2i</code> 点（以後 α として使える）　<code>z=e^(it) t:0..π</code> 曲線<br>
+        関数：Re Im conj（共役）arg abs（|z|）sqrt exp log sin cos。<code>k=1</code> などの文字はスライダー。`,
+  vector: `p が動く点の位置ベクトル（p = (x, y)）。小文字 <code>a=(2,1)</code> は矢印、大文字 <code>A=(1,3)</code> は点。<br>
+        <code>p=A+t(B-A)</code> 直線　<code>p=A+t(B-A), 0&lt;=t&lt;=1</code> 線分　<code>|p-A|=2</code> 円　<code>(p-A)·(p-B)=0</code> AB が直径の円<br>
+        <code>p=sa+tb, s&gt;=0, t&gt;=0, s+t&lt;=1</code> 領域（s, t は1次まで）　<code>n·(p-A)=0</code> 法線ベクトルと直線　<code>a·b</code> 内積の値<br>
+        内積は <code>·</code> か <code>*</code>（ベクトルどうしの積は内積）。<code>|a|</code> は大きさ。<code>k=1</code> などの文字はスライダー。`,
+  '3d': `<code>z=x^2-y^2</code> 曲面　<code>x+2y+3z=6</code> 平面　<code>x^2+y^2+z^2=4</code> 球（z について2次までの式）<br>
+        <code>(cos t, sin t, t/4) t:0..12</code> 空間曲線　<code>(cos u, sin u, v) u:0..2pi v:-2..2</code> 媒介変数曲面<br>
+        <code>(1,2,3)</code> 点　<code>a=2</code> などの文字はスライダー。1本指で回転、2本指・＋−で表示範囲を変更。`,
+};
+
+// グラフの作業場（式の一覧・スライダー・例・書き方）。グラフ画面と、問題を解きながら開くシートで共用
+// 戻り値の destroy() で、グラフを片付ける（シートを閉じるとき）
+function graphWorkspace(root, { compact = false } = {}) {
+  const mode = GKEYS[state.graphMode] ? state.graphMode : '2d';
+  const is3 = mode === '3d';
+  const key = GKEYS[mode];
+  const presets = { '2d': PRESETS, complex: PRESETS_C, vector: PRESETS_V, '3d': PRESETS3 }[mode];
+  const defaults = is3 ? PRESETS3[1].exprs : mode === 'complex' ? PRESETS_C[0].exprs.slice(0, 2) : mode === 'vector' ? PRESETS_V[0].exprs : DEFAULT_EXPRS;
+  const exprs = state[key] && state[key].length ? state[key] : defaults.map(src => ({ src }));
+  root.innerHTML = `
+      <div class="segment mode-switch gmode">
+        ${GMODES.map(([m, label]) => `<button data-m="${m}" class="${m === mode ? 'on' : ''}">${label}</button>`).join('')}
       </div>
-    </div>`;
-  $$('#gmode button').forEach(b => b.addEventListener('click', () => {
+      <div class="gp"></div>
+      <div class="expr-list"></div>
+      <div class="btn-row" style="margin-top:10px">
+        <button class="btn gadd">＋ 式を追加</button>
+        ${mode === '2d' ? '<button class="btn gsk">予想を描く</button>' : ''}
+      </div>
+      <div class="sliders gsl"></div>
+      ${compact ? '<details class="gmore"><summary>例と書き方</summary>' : ''}
+      <h2>例</h2>
+      <div class="presets gpre">${presets.map((p, i) => `<button data-i="${i}">${esc(p.name)}</button>`).join('')}</div>
+      <h2>書き方</h2>
+      <div class="panel syntax">${GSYNTAX[mode]}</div>
+      ${compact ? '</details>' : ''}`;
+  let g;
+  const destroy = () => { if (g) { g.destroy(); activeGraphs = activeGraphs.filter(x => x !== g); g = null; } };
+  $$('.gmode button', root).forEach(b => b.addEventListener('click', () => {
     if (b.dataset.m === mode) return;
-    state.graphMode = b.dataset.m; save(); clearGraphs(); renderGraphPage();
+    state.graphMode = b.dataset.m; save(); destroy();
+    api.inner = graphWorkspace(root, { compact });
   }));
-  const g = mountGraph($('#gp'), [], { three: is3 });
+  g = mountGraph($('.gp', root), [], { three: is3, mode: is3 ? undefined : (mode === '2d' ? 'xy' : mode) });
   let list = exprs.map(e => ({ src: e.src, hidden: !!e.hidden }));
+  const el = $('.expr-list', root);
   const apply = () => {
     const items = g.setExpressions(list.map((e, i) => ({ src: e.src, hidden: e.hidden, color: COLORS[i % COLORS.length] })));
     state[key] = list; save();
-    $$('.expr', $('#el')).forEach((row, i) => {
+    $$('.expr', el).forEach((row, i) => {
       const err = row.nextElementSibling;
-      if (err && err.classList.contains('expr-err')) err.textContent = items[i]?.error || '';
+      if (!err || !err.classList.contains('expr-err')) return;
+      const note = !items[i]?.error && g.noteOf ? g.noteOf(items[i]) : '';
+      err.textContent = items[i]?.error || note;
+      err.classList.toggle('note', !!note);
     });
-    renderSliders($('#gsl'), g);
+    renderSliders($('.gsl', root), g, apply);
   };
   const renderList = () => {
-    $('#el').innerHTML = list.map((e, i) => `
+    el.innerHTML = list.map((e, i) => `
       <div class="expr" data-i="${i}">
         <button class="dot ${e.hidden ? 'off' : ''}" style="border-color:${COLORS[i % COLORS.length]};background:${COLORS[i % COLORS.length]}" aria-label="表示切替"></button>
         <input value="${esc(e.src)}" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" aria-label="式 ${i + 1}">
         <button class="del" aria-label="削除">×</button>
       </div><div class="expr-err"></div>`).join('');
-    $$('.expr', $('#el')).forEach(row => {
+    $$('.expr', el).forEach(row => {
       const i = +row.dataset.i;
       $('input', row).addEventListener('input', (ev) => { list[i].src = ev.target.value; apply(); });
       $('.dot', row).addEventListener('click', (ev) => { list[i].hidden = !list[i].hidden; ev.target.classList.toggle('off', list[i].hidden); apply(); });
@@ -1467,11 +1516,11 @@ function renderGraphPage() {
     });
   };
   renderList(); apply();
-  $('#add').addEventListener('click', () => {
+  $('.gadd', root).addEventListener('click', () => {
     list.push({ src: '' }); renderList(); apply();
-    $$('.expr input').at(-1).focus();
+    $$('.expr input', el).at(-1).focus();
   });
-  $('#sk')?.addEventListener('click', (ev) => {
+  $('.gsk', root)?.addEventListener('click', (ev) => {
     const on = !g.sketchMode;
     g.setSketchMode(on);
     ev.target.textContent = on ? '描き終わる' : '予想を描く';
@@ -1479,13 +1528,52 @@ function renderGraphPage() {
     if (on) { g.clearSketch(); g.setRevealed(false); toast('指で概形を描いて、終わったらボタンを押す'); }
     else g.setRevealed(true);
   });
-  $('#pre').addEventListener('click', (ev) => {
+  $('.gpre', root).addEventListener('click', (ev) => {
     const b = ev.target.closest('button'); if (!b) return;
     list = presets[+b.dataset.i].exprs.map(src => ({ src }));
     g.params = {};
     renderList(); apply(); g.resetView();
   });
+  const api = { get graph() { return api.inner ? api.inner.graph : g; }, destroy() { if (api.inner) api.inner.destroy(); else destroy(); }, inner: null };
+  return api;
 }
+
+function renderGraphPage() {
+  view.innerHTML = '<div class="graph-page fade-in" id="gwrap"></div>';
+  graphWorkspace($('#gwrap'));
+}
+
+// ---------- 問題を解きながらグラフを開く（下から出るシート。問題の画面はそのまま残る）
+let graphSheet = null;
+function openGraphSheet() {
+  if (graphSheet) return;
+  const wrap = document.createElement('div');
+  wrap.className = 'gsheet';
+  wrap.innerHTML = `<div class="gsheet-box" role="dialog" aria-modal="true" aria-label="グラフ">
+      <div class="gsheet-head"><b>グラフ</b><span class="muted">問題はそのまま残っています</span><button class="icon-btn gsheet-close" aria-label="閉じる">✕</button></div>
+      <div class="gsheet-body graph-page"></div>
+    </div>`;
+  document.body.appendChild(wrap);
+  document.body.classList.add('sheet-open');
+  const ws = graphWorkspace($('.gsheet-body', wrap), { compact: true });
+  const close = () => {
+    if (!graphSheet) return;
+    ws.destroy(); wrap.remove(); graphSheet = null;
+    document.body.classList.remove('sheet-open');
+    window.removeEventListener('hashchange', close);
+    document.removeEventListener('keydown', onKey);
+  };
+  const onKey = (e) => { if (e.key === 'Escape') close(); };
+  graphSheet = { close };
+  $('.gsheet-close', wrap).addEventListener('click', close);
+  wrap.addEventListener('click', (e) => { if (e.target === wrap) close(); });
+  window.addEventListener('hashchange', close);
+  document.addEventListener('keydown', onKey);
+}
+document.addEventListener('click', (ev) => {
+  if (ev.target.closest && ev.target.closest('[data-graph-sheet]')) openGraphSheet();
+});
+const graphButton = () => `<button class="chip gbtn" data-graph-sheet title="グラフを開く（問題はそのまま）"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 20h18M4 4v16M6 16c3-9 6-9 8-3s4 6 6-6"/></svg><span> グラフ</span></button>`;
 
 // ---------- 定着度 ----------
 function fieldStats(keys) {
@@ -1803,7 +1891,7 @@ function renderSettings() {
         ? [{ key: 'all', label: 'この端末とアカウントの記録を消す', cls: 'danger' }, { key: 'device', label: 'ログアウトして、この端末の記録だけ消す' }]
         : [{ key: 'all', label: '消す', cls: 'danger' }] });
     if (!k) return;
-    const keep = { settings: state.settings, practice: state.practice, settingsAt: state.settingsAt, graphExprs: state.graphExprs, graph3Exprs: state.graph3Exprs };
+    const keep = { settings: state.settings, practice: state.practice, settingsAt: state.settingsAt, graphExprs: state.graphExprs, graph3Exprs: state.graph3Exprs, graphCExprs: state.graphCExprs, graphVExprs: state.graphVExprs };
     if (k === 'device') { await sync.logout(); state = { ...freshState(), ...keep }; }
     else state = { ...freshState(), ...keep, resetAt: Date.now() };   // 消した印：同期で、ほかの端末・サーバーの古い記録を持ち込まない
     save(); session = null; toast('消去しました'); route();
@@ -1831,7 +1919,7 @@ loadCatalog().then((meta) => {
 // アップロード漏れの検出：各ファイルの版が app.js と一致するか
 function staleFiles() {
   const cssV = getComputedStyle(document.documentElement).getPropertyValue('--lemma-version').replace(/['"\s]/g, '');
-  const list = { 'js/answer.js': M_ANS.FILE_VERSION, 'js/ui.js': M_UI.FILE_VERSION, 'js/drill.js': M_DRILL.FILE_VERSION, 'js/catalog.js': M_CAT.FILE_VERSION, 'js/content.js': M_CONTENT.FILE_VERSION, 'js/scheduler.js': M_SCHED.FILE_VERSION, 'js/graph.js': M_GRAPH.FILE_VERSION, 'js/graph3d.js': M_G3.FILE_VERSION, 'js/parser.js': M_PARSER.FILE_VERSION, 'css/style.css': cssV };
+  const list = { 'js/answer.js': M_ANS.FILE_VERSION, 'js/ui.js': M_UI.FILE_VERSION, 'js/drill.js': M_DRILL.FILE_VERSION, 'js/catalog.js': M_CAT.FILE_VERSION, 'js/content.js': M_CONTENT.FILE_VERSION, 'js/scheduler.js': M_SCHED.FILE_VERSION, 'js/graph.js': M_GRAPH.FILE_VERSION, 'js/plane.js': M_PLANE.FILE_VERSION, 'js/graph3d.js': M_G3.FILE_VERSION, 'js/parser.js': M_PARSER.FILE_VERSION, 'css/style.css': cssV };
   return Object.entries(list).filter(([, v]) => v !== VERSION).map(([k]) => k);
 }
 function showBanner(html) {

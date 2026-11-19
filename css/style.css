@@ -1,5 +1,5 @@
 :root {
-  --lemma-version: '0.11.0';
+  --lemma-version: '0.12.0';
   --paper: #f6f4ee;
   --card: #ffffff;
   --ink: #1c1d21;
@@ -321,6 +321,8 @@ textarea.explain:focus { outline: none; border-color: var(--accent); }
 .keypoint { margin-top: 12px; padding-top: 12px; border-top: 1px dashed var(--line); font-size: 14.5px; color: var(--ink-2); }
 .keypoint b { display: block; font-size: 12px; color: var(--ink-3); letter-spacing: .08em; margin-bottom: 2px; }
 .mode-switch { grid-template-columns: 1fr 1fr; margin-bottom: 12px; }
+.mode-switch.gmode { grid-template-columns: repeat(4, 1fr); }
+.mode-switch.gmode button { padding-left: 2px; padding-right: 2px; font-size: 13px; }
 
 /* ---------- today ---------- */
 .toolbar { display: flex; align-items: center; gap: 10px; justify-content: space-between; margin: 6px 0 14px; flex-wrap: wrap; }
@@ -579,3 +581,20 @@ body[data-tab="graph"] #bird:not(.talk) { opacity: .0; }
 .chip.bm { cursor: pointer; border: 1px solid var(--line); background: transparent; color: var(--ink-2); font: inherit; font-size: 12px; }
 .chip.bm.on { color: var(--warn); border-color: var(--warn); background: var(--warn-soft); }
 @media (max-width: 420px) { .chip.bm span { display: none; } }
+
+/* ---------- 問題を解きながら開くグラフ（下から出るシート） ---------- */
+.chip.gbtn { cursor: pointer; border: 1px solid var(--line); background: transparent; color: var(--ink-2); font: inherit; font-size: 12px; display: inline-flex; align-items: center; gap: 2px; }
+.chip.gbtn svg { width: 15px; height: 15px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+@media (max-width: 420px) { .chip.gbtn span { display: none; } }
+.gsheet { position: fixed; inset: 0; z-index: 55; background: rgb(0 0 0 / .35); display: flex; align-items: flex-end; justify-content: center; }
+.gsheet-box { background: var(--paper); color: var(--ink); width: min(720px, 100%); max-height: 92dvh; border-radius: 18px 18px 0 0; box-shadow: 0 -8px 30px rgb(0 0 0 / .2); display: flex; flex-direction: column; animation: sheet-up .2s ease-out; }
+@keyframes sheet-up { from { transform: translateY(30px); opacity: .6; } to { transform: none; opacity: 1; } }
+.gsheet-head { display: flex; align-items: center; gap: 10px; padding: 12px 14px 8px; border-bottom: 1px solid var(--line); }
+.gsheet-head b { font-size: 16px; }
+.gsheet-head .muted { font-size: 12px; flex: 1; }
+.gsheet-body { overflow-y: auto; padding: 12px 14px calc(16px + env(safe-area-inset-bottom)); -webkit-overflow-scrolling: touch; }
+.gsheet .graph-page .graph-host, .gsheet-body .graph-host { height: min(44dvh, 400px); }
+.gsheet .gmore { margin-top: 12px; }
+.gsheet .gmore summary { cursor: pointer; color: var(--ink-2); font-size: 14px; }
+body.sheet-open { overflow: hidden; }
+.expr-err.note { color: var(--ink-2); font-variant-numeric: tabular-nums; }

@@ -41,6 +41,7 @@ process.exit(ok ? 0 : 1);`]],
   ['自動採点の回帰テスト', 'node', ['tests/answer.test.mjs']],
   ['catalog.js の単体テスト（getProblem・v0.6 の学習記録）', 'node', ['tests/catalog.test.mjs']],
   ['同期の単体テスト（記録の合わせ方・にせ Supabase との通信）', 'node', ['tests/sync.test.mjs']],
+  ['複素平面・ベクトルの式（plane.js）の単体テスト', 'node', ['tests/plane.test.mjs']],
   ['配信用の dist/（必要なファイルだけ・CSP・配信してはいけないものが無い）', py, ['tools/build_dist.py', path.join(tmp, 'dist')]],
 ];
 if (process.argv.includes('--e2e')) steps.push(['ブラウザでの通し操作', 'node', ['tests/e2e.mjs']], ['解答の形式（記述式・選択式・自己採点）', 'node', ['tests/e2e_modes.mjs']], ['配信用の dist/ を CSP つきで動かす', 'node', ['tests/e2e_dist.mjs']]);
