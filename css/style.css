@@ -1,5 +1,5 @@
 :root {
-  --lemma-version: '0.12.0';
+  --lemma-version: '0.13.0';
   --paper: #f6f4ee;
   --card: #ffffff;
   --ink: #1c1d21;
@@ -585,7 +585,7 @@ body[data-tab="graph"] #bird:not(.talk) { opacity: .0; }
 /* ---------- 問題を解きながら開くグラフ（下から出るシート） ---------- */
 .chip.gbtn { cursor: pointer; border: 1px solid var(--line); background: transparent; color: var(--ink-2); font: inherit; font-size: 12px; display: inline-flex; align-items: center; gap: 2px; }
 .chip.gbtn svg { width: 15px; height: 15px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
-@media (max-width: 420px) { .chip.gbtn span { display: none; } }
+@media (max-width: 420px) { .chip.gbtn span:not(.lbl) { display: none; } }
 .gsheet { position: fixed; inset: 0; z-index: 55; background: rgb(0 0 0 / .35); display: flex; align-items: flex-end; justify-content: center; }
 .gsheet-box { background: var(--paper); color: var(--ink); width: min(720px, 100%); max-height: 92dvh; border-radius: 18px 18px 0 0; box-shadow: 0 -8px 30px rgb(0 0 0 / .2); display: flex; flex-direction: column; animation: sheet-up .2s ease-out; }
 @keyframes sheet-up { from { transform: translateY(30px); opacity: .6; } to { transform: none; opacity: 1; } }
@@ -598,3 +598,6 @@ body[data-tab="graph"] #bird:not(.talk) { opacity: .0; }
 .gsheet .gmore summary { cursor: pointer; color: var(--ink-2); font-size: 14px; }
 body.sheet-open { overflow: hidden; }
 .expr-err.note { color: var(--ink-2); font-variant-numeric: tabular-nums; }
+.chip.gbtn.fig { color: var(--accent); border-color: color-mix(in srgb, var(--accent) 45%, var(--line)); }
+.chip.gbtn.fig.locked { opacity: .5; }
+.fig-note { font-size: 13px; margin: 0 0 10px; line-height: 1.6; }

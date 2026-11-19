@@ -19,7 +19,7 @@ for (const f of fs.readdirSync(dir).filter((f) => f.startsWith('f-'))) {
       }
     }
     for (const [k, html] of Object.entries(b)) {
-      if (k === 'ch') continue;
+      if (k === 'ch' || k === 'fg' || typeof html !== 'string') continue;   // 選択肢・問題の図（式の文字列）は別
       // 表示数式 \[...\] と 行内 $...$ を取り出す（\text{} の中の $ を考慮）
       const segs = [];
       let s = html.replace(/\\\[([\s\S]*?)\\\]/g, (_, m) => { segs.push([m, true]); return ' '; });

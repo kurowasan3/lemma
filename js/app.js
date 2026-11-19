@@ -22,7 +22,7 @@ import {
   subjectsWithFields, pool, pickPractice, pickReview, dueEntries, nextReviewTime,
 } from './catalog.js';
 
-const VERSION = '0.12.0';
+const VERSION = '0.13.0';
 const KEY = 'lemma.v2';
 let sync = null, syncApplying = false, syncStatus = null;   // アカウントと同期（initSync で用意）
 const $ = (sel, el = document) => el.querySelector(sel);
@@ -973,6 +973,7 @@ function renderWritten(step, e) {
   if (mode === 'self') spec = null;                       // 自己採点：入力用の答えがあっても使わない
   const useChoice = mode === 'choice' && !!spec && Array.isArray(b.ch) && b.ch.some(Boolean);
   const t0 = Date.now();
+  currentFigure = b.fg ? { fg: b.fg, revealed: () => !!a.revealed } : null;
   const a = { conf: null, hint: false, revealed: false, sg: null, feel: null, log: null, min: null, attempts: 0, results: null, firstAllOk: null, disputes: [] };
   // 入力欄の状態：fields[k] = { f, part, mode: 'plain'|'cases', text, rows }
   const fields = [];
@@ -993,7 +994,7 @@ function renderWritten(step, e) {
       ${topBar()}
       <div class="meta">
         ${metaChips(e)}
-        <span class="chip plain timer" id="clock">0:00</span>${bmButton(e.id)}${graphButton()}
+        <span class="chip plain timer" id="clock">0:00</span>${bmButton(e.id)}${b.fg ? figButton(b.fg) : ''}${graphButton()}
         <span class="count">${session.i + 1} / ${session.steps.length}</span>
       </div>
       <div class="question qhtml">${bigOps(b.q)}</div>
@@ -1202,6 +1203,7 @@ function renderWritten(step, e) {
 
   function reveal() {
     a.revealed = true;
+    $$('[data-fig-sheet].locked').forEach(x => { x.classList.remove('locked'); x.title = '問題の図を開く'; });
     a.min = Math.max(1, Math.round((Date.now() - t0) / 60000));
     stopTimer();
     $$('#conf button').forEach(x => x.disabled = true);
@@ -1413,6 +1415,11 @@ const PRESETS3 = [
   { name: '円柱と平面', exprs: ['(cos(u), sin(u), v) u:0..2pi v:-3..3', 'z=y+a', 'a=0'] },
   { name: '回転体', exprs: ['(v, sin(v)cos(u), sin(v)sin(u)) u:0..2pi v:0..pi'] },
   { name: '曲面と接平面', exprs: ['z=x^2+y^2', 'z=2a(x-a)+a^2', 'a=1'] },
+  // 空間ベクトル（p が動く点の位置ベクトル。plane.js の vector3 が読む）
+  { name: 'ベクトル：直線と平面', exprs: ['A=(1,0,2)', 'a=(1,2,2)', 'p=A+ta', 'n=(2,-1,1)', 'n·(p-A)=0'] },
+  { name: 'ベクトル：三角形', exprs: ['A=(2,0,0)', 'B=(0,2,0)', 'C=(0,0,2)', 'p=A+s(B-A)+t(C-A), s>=0, t>=0, s+t<=1', 'p=A+t(B-A), 0<=t<=1'] },
+  { name: 'ベクトル：球', exprs: ['A=(1,1,0)', '|p-A|=r', 'r=2', 'B=(0,0,3)', '(p-B)·(p-A)=0'] },
+  { name: 'ベクトル：外積', exprs: ['a=(2,0,1)', 'b=(0,2,1)', 'a×b', 'p=sa+tb, 0<=s<=1, 0<=t<=1', '|a×b|'] },
 ];
 
 // 複素平面・ベクトルの例（plane.js が解析する）
@@ -1450,27 +1457,34 @@ const GSYNTAX = {
         内積は <code>·</code> か <code>*</code>（ベクトルどうしの積は内積）。<code>|a|</code> は大きさ。<code>k=1</code> などの文字はスライダー。`,
   '3d': `<code>z=x^2-y^2</code> 曲面　<code>x+2y+3z=6</code> 平面　<code>x^2+y^2+z^2=4</code> 球（z について2次までの式）<br>
         <code>(cos t, sin t, t/4) t:0..12</code> 空間曲線　<code>(cos u, sin u, v) u:0..2pi v:-2..2</code> 媒介変数曲面<br>
-        <code>(1,2,3)</code> 点　<code>a=2</code> などの文字はスライダー。1本指で回転、2本指・＋−で表示範囲を変更。`,
+        <code>(1,2,3)</code> 点　<code>a=2</code> などの文字はスライダー。1本指で回転、2本指・＋−で表示範囲を変更。<br>
+        <b>空間ベクトル</b>（p が動く点の位置ベクトル）：小文字 <code>a=(1,2,2)</code> は矢印、大文字 <code>A=(1,0,2)</code> は点。<br>
+        <code>p=A+ta</code> 直線　<code>p=A+t(B-A), 0&lt;=t&lt;=1</code> 線分　<code>p=A+sa+tb</code> 平面　<code>…, s&gt;=0, t&gt;=0, s+t&lt;=1</code> 三角形<br>
+        <code>|p-A|=2</code> 球　<code>n·(p-A)=0</code> 平面　<code>a×b</code> 外積（矢印）　<code>a·b</code>・<code>|a×b|</code> 値`,
 };
 
 // グラフの作業場（式の一覧・スライダー・例・書き方）。グラフ画面と、問題を解きながら開くシートで共用
 // 戻り値の destroy() で、グラフを片付ける（シートを閉じるとき）
-function graphWorkspace(root, { compact = false } = {}) {
-  const mode = GKEYS[state.graphMode] ? state.graphMode : '2d';
+// figure：問題の図（{ m: モード, e: [式], s: 'auto'|'manual' }）を渡すと、その式で開く（保存はしない。モードの切り替えもなし）
+function graphWorkspace(root, { compact = false, figure = null } = {}) {
+  const mode = figure ? figure.m : (GKEYS[state.graphMode] ? state.graphMode : '2d');
   const is3 = mode === '3d';
-  const key = GKEYS[mode];
+  const key = figure ? null : GKEYS[mode];
   const presets = { '2d': PRESETS, complex: PRESETS_C, vector: PRESETS_V, '3d': PRESETS3 }[mode];
   const defaults = is3 ? PRESETS3[1].exprs : mode === 'complex' ? PRESETS_C[0].exprs.slice(0, 2) : mode === 'vector' ? PRESETS_V[0].exprs : DEFAULT_EXPRS;
-  const exprs = state[key] && state[key].length ? state[key] : defaults.map(src => ({ src }));
+  const exprs = figure ? figure.e.map(src => ({ src })) : state[key] && state[key].length ? state[key] : defaults.map(src => ({ src }));
+  const modeName = (GMODES.find(([m]) => m === mode) || [, ''])[1];
   root.innerHTML = `
-      <div class="segment mode-switch gmode">
+      ${figure ? `<p class="muted fig-note">${figure.s === 'manual' ? '' : '問題文から自動で取り出した式です。'}${modeName}のグラフ。文字はスライダーで動かせます。式を足したり直したりしても、ここでの変更は保存されません。</p>`
+        : `<div class="segment mode-switch gmode">
         ${GMODES.map(([m, label]) => `<button data-m="${m}" class="${m === mode ? 'on' : ''}">${label}</button>`).join('')}
-      </div>
+      </div>`}
       <div class="gp"></div>
       <div class="expr-list"></div>
       <div class="btn-row" style="margin-top:10px">
         <button class="btn gadd">＋ 式を追加</button>
         ${mode === '2d' ? '<button class="btn gsk">予想を描く</button>' : ''}
+        ${figure ? '<button class="btn gcopy">グラフに写す</button>' : ''}
       </div>
       <div class="sliders gsl"></div>
       ${compact ? '<details class="gmore"><summary>例と書き方</summary>' : ''}
@@ -1491,7 +1505,7 @@ function graphWorkspace(root, { compact = false } = {}) {
   const el = $('.expr-list', root);
   const apply = () => {
     const items = g.setExpressions(list.map((e, i) => ({ src: e.src, hidden: e.hidden, color: COLORS[i % COLORS.length] })));
-    state[key] = list; save();
+    if (key) { state[key] = list; save(); }
     $$('.expr', el).forEach((row, i) => {
       const err = row.nextElementSibling;
       if (!err || !err.classList.contains('expr-err')) return;
@@ -1528,6 +1542,11 @@ function graphWorkspace(root, { compact = false } = {}) {
     if (on) { g.clearSketch(); g.setRevealed(false); toast('指で概形を描いて、終わったらボタンを押す'); }
     else g.setRevealed(true);
   });
+  $('.gcopy', root)?.addEventListener('click', () => {
+    const k = GKEYS[mode];
+    state[k] = list.map(e => ({ src: e.src, hidden: !!e.hidden })); state.graphMode = mode; save();
+    toast(`グラフ（${modeName}）に写しました。下の「グラフ」から続きを描けます`);
+  });
   $('.gpre', root).addEventListener('click', (ev) => {
     const b = ev.target.closest('button'); if (!b) return;
     list = presets[+b.dataset.i].exprs.map(src => ({ src }));
@@ -1545,17 +1564,19 @@ function renderGraphPage() {
 
 // ---------- 問題を解きながらグラフを開く（下から出るシート。問題の画面はそのまま残る）
 let graphSheet = null;
-function openGraphSheet() {
+let currentFigure = null;   // 表示中の問題の図（renderWritten が入れる）
+function openGraphSheet(figure = null) {
   if (graphSheet) return;
   const wrap = document.createElement('div');
   wrap.className = 'gsheet';
-  wrap.innerHTML = `<div class="gsheet-box" role="dialog" aria-modal="true" aria-label="グラフ">
-      <div class="gsheet-head"><b>グラフ</b><span class="muted">問題はそのまま残っています</span><button class="icon-btn gsheet-close" aria-label="閉じる">✕</button></div>
+  const title = figure ? '問題の図' : 'グラフ';
+  wrap.innerHTML = `<div class="gsheet-box" role="dialog" aria-modal="true" aria-label="${title}">
+      <div class="gsheet-head"><b>${title}</b><span class="muted">問題はそのまま残っています</span><button class="icon-btn gsheet-close" aria-label="閉じる">✕</button></div>
       <div class="gsheet-body graph-page"></div>
     </div>`;
   document.body.appendChild(wrap);
   document.body.classList.add('sheet-open');
-  const ws = graphWorkspace($('.gsheet-body', wrap), { compact: true });
+  const ws = graphWorkspace($('.gsheet-body', wrap), { compact: true, figure });
   const close = () => {
     if (!graphSheet) return;
     ws.destroy(); wrap.remove(); graphSheet = null;
@@ -1571,8 +1592,17 @@ function openGraphSheet() {
   document.addEventListener('keydown', onKey);
 }
 document.addEventListener('click', (ev) => {
-  if (ev.target.closest && ev.target.closest('[data-graph-sheet]')) openGraphSheet();
+  if (!ev.target.closest) return;
+  if (ev.target.closest('[data-graph-sheet]')) openGraphSheet();
+  if (ev.target.closest('[data-fig-sheet]')) {
+    const cf = currentFigure;
+    if (!cf) return;
+    // 図そのものが答えになる問題（図示せよ・概形をかけ）は、答え合わせのあとで
+    if (cf.fg.a && !cf.revealed()) { toast('図そのものが答えになる問題なので、答え合わせのあとで見られます'); return; }
+    openGraphSheet(cf.fg);
+  }
 });
+const figButton = (fg) => `<button class="chip gbtn fig ${fg.a ? 'locked' : ''}" data-fig-sheet title="${fg.a ? '答え合わせのあとで開けます' : '問題の図を開く'}"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20h16M4 20V4M7 15l4-6 4 4 4-8"/><circle cx="11" cy="9" r="1.4"/><circle cx="15" cy="13" r="1.4"/></svg><span class="lbl"> 問題の図</span></button>`;
 const graphButton = () => `<button class="chip gbtn" data-graph-sheet title="グラフを開く（問題はそのまま）"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 20h18M4 4v16M6 16c3-9 6-9 8-3s4 6 6-6"/></svg><span> グラフ</span></button>`;
 
 // ---------- 定着度 ----------

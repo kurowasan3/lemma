@@ -7,10 +7,13 @@
 //   a=(2,1)（矢印）  A=(1,3)（点）  p=A+t(a)（直線）  p=A+t(B-A), 0<=t<=1（線分）
 //   |p-A|=2（円）  (p-A)·(p-B)=0（AB を直径とする円）  p=sa+tb, s>=0, t>=0, s+t<=1（三角形の内部）
 //
+// 空間ベクトル（mode 'vector3'、グラフの「空間」で使う）：p = (x, y, z)
+//   A=(1,0,2)（点）  a=(1,2,2)（矢印）  p=A+t a（直線）  p=A+sa+tb（平面）  p=A+s(B-A)+t(C-A), s>=0, t>=0, s+t<=1（三角形）
+//   |p-A|=2（球）  n·(p-A)=0（平面）  a×b（外積の矢印）  a·b（内積の値）
 // 値：数は複素数 {re, im}（ベクトルのモードでも数は複素数として持ち、成分は実数）、ベクトルは実数の配列 [x, y]
 // 1行の解析結果（graph.js の analyze() と同じ形に、矢印 arrow・解の点 roots・条件つき陰関数 implicitc を加えたもの）
 
-export const FILE_VERSION = '0.12.0';
+export const FILE_VERSION = '0.13.0';
 const TAU = Math.PI * 2;
 
 // ---------------------------------------------------------------- 複素数
@@ -39,12 +42,12 @@ const csin = (a) => C(Math.sin(a.re) * Math.cosh(a.im), Math.cos(a.re) * Math.si
 const ccos = (a) => C(Math.cos(a.re) * Math.cosh(a.im), -Math.sin(a.re) * Math.sinh(a.im));
 
 // ---------------------------------------------------------------- 字句・構文
-const FUNCS = ['conj', 'sqrt', 'Re', 'Im', 'arg', 'abs', 'exp', 'log', 'ln', 'sin', 'cos', 'tan', 'dot', 'norm'];
+const FUNCS = ['conj', 'sqrt', 'Re', 'Im', 'arg', 'abs', 'exp', 'log', 'ln', 'sin', 'cos', 'tan', 'dot', 'cross', 'norm'];
 const NAMES = [...FUNCS, 'pi'].sort((a, b) => b.length - a.length);
 
 function normalize(src) {
   return String(src)
-    .replace(/[−–]/g, '-').replace(/[×]/g, '*').replace(/[·・⋅∙]/g, '·').replace(/÷/g, '/')
+    .replace(/[−–]/g, '-').replace(/[·・⋅∙]/g, '·').replace(/÷/g, '/')
     .replace(/＝/g, '=').replace(/（/g, '(').replace(/）/g, ')').replace(/，|、/g, ',').replace(/｜/g, '|')
     .replace(/≤|≦/g, '<=').replace(/≥|≧/g, '>=');
 }
@@ -77,7 +80,7 @@ function tokenize(src) {
       }
       i = j; continue;
     }
-    if ('+-*/^(),|·'.includes(c)) { out.push({ k: 'op', v: c }); i++; continue; }
+    if ('+-*/^(),|·×'.includes(c)) { out.push({ k: 'op', v: c }); i++; continue; }
     throw new Error(`「${c}」は使えません`);
   }
   return out;
@@ -105,9 +108,9 @@ export function parsePlane(src) {
   function term() {
     let a = unary();
     for (;;) {
-      if (isOp('*') || isOp('/') || isOp('·')) {
+      if (isOp('*') || isOp('/') || isOp('·') || isOp('×')) {
         const op = toks[i++].v;
-        a = { t: op === '/' ? 'div' : op === '·' ? 'dot' : 'mul', a, b: unary() };
+        a = { t: op === '/' ? 'div' : op === '·' ? 'dot' : op === '×' ? 'cross' : 'mul', a, b: unary() };
       } else if (startsAtom()) a = { t: 'mul', a, b: power() };   // 暗黙の積：2z, t(3,1), (1+i)z
       else return a;
     }
@@ -205,6 +208,10 @@ export function compilePlane(ast, mode) {
           return cmul(x, y);
         };
       }
+      case 'cross': {
+        const a = ev(n.a), b = ev(n.b);
+        return (s) => crossOf(a(s), b(s));
+      }
       case 'div': {
         const a = ev(n.a), b = ev(n.b);
         return (s) => {
@@ -237,6 +244,18 @@ export function compilePlane(ast, mode) {
   return ev(ast);
 }
 
+// 外積：空間ベクトルどうしはベクトル、平面のベクトルどうしは数（a1b2-a2b1）、数どうしはふつうの積
+function crossOf(x, y) {
+  if (Array.isArray(x) && Array.isArray(y)) {
+    if (x.length === 3 && y.length === 3) return [x[1] * y[2] - x[2] * y[1], x[2] * y[0] - x[0] * y[2], x[0] * y[1] - x[1] * y[0]];
+    if (x.length === 2 && y.length === 2) return C(x[0] * y[1] - x[1] * y[0]);
+    throw new Error('外積は成分の数が同じベクトルどうしで取ります');
+  }
+  if (Array.isArray(x)) return x.map(c => c * real(y, '実数倍'));
+  if (Array.isArray(y)) return y.map(c => c * real(x, '実数倍'));
+  return cmul(x, y);
+}
+
 function varRef(name, mode) {
   if (name === 'pi') { const v = C(Math.PI); return () => v; }
   if (name === 'e') return (s) => (s.$defs && s.$defs.e) ? s.$defs.e(s) : C(Math.E);
@@ -246,10 +265,11 @@ function varRef(name, mode) {
     if (name === 'x') return (s) => C(s.z.re);
     if (name === 'y') return (s) => C(s.z.im);
   }
-  if (mode === 'vector') {
+  if (mode === 'vector' || mode === 'vector3') {
     if (name === 'p') return (s) => s.p;
     if (name === 'x') return (s) => C(s.p[0]);
     if (name === 'y') return (s) => C(s.p[1]);
+    if (name === 'z' && mode === 'vector3') return (s) => C(s.p[2]);
   }
   return (s) => {
     const d = s.$defs && s.$defs[name];
@@ -278,6 +298,11 @@ function callOf(f, args) {
     case 'sin': return scalarFn(csin);
     case 'cos': return scalarFn(ccos);
     case 'tan': return scalarFn(v => cdiv(csin(v), ccos(v)));
+    case 'cross': {
+      if (args.length !== 2) throw new Error('cross(a, b) の形で書きます');
+      const [a, b] = args;
+      return (s) => crossOf(a(s), b(s));
+    }
     case 'dot': {
       if (args.length !== 2) throw new Error('dot(a, b) の形で書きます');
       const [a, b] = args;
@@ -319,8 +344,9 @@ function splitRel(src) {
   return { parts: parts.map(p => p.trim()), ops };
 }
 
-const RESERVED = { complex: new Set(['z', 'x', 'y', 't', 'i', 'e', 'pi']), vector: new Set(['p', 'x', 'y', 't', 's', 'e', 'pi']) };
-const MOVING = { complex: ['z', 'x', 'y'], vector: ['p', 'x', 'y'] };
+const RESERVED = { complex: new Set(['z', 'x', 'y', 't', 'i', 'e', 'pi']), vector: new Set(['p', 'x', 'y', 't', 's', 'e', 'pi']), vector3: new Set(['p', 'x', 'y', 'z', 't', 's', 'e', 'pi']) };
+const MOVING = { complex: ['z', 'x', 'y'], vector: ['p', 'x', 'y'], vector3: ['p', 'x', 'y', 'z'] };
+const DIM = { vector: 2, vector3: 3 };
 
 // 1行の「範囲」t:0..1、s:0..2 を取り出す
 function takeRanges(src) {
@@ -338,7 +364,7 @@ function takeRanges(src) {
 // ---------------------------------------------------------------- 全体の解析
 // srcs：各行の文字列 → [{ a, error }]（a は描き方。graph.js の Graph.drawItem で描く）
 export function analyzePlane(srcs, mode) {
-  if (mode !== 'complex' && mode !== 'vector') throw new Error('mode は complex か vector');
+  if (mode !== 'complex' && mode !== 'vector' && mode !== 'vector3') throw new Error('mode は complex・vector・vector3');
   const defs = {};            // 名前 → 値を返す関数（行の順番によらず使える）
   const pre = srcs.map((raw) => {
     const src0 = normalize(raw || '').trim();
@@ -355,7 +381,7 @@ export function analyzePlane(srcs, mode) {
       if (rels.length === 1 && main.ops.length === 1 && main.ops[0] === '=' && /^[A-Za-zα-ωΑ-Ω]$/.test(main.parts[0]) && !RESERVED[mode].has(main.parts[0])) {
         const name = main.parts[0], rhs = main.asts[1];
         const used = namesIn(rhs);
-        const moving = MOVING[mode].some(v => used.has(v)) || used.has('t') || (mode === 'vector' && used.has('s'));
+        const moving = MOVING[mode].some(v => used.has(v)) || used.has('t') || (mode !== 'complex' && used.has('s'));
         if (!moving) return { kind: 'def', name, rhs, src };
       }
       return { kind: 'line', rels, ranges, src };
@@ -401,7 +427,9 @@ function defItem(p, defs, mode, params) {
   if (plain && isC(v) && v.im === 0 && p.rhs.t === 'neg' && p.rhs.a.t === 'num') return { kind: 'param', name: p.name, value: v.re, params: new Set() };
   const val = (s) => f({ ...s, $defs: defs });
   if (Array.isArray(v)) {
-    if (v.length !== 2) throw new Error('平面のベクトルは2成分 (x, y) で書きます');
+    if (mode === 'vector' && v.length !== 2) throw new Error('平面のベクトルは2成分 (x, y) で書きます（空間ベクトルは「空間」のモードで）');
+    if (mode === 'vector3' && v.length !== 3) throw new Error('空間のベクトルは3成分 (x, y, z) で書きます');
+    if (mode === 'complex') throw new Error('複素平面ではベクトルは使えません（点は α=1+2i のように書きます）');
     // 大文字は点（位置ベクトルの終点）、小文字は原点からの矢印
     if (/^[A-ZΑ-Ω]$/.test(p.name)) return { kind: 'vpoint', name: p.name, f: val, params, defName: p.name };
     return { kind: 'arrow', name: p.name, f: val, params, defName: p.name };
@@ -416,7 +444,7 @@ function realSide(f, defs, mode, params) {
   let n = 0;
   for (let k = 0; k < 9; k++) {
     const x = -2.7 + 0.71 * k, y = 1.9 - 0.53 * k;
-    if (mode === 'complex') s.z = C(x, y); else s.p = [x, y];
+    if (mode === 'complex') s.z = C(x, y); else s.p = mode === 'vector3' ? [x, y, 0.83 - 0.47 * k] : [x, y];
     let v;
     try { v = f(s); } catch (e) { if (/ベクトル|成分/.test(e.message)) throw e; continue; }
     if (Array.isArray(v)) return 'vector';
@@ -429,9 +457,9 @@ function realSide(f, defs, mode, params) {
 
 // (x, y) を受け取る関数に直す
 function atXY(f, mode, defs) {
-  return mode === 'complex'
-    ? (s) => { s.$defs = defs; s.z = C(s.x, s.y); return f(s); }
-    : (s) => { s.$defs = defs; s.p = [s.x, s.y]; return f(s); };
+  if (mode === 'complex') return (s) => { s.$defs = defs; s.z = C(s.x, s.y); return f(s); };
+  if (mode === 'vector3') return (s) => { s.$defs = defs; s.p = [s.x, s.y, s.z]; return f(s); };
+  return (s) => { s.$defs = defs; s.p = [s.x, s.y]; return f(s); };
 }
 
 function lineItem(p, defs, mode, paramsFor) {
@@ -447,7 +475,7 @@ function lineItem(p, defs, mode, paramsFor) {
     throw new Error(`${main0.parts[0]} に${mode === 'complex' ? ' z' : ' p'}・t・s を含む式は入れられません（定義には定数の式を書きます）`);
   }
   const moving = MOVING[mode].some(v => usedAll.has(v));
-  const usesT = usedAll.has('t'), usesS = mode === 'vector' && usedAll.has('s');
+  const usesT = usedAll.has('t'), usesS = mode !== 'complex' && usedAll.has('s');
   const main = rels[0];
   const label = p.src.length <= 14 ? p.src : '';
 
@@ -460,7 +488,17 @@ function lineItem(p, defs, mode, paramsFor) {
     if (!body) throw new Error(mode === 'complex' ? '点 z の式には「=」か不等号を使います（例：|z-1|=2）' : '点 p の式には「=」か不等号を使います（例：|p-A|=2）');
     const f = compilePlane(body, mode);
     const condFns = rels.slice(1).flatMap(r => relCondsST(r, mode, defs));   // t・s の条件
-    if (usesT && usesS) return twoParam(f, defs, condFns, params, ranges);
+    if (usesT && usesS) return mode === 'vector3' ? patch3(f, defs, condFns, params, ranges, rels.slice(1)) : twoParam(f, defs, condFns, params, ranges);
+    if ((usesT || usesS) && mode === 'vector3') {
+      const tv = usesT ? 't' : 's';
+      if (condFns.some(c => c.op === '=')) throw new Error(`${tv} の条件には不等号を使います`);
+      const xyz = (s) => vecOf(f({ ...s, $defs: defs }));
+      const test = xyz({ [tv]: 0.3, ...Object.fromEntries([...params].map(k => [k, 1])) });
+      if (test.length !== 3) throw new Error('空間の点は (x, y, z) の3成分で書きます');
+      // 範囲を書かない直線は、表示範囲いっぱいに伸ばす（graph3d.js が表示範囲から決める）
+      const trange = ranges[tv] || boundsFrom(rels.slice(1), tv) || null;
+      return { kind: 'curve3', tv, trange, xyz, linear: isAffine1(xyz, tv, params), mask: condFns.length ? (s) => condFns.every(c => holds(c.g(s), c.op)) : null, params };
+    }
     if (usesT || usesS) {
       const tv = usesT ? 't' : 's';
       const trange = ranges[tv] || boundsFrom(rels.slice(1), tv) || (mode === 'complex' ? [0, TAU] : [-30, 30]);
@@ -471,7 +509,11 @@ function lineItem(p, defs, mode, paramsFor) {
     // 点・矢印
     const sv = f(sampleEnv(defs, Object.fromEntries([...params].map(k => [k, 1]))));
     const val = (s) => f({ ...s, $defs: defs });
-    if (Array.isArray(sv)) return { kind: 'arrow', name: label, f: val, params };
+    if (Array.isArray(sv)) {
+      if (mode === 'vector3' && sv.length !== 3) throw new Error('空間のベクトルは3成分 (x, y, z) で書きます');
+      if (mode === 'vector' && sv.length !== 2) throw new Error('平面のベクトルは2成分 (x, y) で書きます（空間ベクトルは「空間」のモードで）');
+      return { kind: 'arrow', name: label, f: val, params };
+    }
     if (mode === 'complex') return { kind: 'cpoint', name: label, f: val, params };
     return { kind: 'note', text: `= ${fmtNum(sv.re)}`, f: val, params };   // 内積などの数は値だけ表示
   }
@@ -493,6 +535,11 @@ function lineItem(p, defs, mode, paramsFor) {
       if (zr) reals.push(im); else if (zi) reals.push(re); else reals.push(re, im);
     } else reals.push(c);
   }
+  if (mode === 'vector3') {
+    if (ineqs.length) throw new Error('空間では不等式（領域）は描けません');
+    if (reals.length !== 1) throw new Error('空間で「=」の式は1つずつ書きます（2つの交わり＝交線はまだ描けません）');
+    return surface3(reals[0].g, params);
+  }
   if (reals.length === 0) {
     return { kind: 'region', conds: ineqs, bounds: ineqs.map(c => ({ type: 'imp', g: c.g, strict: c.op === '<' || c.op === '>' })), params, verify: true };
   }
@@ -501,20 +548,79 @@ function lineItem(p, defs, mode, paramsFor) {
   throw new Error('「=」の条件は2つまでです（2つなら交点を描きます）');
 }
 
+// t について1次（直線）か
+function isAffine1(xyz, tv, params) {
+  const base = Object.fromEntries([...params].map(k => [k, 1.1]));
+  const P = (t) => xyz({ ...base, [tv]: t });
+  const a = P(0), b = P(1), c = P(-2.5);
+  return a.every((v, k) => Math.abs(c[k] - (v + (-2.5) * (b[k] - v))) < 1e-7 * (1 + Math.abs(c[k])));
+}
+
+// 空間の p の式1つ：1次（平面）なら平面の一部として、z について2次まで（球など）なら曲面として描く
+function surface3(g, params) {
+  const base = Object.fromEntries([...params].map(k => [k, 1.3]));
+  const G = (x, y, z) => g({ ...base, x, y, z });
+  const g0 = G(0, 0, 0), gx = G(1, 0, 0) - g0, gy = G(0, 1, 0) - g0, gz = G(0, 0, 1) - g0;
+  const lin = [[2, -1, 3], [-1.5, 0.5, 2], [0.3, 4, -2]].every(([x, y, z]) => Math.abs(G(x, y, z) - (g0 + gx * x + gy * y + gz * z)) < 1e-7 * (1 + Math.abs(G(x, y, z))));
+  if (lin) {
+    // 平面 n·p + c = 0：法線 n と、平面上の点・平面内の2方向を、パラメータに合わせて毎回求める
+    const frame = (s) => {
+      const q = { ...s };
+      const f = (x, y, z) => g({ ...q, x, y, z });
+      const c = f(0, 0, 0), n = [f(1, 0, 0) - c, f(0, 1, 0) - c, f(0, 0, 1) - c];
+      const nn = n[0] * n[0] + n[1] * n[1] + n[2] * n[2];
+      if (!(nn > 1e-18)) return null;
+      const p0 = n.map(v => -c * v / nn);
+      const ref = Math.abs(n[0]) < 0.9 * Math.sqrt(nn) ? [1, 0, 0] : [0, 1, 0];
+      const cr = (a, b) => [a[1] * b[2] - a[2] * b[1], a[2] * b[0] - a[0] * b[2], a[0] * b[1] - a[1] * b[0]];
+      const unit = (v) => { const l = Math.hypot(...v); return v.map(x => x / l); };
+      const u = unit(cr(n, ref)), v = unit(cr(n, u));
+      return { p0, u, v };
+    };
+    return { kind: 'plane3', frame, params };
+  }
+  // z について2次まで（graph3d.js の陰関数曲面と同じ条件）
+  const s = { ...base, x: 0.37, y: -0.61 };
+  const at = (z) => g({ ...s, z });
+  const a0 = at(0), a1 = at(1), am = at(-1);
+  const A = (a1 + am) / 2 - a0, B = (a1 - am) / 2;
+  if ([2, -3, 0.5].some(z => Math.abs(at(z) - (A * z * z + B * z + a0)) > 1e-6 * (1 + Math.abs(at(z))))) {
+    return { kind: 'implicitN', g, params };   // |p-A|=2 のような式は、z の方向に数値で解を探す（graph3d.js）
+  }
+  return { kind: 'implicit', g, params };
+}
+
+// p = A + s a + t b（空間）：s, t について1次なら、平面の一部（条件で切り取る）
+function patch3(f, defs, conds, params, ranges, condRels) {
+  const at = (sv, tv, s) => vecOf(f({ ...s, s: sv, t: tv, $defs: defs }));
+  const test = Object.fromEntries([...params].map(k => [k, 1.1]));
+  const c0 = at(0, 0, test);
+  if (c0.length !== 3) throw new Error('空間の点は (x, y, z) の3成分で書きます');
+  const u0 = at(1, 0, test).map((x, k) => x - c0[k]), v0 = at(0, 1, test).map((x, k) => x - c0[k]);
+  const lin = (a, b) => { const w = at(a, b, test); return c0.every((x, k) => Math.abs(x + a * u0[k] + b * v0[k] - w[k]) < 1e-7 * (1 + Math.abs(w[k]))); };
+  if (!lin(2, -3) || !lin(-0.5, 1.5)) throw new Error('s, t の2つを使う式は、s, t について1次の形（p = A + s a + t b）にします');
+  const cr = [u0[1] * v0[2] - u0[2] * v0[1], u0[2] * v0[0] - u0[0] * v0[2], u0[0] * v0[1] - u0[1] * v0[0]];
+  if (Math.hypot(...cr) < 1e-12) throw new Error('2つの向きのベクトルが平行なので、平面になりません');
+  if (conds.some(c => c.op === '=')) throw new Error('空間の平面の一部には、s, t の不等式の条件だけ使えます');
+  const sr = ranges.s || boundsFrom(condRels, 's') || null;
+  const tr = ranges.t || boundsFrom(condRels, 't') || null;
+  return { kind: 'patch3', at: (sv, tv, s) => at(sv, tv, s), conds, sr, tr, params };
+}
+
 // 関係式 → [{ g, op }]（a<b<c は2つ）。g は (x, y) の関数で「左辺 − 右辺」
 function relConds(r, mode, defs, params = new Set()) {
-  const fs = r.asts.map(a => atXY(compilePlane(a, mode), mode, defs));
+  const raw = r.asts.map(a => compilePlane(a, mode));
+  const fs = raw.map(f => atXY(f, mode, defs));
   const out = [];
   for (let k = 0; k < r.ops.length; k++) {
     const op = r.ops[k], L = fs[k], R = fs[k + 1];
     const diff = (s) => { const a = L(s), b = R(s); return [a, b]; };
-    const kindL = realSide((s) => L({ ...s, x: s.z ? s.z.re : s.p[0], y: s.z ? s.z.im : s.p[1] }), defs, mode, params);
-    const kindR = realSide((s) => R({ ...s, x: s.z ? s.z.re : s.p[0], y: s.z ? s.z.im : s.p[1] }), defs, mode, params);
+    const kindL = realSide(raw[k], defs, mode, params);
+    const kindR = realSide(raw[k + 1], defs, mode, params);
     if (kindL === 'vector' || kindR === 'vector') {
       if (op !== '=') throw new Error('ベクトルに不等号は使えません（大きさ |…| にします）');
-      // ベクトルの等式は成分ごとの2式
-      out.push({ g: (s) => { const [a, b] = diff(s); return vecOf(a)[0] - vecOf(b)[0]; }, op: '=' });
-      out.push({ g: (s) => { const [a, b] = diff(s); return vecOf(a)[1] - vecOf(b)[1]; }, op: '=' });
+      // ベクトルの等式は成分ごとの式
+      for (let c = 0; c < (DIM[mode] || 2); c++) out.push({ g: (s) => { const [a, b] = diff(s); return vecOf(a)[c] - vecOf(b)[c]; }, op: '=' });
       continue;
     }
     if (op === '=' && (kindL === 'complex' || kindR === 'complex')) {

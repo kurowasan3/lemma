@@ -28,7 +28,7 @@ HEADERS = {'ID': 'id', '作成日': 'date', '科目': 'subject', '分野': 'fiel
            '想定時間(分)': 'minutes', '問題文（LaTeX）': 'q', '答え': 'answer', '解答・解説': 'solution',
            '核となるアイデア': 'idea', '参考元（非公開）': 'source', '作成方法': 'method', '検証:二重解答': 'v1',
            '検証:SymPy等': 'v2', '検証:人間確認': 'v3', '検証済み': 'verified', 'タグ': 'tags', 'メモ': 'memo',
-           '入力用の答え': 'input'}
+           '入力用の答え': 'input', '図の式': 'figure'}
 PRIVATE = {'source', 'memo'}          # 決して書き出さない列
 INCLUDE_METHOD = False                # 「作成方法」を公開データに入れるか（未決定のため入れない）
 SCHEMA = 'lemma.problem/1'
@@ -55,6 +55,38 @@ def read_sheet(src):
         rec['_row'] = n
         recs.append(rec)
     return recs
+
+
+FIG_MODES = {'平面': '2d', '2d': '2d', '2D': '2d', '複素平面': 'complex', 'complex': 'complex', 'ベクトル': 'vector', 'vector': 'vector',
+             '空間': '3d', '3d': '3d', '3D': '3d'}
+
+
+def parse_figure(raw):
+    """「図の式」列：1行に1つの式。先頭に「モード：平面／複素平面／ベクトル／空間」（省略すると平面）、
+    「表示：答え合わせのあと／最初から」（省略すると、問題文が「図示せよ」などなら答え合わせのあと）を書ける"""
+    if raw is None or not str(raw).strip():
+        return None
+    mode, after, exprs = '2d', None, []
+    for line in str(raw).replace('\r\n', '\n').split('\n'):
+        t = line.strip()
+        if not t:
+            continue
+        m = re.match(r'^(?:モード|mode)\s*[:：]\s*(.+)$', t)
+        if m:
+            key = m.group(1).strip()
+            if key not in FIG_MODES:
+                raise ImportFailure(f'「図の式」のモード「{key}」は使えません（平面・複素平面・ベクトル・空間）')
+            mode = FIG_MODES[key]
+            continue
+        m = re.match(r'^(?:表示|show)\s*[:：]\s*(.+)$', t)
+        if m:
+            v = m.group(1)
+            after = not ('最初' in v or 'はじめ' in v or 'first' in v)   # 「答え合わせのあと」「後」なら true
+            continue
+        exprs.append(t)
+    if not exprs:
+        return None
+    return {'mode': mode, 'exprs': exprs, 'after': after}
 
 
 def split_tags(raw):
@@ -139,6 +171,9 @@ def to_problem(rec, key, issues):
         p['idea'] = {'tex': nl(rec['idea'])}
     if rec['input'] and str(rec['input']).strip():
         p['grading'] = {'format': 'lemma-input/1', 'spec': str(rec['input']).strip().replace('\r\n', '\n')}
+    fig = parse_figure(rec.get('figure'))
+    if fig:
+        p['figure'] = fig
     p['methods'] = []
     p['tags'] = [t for t in split_tags(raw_tags) if t != '非表示']
     prov = {}

@@ -163,8 +163,9 @@ def run(src, content, data, new_fields=False):
         notes.append('node が無いので内蔵問題（builtin.json）は更新していません')
     if node:
         subprocess.run([node, str(TOOLS / 'make_choices.mjs'), str(content)], check=True, capture_output=True)
+        subprocess.run([node, str(TOOLS / 'make_figures.mjs'), str(content)], check=True, capture_output=True)
     else:
-        notes.append('node が無いので選択式の選択肢（choices.json）は更新していません')
+        notes.append('node が無いので選択式の選択肢（choices.json）と問題の図（figures.json）は更新していません')
     import tags as TG
     _, added = TG.update(content)
     if added:

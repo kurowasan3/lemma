@@ -298,6 +298,41 @@ try {
     await inp.nth(1).fill('4'); await inp.nth(2).fill('-3');
     await G.click('#judge'); await G.waitForTimeout(500);
     ok(await G.locator('#inputs .is-ok').count() >= 1, 'シートを使ったあとも、そのまま採点できる');
+    // 空間ベクトル（空間のモードの例 8〜11）
+    await G.goto(U + '#graph'); await G.waitForTimeout(1000);
+    await G.click('.gmode button[data-m="3d"]'); await G.waitForTimeout(400);
+    for (const i of [7, 8, 9, 10]) {
+      await G.click(`.gpre button[data-i="${i}"]`); await G.waitForTimeout(500);
+      const errs = await G.$$eval('.expr-err', xs => xs.filter(x => !x.classList.contains('note')).map(x => x.textContent).filter(Boolean));
+      ok(errs.length === 0, `空間ベクトルの例 ${i + 1}：式のエラーなし ${errs}`);
+      ok(await ink() > 200, `空間ベクトルの例 ${i + 1}：描かれている`);
+    }
+    ok((await G.locator('.expr-err.note').allInnerTexts()).some(t => /^= 4\.89/.test(t)), '空間ベクトル：|a×b| の値を表示');
+    await G.click('.gmode button[data-m="2d"]'); await G.waitForTimeout(300);
+    // 問題の図
+    await G.goto(U + '#today'); await G.reload(); await G.waitForTimeout(1000);
+    await G.evaluate("__lemma.open(['II-GEO-049'])"); await G.waitForTimeout(1000);
+    await G.click('[data-fig-sheet]'); await G.waitForTimeout(700);
+    const figExprs = await G.$$eval('.gsheet .expr input', xs => xs.map(x => x.value));
+    ok(JSON.stringify(figExprs) === JSON.stringify(['x^2+y^2=4', 'x^2+y^2-8x+6y+21=0']), '問題の図：問題文の2つの円');
+    ok(await G.locator('.gsheet .gmode').count() === 0 && await G.locator('.gsheet .fig-note').count() === 1, '問題の図：自動で取り出した旨を表示（モード切替なし）');
+    const before = await G.evaluate(() => JSON.stringify(JSON.parse(localStorage.getItem('lemma.v2')).graphExprs));
+    await G.locator('.gsheet .expr input').first().fill('x^2+y^2=9'); await G.waitForTimeout(200);
+    ok(await G.evaluate(() => JSON.stringify(JSON.parse(localStorage.getItem('lemma.v2')).graphExprs)) === before, '問題の図：直しても自分のグラフは変わらない');
+    await G.click('.gsheet .gcopy'); await G.waitForTimeout(200);
+    ok((await G.evaluate(() => JSON.parse(localStorage.getItem('lemma.v2')).graphExprs.map(e => e.src))).includes('x^2+y^2=9'), '問題の図：「グラフに写す」で自分のグラフへ');
+    await G.click('.gsheet-close'); await G.waitForTimeout(300);
+    // 図そのものが答えになる問題は、答え合わせのあと
+    await G.goto(U + '#today'); await G.reload(); await G.waitForTimeout(1000);
+    await G.evaluate("__lemma.open(['C-CUR-148'])"); await G.waitForTimeout(1000);
+    ok(await G.locator('[data-fig-sheet].locked').count() === 1, '答えになる図：最初は鍵がかかっている');
+    await G.click('[data-fig-sheet]'); await G.waitForTimeout(300);
+    ok(await G.locator('.gsheet').count() === 0, '答えになる図：答え合わせの前は開かない');
+    await G.locator('#conf button').nth(1).click();
+    await G.click('#reveal'); await G.waitForTimeout(500);
+    await G.click('[data-fig-sheet]'); await G.waitForTimeout(600);
+    ok(await G.locator('.gsheet canvas').count() === 1, '答えになる図：答え合わせのあとは開ける');
+    await G.click('.gsheet-close'); await G.waitForTimeout(200);
     ok(G.errors.length === 0, `ページのエラーなし ${G.errors}`);
     await G.evaluate(() => { const s = JSON.parse(localStorage.getItem('lemma.v2')); s.graphMode = '2d'; localStorage.setItem('lemma.v2', JSON.stringify(s)); });
   }
