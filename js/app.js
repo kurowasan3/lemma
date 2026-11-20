@@ -22,7 +22,7 @@ import {
   subjectsWithFields, pool, pickPractice, pickReview, dueEntries, nextReviewTime,
 } from './catalog.js';
 
-const VERSION = '0.15.2';
+const VERSION = '0.15.3';
 const KEY = 'lemma.v2';
 let sync = null, syncApplying = false, syncStatus = null;   // アカウントと同期（initSync で用意）
 const $ = (sel, el = document) => el.querySelector(sel);
@@ -453,6 +453,14 @@ function openIds(ids) {
   startSession(ok.map(pid => ({ kind: 'problem', pid })), { ids: ok, size: ok.length });
 }
 let searchShown = 30;
+// 検索結果の並べ方（関連度＝検索の順。同じ値どうしは関連度の順のまま）
+const SORTS = { rel: '関連度', freq: '頻出度', easy: 'やさしい', hard: '難しい' };
+const sortKey = () => (SORTS[state.practice.sort] ? state.practice.sort : 'rel');
+function sortResults(res) {
+  const k = sortKey(), v = (e) => (e && e.v) || 2;
+  const cmp = { freq: (a, b) => v(b) - v(a) || a.lv - b.lv, easy: (a, b) => a.lv - b.lv || v(b) - v(a), hard: (a, b) => b.lv - a.lv || v(b) - v(a) }[k];
+  return cmp ? res.map((e, i) => [e, i]).sort((a, b) => cmp(a[0], b[0]) || a[1] - b[1]).map(x => x[0]) : res;
+}
 async function renderSearch(q) {
   const pr = state.practice;
   const bar = levelToolbar(pr, () => renderSearch(q));
@@ -474,21 +482,24 @@ async function renderSearch(q) {
   try { res = await M_CAT.searchProblems(q, { levels: pr.levels }); }
   catch (e) { box.innerHTML = `<p class="muted">検索の索引を読めませんでした（${esc(e.message)}）。</p>`; return; }
   dataWarn();
+  res = sortResults(res);
   if (!res.length) { box.innerHTML = '<p class="muted">見つかりませんでした。言葉を短くするか、難易度の選択を広げてみてください。</p>'; return; }
   const fresh = res.filter(e => !state.problems[e.id]);
   const pickIds = [...fresh, ...res.filter(e => state.problems[e.id])].slice(0, pr.size).map(e => e.id);
-  box.innerHTML = `<p class="sub" style="margin:4px 0 10px">${res.length}問 見つかりました（未着手 ${fresh.length}問）</p>
+  box.innerHTML = `<div class="toolbar" style="margin:4px 0 10px"><p class="sub" style="margin:0">${res.length}問 見つかりました（未着手 ${fresh.length}問）</p>
+      <select id="ssort" aria-label="並べ方">${Object.entries(SORTS).map(([k, v]) => `<option value="${k}" ${sortKey() === k ? 'selected' : ''}>${v}順</option>`).join('')}</select></div>
     <div class="btn-row" style="margin-top:0"><button class="btn primary" id="sgo">${pickIds.length}問 演習する</button><button class="btn ghost" id="sshare">リンクをコピー</button></div>
     <div class="results">${res.slice(0, searchShown).map(e => {
       const f = fieldByKey[e.f] || {};
       return `<button class="res-row" data-pid="${esc(e.id)}">
         <span class="nm">${e.th || esc(e.id)}</span>
-        <span class="muted small">${esc(f.subject || '')}・${esc(f.name || '')}　<span class="chip lv${e.lv}">${LEVELS[e.lv]}</span>${state.problems[e.id] ? '　✓ 解いた' : ''}${(e.tg || []).length ? '　' + e.tg.slice(0, 3).map(esc).join('・') : ''}</span>
+        <span class="muted small">${esc(f.subject || '')}・${esc(f.name || '')}　<span class="chip lv${e.lv}">${LEVELS[e.lv]}</span>${valueChip(e)}${state.problems[e.id] ? '　✓ 解いた' : ''}${(e.tg || []).length ? '　' + e.tg.slice(0, 3).map(esc).join('・') : ''}</span>
       </button>`;
     }).join('')}</div>
     ${res.length > searchShown ? `<button class="btn ghost block" id="smore">さらに表示（残り ${res.length - searchShown}問）</button>` : ''}`;
   math(box);
   $('#sgo').addEventListener('click', () => startSession(pickIds.map(pid => ({ kind: 'problem', pid })), { ids: pickIds, size: pickIds.length }));
+  $('#ssort').addEventListener('change', (ev) => { pr.sort = ev.target.value; save(); renderSearch(q); });
   $('#sshare').addEventListener('click', () => copyLink(shareURL('search=' + encodeURIComponent(q))));
   $('#smore')?.addEventListener('click', () => { searchShown += 60; renderSearch(q); });
   $$('.res-row', box).forEach(b => b.addEventListener('click', () => openIds([b.dataset.pid])));

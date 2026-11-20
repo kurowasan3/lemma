@@ -174,6 +174,12 @@ try {
     await page.fill('#sq', '回転体'); await page.press('#sq', 'Enter'); await page.waitForTimeout(1500);
     const n = await page.locator('.res-row').count();
     ok(n > 0 && (await page.locator('#sres').innerText()).includes('見つかりました'), `検索「回転体」で結果が出る（${n}件表示）`);
+    await page.selectOption('#ssort', 'freq'); await page.waitForTimeout(1200);
+    const fr = await page.$$eval('.res-row .chip.val', els => els.map(x => ({ '高': 3, '中': 2, '低': 1 })[x.textContent.slice(-1)]));
+    ok(fr.length > 1 && fr.every((v, i) => !i || fr[i - 1] >= v), `頻出度順に並べ替えられる（${fr.join('')}）`);
+    await page.selectOption('#ssort', 'hard'); await page.waitForTimeout(1200);
+    const lv = await page.$$eval('.res-row .chip[class*="lv"]', els => els.map(x => +x.className.match(/lv(\d)/)[1]));
+    ok(lv.length > 1 && lv.every((v, i) => !i || lv[i - 1] >= v), `難しい順に並べ替えられる（${lv.join('')}）`);
     await page.click('#sgo'); await page.waitForTimeout(1000);
     ok(await page.locator('#conf button').count() === 3, '検索結果から演習が始まる');
     await page.goto(U + '#set=col-induction'); await page.waitForTimeout(1500);
