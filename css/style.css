@@ -1,5 +1,5 @@
 :root {
-  --lemma-version: '0.18.0';
+  --lemma-version: '0.19.0';
   --paper: #f6f4ee;
   --card: #ffffff;
   --ink: #1c1d21;
@@ -685,3 +685,16 @@ details.checks li.ok { color: var(--good); }
 .chip.tech.main { font-weight: 700; }
 .tech-row .kind { margin-left: 8px; font-weight: 400; }
 .res-row .note { margin-left: 6px; font-weight: 400; }
+
+/* 解法の想起（v0.19） */
+.recall { margin: 12px 0 0; padding: 10px 12px; border: 1px solid var(--line); border-radius: 10px; }
+.recall .seg3 { display: flex; flex-wrap: wrap; gap: 6px; }
+.recall .seg3 .btn { min-height: 34px; padding: 4px 12px; font-size: 13px; }
+.recall .seg3 .btn.on { border-color: var(--accent); color: var(--accent); font-weight: 700; }
+.recall-msg { margin: 6px 0 0; color: var(--ink-2); line-height: 1.7; }
+.recall-msg:empty { display: none; }
+.next-acts { margin: 6px 0 18px; padding: 12px 14px; border: 1.5px solid var(--accent); border-radius: 12px; }
+.next-act { padding: 8px 0; border-top: 1px solid var(--line); }
+.next-act:first-of-type { border-top: 0; padding-top: 0; }
+.next-act p { margin: 0 0 8px; font-size: 14px; line-height: 1.75; }
+.first-run { margin-bottom: 14px; }

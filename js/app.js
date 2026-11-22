@@ -22,9 +22,9 @@ import {
   LEVELS, FIELDS, ENTRIES, META, fieldByKey, entryById, loadCatalog, ensureBodies, getBody,
   subjectsWithFields, pool, pickPractice, pickReview, dueEntries, nextReviewTime, pickToday, similarTo, loadTechniques,
 } from './catalog.js';
-import { techMastery, techCandidates, masterChecklist, MASTER, STATUS } from './mastery.js';
+import { techMastery, techCandidates, masterChecklist, makeCtx, MASTER, STATUS } from './mastery.js';
 
-const VERSION = '0.18.0';
+const VERSION = '0.19.0';
 const KEY = 'lemma.v2';
 let sync = null, syncApplying = false, syncStatus = null;   // アカウントと同期（initSync で用意）
 const $ = (sel, el = document) => el.querySelector(sel);
@@ -358,7 +358,11 @@ const techName = (id) => { const t = TECH && TECH.byId.get(id); return t ? t.nam
 const plainName = (id) => techName(id).replace(/\$([^$]*)\$/g, (_, m) => m.replace(/\\frac\{([^}]*)\}\{([^}]*)\}/g, '$1/$2').replace(/\\/g, ''));
 const STATUS_CLS = { none: 'st-none', learning: 'st-learning', review: 'st-review', mastered: 'st-mastered' };
 const statusChip = (m) => `<span class="chip st ${STATUS_CLS[m.status]}">${STATUS[m.status]}</span>`;
-function techM(t) { return techMastery(state, t, entryById); }
+// 解法ごとの「文脈」（別の分野・組み合わせ・補助）。解法カードを読み込んだあと一度だけ作る
+const CTX = new Map();
+function ctxFor(t) { if (!CTX.has(t.id)) CTX.set(t.id, makeCtx(t, entryById, TECH.byProblem)); return CTX.get(t.id); }
+function techM(t) { return techMastery(state, t, entryById, Date.now(), ctxFor(t)); }
+function candidates() { return techCandidates(state, TECH.list, entryById, Date.now(), ctxFor); }
 
 function techChipsHTML(pid) {
   const ts = TECH && TECH.byProblem.get(pid);
@@ -435,9 +439,10 @@ function renderTech(id) {
   const shown = new Set([...t.pre, ...t.rec, ...next, ...alt, ...rel]);
   const withData = t.with.filter(([x]) => !shown.has(x));
   const relRow = (label, ids, note = '') => ids.length ? `<dt>${label}</dt><dd class="chips">${ids.map(link).join('')}${note}</dd>` : '';
-  const done = new Set(m.fields);
+  const cx = ctxFor(t);
   const inLv = pickFromIds(t.ids, { levels: pr.levels, size: pr.size, main: t.main });
-  const transfer = m.full.length ? pickFromIds(t.main, { levels: pr.levels, size: pr.size, pred: (e) => !done.has(e.f) && !state.problems[e.id] }) : [];
+  // 違う文脈：その解法の問題が最も多い分野以外・他の解法と組み合わせる問題（データから判定できるものだけ）
+  const transfer = m.full.length ? pickFromIds(t.ids, { levels: pr.levels, size: pr.size, pred: (e) => !state.problems[e.id] && (cx(e.id).cross || cx(e.id).combo) }) : [];
   const due = new Set(dueEntries(state).map(e => e.id));
   const dueHere = t.ids.filter(x => due.has(x));
   const checks = masterChecklist(m);
@@ -468,12 +473,13 @@ function renderTech(id) {
       <div class="panel">
         <p style="margin:0">${statusChip(m)}　${m.n ? `${t.ids.length}問のうち ${m.n}問を解いた・最後に完答 ${m.full.length}問${m.score != null ? `・得意度 ${Math.round(m.score * 100)}` : ''}` : `${t.ids.length}問のうち、まだ1問も解いていません。`}</p>
         ${m.status === 'review' ? `<p class="small" style="margin:6px 0 0">${m.lapses.length ? `一度完答した問題を最近解けませんでした（${m.lapses.length}問）。` : m.twoMiss ? 'この解法の問題が2回続けて完答できませんでした。' : '完答できない問題が多くなっています。'}要点を読み直してから、もう一度解いてください。</p>` : ''}
+        ${m.full.length ? `<p class="small" style="margin:6px 0 0">${m.transfer.length ? `転用：違う文脈（別の分野・他の解法との組み合わせ・補助）の問題を、解法を知らされずに ${m.transfer.length}問完答。` : '転用：まだ確かめられていません（違う文脈の問題を、解法を知らされずに完答した記録がありません）。'}${m.noRecall.length ? `　解法が浮かばないまま完答した問題 ${m.noRecall.length}問。` : ''}</p>` : ''}
         ${dueHere.length ? `<p class="muted small" style="margin:6px 0 0">復習の時期が来ている問題：${dueHere.length}問</p>` : ''}
         ${m.status !== 'none' && m.status !== 'mastered' ? `<details class="checks"><summary>「習得」までの基準</summary><ul>${checks.map(c => `<li class="${c.ok ? 'ok' : ''}">${c.ok ? '✓' : '・'} ${esc(c.label)}<span class="muted">（いま ${c.now}）</span></li>`).join('')}</ul></details>` : ''}
         <div class="btn-row">
           <button class="btn primary" id="tgo" ${inLv.length ? '' : 'disabled'}>この解法の問題を解く ${inLv.length}問</button>
           ${m.wrong.length ? `<button class="btn" id="twrong">完答できなかった問題 ${Math.min(m.wrong.length, 20)}問</button>` : ''}
-          ${transfer.length ? `<button class="btn" id="ttransfer">別の分野で使う ${transfer.length}問</button>` : ''}
+          ${transfer.length ? `<button class="btn" id="ttransfer">違う文脈で使う ${transfer.length}問</button>` : ''}
         </div>
         <p class="muted small" style="margin:8px 0 0">ホームで選んでいる難易度（${pr.levels.map(l => LEVELS[l]).join('・') || 'なし'}）の中から、この解法を主に使う問題を、まだ解いていないものからやさしい順に出します。ここから解いた結果は「解法を知らされて解いた」として記録し、習得の判定では区別します。</p>
       </div>
@@ -493,7 +499,7 @@ function renderTech(id) {
   const go = (steps) => { if (steps.length) startSession(steps.map(s => ({ ...s, why: `解法「${plainName(t.id)}」の練習` })), { tech: t.id, size: steps.length }); };
   $('#tgo').addEventListener('click', () => go(inLv));
   $('#twrong')?.addEventListener('click', () => go(m.wrong.slice(0, 20).map(pid => ({ kind: 'problem', pid }))));
-  $('#ttransfer')?.addEventListener('click', () => go(transfer));
+  $('#ttransfer')?.addEventListener('click', () => { if (transfer.length) startSession(transfer.map(s => ({ ...s, why: cx(s.pid).cross ? `「${plainName(t.id)}」を別の分野で使う` : `「${plainName(t.id)}」を他の解法と組み合わせて使う` })), { tech: t.id, size: transfer.length }); });
   $$('.tech-lv summary .btn').forEach(b => b.addEventListener('click', (ev) => {
     ev.preventDefault();
     go(pickFromIds(t.ids, { levels: [+b.dataset.lv], size: pr.size, main: t.main }));
@@ -501,10 +507,59 @@ function renderTech(id) {
   $$('.tech-page .res-row').forEach(b => b.addEventListener('click', () => openIds([b.dataset.pid])));
 }
 
+// 定着度の「次にやること」：記録から当てはまる規則を上から3つまで。各規則の根拠をそのまま文にする
+let NEXT_ACTS = [];
+function nextActions() {
+  const acts = [];
+  const n = state.log.length;
+  if (n < 10) return [{ text: `まだ判定に使える記録が少ないため（${n}回）、得意・苦手や解法の習熟は保留しています。あと${10 - n}問ほど解くと判定が始まります。`, label: '今日の演習へ', href: '#today' }];
+  const now = Date.now(), cut = now - 14 * 86400000;
+  const recent = state.log.filter(l => l.t >= cut), before = state.log.filter(l => l.t < cut);
+  const rate = (ls) => ls.filter(l => l.g >= 3).length / ls.length;
+  const lastOf = new Map(); for (const l of state.log) lastOf.set(l.p, l);
+  if (recent.length >= 10 && before.length >= 10 && rate(recent) - rate(before) <= -0.15) {
+    const ids = [...lastOf.values()].filter(l => l.t >= cut && l.g < 3 && entryById.has(l.p)).map(l => l.p).slice(-8);
+    if (ids.length) acts.push({ text: `直近2週間の完答率（${Math.round(rate(recent) * 100)}%）が、それ以前（${Math.round(rate(before) * 100)}%）より下がっています。`, label: `最近完答できなかった問題を解き直す ${ids.length}問`, steps: ids.map(pid => ({ kind: 'problem', pid, why: '最近完答できなかった問題の解き直し' })) });
+  }
+  const due = dueEntries(state).length;
+  if (due > 2 * state.practice.size) acts.push({ text: `復習の時期が来た問題が ${due}問たまっています。今日の演習では新しい問題の枠を残すため、一部しか出しません。`, label: '復習だけ解く', review: true });
+  if (TECH) {
+    const cand = candidates();
+    const rv = cand.review[0];
+    if (rv) {
+      const steps = pickFromIds(rv.main, { size: state.practice.size, main: rv.main }).map(s => ({ ...s, why: `要復習の解法「${plainName(rv.id)}」の問題` }));
+      acts.push({ text: `解法「${techName(rv.id)}」が要復習です（${STATUS_REASON(cand.ms.get(rv.id))}）。`, label: 'この解法の問題をやさしい順に', steps, tech: rv.id, card: rv.id });
+    }
+    const tr = TECH.list.find(t => { const m = cand.ms.get(t.id); return m.full.length >= 3 && !m.transfer.length && m.status !== 'review'; });
+    if (tr) acts.push({ text: `解法「${techName(tr.id)}」は ${cand.ms.get(tr.id).full.length}問完答していますが、違う文脈（別の分野・他の解法との組み合わせ）ではまだ解けていません。今日の演習で、そうした問題を混ぜて出します。`, label: '今日の演習へ', href: '#today', card: tr.id });
+    const nr = TECH.list.find(t => cand.ms.get(t.id).noRecall.length >= 2);
+    if (nr) acts.push({ text: `解法「${techName(nr.id)}」は、解けても解法が浮かばなかった問題が ${cand.ms.get(nr.id).noRecall.length}問あります。カードの「着眼点」を読んでおくと、問題を見たときに浮かびやすくなります。`, label: '解法カードを開く', href: '#tech=' + nr.id });
+    const fr = cand.fresh[0];
+    if (fr && !acts.length) acts.push({ text: `まだ学んでいない解法のうち「${techName(fr.id)}」から始めるのがおすすめです（必須の前提を学び始めていて、問題が多い解法）。`, label: '解法カードを開く', href: '#tech=' + fr.id });
+  }
+  if (!acts.length) acts.push({ text: '今のところ、特に手当てが必要な点は見つかっていません。今日の演習を続けてください。', label: '今日の演習へ', href: '#today' });
+  return acts.slice(0, 3);
+}
+function STATUS_REASON(m) {
+  return m.lapses.length ? '一度完答した問題を最近解けなかった' : m.twoMiss ? '2回続けて完答できなかった' : '完答できない問題が多い';
+}
+function nextActionsHTML() {
+  if (!NEXT_ACTS.length) return '';
+  return `<div class="next-acts"><h2 style="margin-top:0">次にやること</h2>${NEXT_ACTS.map((a, i) => `<div class="next-act"><p>${techText(a.text)}</p>${a.href ? `<a class="btn small" href="${esc(a.href)}">${esc(a.label)}</a>` : `<button class="btn small primary" data-act="${i}">${esc(a.label)}</button>`}${a.card ? ` <a class="small" href="#tech=${esc(a.card)}">解法カード ›</a>` : ''}</div>`).join('')}</div>`;
+}
+document.addEventListener('click', (ev) => {
+  const b = ev.target.closest && ev.target.closest('.next-act [data-act]');
+  if (!b) return;
+  const a = NEXT_ACTS[+b.dataset.act];
+  if (!a) return;
+  if (a.review) { const steps = pickReview(state, { size: state.practice.size }); if (steps.length) startSession(steps, { review: true, size: state.practice.size }); return; }
+  if (a.steps && a.steps.length) startSession(a.steps, a.tech ? { tech: a.tech, size: a.steps.length } : { size: a.steps.length });
+});
+
 // 定着度：解法の習熟（状態ごとの数・分類ごと・要復習の解法・次に学ぶとよい解法）
 function techStrengthHTML() {
   if (!TECH) return '';
-  const cand = techCandidates(state, TECH.list, entryById);
+  const cand = candidates();
   const cnt = { mastered: 0, learning: 0, review: 0, none: 0 };
   for (const m of cand.ms.values()) cnt[m.status]++;
   const touched = TECH.list.length - cnt.none;
@@ -521,7 +576,7 @@ function techStrengthHTML() {
       ${cand.fresh.length ? `<h3>次に学ぶとよい解法</h3><p class="muted small" style="margin:0 0 4px">まだ学んでいない解法のうち、必須の前提を学び始めているもの（問題の多い順）。</p><div class="tech-list">${cand.fresh.slice(0, 3).map(t => row(t, `<span class="muted">${t.main.length}問</span>`)).join('')}</div>` : ''}
       ` : `<p class="muted" style="margin:0">解いた問題に結びつく解法ごとに、未学習・学習中・要復習・習得を判定します。</p>`}
       <details class="checks"><summary>判定の基準</summary><ul>
-        <li><b>習得</b>：完答 ${MASTER.full}問以上・解法を知らされずに完答 ${MASTER.recall}問以上・完答した分野 ${MASTER.fields}つ以上・3日以上あけて同じ問題をもう一度完答・得意度 ${Math.round(MASTER.score * 100)} 以上</li>
+        <li><b>習得</b>：完答 ${MASTER.full}問以上・解法を知らされずに完答 ${MASTER.recall}問以上・違う文脈（別の分野・他の解法との組み合わせ・補助）で完答 ${MASTER.transfer}問以上・3日以上あけて同じ問題をもう一度完答・得意度 ${Math.round(MASTER.score * 100)} 以上。解答後に「解法が浮かばなかった」と答えた完答は、知らされずに完答に数えません</li>
         <li><b>要復習</b>：3問以上解いて得意度 50 未満、一度完答した問題を直近30日に解けなかった、または最後の2回が続けて完答でない</li>
         <li><b>学習中</b>：解いたことがあり、上のどちらでもない</li>
       </ul><p class="muted small">問題ごとの復習（いつもう一度解くか）は、これとは別に問題ごとの記録で決めています。</p></details>
@@ -550,13 +605,13 @@ function levelToolbar(pr, onChange) {
 
 // 今日の演習：復習（scheduler）＋解法の習熟（mastery.js）＋苦手分野＋新しい問題。解法カードを読み込む前は解法の部分なし
 function todayPlan(pr, weak) {
-  const tech = TECH ? { ...techCandidates(state, TECH.list, entryById), name: plainName } : null;
+  const tech = TECH ? { ...candidates(), name: plainName, ctx: (id) => ctxFor(TECH.byId.get(id)) } : null;
   return pickToday(state, { levels: pr.levels.slice(), size: pr.size, weak: weak ? weak.f.key : null, weakName: weak ? weak.f.name : '', tech });
 }
 function planSummary(plan) {
   const c = plan.count;
   return [c.due ? `復習 ${c.due}問` : '', c.tech ? `要復習の解法 ${c.tech}問` : '', c.new ? `新しい解法 ${c.new}問` : '',
-    c.transfer ? `解法を別の分野で ${c.transfer}問` : '', c.weak ? `苦手分野 ${c.weak}問` : '', c.fresh ? `新しい問題 ${c.fresh}問` : ''].filter(Boolean).join('・');
+    c.transfer ? `解法を違う文脈で ${c.transfer}問` : '', c.weak ? `苦手分野 ${c.weak}問` : '', c.fresh ? `新しい問題 ${c.fresh}問` : ''].filter(Boolean).join('・');
 }
 function renderToday() {
   const pr = state.practice;
@@ -573,20 +628,26 @@ function renderToday() {
   // 今日の演習の中身をここで決め、ボタンの説明と実際の出題を一致させる
   if (!TECH) loadTechniques().then(t => { TECH = t; if ((location.hash || '#today') === '#today' && !session) renderToday(); }).catch(() => {});
   const plan = todayPlan(pr, weak);
+  const firstRun = !state.log.length && !resume;   // 初めて：説明と「まず8問」だけを大きく出す
   const planText = planSummary(plan);
   view.innerHTML = `
     <div class="fade-in">
       <div class="kicker">LEMMA · 受験数学</div>
       <h1>今日の学習</h1>
-      <div class="goal" aria-label="今日の進み具合">
+      ${firstRun ? `<div class="panel first-run">
+        <p style="margin:0;line-height:1.8"><b>Lemma は、入試数学の問題を解きながら「解法」（考え方の型）を身につけるアプリです。</b>解いた結果から、問題ごとに解き直す時期と、解法ごとの身につき具合を記録し、次に解く問題を選びます。</p>
+        <button class="hero" id="firstgo" style="margin-top:12px"><b>まず8問解いてみる</b><span>基礎〜入試基礎の問題を、分野を混ぜて出します。紙と鉛筆を用意してください。</span></button>
+        <p class="muted small" style="margin:8px 0 0">慣れてきたら、下の難易度ボタンで範囲を変えられます。解法の一覧は「解法から選ぶ」から見られます。</p>
+      </div>` : ''}
+      ${firstRun ? '' : `<div class="goal" aria-label="今日の進み具合">
         <span>今日 <b>${doneN}</b> / ${goal}問${doneN >= goal ? '　目標達成' : ''}</span>
         <span class="bar"><div style="width:${Math.min(100, Math.round(doneN / Math.max(1, goal) * 100))}%"></div></span>
-      </div>
+      </div>`}
       ${resume ? `<div class="resume-row">
         <button class="hero alt" id="resume"><b>前回の続き</b><span>全${resume.steps.length}問の ${resume.i + 1}問目から再開します。</span></button>
         <button class="btn ghost small" id="dropresume">続きを破棄</button>
       </div>` : ''}
-      <button class="hero" id="todaygo" ${plan.steps.length ? '' : 'disabled'}>
+      <button class="${firstRun ? 'hero alt' : 'hero'}" id="todaygo" ${plan.steps.length ? '' : 'disabled'}>
         <b>今日の演習を始める</b>
         <span>${planText || '今は出題できる問題がありません'}。分野を混ぜて出すので、どの解法を使うかを見抜く練習になります。</span>
       </button>
@@ -645,6 +706,10 @@ function renderToday() {
     if (plan.steps.length) startSession(plan.steps, { today: true, levels: pr.levels.slice(), size: pr.size }); else toast('今は出題できる問題がありません');
   });
   $('#resume')?.addEventListener('click', () => resumeSession(resume));
+  $('#firstgo')?.addEventListener('click', () => {
+    const steps = pickPractice(state, { levels: [0, 1, 2], size: 8 }).map(s => ({ ...s, why: 'はじめての演習（基礎〜入試基礎）' }));
+    if (steps.length) startSession(steps, { levels: [0, 1, 2], size: 8 });
+  });
   $('#dropresume')?.addEventListener('click', () => { if (confirm('中断した演習の続きを破棄しますか？（解いた記録は残ります）')) { clearSavedSession(); renderToday(); } });
   $('#weakgo')?.addEventListener('click', () => go([weak.f.key]));
   $$('.unit-row').forEach(b => b.addEventListener('click', () => go([b.dataset.f])));
@@ -1641,6 +1706,7 @@ function renderWritten(step, e) {
     after.innerHTML = `
       <div class="verdict v-${sg} fade-in">${ICON[sg]}<b>${SELF.find(x => x.id === sg).label}</b></div>
       ${confNoteHTML(sg, a.conf, $('#solbox') ? '' : b.k)}
+      ${recallHTML(e.id)}
       ${$('#solbox') ? '' : solutionHTML()}
       <div class="label">手応え（任意）</div>
       <div class="feel" id="feel">${FEEL.map(f => `<button data-k="${f.k}"><b>${f.k}</b><span>${f.label}</span></button>`).join('')}</div>
@@ -1652,6 +1718,7 @@ function renderWritten(step, e) {
       </div>`;
     math(after);
     $('#similar')?.addEventListener('click', (ev) => addSimilar(e.id, ev.currentTarget));
+    bindRecall(e.id, sg);
     $$('#feel button').forEach(btn => btn.addEventListener('click', () => {
       a.feel = +btn.dataset.k;
       $$('#feel button').forEach(x => x.classList.toggle('on', x === btn));
@@ -1675,6 +1742,38 @@ function confNoteHTML(sg, conf, key) {
   if (sg !== 'full' && conf === 'high') return `<div class="conf-note warn fade-in"><b>「確実」だったのに解けませんでした。</b>思い込みや見落としがなかったか、解説の「核となるアイデア」と照らし合わせてください。復習でも優先して出します。${key ? `<div class="keypoint">${key}</div>` : ''}</div>`;
   return '';
 }
+// 解法の想起（任意の1タップ）：主な解法がある問題で、解法を知らされていない演習のときだけ聞く。
+// 答えは直前の記録に r（1=すぐ浮かんだ 2=考えるうちに気づいた 3=浮かばなかった・別の方法で解いた）として残し、解法の習熟の判定に使う
+const RECALL = [[1, 'すぐ浮かんだ'], [2, '考えるうちに気づいた'], [3, '浮かばなかった・別の方法']];
+function recallMain(pid) {
+  if (!TECH || (session && session.cfg && session.cfg.tech)) return null;
+  const m = (TECH.byProblem.get(pid) || []).find(x => x.main);
+  return m ? TECH.byId.get(m.id) : null;
+}
+function recallHTML(pid) {
+  const t = recallMain(pid);
+  if (!t) return '';
+  return `<div class="recall" id="recall"><p class="small" style="margin:0 0 6px">この問題の主な解法「<a href="#tech=${esc(t.id)}">${techText(t.name)}</a>」は、問題を見て浮かびましたか？<span class="muted">（任意）</span></p>
+    <div class="seg3">${RECALL.map(([v, l]) => `<button class="btn small" data-r="${v}">${l}</button>`).join('')}</div><p class="small recall-msg" id="recallmsg"></p></div>`;
+}
+function bindRecall(pid, sg) {
+  const t = recallMain(pid);
+  if (!t) return;
+  $$('#recall [data-r]').forEach(b => b.addEventListener('click', () => {
+    const v = +b.dataset.r;
+    const l = [...state.log].reverse().find(x => x.p === pid);
+    if (!l) return;
+    l.r = v; save();
+    $$('#recall [data-r]').forEach(x => x.classList.toggle('on', x === b));
+    const full = sg === 'full';
+    const tn = techText(t.name);
+    $('#recallmsg').innerHTML = full
+      ? (v === 3 ? `記録しました。解法を思いつかずに解けた回は、解法の習熟では「思い出せた」に数えません。<a href="#tech=${esc(t.id)}">「${tn}」の着眼点</a>を読んでおくと、次は浮かびやすくなります。` : '記録しました。')
+      : (v === 3 ? `記録しました。まず<a href="#tech=${esc(t.id)}">「${tn}」の要点と着眼点</a>を確認してから、類題で使ってみてください。` : '記録しました。解法は浮かんでいたので、解説と自分の答案のどこで分かれたか（計算・場合分け・条件の確認）を見直してください。');
+    math($('#recallmsg'));
+  }));
+}
+
 // 類題を今の問題の次に差し込む
 async function addSimilar(pid, btn) {
   const sim = similarTo(state, pid, session.steps.map(st => st.pid), TECH && TECH.byProblem);
@@ -1694,6 +1793,11 @@ function renderSummary() {
   const withHint = r.filter(x => x.grade === 2).length;
   const missed = r.filter(x => x.grade === 1).length;
   const next = nextReviewTime(state);
+  const today = dayKey();
+  const doneN = state.log.filter(l => dayKey(l.t) === today).length, goal = state.practice.size;
+  const first = state.log.length === r.length;
+  // 完答できなかった問題の主な解法（重複なし・最大2つ）：次に読むべき解法カード
+  const missTech = TECH ? [...new Set(r.filter(x => x.grade < 3).map(x => ((TECH.byProblem.get(x.pid) || []).find(y => y.main) || {}).id).filter(Boolean))].slice(0, 2) : [];
   view.innerHTML = `
     <div class="fade-in">
       <div class="kicker">おつかれさま</div>
@@ -1707,11 +1811,15 @@ function renderSummary() {
         <p style="margin:0">解けなかった問題は近いうちに、解けた問題は間をあけて復習に出します。${next ? `次の復習は <strong>${relTime(next)}</strong>。` : ''}</p>
         <p class="muted" style="margin:8px 0 0">難しく感じた日の方が、あとで解ける力は伸びています。</p>
       </div>
+      ${first ? `<div class="panel"><p style="margin:0"><b>記録の使われ方</b></p><p class="small" style="margin:6px 0 0;line-height:1.8">いま解いた結果から、問題ごとに次に解き直す時期を決め、問題に結びつく解法（考え方の型）ごとに「学習中」などの状態を記録しました。明日からの「今日の演習」は、解き直しの時期が来た問題と、まだ学んでいない解法の問題を組み合わせて出します。様子は<a href="#map">定着度</a>で見られます。</p></div>` : ''}
+      ${missTech.length ? `<h2>次に読むとよい解法</h2><p class="muted small" style="margin:-4px 0 6px">完答できなかった問題の主な解法です。要点と着眼点を確認してから類題に進むと、同じところでつまずきにくくなります。</p><div class="tech-list">${missTech.map(id => `<a class="tech-row" href="#tech=${esc(id)}"><span class="nm">${techText(techName(id))}</span><span class="muted small">›</span></a>`).join('')}</div>` : ''}
+      <p class="sub" style="margin:14px 2px 0">今日 ${doneN} / ${goal}問${doneN >= goal ? '　今日の目標を達成しました。' : `　あと ${goal - doneN}問で今日の目標です。`}</p>
       <div class="btn-row">
-        <button class="btn" id="more">同じ条件でもう一度</button>
-        <button class="btn primary" id="home">ホームへ</button>
+        <button class="btn${doneN < goal ? ' primary' : ''}" id="more">${session.cfg && session.cfg.today ? (doneN < goal ? '続けて今日の演習' : 'もう一度今日の演習') : '同じ条件でもう一度'}</button>
+        <button class="btn${doneN >= goal ? ' primary' : ''}" id="home">ホームへ</button>
       </div>
     </div>`;
+  math(view);
   play('finish');
   setTimeout(() => birdSay(birdMessage('summary', { solo, missed, n: r.length }), { sound: false }), 600);
   $('#home').addEventListener('click', () => { session = null; route(); });
@@ -2062,6 +2170,7 @@ function trendHTML(now = Date.now()) {
 function renderMap() {
   if (!TECH) loadTechniques().then(t => { TECH = t; if (location.hash.startsWith('#map')) renderMap(); }).catch(() => {});
   const withConf = state.log.filter(l => l.c);
+  NEXT_ACTS = nextActions();
   const high = withConf.filter(l => l.c === 'high');
   const low = withConf.filter(l => l.c === 'low');
   const over = high.filter(l => !l.ok).length;
@@ -2074,6 +2183,7 @@ function renderMap() {
       <div class="kicker">${FIELDS.length}分野・${ENTRIES.length}問</div>
       <h1>定着度</h1>
       <p class="sub">分野ごとの進み具合と、最後に解いたときに完答できた割合です。</p>
+      ${nextActionsHTML()}
       ${strengthHTML()}
       ${techStrengthHTML()}
       <h2>自信と結果のズレ</h2>

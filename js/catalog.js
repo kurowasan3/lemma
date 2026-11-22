@@ -2,7 +2,7 @@
 import { PROBLEMS as BUILTIN, cardById, problemById as builtinById, unitOf as builtinUnit } from './content.js';
 import { retrievability, dueAt, TARGET_R } from './scheduler.js';
 
-export const FILE_VERSION = '0.18.0';
+export const FILE_VERSION = '0.19.0';
 
 // 難易度（問題管理表と同じ6段階。0=基礎 は v0.6 で追加。v0.15 で 3〜5 の名前を変更）
 export const LEVELS = { 0: '基礎', 1: '標準', 2: '入試基礎', 3: '入試標準', 4: '入試発展', 5: '数学探究' };
@@ -167,34 +167,53 @@ export function nextReviewTime(state) {
 
 // 今日の演習：復習待ちを先に（忘れかけ順）、残りを新しい問題で埋める。
 // weak（苦手分野のキー）があれば、新しい問題のうち最大2問をその分野から選ぶ。分野が続かないよう交互に並べる。
-// 推薦の順（v0.18）：復習の時期が来た問題（scheduler）→ 要復習の解法 → 未学習の解法 → 解法を別の分野で → 苦手分野 → 新しい問題。
+// 推薦の順（v0.19）：復習の時期が来た問題（scheduler。新しい学習の枠を残す）→ 要復習の解法 → 未学習の解法 → 解法を違う文脈で
+// → 苦手分野 → 新しい問題。復習以外は、1つの分野から1回の3分の1まで（偏らせない）。
 // 各問題に、選んだ理由（why）を付ける。理由は選んだ規則そのもので、ランダムに選んだものは「新しい問題」とだけ書く。
-// tech（省略可）：mastery.js の techCandidates の結果に { name(id) } を足したもの
+// tech（省略可）：mastery.js の techCandidates の結果に { name(id), ctx(techId) → (pid → 文脈) } を足したもの
 export function pickToday(state, { levels = null, size = 8, weak = null, weakName = '', tech = null } = {}) {
   const lv = levels && new Set(levels);
   const last = new Map(); for (const l of state.log) last.set(l.p, l);
   const out = [];
   const used = new Set();
   const add = (e, why, tag) => { out.push({ e, why, tag }); used.add(e.id); };
-  for (const e of dueEntries(state).slice(0, size)) add(e, (last.get(e.id) || {}).g < 3 ? '前回完答できなかった問題の復習' : '復習の時期', 'due');
+  // 復習が積み上がっても新しい学習が止まらないようにする（残りの復習は「復習だけ」から解ける）
+  const dueAll = dueEntries(state);
+  // 新しい学習の枠は最低 3問（復習が1回分の2倍より多くたまっているときは 2問）。残りを復習に使う
+  const newMin = Math.min(size, dueAll.length > 2 * size ? 2 : 3);
+  for (const e of dueAll.slice(0, Math.max(0, size - newMin))) add(e, (last.get(e.id) || {}).g < 3 ? '前回完答できなかった問題の復習' : '復習の時期', 'due');
   const room = () => size - out.length;
+  const fieldCap = Math.max(2, Math.ceil(size / 3));
+  const fieldN = (f) => out.filter(x => x.tag !== 'due' && x.e.f === f).length;
   // 解法の問題から1問：選んだ難易度の中で、未着手をやさしい順（頻出度の高い順）
   const fromTech = (t, pred = () => true) => {
-    const c = t.main.map(id => entryById.get(id)).filter(e => e && !used.has(e.id) && (!lv || lv.has(e.lv)) && !state.problems[e.id] && pred(e));
+    const c = (pred.all ? t.ids : t.main).map(id => entryById.get(id)).filter(e => e && !used.has(e.id) && (!lv || lv.has(e.lv)) && !state.problems[e.id] && fieldN(e.f) < fieldCap && pred(e));
     c.sort((a, b) => a.lv - b.lv || ((b.v || 2) - (a.v || 2)));
     return c[0] || null;
   };
   if (tech) {
-    for (const t of tech.review.slice(0, 2)) { if (room() <= 0) break; const e = fromTech(t); if (e) add(e, `要復習の解法「${tech.name(t.id)}」を立て直す`, 'tech'); }
+    // 復習以外の枠のうち、要復習の解法は半分まで（新しい解法・転用・新しい問題の枠を残す）
+    const free = room(), revMax = Math.max(1, Math.min(2, Math.floor(free / 2)));
+    for (const t of tech.review.slice(0, revMax)) { if (room() <= 0 || (free <= 2 && out.some(x => x.tag === 'tech'))) break; const e = fromTech(t); if (e) add(e, `要復習の解法「${tech.name(t.id)}」を立て直す`, 'tech'); }
     for (const t of tech.fresh.slice(0, 3)) { if (room() <= 0 || out.some(x => x.tag === 'new')) break; const e = fromTech(t); if (e) add(e, `まだ学んでいない解法「${tech.name(t.id)}」を学ぶ`, 'new'); }
     for (const t of tech.transfer.slice(0, 3)) {
       if (room() <= 0 || out.some(x => x.tag === 'transfer')) break;
-      const done = new Set(tech.ms.get(t.id).fields);
-      const e = fromTech(t, (x) => !done.has(x.f));
-      if (e) add(e, `「${tech.name(t.id)}」を別の分野で使う`, 'transfer');
+      const c = tech.ctx(t.id);
+      const pred = (x) => c(x.id).cross || c(x.id).combo; pred.all = true;
+      const e = fromTech(t, pred);
+      if (e) add(e, c(e.id).cross ? `「${tech.name(t.id)}」を別の分野で使う` : `「${tech.name(t.id)}」を他の解法と組み合わせて使う`, 'transfer');
     }
   }
-  const take = (cfg, n) => pickPractice(state, { ...cfg, size: n + used.size }).map(st => entryById.get(st.pid)).filter(e => e && !used.has(e.id)).slice(0, n);
+  const take = (cfg, n) => {
+    const got = [];
+    for (const st of pickPractice(state, { ...cfg, size: n + used.size + size })) {
+      const e = entryById.get(st.pid);
+      if (!e || used.has(e.id) || got.includes(e) || fieldN(e.f) + got.filter(x => x.f === e.f).length >= fieldCap) continue;
+      got.push(e);
+      if (got.length >= n) break;
+    }
+    return got;
+  };
   if (weak && room() > 0) for (const e of take({ fields: [weak], levels }, Math.min(2, room()))) add(e, `苦手な分野「${weakName}」を補う`, 'weak');
   if (room() > 0) for (const e of take({ levels }, room())) add(e, '新しい問題', 'fresh');
   const byE = new Map(out.map(x => [x.e.id, x]));

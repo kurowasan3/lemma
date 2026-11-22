@@ -100,7 +100,7 @@ try {
     const page = await newPage();
     await page.goto(U + '#today'); await page.waitForTimeout(1200);
     for (const k of ['1', '2', '3', '4', '5']) await page.click(`#lv button[data-l="${k}"]`);
-    await page.locator('.hero').first().click(); await page.waitForTimeout(1200);
+    await page.click('#todaygo'); await page.waitForTimeout(1200);
     ok((await page.locator('.chip').allInnerTexts()).includes('基礎'), '基礎だけ選ぶと基礎の問題が出る');
     await page.goto(U + '#drill'); await page.waitForTimeout(600);
     await page.locator('.drill-card').first().click(); await page.waitForTimeout(500);
@@ -171,6 +171,7 @@ try {
     await page.goto(U + '#today'); await page.waitForTimeout(1200);
     ok((await page.locator('h1').innerText()).includes('今日の学習') && await page.locator('#todaygo').count() === 1, '今日の画面に「今日の演習を始める」');
     ok(await page.locator('#resume').count() === 0, '中断した演習がなければ「前回の続き」は出ない');
+    ok(await page.locator('.first-run #firstgo').count() === 1, '初めての利用では「まず8問解いてみる」');
     await page.click('#todaygo'); await page.waitForTimeout(1500);
     ok(await page.locator('#conf button').count() === 3, '今日の演習が始まる');
     const first = await page.evaluate(() => JSON.parse(localStorage.getItem('lemma.session.v1')).steps[0].pid);
@@ -254,9 +255,23 @@ try {
     ok(/復習|解法|新しい問題/.test(plan), `今日の演習の説明に中身（${plan}）`);
     await page.click('#todaygo'); await page.waitForTimeout(1500);
     ok((await page.locator('.why').count()) === 1, '今日の演習で出題の理由を表示');
+    // 解法の想起（任意）：主な解法がある問題なら解答後に聞き、答えを記録に残す
+    let asked = false;
+    for (let k = 0; k < 8 && !asked; k++) {
+      await page.locator('#conf button').nth(1).click(); await page.click('#reveal'); await page.waitForTimeout(500);
+      await page.locator('#self button').first().click(); await page.waitForTimeout(500);
+      if (await page.locator('#recall').count()) {
+        asked = true;
+        await page.locator('#recall [data-r="3"]').click(); await page.waitForTimeout(300);
+        ok(await page.evaluate(() => JSON.parse(localStorage.getItem('lemma.v2')).log.at(-1).r === 3), '「解法が浮かばなかった」を記録に残す');
+        ok((await page.locator('#recallmsg').innerText()).includes('着眼点'), '浮かばなかったときは着眼点へ案内');
+      } else { await page.click('#next'); await page.waitForTimeout(1200); }
+    }
+    ok(asked, '主な解法がある問題で、解答後に解法を思いついたかを聞く');
     await page.click('#quit'); await page.waitForTimeout(500);
     await page.goto(U + '#map'); await page.waitForTimeout(1500);
     ok((await page.locator('#view').innerText()).includes('解法の習熟') && await page.locator('.st-counts').count() === 1, '定着度に解法の習熟（状態ごとの数）');
+    ok(await page.locator('.next-acts .next-act').count() >= 1 && (await page.locator('.next-acts').innerText()).includes('保留'), '記録が少ないうちは「次にやること」で判定を保留と伝える');
     ok(page.errors.length === 0, `ページのエラーなし ${page.errors}`);
   }
   // 6. 検索・問題セット・共有リンク・得意苦手の図

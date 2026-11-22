@@ -69,16 +69,35 @@ ok(Array.isArray(CAT.pickReview(st, { size: 5 })), 'pickReview()');
 
 // 推薦（v0.18）：理由はすべて決まった規則から付き、解法の候補があれば解法の理由の問題が入る
 {
-  const { techCandidates } = await import('../js/mastery.js');
+  const { techCandidates, makeCtx } = await import('../js/mastery.js');
   const T = await CAT.loadTechniques();
   const st = { problems: {}, pstat: {}, log: [] };
-  const tech = { ...techCandidates(st, T.list, CAT.entryById), name: (id) => T.byId.get(id).name };
+  const CX = new Map(T.list.map(t => [t.id, makeCtx(t, CAT.entryById, T.byProblem)]));
+  const tech = { ...techCandidates(st, T.list, CAT.entryById, Date.now(), (t) => CX.get(t.id)), name: (id) => T.byId.get(id).name, ctx: (id) => CX.get(id) };
   const plan = CAT.pickToday(st, { size: 8, tech });
-  const RULES = [/^前回完答できなかった問題の復習$/, /^復習の時期$/, /^要復習の解法「.+」を立て直す$/, /^まだ学んでいない解法「.+」を学ぶ$/, /^「.+」を別の分野で使う$/, /^苦手な分野「.+」を補う$/, /^新しい問題$/];
+  const RULES = [/^前回完答できなかった問題の復習$/, /^復習の時期$/, /^要復習の解法「.+」を立て直す$/, /^まだ学んでいない解法「.+」を学ぶ$/, /^「.+」を別の分野で使う$/, /^「.+」を他の解法と組み合わせて使う$/, /^苦手な分野「.+」を補う$/, /^新しい問題$/];
   ok(plan.steps.length === 8 && plan.steps.every(x => RULES.some(r => r.test(x.why))), '今日の演習：すべての問題に規則どおりの理由');
   const nw = plan.items.find(x => x.tag === 'new');
   ok(nw && T.byProblem.get(nw.pid).some(x => x.main), `何も解いていなければ、まだ学んでいない解法の問題が入る（${nw && nw.why}）`);
   ok(plan.items.filter(x => x.tag === 'fresh').length === plan.count.fresh, '「新しい問題」の数が count と合う');
+  // 復習が積み上がっても新しい学習の枠を残す（v0.19）・復習以外は1つの分野から3分の1まで
+  {
+    const old = Date.now() - 90 * 86400000;
+    const many = CAT.ENTRIES.filter(e => e.kind === 'bank').slice(0, 40);
+    const s2 = { problems: {}, pstat: {}, log: [] };
+    for (const e of many) { s2.problems[e.id] = { last: old, n: 1 }; s2.pstat[e.id] = { S: 1, D: 5, last: old, reps: 1, lapses: 0 }; s2.log.push({ p: e.id, t: old, g: 3 }); }
+    const p2 = CAT.pickToday(s2, { size: 8 });
+    ok(p2.count.due === 6 && p2.steps.length === 8, `復習が40問たまっていても、新しい問題の枠を2問残す（復習 ${p2.count.due}）`);
+    const s3 = { problems: {}, pstat: {}, log: [] };
+    for (const e of many.slice(0, 5)) { s3.problems[e.id] = { last: old, n: 1 }; s3.pstat[e.id] = { S: 1, D: 5, last: old, reps: 1, lapses: 0 }; s3.log.push({ p: e.id, t: old, g: 3 }); }
+    ok(CAT.pickToday(s3, { size: 8 }).count.due === 5, '復習が少ないときは新しい問題の枠を3問残す（復習5問はすべて出す）');
+    for (let k = 0; k < 20; k++) {
+      const p4 = CAT.pickToday({ problems: {}, pstat: {}, log: [] }, { size: 9 });
+      const c = {}; for (const it of p4.items) { const f = CAT.entryById.get(it.pid).f; c[f] = (c[f] || 0) + 1; }
+      if (Math.max(...Object.values(c)) > 3) { ok(false, '1つの分野から3分の1を超えない'); break; }
+      if (k === 19) ok(true, '1つの分野から3分の1を超えない');
+    }
+  }
   // 旧 ID（former）で引ける
   ok(T.byId.get('ivt-mvt') && T.byId.get('ivt-mvt').id === 'mvt', '旧 ID ivt-mvt は平均値の定理のカードへ');
   ok(T.list.every(t => t.main.every(id => t.ids.includes(id))), '主な解法の問題は結びつく問題に含まれる');
