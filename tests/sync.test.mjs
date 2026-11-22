@@ -157,5 +157,21 @@ const base = JSON.parse(fs.readFileSync(path.join(root, 'tests/fixtures/state-v0
   ok(!mem.has('lemma.auth'), '退会後はログイン情報も消える');
 }
 
+// v0.20：解答後の「解法は浮かんだか」（r）と解法カードからの印（k）が同期で保たれる
+{
+  const base = { v: 2, log: [], problems: {}, pstat: {}, cards: {}, bookmarks: {}, practice: {}, settings: {} };
+  const L = clone(base), R = clone(base);
+  L.log = [{ p: 'I-EXP-001', t: 1000, g: 3, ok: true, r: 3 }, { p: 'I-EXP-002', t: 2000, g: 3, ok: true, k: 't' }];
+  R.log = [{ p: 'I-EXP-001', t: 1000, g: 3, ok: true }, { p: 'I-EXP-003', t: 3000, g: 1, ok: false, r: 1 }];
+  const M = S.mergeState(clone(L), clone(R));
+  const by = Object.fromEntries(M.log.map(l => [l.p, l]));
+  ok(by['I-EXP-001'].r === 3, '手元で答えた r は、r の無い向こうの同じ回に上書きされない');
+  ok(by['I-EXP-002'].k === 't' && by['I-EXP-003'].r === 1, 'k と向こうの r も残る');
+  const M2 = S.mergeState(clone(R), clone(L));
+  ok(M2.log.find(l => l.p === 'I-EXP-001').r === 3, '向こうの端末に r があれば、こちらにも入る');
+  const L2 = clone(L); L2.log[0].r = 1;
+  ok(S.mergeState(clone(L2), clone(L)).log.find(l => l.p === 'I-EXP-001').r === 1, '同じ端末で答え直した r は手元の値が残る');
+}
+
 console.log(`sync.test: ${pass} 件 OK${fail ? `、${fail} 件失敗` : ''}`);
 process.exitCode = fail ? 1 : 0;

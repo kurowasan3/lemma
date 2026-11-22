@@ -73,9 +73,10 @@ ok(Array.isArray(CAT.pickReview(st, { size: 5 })), 'pickReview()');
   const T = await CAT.loadTechniques();
   const st = { problems: {}, pstat: {}, log: [] };
   const CX = new Map(T.list.map(t => [t.id, makeCtx(t, CAT.entryById, T.byProblem)]));
-  const tech = { ...techCandidates(st, T.list, CAT.entryById, Date.now(), (t) => CX.get(t.id)), name: (id) => T.byId.get(id).name, ctx: (id) => CX.get(id) };
+  const { transferWhy } = await import('../js/mastery.js');
+  const tech = { ...techCandidates(st, T.list, CAT.entryById, Date.now(), (t) => CX.get(t.id)), name: (id) => T.byId.get(id).name, transferWhy: (id, pid) => transferWhy(CX.get(id), pid, T.byId.get(id).name) };
   const plan = CAT.pickToday(st, { size: 8, tech });
-  const RULES = [/^前回完答できなかった問題の復習$/, /^復習の時期$/, /^要復習の解法「.+」を立て直す$/, /^まだ学んでいない解法「.+」を学ぶ$/, /^「.+」を別の分野で使う$/, /^「.+」を他の解法と組み合わせて使う$/, /^苦手な分野「.+」を補う$/, /^新しい問題$/];
+  const RULES = [/^前回完答できなかった問題の復習$/, /^復習の時期$/, /^要復習の解法「.+」を立て直す$/, /^まだ学んでいない解法「.+」を学ぶ$/, /^「.+」を別の分野の問題で使う$/, /^「.+」を、ほかの解法も関わる問題で使う$/, /^苦手な分野「.+」を補う$/, /^新しい問題$/];
   ok(plan.steps.length === 8 && plan.steps.every(x => RULES.some(r => r.test(x.why))), '今日の演習：すべての問題に規則どおりの理由');
   const nw = plan.items.find(x => x.tag === 'new');
   ok(nw && T.byProblem.get(nw.pid).some(x => x.main), `何も解いていなければ、まだ学んでいない解法の問題が入る（${nw && nw.why}）`);
@@ -83,11 +84,18 @@ ok(Array.isArray(CAT.pickReview(st, { size: 5 })), 'pickReview()');
   // 復習が積み上がっても新しい学習の枠を残す（v0.19）・復習以外は1つの分野から3分の1まで
   {
     const old = Date.now() - 90 * 86400000;
-    const many = CAT.ENTRIES.filter(e => e.kind === 'bank').slice(0, 40);
+    // 分野をまたいで40問（同じ分野の復習は1回の半分までなので、分野を散らす）
+    const byF = {}; for (const e of CAT.ENTRIES.filter(e => e.kind === 'bank')) (byF[e.f] = byF[e.f] || []).push(e);
+    const fs = Object.values(byF); const many = [];
+    for (let i = 0; many.length < 40; i++) many.push(fs[i % fs.length][Math.floor(i / fs.length)]);
     const s2 = { problems: {}, pstat: {}, log: [] };
     for (const e of many) { s2.problems[e.id] = { last: old, n: 1 }; s2.pstat[e.id] = { S: 1, D: 5, last: old, reps: 1, lapses: 0 }; s2.log.push({ p: e.id, t: old, g: 3 }); }
     const p2 = CAT.pickToday(s2, { size: 8 });
-    ok(p2.count.due === 6 && p2.steps.length === 8, `復習が40問たまっていても、新しい問題の枠を2問残す（復習 ${p2.count.due}）`);
+    ok(p2.count.due === 6 && p2.steps.length === 8, `復習が40問（1回分の4倍超）たまっていても、新しい問題の枠を2問残す（復習 ${p2.count.due}）`);
+    const sameF = fs[0].slice(0, 10), s5 = { problems: {}, pstat: {}, log: [] };
+    for (const e of sameF) { s5.problems[e.id] = { last: old, n: 1 }; s5.pstat[e.id] = { S: 1, D: 5, last: old, reps: 1, lapses: 0 }; s5.log.push({ p: e.id, t: old, g: 3 }); }
+    const p5 = CAT.pickToday(s5, { size: 8 });
+    ok(p5.count.due === 4 && p5.items.filter(x => CAT.entryById.get(x.pid).f === sameF[0].f).length <= 4, `復習が1分野に10問あっても、その分野は1回の半分まで（復習 ${p5.count.due}）`);
     const s3 = { problems: {}, pstat: {}, log: [] };
     for (const e of many.slice(0, 5)) { s3.problems[e.id] = { last: old, n: 1 }; s3.pstat[e.id] = { S: 1, D: 5, last: old, reps: 1, lapses: 0 }; s3.log.push({ p: e.id, t: old, g: 3 }); }
     ok(CAT.pickToday(s3, { size: 8 }).count.due === 5, '復習が少ないときは新しい問題の枠を3問残す（復習5問はすべて出す）');

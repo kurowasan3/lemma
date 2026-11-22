@@ -2,7 +2,7 @@
 import { PROBLEMS as BUILTIN, cardById, problemById as builtinById, unitOf as builtinUnit } from './content.js';
 import { retrievability, dueAt, TARGET_R } from './scheduler.js';
 
-export const FILE_VERSION = '0.19.0';
+export const FILE_VERSION = '0.20.0';
 
 // 難易度（問題管理表と同じ6段階。0=基礎 は v0.6 で追加。v0.15 で 3〜5 の名前を変更）
 export const LEVELS = { 0: '基礎', 1: '標準', 2: '入試基礎', 3: '入試標準', 4: '入試発展', 5: '数学探究' };
@@ -170,7 +170,7 @@ export function nextReviewTime(state) {
 // 推薦の順（v0.19）：復習の時期が来た問題（scheduler。新しい学習の枠を残す）→ 要復習の解法 → 未学習の解法 → 解法を違う文脈で
 // → 苦手分野 → 新しい問題。復習以外は、1つの分野から1回の3分の1まで（偏らせない）。
 // 各問題に、選んだ理由（why）を付ける。理由は選んだ規則そのもので、ランダムに選んだものは「新しい問題」とだけ書く。
-// tech（省略可）：mastery.js の techCandidates の結果に { name(id), ctx(techId) → (pid → 文脈) } を足したもの
+// tech（省略可）：mastery.js の techCandidates の結果に { name(id), transferWhy(techId, pid) } を足したもの
 export function pickToday(state, { levels = null, size = 8, weak = null, weakName = '', tech = null } = {}) {
   const lv = levels && new Set(levels);
   const last = new Map(); for (const l of state.log) last.set(l.p, l);
@@ -179,29 +179,44 @@ export function pickToday(state, { levels = null, size = 8, weak = null, weakNam
   const add = (e, why, tag) => { out.push({ e, why, tag }); used.add(e.id); };
   // 復習が積み上がっても新しい学習が止まらないようにする（残りの復習は「復習だけ」から解ける）
   const dueAll = dueEntries(state);
-  // 新しい学習の枠は最低 3問（復習が1回分の2倍より多くたまっているときは 2問）。残りを復習に使う
-  const newMin = Math.min(size, dueAll.length > 2 * size ? 2 : 3);
-  for (const e of dueAll.slice(0, Math.max(0, size - newMin))) add(e, (last.get(e.id) || {}).g < 3 ? '前回完答できなかった問題の復習' : '復習の時期', 'due');
+  // 新しい学習の枠は最低 3問（復習が1回分の4倍より多くたまっているときは 2問）。残りを復習に使う。
+  // 復習も1つの分野から1回の半分まで（1分野に偏った過去の記録で、復習が1分野で埋まらないように）
+  const newMin = Math.min(size, dueAll.length > 4 * size ? 2 : 3);
+  const dueFieldCap = Math.max(2, Math.ceil(size / 2));
+  const dueN = {};
+  for (const e of dueAll) {
+    if (out.length >= Math.max(0, size - newMin)) break;
+    if ((dueN[e.f] || 0) >= dueFieldCap) continue;
+    dueN[e.f] = (dueN[e.f] || 0) + 1;
+    add(e, (last.get(e.id) || {}).g < 3 ? '前回完答できなかった問題の復習' : '復習の時期', 'due');
+  }
   const room = () => size - out.length;
   const fieldCap = Math.max(2, Math.ceil(size / 3));
-  const fieldN = (f) => out.filter(x => x.tag !== 'due' && x.e.f === f).length;
+  // 復習以外：1つの分野から1回の3分の1まで、かつ復習と合わせて半分まで
+  const fieldN = (f) => {
+    const nd = out.filter(x => x.tag !== 'due' && x.e.f === f).length, all = out.filter(x => x.e.f === f).length;
+    return all >= dueFieldCap ? Infinity : nd;
+  };
   // 解法の問題から1問：選んだ難易度の中で、未着手をやさしい順（頻出度の高い順）
   const fromTech = (t, pred = () => true) => {
-    const c = (pred.all ? t.ids : t.main).map(id => entryById.get(id)).filter(e => e && !used.has(e.id) && (!lv || lv.has(e.lv)) && !state.problems[e.id] && fieldN(e.f) < fieldCap && pred(e));
+    const c = t.main.map(id => entryById.get(id)).filter(e => e && !used.has(e.id) && (!lv || lv.has(e.lv)) && !state.problems[e.id] && fieldN(e.f) < fieldCap && pred(e));
     c.sort((a, b) => a.lv - b.lv || ((b.v || 2) - (a.v || 2)));
     return c[0] || null;
   };
   if (tech) {
-    // 復習以外の枠のうち、要復習の解法は半分まで（新しい解法・転用・新しい問題の枠を残す）
-    const free = room(), revMax = Math.max(1, Math.min(2, Math.floor(free / 2)));
-    for (const t of tech.review.slice(0, revMax)) { if (room() <= 0 || (free <= 2 && out.some(x => x.tag === 'tech'))) break; const e = fromTech(t); if (e) add(e, `要復習の解法「${tech.name(t.id)}」を立て直す`, 'tech'); }
+    // 復習以外の枠：要復習の解法・新しい解法・転用を1問ずつ（枠が5問以上あるときだけ要復習の解法を2問）
+    const free = room(), revMax = free >= 5 ? 2 : 1;
+    let nRev = 0;
+    // 直近24時間にその解法の問題を解いていれば次の解法へ（同じ解法を毎回続けて出さない）
+    const recentT = (t) => t.ids.some(id => state.problems[id] && Date.now() - state.problems[id].last < 86400000);
+    for (const t of tech.review) { if (room() <= 0 || nRev >= revMax) break; if (recentT(t)) continue; const e = fromTech(t); if (e) { add(e, `要復習の解法「${tech.name(t.id)}」を立て直す`, 'tech'); nRev++; } }
     for (const t of tech.fresh.slice(0, 3)) { if (room() <= 0 || out.some(x => x.tag === 'new')) break; const e = fromTech(t); if (e) add(e, `まだ学んでいない解法「${tech.name(t.id)}」を学ぶ`, 'new'); }
+    // 転用：mastery.js の transferTargets（知らされずに完答した文脈と違う文脈の、主な解法の未着手問題）から
     for (const t of tech.transfer.slice(0, 3)) {
       if (room() <= 0 || out.some(x => x.tag === 'transfer')) break;
-      const c = tech.ctx(t.id);
-      const pred = (x) => c(x.id).cross || c(x.id).combo; pred.all = true;
-      const e = fromTech(t, pred);
-      if (e) add(e, c(e.id).cross ? `「${tech.name(t.id)}」を別の分野で使う` : `「${tech.name(t.id)}」を他の解法と組み合わせて使う`, 'transfer');
+      const set = new Set(tech.targets.get(t.id) || []);
+      const e = fromTech(t, (x) => set.has(x.id));
+      if (e) add(e, tech.transferWhy(t.id, e.id), 'transfer');
     }
   }
   const take = (cfg, n) => {

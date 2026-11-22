@@ -1,5 +1,5 @@
 :root {
-  --lemma-version: '0.19.0';
+  --lemma-version: '0.20.0';
   --paper: #f6f4ee;
   --card: #ffffff;
   --ink: #1c1d21;
@@ -698,3 +698,7 @@ details.checks li.ok { color: var(--good); }
 .next-act:first-of-type { border-top: 0; padding-top: 0; }
 .next-act p { margin: 0 0 8px; font-size: 14px; line-height: 1.75; }
 .first-run { margin-bottom: 14px; }
+.recall-table { width: 100%; border-collapse: collapse; font-size: 12.5px; margin: 8px 0 2px; }
+.recall-table th { text-align: left; font-weight: 500; padding: 3px 6px 3px 0; white-space: nowrap; }
+.recall-table td { padding: 3px 6px; }
+.recall-table td:nth-child(2) { white-space: nowrap; text-align: right; }

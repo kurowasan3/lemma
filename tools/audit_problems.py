@@ -2,7 +2,9 @@
 """問題の品質確認を助ける一覧を作る（問題は消さない・書きかえない）。
 
   python3 tools/audit_problems.py                 # 要約だけ
-  python3 tools/audit_problems.py --csv DIR       # DIR に similar.csv・quality.csv を書き出す（Excel で開ける UTF-8）
+  python3 tools/audit_problems.py --csv DIR       # DIR に similar.csv・quality.csv・priority.csv を書き出す（Excel で開ける UTF-8）
+  python3 tools/audit_problems.py --reviewed FILE [--csv DIR]
+                                                  # 人が記入した quality.csv を読み、管理表の「検証:人間確認」と照合する
 
 1) 類似・重複の候補（similar.csv）
    - 同一：問題文が空白・記号の違いを除いて同じ
@@ -11,7 +13,21 @@
    文字列の比較なので、数学的に同じでも表現が違うもの（文字の置きかえ・言い回しの違い）は見つからない。
    候補は人が見て、残す・まとめる・差しかえるを決める。
 2) 品質の一覧（quality.csv）
-   自動で確かめられる項目と、人が判断する項目（空欄）を分けた表。管理表の問題 ID で引ける。
+   自動で確かめられる項目と、人が判断する項目（空欄）を分けた表。管理表の問題 ID・「検証:人間確認」の今の値で引ける。
+3) 優先して確認する問題（priority.csv）
+   決まった規則で並べる（点数は作らない）。各行に、なぜ挙がったかを書く。
+     優先1：同一の問題文・数値だけ違う問題文・類似度 0.9 以上（重複していないかを見る。数値違い・類題は消す対象ではない）
+     優先2：解答・解説・核となるアイデアのどれかが無い
+     優先3：主な解法が決まっていない（入試基礎以上）・自動検算が未実施
+     優先4：同じ主な解法・同じ難易度に類似候補が集まっている
+   同じ優先度の中は、頻出度の高い順・難易度の低い順（多くの学習者が解く問題から）。
+   人の確認が済んだ問題（管理表の「検証:人間確認」が「済」）は、優先2〜4から外す。
+4) 照合（--reviewed）
+   quality.csv の【人】の列に記入したものを読み、すべて記入済みで「要修正」「×」が無い問題は
+   「管理表の『検証:人間確認』を『済』にしてよい問題」、「要修正」「×」がある問題は「直す問題」として一覧にする。
+   管理表やデータは書きかえない。
+
+基礎・標準の問題が少ないことは欠点として扱わない（厳選した問題をくり返す方針のため）。
 """
 import json, re, sys, csv, random, hashlib, collections
 from pathlib import Path
@@ -131,7 +147,7 @@ def main():
         if not checks['主な解法']: auto['主な解法が決まっていない'] += 1
         if checks['類似・重複の候補']: auto['類似・重複の候補がある'] += 1
         if not checks['人の確認']: auto['人の確認がまだ'] += 1
-        rows.append([p['id'], p['field'], p['level'], p.get('theme', '')] + list(checks.values()) + [''] * len(HUMAN))
+        rows.append([p['id'], p['field'], p['level'], p.get('theme', '')] + list(checks.values()) + ['済' if checks['人の確認'] else ''] + [''] * len(HUMAN))
     print('  自動で分かること：' + '、'.join(f'{k} {v}問' for k, v in auto.most_common()))
     if '--csv' in args:
         out = Path(args[args.index('--csv') + 1]); out.mkdir(parents=True, exist_ok=True)
@@ -142,9 +158,64 @@ def main():
             for a, b, j in sim: w.writerow(['類似', f'{a} {b}', f'{j:.2f}', f"{byid[a].get('theme', '')} ／ {byid[b].get('theme', '')}"])
         with open(out / 'quality.csv', 'w', newline='', encoding='utf-8-sig') as f:
             w = csv.writer(f)
-            w.writerow(['問題ID', '分野', '難易度', 'テーマ', '解答あり', '解説あり', '解説の長さ（文字）', '核となるアイデアあり', '入力採点の答えあり', 'タグの数', '主な解法', '類似・重複の候補', '自動検算（sympy）', '人の確認'] + [f'【人】{h}' for h in HUMAN])
+            w.writerow(['問題ID', '分野', '難易度', 'テーマ', '解答あり', '解説あり', '解説の長さ（文字）', '核となるアイデアあり', '入力採点の答えあり', 'タグの数', '主な解法', '類似・重複の候補', '自動検算（sympy）', '人の確認', '管理表：検証:人間確認'] + [f'【人】{h}' for h in HUMAN])
             w.writerows(rows)
+        # 優先して確認する問題（規則で決める。点数は作らない）
+        reasons = collections.defaultdict(list)
+        tier = {}
+        def put(pid, t, why):
+            reasons[pid].append(why); tier[pid] = min(tier.get(pid, 9), t)
+        for g in same:
+            for i in g: put(i, 1, '同一の問題文：' + ' '.join(x for x in g if x != i))
+        for g in num:
+            for i in g: put(i, 1, '数値だけ違う問題文：' + ' '.join(x for x in g if x != i) + '（類題として残すかを判断）')
+        for a, b, j in sim:
+            if j >= 0.9:
+                put(a, 1, f'類似 {j:.2f}：{b}'); put(b, 1, f'類似 {j:.2f}：{a}')
+        clus_pairs = {(main_of.get(a), byid[a]['level']) for a, b, _ in sim if main_of.get(a) and main_of.get(a) == main_of.get(b) and byid[a]['level'] == byid[b]['level']}
+        for p in ps:
+            human = p['quality'].get('checks', {}).get('human', False)
+            if human:
+                continue
+            if not p.get('answer', {}).get('tex', '').strip(): put(p['id'], 2, '解答が無い')
+            if not sum(len(x.get('tex', '')) for x in p.get('solutions', [])): put(p['id'], 2, '解説が無い')
+            if not p.get('idea', {}).get('tex', '').strip(): put(p['id'], 2, '核となるアイデアが無い')
+            if p['level'] >= 2 and not main_of.get(p['id']): put(p['id'], 3, '主な解法が決まっていない')
+            if not p['quality'].get('checks', {}).get('sympy', False): put(p['id'], 3, '自動検算が未実施')
+            if (main_of.get(p['id']), p['level']) in clus_pairs and sim_n.get(p['id']): put(p['id'], 4, '同じ主な解法・同じ難易度に類似候補が集まっている')
+        order = sorted(tier, key=lambda i: (tier[i], -byid[i].get('value', 2) if byid[i].get('value') else -2, byid[i]['level'], i))
+        with open(out / 'priority.csv', 'w', newline='', encoding='utf-8-sig') as f:
+            w = csv.writer(f); w.writerow(['優先度', '問題ID', '分野', '難易度', 'テーマ', '挙がった理由'])
+            for i in order: w.writerow([tier[i], i, byid[i]['field'], byid[i]['level'], byid[i].get('theme', ''), '／'.join(reasons[i])])
+        tc = collections.Counter(tier.values())
+        print('  優先して確認する問題：' + '、'.join(f'優先{t} {tc[t]}問' for t in sorted(tc)))
         print(f'  CSV を {out} に書き出しました')
+    if '--reviewed' in args:
+        src = Path(args[args.index('--reviewed') + 1])
+        with open(src, encoding='utf-8-sig') as f:
+            rd = list(csv.DictReader(f))
+        hcols = [f'【人】{h}' for h in HUMAN]
+        done, fix, partial = [], [], []
+        for row in rd:
+            vals = [str(row.get(c, '') or '').strip() for c in hcols]
+            if not any(vals):
+                continue
+            pid = row.get('問題ID', '')
+            if pid not in byid:
+                print(f'  照合：問題 ID {pid} がデータに無い'); continue
+            bad = [h for h, v in zip(HUMAN, vals) if v in ('要修正', '×', 'x', 'NG')]
+            if bad: fix.append((pid, bad))
+            elif all(vals):
+                if not byid[pid]['quality'].get('checks', {}).get('human', False): done.append(pid)
+            else: partial.append(pid)
+        print(f'  照合：管理表の「検証:人間確認」を「済」にしてよい問題 {len(done)}問・直す問題 {len(fix)}問・記入途中 {len(partial)}問')
+        if '--csv' in args:
+            out = Path(args[args.index('--csv') + 1]); out.mkdir(parents=True, exist_ok=True)
+            with open(out / 'reviewed.csv', 'w', newline='', encoding='utf-8-sig') as f:
+                w = csv.writer(f); w.writerow(['問題ID', '管理表で行うこと', '項目'])
+                for pid in done: w.writerow([pid, '「検証:人間確認」を「済」にする', ''])
+                for pid, bad in fix: w.writerow([pid, '直す', '、'.join(bad)])
+                for pid in partial: w.writerow([pid, '記入途中', ''])
     return 0
 
 

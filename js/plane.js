@@ -13,7 +13,7 @@
 // 値：数は複素数 {re, im}（ベクトルのモードでも数は複素数として持ち、成分は実数）、ベクトルは実数の配列 [x, y]
 // 1行の解析結果（graph.js の analyze() と同じ形に、矢印 arrow・解の点 roots・条件つき陰関数 implicitc を加えたもの）
 
-export const FILE_VERSION = '0.19.0';
+export const FILE_VERSION = '0.20.0';
 const TAU = Math.PI * 2;
 
 // ---------------------------------------------------------------- 複素数

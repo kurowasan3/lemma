@@ -22,9 +22,9 @@ import {
   LEVELS, FIELDS, ENTRIES, META, fieldByKey, entryById, loadCatalog, ensureBodies, getBody,
   subjectsWithFields, pool, pickPractice, pickReview, dueEntries, nextReviewTime, pickToday, similarTo, loadTechniques,
 } from './catalog.js';
-import { techMastery, techCandidates, masterChecklist, makeCtx, MASTER, STATUS } from './mastery.js';
+import { techMastery, techCandidates, masterChecklist, makeCtx, transferTargets, transferWhy, MASTER, STATUS, TRANSFER, TRANSFER_KIND } from './mastery.js';
 
-const VERSION = '0.19.0';
+const VERSION = '0.20.0';
 const KEY = 'lemma.v2';
 let sync = null, syncApplying = false, syncStatus = null;   // アカウントと同期（initSync で用意）
 const $ = (sel, el = document) => el.querySelector(sel);
@@ -442,7 +442,9 @@ function renderTech(id) {
   const cx = ctxFor(t);
   const inLv = pickFromIds(t.ids, { levels: pr.levels, size: pr.size, main: t.main });
   // 違う文脈：その解法の問題が最も多い分野以外・他の解法と組み合わせる問題（データから判定できるものだけ）
-  const transfer = m.full.length ? pickFromIds(t.ids, { levels: pr.levels, size: pr.size, pred: (e) => !state.problems[e.id] && (cx(e.id).cross || cx(e.id).combo) }) : [];
+  // 転用を確かめる問題：推薦（今日の演習）と同じ定義（mastery.js の transferTargets）
+  const tSet = new Set(transferTargets(state, t, cx, m));
+  const transfer = m.transfer.stage === 'none' ? pickFromIds([...tSet], { levels: pr.levels, size: pr.size }) : [];
   const due = new Set(dueEntries(state).map(e => e.id));
   const dueHere = t.ids.filter(x => due.has(x));
   const checks = masterChecklist(m);
@@ -473,7 +475,8 @@ function renderTech(id) {
       <div class="panel">
         <p style="margin:0">${statusChip(m)}　${m.n ? `${t.ids.length}問のうち ${m.n}問を解いた・最後に完答 ${m.full.length}問${m.score != null ? `・得意度 ${Math.round(m.score * 100)}` : ''}` : `${t.ids.length}問のうち、まだ1問も解いていません。`}</p>
         ${m.status === 'review' ? `<p class="small" style="margin:6px 0 0">${m.lapses.length ? `一度完答した問題を最近解けませんでした（${m.lapses.length}問）。` : m.twoMiss ? 'この解法の問題が2回続けて完答できませんでした。' : '完答できない問題が多くなっています。'}要点を読み直してから、もう一度解いてください。</p>` : ''}
-        ${m.full.length ? `<p class="small" style="margin:6px 0 0">${m.transfer.length ? `転用：違う文脈（別の分野・他の解法との組み合わせ・補助）の問題を、解法を知らされずに ${m.transfer.length}問完答。` : '転用：まだ確かめられていません（違う文脈の問題を、解法を知らされずに完答した記録がありません）。'}${m.noRecall.length ? `　解法が浮かばないまま完答した問題 ${m.noRecall.length}問。` : ''}</p>` : ''}
+        ${m.n ? recallBreakdownHTML(m) : ''}
+        ${m.full.length ? transferHTML(m, cx) : ''}
         ${dueHere.length ? `<p class="muted small" style="margin:6px 0 0">復習の時期が来ている問題：${dueHere.length}問</p>` : ''}
         ${m.status !== 'none' && m.status !== 'mastered' ? `<details class="checks"><summary>「習得」までの基準</summary><ul>${checks.map(c => `<li class="${c.ok ? 'ok' : ''}">${c.ok ? '✓' : '・'} ${esc(c.label)}<span class="muted">（いま ${c.now}）</span></li>`).join('')}</ul></details>` : ''}
         <div class="btn-row">
@@ -499,12 +502,37 @@ function renderTech(id) {
   const go = (steps) => { if (steps.length) startSession(steps.map(s => ({ ...s, why: `解法「${plainName(t.id)}」の練習` })), { tech: t.id, size: steps.length }); };
   $('#tgo').addEventListener('click', () => go(inLv));
   $('#twrong')?.addEventListener('click', () => go(m.wrong.slice(0, 20).map(pid => ({ kind: 'problem', pid }))));
-  $('#ttransfer')?.addEventListener('click', () => { if (transfer.length) startSession(transfer.map(s => ({ ...s, why: cx(s.pid).cross ? `「${plainName(t.id)}」を別の分野で使う` : `「${plainName(t.id)}」を他の解法と組み合わせて使う` })), { tech: t.id, size: transfer.length }); });
+  $('#ttransfer')?.addEventListener('click', () => { if (transfer.length) startSession(transfer.map(s => ({ ...s, why: transferWhy(cx, s.pid, plainName(t.id)) })), { tech: t.id, size: transfer.length }); });
   $$('.tech-lv summary .btn').forEach(b => b.addEventListener('click', (ev) => {
     ev.preventDefault();
     go(pickFromIds(t.ids, { levels: [+b.dataset.lv], size: pr.size, main: t.main }));
   }));
   $$('.tech-page .res-row').forEach(b => b.addEventListener('click', () => openIds([b.dataset.pid])));
+}
+
+// 想起の内訳（解法カード）。答えていない回は「未回答」として別に数える
+function recallBreakdownHTML(m) {
+  const rows = [
+    ['解法を知らされずに完答', m.solo.length, '「浮かばなかった」と答えた問題を除く'],
+    ['解法が浮かんで完答', m.recalled.length, '自己申告'],
+    ['浮かばなかったが完答', m.noRecall.length, '別の方法で解けた可能性'],
+    ['浮かんだが完答できず', m.missed.length, '実行（計算・場合分け）で崩れた'],
+    ['想起は未回答', m.unanswered.length, '成功にも失敗にも数えない'],
+  ].filter(([, n]) => n);
+  if (!rows.length) return '';
+  return `<table class="recall-table">${rows.map(([l, n, note]) => `<tr><th>${l}</th><td>${n}問</td><td class="muted">${note}</td></tr>`).join('')}</table>`;
+}
+// 転用の段階と根拠（代理の指標であることを明記）
+function transferHTML(m, cx) {
+  const t = m.transfer;
+  const kinds = t.kinds.map(k => TRANSFER_KIND[k]).join('・');
+  const msg = {
+    unavailable: 'この解法の収録問題は文脈が1種類なので、転用は判定できません（習得の条件から外しています）。',
+    none: '違う2つの文脈の問題を、解法を知らされずに完答した記録がまだありません。力が足りないという意味ではなく、まだ確かめていないということです。',
+    candidate: `違う文脈（${kinds}）の問題で完答しました。ただし、その解法を実際に使ったかは確認していません。`,
+    recalled: `違う文脈（${kinds}）の問題で完答し、解法が浮かんだとも答えています（自己申告）。`,
+  }[t.stage];
+  return `<p class="small" style="margin:6px 0 0"><b>転用：${TRANSFER[t.stage]}</b>　${msg}</p>`;
 }
 
 // 定着度の「次にやること」：記録から当てはまる規則を上から3つまで。各規則の根拠をそのまま文にする
@@ -530,8 +558,8 @@ function nextActions() {
       const steps = pickFromIds(rv.main, { size: state.practice.size, main: rv.main }).map(s => ({ ...s, why: `要復習の解法「${plainName(rv.id)}」の問題` }));
       acts.push({ text: `解法「${techName(rv.id)}」が要復習です（${STATUS_REASON(cand.ms.get(rv.id))}）。`, label: 'この解法の問題をやさしい順に', steps, tech: rv.id, card: rv.id });
     }
-    const tr = TECH.list.find(t => { const m = cand.ms.get(t.id); return m.full.length >= 3 && !m.transfer.length && m.status !== 'review'; });
-    if (tr) acts.push({ text: `解法「${techName(tr.id)}」は ${cand.ms.get(tr.id).full.length}問完答していますが、違う文脈（別の分野・他の解法との組み合わせ）ではまだ解けていません。今日の演習で、そうした問題を混ぜて出します。`, label: '今日の演習へ', href: '#today', card: tr.id });
+    const tr = cand.transfer.find(t => cand.ms.get(t.id).full.length >= 3);
+    if (tr) acts.push({ text: `解法「${techName(tr.id)}」は ${cand.ms.get(tr.id).full.length}問完答していますが、転用（違う文脈の問題で、解法を知らされずに完答）はまだ確認できていません。今日の演習で、そうした問題を混ぜて出します。`, label: '今日の演習へ', href: '#today', card: tr.id });
     const nr = TECH.list.find(t => cand.ms.get(t.id).noRecall.length >= 2);
     if (nr) acts.push({ text: `解法「${techName(nr.id)}」は、解けても解法が浮かばなかった問題が ${cand.ms.get(nr.id).noRecall.length}問あります。カードの「着眼点」を読んでおくと、問題を見たときに浮かびやすくなります。`, label: '解法カードを開く', href: '#tech=' + nr.id });
     const fr = cand.fresh[0];
@@ -576,7 +604,8 @@ function techStrengthHTML() {
       ${cand.fresh.length ? `<h3>次に学ぶとよい解法</h3><p class="muted small" style="margin:0 0 4px">まだ学んでいない解法のうち、必須の前提を学び始めているもの（問題の多い順）。</p><div class="tech-list">${cand.fresh.slice(0, 3).map(t => row(t, `<span class="muted">${t.main.length}問</span>`)).join('')}</div>` : ''}
       ` : `<p class="muted" style="margin:0">解いた問題に結びつく解法ごとに、未学習・学習中・要復習・習得を判定します。</p>`}
       <details class="checks"><summary>判定の基準</summary><ul>
-        <li><b>習得</b>：完答 ${MASTER.full}問以上・解法を知らされずに完答 ${MASTER.recall}問以上・違う文脈（別の分野・他の解法との組み合わせ・補助）で完答 ${MASTER.transfer}問以上・3日以上あけて同じ問題をもう一度完答・得意度 ${Math.round(MASTER.score * 100)} 以上。解答後に「解法が浮かばなかった」と答えた完答は、知らされずに完答に数えません</li>
+        <li><b>習得</b>：完答 ${MASTER.full}問以上・解法を知らされずに完答 ${MASTER.solo}問以上（「浮かばなかった」と答えた問題を除く）・転用（違う2つの文脈で知らされずに完答）・3日以上あけて同じ問題をもう一度完答・得意度 ${Math.round(MASTER.score * 100)} 以上・完答した問題のどれかがまだ解き直しの時期になっていない。想起の質問に答えていない回は、想起の成功にも失敗にも数えません</li>
+        <li><b>転用</b>の「違う文脈」は、問題データから分かる代理の指標（その解法の主な分野以外の問題か、ほかの解法も結びつく問題か）で、その解法を実際に使ったことを確かめたものではありません</li>
         <li><b>要復習</b>：3問以上解いて得意度 50 未満、一度完答した問題を直近30日に解けなかった、または最後の2回が続けて完答でない</li>
         <li><b>学習中</b>：解いたことがあり、上のどちらでもない</li>
       </ul><p class="muted small">問題ごとの復習（いつもう一度解くか）は、これとは別に問題ごとの記録で決めています。</p></details>
@@ -605,7 +634,7 @@ function levelToolbar(pr, onChange) {
 
 // 今日の演習：復習（scheduler）＋解法の習熟（mastery.js）＋苦手分野＋新しい問題。解法カードを読み込む前は解法の部分なし
 function todayPlan(pr, weak) {
-  const tech = TECH ? { ...candidates(), name: plainName, ctx: (id) => ctxFor(TECH.byId.get(id)) } : null;
+  const tech = TECH ? { ...candidates(), name: plainName, transferWhy: (id, pid) => transferWhy(ctxFor(TECH.byId.get(id)), pid, plainName(id)) } : null;
   return pickToday(state, { levels: pr.levels.slice(), size: pr.size, weak: weak ? weak.f.key : null, weakName: weak ? weak.f.name : '', tech });
 }
 function planSummary(plan) {
@@ -1768,7 +1797,7 @@ function bindRecall(pid, sg) {
     const full = sg === 'full';
     const tn = techText(t.name);
     $('#recallmsg').innerHTML = full
-      ? (v === 3 ? `記録しました。解法を思いつかずに解けた回は、解法の習熟では「思い出せた」に数えません。<a href="#tech=${esc(t.id)}">「${tn}」の着眼点</a>を読んでおくと、次は浮かびやすくなります。` : '記録しました。')
+      ? (v === 3 ? `記録しました。解法が浮かばずに解けた回は、解法の習熟では「知らされずに完答」に数えません。<a href="#tech=${esc(t.id)}">「${tn}」の着眼点</a>を読んでおくと、次は浮かびやすくなります。` : '記録しました。')
       : (v === 3 ? `記録しました。まず<a href="#tech=${esc(t.id)}">「${tn}」の要点と着眼点</a>を確認してから、類題で使ってみてください。` : '記録しました。解法は浮かんでいたので、解説と自分の答案のどこで分かれたか（計算・場合分け・条件の確認）を見直してください。');
     math($('#recallmsg'));
   }));
