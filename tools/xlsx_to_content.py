@@ -28,7 +28,7 @@ HEADERS = {'ID': 'id', '作成日': 'date', '科目': 'subject', '分野': 'fiel
            '想定時間(分)': 'minutes', '問題文（LaTeX）': 'q', '答え': 'answer', '解答・解説': 'solution',
            '核となるアイデア': 'idea', '参考元（非公開）': 'source', '作成方法': 'method', '検証:二重解答': 'v1',
            '検証:SymPy等': 'v2', '検証:人間確認': 'v3', '検証済み': 'verified', 'タグ': 'tags', 'メモ': 'memo',
-           '入力用の答え': 'input', '図の式': 'figure', '頻出度': 'value', '教育的価値': 'value'}
+           '入力用の答え': 'input', '図の式': 'figure', '頻出度': 'value', '教育的価値': 'value', '解法': 'techniques'}
 PRIVATE = {'source', 'memo'}          # 決して書き出さない列
 INCLUDE_METHOD = False                # 「作成方法」を公開データに入れるか（未決定のため入れない）
 SCHEMA = 'lemma.problem/1'
@@ -190,6 +190,9 @@ def to_problem(rec, key, issues):
     val = parse_value(rec.get('value'))
     if val:
         p['value'] = val
+    tech = split_tags(str(rec.get('techniques') or ''))
+    if tech:
+        p['techniques'] = tech   # 解法カードの名前か ID（読点・カンマ区切り）。build_app_data.py で照合する
     p['methods'] = []
     p['tags'] = [t for t in split_tags(raw_tags) if t != '非表示']
     prov = {}

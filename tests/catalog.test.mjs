@@ -55,6 +55,18 @@ ok(Array.isArray(CAT.pickReview(st, { size: 5 })), 'pickReview()');
   ok(!sim2 || sim2.id !== sim.id, '類題：除外した問題は選ばない');
 }
 
+// 解法カード（v0.17）：どのカードにも問題が結びつき、前提・関連の参照先がある。問題の8割以上がどれかの解法に結びつく
+{
+  const T = await CAT.loadTechniques();
+  ok(T.list.length >= 60, `解法カードが ${T.list.length}枚`);
+  ok(T.list.every(t => t.ids.length > 0 && t.summary && t.essence && t.when && t.cue), 'どのカードにも問題と説明がある');
+  ok(T.list.every(t => [...t.pre, ...t.rel].every(x => T.byId.has(x))), '前提・関連の参照先がある');
+  ok(T.list.every(t => t.ids.every((id, i) => i === 0 || CAT.entryById.get(t.ids[i - 1]).lv <= CAT.entryById.get(id).lv)), 'カードの問題はやさしい順');
+  const bank = CAT.ENTRIES.filter(e => e.kind === 'bank').length;
+  ok(T.byProblem.size / bank > 0.8, `解法に結びつく問題 ${T.byProblem.size} / ${bank}`);
+  ok(T.byId.get('recurrence').ids.every(id => (CAT.entryById.get(id).tg || []).some(t => /漸化式|不動点|階差/.test(t))), '漸化式のカードの問題は漸化式のタグをもつ');
+}
+
 // 頻出度：1〜3 だけが入り、出題では頻出度の高い問題が多めに選ばれること
 ok(CAT.ENTRIES.every(e => e.v === undefined || e.v === 1 || e.v === 3), '頻出度は 1 か 3 だけが書かれる（2 は既定）');
 ok(CAT.ENTRIES.some(e => e.v === 3) && CAT.ENTRIES.some(e => e.v === 1), '頻出度の高・低がどちらもある');

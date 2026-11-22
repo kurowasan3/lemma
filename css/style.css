@@ -1,5 +1,5 @@
 :root {
-  --lemma-version: '0.16.0';
+  --lemma-version: '0.17.0';
   --paper: #f6f4ee;
   --card: #ffffff;
   --ink: #1c1d21;
@@ -634,3 +634,28 @@ details.howto ol { margin: 8px 0 0; padding-left: 1.2em; line-height: 1.8; }
 .sw-cols small { margin-left: 4px; font-size: 10.5px; color: var(--ink-3); }
 /* 検索の絞り込み・並べ方 */
 .sres-tools { display: flex; gap: 8px; flex-wrap: wrap; }
+
+/* 解法カード（v0.17） */
+a.back { display: inline-block; margin: 2px 0 8px; font-size: 13.5px; color: var(--ink-3); text-decoration: none; }
+.tech-page .lead { font-size: 15.5px; line-height: 1.85; margin: 6px 0 14px; }
+.tech-dl { margin: 0; display: grid; grid-template-columns: 6.5em 1fr; gap: 10px 12px; font-size: 14.5px; line-height: 1.8; }
+.tech-dl dt { font-weight: 700; color: var(--ink-2); font-size: 13px; padding-top: 2px; }
+.tech-dl dd { margin: 0; }
+.tech-dl dd.chips { display: flex; flex-wrap: wrap; gap: 6px; }
+@media (max-width: 480px) { .tech-dl { grid-template-columns: 1fr; gap: 2px; } .tech-dl dd { margin-bottom: 10px; } }
+.chip.tech { text-decoration: none; background: var(--accent-soft); color: var(--accent); border: 0; }
+.tech-chips { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; margin-top: 12px; }
+.tech-chips .muted { margin-right: 4px; }
+.tech-list { display: flex; flex-direction: column; border-top: 1px solid var(--line); }
+.tech-row { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; padding: 11px 2px; border-bottom: 1px solid var(--line); text-decoration: none; color: var(--ink); }
+.tech-row .nm { font-weight: 600; }
+.tech-row .muted { text-align: right; flex-shrink: 0; }
+.tech-hits { margin: 0 0 12px; }
+.tech-hits .tech-row { justify-content: flex-start; }
+.tech-hits .tech-row b { font-size: 11px; color: var(--accent); border: 1px solid var(--accent); border-radius: 4px; padding: 0 5px; }
+.tech-hits .tech-row .muted { margin-left: auto; }
+details.tech-lv { border-bottom: 1px solid var(--line); padding: 6px 0; }
+details.tech-lv summary { display: flex; align-items: center; gap: 8px; cursor: pointer; padding: 6px 0; list-style: none; }
+details.tech-lv summary::-webkit-details-marker { display: none; }
+details.tech-lv summary .btn { margin-left: auto; min-height: 32px; padding: 4px 14px; font-size: 13px; }
+details.tech-lv .results { margin: 6px 0 8px; }

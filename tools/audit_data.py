@@ -164,7 +164,37 @@ def audit(xlsx=None):
                     if k in seen and seen[k] != t['name']:
                         E.append(f'タグ辞書：「{s2}」が「{seen[k]}」と「{t["name"]}」の両方にある')
                     seen[k] = t['name']
-    for name in ('search.json', 'collections.json'):
+        # 解法カード：ID の重複・前提と関連の参照先・タグが辞書にあるか・管理表の「解法」列の名前
+        tf = CONTENT / 'techniques.json'
+        if tf.exists():
+            td = json.loads(tf.read_text(encoding='utf-8'))
+            tids = [t['id'] for t in td['techniques']]
+            names = set(tids) | {t['name'] for t in td['techniques']}
+            groups = {g['id'] for g in td['groups']}
+            if len(set(tids)) != len(tids):
+                E.append('解法カード：ID が重複している')
+            tagnames = set()
+            if tg.exists():
+                for t in json.loads(tg.read_text(encoding='utf-8'))['tags']:
+                    tagnames |= {t['name'], *t.get('aliases', [])}
+            for t in td['techniques']:
+                for k in ('pre', 'rel'):
+                    for x in t.get(k, []):
+                        if x not in tids:
+                            E.append(f'解法カード {t["id"]}: {k} の {x} が無い')
+                if t['group'] not in groups:
+                    E.append(f'解法カード {t["id"]}: 分類 {t["group"]} が無い')
+                for k in ('summary', 'essence', 'when', 'cue'):
+                    if not str(t.get(k, '')).strip():
+                        E.append(f'解法カード {t["id"]}: {k} が空')
+                for x in t['tags']:
+                    if tagnames and x not in tagnames:
+                        W['解法カードのタグがタグ辞書に無い'] += 1
+            for _, p in content:
+                for x in p.get('techniques', []):
+                    if x not in names:
+                        E.append(f'{p["id"]}: 「解法」の {x} が解法カードに無い')
+    for name in ('search.json', 'collections.json', 'techniques.json'):
         f = DATA / name
         if 'dataVersion' in idx and f.exists():
             v = json.loads(f.read_text(encoding='utf-8')).get('dataVersion')

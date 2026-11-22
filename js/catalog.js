@@ -2,7 +2,7 @@
 import { PROBLEMS as BUILTIN, cardById, problemById as builtinById, unitOf as builtinUnit } from './content.js';
 import { retrievability, dueAt, TARGET_R } from './scheduler.js';
 
-export const FILE_VERSION = '0.16.0';
+export const FILE_VERSION = '0.17.0';
 
 // 難易度（問題管理表と同じ6段階。0=基礎 は v0.6 で追加。v0.15 で 3〜5 の名前を変更）
 export const LEVELS = { 0: '基礎', 1: '標準', 2: '入試基礎', 3: '入試標準', 4: '入試発展', 5: '数学探究' };
@@ -228,6 +228,26 @@ export async function searchProblems(query, { levels = null } = {}) {
   }
   out.sort((a, b) => b.score - a.score || a.e.lv - b.e.lv || (a.e.id < b.e.id ? -1 : 1));
   return out.map(x => x.e);
+}
+
+// ---------- 解法カード（data/techniques.json を初めて使うときに読む） ----------
+let techniques = null;
+export function loadTechniques() {
+  if (!techniques) {
+    techniques = fetch('data/techniques.json').then(r => { if (!r.ok) throw new Error(`data/techniques.json を読めません（${r.status}）`); return r.json(); })
+      .then(d => {
+        if (META.dataVersion && d.dataVersion !== META.dataVersion) staleData.add('data/techniques.json');
+        const byId = new Map(), byProblem = new Map();
+        for (const t of d.techniques) {
+          t.ids = t.ids.filter(id => entryById.has(id));
+          byId.set(t.id, t);
+          for (const id of t.ids) { if (!byProblem.has(id)) byProblem.set(id, []); byProblem.get(id).push(t.id); }
+        }
+        return { groups: d.groups, list: d.techniques, byId, byProblem };
+      })
+      .catch(e => { techniques = null; throw e; });
+  }
+  return techniques;
 }
 
 // ---------- 問題セット（data/collections.json） ----------

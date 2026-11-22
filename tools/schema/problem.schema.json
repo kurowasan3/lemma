@@ -297,11 +297,16 @@
         }
       }
     },
+    "techniques": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 },
+      "description": "解法カード（content/techniques.json）の名前か ID。管理表の「解法」列。あればタグからの自動の結びつきより優先"
+    },
     "value": {
       "type": "integer",
       "minimum": 1,
       "maximum": 3,
-      "description": "教育的価値（管理表の「教育的価値」列。1=低 2=中 3=高）。無いときは content/values.json の自動判定"
+      "description": "頻出度（管理表の「頻出度」列。1=低 2=中 3=高）。無いときは content/values.json の自動判定"
     }
   }
 }

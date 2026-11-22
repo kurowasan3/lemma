@@ -9,7 +9,7 @@
   index.json の "format"（データ形式の版）・"dataVersion"（中身から計算する版）・"builtinUnits"（内蔵問題の単元→分野）
   f-*.json の "_meta": {"dataVersion"}（一部のファイルだけ古いときに気づくため）
   タグはタグ辞書（content/tags.json）の正規名に置き換えて出す
-  search.json（検索用の索引）・collections.json（問題セット）
+  search.json（検索用の索引）・collections.json（問題セット）・techniques.json（解法カードと結びつく問題）
 quality.status が "hidden" の問題は出さない。
 """
 import hashlib
@@ -41,7 +41,7 @@ def load_content(content):
 
 def data_version(files, tax_path):
     h = hashlib.sha256()
-    extra = [tax_path.parent / 'tags.json', tax_path.parent / 'choices.json', tax_path.parent / 'figures.json', tax_path.parent / 'values.json'] + sorted((tax_path.parent / 'collections').glob('*.json'))
+    extra = [tax_path.parent / 'tags.json', tax_path.parent / 'choices.json', tax_path.parent / 'figures.json', tax_path.parent / 'values.json', tax_path.parent / 'techniques.json'] + sorted((tax_path.parent / 'collections').glob('*.json'))
     for p in [tax_path] + list(files) + [x for x in extra if x.exists()]:
         h.update(p.name.encode())
         h.update(p.read_bytes())
@@ -103,6 +103,17 @@ def build(content=ROOT / 'content', out=ROOT / 'data'):
     figures = json.loads(fpath.read_text(encoding='utf-8')) if fpath.exists() else {}
     vpath = content / 'values.json'
     values = json.loads(vpath.read_text(encoding='utf-8')) if vpath.exists() else {}
+    tpath = content / 'techniques.json'
+    tdoc = json.loads(tpath.read_text(encoding='utf-8')) if tpath.exists() else {'groups': [], 'techniques': []}
+    techs = tdoc['techniques']
+    tag2tech, tname = {}, {}
+    for t in techs:
+        tname[t['id']] = t['id']
+        tname[t['name']] = t['id']
+        for tg in t['tags']:
+            tag2tech.setdefault(TG.to_canonical(tg, cmap), []).append(t['id'])
+    tech_ids = {t['id']: [] for t in techs}
+    bad_tech = []
     index, bodies, hidden, search = [], {}, 0, []
     for p in problems:
         if p['quality']['status'] != 'published':
@@ -132,6 +143,18 @@ def build(content=ROOT / 'content', out=ROOT / 'data'):
                 v = jv['v']
         if v and v != 2:
             e['v'] = v
+        # 解法：管理表の「解法」列があればそれだけ、なければタグから自動で
+        if p.get('techniques'):
+            ms = []
+            for x in p['techniques']:
+                if x in tname:
+                    ms.append(tname[x])
+                else:
+                    bad_tech.append(f"{p['id']}: {x}")
+        else:
+            ms = [m for t in e.get('tg', []) for m in tag2tech.get(t, [])]
+        for m in dict.fromkeys(ms):
+            tech_ids[m].append(p['id'])
         ch = choices.get(p['id'])
         if ch and b.get('in') == ch['spec']:
             b['ch'] = ch['f']      # 選択式の選択肢（欄の順。先頭が正解、表示のときに混ぜる。null の欄は入力式）
@@ -164,7 +187,13 @@ def build(content=ROOT / 'content', out=ROOT / 'data'):
     cols.sort(key=lambda c: (c.get('order', 10 ** 6), c['id']))
     (out / 'collections.json').write_text(json.dumps({'dataVersion': version, 'collections': cols}, ensure_ascii=False,
                                                      separators=(',', ':')), encoding='utf-8')
-    return {'collections': len(cols), 'count': len(index), 'choice': sum(1 for e in index if e.get('ch')), 'fields': len(fields), 'hidden': hidden, 'auto': sum(1 for e in index if e.get('in')),
+    # 解法カード：カードの内容と、結びつく問題の ID（難易度の低い順）
+    lv = {e['id']: e['lv'] for e in index}
+    tout = [{**{k: v for k, v in t.items() if k != 'tags'}, 'ids': sorted(tech_ids[t['id']], key=lambda i: (lv[i], i))} for t in techs]
+    (out / 'techniques.json').write_text(json.dumps({'dataVersion': version, 'groups': tdoc['groups'], 'techniques': tout},
+                                                    ensure_ascii=False, separators=(',', ':')), encoding='utf-8')
+    return {'techniques': len(techs), 'tech_linked': len({i for v in tech_ids.values() for i in v}), 'bad_tech': bad_tech,
+            'collections': len(cols), 'count': len(index), 'choice': sum(1 for e in index if e.get('ch')), 'fields': len(fields), 'hidden': hidden, 'auto': sum(1 for e in index if e.get('in')),
             'dataVersion': version, 'unknown': sorted(unknown), 'warn': list(WARN)}
 
 
@@ -173,6 +202,9 @@ def main():
     r = build(args[0] if args else ROOT / 'content', args[1] if len(args) > 1 else ROOT / 'data')
     print(f"{r['count']}問を書き出しました（{r['fields']}分野、入力して採点できる問題 {r['auto']}問、"
           f"非表示 {r['hidden']}問、dataVersion {r['dataVersion']}）")
+    print(f"解法カード {r['techniques']}枚（結びつく問題 {r['tech_linked']}問）")
+    for b in r['bad_tech']:
+        print('  解法の名前が見つかりません', b)
     if r['unknown']:
         print('文章中の未対応命令（名前だけ表示）:', ', '.join(r['unknown']))
     for w in r['warn'][:50]:
