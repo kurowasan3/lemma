@@ -1,5 +1,5 @@
 :root {
-  --lemma-version: '0.15.3';
+  --lemma-version: '0.16.0';
   --paper: #f6f4ee;
   --card: #ffffff;
   --ink: #1c1d21;
@@ -606,3 +606,31 @@ body.sheet-open { overflow: hidden; }
 .chip.val { background: transparent; border: 1px solid var(--line); color: var(--ink-2); }
 .chip.val.v3 { border-color: var(--accent); color: var(--accent); font-weight: 600; }
 .chip.val.v1 { opacity: .75; }
+
+/* 今日の学習（v0.16） */
+.goal { display: grid; grid-template-columns: auto 1fr; align-items: center; gap: 12px; margin: 2px 2px 14px; font-size: 14px; color: var(--ink-2); }
+.goal b { font-size: 18px; color: var(--ink); }
+.goal .bar { grid-column: auto; height: 6px; }
+.goal .bar > div { background: var(--good); }
+.resume-row { display: flex; flex-direction: column; gap: 6px; margin-bottom: 10px; }
+.resume-row .btn.small { align-self: flex-end; min-height: 32px; padding: 4px 12px; font-size: 12.5px; }
+.hero.alt { background: var(--card); color: var(--ink); border: 1.5px solid var(--accent); }
+.hero.alt b { color: var(--accent); }
+.hero[disabled] { opacity: .5; }
+.weak-note { margin: 10px 2px 14px; font-size: 13.5px; color: var(--ink-2); line-height: 1.7; }
+.weak-note .linkbtn { font-size: 13px; color: var(--accent); margin-left: 6px; text-decoration: none; font-weight: 600; }
+details.howto { margin-top: 26px; border-top: 1px solid var(--line); padding-top: 12px; font-size: 14px; color: var(--ink-2); }
+details.howto summary { cursor: pointer; font-weight: 600; color: var(--ink); padding: 4px 0; }
+details.howto ol { margin: 8px 0 0; padding-left: 1.2em; line-height: 1.8; }
+/* 解答後の一言（自信度と結果のずれ） */
+.conf-note { margin: 10px 0 0; padding: 10px 12px; border-radius: 10px; background: var(--accent-soft); font-size: 14px; line-height: 1.7; color: var(--ink-2); }
+.conf-note.warn { background: var(--warn-soft); }
+.conf-note.warn b { color: var(--ink); }
+.conf-note .keypoint { margin-top: 8px; }
+/* 最近の伸び */
+.trend { margin: 12px 0 0; font-size: 13.5px; line-height: 1.7; }
+.trend .up { color: var(--good); font-weight: 700; }
+.trend .down { color: var(--bad); font-weight: 700; }
+.sw-cols small { margin-left: 4px; font-size: 10.5px; color: var(--ink-3); }
+/* 検索の絞り込み・並べ方 */
+.sres-tools { display: flex; gap: 8px; flex-wrap: wrap; }

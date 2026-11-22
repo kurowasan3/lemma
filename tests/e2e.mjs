@@ -165,6 +165,56 @@ try {
     ok(!(await page.locator('#view').innerText()).includes('問題データ'), '設定に「問題データ」の項目が無い');
     ok(page.errors.length === 0, `ページのエラーなし ${page.errors}`);
   }
+  // 5b. 今日の学習（v0.16）：今日の演習・中断と再開・自信なしの正解は早めに復習・類題・検索の絞り込み
+  {
+    const page = await newPage();
+    await page.goto(U + '#today'); await page.waitForTimeout(1200);
+    ok((await page.locator('h1').innerText()).includes('今日の学習') && await page.locator('#todaygo').count() === 1, '今日の画面に「今日の演習を始める」');
+    ok(await page.locator('#resume').count() === 0, '中断した演習がなければ「前回の続き」は出ない');
+    await page.click('#todaygo'); await page.waitForTimeout(1500);
+    ok(await page.locator('#conf button').count() === 3, '今日の演習が始まる');
+    const first = await page.evaluate(() => JSON.parse(localStorage.getItem('lemma.session.v1')).steps[0].pid);
+    // 1問目：自己採点で「自信なし」→ 正解
+    await page.click('#quit'); await page.waitForTimeout(500);
+    await page.goto(U + '#settings'); await page.waitForTimeout(800);
+    await page.click('#amode [data-m="self"]'); await page.waitForTimeout(300);
+    await page.goto(U + '#today'); await page.waitForTimeout(1200);
+    ok(await page.locator('#resume').count() === 1, 'まだ答えていなくても、始めた演習は「前回の続き」に出る');
+    await page.click('#resume'); await page.waitForTimeout(1500);
+    const cur = await page.evaluate(() => JSON.parse(localStorage.getItem('lemma.session.v1')));
+    ok(cur.i === 0 && cur.steps[0].pid === first, '再開すると1問目から');
+    await page.locator('#conf button').nth(0).click();
+    await page.click('#reveal'); await page.waitForTimeout(400);
+    await page.locator('#self button').first().click(); await page.waitForTimeout(400);
+    const g = await page.evaluate(() => JSON.parse(localStorage.getItem('lemma.v2')).log.at(-1));
+    ok(g.c === 'low' && g.ok && g.g === 2, `自信なしで正解 → 早めに復習（grade ${g.g}）`);
+    ok((await page.locator('.conf-note').innerText()).includes('早めに復習'), '自信なしで正解したときの一言');
+    const nSteps = await page.evaluate(() => JSON.parse(localStorage.getItem('lemma.session.v1')).steps.length);
+    if (await page.locator('#similar').count()) {
+      await page.click('#similar'); await page.waitForTimeout(1200);
+      const s2 = await page.evaluate(() => JSON.parse(localStorage.getItem('lemma.session.v1')));
+      ok(s2.steps.length === nSteps + 1 && s2.i === 1, '類題を1問追加すると次の問題に入る');
+    } else ok(false, '類題のボタンが出る');
+    // 中断して再開すると2問目（類題）から
+    await page.click('#quit'); await page.waitForTimeout(800);
+    ok((await page.locator('#resume').innerText()).includes('2問目から'), '中断すると「前回の続き」が2問目から');
+    await page.click('#resume'); await page.waitForTimeout(1500);
+    ok(await page.locator('#conf button').count() === 3, '前回の続きから再開できる');
+    // 確実なのに不正解 → 注意
+    await page.locator('#conf button').nth(2).click();
+    await page.click('#reveal'); await page.waitForTimeout(400);
+    await page.locator('#self button').last().click(); await page.waitForTimeout(400);
+    ok((await page.locator('.conf-note.warn').count()) === 1, '確実なのに不正解のときは思い込みの確認を促す');
+    // 検索の絞り込み：間違えた問題
+    await page.click('#quit'); await page.waitForTimeout(600);
+    await page.goto(U + '#search=' + encodeURIComponent('a')); await page.waitForTimeout(1500);
+    await page.selectOption('#sfilter', 'wrong'); await page.waitForTimeout(1200);
+    const wrongIds = await page.$$eval('.res-row', els => els.map(x => x.dataset.pid));
+    const wrongAll = await page.evaluate(() => { const m = new Map(); for (const l of JSON.parse(localStorage.getItem('lemma.v2')).log) m.set(l.p, l.g); return [...m].filter(([, g]) => g < 3).map(([p]) => p); });
+    ok(wrongAll.length >= 1 && wrongIds.every(id => wrongAll.includes(id)), `検索で「間違えた」に絞れる（${wrongIds.length}件）`);
+    await page.selectOption('#sfilter', 'all'); await page.waitForTimeout(800);
+    ok(page.errors.length === 0, `ページのエラーなし ${page.errors}`);
+  }
   // 6. 検索・問題セット・共有リンク・得意苦手の図
   {
     const old = JSON.parse(fs.readFileSync(path.join(root, 'tests/fixtures/state-v0.6.json'), 'utf8'));

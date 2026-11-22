@@ -6,7 +6,7 @@
 import { parse, compile, splitRelation, freeVars } from './parser.js';
 import { analyzePlane, solveRoots, fmtComplex, fmtNum, holds as holdsEq } from './plane.js';
 
-export const FILE_VERSION = '0.15.3';
+export const FILE_VERSION = '0.16.0';
 export const COLORS = ['#2f6fdf', '#d9463b', '#2e9d5b', '#8e4fd6', '#e08a1e', '#1a9aa8'];
 const RESERVED = new Set(['x', 'y', 't', 'θ', 'r']);
 const TAU = Math.PI * 2;

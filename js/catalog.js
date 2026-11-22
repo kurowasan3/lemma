@@ -2,7 +2,7 @@
 import { PROBLEMS as BUILTIN, cardById, problemById as builtinById, unitOf as builtinUnit } from './content.js';
 import { retrievability, dueAt, TARGET_R } from './scheduler.js';
 
-export const FILE_VERSION = '0.15.3';
+export const FILE_VERSION = '0.16.0';
 
 // 難易度（問題管理表と同じ6段階。0=基礎 は v0.6 で追加。v0.15 で 3〜5 の名前を変更）
 export const LEVELS = { 0: '基礎', 1: '標準', 2: '入試基礎', 3: '入試標準', 4: '入試発展', 5: '数学探究' };
@@ -164,6 +164,39 @@ export function nextReviewTime(state) {
   const ts = Object.values(state.pstat || {}).map(dueAt);
   return ts.length ? Math.min(...ts) : null;
 }
+
+// 今日の演習：復習待ちを先に（忘れかけ順）、残りを新しい問題で埋める。
+// weak（苦手分野のキー）があれば、新しい問題のうち最大2問をその分野から選ぶ。分野が続かないよう交互に並べる。
+export function pickToday(state, { levels = null, size = 8, weak = null } = {}) {
+  const due = dueEntries(state).slice(0, size);
+  const used = new Set(due.map(e => e.id));
+  const take = (cfg, n) => pickPractice(state, { ...cfg, size: n + used.size }).map(st => entryById.get(st.pid)).filter(e => e && !used.has(e.id)).slice(0, n);
+  const fresh = [];
+  if (weak && due.length < size) for (const e of take({ fields: [weak], levels }, Math.min(2, size - due.length))) { fresh.push(e); used.add(e.id); }
+  if (due.length + fresh.length < size) for (const e of take({ levels }, size - due.length - fresh.length)) { fresh.push(e); used.add(e.id); }
+  return { steps: interleave([...due, ...fresh]).map(e => ({ kind: 'problem', pid: e.id })), due: due.length, fresh: fresh.length };
+}
+
+// 類題：同じ分野で、共通のタグが多く、難易度が近い問題。未着手を優先し、次に最後に解いてから久しい順。
+export function similarTo(state, id, exclude = []) {
+  const e0 = entryById.get(id);
+  if (!e0) return null;
+  const ex = new Set([id, ...exclude]);
+  const tg0 = new Set(e0.tg || []);
+  let best = null, bestKey = null;
+  for (const e of ENTRIES) {
+    if (e.f !== e0.f || ex.has(e.id) || e.kind === 'builtin') continue;
+    const d = Math.abs(e.lv - e0.lv);
+    if (d > 1) continue;
+    const common = (e.tg || []).filter(t => tg0.has(t)).length;
+    const rec = state.problems[e.id];
+    // 比べる順：共通タグ（多いほど先）→ 未着手 → 難易度の差 → 久しぶり
+    const key = [-common, rec ? 1 : 0, d, rec ? rec.last : 0, e.id];
+    if (!best || cmpKey(key, bestKey) < 0) { best = e; bestKey = key; }
+  }
+  return best && bestKey[0] < 0 ? best : null;
+}
+const cmpKey = (a, b) => { for (let i = 0; i < a.length; i++) if (a[i] !== b[i]) return a[i] < b[i] ? -1 : 1; return 0; };
 
 // ---------- 検索（data/search.json を初めて使うときに読む） ----------
 // 比較用の正規化：tools/tags.py の norm() と同じ規則（全角半角・大文字小文字・中黒や空白の違いを無視）

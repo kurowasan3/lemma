@@ -19,10 +19,10 @@ import { CARDS, cardById, problemById, unitById, subjectById } from './content.j
 import { review, retrievability, dayKey } from './scheduler.js';
 import {
   LEVELS, FIELDS, ENTRIES, META, fieldByKey, entryById, loadCatalog, ensureBodies, getBody,
-  subjectsWithFields, pool, pickPractice, pickReview, dueEntries, nextReviewTime,
+  subjectsWithFields, pool, pickPractice, pickReview, dueEntries, nextReviewTime, pickToday, similarTo,
 } from './catalog.js';
 
-const VERSION = '0.15.3';
+const VERSION = '0.16.0';
 const KEY = 'lemma.v2';
 let sync = null, syncApplying = false, syncStatus = null;   // アカウントと同期（initSync で用意）
 const $ = (sel, el = document) => el.querySelector(sel);
@@ -181,7 +181,7 @@ function drawAccount() {
       options: [{ key: 'keep', label: 'この端末の記録は残してログアウト', cls: 'primary' }, { key: 'wipe', label: 'この端末の記録も消してログアウト' }] });
     if (!k) return;
     await sync.syncNow(); await sync.logout();
-    if (k === 'wipe') { state = { ...freshState(), settings: state.settings }; save(); session = null; }
+    if (k === 'wipe') { state = { ...freshState(), settings: state.settings }; save(); session = null; clearSavedSession(); }
     toast(k === 'wipe' ? 'ログアウトし、この端末の記録を消しました' : 'ログアウトしました'); route();
   });
   $('#acct-del').addEventListener('click', async () => {
@@ -287,6 +287,28 @@ function renderSliders(box, g, onChange = null) {
 
 // ---------- ルーティング ----------
 let session = null; // { steps, i, results: [], extra }
+// 中断した演習：端末の中だけに保存（同期はしない）。答え終えた問題の次から再開する
+const SKEY = 'lemma.session.v1';
+function saveSession() {
+  if (!session) return;
+  const cur = session.steps[session.i];
+  const answered = cur && session.results.length && session.results[session.results.length - 1].pid === cur.pid;
+  const i = session.i + (answered ? 1 : 0);
+  try {
+    if (i >= session.steps.length) localStorage.removeItem(SKEY);
+    else localStorage.setItem(SKEY, JSON.stringify({ steps: session.steps, i, results: session.results, cfg: session.cfg, t: Date.now() }));
+  } catch { /* 保存できない環境では再開できないだけ */ }
+}
+function clearSavedSession() { try { localStorage.removeItem(SKEY); } catch { /* なし */ } }
+function savedSession() {
+  try {
+    const d = JSON.parse(localStorage.getItem(SKEY) || 'null');
+    if (!d || !Array.isArray(d.steps) || !Number.isInteger(d.i) || d.i >= d.steps.length) return null;
+    if (Date.now() - d.t > 14 * 86400000) { clearSavedSession(); return null; }   // 2週間たったら捨てる
+    const left = d.steps.slice(d.i).filter(st => st.kind !== 'problem' || entryById.has(st.pid));
+    return left.some(st => st.kind === 'problem') ? d : null;
+  } catch { return null; }
+}
 
 let ready = false;
 let greeted = false;
@@ -347,21 +369,40 @@ function renderToday() {
   const solved = (list) => list.filter(e => state.problems[e.id]).length;
   const all = pool({ levels: pr.levels });
   const due = dueEntries(state).length;
-  const doneToday = state.streak.last === dayKey();
   const marked = markedIds();
   const bar = levelToolbar(pr, renderToday);
+  const today = dayKey();
+  const doneN = state.log.filter(l => dayKey(l.t) === today).length;
+  const goal = pr.size;
+  const resume = savedSession();
+  const weak = weakestField();
+  const dueN = Math.min(due, pr.size), freshN = Math.max(0, Math.min(pr.size - dueN, all.length));
+  const weakN = weak && freshN ? Math.min(2, freshN) : 0;
+  const planText = [dueN ? `復習 ${dueN}問` : '', freshN ? `新しい問題 ${freshN}問${weakN ? `（苦手な「${esc(weak.f.name)}」から${weakN}問）` : ''}` : ''].filter(Boolean).join('＋');
   view.innerHTML = `
     <div class="fade-in">
       <div class="kicker">LEMMA · 受験数学</div>
-      <h1>演習</h1>
-      <p class="sub">${state.streak.count ? `連続 ${state.streak.count}日${doneToday ? '（今日の分 ✓）' : ''}・` : ''}解いた問題 ${solved(all)} / ${all.length}</p>
-      ${bar.html}
-      <button class="hero" id="random">
-        <b>全分野からランダム</b>
-        <span>数I〜数C・融合の全${FIELDS.length}分野から ${Math.min(pr.size, all.length)}問。分野を混ぜて出すので、どの解法を使うかを見抜く練習になります。</span>
+      <h1>今日の学習</h1>
+      <div class="goal" aria-label="今日の進み具合">
+        <span>今日 <b>${doneN}</b> / ${goal}問${doneN >= goal ? '　目標達成' : ''}</span>
+        <span class="bar"><div style="width:${Math.min(100, Math.round(doneN / Math.max(1, goal) * 100))}%"></div></span>
+      </div>
+      ${resume ? `<div class="resume-row">
+        <button class="hero alt" id="resume"><b>前回の続き</b><span>全${resume.steps.length}問の ${resume.i + 1}問目から再開します。</span></button>
+        <button class="btn ghost small" id="dropresume">続きを破棄</button>
+      </div>` : ''}
+      <button class="hero" id="todaygo" ${dueN + freshN ? '' : 'disabled'}>
+        <b>今日の演習を始める</b>
+        <span>${planText || '今は出題できる問題がありません'}。分野を混ぜて出すので、どの解法を使うかを見抜く練習になります。</span>
       </button>
-      ${due ? `<button class="btn block" id="review" style="margin-top:10px">復習：忘れかけた問題 ${due}問</button>` : ''}
-      ${marked.length ? `<button class="btn block" id="bmset" style="margin-top:10px">★ ブックマークした問題 ${marked.length}問</button>` : ''}
+      ${weak ? `<p class="weak-note">苦手な分野：<b>${esc(weak.f.name)}</b>（得意度 ${Math.round(weak.score * 100)}・${weak.n}問の結果${weak.n < 10 ? '・暫定' : ''}）<button class="linkbtn" id="weakgo">この分野だけ演習 ›</button></p>` : ''}
+      ${bar.html}
+      <div class="btn-row" style="margin-top:0">
+        <button class="btn" id="random">全分野ランダム</button>
+        ${due ? `<button class="btn" id="review">復習だけ ${due}問</button>` : ''}
+        ${marked.length ? `<button class="btn" id="bmset">★ ブックマーク ${marked.length}問</button>` : ''}
+      </div>
+      <p class="sub" style="margin:12px 2px 0">解いた問題 ${solved(all)} / ${all.length}（選んだ難易度）</p>
       <form class="search" id="sform" role="search">
         <input type="search" id="sq" placeholder="問題を探す（例：漸化式 確率、回転体）" enterkeyhint="search" autocomplete="off">
         <button class="btn" type="submit">検索</button>
@@ -384,15 +425,15 @@ function renderToday() {
         </div>`;
       }).join('')}
       <button class="btn ghost block" id="pick" style="margin-top:14px">複数の分野を組み合わせて選ぶ</button>
-      <h2>このアプリの学び方</h2>
-      <div class="panel">
+      <details class="howto">
+        <summary>このアプリの学び方</summary>
         <ol style="margin:0;padding-left:1.2em">
           <li><strong>紙に解いてから答え合わせ。</strong>解説を読む前に自力で考える方が、記憶に残ります。</li>
           <li><strong>ヒントは答えを出さない。</strong>詰まったら「考え方」だけを見られます。</li>
           <li><strong>答え合わせの前に自信度を選ぶ。</strong>「わかったつもり」とのズレを定着度ページで見られます。</li>
-          <li><strong>忘れかけた頃に復習。</strong>解けなかった問題ほど早く、解けた問題は間をあけて復習に出します。</li>
+          <li><strong>忘れかけた頃に復習。</strong>解けなかった問題・自信なく正解した問題ほど早く、解けた問題は間をあけて復習に出します。</li>
         </ol>
-      </div>
+      </details>
     </div>`;
   bar.bind();
   if (!greeted) { greeted = true; setTimeout(() => birdSay(birdMessage('greet'), { sound: false }), 700); }
@@ -402,6 +443,13 @@ function renderToday() {
     if (st.length) startSession(st, cfg); else toast('この条件の問題はありません');
   };
   $('#random').addEventListener('click', () => go(null));
+  $('#todaygo').addEventListener('click', () => {
+    const plan = pickToday(state, { levels: pr.levels.slice(), size: pr.size, weak: weak ? weak.f.key : null });
+    if (plan.steps.length) startSession(plan.steps, { today: true, levels: pr.levels.slice(), size: pr.size }); else toast('今は出題できる問題がありません');
+  });
+  $('#resume')?.addEventListener('click', () => resumeSession(resume));
+  $('#dropresume')?.addEventListener('click', () => { if (confirm('中断した演習の続きを破棄しますか？（解いた記録は残ります）')) { clearSavedSession(); renderToday(); } });
+  $('#weakgo')?.addEventListener('click', () => go([weak.f.key]));
   $$('.unit-row').forEach(b => b.addEventListener('click', () => go([b.dataset.f])));
   $$('.subj-row').forEach(b => b.addEventListener('click', () => go(FIELDS.filter(f => f.subject === b.dataset.s).map(f => f.key))));
   $('#pick').addEventListener('click', () => { location.hash = '#practice'; });
@@ -456,6 +504,18 @@ let searchShown = 30;
 // 検索結果の並べ方（関連度＝検索の順。同じ値どうしは関連度の順のまま）
 const SORTS = { rel: '関連度', freq: '頻出度', easy: 'やさしい', hard: '難しい' };
 const sortKey = () => (SORTS[state.practice.sort] ? state.practice.sort : 'rel');
+// 学習状態での絞り込み：未着手・間違えた（最後の結果が完答でない）・復習待ち・ブックマーク
+const SFILTERS = { all: 'すべて', fresh: '未着手', wrong: '間違えた', due: '復習待ち', marked: 'ブックマーク' };
+const sfilterKey = () => (SFILTERS[state.practice.sfilter] ? state.practice.sfilter : 'all');
+function filterResults(res) {
+  const k = sfilterKey();
+  if (k === 'all') return res;
+  if (k === 'fresh') return res.filter(e => !state.problems[e.id]);
+  if (k === 'marked') return res.filter(e => isMarked(e.id));
+  if (k === 'due') { const d = new Set(dueEntries(state).map(e => e.id)); return res.filter(e => d.has(e.id)); }
+  const last = new Map(); for (const l of state.log) last.set(l.p, l);
+  return res.filter(e => { const l = last.get(e.id); return l && l.g < 3; });
+}
 function sortResults(res) {
   const k = sortKey(), v = (e) => (e && e.v) || 2;
   const cmp = { freq: (a, b) => v(b) - v(a) || a.lv - b.lv, easy: (a, b) => a.lv - b.lv || v(b) - v(a), hard: (a, b) => b.lv - a.lv || v(b) - v(a) }[k];
@@ -482,12 +542,20 @@ async function renderSearch(q) {
   try { res = await M_CAT.searchProblems(q, { levels: pr.levels }); }
   catch (e) { box.innerHTML = `<p class="muted">検索の索引を読めませんでした（${esc(e.message)}）。</p>`; return; }
   dataWarn();
-  res = sortResults(res);
-  if (!res.length) { box.innerHTML = '<p class="muted">見つかりませんでした。言葉を短くするか、難易度の選択を広げてみてください。</p>'; return; }
+  const found = res.length;
+  res = sortResults(filterResults(res));
+  const tools = `<div class="sres-tools"><select id="sfilter" aria-label="絞り込み">${Object.entries(SFILTERS).map(([k, v]) => `<option value="${k}" ${sfilterKey() === k ? 'selected' : ''}>${v}</option>`).join('')}</select>
+      <select id="ssort" aria-label="並べ方">${Object.entries(SORTS).map(([k, v]) => `<option value="${k}" ${sortKey() === k ? 'selected' : ''}>${v}順</option>`).join('')}</select></div>`;
+  const bindTools = () => {
+    $('#ssort').addEventListener('change', (ev) => { pr.sort = ev.target.value; save(); renderSearch(q); });
+    $('#sfilter').addEventListener('change', (ev) => { pr.sfilter = ev.target.value; save(); searchShown = 30; renderSearch(q); });
+  };
+  if (!found) { box.innerHTML = '<p class="muted">見つかりませんでした。言葉を短くするか、難易度の選択を広げてみてください。</p>'; return; }
+  if (!res.length) { box.innerHTML = `<div class="toolbar" style="margin:4px 0 10px"><p class="sub" style="margin:0">${found}問のうち「${SFILTERS[sfilterKey()]}」の問題はありません</p>${tools}</div>`; bindTools(); return; }
   const fresh = res.filter(e => !state.problems[e.id]);
   const pickIds = [...fresh, ...res.filter(e => state.problems[e.id])].slice(0, pr.size).map(e => e.id);
-  box.innerHTML = `<div class="toolbar" style="margin:4px 0 10px"><p class="sub" style="margin:0">${res.length}問 見つかりました（未着手 ${fresh.length}問）</p>
-      <select id="ssort" aria-label="並べ方">${Object.entries(SORTS).map(([k, v]) => `<option value="${k}" ${sortKey() === k ? 'selected' : ''}>${v}順</option>`).join('')}</select></div>
+  box.innerHTML = `<div class="toolbar" style="margin:4px 0 10px"><p class="sub" style="margin:0">${sfilterKey() === 'all' ? `${res.length}問 見つかりました（未着手 ${fresh.length}問）` : `${found}問のうち「${SFILTERS[sfilterKey()]}」${res.length}問`}</p>
+      ${tools}</div>
     <div class="btn-row" style="margin-top:0"><button class="btn primary" id="sgo">${pickIds.length}問 演習する</button><button class="btn ghost" id="sshare">リンクをコピー</button></div>
     <div class="results">${res.slice(0, searchShown).map(e => {
       const f = fieldByKey[e.f] || {};
@@ -499,7 +567,7 @@ async function renderSearch(q) {
     ${res.length > searchShown ? `<button class="btn ghost block" id="smore">さらに表示（残り ${res.length - searchShown}問）</button>` : ''}`;
   math(box);
   $('#sgo').addEventListener('click', () => startSession(pickIds.map(pid => ({ kind: 'problem', pid })), { ids: pickIds, size: pickIds.length }));
-  $('#ssort').addEventListener('change', (ev) => { pr.sort = ev.target.value; save(); renderSearch(q); });
+  bindTools();
   $('#sshare').addEventListener('click', () => copyLink(shareURL('search=' + encodeURIComponent(q))));
   $('#smore')?.addEventListener('click', () => { searchShown += 60; renderSearch(q); });
   $$('.res-row', box).forEach(b => b.addEventListener('click', () => openIds([b.dataset.pid])));
@@ -510,6 +578,7 @@ async function startSession(steps, cfg = null) {
   try { await ensureBodies(steps.map(s => s.pid).filter(Boolean)); dataWarn(); }
   catch (e) { showBanner(`<b>問題を読み込めませんでした</b>${esc(e.message)}`); route(); return; }
   session = { steps, i: 0, results: [], cfg };
+  saveSession();
   if (!studyStart || Date.now() - lastActivity > 15 * 60000) { studyStart = Date.now(); breakNotified = 0; }
   lastActivity = Date.now();
   const hr = new Date().getHours();
@@ -517,11 +586,23 @@ async function startSession(steps, cfg = null) {
   if (location.hash !== '#today') location.hash = '#today'; else route();
 }
 
+async function resumeSession(d) {
+  const steps = d.steps.slice(d.i).filter(st => st.kind !== 'problem' || entryById.has(st.pid));
+  view.innerHTML = '<p class="muted" style="padding:40px 4px">問題を読み込んでいます…</p>';
+  try { await ensureBodies(steps.map(s => s.pid).filter(Boolean)); dataWarn(); }
+  catch (e) { showBanner(`<b>問題を読み込めませんでした</b>${esc(e.message)}`); route(); return; }
+  // 進み具合の表示を保つため、解き終えた分も steps に残して i から始める
+  session = { steps: [...d.steps.slice(0, d.i), ...steps], i: d.i, results: Array.isArray(d.results) ? d.results : [], cfg: d.cfg || null };
+  saveSession();
+  studyStart = Date.now(); breakNotified = 0; lastActivity = Date.now();
+  if (location.hash !== '#today') location.hash = '#today'; else route();
+}
+
 // ---------- セッション ----------
 function renderStep() {
   document.body.classList.add('immersive');
   const step = session.steps[session.i];
-  if (!step) { session.shown = true; return renderSummary(); }
+  if (!step) { session.shown = true; clearSavedSession(); return renderSummary(); }
   if (step.kind === 'intro') return renderIntro(step);
   return renderProblem(step);
 }
@@ -535,11 +616,11 @@ function topBar() {
 }
 function bindQuit() {
   $('#quit').addEventListener('click', () => {
-    if (session.results.length && !confirm('中断しますか？ここまでの結果は保存されています。')) return;
-    session = null; route();
+    if (session.results.length && !confirm('中断しますか？ここまでの結果は保存されています。ホームの「前回の続き」から再開できます。')) return;
+    saveSession(); session = null; route();
   });
 }
-function nextStep() { lastActivity = Date.now(); stopTimer(); session.i++; clearGraphs(); window.scrollTo(0, 0); renderStep(); }
+function nextStep() { lastActivity = Date.now(); stopTimer(); session.i++; saveSession(); clearGraphs(); window.scrollTo(0, 0); renderStep(); }
 
 function renderIntro(step) {
   const c = cardById[step.cid];
@@ -725,6 +806,7 @@ function recordResult(pid, grade, extra) {
   }
   save();
   session.results.push({ pid, grade });
+  saveSession();
   return state.log[state.log.length - 1];
 }
 
@@ -864,7 +946,8 @@ function renderProblem(step) {
     const fb = $('#feedback');
     if (res.ok) {
       a.correct = true;
-      const grade = a.attempts > 1 || a.hints > 0 ? 2 : (a.conf === 'high' ? 4 : 3);
+      // 自信なしで正解したときは「ヒントあり」と同じ短い間隔（早めに復習）
+      const grade = a.attempts > 1 || a.hints > 0 || a.conf === 'low' ? 2 : (a.conf === 'high' ? 4 : 3);
       finish(grade);
       play('correct');
       fb.innerHTML = `<div class="result ok fade-in"><span class="mark">${ICON.ok}</span><div>正解${a.hints ? `<small>ヒント${a.hints}つで到達</small>` : a.attempts > 1 ? '<small>2回目以降で正解</small>' : ''}</div></div>`;
@@ -1332,8 +1415,9 @@ function renderWritten(step, e) {
     }
   }
   function gradeOf(sg) {
-    // 選択式で正解したときは、思い出して書けたときより定着が弱いとみて「確実」でも 3 まで
-    return sg === 'full' ? (a.hint || a.attempts > 1 ? 2 : a.conf === 'high' && !useChoice ? 4 : 3) : sg === 'part' ? 2 : 1;
+    // 選択式で正解したときは、思い出して書けたときより定着が弱いとみて「確実」でも 3 まで。
+    // 自信なしで正解したときは「ヒントあり」と同じ 2（早めに復習）
+    return sg === 'full' ? (a.hint || a.attempts > 1 || a.conf === 'low' ? 2 : a.conf === 'high' && !useChoice ? 4 : 3) : sg === 'part' ? 2 : 1;
   }
 
   function grade(selfSg) {
@@ -1348,13 +1432,18 @@ function renderWritten(step, e) {
     const after = $('#after');
     after.innerHTML = `
       <div class="verdict v-${sg} fade-in">${ICON[sg]}<b>${SELF.find(x => x.id === sg).label}</b></div>
+      ${confNoteHTML(sg, a.conf, $('#solbox') ? '' : b.k)}
       ${$('#solbox') ? '' : solutionHTML()}
       <div class="label">手応え（任意）</div>
       <div class="feel" id="feel">${FEEL.map(f => `<button data-k="${f.k}"><b>${f.k}</b><span>${f.label}</span></button>`).join('')}</div>
       <div class="label">${sg === 'full' ? 'この問題で最初に気づくべきことを1行で（任意）' : 'どこで詰まった？（任意）'}</div>
       <textarea class="explain" id="explain" placeholder="${sg === 'full' ? '例：交点の x 座標を出して1/6公式' : '例：(2) の場合分けで a=1 を落とした'}"></textarea>
-      <button class="btn primary block" id="next" style="margin-top:14px">${session.i + 1 < session.steps.length ? '次へ' : '結果を見る'}</button>`;
+      <div class="btn-row">
+        ${similarTo(state, e.id, session.steps.map(st => st.pid)) ? `<button class="btn" id="similar">類題を1問追加</button>` : ''}
+        <button class="btn primary" id="next">${session.i + 1 < session.steps.length ? '次へ' : '結果を見る'}</button>
+      </div>`;
     math(after);
+    $('#similar')?.addEventListener('click', (ev) => addSimilar(e.id, ev.currentTarget));
     $$('#feel button').forEach(btn => btn.addEventListener('click', () => {
       a.feel = +btn.dataset.k;
       $$('#feel button').forEach(x => x.classList.toggle('on', x === btn));
@@ -1370,6 +1459,24 @@ function renderWritten(step, e) {
 
   drawInputs();
   actions();
+}
+
+// 自信度と結果のずれへの一言：正解だが自信なし → 早めに復習／確実なのに解けず → 思い込みの確認
+function confNoteHTML(sg, conf, key) {
+  if (sg === 'full' && conf === 'low') return `<p class="conf-note fade-in">自信がないまま正解しました。定着しきっていないので、早めに復習に出します。</p>`;
+  if (sg !== 'full' && conf === 'high') return `<div class="conf-note warn fade-in"><b>「確実」だったのに解けませんでした。</b>思い込みや見落としがなかったか、解説の「核となるアイデア」と照らし合わせてください。復習でも優先して出します。${key ? `<div class="keypoint">${key}</div>` : ''}</div>`;
+  return '';
+}
+// 類題を今の問題の次に差し込む
+async function addSimilar(pid, btn) {
+  const sim = similarTo(state, pid, session.steps.map(st => st.pid));
+  if (!sim) { btn.disabled = true; btn.textContent = '類題が見つかりません'; return; }
+  btn.disabled = true; btn.textContent = '読み込んでいます…';
+  try { await ensureBodies([sim.id]); } catch (err) { btn.disabled = false; btn.textContent = '類題を1問追加'; toast('類題を読み込めませんでした'); return; }
+  session.steps.splice(session.i + 1, 0, { kind: 'problem', pid: sim.id });
+  saveSession();
+  btn.textContent = `類題を追加しました（${LEVELS[sim.lv]}）`;
+  const nx = $('#next'); if (nx) nx.textContent = '次へ（類題）';
 }
 
 function renderSummary() {
@@ -1403,7 +1510,7 @@ function renderSummary() {
     const cfg = session.cfg || { size: 8 };
     if (cfg.collection) { openCollection(cfg.collection); return; }
     if (cfg.ids) { openIds(cfg.ids); return; }
-    const steps = cfg.review ? pickReview(state, cfg) : pickPractice(state, cfg);
+    const steps = cfg.today ? pickToday(state, { levels: cfg.levels, size: cfg.size, weak: weakestField()?.f.key }).steps : cfg.review ? pickReview(state, cfg) : pickPractice(state, cfg);
     if (!steps.length) { toast('今は出題できる問題がありません'); return; }
     startSession(steps, cfg);
   });
@@ -1661,7 +1768,7 @@ function fieldStats(keys) {
 }
 
 // 得意度：各問題の最新の結果（完答 1・一部やヒント 0.5・解けず 0）を難易度で重みづけした平均。
-// 少ない回数で極端にならないよう 0.5 に2問分寄せる。3問未満は「データ不足」。
+// 少ない回数で極端にならないよう 0.5 に2問分寄せる。5問未満は「データ不足」、10問未満は「暫定」。
 function strength(keys) {
   const set = new Set(keys);
   const last = new Map();
@@ -1673,7 +1780,17 @@ function strength(keys) {
     sw += w; ss += w * sc;
   }
   const n = last.size;
-  return { n, score: n >= 3 ? (ss + 1) / (sw + 2) : null };
+  return { n, score: n >= MIN_JUDGE ? (ss + 1) / (sw + 2) : null };
+}
+const MIN_JUDGE = 5;
+// いちばん苦手な分野（得意度 0.5 未満で、5問以上の結果があるもの）
+function weakestField() {
+  let w = null;
+  for (const f of FIELDS) {
+    const st = strength([f.key]);
+    if (st.score != null && st.score < 0.5 && (!w || st.score < w.score)) w = { f, ...st };
+  }
+  return w;
 }
 const SUBJ_SHORT = { '数I': 'I', '数A': 'A', '数II': 'II', '数B': 'B', '数III': 'III', '数C': 'C', '融合': '融合' };
 // 得意度 → タイルの色（苦手＝赤系、得意＝緑系、データ不足＝無地）
@@ -1709,18 +1826,28 @@ function strengthHTML() {
   return `
     <h2>得意・苦手</h2>
     <div class="panel strength">
-      ${judged.length ? '' : '<p class="muted" style="margin:0 0 8px">1つの分野で3問以上解くと、その分野の得意・苦手が出ます。</p>'}
+      ${judged.length ? '' : `<p class="muted" style="margin:0 0 8px">1つの分野で${MIN_JUDGE}問以上解くと、その分野の得意・苦手が出ます（10問までは暫定）。</p>`}
       ${radar}
       <div class="sw-cols">
-        <div><b class="sw-good">得意</b>${good.length ? good.map(x => `<span>${name(x)} <em>${Math.round(x.score * 100)}</em></span>`).join('') : '<span class="muted">まだありません</span>'}</div>
-        <div><b class="sw-weak">苦手</b>${weak.length ? weak.map(x => `<span>${name(x)} <em>${Math.round(x.score * 100)}</em></span>`).join('') : '<span class="muted">まだありません</span>'}</div>
+        <div><b class="sw-good">得意</b>${good.length ? good.map(x => `<span>${name(x)} <em>${Math.round(x.score * 100)}</em>${x.n < 10 ? '<small>暫定</small>' : ''}</span>`).join('') : '<span class="muted">まだありません</span>'}</div>
+        <div><b class="sw-weak">苦手</b>${weak.length ? weak.map(x => `<span>${name(x)} <em>${Math.round(x.score * 100)}</em>${x.n < 10 ? '<small>暫定</small>' : ''}</span>`).join('') : '<span class="muted">まだありません</span>'}</div>
       </div>
       <div class="tiles">${subs.map(s => `<div class="tile-row"><span class="tile-sub">${esc(SUBJ_SHORT[s.name] || s.name)}</span><div class="tile-grid">${s.fields.map(f => {
         const x = fs.find(y => y.f.key === f.key);
-        return `<button class="tile" data-f="${esc(f.key)}" style="${strengthStyle(x.score)}"><span>${esc(f.name)}</span><b>${x.score == null ? (x.n ? `${x.n}問` : '—') : Math.round(x.score * 100)}</b></button>`;
+        return `<button class="tile" data-f="${esc(f.key)}" style="${strengthStyle(x.score)}"><span>${esc(f.name)}</span><b>${x.score == null ? (x.n ? `${x.n}問` : '—') : Math.round(x.score * 100) + (x.n < 10 ? '?' : '')}</b></button>`;
       }).join('')}</div></div>`).join('')}</div>
-      <p class="muted legend"><i class="lg-weak"></i>苦手<i class="lg-mid"></i>ふつう<i class="lg-good"></i>得意　数字は得意度（0〜100）。最後に解いた結果を難しい問題ほど重く数えます。タップでその分野を演習。</p>
+      <p class="muted legend"><i class="lg-weak"></i>苦手<i class="lg-mid"></i>ふつう<i class="lg-good"></i>得意　数字は得意度（0〜100）。最後に解いた結果を難しい問題ほど重く数えます。「?」は10問未満の暫定値。タップでその分野を演習。</p>
+      ${trendHTML()}
     </div>`;
+}
+// 最近の伸び：直近14日とそれ以前の完答率。どちらも10回以上あるときだけ比べる
+function trendHTML(now = Date.now()) {
+  const cut = now - 14 * 86400000;
+  const rate = (ls) => ls.filter(l => l.g >= 3).length / ls.length;
+  const recent = state.log.filter(l => l.t >= cut), before = state.log.filter(l => l.t < cut);
+  if (recent.length < 10 || before.length < 10) return `<p class="muted trend">最近の伸びは、直近2週間とそれ以前にそれぞれ10回以上の解答がたまると表示します。</p>`;
+  const a = rate(recent), b = rate(before), d = Math.round((a - b) * 100);
+  return `<p class="trend">完答率：直近2週間 <b>${Math.round(a * 100)}%</b>（${recent.length}回）／それ以前 ${Math.round(b * 100)}%（${before.length}回）${Math.abs(d) < 5 ? '　ほぼ同じ' : d > 0 ? `　<span class="up">+${d}</span>` : `　<span class="down">${d}</span>`}<br><span class="muted small">解く問題の難易度が変わると完答率も変わります。目安として見てください。</span></p>`;
 }
 
 function renderMap() {
@@ -1961,7 +2088,7 @@ function renderSettings() {
     const keep = { settings: state.settings, practice: state.practice, settingsAt: state.settingsAt, graphExprs: state.graphExprs, graph3Exprs: state.graph3Exprs, graphCExprs: state.graphCExprs, graphVExprs: state.graphVExprs };
     if (k === 'device') { await sync.logout(); state = { ...freshState(), ...keep }; }
     else state = { ...freshState(), ...keep, resetAt: Date.now() };   // 消した印：同期で、ほかの端末・サーバーの古い記録を持ち込まない
-    save(); session = null; toast('消去しました'); route();
+    save(); session = null; clearSavedSession(); toast('消去しました'); route();
     if (k === 'all' && logged) sync.syncNow();
   });
 }

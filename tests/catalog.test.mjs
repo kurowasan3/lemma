@@ -31,6 +31,30 @@ const st = JSON.parse(fs.readFileSync(path.join(root, 'tests/fixtures/state-v0.6
 ok(CAT.pickPractice(st, { size: 8 }).length === 8, 'pickPractice()');
 ok(Array.isArray(CAT.pickReview(st, { size: 5 })), 'pickReview()');
 
+// 今日の演習（v0.16）：復習待ちを先に、残りを新しい問題で。苦手分野から最大2問
+{
+  const now = Date.now(), old = now - 60 * 86400000;
+  const ids = CAT.ENTRIES.filter(e => e.kind === 'bank').slice(0, 3).map(e => e.id);
+  const st = { problems: {}, pstat: {}, log: [] };
+  for (const id of ids) { st.problems[id] = { last: old, n: 1 }; st.pstat[id] = { S: 1, D: 5, last: old, reps: 1, lapses: 0 }; }
+  const weak = CAT.FIELDS.find(f => f.key !== CAT.entryById.get(ids[0]).f).key;
+  const plan = CAT.pickToday(st, { size: 8, weak });
+  const got = plan.steps.map(x => x.pid);
+  ok(plan.due === 3 && plan.fresh === 5 && got.length === 8 && new Set(got).size === 8, `今日の演習：復習3問＋新しい問題5問（${plan.due}+${plan.fresh}）`);
+  ok(ids.every(id => got.includes(id)), '今日の演習に復習待ちがすべて入る');
+  ok(got.filter(id => CAT.entryById.get(id).f === weak && !ids.includes(id)).length >= 2, '今日の演習に苦手分野の新しい問題が2問入る');
+  const only = CAT.pickToday({ problems: {}, pstat: {}, log: [] }, { size: 6, levels: [0] });
+  ok(only.due === 0 && only.steps.length === 6 && only.steps.every(x => CAT.entryById.get(x.pid).lv === 0), '今日の演習：難易度の選択を守る');
+}
+// 類題（v0.16）：同じ分野・難易度の差1以内・共通タグあり
+{
+  const e0 = CAT.ENTRIES.find(e => e.kind === 'bank' && (e.tg || []).length >= 2);
+  const sim = CAT.similarTo({ problems: {} }, e0.id);
+  ok(sim && sim.id !== e0.id && sim.f === e0.f && Math.abs(sim.lv - e0.lv) <= 1 && sim.tg.some(t => e0.tg.includes(t)), `類題：${e0.id} → ${sim && sim.id}`);
+  const sim2 = CAT.similarTo({ problems: {} }, e0.id, [sim.id]);
+  ok(!sim2 || sim2.id !== sim.id, '類題：除外した問題は選ばない');
+}
+
 // 頻出度：1〜3 だけが入り、出題では頻出度の高い問題が多めに選ばれること
 ok(CAT.ENTRIES.every(e => e.v === undefined || e.v === 1 || e.v === 3), '頻出度は 1 か 3 だけが書かれる（2 は既定）');
 ok(CAT.ENTRIES.some(e => e.v === 3) && CAT.ENTRIES.some(e => e.v === 1), '頻出度の高・低がどちらもある');
