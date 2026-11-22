@@ -84,7 +84,7 @@ const base = [full('p1', 30), full('p2', 29), full('p3', 28), full('p1', 10)];  
   // 9) 古い記録しかない：基準をすべて満たした記録でも、1年たてばどの問題も解き直しの時期 → 「今も覚えている」が確かめられない
   const log = [...base, full('p5', 1)];
   const m = techMastery(st(log), T, E, now + 365 * D, ctx);
-  ok(m.status === 'learning' && m.stale && !m.checks.fresh, '9) 古い記録しかない：今も覚えているか確かめられず習得にしない');
+  ok(m.status === 'learning' && m.stale && m.retention === 'stale' && !m.checks.fresh, '9) 古い記録しかない：今も覚えているか確かめられず習得にしない');
 }
 {
   // 10) 複数の解法が結びついた問題（c1）と主な分野だけ：c1 は「ほかの解法も関わる」文脈なので転用の候補になる。
@@ -129,7 +129,29 @@ ok(techMastery(st([...base, full('p5', 1)]), T, E, now).transfer.stage === 'none
 {
   const s = { log: [{ p: 'p1', t: now - D, g: 3 }, { p: 'p2', t: now, g: 4, ok: true }], problems: {} };
   const m = techMastery(s, T, E, now, ctx);
-  ok(m.status === 'learning' && !m.stale && m.unanswered.length === 2, '古い形の記録（r・k・pstat なし）でも判定でき、想起は未回答として扱う');
+  ok(m.status === 'learning' && m.retention === 'unknown' && m.unanswered.length === 2, '古い形の記録（r・k・pstat なし）でも判定でき、想起は未回答・保持は確認できないとして扱う');
 }
+// ---- v0.21：保持（今も覚えているか）。pstat が無い記録では確認できない
+{
+  // 習得のほかの条件をすべて満たす記録（p1 を20日あけて再完答・別の分野 p5 で完答）
+  const log = [...base, full('p5', 1)];
+  const R = (pids, dayAgo) => Object.fromEntries(pids.map(p => [p, review(undefined, 4, now - dayAgo * D)]));
+  const at = (pstat) => techMastery({ log, problems: {}, pstat }, T, E, now, ctx);
+  const m1 = at({});
+  ok(m1.retention === 'unknown' && !m1.checks.fresh && m1.status === 'learning', 'P1-1) 古い形式で4問以上完答・他の条件も満たすが pstat が無い：保持は確認できず習得にしない');
+  ok(Object.entries(m1.checks).filter(([k, v]) => !v).map(([k]) => k).join() === 'fresh', '   満たしていないのは保持だけ（ほかの条件の判定はそのまま）');
+  const m2 = at(R(['p5'], 1));
+  ok(m2.retention === 'held' && m2.status === 'mastered', 'P1-2) pstat が1つだけで、その問題を今も覚えている：習得');
+  const m3 = at(R(['p5'], 200));
+  ok(m3.retention === 'stale' && m3.status === 'learning', 'P1-3) pstat が1つだけで、解き直しの時期を過ぎている：習得にしない');
+  const m4 = at({ ...R(['p1', 'p2'], 200), ...R(['p5'], 1) });
+  ok(m4.retention === 'held' && m4.heldPids.join() === 'p5' && m4.status === 'mastered', 'P1-4) pstat が複数で一部だけ覚えている：1問でも覚えていれば保持あり');
+  const m5 = at(R(['p1', 'p2', 'p5'], 200));
+  ok(m5.retention === 'stale' && m5.status === 'learning', 'P1-5) すべての pstat が解き直しの時期を過ぎている：習得にしない');
+  const m6 = at(R(['p3'], 200));
+  ok(m6.retention === 'stale' && m6.status === 'learning', 'P1-6) 古い記録（pstat なし）と新しい記録が混在し、pstat のある問題は時期を過ぎている：pstat の無い問題を保持の根拠にしない');
+  ok(masterChecklist(m1).find(c => c.label.includes('今も覚えている')).now.includes('確認できない'), '   画面の説明：「確認できない」と表示する');
+}
+
 console.log(`mastery.test: ${pass} 件 OK${fail ? `、${fail} 件失敗` : ''}`);
 process.exit(fail ? 1 : 0);

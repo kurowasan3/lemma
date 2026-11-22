@@ -171,6 +171,12 @@ const base = JSON.parse(fs.readFileSync(path.join(root, 'tests/fixtures/state-v0
   ok(M2.log.find(l => l.p === 'I-EXP-001').r === 3, '向こうの端末に r があれば、こちらにも入る');
   const L2 = clone(L); L2.log[0].r = 1;
   ok(S.mergeState(clone(L2), clone(L)).log.find(l => l.p === 'I-EXP-001').r === 1, '同じ端末で答え直した r は手元の値が残る');
+  // pstat（問題ごとの復習の記録）も失われない：片方にしか無い問題はそのまま、両方にあれば新しい方
+  const L3 = clone(L), R3 = clone(R);
+  L3.pstat = { 'I-EXP-001': { S: 3, D: 5, last: 1000, reps: 1, lapses: 0 } };
+  R3.pstat = { 'I-EXP-003': { S: 1, D: 6, last: 3000, reps: 1, lapses: 1 }, 'I-EXP-001': { S: 1, D: 6, last: 500, reps: 1, lapses: 0 } };
+  const M3 = S.mergeState(clone(L3), clone(R3));
+  ok(M3.pstat['I-EXP-001'].last === 1000 && M3.pstat['I-EXP-003'] && M3.log.find(l => l.p === 'I-EXP-001').r === 3, 'pstat は問題ごとに新しい方が残り、片方にしか無いものも残る（r も一緒に）');
 }
 
 console.log(`sync.test: ${pass} 件 OK${fail ? `、${fail} 件失敗` : ''}`);

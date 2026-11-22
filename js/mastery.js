@@ -29,14 +29,22 @@
 //   none     未学習  … この解法に結びつく問題をまだ解いていない
 //   review   要復習  … 3問以上解いて得意度 0.5 未満／一度完答した問題を直近30日に解けなかった／最後の2回が続けて完答でない
 //   mastered 習得    … MASTER の条件と転用・間をあけた再完答をすべて満たし、かつ今も覚えていること
-//                     （完答した問題のうち1問でも、問題ごとの復習で解き直しの時期が来ていない＝scheduler の R ≥ 0.9）
+//                     （問題ごとの復習の記録 pstat のある完答問題のうち1問以上が、まだ解き直しの時期でない＝R ≥ 0.9。
+//                       pstat が1つも無ければ確認できないので満たさない）
 //   learning 学習中  … それ以外
 import { retrievability, TARGET_R } from './scheduler.js';
 
-export const FILE_VERSION = '0.20.0';
+export const FILE_VERSION = '0.21.0';
 export const MASTER = { full: 4, solo: 2, score: 0.7 };
 export const STATUS = { none: '未学習', learning: '学習中', review: '要復習', mastered: '習得' };
-export const TRANSFER = { unavailable: '判定できる問題がない', none: '未確認', candidate: '候補問題で完答', recalled: '想起も確認' };
+// 転用の段階の表示。「転用できた」「応用力が身についた」とは言わない（代理の指標のため）
+export const TRANSFER = {
+  unavailable: '判定できる問題がない',
+  none: '異なる文脈の問題はまだ未確認',
+  candidate: '異なる文脈の問題で完答',
+  recalled: '異なる文脈の問題で完答・解法の想起も自己申告あり',
+};
+export const RETENTION = { held: 'はい', stale: 'すべて解き直しの時期を過ぎている', unknown: '確認できない（問題ごとの復習の記録がない）' };
 const DAY = 86400000;
 const RECALLED = (r) => r === 1 || r === 2;
 
@@ -102,16 +110,22 @@ export function techMastery(state, tech, entryById, now = Date.now(), ctx = null
   const last2 = seq.slice(-2);
   const twoMiss = last2.length === 2 && last2.every(l => l.g < 3);
   const tr = transferOf(solo, recalled, ctx);
-  // 今も覚えているか：最後に完答した問題のうち1問でも、問題ごとの復習の時期が来ていないこと（pstat の無い古い記録は判断しない）
+  // 今も覚えているか（保持）：最後に完答した問題のうち、問題ごとの復習の記録（pstat）がある問題で判定する。
+  //   held    … 少なくとも1問が、まだ解き直しの時期になっていない（R ≥ 0.9）
+  //   stale   … pstat のある問題がすべて解き直しの時期を過ぎている
+  //   unknown … pstat のある問題が1問もない（古い形式の記録だけ）→ 保持は確認できない。成功とは推定しない
+  // pstat の無い古い記録も、完答・想起・転用の記録としては使う。記録は書きかえない。
   const withStat = full.filter(pid => state.pstat && state.pstat[pid]);
-  const stale = withStat.length > 0 && withStat.every(pid => retrievability(state.pstat[pid], now) < TARGET_R);
+  const heldPids = withStat.filter(pid => retrievability(state.pstat[pid], now) >= TARGET_R);
+  const retention = !withStat.length ? 'unknown' : heldPids.length ? 'held' : 'stale';
+  const stale = retention === 'stale';
   const checks = {
     full: full.length >= MASTER.full,
     solo: solo.length >= MASTER.solo,
     transfer: tr.stage === 'candidate' || tr.stage === 'recalled' || tr.stage === 'unavailable',
     retained,
     score: score != null && score >= MASTER.score,
-    fresh: !stale,
+    fresh: retention === 'held',
   };
   let status;
   if (!n) status = 'none';
@@ -120,7 +134,7 @@ export function techMastery(state, tech, entryById, now = Date.now(), ctx = null
   else status = 'learning';
   return {
     status, n, score, full, solo, recalled, noRecall, unanswered, missed, wrong, lapses, fields: [...fields],
-    retained, twoMiss, stale, checks, transfer: tr, lastT: seq.length ? seq[seq.length - 1].t : 0,
+    retained, twoMiss, stale, retention, heldPids, checks, transfer: tr, lastT: seq.length ? seq[seq.length - 1].t : 0,
   };
 }
 
@@ -165,10 +179,10 @@ export function masterChecklist(m) {
   return [
     { label: `完答した問題 ${MASTER.full}問`, ok: m.checks.full, now: `${m.full.length}問` },
     { label: `解法を知らされずに完答 ${MASTER.solo}問（「浮かばなかった」と答えた問題を除く）`, ok: m.checks.solo, now: `${m.solo.length}問` },
-    { label: '転用：違う2つの文脈（主な分野と別の分野、ほかの解法も関わるかどうか）で、知らされずに完答', ok: m.checks.transfer, now: TRANSFER[m.transfer.stage] },
+    { label: '違う2つの文脈（主な分野と別の分野、ほかの解法も関わるかどうか）の問題で、知らされずに完答', ok: m.checks.transfer, now: TRANSFER[m.transfer.stage] },
     { label: '3日以上あけて、同じ問題をもう一度完答', ok: m.checks.retained, now: m.retained ? 'あり' : 'なし' },
     { label: `得意度 ${Math.round(MASTER.score * 100)} 以上`, ok: m.checks.score, now: m.score == null ? '3問から' : `${Math.round(m.score * 100)}` },
-    { label: '完答した問題のどれかが、まだ解き直しの時期になっていない（今も覚えている）', ok: m.checks.fresh, now: m.stale ? 'すべて解き直しの時期' : 'はい' },
+    { label: '完答した問題のどれかが、まだ解き直しの時期になっていない（今も覚えている）', ok: m.checks.fresh, now: RETENTION[m.retention] },
   ];
 }
 

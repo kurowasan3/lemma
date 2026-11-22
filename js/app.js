@@ -24,7 +24,7 @@ import {
 } from './catalog.js';
 import { techMastery, techCandidates, masterChecklist, makeCtx, transferTargets, transferWhy, MASTER, STATUS, TRANSFER, TRANSFER_KIND } from './mastery.js';
 
-const VERSION = '0.20.0';
+const VERSION = '0.21.0';
 const KEY = 'lemma.v2';
 let sync = null, syncApplying = false, syncStatus = null;   // アカウントと同期（initSync で用意）
 const $ = (sel, el = document) => el.querySelector(sel);
@@ -514,7 +514,7 @@ function renderTech(id) {
 function recallBreakdownHTML(m) {
   const rows = [
     ['解法を知らされずに完答', m.solo.length, '「浮かばなかった」と答えた問題を除く'],
-    ['解法が浮かんで完答', m.recalled.length, '自己申告'],
+    ['想起を確認（浮かんで完答）', m.recalled.length, '本人の回答'],
     ['浮かばなかったが完答', m.noRecall.length, '別の方法で解けた可能性'],
     ['浮かんだが完答できず', m.missed.length, '実行（計算・場合分け）で崩れた'],
     ['想起は未回答', m.unanswered.length, '成功にも失敗にも数えない'],
@@ -529,10 +529,10 @@ function transferHTML(m, cx) {
   const msg = {
     unavailable: 'この解法の収録問題は文脈が1種類なので、転用は判定できません（習得の条件から外しています）。',
     none: '違う2つの文脈の問題を、解法を知らされずに完答した記録がまだありません。力が足りないという意味ではなく、まだ確かめていないということです。',
-    candidate: `違う文脈（${kinds}）の問題で完答しました。ただし、その解法を実際に使ったかは確認していません。`,
-    recalled: `違う文脈（${kinds}）の問題で完答し、解法が浮かんだとも答えています（自己申告）。`,
+    candidate: `違う文脈（${kinds}）の問題で完答しています。問題の分類からの判断で、その解法を実際に使ったかは確認していません。`,
+    recalled: `違う文脈（${kinds}）の問題で完答し、その問題で解法が浮かんだという回答もあります。問題の分類と本人の回答からの判断です。`,
   }[t.stage];
-  return `<p class="small" style="margin:6px 0 0"><b>転用：${TRANSFER[t.stage]}</b>　${msg}</p>`;
+  return `<p class="small" style="margin:6px 0 0"><b>違う文脈：${TRANSFER[t.stage]}</b>　${msg}</p>${m.retention === 'unknown' && m.full.length ? '<p class="small muted" style="margin:4px 0 0">今も覚えているか：問題ごとの復習の記録がない古い記録だけなので、確認できません（習得の条件を満たしません）。</p>' : ''}`;
 }
 
 // 定着度の「次にやること」：記録から当てはまる規則を上から3つまで。各規則の根拠をそのまま文にする
@@ -604,8 +604,8 @@ function techStrengthHTML() {
       ${cand.fresh.length ? `<h3>次に学ぶとよい解法</h3><p class="muted small" style="margin:0 0 4px">まだ学んでいない解法のうち、必須の前提を学び始めているもの（問題の多い順）。</p><div class="tech-list">${cand.fresh.slice(0, 3).map(t => row(t, `<span class="muted">${t.main.length}問</span>`)).join('')}</div>` : ''}
       ` : `<p class="muted" style="margin:0">解いた問題に結びつく解法ごとに、未学習・学習中・要復習・習得を判定します。</p>`}
       <details class="checks"><summary>判定の基準</summary><ul>
-        <li><b>習得</b>：完答 ${MASTER.full}問以上・解法を知らされずに完答 ${MASTER.solo}問以上（「浮かばなかった」と答えた問題を除く）・転用（違う2つの文脈で知らされずに完答）・3日以上あけて同じ問題をもう一度完答・得意度 ${Math.round(MASTER.score * 100)} 以上・完答した問題のどれかがまだ解き直しの時期になっていない。想起の質問に答えていない回は、想起の成功にも失敗にも数えません</li>
-        <li><b>転用</b>の「違う文脈」は、問題データから分かる代理の指標（その解法の主な分野以外の問題か、ほかの解法も結びつく問題か）で、その解法を実際に使ったことを確かめたものではありません</li>
+        <li><b>習得</b>：完答 ${MASTER.full}問以上・解法を知らされずに完答 ${MASTER.solo}問以上（「浮かばなかった」と答えた問題を除く）・転用（違う2つの文脈で知らされずに完答）・3日以上あけて同じ問題をもう一度完答・得意度 ${Math.round(MASTER.score * 100)} 以上・完答した問題のどれかがまだ解き直しの時期になっていない（問題ごとの復習の記録がない古い記録だけでは確認できないので満たしません）。想起の質問に答えていない回は、想起の成功にも失敗にも数えません</li>
+        <li><b>転用</b>の「違う文脈」は、問題データから分かる代理の指標（その解法の主な分野以外の問題か、ほかの解法も結びつく問題か）で、その解法を実際に使ったことを確かめたものではありません。「異なる文脈の問題で完答」は、応用力が身についたという判定ではありません</li>
         <li><b>要復習</b>：3問以上解いて得意度 50 未満、一度完答した問題を直近30日に解けなかった、または最後の2回が続けて完答でない</li>
         <li><b>学習中</b>：解いたことがあり、上のどちらでもない</li>
       </ul><p class="muted small">問題ごとの復習（いつもう一度解くか）は、これとは別に問題ごとの記録で決めています。</p></details>
@@ -640,7 +640,8 @@ function todayPlan(pr, weak) {
 function planSummary(plan) {
   const c = plan.count;
   return [c.due ? `復習 ${c.due}問` : '', c.tech ? `要復習の解法 ${c.tech}問` : '', c.new ? `新しい解法 ${c.new}問` : '',
-    c.transfer ? `解法を違う文脈で ${c.transfer}問` : '', c.weak ? `苦手分野 ${c.weak}問` : '', c.fresh ? `新しい問題 ${c.fresh}問` : ''].filter(Boolean).join('・');
+    c.transfer ? `違う文脈の問題 ${c.transfer}問` : '', c.weak ? `苦手分野 ${c.weak}問` : '', c.fresh ? `新しい問題 ${c.fresh}問` : ''].filter(Boolean).join('・')
+    + (plan.short ? `（${plan.short.text}）` : '');
 }
 function renderToday() {
   const pr = state.practice;

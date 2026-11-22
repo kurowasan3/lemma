@@ -2,7 +2,7 @@
 import { PROBLEMS as BUILTIN, cardById, problemById as builtinById, unitOf as builtinUnit } from './content.js';
 import { retrievability, dueAt, TARGET_R } from './scheduler.js';
 
-export const FILE_VERSION = '0.20.0';
+export const FILE_VERSION = '0.21.0';
 
 // 難易度（問題管理表と同じ6段階。0=基礎 は v0.6 で追加。v0.15 で 3〜5 の名前を変更）
 export const LEVELS = { 0: '基礎', 1: '標準', 2: '入試基礎', 3: '入試標準', 4: '入試発展', 5: '数学探究' };
@@ -221,19 +221,32 @@ export function pickToday(state, { levels = null, size = 8, weak = null, weakNam
   }
   const take = (cfg, n) => {
     const got = [];
-    for (const st of pickPractice(state, { ...cfg, size: n + used.size + size })) {
+    // 分野の上限で飛ばす分があるので、候補は選んだ難易度の問題すべてから順に見る（制限は越えない）
+    for (const st of pickPractice(state, { ...cfg, size: Number.MAX_SAFE_INTEGER })) {
       const e = entryById.get(st.pid);
-      if (!e || used.has(e.id) || got.includes(e) || fieldN(e.f) + got.filter(x => x.f === e.f).length >= fieldCap) continue;
+      if (!e || used.has(e.id) || got.includes(e)) continue;
+      // 未着手が尽きたときは解いたことのある問題も候補になるが、3日以内に解いた問題は出さない
+      if (state.problems[e.id] && Date.now() - state.problems[e.id].last < 3 * 86400000) continue;
+      if (fieldN(e.f) + got.filter(x => x.f === e.f).length >= fieldCap) continue;
       got.push(e);
       if (got.length >= n) break;
     }
     return got;
   };
   if (weak && room() > 0) for (const e of take({ fields: [weak], levels }, Math.min(2, room()))) add(e, `苦手な分野「${weakName}」を補う`, 'weak');
-  if (room() > 0) for (const e of take({ levels }, room())) add(e, '新しい問題', 'fresh');
+  if (room() > 0) for (const e of take({ levels }, room())) add(e, state.problems[e.id] ? '解いてから日がたった問題（選んだ難易度の未着手が残っていない）' : '新しい問題', 'fresh');
   const byE = new Map(out.map(x => [x.e.id, x]));
   const count = {}; for (const x of out) count[x.tag] = (count[x.tag] || 0) + 1;
+  // 出題数が足りないときの理由（制限は越えずに、足りないまま出す）
+  let short = null;
+  if (out.length < size) {
+    const rest = pool({ levels }).filter(e => !used.has(e.id) && !(state.problems[e.id] && Date.now() - state.problems[e.id].last < 3 * 86400000)).length;
+    short = { want: size, got: out.length, cause: rest === 0 ? 'pool' : 'field',
+      text: rest === 0 ? `選んだ難易度で今出せる問題（未着手か、解いてから3日以上たった問題）がこれ以上ないため ${out.length}問です`
+        : `1回の中で同じ分野に偏らないよう（新しい問題は1つの分野から3分の1、復習と合わせて半分まで）、${out.length}問になりました。難易度の選択を広げると増えます` };
+  }
   return {
+    short,
     steps: interleave(out.map(x => x.e)).map(e => ({ kind: 'problem', pid: e.id, why: byE.get(e.id).why })),
     due: count.due || 0, fresh: (count.fresh || 0) + (count.weak || 0), count, items: out.map(x => ({ pid: x.e.id, why: x.why, tag: x.tag })),
   };

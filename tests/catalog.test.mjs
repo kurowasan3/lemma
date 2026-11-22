@@ -76,7 +76,7 @@ ok(Array.isArray(CAT.pickReview(st, { size: 5 })), 'pickReview()');
   const { transferWhy } = await import('../js/mastery.js');
   const tech = { ...techCandidates(st, T.list, CAT.entryById, Date.now(), (t) => CX.get(t.id)), name: (id) => T.byId.get(id).name, transferWhy: (id, pid) => transferWhy(CX.get(id), pid, T.byId.get(id).name) };
   const plan = CAT.pickToday(st, { size: 8, tech });
-  const RULES = [/^前回完答できなかった問題の復習$/, /^復習の時期$/, /^要復習の解法「.+」を立て直す$/, /^まだ学んでいない解法「.+」を学ぶ$/, /^「.+」を別の分野の問題で使う$/, /^「.+」を、ほかの解法も関わる問題で使う$/, /^苦手な分野「.+」を補う$/, /^新しい問題$/];
+  const RULES = [/^前回完答できなかった問題の復習$/, /^復習の時期$/, /^要復習の解法「.+」を立て直す$/, /^まだ学んでいない解法「.+」を学ぶ$/, /^「.+」を別の分野の問題で使う$/, /^「.+」を、ほかの解法も関わる問題で使う$/, /^苦手な分野「.+」を補う$/, /^新しい問題$/, /^解いてから日がたった問題（選んだ難易度の未着手が残っていない）$/];
   ok(plan.steps.length === 8 && plan.steps.every(x => RULES.some(r => r.test(x.why))), '今日の演習：すべての問題に規則どおりの理由');
   const nw = plan.items.find(x => x.tag === 'new');
   ok(nw && T.byProblem.get(nw.pid).some(x => x.main), `何も解いていなければ、まだ学んでいない解法の問題が入る（${nw && nw.why}）`);

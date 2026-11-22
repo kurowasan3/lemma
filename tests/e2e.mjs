@@ -273,7 +273,7 @@ try {
     if (recallTech) {
       await page.goto(U + '#tech=' + recallTech); await page.waitForTimeout(1500);
       const panel = await page.locator('.tech-page .panel').innerText();
-      ok(panel.includes('浮かばなかったが完答') && panel.includes('転用：'), `解法カードに想起の内訳と転用の段階（${recallTech}）`);
+      ok(panel.includes('浮かばなかったが完答') && panel.includes('違う文脈：') && !/転用できた|応用力が身について/.test(panel), `解法カードに想起の内訳と転用の段階（${recallTech}）`);
     }
     await page.goto(U + '#map'); await page.waitForTimeout(1500);
     ok((await page.locator('#view').innerText()).includes('解法の習熟') && await page.locator('.st-counts').count() === 1, '定着度に解法の習熟（状態ごとの数）');
