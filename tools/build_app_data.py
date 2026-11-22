@@ -106,14 +106,17 @@ def build(content=ROOT / 'content', out=ROOT / 'data'):
     tpath = content / 'techniques.json'
     tdoc = json.loads(tpath.read_text(encoding='utf-8')) if tpath.exists() else {'groups': [], 'techniques': []}
     techs = tdoc['techniques']
-    tag2tech, tname = {}, {}
+    tag2tech, tname = {}, {}   # タグ（正規名）→ [(解法 ID, 補助だけか)]、名前・ID・旧 ID → 解法 ID
     for t in techs:
-        tname[t['id']] = t['id']
-        tname[t['name']] = t['id']
+        for x in [t['id'], t['name'], *t.get('former', [])]:
+            tname[x] = t['id']
+        weak = {TG.to_canonical(w, cmap) for w in t.get('weak', [])}
         for tg in t['tags']:
-            tag2tech.setdefault(TG.to_canonical(tg, cmap), []).append(t['id'])
+            c = TG.to_canonical(tg, cmap)
+            tag2tech.setdefault(c, []).append((t['id'], c in weak))
     tech_ids = {t['id']: [] for t in techs}
-    bad_tech = []
+    tech_main = {t['id']: [] for t in techs}
+    manual, bad_tech, links = [], [], {}
     index, bodies, hidden, search = [], {}, 0, []
     for p in problems:
         if p['quality']['status'] != 'published':
@@ -143,7 +146,8 @@ def build(content=ROOT / 'content', out=ROOT / 'data'):
                 v = jv['v']
         if v and v != 2:
             e['v'] = v
-        # 解法：管理表の「解法」列があればそれだけ、なければタグから自動で
+        # 解法：管理表の「解法」列があればそれだけ（先頭が主な解法）。なければタグから自動で：
+        # 話題だけのタグ（weak）以外で最初に当たった解法を主、残りを補助とする
         if p.get('techniques'):
             ms = []
             for x in p['techniques']:
@@ -151,10 +155,19 @@ def build(content=ROOT / 'content', out=ROOT / 'data'):
                     ms.append(tname[x])
                 else:
                     bad_tech.append(f"{p['id']}: {x}")
+            ms = list(dict.fromkeys(ms))
+            main = ms[:1]
+            manual.append(p['id'])
         else:
-            ms = [m for t in e.get('tg', []) for m in tag2tech.get(t, [])]
-        for m in dict.fromkeys(ms):
+            hits = [h for t in e.get('tg', []) for h in tag2tech.get(t, [])]
+            ms = list(dict.fromkeys(m for m, _ in hits))
+            main = [m for m, w in hits if not w][:1]
+        for m in ms:
             tech_ids[m].append(p['id'])
+        for m in main:
+            tech_main[m].append(p['id'])
+        if ms:
+            links[p['id']] = ms
         ch = choices.get(p['id'])
         if ch and b.get('in') == ch['spec']:
             b['ch'] = ch['f']      # 選択式の選択肢（欄の順。先頭が正解、表示のときに混ぜる。null の欄は入力式）
@@ -189,10 +202,20 @@ def build(content=ROOT / 'content', out=ROOT / 'data'):
                                                      separators=(',', ':')), encoding='utf-8')
     # 解法カード：カードの内容と、結びつく問題の ID（難易度の低い順）
     lv = {e['id']: e['lv'] for e in index}
-    tout = [{**{k: v for k, v in t.items() if k != 'tags'}, 'ids': sorted(tech_ids[t['id']], key=lambda i: (lv[i], i))} for t in techs]
-    (out / 'techniques.json').write_text(json.dumps({'dataVersion': version, 'groups': tdoc['groups'], 'techniques': tout},
+    # よく一緒に結びつく解法（同じ問題に結びつく回数。5問以上のものを多い順に3つまで）
+    co = {t['id']: {} for t in techs}
+    for ms in links.values():
+        for a in ms:
+            for b in ms:
+                if a != b:
+                    co[a][b] = co[a].get(b, 0) + 1
+    srt = lambda ids: sorted(ids, key=lambda i: (lv[i], i))
+    tout = [{**{k: v for k, v in t.items() if k not in ('tags', 'weak')}, 'ids': srt(tech_ids[t['id']]), 'main': srt(tech_main[t['id']]),
+             'with': [[b, n] for b, n in sorted(co[t['id']].items(), key=lambda x: -x[1]) if n >= 5][:3]} for t in techs]
+    (out / 'techniques.json').write_text(json.dumps({'dataVersion': version, 'groups': tdoc['groups'], 'kinds': tdoc.get('kinds', []),
+                                                     'manual': sorted(manual), 'techniques': tout},
                                                     ensure_ascii=False, separators=(',', ':')), encoding='utf-8')
-    return {'techniques': len(techs), 'tech_linked': len({i for v in tech_ids.values() for i in v}), 'bad_tech': bad_tech,
+    return {'techniques': len(techs), 'tech_linked': len(links), 'tech_main': len({i for v in tech_main.values() for i in v}), 'bad_tech': bad_tech,
             'collections': len(cols), 'count': len(index), 'choice': sum(1 for e in index if e.get('ch')), 'fields': len(fields), 'hidden': hidden, 'auto': sum(1 for e in index if e.get('in')),
             'dataVersion': version, 'unknown': sorted(unknown), 'warn': list(WARN)}
 
@@ -202,7 +225,7 @@ def main():
     r = build(args[0] if args else ROOT / 'content', args[1] if len(args) > 1 else ROOT / 'data')
     print(f"{r['count']}問を書き出しました（{r['fields']}分野、入力して採点できる問題 {r['auto']}問、"
           f"非表示 {r['hidden']}問、dataVersion {r['dataVersion']}）")
-    print(f"解法カード {r['techniques']}枚（結びつく問題 {r['tech_linked']}問）")
+    print(f"解法カード {r['techniques']}枚（結びつく問題 {r['tech_linked']}問・うち主な解法がある {r['tech_main']}問）")
     for b in r['bad_tech']:
         print('  解法の名前が見つかりません', b)
     if r['unknown']:

@@ -2,7 +2,7 @@
 import { PROBLEMS as BUILTIN, cardById, problemById as builtinById, unitOf as builtinUnit } from './content.js';
 import { retrievability, dueAt, TARGET_R } from './scheduler.js';
 
-export const FILE_VERSION = '0.17.0';
+export const FILE_VERSION = '0.18.0';
 
 // 難易度（問題管理表と同じ6段階。0=基礎 は v0.6 で追加。v0.15 で 3〜5 の名前を変更）
 export const LEVELS = { 0: '基礎', 1: '標準', 2: '入試基礎', 3: '入試標準', 4: '入試発展', 5: '数学探究' };
@@ -167,28 +167,62 @@ export function nextReviewTime(state) {
 
 // 今日の演習：復習待ちを先に（忘れかけ順）、残りを新しい問題で埋める。
 // weak（苦手分野のキー）があれば、新しい問題のうち最大2問をその分野から選ぶ。分野が続かないよう交互に並べる。
-export function pickToday(state, { levels = null, size = 8, weak = null } = {}) {
-  const due = dueEntries(state).slice(0, size);
-  const used = new Set(due.map(e => e.id));
+// 推薦の順（v0.18）：復習の時期が来た問題（scheduler）→ 要復習の解法 → 未学習の解法 → 解法を別の分野で → 苦手分野 → 新しい問題。
+// 各問題に、選んだ理由（why）を付ける。理由は選んだ規則そのもので、ランダムに選んだものは「新しい問題」とだけ書く。
+// tech（省略可）：mastery.js の techCandidates の結果に { name(id) } を足したもの
+export function pickToday(state, { levels = null, size = 8, weak = null, weakName = '', tech = null } = {}) {
+  const lv = levels && new Set(levels);
+  const last = new Map(); for (const l of state.log) last.set(l.p, l);
+  const out = [];
+  const used = new Set();
+  const add = (e, why, tag) => { out.push({ e, why, tag }); used.add(e.id); };
+  for (const e of dueEntries(state).slice(0, size)) add(e, (last.get(e.id) || {}).g < 3 ? '前回完答できなかった問題の復習' : '復習の時期', 'due');
+  const room = () => size - out.length;
+  // 解法の問題から1問：選んだ難易度の中で、未着手をやさしい順（頻出度の高い順）
+  const fromTech = (t, pred = () => true) => {
+    const c = t.main.map(id => entryById.get(id)).filter(e => e && !used.has(e.id) && (!lv || lv.has(e.lv)) && !state.problems[e.id] && pred(e));
+    c.sort((a, b) => a.lv - b.lv || ((b.v || 2) - (a.v || 2)));
+    return c[0] || null;
+  };
+  if (tech) {
+    for (const t of tech.review.slice(0, 2)) { if (room() <= 0) break; const e = fromTech(t); if (e) add(e, `要復習の解法「${tech.name(t.id)}」を立て直す`, 'tech'); }
+    for (const t of tech.fresh.slice(0, 3)) { if (room() <= 0 || out.some(x => x.tag === 'new')) break; const e = fromTech(t); if (e) add(e, `まだ学んでいない解法「${tech.name(t.id)}」を学ぶ`, 'new'); }
+    for (const t of tech.transfer.slice(0, 3)) {
+      if (room() <= 0 || out.some(x => x.tag === 'transfer')) break;
+      const done = new Set(tech.ms.get(t.id).fields);
+      const e = fromTech(t, (x) => !done.has(x.f));
+      if (e) add(e, `「${tech.name(t.id)}」を別の分野で使う`, 'transfer');
+    }
+  }
   const take = (cfg, n) => pickPractice(state, { ...cfg, size: n + used.size }).map(st => entryById.get(st.pid)).filter(e => e && !used.has(e.id)).slice(0, n);
-  const fresh = [];
-  if (weak && due.length < size) for (const e of take({ fields: [weak], levels }, Math.min(2, size - due.length))) { fresh.push(e); used.add(e.id); }
-  if (due.length + fresh.length < size) for (const e of take({ levels }, size - due.length - fresh.length)) { fresh.push(e); used.add(e.id); }
-  return { steps: interleave([...due, ...fresh]).map(e => ({ kind: 'problem', pid: e.id })), due: due.length, fresh: fresh.length };
+  if (weak && room() > 0) for (const e of take({ fields: [weak], levels }, Math.min(2, room()))) add(e, `苦手な分野「${weakName}」を補う`, 'weak');
+  if (room() > 0) for (const e of take({ levels }, room())) add(e, '新しい問題', 'fresh');
+  const byE = new Map(out.map(x => [x.e.id, x]));
+  const count = {}; for (const x of out) count[x.tag] = (count[x.tag] || 0) + 1;
+  return {
+    steps: interleave(out.map(x => x.e)).map(e => ({ kind: 'problem', pid: e.id, why: byE.get(e.id).why })),
+    due: count.due || 0, fresh: (count.fresh || 0) + (count.weak || 0), count, items: out.map(x => ({ pid: x.e.id, why: x.why, tag: x.tag })),
+  };
 }
 
 // 類題：同じ分野で、共通のタグが多く、難易度が近い問題。未着手を優先し、次に最後に解いてから久しい順。
-export function similarTo(state, id, exclude = []) {
+export function similarTo(state, id, exclude = [], techOf = null) {
   const e0 = entryById.get(id);
   if (!e0) return null;
   const ex = new Set([id, ...exclude]);
   const tg0 = new Set(e0.tg || []);
+  // 解法が分かっていれば、同じ主な解法を共有する問題を強く優先（共通の解法1つ＝タグ3つ分）
+  const mainOf = (pid) => ((techOf && techOf.get(pid)) || []).filter(x => x.main).map(x => x.id);
+  const tc0 = new Set(((techOf && techOf.get(id)) || []).map(x => x.id));
+  const main0 = new Set(mainOf(id));
   let best = null, bestKey = null;
   for (const e of ENTRIES) {
     if (e.f !== e0.f || ex.has(e.id) || e.kind === 'builtin') continue;
     const d = Math.abs(e.lv - e0.lv);
     if (d > 1) continue;
-    const common = (e.tg || []).filter(t => tg0.has(t)).length;
+    const common = (e.tg || []).filter(t => tg0.has(t)).length
+      + 3 * mainOf(e.id).filter(x => main0.has(x)).length
+      + ((techOf && techOf.get(e.id)) || []).filter(x => tc0.has(x.id)).length;
     const rec = state.problems[e.id];
     // 比べる順：共通タグ（多いほど先）→ 未着手 → 難易度の差 → 久しぶり
     const key = [-common, rec ? 1 : 0, d, rec ? rec.last : 0, e.id];
@@ -237,13 +271,19 @@ export function loadTechniques() {
     techniques = fetch('data/techniques.json').then(r => { if (!r.ok) throw new Error(`data/techniques.json を読めません（${r.status}）`); return r.json(); })
       .then(d => {
         if (META.dataVersion && d.dataVersion !== META.dataVersion) staleData.add('data/techniques.json');
-        const byId = new Map(), byProblem = new Map();
+        // byId は旧 ID（former）でも引ける。byProblem: 問題 ID → [{ id, main }]（主な解法が先）
+        const byId = new Map(), byProblem = new Map(), manual = new Set(d.manual || []);
         for (const t of d.techniques) {
           t.ids = t.ids.filter(id => entryById.has(id));
+          t.main = (t.main || []).filter(id => entryById.has(id));
+          t.pre = t.pre || []; t.rec = t.rec || []; t.rel = t.rel || []; t.alt = t.alt || []; t.with = t.with || [];
           byId.set(t.id, t);
-          for (const id of t.ids) { if (!byProblem.has(id)) byProblem.set(id, []); byProblem.get(id).push(t.id); }
+          for (const f of t.former || []) byId.set(f, t);
+          const ms = new Set(t.main);
+          for (const id of t.ids) { if (!byProblem.has(id)) byProblem.set(id, []); byProblem.get(id).push({ id: t.id, main: ms.has(id) }); }
         }
-        return { groups: d.groups, list: d.techniques, byId, byProblem };
+        for (const v of byProblem.values()) v.sort((a, b) => b.main - a.main);
+        return { groups: d.groups, kinds: d.kinds || [], list: d.techniques, byId, byProblem, manual };
       })
       .catch(e => { techniques = null; throw e; });
   }

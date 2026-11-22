@@ -35,12 +35,14 @@ for (const f of ['problems/builtin.json', 'methods.json']) {
   if (fs.readFileSync(p.join(t, f), 'utf8') !== fs.readFileSync(p.join('content', f), 'utf8')) { console.log(f + ' が古い → node tools/builtin_to_content.mjs'); ok = false; }
 }
 process.exit(ok ? 0 : 1);`]],
+  ['解法カードと問題の結びつき（参照先・循環・ID の消失・索引との整合）', py, ['tools/audit_techniques.py']],
   ['入力用の答え（読める・正解を入れると正解になる）', 'node', ['tools/check_answers.mjs', 'data']],
   ['選択式の選択肢（content/choices.json）が入力用の答えと合っている', 'node', ['tools/make_choices.mjs', 'content', '--check']],
   ['問題の図（content/figures.json）が問題文と合っている', 'node', ['tools/make_figures.mjs', 'content', '--check']],
   ['すべての数式を KaTeX で描画できる', 'node', ['tools/check_katex.cjs']],
   ['自動採点の回帰テスト', 'node', ['tests/answer.test.mjs']],
   ['catalog.js の単体テスト（getProblem・v0.6 の学習記録）', 'node', ['tests/catalog.test.mjs']],
+  ['解法の習熟度（mastery.js）の単体テスト', 'node', ['tests/mastery.test.mjs']],
   ['同期の単体テスト（記録の合わせ方・にせ Supabase との通信）', 'node', ['tests/sync.test.mjs']],
   ['複素数平面・ベクトルの式（plane.js）の単体テスト', 'node', ['tests/plane.test.mjs']],
   ['問題の図（自動で取り出した式・管理表の「図の式」）', 'node', ['tests/figures.test.mjs']],

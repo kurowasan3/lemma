@@ -227,24 +227,36 @@ try {
     ok((await page.locator('h1').innerText()).includes('漸化式') && await page.locator('.tech-dl dt').count() >= 4, '解法カードに本質・使う場面・発想の起点');
     ok(await page.locator('details.tech-lv').count() >= 3, '難易度別の問題');
     await page.locator('.tech-dl a.chip.tech').first().click(); await page.waitForTimeout(800);
-    ok(page.url().includes('#tech=') && !page.url().endsWith('recurrence'), '関連する解法へ移れる');
+    ok(page.url().includes('#tech=') && !page.url().endsWith('#tech=recurrence'), '関連する解法へ移れる');
     await page.goto(U + '#settings'); await page.waitForTimeout(800);
     await page.click('#amode [data-m="self"]'); await page.waitForTimeout(300);
     await page.goto(U + '#tech=recurrence'); await page.waitForTimeout(1500);
     await page.click('#tgo'); await page.waitForTimeout(1500);
     const pid = await page.evaluate(() => JSON.parse(localStorage.getItem('lemma.session.v1')).steps[0].pid);
+    ok((await page.locator('.why').innerText()).includes('漸化式'), '解法カードからの演習で出題の理由を表示');
     ok(await page.locator('#conf button').count() === 3, `解法カードから演習が始まる（${pid}）`);
     await page.locator('#conf button').nth(1).click(); await page.click('#reveal'); await page.waitForTimeout(600);
     const chips = await page.locator('.tech-chips a').allInnerTexts();
     ok(chips.some(t => t.includes('漸化式')), `解説に「この問題の解法」（${chips}）`);
     await page.locator('#self button').last().click(); await page.waitForTimeout(400);
+    ok(await page.evaluate(() => JSON.parse(localStorage.getItem('lemma.v2')).log.at(-1).k === 't'), '解法カードから解いた記録に k:t');
     await page.click('#quit'); await page.waitForTimeout(500);
     await page.goto(U + '#tech=recurrence'); await page.waitForTimeout(1500);
+    ok((await page.locator('.tech-page .panel .chip.st').innerText()).includes('学習中'), '1問解いた解法は「学習中」');
+    ok((await page.locator('.tech-dl').first().innerText()).includes('注意点') && (await page.locator('.tech-dl.rel').innerText()).includes('発展'), '解法カードに注意点と位置づけ');
     ok((await page.locator('.tech-page .panel').innerText()).includes('1問を解いた') && await page.locator('#twrong').count() === 1, '解法カードに自分の結果と「間違えた問題を解き直す」');
     await page.goto(U + '#search=' + encodeURIComponent('漸化式')); await page.waitForTimeout(1500);
     ok(await page.locator('.tech-hits .tech-row').count() >= 1, '検索で解法カードが出る');
+    await page.goto(U + '#tech=ivt-mvt'); await page.waitForTimeout(1200);
+    ok((await page.locator('h1').innerText()).includes('平均値の定理') && page.url().endsWith('#tech=mvt'), '旧 ID のリンクは新しいカードへ');
+    await page.goto(U + '#today'); await page.waitForTimeout(1500);
+    const plan = await page.locator('#todaygo span').innerText();
+    ok(/復習|解法|新しい問題/.test(plan), `今日の演習の説明に中身（${plan}）`);
+    await page.click('#todaygo'); await page.waitForTimeout(1500);
+    ok((await page.locator('.why').count()) === 1, '今日の演習で出題の理由を表示');
+    await page.click('#quit'); await page.waitForTimeout(500);
     await page.goto(U + '#map'); await page.waitForTimeout(1500);
-    ok((await page.locator('#view').innerText()).includes('解法ごとの習熟'), '定着度に解法ごとの習熟');
+    ok((await page.locator('#view').innerText()).includes('解法の習熟') && await page.locator('.st-counts').count() === 1, '定着度に解法の習熟（状態ごとの数）');
     ok(page.errors.length === 0, `ページのエラーなし ${page.errors}`);
   }
   // 6. 検索・問題セット・共有リンク・得意苦手の図

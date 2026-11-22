@@ -9,6 +9,7 @@ import * as M_GRAPH from './graph.js';
 import * as M_PLANE from './plane.js';
 import * as M_PARSER from './parser.js';
 import * as M_CAT from './catalog.js';
+import * as M_MAST from './mastery.js';
 import * as M_ANS from './answer.js';
 import * as M_UI from './ui.js';
 import * as M_DRILL from './drill.js';
@@ -21,8 +22,9 @@ import {
   LEVELS, FIELDS, ENTRIES, META, fieldByKey, entryById, loadCatalog, ensureBodies, getBody,
   subjectsWithFields, pool, pickPractice, pickReview, dueEntries, nextReviewTime, pickToday, similarTo, loadTechniques,
 } from './catalog.js';
+import { techMastery, techCandidates, masterChecklist, MASTER, STATUS } from './mastery.js';
 
-const VERSION = '0.17.0';
+const VERSION = '0.18.0';
 const KEY = 'lemma.v2';
 let sync = null, syncApplying = false, syncStatus = null;   // アカウントと同期（initSync で用意）
 const $ = (sel, el = document) => el.querySelector(sel);
@@ -347,14 +349,22 @@ function route() {
 }
 window.addEventListener('hashchange', route);
 
-// ---------- 解法カード（data/techniques.json） ----------
-let TECH = null;   // 読みこみ後：{ groups, list, byId, byProblem }
+// ---------- 解法カード（data/techniques.json）と解法の習熟（mastery.js） ----------
+let TECH = null;   // 読みこみ後：{ groups, kinds, list, byId, byProblem, manual }
 // カードの文章：エスケープして **強調** だけ太字に（数式は math() が描く）
 const techText = (s) => esc(s || '').replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+const techName = (id) => { const t = TECH && TECH.byId.get(id); return t ? t.name : id; };
+// 推薦の理由に入れる名前（数式を含む名前は $ を外して読める形に）
+const plainName = (id) => techName(id).replace(/\$([^$]*)\$/g, (_, m) => m.replace(/\\frac\{([^}]*)\}\{([^}]*)\}/g, '$1/$2').replace(/\\/g, ''));
+const STATUS_CLS = { none: 'st-none', learning: 'st-learning', review: 'st-review', mastered: 'st-mastered' };
+const statusChip = (m) => `<span class="chip st ${STATUS_CLS[m.status]}">${STATUS[m.status]}</span>`;
+function techM(t) { return techMastery(state, t, entryById); }
+
 function techChipsHTML(pid) {
   const ts = TECH && TECH.byProblem.get(pid);
   if (!ts || !ts.length) return '';
-  return `<div class="tech-chips"><span class="muted small">この問題の解法</span>${ts.map(id => `<a class="chip tech" href="#tech=${esc(id)}">${techText(TECH.byId.get(id).name)}</a>`).join('')}</div>`;
+  const src = TECH.manual.has(pid) ? '' : '<span class="muted small" title="問題のタグから自動で結びつけたもの">（自動）</span>';
+  return `<div class="tech-chips"><span class="muted small">この問題の解法</span>${ts.map(x => `<a class="chip tech${x.main ? ' main' : ''}" href="#tech=${esc(x.id)}" title="${x.main ? '主な解法' : '補助的に使う解法'}">${techText(techName(x.id))}</a>`).join('')}${src}</div>`;
 }
 function techHitsHTML(q) {
   if (!TECH || !q) return '';
@@ -362,31 +372,13 @@ function techHitsHTML(q) {
   const hits = TECH.list.filter(t => t.name.replace(/\s+/g, '').includes(k) || k.includes(t.name.replace(/[（(].*$/, '').replace(/\s+/g, ''))).slice(0, 3);
   return hits.length ? `<div class="tech-hits">${hits.map(t => `<a class="tech-row" href="#tech=${esc(t.id)}"><b>解法</b><span>${techText(t.name)}</span><span class="muted small">${t.ids.length}問 ›</span></a>`).join('')}</div>` : '';
 }
-// 問題 ID の集合についての得意度（strength と同じ計算）
-function strengthIds(ids) {
-  const set = new Set(ids);
-  const last = new Map();
-  for (const l of state.log) { const e = entryById.get(l.p); if (e && set.has(l.p)) last.set(l.p, { l, e }); }
-  let sw = 0, ss = 0, wrong = [];
-  for (const { l, e } of last.values()) {
-    const w = 1 + 0.25 * e.lv;
-    const sc = l.g >= 3 ? 1 : l.g === 2 ? 0.5 : 0;
-    sw += w; ss += w * sc;
-    if (l.g < 3) wrong.push(l.p);
-  }
-  const n = last.size;
-  return { n, score: n >= MIN_JUDGE ? (ss + 1) / (sw + 2) : null, wrong };
-}
-function scoreText(st) {
-  if (st.score == null) return st.n ? `${st.n}問の結果（${MIN_JUDGE}問から判定）` : '未着手';
-  return `得意度 ${Math.round(st.score * 100)}${st.n < 10 ? '（暫定）' : ''}`;
-}
-// 解法の問題から出題：選んだ難易度の中で、未着手（やさしい順・頻出度の高い順）→ 久しぶりの順
-function pickFromIds(ids, { levels = null, size = 8 } = {}) {
+// 解法の問題から出題：選んだ難易度の中で、主な解法の問題を先に、未着手（やさしい順・頻出度の高い順）→ 久しぶりの順
+function pickFromIds(ids, { levels = null, size = 8, main = null, pred = null } = {}) {
   const ls = levels && new Set(levels);
-  return ids.map(id => entryById.get(id)).filter(e => e && (!ls || ls.has(e.lv)))
-    .map(e => { const rec = state.problems[e.id]; return { e, key: rec ? [1, rec.last, 0] : [0, e.lv, -((e.v) || 2)] }; })
-    .sort((a, b) => a.key[0] - b.key[0] || a.key[1] - b.key[1] || a.key[2] - b.key[2])
+  const ms = main ? new Set(main) : null;
+  return ids.map(id => entryById.get(id)).filter(e => e && (!ls || ls.has(e.lv)) && (!pred || pred(e)))
+    .map(e => { const rec = state.problems[e.id]; return { e, key: [rec ? 1 : 0, ms && !ms.has(e.id) ? 1 : 0, rec ? rec.last : e.lv, -(e.v || 2)] }; })
+    .sort((a, b) => a.key[0] - b.key[0] || a.key[1] - b.key[1] || a.key[2] - b.key[2] || a.key[3] - b.key[3])
     .slice(0, size).map(x => ({ kind: 'problem', pid: x.e.id }));
 }
 async function withTech(fn) {
@@ -401,18 +393,19 @@ function renderTechs(q = '') {
   if (!TECH) return withTech(() => renderTechs(q));
   const k = q.trim();
   const match = (t) => !k || (t.name + t.summary).includes(k);
+  const kindName = Object.fromEntries(TECH.kinds.map(x => [x.id, x.name]));
   view.innerHTML = `
     <div class="fade-in">
       <a class="back" href="#today">‹ 今日</a>
       <h1>解法から選ぶ</h1>
-      <p class="sub">入試数学の解法・技法 ${TECH.list.length}枚。カードを開くと、考え方の要点と、その解法を使う問題を難易度別に演習できます。</p>
+      <p class="sub">入試数学の解法・技法 ${TECH.list.length}枚。カードには考え方の要点・使う場面・注意点と、その解法を使う問題があります。</p>
       <form class="search" id="tform" role="search"><input id="tq" type="search" placeholder="解法を探す（例：漸化式、内積、はさみうち）" value="${esc(k)}" aria-label="解法を探す"><button class="btn">探す</button></form>
       ${TECH.groups.map(g => {
         const ts = TECH.list.filter(t => t.group === g.id && match(t));
         if (!ts.length) return '';
         return `<h2>${esc(g.name)}</h2><div class="tech-list">${ts.map(t => {
-          const st = strengthIds(t.ids);
-          return `<a class="tech-row" href="#tech=${esc(t.id)}"><span class="nm">${techText(t.name)}</span><span class="muted small">${t.ids.length}問・${scoreText(st)}</span></a>`;
+          const m = techM(t);
+          return `<a class="tech-row" href="#tech=${esc(t.id)}"><span class="nm">${techText(t.name)}<span class="muted small kind">${esc(kindName[t.kind] || '')}</span></span><span class="small">${m.status === 'none' ? `<span class="muted">${t.ids.length}問</span>` : statusChip(m)}</span></a>`;
         }).join('')}</div>`;
       }).join('') || '<p class="muted">見つかりませんでした。</p>'}
     </div>`;
@@ -424,73 +417,114 @@ function renderTech(id) {
   if (!TECH) return withTech(() => renderTech(id));
   const t = TECH.byId.get(id);
   if (!t) { view.innerHTML = '<p class="muted" style="padding:40px 4px">その解法カードは見つかりません。</p><a class="btn" href="#techs">解法の一覧へ</a>'; return; }
+  if (t.id !== id) { history.replaceState(null, '', '#tech=' + t.id); }   // 旧 ID は今の ID へ
   const pr = state.practice;
   const group = (TECH.groups.find(g => g.id === t.group) || {}).name || '';
-  const st = strengthIds(t.ids);
+  const kind = (TECH.kinds.find(k => k.id === t.kind) || {}).name || '';
+  const m = techM(t);
+  const mainSet = new Set(t.main);
   const byLv = {};
   for (const pid of t.ids) { const e = entryById.get(pid); (byLv[e.lv] = byLv[e.lv] || []).push(e); }
-  const link = (x) => { const u = TECH.byId.get(x); return u ? `<a class="chip tech" href="#tech=${esc(x)}">${techText(u.name)}</a>` : ''; };
-  const usedBy = TECH.list.filter(u => u.pre.includes(t.id));
-  const inLv = pickFromIds(t.ids, { levels: pr.levels, size: pr.size });
+  for (const lv in byLv) byLv[lv].sort((a, b) => mainSet.has(b.id) - mainSet.has(a.id));
+  const link = (x) => { const u = TECH.byId.get(x); return u ? `<a class="chip tech" href="#tech=${esc(u.id)}">${techText(u.name)}</a>` : ''; };
+  // 関係：前提（必須・推奨）、発展（この解法を前提にする解法）、別のアプローチ・組み合わせ（向きなし）、データ上よく一緒に結びつく解法
+  const others = TECH.list.filter(u => u.id !== t.id);
+  const next = others.filter(u => u.pre.includes(t.id) || u.rec.includes(t.id)).map(u => u.id);
+  const alt = [...new Set([...t.alt, ...others.filter(u => u.alt.includes(t.id)).map(u => u.id)])];
+  const rel = [...new Set([...t.rel, ...others.filter(u => u.rel.includes(t.id)).map(u => u.id)])].filter(x => !alt.includes(x) && !t.pre.includes(x) && !t.rec.includes(x) && !next.includes(x));
+  const shown = new Set([...t.pre, ...t.rec, ...next, ...alt, ...rel]);
+  const withData = t.with.filter(([x]) => !shown.has(x));
+  const relRow = (label, ids, note = '') => ids.length ? `<dt>${label}</dt><dd class="chips">${ids.map(link).join('')}${note}</dd>` : '';
+  const done = new Set(m.fields);
+  const inLv = pickFromIds(t.ids, { levels: pr.levels, size: pr.size, main: t.main });
+  const transfer = m.full.length ? pickFromIds(t.main, { levels: pr.levels, size: pr.size, pred: (e) => !done.has(e.f) && !state.problems[e.id] }) : [];
+  const due = new Set(dueEntries(state).map(e => e.id));
+  const dueHere = t.ids.filter(x => due.has(x));
+  const checks = masterChecklist(m);
   view.innerHTML = `
     <div class="fade-in tech-page">
       <a class="back" href="#techs">‹ 解法の一覧</a>
-      <div class="kicker">${esc(group)}</div>
+      <div class="kicker">${esc(group)}・${esc(kind)}</div>
       <h1>${techText(t.name)}</h1>
       <p class="lead">${techText(t.summary)}</p>
       <dl class="tech-dl">
-        <dt>本質</dt><dd>${techText(t.essence)}</dd>
+        <dt>核心</dt><dd>${techText(t.essence)}</dd>
         <dt>使う場面</dt><dd>${techText(t.when)}</dd>
-        <dt>発想の起点</dt><dd>${techText(t.cue)}</dd>
-        ${t.pre.length ? `<dt>前提</dt><dd class="chips">${t.pre.map(link).join('')}</dd>` : ''}
-        ${t.rel.length || usedBy.length ? `<dt>関連</dt><dd class="chips">${[...new Set([...t.rel, ...usedBy.map(u => u.id)])].map(link).join('')}</dd>` : ''}
+        <dt>着眼点</dt><dd>${techText(t.cue)}</dd>
+        ${t.caution ? `<dt>注意点</dt><dd>${techText(t.caution)}</dd>` : ''}
       </dl>
       ${t.reviewed ? '' : '<p class="muted small">このカードの説明は、まだ人による確認を受けていません。</p>'}
+      ${t.pre.length + t.rec.length + next.length + alt.length + rel.length + withData.length ? `
+      <h2>解法の位置づけ</h2>
+      <dl class="tech-dl rel">
+        ${relRow('必須の前提', t.pre)}
+        ${relRow('先に学ぶとよい', t.rec)}
+        ${relRow('発展', next)}
+        ${relRow('別のアプローチ', alt)}
+        ${relRow('組み合わせて使う', rel)}
+        ${relRow('同じ問題によく出る', withData.map(([x]) => x), '<span class="muted small">（結びつく問題の重なりから）</span>')}
+      </dl>` : ''}
       <h2>あなたの習熟</h2>
       <div class="panel">
-        <p style="margin:0">${st.n ? `${t.ids.length}問のうち <b>${st.n}</b>問を解いた・${scoreText(st)}` : `${t.ids.length}問のうち、まだ1問も解いていません。`}</p>
-        ${st.wrong.length ? `<p class="muted small" style="margin:6px 0 0">最後に完答できなかった問題が ${st.wrong.length}問あります。</p>` : ''}
+        <p style="margin:0">${statusChip(m)}　${m.n ? `${t.ids.length}問のうち ${m.n}問を解いた・最後に完答 ${m.full.length}問${m.score != null ? `・得意度 ${Math.round(m.score * 100)}` : ''}` : `${t.ids.length}問のうち、まだ1問も解いていません。`}</p>
+        ${m.status === 'review' ? `<p class="small" style="margin:6px 0 0">${m.lapses.length ? `一度完答した問題を最近解けませんでした（${m.lapses.length}問）。` : m.twoMiss ? 'この解法の問題が2回続けて完答できませんでした。' : '完答できない問題が多くなっています。'}要点を読み直してから、もう一度解いてください。</p>` : ''}
+        ${dueHere.length ? `<p class="muted small" style="margin:6px 0 0">復習の時期が来ている問題：${dueHere.length}問</p>` : ''}
+        ${m.status !== 'none' && m.status !== 'mastered' ? `<details class="checks"><summary>「習得」までの基準</summary><ul>${checks.map(c => `<li class="${c.ok ? 'ok' : ''}">${c.ok ? '✓' : '・'} ${esc(c.label)}<span class="muted">（いま ${c.now}）</span></li>`).join('')}</ul></details>` : ''}
         <div class="btn-row">
-          <button class="btn primary" id="tgo" ${inLv.length ? '' : 'disabled'}>この解法で演習 ${inLv.length}問</button>
-          ${st.wrong.length ? `<button class="btn" id="twrong">間違えた問題を解き直す ${Math.min(st.wrong.length, 20)}問</button>` : ''}
+          <button class="btn primary" id="tgo" ${inLv.length ? '' : 'disabled'}>この解法の問題を解く ${inLv.length}問</button>
+          ${m.wrong.length ? `<button class="btn" id="twrong">完答できなかった問題 ${Math.min(m.wrong.length, 20)}問</button>` : ''}
+          ${transfer.length ? `<button class="btn" id="ttransfer">別の分野で使う ${transfer.length}問</button>` : ''}
         </div>
-        <p class="muted small" style="margin:8px 0 0">演習は、ホームで選んでいる難易度（${pr.levels.map(l => LEVELS[l]).join('・') || 'なし'}）の中から、まだ解いていない問題をやさしい順に出します。</p>
+        <p class="muted small" style="margin:8px 0 0">ホームで選んでいる難易度（${pr.levels.map(l => LEVELS[l]).join('・') || 'なし'}）の中から、この解法を主に使う問題を、まだ解いていないものからやさしい順に出します。ここから解いた結果は「解法を知らされて解いた」として記録し、習得の判定では区別します。</p>
       </div>
-      <h2>難易度別の問題</h2>
+      <h2>この解法を使う問題</h2>
+      <p class="muted small" style="margin:-4px 0 6px">主に使う ${t.main.length}問・補助的に使う ${t.ids.length - t.main.length}問。${TECH.manual.size ? '' : '問題のタグから自動で結びつけています。'}</p>
       ${Object.keys(byLv).length ? Object.keys(byLv).map(Number).sort((a, b) => a - b).map(lv => {
         const es = byLv[lv];
-        const done = es.filter(e => state.problems[e.id]).length;
+        const solvedN = es.filter(e => state.problems[e.id]).length;
         return `<details class="tech-lv">
-          <summary><span class="chip lv${lv}">${LEVELS[lv]}</span> ${es.length}問<span class="muted small">（解いた ${done}）</span><button class="btn small" data-lv="${lv}">演習</button></summary>
-          <div class="results">${es.slice(0, 60).map(resRow).join('')}</div>
-          ${es.length > 60 ? `<p class="muted small">ほか ${es.length - 60}問（演習ではすべてから選びます）</p>` : ''}
+          <summary><span class="chip lv${lv}">${LEVELS[lv]}</span> ${es.length}問<span class="muted small">（解いた ${solvedN}）</span><button class="btn small" data-lv="${lv}">解く</button></summary>
+          <div class="results">${es.slice(0, 60).map(e => resRow(e, mainSet.has(e.id) ? '' : '補助')).join('')}</div>
+          ${es.length > 60 ? `<p class="muted small">ほか ${es.length - 60}問（「解く」ではすべてから選びます）</p>` : ''}
         </details>`;
       }).join('') : '<p class="muted">この解法に結びついた問題はまだありません。</p>'}
     </div>`;
   math(view);
-  $('#tgo').addEventListener('click', () => startSession(inLv, { tech: t.id, size: inLv.length }));
-  $('#twrong')?.addEventListener('click', () => {
-    const ids = st.wrong.slice(0, 20);
-    startSession(ids.map(pid => ({ kind: 'problem', pid })), { ids, size: ids.length });
-  });
+  const go = (steps) => { if (steps.length) startSession(steps.map(s => ({ ...s, why: `解法「${plainName(t.id)}」の練習` })), { tech: t.id, size: steps.length }); };
+  $('#tgo').addEventListener('click', () => go(inLv));
+  $('#twrong')?.addEventListener('click', () => go(m.wrong.slice(0, 20).map(pid => ({ kind: 'problem', pid }))));
+  $('#ttransfer')?.addEventListener('click', () => go(transfer));
   $$('.tech-lv summary .btn').forEach(b => b.addEventListener('click', (ev) => {
     ev.preventDefault();
-    const steps = pickFromIds(t.ids, { levels: [+b.dataset.lv], size: pr.size });
-    if (steps.length) startSession(steps, { tech: t.id, size: steps.length });
+    go(pickFromIds(t.ids, { levels: [+b.dataset.lv], size: pr.size, main: t.main }));
   }));
   $$('.tech-page .res-row').forEach(b => b.addEventListener('click', () => openIds([b.dataset.pid])));
 }
 
-// 定着度：解法ごとの習熟（5問以上解いたものだけ。苦手を上に）
+// 定着度：解法の習熟（状態ごとの数・分類ごと・要復習の解法・次に学ぶとよい解法）
 function techStrengthHTML() {
   if (!TECH) return '';
-  const rows = TECH.list.map(t => ({ t, ...strengthIds(t.ids) })).filter(x => x.score != null).sort((a, b) => a.score - b.score);
+  const cand = techCandidates(state, TECH.list, entryById);
+  const cnt = { mastered: 0, learning: 0, review: 0, none: 0 };
+  for (const m of cand.ms.values()) cnt[m.status]++;
+  const touched = TECH.list.length - cnt.none;
+  const row = (t, extra = '') => `<a class="tech-row" href="#tech=${esc(t.id)}"><span class="nm">${techText(t.name)}</span><span class="small">${extra}</span></a>`;
   return `
-    <h2>解法ごとの習熟</h2>
+    <h2>解法の習熟</h2>
     <div class="panel">
-      ${rows.length ? `<div class="tech-list">${rows.slice(0, 6).map(x => `<a class="tech-row" href="#tech=${esc(x.t.id)}"><span class="nm">${techText(x.t.name)}</span><span class="small ${x.score < 0.5 ? 'sw-weak' : x.score >= 0.6 ? 'sw-good' : 'muted'}">${Math.round(x.score * 100)}${x.n < 10 ? '<small>暫定</small>' : ''}</span></a>`).join('')}</div>
-        <p class="muted small" style="margin:8px 0 0">得意度の低い順。1つの解法で${MIN_JUDGE}問以上解くと表示します。</p>`
-      : `<p class="muted" style="margin:0">1つの解法で${MIN_JUDGE}問以上解くと、ここに解法ごとの習熟が出ます。</p>`}
+      ${touched ? `
+      <div class="st-counts">${['mastered', 'learning', 'review', 'none'].map(k => `<div class="${STATUS_CLS[k]}"><b>${cnt[k]}</b><span>${STATUS[k]}</span></div>`).join('')}</div>
+      <table class="st-table"><thead><tr><th></th><th>習得</th><th>学習中</th><th>要復習</th><th>未学習</th></tr></thead><tbody>
+        ${TECH.groups.map(g => { const ts = TECH.list.filter(t => t.group === g.id); const c = { mastered: 0, learning: 0, review: 0, none: 0 }; ts.forEach(t => c[cand.ms.get(t.id).status]++); return `<tr><th>${esc(g.name)}</th>${['mastered', 'learning', 'review', 'none'].map(k => `<td class="${c[k] && k !== 'none' ? STATUS_CLS[k] : 'muted'}">${c[k]}</td>`).join('')}</tr>`; }).join('')}
+      </tbody></table>
+      ${cand.review.length ? `<h3>要復習の解法</h3><div class="tech-list">${cand.review.slice(0, 5).map(t => row(t, statusChip(cand.ms.get(t.id)))).join('')}</div>` : ''}
+      ${cand.fresh.length ? `<h3>次に学ぶとよい解法</h3><p class="muted small" style="margin:0 0 4px">まだ学んでいない解法のうち、必須の前提を学び始めているもの（問題の多い順）。</p><div class="tech-list">${cand.fresh.slice(0, 3).map(t => row(t, `<span class="muted">${t.main.length}問</span>`)).join('')}</div>` : ''}
+      ` : `<p class="muted" style="margin:0">解いた問題に結びつく解法ごとに、未学習・学習中・要復習・習得を判定します。</p>`}
+      <details class="checks"><summary>判定の基準</summary><ul>
+        <li><b>習得</b>：完答 ${MASTER.full}問以上・解法を知らされずに完答 ${MASTER.recall}問以上・完答した分野 ${MASTER.fields}つ以上・3日以上あけて同じ問題をもう一度完答・得意度 ${Math.round(MASTER.score * 100)} 以上</li>
+        <li><b>要復習</b>：3問以上解いて得意度 50 未満、一度完答した問題を直近30日に解けなかった、または最後の2回が続けて完答でない</li>
+        <li><b>学習中</b>：解いたことがあり、上のどちらでもない</li>
+      </ul><p class="muted small">問題ごとの復習（いつもう一度解くか）は、これとは別に問題ごとの記録で決めています。</p></details>
       <a class="btn ghost block" href="#techs" style="margin-top:10px">解法の一覧へ</a>
     </div>`;
 }
@@ -514,6 +548,16 @@ function levelToolbar(pr, onChange) {
   };
 }
 
+// 今日の演習：復習（scheduler）＋解法の習熟（mastery.js）＋苦手分野＋新しい問題。解法カードを読み込む前は解法の部分なし
+function todayPlan(pr, weak) {
+  const tech = TECH ? { ...techCandidates(state, TECH.list, entryById), name: plainName } : null;
+  return pickToday(state, { levels: pr.levels.slice(), size: pr.size, weak: weak ? weak.f.key : null, weakName: weak ? weak.f.name : '', tech });
+}
+function planSummary(plan) {
+  const c = plan.count;
+  return [c.due ? `復習 ${c.due}問` : '', c.tech ? `要復習の解法 ${c.tech}問` : '', c.new ? `新しい解法 ${c.new}問` : '',
+    c.transfer ? `解法を別の分野で ${c.transfer}問` : '', c.weak ? `苦手分野 ${c.weak}問` : '', c.fresh ? `新しい問題 ${c.fresh}問` : ''].filter(Boolean).join('・');
+}
 function renderToday() {
   const pr = state.practice;
   const solved = (list) => list.filter(e => state.problems[e.id]).length;
@@ -526,9 +570,10 @@ function renderToday() {
   const goal = pr.size;
   const resume = savedSession();
   const weak = weakestField();
-  const dueN = Math.min(due, pr.size), freshN = Math.max(0, Math.min(pr.size - dueN, all.length));
-  const weakN = weak && freshN ? Math.min(2, freshN) : 0;
-  const planText = [dueN ? `復習 ${dueN}問` : '', freshN ? `新しい問題 ${freshN}問${weakN ? `（苦手な「${esc(weak.f.name)}」から${weakN}問）` : ''}` : ''].filter(Boolean).join('＋');
+  // 今日の演習の中身をここで決め、ボタンの説明と実際の出題を一致させる
+  if (!TECH) loadTechniques().then(t => { TECH = t; if ((location.hash || '#today') === '#today' && !session) renderToday(); }).catch(() => {});
+  const plan = todayPlan(pr, weak);
+  const planText = planSummary(plan);
   view.innerHTML = `
     <div class="fade-in">
       <div class="kicker">LEMMA · 受験数学</div>
@@ -541,7 +586,7 @@ function renderToday() {
         <button class="hero alt" id="resume"><b>前回の続き</b><span>全${resume.steps.length}問の ${resume.i + 1}問目から再開します。</span></button>
         <button class="btn ghost small" id="dropresume">続きを破棄</button>
       </div>` : ''}
-      <button class="hero" id="todaygo" ${dueN + freshN ? '' : 'disabled'}>
+      <button class="hero" id="todaygo" ${plan.steps.length ? '' : 'disabled'}>
         <b>今日の演習を始める</b>
         <span>${planText || '今は出題できる問題がありません'}。分野を混ぜて出すので、どの解法を使うかを見抜く練習になります。</span>
       </button>
@@ -597,7 +642,6 @@ function renderToday() {
   };
   $('#random').addEventListener('click', () => go(null));
   $('#todaygo').addEventListener('click', () => {
-    const plan = pickToday(state, { levels: pr.levels.slice(), size: pr.size, weak: weak ? weak.f.key : null });
     if (plan.steps.length) startSession(plan.steps, { today: true, levels: pr.levels.slice(), size: pr.size }); else toast('今は出題できる問題がありません');
   });
   $('#resume')?.addEventListener('click', () => resumeSession(resume));
@@ -648,10 +692,10 @@ async function openCollection(id) {
   const steps = M_CAT.pickCollection(state, col, state.practice.size);
   startSession(steps, { collection: id, size: state.practice.size });
 }
-function resRow(e) {
+function resRow(e, note = '') {
   const f = fieldByKey[e.f] || {};
   return `<button class="res-row" data-pid="${esc(e.id)}">
-        <span class="nm">${e.th || esc(e.id)}</span>
+        <span class="nm">${e.th || esc(e.id)}${note ? `<span class="muted small note">${esc(note)}</span>` : ''}</span>
         <span class="muted small">${esc(f.subject || '')}・${esc(f.name || '')}　<span class="chip lv${e.lv}">${LEVELS[e.lv]}</span>${valueChip(e)}${state.problems[e.id] ? '　✓ 解いた' : ''}${(e.tg || []).length ? '　' + e.tg.slice(0, 3).map(esc).join('・') : ''}</span>
       </button>`;
 }
@@ -718,7 +762,7 @@ async function renderSearch(q) {
       ${tools}</div>
     <div class="btn-row" style="margin-top:0"><button class="btn primary" id="sgo">${pickIds.length}問 演習する</button><button class="btn ghost" id="sshare">リンクをコピー</button></div>
     ${techHitsHTML(q)}
-    <div class="results">${res.slice(0, searchShown).map(resRow).join('')}</div>
+    <div class="results">${res.slice(0, searchShown).map(e => resRow(e)).join('')}</div>
     ${res.length > searchShown ? `<button class="btn ghost block" id="smore">さらに表示（残り ${res.length - searchShown}問）</button>` : ''}`;
   math(box);
   $('#sgo').addEventListener('click', () => startSession(pickIds.map(pid => ({ kind: 'problem', pid })), { ids: pickIds, size: pickIds.length }));
@@ -883,6 +927,11 @@ function valueChip(e) {
   const v = (e && e.v) || 2;
   return `<span class="chip val v${v}" title="頻出度：入試で繰り返し使われる考え方を扱う問題ほど高い">頻出度 ${VALUE_NAMES[v]}</span>`;
 }
+// この問題を出した理由（今日の演習・解法カード・類題）。理由のない演習（分野・検索など）では出さない
+function whyHTML() {
+  const st = session && session.steps[session.i];
+  return st && st.why ? `<p class="why">${esc(st.why)}</p>` : '';
+}
 function metaChips(e) {
   const p = problemView(e);
   return `<span class="chip">${esc(p.subject)}・${esc(p.fieldName)}</span>
@@ -952,7 +1001,8 @@ function recordResult(pid, grade, extra) {
   const now = Date.now();
   state.pstat[pid] = review(state.pstat[pid], grade, now);
   state.problems[pid] = { last: now, n: ((state.problems[pid] || {}).n || 0) + 1 };
-  state.log.push({ p: pid, t: now, g: grade, ...extra });
+  // 解法カードから始めた演習（解法を知らされて解いた）は k:'t' を付ける。解法の習得判定で区別する
+  state.log.push({ p: pid, t: now, g: grade, ...extra, ...(session && session.cfg && session.cfg.tech ? { k: 't' } : {}) });
   if (state.log.length > 5000) state.log = state.log.slice(-5000);
   const today = dayKey(now);
   if (state.streak.last !== today) {
@@ -981,6 +1031,7 @@ function renderProblem(step) {
         ${metaChips(entry)}<span class="chip plain">自動判定</span>${bmButton(entry.id)}${graphButton()}
         <span class="count">${session.i + 1} / ${session.steps.length}</span>
       </div>
+      ${whyHTML()}
       <div class="question">${rich(p.q)}</div>
       <div id="answer"></div>
       <div id="conf"></div>
@@ -1253,6 +1304,7 @@ function renderWritten(step, e) {
         <span class="chip plain timer" id="clock">0:00</span>${bmButton(e.id)}${b.fg ? figButton(b.fg) : ''}${graphButton()}
         <span class="count">${session.i + 1} / ${session.steps.length}</span>
       </div>
+      ${whyHTML()}
       <div class="question qhtml">${bigOps(b.q)}</div>
       ${spec ? inputNote + '<div id="inputs" class="inputs"></div>' : '<p class="muted pen">この問題は紙に解いてから、答え合わせで自己採点します。</p>'}
       <div id="conf"><div class="label">${spec ? '判定の前に' : '答え合わせの前に'}：どのくらい自信がある？</div>
@@ -1595,7 +1647,7 @@ function renderWritten(step, e) {
       <div class="label">${sg === 'full' ? 'この問題で最初に気づくべきことを1行で（任意）' : 'どこで詰まった？（任意）'}</div>
       <textarea class="explain" id="explain" placeholder="${sg === 'full' ? '例：交点の x 座標を出して1/6公式' : '例：(2) の場合分けで a=1 を落とした'}"></textarea>
       <div class="btn-row">
-        ${similarTo(state, e.id, session.steps.map(st => st.pid)) ? `<button class="btn" id="similar">類題を1問追加</button>` : ''}
+        ${similarTo(state, e.id, session.steps.map(st => st.pid), TECH && TECH.byProblem) ? `<button class="btn" id="similar">類題を1問追加</button>` : ''}
         <button class="btn primary" id="next">${session.i + 1 < session.steps.length ? '次へ' : '結果を見る'}</button>
       </div>`;
     math(after);
@@ -1625,11 +1677,12 @@ function confNoteHTML(sg, conf, key) {
 }
 // 類題を今の問題の次に差し込む
 async function addSimilar(pid, btn) {
-  const sim = similarTo(state, pid, session.steps.map(st => st.pid));
+  const sim = similarTo(state, pid, session.steps.map(st => st.pid), TECH && TECH.byProblem);
   if (!sim) { btn.disabled = true; btn.textContent = '類題が見つかりません'; return; }
   btn.disabled = true; btn.textContent = '読み込んでいます…';
   try { await ensureBodies([sim.id]); } catch (err) { btn.disabled = false; btn.textContent = '類題を1問追加'; toast('類題を読み込めませんでした'); return; }
-  session.steps.splice(session.i + 1, 0, { kind: 'problem', pid: sim.id });
+  const shared = TECH ? (TECH.byProblem.get(sim.id) || []).filter(x => (TECH.byProblem.get(pid) || []).some(y => y.id === x.id)).map(x => x.id) : [];
+  session.steps.splice(session.i + 1, 0, { kind: 'problem', pid: sim.id, why: shared.length ? `類題（解法「${plainName(shared[0])}」が共通）` : '類題（同じ分野・共通のタグ）' });
   saveSession();
   btn.textContent = `類題を追加しました（${LEVELS[sim.lv]}）`;
   const nx = $('#next'); if (nx) nx.textContent = '次へ（類題）';
@@ -1666,7 +1719,7 @@ function renderSummary() {
     const cfg = session.cfg || { size: 8 };
     if (cfg.collection) { openCollection(cfg.collection); return; }
     if (cfg.ids) { openIds(cfg.ids); return; }
-    const steps = cfg.today ? pickToday(state, { levels: cfg.levels, size: cfg.size, weak: weakestField()?.f.key }).steps : cfg.review ? pickReview(state, cfg) : pickPractice(state, cfg);
+    const steps = cfg.today ? todayPlan({ levels: cfg.levels, size: cfg.size }, weakestField()).steps : cfg.review ? pickReview(state, cfg) : pickPractice(state, cfg);
     if (!steps.length) { toast('今は出題できる問題がありません'); return; }
     startSession(steps, cfg);
   });
@@ -2272,7 +2325,7 @@ loadCatalog().then((meta) => {
 // アップロード漏れの検出：各ファイルの版が app.js と一致するか
 function staleFiles() {
   const cssV = getComputedStyle(document.documentElement).getPropertyValue('--lemma-version').replace(/['"\s]/g, '');
-  const list = { 'js/answer.js': M_ANS.FILE_VERSION, 'js/ui.js': M_UI.FILE_VERSION, 'js/drill.js': M_DRILL.FILE_VERSION, 'js/catalog.js': M_CAT.FILE_VERSION, 'js/content.js': M_CONTENT.FILE_VERSION, 'js/scheduler.js': M_SCHED.FILE_VERSION, 'js/graph.js': M_GRAPH.FILE_VERSION, 'js/plane.js': M_PLANE.FILE_VERSION, 'js/graph3d.js': M_G3.FILE_VERSION, 'js/parser.js': M_PARSER.FILE_VERSION, 'css/style.css': cssV };
+  const list = { 'js/answer.js': M_ANS.FILE_VERSION, 'js/ui.js': M_UI.FILE_VERSION, 'js/drill.js': M_DRILL.FILE_VERSION, 'js/catalog.js': M_CAT.FILE_VERSION, 'js/mastery.js': M_MAST.FILE_VERSION, 'js/content.js': M_CONTENT.FILE_VERSION, 'js/scheduler.js': M_SCHED.FILE_VERSION, 'js/graph.js': M_GRAPH.FILE_VERSION, 'js/plane.js': M_PLANE.FILE_VERSION, 'js/graph3d.js': M_G3.FILE_VERSION, 'js/parser.js': M_PARSER.FILE_VERSION, 'css/style.css': cssV };
   return Object.entries(list).filter(([, v]) => v !== VERSION).map(([k]) => k);
 }
 function showBanner(html) {

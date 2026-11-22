@@ -67,6 +67,28 @@ ok(Array.isArray(CAT.pickReview(st, { size: 5 })), 'pickReview()');
   ok(T.byId.get('recurrence').ids.every(id => (CAT.entryById.get(id).tg || []).some(t => /漸化式|不動点|階差/.test(t))), '漸化式のカードの問題は漸化式のタグをもつ');
 }
 
+// 推薦（v0.18）：理由はすべて決まった規則から付き、解法の候補があれば解法の理由の問題が入る
+{
+  const { techCandidates } = await import('../js/mastery.js');
+  const T = await CAT.loadTechniques();
+  const st = { problems: {}, pstat: {}, log: [] };
+  const tech = { ...techCandidates(st, T.list, CAT.entryById), name: (id) => T.byId.get(id).name };
+  const plan = CAT.pickToday(st, { size: 8, tech });
+  const RULES = [/^前回完答できなかった問題の復習$/, /^復習の時期$/, /^要復習の解法「.+」を立て直す$/, /^まだ学んでいない解法「.+」を学ぶ$/, /^「.+」を別の分野で使う$/, /^苦手な分野「.+」を補う$/, /^新しい問題$/];
+  ok(plan.steps.length === 8 && plan.steps.every(x => RULES.some(r => r.test(x.why))), '今日の演習：すべての問題に規則どおりの理由');
+  const nw = plan.items.find(x => x.tag === 'new');
+  ok(nw && T.byProblem.get(nw.pid).some(x => x.main), `何も解いていなければ、まだ学んでいない解法の問題が入る（${nw && nw.why}）`);
+  ok(plan.items.filter(x => x.tag === 'fresh').length === plan.count.fresh, '「新しい問題」の数が count と合う');
+  // 旧 ID（former）で引ける
+  ok(T.byId.get('ivt-mvt') && T.byId.get('ivt-mvt').id === 'mvt', '旧 ID ivt-mvt は平均値の定理のカードへ');
+  ok(T.list.every(t => t.main.every(id => t.ids.includes(id))), '主な解法の問題は結びつく問題に含まれる');
+  // 類題：同じ主な解法の問題を優先
+  const e0 = CAT.ENTRIES.find(e => (T.byProblem.get(e.id) || []).some(x => x.main));
+  const m0 = T.byProblem.get(e0.id).find(x => x.main).id;
+  const sim = CAT.similarTo({ problems: {} }, e0.id, [], T.byProblem);
+  ok(sim && (T.byProblem.get(sim.id) || []).some(x => x.id === m0), `類題は同じ解法を共有する（${e0.id} → ${sim && sim.id}）`);
+}
+
 // 頻出度：1〜3 だけが入り、出題では頻出度の高い問題が多めに選ばれること
 ok(CAT.ENTRIES.every(e => e.v === undefined || e.v === 1 || e.v === 3), '頻出度は 1 か 3 だけが書かれる（2 は既定）');
 ok(CAT.ENTRIES.some(e => e.v === 3) && CAT.ENTRIES.some(e => e.v === 1), '頻出度の高・低がどちらもある');
