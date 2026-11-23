@@ -2,7 +2,7 @@
 import { PROBLEMS as BUILTIN, cardById, problemById as builtinById, unitOf as builtinUnit } from './content.js';
 import { retrievability, dueAt, TARGET_R } from './scheduler.js';
 
-export const FILE_VERSION = '0.21.0';
+export const FILE_VERSION = '0.22.0';
 
 // 難易度（問題管理表と同じ6段階。0=基礎 は v0.6 で追加。v0.15 で 3〜5 の名前を変更）
 export const LEVELS = { 0: '基礎', 1: '標準', 2: '入試基礎', 3: '入試標準', 4: '入試発展', 5: '数学探究' };
@@ -167,7 +167,7 @@ export function nextReviewTime(state) {
 
 // 今日の演習：復習待ちを先に（忘れかけ順）、残りを新しい問題で埋める。
 // weak（苦手分野のキー）があれば、新しい問題のうち最大2問をその分野から選ぶ。分野が続かないよう交互に並べる。
-// 推薦の順（v0.19）：復習の時期が来た問題（scheduler。新しい学習の枠を残す）→ 要復習の解法 → 未学習の解法 → 解法を違う文脈で
+// 推薦の順：復習の時期が来た問題（scheduler。新しい学習の枠を残す）→ 要復習の解法 → 未学習の解法 → 解法を違う文脈で
 // → 苦手分野 → 新しい問題。復習以外は、1つの分野から1回の3分の1まで（偏らせない）。
 // 各問題に、選んだ理由（why）を付ける。理由は選んだ規則そのもので、ランダムに選んだものは「新しい問題」とだけ書く。
 // tech（省略可）：mastery.js の techCandidates の結果に { name(id), transferWhy(techId, pid) } を足したもの

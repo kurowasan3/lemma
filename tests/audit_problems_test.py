@@ -67,5 +67,65 @@ ok(pri3['C'][0] == 1 and pri3['F'][0] == 1 and pri3['A'][0] == 2, '類似度 0.9
 ps = [prob('S1', tex='$a_1=1$, $a_{n+1}=2a_n-3^n$ で定まる数列の一般項を求めよ。'), prob('S2', tex='$a_1=2$, $a_{n+1}=3a_n+2n$ で定まる数列の一般項を求めよ。')]
 sp = A.similar_pairs(ps, thr=0.5)
 ok(sp and sp[0][4] is True, f'短い問題文の組に「短い」の印（{sp}）')
+# ---- v0.22：CSV の読み込み（列の欠け・列の順番・BOM・空行と崩れた行・誤りと警告）
+import csv, tempfile, os, json
+def write_csv(rows, head, bom=True):
+    fd, path = tempfile.mkstemp(suffix='.csv'); os.close(fd)
+    with open(path, 'w', newline='', encoding='utf-8-sig' if bom else 'utf-8') as f:
+        w = csv.writer(f); w.writerow(head); w.writerows(rows)
+    return path
+HEAD = ['問題ID', '分野', A.HASH_COL] + A.HCOLS
+good = ['P1', 'I-01', A.content_hash(byid['P1'])] + ['OK'] * 9
+rows, errs = A.read_reviewed(write_csv([good], HEAD))
+ok(not errs and A.check_reviewed(rows, byid)['done'] == ['P1'], 'BOM つき UTF-8 の CSV を読める')
+rows, errs = A.read_reviewed(write_csv([good], HEAD, bom=False))
+ok(not errs and A.check_reviewed(rows, byid)['done'] == ['P1'], 'BOM なしでも読める')
+perm = list(reversed(HEAD)); rows, errs = A.read_reviewed(write_csv([list(reversed(good))], perm))
+ok(not errs and A.check_reviewed(rows, byid)['done'] == ['P1'], '列の順番が変わっても正しく読む')
+rows, errs = A.read_reviewed(write_csv([['P1', 'I-01', ''] + [''] * 8], HEAD[:-1]))
+ok(errs and '必要な列が無い' in errs[0] and not rows, '必要な列の欠けは、記入が空かどうかより先に誤りにする')
+rows, errs = A.read_reviewed(write_csv([good, [''] * len(HEAD), ['', '', ''] + [''] * 9, ['P2', 'I-01']], HEAD))
+ok(len(rows) == 1 and len(errs) == 1 and '列の数' in errs[0], f'空行は飛ばし、列の数が合わない行は誤りにする（{errs}）')
+res = A.check_reviewed([{**dict(zip(HEAD, good)), '_line': 2}, {**dict(zip(HEAD, ['P2', 'I-01', A.content_hash(byid['P2'])] + ['OK'] * 8 + ['良い'])), '_line': 3}], byid)
+ok(res['done'] == ['P1'] and res['warnings'] and not res['errors'], '使えない値は警告（誤りとは分ける）で、確認済みにしない')
+res = A.check_reviewed([{**dict(zip(HEAD, ['ZZ'] + good[1:])), '_line': 2}], byid)
+ok(res['errors'] and not res['warnings'], '存在しない ID は誤り（警告とは分ける）')
+res = A.check_reviewed([{'問題ID': 'P1', A.HCOLS[0]: 'OK'}], byid)
+ok(res['errors'] and '必要な列' in res['errors'][0], 'check_reviewed に直接渡しても、列の欠けを先に誤りにする')
+
+# ---- 自動検証と人の確認を分ける
+pa = prob('Q1'); h = A.content_hash(pa)
+auto = {'Q1': {'h': h, 'at': 'x', 'items': [{'i': '', 'kind': '定積分', 'result': 'pass-symbolic', 'detail': ''}], 'lint': []}}
+ok(A.quality_status(pa, auto, {}) == ('pass', 'none'), '自動検証に合格しても、人の確認は「未実施」のまま')
+ok(A.quality_status(pa, {'Q1': {**auto['Q1'], 'h': 'old'}}, {}) == ('stale', 'none'), '内容が変わったら自動検証の記録は「古い」（合格とみなさない）')
+ok(A.quality_status(pa, {}, {})[0] == 'none', '自動検証を実行していない問題は「未実行」')
+ok(A.quality_status(pa, {'Q1': {'h': h, 'at': 'x'}}, {})[0] == 'na', '対象外の記録は「対象外」（合格にしない）')
+fail_rec = {'Q1': {'h': h, 'at': 'x', 'items': [{'i': '', 'kind': '極限', 'result': 'fail', 'detail': ''}], 'lint': []}}
+ok(A.quality_status(pa, fail_rec, {})[0] == 'issue', '自動検証で不一致なら「不一致あり」')
+ok(A.quality_status(pa, {}, {'Q1': {'h': h, 'result': 'fix'}})[1] == 'fix', '人の確認で要修正')
+ok(A.quality_status(pa, {}, {'Q1': {'h': 'old', 'result': 'done'}})[1] == 'stale', '人の確認のあとで内容が変わったら「古い」（完了とみなさない）')
+ok(A.quality_status(prob('Q2', human=True), {}, {})[1] == 'declared', '管理表の「済」は、内容の照合ができない「管理表で済」として区別')
+fd, hp = tempfile.mkstemp(suffix='.json'); os.close(fd); os.remove(hp)
+n = A.record_human({'done': ['P1'], 'fix': [('P2', ['解答の正確性'])], 'items': {'P1': {}, 'P2': {}}}, byid, path=Path(hp), today='2026-11-23')
+rec = json.loads(Path(hp).read_text(encoding='utf-8'))['results']
+ok(n == 2 and rec['P1']['result'] == 'done' and rec['P2']['result'] == 'fix' and rec['P1']['h'] == A.content_hash(byid['P1']) and rec['P1']['at'] == '2026-11-23' and rec['P1']['method'],
+   '人の確認の記録に、問題 ID・結果・日付・方法・照合用の値を残す')
+pri4 = A.priority([pa], [], [], [], {}, {}, {'Q1': ('issue', 'none', ['答えの無い小問 (2)'])})
+ok(pri4['Q1'][0] == 1 and any('自動検証' in x for x in pri4['Q1'][1]) and any('構造の候補' in x for x in pri4['Q1'][1]), '自動検証の不一致は優先1、構造の候補も理由に並べる')
+
+# ---- 学習上の役割の近い問題：同じ解法でもアイデアが違えば出さない・言い回しが違ってもアイデアが同じなら候補
+def rp(pid, idea, theme, tex=None):
+    q = prob(pid, level=3, tex=tex); q['idea'] = {'tex': idea}; q['theme'] = theme; return q
+R1 = rp('R1', '不動点を引いて等比数列に直す．', '2項間漸化式', tex='$a_1=1$，$a_{n+1}=2a_n+1$ の一般項を求めよ．')
+R2 = rp('R2', '不動点を引いて等比数列に直す．', '漸化式の一般項', tex=r'数列 $\{b_n\}$ は $b_1=3$，$b_{n+1}=\frac12 b_n+5$ をみたす．$b_n$ を求めよ．')
+R3 = rp('R3', '両辺を $3^{n+1}$ で割って階差数列にする．', '指数を含む漸化式', tex='$a_1=1$，$a_{n+1}=3a_n+2^n$ の一般項を求めよ．')
+mo = {'R1': 'recurrence', 'R2': 'recurrence', 'R3': 'recurrence'}
+pairs = A.role_pairs([R1, R2, R3], mo, {})
+got = {(x['a'], x['b']) for x in pairs}
+ok(('R1', 'R2') in got, '文章が違っても、同じ解法・難易度・要求で核となるアイデアが同じ問題は「役割が近い候補」')
+ok(('R1', 'R3') not in got and ('R2', 'R3') not in got, '同じ解法でも、アイデア（着眼点）が違う類題は候補にしない')
+sim_text = A.similar_pairs([R1, R2], thr=0.7)
+ok(not sim_text, '役割が近い組は、文字列の類似では見つからない（だから別に比べる）')
+
 print(f'audit_problems_test: {passed} 件 OK' + (f'、{failed} 件失敗' if failed else ''))
 sys.exit(1 if failed else 0)

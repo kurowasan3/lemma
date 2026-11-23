@@ -1,4 +1,4 @@
-// 解法の習熟度（v0.20）
+// 解法の習熟度
 //
 // 問題の習熟（scheduler.js の pstat：その問題をいつ解き直すか）とは別に、
 // 「その解法を、知らされなくても使い、違う文脈の問題でも使えるか」を学習記録（state.log）から判定する。
@@ -34,7 +34,7 @@
 //   learning 学習中  … それ以外
 import { retrievability, TARGET_R } from './scheduler.js';
 
-export const FILE_VERSION = '0.21.0';
+export const FILE_VERSION = '0.22.0';
 export const MASTER = { full: 4, solo: 2, score: 0.7 };
 export const STATUS = { none: '未学習', learning: '学習中', review: '要復習', mastered: '習得' };
 // 転用の段階の表示。「転用できた」「応用力が身についた」とは言わない（代理の指標のため）

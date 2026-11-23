@@ -1,4 +1,4 @@
-# 解法体系（v0.18）
+# 解法体系
 
 ## データ：`content/techniques.json`（schema `lemma.techniques/2`）
 
