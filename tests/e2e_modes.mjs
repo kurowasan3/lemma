@@ -41,7 +41,7 @@ ok(await page.locator('#inputs .choice.wrong').count() === keys.length - 1, '判
 ok(await page.locator('#judge').count() === 0, '選択式はやり直しなし');
 ok(await page.locator('.dispute').count() === 0 || await page.locator('#inputs input').count() > 0, '選択欄に「判定がおかしい？」は出ない');
 SHOT && await page.screenshot({ path: out + '/3-choice-judged.png', fullPage: true });
-if (await page.locator('#self button').count()) await page.locator('#self button').first().click();
+if (await page.locator('#self button').count()) await page.locator('#self button[data-g="full"]').click();
 // 自己採点
 await page.goto(U + '#settings'); await page.waitForTimeout(600);
 await page.locator('#amode button[data-m="self"]').click(); await page.waitForTimeout(200);

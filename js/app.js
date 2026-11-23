@@ -26,7 +26,7 @@ import {
 } from './catalog.js';
 import { techMastery, techCandidates, masterChecklist, makeCtx, transferTargets, transferWhy, MASTER, STATUS, TRANSFER, TRANSFER_KIND } from './mastery.js';
 
-const VERSION = '0.27.1';
+const VERSION = '0.27.2';
 const KEY = 'lemma.v2';
 let sync = null, syncApplying = false, syncStatus = null;   // アカウントと同期（initSync で用意）
 const $ = (sel, el = document) => el.querySelector(sel);
@@ -978,6 +978,59 @@ function formatSolution(html) {
   return bigOps(t);
 }
 
+// 解説を小問ごとの枠に分ける（見出しバー・別解の枠・点線の区切り・答の枠）。
+// 区切るのは入れ子の外の改行だけで、数式とタグの中では区切らない。
+function solutionSections(html) {
+  if (!html) return '';
+  const lines = []; let cur = '', depth = 0, sep = null;
+  const re = /\$[^$]*\$|\\\[[\s\S]*?\\\]|<br\b[^>]*>|<\/?([a-zA-Z]+)\b[^>]*>|[^$<\\]+|[\s\S]/g;
+  for (const m of html.matchAll(re)) {
+    const tok = m[0];
+    if (/^<br\b/i.test(tok) && depth === 0) { lines.push({ sep, html: cur }); cur = ''; sep = /class="p"/.test(tok) ? 'p' : 'br'; continue; }
+    const tag = m[1] && m[1].toLowerCase();
+    if (tag && /^(div|ol|ul|li|table|tr|td|span|details|p)$/.test(tag) && !tok.endsWith('/>')) depth += tok[1] === '/' ? -1 : 1;
+    cur += tok;
+  }
+  lines.push({ sep, html: cur });
+  const secs = []; let sec = null, next = 1;
+  for (const ln of lines) {
+    const t = ln.html.replace(/^\s+/, '');
+    // 小問の見出しは次の番号の (n) だけ（まとめの「(1)：…」などで区切らない）
+    let num = t.match(/^\((\d+)\)\s*/);
+    if (num && +num[1] !== next) num = null;
+    const alt = t.match(/^<b>\s*(別解[^<]*)<\/b>\s*[：:．.]?\s*/) || t.match(/^（(別解\d*)[：:]\s*/);
+    if (num || alt || !sec) {
+      if (num) next++;
+      const back = sec && sec.kind !== 'bekkai' ? sec : null;
+      sec = { head: num ? `(${num[1]})` : alt ? alt[1].trim() : '', kind: alt ? 'bekkai' : '', paren: !!(alt && t.startsWith('（')), lines: [] };
+      secs.push(sec);
+      if (num || alt) { ln.html = t.slice((num || alt)[0].length); ln.sep = null; }
+    }
+    if (ln.html.trim()) sec.lines.push(ln);
+    // 「（別解：…）」は閉じ括弧で枠を終え、続きは元の小問に戻す
+    if (sec.paren && /）\s*$/.test(ln.html)) {
+      ln.html = ln.html.replace(/）\s*$/, '');
+      sec.paren = false;
+      const prev = secs.slice(0, -1).reverse().find(x => x.kind !== 'bekkai');
+      sec = { head: '', kind: 'cont', lines: [], ofHead: prev ? prev.head : '' };
+      secs.push(sec);
+    }
+  }
+  const lineHTML = (h) => {
+    const a = h.replace(/^\s*(?:<b>)?答[：:](?:<\/b>)?\s*/, '');
+    return a !== h || /\\boldsymbol/.test(h) ? `<div class="ansrow"><span class="al">答</span><span class="aa">${a}</span></div>` : h;
+  };
+  return secs.filter(x => x.lines.length || (x.head && x.kind !== 'cont')).map(x => {
+    let body = '';
+    x.lines.forEach((ln, i) => {
+      const h = lineHTML(ln.html), box = h.startsWith('<div class="ansrow">');
+      if (i) body += ln.sep === 'p' ? '<hr class="sdash">' : box || body.endsWith('</div>') ? '' : '<br>';
+      body += h;
+    });
+    return `<section class="solsec${x.kind ? ' ' + x.kind : ''}${x.head ? '' : ' nohead'}"${x.kind === 'bekkai' ? ' aria-label="別解"' : ''}>${x.head ? `<div class="sh">${x.head}</div>` : ''}<div class="sb">${body}</div></section>`;
+  }).join('');
+}
+
 // 大学で習う用語が出てきたら、高校の言葉で説明を添える
 const GLOSSARY = [
   ['有界', 'ある定数 $M$ があって，すべてについて $|\\text{値}|\\leqq M$ となること（ある範囲からはみ出さないこと）。「上に有界」は ある定数以下、「下に有界」は ある定数以上 に収まること。'],
@@ -1373,10 +1426,11 @@ function renderProblem(step) {
 }
 
 // 問題管理表の問題：入力用の答えがあれば入力して自動採点、なければ紙に解いて自己採点
+// 並びは左から 不正解 → 一部正解 → 完答（良い方が右）
 const SELF = [
-  { id: 'full', label: '完答', icon: 'full' },
-  { id: 'part', label: '一部正解', icon: 'part' },
   { id: 'none', label: '不正解', icon: 'none' },
+  { id: 'part', label: '一部正解', icon: 'part' },
+  { id: 'full', label: '完答', icon: 'full' },
 ];
 const CONF_ICON = { low: 'low', mid: 'mid', high: 'high' };
 const KEYS = ['^', '(', ')', '/', '√', 'π', 'e', 'sin', 'cos', 'log', ',', '<', '>', '≦', '≧', '±', '|'];
@@ -1643,9 +1697,8 @@ function renderWritten(step, e) {
     const needSelf = !spec || selfParts.length > 0;   // 自己採点がある＝先に解答・解説を見せてから聞く
     fb.innerHTML = `
       ${spec && autoRes.length ? `<div id="autores">${autoBanner()}</div>` : ''}
-      <div class="solution fade-in">
-        <div class="title">答</div>
-        ${answerKey}
+      <div class="solution anskey-box fade-in">
+        <div class="ansrow big"><span class="al">答</span><div class="aa">${answerKey}</div></div>
         ${spec ? `<details class="orig"><summary>問題管理表の答えの表記</summary><div class="qhtml">${b.a}</div></details>` : ''}
       </div>
       ${spec && autoRes.some(r => !r.ok && !r.choice) ? '<p class="muted dispute-note">自分の答えも正しいはずなのに×のときは、欄の横の「判定がおかしい？」を押してください。記録に残り、テスト記録のCSVにも出ます。</p>' : ''}
@@ -1662,7 +1715,7 @@ function renderWritten(step, e) {
   function solutionHTML() {
     return `<div class="solution fade-in" id="solbox">
         <div class="title">解答・解説</div>
-        <div class="qhtml sol">${formatSolution(b.s) || '（解説なし）'}</div>
+        <div class="qhtml sol">${solutionSections(formatSolution(b.s)) || '（解説なし）'}</div>
         ${b.k ? `<div class="keypoint"><b>核となるアイデア</b>${b.k}</div>` : ''}
         ${techChipsHTML(e.id)}
         ${e.th || e.tg ? `<div class="methods">${e.th ? `<span class="chip plain">${e.th}</span>` : ''}${(e.tg || []).map(t => `<span class="chip plain">${esc(t)}</span>`).join('')}</div>` : ''}

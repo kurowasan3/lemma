@@ -159,7 +159,7 @@ try {
     await page.click('#reveal'); await page.waitForTimeout(400);
     const order = await page.evaluate(() => { const a = document.querySelector('#solbox'), b = document.querySelector('#self'); return !!(a && b && (a.compareDocumentPosition(b) & Node.DOCUMENT_POSITION_FOLLOWING)); });
     ok(order, '自己採点の問題で、解答・解説が「どうだった？」より前に出る');
-    await page.locator('#self button').first().click(); await page.waitForTimeout(300);
+    await page.locator('#self button[data-g="full"]').click(); await page.waitForTimeout(300);
     ok(await page.locator('#solbox').count() === 1, '採点後も解答・解説は1つだけ');
     await page.goto(U + '#settings'); await page.waitForTimeout(500);
     ok(!(await page.locator('#view').innerText()).includes('問題データ'), '設定に「問題データ」の項目が無い');
@@ -186,7 +186,7 @@ try {
     ok(cur.i === 0 && cur.steps[0].pid === first, '再開すると1問目から');
     await page.locator('#conf button').nth(0).click();
     await page.click('#reveal'); await page.waitForTimeout(400);
-    await page.locator('#self button').first().click(); await page.waitForTimeout(400);
+    await page.locator('#self button[data-g="full"]').click(); await page.waitForTimeout(400);
     const g = await page.evaluate(() => JSON.parse(localStorage.getItem('lemma.v2')).log.at(-1));
     ok(g.c === 'low' && g.ok && g.g === 2, `自信なしで正解 → 早めに復習（grade ${g.g}）`);
     ok((await page.locator('.conf-note').innerText()).includes('早めに復習'), '自信なしで正解したときの一言');
@@ -204,7 +204,7 @@ try {
     // 確実なのに不正解 → 注意
     await page.locator('#conf button').nth(2).click();
     await page.click('#reveal'); await page.waitForTimeout(400);
-    await page.locator('#self button').last().click(); await page.waitForTimeout(400);
+    await page.locator('#self button[data-g="none"]').click(); await page.waitForTimeout(400);
     ok((await page.locator('.conf-note.warn').count()) === 1, '確実なのに不正解のときは思い込みの確認を促す');
     // 検索の絞り込み：間違えた問題
     await page.click('#quit'); await page.waitForTimeout(600);
@@ -239,7 +239,7 @@ try {
     await page.locator('#conf button').nth(1).click(); await page.click('#reveal'); await page.waitForTimeout(600);
     const chips = await page.locator('.tech-chips a').allInnerTexts();
     ok(chips.some(t => t.includes('漸化式')), `解説に「この問題の解法」（${chips}）`);
-    await page.locator('#self button').last().click(); await page.waitForTimeout(400);
+    await page.locator('#self button[data-g="none"]').click(); await page.waitForTimeout(400);
     ok(await page.evaluate(() => JSON.parse(localStorage.getItem('lemma.v2')).log.at(-1).k === 't'), '解法カードから解いた記録に k:t');
     await page.click('#quit'); await page.waitForTimeout(500);
     await page.goto(U + '#tech=recurrence'); await page.waitForTimeout(1500);
@@ -259,7 +259,7 @@ try {
     let asked = false, recallTech = null;
     for (let k = 0; k < 8 && !asked; k++) {
       await page.locator('#conf button').nth(1).click(); await page.click('#reveal'); await page.waitForTimeout(500);
-      await page.locator('#self button').first().click(); await page.waitForTimeout(500);
+      await page.locator('#self button[data-g="full"]').click(); await page.waitForTimeout(500);
       if (await page.locator('#recall').count()) {
         asked = true;
         await page.locator('#recall [data-r="3"]').click(); await page.waitForTimeout(300);
@@ -571,7 +571,7 @@ try {
     const solve = async (pg, pid) => {
       await pg.evaluate(`__lemma.open(['${pid}'])`); await pg.waitForTimeout(800);
       await pg.locator('#conf button').nth(1).click(); await pg.click('#reveal'); await pg.waitForTimeout(400);
-      await pg.locator('#self button').first().click(); await pg.waitForTimeout(300);
+      await pg.locator('#self button[data-g="full"]').click(); await pg.waitForTimeout(300);
     };
     await solve(T1, 'A-COM-020');
     const t1n = await T1.evaluate(() => JSON.parse(localStorage.getItem('lemma.v2')).log.length);
@@ -585,7 +585,7 @@ try {
     ok((await NW.locator('.banner').innerText()).includes('保存も同期もしません'), '新しい schema：起動時に保存しないことを知らせる');
     await NW.evaluate("__lemma.open(['A-COM-020'])"); await NW.waitForTimeout(800);
     await NW.locator('#conf button').nth(1).click(); await NW.click('#reveal'); await NW.waitForTimeout(400);
-    await NW.locator('#self button').first().click(); await NW.waitForTimeout(400);
+    await NW.locator('#self button[data-g="full"]').click(); await NW.waitForTimeout(400);
     ok(await NW.evaluate(() => localStorage.getItem('lemma.v2')) === newerRaw, '新しい schema：解いても保存された記録は書き換わらない');
     await NW.reload(); await NW.waitForTimeout(1200);
     ok(await NW.evaluate(() => localStorage.getItem('lemma.v2')) === newerRaw, '新しい schema：再読み込みしても元の内容のまま');
@@ -600,7 +600,7 @@ try {
     ok((await RF.locator('.banner').innerText()).includes('読めませんでした'), '保存先を読めない：起動時に知らせる');
     await RF.evaluate("__lemma.open(['A-COM-020'])"); await RF.waitForTimeout(800);
     await RF.locator('#conf button').nth(1).click(); await RF.click('#reveal'); await RF.waitForTimeout(400);
-    await RF.locator('#self button').first().click(); await RF.waitForTimeout(400);
+    await RF.locator('#self button[data-g="full"]').click(); await RF.waitForTimeout(400);
     const rfLog = await RF.evaluate(() => JSON.parse(localStorage.getItem('lemma.v2')).log.map(l => l.p));
     ok(rfLog.length === old.log.length + 1 && rfLog.includes('A-COM-020'), `保存先が復旧したら、元の記録（${old.log.length}件）と合わせて保存する（${rfLog.length}件）`);
     const errs = [...P.errors, ...Q.errors, ...R.errors, ...BR.errors, ...T1.errors, ...T2.errors, ...NW.errors, ...RF.errors].filter(e => !/status of 40[13]/.test(e));
