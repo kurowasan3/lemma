@@ -31,7 +31,7 @@ jobs:
       - name: 依存（Python・Playwright）
         run: |
           pip install openpyxl jsonschema sympy antlr4-python3-runtime==4.11
-          npm install --no-save --no-package-lock playwright
+          npm install --no-save --no-package-lock playwright @electric-sql/pglite
           npx playwright install --with-deps chromium
       - name: 検査（node tests/run.mjs --e2e）
         run: node tests/run.mjs --e2e

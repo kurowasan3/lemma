@@ -26,7 +26,7 @@ import {
 } from './catalog.js';
 import { techMastery, techCandidates, masterChecklist, makeCtx, transferTargets, transferWhy, MASTER, STATUS, TRANSFER, TRANSFER_KIND } from './mastery.js';
 
-const VERSION = '0.23.0';
+const VERSION = '0.24.0';
 const KEY = 'lemma.v2';
 let sync = null, syncApplying = false, syncStatus = null;   // アカウントと同期（initSync で用意）
 const $ = (sel, el = document) => el.querySelector(sel);
@@ -34,8 +34,11 @@ const $$ = (sel, el = document) => [...el.querySelectorAll(sel)];
 
 // ---------- 保存（v0.23：読み書き・移行・控えは js/store.js） ----------
 //   読めない記録は上書きせずに退避、保存に失敗したら前の記録のまま、別のタブの保存とは合わせてから保存する。
-let LS;
-try { LS = window.localStorage; LS.getItem(KEY); } catch {   // 保存できない環境（一部のプライベートモード）：この画面の中だけで動く
+// localStorage そのものを使えない環境（一部のプライベートモード・保存を禁止した設定）だけ、この画面の中だけで動く。
+//   getItem の一時的な失敗はここでは判定しない（store.js が「読めない」として扱い、保存のときに読み直す）
+let LS, noStorage = false;
+try { LS = window.localStorage; if (!LS) throw new Error('no localStorage'); } catch {
+  noStorage = true;
   const m = new Map();
   LS = { getItem: k => (m.has(k) ? m.get(k) : null), setItem: (k, v) => m.set(k, String(v)), removeItem: k => m.delete(k), key: i => [...m.keys()][i] ?? null, get length() { return m.size; } };
 }
@@ -48,23 +51,36 @@ let saveWarned = false;
 let persistAsked = false;
 const SAVE_MSG = {
   quota: 'この端末の保存領域がいっぱいで、記録を保存できませんでした（前に保存した記録は残っています）。設定から書き出しておいてください。',
+  write: 'この端末に記録を書き込めませんでした（前に保存した記録は残っています）。設定から書き出しておいてください。',
+  read: 'この端末に保存した記録を読めないため、上書きしないよう保存を止めています。しばらくしてから再読み込みしてください。',
   verify: '記録を保存できたか確かめられませんでした。設定から書き出しておいてください。',
+  verify_read: '記録を保存できたか確かめられませんでした。設定から書き出しておいてください。',
+  conflict: 'ほかの画面と同時に保存が重なりました。この画面の記録は残っています。もう一度操作すると保存します。',
   invalid: '記録の形が正しくないため、保存を止めました（前に保存した記録は残っています）。設定から書き出しておいてください。',
-  blocked: '読めなかった記録を退避できなかったため、この端末への保存を止めています。設定から書き出しておいてください。',
-  newer: '別の画面で新しい版の Lemma が開いているため、保存を止めました。その画面を閉じるか、この画面を再読み込みしてください。',
+  broken: '読めなかった記録を退避できなかったため、この端末への保存を止めています。設定から書き出しておいてください。',
+  migrate: '記録を新しい形に移せなかったため、元の記録を守るよう保存を止めています。アプリを更新してから再読み込みしてください。',
+  newer: '新しい版の Lemma で保存された記録なので、この版では保存しません（元の記録はそのまま）。ページを再読み込みしてアプリを更新してください。',
   serialize: '記録を保存できませんでした。設定から書き出しておいてください。',
 };
+const BIG = 3e6;   // 保存している記録がこの文字数を超えたら1回知らせる（localStorage は多くのブラウザで約500万文字）
+let bigWarned = false;
+const lwwOf = (st) => JSON.stringify([st.settings, st.practice, st.graphExprs, st.graph3Exprs, st.graphCExprs, st.graphVExprs]);
 function save() {
-  const sig = JSON.stringify([state.settings, state.practice, state.graphExprs, state.graph3Exprs, state.graphCExprs, state.graphVExprs]);
+  const sig = lwwOf(state);
   if (lwwSig !== null && sig !== lwwSig) state.settingsAt = Date.now();
   lwwSig = sig;
   const r = store.save(state);
   // 別のタブが先に保存していた：その記録と合わせた結果を、この画面の記録にも入れる（同じオブジェクトのまま）
-  if (r.merged) for (const k of Object.keys(r.merged)) state[k] = r.merged[k];
+  if (r.merged) {
+    for (const k of Object.keys(state)) if (!(k in r.merged)) delete state[k];
+    for (const k of Object.keys(r.merged)) state[k] = r.merged[k];
+    lwwSig = lwwOf(state);   // ほかのタブで変えた設定を、この画面で変えたことにしない
+  }
   if (!r.ok && !saveWarned) {   // 黙って失うと気づけないので、1回だけ知らせる
     saveWarned = true; setTimeout(() => toast(SAVE_MSG[r.reason] || SAVE_MSG.serialize), 0);
   }
   if (r.ok) saveWarned = false;
+  if (r.ok && r.size > BIG && !bigWarned) { bigWarned = true; setTimeout(() => toast('保存している学習記録が大きくなり、この端末の保存領域の上限に近づいています。設定から書き出しておいてください。'), 0); }
   if (sync && !syncApplying) sync.schedule();
   return r.ok;
 }
@@ -109,8 +125,11 @@ async function firstSyncAfterLogin() {
     if (k === 'remote') {
       download(`lemma-この端末の記録-${dayKey()}.json`, JSON.stringify(makeBackup(state, VERSION), null, 1), 'application/json');
       // 端末の記録を空にしてから同期すると、アカウントの記録だけになる（設定は端末のまま）
-      state = { ...freshState(), settings: state.settings, practice: state.practice, settingsAt: state.settingsAt, graphExprs: state.graphExprs, graph3Exprs: state.graph3Exprs, graphCExprs: state.graphCExprs, graphVExprs: state.graphVExprs };
-      save(); session = null;
+      //   fence：ほかのタブに残っている古い記録が、あとで持ち込まれないようにする
+      const next = { ...freshState(), settings: state.settings, practice: state.practice, settingsAt: state.settingsAt, graphExprs: state.graphExprs, graph3Exprs: state.graph3Exprs, graphCExprs: state.graphCExprs, graphVExprs: state.graphVExprs };
+      const r = store.replace(state, next, null, { fence: true });
+      if (!r.ok) { toast(`${SAVE_MSG[r.reason] || SAVE_MSG.write}（切り替えていません）`); await sync.logout(); return; }
+      state = r.state; lwwSig = null; session = null;
       await sync.syncNow(); toast('アカウントの記録に切り替えました'); route(); return;
     }
     if (!k) { await sync.logout(); toast('ログインを取りやめました'); return; }
@@ -180,7 +199,11 @@ function drawAccount() {
     // 消す前に、サーバーに送れたことを確かめる（送れていない記録を消さない）
     if (k === 'wipe' && !synced) { toast('サーバーと同期できなかったため、この端末の記録は消していません（ログアウトもしていません）'); drawAccount(); return; }
     await sync.logout();
-    if (k === 'wipe') { state = { ...freshState(), settings: state.settings }; save(); session = null; clearSavedSession(); }
+    if (k === 'wipe') {
+      const r = store.replace(state, { ...freshState(), settings: state.settings }, null, { fence: true });
+      if (!r.ok) { toast(`${SAVE_MSG[r.reason] || SAVE_MSG.write}（この端末の記録は消していません）`); route(); return; }
+      state = r.state; lwwSig = null; session = null; clearSavedSession();
+    }
     toast(k === 'wipe' ? 'ログアウトし、この端末の記録を消しました' : 'ログアウトしました'); route();
   });
   $('#acct-del').addEventListener('click', async () => {
@@ -2323,9 +2346,9 @@ async function applyRestore(incoming, mode, reason) {
   const rep = audit(next, idContext());
   if (rep.errors.length) { toast('読み込んだ結果に正しくない値があるため、取りやめました（今の記録はそのままです）'); return false; }
   const r = store.replace(state, next, reason);
-  if (!r.ok) { toast('保存できなかったため、取りやめました（今の記録はそのままです）'); return false; }
+  if (!r.ok) { toast(`${SAVE_MSG[r.reason] || SAVE_MSG.write}（読み込みは取りやめました。今の記録はそのままです）`); return false; }
   if (!r.snapshotted) backupFile();   // 端末に控えを残せなかったときは、置き換える前の記録をファイルで残す（この時点では保存前の state）
-  state = next; lwwSig = null; session = null;
+  state = r.state; lwwSig = null; session = null;
   const after = counts(state);
   const warn = rep.warnings.reduce((a, w) => a + w.count, 0);
   await choose({ title: '読み込みました',
@@ -2341,10 +2364,12 @@ function integrityHTML() {
   const rep = audit(state, idContext());
   const nw = rep.warnings.reduce((a, w) => a + w.count, 0), ne = rep.errors.reduce((a, w) => a + w.count, 0);
   const items = [...rep.errors.map(x => ['bad', x]), ...rep.warnings.map(x => ['', x])];
-  const snaps = store.snapshots(), broken = store.brokenKeys();
+  const snaps = store.snapshots(), broken = store.brokenKeys(), use = store.usage();
+  const kb = (n) => `${Math.round(n / 1024).toLocaleString('ja-JP')}KB`;
   return `<details class="integrity" style="margin-top:10px"><summary class="muted small">記録の点検：${ne ? `<b style="color:var(--bad)">正しくない値 ${ne}件</b>` : '正しくない値はありません'}${nw ? `・注意 ${nw}件` : ''}（解答の記録 ${rep.stats.log}件）</summary>
       ${items.length ? `<ul class="small" style="margin:6px 0;padding-left:1.1em">${items.map(([c, x]) => `<li${c ? ' style="color:var(--bad)"' : ''}>${esc(x.msg)}：${x.count}件（${esc(x.ids.slice(0, 5).join(', '))}${x.count > 5 ? ' ほか' : ''}）</li>`).join('')}</ul>
         <p class="muted small" style="margin:0">記録は自動では直しません（消える記録が出ないように）。今のデータに無い問題の記録は、そのまま残してあります。</p>` : ''}
+      <p class="muted small" style="margin:4px 0 0">この端末に保存している量：記録 ${kb(use.main)}・控え ${kb(use.snaps)}${use.broken ? `・退避 ${kb(use.broken)}` : ''}（多くのブラウザの上限は約5MB）</p>
     </details>
     ${snaps.length || broken.length ? `<div class="small" style="margin-top:10px"><b>自動の控え</b>（この端末の中だけ。移行・読み込み・消去の前に残します）
       <ul style="margin:6px 0;padding-left:1.1em">${snaps.map((sn, i) => `<li>${new Date(sn.at).toLocaleString('ja-JP')}：${esc(sn.reason || '')}（解答 ${sn.n}件） <button class="btn ghost snap-back" data-i="${i}" style="padding:2px 10px">戻す</button></li>`).join('')}
@@ -2457,7 +2482,8 @@ function renderSettings() {
     const k = await choose({ title: '自動の控えを消す', body: 'この端末に残している控え（と、読めなかった記録の退避）を消します。学習記録の本体は消えません。',
       options: [{ key: 'y', label: '消す', cls: 'danger' }] });
     if (!k) return;
-    try { LS.removeItem(M_STORE.SNAP_KEY); for (const key of store.brokenKeys()) LS.removeItem(key); } catch { /* なし */ }
+    const r = store.clearSnapshots();
+    if (!r.ok) toast(`${r.failed.length}件の控えを消せませんでした（学習記録の本体は変わっていません）`);
     renderSettings();
   });
   $$('.broken-dl').forEach(b => b.addEventListener('click', () => {
@@ -2478,15 +2504,15 @@ function renderSettings() {
       // この端末の分だけ消す：先にサーバーへ送れたことを確かめる（送れていない記録を消さない）
       if (!(await sync.syncNow())) { toast('サーバーと同期できなかったため、消していません'); return; }
       await sync.logout();
-      const r = store.replace(state, { ...freshState(), ...keep }, null);
-      if (!r.ok) { toast('保存できなかったため、消していません'); return; }
-      state = { ...freshState(), ...keep };
+      const r = store.replace(state, { ...freshState(), ...keep }, null, { fence: true });
+      if (!r.ok) { toast(`${SAVE_MSG[r.reason] || SAVE_MSG.write}（消していません）`); return; }
+      state = r.state;
     } else {
       const next = { ...freshState(), ...keep, resetAt: Date.now() };   // 消した印：同期で、ほかの端末・サーバーの古い記録を持ち込まない
       const r = store.replace(state, next, '消去の前');
-      if (!r.ok) { toast('保存できなかったため、消していません'); return; }
+      if (!r.ok) { toast(`${SAVE_MSG[r.reason] || SAVE_MSG.write}（消していません）`); return; }
       if (!r.snapshotted) backupFile();
-      state = next;
+      state = r.state;
     }
     lwwSig = null; session = null; clearSavedSession(); toast('消去しました'); route();
     if (k === 'all' && logged) sync.syncNow();
@@ -2524,10 +2550,18 @@ function bootWarn() {
   const msg = {
     broken: boot.quarantined ? `<b>保存されていた記録を読めませんでした</b>元の記録は消さずに退避してあります（${where}）。` : '<b>保存されていた記録を読めませんでした</b>元の記録を退避できなかったため、この端末への保存を止めています。新しく解いた記録は、この画面を閉じると残りません。',
     salvaged: `<b>記録の一部が壊れていました</b>壊れていた部分（${esc(boot.issues.map(i => i.key || i.code).join('・'))}）だけを初期値に戻し、ほかの記録はそのまま使います。元の記録は退避してあります（${where}）。`,
-    newer: '<b>新しい版の Lemma で保存された記録です</b>この版のアプリは古いため、ページを再読み込みして更新してください（記録はそのまま使います）。',
-  }[boot.status];
+    newer: '<b>新しい版の Lemma で保存された記録です</b>この版のアプリは古いため、記録を守るよう<b>保存も同期もしません</b>（解いた結果は残りません）。ページを再読み込みしてアプリを更新してください。',
+    migrate_failed: `<b>記録を新しい形に移せませんでした</b>元の記録を守るため、この端末への保存を止めています（解いた結果は残りません）。アプリを更新してから再読み込みすると、もう一度移します。元の記録は退避もしてあります（${where}）。`,
+    unavailable: '<b>この端末に保存した記録を読めませんでした</b>記録を上書きしないよう、保存を止めています。しばらくしてから再読み込みしてください（保存できるようになれば、保存されている記録と合わせてから保存します）。',
+  }[boot.status] || (noStorage ? '<b>この環境では記録を保存できません</b>プライベートモードなどで、ブラウザの保存領域が使えません。解いた結果は画面を閉じると残りません。' : '');
   if (msg) showBanner(msg);
 }
+// 同じ端末の別のタブが記録を保存した：この画面の記録と合わせる（解いている途中なら、画面は描き直さない）
+window.addEventListener('storage', (e) => {
+  if (e.key !== KEY || e.storageArea !== LS) return;
+  save();
+  if (!session && !document.activeElement?.matches('input, textarea')) route();
+});
 function showBanner(html) {
   let b = $('.banner');
   if (!b) { b = document.createElement('div'); b.className = 'banner'; document.body.prepend(b); }

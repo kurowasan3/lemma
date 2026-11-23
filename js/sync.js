@@ -4,7 +4,7 @@
 //   ログインしなければ何も送らない（今まで通り端末の中だけ）。
 import { SUPABASE_URL, SUPABASE_KEY } from './config.js';
 
-export const FILE_VERSION = '0.23.0';
+export const FILE_VERSION = '0.24.0';
 const AUTH_KEY = 'lemma.auth';
 export const enabled = () => !!(SUPABASE_URL && SUPABASE_KEY);
 
@@ -28,10 +28,17 @@ const MESSAGES = {
   otp_expired: 'コードが違うか、期限が切れています。もう一度コードを送ってください。',
   validation_failed: 'メールアドレスの形が正しくありません。',
   email_address_invalid: 'メールアドレスの形が正しくありません。',
+  // supabase/guard.sql（サーバー側の制限）で断られたとき。どれも端末の記録はそのまま残る
+  LM001: 'サーバーが記録の形を受け付けませんでした（この端末の記録はそのまま残っています）。',
+  LM002: '別の端末と同時に同期しました。もう一度同期してください。',
+  LM003: 'サーバーには新しい版のアプリの記録があります。アプリを更新してから同期してください（この端末の記録はそのまま残っています）。',
+  LM004: 'サーバーの解答の記録を減らす書き込みだったため、サーバーが断りました（この端末の記録はそのまま残っています）。',
 };
 
+// サーバーに送らないもの：localResetAt（この端末だけの「置き換えた」印）
+const forServer = (st) => { if (!st || !('localResetAt' in st)) return st; const o = { ...st }; delete o.localResetAt; return o; };
 const RETRY_MAX = 4;
-const retryable = (e) => e && (e.code === 'offline' || e.code === 'conflict' || /^(5\d\d|429|408)$/.test(String(e.code)));
+const retryable = (e) => e && (e.code === 'offline' || e.code === 'conflict' || e.code === 'LM002' || /^(5\d\d|429|408)$/.test(String(e.code)));
 export function createSync({ getState, applyState, onStatus = () => {}, retryDelay = 15000 }) {
   let session = loadSession();
   let timer = null, running = null, retries = 0;
@@ -41,7 +48,10 @@ export function createSync({ getState, applyState, onStatus = () => {}, retryDel
   async function call(path, { method = 'GET', body, auth = false, prefer } = {}) {
     if (!enabled()) throw new SyncError('同期の設定がありません', 'not_configured');
     const headers = { apikey: SUPABASE_KEY, 'Content-Type': 'application/json' };
-    if (auth) headers.Authorization = `Bearer ${session.access_token}`;
+    if (auth) {
+      if (!session) throw new SyncError('ログインしていません', 'no_session');   // 通信の途中でログアウトした
+      headers.Authorization = `Bearer ${session.access_token}`;
+    }
     if (prefer) headers.Prefer = prefer;
     let res;
     try {
@@ -83,9 +93,10 @@ export function createSync({ getState, applyState, onStatus = () => {}, retryDel
       const rows = await call(`/rest/v1/lemma_state?select=state,rev&user_id=eq.${uid}`, { auth: true });
       const local = getState();
       if (structural(local).length) throw new SyncError('この端末の記録の形が正しくないため、同期を止めました。', 'bad_local');
+      if (Number.isInteger(local.schema) && local.schema > SCHEMA) throw new SyncError('この端末の記録は新しい版のアプリのものです。アプリを更新してから同期してください。', 'newer_local');
       if (!rows.length) {
         try {
-          await call('/rest/v1/lemma_state', { method: 'POST', auth: true, prefer: 'return=minimal', body: { user_id: uid, state: local, rev: 1 } });
+          await call('/rest/v1/lemma_state', { method: 'POST', auth: true, prefer: 'return=minimal', body: { user_id: uid, state: forServer(local), rev: 1 } });
           return local;
         } catch (e) { if (e.code === '23505' || e.code === '409') continue; throw e; }   // 別の端末が先に作った
       }
@@ -94,11 +105,14 @@ export function createSync({ getState, applyState, onStatus = () => {}, retryDel
       if (structural(remote).length) throw new SyncError('アカウントの記録の形が正しくないため、同期を止めました。この端末の記録はそのまま残っています。', 'bad_remote');
       if (Number.isInteger(remote.schema) && remote.schema > SCHEMA) throw new SyncError('新しい版のアプリで保存された記録です。アプリを更新してから同期してください（この端末の記録はそのまま残っています）。', 'newer_remote');
       const merged = mergeState(local, remote);
-      if (stable(merged) !== stable(remote)) {
+      const send = forServer(merged);
+      if (stable(send) !== stable(remote)) {
         const up = await call(`/rest/v1/lemma_state?user_id=eq.${uid}&rev=eq.${rev}`, { method: 'PATCH', auth: true, prefer: 'return=representation',
-          body: { state: merged, rev: rev + 1, updated_at: new Date().toISOString() } });
+          body: { state: send, rev: rev + 1, updated_at: new Date().toISOString() } });
         if (!up.length) continue;   // 同時に別の端末が書いた → 取り直して合わせ直す
       }
+      // 通信の途中でログアウトした：手元には反映しない（ログアウトで消すときに、サーバーの記録が戻らないように）
+      if (!session || session.user.id !== uid) throw new SyncError('ログアウトしました', 'no_session');
       applyState(merged);
       return merged;
     }
@@ -111,8 +125,9 @@ export function createSync({ getState, applyState, onStatus = () => {}, retryDel
     st.status = 'syncing'; st.error = null; emit();
     running = syncOnce().then((r) => {
       retries = 0;
+      if (!session) { st.status = 'out'; emit(); return null; }
       st.status = 'ok'; st.lastSync = Date.now();
-      if (session) { session.lastSync = st.lastSync; saveSession(session); }
+      session.lastSync = st.lastSync; saveSession(session);
       emit(); return r;
     }).catch((e) => {
       if (session) { st.status = e.code === 'offline' ? 'offline' : 'error'; st.error = e.message; }

@@ -279,5 +279,76 @@ const base = JSON.parse(fs.readFileSync(path.join(root, 'tests/fixtures/state-v0
   mem.set('lemma.auth', sess);
 }
 
+// ---------------------------------------------------------------- v0.24：同期の境界条件
+{
+  const mock = createMockSupabase({ key: SUPABASE_KEY });
+  globalThis.fetch = mock.fetch;
+  const wait = (ms) => new Promise(r => setTimeout(r, ms));
+  const device = (initial) => {
+    let st = clone(initial);
+    const sync = S.createSync({ getState: () => st, applyState: (m) => { st = S.mergeState(st, m); }, retryDelay: 5 });
+    return { sync, get: () => st, set: (x) => { st = x; } };
+  };
+  mem.clear();
+  const A = device({ ...clone(base), localResetAt: 1234 });
+  await A.sync.sendCode('edge@example.com'); await A.sync.verify('edge@example.com', '123456');
+  const uid = [...mock.users.values()].find(u => u.email === 'edge@example.com').id;
+  ok(!('localResetAt' in mock.rows.get(uid).state) && A.get().localResetAt === 1234, 'この端末だけの印 localResetAt はサーバーに送らない（手元には残る）');
+
+  // 再試行の重複：同時に何度呼んでも、通信は1回分
+  let gets = 0;
+  globalThis.fetch = async (url, init) => { if ((!init || !init.method || init.method === 'GET') && String(url).includes('lemma_state')) gets++; return mock.fetch(url, init); };
+  A.set({ ...A.get(), log: [...A.get().log, { p: 'q01', t: 2200000000000, g: 3 }] });
+  await Promise.all([A.sync.syncNow(), A.sync.syncNow(), A.sync.syncNow()]);
+  ok(gets === 1, `同時に3回同期を呼んでも、サーバーへの取得は1回（${gets}回）`);
+  globalThis.fetch = mock.fetch;
+
+  // 通信中のログアウト：落ちずに止まり、記録は変えない
+  const before = S.stable(A.get().log);
+  mock.hooks.beforePatch = async () => { await A.sync.logout(); };
+  A.set({ ...A.get(), log: [...A.get().log, { p: 'q02', t: 2200000001000, g: 3 }] });
+  const res = await A.sync.syncNow();
+  mock.hooks.beforePatch = null;
+  ok(!A.sync.loggedIn() && A.get().log.length === JSON.parse(before).length + 1 && A.sync.status().status === 'out', `通信中にログアウトしても、記録を変えずに止まる（${res === null ? '失敗扱い' : '完了'}）`);
+  await wait(30);
+
+  // 新しい schema の手元の記録は送らない
+  mem.clear();
+  const N = device({ ...clone(base), schema: 99 });
+  await N.sync.sendCode('edge@example.com'); await N.sync.verify('edge@example.com', '123456');
+  ok(/新しい版/.test(N.sync.status().error || '') && mock.rows.get(uid).state.schema === 4, '手元の記録が新しい schema なら送らない');
+
+  // サーバー側の制限（guard.sql と同じ規則をにせサーバーで）：古いアプリの切り捨ては断られ、理由が出る。手元は変わらない
+  mock.hooks.guard = true;
+  const r0 = mock.rows.get(uid);
+  // 古いアプリ（v0.22）の切り捨てを再現：サーバーに 6000件 → 5000件で PATCH
+  r0.state = { ...r0.state, log: Array.from({ length: 6000 }, (_, i) => ({ p: 'q01', t: 1700000000000 + i * 1000, g: 3 })) };
+  const res2 = await mock.handle({ method: 'PATCH', url: `https://x/rest/v1/lemma_state?user_id=eq.${uid}&rev=eq.${r0.rev}`, headers: { authorization: `Bearer ${[...mock.tokens.entries()].find(([, id]) => id === uid)?.[0]}`, apikey: SUPABASE_KEY },
+    body: JSON.stringify({ state: { ...r0.state, log: r0.state.log.slice(-5000) }, rev: r0.rev + 1 }) }).catch(e => ({ status: 0, body: String(e) }));
+  ok(res2.status === 400 && /LM004/.test(res2.body) && mock.rows.get(uid).state.log.length === 6000, '（にせサーバー）古いアプリの5000件への切り捨ては LM004 で断られる');
+  // 新しいアプリの通常の同期は通る（記録は減らない）
+  const G = device(base);
+  await G.sync.sendCode('edge@example.com'); await G.sync.verify('edge@example.com', '123456');
+  ok(G.sync.status().status === 'ok' && mock.rows.get(uid).state.log.length >= 6000 && G.get().log.length >= 6000, 'サーバー側の制限があっても、通常の同期（和集合）は通る');
+  // サーバーが LM003（schema を下げる書き込み）で断ったら、理由を出して手元を変えない
+  const gsnap = S.stable(G.get());
+  mock.rows.get(uid).state.schema = 4; G.set({ ...G.get(), schema: 3, log: [...G.get().log, { p: 'q03', t: 2300000000000, g: 3 }] });
+  await G.sync.syncNow();
+  ok(/新しい版/.test(G.sync.status().error || '') && G.get().log.some(l => l.t === 2300000000000), 'サーバーが LM003 で断ったら理由を表示し、手元の記録は残す');
+  mock.hooks.guard = false;
+  void gsnap;
+
+  // 大きい記録（2万件）の同期：欠けずに往復する
+  mem.clear();
+  const many = Array.from({ length: 20000 }, (_, i) => ({ p: `q${String(i % 500).padStart(3, '0')}`, t: 1700000000000 + i * 60000, g: 1 + (i % 4), sg: 'full', c: 'mid', min: 5, in: 1 }));
+  const Big = device({ ...clone(base), log: many });
+  const t0 = Date.now();
+  await Big.sync.sendCode('big@example.com'); await Big.sync.verify('big@example.com', '123456');
+  const uidB = [...mock.users.values()].find(u => u.email === 'big@example.com').id;
+  const Big2 = device({ ...clone(base), log: many.slice(0, 100) });
+  await Big2.sync.sendCode('big@example.com'); await Big2.sync.verify('big@example.com', '123456');
+  ok(mock.rows.get(uidB).state.log.length >= 20000 && Big2.get().log.length >= 20000, `2万件の記録も欠けずに同期する（${Date.now() - t0}ms）`);
+}
+
 console.log(`sync.test: ${pass} 件 OK${fail ? `、${fail} 件失敗` : ''}`);
 process.exitCode = fail ? 1 : 0;

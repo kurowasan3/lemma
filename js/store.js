@@ -7,7 +7,7 @@
 //     ・移行・読み込み（置き換え）・全消去の前に、端末の中に控えを残す
 import { review } from './scheduler.js';
 
-export const FILE_VERSION = '0.23.0';
+export const FILE_VERSION = '0.24.0';
 export const KEY = 'lemma.v2';                  // 学習記録の本体
 export const SNAP_KEY = 'lemma.snap.v1';        // 自動で残す控え（最大 SNAP_MAX 件。同期しない）
 export const BROKEN_PREFIX = 'lemma.v2.broken.'; // 読めなかった記録の退避先（キー名に時刻）
@@ -230,32 +230,74 @@ export function makeBackup(st, app, now = Date.now()) {
     counts: counts(st), hash: `fnv1a32:${hash(stable(st))}`, state: st };
 }
 
-// ファイルの中身（JSON.parse 済み）→ { state（移行済み）, meta, report, applied }。受け付けられなければ例外（理由つき）
-//   旧形式（v0.22 までの書き出し＝記録そのもの）も読める。
+// 大きすぎる・不自然なファイルを断る上限（実際の記録の数十倍の余裕）
+export const LIMITS = { log: 200000, entries: 100000, text: 20000 };
+const HASH_RE = /^fnv1a32:[0-9a-f]{8}$/;
+const ISO_RE = /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(\.\d{1,3})?Z$/;
+const COUNT_KEYS = ['log', 'pstat', 'problems', 'cards', 'bookmarks', 'explains'];
+class BackupError extends Error { constructor(msg, code) { super(msg); this.code = code; } }
+
+// v1 形式の付帯情報（version 以外）を確かめる。戻り値：注意の一覧（エラーは例外）
+function checkEnvelope(d, now) {
+  const warnings = [];
+  if (typeof d.app !== 'string' || d.app.length > 64) throw new BackupError('バックアップの「アプリの版」(app) が無いか、形が正しくありません', 'bad_app');
+  if (!('schema' in d)) throw new BackupError('バックアップに記録の版 (schema) がありません', 'no_schema');
+  if (!Number.isInteger(d.schema) || d.schema < MIN_SCHEMA) throw new BackupError(`バックアップの記録の版 (schema) が正しくありません：${JSON.stringify(d.schema)}`, 'bad_schema');
+  if (d.schema > SCHEMA) throw new BackupError(`新しい版のアプリの記録です（schema ${d.schema}）。アプリを更新してから読み込んでください`, 'newer_schema');
+  if (d.state.schema !== d.schema) throw new BackupError(`バックアップの schema (${d.schema}) と記録の schema (${JSON.stringify(d.state.schema)}) が違います`, 'schema_mismatch');
+  const at = typeof d.createdAt === 'string' && ISO_RE.test(d.createdAt) ? Date.parse(d.createdAt) : NaN;
+  if (!Number.isFinite(at) || at < T_MIN || at > now + 86400000) throw new BackupError(`バックアップの作成時刻 (createdAt) が正しくありません：${JSON.stringify(d.createdAt)}`, 'bad_created');
+  // hash：無い・形が違う・合わない を区別する（FNV-1a は壊れたファイルを見分けるためのもの。書き換えを防ぐものではない）
+  if (!('hash' in d)) throw new BackupError('バックアップに確認用の値 (hash) がありません（壊れたか、途中で切れたファイル）', 'no_hash');
+  if (typeof d.hash !== 'string' || !HASH_RE.test(d.hash)) throw new BackupError(`バックアップの確認用の値 (hash) の形が正しくありません：${JSON.stringify(d.hash).slice(0, 40)}`, 'bad_hash');
+  if (d.hash !== `fnv1a32:${hash(stable(d.state))}`) throw new BackupError('バックアップの中身が壊れているか、書き換えられています（確認用の値 hash が合いません）', 'hash_mismatch');
+  // counts：記録の中身は hash で確かめ済みなので、件数の食い違いは付帯情報だけの不整合＝注意
+  if (!isObj(d.counts) || !COUNT_KEYS.every(k => Number.isInteger(d.counts[k]) && d.counts[k] >= 0)) throw new BackupError('バックアップの件数 (counts) が無いか、形が正しくありません', 'bad_counts');
+  const real = counts(d.state), diff = COUNT_KEYS.filter(k => real[k] !== d.counts[k]);
+  if (diff.length) warnings.push({ code: 'backup_counts_mismatch', msg: 'バックアップに書かれた件数と、実際の記録の件数が違います（記録そのものは確認用の値で確かめ済み）', ids: diff.map(k => `${k}:${d.counts[k]}→${real[k]}`), count: diff.length, fix: 'human' });
+  return warnings;
+}
+function checkSize(st) {
+  if (st.log.length > LIMITS.log) throw new BackupError(`解答の記録が多すぎるファイルです（${st.log.length}件。上限 ${LIMITS.log}）`, 'too_large');
+  for (const k of ['pstat', 'problems', 'cards', 'bookmarks', 'explains']) {
+    if (isObj(st[k]) && Object.keys(st[k]).length > LIMITS.entries) throw new BackupError(`${k} の件数が多すぎるファイルです`, 'too_large');
+  }
+  for (const v of Object.values(st.explains || {})) if (Array.isArray(v) && v.some(e => isObj(e) && typeof e.text === 'string' && e.text.length > LIMITS.text)) throw new BackupError('長すぎるメモを含むファイルです', 'too_large');
+  for (const l of st.log) if (typeof l.p === 'string' && l.p.length > 64) throw new BackupError('問題IDが長すぎる記録を含むファイルです', 'too_large');
+}
+
+// ファイルの中身（JSON.parse 済み）→ { state（移行済み）, meta, report, applied }。受け付けられなければ例外（理由と code つき）
+//   v1：format・version・app・schema・createdAt・counts・hash・state をすべて確かめる。
+//   旧形式（v0.22 までの書き出し＝記録そのもの）も読める（付帯情報が無いので、確認用の値による確認はできない）。
 export function readBackup(d, ctx = {}) {
-  if (!isObj(d)) throw new Error('Lemma の学習記録のファイルではありません');
-  let st, meta;
-  if (d.format === BACKUP_FORMAT) {
-    if (!Number.isInteger(d.version) || d.version > BACKUP_VERSION) throw new Error(`新しい版のアプリで作ったバックアップです（形式 ${d.version}）。アプリを更新してから読み込んでください`);
-    if (!isObj(d.state)) throw new Error('バックアップに記録が入っていません');
-    if (typeof d.hash === 'string' && d.hash !== `fnv1a32:${hash(stable(d.state))}`) throw new Error('バックアップの中身が壊れているか、書き換えられています（確認用の値が合いません）');
+  const now = ctx.now || Date.now();
+  if (!isObj(d)) throw new BackupError('Lemma の学習記録のファイルではありません', 'not_lemma');
+  let st, meta, extra = [];
+  if ('format' in d) {
+    if (d.format !== BACKUP_FORMAT) throw new BackupError('Lemma の学習記録のファイルではありません', 'not_lemma');
+    if (!Number.isInteger(d.version) || d.version < 1) throw new BackupError(`バックアップの形式の版 (version) が正しくありません：${JSON.stringify(d.version)}`, 'bad_version');
+    if (d.version > BACKUP_VERSION) throw new BackupError(`新しい版のアプリで作ったバックアップです（形式 ${d.version}）。アプリを更新してから読み込んでください`, 'newer_version');
+    if (!isObj(d.state)) throw new BackupError('バックアップに記録 (state) が入っていないか、形が正しくありません', 'bad_state');
+    if (!Array.isArray(d.state.log) || !isObj(d.state.problems)) throw new BackupError('バックアップの記録 (state) の形が正しくありません', 'bad_state');
+    checkSize(d.state);
+    extra = checkEnvelope(d, now);
     st = d.state;
-    meta = { format: d.version, app: d.app || '', createdAt: d.createdAt || '', schema: st.schema };
+    meta = { format: d.version, app: d.app, createdAt: d.createdAt, schema: d.schema };
   } else {
-    if (d.format) throw new Error('Lemma の学習記録のファイルではありません');
     st = d;
+    if (!Array.isArray(st.log) || !isObj(st.problems)) throw new BackupError('Lemma の学習記録のファイルではありません', 'not_lemma');
+    checkSize(st);
     meta = { format: 0, app: '', createdAt: '', schema: st.schema };
   }
-  if (!Array.isArray(st.log) || !isObj(st.problems)) throw new Error('Lemma の学習記録のファイルではありません');
-  if (st.log.length > 200000) throw new Error('記録が多すぎるファイルです');
   const bad = structural(st);
-  if (bad.length) throw new Error(`記録の形が正しくありません：${bad.map(b => b.msg).join('／')}`);
-  if (Number.isInteger(st.schema) && st.schema > SCHEMA) throw new Error(`新しい版のアプリの記録です（schema ${st.schema}）。アプリを更新してから読み込んでください`);
+  if (bad.length) throw new BackupError(`記録の形が正しくありません：${bad.map(b => b.msg).join('／')}`, 'bad_state');
+  if (Number.isInteger(st.schema) && st.schema > SCHEMA) throw new BackupError(`新しい版のアプリの記録です（schema ${st.schema}）。アプリを更新してから読み込んでください`, 'newer_schema');
   const { state, applied } = migrate(st);
-  delete state.settingsAt; delete state.resetAt;   // 読み込む側の時刻で決める
+  delete state.settingsAt; delete state.resetAt; delete state.localResetAt;   // 読み込む側の時刻で決める
   const report = audit(state, ctx);
+  report.warnings.push(...extra);
   if (report.errors.length) {
-    const e = new Error(`記録に正しくない値があります：${report.errors.map(x => `${x.msg}（${x.ids.slice(0, 3).join(', ')}${x.count > 3 ? ' ほか' : ''}）`).join('／')}`);
+    const e = new BackupError(`記録に正しくない値があります：${report.errors.map(x => `${x.msg}（${x.ids.slice(0, 3).join(', ')}${x.count > 3 ? ' ほか' : ''}）`).join('／')}`, 'invalid_values');
     e.report = report; throw e;
   }
   return { state, meta, report, applied };
@@ -271,15 +313,38 @@ export function restoreState(current, incoming, mode, now = Date.now()) {
 }
 
 // ---------------------------------------------------------------- 保存先（localStorage と同じ形の storage を受け取る）
-export function createStore(storage, { now = () => Date.now(), app = '' } = {}) {
-  let lastRaw = null;     // 最後に読んだ・書いた本体の文字列（別のタブの書き込みに気づくため）
-  let blocked = null;     // 本体に書いてはいけない理由（読めない記録を退避できなかったとき）
+const isNewer = (o) => isObj(o) && Number.isInteger(o.schema) && o.schema > SCHEMA;
+export function isQuotaError(e) {
+  return !!e && (e.name === 'QuotaExceededError' || e.name === 'NS_ERROR_DOM_QUOTA_REACHED' || e.code === 22 || e.code === 1014 || /quota/i.test(String(e.message || e)));
+}
+// 同じ端末の別のタブの記録と合わせる。localResetAt（この端末で「置き換えた」時刻。同期しない）より前の記録は、
+// 印の古い側から持ち込まない（ログアウトして消した記録が、古いタブの保存でよみがえらないように）
+export function mergeTabs(mine, other) {
+  const fence = Math.max(mine.localResetAt || 0, other.localResetAt || 0);
+  const a = (mine.localResetAt || 0) < fence ? dropBefore(mine, fence) : mine;
+  const b = (other.localResetAt || 0) < fence ? dropBefore(other, fence) : other;
+  const out = mergeState(a, b);
+  if (fence) out.localResetAt = fence; else delete out.localResetAt;
+  return out;
+}
 
-  const get = (k) => { try { return storage.getItem(k); } catch { return null; } };
+const UNKNOWN = Symbol('unknown');
+export function createStore(storage, { now = () => Date.now(), app = '' } = {}) {
+  // lastRaw：このタブが最後に読んだ・書いた本体の文字列。null＝読んだときは無かった。UNKNOWN＝確かめられていない
+  let lastRaw = UNKNOWN;
+  // blocked：本体に書いてはいけない理由。'read'（読めなかった。保存のときに読み直して解除を試す）
+  //   'newer'（新しい版のアプリの記録）'broken'（読めない記録を退避できなかった）'migrate'（移行に失敗。次の起動で再試行）
+  let blocked = null;
+
+  // 読み書きは「成功・無い・失敗」を区別する（読めなかったことを「記録が無い」とは扱わない）
+  const read = (k) => { try { return { ok: true, value: storage.getItem(k) }; } catch (error) { return { ok: false, error }; } };
+  const write = (k, v) => { try { storage.setItem(k, v); return { ok: true }; } catch (error) { return { ok: false, error, quota: isQuotaError(error) }; } };
+  const remove = (k) => { try { storage.removeItem(k); return true; } catch { return false; } };
+  const get = (k) => { const r = read(k); return r.ok ? r.value : null; };   // 画面の表示用（控え・退避の一覧）
 
   // 読めなかった記録を別のキーに移す（消さない）。成功したら true
   function quarantine(raw, reason) {
-    try { storage.setItem(BROKEN_PREFIX + now(), JSON.stringify({ reason, at: now(), app, raw })); return true; } catch { return false; }
+    return write(BROKEN_PREFIX + now(), JSON.stringify({ reason, at: now(), app, raw })).ok;
   }
 
   // 自動の控え：新しい順に SNAP_MAX 件。入らなければ古い控えから捨てる（本体は触らない）
@@ -291,26 +356,50 @@ export function createStore(storage, { now = () => Date.now(), app = '' } = {}) 
     let n = 0; try { n = (JSON.parse(raw).log || []).length; } catch { /* 数えられないだけ */ }
     let list = [{ at: now(), reason, app, n, raw }, ...snapshots()].slice(0, SNAP_MAX);
     while (list.length) {
-      try { storage.setItem(SNAP_KEY, JSON.stringify(list)); return true; } catch { list = list.slice(0, -1); }
+      if (write(SNAP_KEY, JSON.stringify(list)).ok) return true;
+      list = list.slice(0, -1);
     }
-    try { storage.removeItem(SNAP_KEY); } catch { /* なし */ }
-    return false;
+    return false;   // 前の控えはそのまま（消さない）
+  }
+  // 本体を保存する場所が足りないとき：古い控えから1つ捨てる（本体の新しい記録の方が大事）。捨てたら true
+  function dropOldestSnapshot() {
+    const list = snapshots();
+    if (!list.length) return false;
+    const rest = list.slice(0, -1);
+    return rest.length ? write(SNAP_KEY, JSON.stringify(rest)).ok : remove(SNAP_KEY);
+  }
+  function clearSnapshots() {
+    const failed = [];
+    if (!remove(SNAP_KEY)) failed.push(SNAP_KEY);
+    for (const k of brokenKeys()) if (!remove(k)) failed.push(k);
+    return { ok: !failed.length, failed };
   }
 
-  // 戻り値：{ state, status, issues, applied }
-  //   status: 'new' | 'ok' | 'migrated' | 'newer' | 'salvaged' | 'broken'
+  // 戻り値：{ state, status, issues, applied, quarantined? }
+  //   status: 'new' | 'ok' | 'migrated' | 'newer' | 'salvaged' | 'broken' | 'migrate_failed' | 'unavailable'
   function load() {
-    const raw = get(KEY);
-    if (raw === null) { lastRaw = null; return { state: freshState(), status: 'new', issues: [], applied: [] }; }
+    blocked = null;
+    const r = read(KEY);
+    if (!r.ok) {   // 読めない（保存先の障害）：記録が無いとは扱わない。保存のときに読み直す
+      blocked = 'read'; lastRaw = UNKNOWN;
+      return { state: freshState(), status: 'unavailable', issues: [{ code: 'read_failed', msg: String(r.error && r.error.message || r.error) }], applied: [] };
+    }
+    const raw = r.value;
+    lastRaw = raw;
+    if (raw === null) return { state: freshState(), status: 'new', issues: [], applied: [] };
     let parsed;
     try { parsed = JSON.parse(raw); } catch { parsed = undefined; }
     if (!isObj(parsed)) {
       const q = quarantine(raw, 'JSON として読めない');
       if (!q) blocked = 'broken';
-      lastRaw = raw;
       return { state: freshState(), status: 'broken', issues: [{ code: 'unreadable', msg: '保存されていた記録を読めませんでした' }], applied: [], quarantined: q };
     }
-    let issues = structural(parsed);
+    if (isNewer(parsed)) {
+      // 新しい版のアプリの記録：形を変えず、保存もしない（画面の中では使う）
+      blocked = 'newer';
+      return { state: { ...freshState(), ...parsed }, status: 'newer', issues: [], applied: [] };
+    }
+    const issues = structural(parsed);
     if (issues.length) {
       // 形の壊れた部分だけを初期値に戻し、ほかの記録は残す。元の記録は先に退避する
       const q = quarantine(raw, issues.map(i => i.msg).join('／'));
@@ -319,70 +408,99 @@ export function createStore(storage, { now = () => Date.now(), app = '' } = {}) 
       for (const [k, t] of Object.entries(CONTAINERS)) if (k in s && !(t === 'array' ? Array.isArray(s[k]) : isObj(s[k]))) s[k] = freshState()[k];
       if (Array.isArray(s.log)) s.log = s.log.filter(l => isObj(l) && typeof l.p === 'string' && fin(l.t));
       if (!(Number.isInteger(s.schema) && s.schema >= 1)) s.schema = SCHEMA;
-      parsed = s;
-      lastRaw = raw;
-      try { const m = migrate(parsed); return { state: m.state, status: 'salvaged', issues, applied: m.applied, quarantined: q }; }
-      catch (e) { return { state: { ...freshState(), ...parsed }, status: 'salvaged', issues: [...issues, { code: 'migrate_failed', msg: e.message }], applied: [], quarantined: q }; }
+      try { const m = migrate(s); return { state: m.state, status: 'salvaged', issues, applied: m.applied, quarantined: q }; }
+      catch (e) { blocked = 'migrate'; return { state: { ...freshState(), ...s }, status: 'salvaged', issues: [...issues, { code: 'migrate_failed', msg: e.message }], applied: [], quarantined: q }; }
     }
-    lastRaw = raw;
     let m;
     try { m = migrate(parsed); }
     catch (e) {
-      // 移行に失敗：元の記録は本体にそのまま残っている。退避してから、移行前の形のまま使う（保存すると本体が変わるため）
+      // 移行に失敗：本体の元の記録には書かない（次の起動で、直った版のアプリがもう一度移行できるように）。退避もする
+      blocked = 'migrate';
       const q = quarantine(raw, `移行に失敗：${e.message}`);
-      if (!q) blocked = 'migrate';
-      return { state: { ...freshState(), ...parsed }, status: 'broken', issues: [{ code: 'migrate_failed', msg: e.message }], applied: [], quarantined: q };
+      return { state: { ...freshState(), ...parsed }, status: 'migrate_failed', issues: [{ code: 'migrate_failed', msg: e.message }], applied: [], quarantined: q };
     }
-    if (m.newer) return { state: m.state, status: 'newer', issues: [], applied: [] };
     const changed = m.applied.length > 0;
     if (changed) snapshot(raw, `移行の前（${m.applied.join('・')}）`);
     return { state: m.state, status: changed ? 'migrated' : 'ok', issues: [], applied: m.applied };
   }
 
-  // 保存。戻り値：{ ok, reason?, merged? }
-  //   merged：別のタブ（同じ端末の別の画面）が先に保存していたので、合わせた結果（呼び出し側が手元の記録に反映する）
+  // 保存。戻り値：{ ok, reason?, merged?, size?, dropped? }
+  //   reason: 'newer' | 'read' | 'broken' | 'migrate' | 'invalid' | 'serialize' | 'quota' | 'write' | 'verify_read' | 'verify' | 'conflict'
+  //   merged：別のタブの記録と合わせた結果（呼び出し側が、画面の記録に反映する）。保存に失敗しても返ることがある
   function save(state) {
-    if (blocked) return { ok: false, reason: 'blocked' };
+    if (blocked === 'read') {   // 前に読めなかった：読めるようになっていれば、保存されている記録と合わせてから保存する
+      const r = read(KEY);
+      if (!r.ok) return { ok: false, reason: 'read' };
+      blocked = null; lastRaw = UNKNOWN;
+    }
+    if (blocked) return { ok: false, reason: blocked };
+    if (isNewer(state)) return { ok: false, reason: 'newer' };
     const bad = structural(state);
     if (bad.length) return { ok: false, reason: 'invalid', issues: bad };
-    let merged = null;
-    const cur = get(KEY);
-    if (cur !== null && cur !== lastRaw) {   // lastRaw が null＝読み込んだときは何も無かった
-      let other = null;
-      try { other = JSON.parse(cur); } catch { /* 読めない：下で上書きしない */ }
-      if (!isObj(other) || structural(other).length) {
-        if (!quarantine(cur, '別の画面が保存した記録を読めない')) return { ok: false, reason: 'blocked' };
-      } else if (!(Number.isInteger(other.schema) && other.schema > SCHEMA)) {
-        merged = mergeState(state, other);
-        state = merged;
-      } else return { ok: false, reason: 'newer' };   // 新しい版のアプリが別の画面で動いている：上書きしない
-    }
     let json;
-    try { json = JSON.stringify(state); } catch (e) { return { ok: false, reason: 'serialize' }; }
-    try { storage.setItem(KEY, json); }
-    catch (e) { return { ok: false, reason: 'quota', merged }; }    // 前の値のまま残る
-    const back = get(KEY);
-    if (back === null || back.length !== json.length) return { ok: false, reason: 'verify', merged };
-    lastRaw = json;
-    return { ok: true, merged };
+    try { json = JSON.stringify(state); } catch { return { ok: false, reason: 'serialize' }; }   // 循環など：合わせる前に断る
+    let merged = null, dropped = 0;
+    for (let attempt = 0; attempt < 4; attempt++) {
+      const cur = read(KEY);
+      if (!cur.ok) return { ok: false, reason: 'read', merged };   // 今の記録を確かめられないときは書かない
+      if (cur.value !== null && cur.value !== lastRaw) {
+        // 別のタブ（または読み込めなかった間）に保存された記録がある：上書きせずに合わせる
+        let other = null;
+        try { other = JSON.parse(cur.value); } catch { /* 読めない */ }
+        if (!isObj(other) || structural(other).length) {
+          if (!quarantine(cur.value, '保存されていた記録を読めない（別のタブが書いた？）')) return { ok: false, reason: 'broken', merged };
+        } else if (isNewer(other)) {
+          blocked = 'newer';   // 別のタブで新しい版のアプリが記録を移行した：このタブはもう書かない
+          return { ok: false, reason: 'newer', merged };
+        } else {
+          state = mergeTabs(state, other);
+          merged = state;
+          if (stable(state) === stable(other)) { lastRaw = cur.value; return { ok: true, merged, size: cur.value.length, dropped }; }   // 書くことが無い
+          json = JSON.stringify(state);
+        }
+      }
+      if (json === cur.value) { lastRaw = json; return { ok: true, merged, size: json.length, dropped }; }
+      const w = write(KEY, json);
+      if (!w.ok) {
+        // 容量不足：控えを1つずつ捨てて、もう一度（本体の記録を優先）。それでも入らなければ前の記録のまま
+        if (w.quota && dropOldestSnapshot()) { dropped++; attempt--; continue; }
+        return { ok: false, reason: w.quota ? 'quota' : 'write', merged, dropped };
+      }
+      const back = read(KEY);
+      if (!back.ok) { lastRaw = UNKNOWN; return { ok: false, reason: 'verify_read', merged, dropped }; }
+      if (back.value === json) { lastRaw = json; return { ok: true, merged, size: json.length, dropped }; }
+      // 読み返した内容が違う：別のタブが直後に書いた正しい記録なら合わせ直す。そうでなければ保存先の異常
+      let o = null; try { o = JSON.parse(back.value); } catch { /* 読めない */ }
+      if (!isObj(o) || structural(o).length) { lastRaw = UNKNOWN; return { ok: false, reason: 'verify', merged, dropped }; }
+      lastRaw = json;
+    }
+    lastRaw = UNKNOWN;
+    return { ok: false, reason: 'conflict', merged, dropped };
   }
 
   // 本体を、検証済みの新しい記録に置き換える（読み込み・控えへの復帰・全消去で使う）。
-  //   先に今の記録の控えを残す（残せなければ、呼び出し側が書き出しファイルを作れるよう snapshotted:false を返す）。
-  //   保存に失敗したら本体は前のまま（ロールバック）。
-  function replace(current, next, reason) {
+  //   先に今の記録の控えを残す（reason が null なら残さない。共用の端末でログアウトして消すとき）。
+  //   fence：localResetAt を付けて、ほかのタブの古い記録を持ち込ませない（ログアウトして消す・アカウントの記録に切り替える）。
+  //   保存に失敗したら本体を元の文字列に戻す（ロールバック）。戻り値：{ ok, reason?, snapshotted, state（保存した記録） }
+  function replace(current, next, reason, { fence = false } = {}) {
+    if (blocked && blocked !== 'read') return { ok: false, reason: blocked, snapshotted: false };
     const bad = structural(next);
-    if (bad.length) return { ok: false, reason: 'invalid', issues: bad };
-    const cur = get(KEY);
-    // reason が null のときは控えを残さない（共用の端末で、ログアウトして消すとき。記録はサーバーにある）
-    const snapshotted = reason === null ? false : snapshot(cur !== null ? cur : JSON.stringify(current), reason);
-    lastRaw = cur;   // 別のタブの記録と合わせ直さない（置き換えは意図した操作）
+    if (bad.length) return { ok: false, reason: 'invalid', issues: bad, snapshotted: false };
+    const cur = read(KEY);
+    if (!cur.ok) return { ok: false, reason: 'read', snapshotted: false };
+    if (cur.value !== null) { let o = null; try { o = JSON.parse(cur.value); } catch { /* 読めない */ } if (isNewer(o)) { blocked = 'newer'; return { ok: false, reason: 'newer', snapshotted: false }; } }
+    if (blocked === 'read') blocked = null;
+    const snapshotted = reason === null ? false : snapshot(cur.value !== null ? cur.value : JSON.stringify(current), reason);
+    if (fence) next = { ...next, localResetAt: now() };
+    lastRaw = cur.value;   // 置き換えは意図した操作：読んだ時点の記録とは合わせない
     const r = save(next);
     if (!r.ok) {
-      try { if (cur !== null && get(KEY) !== cur) storage.setItem(KEY, cur); } catch { /* 本体は前の値のまま */ }
+      const now2 = read(KEY);
+      if (cur.value !== null && (!now2.ok || now2.value !== cur.value)) write(KEY, cur.value);
+      lastRaw = UNKNOWN;
       return { ...r, snapshotted };
     }
-    return { ok: true, snapshotted };
+    return { ok: true, snapshotted, state: r.merged || next };
   }
 
   function brokenKeys() {
@@ -390,8 +508,14 @@ export function createStore(storage, { now = () => Date.now(), app = '' } = {}) 
     try { for (let i = 0; i < storage.length; i++) { const k = storage.key(i); if (k && k.startsWith(BROKEN_PREFIX)) out.push(k); } } catch { /* なし */ }
     return out.sort();
   }
+  // この端末で Lemma が使っている保存領域（文字数）
+  function usage() {
+    const size = (k) => { const v = get(k); return v ? v.length + k.length : 0; };
+    const main = size(KEY), snaps = size(SNAP_KEY), broken = brokenKeys().reduce((a, k) => a + size(k), 0);
+    return { main, snaps, broken, total: main + snaps + broken };
+  }
 
-  return { load, save, replace, snapshot, snapshots, brokenKeys, blocked: () => blocked, get };
+  return { load, save, replace, snapshot, snapshots, clearSnapshots, brokenKeys, usage, blocked: () => blocked, get };
 }
 
 // ---------------------------------------------------------------- 記録の合わせ方（端末どうしで食い違ったとき）
@@ -509,6 +633,8 @@ export function mergeState(L, R) {
   for (const k of LWW_KEYS) { if (k in lw) out[k] = lw[k]; else delete out[k]; }
   out.settingsAt = Math.max(L.settingsAt || 0, R.settingsAt || 0);
   out.schema = L.schema;
+  // localResetAt はこの端末だけの印：相手（サーバー・ほかの端末）の値は持ち込まない
+  if ('localResetAt' in L) out.localResetAt = L.localResetAt; else delete out.localResetAt;
   if (resetAt) out.resetAt = resetAt; else delete out.resetAt;
   return out;
 }

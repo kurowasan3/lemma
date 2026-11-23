@@ -153,7 +153,7 @@ const codes = (rep) => [...rep.errors, ...rep.warnings].map(x => x.code);
   const ls4 = memStorage(); const raw4 = 'x'.repeat(50); ls4.map.set(S.KEY, raw4); ls4.failSet = 5;
   const c4 = S.createStore(ls4, { now: () => NOW });
   L = c4.load(); ls4.failSet = 0;
-  ok(L.status === 'broken' && !L.quarantined && c4.save(L.state).reason === 'blocked' && ls4.getItem(S.KEY) === raw4, '退避できなければ本体への保存を止め、元の記録を残す');
+  ok(L.status === 'broken' && !L.quarantined && c4.save(L.state).reason === 'broken' && ls4.getItem(S.KEY) === raw4, '退避できなければ本体への保存を止め、元の記録を残す');
   // 一部だけ壊れた記録：壊れた部分だけ初期値、ほかは残す（元は退避）
   const part = clone(base); part.pstat = 'こわれた'; part.log.push({ p: 'q01' });
   const ls5 = memStorage(); ls5.map.set(S.KEY, JSON.stringify(part));
@@ -162,7 +162,7 @@ const codes = (rep) => [...rep.errors, ...rep.warnings].map(x => x.code);
   ok(L.status === 'salvaged' && L.state.log.length === base.log.length && Object.keys(L.state.pstat).length === 0 && c5.brokenKeys().length === 1, '一部だけ壊れた記録：解答の記録は残し、壊れた部分だけ初期値にして、元の記録は退避する');
   // 保存先そのものが使えない
   const ls6 = memStorage(); ls6.failGet = true;
-  ok(S.createStore(ls6).load().status === 'new', '保存先を読めない環境でも起動できる');
+  ok(S.createStore(ls6).load().status === 'unavailable', '保存先を読めない環境でも起動でき、「記録が無い」とは扱わない');
   // 置き換え（読み込み・消去）は控えを残し、失敗したら元のまま
   const ls7 = memStorage(); ls7.map.set(S.KEY, JSON.stringify(base));
   const c7 = S.createStore(ls7, { now: () => NOW });
@@ -173,7 +173,7 @@ const codes = (rep) => [...rep.errors, ...rep.warnings].map(x => x.code);
   ls7.map.set(S.KEY, JSON.stringify(base)); c7.load();
   ls7.failSet = 0;
   const realSet = ls7.setItem; let calls = 0;
-  ls7.setItem = (k, v) => { if (k === S.KEY && calls++ === 0) throw new Error('QuotaExceededError'); return realSet(k, v); };
+  ls7.setItem = (k, v) => { if (k === S.KEY && calls++ === 0) throw new Error('IOError'); return realSet(k, v); };
   rr = c7.replace(cur, S.freshState(), '消去の前');
   ok(!rr.ok && JSON.parse(ls7.getItem(S.KEY)).log.length === base.log.length, '置き換えの保存に失敗したら、本体は元の記録のまま（ロールバック）');
   ls7.setItem = realSet;
@@ -272,7 +272,7 @@ const codes = (rep) => [...rep.errors, ...rep.warnings].map(x => x.code);
   const ls = memStorage(); const raw = JSON.stringify(v1); ls.setItem(S.KEY, raw);
   const st = S.createStore(ls, { now: () => NOW });
   const L = st.load();
-  ok(L.status === 'broken' && L.quarantined && ls.getItem(S.KEY) === raw && JSON.parse(ls.getItem(st.brokenKeys()[0])).raw === raw, '移行に失敗しても、元の記録は本体にそのまま・退避もする');
+  ok(L.status === 'migrate_failed' && L.quarantined && ls.getItem(S.KEY) === raw && JSON.parse(ls.getItem(st.brokenKeys()[0])).raw === raw, '移行に失敗しても、元の記録は本体にそのまま・退避もする');
   ok(L.state.log.length === base.log.length, '移行に失敗しても、解答の記録はそのまま使える');
   S.MIGRATIONS[2].up = saved;
   // 移行の前に控えを残す

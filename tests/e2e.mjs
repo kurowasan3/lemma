@@ -578,7 +578,32 @@ try {
     await solve(T2, 'A-COM-021');
     const both = await T2.evaluate(() => JSON.parse(localStorage.getItem('lemma.v2')).log.map(l => l.p));
     ok(t1n >= 1 && both.includes('A-COM-020') && both.includes('A-COM-021'), `2つのタブ：あとから保存したタブが、先のタブの記録を消さない（${both}）`);
-    const errs = [...P.errors, ...Q.errors, ...R.errors, ...BR.errors, ...T1.errors, ...T2.errors].filter(e => !/status of 40[13]/.test(e));
+    // v0.24：新しい版（schema 99）の記録は、古いアプリでは保存しない（解いても上書きされず、再読み込みしても元のまま）
+    const newerRaw = JSON.stringify({ ...old, schema: 99, settings: { ...old.settings, answer: 'self' }, future: { x: 1 } });
+    const NW = await newPage({ raw: newerRaw });
+    await NW.goto(U + '#today'); await NW.waitForTimeout(1200);
+    ok((await NW.locator('.banner').innerText()).includes('保存も同期もしません'), '新しい schema：起動時に保存しないことを知らせる');
+    await NW.evaluate("__lemma.open(['A-COM-020'])"); await NW.waitForTimeout(800);
+    await NW.locator('#conf button').nth(1).click(); await NW.click('#reveal'); await NW.waitForTimeout(400);
+    await NW.locator('#self button').first().click(); await NW.waitForTimeout(400);
+    ok(await NW.evaluate(() => localStorage.getItem('lemma.v2')) === newerRaw, '新しい schema：解いても保存された記録は書き換わらない');
+    await NW.reload(); await NW.waitForTimeout(1200);
+    ok(await NW.evaluate(() => localStorage.getItem('lemma.v2')) === newerRaw, '新しい schema：再読み込みしても元の内容のまま');
+    // 起動時に保存先を読めなかった（一時的な障害）：空の記録で上書きせず、読めるようになったら合わせて保存する
+    const RF = await newPage({ state: { ...old, settings: { ...old.settings, answer: 'self' } } });
+    await RF.context().addInitScript(() => {
+      if (sessionStorage.getItem('rf')) return; sessionStorage.setItem('rf', '1');
+      const orig = Storage.prototype.getItem; let n = 0;
+      Storage.prototype.getItem = function (k) { if (k === 'lemma.v2' && n++ === 0) throw new Error('SecurityError'); return orig.call(this, k); };
+    });
+    await RF.goto(U + '#today'); await RF.waitForTimeout(1200);
+    ok((await RF.locator('.banner').innerText()).includes('読めませんでした'), '保存先を読めない：起動時に知らせる');
+    await RF.evaluate("__lemma.open(['A-COM-020'])"); await RF.waitForTimeout(800);
+    await RF.locator('#conf button').nth(1).click(); await RF.click('#reveal'); await RF.waitForTimeout(400);
+    await RF.locator('#self button').first().click(); await RF.waitForTimeout(400);
+    const rfLog = await RF.evaluate(() => JSON.parse(localStorage.getItem('lemma.v2')).log.map(l => l.p));
+    ok(rfLog.length === old.log.length + 1 && rfLog.includes('A-COM-020'), `保存先が復旧したら、元の記録（${old.log.length}件）と合わせて保存する（${rfLog.length}件）`);
+    const errs = [...P.errors, ...Q.errors, ...R.errors, ...BR.errors, ...T1.errors, ...T2.errors, ...NW.errors, ...RF.errors].filter(e => !/status of 40[13]/.test(e));
     ok(errs.length === 0, `ページのエラーなし ${errs}`);
   }
 } finally {

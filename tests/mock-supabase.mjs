@@ -8,7 +8,16 @@ export function createMockSupabase({ key = 'sb_publishable_test', code = '123456
   const rows = new Map();       // user id → { state, rev, updated_at }
   const sent = [];
   let n = 0;
-  const hooks = { beforePatch: null };
+  const hooks = { beforePatch: null, guard: false };
+  // supabase/guard.sql と同じ規則（本物は tests/server_guard.test.mjs で PostgreSQL を相手に確かめる）。hooks.guard = true で有効
+  const num = (v, d) => (typeof v === 'number' ? v : d);
+  const guardCheck = (old, nw) => {
+    if (!nw.state || typeof nw.state !== 'object' || !Array.isArray(nw.state.log)) return { code: 'LM001', message: 'lemma: state.log が配列ではありません' };
+    if (nw.rev !== old.rev + 1) return { code: 'LM002', message: 'lemma: rev' };
+    if (num(nw.state.schema, 1) < num(old.state.schema, 1)) return { code: 'LM003', message: 'lemma: schema' };
+    if (nw.state.log.length < (Array.isArray(old.state.log) ? old.state.log.length : 0) && num(nw.state.resetAt, 0) <= num(old.state.resetAt, 0)) return { code: 'LM004', message: 'lemma: log shrink' };
+    return null;
+  };
 
   const issue = (u) => {
     n++;
@@ -63,6 +72,7 @@ export function createMockSupabase({ key = 'sb_publishable_test', code = '123456
         const rev = Number(u.searchParams.get('rev')?.replace(/^eq\./, ''));
         const r = rows.get(uid);
         if (want !== uid || !r || r.rev !== rev) return json(200, []);
+        if (hooks.guard) { const e = guardCheck(r, data); if (e) return json(400, e); }
         rows.set(uid, { state: data.state, rev: data.rev, updated_at: data.updated_at });
         return json(200, [{ user_id: uid, rev: data.rev }]);
       }
