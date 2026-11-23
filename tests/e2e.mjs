@@ -49,9 +49,9 @@ let fail = 0, pass = 0;
 const ok = (cond, msg) => { if (cond) pass++; else { fail++; console.log('FAIL', msg); } };
 const browser = await chromium.launch();
 
-async function newPage({ state = null, route = null, sw = false } = {}) {
+async function newPage({ state = null, raw = null, route = null, sw = false } = {}) {
   const ctx = await browser.newContext({ viewport: { width: 390, height: 844 }, acceptDownloads: true, serviceWorkers: sw ? 'allow' : 'block' });
-  if (state) await ctx.addInitScript((s) => { if (!sessionStorage.getItem('seeded')) { sessionStorage.setItem('seeded', '1'); localStorage.setItem('lemma.v2', s); } }, JSON.stringify(state));
+  if (state || raw !== null) await ctx.addInitScript((s) => { if (!sessionStorage.getItem('seeded')) { sessionStorage.setItem('seeded', '1'); localStorage.setItem('lemma.v2', s); } }, raw !== null ? raw : JSON.stringify(state));
   const page = await ctx.newPage();
   page.errors = [];
   page.on('pageerror', e => page.errors.push(String(e)));
@@ -489,11 +489,32 @@ try {
     ok((await P.locator('.toast').innerText()).includes('Lemma の学習記録のファイルではありません'), '読み込み：別のファイルは断る');
     await P.setInputFiles('#imp', { name: 'b.json', mimeType: 'application/json', buffer: Buffer.from(JSON.stringify(old)) });
     await P.waitForTimeout(400);
-    const askedImp = await P.locator('.chooser').count();
+    const askedImp = await P.locator('.chooser [data-k="replace"]').count();
     if (askedImp) await P.click('.chooser [data-k="replace"]');
     await P.waitForTimeout(800);
+    ok((await P.locator('.chooser').innerText()).includes('読み込みました'), '読み込み：結果（件数・点検）を表示する');
+    await P.click('.chooser [data-k="ok"]'); await P.waitForTimeout(400);
     const st = await P.evaluate(() => JSON.parse(localStorage.getItem('lemma.v2')));
     ok(st.log.length === old.log.length && st.resetAt > 0, `読み込み：置き換えるとファイルの記録になり、消した印が付く（${st.log.length}件）`);
+    const snaps = await P.evaluate(() => JSON.parse(localStorage.getItem('lemma.snap.v1') || '[]'));
+    ok(snaps.length === 1 && /置き換える前/.test(snaps[0].reason), '読み込み：置き換える前の記録を、端末に控えとして残す');
+    // v0.23：書き出し（形式・版・確認用の値つき）→ 読み込み（合わせる）で件数が変わらない
+    await P.goto(U + '#settings'); await P.waitForTimeout(800);
+    const [exp] = await Promise.all([P.waitForEvent('download'), P.click('#exp')]);
+    const bk = JSON.parse(fs.readFileSync(await exp.path(), 'utf8'));
+    ok(bk.format === 'lemma-backup' && bk.version === 1 && bk.schema === 4 && bk.app && /^fnv1a32:/.test(bk.hash) && bk.state.log.length === old.log.length, '書き出し：形式・版・作成時刻・確認用の値つきのバックアップ');
+    const tampered = JSON.parse(JSON.stringify(bk)); tampered.state.log.pop();
+    await P.setInputFiles('#imp', { name: 't.json', mimeType: 'application/json', buffer: Buffer.from(JSON.stringify(tampered)) });
+    await P.waitForTimeout(400);
+    ok((await P.locator('.toast').innerText()).includes('壊れているか'), '読み込み：中身が欠けたバックアップは断る');
+    await P.setInputFiles('#imp', { name: 'b2.json', mimeType: 'application/json', buffer: Buffer.from(JSON.stringify(bk)) });
+    await P.waitForTimeout(400);
+    await P.click('.chooser [data-k="merge"]'); await P.waitForTimeout(600);
+    await P.click('.chooser [data-k="ok"]'); await P.waitForTimeout(400);
+    ok((await P.evaluate(() => JSON.parse(localStorage.getItem('lemma.v2')).log.length)) === old.log.length, '読み込み：同じバックアップを合わせても記録は重複しない');
+    // 控えの時点に戻す（設定の「自動の控え」）
+    await P.goto(U + '#settings'); await P.waitForTimeout(800);
+    ok(await P.locator('.snap-back').count() >= 1 && (await P.locator('.integrity summary').innerText()).includes('記録の点検'), '設定：記録の点検と自動の控えが見える');
     // ログインして同期 → 「記録をすべて消す」でアカウントの記録も消える
     const login = async (page, email) => {
       await page.goto(U + '#settings'); await page.waitForTimeout(1200);
@@ -536,7 +557,28 @@ try {
     await R.click('.chooser [data-k="wipe"]'); await R.waitForTimeout(1500);
     const nR2 = await R.evaluate(() => JSON.parse(localStorage.getItem('lemma.v2')).log.length);
     ok(nR2 === 0 && await R.locator('#acct-email').count() === 1, 'ログアウト時に端末の記録も消せる');
-    const errs = [...P.errors, ...Q.errors, ...R.errors].filter(e => !/status of 40[13]/.test(e));
+    // v0.23：保存されていた記録が壊れていても、上書きせずに退避する
+    const BR = await newPage({ raw: '{"log":[{"p":"I-EXP-001","t":1700000000000,"g":3}], こわれた' });
+    await BR.goto(U + '#today'); await BR.waitForTimeout(1200);
+    ok((await BR.locator('.banner').innerText()).includes('読めませんでした'), '壊れた記録：起動時に知らせる');
+    const brk = await BR.evaluate(() => Object.keys(localStorage).filter(k => k.startsWith('lemma.v2.broken.')).map(k => JSON.parse(localStorage.getItem(k)).raw));
+    ok(brk.length === 1 && brk[0].includes('こわれた'), '壊れた記録：元の文字列を消さずに退避する');
+    // 同じ端末の2つのタブで解いても、どちらの記録も残る
+    const T1 = await newPage({ state: { settings: { size: 6, newPerDay: 3, answer: 'self' } } });
+    await T1.goto(U + '#today'); await T1.waitForTimeout(1000);
+    const T2 = await T1.context().newPage(); T2.errors = [];
+    await T2.goto(U + '#today'); await T2.waitForTimeout(1000);
+    const solve = async (pg, pid) => {
+      await pg.evaluate(`__lemma.open(['${pid}'])`); await pg.waitForTimeout(800);
+      await pg.locator('#conf button').nth(1).click(); await pg.click('#reveal'); await pg.waitForTimeout(400);
+      await pg.locator('#self button').first().click(); await pg.waitForTimeout(300);
+    };
+    await solve(T1, 'A-COM-020');
+    const t1n = await T1.evaluate(() => JSON.parse(localStorage.getItem('lemma.v2')).log.length);
+    await solve(T2, 'A-COM-021');
+    const both = await T2.evaluate(() => JSON.parse(localStorage.getItem('lemma.v2')).log.map(l => l.p));
+    ok(t1n >= 1 && both.includes('A-COM-020') && both.includes('A-COM-021'), `2つのタブ：あとから保存したタブが、先のタブの記録を消さない（${both}）`);
+    const errs = [...P.errors, ...Q.errors, ...R.errors, ...BR.errors, ...T1.errors, ...T2.errors].filter(e => !/status of 40[13]/.test(e));
     ok(errs.length === 0, `ページのエラーなし ${errs}`);
   }
 } finally {

@@ -4,103 +4,13 @@
 //   ログインしなければ何も送らない（今まで通り端末の中だけ）。
 import { SUPABASE_URL, SUPABASE_KEY } from './config.js';
 
-export const FILE_VERSION = '0.22.0';
+export const FILE_VERSION = '0.23.0';
 const AUTH_KEY = 'lemma.auth';
 export const enabled = () => !!(SUPABASE_URL && SUPABASE_KEY);
 
-// ---------------------------------------------------------------- 記録の合わせ方（端末どうしで食い違ったとき）
-// 設定のように「最後に変えた方」を採るもの
-export const LWW_KEYS = ['settings', 'practice', 'graphExprs', 'graph3Exprs', 'graphCExprs', 'graphVExprs'];
-const entryKey = (l) => `${l.p}|${l.t}`;
-const nkeys = (o) => Object.keys(o || {}).length;
-
-// 記録を消した印（resetAt）：「すべて消す」「バックアップで置き換える」をした時刻（ms）。
-//   印の新しい側は、その時刻より前の記録も含めて全部が正しい。印の古い側（まだ消したことを知らない端末・サーバー）からは、
-//   その時刻より前の記録を持ち込まない（持ち込むと消した記録がよみがえる）。
-function dropBefore(S, at) {
-  const keep = (o) => Object.fromEntries(Object.entries(o || {}).filter(([, v]) => v && (v.last || v.t || 0) >= at));
-  const day = new Date(at); day.setHours(0, 0, 0, 0);
-  const dk = `${day.getFullYear()}-${String(day.getMonth() + 1).padStart(2, '0')}-${String(day.getDate()).padStart(2, '0')}`;
-  return {
-    ...S,
-    log: (S.log || []).filter(l => l.t >= at),
-    pstat: keep(S.pstat), cards: keep(S.cards), problems: keep(S.problems), bookmarks: keep(S.bookmarks),
-    explains: Object.fromEntries(Object.entries(S.explains || {}).map(([k, v]) => [k, (v || []).filter(e => e.t >= at)]).filter(([, v]) => v.length)),
-    streak: S.streak && (S.streak.last || '') > dk ? S.streak : { last: '', count: 0 },
-    drill: S.drill ? { ...S.drill, best: {} } : undefined,   // 自己ベストも記録のうち
-  };
-}
-
-export function mergeState(L, R) {
-  if (!R) return L;
-  if (!L) return R;
-  const resetAt = Math.max(L.resetAt || 0, R.resetAt || 0);
-  if ((L.resetAt || 0) < resetAt) L = dropBefore(L, resetAt);
-  if ((R.resetAt || 0) < resetAt) R = dropBefore(R, resetAt);
-  const out = { ...R, ...L };
-  // 解答の記録：両方を足す（同じ回＝同じ問題・同じ時刻は1つに。項目の多い方に、足りない項目を補う）
-  const m = new Map();
-  for (const r of R.log || []) m.set(entryKey(r), r);
-  for (const l of L.log || []) {
-    const r = m.get(entryKey(l));
-    if (r && nkeys(r) > nkeys(l)) Object.assign(l, r);
-    else if (r) for (const [k, v] of Object.entries(r)) if (!(k in l)) l[k] = v;
-    m.set(entryKey(l), l);   // 手元の記録はそのままのオブジェクトを使う（解いている途中の参照が切れないように）
-  }
-  out.log = [...m.values()].sort((a, b) => a.t - b.t).slice(-5000);
-  // 復習状態・解法カード：問題ごとに、最後に解いた方
-  const newer = (a, b) => { const o = { ...(b || {}) }; for (const [k, v] of Object.entries(a || {})) if (!o[k] || (v && v.last >= o[k].last)) o[k] = v; return o; };
-  out.pstat = newer(L.pstat, R.pstat);
-  out.cards = newer(L.cards, R.cards);
-  // ブックマーク：問題ごとに、最後に付け外しした方（外した印 on:false も残して、よみがえらないようにする）
-  const bmNewer = (a, b) => { const o = { ...(b || {}) }; for (const [k, v] of Object.entries(a || {})) if (!o[k] || (v && v.t >= o[k].t)) o[k] = v; return o; };
-  out.bookmarks = bmNewer(L.bookmarks, R.bookmarks);
-  // 解いた問題：最後に解いた時刻は新しい方、回数は多い方（記録の数より少なくはしない）
-  const count = {};
-  for (const l of out.log) count[l.p] = (count[l.p] || 0) + 1;
-  out.problems = {};
-  for (const k of new Set([...Object.keys(L.problems || {}), ...Object.keys(R.problems || {})])) {
-    const a = (L.problems || {})[k], b = (R.problems || {})[k];
-    out.problems[k] = { last: Math.max(a ? a.last : 0, b ? b.last : 0), n: Math.max(a ? a.n : 0, b ? b.n : 0, count[k] || 0) };
-  }
-  // 気づきのメモ：両方を足して、問題ごとに新しい5件
-  out.explains = {};
-  for (const k of new Set([...Object.keys(L.explains || {}), ...Object.keys(R.explains || {})])) {
-    const all = new Map();
-    for (const e of [...((R.explains || {})[k] || []), ...((L.explains || {})[k] || [])]) all.set(`${e.t}|${e.text}`, e);
-    out.explains[k] = [...all.values()].sort((a, b) => a.t - b.t).slice(-5);
-  }
-  // 計算トレーニングの自己ベスト：正答率が高い方、同じなら速い方
-  const dl = L.drill || {}, dr = R.drill || {};
-  if (!L.drill && !R.drill) delete out.drill;
-  if (L.drill || R.drill) {
-    const best = { ...(dr.best || {}) };
-    for (const [k, v] of Object.entries(dl.best || {})) {
-      const o = best[k];
-      if (!o || v.ok / v.n > o.ok / o.n || (v.ok / v.n === o.ok / o.n && v.ms <= o.ms)) best[k] = v;
-    }
-    out.drill = { ...dr, ...dl, best };
-  }
-  // 連続日数：最後に解いた日が新しい方（同じ日なら長い方）
-  const sl = L.streak || {}, sr = R.streak || {};
-  out.streak = (sl.last || '') > (sr.last || '') ? sl : (sr.last || '') > (sl.last || '') ? sr : ((sl.count || 0) >= (sr.count || 0) ? sl : sr);
-  out.csvExportedAt = Math.max(L.csvExportedAt || 0, R.csvExportedAt || 0) || undefined;
-  if (out.csvExportedAt === undefined) delete out.csvExportedAt;
-  // 設定・選んだ分野など：最後に変えた方
-  const lw = (L.settingsAt || 0) >= (R.settingsAt || 0) ? L : R;
-  for (const k of LWW_KEYS) { if (k in lw) out[k] = lw[k]; else delete out[k]; }
-  out.settingsAt = Math.max(L.settingsAt || 0, R.settingsAt || 0);
-  out.schema = L.schema;
-  if (resetAt) out.resetAt = resetAt; else delete out.resetAt;
-  return out;
-}
-
-// 比較用：キーの順番によらない JSON
-export function stable(v) {
-  if (Array.isArray(v)) return `[${v.map(stable).join(',')}]`;
-  if (v && typeof v === 'object') return `{${Object.keys(v).sort().filter(k => v[k] !== undefined).map(k => `${JSON.stringify(k)}:${stable(v[k])}`).join(',')}}`;
-  return JSON.stringify(v);
-}
+// 記録の合わせ方（mergeState など）は v0.23 から js/store.js にある（同期しない版でも、タブどうし・バックアップの読み込みで使うため）
+export { LWW_KEYS, mergeState, mergePstat, stable } from './store.js';
+import { mergeState, stable, structural, SCHEMA } from './store.js';
 
 // ---------------------------------------------------------------- 通信
 export class SyncError extends Error {
@@ -120,9 +30,11 @@ const MESSAGES = {
   email_address_invalid: 'メールアドレスの形が正しくありません。',
 };
 
-export function createSync({ getState, applyState, onStatus = () => {} }) {
+const RETRY_MAX = 4;
+const retryable = (e) => e && (e.code === 'offline' || e.code === 'conflict' || /^(5\d\d|429|408)$/.test(String(e.code)));
+export function createSync({ getState, applyState, onStatus = () => {}, retryDelay = 15000 }) {
   let session = loadSession();
-  let timer = null, running = null;
+  let timer = null, running = null, retries = 0;
   const st = { status: session ? 'idle' : 'out', lastSync: session?.lastSync || null, error: null };
   const emit = () => onStatus({ ...st, email: session?.user?.email || null });
 
@@ -170,6 +82,7 @@ export function createSync({ getState, applyState, onStatus = () => {} }) {
     for (let attempt = 0; attempt < 4; attempt++) {
       const rows = await call(`/rest/v1/lemma_state?select=state,rev&user_id=eq.${uid}`, { auth: true });
       const local = getState();
+      if (structural(local).length) throw new SyncError('この端末の記録の形が正しくないため、同期を止めました。', 'bad_local');
       if (!rows.length) {
         try {
           await call('/rest/v1/lemma_state', { method: 'POST', auth: true, prefer: 'return=minimal', body: { user_id: uid, state: local, rev: 1 } });
@@ -177,6 +90,9 @@ export function createSync({ getState, applyState, onStatus = () => {} }) {
         } catch (e) { if (e.code === '23505' || e.code === '409') continue; throw e; }   // 別の端末が先に作った
       }
       const { state: remote, rev } = rows[0];
+      // v0.23：サーバーの記録を確かめてから合わせる。壊れた記録・新しい版の記録とは合わせず、書き戻しもしない（手元もサーバーも変えない）
+      if (structural(remote).length) throw new SyncError('アカウントの記録の形が正しくないため、同期を止めました。この端末の記録はそのまま残っています。', 'bad_remote');
+      if (Number.isInteger(remote.schema) && remote.schema > SCHEMA) throw new SyncError('新しい版のアプリで保存された記録です。アプリを更新してから同期してください（この端末の記録はそのまま残っています）。', 'newer_remote');
       const merged = mergeState(local, remote);
       if (stable(merged) !== stable(remote)) {
         const up = await call(`/rest/v1/lemma_state?user_id=eq.${uid}&rev=eq.${rev}`, { method: 'PATCH', auth: true, prefer: 'return=representation',
@@ -194,11 +110,15 @@ export function createSync({ getState, applyState, onStatus = () => {} }) {
     if (running) return running;
     st.status = 'syncing'; st.error = null; emit();
     running = syncOnce().then((r) => {
+      retries = 0;
       st.status = 'ok'; st.lastSync = Date.now();
       if (session) { session.lastSync = st.lastSync; saveSession(session); }
       emit(); return r;
     }).catch((e) => {
       if (session) { st.status = e.code === 'offline' ? 'offline' : 'error'; st.error = e.message; }
+      // 一時的な失敗（オフライン・同時の書き込み・サーバーの不調）は、間をあけて数回だけやり直す。
+      //   形の正しくない記録・新しい版の記録・ログイン切れはやり直さない（人が対処する）
+      if (session && retryable(e) && retries < RETRY_MAX) { retries++; clearTimeout(timer); timer = setTimeout(() => syncNow(), retryDelay * 2 ** (retries - 1)); }
       emit(); return null;
     }).finally(() => { running = null; });
     return running;

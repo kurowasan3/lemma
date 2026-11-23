@@ -34,7 +34,11 @@ const base = JSON.parse(fs.readFileSync(path.join(root, 'tests/fixtures/state-v0
   const keys = new Set(M.log.map(l => `${l.p}|${l.t}`));
   ok(M.log.length === base.log.length + 2 && keys.has('I-QF-109|2000000000000') && keys.has('q01|2000000000500'), '解答の記録は両方の分を足し、同じ回は重複しない');
   ok(M.log.every((l, i) => i === 0 || M.log[i - 1].t <= l.t), '記録は時刻順');
-  ok(M.pstat['I-QF-109'].S === 3 && M.pstat.q01.S === 0.4, '復習状態は問題ごとに新しい方');
+  // v0.23：B の復習（last=1990…）のあとに A の解答（t=2000…, g=4）があり、A の reps は B から増えていない＝別々に復習した。
+  //   新しい方（A）だけを採ると B の復習が消えるので、B の状態から A の解答を review し直す
+  const { review } = await import('../js/scheduler.js');
+  const want = review(B.pstat['I-QF-109'], 4, 2000000000000);
+  ok(M.pstat['I-QF-109'].S === want.S && M.pstat['I-QF-109'].reps === 2 && M.pstat.q01.S === 0.4, '復習状態：2台で別々に復習した問題は、両方の復習を反映する（片方だけなら新しい方）');
   ok(M.settings.theme === 'dark' && M.settingsAt === 200, '設定は最後に変えた方');
   ok(M.drill.best.diff.ok === 10 && M.drill.best.int && M.drill.best.lim, '計算の自己ベストは良い方を残し、両方の種目を残す');
   ok(M.explains['I-QF-109'].map(e => e.text).join() === 'a,b', 'メモは両方を残す');
@@ -177,6 +181,102 @@ const base = JSON.parse(fs.readFileSync(path.join(root, 'tests/fixtures/state-v0
   R3.pstat = { 'I-EXP-003': { S: 1, D: 6, last: 3000, reps: 1, lapses: 1 }, 'I-EXP-001': { S: 1, D: 6, last: 500, reps: 1, lapses: 0 } };
   const M3 = S.mergeState(clone(L3), clone(R3));
   ok(M3.pstat['I-EXP-001'].last === 1000 && M3.pstat['I-EXP-003'] && M3.log.find(l => l.p === 'I-EXP-001').r === 3, 'pstat は問題ごとに新しい方が残り、片方にしか無いものも残る（r も一緒に）');
+}
+
+// ---------------------------------------------------------------- v0.23：同期の安全性
+{
+  const mock = createMockSupabase({ key: SUPABASE_KEY });
+  globalThis.fetch = mock.fetch;
+  const wait = (ms) => new Promise(r => setTimeout(r, ms));
+  const device = (initial, opts = {}) => {
+    let st = clone(initial);
+    const sync = S.createSync({ getState: () => st, applyState: opts.apply ? (m) => { st = opts.apply(st, m); } : (m) => { st = m; }, retryDelay: 5 });
+    return { sync, get: () => st, set: (x) => { st = x; } };
+  };
+  mem.clear();
+  const A = device({ ...clone(base), log: base.log.slice(0, 30) });
+  await A.sync.sendCode('safe@example.com'); await A.sync.verify('safe@example.com', '123456');
+  const uid = [...mock.users.values()].find(u => u.email === 'safe@example.com').id;
+  const sess = mem.get('lemma.auth');
+
+  // 壊れたサーバーの記録：合わせず、書き戻さず、手元も変えない
+  const good = clone(mock.rows.get(uid));
+  mock.rows.set(uid, { ...good, state: { ...good.state, log: 'こわれた' } });
+  const before = S.stable(A.get());
+  await A.sync.syncNow();
+  ok(A.sync.status().status === 'error' && /形が正しくない/.test(A.sync.status().error) && S.stable(A.get()) === before && mock.rows.get(uid).state.log === 'こわれた', '壊れたサーバーの記録とは合わせず、手元もサーバーも変えない');
+  // 新しい版（schema が大きい）の記録：上書きしない
+  mock.rows.set(uid, { ...good, state: { ...good.state, schema: 99 } });
+  await A.sync.syncNow();
+  ok(/新しい版/.test(A.sync.status().error) && mock.rows.get(uid).state.schema === 99 && mock.rows.get(uid).rev === good.rev, '新しい版のアプリの記録は上書きしない');
+  mock.rows.set(uid, good);
+  await wait(30);
+
+  // 手元の記録が壊れている：送らない
+  const broken = device({ ...clone(base), log: [{ p: 'x' }] });
+  await broken.sync.syncNow();
+  ok(broken.sync.status().status === 'error' && mock.rows.get(uid).rev === good.rev, '手元の記録の形が正しくなければ送らない');
+
+  // 古い記録しか持っていない端末が同期しても、サーバーの新しい記録・復習状態は消えない
+  mock.rows.set(uid, { ...good, state: { ...good.state, log: [...good.state.log, { p: 'I-QF-109', t: 2100000000000, g: 4 }], pstat: { ...good.state.pstat, 'I-QF-109': { S: 9, D: 4, last: 2100000000000, reps: 3, lapses: 0 } } } });
+  const old = device({ ...clone(base), log: base.log.slice(0, 5), pstat: { 'I-QF-109': { S: 1, D: 5, last: 1700000000000, reps: 2, lapses: 0 } } });
+  await old.sync.syncNow();
+  const srv = mock.rows.get(uid).state;
+  ok(srv.log.some(l => l.t === 2100000000000) && srv.log.length >= good.state.log.length + 1 && srv.pstat['I-QF-109'].S === 9, '古い記録の端末が同期しても、サーバーの新しい記録・復習状態で上書きされる側にはならない');
+
+  // 書き戻しの途中で通信が切れた（部分的な同期）：サーバーは前のまま、手元も失わない。次の同期で両方が入る
+  const C = device(old.get());
+  C.set({ ...C.get(), log: [...C.get().log, { p: 'q03', t: 2100000001000, g: 3 }] });
+  const revC = mock.rows.get(uid).rev;
+  globalThis.fetch = async (url, init) => { if (init && init.method === 'PATCH') throw new TypeError('Failed to fetch'); return mock.fetch(url, init); };
+  await C.sync.syncNow();
+  ok(C.sync.status().status === 'offline' && mock.rows.get(uid).rev === revC && C.get().log.some(l => l.p === 'q03'), '書き戻しで切れても、サーバーは前の版のまま・手元の記録も残る');
+  globalThis.fetch = mock.fetch;
+  await wait(40);   // 自動のやり直し（retryDelay=5ms）
+  ok(C.sync.status().status === 'ok' && mock.rows.get(uid).state.log.some(l => l.p === 'q03'), 'オフラインの失敗は、間をあけて自動でやり直す');
+
+  // サーバーの一時的な不調（503）も自動でやり直す。壊れた記録（bad_remote）はやり直さない
+  let n503 = 1;
+  globalThis.fetch = async (url, init) => { if (n503-- > 0) return { ok: false, status: 503, text: async () => '{"message":"busy"}' }; return mock.fetch(url, init); };
+  C.set({ ...C.get(), log: [...C.get().log, { p: 'q04', t: 2100000002000, g: 2 }] });
+  await C.sync.syncNow();
+  ok(C.sync.status().status === 'error', '503 ではいったん失敗');
+  await wait(40);
+  ok(C.sync.status().status === 'ok' && mock.rows.get(uid).state.log.some(l => l.p === 'q04'), '503 のあと自動でやり直して同期できる');
+  globalThis.fetch = mock.fetch;
+
+  // 通信している間に解いた記録：アプリと同じく、反映の前にもう一度合わせれば失われない
+  const D = device(C.get(), { apply: (cur, m) => S.mergeState(cur, m) });
+  const NAIVE = device(C.get());
+  for (const [dev, name] of [[D, 'merge'], [NAIVE, 'naive']]) {
+    mock.hooks.beforePatch = async () => { dev.get().log.push({ p: 'q05', t: 2100000003000 + (name === 'merge' ? 0 : 1), g: 3 }); };
+    dev.set({ ...dev.get(), log: [...dev.get().log, { p: 'q06', t: 2100000004000 + (name === 'merge' ? 0 : 1), g: 3 }] });
+    await dev.sync.syncNow();
+    mock.hooks.beforePatch = null;
+  }
+  ok(D.get().log.some(l => l.p === 'q05'), '同期の途中で解いた記録も、反映のときに合わせ直せば残る（app.js の applyState）');
+  ok(!NAIVE.get().log.some(l => l.p === 'q05'), '（確認）合わせ直さずに置き換えると、途中で解いた記録が消える＝合わせ直しが必要');
+
+  // 5000件を超える記録も、同期で切り捨てない
+  const many = Array.from({ length: 6000 }, (_, i) => ({ p: 'q01', t: 1700000000000 + i * 1000, g: 3 }));
+  const M = S.mergeState({ ...clone(base), log: many.slice(0, 3500) }, { ...clone(base), log: many.slice(2500) });
+  ok(M.log.filter(l => l.t >= 1700000000000 && l.p === 'q01').length === 6000, '5000件を超える解答の記録も同期で切り捨てない');
+  // 同じ問題を2台で別々に復習（共通の状態 C0 から）：両方の復習が入り、どちらから合わせても同じ・何度合わせても同じ
+  const { review } = await import('../js/scheduler.js');
+  const C0 = review(null, 3, 1800000000000);
+  const LA = { ...clone(base), log: [{ p: 'q09', t: 1800000000000, g: 3 }, { p: 'q09', t: 1801000000000, g: 1 }], pstat: { q09: review(C0, 1, 1801000000000) } };
+  const RB = { ...clone(base), log: [{ p: 'q09', t: 1800000000000, g: 3 }, { p: 'q09', t: 1802000000000, g: 4 }], pstat: { q09: review(C0, 4, 1802000000000) } };
+  const want = review(review(C0, 1, 1801000000000), 4, 1802000000000);
+  const X = S.mergeState(clone(LA), clone(RB)), Y = S.mergeState(clone(RB), clone(LA));
+  ok(X.pstat.q09.reps === 3 && X.pstat.q09.lapses === 1 && Math.abs(X.pstat.q09.S - want.S) < 1e-9, '2台で別々に復習した問題は、両方の復習を時刻順に反映する（片方の失敗が消えない）');
+  ok(S.stable(X.pstat) === S.stable(Y.pstat), '復習状態の合わせ方は、どちらから合わせても同じ');
+  ok(S.stable(S.mergeState(clone(X), clone(RB)).pstat) === S.stable(X.pstat) && S.stable(S.mergeState(clone(RB), clone(X)).pstat) === S.stable(X.pstat), '合わせた結果をもう一度どちらと合わせても変わらない（端末どうしで行ったり来たりしない）');
+  // 一方が他方の続き（同じ端末で続けて復習しただけ）なら、新しい方をそのまま使う
+  const P1 = { q09: review(C0, 3, 1801000000000) };
+  const P2 = { q09: review(P1.q09, 4, 1802000000000) };
+  const lg = [{ p: 'q09', t: 1800000000000, g: 3 }, { p: 'q09', t: 1801000000000, g: 3 }, { p: 'q09', t: 1802000000000, g: 4 }];
+  ok(S.stable(S.mergeState({ ...clone(base), log: lg, pstat: P1 }, { ...clone(base), log: lg, pstat: P2 }).pstat.q09) === S.stable(P2.q09), '続きの関係なら新しい方（二重に数えない）');
+  mem.set('lemma.auth', sess);
 }
 
 console.log(`sync.test: ${pass} 件 OK${fail ? `、${fail} 件失敗` : ''}`);

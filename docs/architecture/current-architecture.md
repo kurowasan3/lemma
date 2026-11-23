@@ -95,6 +95,7 @@ recordResult() ─► state（メモリ）─► save() ─► localStorage['lem
                                        └──► sync.schedule()（ログイン時、20秒まとめて）─► Supabase lemma_state
 ```
 
+- 【v0.23】保存・移行・控え・退避は `js/store.js`（キーの一覧と仕様は `docs/data-integrity.md`）。以下は v0.22 時点の記述。
 - 【確認】保存先は `localStorage` のキー `lemma.v2` の1つだけ（`app.js` 25・68行）。IndexedDB・Cookie は使っていない。
 - 【確認】認証情報は別キー `lemma.auth`（`sync.js` 8行）に access_token・refresh_token・メールアドレスを平文 JSON で保存。
 - 【確認】`save()` は変更のたびに `state` 全体を `JSON.stringify` して書く（68行）。
@@ -166,7 +167,7 @@ recordResult() ─► state（メモリ）─► save() ─► localStorage['lem
 | S3 | 中 | **CSP・セキュリティヘッダーなし**。GitHub Pages ではレスポンスヘッダーを設定できない | 【確認】`index.html` に `Content-Security-Policy` なし |
 | S4 | 中 | **ログイン用コードの送信に制限・CAPTCHA がない**（`create_user: true`）。他人のアドレスへの大量送信・アカウントの大量作成ができる。Supabase 側のメール送信レート制限だけが防波堤 | 【確認】`sync.js` 186行。レート値は【要検証】 |
 | S5 | 中 | **サーバー側で `state` の中身を検証しない**。自分の行に任意の JSON（5 MB 未満）を書ける。`updated_at` もクライアントが送る値 | 【確認】`schema.sql`（制約は `pg_column_size(state) < 5000000` だけ）、`sync.js` 158行 |
-| S6 | 低 | **バックアップの読み込みに検証がない**。`problems` と `log` があれば何でも `state` を置き換え、ログイン中はそのままサーバーへ合算される | 【確認】`app.js` 1672–1679行 |
+| S6 | 低 | 【v0.23 で対応：`docs/data-integrity.md` §5】**バックアップの読み込みに検証がない**。`problems` と `log` があれば何でも `state` を置き換え、ログイン中はそのままサーバーへ合算される | 【確認】`app.js` 1672–1679行 |
 | S7 | 低 | 問題本文 HTML を `innerHTML` で挿入。現状はビルド時にエスケープ済みで問題ないが、`content/` の改ざん（PR・アップロード）がそのまま XSS になる。S2 と組み合わさると影響が大きい | 【確認】`latex_html.py` `esc()`、`app.js` 905行 |
 | S8 | 低 | 退会（`delete_my_account`）は `auth.users` を直接消す SECURITY DEFINER 関数。権限は `authenticated` だけで妥当。ただし Supabase のバックアップには一定期間残る（期間は【要検証】） | 【確認】`schema.sql` |
 | S9 | 情報 | Publishable key と Project URL の公開は設計どおりで問題ない（RLS で守る前提） | 【確認】`config.js` |

@@ -13,6 +13,8 @@ import * as M_MAST from './mastery.js';
 import * as M_ANS from './answer.js';
 import * as M_UI from './ui.js';
 import * as M_DRILL from './drill.js';
+import * as M_STORE from './store.js';
+import { freshState, createStore, audit, repair, makeBackup, readBackup, restoreState, counts, mergeState, BROKEN_PREFIX } from './store.js';
 import { parseSpec, checkField, fieldHint, fieldUnit, fieldTeX, condTeX, exprTeX } from './answer.js';
 import { ICON, play, setSound, applyTheme, BIRD_SVG, BIRD_NAME, birdMessage } from './ui.js';
 import { renderDrillHome } from './drill.js';
@@ -24,57 +26,47 @@ import {
 } from './catalog.js';
 import { techMastery, techCandidates, masterChecklist, makeCtx, transferTargets, transferWhy, MASTER, STATUS, TRANSFER, TRANSFER_KIND } from './mastery.js';
 
-const VERSION = '0.22.0';
+const VERSION = '0.23.0';
 const KEY = 'lemma.v2';
 let sync = null, syncApplying = false, syncStatus = null;   // アカウントと同期（initSync で用意）
 const $ = (sel, el = document) => el.querySelector(sel);
 const $$ = (sel, el = document) => [...el.querySelectorAll(sel)];
 
-// ---------- 保存 ----------
-function freshState() {
-  return {
-    cards: {}, problems: {}, pstat: {}, log: [], explains: {}, bookmarks: {},
-    settings: { size: 6, newPerDay: 3 },
-    practice: { fields: null, levels: [0, 1, 2, 3, 4, 5], size: 8 }, lv0: 1,
-    schema: 4,
-    newIntroduced: null, streak: { last: null, count: 0 },
-    graphExprs: null, graphCExprs: null, graphVExprs: null,
-  };
+// ---------- 保存（v0.23：読み書き・移行・控えは js/store.js） ----------
+//   読めない記録は上書きせずに退避、保存に失敗したら前の記録のまま、別のタブの保存とは合わせてから保存する。
+let LS;
+try { LS = window.localStorage; LS.getItem(KEY); } catch {   // 保存できない環境（一部のプライベートモード）：この画面の中だけで動く
+  const m = new Map();
+  LS = { getItem: k => (m.has(k) ? m.get(k) : null), setItem: (k, v) => m.set(k, String(v)), removeItem: k => m.delete(k), key: i => [...m.keys()][i] ?? null, get length() { return m.size; } };
 }
-let state = load();
-function load() {
-  try {
-    const raw = localStorage.getItem(KEY);
-    if (raw) {
-      const st = { ...freshState(), ...JSON.parse(raw) };
-      if (st.schema !== 4) { // v0.3 以前の記録：難易度の段階と分野が変わったので選択だけ初期化
-        st.practice = { fields: null, levels: [0, 1, 2, 3, 4, 5], size: (st.practice && st.practice.size) || 8 };
-        st.pstat = st.pstat || {};
-        st.schema = 4;
-      }
-      // v0.6 で「基礎」(0) を追加：全段階を選んでいた人は基礎も含める
-      if (!JSON.parse(raw).lv0 && st.practice && Array.isArray(st.practice.levels)) {
-        if ([1, 2, 3, 4, 5].every(k => st.practice.levels.includes(k)) && !st.practice.levels.includes(0)) st.practice.levels.unshift(0);
-        st.lv0 = 1;
-      }
-      return st;
-    }
-  } catch (e) { /* 読めないときは新規 */ }
-  return freshState();
-}
+const store = createStore(LS, { app: VERSION });
+const boot = store.load();
+let state = boot.state;
 // 設定・選んだ分野などが変わった時刻（端末どうしで食い違ったら新しい方を採る）
 let lwwSig = null;
 let saveWarned = false;
 let persistAsked = false;
+const SAVE_MSG = {
+  quota: 'この端末の保存領域がいっぱいで、記録を保存できませんでした（前に保存した記録は残っています）。設定から書き出しておいてください。',
+  verify: '記録を保存できたか確かめられませんでした。設定から書き出しておいてください。',
+  invalid: '記録の形が正しくないため、保存を止めました（前に保存した記録は残っています）。設定から書き出しておいてください。',
+  blocked: '読めなかった記録を退避できなかったため、この端末への保存を止めています。設定から書き出しておいてください。',
+  newer: '別の画面で新しい版の Lemma が開いているため、保存を止めました。その画面を閉じるか、この画面を再読み込みしてください。',
+  serialize: '記録を保存できませんでした。設定から書き出しておいてください。',
+};
 function save() {
   const sig = JSON.stringify([state.settings, state.practice, state.graphExprs, state.graph3Exprs, state.graphCExprs, state.graphVExprs]);
   if (lwwSig !== null && sig !== lwwSig) state.settingsAt = Date.now();
   lwwSig = sig;
-  try { localStorage.setItem(KEY, JSON.stringify(state)); }
-  catch (e) {   // 容量がいっぱい・プライベートモードなど。黙って失うと気づけないので、1回だけ知らせる
-    if (!saveWarned) { saveWarned = true; setTimeout(() => toast('この端末に記録を保存できませんでした。設定から書き出しておいてください。'), 0); }
+  const r = store.save(state);
+  // 別のタブが先に保存していた：その記録と合わせた結果を、この画面の記録にも入れる（同じオブジェクトのまま）
+  if (r.merged) for (const k of Object.keys(r.merged)) state[k] = r.merged[k];
+  if (!r.ok && !saveWarned) {   // 黙って失うと気づけないので、1回だけ知らせる
+    saveWarned = true; setTimeout(() => toast(SAVE_MSG[r.reason] || SAVE_MSG.serialize), 0);
   }
+  if (r.ok) saveWarned = false;
   if (sync && !syncApplying) sync.schedule();
+  return r.ok;
 }
 
 // ---------- アカウントと同期（js/sync.js を読めないときは、この機能なしで動く）
@@ -86,6 +78,8 @@ function initSync() {
       getState: () => state,
       applyState: (merged) => {
         syncApplying = true;
+        // 通信している間にこの端末で解いた分を落とさないよう、今の記録ともう一度合わせてから入れる
+        merged = mergeState(state, merged);
         for (const k of Object.keys(merged)) state[k] = merged[k];
         save();
         syncApplying = false;
@@ -113,7 +107,7 @@ async function firstSyncAfterLogin() {
       options: [{ key: 'merge', label: '合わせる（両方の記録を残す）', cls: 'primary' },
         { key: 'remote', label: 'アカウントの記録だけを使う（この端末の分は書き出してから消す）' }] });
     if (k === 'remote') {
-      download(`lemma-この端末の記録-${dayKey()}.json`, JSON.stringify(state, null, 1), 'application/json');
+      download(`lemma-この端末の記録-${dayKey()}.json`, JSON.stringify(makeBackup(state, VERSION), null, 1), 'application/json');
       // 端末の記録を空にしてから同期すると、アカウントの記録だけになる（設定は端末のまま）
       state = { ...freshState(), settings: state.settings, practice: state.practice, settingsAt: state.settingsAt, graphExprs: state.graphExprs, graph3Exprs: state.graph3Exprs, graphCExprs: state.graphCExprs, graphVExprs: state.graphVExprs };
       save(); session = null;
@@ -182,7 +176,10 @@ function drawAccount() {
     const k = await choose({ title: 'ログアウト', body: 'サーバーの記録はそのまま残ります。この端末の記録をどうしますか？（家族や学校の共用の端末なら、消すのがおすすめです）',
       options: [{ key: 'keep', label: 'この端末の記録は残してログアウト', cls: 'primary' }, { key: 'wipe', label: 'この端末の記録も消してログアウト' }] });
     if (!k) return;
-    await sync.syncNow(); await sync.logout();
+    const synced = await sync.syncNow();
+    // 消す前に、サーバーに送れたことを確かめる（送れていない記録を消さない）
+    if (k === 'wipe' && !synced) { toast('サーバーと同期できなかったため、この端末の記録は消していません（ログアウトもしていません）'); drawAccount(); return; }
+    await sync.logout();
     if (k === 'wipe') { state = { ...freshState(), settings: state.settings }; save(); session = null; clearSavedSession(); }
     toast(k === 'wipe' ? 'ログアウトし、この端末の記録を消しました' : 'ログアウトしました'); route();
   });
@@ -1098,7 +1095,7 @@ function recordResult(pid, grade, extra) {
   state.problems[pid] = { last: now, n: ((state.problems[pid] || {}).n || 0) + 1 };
   // 解法カードから始めた演習（解法を知らされて解いた）は k:'t' を付ける。解法の習得判定で区別する
   state.log.push({ p: pid, t: now, g: grade, ...extra, ...(session && session.cfg && session.cfg.tech ? { k: 't' } : {}) });
-  if (state.log.length > 5000) state.log = state.log.slice(-5000);
+  // v0.23：5000件での切り捨てをやめた（古い記録が消えていた）。保存できなくなったら save() が知らせる
   const today = dayKey(now);
   if (state.streak.last !== today) {
     const y = dayKey(now - 86400000);
@@ -2311,25 +2308,48 @@ function download(name, text, type) {
   setTimeout(() => URL.revokeObjectURL(a.href), 1000);
 }
 
-// バックアップの形を確かめる（壊れたファイル・別アプリのファイルで記録を上書きしないように）
-function checkBackup(d) {
-  const obj = (v) => v && typeof v === 'object' && !Array.isArray(v);
-  if (!obj(d) || !Array.isArray(d.log) || !obj(d.problems)) throw new Error('Lemma の学習記録のファイルではありません');
-  if (d.log.length > 100000) throw new Error('記録が多すぎるファイルです');
-  const okLog = d.log.every(l => obj(l) && typeof l.p === 'string' && l.p.length <= 40 && Number.isFinite(l.t));
-  if (!okLog) throw new Error('解答の記録の形が正しくありません');
-  for (const k of ['pstat', 'cards', 'explains', 'bookmarks']) if (k in d && !obj(d[k])) throw new Error('記録の形が正しくありません');
-  const out = { ...d };
-  delete out.settingsAt; delete out.resetAt;
-  return out;
+// 記録の点検に使う ID の一覧（今の問題データ・解法カード）
+function idContext() {
+  return { problemIds: new Set(ENTRIES.map(e => e.id)), cardIds: new Set(CARDS.map(c => c.id)) };
 }
-// 手元どうしで合わせる（同期と同じ規則。sync.js を読めない版でも動くよう、読めなければ単純に足す）
-let mergeFn = null;
-import('./sync.js').then(M => { mergeFn = M.mergeState; }).catch(() => {});
-function mergeLocal(a, b) {
-  if (mergeFn) return mergeFn(a, b);
-  const seen = new Set(a.log.map(l => `${l.p}|${l.t}`));
-  return { ...a, log: [...a.log, ...b.log.filter(l => !seen.has(`${l.p}|${l.t}`))].sort((x, y) => x.t - y.t).slice(-5000) };
+function backupFile() {
+  download(`lemma-${dayKey()}.json`, JSON.stringify(makeBackup(state, VERSION), null, 1), 'application/json');
+}
+const REASON_LABEL = (r) => esc(r || '');
+// 読み込み・控えへの復帰の共通部分：今の記録の控えを残す → 新しい記録を保存 → 点検。失敗したら元のまま
+async function applyRestore(incoming, mode, reason) {
+  const before = counts(state);
+  const next = restoreState(state, incoming, mode);
+  const rep = audit(next, idContext());
+  if (rep.errors.length) { toast('読み込んだ結果に正しくない値があるため、取りやめました（今の記録はそのままです）'); return false; }
+  const r = store.replace(state, next, reason);
+  if (!r.ok) { toast('保存できなかったため、取りやめました（今の記録はそのままです）'); return false; }
+  if (!r.snapshotted) backupFile();   // 端末に控えを残せなかったときは、置き換える前の記録をファイルで残す（この時点では保存前の state）
+  state = next; lwwSig = null; session = null;
+  const after = counts(state);
+  const warn = rep.warnings.reduce((a, w) => a + w.count, 0);
+  await choose({ title: '読み込みました',
+    body: `解答の記録 ${before.log} → ${after.log}件、復習状態 ${before.pstat} → ${after.pstat}問、ブックマーク ${before.bookmarks} → ${after.bookmarks}件。${warn ? `注意 ${warn}件（今のデータに無い問題IDの記録など。記録は残してあります）。` : '点検で問題はありませんでした。'}${r.snapshotted ? '読み込む前の記録は、設定の「自動の控え」から戻せます。' : '読み込む前の記録はファイルに書き出しました。'}`,
+    options: [{ key: 'ok', label: 'OK', cls: 'primary' }] });
+  route();
+  if (sync && sync.loggedIn()) sync.syncNow();
+  return true;
+}
+
+// 設定の「学習記録のバックアップ」：点検の結果・自動の控え・読めなかった記録
+function integrityHTML() {
+  const rep = audit(state, idContext());
+  const nw = rep.warnings.reduce((a, w) => a + w.count, 0), ne = rep.errors.reduce((a, w) => a + w.count, 0);
+  const items = [...rep.errors.map(x => ['bad', x]), ...rep.warnings.map(x => ['', x])];
+  const snaps = store.snapshots(), broken = store.brokenKeys();
+  return `<details class="integrity" style="margin-top:10px"><summary class="muted small">記録の点検：${ne ? `<b style="color:var(--bad)">正しくない値 ${ne}件</b>` : '正しくない値はありません'}${nw ? `・注意 ${nw}件` : ''}（解答の記録 ${rep.stats.log}件）</summary>
+      ${items.length ? `<ul class="small" style="margin:6px 0;padding-left:1.1em">${items.map(([c, x]) => `<li${c ? ' style="color:var(--bad)"' : ''}>${esc(x.msg)}：${x.count}件（${esc(x.ids.slice(0, 5).join(', '))}${x.count > 5 ? ' ほか' : ''}）</li>`).join('')}</ul>
+        <p class="muted small" style="margin:0">記録は自動では直しません（消える記録が出ないように）。今のデータに無い問題の記録は、そのまま残してあります。</p>` : ''}
+    </details>
+    ${snaps.length || broken.length ? `<div class="small" style="margin-top:10px"><b>自動の控え</b>（この端末の中だけ。移行・読み込み・消去の前に残します）
+      <ul style="margin:6px 0;padding-left:1.1em">${snaps.map((sn, i) => `<li>${new Date(sn.at).toLocaleString('ja-JP')}：${esc(sn.reason || '')}（解答 ${sn.n}件） <button class="btn ghost snap-back" data-i="${i}" style="padding:2px 10px">戻す</button></li>`).join('')}
+      ${broken.map(k => `<li>読めなかった記録（${new Date(+k.slice(BROKEN_PREFIX.length)).toLocaleString('ja-JP')}） <button class="btn ghost broken-dl" data-k="${esc(k)}" style="padding:2px 10px">書き出す</button></li>`).join('')}</ul>
+      <button class="btn ghost" id="snap-clear" style="padding:2px 10px">控えを消す</button></div>` : ''}`;
 }
 
 function renderSettings() {
@@ -2373,6 +2393,7 @@ function renderSettings() {
           <label class="btn" for="imp">読み込む</label>
           <input type="file" id="imp" accept="application/json" hidden>
         </div>
+        ${integrityHTML()}
         <button class="btn ghost block" id="reset" style="margin-top:10px;color:var(--bad)">記録をすべて消す</button>
       </div>
       <h2>設計の根拠</h2>
@@ -2406,40 +2427,68 @@ function renderSettings() {
   };
   $('#csvnew').addEventListener('click', () => csv(since));
   $('#csvall').addEventListener('click', () => csv(0));
-  $('#exp').addEventListener('click', () => download(`lemma-${dayKey()}.json`, JSON.stringify(state, null, 1), 'application/json'));
+  $('#exp').addEventListener('click', backupFile);
   $('#imp').addEventListener('change', async (e) => {
     const f = e.target.files[0]; e.target.value = ''; if (!f) return;
     let data;
     try {
-      if (f.size > 20e6) throw new Error('大きすぎるファイルです');
-      data = checkBackup(JSON.parse(await f.text()));
-    } catch (err) { toast(err && err.message && err.message !== 'x' ? err.message : '読み込めないファイルです'); return; }
+      if (f.size > 50e6) throw new Error('大きすぎるファイルです');
+      let obj;
+      try { obj = JSON.parse(await f.text()); } catch { throw new Error('ファイルが壊れていて読めません（JSON ではありません）'); }
+      data = readBackup(obj, idContext());
+    } catch (err) { toast(err && err.message ? err.message : '読み込めないファイルです'); return; }
     const k = hasRecords(state) ? await choose({ title: 'バックアップを読み込む',
-      body: `ファイルには解答の記録が ${data.log.length}件あります。今の記録（${state.log.length}件）をどうしますか？`,
-      options: [{ key: 'merge', label: '今の記録と合わせる', cls: 'primary' }, { key: 'replace', label: '今の記録を消して、ファイルの記録に置き換える' }] }) : 'replace';
+      body: `ファイルには解答の記録が ${data.state.log.length}件あります${data.meta.createdAt ? `（${new Date(data.meta.createdAt).toLocaleString('ja-JP')} に書き出し）` : ''}。今の記録（${state.log.length}件）をどうしますか？`,
+      options: [{ key: 'merge', label: '今の記録と合わせる', cls: 'primary' }, { key: 'replace', label: '今の記録を、ファイルの記録に置き換える' }] }) : 'replace';
     if (!k) return;
-    const keep = { settings: state.settings, practice: state.practice, settingsAt: state.settingsAt };
-    if (k === 'merge') {
-      state = mergeLocal(state, { ...data, resetAt: state.resetAt });
-    } else {
-      // 置き換え：ログイン中でもサーバーの古い記録が戻らないよう、消した印を付ける
-      state = { ...freshState(), ...data, ...keep, schema: 4, resetAt: Date.now() };
-    }
-    save(); session = null; toast('読み込みました'); route();
-    if (sync && sync.loggedIn()) sync.syncNow();
+    await applyRestore(data.state, k, k === 'merge' ? 'バックアップと合わせる前' : 'バックアップで置き換える前');
   });
+  $$('.snap-back').forEach(b => b.addEventListener('click', async () => {
+    const sn = store.snapshots()[+b.dataset.i];
+    if (!sn) return;
+    let data;
+    try { data = readBackup(JSON.parse(sn.raw), idContext()); } catch (err) { toast(`この控えは読めません：${err.message}`); return; }
+    const k = await choose({ title: '控えの時点に戻す', body: `${new Date(sn.at).toLocaleString('ja-JP')}（${REASON_LABEL(sn.reason)}）の記録 ${data.state.log.length}件に戻します。今の記録（${state.log.length}件）は新しい控えとして残します。`,
+      options: [{ key: 'replace', label: 'この時点に戻す', cls: 'primary' }, { key: 'merge', label: '今の記録と合わせる' }] });
+    if (!k) return;
+    await applyRestore(data.state, k, '控えに戻す前');
+  }));
+  $('#snap-clear')?.addEventListener('click', async () => {
+    const k = await choose({ title: '自動の控えを消す', body: 'この端末に残している控え（と、読めなかった記録の退避）を消します。学習記録の本体は消えません。',
+      options: [{ key: 'y', label: '消す', cls: 'danger' }] });
+    if (!k) return;
+    try { LS.removeItem(M_STORE.SNAP_KEY); for (const key of store.brokenKeys()) LS.removeItem(key); } catch { /* なし */ }
+    renderSettings();
+  });
+  $$('.broken-dl').forEach(b => b.addEventListener('click', () => {
+    const v = store.get(b.dataset.k);
+    if (v) download(`lemma-読めなかった記録-${b.dataset.k.slice(BROKEN_PREFIX.length)}.json`, v, 'application/json');
+  }));
   $('#reset').addEventListener('click', async () => {
     const logged = sync && sync.loggedIn();
     const k = await choose({ title: '記録をすべて消す',
-      body: logged ? '解答の記録・復習の予定・ブックマーク・メモを消します（設定は残ります）。元に戻せません。' : '学習記録をすべて消します（設定は残ります）。元に戻せません。',
+      body: (logged ? '解答の記録・復習の予定・ブックマーク・メモを消します（設定は残ります）。' : '学習記録をすべて消します（設定は残ります）。')
+        + '消す前の記録は、この端末に控えとして残ります（設定の「自動の控え」から戻せます。控えも消すには「控えを消す」）。',
       options: logged
         ? [{ key: 'all', label: 'この端末とアカウントの記録を消す', cls: 'danger' }, { key: 'device', label: 'ログアウトして、この端末の記録だけ消す' }]
         : [{ key: 'all', label: '消す', cls: 'danger' }] });
     if (!k) return;
     const keep = { settings: state.settings, practice: state.practice, settingsAt: state.settingsAt, graphExprs: state.graphExprs, graph3Exprs: state.graph3Exprs, graphCExprs: state.graphCExprs, graphVExprs: state.graphVExprs };
-    if (k === 'device') { await sync.logout(); state = { ...freshState(), ...keep }; }
-    else state = { ...freshState(), ...keep, resetAt: Date.now() };   // 消した印：同期で、ほかの端末・サーバーの古い記録を持ち込まない
-    save(); session = null; clearSavedSession(); toast('消去しました'); route();
+    if (k === 'device') {
+      // この端末の分だけ消す：先にサーバーへ送れたことを確かめる（送れていない記録を消さない）
+      if (!(await sync.syncNow())) { toast('サーバーと同期できなかったため、消していません'); return; }
+      await sync.logout();
+      const r = store.replace(state, { ...freshState(), ...keep }, null);
+      if (!r.ok) { toast('保存できなかったため、消していません'); return; }
+      state = { ...freshState(), ...keep };
+    } else {
+      const next = { ...freshState(), ...keep, resetAt: Date.now() };   // 消した印：同期で、ほかの端末・サーバーの古い記録を持ち込まない
+      const r = store.replace(state, next, '消去の前');
+      if (!r.ok) { toast('保存できなかったため、消していません'); return; }
+      if (!r.snapshotted) backupFile();
+      state = next;
+    }
+    lwwSig = null; session = null; clearSavedSession(); toast('消去しました'); route();
     if (k === 'all' && logged) sync.syncNow();
   });
 }
@@ -2454,6 +2503,7 @@ window.matchMedia('(prefers-color-scheme: dark)').addEventListener?.('change', (
 mountBird();
 const drillCtx = { state, save, math, tex, esc, toast, play, ICON, birdSay, setImmersive: (on) => document.body.classList.toggle('immersive', on), go: (h) => { location.hash = h; } };
 route();
+bootWarn();
 loadCatalog().then((meta) => {
   ready = true;
   setTimeout(() => loadTechniques().then(t => { TECH = t; }).catch(() => {}), 800);   // 解説の解法リンク・定着度で使う
@@ -2465,8 +2515,18 @@ loadCatalog().then((meta) => {
 // アップロード漏れの検出：各ファイルの版が app.js と一致するか
 function staleFiles() {
   const cssV = getComputedStyle(document.documentElement).getPropertyValue('--lemma-version').replace(/['"\s]/g, '');
-  const list = { 'js/answer.js': M_ANS.FILE_VERSION, 'js/ui.js': M_UI.FILE_VERSION, 'js/drill.js': M_DRILL.FILE_VERSION, 'js/catalog.js': M_CAT.FILE_VERSION, 'js/mastery.js': M_MAST.FILE_VERSION, 'js/content.js': M_CONTENT.FILE_VERSION, 'js/scheduler.js': M_SCHED.FILE_VERSION, 'js/graph.js': M_GRAPH.FILE_VERSION, 'js/plane.js': M_PLANE.FILE_VERSION, 'js/graph3d.js': M_G3.FILE_VERSION, 'js/parser.js': M_PARSER.FILE_VERSION, 'css/style.css': cssV };
+  const list = { 'js/answer.js': M_ANS.FILE_VERSION, 'js/ui.js': M_UI.FILE_VERSION, 'js/drill.js': M_DRILL.FILE_VERSION, 'js/store.js': M_STORE.FILE_VERSION, 'js/catalog.js': M_CAT.FILE_VERSION, 'js/mastery.js': M_MAST.FILE_VERSION, 'js/content.js': M_CONTENT.FILE_VERSION, 'js/scheduler.js': M_SCHED.FILE_VERSION, 'js/graph.js': M_GRAPH.FILE_VERSION, 'js/plane.js': M_PLANE.FILE_VERSION, 'js/graph3d.js': M_G3.FILE_VERSION, 'js/parser.js': M_PARSER.FILE_VERSION, 'css/style.css': cssV };
   return Object.entries(list).filter(([, v]) => v !== VERSION).map(([k]) => k);
+}
+// 起動時の記録の読み込みで起きたこと（読めない・一部壊れていた・新しい版の記録）
+function bootWarn() {
+  const where = '設定の「学習記録のバックアップ」から書き出せます。';
+  const msg = {
+    broken: boot.quarantined ? `<b>保存されていた記録を読めませんでした</b>元の記録は消さずに退避してあります（${where}）。` : '<b>保存されていた記録を読めませんでした</b>元の記録を退避できなかったため、この端末への保存を止めています。新しく解いた記録は、この画面を閉じると残りません。',
+    salvaged: `<b>記録の一部が壊れていました</b>壊れていた部分（${esc(boot.issues.map(i => i.key || i.code).join('・'))}）だけを初期値に戻し、ほかの記録はそのまま使います。元の記録は退避してあります（${where}）。`,
+    newer: '<b>新しい版の Lemma で保存された記録です</b>この版のアプリは古いため、ページを再読み込みして更新してください（記録はそのまま使います）。',
+  }[boot.status];
+  if (msg) showBanner(msg);
 }
 function showBanner(html) {
   let b = $('.banner');
