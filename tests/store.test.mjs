@@ -296,6 +296,13 @@ const codes = (rep) => [...rep.errors, ...rep.warnings].map(x => x.code);
   const m = S.mergePstat({ x: a }, { x: b }, log);
   ok(m.x.reps === 3 && m.x.lapses === 1 && m.x.last === Date.UTC(2026, 0, 6), '別々の復習を両方数える');
   ok(S.stable(S.mergePstat({ x: a }, { x: b }, log.slice(0, 2))) === S.stable({ x: b }), '記録が足りなければ（切り捨てられた等）、今まで通り新しい方');
+  // 同期していない端末が初めて解いた（reps 1）：前の端末の5回分を残して計算し直す（v0.26）
+  let five = null; const flog = [];
+  for (let i = 0; i < 5; i++) { const t = Date.UTC(2026, 1, 1 + i); five = review(five, 3, t); flog.push({ p: 'y', t, g: 3 }); }
+  const fresh = review(null, 1, Date.UTC(2026, 2, 1)); flog.push({ p: 'y', t: Date.UTC(2026, 2, 1), g: 1 });
+  const fm = S.mergePstat({ y: five }, { y: fresh }, flog), fm2 = S.mergePstat({ y: fresh }, { y: five }, flog);
+  ok(fm.y.reps === 6 && fm.y.lapses === 1 && S.stable(fm) === S.stable(fm2), '同期していない端末が初めて解いても、前の端末の復習回数を消さない（どちらから合わせても同じ）');
+  ok(S.stable(S.mergePstat(fm, { y: fresh }, flog)) === S.stable(fm) && S.stable(S.mergePstat(fm, { y: five }, flog)) === S.stable(fm), 'その結果をもう一度合わせても変わらない');
 }
 
 console.log(`store.test: ${pass} 件 OK${fail ? `、${fail} 件失敗` : ''}`);

@@ -2,7 +2,7 @@
 // 対応：+ - * / ^、暗黙の積（2x, x(x+1), xe^x）、sin x のような括弧なし引数、
 //       sin^2 x、|x|、√、π、θ、{ } を括弧として扱う
 
-export const FILE_VERSION = '0.25.0';
+export const FILE_VERSION = '0.26.0';
 const FUNC_NAMES = ['arcsin', 'arccos', 'arctan', 'asin', 'acos', 'atan', 'sinh', 'cosh', 'tanh',
   'sin', 'cos', 'tan', 'exp', 'log', 'ln', 'sqrt', 'abs', 'floor', 'ceil', 'sign'];
 const CONST_NAMES = ['pi', 'e'];

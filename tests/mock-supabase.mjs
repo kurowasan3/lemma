@@ -102,7 +102,7 @@ export function createMockSupabase({ key = 'sb_publishable_test', code = '123456
   // node の fetch の代わりに使う（単体テスト用）
   const fetch = async (url, init = {}) => {
     const r = await handle({ method: init.method || 'GET', url, headers: init.headers, body: init.body });
-    return { ok: r.status >= 200 && r.status < 300, status: r.status, text: async () => r.body };
+    return { ok: r.status >= 200 && r.status < 300, status: r.status, text: async () => r.body, json: async () => JSON.parse(r.body) };
   };
   return { handle, fetch, rows, users, tokens, refresh, sent, hooks };
 }

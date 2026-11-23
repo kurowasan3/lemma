@@ -38,7 +38,10 @@ const base = JSON.parse(fs.readFileSync(path.join(root, 'tests/fixtures/state-v0
   //   新しい方（A）だけを採ると B の復習が消えるので、B の状態から A の解答を review し直す
   const { review } = await import('../js/scheduler.js');
   const want = review(B.pstat['I-QF-109'], 4, 2000000000000);
-  ok(M.pstat['I-QF-109'].S === want.S && M.pstat['I-QF-109'].reps === 2 && M.pstat.q01.S === 0.4, '復習状態：2台で別々に復習した問題は、両方の復習を反映する（片方だけなら新しい方）');
+  // q01：A（＝base）は2回復習済み、B はその状態を知らずに1回目として解いた（reps 1）。v0.26 から、B の reps が少なくても
+  //   A の状態から B の解答（g=1）を計算し直す（以前は B の状態だけを採り、A の2回分が消えていた）
+  const wantQ = review(base.pstat.q01, 1, 2000000000500);
+  ok(M.pstat['I-QF-109'].S === want.S && M.pstat['I-QF-109'].reps === 2 && M.pstat.q01.reps === 3 && M.pstat.q01.S === wantQ.S, '復習状態：2台で別々に復習した問題は、両方の復習を反映する（同期していない端末が初めて解いた場合も）');
   ok(M.settings.theme === 'dark' && M.settingsAt === 200, '設定は最後に変えた方');
   ok(M.drill.best.diff.ok === 10 && M.drill.best.int && M.drill.best.lim, '計算の自己ベストは良い方を残し、両方の種目を残す');
   ok(M.explains['I-QF-109'].map(e => e.text).join() === 'a,b', 'メモは両方を残す');

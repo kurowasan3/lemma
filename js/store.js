@@ -7,7 +7,7 @@
 //     ・移行・読み込み（置き換え）・全消去の前に、端末の中に控えを残す
 import { review } from './scheduler.js';
 
-export const FILE_VERSION = '0.25.0';
+export const FILE_VERSION = '0.26.0';
 export const KEY = 'lemma.v2';                  // 学習記録の本体
 export const SNAP_KEY = 'lemma.snap.v1';        // 自動で残す控え（最大 SNAP_MAX 件。同期しない）
 export const BROKEN_PREFIX = 'lemma.v2.broken.'; // 読めなかった記録の退避先（キー名に時刻）
@@ -545,8 +545,7 @@ function dropBefore(S, at) {
 //   以前は「最後に解いた時刻 last が新しい方」だけを採っていたため、2台でそれぞれ同じ問題を復習すると、
 //   古い方の端末の復習が復習状態に反映されなかった（解答の記録には両方残る）。
 //   今は、解答の記録（合わせた後）を手がかりにする：古い方の last より後の記録が、新しい方の reps の増え方より多ければ、
-//   古い方の状態からそれらの記録を時刻順に review() し直す。記録が足りない（切り捨てられた等）・新しい方の reps が古い方より少ない
-//   （つじつまが合わない）・評価 g の無い記録があるときは、今まで通り新しい方。
+//   古い方の状態からそれらの記録を時刻順に review() し直す。記録が足りない（切り捨てられた等）・評価 g の無い記録があるときは、新しい方。
 //   どちらから合わせても同じ結果になり、何度合わせても変わらない。
 export function mergePstat(a, b, log) {
   const o = { ...(b || {}) };
@@ -563,7 +562,9 @@ export function mergePstat(a, b, log) {
     if (v.last === w.last) { o[k] = w.reps > v.reps ? w : v; continue; }   // 同じ時刻：多くの復習を含む方（同じなら手元 a）
     const [older, newer] = v.last < w.last ? [v, w] : [w, v];
     const after = entries(k).filter(l => l.t > older.last);
-    if (after.length && newer.reps >= older.reps && after.length > newer.reps - older.reps && after.every(l => [1, 2, 3, 4].includes(l.g))) {
+    // v0.26：新しい方の reps が古い方より少ない（＝古い方の続きではない。同期していない端末で初めて解いた等）ときも計算し直す。
+    //   以前はこのとき新しい方を採り、古い方の端末の復習（reps・lapses）が消えていた
+    if (after.length && after.length > newer.reps - older.reps && after.every(l => [1, 2, 3, 4].includes(l.g))) {
       let s = older;
       for (const l of after) s = review(s, l.g, l.t);
       o[k] = s;

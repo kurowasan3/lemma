@@ -1,4 +1,4 @@
-# 学習記録の保全（v0.23〜v0.25）
+# 学習記録の保全（v0.23〜v0.26）
 
 学習記録を失わないための仕組み。実装は `js/store.js`（保存・移行・点検・バックアップ・合わせ方）、
 `js/sync.js`（通信）、`js/app.js`（画面からの呼び出し）。テストは `tests/store.test.mjs`・`tests/store_edge.test.mjs`・`tests/sync.test.mjs`・`tests/server_guard.test.mjs`・`tests/e2e.mjs`。
@@ -198,7 +198,25 @@ v1 の必須項目と検査（`readBackup`。断るときは理由と `code` を
 | LM006 | `resetAt` が数値でない・戻す・進めるときにサーバーの時計で1日より先の未来 |
 | LM007 | pstat・problems・cards（`last`）、bookmarks（`t`）の項目が消える・時刻が戻る、problems の回数 `n` が減る、問題ごとのいちばん新しいメモが消える |
 | LM008 | 同じ `(p, t)` の解答の記録を増やす（作成では重複そのもの） |
+| LM009 | 同じ時刻のままの書き換え（v0.26）：下の表 |
 | — | `localResetAt` は送られても保存しない（取り除く） |
+
+**同じ時刻のままの書き換え（LM009、v0.26）**。アプリの中で「時刻が同じまま値が変わる」のは pstat の再採点だけなので、それ以外は値を変えさせない：
+
+| データ | アプリでの更新 | 許す | 断る |
+|---|---|---|---|
+| pstat | 復習：`last` が進み `reps+1`。再採点：同じ `last`・`reps` のまま、前の状態から計算し直す（`lapses` は ±1、S・D は大きく変わりうる）。2台の復習の計算し直し：`last`・`reps` が進む | 値が正しい範囲（S>0、1≦D≦10、reps・lapses は 0 以上の整数、lapses≦reps）で、`last` が進んだ変化／同じ `last` で `reps` が増えた変化／同じ `last`・`reps` で `lapses` の差が1まで | 範囲外の値・項目を消す／同じ `last` で `reps` を減らす／同じ `last`・`reps` で `lapses` を2以上変える |
+| cards | 復習だけ（再採点しない） | `last` が進んだ変化（値が正しい範囲） | 範囲外の値／同じ `last` で `reps` を減らす／同じ `last`・`reps` で値を変える |
+| bookmarks | 付け外しのたびに `{on, t: 今}` | 新しい `t` での変化（解除を含む） | 同じ `t` のまま値（`on` など）を変える |
+| explains | 追加だけ（編集の画面は無い）。問題ごとに新しい5件 | メモの追加、5件から押し出された古いメモが外れる | 前にあったメモ（`t` と本文）が、押し出し以外で無くなる（LM007）／同じ `t` の別の本文に入れ替わる（LM009） |
+
+S・D の値の大小では判定しない（再採点・計算し直しで正しく上下するため）。値が変わったかどうかは前の記録と比べ、変わっていない項目は範囲外でも断らない（guard を入れる前からの記録で同期が止まらないように）。
+
+**守れないもの**（サーバーには「前の記録」と「新しい記録」しか見えないため）：
+
+- `last` を進めたうえで、S・D・reps を正しい範囲の別の値にする書き込み（正しい復習・古い版のアプリの合わせ方と区別できない）。復習状態は解答の記録から計算し直せるので、解答の記録（LM004・LM005）を守ることで補っている。
+- 新しく足された項目（前の記録に無い問題の pstat・新しいメモなど）の中身が正しいか。
+- 解答の記録の値の書き換え（再採点で `g`・`sg`・`ok` が正しく変わるため、値は許している）。
 
 **消してよい場合**：`resetAt` を進めた書き込み（「すべて消す」「バックアップで置き換える」）だけ、その時刻より前のもの
 （解答の記録は `t`、pstat・problems・cards は `last`、bookmarks は `t`、メモは問題ごとのいちばん新しい `t`）は消えてよい。その時刻以後のものは消せない。
@@ -219,6 +237,15 @@ v1 の必須項目と検査（`readBackup`。断るときは理由と `code` を
 ### 6.3 Supabase への適用手順
 
 **guard.sql は、Supabase の SQL Editor で実行するまで効かない。** 実行は数秒で、表と既存の記録は変えない（関数とトリガーを作るだけ）。
+v0.24・v0.25 の guard.sql を入れてあっても、v0.26 の guard.sql をそのまま上書きで実行すればよい（トリガーは作り直され、関数は置き換わる。テストで v0.24→v0.25→v0.26・v0.25→v0.26 を確認）。
+
+**適用済みかの確認**（いつでも）：
+
+```sql
+select lemma_private.guard_version();   -- '0.26.0' が返れば v0.26 が入っている。v0.25 以前は「関数が無い」エラー（v0.25 は下のトリガーの確認で判別）
+select t.tgname, s.nspname, p.proname from pg_trigger t join pg_proc p on p.oid = t.tgfoid join pg_namespace s on s.oid = p.pronamespace
+where t.tgname = 'lemma_state_guard';   -- 0行＝未適用、public｜lemma_state_guard＝v0.24、lemma_private｜lemma_state_guard＝v0.25 以降
+```
 
 1. **適用前の確認**（何も変えない）。既存の記録に、アプリ（v0.23 以降）が読めない形のものが無いかを見る：
 
@@ -239,11 +266,12 @@ v1 の必須項目と検査（`readBackup`。断るときは理由と `code` を
 2. **念のための写し**（任意・推奨。表を写すだけ）：
 
    ```sql
-   create table public.lemma_state_backup_v025 as select * from public.lemma_state;
-   alter table public.lemma_state_backup_v025 enable row level security;   -- API から見えないように（ポリシーを作らない＝誰も読めない）
+   create table public.lemma_state_backup_v026 as select * from public.lemma_state;
+   alter table public.lemma_state_backup_v026 enable row level security;   -- API から見えないように（ポリシーを作らない＝誰も読めない）
+   select count(*) from public.lemma_state_backup_v026;                     -- 元の表と同じ行数か確かめる
    ```
 
-3. **適用**：`supabase/guard.sql` の中身をすべて貼り付けて実行する（v0.24 の guard.sql を入れてあっても、そのまま上書きでよい）。
+3. **適用**：`supabase/guard.sql` の中身をすべて貼り付けて実行する（v0.24・v0.25 を入れてあっても、そのまま上書きでよい）。
 
 4. **適用後の確認**：
 
@@ -253,6 +281,14 @@ v1 の必須項目と検査（`readBackup`。断るときは理由と `code` を
    where t.tgname = 'lemma_state_guard';                      -- 1行：lemma_state_guard | lemma_private | lemma_state_guard
    -- public（API から呼べる場所）に古い関数が残っていない
    select proname from pg_proc p join pg_namespace s on s.oid = p.pronamespace where s.nspname = 'public' and proname like 'lemma_%';   -- 0行
+   -- 版と、関数の権限（anon は実行できない・search_path が空・SECURITY DEFINER でない）
+   select lemma_private.guard_version();                                                                   -- '0.26.0'
+   select p.proname, has_function_privilege('anon', p.oid, 'EXECUTE') as anon, has_function_privilege('authenticated', p.oid, 'EXECUTE') as authenticated,
+          p.proconfig, p.prosecdef from pg_proc p join pg_namespace s on s.oid = p.pronamespace where s.nspname = 'lemma_private';
+   -- anon = false・authenticated = true・proconfig = {search_path=""}・prosecdef = false がすべての行で
+   -- 既存の記録が変わっていない（2 の写しと比べる。0 なら同じ）
+   select count(*) from public.lemma_state a full join public.lemma_state_backup_v026 b using (user_id)
+   where a.state is distinct from b.state or a.rev is distinct from b.rev;
    -- 規則が効いている（変更は取り消す）：自分の行で、解答の記録を空にする更新が LM004 で断られる
    begin;
    update public.lemma_state set state = jsonb_set(state, '{log}', '[]'::jsonb), rev = rev + 1
@@ -260,7 +296,25 @@ v1 の必須項目と検査（`readBackup`。断るときは理由と `code` を
    rollback;                                                   -- ERROR: lemma: 前にあった解答の記録 … （LM004）になれば効いている
    ```
 
-   そのあと、アプリで「今すぐ同期」を押して、ふつうに同期できることを確かめる（**PostgREST 経由でエラーの code が `LM00x` として返るか**は、ここで初めて確かめられる。テストでは確かめていない）。
+   そのあと、アプリで「今すぐ同期」を押して、ふつうに同期できることを確かめる。
+
+   **PostgREST 経由でエラーの code が返るかの確認**（テストでは確かめられない。本番の自分の行で行う）：
+   アプリにログインした状態で、設定から「今すぐ同期」を押してから、ブラウザの開発者ツールのコンソールに貼り付ける。
+   記録はそのまま、版番号だけを2つ飛ばして書く要求なので、**guard が効いていれば LM002 で断られ、効いていなくても rev が2進むだけ**（記録は変わらず、アプリは次の同期で取り直す）：
+
+   ```js
+   const { SUPABASE_URL: U, SUPABASE_KEY: K } = await import('./js/config.js');
+   const a = JSON.parse(localStorage.getItem('lemma.auth'));
+   const h = { apikey: K, Authorization: `Bearer ${a.access_token}`, 'Content-Type': 'application/json' };
+   const [row] = await (await fetch(`${U}/rest/v1/lemma_state?select=state,rev&user_id=eq.${a.user.id}`, { headers: h })).json();
+   const r = await fetch(`${U}/rest/v1/lemma_state?user_id=eq.${a.user.id}&rev=eq.${row.rev}`,
+     { method: 'PATCH', headers: { ...h, Prefer: 'return=representation' }, body: JSON.stringify({ state: row.state, rev: row.rev + 2 }) });
+   console.log(r.status, await r.text());
+   ```
+
+   期待：`400 {"code":"LM002","message":"lemma: rev は … のはずです …"}`。
+   `200` で行が返ったら guard が効いていない（SQL の適用を確かめる）。`401` ならログインの期限切れ（「今すぐ同期」を押してからもう一度）。
+   アプリの表示は `code` を見て日本語の理由を出すので、ここで `code` が `LM002` として返ることが、アプリが正しく理由を出せることの確認になる。
 
 5. **形の崩れた行がある場合**（1 で見つかったとき）：その利用者に設定から書き出してもらう（端末の記録は残っている）。行は消さず、写し（2）を取ったうえで、どの部分が崩れているかを見てから直す。トリガーを一時的に外す必要がある場合は、作業のあと必ず戻す：
 
@@ -271,6 +325,7 @@ v1 の必須項目と検査（`readBackup`。断るときは理由と `code` を
    ```
 
 **戻し方**（制限を外す。記録は変えない）：`drop trigger if exists lemma_state_guard on public.lemma_state;`
+写しの表は、確認が済んだら `drop table public.lemma_state_backup_v026;` で消してよい（消さなくても API からは見えない）。
 
 **適用後に同期できなくなる利用者**：
 
@@ -284,16 +339,16 @@ v1 の必須項目と検査（`readBackup`。断るときは理由と `code` を
 
 `tests/server_guard.test.mjs` は、PostgreSQL 18（PGlite：WASM 版）に schema.sql の表（`auth.users` への参照と RLS を除く）と guard.sql を入れて確かめる：
 
-- 上の規則のすべて（作成・更新・resetAt・各データ）と、通るべき書き込み（追加・再採点・想起・メモ・ブックマーク解除・設定・全消去・置き換え・resetAt 以前だけの削除）
+- 上の規則のすべて（作成・更新・resetAt・各データ・同じ時刻のままの書き換え）と、通るべき書き込み（追加・再採点・想起・メモ・メモの押し出し・ブックマーク解除・設定・全消去・置き換え・resetAt 以前だけの削除・2台の復習の計算し直し）
 - 本物の `js/sync.js` と `js/store.js` が、トリガーつきの表を相手に、2台での追加・同時更新・2台での復習・ネットワーク障害と再試行・全消去・古い端末からの復活防止・バックアップの置き換えと合わせる読み込み・ログアウトして消した端末の同期・5000件超・断られた後の停止と再開、をすべて通ること
-- `authenticated` の権限でトリガーが動き、`anon` は関数の schema を使えないこと
-- v0.24 の guard.sql を入れた状態に上書きで入れても、既存の記録が変わらないこと
+- `authenticated`・`service_role` の権限でトリガーが動き、`anon` は関数を実行できないこと。関数の search_path が空で、SECURITY DEFINER を使っていないこと
+- v0.24→v0.25→v0.26・v0.25→v0.26 の上書き適用で、既存の記録が変わらず、トリガーが1つだけで、新しい規則が効くこと
 - 2万件の記録の更新を確かめられること（PGlite で数秒以内）
 
 実際の Supabase でしか確かめられないこと：
 
 - guard.sql を実行したこと（上の 4 の確認）
-- PostgREST が、トリガーのエラーを HTTP 400 と `{ code: "LM00x", message }` で返すこと（アプリはこの形を前提にしている）
+- PostgREST が、トリガーのエラーを HTTP 400 と `{ code: "LM00x", message }` で返すこと（アプリはこの形を前提にしている。確かめ方は 4）
 - RLS・認証と組み合わせた動き、本番の大きさの記録でのトリガーの時間（Supabase の文の時間制限）
 - 本番の既存の記録が、上の 1 の確認を通ること
 

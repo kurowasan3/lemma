@@ -1,4 +1,4 @@
-// supabase/guard.sql（サーバー側の書き込み制限）を、実際の PostgreSQL（PGlite：WASM 版）で確かめる（v0.25）
+// supabase/guard.sql（サーバー側の書き込み制限）を、実際の PostgreSQL（PGlite：WASM 版）で確かめる（v0.25・v0.26）
 //   node tests/server_guard.test.mjs        （@electric-sql/pglite が必要：npm install --no-save --no-package-lock @electric-sql/pglite）
 // 前半：SQL を直接送って、各規則が断る／通すことを確かめる。
 // 後半：本物の js/sync.js（createSync）と js/store.js（mergeState・restoreState）を、トリガーつきの表を持つにせ Supabase につなぎ、
@@ -33,8 +33,9 @@ const db = new PGlite();
 await db.exec(`create table public.lemma_state (user_id uuid primary key, state jsonb not null, rev integer not null default 1,
   updated_at timestamptz not null default now(), constraint state_size check (pg_column_size(state) < 5000000));`);
 // Supabase にある役割（PGlite には無いので作る）
-await db.exec(`create role anon nologin; create role authenticated nologin; grant usage on schema public to anon, authenticated;
-  grant select, insert, update, delete on public.lemma_state to authenticated;`);
+await db.exec(`create role anon nologin; create role authenticated nologin; create role service_role nologin;
+  grant usage on schema public to anon, authenticated, service_role;
+  grant select, insert, update, delete on public.lemma_state to authenticated, service_role;`);
 const guard = fs.readFileSync(path.join(root, 'supabase/guard.sql'), 'utf8');
 await db.exec(guard);
 await db.exec(guard);   // 何度実行してもよい
@@ -47,11 +48,11 @@ const e = (p, t, g = 3, extra = {}) => ({ p, t, g, ok: g >= 3, sg: g >= 3 ? 'ful
 const S0 = () => ({
   schema: 4,
   log: [e('q01', T0), e('q02', T0 + 1000, 1), e('q01', T0 + 2000, 4)],
-  pstat: { q01: { S: 8, D: 4, last: T0 + 2000, reps: 2, lapses: 0 }, q02: { S: 0.4, D: 6, last: T0 + 1000, reps: 1, lapses: 1 } },
+  pstat: { q01: review(review(null, 3, T0), 4, T0 + 2000), q02: review(null, 1, T0 + 1000) },
   problems: { q01: { last: T0 + 2000, n: 2 }, q02: { last: T0 + 1000, n: 1 } },
-  cards: { 'qe-loc': { S: 3, D: 5, last: T0 + 500, reps: 1, lapses: 0 } },
+  cards: { 'qe-loc': review(null, 3, T0 + 500) },
   bookmarks: { q02: { on: true, t: T0 + 1500 } },
-  explains: { q01: [{ t: T0 + 2100, text: '判別式' }] },
+  explains: { q01: [{ t: T0 + 2100, text: '判別式' }], q02: [1, 2, 3, 4, 5].map(i => ({ t: T0 + 3000 + i, text: `メモ${i}` })) },
   settings: { size: 6, theme: 'dark' }, practice: { size: 8 }, streak: { last: '2026-11-01', count: 3 }, drill: { size: 10, best: { diff: { ok: 8, n: 10, ms: 1000 } } },
 });
 const code = async (fn) => { try { await fn(); return null; } catch (err) { return err.code || String(err.message || err); } };
@@ -88,6 +89,15 @@ await db.exec('reset role');
 ok(asUser === null && asUserBad === 'LM004', `authenticated の権限で、正しい更新は通り、記録を消す更新は断られる（${asUser} / ${asUserBad}）`);
 const anonUse = (await db.query("select has_schema_privilege('anon', 'lemma_private', 'USAGE') as a, has_schema_privilege('authenticated', 'lemma_private', 'USAGE') as b")).rows[0];
 ok(!anonUse.a && anonUse.b, 'lemma_private は anon からは使えず、authenticated からは使える');
+const fx = (await db.query(`select bool_and(has_function_privilege('authenticated', p.oid, 'EXECUTE')) as auth, bool_or(has_function_privilege('anon', p.oid, 'EXECUTE')) as anon,
+  bool_and(has_function_privilege('service_role', p.oid, 'EXECUTE')) as svc, bool_and('search_path=""' = any(p.proconfig)) as sp, bool_or(p.prosecdef) as definer
+  from pg_proc p join pg_namespace s on s.oid = p.pronamespace where s.nspname = 'lemma_private'`)).rows[0];
+ok(fx.auth && !fx.anon && fx.svc && fx.sp && !fx.definer, `lemma_private の関数：authenticated・service_role は実行でき、anon はできない・search_path は空・SECURITY DEFINER は使わない（${JSON.stringify(fx)}）`);
+await put(S0());
+await db.exec('set role service_role');
+const asSvc = await upd({ ...S0(), log: [] });
+await db.exec('reset role');
+ok(asSvc === 'LM004', 'service_role（管理用の鍵）で書いてもトリガーは動く');
 const oldFn = (await db.query("select count(*)::int as n from pg_proc p join pg_namespace s on s.oid = p.pronamespace where s.nspname = 'public' and p.proname like 'lemma_%'")).rows[0].n;
 ok(oldFn === 0, 'public（API から呼べる場所）に lemma_ の関数を残さない');
 
@@ -108,7 +118,7 @@ ok(await check(s => { s.log.splice(1, 1); }) === 'LM004', '一部の記録の削
 ok(await check(s => { s.log[0].t += 1; }) === 'LM004', '記録の時刻を書き換える（＝別の記録になる）→ LM004');
 ok(await check(s => { s.log[0].p = 'q99'; }) === 'LM004', '記録の問題IDを書き換える → LM004');
 ok(await check(s => { delete s.log[0].sg; }) === 'LM005', '記録から項目を消す → LM005');
-ok(await check(s => { Object.assign(s.log[1], { g: 2, sg: 'part', ok: false }); s.pstat.q02 = review(s.pstat.q02, 2, s.pstat.q02.last); }) === null, '再採点（g・sg・ok の更新）→ 通す');
+ok(await check(s => { Object.assign(s.log[1], { g: 2, sg: 'part', ok: false }); s.pstat.q02 = review(null, 2, s.log[1].t); }) === null, '再採点（g・sg・ok の更新と、前の状態からの復習状態の計算し直し）→ 通す');
 ok(await check(s => { s.log[0].r = 3; s.log[0].note = 'あとで'; s.log[0].disp = ['x']; }) === null, '想起 r・メモ・異議の追記 → 通す');
 ok(await check(s => { s.log.reverse(); }) === null, '並び順だけ違う → 通す');
 // 明示的な全消去・置き換え（resetAt を進める）
@@ -132,6 +142,32 @@ ok(await check(s => { delete s.explains.q01; }) === 'LM007', 'メモの消失 �
 ok(await check(s => { s.settings = { size: 10, theme: 'light' }; s.practice = { size: 4 }; s.graphExprs = [{ src: 'y=x' }]; s.settingsAt = NOW; }) === null, '設定・グラフの式の変更 → 通す');
 ok(await check(s => { s.streak = { last: '2026-11-20', count: 1 }; s.drill = { size: 20, best: {} }; }) === null, '連続日数が戻る・自己ベストの入れ替え → 通す（守る対象ではない）');
 ok(await check(s => { s.pstat = []; }) === 'LM001', '不正なデータ型（pstat が配列）→ LM001');
+
+// ---- v0.26：同じ時刻のままの書き換え（LM009）と、正当な計算し直し
+const P2 = () => S0().pstat.q01;   // 2回復習（g=3, g=4）、last = T0+2000
+ok(await check(s => { s.pstat.q01 = { ...P2(), reps: 1 }; }) === 'LM009', 'pstat：last を保ったまま reps を減らす → LM009');
+ok(await check(s => { s.pstat.q02 = { ...s.pstat.q02, lapses: 0, S: 99 }; }) === null, 'pstat：last・reps を保ったまま lapses を1減らし S を変える（再採点で「解けた」に直した）→ 通す');
+ok(await check(s => { s.pstat.q01 = { ...P2(), lapses: 2 }; }) === 'LM009', 'pstat：last・reps を保ったまま lapses を2増やす → LM009（再採点で変わるのは1まで）');
+ok(await check(s => { s.pstat.q01 = { ...P2(), S: -1 }; }) === 'LM009' && await check(s => { s.pstat.q01 = { ...P2(), D: 50 }; }) === 'LM009', 'pstat：S・D を範囲外に書き換える → LM009');
+ok(await check(s => { const { S, ...rest } = P2(); s.pstat.q01 = rest; }) === 'LM009', 'pstat：同じ時刻のまま項目（S）を消す → LM009');
+ok(await check(s => { s.pstat.q01 = { ...P2(), lapses: 5 }; }) === 'LM009', 'pstat：lapses が reps より多い → LM009');
+ok(await check(s => { s.pstat.q01 = review(review(review(null, 3, T0), 1, T0 + 1000), 4, T0 + 2000); }) === null, 'pstat：同じ last・reps で、途中の評価が違う計算し直し（S・D・lapses が変わる）→ 通す');
+ok(await check(s => { s.pstat.q01 = review(null, 2, NOW); s.log.push(e('q01', NOW, 2)); }) === null, 'pstat：last が進めば reps が減っても通す（古い版のアプリの合わせ方。値は正しい範囲）');
+ok(await check(s => { s.pstat.q01 = { ...review(P2(), 3, NOW), D: 0 }; }) === 'LM009', 'pstat：last が進んでも、値が範囲外なら LM009');
+ok(await check(s => { s.cards['qe-loc'] = { ...s.cards['qe-loc'], S: 50 }; }) === 'LM009', 'cards：同じ last・reps のまま S を書き換える → LM009（cards は再採点しない）');
+ok(await check(s => { s.cards['qe-loc'] = { ...s.cards['qe-loc'], reps: 0 }; }) === 'LM009', 'cards：同じ last のまま reps を減らす → LM009');
+ok(await check(s => { s.cards['qe-loc'] = review(s.cards['qe-loc'], 2, NOW); }) === null, 'cards：復習（last が進み reps+1）→ 通す');
+ok(await check(s => { s.cards.new1 = review(null, 3, NOW); }) === null, 'cards：新しいカード → 通す');
+ok(await check(s => { s.bookmarks.q02 = { on: false, t: s.bookmarks.q02.t }; }) === 'LM009', 'bookmarks：t を保ったまま on を変える → LM009');
+ok(await check(s => { s.bookmarks.q02 = { ...s.bookmarks.q02, x: 1 }; }) === 'LM009', 'bookmarks：t を保ったまま項目を書き換える → LM009');
+ok(await check(s => { s.bookmarks.q02 = { on: false, t: NOW }; }) === null && await check(s => { s.bookmarks.q02 = { on: true, t: s.bookmarks.q02.t - 1 }; }) === 'LM007', 'bookmarks：正当な解除（新しい t）は通り、t を戻すと LM007');
+ok(await check(s => { s.explains.q01 = [{ t: T0 + 2100, text: '書き換えた' }]; }) === 'LM009', 'explains：最新のメモを同じ時刻のまま本文を書き換える → LM009');
+ok(await check(s => { s.explains.q02 = s.explains.q02.filter(m => m.text !== 'メモ3'); }) === 'LM007', 'explains：途中のメモだけを消す（古いメモは残す）→ LM007');
+ok(await check(s => { s.explains.q02 = [...s.explains.q02, { t: NOW, text: '新しい' }].slice(-5); }) === null, 'explains：新しいメモで、いちばん古いメモが5件から押し出される → 通す');
+ok(await check(s => { s.explains.q02 = [...s.explains.q02.slice(1), { t: T0 + 3001, text: '別の本文' }].sort((x, y) => x.t - y.t).slice(-5); }) === 'LM009', 'explains：押し出しに見せかけて、同じ時刻の別の本文に入れ替える → LM009');
+ok(await check(s => { s.explains.q01 = [...s.explains.q01, { t: NOW, text: '追加' }]; s.explains.q03 = [{ t: NOW, text: '初めて' }]; }) === null, 'explains：メモの追加 → 通す');
+ok(await check(s => { Object.assign(s, { resetAt: NOW, log: [e('q50', T0 - 9e8)], pstat: { q01: { ...P2(), reps: 1 } }, cards: {}, bookmarks: { q02: { on: false, t: s.bookmarks.q02.t } }, explains: { q01: [{ t: T0 + 2100, text: 'ファイルの本文' }] }, problems: {} }); }) === null,
+  'resetAt を進めた置き換えでは、その時刻より前のもの（同じ時刻の値が違っても）を置き換えてよい');
 
 // ---- resetAt
 ok(await check(s => { s.resetAt = 1; }) === null, 'resetAt を（古い時刻へ）初めて付ける → 通す（消せるものは無い）');
@@ -168,17 +204,35 @@ ok(tidy.log.length === S0().log.length && await upd(tidy, 8) === null, '前か�
   await up.exec(`create role anon nologin; create role authenticated nologin;
     create table public.lemma_state (user_id uuid primary key, state jsonb not null, rev integer not null default 1,
     updated_at timestamptz not null default now(), constraint state_size check (pg_column_size(state) < 5000000));`);
+  await up.exec(`create role service_role nologin;`);
   await up.exec(fs.readFileSync(path.join(root, 'tests/fixtures/guard-v0.24.sql'), 'utf8'));
   await up.query('insert into public.lemma_state (user_id, state, rev) values ($1, $2::jsonb, 1)', [U, JSON.stringify(S0())]);
   const before = (await up.query('select state::text as s, rev from public.lemma_state')).rows[0];
+  await up.exec(fs.readFileSync(path.join(root, 'tests/fixtures/guard-v0.25.sql'), 'utf8'));
+  const mid = (await up.query('select state::text as s, rev from public.lemma_state')).rows[0];
   await up.exec(guard);
   const after = (await up.query('select state::text as s, rev from public.lemma_state')).rows[0];
-  ok(before.s === after.s && before.rev === after.rev, 'v0.24 → v0.25 の上書き適用で、既存の記録は変わらない');
+  ok(before.s === mid.s && mid.s === after.s && before.rev === after.rev, 'v0.24 → v0.25 → v0.26 の上書き適用で、既存の記録は変わらない');
+  ok((await up.query('select lemma_private.guard_version() as v')).rows[0].v === '0.26.0', '適用済みの版を guard_version() で確かめられる');
+  ok(await code(() => up.query('update public.lemma_state set state = $1::jsonb, rev = 2 where user_id = $2', [JSON.stringify({ ...S0(), bookmarks: { q02: { on: false, t: S0().bookmarks.q02.t } } }), U])) === 'LM009', '上書き後は、v0.26 の規則（同じ時刻のままの書き換え）も効く');
   const trg = (await up.query("select p.proname, s.nspname from pg_trigger t join pg_proc p on p.oid = t.tgfoid join pg_namespace s on s.oid = p.pronamespace where t.tgname = 'lemma_state_guard'")).rows;
   const old = (await up.query("select count(*)::int as n from pg_proc p join pg_namespace s on s.oid = p.pronamespace where s.nspname = 'public' and p.proname = 'lemma_state_guard'")).rows[0].n;
   ok(trg.length === 1 && trg[0].nspname === 'lemma_private' && old === 0, 'トリガーは1つで v0.25 の関数を使い、v0.24 の関数は消える');
   const sameCount = await code(() => up.query('update public.lemma_state set state = $1::jsonb, rev = 2 where user_id = $2', [JSON.stringify({ ...S0(), log: S0().log.map((l, i) => ({ ...l, t: l.t + 1 })) }), U]));
   ok(sameCount === 'LM004', '上書き後は、v0.24 では通っていた「同じ件数での置き換え」も断る');
+  // v0.25 だけを入れた状態から v0.26 へ
+  const up2 = new PGlite();
+  await up2.exec(`create role anon nologin; create role authenticated nologin; create role service_role nologin;
+    create table public.lemma_state (user_id uuid primary key, state jsonb not null, rev integer not null default 1,
+    updated_at timestamptz not null default now(), constraint state_size check (pg_column_size(state) < 5000000));`);
+  await up2.exec(fs.readFileSync(path.join(root, 'tests/fixtures/guard-v0.25.sql'), 'utf8'));
+  await up2.query('insert into public.lemma_state (user_id, state, rev) values ($1, $2::jsonb, 1)', [U, JSON.stringify(S0())]);
+  const b2 = (await up2.query('select state::text as s from public.lemma_state')).rows[0].s;
+  await up2.exec(guard);
+  ok((await up2.query('select state::text as s from public.lemma_state')).rows[0].s === b2, 'v0.25 → v0.26 の上書き適用で、既存の記録は変わらない');
+  const fns = (await up2.query("select count(*)::int as n from pg_trigger where tgname = 'lemma_state_guard'")).rows[0].n;
+  ok(fns === 1, 'トリガーは1つだけ');
+  await up2.close();
   await up.close();
 }
 
@@ -321,6 +375,48 @@ ok(tidy.log.length === S0().log.length && await upd(tidy, 8) === null, '前か�
   oldDev.set({ ...ST.freshState(), localResetAt: Date.now() });
   await oldDev.sync.syncNow();
   ok(!('localResetAt' in (await srv(uid)).state) && (await srv(uid)).state.log.length === before && oldDev.get().log.length === before, 'ログアウトして消した端末が同期しても、サーバーの記録は消えず、localResetAt も送られない');
+
+  // v0.26：複数端末でのブックマークの付与・解除、再採点、同期していない端末の初回の復習（トリガーつき）
+  {
+    mem.clear();
+    const t1 = Date.now();
+    const X = device({ ...ST.freshState(), log: [], pstat: {} });
+    await login(X, 'v26@example.com');
+    const uidX = [...mock.users.values()].find(u => u.email === 'v26@example.com').id;
+    const authX = mem.get('lemma.auth');
+    mem.clear();
+    const Y = device(ST.freshState());
+    await login(Y, 'v26@example.com');
+    const authY = mem.get('lemma.auth');
+    mem.set('lemma.auth', authX); X.edit(s => { s.bookmarks.q01 = { on: true, t: t1 }; }); await X.sync.syncNow();
+    mem.set('lemma.auth', authY); await Y.sync.syncNow(); Y.edit(s => { s.bookmarks.q01 = { on: false, t: t1 + 10 }; }); await Y.sync.syncNow();
+    mem.set('lemma.auth', authX); await X.sync.syncNow();
+    ok(X.sync.status().status === 'ok' && Y.sync.status().status === 'ok' && X.get().bookmarks.q01.on === false && (await srv(uidX)).state.bookmarks.q01.on === false, '複数端末でのブックマークの付与・解除が、トリガーつきの表で通る');
+    // 端末Xで5回復習して同期 → 端末Y（同期していない）が初めて解く → 合わせても5回分が残り、サーバーにも通る
+    let st5 = null;
+    X.edit(s => { for (let i = 0; i < 5; i++) { const t = t1 - 100000 + i; st5 = review(st5, 3, t); s.log.push(L('q02', t)); } s.pstat.q02 = st5; s.problems.q02 = { last: t1 - 100000 + 4, n: 5 }; });
+    await X.sync.syncNow();
+    Y.edit(s => { s.log.push(L('q02', t1 + 20, 1)); s.pstat.q02 = review(null, 1, t1 + 20); s.problems.q02 = { last: t1 + 20, n: 1 }; });
+    mem.set('lemma.auth', authY); await Y.sync.syncNow();
+    const sp = (await srv(uidX)).state.pstat.q02;
+    ok(Y.sync.status().status === 'ok' && sp.reps === 6 && sp.lapses === 1, `同期していない端末が初めて解いても、サーバーの復習回数は消えない（reps ${sp.reps}）`);
+    // 再採点：同じ last・reps のまま lapses と S が変わる → 通る
+    Y.edit(s => { const l = s.log.find(x => x.t === t1 + 20); Object.assign(l, { g: 3, sg: 'full', ok: true }); s.pstat.q02 = review(st5, 3, t1 + 20); });
+    await Y.sync.syncNow();
+    ok(Y.sync.status().status === 'ok' && (await srv(uidX)).state.pstat.q02.lapses === 0, `再採点（同じ時刻で lapses が1減る）が同期で通る（${Y.sync.status().error || ''}）`);
+  }
+
+  // docs §6.3 の「PostgREST 経由の確認」と同じ要求（記録はそのまま、rev を2つ飛ばす）：guard があれば LM002 で断られ、記録も rev も変わらない
+  {
+    const auth = JSON.parse(mem.get('lemma.auth'));
+    const h = { apikey: SUPABASE_KEY, Authorization: `Bearer ${auth.access_token}`, 'Content-Type': 'application/json' };
+    const U0 = 'https://example.supabase.co';
+    const [row0] = await (await mock.fetch(`${U0}/rest/v1/lemma_state?select=state,rev&user_id=eq.${auth.user.id}`, { headers: h })).json();
+    const r = await mock.fetch(`${U0}/rest/v1/lemma_state?user_id=eq.${auth.user.id}&rev=eq.${row0.rev}`, { method: 'PATCH', headers: { ...h, Prefer: 'return=representation' }, body: JSON.stringify({ state: row0.state, rev: row0.rev + 2 }) });
+    const body = JSON.parse(await r.text());
+    const row1 = (await db.query('select rev, state from public.lemma_state where user_id = $1', [auth.user.id])).rows[0];
+    ok(r.status === 400 && body.code === 'LM002' && row1.rev === row0.rev, `確認用の要求（rev を2つ飛ばす）は LM002 で断られ、行は変わらない（${r.status} ${body.code}）`);
+  }
 
   // ログアウトとの競合：通信中にログアウト
   mock.hooks.beforePatch = async () => { await oldDev.sync.logout(); };

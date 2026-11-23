@@ -1,4 +1,4 @@
--- Lemma v0.25：学習記録をサーバー側でも守る（schema.sql のあとに、Supabase の SQL Editor で実行する）
+-- Lemma v0.26：学習記録をサーバー側でも守る（schema.sql のあとに、Supabase の SQL Editor で実行する）
 --   ・何度実行してもよい（関数は create or replace、トリガーは作り直すだけ）。表と既存の記録は変えない。
 --   ・適用前後の確認・戻し方は docs/data-integrity.md §6.3。
 --
@@ -15,6 +15,11 @@
 --   LM007 学習状態：pstat・problems・cards・bookmarks・explains の項目が消えていない・時刻（と problems の回数）が戻っていない
 --         （resetAt を進めた消去なら、その時刻より前のものは消えてよい）
 --   LM008 重複：同じ (p, t) の解答の記録を増やしていない
+--   LM009 同じ時刻のままの書き換え（v0.26）：
+--         pstat・cards：値が変わるなら、新しい値は正しい範囲（S>0、1≦D≦10、reps・lapses は 0 以上の整数で lapses≦reps）。
+--                        last が同じなら reps を減らさない。reps も同じなら、pstat は lapses の差が1まで（再採点）、cards は値を変えない
+--         bookmarks：t が同じなら値を変えない（付け外しは新しい t になる）
+--         explains：前にあったメモ（t と本文）は、新しい5件から押し出された場合を除いて残る（同じ t のまま本文を変えない）
 --   localResetAt（端末だけの印）は、送られてきても保存しない（取り除く）。
 --
 -- 守らないもの（通常の操作で正しく変わるため）：settings・practice・グラフの式（最後に変えた方）、streak（日をあけると戻る）、
@@ -24,7 +29,11 @@
 -- トリガーは書き込んだ利用者の権限で動くので、authenticated にこの schema の利用を許す。
 create schema if not exists lemma_private;
 revoke all on schema lemma_private from public, anon;
-grant usage on schema lemma_private to authenticated;
+grant usage on schema lemma_private to authenticated, service_role;
+
+-- 入っている guard.sql の版（適用済みかの確認用：select lemma_private.guard_version();）
+create or replace function lemma_private.guard_version() returns text
+language sql immutable set search_path = '' as $$ select '0.26.0'::text $$;
 
 create or replace function lemma_private.lemma_num(v jsonb) returns numeric
 language sql immutable set search_path = '' as $$
@@ -43,13 +52,45 @@ language sql immutable set search_path = '' as $$
              and coalesce(lemma_private.lemma_num(b.value -> field), -1) < lemma_private.lemma_num(a.value -> field)))
 $$;
 
+-- 復習状態の値（{S, D, last, reps, lapses}）が正しい範囲か
+create or replace function lemma_private.lemma_review_ok(v jsonb) returns boolean
+language sql immutable set search_path = '' as $$
+  select jsonb_typeof(v) = 'object'
+    and coalesce(lemma_private.lemma_num(v -> 'S') > 0, false)
+    and coalesce(lemma_private.lemma_num(v -> 'D') between 1 and 10, false)
+    and lemma_private.lemma_num(v -> 'last') is not null
+    and coalesce(lemma_private.lemma_num(v -> 'reps') >= 0 and lemma_private.lemma_num(v -> 'reps') = floor(lemma_private.lemma_num(v -> 'reps')), false)
+    and coalesce(lemma_private.lemma_num(v -> 'lapses') >= 0 and lemma_private.lemma_num(v -> 'lapses') = floor(lemma_private.lemma_num(v -> 'lapses'))
+                 and lemma_private.lemma_num(v -> 'lapses') <= lemma_private.lemma_num(v -> 'reps'), false)
+$$;
+
+-- 復習状態の対応表で、前からある項目（last >= cutoff）の値が変わったもののうち、不正なものの数と例。
+--   regrade = true（pstat）：last と reps が同じなら lapses の差1までの変化を許す（再採点は前の状態から計算し直すため S・D も変わる）
+--   regrade = false（cards）：last と reps が同じなら値を変えない
+--   last が進んだ変化は、値が正しい範囲なら許す（復習・2台の復習の計算し直し。古い版のアプリは reps が減る合わせ方をすることがある）
+create or replace function lemma_private.lemma_review_bad(o jsonb, n jsonb, cutoff numeric, regrade boolean, out bad bigint, out example text)
+language sql immutable set search_path = '' as $$
+  select count(*), min(a.key)
+  from jsonb_each(case when jsonb_typeof(o) = 'object' then o else '{}'::jsonb end) a
+  join jsonb_each(case when jsonb_typeof(n) = 'object' then n else '{}'::jsonb end) b on b.key = a.key
+  where coalesce(lemma_private.lemma_num(a.value -> 'last'), 0) >= cutoff
+    and b.value is distinct from a.value
+    and (not lemma_private.lemma_review_ok(b.value)
+         or (lemma_private.lemma_num(a.value -> 'last') = lemma_private.lemma_num(b.value -> 'last')
+             and lemma_private.lemma_num(a.value -> 'reps') is not null
+             and (lemma_private.lemma_num(b.value -> 'reps') < lemma_private.lemma_num(a.value -> 'reps')
+                  or (lemma_private.lemma_num(b.value -> 'reps') = lemma_private.lemma_num(a.value -> 'reps')
+                      and (not regrade
+                           or abs(lemma_private.lemma_num(b.value -> 'lapses') - coalesce(lemma_private.lemma_num(a.value -> 'lapses'), 0)) > 1)))))
+$$;
+
 create or replace function lemma_private.lemma_state_guard() returns trigger
 language plpgsql set search_path = '' as $$
 declare
   o jsonb; n jsonb;
   old_reset numeric; new_reset numeric; cutoff numeric;
   old_schema numeric; new_schema numeric;
-  cnt bigint; ex text; m text;
+  cnt bigint; ex text; m text; old_n bigint;
 begin
   -- 端末だけの印は保存しない
   if jsonb_typeof(new.state) = 'object' and new.state ? 'localResetAt' then
@@ -170,16 +211,49 @@ begin
   if cnt > 0 then
     raise exception 'lemma: problems の解いた回数が減る書き込みです（例 %）', ex using errcode = 'LM007';
   end if;
-  -- メモ：問題ごとに、いちばん新しいメモの時刻が戻っていない（古いメモは新しい5件に入らなければ外れてよい）
+  -- 同じ時刻のままの書き換え（LM009）
+  select l.bad, l.example into cnt, ex from lemma_private.lemma_review_bad(o -> 'pstat', n -> 'pstat', cutoff, true) l;
+  if cnt > 0 then
+    raise exception 'lemma: pstat の % 件が、正しくない値か、同じ時刻のまま書き換えられています（例 %）', cnt, ex using errcode = 'LM009';
+  end if;
+  select l.bad, l.example into cnt, ex from lemma_private.lemma_review_bad(o -> 'cards', n -> 'cards', cutoff, false) l;
+  if cnt > 0 then
+    raise exception 'lemma: cards の % 件が、正しくない値か、同じ時刻のまま書き換えられています（例 %）', cnt, ex using errcode = 'LM009';
+  end if;
+  select count(*), min(a.key) into cnt, ex
+    from jsonb_each(case when jsonb_typeof(o -> 'bookmarks') = 'object' then o -> 'bookmarks' else '{}'::jsonb end) a
+    join jsonb_each(n -> 'bookmarks') b on b.key = a.key
+    where coalesce(lemma_private.lemma_num(a.value -> 't'), 0) >= cutoff
+      and lemma_private.lemma_num(a.value -> 't') = lemma_private.lemma_num(b.value -> 't')
+      and b.value is distinct from a.value;
+  if cnt > 0 then
+    raise exception 'lemma: bookmarks の % 件が、同じ時刻のまま書き換えられています（例 %。付け外しは新しい時刻になります）', cnt, ex using errcode = 'LM009';
+  end if;
+  -- メモ：前にあったメモ（t と本文）は残る。ただし新しい5件から押し出された（残ったメモがどれもそれより新しく、5件ある）なら外れてよい。
+  --   同じ時刻のメモが別の本文で入っていれば、押し出しに見えても書き換え（LM009）
   with a as (
-    select key, (select max(lemma_private.lemma_num(x -> 't')) from jsonb_array_elements(case when jsonb_typeof(value) = 'array' then value else '[]'::jsonb end) x) as t
-    from jsonb_each(case when jsonb_typeof(o -> 'explains') = 'object' then o -> 'explains' else '{}'::jsonb end)
+    select k.key, mm.value as memo, lemma_private.lemma_num(mm.value -> 't') as t
+    from jsonb_each(case when jsonb_typeof(o -> 'explains') = 'object' then o -> 'explains' else '{}'::jsonb end) k,
+         jsonb_array_elements(case when jsonb_typeof(k.value) = 'array' then k.value else '[]'::jsonb end) mm
+    where lemma_private.lemma_num(mm.value -> 't') >= cutoff
   ), b as (
-    select key, (select max(lemma_private.lemma_num(x -> 't')) from jsonb_array_elements(case when jsonb_typeof(value) = 'array' then value else '[]'::jsonb end) x) as t
-    from jsonb_each(case when jsonb_typeof(n -> 'explains') = 'object' then n -> 'explains' else '{}'::jsonb end)
+    select k.key, case when jsonb_typeof(k.value) = 'array' then k.value else '[]'::jsonb end as arr
+    from jsonb_each(n -> 'explains') k
+  ), gone as (
+    select a.key, a.t, a.memo, b.arr from a left join b on b.key = a.key
+    where b.arr is null
+       or not exists (select 1 from jsonb_array_elements(b.arr) x where x -> 't' = a.memo -> 't' and x -> 'text' is not distinct from a.memo -> 'text')
   )
-  select count(*), min(a.key) into cnt, ex from a left join b on b.key = a.key
-    where a.t is not null and a.t >= cutoff and (b.key is null or coalesce(b.t, -1) < a.t);
+  select count(*) filter (where gone.arr is null
+                             or jsonb_array_length(gone.arr) < 5
+                             or exists (select 1 from jsonb_array_elements(gone.arr) x where coalesce(lemma_private.lemma_num(x -> 't'), 0) < gone.t)),
+         min(gone.key || '@' || gone.t),
+         count(*) filter (where gone.arr is not null and exists (select 1 from jsonb_array_elements(gone.arr) x where x -> 't' = gone.memo -> 't'))
+    into cnt, ex, old_n
+    from gone;
+  if old_n > 0 then
+    raise exception 'lemma: メモが同じ時刻のまま書き換えられています（例 %）', ex using errcode = 'LM009';
+  end if;
   if cnt > 0 then
     raise exception 'lemma: explains（メモ）の % 件が消える書き込みです（例 %）', cnt, ex using errcode = 'LM007';
   end if;
@@ -192,3 +266,7 @@ create trigger lemma_state_guard before insert or update on public.lemma_state
 
 -- v0.24 の guard.sql が public に作った関数は使わなくなったので消す（トリガーは上で作り直し済み。表と記録は変えない）
 drop function if exists public.lemma_state_guard();
+
+-- 関数は authenticated（アプリの利用者）と service_role（管理用の鍵）だけが使う。anon・PUBLIC からは使えない
+revoke all on all functions in schema lemma_private from public, anon;
+grant execute on all functions in schema lemma_private to authenticated, service_role;
