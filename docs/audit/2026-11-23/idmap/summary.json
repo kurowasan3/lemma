@@ -1,0 +1,20 @@
+{
+ "app": 5217,
+ "excel": 4913,
+ "categories": {
+  "A": 3467,
+  "B": 13,
+  "D": 1162,
+  "E": 82,
+  "G": 493
+ },
+ "human": 564,
+ "conflicts": {
+  "多対一": 56,
+  "同一ID別問題": 1352
+ },
+ "unmatched_excel": 254,
+ "unmatched_excel_notes": {
+  "": 254
+ }
+}
