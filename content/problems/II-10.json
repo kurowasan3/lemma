@@ -2972,6 +2972,10 @@
    "format": "lemma-input/1",
    "spec": "最小値：(4-sqrt(7))/3 ; 最大値：2"
   },
+  "techniques": [
+   "内積の利用",
+   "接線（接点を文字で置く）"
+  ],
   "methods": [],
   "tags": [
    "傾き",
