@@ -1,0 +1,27 @@
+{
+ "result": {
+  "original_sha256": "62723082d679eb284e49d6f29b40ffb391953bc32366819432d8b5461c6ba733",
+  "restored_sha256": "32f68e0d581b565e258d15b27481afcaa90aa31379fc4ab2693ab85a8f536665",
+  "rows": {
+   "before": 4913,
+   "after": 5471
+  },
+  "renamed": 1352,
+  "ids": {
+   "total": 5471,
+   "unique": 5471,
+   "empty": 0,
+   "duplicates": 0
+  },
+  "content_compare": {
+   "入力用の答え（列が無い）": 3701,
+   "一致（入力用の答え以外）": 5186,
+   "v0.27.0 の修正（管理表は修正前）": 24,
+   "同じIDで言い回しが違う": 6,
+   "アプリでは非表示だが、管理表のタグに「非表示」が無い（元の管理表から）": 1
+  },
+  "restored_exact": 558,
+  "grading_missing": 3701
+ },
+ "failed": []
+}
