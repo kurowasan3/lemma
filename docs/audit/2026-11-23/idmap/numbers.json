@@ -1,0 +1,106 @@
+{
+ "numbers": {
+  "app": {
+   "total": 5217,
+   "published": 5216,
+   "hidden": 1
+  },
+  "categories": {
+   "A": 3467,
+   "B": 13,
+   "D": 1162,
+   "E": 82,
+   "G": 493
+  },
+  "many_to_one": {
+   "count": 56,
+   "kinds": {
+    "A+E": 47,
+    "A+E+E": 7,
+    "E+E": 1,
+    "E+E+E+E": 1
+   }
+  },
+  "same_id_other": 1352,
+  "E": {
+   "v0.27.0 の修正": 11,
+   "管理表から消えた類題": 61,
+   "同じIDで言い回しが違う": 6,
+   "その他の類題": 4
+  },
+  "human": {
+   "total": 564,
+   "G": 493,
+   "E": 71
+  },
+  "git": [
+   {
+    "rev": "7ac6982",
+    "total": 4076,
+    "added": 4076,
+    "removed": 0,
+    "statement_changed": 0
+   },
+   {
+    "rev": "4d6042c",
+    "total": 4237,
+    "added": 161,
+    "removed": 0,
+    "statement_changed": 0
+   },
+   {
+    "rev": "523bde6",
+    "total": 4441,
+    "added": 204,
+    "removed": 0,
+    "statement_changed": 0
+   },
+   {
+    "rev": "8441ea3",
+    "total": 5217,
+    "added": 776,
+    "removed": 0,
+    "statement_changed": 0
+   },
+   {
+    "rev": "HEAD",
+    "total": 5217,
+    "added": 0,
+    "removed": 0,
+    "statement_changed": 11
+   }
+  ],
+  "created_1030": 1146,
+  "deleted_from_excel": 558,
+  "shifted_in_excel": 588,
+  "shift_rule": {
+   "ok": 588,
+   "bad": 0,
+   "examples": []
+  },
+  "renamed_batches": 574,
+  "renamed_by_commit": {
+   "4d6042c": 161,
+   "8441ea3": 390,
+   "523bde6": 23
+  },
+  "xlsx": {
+   "path": "b81aa818-Lemma_________.xlsx",
+   "sha256": "62723082d679eb284e49d6f29b40ffb391953bc32366819432d8b5461c6ba733"
+  },
+  "excel": {
+   "rows": 4913,
+   "unique_ids": 4913
+  },
+  "ids_both": 4849,
+  "ids_app_only": 368,
+  "ids_excel_only": 64,
+  "renamed_explained_by_sheet": 574,
+  "v0271_same_id_other": {
+   "total": 1358,
+   "different_problem": 1352,
+   "same_problem_wording": 6
+  }
+ },
+ "failed": []
+}
