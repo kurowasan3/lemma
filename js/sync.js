@@ -4,7 +4,7 @@
 //   ログインしなければ何も送らない（今まで通り端末の中だけ）。
 import { SUPABASE_URL, SUPABASE_KEY } from './config.js';
 
-export const FILE_VERSION = '0.24.0';
+export const FILE_VERSION = '0.25.0';
 const AUTH_KEY = 'lemma.auth';
 export const enabled = () => !!(SUPABASE_URL && SUPABASE_KEY);
 
@@ -32,17 +32,40 @@ const MESSAGES = {
   LM001: 'サーバーが記録の形を受け付けませんでした（この端末の記録はそのまま残っています）。',
   LM002: '別の端末と同時に同期しました。もう一度同期してください。',
   LM003: 'サーバーには新しい版のアプリの記録があります。アプリを更新してから同期してください（この端末の記録はそのまま残っています）。',
-  LM004: 'サーバーの解答の記録を減らす書き込みだったため、サーバーが断りました（この端末の記録はそのまま残っています）。',
+  LM004: 'サーバーにある解答の記録が無くなる書き込みだったため、サーバーが断りました（この端末の記録はそのまま残っています）。アプリを最新の版に更新してから「今すぐ同期」を押してください。',
+  LM005: '解答の記録の一部の項目を消す書き込みだったため、サーバーが断りました（この端末の記録はそのまま残っています）。アプリを最新の版に更新してから「今すぐ同期」を押してください。',
+  LM006: '「記録を消した時刻」が正しくないため、サーバーが断りました。端末の日時が正しいか確かめてから「今すぐ同期」を押してください。',
+  LM007: 'サーバーにある復習の状態・ブックマーク・メモが無くなる書き込みだったため、サーバーが断りました（この端末の記録はそのまま残っています）。アプリを最新の版に更新してから「今すぐ同期」を押してください。',
+  LM008: '同じ解答の記録を重ねて送る書き込みだったため、サーバーが断りました（この端末の記録はそのまま残っています）。',
 };
 
 // サーバーに送らないもの：localResetAt（この端末だけの「置き換えた」印）
 const forServer = (st) => { if (!st || !('localResetAt' in st)) return st; const o = { ...st }; delete o.localResetAt; return o; };
 const RETRY_MAX = 4;
-const retryable = (e) => e && (e.code === 'offline' || e.code === 'conflict' || e.code === 'LM002' || /^(5\d\d|429|408)$/.test(String(e.code)));
+// 失敗の分類（v0.25）。kind ごとに、やり直すか・自動の同期を止めるかが決まる
+//   offline   通信できない            → 間をあけてやり直す
+//   conflict  同時の書き込み（LM002 含む）→ 間をあけてやり直す
+//   server    サーバーの一時的な不調（5xx・429・408）→ 間をあけてやり直す
+//   auth      ログイン切れ・ログアウト → やり直さない（もう一度ログイン）
+//   rejected  サーバー（guard.sql）が書き込みを断った（LM001・LM003〜LM008）→ やり直さず、自動の同期を止める
+//   data      サーバーか手元の記録が壊れている・新しい版 → やり直さず、自動の同期を止める
+//   other     そのほか → やり直さない
+export function classify(code) {
+  const c = String(code || '');
+  if (c === 'offline') return 'offline';
+  if (c === 'conflict' || c === 'LM002') return 'conflict';
+  if (/^(5\d\d|429|408)$/.test(c)) return 'server';
+  if (/^LM00\d$/.test(c)) return 'rejected';
+  if (['bad_remote', 'newer_remote', 'bad_local', 'newer_local'].includes(c)) return 'data';
+  if (['no_session', 'PGRST301', '401', 'refresh_token_not_found'].includes(c)) return 'auth';
+  return 'other';
+}
+const retryable = (e) => e && ['offline', 'conflict', 'server'].includes(classify(e.code));
+const halts = (e) => e && ['rejected', 'data'].includes(classify(e.code));
 export function createSync({ getState, applyState, onStatus = () => {}, retryDelay = 15000 }) {
   let session = loadSession();
   let timer = null, running = null, retries = 0;
-  const st = { status: session ? 'idle' : 'out', lastSync: session?.lastSync || null, error: null };
+  const st = { status: session ? 'idle' : 'out', lastSync: session?.lastSync || null, error: null, code: null, kind: null, halted: false };
   const emit = () => onStatus({ ...st, email: session?.user?.email || null });
 
   async function call(path, { method = 'GET', body, auth = false, prefer } = {}) {
@@ -119,21 +142,25 @@ export function createSync({ getState, applyState, onStatus = () => {}, retryDel
     throw new SyncError('同時に同期が重なりました。少し待ってからもう一度試してください。', 'conflict');
   }
 
-  async function syncNow() {
+  // auto：解答後・画面が隠れたとき・オンライン復帰・自動のやり直しなど、利用者が押したのではない同期。
+  //   サーバーに断られた（halted）後は、自動の同期をしない（同じ書き込みを何度も断られ続けないように）。利用者の操作でだけ再開する
+  async function syncNow({ auto = false } = {}) {
     if (!session) return null;
     if (running) return running;
-    st.status = 'syncing'; st.error = null; emit();
+    if (auto && st.halted) return null;
+    st.status = 'syncing'; st.error = null; st.code = null; st.kind = null; emit();
     running = syncOnce().then((r) => {
-      retries = 0;
+      retries = 0; st.halted = false;
       if (!session) { st.status = 'out'; emit(); return null; }
       st.status = 'ok'; st.lastSync = Date.now();
       session.lastSync = st.lastSync; saveSession(session);
       emit(); return r;
     }).catch((e) => {
-      if (session) { st.status = e.code === 'offline' ? 'offline' : 'error'; st.error = e.message; }
+      if (session) { st.status = e.code === 'offline' ? 'offline' : 'error'; st.error = e.message; st.code = e.code || null; st.kind = classify(e.code); }
       // 一時的な失敗（オフライン・同時の書き込み・サーバーの不調）は、間をあけて数回だけやり直す。
-      //   形の正しくない記録・新しい版の記録・ログイン切れはやり直さない（人が対処する）
-      if (session && retryable(e) && retries < RETRY_MAX) { retries++; clearTimeout(timer); timer = setTimeout(() => syncNow(), retryDelay * 2 ** (retries - 1)); }
+      //   サーバーに断られた・記録の形の問題は、やり直さず自動の同期も止める（人が対処する）。ログイン切れもやり直さない
+      if (session && halts(e)) { st.halted = true; clearTimeout(timer); }
+      else if (session && retryable(e) && retries < RETRY_MAX) { retries++; clearTimeout(timer); timer = setTimeout(() => syncNow({ auto: true }), retryDelay * 2 ** (retries - 1)); }
       emit(); return null;
     }).finally(() => { running = null; });
     return running;
@@ -163,9 +190,9 @@ export function createSync({ getState, applyState, onStatus = () => {}, retryDel
     syncNow,
     // 問題を解いたあとなど：20秒まとめてから同期
     schedule(ms = 20000) {
-      if (!session) return;
+      if (!session || st.halted) return;
       clearTimeout(timer);
-      timer = setTimeout(() => syncNow(), ms);
+      timer = setTimeout(() => syncNow({ auto: true }), ms);
     },
     async logout() {
       clearTimeout(timer);

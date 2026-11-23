@@ -8,16 +8,10 @@ export function createMockSupabase({ key = 'sb_publishable_test', code = '123456
   const rows = new Map();       // user id → { state, rev, updated_at }
   const sent = [];
   let n = 0;
-  const hooks = { beforePatch: null, guard: false };
-  // supabase/guard.sql と同じ規則（本物は tests/server_guard.test.mjs で PostgreSQL を相手に確かめる）。hooks.guard = true で有効
-  const num = (v, d) => (typeof v === 'number' ? v : d);
-  const guardCheck = (old, nw) => {
-    if (!nw.state || typeof nw.state !== 'object' || !Array.isArray(nw.state.log)) return { code: 'LM001', message: 'lemma: state.log が配列ではありません' };
-    if (nw.rev !== old.rev + 1) return { code: 'LM002', message: 'lemma: rev' };
-    if (num(nw.state.schema, 1) < num(old.state.schema, 1)) return { code: 'LM003', message: 'lemma: schema' };
-    if (nw.state.log.length < (Array.isArray(old.state.log) ? old.state.log.length : 0) && num(nw.state.resetAt, 0) <= num(old.state.resetAt, 0)) return { code: 'LM004', message: 'lemma: log shrink' };
-    return null;
-  };
+  // hooks.db：PostgreSQL（PGlite）。指定すると、記録の作成・更新を表 public.lemma_state（supabase/guard.sql のトリガーつき）に通す。
+  //   トリガーに断られたら、PostgREST と同じく 400 と { code: 'LM00x', message } を返す（実際の Supabase の応答の形は未確認）
+  const hooks = { beforePatch: null, db: null };
+  const pgError = (e) => json(400, { code: e.code || 'XX000', message: e.message, details: null, hint: null });
 
   const issue = (u) => {
     n++;
@@ -58,12 +52,23 @@ export function createMockSupabase({ key = 'sb_publishable_test', code = '123456
     if (path === '/rest/v1/lemma_state') {
       const want = u.searchParams.get('user_id')?.replace(/^eq\./, '');
       if (method === 'GET') {
+        if (hooks.db) {
+          const q = await hooks.db.query('select state, rev from public.lemma_state where user_id = $1', [uid]);
+          return json(200, q.rows.length && (!want || want === uid) ? [{ state: q.rows[0].state, rev: q.rows[0].rev }] : []);
+        }
         const r = rows.get(uid);
         return json(200, r && (!want || want === uid) ? [{ state: r.state, rev: r.rev }] : []);   // 他人の行は見えない
       }
       if (method === 'POST') {
         if (data.user_id !== uid) return json(403, { code: '42501', message: 'new row violates row-level security policy' });
-        if (rows.has(uid)) return json(409, { code: '23505', message: 'duplicate key value violates unique constraint' });
+        if (!hooks.db && rows.has(uid)) return json(409, { code: '23505', message: 'duplicate key value violates unique constraint' });
+        if (hooks.db) {
+          try {
+            const r = await hooks.db.query('insert into public.lemma_state (user_id, state, rev) values ($1, $2::jsonb, $3) returning state, rev', [uid, JSON.stringify(data.state), data.rev]);
+            rows.set(uid, { state: r.rows[0].state, rev: r.rows[0].rev, updated_at: new Date().toISOString() });
+          } catch (e) { return e.code === '23505' ? json(409, { code: '23505', message: e.message }) : pgError(e); }
+          return json(201);
+        }
         rows.set(uid, { state: data.state, rev: data.rev, updated_at: new Date().toISOString() });
         return json(201);
       }
@@ -71,8 +76,16 @@ export function createMockSupabase({ key = 'sb_publishable_test', code = '123456
         if (hooks.beforePatch) await hooks.beforePatch(uid);
         const rev = Number(u.searchParams.get('rev')?.replace(/^eq\./, ''));
         const r = rows.get(uid);
-        if (want !== uid || !r || r.rev !== rev) return json(200, []);
-        if (hooks.guard) { const e = guardCheck(r, data); if (e) return json(400, e); }
+        if (want !== uid) return json(200, []);
+        if (!hooks.db && (!r || r.rev !== rev)) return json(200, []);
+        if (hooks.db) {
+          try {
+            const q = await hooks.db.query('update public.lemma_state set state = $1::jsonb, rev = $2 where user_id = $3 and rev = $4 returning state, rev', [JSON.stringify(data.state), data.rev, uid, rev]);
+            if (!q.rows.length) return json(200, []);
+            rows.set(uid, { state: q.rows[0].state, rev: q.rows[0].rev, updated_at: data.updated_at });
+            return json(200, [{ user_id: uid, rev: q.rows[0].rev }]);
+          } catch (e) { return pgError(e); }
+        }
         rows.set(uid, { state: data.state, rev: data.rev, updated_at: data.updated_at });
         return json(200, [{ user_id: uid, rev: data.rev }]);
       }

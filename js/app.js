@@ -26,7 +26,7 @@ import {
 } from './catalog.js';
 import { techMastery, techCandidates, masterChecklist, makeCtx, transferTargets, transferWhy, MASTER, STATUS, TRANSFER, TRANSFER_KIND } from './mastery.js';
 
-const VERSION = '0.24.0';
+const VERSION = '0.25.0';
 const KEY = 'lemma.v2';
 let sync = null, syncApplying = false, syncStatus = null;   // アカウントと同期（initSync で用意）
 const $ = (sel, el = document) => el.querySelector(sel);
@@ -107,9 +107,9 @@ function initSync() {
     });
     syncStatus = sync.status();
     if ((location.hash || '').startsWith('#settings')) renderSettings();
-    if (sync.loggedIn()) sync.syncNow();
-    document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'hidden') sync.syncNow(); });
-    window.addEventListener('online', () => sync.syncNow());
+    if (sync.loggedIn()) sync.syncNow({ auto: true });
+    document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'hidden') sync.syncNow({ auto: true }); });
+    window.addEventListener('online', () => sync.syncNow({ auto: true }));
   }).catch(() => { /* 同期なし */ });
 }
 // ログイン直後：端末とアカウントの両方に記録があるときだけ、合わせるかを聞く（共用の端末で他人の記録が混ざらないように）
@@ -186,7 +186,7 @@ function drawAccount() {
   box.innerHTML = `
     <div class="setting" style="padding-top:0"><span><b>${esc(s.email || '')}</b><br><span class="muted small" id="acct-state">${esc(label)}</span></span>
       <button class="btn" id="acct-now" ${s.status === 'syncing' ? 'disabled' : ''}>今すぐ同期</button></div>
-    ${s.error && s.status !== 'offline' ? `<p class="acct-err">${esc(s.error)}</p>` : ''}
+    ${s.error && s.status !== 'offline' ? `<p class="acct-err">${esc(s.error)}${s.halted ? '<br>同じ失敗を繰り返さないよう、自動の同期を止めています。対処したら「今すぐ同期」を押してください。' : ''}</p>` : ''}
     <p class="muted small" style="margin:8px 0">この端末の記録とサーバーの記録は、解答の記録を足し合わせ、復習の予定は新しい方を使って合わせます。</p>
     <div class="btn-row" style="margin-top:4px"><button class="btn ghost" id="acct-out">ログアウト</button><button class="btn ghost danger" id="acct-del">退会する</button></div>
     <p class="muted small" style="margin:6px 0 0"><a href="privacy.html">プライバシーポリシー</a>・<a href="terms.html">利用規約</a></p>`;

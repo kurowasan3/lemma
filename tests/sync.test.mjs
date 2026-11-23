@@ -318,25 +318,7 @@ const base = JSON.parse(fs.readFileSync(path.join(root, 'tests/fixtures/state-v0
   await N.sync.sendCode('edge@example.com'); await N.sync.verify('edge@example.com', '123456');
   ok(/新しい版/.test(N.sync.status().error || '') && mock.rows.get(uid).state.schema === 4, '手元の記録が新しい schema なら送らない');
 
-  // サーバー側の制限（guard.sql と同じ規則をにせサーバーで）：古いアプリの切り捨ては断られ、理由が出る。手元は変わらない
-  mock.hooks.guard = true;
-  const r0 = mock.rows.get(uid);
-  // 古いアプリ（v0.22）の切り捨てを再現：サーバーに 6000件 → 5000件で PATCH
-  r0.state = { ...r0.state, log: Array.from({ length: 6000 }, (_, i) => ({ p: 'q01', t: 1700000000000 + i * 1000, g: 3 })) };
-  const res2 = await mock.handle({ method: 'PATCH', url: `https://x/rest/v1/lemma_state?user_id=eq.${uid}&rev=eq.${r0.rev}`, headers: { authorization: `Bearer ${[...mock.tokens.entries()].find(([, id]) => id === uid)?.[0]}`, apikey: SUPABASE_KEY },
-    body: JSON.stringify({ state: { ...r0.state, log: r0.state.log.slice(-5000) }, rev: r0.rev + 1 }) }).catch(e => ({ status: 0, body: String(e) }));
-  ok(res2.status === 400 && /LM004/.test(res2.body) && mock.rows.get(uid).state.log.length === 6000, '（にせサーバー）古いアプリの5000件への切り捨ては LM004 で断られる');
-  // 新しいアプリの通常の同期は通る（記録は減らない）
-  const G = device(base);
-  await G.sync.sendCode('edge@example.com'); await G.sync.verify('edge@example.com', '123456');
-  ok(G.sync.status().status === 'ok' && mock.rows.get(uid).state.log.length >= 6000 && G.get().log.length >= 6000, 'サーバー側の制限があっても、通常の同期（和集合）は通る');
-  // サーバーが LM003（schema を下げる書き込み）で断ったら、理由を出して手元を変えない
-  const gsnap = S.stable(G.get());
-  mock.rows.get(uid).state.schema = 4; G.set({ ...G.get(), schema: 3, log: [...G.get().log, { p: 'q03', t: 2300000000000, g: 3 }] });
-  await G.sync.syncNow();
-  ok(/新しい版/.test(G.sync.status().error || '') && G.get().log.some(l => l.t === 2300000000000), 'サーバーが LM003 で断ったら理由を表示し、手元の記録は残す');
-  mock.hooks.guard = false;
-  void gsnap;
+  // サーバー側の制限（guard.sql）に対する同期は tests/server_guard.test.mjs で、本物の PostgreSQL（PGlite）を相手に確かめる
 
   // 大きい記録（2万件）の同期：欠けずに往復する
   mem.clear();
@@ -348,6 +330,35 @@ const base = JSON.parse(fs.readFileSync(path.join(root, 'tests/fixtures/state-v0
   const Big2 = device({ ...clone(base), log: many.slice(0, 100) });
   await Big2.sync.sendCode('big@example.com'); await Big2.sync.verify('big@example.com', '123456');
   ok(mock.rows.get(uidB).state.log.length >= 20000 && Big2.get().log.length >= 20000, `2万件の記録も欠けずに同期する（${Date.now() - t0}ms）`);
+}
+
+// ---------------------------------------------------------------- v0.25：失敗の分類と、断られた後の自動同期の停止
+{
+  const C = S.classify;
+  ok(C('offline') === 'offline' && C('conflict') === 'conflict' && C('LM002') === 'conflict' && C('503') === 'server' && C('429') === 'server'
+    && C('LM004') === 'rejected' && C('LM007') === 'rejected' && C('bad_remote') === 'data' && C('newer_local') === 'data'
+    && C('no_session') === 'auth' && C('PGRST301') === 'auth' && C('xyz') === 'other', '失敗の分類（やり直す・止める・ログインし直す）');
+  const mock = createMockSupabase({ key: SUPABASE_KEY });
+  globalThis.fetch = mock.fetch;
+  mem.clear();
+  let st = clone(base);
+  const sync = S.createSync({ getState: () => st, applyState: (m) => { st = S.mergeState(st, m); }, retryDelay: 5 });
+  await sync.sendCode('halt@example.com'); await sync.verify('halt@example.com', '123456');
+  const uid = [...mock.users.values()].find(u => u.email === 'halt@example.com').id;
+  const good = clone(mock.rows.get(uid));
+  mock.rows.set(uid, { ...good, state: { ...good.state, log: 'こわれた' } });
+  let gets = 0;
+  globalThis.fetch = async (url, init) => { if (String(url).includes('lemma_state') && (!init || !init.method || init.method === 'GET')) gets++; return mock.fetch(url, init); };
+  await sync.syncNow();
+  const s1 = sync.status();
+  ok(s1.kind === 'data' && s1.halted && s1.code === 'bad_remote', '壊れたサーバーの記録 → data・自動の同期を止める');
+  sync.schedule(1); await sync.syncNow({ auto: true });
+  await new Promise(r => setTimeout(r, 30));
+  ok(gets === 1, `止めた後は、解答後・画面が隠れたとき等の自動の同期でサーバーに問い合わせない（${gets}回）`);
+  mock.rows.set(uid, good);
+  await sync.syncNow();
+  ok(sync.status().status === 'ok' && !sync.status().halted && gets === 2, '利用者が「今すぐ同期」を押すと再開する');
+  globalThis.fetch = mock.fetch;
 }
 
 console.log(`sync.test: ${pass} 件 OK${fail ? `、${fail} 件失敗` : ''}`);

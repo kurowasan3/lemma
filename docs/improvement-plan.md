@@ -145,3 +145,9 @@ AI チャット・SNS・コメント・ランキング・煽る通知やスト�
 - 同期：通信中のログアウトで反映しない、`localResetAt` を送らない、新しい schema の手元の記録を送らない。サーバー側の制限 `supabase/guard.sql`（rev・schema・件数の減少。要実行）と PGlite でのテスト。
 - 保存容量を実測し、IndexedDB への移行は見送り（`docs/data-integrity.md` §9）。
 
+## v0.25.0：サーバー側の学習データ保全と同期の完全性
+
+- `supabase/guard.sql` を作り直した：解答の記録は件数ではなく `(p, t)` ごとに残っていること・項目が消えていないこと・重複が増えないことを確かめる。pstat・problems・cards・bookmarks・explains の消失・後退を断る。`resetAt` は戻さない・未来にしない・進めた時刻以後は消せない。作成時の rev・schema も確かめる。関数を API に出ない `lemma_private` に移した。**Supabase で実行が必要**（docs/data-integrity.md §6.3）。
+- 同期の失敗を分類し、サーバーに断られた・記録の形の問題では自動の同期を止める（手動で再開）。
+- PGlite のテストを、本物の sync.js・store.js をトリガーつきの表につないだ通しのテストに広げた。
+
