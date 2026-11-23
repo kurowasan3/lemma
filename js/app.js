@@ -26,7 +26,7 @@ import {
 } from './catalog.js';
 import { techMastery, techCandidates, masterChecklist, makeCtx, transferTargets, transferWhy, MASTER, STATUS, TRANSFER, TRANSFER_KIND } from './mastery.js';
 
-const VERSION = '0.27.2';
+const VERSION = '0.27.3';
 const KEY = 'lemma.v2';
 let sync = null, syncApplying = false, syncStatus = null;   // アカウントと同期（initSync で用意）
 const $ = (sel, el = document) => el.querySelector(sel);
@@ -1358,7 +1358,7 @@ function renderProblem(step) {
     const fb = $('#feedback');
     fb.innerHTML = `<div class="label">重ねて見比べよう。予想はどうだった？</div>
       <div class="segment" id="self">
-        <button data-g="3">ほぼ合っていた</button><button data-g="2">一部ずれていた</button><button data-g="1">違っていた</button>
+        <button data-g="1">違っていた</button><button data-g="2">一部ずれていた</button><button data-g="3">ほぼ合っていた</button>
       </div>`;
     $$('#self button').forEach(b => b.addEventListener('click', () => {
       const g = Math.min(+b.dataset.g, a.hints ? 2 : 4);
