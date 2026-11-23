@@ -1544,7 +1544,7 @@
    "tex": "不等式 $\\log_2x+\\log_2(4-x)\\geqq\\log_2y\\geqq2\\log_2x-1$ を満たす点 $(x,y)$ 全体の領域を $D$ とする．\n\\begin{enumerate}\n  \\item $D$ を図示せよ．\n  \\item $a<4$ を満たす定数 $a$ に対し，$D$ 上での $y-ax$ の最大値 $M(a)$ を求めよ．\n\\end{enumerate}"
   },
   "answer": {
-   "tex": "(2) $a\\geqq-\\frac43$: $\\frac{(4-a)^2}4$；$a<-\\frac43$: $\\frac{32}9-\\frac{8a}3$"
+   "tex": "(1) 図示（解答参照。$0<x\\leqq\\dfrac83$，$\\dfrac{x^2}2\\leqq y\\leqq4x-x^2$）　(2) $a\\geqq-\\frac43$: $\\frac{(4-a)^2}4$；$a<-\\frac43$: $\\frac{32}9-\\frac{8a}3$"
   },
   "solutions": [
    {

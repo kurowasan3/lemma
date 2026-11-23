@@ -52,6 +52,20 @@ l4 = V.lint(P(r'$x^2+1$ の値．', r'$2$'))
 ok(any('要求' in x for x in l4), f'要求（求めよ・示せ など）が読み取れない問題文を検出（{l4}）')
 ok(V.lint(P(r'方程式 $x^2-1=0$ を解け．', r'$x=\pm1$')) == [], '整った問題では構造の候補を出さない')
 
+# ---- v0.27：小問の数え方（入れ子・続きの番号・[I][II] の区切り）と要求の言葉
+nest = '前文\n\\begin{enumerate}\n  \\item A を求めよ．\n  \\begin{enumerate}\n    \\item x\n    \\item y\n  \\end{enumerate}\n  \\item B を示せ．\n  \\begin{itemize}\n    \\item 条件\n  \\end{itemize}\n\\end{enumerate}'
+ok(len(V.items_of(nest)) == 2, f'入れ子の enumerate・itemize の \\item は小問に数えない（{len(V.items_of(nest))}）')
+cont = '\\begin{enumerate}\n  \\item p を示せ．\n\\end{enumerate}\n以下，…とする．\n\\begin{enumerate}[resume]\n  \\item q を求めよ．\n  \\item r を求めよ．\n\\end{enumerate}'
+ok(len(V.items_of(cont)) == 3 and V.lint(P(cont, '(1) 証明　(2) $1$　(3) $2$')) == [], '[resume] で続く小問は (2)(3) として数える')
+cont2 = cont.replace('[resume]', '').replace('  \\item q', '  \\setcounter{enumi}{1}\n  \\item q')
+ok(V.lint(P(cont2, '(1) 証明　(2) $1$　(3) $2$')) == [], '\\setcounter{enumi} で続く小問も同じ')
+blocks = '(I) …\n\\begin{enumerate}\n  \\item a を求めよ．\n  \\item b を求めよ．\n\\end{enumerate}\n(II) …\n\\begin{enumerate}\n  \\item c を求めよ．\n  \\item d を求めよ．\n\\end{enumerate}'
+ok(V.block_sizes(blocks) == [2, 2] and V.lint(P(blocks, '(I)(1) $1$　(2) $2$　(II)(1) $3$　(2) $4$')) == [], '[I][II] で (1) から数え直す問題は、区切りごとの数で照合する')
+for verb in ['確かめよ', 'グラフをかけ．', '概形をえがけ', '導け', '大きい順に並べよ', '表しなさい', '例をあげよ', '言い換えよ', '描いてみよう']:
+    ok(V.lint(P(f'$x$ について{verb}', '$1$')) == [], f'要求の言葉「{verb}」を読み取る')
+ok(V.lint(P(r'頂点の $y$ 座標が負となる $k$ の範囲は $\fbox{ア}$ である．', '$k>1$')) == [], '空欄補充（数式の中の \\fbox）は要求とみなす')
+ok(V.lint(P(r'三角形 ABC で…．形を答えよ．', r'$\angle\mathrm B=90^\circ$ の直角三角形')) == [], '∠B・\\mathrm B は点の名前（答えにだけある文字とみなさない）')
+
 # ---- 照合用の値
 a, b = P('問1', '1'), P('問1', '2')
 ok(V.content_hash(a) != V.content_hash(b), '内容（答え）が変わると照合用の値が変わる')

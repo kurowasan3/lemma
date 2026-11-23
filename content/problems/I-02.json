@@ -1121,7 +1121,7 @@
    "tex": "$f(x)=|x^2-4x+3|$ とする．\n\\begin{enumerate}\n  \\item $y=f(x)$ のグラフをかけ．\n  \\item $y=f(x)$ のグラフと直線 $y=ax$ がちょうど4個の共有点をもつような $a$ の範囲を求めよ．\n  \\item ちょうど3個の共有点をもつような $a$ の値を求めよ．\n\\end{enumerate}"
   },
   "answer": {
-   "tex": "(2) $0<a<4-2\\sqrt3$　(3) $a=4-2\\sqrt3$"
+   "tex": "(1) 図示（解答参照）　(2) $0<a<4-2\\sqrt3$　(3) $a=4-2\\sqrt3$"
   },
   "solutions": [
    {

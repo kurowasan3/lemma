@@ -1705,7 +1705,7 @@
    "tex": "四面体 OABC において $\\overrightarrow{\\mathrm{OA}}=\\vec a$，$\\overrightarrow{\\mathrm{OB}}=\\vec b$，$\\overrightarrow{\\mathrm{OC}}=\\vec c$ とする．辺 OA の中点を P，辺 AB を $1:2$ に内分する点を Q，辺 BC を $2:1$ に内分する点を R，線分 OC を $t:(1-t)$ に内分する点を S とする（$0<t<1$）．\n\\begin{enumerate}\n  \\item $\\overrightarrow{\\mathrm{PQ}}$，$\\overrightarrow{\\mathrm{PR}}$，$\\overrightarrow{\\mathrm{PS}}$ を $\\vec a,\\vec b,\\vec c$ で表せ．\n  \\item 4点 P，Q，R，S が同一平面上にあるような $t$ の値を求めよ．\n\\end{enumerate}"
   },
   "answer": {
-   "tex": "(2) $t=\\frac12$"
+   "tex": "(1) $\\overrightarrow{\\mathrm{PQ}}=\\dfrac16\\vec a+\\dfrac13\\vec b$，$\\overrightarrow{\\mathrm{PR}}=-\\dfrac12\\vec a+\\dfrac13\\vec b+\\dfrac23\\vec c$，$\\overrightarrow{\\mathrm{PS}}=-\\dfrac12\\vec a+t\\vec c$　(2) $t=\\frac12$"
   },
   "solutions": [
    {
@@ -2063,7 +2063,7 @@
    "tex": "座標空間において，$y$ 軸を含み $xz$ 平面との交線 $l$ が点 $(1,0,2\\sqrt3)$ を通る平面を $H$ とする．$xy$ 平面上の曲線 $y=\\sqrt3\\sin^2x$ 上の点 P$(x,y,0)$ における接線の単位方向ベクトルで $x$ 成分が正のものを $\\overrightarrow{\\mathrm{PQ}}$ とする．P，Q を通り $z$ 軸に平行な直線が $H$ と交わる点をそれぞれ P$'$，Q$'$ とする．\n\\begin{enumerate}\n  \\item $\\overrightarrow{\\mathrm{PQ}}$，$\\overrightarrow{\\mathrm{P'Q'}}$ の成分を $x$ で表せ．\n  \\item $\\overrightarrow{\\mathrm{PQ}}$ と $\\overrightarrow{\\mathrm{P'Q'}}$ のなす角を $\\theta$ とするとき，$\\sin\\theta$ を $x$ で表し，$\\theta$ のとりうる値の最小値を求めよ．\n\\end{enumerate}"
   },
   "answer": {
-   "tex": "(2) $\\sin\\theta=\\frac{2\\sqrt3}{\\sqrt{13+3\\sin^22x}}$，最小値 $\\frac\\pi3$"
+   "tex": "(1) $\\overrightarrow{\\mathrm{PQ}}=\\dfrac{(1,\\ \\sqrt3\\sin2x,\\ 0)}{\\sqrt{1+3\\sin^22x}}$，$\\overrightarrow{\\mathrm{P'Q'}}=\\dfrac{(1,\\ \\sqrt3\\sin2x,\\ 2\\sqrt3)}{\\sqrt{1+3\\sin^22x}}$　(2) $\\sin\\theta=\\frac{2\\sqrt3}{\\sqrt{13+3\\sin^22x}}$，最小値 $\\frac\\pi3$"
   },
   "solutions": [
    {

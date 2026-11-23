@@ -7,7 +7,7 @@
 //     ・移行・読み込み（置き換え）・全消去の前に、端末の中に控えを残す
 import { review } from './scheduler.js';
 
-export const FILE_VERSION = '0.26.0';
+export const FILE_VERSION = '0.27.0';
 export const KEY = 'lemma.v2';                  // 学習記録の本体
 export const SNAP_KEY = 'lemma.snap.v1';        // 自動で残す控え（最大 SNAP_MAX 件。同期しない）
 export const BROKEN_PREFIX = 'lemma.v2.broken.'; // 読めなかった記録の退避先（キー名に時刻）

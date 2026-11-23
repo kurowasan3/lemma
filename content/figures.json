@@ -725,7 +725,7 @@
 "II-TRI-164":{"h":"61cbe735adb8","mode":"2d","exprs":["1<= x^2+y^2<=4","x^2+y^2=1","x^2+y^2=4"],"after":false},
 "II-TRI-168":{"h":"26969ea7bb4e","mode":"2d","exprs":["y= tan π x"],"after":false},
 "II-TRI-182":{"h":"6eadac6896ea","mode":"3d","exprs":["x+y+z=xyz"],"after":false},
-"III-DIF-001":{"h":"220581128787","mode":"2d","exprs":["y=x^2e^(-x)","y= log (x+sqrt(x^2+1) )","y=((sin x)/(1+ cos x))","y=e^x cos x"],"after":false},
+"III-DIF-001":{"h":"7e17ff2bbaae","mode":"2d","exprs":["y=x^2e^(-x)","y= log (x+sqrt(x^2+1) )","y=((sin x)/(1+ cos x))","y=e^x cos x"],"after":false},
 "III-DIF-002":{"h":"e51d59dd6c09","mode":"2d","exprs":["x^2+xy+y^2=7"],"after":false},
 "III-DIF-005":{"h":"166fd680af7d","mode":"2d","exprs":["y=((x^2-x+1)/(x-1))"],"after":false},
 "III-DIF-007":{"h":"ebfe9af3cd6c","mode":"2d","exprs":["y=((x+a)/(x^2+1))"],"after":false},

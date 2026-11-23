@@ -186,6 +186,36 @@ def similar_pairs(ps, thr=0.7, perms=64, bands=16):
     return sorted(out, key=lambda x: (-x[2], x[0], x[1]))
 
 
+def _norm_answer(a):
+    """答えの比較用：LaTeX の書き方の違い（\\dfrac と \\frac・空白・太字・区切り・小問番号）を除く"""
+    a = re.sub(r'\\[dt]frac', r'\\frac', a or '')
+    a = re.sub(r'\\(?:mathrm|text|rm)\s*', '', a)
+    a = re.sub(r'\\(?:,|;|quad|qquad|boldsymbol|left|right|displaystyle)|\s|　|[{}$，,．.、；;]', '', a)
+    return re.sub(r'\([a-z]\)|\(\d\)|\[[A-Z]+\]', '', a)
+
+
+def same_answer_pairs(ps, min_len=10, thr=0.6):
+    """答え（書き方の違いを除く）が同じで、問題文に出てくる数字の重なりが thr 以上の組（v0.27）。
+    文章を言いかえた同じ問題（4-gram の類似度では見つからない）を拾う。答えが「証明」だけ・短い答えは除く（偶然一致しやすい）。
+    (a, b, 数字の重なり) の一覧。候補であり、重複と決めるのは人"""
+    g = collections.defaultdict(list)
+    for p in ps:
+        a = _norm_answer(p.get('answer', {}).get('tex', ''))
+        if len(a) >= min_len and not re.fullmatch(r'(証明|図示|略)*', re.sub(r'[（(][^）)]*[）)]', '', a)) and '証明' not in a:
+            g[a].append(p)
+    nums = lambda t: collections.Counter(re.findall(r'\d+(?:\.\d+)?', t))
+    out = []
+    for lst in g.values():
+        for i in range(len(lst)):
+            for j in range(i + 1, len(lst)):
+                x, y = nums(lst[i]['statement']['tex']), nums(lst[j]['statement']['tex'])
+                ov = sum((x & y).values()) / (sum((x | y).values()) or 1)
+                if ov >= thr:
+                    a, b = sorted((lst[i]['id'], lst[j]['id']))
+                    out.append((a, b, ov))
+    return sorted(out, key=lambda x: (-x[2], x[0], x[1]))
+
+
 def groups(ps):
     byid = {p['id']: p for p in ps}
     gs, gn = collections.defaultdict(list), collections.defaultdict(list)
@@ -223,7 +253,7 @@ def index_values(root=ROOT):
     return v, main_of
 
 
-def priority(ps, same, num, sim, value, main_of, quality=None, roles=None):
+def priority(ps, same, num, sim, value, main_of, quality=None, roles=None, same_ans=None):
     """{問題ID: (優先度, [理由])}。1問1つ。優先度は最も高いもの、理由はすべて。
     quality: {問題ID: (自動検証の状態, 人の確認の状態, 構造の候補[])}（省略可）。roles: role_pairs の結果（省略可）"""
     quality = quality or {}
@@ -238,6 +268,9 @@ def priority(ps, same, num, sim, value, main_of, quality=None, roles=None):
         for i in g: put(i, 1, '同一の問題文：' + ' '.join(x for x in g if x != i))
     for g in num:
         for i in g: put(i, 1, '数値だけ違う問題文：' + ' '.join(x for x in g if x != i) + '（類題として残すかを判断。消す対象とは限らない）')
+    for a, b, ov in same_ans or []:
+        put(a, 1, f'答えが同じで問題文の数字も近い（数字の重なり {ov:.2f}）：{b}（同じ問題が2つある候補）')
+        put(b, 1, f'答えが同じで問題文の数字も近い（数字の重なり {ov:.2f}）：{a}（同じ問題が2つある候補）')
     for a, b, jm, jr, short in sim:
         if jm >= 0.9 and not short:
             put(a, 1, f'類似 {jm:.2f}（数値も含め {jr:.2f}）：{b}'); put(b, 1, f'類似 {jm:.2f}（数値も含め {jr:.2f}）：{a}')
@@ -409,16 +442,18 @@ def main():
         rec = auto.get(p['id'])
         quality[p['id']] = (a_st, h_st, rec.get('lint', []) if rec and a_st != 'stale' else [])
     roles = role_pairs(ps, main_of, techs_of)
+    same_ans = same_answer_pairs(ps)
     print(f'問題 {len(ps)}問（公開）')
     print(f'  同一の問題文：{len(same)}組（{sum(len(g) for g in same)}問）')
     print(f'  数値だけ違う問題文：{len(num)}組（{sum(len(g) for g in num)}問）')
     band = collections.Counter(min(9, int(x[2] * 10)) for x in sim)
+    print(f'  答えが同じで問題文の数字も近い（言いかえた同じ問題の候補）：{len(same_ans)}組')
     print(f'  類似（4-gram の Jaccard ≥ 0.7）：{len(sim)}組（0.7台 {band[7]}・0.8台 {band[8]}・0.9以上 {band[9]}。うち短い問題文 {sum(1 for x in sim if x[4])}組）')
     print(f'  学習上の役割が近い候補（主な解法・難易度・要求が同じで、アイデアかテーマが近い）：{len(roles)}組')
     ac = collections.Counter(q[0] for q in quality.values()); hc = collections.Counter(q[1] for q in quality.values())
     print('  自動検証：' + '・'.join(f'{AUTO_JA[k]} {ac[k]}' for k in AUTO_JA if ac[k]) + '／人の確認：' + '・'.join(f'{HUMAN_JA[k]} {hc[k]}' for k in HUMAN_JA if hc[k]))
     print(f"  構造の候補がある問題：{sum(1 for q in quality.values() if q[2])}問")
-    pri = priority(ps, same, num, sim, value, main_of, quality, roles)
+    pri = priority(ps, same, num, sim, value, main_of, quality, roles, same_ans)
     tc = collections.Counter(t for t, _ in pri.values())
     print('  優先して確認する問題：' + '、'.join(f'優先{t} {tc[t]}問' for t in sorted(tc)))
     if '--csv' in args:
@@ -427,6 +462,7 @@ def main():
             w = csv.writer(f); w.writerow(['種類', '問題ID（組）', '類似度（数字を置きかえ）', '類似度（数字も含む）', '短い問題文', 'テーマ'])
             for g in same: w.writerow(['同一', ' '.join(g), 1, 1, '', byid[g[0]].get('theme', '')])
             for g in num: w.writerow(['数値違い', ' '.join(g), 1, '', '', byid[g[0]].get('theme', '')])
+            for a, b, ov in same_ans: w.writerow(['答えが同じ', f'{a} {b}', '', f'{ov:.2f}', '', f"{byid[a].get('theme', '')} ／ {byid[b].get('theme', '')}"])
             for a, b, jm, jr, short in sim: w.writerow(['類似', f'{a} {b}', f'{jm:.2f}', f'{jr:.2f}', '短い' if short else '', f"{byid[a].get('theme', '')} ／ {byid[b].get('theme', '')}"])
         with open(out / 'role.csv', 'w', newline='', encoding='utf-8-sig') as f:
             w = csv.writer(f)

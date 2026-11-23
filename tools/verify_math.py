@@ -35,9 +35,10 @@ from make_input_answers import tex2expr, group, split_answer, question_items, Fa
 from crosscheck_answers import plain_to_sympy  # noqa: E402
 import sympy as sp  # noqa: E402
 
-TOOL = 'verify_math 1'
+TOOL = 'verify_math 2'   # 2：小問は入れ子を除いた最上位の \item だけ数える・要求の言葉を足した（v0.27）
 OUT = ROOT / 'content' / 'quality' / 'auto.json'
-REQUEST = re.compile(r'入れ|\\fbox|空欄|求め|示せ|示し|証明|答え|計算|解け|せよ|述べ|調べ|表せ|定め|何通り|いくつ|何個|何本|何|どれ|か[。．.?？）)]|か$|図示|描け|書け|判定|比べ|与えよ|挙げ')
+REQUEST = re.compile(r'入れ|\\fbox|空欄|求め|示せ|示し|証明|答え|計算|解け|せよ|述べ|調べ|表せ|定め|何通り|いくつ|何個|何本|何|どれ|か[。．.?？）)]|か$|図示|描け|書け|判定|比べ|与えよ|挙げ'
+                     r'|確かめ|かけ[。．]|えがけ|導け|並べ|特徴づけ|なさい|あげよ|言い換え|例を|答えよ|選べ|作れ|決定|てみよう')
 RESULT_JA = {'pass-symbolic': '記号計算で一致', 'pass-numeric': '数値で一致（証明ではない）', 'partial': '答えは条件を満たす（すべてかは未確認）',
              'fail': '不一致', 'na': '対象外'}
 
@@ -364,33 +365,71 @@ KNOWN = set('xyztnkmijeπθ') | {'i'}
 
 
 def items_of(st):
-    """小問の文。条件を並べるだけの enumerate（[label=…] つき）は小問に数えない"""
-    return question_items(re.sub(r'\\begin\{enumerate\}\[[^\]]*\].*?\\end\{enumerate\}', ' ', st, flags=re.S))
+    """小問の文：最上位の enumerate の \\item だけ（入れ子の enumerate・itemize は親の小問の文に含める）。
+    条件を並べるだけの enumerate（[label=…] つき）と itemize は小問に数えない（v0.27）"""
+    # [label=…] の enumerate は条件の列挙。[resume]・[start=…] は小問の続き（例：(1) のあとに文が入り (2)(3) が続く）なので残す
+    st = re.sub(r'\\begin\{enumerate\}\[(?![^\]]*(?:resume|start))[^\]]*\].*?\\end\{enumerate\}', ' ', st, flags=re.S)
+    out, stack, cur = [], [], None
+    for m in re.finditer(r'\\(begin|end)\{(enumerate|itemize)\}|\\item(?!\[)', st):
+        if m.group(1) == 'begin':
+            stack.append(m.group(2))
+        elif m.group(1) == 'end':
+            if stack: stack.pop()
+            if not stack and cur is not None:
+                out.append(st[cur:m.start()]); cur = None
+        elif stack == ['enumerate']:   # 最上位の enumerate の \\item
+            if cur is not None: out.append(st[cur:m.start()])
+            cur = m.end()
+    return out
+
+
+def block_sizes(st):
+    """最上位の enumerate ごとの小問の数（[resume]・[start=…] は前の enumerate に続けて数える）"""
+    st = re.sub(r'\\begin\{enumerate\}\[(?![^\]]*(?:resume|start))[^\]]*\].*?\\end\{enumerate\}', ' ', st, flags=re.S)
+    sizes, depth = [], 0
+    for m in re.finditer(r'\\begin\{(enumerate|itemize)\}(\[[^\]]*\])?|\\end\{(?:enumerate|itemize)\}|\\item(?!\[)', st):
+        t = m.group(0)
+        if t.startswith('\\begin'):
+            if depth == 0 and m.group(1) == 'enumerate':
+                cont = (m.group(2) and re.search(r'resume|start', m.group(2))) or re.match(r'\s*\\setcounter\{enumi\}', st[m.end():])
+                if not (cont and sizes): sizes.append(0)
+            depth += 1
+        elif t.startswith('\\end'):
+            depth -= 1
+        elif depth == 1 and sizes:
+            sizes[-1] += 1
+    return sizes
 
 
 def lint(p):
     st, an = p['statement']['tex'], p.get('answer', {}).get('tex', '')
     out = []
     qi, ai = items_of(st), split_answer(an)
+    # [I][II] のように、enumerate ごとに (1) から数え直す問題：答えの番号は、いちばん大きい区切りの数までを見る
+    sizes = block_sizes(st)
+    nq = max(sizes) if len(sizes) > 1 else len(qi)
     labels = {int(x) for x in re.findall(r'\((\d)\)', re.sub(r'\$[^$]*\$', ' ', an))}
     if qi and not labels:
         out.append('小問があるのに答えが小問ごとに分かれていない')
     elif qi:
-        miss = [k for k in range(1, len(qi) + 1) if k not in labels]
-        more = sorted(k for k in labels if k > len(qi))
+        miss = [k for k in range(1, nq + 1) if k not in labels]
+        more = sorted(k for k in labels if k > nq)
         if miss:
             out.append('答えの無い小問 ' + '・'.join(f'({k})' for k in miss) + '（図示などで答えを書いていないか、答えの抜け）')
         if more:
-            out.append(f'小問は {len(qi)}つなのに、答えに ' + '・'.join(f'({k})' for k in more) + ' がある（小問の区切りの誤りの候補）')
+            out.append(f'小問は {nq}つなのに、答えに ' + '・'.join(f'({k})' for k in more) + ' がある（小問の区切りの誤りの候補）')
     stem = re.split(r'\\begin\{enumerate\}', st)[0]
     tail = re.split(r'\\end\{enumerate\}', st)[-1] if qi else ''
     for k, t in enumerate(qi or [st], start=1):
+        if '\\fbox' in t + stem + tail:   # 空欄補充（\fbox は数式の中に書かれる）
+            continue
         if not REQUEST.search(re.sub(r'\$[^$]*\$', ' ', t)) and not REQUEST.search(re.sub(r'\$[^$]*\$', ' ', stem + tail)):
             out.append(f'小問{k if qi else ""}に要求（求めよ・示せ など）が読み取れない'.replace('小問に', '問題文に'))
     # 答えに出てくる1文字の文字のうち、問題文に無いもの（条件不足・記号の未定義の候補）
     def letters(t, plain=False):
         s = ' '.join(maths(t)) + (' ' + re.sub(r'\$[^$]*\$', ' ', t) if plain else '')
         s = re.sub(r'\\(?:text|mathrm|operatorname)\{[^}]*\}', ' ', s)
+        s = re.sub(r'\\(?:angle|mathrm|triangle)\s*[A-Za-z]+', ' ', s)   # ∠B・\mathrm B（図形の点の名前）
         s = re.sub(r'\\[a-zA-Z]+', ' ', s)
         return set(re.findall(r'(?<![A-Za-z])([A-Za-z])(?![A-Za-z])', s))
     extra = sorted(letters(an) - letters(st, True) - letters(' '.join(x.get('tex', '') for x in p.get('solutions', [])), True) - KNOWN)

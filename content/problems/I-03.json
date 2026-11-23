@@ -2103,7 +2103,7 @@
   "theme": "正三角形の外接円上の点",
   "topic": "正三角形の外接円上の点",
   "statement": {
-   "tex": "$\\mathrm{AB}=\\mathrm{AC}=2\\sqrt3$ である三角形ABCの外接円の中心をOとする．この円の半径は2である．この円の，点Aを含まない弧BC上に点Dをとり，線分ADと線分OCの共有点をEとする．線分DBと線分DCの長さが $\\mathrm{DB}:\\mathrm{DC}=3:2$ を満たすとき，次の線分の長さを求めよ．\n\\begin{enumerate}\n  \\item DC \\quad (2) AD \\quad (3) CE\n\\end{enumerate}"
+   "tex": "$\\mathrm{AB}=\\mathrm{AC}=2\\sqrt3$ である三角形ABCの外接円の中心をOとする．この円の半径は2である．この円の，点Aを含まない弧BC上に点Dをとり，線分ADと線分OCの共有点をEとする．線分DBと線分DCの長さが $\\mathrm{DB}:\\mathrm{DC}=3:2$ を満たすとき，次の線分の長さを求めよ．\n\\begin{enumerate}\n  \\item DC\n  \\item AD\n  \\item CE\n\\end{enumerate}"
   },
   "answer": {
    "tex": "(1) $\\dfrac{4\\sqrt{57}}{19}$　(2) $\\dfrac{10\\sqrt{57}}{19}$　(3) $\\dfrac{12}7$"

@@ -1,0 +1,124 @@
+﻿問題ID,分野,難易度,管理表の列,修正前,修正後,理由
+A-COM-146,A-05,3,問題文（LaTeX）,"数字 1，2，3，4 を重複を許して使ってできる5桁の整数について，次の個数を求めよ．
+\begin{enumerate}
+  \item 3の倍数 \qquad (2) 4の倍数 \qquad (3) 6の倍数 \qquad (4) 12の倍数
+\end{enumerate}","数字 1，2，3，4 を重複を許して使ってできる5桁の整数について，次の個数を求めよ．
+\begin{enumerate}
+  \item 3の倍数
+  \item 4の倍数
+  \item 6の倍数
+  \item 12の倍数
+\end{enumerate}",小問の区切り（\item の中の \qquad (k) を \item に）
+A-INT-233,A-07,1,解答・解説,"(1) 互除法を逆にたどる：$13=8\cdot1+5$，$8=5\cdot1+3$，$5=3\cdot1+2$，$3=2\cdot1+1$ より
+$1=3-2=3-(5-3)=2\cdot3-5=2(8-5)-5=2\cdot8-3\cdot5=2\cdot8-3(13-8)=5\cdot8-3\cdot13$．
+よって $13\cdot(-3)+8\cdot5=1$ で，一般解は $x=-3+8k$，$y=5-13k$（$k$ は整数）．$x$ が最小の自然数となるのは $k=1$ のときで $\boldsymbol{(x,y)=(5,-8)}$．
+(2) (1) を $300$ 倍した $13\cdot1500+8\cdot(-2400)=300$ と辺々引いて $13(x-1500)=-8(y+2400)$．$13$ と $8$ は互いに素なので
+$x=1500+8m$，$y=-2400-13m$（$m$ は整数）．$m=-187+j$ とおくと $x=4+8j$，$y=31-13j$．
+$x\geqq1$，$y\geqq1$ より $j=0,1,2$．よって $\boldsymbol{(x,y)=(4,31),\ (12,18),\ (20,5)}$．","(1) 互除法を逆にたどる：$13=8\cdot1+5$，$8=5\cdot1+3$，$5=3\cdot1+2$，$3=2\cdot1+1$ より
+$1=3-2=3-(5-3)=2\cdot3-5=2(8-5)-5=2\cdot8-3\cdot5=2\cdot8-3(13-8)=5\cdot8-3\cdot13$．
+よって $13\cdot(-3)+8\cdot5=1$ で，一般解は $x=-3+8k$，$y=5-13k$（$k$ は整数）．$x$ が最小の自然数となるのは $k=1$ のときで $\boldsymbol{(x,y)=(5,-8)}$．
+(2) まず整数解を1つ見つける．$8y=300-13x$ が $8$ の倍数になる $x$ を小さい順に調べると，$x=4$ のとき $8y=248$ で $y=31$．
+よって $13\cdot4+8\cdot31=300$．これと辺々引いて $13(x-4)=-8(y-31)$．$13$ と $8$ は互いに素なので，$k$ を整数として $x-4=8k$，$y-31=-13k$，すなわち $x=4+8k$，$y=31-13k$．
+$x\geqq1$ より $k\geqq-\dfrac38$，$y\geqq1$ より $k\leqq\dfrac{30}{13}$ なので $k=0,1,2$．よって $\boldsymbol{(x,y)=(4,31),\ (12,18),\ (20,5)}$．
+（(1) の解を $300$ 倍した $(1500,-2400)$ を特殊解にしてもよいが，数が大きくなり，最後に小さい解へずらす手間がかかる．）",(2) の解説を、小さい特殊解を直接見つける標準の手順に改めた（以前の 300 倍して 187 ずらす手順は注記として残した）
+B-SEQ-023,B-13,2,答え,"[A] $2^n+3^n$　[B] $(1,2,1)$，$a_n=(n+1)^2-2^n$，$S_n=\frac{(n+1)(n+2)(2n+3)}6+1-2^{n+1}$","[A] $a_n=2^n+3^n$　[B] (1) $(\alpha,\beta,\gamma)=(1,2,1)$　(2) $a_n=(n+1)^2-2^n$，$S_n=\dfrac{(n+1)(n+2)(2n+3)}6+1-2^{n+1}$",答えを小問ごとに分けた
+B-SEQ-029,B-13,3,答え,"(1) 0,1,2,2,3,4,5　(3) $\frac{35n^2-n}2$","(1) 0,1,2,2,3,4,5　(2) 証明　(3) $\frac{35n^2-n}2$",(2) の答え（証明）を明記
+C-VEC-038,C-18,3,答え,(2) $t=\frac12$,(1) $\overrightarrow{\mathrm{PQ}}=\dfrac16\vec a+\dfrac13\vec b$，$\overrightarrow{\mathrm{PR}}=-\dfrac12\vec a+\dfrac13\vec b+\dfrac23\vec c$，$\overrightarrow{\mathrm{PS}}=-\dfrac12\vec a+t\vec c$　(2) $t=\frac12$,(1) の答えの抜けを補った
+C-VEC-046,C-18,3,答え,(2) $\sin\theta=\frac{2\sqrt3}{\sqrt{13+3\sin^22x}}$，最小値 $\frac\pi3$,"(1) $\overrightarrow{\mathrm{PQ}}=\dfrac{(1,\ \sqrt3\sin2x,\ 0)}{\sqrt{1+3\sin^22x}}$，$\overrightarrow{\mathrm{P'Q'}}=\dfrac{(1,\ \sqrt3\sin2x,\ 2\sqrt3)}{\sqrt{1+3\sin^22x}}$　(2) $\sin\theta=\frac{2\sqrt3}{\sqrt{13+3\sin^22x}}$，最小値 $\frac\pi3$",(1) の答えの抜けを補った
+C-CUR-028,C-19,4,答え,"(2) G$(-\frac s3,-\frac t3)$　(3) $4\sqrt2$","(1) 証明　(2) G$(-\frac s3,-\frac t3)$　(3) $4\sqrt2$",(1) の答え（証明）を明記
+C-CUR-051,C-19,2,答え,(2) $\frac{-1\pm\sqrt5}2$，$\cos\frac\pi5=\frac{1+\sqrt5}4$　(3) 31，5,"(1) $z=\cos\dfrac{2k\pi}5+i\sin\dfrac{2k\pi}5$（$k=0,1,2,3,4$）　(2) $\frac{-1\pm\sqrt5}2$，$\cos\frac\pi5=\frac{1+\sqrt5}4$　(3) 31，5",(1) の答えの抜けを補った
+I-EXP-023,I-01,3,答え,証明（背理法，有理数解の定理）,(1) 証明　(2) 証明　(3) 証明,答えを小問ごとに分けた
+I-EXP-031,I-01,2,解答・解説,$x^2-6x+7=0$．$P=(x^2-6x+7)(x^2+x-1)+9x-6$ より $P=9(3+\sqrt2)-6=\boldsymbol{21+9\sqrt2}$．,$x^2-6x+7=0$．$P=(x^2-6x+7)(x^2+x+1)+9x-6$ より $P=9(3+\sqrt2)-6=\boldsymbol{21+9\sqrt2}$．,解説の割り算の商の誤り（$x^2+x-1$ → $x^2+x+1$）。答えと余りは正しい
+I-QF-024,I-02,3,答え,(2) $0<a<4-2\sqrt3$　(3) $a=4-2\sqrt3$,(1) 図示（解答参照）　(2) $0<a<4-2\sqrt3$　(3) $a=4-2\sqrt3$,(1) の答え（図示）を明記
+I-TRI-046,I-03,3,問題文（LaTeX）,"$\mathrm{AB}=\mathrm{AC}=2\sqrt3$ である三角形ABCの外接円の中心をOとする．この円の半径は2である．この円の，点Aを含まない弧BC上に点Dをとり，線分ADと線分OCの共有点をEとする．線分DBと線分DCの長さが $\mathrm{DB}:\mathrm{DC}=3:2$ を満たすとき，次の線分の長さを求めよ．
+\begin{enumerate}
+  \item DC \quad (2) AD \quad (3) CE
+\end{enumerate}","$\mathrm{AB}=\mathrm{AC}=2\sqrt3$ である三角形ABCの外接円の中心をOとする．この円の半径は2である．この円の，点Aを含まない弧BC上に点Dをとり，線分ADと線分OCの共有点をEとする．線分DBと線分DCの長さが $\mathrm{DB}:\mathrm{DC}=3:2$ を満たすとき，次の線分の長さを求めよ．
+\begin{enumerate}
+  \item DC
+  \item AD
+  \item CE
+\end{enumerate}",小問の区切り（\item の中の \qquad (k) を \item に）
+II-GEO-034,II-09,3,答え,(2) $a\geqq-\frac43$: $\frac{(4-a)^2}4$；$a<-\frac43$: $\frac{32}9-\frac{8a}3$,(1) 図示（解答参照。$0<x\leqq\dfrac83$，$\dfrac{x^2}2\leqq y\leqq4x-x^2$）　(2) $a\geqq-\frac43$: $\frac{(4-a)^2}4$；$a<-\frac43$: $\frac{32}9-\frac{8a}3$,(1) の答え（図示）を明記
+II-CAL-042,II-12,3,答え,(2) $y=\frac12x+\frac7{16}$　(3) $\frac{16}3$,(1) 図示（解答参照）　(2) $y=\frac12x+\frac7{16}$　(3) $\frac{16}3$,(1) の答え（図示）を明記
+III-DIF-001,III-16,2,問題文（LaTeX）,"次の関数を微分せよ（(4) は第2次導関数を求めよ）．
+\begin{enumerate}
+  \item $y=x^2e^{-x}$ \qquad (2) $y=\log\bigl(x+\sqrt{x^2+1}\bigr)$
+  \setcounter{enumi}{2}
+  \item $y=\dfrac{\sin x}{1+\cos x}$ \qquad (4) $y=e^x\cos x$
+\end{enumerate}","次の関数を微分せよ（(4) は第2次導関数を求めよ）．
+\begin{enumerate}
+  \item $y=x^2e^{-x}$
+  \item $y=\log\bigl(x+\sqrt{x^2+1}\bigr)$
+  \item $y=\dfrac{\sin x}{1+\cos x}$
+  \item $y=e^x\cos x$
+\end{enumerate}",小問の区切り（\item の中の \qquad (k) を \item に）
+III-INT-002,III-17,2,問題文（LaTeX）,"次の定積分を求めよ．
+\begin{enumerate}
+  \item $\displaystyle\int_0^1x(1-x)^5\,dx$ \qquad (2) $\displaystyle\int_0^1\frac{x+3}{x^2+3x+2}\,dx$
+\end{enumerate}","次の定積分を求めよ．
+\begin{enumerate}
+  \item $\displaystyle\int_0^1x(1-x)^5\,dx$
+  \item $\displaystyle\int_0^1\frac{x+3}{x^2+3x+2}\,dx$
+\end{enumerate}",小問の区切り（\item の中の \qquad (k) を \item に）
+III-INT-003,III-17,2,問題文（LaTeX）,"次の定積分を求めよ．
+\begin{enumerate}
+  \item $\displaystyle\int_0^{\frac\pi2}\sin x\cos^4x\,dx$ \qquad (2) $\displaystyle\int_0^1\frac{x}{x^2+1}\,dx$ \qquad (3) $\displaystyle\int_e^{e^2}\frac{dx}{x\log x}$
+\end{enumerate}","次の定積分を求めよ．
+\begin{enumerate}
+  \item $\displaystyle\int_0^{\frac\pi2}\sin x\cos^4x\,dx$
+  \item $\displaystyle\int_0^1\frac{x}{x^2+1}\,dx$
+  \item $\displaystyle\int_e^{e^2}\frac{dx}{x\log x}$
+\end{enumerate}",小問の区切り（\item の中の \qquad (k) を \item に）
+III-INT-004,III-17,3,問題文（LaTeX）,"次の定積分を求めよ．
+\begin{enumerate}
+  \item $\displaystyle\int_0^1\frac{dx}{1+\sqrt x}$ \qquad (2) $\displaystyle\int_0^3\frac{x}{\sqrt{x+1}}\,dx$
+\end{enumerate}","次の定積分を求めよ．
+\begin{enumerate}
+  \item $\displaystyle\int_0^1\frac{dx}{1+\sqrt x}$
+  \item $\displaystyle\int_0^3\frac{x}{\sqrt{x+1}}\,dx$
+\end{enumerate}",小問の区切り（\item の中の \qquad (k) を \item に）
+III-INT-005,III-17,3,問題文（LaTeX）,"次の定積分を求めよ．
+\begin{enumerate}
+  \item $\displaystyle\int_0^1\frac{dx}{x^2+x+1}$ \qquad (2) $\displaystyle\int_0^1\sqrt{2x-x^2}\,dx$ \qquad (3) $\displaystyle\int_{-1}^1\frac{dx}{(1+x^2)^2}$
+\end{enumerate}","次の定積分を求めよ．
+\begin{enumerate}
+  \item $\displaystyle\int_0^1\frac{dx}{x^2+x+1}$
+  \item $\displaystyle\int_0^1\sqrt{2x-x^2}\,dx$
+  \item $\displaystyle\int_{-1}^1\frac{dx}{(1+x^2)^2}$
+\end{enumerate}",小問の区切り（\item の中の \qquad (k) を \item に）
+III-INT-006,III-17,4,問題文（LaTeX）,"$x+\sqrt{x^2+1}=t$ とおくことにより，次の定積分を求めよ．
+\begin{enumerate}
+  \item $\displaystyle\int_0^1\frac{dx}{\sqrt{x^2+1}}$ \qquad (2) $\displaystyle\int_0^1\sqrt{x^2+1}\,dx$
+\end{enumerate}","$x+\sqrt{x^2+1}=t$ とおくことにより，次の定積分を求めよ．
+\begin{enumerate}
+  \item $\displaystyle\int_0^1\frac{dx}{\sqrt{x^2+1}}$
+  \item $\displaystyle\int_0^1\sqrt{x^2+1}\,dx$
+\end{enumerate}",小問の区切り（\item の中の \qquad (k) を \item に）
+III-INT-007,III-17,2,問題文（LaTeX）,"次の定積分を求めよ．
+\begin{enumerate}
+  \item $\displaystyle\int_0^\pi x^2\sin x\,dx$ \qquad (2) $\displaystyle\int_1^ex^2\log x\,dx$
+\end{enumerate}","次の定積分を求めよ．
+\begin{enumerate}
+  \item $\displaystyle\int_0^\pi x^2\sin x\,dx$
+  \item $\displaystyle\int_1^ex^2\log x\,dx$
+\end{enumerate}",小問の区切り（\item の中の \qquad (k) を \item に）
+III-INT-008,III-17,3,問題文（LaTeX）,"次の定積分を求めよ．
+\begin{enumerate}
+  \item $\displaystyle\int_0^\pi e^x\cos x\,dx$ \qquad (2) $\displaystyle\int_1^e(\log x)^3\,dx$
+\end{enumerate}","次の定積分を求めよ．
+\begin{enumerate}
+  \item $\displaystyle\int_0^\pi e^x\cos x\,dx$
+  \item $\displaystyle\int_1^e(\log x)^3\,dx$
+\end{enumerate}",小問の区切り（\item の中の \qquad (k) を \item に）
+III-INT-009,III-17,2,問題文（LaTeX）,"次の定積分を求めよ．
+\begin{enumerate}
+  \item $\displaystyle\int_0^{\frac\pi2}\sin^3x\cos^2x\,dx$ \qquad (2) $\displaystyle\int_0^\pi\sin^2x\cos^2x\,dx$ \qquad (3) $\displaystyle\int_0^{\frac\pi2}\sin3x\cos x\,dx$
+\end{enumerate}","次の定積分を求めよ．
+\begin{enumerate}
+  \item $\displaystyle\int_0^{\frac\pi2}\sin^3x\cos^2x\,dx$
+  \item $\displaystyle\int_0^\pi\sin^2x\cos^2x\,dx$
+  \item $\displaystyle\int_0^{\frac\pi2}\sin3x\cos x\,dx$
+\end{enumerate}",小問の区切り（\item の中の \qquad (k) を \item に）
+III-INT-016,III-17,4,答え,$f(x)=2-2\cos x$,(1) $f(0)=0$，$f'(0)=0$（$f''(x)+f(x)=2$ は証明）　(2) $f(x)=2-2\cos x$,(1) の答え（$f(0)$，$f'(0)$）の抜けを補い，小問ごとに分けた
+III-INT-141,III-17,3,答え,(2) 証明,(1) 証明　(2) 証明,(1) の答え（証明）を明記

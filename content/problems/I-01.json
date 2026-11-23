@@ -1053,7 +1053,7 @@
    "tex": "\\begin{enumerate}\n  \\item $\\sqrt6$ が無理数であることを用いて，$\\sqrt2+\\sqrt3$ が無理数であることを証明せよ．\n  \\item $\\log_23$ が無理数であることを証明せよ．\n  \\item 実数 $a$ が $a^3+a+1=0$ を満たすとき，$a$ は無理数であることを証明せよ．\n\\end{enumerate}"
   },
   "answer": {
-   "tex": "証明（背理法，有理数解の定理）"
+   "tex": "(1) 証明　(2) 証明　(3) 証明"
   },
   "solutions": [
    {
@@ -1426,7 +1426,7 @@
    {
     "id": "main",
     "kind": "main",
-    "tex": "$x^2-6x+7=0$．$P=(x^2-6x+7)(x^2+x-1)+9x-6$ より $P=9(3+\\sqrt2)-6=\\boldsymbol{21+9\\sqrt2}$．"
+    "tex": "$x^2-6x+7=0$．$P=(x^2-6x+7)(x^2+x+1)+9x-6$ より $P=9(3+\\sqrt2)-6=\\boldsymbol{21+9\\sqrt2}$．"
    }
   ],
   "idea": {

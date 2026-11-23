@@ -127,5 +127,17 @@ ok(('R1', 'R3') not in got and ('R2', 'R3') not in got, '同じ解法でも、�
 sim_text = A.similar_pairs([R1, R2], thr=0.7)
 ok(not sim_text, '役割が近い組は、文字列の類似では見つからない（だから別に比べる）')
 
+# ---- v0.27：答えが同じで問題文の数字も近い組（言いかえた同じ問題）
+D1 = prob('D1', tex='円に内接する四角形 ABCD で，半径 7，BC=CD=7，周の長さ 38 のとき AB，DA を求めよ．', ans=r'$\mathrm{AB}=11$，$\mathrm{DA}=13$')
+D2 = prob('D2', tex='半径 7 の円に内接する四角形 ABCD がある．辺 BC と CD はともに 7，周は 38 である．残りの2辺の長さを求めよ．', ans=r'AB$=11$，DA$=13$')
+D3 = prob('D3', tex='半径 5 の円に内接する四角形で，周 30 のとき AB と DA を求めよ．', ans=r'$\mathrm{AB}=11$，$\mathrm{DA}=13$')
+D4 = prob('D4', tex='命題 1 を示せ．', ans='(1) 証明　(2) 証明')
+D5 = prob('D5', tex='命題 1 を示せ．', ans='(1) 証明　(2) 証明')
+sa = A.same_answer_pairs([D1, D2, D3, D4, D5])
+ok([(a, b) for a, b, _ in sa] == [('D1', 'D2')], f'書き方の違う同じ答え＋数字の重なり → 候補（数字の違う D3、答えが「証明」だけの D4・D5 は出さない）（{sa}）')
+ok(not A.similar_pairs([D1, D2], thr=0.7), '（文字列の類似では見つからない組）')
+pri = A.priority([D1, D2], [], [], [], {}, {}, same_ans=sa)
+ok(pri['D1'][0] == 1 and '答えが同じ' in pri['D1'][1][0], '答えが同じ組は優先1（重複と決めるのは人）')
+
 print(f'audit_problems_test: {passed} 件 OK' + (f'、{failed} 件失敗' if failed else ''))
 sys.exit(1 if failed else 0)

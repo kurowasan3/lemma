@@ -1932,7 +1932,7 @@
    "tex": "$f_1(x)=x^2-6x+11$，$f_2(x)=x^2+2x+1$ に対して，$F(x)=\\min\\{f_1(x),\\ f_2(x)\\}$ と定める．\n\\begin{enumerate}\n  \\item $y=F(x)$ のグラフをかけ．\n  \\item 曲線 $y=F(x)$ と異なる2点で接する直線 $l$ を求めよ．\n  \\item 曲線 $y=F(x)$ と $l$ で囲まれた部分の面積を求めよ．\n\\end{enumerate}"
   },
   "answer": {
-   "tex": "(2) $y=\\frac12x+\\frac7{16}$　(3) $\\frac{16}3$"
+   "tex": "(1) 図示（解答参照）　(2) $y=\\frac12x+\\frac7{16}$　(3) $\\frac{16}3$"
   },
   "solutions": [
    {

@@ -57,7 +57,7 @@
   "theme": "$(x-p)^k$ の積分，部分分数分解",
   "topic": "$(x-p)^k$ の積分，部分分数分解",
   "statement": {
-   "tex": "次の定積分を求めよ．\n\\begin{enumerate}\n  \\item $\\displaystyle\\int_0^1x(1-x)^5\\,dx$ \\qquad (2) $\\displaystyle\\int_0^1\\frac{x+3}{x^2+3x+2}\\,dx$\n\\end{enumerate}"
+   "tex": "次の定積分を求めよ．\n\\begin{enumerate}\n  \\item $\\displaystyle\\int_0^1x(1-x)^5\\,dx$\n  \\item $\\displaystyle\\int_0^1\\frac{x+3}{x^2+3x+2}\\,dx$\n\\end{enumerate}"
   },
   "answer": {
    "tex": "(1) $\\frac1{42}$　(2) $\\log\\frac83$"
@@ -100,7 +100,7 @@
   "theme": "$\\{f(x)\\}^kf'(x)$，$\\frac{f'(x)}{f(x)}$ を見抜いて積分する",
   "topic": "$\\{f(x)\\}^kf'(x)$，$\\frac{f'(x)}{f(x)}$ を見抜いて積分する",
   "statement": {
-   "tex": "次の定積分を求めよ．\n\\begin{enumerate}\n  \\item $\\displaystyle\\int_0^{\\frac\\pi2}\\sin x\\cos^4x\\,dx$ \\qquad (2) $\\displaystyle\\int_0^1\\frac{x}{x^2+1}\\,dx$ \\qquad (3) $\\displaystyle\\int_e^{e^2}\\frac{dx}{x\\log x}$\n\\end{enumerate}"
+   "tex": "次の定積分を求めよ．\n\\begin{enumerate}\n  \\item $\\displaystyle\\int_0^{\\frac\\pi2}\\sin x\\cos^4x\\,dx$\n  \\item $\\displaystyle\\int_0^1\\frac{x}{x^2+1}\\,dx$\n  \\item $\\displaystyle\\int_e^{e^2}\\frac{dx}{x\\log x}$\n\\end{enumerate}"
   },
   "answer": {
    "tex": "(1) $\\frac15$　(2) $\\frac12\\log2$　(3) $\\log2$"
@@ -142,7 +142,7 @@
   "theme": "かたまりを $t$ とおく置換積分",
   "topic": "かたまりを $t$ とおく置換積分",
   "statement": {
-   "tex": "次の定積分を求めよ．\n\\begin{enumerate}\n  \\item $\\displaystyle\\int_0^1\\frac{dx}{1+\\sqrt x}$ \\qquad (2) $\\displaystyle\\int_0^3\\frac{x}{\\sqrt{x+1}}\\,dx$\n\\end{enumerate}"
+   "tex": "次の定積分を求めよ．\n\\begin{enumerate}\n  \\item $\\displaystyle\\int_0^1\\frac{dx}{1+\\sqrt x}$\n  \\item $\\displaystyle\\int_0^3\\frac{x}{\\sqrt{x+1}}\\,dx$\n\\end{enumerate}"
   },
   "answer": {
    "tex": "(1) $2-2\\log2$　(2) $\\frac83$"
@@ -184,7 +184,7 @@
   "theme": "特殊な形の積分",
   "topic": "特殊な形の積分",
   "statement": {
-   "tex": "次の定積分を求めよ．\n\\begin{enumerate}\n  \\item $\\displaystyle\\int_0^1\\frac{dx}{x^2+x+1}$ \\qquad (2) $\\displaystyle\\int_0^1\\sqrt{2x-x^2}\\,dx$ \\qquad (3) $\\displaystyle\\int_{-1}^1\\frac{dx}{(1+x^2)^2}$\n\\end{enumerate}"
+   "tex": "次の定積分を求めよ．\n\\begin{enumerate}\n  \\item $\\displaystyle\\int_0^1\\frac{dx}{x^2+x+1}$\n  \\item $\\displaystyle\\int_0^1\\sqrt{2x-x^2}\\,dx$\n  \\item $\\displaystyle\\int_{-1}^1\\frac{dx}{(1+x^2)^2}$\n\\end{enumerate}"
   },
   "answer": {
    "tex": "(1) $\\frac{\\sqrt3\\pi}9$　(2) $\\frac\\pi4$　(3) $\\frac\\pi4+\\frac12$"
@@ -228,7 +228,7 @@
   "unit": "置換積分",
   "topic": "高度な置き換え",
   "statement": {
-   "tex": "$x+\\sqrt{x^2+1}=t$ とおくことにより，次の定積分を求めよ．\n\\begin{enumerate}\n  \\item $\\displaystyle\\int_0^1\\frac{dx}{\\sqrt{x^2+1}}$ \\qquad (2) $\\displaystyle\\int_0^1\\sqrt{x^2+1}\\,dx$\n\\end{enumerate}"
+   "tex": "$x+\\sqrt{x^2+1}=t$ とおくことにより，次の定積分を求めよ．\n\\begin{enumerate}\n  \\item $\\displaystyle\\int_0^1\\frac{dx}{\\sqrt{x^2+1}}$\n  \\item $\\displaystyle\\int_0^1\\sqrt{x^2+1}\\,dx$\n\\end{enumerate}"
   },
   "answer": {
    "tex": "(1) $\\log(1+\\sqrt2)$　(2) $\\frac{\\sqrt2}2+\\frac12\\log(1+\\sqrt2)$"
@@ -271,7 +271,7 @@
   "unit": "部分積分",
   "topic": "$x^k\\times$(三角，対数)",
   "statement": {
-   "tex": "次の定積分を求めよ．\n\\begin{enumerate}\n  \\item $\\displaystyle\\int_0^\\pi x^2\\sin x\\,dx$ \\qquad (2) $\\displaystyle\\int_1^ex^2\\log x\\,dx$\n\\end{enumerate}"
+   "tex": "次の定積分を求めよ．\n\\begin{enumerate}\n  \\item $\\displaystyle\\int_0^\\pi x^2\\sin x\\,dx$\n  \\item $\\displaystyle\\int_1^ex^2\\log x\\,dx$\n\\end{enumerate}"
   },
   "answer": {
    "tex": "(1) $\\pi^2-4$　(2) $\\frac{2e^3+1}9$"
@@ -314,7 +314,7 @@
   "unit": "部分積分",
   "topic": "指数×三角，$(\\log x)^n$",
   "statement": {
-   "tex": "次の定積分を求めよ．\n\\begin{enumerate}\n  \\item $\\displaystyle\\int_0^\\pi e^x\\cos x\\,dx$ \\qquad (2) $\\displaystyle\\int_1^e(\\log x)^3\\,dx$\n\\end{enumerate}"
+   "tex": "次の定積分を求めよ．\n\\begin{enumerate}\n  \\item $\\displaystyle\\int_0^\\pi e^x\\cos x\\,dx$\n  \\item $\\displaystyle\\int_1^e(\\log x)^3\\,dx$\n\\end{enumerate}"
   },
   "answer": {
    "tex": "(1) $-\\frac{e^\\pi+1}2$　(2) $6-2e$"
@@ -357,7 +357,7 @@
   "theme": "三角関数の積分",
   "topic": "三角関数の積分",
   "statement": {
-   "tex": "次の定積分を求めよ．\n\\begin{enumerate}\n  \\item $\\displaystyle\\int_0^{\\frac\\pi2}\\sin^3x\\cos^2x\\,dx$ \\qquad (2) $\\displaystyle\\int_0^\\pi\\sin^2x\\cos^2x\\,dx$ \\qquad (3) $\\displaystyle\\int_0^{\\frac\\pi2}\\sin3x\\cos x\\,dx$\n\\end{enumerate}"
+   "tex": "次の定積分を求めよ．\n\\begin{enumerate}\n  \\item $\\displaystyle\\int_0^{\\frac\\pi2}\\sin^3x\\cos^2x\\,dx$\n  \\item $\\displaystyle\\int_0^\\pi\\sin^2x\\cos^2x\\,dx$\n  \\item $\\displaystyle\\int_0^{\\frac\\pi2}\\sin3x\\cos x\\,dx$\n\\end{enumerate}"
   },
   "answer": {
    "tex": "(1) $\\frac2{15}$　(2) $\\frac\\pi8$　(3) $\\frac12$"
@@ -687,7 +687,7 @@
    "tex": "関数 $f(x)$ が $f(x)=x^2-\\displaystyle\\int_0^x(x-t)f(t)\\,dt$ を満たす．\n\\begin{enumerate}\n  \\item $f(0),\\ f'(0)$ を求め，$f''(x)+f(x)=2$ を示せ．\n  \\item $h(x)=\\{f(x)-2\\}\\cos x-f'(x)\\sin x$，$k(x)=\\{f(x)-2\\}\\sin x+f'(x)\\cos x$ はともに定数であることを示し，$f(x)$ を求めよ．\n\\end{enumerate}"
   },
   "answer": {
-   "tex": "$f(x)=2-2\\cos x$"
+   "tex": "(1) $f(0)=0$，$f'(0)=0$（$f''(x)+f(x)=2$ は証明）　(2) $f(x)=2-2\\cos x$"
   },
   "solutions": [
    {
@@ -6482,7 +6482,7 @@
    "tex": "\\begin{enumerate}\n  \\item 次の不等式を示せ．\\\\\n  (i) $1\\leqq\\sqrt{1+t^3}\\leqq1+t^2$（$0\\leqq t\\leqq1$）\\qquad (ii) $t^{\\frac32}<\\sqrt{1+t^3}\\leqq\\sqrt2\\,t^{\\frac32}$（$t\\geqq1$）\n  \\item (1) を用いて，$x>1$ のとき，不等式\n  $\\displaystyle\\frac\\pi4+\\sqrt2\\left(1-\\frac1{\\sqrt x}\\right)<\\int_0^x\\frac{dt}{\\sqrt{1+t^3}}<3-\\frac2{\\sqrt x}$ を示せ．\n\\end{enumerate}"
   },
   "answer": {
-   "tex": "(2) 証明"
+   "tex": "(1) 証明　(2) 証明"
   },
   "solutions": [
    {

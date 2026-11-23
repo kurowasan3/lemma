@@ -6823,7 +6823,7 @@
   "theme": "4種の数字による5桁の倍数",
   "topic": "4種の数字による5桁の倍数",
   "statement": {
-   "tex": "数字 1，2，3，4 を重複を許して使ってできる5桁の整数について，次の個数を求めよ．\n\\begin{enumerate}\n  \\item 3の倍数 \\qquad (2) 4の倍数 \\qquad (3) 6の倍数 \\qquad (4) 12の倍数\n\\end{enumerate}"
+   "tex": "数字 1，2，3，4 を重複を許して使ってできる5桁の整数について，次の個数を求めよ．\n\\begin{enumerate}\n  \\item 3の倍数\n  \\item 4の倍数\n  \\item 6の倍数\n  \\item 12の倍数\n\\end{enumerate}"
   },
   "answer": {
    "tex": "(1) $341$　(2) $256$　(3) $171$　(4) $86$"

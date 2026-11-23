@@ -1274,7 +1274,7 @@
    "tex": "2つの双曲線 $C:\\dfrac{x^2}4-y^2=1$，$H:\\dfrac{x^2}4-y^2=-1$ を考える．$H$ 上の点 P$(s,t)$ に対して，方程式 $\\dfrac{s}4x-ty=1$ で定まる直線を $l$ とする．\n\\begin{enumerate}\n  \\item 直線 $l$ は点 P を通らないことを示せ．\n  \\item 直線 $l$ と双曲線 $C$ は異なる2点 Q，R で交わることを示し，$\\triangle$PQR の重心 G の座標を $s,t$ で表せ．\n  \\item $\\triangle$PQR の面積は P の位置によらず一定であることを示し，その値を求めよ．\n\\end{enumerate}"
   },
   "answer": {
-   "tex": "(2) G$(-\\frac s3,-\\frac t3)$　(3) $4\\sqrt2$"
+   "tex": "(1) 証明　(2) G$(-\\frac s3,-\\frac t3)$　(3) $4\\sqrt2$"
   },
   "solutions": [
    {
@@ -2320,7 +2320,7 @@
    "tex": "$\\omega=\\cos\\dfrac{2\\pi}5+i\\sin\\dfrac{2\\pi}5$ とする．\n\\begin{enumerate}\n  \\item $z^5=1$ の解を極形式で表せ．\n  \\item $t=z+\\frac1z$（$z\\neq1$）のとりうる値を求め，$\\cos\\dfrac\\pi5$ を求めよ．\n  \\item $\\displaystyle\\prod_{k=1}^4(2-\\omega^k)$，$\\displaystyle\\prod_{k=1}^4|1-\\omega^k|$ を求めよ．\n\\end{enumerate}"
   },
   "answer": {
-   "tex": "(2) $\\frac{-1\\pm\\sqrt5}2$，$\\cos\\frac\\pi5=\\frac{1+\\sqrt5}4$　(3) 31，5"
+   "tex": "(1) $z=\\cos\\dfrac{2k\\pi}5+i\\sin\\dfrac{2k\\pi}5$（$k=0,1,2,3,4$）　(2) $\\frac{-1\\pm\\sqrt5}2$，$\\cos\\frac\\pi5=\\frac{1+\\sqrt5}4$　(3) 31，5"
   },
   "solutions": [
    {

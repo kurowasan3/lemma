@@ -1031,7 +1031,7 @@
    "tex": "[A] $a_1=5$，$a_{n+1}=2a_n+3^n$ を満たす数列について，$b_n=a_n-3^n$ とおく．$b_{n+1}$ を $b_n$ で表し，$a_n$ を求めよ．\n\n[B] $a_1=2$，$a_{n+1}=2a_n-n^2+2$ で定められる数列 $\\{a_n\\}$ について，\n\\begin{enumerate}\n  \\item $b_n=a_n-(\\alpha n^2+\\beta n+\\gamma)$ が等比数列になるように定数 $\\alpha,\\beta,\\gamma$ を定めよ．\n  \\item 一般項 $a_n$ と，初項から第 $n$ 項までの和 $S_n$ を求めよ．\n\\end{enumerate}"
   },
   "answer": {
-   "tex": "[A] $2^n+3^n$　[B] $(1,2,1)$，$a_n=(n+1)^2-2^n$，$S_n=\\frac{(n+1)(n+2)(2n+3)}6+1-2^{n+1}$"
+   "tex": "[A] $a_n=2^n+3^n$　[B] (1) $(\\alpha,\\beta,\\gamma)=(1,2,1)$　(2) $a_n=(n+1)^2-2^n$，$S_n=\\dfrac{(n+1)(n+2)(2n+3)}6+1-2^{n+1}$"
   },
   "solutions": [
    {
@@ -1302,7 +1302,7 @@
    "tex": "実数 $x$ に対し $[x]$ を $x$ 以下の最大の整数とする．$a_k=\\Bigl[\\dfrac{5k}7\\Bigr]\\ (k=1,2,\\cdots)$ と定める．\n\\begin{enumerate}\n  \\item $a_1,\\cdots,a_7$ を求めよ．\n  \\item $a_{k+7}=a_k+5$ を示せ．\n  \\item 自然数 $n$ に対して $\\displaystyle\\sum_{k=1}^{7n}a_k$ を求めよ．\n\\end{enumerate}"
   },
   "answer": {
-   "tex": "(1) 0,1,2,2,3,4,5　(3) $\\frac{35n^2-n}2$"
+   "tex": "(1) 0,1,2,2,3,4,5　(2) 証明　(3) $\\frac{35n^2-n}2$"
   },
   "solutions": [
    {
