@@ -88,6 +88,36 @@ def builtin_ids(content):
     return {x['id'] for x in json.loads(p.read_text(encoding='utf-8'))} if p.exists() else set()
 
 
+
+NO_MAIN = '主な解法なし'   # 管理表の「解法」列の予約語：主な解法を明示的に空にする（カードの名前には使えない）
+
+
+def select_techniques(spec, tags, tag2tech, tname):
+    """1問の解法の結びつきを決める。戻り値：(how, 結びつく解法 ID, 主な解法 ID（0か1個）, 誤りの一覧)
+
+    spec は管理表の「解法」列（名前か ID の並び）、tags は正規名にしたタグ。
+      - 空欄            → how='auto'  ：タグから自動。話題だけのタグ（weak）以外で最初に当たった解法を主、当たった解法すべてを結びつける
+      - 「主な解法なし」 → how='none'  ：主な解法は空。タグから当たった解法は補助としてだけ結びつける（主は自動で選ばない）
+      - 名前の並び      → how='manual'：書いた解法だけ。先頭が主、残りが補助
+    「主な解法なし」は単独で書く。ほかの解法と並べたら誤り（2番目以降でも先頭でも）で、そのときも主な解法は選ばない。
+    """
+    spec = [x for x in (spec or []) if str(x).strip()]
+    hits = [h for t in tags for h in tag2tech.get(t, [])]
+    if not spec:
+        return 'auto', list(dict.fromkeys(m for m, _ in hits)), [m for m, w in hits if not w][:1], []
+    if NO_MAIN in spec:
+        errs = [] if spec == [NO_MAIN] else [f'「{NO_MAIN}」は単独で書く（ほかの解法と並べられない）：' + '、'.join(spec)]
+        return 'none', list(dict.fromkeys(m for m, _ in hits)), [], errs
+    ms, errs = [], []
+    for x in spec:
+        if x in tname:
+            ms.append(tname[x])
+        else:
+            errs.append(x)
+    ms = list(dict.fromkeys(ms))
+    return 'manual', ms, ms[:1], errs
+
+
 def build(content=ROOT / 'content', out=ROOT / 'data'):
     content, out = Path(content), Path(out)
     tax, meta, problems, files = load_content(content)
@@ -109,6 +139,8 @@ def build(content=ROOT / 'content', out=ROOT / 'data'):
     tag2tech, tname = {}, {}   # タグ（正規名）→ [(解法 ID, 補助だけか)]、名前・ID・旧 ID → 解法 ID
     for t in techs:
         for x in [t['id'], t['name'], *t.get('former', [])]:
+            if x == NO_MAIN:
+                sys.exit(f'解法カード {t["id"]} の ID・名前・旧 ID に予約語「{NO_MAIN}」は使えません')
             tname[x] = t['id']
         weak = {TG.to_canonical(w, cmap) for w in t.get('weak', [])}
         for tg in t['tags']:
@@ -116,7 +148,7 @@ def build(content=ROOT / 'content', out=ROOT / 'data'):
             tag2tech.setdefault(c, []).append((t['id'], c in weak))
     tech_ids = {t['id']: [] for t in techs}
     tech_main = {t['id']: [] for t in techs}
-    manual, bad_tech, links = [], [], {}
+    manual, nomain, bad_tech, links = [], [], [], {}
     index, bodies, hidden, search = [], {}, 0, []
     for p in problems:
         if p['quality']['status'] != 'published':
@@ -146,22 +178,13 @@ def build(content=ROOT / 'content', out=ROOT / 'data'):
                 v = jv['v']
         if v and v != 2:
             e['v'] = v
-        # 解法：管理表の「解法」列があればそれだけ（先頭が主な解法）。なければタグから自動で：
-        # 話題だけのタグ（weak）以外で最初に当たった解法を主、残りを補助とする
-        if p.get('techniques'):
-            ms = []
-            for x in p['techniques']:
-                if x in tname:
-                    ms.append(tname[x])
-                else:
-                    bad_tech.append(f"{p['id']}: {x}")
-            ms = list(dict.fromkeys(ms))
-            main = ms[:1]
+        # 解法：管理表の「解法」列（select_techniques を参照）
+        how, ms, main, errs = select_techniques(p.get('techniques'), e.get('tg', []), tag2tech, tname)
+        bad_tech += [f"{p['id']}: {x}" for x in errs]
+        if how == 'manual':
             manual.append(p['id'])
-        else:
-            hits = [h for t in e.get('tg', []) for h in tag2tech.get(t, [])]
-            ms = list(dict.fromkeys(m for m, _ in hits))
-            main = [m for m, w in hits if not w][:1]
+        elif how == 'none':
+            nomain.append(p['id'])
         for m in ms:
             tech_ids[m].append(p['id'])
         for m in main:
@@ -213,7 +236,7 @@ def build(content=ROOT / 'content', out=ROOT / 'data'):
     tout = [{**{k: v for k, v in t.items() if k not in ('tags', 'weak')}, 'ids': srt(tech_ids[t['id']]), 'main': srt(tech_main[t['id']]),
              'with': [[b, n] for b, n in sorted(co[t['id']].items(), key=lambda x: -x[1]) if n >= 5][:3]} for t in techs]
     (out / 'techniques.json').write_text(json.dumps({'dataVersion': version, 'groups': tdoc['groups'], 'kinds': tdoc.get('kinds', []),
-                                                     'manual': sorted(manual), 'techniques': tout},
+                                                     'manual': sorted(manual), 'nomain': sorted(nomain), 'techniques': tout},
                                                     ensure_ascii=False, separators=(',', ':')), encoding='utf-8')
     return {'techniques': len(techs), 'tech_linked': len(links), 'tech_main': len({i for v in tech_main.values() for i in v}), 'bad_tech': bad_tech,
             'collections': len(cols), 'count': len(index), 'choice': sum(1 for e in index if e.get('ch')), 'fields': len(fields), 'hidden': hidden, 'auto': sum(1 for e in index if e.get('in')),
@@ -227,7 +250,7 @@ def main():
           f"非表示 {r['hidden']}問、dataVersion {r['dataVersion']}）")
     print(f"解法カード {r['techniques']}枚（結びつく問題 {r['tech_linked']}問・うち主な解法がある {r['tech_main']}問）")
     for b in r['bad_tech']:
-        print('  解法の名前が見つかりません', b)
+        print('  解法の指定の誤り（名前が無い・予約語の位置）', b)
     if r['unknown']:
         print('文章中の未対応命令（名前だけ表示）:', ', '.join(r['unknown']))
     for w in r['warn'][:50]:

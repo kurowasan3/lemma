@@ -9563,6 +9563,9 @@
    "format": "lemma-input/1",
    "spec": "(1) 半径：{1, 5}\n(2) 4sqrt(2)"
   },
+  "techniques": [
+   "主な解法なし"
+  ],
   "methods": [],
   "tags": [
    "円の方程式",

@@ -1,0 +1,22 @@
+﻿問題ID,区分,管理表の解法列（復旧版コピー）,期待する主な解法ID,期待する補助解法ID,v0.28.1 の主な解法ID,アプリの主な解法ID,アプリの補助解法ID,取り込み・再ビルド後の主な解法ID,取り込み・再ビルド後の補助解法ID,照合
+A-GEO-082,v0.28.1（11件）,方べきの定理・円の性質、接線（接点を文字で置く）,power-point,tangent,power-point,power-point,tangent,power-point,tangent,一致
+II-GEO-012,v0.28.1（11件）,領域と最大最小（線形計画）、接線（接点を文字で置く）,linear-prog,tangent,linear-prog,linear-prog,tangent,linear-prog,tangent,一致
+II-TRI-065,v0.28.1（11件）,内積の利用、接線（接点を文字で置く）,inner-product,tangent,inner-product,inner-product,tangent,inner-product,tangent,一致
+II-CAL-035,v0.28.1（11件）,面積（上下関係と交点）、接線（接点を文字で置く）,area,tangent,area,area,tangent,area,tangent,一致
+II-CAL-098,v0.28.1（11件）,面積（上下関係と交点）、接線（接点を文字で置く）、面積比・メネラウス・チェバ,area,area-ratio、tangent,area,area,area-ratio、tangent,area,area-ratio、tangent,一致
+II-CAL-166,v0.28.1（11件）,相加平均・相乗平均の不等式、最大・最小の求め方、接線（接点を文字で置く）,am-gm,max-min-param、tangent,am-gm,am-gm,max-min-param、tangent,am-gm,max-min-param、tangent,一致
+II-CAL-303,v0.28.1（11件）,凸性（接線・弦との比較）、増減表とグラフの概形、接線（接点を文字で置く）,convexity,monotonic、tangent,convexity,convexity,monotonic、tangent,convexity,monotonic、tangent,一致
+III-DIF-321,v0.28.1（11件）,微分による不等式の証明、平均値の定理、増減表とグラフの概形、接線（接点を文字で置く）,ineq-proof,monotonic、mvt、tangent,ineq-proof,ineq-proof,monotonic、mvt、tangent,ineq-proof,monotonic、mvt、tangent,一致
+III-DIF-288,v0.28.1（11件）,回転体の体積、接線（接点を文字で置く）、逆像法（実数条件）,rotation-volume,inverse-image、tangent,rotation-volume,rotation-volume,inverse-image、tangent,rotation-volume,inverse-image、tangent,一致
+III-INT-215,v0.28.1（11件）,回転体の体積、接線（接点を文字で置く）、部分積分,rotation-volume,parts、tangent,rotation-volume,rotation-volume,parts、tangent,rotation-volume,parts、tangent,一致
+III-INT-572,v0.28.1（11件）,回転体の体積、剰余の定理・整式の割り算、接線（接点を文字で置く）、部分積分,rotation-volume,parts、remainder、tangent,rotation-volume,rotation-volume,parts、remainder、tangent,rotation-volume,parts、remainder、tangent,一致
+C-CUR-193,v0.28.2 A：既存カードへ,2次曲線（焦点・媒介変数）、接線（接点を文字で置く）,conic,tangent,tangent,conic,tangent,conic,tangent,一致
+C-CUR-356,v0.28.2 A：既存カードへ,通過領域、2次曲線（焦点・媒介変数）、接線（接点を文字で置く）,region,conic、tangent,tangent,region,conic、tangent,region,conic、tangent,一致
+C-VEC-181,v0.28.2 A：既存カードへ,逆像法（実数条件）、接線（接点を文字で置く）,inverse-image,tangent,tangent,inverse-image,tangent,inverse-image,tangent,一致
+C-VEC-441,v0.28.2 A：既存カードへ,逆像法（実数条件）、接線（接点を文字で置く）,inverse-image,tangent,tangent,inverse-image,tangent,inverse-image,tangent,一致
+III-DIF-099,v0.28.2 A：既存カードへ,解の配置、接線（接点を文字で置く）,root-location,tangent,tangent,root-location,tangent,root-location,tangent,一致
+III-DIF-122,v0.28.2 A：既存カードへ,定数分離、接線（接点を文字で置く）,sep-const,tangent,tangent,sep-const,tangent,sep-const,tangent,一致
+III-INT-086,v0.28.2 A：既存カードへ,定数分離、接線（接点を文字で置く）,sep-const,tangent,tangent,sep-const,tangent,sep-const,tangent,一致
+III-DIF-196,v0.28.2 A：既存カードへ,最大・最小の求め方、接線（接点を文字で置く）、回転体の体積、体積（断面積の積分）,max-min-param,rotation-volume、tangent、volume-section,tangent,max-min-param,rotation-volume、tangent、volume-section,max-min-param,rotation-volume、tangent、volume-section,一致
+II-GEO-212,v0.28.2 C：主な解法なし,主な解法なし,なし,tangent,tangent,なし,tangent,なし,tangent,一致
+III-DIF-131,v0.28.2 C：主な解法なし,主な解法なし,なし,tangent,tangent,なし,tangent,なし,tangent,一致

@@ -64,7 +64,7 @@ node tests/run.mjs                                       # 検査（全部 ✓ �
 - 分野ID（`I-01` など）は `content/taxonomy.json` で固定されていて、「分野一覧」シートの並びを変えても変わりません。新しい分野を足すときは `--new-fields` を付けて取り込みます
 - 問題ID は変えない・消さない。消えると `tests/golden/ids.txt` との照合で検査が失敗します。出さない問題はタグに `非表示`（`content/` には残る）
 - 問題を追加して検査が「問題ID の台帳」で止まることはありません（増えるのは自由）。台帳を最新にするには `python3 tools/audit_data.py --write-golden`
-- 数式は `$...$` と `\[...\]`、文章の `enumerate`・`itemize`・`tabular`・`\textbf`・`\fbox` などは自動で変換します。難易度は 0=基礎 〜 5=数学探究。「頻出度」列（1〜3、または 低・中・高。旧名「教育的価値」も可）は空欄なら自動判定（content/values.json）を使う 「解法」列（解法カードの名前か ID を読点区切り）に書いた問題は、タグからの自動の結びつきの代わりにその指定を使う（先頭が主な解法）。
+- 数式は `$...$` と `\[...\]`、文章の `enumerate`・`itemize`・`tabular`・`\textbf`・`\fbox` などは自動で変換します。難易度は 0=基礎 〜 5=数学探究。「頻出度」列（1〜3、または 低・中・高。旧名「教育的価値」も可）は空欄なら自動判定（content/values.json）を使う 「解法」列（解法カードの名前か ID を読点区切り）に書いた問題は、タグからの自動の結びつきの代わりにその指定を使う（先頭が主な解法。`主な解法なし` と書くと主な解法を空にする）。
 - 問題セットを作るとき：`content/collections/` に既存のファイルをまねて JSON を置き、`python3 tools/build_app_data.py`。問題ID の並びがそのまま出題順
 - タグの言い換えをまとめるとき：`content/tags.json` の該当タグの `aliases` に別の表記を足して `python3 tools/build_app_data.py`
 - 前の方法（Excel → data/ を直接）に戻すとき：`python3 tools/import_xlsx.py Lemma問題管理表.xlsx data --legacy`

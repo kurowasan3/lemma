@@ -14,6 +14,9 @@ data/techniques.json の問題 ID が問題の索引にあるか、管理表の�
 import json, sys, csv, collections
 from pathlib import Path
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from build_app_data import NO_MAIN  # noqa: E402
+
 ROOT = Path(__file__).resolve().parent.parent
 GOLDEN = ROOT / 'tests' / 'golden' / 'techniques.txt'
 REQUIRED = ('summary', 'essence', 'when', 'cue', 'caution')
@@ -60,6 +63,8 @@ def check(root=ROOT):
     seen = {}
     for t in ts:
         for x in [t['id'], t['name'], *t.get('former', [])]:
+            if x == NO_MAIN:
+                E.append(f'{t["id"]}: ID・名前・旧 ID に予約語「{NO_MAIN}」は使えない')
             if x in seen and seen[x] != t['id']:
                 E.append(f'解法の ID・名前・旧 ID「{x}」が {seen[x]} と {t["id"]} で重複')
             seen[x] = t['id']
@@ -112,6 +117,16 @@ def check(root=ROOT):
             E.append(f'{t["id"]}: 主な解法の問題が結びつきに含まれていない')
         if len(t['ids']) < 10:
             W['結びつく問題が10問未満の解法'] += 1
+    # 管理表で「主な解法なし」と指定した問題：索引にあり、どの解法の主にもなっておらず、解法を名前で指定した問題と重ならない
+    explicit_none = set(data.get('nomain', []))
+    mains = {pid for t in data['techniques'] for pid in t['main']}
+    for pid in sorted(explicit_none):
+        if pid not in pidx:
+            E.append(f'「{NO_MAIN}」の問題 {pid} が索引に無い')
+        if pid in mains:
+            E.append(f'{pid}: 「{NO_MAIN}」と指定したのに主な解法がある')
+    for pid in sorted(explicit_none & set(data.get('manual', []))):
+        E.append(f'{pid}: 「{NO_MAIN}」と解法の名前の指定が両方ある')
     # 分野が外れている結びつき：その解法の結びつきのうち 3% 未満の分野にある、タグから自動の結びつき
     manual = set(data.get('manual', []))
     field_share = {}
@@ -123,7 +138,7 @@ def check(root=ROOT):
     unlinked = [e for e in index if e['id'] not in by_problem]
     many = [(pid, tl) for pid, tl in by_problem.items() if len(tl) >= 5]
     nomain = [pid for pid in by_problem if not any(pid in dts[t]['main'] for t in by_problem[pid])]
-    rep = {'problems': len(index), 'linked': len(by_problem), 'with_main': len(by_problem) - len(nomain), 'manual': len(manual),
+    rep = {'problems': len(index), 'linked': len(by_problem), 'with_main': len(by_problem) - len(nomain), 'manual': len(manual), 'explicit_none': len(explicit_none),
            'unlinked': unlinked, 'suspect': suspect, 'many': many, 'nomain': nomain,
            'per_problem': collections.Counter(len(v) for v in by_problem.values())}
     if suspect:
@@ -144,7 +159,7 @@ def main():
         return 0
     E, W, rep = check()
     n = rep['problems']
-    print(f"解法：問題 {n}問のうち 結びつく {rep['linked']}問（{rep['linked'] / n:.0%}）・主な解法がある {rep['with_main']}問・管理表で指定 {rep['manual']}問")
+    print(f"解法：問題 {n}問のうち 結びつく {rep['linked']}問（{rep['linked'] / n:.0%}）・主な解法がある {rep['with_main']}問・管理表で指定 {rep['manual']}問（ほかに「{NO_MAIN}」の指定 {rep['explicit_none']}問）")
     print('  1問あたりの解法の数：' + '、'.join(f'{k}個 {v}問' for k, v in sorted(rep['per_problem'].items())))
     unl = collections.Counter(e['f'] for e in rep['unlinked'])
     print('  結びつかない問題（分野別）：' + '、'.join(f'{f} {c}' for f, c in unl.most_common()))

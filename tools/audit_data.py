@@ -15,6 +15,9 @@ import sys
 from collections import Counter
 from pathlib import Path
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from build_app_data import NO_MAIN  # noqa: E402
+
 ROOT = Path(__file__).resolve().parent.parent
 DATA, CONTENT, GOLDEN = ROOT / 'data', ROOT / 'content', ROOT / 'tests' / 'golden'
 BUILTIN_ID = re.compile(r'^q\d+$')
@@ -190,9 +193,14 @@ def audit(xlsx=None):
                 for x in t['tags']:
                     if tagnames and x not in tagnames:
                         W['解法カードのタグがタグ辞書に無い'] += 1
+            if NO_MAIN in names or any(NO_MAIN in t.get('former', []) for t in td['techniques']):
+                E.append(f'解法カードの ID・名前に予約語「{NO_MAIN}」が使われている')
             for _, p in content:
-                for x in p.get('techniques', []):
-                    if x not in names:
+                spec = p.get('techniques', [])
+                if NO_MAIN in spec and spec != [NO_MAIN]:
+                    E.append(f'{p["id"]}: 「解法」の「{NO_MAIN}」は単独で書く（ほかの解法と並べられない）')
+                for x in spec:
+                    if x not in names and x != NO_MAIN:
                         E.append(f'{p["id"]}: 「解法」の {x} が解法カードに無い')
     for name in ('search.json', 'collections.json', 'techniques.json'):
         f = DATA / name
