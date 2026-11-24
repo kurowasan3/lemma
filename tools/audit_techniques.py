@@ -7,7 +7,7 @@
 
 検査すること（誤り）：ID・名前・旧 ID の重複、pre/rec/rel/alt の参照先、自分自身への参照、pre＋rec の循環、
 種類・分類の値、必須の文章の欠け、以前あった解法 ID の消失（tests/golden/techniques.txt。旧 ID は former に残せばよい）、
-data/techniques.json の問題 ID が問題の索引にあるか、管理表の「解法」列の名前。
+data/techniques.json の問題 ID が問題の索引にあるか、管理表の「主な解法」「補助の解法」の指定（tools/audit_data.py）。
 報告すること（警告）：前提の多すぎる解法、問題の少ない解法、結びつかない問題、分野が外れている結びつき（要確認）、
 解法が5つ以上結びつく問題。
 """
@@ -15,7 +15,7 @@ import json, sys, csv, collections
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from build_app_data import NO_MAIN  # noqa: E402
+from build_app_data import NO_MAIN, RESERVED  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
 GOLDEN = ROOT / 'tests' / 'golden' / 'techniques.txt'
@@ -63,8 +63,8 @@ def check(root=ROOT):
     seen = {}
     for t in ts:
         for x in [t['id'], t['name'], *t.get('former', [])]:
-            if x == NO_MAIN:
-                E.append(f'{t["id"]}: ID・名前・旧 ID に予約語「{NO_MAIN}」は使えない')
+            if x in RESERVED:
+                E.append(f'{t["id"]}: ID・名前・旧 ID に予約語「{x}」は使えない')
             if x in seen and seen[x] != t['id']:
                 E.append(f'解法の ID・名前・旧 ID「{x}」が {seen[x]} と {t["id"]} で重複')
             seen[x] = t['id']
@@ -79,7 +79,7 @@ def check(root=ROOT):
             if not str(t.get(k, '')).strip():
                 E.append(f'{t["id"]}: {k} が空')
         if not t.get('tags'):
-            W['タグの無い解法（管理表の「解法」列でしか結びつかない）'] += 1
+            W['タグの無い解法（管理表の「主な解法」「補助の解法」列でしか結びつかない）'] += 1
         for k in ('pre', 'rec', 'rel', 'alt'):
             for x in t.get(k, []):
                 if x not in idset:
@@ -117,7 +117,7 @@ def check(root=ROOT):
             E.append(f'{t["id"]}: 主な解法の問題が結びつきに含まれていない')
         if len(t['ids']) < 10:
             W['結びつく問題が10問未満の解法'] += 1
-    # 管理表で「主な解法なし」と指定した問題：索引にあり、どの解法の主にもなっておらず、解法を名前で指定した問題と重ならない
+    # 管理表で「主な解法なし」と指定した問題：索引にあり、どの解法の主にもなっておらず、明示の指定（manual）に含まれる
     explicit_none = set(data.get('nomain', []))
     mains = {pid for t in data['techniques'] for pid in t['main']}
     for pid in sorted(explicit_none):
@@ -125,8 +125,8 @@ def check(root=ROOT):
             E.append(f'「{NO_MAIN}」の問題 {pid} が索引に無い')
         if pid in mains:
             E.append(f'{pid}: 「{NO_MAIN}」と指定したのに主な解法がある')
-    for pid in sorted(explicit_none & set(data.get('manual', []))):
-        E.append(f'{pid}: 「{NO_MAIN}」と解法の名前の指定が両方ある')
+    for pid in sorted(explicit_none - set(data.get('manual', []))):
+        E.append(f'{pid}: 「{NO_MAIN}」なのに明示の指定（manual）に無い')
     # 分野が外れている結びつき：その解法の結びつきのうち 3% 未満の分野にある、タグから自動の結びつき
     manual = set(data.get('manual', []))
     field_share = {}

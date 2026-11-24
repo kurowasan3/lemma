@@ -3934,8 +3934,8 @@
   "idea": {
    "tex": "$e^x\\geqq ax+b$ が全実数で成り立つ $\\iff$ 直線が接線以下．最適な直線は積分区間の中点での接線．"
   },
-  "techniques": [
-   "定数分離",
+  "technique_main": "定数分離",
+  "technique_support": [
    "接線（接点を文字で置く）"
   ],
   "methods": [],
@@ -9996,8 +9996,8 @@
    "format": "lemma-input/1",
    "spec": "(1) 記述\n(2) π(e^3/6-e/2)"
   },
-  "techniques": [
-   "回転体の体積",
+  "technique_main": "回転体の体積",
+  "technique_support": [
    "接線（接点を文字で置く）",
    "部分積分"
   ],
@@ -25664,8 +25664,8 @@
    "format": "lemma-input/1",
    "spec": "(1) 記述\n(2) $V_n$：π^2(10π^2(12n^2+1)-51)/192\n(3) 5π^4/8"
   },
-  "techniques": [
-   "回転体の体積",
+  "technique_main": "回転体の体積",
+  "technique_support": [
    "剰余の定理・整式の割り算",
    "接線（接点を文字で置く）",
    "部分積分"

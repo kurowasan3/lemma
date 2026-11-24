@@ -24,11 +24,15 @@ except ImportError:
 ROOT = Path(__file__).resolve().parent.parent
 SUBJECT_KEY = {'数I': 'I', '数A': 'A', '数II': 'II', '数B': 'B', '数III': 'III', '数C': 'C', '融合': 'X'}
 # 見出しの名前 → 内部の名前（列の順番が変わっても読めるように、見出しで探す）
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from build_app_data import NO_MAIN, NO_SUPPORT  # noqa: E402
+
 HEADERS = {'ID': 'id', '作成日': 'date', '科目': 'subject', '分野': 'field', '単元・テーマ': 'theme', '難易度': 'level',
            '想定時間(分)': 'minutes', '問題文（LaTeX）': 'q', '答え': 'answer', '解答・解説': 'solution',
            '核となるアイデア': 'idea', '参考元（非公開）': 'source', '作成方法': 'method', '検証:二重解答': 'v1',
            '検証:SymPy等': 'v2', '検証:人間確認': 'v3', '検証済み': 'verified', 'タグ': 'tags', 'メモ': 'memo',
-           '入力用の答え': 'input', '図の式': 'figure', '頻出度': 'value', '教育的価値': 'value', '解法': 'techniques'}
+           '入力用の答え': 'input', '図の式': 'figure', '頻出度': 'value', '教育的価値': 'value',
+           '主な解法': 'technique_main', '補助の解法': 'technique_support', '解法': 'legacy_techniques'}
 PRIVATE = {'source', 'memo'}          # 決して書き出さない列
 INCLUDE_METHOD = False                # 「作成方法」を公開データに入れるか（未決定のため入れない）
 SCHEMA = 'lemma.problem/1'
@@ -46,6 +50,7 @@ def read_sheet(src):
     cols = [HEADERS.get(h) for h in head]
     if 'id' not in cols or 'q' not in cols:
         raise ImportFailure('問題一覧シートの見出しに「ID」「問題文（LaTeX）」が見つかりません')
+    have = {c for c in cols if c}
     recs = []
     for n, r in enumerate(ws.iter_rows(min_row=2, values_only=True), start=2):
         if not r or not r[0]:
@@ -53,8 +58,55 @@ def read_sheet(src):
         rec = {k: None for k in HEADERS.values() if k not in PRIVATE}
         rec.update({k: v for k, v in zip(cols, r) if k and k not in PRIVATE})
         rec['_row'] = n
+        rec['_cols'] = have
         recs.append(rec)
     return recs
+
+
+# 解法の列。正式な列は「主な解法」「補助の解法」の2つ（v0.29.0〜）。
+#   どちらも空欄          … 未指定（タグから自動）
+#   「主な解法」          … 解法カードの名前か ID を1つ、または「主な解法なし」（明示の主なし）
+#   「補助の解法」        … 名前か ID を読点区切り（書いた順を保つ）、または「補助の解法なし」（明示の補助なし）
+#   片方だけ空欄          … 誤り（未指定と明示の「なし」を混ぜない。取り込みを止める）
+# 旧「解法」列（v0.28.x の1列：先頭が主、残りが補助）は v0.29.0 の移行の期間だけ読む。
+#   新しい2列と一緒にあれば誤り。「主な解法なし」の行は誤り（補助がタグから来ていたので、1列からは補助を決められない）。
+#   旧形式の管理表は tools/xlsx_technique_columns.py で新しい2列の管理表に変換する。旧列の読み込みは v0.29.1 で消す。
+def parse_techniques(rec):
+    """戻り値：(項目の dict（未指定なら空）, 誤りの一覧)"""
+    cols = rec['_cols']
+    new_cols = {'technique_main', 'technique_support'} & cols
+    if 'legacy_techniques' in cols and new_cols:
+        return {}, ['「解法」列と「主な解法」「補助の解法」列が両方ある（どちらか一方の形式にする）']
+    if new_cols and len(new_cols) == 1:
+        return {}, ['「主な解法」「補助の解法」の列は2つそろえて置く']
+    if new_cols:
+        m = str(rec.get('technique_main') or '').strip()
+        sup = str(rec.get('technique_support') or '').strip()
+        if not m and not sup:
+            return {}, []
+        if not m or not sup:
+            return {}, ['「主な解法」「補助の解法」の片方だけが空欄（未指定なら両方空欄、なしなら「主な解法なし」「補助の解法なし」と書く）']
+        errs = []
+        ms = split_tags(m)
+        if len(ms) != 1:
+            errs.append(f'「主な解法」は1つだけ書く：{m}')
+        main = None if ms == [NO_MAIN] else (ms[0] if ms else None)
+        if main == NO_SUPPORT:
+            errs.append('「主な解法」に「補助の解法なし」は書けない')
+        sp = split_tags(sup)
+        if sp == [NO_SUPPORT]:
+            sp = []
+        elif NO_SUPPORT in sp or NO_MAIN in sp:
+            errs.append(f'「補助の解法」の予約語は単独で書く（「主な解法なし」は書けない）：{sup}')
+        return {'technique_main': main, 'technique_support': sp}, errs
+    if 'legacy_techniques' in cols:
+        spec = split_tags(str(rec.get('legacy_techniques') or ''))
+        if not spec:
+            return {}, []
+        if NO_MAIN in spec:
+            return {}, ['旧「解法」列の「主な解法なし」は変換できない（tools/xlsx_technique_columns.py で新しい2列の管理表を作る）']
+        return {'technique_main': spec[0], 'technique_support': spec[1:]}, []
+    return {}, []
 
 
 FIG_MODES = {'平面': '2d', '2d': '2d', '2D': '2d', '複素平面': 'complex', '複素数平面': 'complex', 'complex': 'complex', 'ベクトル': '2d', 'vector': '2d',
@@ -190,9 +242,7 @@ def to_problem(rec, key, issues):
     val = parse_value(rec.get('value'))
     if val:
         p['value'] = val
-    tech = split_tags(str(rec.get('techniques') or ''))
-    if tech:
-        p['techniques'] = tech   # 解法カードの名前か ID（読点・カンマ区切り）。build_app_data.py で照合する
+    p.update(rec.get('_tech') or {})   # technique_main・technique_support（parse_techniques。名前の照合は build_app_data.py）
     p['methods'] = []
     p['tags'] = [t for t in split_tags(raw_tags) if t != '非表示']
     prov = {}
@@ -242,6 +292,11 @@ def convert(src, content=ROOT / 'content', new_fields=False):
                 continue
             key = tax.add(subject, field)
             notes.append(f'新しい分野を追加しました：{key} {subject}／{field}')
+        tech, terrs = parse_techniques(rec)
+        if terrs:
+            errors += [f'{where}: {x}' for x in terrs]
+            continue
+        rec['_tech'] = tech
         issues = []
         out.setdefault(key, []).append(to_problem(rec, key, issues))
         if issues:

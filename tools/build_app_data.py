@@ -89,33 +89,69 @@ def builtin_ids(content):
 
 
 
-NO_MAIN = '主な解法なし'   # 管理表の「解法」列の予約語：主な解法を明示的に空にする（カードの名前には使えない）
+NO_MAIN = '主な解法なし'        # 管理表「主な解法」列の予約語：主な解法を明示的に空にする（content では technique_main: null）
+NO_SUPPORT = '補助の解法なし'   # 管理表「補助の解法」列の予約語：補助の解法を明示的に空にする（content では technique_support: []）
+RESERVED = (NO_MAIN, NO_SUPPORT)  # どちらも解法カードの ID・名前・旧 ID には使えない
+MISSING = object()              # content の問題に項目が無い（＝未指定）
 
 
-def select_techniques(spec, tags, tag2tech, tname):
-    """1問の解法の結びつきを決める。戻り値：(how, 結びつく解法 ID, 主な解法 ID（0か1個）, 誤りの一覧)
+def technique_spec(p):
+    """content の問題から (technique_main, technique_support) を取り出す。項目が無ければ MISSING。"""
+    return p.get('technique_main', MISSING), p.get('technique_support', MISSING)
 
-    spec は管理表の「解法」列（名前か ID の並び）、tags は正規名にしたタグ。
-      - 空欄            → how='auto'  ：タグから自動。話題だけのタグ（weak）以外で最初に当たった解法を主、当たった解法すべてを結びつける
-      - 「主な解法なし」 → how='none'  ：主な解法は空。タグから当たった解法は補助としてだけ結びつける（主は自動で選ばない）
-      - 名前の並び      → how='manual'：書いた解法だけ。先頭が主、残りが補助
-    「主な解法なし」は単独で書く。ほかの解法と並べたら誤り（2番目以降でも先頭でも）で、そのときも主な解法は選ばない。
+
+def select_techniques(main, support, tags, tag2tech, tname):
+    """1問の解法の結びつきを決める。戻り値：(how, 結びつく解法 ID（主が先、補助は書いた順）, 主な解法 ID（0か1個）, 誤りの一覧)
+
+    main・support は content の technique_main・technique_support（項目が無ければ MISSING）、tags は正規名にしたタグ。
+      - 両方とも未指定        → how='auto'  ：タグから自動。話題だけのタグ（weak）以外で最初に当たった解法を主、当たった解法すべてを結びつける
+      - 両方とも指定          → 明示の指定。タグは使わない
+          main が名前・ID     → how='manual'：その解法が主
+          main が None        → how='none'  ：主な解法なし（明示）
+          support が並び      → 補助（書いた順）。[] は補助なし（明示）
+      - 片方だけ指定          → 誤り（未指定と明示の「なし」を混ぜない）
+    誤り：片方だけの指定・無い解法の名前・補助の中の重複・主と同じ解法を補助に書く・予約語を名前として使う・旧形式の techniques。
+    誤りがあっても主は推測しない（main が名前として正しいときだけ主にする）。
     """
-    spec = [x for x in (spec or []) if str(x).strip()]
     hits = [h for t in tags for h in tag2tech.get(t, [])]
-    if not spec:
+    if main is MISSING and support is MISSING:
         return 'auto', list(dict.fromkeys(m for m, _ in hits)), [m for m, w in hits if not w][:1], []
-    if NO_MAIN in spec:
-        errs = [] if spec == [NO_MAIN] else [f'「{NO_MAIN}」は単独で書く（ほかの解法と並べられない）：' + '、'.join(spec)]
-        return 'none', list(dict.fromkeys(m for m, _ in hits)), [], errs
-    ms, errs = [], []
-    for x in spec:
-        if x in tname:
-            ms.append(tname[x])
+    errs = []
+    if main is MISSING or support is MISSING:
+        errs.append('technique_main と technique_support は両方そろえて書く（片方だけは誤り）')
+    main_id = None
+    if main is not MISSING and main is not None:
+        if not isinstance(main, str) or main in RESERVED or main not in tname:
+            errs.append(f'主な解法「{main}」が解法カードに無い')
         else:
-            errs.append(x)
-    ms = list(dict.fromkeys(ms))
-    return 'manual', ms, ms[:1], errs
+            main_id = tname[main]
+    sup_ids = []
+    if support is not MISSING:
+        if not isinstance(support, list):
+            errs.append('technique_support は並び（リスト）で書く')
+            support = []
+        for x in support:
+            if not isinstance(x, str) or x in RESERVED or x not in tname:
+                errs.append(f'補助の解法「{x}」が解法カードに無い')
+                continue
+            t = tname[x]
+            if t == main_id:
+                errs.append(f'補助の解法「{x}」が主な解法と同じ')
+            elif t in sup_ids:
+                errs.append(f'補助の解法「{x}」が重複している')
+            else:
+                sup_ids.append(t)
+    ms = ([main_id] if main_id else []) + sup_ids
+    return ('manual' if main_id else 'none'), ms, ([main_id] if main_id else []), errs
+
+
+def spec_errors(p, tname):
+    """管理表由来の解法の指定の誤り（検査・テスト用。タグは見ない）"""
+    errs = []
+    if 'techniques' in p:
+        errs.append('旧形式の techniques が残っている（technique_main・technique_support に移す）')
+    errs += select_techniques(*technique_spec(p), [], {}, tname)[3]
+    return errs
 
 
 def build(content=ROOT / 'content', out=ROOT / 'data'):
@@ -139,8 +175,8 @@ def build(content=ROOT / 'content', out=ROOT / 'data'):
     tag2tech, tname = {}, {}   # タグ（正規名）→ [(解法 ID, 補助だけか)]、名前・ID・旧 ID → 解法 ID
     for t in techs:
         for x in [t['id'], t['name'], *t.get('former', [])]:
-            if x == NO_MAIN:
-                sys.exit(f'解法カード {t["id"]} の ID・名前・旧 ID に予約語「{NO_MAIN}」は使えません')
+            if x in RESERVED:
+                sys.exit(f'解法カード {t["id"]} の ID・名前・旧 ID に予約語「{x}」は使えません')
             tname[x] = t['id']
         weak = {TG.to_canonical(w, cmap) for w in t.get('weak', [])}
         for tg in t['tags']:
@@ -178,13 +214,15 @@ def build(content=ROOT / 'content', out=ROOT / 'data'):
                 v = jv['v']
         if v and v != 2:
             e['v'] = v
-        # 解法：管理表の「解法」列（select_techniques を参照）
-        how, ms, main, errs = select_techniques(p.get('techniques'), e.get('tg', []), tag2tech, tname)
+        # 解法：管理表の「主な解法」「補助の解法」列（select_techniques を参照）
+        how, ms, main, errs = select_techniques(*technique_spec(p), e.get('tg', []), tag2tech, tname)
+        if 'techniques' in p:
+            errs = ['旧形式の techniques が残っている（technique_main・technique_support に移す）'] + errs
         bad_tech += [f"{p['id']}: {x}" for x in errs]
-        if how == 'manual':
-            manual.append(p['id'])
-        elif how == 'none':
-            nomain.append(p['id'])
+        if how != 'auto':
+            manual.append(p['id'])      # 明示の指定（主な解法なしも含む）。画面の「（自動）」の表示に使う
+        if how == 'none':
+            nomain.append(p['id'])      # 明示の「主な解法なし」
         for m in ms:
             tech_ids[m].append(p['id'])
         for m in main:
@@ -250,7 +288,7 @@ def main():
           f"非表示 {r['hidden']}問、dataVersion {r['dataVersion']}）")
     print(f"解法カード {r['techniques']}枚（結びつく問題 {r['tech_linked']}問・うち主な解法がある {r['tech_main']}問）")
     for b in r['bad_tech']:
-        print('  解法の指定の誤り（名前が無い・予約語の位置）', b)
+        print('  解法の指定の誤り', b)
     if r['unknown']:
         print('文章中の未対応命令（名前だけ表示）:', ', '.join(r['unknown']))
     for w in r['warn'][:50]:

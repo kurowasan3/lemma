@@ -540,8 +540,8 @@
    "format": "lemma-input/1",
    "spec": "(1) 記述\n(2) 6"
   },
-  "techniques": [
-   "領域と最大最小（線形計画）",
+  "technique_main": "領域と最大最小（線形計画）",
+  "technique_support": [
    "接線（接点を文字で置く）"
   ],
   "methods": [],
@@ -9563,8 +9563,9 @@
    "format": "lemma-input/1",
    "spec": "(1) 半径：{1, 5}\n(2) 4sqrt(2)"
   },
-  "techniques": [
-   "主な解法なし"
+  "technique_main": null,
+  "technique_support": [
+   "接線（接点を文字で置く）"
   ],
   "methods": [],
   "tags": [
@@ -11435,6 +11436,10 @@
    "format": "lemma-input/1",
    "spec": "(1) 証明\n(2) $\\rho$：sqrt(abc/(a+b+c))\n(3) $(a,b,c)$：(1, 2, 3)"
   },
+  "technique_main": null,
+  "technique_support": [
+   "円の接線と半径（垂直・接線の長さ）"
+  ],
   "methods": [],
   "tags": [
    "根軸",
@@ -11620,8 +11625,8 @@
   "idea": {
    "tex": "円の外部または周上の点から引いた接線の長さの2乗は（中心までの距離）$^2-$（半径）$^2$．係数 $1,1,-2$ で組み合わせると $x^2+y^2$ の項が消え，条件は円ではなく直線になる．その直線上でも「どの円の内部にもない」という条件で一部が除かれるので，最小値は除かれた区間の端で起こる．"
   },
-  "techniques": [
-   "円の接線と半径（垂直・接線の長さ）",
+  "technique_main": "円の接線と半径（垂直・接線の長さ）",
+  "technique_support": [
    "接線（接点を文字で置く）"
   ],
   "methods": [],
@@ -12512,8 +12517,8 @@
    "format": "lemma-input/1",
    "spec": "(1) 記述\n(2) 記述\n(3) 0<U<=3sqrt(3)/4"
   },
-  "techniques": [
-   "円の接線と半径（垂直・接線の長さ）",
+  "technique_main": "円の接線と半径（垂直・接線の長さ）",
+  "technique_support": [
    "2次曲線（焦点・媒介変数）",
    "面積（上下関係と交点）",
    "最大・最小の求め方"

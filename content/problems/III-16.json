@@ -4490,8 +4490,8 @@
    "format": "lemma-input/1",
    "spec": "(1) a<=2 ; $x$：-1+sqrt(2-a)\n(2) 2/3<a+b<1"
   },
-  "techniques": [
-   "解の配置",
+  "technique_main": "解の配置",
+  "technique_support": [
    "接線（接点を文字で置く）"
   ],
   "methods": [],
@@ -5546,8 +5546,8 @@
   "idea": {
    "tex": "傾き $p>0$ の直線で $e^x$ と交わらないのは接線 $y=px+p-p\\log p$ より下．$p<0$ は必ず交わり，$p=0$ は $q\\leqq0$．"
   },
-  "techniques": [
-   "定数分離",
+  "technique_main": "定数分離",
+  "technique_support": [
    "接線（接点を文字で置く）"
   ],
   "methods": [],
@@ -5963,8 +5963,9 @@
    "format": "lemma-input/1",
    "spec": "(1) 記述\n(2) $y$：-1/6(x-4)-log(5)\n(3) log((9+4sqrt(5))/5)"
   },
-  "techniques": [
-   "主な解法なし"
+  "technique_main": null,
+  "technique_support": [
+   "接線（接点を文字で置く）"
   ],
   "methods": [],
   "tags": [
@@ -8540,8 +8541,8 @@
   "idea": {
    "tex": "接点・接線の長さ・接点円の位置をすべて半径 $r$ で表し，求める量を $r$ の関数にして微分で最大を調べる．円錐の体積から球欠の体積を引くと因数がそろって簡単になる．"
   },
-  "techniques": [
-   "最大・最小の求め方",
+  "technique_main": "最大・最小の求め方",
+  "technique_support": [
    "接線（接点を文字で置く）",
    "回転体の体積",
    "体積（断面積の積分）"
@@ -14030,8 +14031,8 @@
    "format": "lemma-input/1",
    "spec": "(1) 記述\n(2) 記述\n(3) $c$：2"
   },
-  "techniques": [
-   "微分による不等式の証明",
+  "technique_main": "微分による不等式の証明",
+  "technique_support": [
    "平均値の定理",
    "増減表とグラフの概形",
    "接線（接点を文字で置く）"
@@ -15438,8 +15439,8 @@
    "format": "lemma-input/1",
    "spec": "(1) $V$：(2π/(3d^2)) sqrt(1-1/d^2)\n(2) 記述\n(3) 記述"
   },
-  "techniques": [
-   "回転体の体積",
+  "technique_main": "回転体の体積",
+  "technique_support": [
    "接線（接点を文字で置く）",
    "逆像法（実数条件）"
   ],

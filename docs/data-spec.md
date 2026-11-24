@@ -48,6 +48,8 @@ data/                          … アプリ用（index.json・f-<分野ID>.json
 | `hints[]` | | 内蔵問題の3段階ヒント | — |
 | `methods[]` | ○ | 解法ID（今は内蔵問題だけ。空でよい） | — |
 | `tags[]` | ○ | タグ（「非表示」は除く） | R |
+| `technique_main` | | 主な解法：解法カードの名前か ID。`null` は明示の「主な解法なし」。項目なし＝未指定。`technique_support` と両方そろえて書く（両方無ければタグから自動）。詳細は docs/techniques.md | 「主な解法」 |
+| `technique_support[]` | | 補助の解法：名前か ID の並び（順を保つ）。`[]` は明示の「補助の解法なし」 | 「補助の解法」 |
 | `provenance` | ○ | `{created: "YYYY-MM-DD"}`（作成方法は公開しない設定。`xlsx_to_content.py` の `INCLUDE_METHOD`） | B（M は既定で入れない） |
 | `quality` | ○ | `{status, checks:{dual,sympy,human}, verified, issues?}`。`status` は `published`／`hidden`（タグに「非表示」）など | N・O・P・Q・R |
 | `assets` | | 内蔵問題のグラフ（`graph` `graph3` `view`） | — |

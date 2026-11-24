@@ -545,9 +545,8 @@
    "format": "lemma-input/1",
    "spec": "(1) $\\cos B$：1/2 ; $S$：10sqrt(3) ; $r$：sqrt(3)\n(2) {sqrt(3)/3, 3sqrt(3)}\n(3) (1-sin(B/2))/(1+sin(B/2))"
   },
-  "techniques": [
-   "円の接線と半径（垂直・接線の長さ）"
-  ],
+  "technique_main": "円の接線と半径（垂直・接線の長さ）",
+  "technique_support": [],
   "methods": [],
   "tags": [
    "内接円",
@@ -1457,8 +1456,8 @@
   "idea": {
    "tex": "内心から辺までの接線の長さは $\\frac r{\\tan\\frac B2}$ など．傍心も同様に $r_a\\tan\\frac B2$．和を $a$ として正弦定理 $a=2R\\sin A$ と組み合わせる．"
   },
-  "techniques": [
-   "加法定理・倍角・和積",
+  "technique_main": "加法定理・倍角・和積",
+  "technique_support": [
    "円の接線と半径（垂直・接線の長さ）"
   ],
   "methods": [],
@@ -3757,6 +3756,10 @@
   "idea": {
    "tex": "Aから内心までの距離は（Aからの接線の長さ）$\\div\\cos\\frac{\\angle A}2$．接線の長さ $s-\\text{対辺}$ を角で表すと比は角の関数で，端点の極限と単調性から範囲が決まる．"
   },
+  "technique_main": null,
+  "technique_support": [
+   "円の接線と半径（垂直・接線の長さ）"
+  ],
   "methods": [],
   "tags": [
    "内心",
@@ -6347,8 +6350,8 @@
   "idea": {
    "tex": "頂点 $\\mathrm B$ から2辺上に等距離 $s$ の2点を結ぶ直線は $\\angle\\mathrm B$ の二等分線に垂直で，二等分線方向の単位ベクトル $\\vec u_{\\mathrm B}$ を使えば $\\overrightarrow{\\mathrm{BX}}\\cdot\\vec u_{\\mathrm B}=s\\cos\\frac B2$ と書ける．$\\mathrm A$ からの垂線上の点をこの式に代入すると高さが $(s-c\\cos B)\\cdot\\frac{\\cos\\frac B2}{\\sin\\frac B2}$ になり，$\\frac{\\cos\\frac B2}{\\sin\\frac B2}=\\frac{s-b}r$ と $s-c\\cos B=\\frac{(b+c)(s-c)}a$ から $\\mathrm B$ 側・$\\mathrm C$ 側の式が一致する．ヘロンの公式 $r^2s=(s-a)(s-b)(s-c)$ で $\\mathrm{AA}_3=\\frac{(s-b)(s-c)}r=r_a$．"
   },
-  "techniques": [
-   "加法定理・倍角・和積",
+  "technique_main": "加法定理・倍角・和積",
+  "technique_support": [
    "正弦定理・余弦定理",
    "座標を設定する",
    "円の接線と半径（垂直・接線の長さ）"

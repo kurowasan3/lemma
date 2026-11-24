@@ -2692,8 +2692,8 @@
   "idea": {
    "tex": "Oから接点までの距離が両円で等しいので，C$_2$ は $y$ 軸と点 $(0,1)$ で接する．$\\ell$ の傾き角を $\\alpha$，$t=\\tan\\frac\\alpha2$ とすると $r_1=t$，$r_2=\\frac{1-t}{1+t}$．"
   },
-  "techniques": [
-   "加法定理・倍角・和積",
+  "technique_main": "加法定理・倍角・和積",
+  "technique_support": [
    "接線（接点を文字で置く）",
    "最大・最小の求め方",
    "円の接線と半径（垂直・接線の長さ）"
@@ -2838,8 +2838,8 @@
    "format": "lemma-input/1",
    "spec": "(1) 証明\n(2) 3-2sqrt(2)\n(3) 記述"
   },
-  "techniques": [
-   "円の接線と半径（垂直・接線の長さ）",
+  "technique_main": "円の接線と半径（垂直・接線の長さ）",
+  "technique_support": [
    "接線（接点を文字で置く）",
    "最大・最小の求め方"
   ],
@@ -2983,8 +2983,8 @@
    "format": "lemma-input/1",
    "spec": "最小値：(4-sqrt(7))/3 ; 最大値：2"
   },
-  "techniques": [
-   "内積の利用",
+  "technique_main": "内積の利用",
+  "technique_support": [
    "接線（接点を文字で置く）"
   ],
   "methods": [],
@@ -6389,8 +6389,8 @@
    "format": "lemma-input/1",
    "spec": "(1) 1+2sqrt(2)\n(2) 2+sqrt(3)"
   },
-  "techniques": [
-   "相加平均・相乗平均の不等式",
+  "technique_main": "相加平均・相乗平均の不等式",
+  "technique_support": [
    "接線（接点を文字で置く）",
    "円の接線と半径（垂直・接線の長さ）"
   ],
@@ -7098,8 +7098,8 @@
   "idea": {
    "tex": "傍心 J は角 A の二等分線上にあり，A からの接線の長さが半周 $s$ に等しいことから $\\mathrm{AJ}=4R\\cos\\frac B2\\cos\\frac C2$，半径 $\\rho=4R\\sin\\frac A2\\cos\\frac B2\\cos\\frac C2$．直線 AO，AH はともに AJ と角 $\\frac{|B-C|}2$ をなすので，$\\triangle$AOJ，$\\triangle$AHJ に余弦定理を使って $\\mathrm{OJ}^2$，$\\mathrm{HJ}^2$ を出し，$\\triangle$JOH の中線定理で $\\mathrm{NJ}=\\frac R2+\\rho$ を得る．"
   },
-  "techniques": [
-   "加法定理・倍角・和積",
+  "technique_main": "加法定理・倍角・和積",
+  "technique_support": [
    "正弦定理・余弦定理",
    "円の接線と半径（垂直・接線の長さ）"
   ],

@@ -16,7 +16,7 @@ from collections import Counter
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from build_app_data import NO_MAIN  # noqa: E402
+from build_app_data import RESERVED, spec_errors  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
 DATA, CONTENT, GOLDEN = ROOT / 'data', ROOT / 'content', ROOT / 'tests' / 'golden'
@@ -167,7 +167,7 @@ def audit(xlsx=None):
                     if k in seen and seen[k] != t['name']:
                         E.append(f'タグ辞書：「{s2}」が「{seen[k]}」と「{t["name"]}」の両方にある')
                     seen[k] = t['name']
-        # 解法カード：ID の重複・前提と関連の参照先・タグが辞書にあるか・管理表の「解法」列の名前
+        # 解法カード：ID の重複・前提と関連の参照先・タグが辞書にあるか・管理表の「主な解法」「補助の解法」の指定
         tf = CONTENT / 'techniques.json'
         if tf.exists():
             td = json.loads(tf.read_text(encoding='utf-8'))
@@ -193,15 +193,13 @@ def audit(xlsx=None):
                 for x in t['tags']:
                     if tagnames and x not in tagnames:
                         W['解法カードのタグがタグ辞書に無い'] += 1
-            if NO_MAIN in names or any(NO_MAIN in t.get('former', []) for t in td['techniques']):
-                E.append(f'解法カードの ID・名前に予約語「{NO_MAIN}」が使われている')
+            tname = {x: t['id'] for t in td['techniques'] for x in [t['id'], t['name'], *t.get('former', [])]}
+            for w in RESERVED:
+                if w in tname:
+                    E.append(f'解法カードの ID・名前・旧 ID に予約語「{w}」が使われている')
             for _, p in content:
-                spec = p.get('techniques', [])
-                if NO_MAIN in spec and spec != [NO_MAIN]:
-                    E.append(f'{p["id"]}: 「解法」の「{NO_MAIN}」は単独で書く（ほかの解法と並べられない）')
-                for x in spec:
-                    if x not in names and x != NO_MAIN:
-                        E.append(f'{p["id"]}: 「解法」の {x} が解法カードに無い')
+                for x in spec_errors(p, tname):
+                    E.append(f'{p["id"]}: 解法の指定：{x}')
     for name in ('search.json', 'collections.json', 'techniques.json'):
         f = DATA / name
         if 'dataVersion' in idx and f.exists():

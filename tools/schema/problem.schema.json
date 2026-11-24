@@ -297,10 +297,16 @@
         }
       }
     },
-    "techniques": {
+    "technique_main": {
+      "type": ["string", "null"],
+      "minLength": 1,
+      "description": "主な解法：解法カード（content/techniques.json）の名前か ID。null は明示の「主な解法なし」。項目が無ければ未指定（technique_support と両方無ければタグから自動）。管理表の「主な解法」列"
+    },
+    "technique_support": {
       "type": "array",
       "items": { "type": "string", "minLength": 1 },
-      "description": "解法カード（content/techniques.json）の名前か ID。管理表の「解法」列。あればタグからの自動の結びつきより優先"
+      "uniqueItems": true,
+      "description": "補助の解法：名前か ID の並び（書いた順を保つ）。[] は明示の「補助の解法なし」。technique_main と両方そろえて書く。管理表の「補助の解法」列"
     },
     "value": {
       "type": "integer",

@@ -407,8 +407,8 @@
    "format": "lemma-input/1",
    "spec": "(1) $r$：(a+b-c)/2 ; $r_c$：(a+b+c)/2\n(2) 証明"
   },
-  "techniques": [
-   "円の接線と半径（垂直・接線の長さ）",
+  "technique_main": "円の接線と半径（垂直・接線の長さ）",
+  "technique_support": [
    "接線（接点を文字で置く）"
   ],
   "methods": [],
@@ -503,8 +503,8 @@
    "format": "lemma-input/1",
    "spec": "(1) 12\n(2) 36/25"
   },
-  "techniques": [
-   "円の接線と半径（垂直・接線の長さ）",
+  "technique_main": "円の接線と半径（垂直・接線の長さ）",
+  "technique_support": [
    "接線（接点を文字で置く）"
   ],
   "methods": [],
@@ -783,6 +783,10 @@
    "format": "lemma-input/1",
    "spec": "(1) 4\n(2) 記述"
   },
+  "technique_main": null,
+  "technique_support": [
+   "円の接線と半径（垂直・接線の長さ）"
+  ],
   "methods": [],
   "tags": [
    "接線の長さ",
@@ -830,8 +834,8 @@
    "format": "lemma-input/1",
    "spec": "(1) 10sqrt(3)\n(2) 記述\n(3) 2sqrt(3)"
   },
-  "techniques": [
-   "円の接線と半径（垂直・接線の長さ）",
+  "technique_main": "円の接線と半径（垂直・接線の長さ）",
+  "technique_support": [
    "接線（接点を文字で置く）"
   ],
   "methods": [],
@@ -1067,8 +1071,8 @@
    "format": "lemma-input/1",
    "spec": "(1) 4\n(2) 記述"
   },
-  "techniques": [
-   "円の接線と半径（垂直・接線の長さ）",
+  "technique_main": "円の接線と半径（垂直・接線の長さ）",
+  "technique_support": [
    "接線（接点を文字で置く）"
   ],
   "methods": [],
@@ -3471,8 +3475,8 @@
    "format": "lemma-input/1",
    "spec": "(1) 2sqrt(21)\n(2) 6"
   },
-  "techniques": [
-   "円の接線と半径（垂直・接線の長さ）",
+  "technique_main": "円の接線と半径（垂直・接線の長さ）",
+  "technique_support": [
    "接線（接点を文字で置く）"
   ],
   "methods": [],
@@ -3814,8 +3818,8 @@
    "format": "lemma-input/1",
    "spec": "(1) 65°\n(2) 115°"
   },
-  "techniques": [
-   "方べきの定理・円の性質",
+  "technique_main": "方べきの定理・円の性質",
+  "technique_support": [
    "接線（接点を文字で置く）"
   ],
   "methods": [],
@@ -3867,8 +3871,8 @@
    "format": "lemma-input/1",
    "spec": "(1) $BD$：3 ; $AE$：4\n(2) 6"
   },
-  "techniques": [
-   "円の接線と半径（垂直・接線の長さ）",
+  "technique_main": "円の接線と半径（垂直・接線の長さ）",
+  "technique_support": [
    "接線（接点を文字で置く）"
   ],
   "methods": [],
@@ -3919,8 +3923,8 @@
    "format": "lemma-input/1",
    "spec": "(1) 12\n(2) 36/25"
   },
-  "techniques": [
-   "円の接線と半径（垂直・接線の長さ）",
+  "technique_main": "円の接線と半径（垂直・接線の長さ）",
+  "technique_support": [
    "接線（接点を文字で置く）"
   ],
   "methods": [],
