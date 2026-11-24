@@ -10,7 +10,10 @@
    指定の無い問題はタグからの自動の規則どおり・指定の名前がすべて解法カードにある。
 4. 判定の記録（link_review.csv）：「誤り」で外した問題はそのカードの主に戻っていない、
    「正しい」「新しく主に」「保留」の問題はそのカードの主のまま。
-5. 管理表で指定した21件（spec_check.csv）：期待する主な解法と補助の解法がアプリのデータと一致する。
+5. 管理表で指定した問題（spec_check.csv。v0.28.2 の21件と v0.28.3 の44件）：期待する主な解法と補助の解法がアプリのデータと一致し、
+   指定のある問題はすべてどれかの記録に載っている。
+6. タグの無い解法カード（「円の接線と半径」など）は、管理表の「解法」列で名前を書いた問題にしか結びつかない。
+   「円の接線と半径」はタグ・weak が空で、誤分類だった問題（III-INT-216・A-GEO-094・II-GEO-010）に結びつかない。
 """
 import csv
 import json
@@ -25,7 +28,7 @@ sys.path.insert(0, str(ROOT / 'tools'))
 from build_app_data import NO_MAIN, select_techniques  # noqa: E402
 
 REVIEWS = ['docs/audit/2026-11-23/techlinks/link_review.csv', 'docs/audit/2026-11-24/tangent/link_review.csv']
-SPECS = 'docs/audit/2026-11-24/spec-nomain/spec_check.csv'
+SPECS = ['docs/audit/2026-11-24/spec-nomain/spec_check.csv', 'docs/audit/2026-11-24/circle-tangent/spec_check.csv']
 bad = []
 
 
@@ -146,20 +149,41 @@ for rel in REVIEWS:
         if r['判定'] in ('正しい', '新しく主に', '保留'):
             expect(got == r['解法ID'], f'{r["問題ID"]} の主な解法が「{r["解法"]}」でなくなった（今は {got}。判定：{r["判定"]}）')
 
-# 5. 管理表で指定した21件
-k = 0
-for r in csv.DictReader(open(ROOT / SPECS, encoding='utf-8-sig')):
-    k += 1
-    i = r['問題ID']
-    want = r['期待する主な解法ID'] if r['期待する主な解法ID'] != 'なし' else None
-    sup = sorted(x for x in r['期待する補助解法ID'].split('、') if x)
-    expect((main.get(i) or [None])[0] == want, f'{i}: 主な解法が {main.get(i)}（期待 {want}）')
-    expect(sorted(x for x in linked.get(i, []) if x != want) == sup, f'{i}: 補助の解法が {linked.get(i)}（期待 {sup}）')
-    expect(specs.get(i) == r['管理表の解法列（復旧版コピー）'].split('、'), f'{i}: content の「解法」が管理表のコピーと違う')
-expect(k == len(data['manual']) + len(nomain), f'spec_check.csv の {k}件と、指定のある問題 {len(data["manual"]) + len(nomain)}問が合わない')
+# 5. 管理表で指定した問題（spec_check.csv）
+k, recorded = 0, set()
+for rel in SPECS:
+    for r in csv.DictReader(open(ROOT / rel, encoding='utf-8-sig')):
+        k += 1
+        i = r['問題ID']
+        recorded.add(i)
+        want = r['期待する主な解法ID'] if r['期待する主な解法ID'] != 'なし' else None
+        sup = sorted(x for x in r['期待する補助解法ID'].split('、') if x)
+        col = next(v for c, v in r.items() if c.startswith('管理表の解法列'))
+        expect((main.get(i) or [None])[0] == want, f'{i}: 主な解法が {main.get(i)}（期待 {want}）')
+        expect(sorted(x for x in linked.get(i, []) if x != want) == sup, f'{i}: 補助の解法が {linked.get(i)}（期待 {sup}）')
+        expect(specs.get(i) == col.split('、'), f'{i}: content の「解法」が管理表のコピー（{rel}）と違う')
+expect(recorded == {i for i, s in specs.items() if s}, f'指定のある問題 {sum(1 for s in specs.values() if s)}問と spec_check.csv の問題 {len(recorded)}問が合わない')
+
+# 6. タグの無い解法カードは「解法」列で名前を書いた問題にだけ結びつく
+for t in cards:
+    if t.get('tags'):
+        continue
+    named = {i for i, s in specs.items() if any(name2id.get(x) == t['id'] for x in s)}
+    dc = next((c for c in data['techniques'] if c['id'] == t['id']), None)
+    expect(dc is not None, f'解法カード {t["id"]} が data/techniques.json に無い（再ビルドが必要）')
+    got = set(dc['ids']) if dc else set()
+    expect(got == named, f'タグの無い {t["id"]} の結びつきが「解法」列の指定と違う（指定 {len(named)}・実際 {len(got)}）')
+ct = next((t for t in cards if t['id'] == 'circle-tangent'), None)
+expect(ct is not None, '解法カード circle-tangent が無い')
+if ct:
+    expect(ct['name'] == '円の接線と半径（垂直・接線の長さ）' and ct['group'] == 'geo' and ct['kind'] == 'theorem', 'circle-tangent の名前・分類・種類が違う')
+    expect(ct.get('tags') == [] and not ct.get('weak'), 'circle-tangent のタグ・weak は空（タグで自動に結びつけない）')
+    expect(all(str(ct.get(f, '')).strip() for f in ('summary', 'essence', 'when', 'cue', 'caution')), 'circle-tangent の必須項目が空')
+    for i in ('III-INT-216', 'A-GEO-094', 'II-GEO-010'):
+        expect('circle-tangent' not in linked.get(i, []), f'{i} に circle-tangent が結びついている（誤分類）')
 
 for b in bad:
     print('✗', b)
-print(f'判定の記録 {n}件・管理表の指定 {k}件（名前 {len(data["manual"])}・主な解法なし {len(nomain)}）・自動 {n_auto}問・'
+print(f'判定の記録 {n}件・指定の照合 {k}行（指定のある問題：名前 {len(data["manual"])}・主な解法なし {len(nomain)}）・自動 {n_auto}問・'
       + ('OK' if not bad else f'{len(bad)}件合わない'))
 sys.exit(1 if bad else 0)
