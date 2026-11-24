@@ -68,15 +68,17 @@ def read_sheet(src):
 #   「主な解法」          … 解法カードの名前か ID を1つ、または「主な解法なし」（明示の主なし）
 #   「補助の解法」        … 名前か ID を読点区切り（書いた順を保つ）、または「補助の解法なし」（明示の補助なし）
 #   片方だけ空欄          … 誤り（未指定と明示の「なし」を混ぜない。取り込みを止める）
-# 旧「解法」列（v0.28.x の1列：先頭が主、残りが補助）は v0.29.0 の移行の期間だけ読む。
-#   新しい2列と一緒にあれば誤り。「主な解法なし」の行は誤り（補助がタグから来ていたので、1列からは補助を決められない）。
-#   旧形式の管理表は tools/xlsx_technique_columns.py で新しい2列の管理表に変換する。旧列の読み込みは v0.29.1 で消す。
+# 旧「解法」列（v0.28.x の1列：先頭が主、残りが補助）は v0.29.1 から読まない。列があれば取り込み全体を止める
+#   （黙って読み飛ばすと、その列の指定が消えるため）。旧形式の管理表は tools/xlsx_technique_columns.py で
+#   新しい2列の管理表に変換してから取り込む。
+LEGACY_MSG = ('旧「解法」列は v0.29.1 から読みません。python3 tools/xlsx_technique_columns.py 元.xlsx 新.xlsx で'
+              '「主な解法」「補助の解法」の2列に変換してから取り込んでください（元のファイルは上書きしません）')
+
+
 def parse_techniques(rec):
     """戻り値：(項目の dict（未指定なら空）, 誤りの一覧)"""
     cols = rec['_cols']
     new_cols = {'technique_main', 'technique_support'} & cols
-    if 'legacy_techniques' in cols and new_cols:
-        return {}, ['「解法」列と「主な解法」「補助の解法」列が両方ある（どちらか一方の形式にする）']
     if new_cols and len(new_cols) == 1:
         return {}, ['「主な解法」「補助の解法」の列は2つそろえて置く']
     if new_cols:
@@ -99,13 +101,6 @@ def parse_techniques(rec):
         elif NO_SUPPORT in sp or NO_MAIN in sp:
             errs.append(f'「補助の解法」の予約語は単独で書く（「主な解法なし」は書けない）：{sup}')
         return {'technique_main': main, 'technique_support': sp}, errs
-    if 'legacy_techniques' in cols:
-        spec = split_tags(str(rec.get('legacy_techniques') or ''))
-        if not spec:
-            return {}, []
-        if NO_MAIN in spec:
-            return {}, ['旧「解法」列の「主な解法なし」は変換できない（tools/xlsx_technique_columns.py で新しい2列の管理表を作る）']
-        return {'technique_main': spec[0], 'technique_support': spec[1:]}, []
     return {}, []
 
 
@@ -270,6 +265,16 @@ def convert(src, content=ROOT / 'content', new_fields=False):
     tax = Taxonomy(content / 'taxonomy.json')
     recs = read_sheet(src)
     errors, notes, seen, out = [], [], set(), {}
+    if recs and 'legacy_techniques' in recs[0]['_cols']:
+        raise ImportFailure(LEGACY_MSG)
+    if recs and not {'technique_main', 'technique_support'} & recs[0]['_cols']:
+        # 解法の列が無い管理表で取り込むと、content の明示の指定がすべて消える。あれば止める
+        have = sorted(p['id'] for f in (content / 'problems').glob('*.json') if f.name != 'builtin.json'
+                      for p in json.loads(f.read_text(encoding='utf-8')) if 'technique_main' in p or 'technique_support' in p)
+        if have:
+            raise ImportFailure(f'管理表に「主な解法」「補助の解法」の列がありません。取り込むと content の明示の指定 {len(have)}問'
+                                f'（{"・".join(have[:5])}{" など" if len(have) > 5 else ""}）が消えるので止めました。'
+                                '列のある管理表（tools/xlsx_technique_columns.py で作れます）で取り込んでください')
     for rec in recs:
         pid = str(rec['id']).strip()
         where = f'{pid}（{rec["_row"]}行目）'

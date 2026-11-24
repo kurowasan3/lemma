@@ -5,8 +5,8 @@
    主あり・補助あり／主あり・補助なし／主なし・補助あり／主なし・補助なし／自動（タグ）／
    明示の主なしと自動の主なしの区別／片方だけの指定・重複・主と同じ補助・無い解法・予約語の誤り。
    予約語（「主な解法なし」「補助の解法なし」）をカード名に使うと検査で誤り。
-2. 管理表の取り込み（tools/xlsx_to_content.py）：その場で作る .xlsx で、新しい2列・旧「解法」列（移行の期間だけ）・
-   止まるべき入力（片方だけ空欄・新旧の列が両方・旧列の「主な解法なし」）を確かめる。
+2. 管理表の取り込み（tools/xlsx_to_content.py）：その場で作る .xlsx で、新しい2列と、止まるべき入力（片方だけ空欄・
+   旧「解法」列〈v0.29.1 から読まない〉・解法の列が無いのに content に明示の指定がある）を確かめる。
 3. 書き出したデータ全体：主は1問に1つまで・主は結びつき（ids）に含まれる・nomain／manual が content の指定と一致・
    全問が規則どおり（指定のある問題は指定どおり、無い問題はタグから自動）・指定に誤りが無い・旧形式の techniques が無い。
 4. 判定の記録（link_review.csv）：「誤り」で外した問題はそのカードの主に戻らない、「正しい」「新しく主に」「保留」は主のまま。
@@ -81,14 +81,18 @@ except ImportError:
     print('（openpyxl が無いので、取り込みの確認は飛ばす）')
 
 
-def import_rows(headers, rows):
-    """見出し（解法の列だけ）と行（ID と解法の列の値）で .xlsx を作って取り込む。戻り値：(ID → 解法の項目, 誤り)"""
+def import_rows(headers, rows, existing=None):
+    """見出し（解法の列だけ）と行（ID と解法の列の値）で .xlsx を作って取り込む。戻り値：(ID → 解法の項目, 誤り)
+    existing：取り込む前の content にある問題（取り込み先の上書きの確認用）"""
     tax = json.loads((ROOT / 'content/taxonomy.json').read_text())
     f0 = tax['fields'][0]
     with tempfile.TemporaryDirectory() as d:
         d = Path(d)
         (d / 'content').mkdir()
         shutil.copy(ROOT / 'content/taxonomy.json', d / 'content/taxonomy.json')
+        if existing:
+            (d / 'content/problems').mkdir()
+            (d / 'content/problems/X.json').write_text(json.dumps(existing, ensure_ascii=False))
         wb = openpyxl.Workbook(); ws = wb.active; ws.title = '問題一覧'
         ws.append(['ID', '科目', '分野', '難易度', '問題文（LaTeX）', '答え', 'タグ', *headers])
         for pid, *vals in rows:
@@ -125,12 +129,15 @@ if openpyxl:
                                (['主な解法', '補助の解法'], [('T-1', 'Z', f'W、{NO_SUPPORT}')], '補助の予約語を並べる'),
                                (['主な解法'], [('T-1', 'Z')], '列が片方だけ'),
                                (['解法', '主な解法', '補助の解法'], [('T-1', 'Z', 'Z', NO_SUPPORT)], '新旧の列が両方'),
-                               (['解法'], [('T-1', NO_MAIN)], '旧列の「主な解法なし」')]:
+                               (['解法'], [('T-1', 'Z、W')], '旧「解法」列（v0.29.1 から読まない）'),
+                               (['解法'], [('T-1', None)], '旧「解法」列（空欄だけでも列があれば止める）')]:
         got, err = import_rows(headers, rows)
         expect(err is not None, f'取り込みが止まるべき入力（{why}）が通った：{got}')
-    got, err = import_rows(['解法'], [('T-1', 'Z、W、Y'), ('T-2', 'Z'), ('T-3', None)])
-    expect(got == {'T-1': {'technique_main': 'Z', 'technique_support': ['W', 'Y']}, 'T-2': {'technique_main': 'Z', 'technique_support': []}, 'T-3': {}},
-           f'旧「解法」列の変換が違う：{got or err}')
+    spec_p = {'id': 'T-9', 'technique_main': 'Z', 'technique_support': []}
+    got, err = import_rows([], [('T-1',)], existing=[spec_p])
+    expect(err is not None and 'T-9' in err, f'解法の列が無いのに content の明示の指定が消える取り込みが通った：{got}')
+    got, err = import_rows([], [('T-1',)], existing=[{'id': 'T-9'}])
+    expect(err is None and got == {'T-1': {}}, f'解法の列が無く明示の指定も無いときの取り込みが止まった：{err}')
 
 # 3. 書き出したデータ全体の整合
 data = json.loads((ROOT / 'data/techniques.json').read_text())
