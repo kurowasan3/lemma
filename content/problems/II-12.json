@@ -9555,1450 +9555,6 @@
   }
  },
  {
-  "id": "II-CAL-207",
-  "schema": "lemma.problem/1",
-  "kind": "written",
-  "field": "II-12",
-  "level": 0,
-  "minutes": 6,
-  "theme": "微分法／平均変化率と微分係数の定義",
-  "unit": "微分法",
-  "topic": "平均変化率と微分係数の定義",
-  "statement": {
-   "tex": "関数 $f(x)=x^2+3x$ について，次の問いに答えよ．\n\\begin{enumerate}\n  \\item $x$ が $1$ から $3$ まで変化するときの平均変化率を求めよ．\n  \\item 微分係数 $f'(1)$ を，定義 $f'(1)=\\displaystyle\\lim_{h\\to0}\\dfrac{f(1+h)-f(1)}{h}$ に従って求めよ．\n\\end{enumerate}"
-  },
-  "answer": {
-   "tex": "(1) $7$　(2) $5$"
-  },
-  "solutions": [
-   {
-    "id": "main",
-    "kind": "main",
-    "tex": "(1) $\\dfrac{f(3)-f(1)}{3-1}=\\dfrac{18-4}{2}=\\boldsymbol{7}$．\n(2) $f(1+h)-f(1)=(1+h)^2+3(1+h)-4=5h+h^2$．\nよって $f'(1)=\\displaystyle\\lim_{h\\to0}\\dfrac{5h+h^2}{h}=\\lim_{h\\to0}(5+h)=\\boldsymbol{5}$．"
-   }
-  ],
-  "idea": {
-   "tex": "平均変化率は2点を結ぶ直線の傾き，微分係数はその $h\\to0$ の極限．"
-  },
-  "grading": {
-   "format": "lemma-input/1",
-   "spec": "(1) 7\n(2) 5"
-  },
-  "methods": [],
-  "tags": [
-   "平均変化率",
-   "微分係数",
-   "定義"
-  ],
-  "provenance": {
-   "created": "2026-10-30"
-  },
-  "quality": {
-   "status": "published",
-   "checks": {
-    "dual": false,
-    "sympy": true,
-    "human": false
-   },
-   "verified": false
-  }
- },
- {
-  "id": "II-CAL-208",
-  "schema": "lemma.problem/1",
-  "kind": "written",
-  "field": "II-12",
-  "level": 0,
-  "minutes": 5,
-  "theme": "微分法／導関数の計算",
-  "unit": "微分法",
-  "topic": "導関数の計算",
-  "statement": {
-   "tex": "次の関数を微分せよ．\n\\begin{enumerate}\n  \\item $y=(x+2)(x^2-3)$\n  \\item $y=(2x-1)^2$\n\\end{enumerate}"
-  },
-  "answer": {
-   "tex": "(1) $y'=3x^2+4x-3$　(2) $y'=8x-4$"
-  },
-  "solutions": [
-   {
-    "id": "main",
-    "kind": "main",
-    "tex": "(1) 展開すると $y=x^3+2x^2-3x-6$ なので $y'=\\boldsymbol{3x^2+4x-3}$．\n(2) $y=4x^2-4x+1$ なので $y'=\\boldsymbol{8x-4}$．"
-   }
-  ],
-  "idea": {
-   "tex": "積の形は展開してから，$(x^n)'=nx^{n-1}$ を項ごとに使う．"
-  },
-  "grading": {
-   "format": "lemma-input/1",
-   "spec": "(1) $y'$：3x^2+4x-3\n(2) $y'$：8x-4"
-  },
-  "methods": [],
-  "tags": [
-   "導関数"
-  ],
-  "provenance": {
-   "created": "2026-10-30"
-  },
-  "quality": {
-   "status": "published",
-   "checks": {
-    "dual": false,
-    "sympy": true,
-    "human": false
-   },
-   "verified": false
-  }
- },
- {
-  "id": "II-CAL-209",
-  "schema": "lemma.problem/1",
-  "kind": "written",
-  "field": "II-12",
-  "level": 0,
-  "minutes": 5,
-  "theme": "微分法／曲線上の点における接線",
-  "unit": "微分法",
-  "topic": "曲線上の点における接線",
-  "statement": {
-   "tex": "次の曲線上の点における接線の方程式を求めよ．\n\\begin{enumerate}\n  \\item $y=x^3-2x$，点 $(1,-1)$\n  \\item $y=x^2-4x+5$，点 $(3,2)$\n\\end{enumerate}"
-  },
-  "answer": {
-   "tex": "(1) $y=x-2$　(2) $y=2x-4$"
-  },
-  "solutions": [
-   {
-    "id": "main",
-    "kind": "main",
-    "tex": "(1) $y'=3x^2-2$ より傾きは $1$．$y-(-1)=1\\cdot(x-1)$，$\\boldsymbol{y=x-2}$．\n(2) $y'=2x-4$ より傾きは $2$．$y-2=2(x-3)$，$\\boldsymbol{y=2x-4}$．"
-   }
-  ],
-  "idea": {
-   "tex": "接点 $(a,f(a))$ での接線は $y-f(a)=f'(a)(x-a)$．"
-  },
-  "grading": {
-   "format": "lemma-input/1",
-   "spec": "(1) $y$：x-2\n(2) $y$：2x-4"
-  },
-  "methods": [],
-  "tags": [
-   "接線"
-  ],
-  "provenance": {
-   "created": "2026-10-30"
-  },
-  "quality": {
-   "status": "published",
-   "checks": {
-    "dual": false,
-    "sympy": true,
-    "human": false
-   },
-   "verified": false
-  }
- },
- {
-  "id": "II-CAL-210",
-  "schema": "lemma.problem/1",
-  "kind": "written",
-  "field": "II-12",
-  "level": 0,
-  "minutes": 7,
-  "theme": "微分法／曲線外の点から引く接線",
-  "unit": "微分法",
-  "topic": "曲線外の点から引く接線",
-  "statement": {
-   "tex": "点 $(0,-2)$ から放物線 $y=x^2$ に引いた接線の方程式をすべて求めよ．"
-  },
-  "answer": {
-   "tex": "$y=2\\sqrt{2}x-2$，$y=-2\\sqrt{2}x-2$"
-  },
-  "solutions": [
-   {
-    "id": "main",
-    "kind": "main",
-    "tex": "接点を $(t,t^2)$ とすると，接線は $y=2t(x-t)+t^2=2tx-t^2$．\nこれが $(0,-2)$ を通るので $-2=-t^2$，$t=\\pm\\sqrt2$．\nよって $\\boldsymbol{y=2\\sqrt{2}x-2}$，$\\boldsymbol{y=-2\\sqrt{2}x-2}$．"
-   }
-  ],
-  "idea": {
-   "tex": "接点を文字でおいて接線の式を作り，通る点の条件から接点を決める．"
-  },
-  "grading": {
-   "format": "lemma-input/1",
-   "spec": "$y$：{2sqrt(2)x-2, -2sqrt(2)x-2}"
-  },
-  "methods": [],
-  "tags": [
-   "接線",
-   "接点"
-  ],
-  "provenance": {
-   "created": "2026-10-30"
-  },
-  "quality": {
-   "status": "published",
-   "checks": {
-    "dual": false,
-    "sympy": true,
-    "human": false
-   },
-   "verified": false
-  }
- },
- {
-  "id": "II-CAL-211",
-  "schema": "lemma.problem/1",
-  "kind": "written",
-  "field": "II-12",
-  "level": 0,
-  "minutes": 6,
-  "theme": "微分法／増減と極値",
-  "unit": "微分法",
-  "topic": "増減と極値",
-  "statement": {
-   "tex": "関数 $f(x)=x^3-3x^2-9x+2$ の極大値と極小値を求めよ．また，そのときの $x$ の値を答えよ．"
-  },
-  "answer": {
-   "tex": "極大値 $7$（$x=-1$），極小値 $-25$（$x=3$）"
-  },
-  "solutions": [
-   {
-    "id": "main",
-    "kind": "main",
-    "tex": "$f'(x)=3x^2-6x-9=3(x+1)(x-3)$．\n$f'(x)$ の符号は $x<-1$ で正，$-1<x<3$ で負，$x>3$ で正．\nよって $x=-1$ で極大値 $f(-1)=\\boldsymbol{7}$，$x=3$ で極小値 $f(3)=\\boldsymbol{-25}$．"
-   }
-  ],
-  "idea": {
-   "tex": "$f'(x)=0$ となる点の前後で $f'(x)$ の符号を調べ，増減表を書く．"
-  },
-  "grading": {
-   "format": "lemma-input/1",
-   "spec": "極大値：7 ; そのときの $x$：-1 ; 極小値：-25 ; そのときの $x$：3"
-  },
-  "methods": [],
-  "tags": [
-   "極値",
-   "増減表"
-  ],
-  "provenance": {
-   "created": "2026-10-30"
-  },
-  "quality": {
-   "status": "published",
-   "checks": {
-    "dual": false,
-    "sympy": true,
-    "human": false
-   },
-   "verified": false
-  }
- },
- {
-  "id": "II-CAL-212",
-  "schema": "lemma.problem/1",
-  "kind": "written",
-  "field": "II-12",
-  "level": 0,
-  "minutes": 6,
-  "theme": "微分法／区間における最大・最小",
-  "unit": "微分法",
-  "topic": "区間における最大・最小",
-  "statement": {
-   "tex": "関数 $f(x)=x^3-3x$ の $-2\\leqq x\\leqq 3$ における最大値と最小値を求めよ．"
-  },
-  "answer": {
-   "tex": "最大値 $18$，最小値 $-2$"
-  },
-  "solutions": [
-   {
-    "id": "main",
-    "kind": "main",
-    "tex": "$f'(x)=3(x+1)(x-1)$．$x=-1$ で極大値 $2$，$x=1$ で極小値 $-2$．\n端の値は $f(-2)=-2$，$f(3)=18$．\nよって最大値 $\\boldsymbol{18}$（$x=3$），最小値 $\\boldsymbol{-2}$（$x=-2,\\ 1$）．"
-   }
-  ],
-  "idea": {
-   "tex": "区間での最大・最小は，極値と区間の端の値を比べて決める．"
-  },
-  "grading": {
-   "format": "lemma-input/1",
-   "spec": "最大値：18 ; 最小値：-2"
-  },
-  "methods": [],
-  "tags": [
-   "最大最小",
-   "増減表"
-  ],
-  "provenance": {
-   "created": "2026-10-30"
-  },
-  "quality": {
-   "status": "published",
-   "checks": {
-    "dual": false,
-    "sympy": true,
-    "human": false
-   },
-   "verified": false
-  }
- },
- {
-  "id": "II-CAL-213",
-  "schema": "lemma.problem/1",
-  "kind": "written",
-  "field": "II-12",
-  "level": 0,
-  "minutes": 7,
-  "theme": "微分法／極値の条件から係数を決める",
-  "unit": "微分法",
-  "topic": "極値の条件から係数を決める",
-  "statement": {
-   "tex": "関数 $f(x)=x^3+ax^2+bx$ が $x=1$ で極小値 $-2$ をとるように，定数 $a$，$b$ の値を定めよ．また，そのときの極大値を求めよ．"
-  },
-  "answer": {
-   "tex": "$a=0$，$b=-3$，極大値 $2$"
-  },
-  "solutions": [
-   {
-    "id": "main",
-    "kind": "main",
-    "tex": "$f'(x)=3x^2+2ax+b$．$f'(1)=0$，$f(1)=-2$ より $3+2a+b=0$，$1+a+b=-2$．\nこれを解いて $\\boldsymbol{a=0}$，$\\boldsymbol{b=-3}$．\nこのとき $f(x)=x^3-3x$，$f'(x)=3(x+1)(x-1)$ で，確かに $x=1$ で極小となる（十分性）．\n極大値は $f(-1)=\\boldsymbol{2}$．"
-   }
-  ],
-  "idea": {
-   "tex": "「$f'(1)=0$」は必要条件にすぎないので，求めた係数で実際に極小になるかを確かめる．"
-  },
-  "grading": {
-   "format": "lemma-input/1",
-   "spec": "$a$：0 ; $b$：-3 ; 極大値：2"
-  },
-  "methods": [],
-  "tags": [
-   "極値",
-   "係数決定",
-   "必要十分"
-  ],
-  "provenance": {
-   "created": "2026-10-30"
-  },
-  "quality": {
-   "status": "published",
-   "checks": {
-    "dual": false,
-    "sympy": true,
-    "human": false
-   },
-   "verified": false
-  }
- },
- {
-  "id": "II-CAL-214",
-  "schema": "lemma.problem/1",
-  "kind": "written",
-  "field": "II-12",
-  "level": 0,
-  "minutes": 7,
-  "theme": "微分法／方程式の実数解の個数",
-  "unit": "微分法",
-  "topic": "方程式の実数解の個数",
-  "statement": {
-   "tex": "$x$ の方程式 $x^3-3x=k$ が異なる3つの実数解をもつような定数 $k$ の値の範囲を求めよ．"
-  },
-  "answer": {
-   "tex": "$-2<k<2$"
-  },
-  "solutions": [
-   {
-    "id": "main",
-    "kind": "main",
-    "tex": "$y=x^3-3x$ のグラフと直線 $y=k$ の共有点の個数を調べる．\n$y'=3(x+1)(x-1)$ より，$x=-1$ で極大値 $2$，$x=1$ で極小値 $-2$．\n直線 $y=k$ がグラフと3点で交わるのは，$k$ が極小値と極大値の間にあるときで $\\boldsymbol{-2<k<2}$．"
-   }
-  ],
-  "idea": {
-   "tex": "定数 $k$ を右辺に分けると，曲線と水平な直線の交点の個数の問題になる．"
-  },
-  "grading": {
-   "format": "lemma-input/1",
-   "spec": "-2<k<2"
-  },
-  "methods": [],
-  "tags": [
-   "実数解の個数",
-   "定数分離"
-  ],
-  "provenance": {
-   "created": "2026-10-30"
-  },
-  "quality": {
-   "status": "published",
-   "checks": {
-    "dual": false,
-    "sympy": true,
-    "human": false
-   },
-   "verified": false
-  }
- },
- {
-  "id": "II-CAL-215",
-  "schema": "lemma.problem/1",
-  "kind": "written",
-  "field": "II-12",
-  "level": 0,
-  "minutes": 5,
-  "theme": "積分法／不定積分",
-  "unit": "積分法",
-  "topic": "不定積分",
-  "statement": {
-   "tex": "\\begin{enumerate}\n  \\item 不定積分 $\\displaystyle\\int(3x^2-4x+1)\\,dx$ を求めよ．\n  \\item $f'(x)=6x-2$，$f(0)=1$ を満たす関数 $f(x)$ を求めよ．\n\\end{enumerate}"
-  },
-  "answer": {
-   "tex": "(1) $x^3-2x^2+x+C$（$C$ は積分定数）　(2) $f(x)=3x^2-2x+1$"
-  },
-  "solutions": [
-   {
-    "id": "main",
-    "kind": "main",
-    "tex": "(1) $\\displaystyle\\int(3x^2-4x+1)\\,dx=\\boldsymbol{x^3-2x^2+x+C}$（$C$ は積分定数）．\n(2) $f(x)=\\displaystyle\\int(6x-2)\\,dx=3x^2-2x+C$．$f(0)=C=1$ より $f(x)=\\boldsymbol{3x^2-2x+1}$．"
-   }
-  ],
-  "idea": {
-   "tex": "$\\displaystyle\\int x^n\\,dx=\\dfrac{x^{n+1}}{n+1}+C$．条件 $f(0)=1$ で積分定数を決める．"
-  },
-  "grading": {
-   "format": "lemma-input/1",
-   "spec": "(1) x^3-2x^2+x+C\n(2) $f(x)$：3x^2-2x+1"
-  },
-  "methods": [],
-  "tags": [
-   "不定積分",
-   "積分定数"
-  ],
-  "provenance": {
-   "created": "2026-10-30"
-  },
-  "quality": {
-   "status": "published",
-   "checks": {
-    "dual": false,
-    "sympy": true,
-    "human": false
-   },
-   "verified": false
-  }
- },
- {
-  "id": "II-CAL-216",
-  "schema": "lemma.problem/1",
-  "kind": "written",
-  "field": "II-12",
-  "level": 0,
-  "minutes": 5,
-  "theme": "積分法／定積分の計算",
-  "unit": "積分法",
-  "topic": "定積分の計算",
-  "statement": {
-   "tex": "次の定積分を求めよ．\n\\begin{enumerate}\n  \\item $\\displaystyle\\int_{-1}^{2}(x^2+x)\\,dx$\n  \\item $\\displaystyle\\int_{1}^{3}(x-1)(x-3)\\,dx$\n\\end{enumerate}"
-  },
-  "answer": {
-   "tex": "(1) $\\dfrac{9}{2}$　(2) $-\\dfrac{4}{3}$"
-  },
-  "solutions": [
-   {
-    "id": "main",
-    "kind": "main",
-    "tex": "(1) $\\left[\\dfrac{x^3}{3}+\\dfrac{x^2}{2}\\right]_{-1}^{2}=\\left(\\dfrac83+2\\right)-\\left(-\\dfrac13+\\dfrac12\\right)=3+\\dfrac32=\\boldsymbol{\\dfrac{9}{2}}$．\n(2) $\\displaystyle\\int_\\alpha^\\beta(x-\\alpha)(x-\\beta)\\,dx=-\\dfrac{(\\beta-\\alpha)^3}{6}$ より $-\\dfrac{2^3}{6}=\\boldsymbol{-\\dfrac{4}{3}}$．"
-   }
-  ],
-  "idea": {
-   "tex": "原始関数の差をとる．$(x-\\alpha)(x-\\beta)$ の形なら $-\\dfrac16(\\beta-\\alpha)^3$ の公式が速い．"
-  },
-  "grading": {
-   "format": "lemma-input/1",
-   "spec": "(1) 9/2\n(2) -4/3"
-  },
-  "methods": [],
-  "tags": [
-   "定積分"
-  ],
-  "provenance": {
-   "created": "2026-10-30"
-  },
-  "quality": {
-   "status": "published",
-   "checks": {
-    "dual": false,
-    "sympy": true,
-    "human": false
-   },
-   "verified": false
-  }
- },
- {
-  "id": "II-CAL-217",
-  "schema": "lemma.problem/1",
-  "kind": "written",
-  "field": "II-12",
-  "level": 0,
-  "minutes": 5,
-  "theme": "積分法／放物線と $x$ 軸で囲まれた面積",
-  "unit": "積分法",
-  "topic": "放物線と $x$ 軸で囲まれた面積",
-  "statement": {
-   "tex": "放物線 $y=x^2-2x-3$ と $x$ 軸で囲まれた部分の面積を求めよ．"
-  },
-  "answer": {
-   "tex": "$\\dfrac{32}{3}$"
-  },
-  "solutions": [
-   {
-    "id": "main",
-    "kind": "main",
-    "tex": "$x^2-2x-3=(x+1)(x-3)$ より $x$ 軸との交点は $x=-1,\\ 3$．この間で $y\\leqq0$ なので\n面積 $=-\\displaystyle\\int_{-1}^{3}(x+1)(x-3)\\,dx=\\dfrac{(3-(-1))^3}{6}=\\boldsymbol{\\dfrac{32}{3}}$．"
-   }
-  ],
-  "idea": {
-   "tex": "グラフが $x$ 軸の下にある部分は，$-\\displaystyle\\int y\\,dx$ が面積になる．"
-  },
-  "grading": {
-   "format": "lemma-input/1",
-   "spec": "32/3"
-  },
-  "methods": [],
-  "tags": [
-   "面積",
-   "1/6公式"
-  ],
-  "provenance": {
-   "created": "2026-10-30"
-  },
-  "quality": {
-   "status": "published",
-   "checks": {
-    "dual": false,
-    "sympy": true,
-    "human": false
-   },
-   "verified": false
-  }
- },
- {
-  "id": "II-CAL-218",
-  "schema": "lemma.problem/1",
-  "kind": "written",
-  "field": "II-12",
-  "level": 0,
-  "minutes": 6,
-  "theme": "積分法／放物線と直線で囲まれた面積",
-  "unit": "積分法",
-  "topic": "放物線と直線で囲まれた面積",
-  "statement": {
-   "tex": "放物線 $y=x^2$ と直線 $y=x+2$ で囲まれた部分の面積を求めよ．"
-  },
-  "answer": {
-   "tex": "$\\dfrac{9}{2}$"
-  },
-  "solutions": [
-   {
-    "id": "main",
-    "kind": "main",
-    "tex": "$x^2=x+2$ より $(x+1)(x-2)=0$，交点の $x$ 座標は $-1,\\ 2$．$-1\\leqq x\\leqq2$ で $x+2\\geqq x^2$．\n面積 $=\\displaystyle\\int_{-1}^{2}(x+2-x^2)\\,dx=\\dfrac{(2-(-1))^3}{6}=\\boldsymbol{\\dfrac{9}{2}}$．"
-   }
-  ],
-  "idea": {
-   "tex": "上の曲線から下の曲線を引いて，交点の間で積分する．"
-  },
-  "grading": {
-   "format": "lemma-input/1",
-   "spec": "9/2"
-  },
-  "methods": [],
-  "tags": [
-   "面積",
-   "1/6公式"
-  ],
-  "provenance": {
-   "created": "2026-10-30"
-  },
-  "quality": {
-   "status": "published",
-   "checks": {
-    "dual": false,
-    "sympy": true,
-    "human": false
-   },
-   "verified": false
-  }
- },
- {
-  "id": "II-CAL-219",
-  "schema": "lemma.problem/1",
-  "kind": "written",
-  "field": "II-12",
-  "level": 0,
-  "minutes": 6,
-  "theme": "積分法／積分区間に $x$ を含む関数",
-  "unit": "積分法",
-  "topic": "積分区間に $x$ を含む関数",
-  "statement": {
-   "tex": "関数 $f(x)$ と定数 $a$ が $\\displaystyle\\int_a^x f(t)\\,dt=x^2-4x+3$ を満たすとき，$f(x)$ と $a$ の値を求めよ．"
-  },
-  "answer": {
-   "tex": "$f(x)=2x-4$，$a=1,\\ 3$"
-  },
-  "solutions": [
-   {
-    "id": "main",
-    "kind": "main",
-    "tex": "両辺を $x$ で微分すると $f(x)=\\boldsymbol{2x-4}$．\nまた $x=a$ とおくと左辺は $0$ なので $a^2-4a+3=0$，$(a-1)(a-3)=0$ より $\\boldsymbol{a=1,\\ 3}$．"
-   }
-  ],
-  "idea": {
-   "tex": "$\\dfrac{d}{dx}\\displaystyle\\int_a^x f(t)\\,dt=f(x)$ と，$x=a$ を代入すると積分が $0$ になることを使う．"
-  },
-  "grading": {
-   "format": "lemma-input/1",
-   "spec": "$f(x)$：2x-4 ; $a$：{1, 3}"
-  },
-  "methods": [],
-  "tags": [
-   "定積分で表された関数",
-   "微分"
-  ],
-  "provenance": {
-   "created": "2026-10-30"
-  },
-  "quality": {
-   "status": "published",
-   "checks": {
-    "dual": false,
-    "sympy": true,
-    "human": false
-   },
-   "verified": false
-  }
- },
- {
-  "id": "II-CAL-220",
-  "schema": "lemma.problem/1",
-  "kind": "written",
-  "field": "II-12",
-  "level": 0,
-  "minutes": 6,
-  "theme": "積分法／定積分を含む関数の決定",
-  "unit": "積分法",
-  "topic": "定積分を含む関数の決定",
-  "statement": {
-   "tex": "等式 $f(x)=3x^2-2\\displaystyle\\int_0^1 f(t)\\,dt$ を満たす関数 $f(x)$ を求めよ．"
-  },
-  "answer": {
-   "tex": "$f(x)=3x^2-\\dfrac{2}{3}$"
-  },
-  "solutions": [
-   {
-    "id": "main",
-    "kind": "main",
-    "tex": "$\\displaystyle\\int_0^1f(t)\\,dt$ は定数なので $c$ とおくと $f(x)=3x^2-2c$．\n$c=\\displaystyle\\int_0^1(3t^2-2c)\\,dt=1-2c$ より $c=\\dfrac13$．\nよって $f(x)=\\boldsymbol{3x^2-\\dfrac{2}{3}}$．"
-   }
-  ],
-  "idea": {
-   "tex": "区間が定数の定積分は定数．文字でおいて，その定義式から方程式を作る．"
-  },
-  "grading": {
-   "format": "lemma-input/1",
-   "spec": "$f(x)$：3x^2-2/3"
-  },
-  "methods": [],
-  "tags": [
-   "定積分で表された関数"
-  ],
-  "provenance": {
-   "created": "2026-10-30"
-  },
-  "quality": {
-   "status": "published",
-   "checks": {
-    "dual": false,
-    "sympy": true,
-    "human": false
-   },
-   "verified": false
-  }
- },
- {
-  "id": "II-CAL-221",
-  "schema": "lemma.problem/1",
-  "kind": "written",
-  "field": "II-12",
-  "level": 0,
-  "minutes": 7,
-  "theme": "積分法／絶対値を含む関数の定積分",
-  "unit": "積分法",
-  "topic": "絶対値を含む関数の定積分",
-  "statement": {
-   "tex": "次の定積分を求めよ．\n\\begin{enumerate}\n  \\item $\\displaystyle\\int_0^3|x-1|\\,dx$\n  \\item $\\displaystyle\\int_0^2|x^2-1|\\,dx$\n\\end{enumerate}"
-  },
-  "answer": {
-   "tex": "(1) $\\dfrac{5}{2}$　(2) $2$"
-  },
-  "solutions": [
-   {
-    "id": "main",
-    "kind": "main",
-    "tex": "(1) $\\displaystyle\\int_0^1(1-x)\\,dx+\\int_1^3(x-1)\\,dx=\\dfrac12+2=\\boldsymbol{\\dfrac{5}{2}}$．\n(2) $\\displaystyle\\int_0^1(1-x^2)\\,dx+\\int_1^2(x^2-1)\\,dx=\\dfrac23+\\dfrac43=\\boldsymbol{2}$．"
-   }
-  ],
-  "idea": {
-   "tex": "絶対値の中が $0$ になる点で区間を分け，それぞれ絶対値を外して積分する．"
-  },
-  "grading": {
-   "format": "lemma-input/1",
-   "spec": "(1) 5/2\n(2) 2"
-  },
-  "methods": [],
-  "tags": [
-   "定積分",
-   "絶対値"
-  ],
-  "provenance": {
-   "created": "2026-10-30"
-  },
-  "quality": {
-   "status": "published",
-   "checks": {
-    "dual": false,
-    "sympy": true,
-    "human": false
-   },
-   "verified": false
-  }
- },
- {
-  "id": "II-CAL-222",
-  "schema": "lemma.problem/1",
-  "kind": "written",
-  "field": "II-12",
-  "level": 1,
-  "minutes": 10,
-  "theme": "微分法／3次関数が単調増加となる条件",
-  "unit": "微分法",
-  "topic": "3次関数が単調増加となる条件",
-  "statement": {
-   "tex": "\\begin{enumerate}\n  \\item 関数 $f(x)=x^3+ax^2+3x$ がつねに増加するような定数 $a$ の値の範囲を求めよ．\n  \\item 関数 $g(x)=x^3-3ax^2+3(a+2)x$ が極値をもつような定数 $a$ の値の範囲を求めよ．\n\\end{enumerate}"
-  },
-  "answer": {
-   "tex": "(1) $-3\\leqq a\\leqq 3$　(2) $a<-1,\\ 2<a$"
-  },
-  "solutions": [
-   {
-    "id": "main",
-    "kind": "main",
-    "tex": "(1) $f'(x)=3x^2+2ax+3$．つねに増加 $\\iff$ すべての $x$ で $f'(x)\\geqq0$ $\\iff$ $\\dfrac{D}{4}=a^2-9\\leqq0$．\nよって $\\boldsymbol{-3\\leqq a\\leqq 3}$（$D=0$ のときも $f'(x)=0$ は1点だけなので増加する）．\n(2) $g'(x)=3\\{x^2-2ax+(a+2)\\}$．極値をもつ $\\iff$ $g'(x)$ の符号が変わる $\\iff$ $\\dfrac{D}{4}=a^2-a-2>0$．\n$(a+1)(a-2)>0$ より $\\boldsymbol{a<-1,\\ 2<a}$．"
-   }
-  ],
-  "idea": {
-   "tex": "3次関数の増減は $f'(x)$（2次式）の符号で決まる．判別式で符号が変わるかどうかを見る．"
-  },
-  "grading": {
-   "format": "lemma-input/1",
-   "spec": "(1) -3<=a<=3\n(2) a<-1 または 2<a"
-  },
-  "methods": [],
-  "tags": [
-   "単調増加",
-   "極値をもつ条件",
-   "判別式"
-  ],
-  "provenance": {
-   "created": "2026-10-30"
-  },
-  "quality": {
-   "status": "published",
-   "checks": {
-    "dual": false,
-    "sympy": true,
-    "human": false
-   },
-   "verified": false
-  }
- },
- {
-  "id": "II-CAL-223",
-  "schema": "lemma.problem/1",
-  "kind": "written",
-  "field": "II-12",
-  "level": 1,
-  "minutes": 11,
-  "theme": "微分法／極大値と極小値の差",
-  "unit": "微分法",
-  "topic": "極大値と極小値の差",
-  "statement": {
-   "tex": "$p>0$ とする．関数 $f(x)=x^3-3px+1$ について，次の問いに答えよ．\n\\begin{enumerate}\n  \\item 極大値と極小値の差を $p$ で表せ．\n  \\item 極大値と極小値の差が $32$ となるような $p$ の値を求め，そのときの極小値を求めよ．\n\\end{enumerate}"
-  },
-  "answer": {
-   "tex": "(1) $4p\\sqrt{p}$　(2) $p=4$，極小値 $-15$"
-  },
-  "solutions": [
-   {
-    "id": "main",
-    "kind": "main",
-    "tex": "(1) $f'(x)=3(x^2-p)$ より $x=-\\sqrt p$ で極大，$x=\\sqrt p$ で極小．\n$f(-\\sqrt p)-f(\\sqrt p)=(-p\\sqrt p+3p\\sqrt p)-(p\\sqrt p-3p\\sqrt p)=\\boldsymbol{4p\\sqrt{p}}$．\n(2) $4p\\sqrt p=32$ より $p^{\\frac32}=8$，$\\boldsymbol{p=4}$．\n極小値は $f(2)=8-24+1=\\boldsymbol{-15}$．"
-   }
-  ],
-  "idea": {
-   "tex": "極値をとる $x$ を求めて差を直接計算する．定数項は差に影響しない．"
-  },
-  "grading": {
-   "format": "lemma-input/1",
-   "spec": "(1) 4p sqrt(p)\n(2) $p$：4 ; 極小値：-15"
-  },
-  "methods": [],
-  "tags": [
-   "極値",
-   "極値の差"
-  ],
-  "provenance": {
-   "created": "2026-10-30"
-  },
-  "quality": {
-   "status": "published",
-   "checks": {
-    "dual": false,
-    "sympy": true,
-    "human": false
-   },
-   "verified": false
-  }
- },
- {
-  "id": "II-CAL-224",
-  "schema": "lemma.problem/1",
-  "kind": "written",
-  "field": "II-12",
-  "level": 1,
-  "minutes": 12,
-  "theme": "微分法／2曲線が接する条件",
-  "unit": "微分法",
-  "topic": "2曲線が接する条件",
-  "statement": {
-   "tex": "曲線 $y=x^3-x$ と放物線 $y=x^2+a$ が接する（共有点をもち，その点で共通の接線をもつ）ような定数 $a$ の値をすべて求めよ．"
-  },
-  "answer": {
-   "tex": "$a=-1,\\ \\dfrac{5}{27}$"
-  },
-  "solutions": [
-   {
-    "id": "main",
-    "kind": "main",
-    "tex": "接点の $x$ 座標を $t$ とすると，$y$ 座標と傾きが一致するので\n$t^3-t=t^2+a$ …①，$3t^2-1=2t$ …②．\n② より $(t-1)(3t+1)=0$，$t=1,\\ -\\dfrac13$．\n① より $a=t^3-t^2-t$ なので，$t=1$ のとき $a=-1$，$t=-\\dfrac13$ のとき $a=-\\dfrac1{27}-\\dfrac19+\\dfrac13=\\dfrac{5}{27}$．\nよって $\\boldsymbol{a=-1,\\ \\dfrac{5}{27}}$．"
-   }
-  ],
-  "idea": {
-   "tex": "「接する」は，接点で関数の値と微分係数が両方とも一致すること．"
-  },
-  "grading": {
-   "format": "lemma-input/1",
-   "spec": "$a$：{-1, 5/27}"
-  },
-  "methods": [],
-  "tags": [
-   "接する条件",
-   "共通接線"
-  ],
-  "provenance": {
-   "created": "2026-10-30"
-  },
-  "quality": {
-   "status": "published",
-   "checks": {
-    "dual": false,
-    "sympy": true,
-    "human": false
-   },
-   "verified": false
-  }
- },
- {
-  "id": "II-CAL-225",
-  "schema": "lemma.problem/1",
-  "kind": "written",
-  "field": "II-12",
-  "level": 1,
-  "minutes": 12,
-  "theme": "微分法／法線と囲まれた面積",
-  "unit": "微分法",
-  "topic": "法線と囲まれた面積",
-  "statement": {
-   "tex": "放物線 $C:y=x^2$ 上の点 $\\mathrm{A}(1,1)$ における法線を $\\ell$ とする．\n\\begin{enumerate}\n  \\item $\\ell$ の方程式を求めよ．\n  \\item $\\ell$ と $C$ の $\\mathrm{A}$ 以外の交点の座標を求めよ．\n  \\item $\\ell$ と $C$ で囲まれた部分の面積を求めよ．\n\\end{enumerate}"
-  },
-  "answer": {
-   "tex": "(1) $y=-\\dfrac{1}{2}x+\\dfrac{3}{2}$　(2) $\\left(-\\dfrac{3}{2},\\ \\dfrac{9}{4}\\right)$　(3) $\\dfrac{125}{48}$"
-  },
-  "solutions": [
-   {
-    "id": "main",
-    "kind": "main",
-    "tex": "(1) $y'=2x$ より A での接線の傾きは $2$，法線の傾きは $-\\dfrac12$．$y-1=-\\dfrac12(x-1)$，$\\boldsymbol{y=-\\dfrac{1}{2}x+\\dfrac{3}{2}}$．\n(2) $x^2=-\\dfrac12x+\\dfrac32$ より $2x^2+x-3=0$，$(x-1)(2x+3)=0$．$x=-\\dfrac32$ で，交点は $\\boldsymbol{\\left(-\\dfrac{3}{2},\\ \\dfrac{9}{4}\\right)}$．\n(3) $\\displaystyle\\int_{-\\frac32}^{1}\\left(-\\dfrac12x+\\dfrac32-x^2\\right)dx=\\dfrac{1}{6}\\left(1+\\dfrac32\\right)^3=\\boldsymbol{\\dfrac{125}{48}}$．"
-   }
-  ],
-  "idea": {
-   "tex": "法線は接線に垂直で，傾きは $-\\dfrac{1}{f'(a)}$．囲まれた面積は $\\dfrac16$ 公式．"
-  },
-  "grading": {
-   "format": "lemma-input/1",
-   "spec": "(1) $y$：-x/2+3/2\n(2) (-3/2, 9/4)\n(3) 125/48"
-  },
-  "methods": [],
-  "tags": [
-   "法線",
-   "面積"
-  ],
-  "provenance": {
-   "created": "2026-10-30"
-  },
-  "quality": {
-   "status": "published",
-   "checks": {
-    "dual": false,
-    "sympy": true,
-    "human": false
-   },
-   "verified": false
-  }
- },
- {
-  "id": "II-CAL-226",
-  "schema": "lemma.problem/1",
-  "kind": "written",
-  "field": "II-12",
-  "level": 1,
-  "minutes": 13,
-  "theme": "微分法／3次方程式の正の解・負の解の個数",
-  "unit": "微分法",
-  "topic": "3次方程式の正の解・負の解の個数",
-  "statement": {
-   "tex": "$x$ の3次方程式 $x^3-3x^2-9x-a=0$ が，異なる2つの正の解と1つの負の解をもつような定数 $a$ の値の範囲を求めよ．"
-  },
-  "answer": {
-   "tex": "$-27<a<0$"
-  },
-  "solutions": [
-   {
-    "id": "main",
-    "kind": "main",
-    "tex": "$g(x)=x^3-3x^2-9x$ とおき，$y=g(x)$ と $y=a$ の共有点を考える．\n$g'(x)=3(x+1)(x-3)$ より $x=-1$ で極大値 $5$，$x=3$ で極小値 $-27$．また $g(0)=0$．\nグラフで，$x>0$ の部分と2回，$x<0$ の部分と1回交わるのは，直線 $y=a$ が $y=g(0)=0$ より下で極小値より上にあるとき．\nよって $\\boldsymbol{-27<a<0}$．"
-   }
-  ],
-  "idea": {
-   "tex": "定数を分離してグラフと水平線の交点を見る．解の正負は交点の $x$ 座標の位置で，$x=0$ での値 $g(0)$ が境目になる．"
-  },
-  "grading": {
-   "format": "lemma-input/1",
-   "spec": "-27<a<0"
-  },
-  "methods": [],
-  "tags": [
-   "定数分離",
-   "解の配置"
-  ],
-  "provenance": {
-   "created": "2026-10-30"
-  },
-  "quality": {
-   "status": "published",
-   "checks": {
-    "dual": false,
-    "sympy": true,
-    "human": false
-   },
-   "verified": false
-  }
- },
- {
-  "id": "II-CAL-227",
-  "schema": "lemma.problem/1",
-  "kind": "written",
-  "field": "II-12",
-  "level": 1,
-  "minutes": 11,
-  "theme": "微分法／不等式がつねに成り立つ条件",
-  "unit": "微分法",
-  "topic": "不等式がつねに成り立つ条件",
-  "statement": {
-   "tex": "$x\\geqq 0$ のすべての $x$ に対して不等式 $x^3-3x^2+a\\geqq 0$ が成り立つような定数 $a$ の値の範囲を求めよ．"
-  },
-  "answer": {
-   "tex": "$a\\geqq 4$"
-  },
-  "solutions": [
-   {
-    "id": "main",
-    "kind": "main",
-    "tex": "$f(x)=x^3-3x^2+a$ とおく．$f'(x)=3x(x-2)$ より，$x\\geqq0$ では $0\\leqq x\\leqq2$ で減少，$x\\geqq2$ で増加．\nよって $x\\geqq0$ における最小値は $f(2)=a-4$．\n$a-4\\geqq0$ より $\\boldsymbol{a\\geqq 4}$．"
-   }
-  ],
-  "idea": {
-   "tex": "「つねに $\\geqq0$」は「その範囲での最小値 $\\geqq0$」と言い換える．"
-  },
-  "grading": {
-   "format": "lemma-input/1",
-   "spec": "a>=4"
-  },
-  "methods": [],
-  "tags": [
-   "不等式",
-   "最小値"
-  ],
-  "provenance": {
-   "created": "2026-10-30"
-  },
-  "quality": {
-   "status": "published",
-   "checks": {
-    "dual": false,
-    "sympy": true,
-    "human": false
-   },
-   "verified": false
-  }
- },
- {
-  "id": "II-CAL-228",
-  "schema": "lemma.problem/1",
-  "kind": "written",
-  "field": "II-12",
-  "level": 1,
-  "minutes": 11,
-  "theme": "微分法／容積の最大（文章題）",
-  "unit": "微分法",
-  "topic": "容積の最大（文章題）",
-  "statement": {
-   "tex": "1辺の長さが $12$ の正方形の厚紙の四隅から，1辺の長さ $x$ の正方形を切り取り，残りを折り曲げてふたのない直方体の箱を作る．\n\\begin{enumerate}\n  \\item 箱の容積 $V$ を $x$ の式で表し，$x$ のとりうる値の範囲を答えよ．\n  \\item $V$ の最大値と，そのときの $x$ の値を求めよ．\n\\end{enumerate}"
-  },
-  "answer": {
-   "tex": "(1) $V=x(12-2x)^2$，$0<x<6$　(2) 最大値 $128$（$x=2$）"
-  },
-  "solutions": [
-   {
-    "id": "main",
-    "kind": "main",
-    "tex": "(1) 底面は1辺 $12-2x$ の正方形，高さは $x$ なので $\\boldsymbol{V=x(12-2x)^2}$，$\\boldsymbol{0<x<6}$．\n(2) $V=4x^3-48x^2+144x$，$V'=12x^2-96x+144=12(x-2)(x-6)$．\n$0<x<6$ では $x=2$ の前後で $V'$ が正から負に変わるので，$x=2$ で最大．\n最大値は $2\\cdot8^2=\\boldsymbol{128}$（$x=2$）．"
-   }
-  ],
-  "idea": {
-   "tex": "量を1つの変数で表し，変数の範囲を確認してから増減を調べる．"
-  },
-  "grading": {
-   "format": "lemma-input/1",
-   "spec": "(1) $V$：x(12-2x)^2 ; 0<x<6\n(2) 最大値：128 ; $x$：2"
-  },
-  "methods": [],
-  "tags": [
-   "最大最小",
-   "文章題"
-  ],
-  "provenance": {
-   "created": "2026-10-30"
-  },
-  "quality": {
-   "status": "published",
-   "checks": {
-    "dual": false,
-    "sympy": true,
-    "human": false
-   },
-   "verified": false
-  }
- },
- {
-  "id": "II-CAL-229",
-  "schema": "lemma.problem/1",
-  "kind": "written",
-  "field": "II-12",
-  "level": 1,
-  "minutes": 13,
-  "theme": "微分法／球に内接する円柱の体積",
-  "unit": "微分法",
-  "topic": "球に内接する円柱の体積",
-  "statement": {
-   "tex": "半径 $3$ の球に内接する円柱を考える．円柱の高さを $h$ とする．\n\\begin{enumerate}\n  \\item 円柱の体積 $V$ を $h$ の式で表せ．\n  \\item $V$ の最大値と，そのときの $h$ を求めよ．\n\\end{enumerate}"
-  },
-  "answer": {
-   "tex": "(1) $V=\\pi\\left(9h-\\dfrac{h^3}{4}\\right)$　(2) 最大値 $12\\sqrt{3}\\pi$（$h=2\\sqrt{3}$）"
-  },
-  "solutions": [
-   {
-    "id": "main",
-    "kind": "main",
-    "tex": "(1) 底面の半径を $r$ とすると，球の中心から底面までの距離は $\\dfrac h2$ なので $r^2=9-\\dfrac{h^2}{4}$．\n$V=\\pi r^2h=\\boldsymbol{\\pi\\left(9h-\\dfrac{h^3}{4}\\right)}$（$0<h<6$）．\n(2) $V'=\\pi\\left(9-\\dfrac{3h^2}{4}\\right)=0$ より $h^2=12$，$h=2\\sqrt3$．この前後で $V'$ は正から負．\n最大値は $\\pi\\left(18\\sqrt3-\\dfrac{24\\sqrt3}{4}\\right)=\\boldsymbol{12\\sqrt{3}\\pi}$（$h=2\\sqrt3$）．"
-   }
-  ],
-  "idea": {
-   "tex": "断面の直角三角形で半径と高さの関係を作り，体積を1変数の3次関数にする．"
-  },
-  "grading": {
-   "format": "lemma-input/1",
-   "spec": "(1) $V$：π(9h-h^3/4)\n(2) 最大値：12sqrt(3)π ; $h$：2sqrt(3)"
-  },
-  "methods": [],
-  "tags": [
-   "最大最小",
-   "立体",
-   "文章題"
-  ],
-  "provenance": {
-   "created": "2026-10-30"
-  },
-  "quality": {
-   "status": "published",
-   "checks": {
-    "dual": false,
-    "sympy": true,
-    "human": false
-   },
-   "verified": false
-  }
- },
- {
-  "id": "II-CAL-230",
-  "schema": "lemma.problem/1",
-  "kind": "written",
-  "field": "II-12",
-  "level": 1,
-  "minutes": 12,
-  "theme": "積分法／3次関数のグラフと接線で囲まれた面積",
-  "unit": "積分法",
-  "topic": "3次関数のグラフと接線で囲まれた面積",
-  "statement": {
-   "tex": "曲線 $C:y=x^3-3x$ について，次の問いに答えよ．\n\\begin{enumerate}\n  \\item $C$ 上の点 $(1,-2)$ における接線 $\\ell$ の方程式と，$\\ell$ と $C$ の接点以外の共有点の $x$ 座標を求めよ．\n  \\item $C$ と $\\ell$ で囲まれた部分の面積を求めよ．\n\\end{enumerate}"
-  },
-  "answer": {
-   "tex": "(1) $y=-2$，$x=-2$　(2) $\\dfrac{27}{4}$"
-  },
-  "solutions": [
-   {
-    "id": "main",
-    "kind": "main",
-    "tex": "(1) $y'=3x^2-3$ より $x=1$ での傾きは $0$．$\\ell:\\boldsymbol{y=-2}$．\n$x^3-3x+2=(x-1)^2(x+2)=0$ より，接点以外の共有点は $\\boldsymbol{x=-2}$．\n(2) $-2\\leqq x\\leqq1$ で $x^3-3x+2=(x-1)^2(x+2)\\geqq0$．\n面積 $=\\displaystyle\\int_{-2}^{1}(x-1)^2(x+2)\\,dx=\\dfrac{(1-(-2))^4}{12}=\\boldsymbol{\\dfrac{27}{4}}$．"
-   }
-  ],
-  "idea": {
-   "tex": "接線との差は接点で重解をもつので $(x-\\alpha)^2(x-\\beta)$ と因数分解でき，$\\dfrac1{12}$ 公式が使える．"
-  },
-  "grading": {
-   "format": "lemma-input/1",
-   "spec": "(1) $y$：-2 ; $x$：-2\n(2) 27/4"
-  },
-  "methods": [],
-  "tags": [
-   "接線",
-   "面積",
-   "1/12公式"
-  ],
-  "provenance": {
-   "created": "2026-10-30"
-  },
-  "quality": {
-   "status": "published",
-   "checks": {
-    "dual": false,
-    "sympy": true,
-    "human": false
-   },
-   "verified": false
-  }
- },
- {
-  "id": "II-CAL-231",
-  "schema": "lemma.problem/1",
-  "kind": "written",
-  "field": "II-12",
-  "level": 1,
-  "minutes": 13,
-  "theme": "積分法／面積を2等分する直線",
-  "unit": "積分法",
-  "topic": "面積を2等分する直線",
-  "statement": {
-   "tex": "放物線 $y=x^2-2x$ と $x$ 軸で囲まれた部分を $D$ とする．\n\\begin{enumerate}\n  \\item $D$ の面積を求めよ．\n  \\item 原点を通る直線 $y=mx$ が $D$ の面積を2等分するとき，$m$ の値を求めよ．\n\\end{enumerate}"
-  },
-  "answer": {
-   "tex": "(1) $\\dfrac{4}{3}$　(2) $m=\\sqrt[3]{4}-2$"
-  },
-  "solutions": [
-   {
-    "id": "main",
-    "kind": "main",
-    "tex": "(1) $-\\displaystyle\\int_0^2(x^2-2x)\\,dx=\\dfrac{2^3}{6}=\\boldsymbol{\\dfrac{4}{3}}$．\n(2) 直線が $D$ を通るには $-2<m<0$．$x^2-2x=mx$ より $x=0,\\ m+2$．\n直線と放物線で囲まれた部分の面積は $\\displaystyle\\int_0^{m+2}\\{mx-(x^2-2x)\\}\\,dx=\\dfrac{(m+2)^3}{6}$．\nこれが $\\dfrac23$ に等しいので $(m+2)^3=4$，$\\boldsymbol{m=\\sqrt[3]{4}-2}$（$-2<m<0$ を満たす）．"
-   }
-  ],
-  "idea": {
-   "tex": "直線と放物線で囲まれた小さい部分の面積を $m$ で表し，全体の半分とおく．"
-  },
-  "grading": {
-   "format": "lemma-input/1",
-   "spec": "(1) 4/3\n(2) $m$：4^(1/3)-2"
-  },
-  "methods": [],
-  "tags": [
-   "面積",
-   "2等分",
-   "1/6公式"
-  ],
-  "provenance": {
-   "created": "2026-10-30"
-  },
-  "quality": {
-   "status": "published",
-   "checks": {
-    "dual": false,
-    "sympy": true,
-    "human": false
-   },
-   "verified": false
-  }
- },
- {
-  "id": "II-CAL-232",
-  "schema": "lemma.problem/1",
-  "kind": "written",
-  "field": "II-12",
-  "level": 1,
-  "minutes": 12,
-  "theme": "積分法／絶対値を含む定積分の最小",
-  "unit": "積分法",
-  "topic": "絶対値を含む定積分の最小",
-  "statement": {
-   "tex": "$0\\leqq a\\leqq 1$ とし，$F(a)=\\displaystyle\\int_0^1|x-a|\\,dx$ とおく．\n\\begin{enumerate}\n  \\item $F(a)$ を $a$ の式で表せ．\n  \\item $F(a)$ の最小値と，そのときの $a$ の値を求めよ．\n\\end{enumerate}"
-  },
-  "answer": {
-   "tex": "(1) $F(a)=a^2-a+\\dfrac{1}{2}$　(2) 最小値 $\\dfrac{1}{4}$（$a=\\dfrac{1}{2}$）"
-  },
-  "solutions": [
-   {
-    "id": "main",
-    "kind": "main",
-    "tex": "(1) $F(a)=\\displaystyle\\int_0^a(a-x)\\,dx+\\int_a^1(x-a)\\,dx=\\dfrac{a^2}{2}+\\dfrac{(1-a)^2}{2}=\\boldsymbol{a^2-a+\\dfrac{1}{2}}$．\n(2) $F(a)=\\left(a-\\dfrac12\\right)^2+\\dfrac14$ より，$a=\\dfrac12$ で最小値 $\\boldsymbol{\\dfrac{1}{4}}$．"
-   }
-  ],
-  "idea": {
-   "tex": "$x=a$ で区間を分けて絶対値を外すと，$F(a)$ は $a$ の2次関数になる．"
-  },
-  "grading": {
-   "format": "lemma-input/1",
-   "spec": "(1) $F(a)$：a^2-a+1/2\n(2) 最小値：1/4 ; $a$：1/2"
-  },
-  "methods": [],
-  "tags": [
-   "定積分",
-   "絶対値",
-   "最大最小"
-  ],
-  "provenance": {
-   "created": "2026-10-30"
-  },
-  "quality": {
-   "status": "published",
-   "checks": {
-    "dual": false,
-    "sympy": true,
-    "human": false
-   },
-   "verified": false
-  }
- },
- {
-  "id": "II-CAL-233",
-  "schema": "lemma.problem/1",
-  "kind": "written",
-  "field": "II-12",
-  "level": 1,
-  "minutes": 11,
-  "theme": "積分法／定積分で表された関数の極値",
-  "unit": "積分法",
-  "topic": "定積分で表された関数の極値",
-  "statement": {
-   "tex": "関数 $f(x)=\\displaystyle\\int_0^x(t^2-4t+3)\\,dt$ の極大値と極小値を求めよ．"
-  },
-  "answer": {
-   "tex": "極大値 $\\dfrac{4}{3}$（$x=1$），極小値 $0$（$x=3$）"
-  },
-  "solutions": [
-   {
-    "id": "main",
-    "kind": "main",
-    "tex": "$f'(x)=x^2-4x+3=(x-1)(x-3)$．$x=1$ の前後で正から負，$x=3$ の前後で負から正．\n$f(x)=\\dfrac{x^3}{3}-2x^2+3x$ より，極大値 $f(1)=\\boldsymbol{\\dfrac{4}{3}}$，極小値 $f(3)=9-18+9=\\boldsymbol{0}$．"
-   }
-  ],
-  "idea": {
-   "tex": "微分すれば被積分関数が出てくるので，増減は被積分関数の符号で決まる．"
-  },
-  "grading": {
-   "format": "lemma-input/1",
-   "spec": "極大値：4/3 ; 極小値：0"
-  },
-  "methods": [],
-  "tags": [
-   "定積分で表された関数",
-   "極値"
-  ],
-  "provenance": {
-   "created": "2026-10-30"
-  },
-  "quality": {
-   "status": "published",
-   "checks": {
-    "dual": false,
-    "sympy": true,
-    "human": false
-   },
-   "verified": false
-  }
- },
- {
-  "id": "II-CAL-234",
-  "schema": "lemma.problem/1",
-  "kind": "written",
-  "field": "II-12",
-  "level": 1,
-  "minutes": 10,
-  "theme": "積分法／2つの放物線で囲まれた面積",
-  "unit": "積分法",
-  "topic": "2つの放物線で囲まれた面積",
-  "statement": {
-   "tex": "2つの放物線 $y=x^2$ と $y=-x^2+2x+4$ で囲まれた部分の面積を求めよ．"
-  },
-  "answer": {
-   "tex": "$9$"
-  },
-  "solutions": [
-   {
-    "id": "main",
-    "kind": "main",
-    "tex": "$x^2=-x^2+2x+4$ より $2x^2-2x-4=0$，$(x+1)(x-2)=0$．\n$-1\\leqq x\\leqq2$ で $-x^2+2x+4\\geqq x^2$ なので\n面積 $=\\displaystyle\\int_{-1}^{2}(-2x^2+2x+4)\\,dx=-2\\int_{-1}^{2}(x+1)(x-2)\\,dx=2\\cdot\\dfrac{3^3}{6}=\\boldsymbol{9}$．"
-   }
-  ],
-  "idea": {
-   "tex": "差をとると2次式になり，交点の間の積分は $\\dfrac16$ 公式で求まる（$x^2$ の係数に注意）．"
-  },
-  "grading": {
-   "format": "lemma-input/1",
-   "spec": "9"
-  },
-  "methods": [],
-  "tags": [
-   "面積",
-   "1/6公式"
-  ],
-  "provenance": {
-   "created": "2026-10-30"
-  },
-  "quality": {
-   "status": "published",
-   "checks": {
-    "dual": false,
-    "sympy": true,
-    "human": false
-   },
-   "verified": false
-  }
- },
- {
-  "id": "II-CAL-235",
-  "schema": "lemma.problem/1",
-  "kind": "written",
-  "field": "II-12",
-  "level": 1,
-  "minutes": 13,
-  "theme": "積分法／$x$ を含む定積分を含む関数の決定",
-  "unit": "積分法",
-  "topic": "$x$ を含む定積分を含む関数の決定",
-  "statement": {
-   "tex": "等式 $f(x)=x^2+\\displaystyle\\int_0^1(x+t)f(t)\\,dt$ を満たす関数 $f(x)$ を求めよ．"
-  },
-  "answer": {
-   "tex": "$f(x)=x^{2}-5x-\\dfrac{17}{6}$"
-  },
-  "solutions": [
-   {
-    "id": "main",
-    "kind": "main",
-    "tex": "$\\displaystyle\\int_0^1(x+t)f(t)\\,dt=x\\int_0^1f(t)\\,dt+\\int_0^1 tf(t)\\,dt$．\n$A=\\displaystyle\\int_0^1f(t)\\,dt$，$B=\\displaystyle\\int_0^1 tf(t)\\,dt$ とおくと $f(x)=x^2+Ax+B$．\n$A=\\displaystyle\\int_0^1(t^2+At+B)\\,dt=\\dfrac13+\\dfrac A2+B$，$B=\\displaystyle\\int_0^1(t^3+At^2+Bt)\\,dt=\\dfrac14+\\dfrac A3+\\dfrac B2$．\n整理すると $3A-6B=2$，$-4A+6B=3$．これを解いて $A=-5$，$B=-\\dfrac{17}{6}$．\nよって $f(x)=\\boldsymbol{x^{2}-5x-\\dfrac{17}{6}}$．"
-   }
-  ],
-  "idea": {
-   "tex": "$x$ は積分の外に出してから，残る定積分をそれぞれ定数とおく．"
-  },
-  "grading": {
-   "format": "lemma-input/1",
-   "spec": "$f(x)$：x^2-5*x-17/6"
-  },
-  "methods": [],
-  "tags": [
-   "定積分で表された関数",
-   "連立方程式"
-  ],
-  "provenance": {
-   "created": "2026-10-30"
-  },
-  "quality": {
-   "status": "published",
-   "checks": {
-    "dual": false,
-    "sympy": true,
-    "human": false
-   },
-   "verified": false
-  }
- },
- {
-  "id": "II-CAL-236",
-  "schema": "lemma.problem/1",
-  "kind": "written",
-  "field": "II-12",
-  "level": 1,
-  "minutes": 11,
-  "theme": "微分法／$(x-a)^2$ で割った余りと微分",
-  "unit": "微分法",
-  "topic": "$(x-a)^2$ で割った余りと微分",
-  "statement": {
-   "tex": "\\begin{enumerate}\n  \\item 整式 $f(x)$ を $(x-a)^2$ で割った余りを $px+q$ とするとき，$f(a)=pa+q$，$f'(a)=p$ が成り立つことを用いて，$x^{10}$ を $(x-1)^2$ で割った余りを求めよ．\n  \\item 整式 $x^{n}$（$n\\geqq2$）を $(x-1)^2$ で割った余りを $n$ の式で表せ．\n\\end{enumerate}"
-  },
-  "answer": {
-   "tex": "(1) $10x-9$　(2) $nx-(n-1)$"
-  },
-  "solutions": [
-   {
-    "id": "main",
-    "kind": "main",
-    "tex": "$x^{n}=(x-1)^2Q(x)+px+q$ とおき，両辺を微分すると $nx^{n-1}=2(x-1)Q(x)+(x-1)^2Q'(x)+p$．\n$x=1$ を代入すると $1=p+q$，$n=p$．\n(1) $n=10$ で $p=10$，$q=-9$．余りは $\\boldsymbol{10x-9}$．\n(2) $p=n$，$q=1-n$ より余りは $\\boldsymbol{nx-(n-1)}$．"
-   }
-  ],
-  "idea": {
-   "tex": "$(x-a)^2$ で割り切れる部分は，$x=a$ で値も微分係数も $0$ になる．"
-  },
-  "grading": {
-   "format": "lemma-input/1",
-   "spec": "(1) 10x-9\n(2) nx-(n-1)"
-  },
-  "methods": [],
-  "tags": [
-   "剰余の定理",
-   "微分",
-   "整式の割り算"
-  ],
-  "provenance": {
-   "created": "2026-10-30"
-  },
-  "quality": {
-   "status": "published",
-   "checks": {
-    "dual": false,
-    "sympy": true,
-    "human": false
-   },
-   "verified": false
-  }
- },
- {
   "id": "II-CAL-237",
   "schema": "lemma.problem/1",
   "kind": "written",
@@ -12443,100 +10999,6 @@
   }
  },
  {
-  "id": "II-CAL-267",
-  "schema": "lemma.problem/1",
-  "kind": "written",
-  "field": "II-12",
-  "level": 4,
-  "minutes": 30,
-  "theme": "3次曲線を点対称に移した曲線との囲む面積",
-  "topic": "3次曲線を点対称に移した曲線との囲む面積",
-  "statement": {
-   "tex": "$f(x)=x^3-x$ とし，$t$ を実数とする．$xy$ 平面において，曲線 $C_1:y=f(x)$ を点 $(t,\\,t)$ に関して対称移動した曲線を $C_2$ とする．\n\\begin{enumerate}\n  \\item $C_2$ の方程式を求めよ．また，$C_1$ と $C_2$ がちょうど2個の共有点をもつような $t$ の値の範囲を求めよ．\n  \\item $t$ が (1) で求めた範囲を動くとき，$C_1$ と $C_2$ で囲まれた部分の面積 $S$ の最大値と，そのときの $t$ の値を求めよ．\n\\end{enumerate}"
-  },
-  "answer": {
-   "tex": "(1) $C_2:y=2t-f(2t-x)$，$0<|t|<\\sqrt2$　(2) $t=\\pm\\dfrac1{\\sqrt2}$ のとき最大値 $S=2$"
-  },
-  "solutions": [
-   {
-    "id": "main",
-    "kind": "main",
-    "tex": "(1) 点 $(X,Y)$ の点 $(t,t)$ に関する対称点は $(2t-X,\\,2t-Y)$．$(x,y)$ が $C_2$ 上 $\\iff(2t-x,\\,2t-y)$ が $C_1$ 上 $\\iff2t-y=f(2t-x)$．よって $C_2:\\boldsymbol{y=2t-f(2t-x)}$．\n\n共有点の $x$ 座標は $f(x)+f(2t-x)=2t$ の実数解．$x=t+u$ とおくと\n\\[\nf(t+u)+f(t-u)=(t+u)^3+(t-u)^3-2t=2t^3+6tu^2-2t\n\\]\nだから，方程式は $6tu^2=4t-2t^3$，すなわち $3tu^2=t(2-t^2)$．\n\\begin{itemize}\n  \\item $t=0$ のとき，すべての $u$ で成り立ち（$f$ は奇関数で $C_2=C_1$），共有点は無数．\n  \\item $t\\neq0$ のとき $u^2=\\dfrac{2-t^2}3$．異なる2実数解 $\\iff t^2<2$．$t^2=2$ なら1個，$t^2>2$ なら0個．\n\\end{itemize}\n共有点の $x$ 座標が決まれば点は1つに決まるので，ちょうど2個 $\\iff\\boldsymbol{0<|t|<\\sqrt2}$．\n\n(2) $c=\\sqrt{\\dfrac{2-t^2}3}$ とおく．$x=t+u$ で\n\\[\nf(x)-\\{2t-f(2t-x)\\}=2t^3+6tu^2-4t=6t(u^2-c^2).\n\\]\n2曲線の差は2次式なので，囲まれた部分は $-c\\leqq u\\leqq c$ の部分だけで，\n\\[\nS=\\int_{-c}^{c}6|t|(c^2-u^2)\\,du=6|t|\\cdot\\frac43c^3=8|t|c^3>0\n\\]\nであり，\n\\[\nS^2=64t^2c^6=\\frac{64}{27}\\,t^2(2-t^2)^3 .\n\\]\n$v=t^2$ とおくと $0<v<2$ で，$\\varphi(v)=v(2-v)^3=-v^4+6v^3-12v^2+8v$ の最大値を考えればよい．\n\\[\n\\varphi'(v)=-4v^3+18v^2-24v+8=-2(2v^3-9v^2+12v-4)=-2(v-2)^2(2v-1)\n\\]\nなので，$0<v<2$ では $\\varphi'(v)>0\\ \\bigl(v<\\frac12\\bigr)$，$\\varphi'(v)<0\\ \\bigl(\\frac12<v<2\\bigr)$ となり，$\\varphi$ は $v=\\frac12$ で最大値 $\\varphi\\left(\\frac12\\right)=\\frac12\\cdot\\left(\\frac32\\right)^3=\\frac{27}{16}$ をとる．$S>0$ なので $S$ も $v=\\frac12$ のとき最大で，$S^2=\\frac{64}{27}\\cdot\\frac{27}{16}=4$．\nよって $\\boldsymbol{t=\\pm\\dfrac1{\\sqrt2}}$ のとき最大値 $S=\\boldsymbol{2}$．"
-   }
-  ],
-  "idea": {
-   "tex": "対称の中心の $x$ 座標 $t$ を原点に移して $x=t+u$ とおく．点対称移動では $f(t+u)+f(t-u)$ が $u$ の偶関数となり，3次の項が打ち消し合って交点の方程式は $u^2=(\\text{定数})$ の形の2次方程式になる．面積は $\\int_{-c}^{c}(c^2-u^2)du=\\frac43c^3$ 型．"
-  },
-  "methods": [],
-  "tags": [
-   "3次関数",
-   "点対称移動",
-   "面積",
-   "最大値"
-  ],
-  "provenance": {
-   "created": "2026-11-10"
-  },
-  "quality": {
-   "status": "published",
-   "checks": {
-    "dual": false,
-    "sympy": true,
-    "human": false
-   },
-   "verified": false
-  }
- },
- {
-  "id": "II-CAL-268",
-  "schema": "lemma.problem/1",
-  "kind": "written",
-  "field": "II-12",
-  "level": 5,
-  "minutes": 40,
-  "theme": "3次曲線に頂点をもつ長方形と正方形",
-  "topic": "3次曲線に頂点をもつ長方形と正方形",
-  "statement": {
-   "tex": "$k$ を実数の定数とし，曲線 $C:\\ y=x^3-kx$ を考える．\n\\begin{enumerate}\n  \\item $C$ 上の相異なる4点を頂点とする平行四辺形があるとき，その対角線の交点は原点であることを示せ．\n  \\item $C$ 上の相異なる4点を頂点とする長方形が存在するような $k$ の値の範囲を求めよ．\n  \\item $C$ 上の相異なる4点を頂点とする正方形の個数を，$k$ の値によって答えよ．また $k=3$ のとき，それらの正方形の1辺の長さを求めよ．\n\\end{enumerate}"
-  },
-  "answer": {
-   "tex": "(1) 証明　(2) $k>\\sqrt3$　(3) $k<2\\sqrt2$ のとき $0$ 個，$k=2\\sqrt2$ のとき $1$ 個，$k>2\\sqrt2$ のとき $2$ 個；$k=3$ のとき1辺の長さは $2\\sqrt2$ と $\\sqrt{10}$"
-  },
-  "solutions": [
-   {
-    "id": "main",
-    "kind": "main",
-    "tex": "$f(x)=x^3-kx$ とする．\n\n(1) 平行四辺形の対角線の交点を $\\mathrm M(m,c)$ とすると，4頂点は M に関して対称な2組に分かれる．点 $(x,f(x))$ の M に関する対称点 $(2m-x,\\,2c-f(x))$ が $C$ 上にある条件は $f(x)+f(2m-x)=2c$ で，\n\\[ f(x)+f(2m-x)-2c=6mx^2-12m^2x+8m^3-2km-2c. \\]\n4頂点は $C$ 上の相異なる点なので $x$ 座標も相異なり（$C$ は関数のグラフ），4つの $x$ 座標はすべてこの右辺を0にする．$m\\neq0$ なら右辺は $x$ の2次式で，0になる $x$ は高々2個だから矛盾．よって $m=0$ で，このとき右辺は $-2c$ なので $c=0$．交点は原点である．\\hfill$\\square$\n\n(2) (1) より長方形の頂点は $\\mathrm P(p,f(p))$，$\\mathrm Q(q,f(q))$，$-\\mathrm P$，$-\\mathrm Q$ の形で，4点が相異なることは $p\\neq0$，$q\\neq0$，$p\\neq\\pm q$ と同値．このとき Q は直線 OP 上にない（OP 上で $C$ と交わるのは $x=0,\\pm p$ の点だけ）ので，4点は O を中心とする平行四辺形をなし，長方形 $\\iff$ 対角線が等しい $\\iff|\\mathrm{OP}|=|\\mathrm{OQ}|$．\n\n$u=p^2$，$v=q^2$ とおくと $u,v>0$，$u\\neq v$ で，$|\\mathrm{OP}|^2=u+u(u-k)^2$．\n\\[ \\{u+u(u-k)^2\\}-\\{v+v(v-k)^2\\}=(u-v)\\{u^2+uv+v^2-2k(u+v)+k^2+1\\}. \\]\nよって条件は $u^2+uv+v^2-2k(u+v)+k^2+1=0$．$a=u-k$，$b=v-k$ とおくと，これは\n\\[ a^2+ab+b^2+k(a+b)+1=0 \\tag{①} \\]\nとなる（展開すると $k^2$ の項は $1+1+1-4+1=0$ で消える）．$s=a+b$，$t=ab$ とすると ① は $t=s^2+ks+1$．\n\n求める条件は「① をみたす相異なる実数 $a,b$ で $a+k>0$，$b+k>0$ のものが存在する」こと．\n\\begin{itemize}\n  \\item $a,b$ が相異なる実数 $\\iff s^2-4t>0\\iff3s^2+4ks+4<0$．\n  \\item $a+k>0$ かつ $b+k>0\\iff s+2k>0$ かつ $t+ks+k^2>0$．ここで $t+ks+k^2=(s+k)^2+1>0$ は常に成り立つ．\n\\end{itemize}\n$3s^2+4ks+4<0$ をみたす $s$ があるのは $4k^2-12>0$，すなわち $|k|>\\sqrt3$ のときで，その範囲は $\\dfrac{-2k-2\\sqrt{k^2-3}}3<s<\\dfrac{-2k+2\\sqrt{k^2-3}}3$．\n\\begin{itemize}\n  \\item $k>\\sqrt3$：上端 $\\frac{-2k+2\\sqrt{k^2-3}}3>-2k$（$\\iff2\\sqrt{k^2-3}>-4k$）なので $s>-2k$ もみたす $s$ がある．\n  \\item $k<-\\sqrt3$：上端 $<\\frac{-2k+2|k|}3=\\frac{4|k|}3<2|k|=-2k$ なので $s>-2k$ となる $s$ はない．\n\\end{itemize}\n$s$ が決まれば $a,b$ は $X^2-sX+t=0$ の2解として得られ，$p=\\sqrt{a+k}$，$q=\\sqrt{b+k}$ とすればよい．よって $\\boldsymbol{k>\\sqrt3}$．\n\n(3) 正方形 $\\iff$ 長方形かつ $\\mathrm{OP}\\perp\\mathrm{OQ}$．$\\overrightarrow{\\mathrm{OP}}\\cdot\\overrightarrow{\\mathrm{OQ}}=pq\\{1+(p^2-k)(q^2-k)\\}=pq(1+ab)$ で $pq\\neq0$ だから，直交 $\\iff ab=-1$．これと ① から $a^2+b^2+ks=0$，すなわち $s^2+ks+2=0$．逆に $s^2+ks+2=0$，$t=-1$ なら $t=s^2+ks+1$ で ① が成り立ち，$s^2-4t=s^2+4>0$ で $a\\neq b$．あとは $s>-2k$ が条件．\n\\begin{itemize}\n  \\item $s^2+ks+2=0$ が実数解をもつのは $k^2\\geqq8$．\n  \\item $k\\geqq2\\sqrt2$：2解 $s=\\frac{-k\\pm\\sqrt{k^2-8}}2$ はともに $>-2k$（$\\iff3k>\\sqrt{k^2-8}$ で成立）．\n  \\item $k\\leqq-2\\sqrt2$：解は正で $\\leqq\\frac{|k|+|k|}2=|k|<2|k|=-2k$ となり不適．\n\\end{itemize}\n正方形（4頂点の集合）は $\\{u,v\\}$ で決まり，$u+v=s+2k$ なので異なる $s$ は異なる正方形を与える．よって\\textbf{個数は $\\boldsymbol{k<2\\sqrt2}$ のとき0個，$\\boldsymbol{k=2\\sqrt2}$ のとき1個，$\\boldsymbol{k>2\\sqrt2}$ のとき2個}．\n\n$k=3$ のとき $s^2+3s+2=0$ より $s=-1,-2$．1辺は $\\sqrt2|\\mathrm{OP}|$，$|\\mathrm{OP}|^2=u(1+a^2)$．\n\\begin{itemize}\n  \\item $s=-2$：$a$ は $X^2+2X-1=0$ の解，$a=-1+\\sqrt2$ とすると $u=2+\\sqrt2$，$1+a^2=4-2\\sqrt2$，$|\\mathrm{OP}|^2=(2+\\sqrt2)(4-2\\sqrt2)=4$．1辺 $2\\sqrt2$．\n  \\item $s=-1$：$a=\\frac{-1+\\sqrt5}2$ とすると $u=\\frac{5+\\sqrt5}2$，$1+a^2=\\frac{5-\\sqrt5}2$，$|\\mathrm{OP}|^2=\\frac{25-5}4=5$．1辺 $\\sqrt{10}$．\n\\end{itemize}\nよって1辺の長さは $\\boldsymbol{2\\sqrt2}$ と $\\boldsymbol{\\sqrt{10}}$．"
-   }
-  ],
-  "idea": {
-   "tex": "曲線上の平行四辺形の中心 M について「点 $X$ と M に関する対称点がともに曲線上」は $x$ の方程式になり，$x^3$ の項が消えて高々2次．4つの異なる解をもつには恒等式でなければならず，中心は変曲点（原点）に限る．長方形は $|\\mathrm{OP}|=|\\mathrm{OQ}|$，正方形はさらに $\\mathrm{OP}\\perp\\mathrm{OQ}$ で，$u=p^2$，$v=q^2$ の対称式の条件（実数解・正の解の存在）に帰着する．"
-  },
-  "grading": {
-   "format": "lemma-input/1",
-   "spec": "(1) 証明\n(2) k>sqrt(3)\n(3) 記述"
-  },
-  "methods": [],
-  "tags": [
-   "点対称",
-   "平行四辺形",
-   "対称式",
-   "解の存在条件"
-  ],
-  "provenance": {
-   "created": "2026-11-10"
-  },
-  "quality": {
-   "status": "published",
-   "checks": {
-    "dual": false,
-    "sympy": true,
-    "human": false
-   },
-   "verified": false
-  }
- },
- {
   "id": "II-CAL-276",
   "schema": "lemma.problem/1",
   "kind": "written",
@@ -13288,6 +11750,100 @@
   ],
   "provenance": {
    "created": "2026-11-19"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-CAL-267",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-12",
+  "level": 4,
+  "minutes": 30,
+  "theme": "3次曲線を点対称に移した曲線との囲む面積",
+  "topic": "3次曲線を点対称に移した曲線との囲む面積",
+  "statement": {
+   "tex": "$f(x)=x^3-x$ とし，$t$ を実数とする．$xy$ 平面において，曲線 $C_1:y=f(x)$ を点 $(t,\\,t)$ に関して対称移動した曲線を $C_2$ とする．\n\\begin{enumerate}\n  \\item $C_2$ の方程式を求めよ．また，$C_1$ と $C_2$ がちょうど2個の共有点をもつような $t$ の値の範囲を求めよ．\n  \\item $t$ が (1) で求めた範囲を動くとき，$C_1$ と $C_2$ で囲まれた部分の面積 $S$ の最大値と，そのときの $t$ の値を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $C_2:y=2t-f(2t-x)$，$0<|t|<\\sqrt2$　(2) $t=\\pm\\dfrac1{\\sqrt2}$ のとき最大値 $S=2$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) 点 $(X,Y)$ の点 $(t,t)$ に関する対称点は $(2t-X,\\,2t-Y)$．$(x,y)$ が $C_2$ 上 $\\iff(2t-x,\\,2t-y)$ が $C_1$ 上 $\\iff2t-y=f(2t-x)$．よって $C_2:\\boldsymbol{y=2t-f(2t-x)}$．\n\n共有点の $x$ 座標は $f(x)+f(2t-x)=2t$ の実数解．$x=t+u$ とおくと\n\\[\nf(t+u)+f(t-u)=(t+u)^3+(t-u)^3-2t=2t^3+6tu^2-2t\n\\]\nだから，方程式は $6tu^2=4t-2t^3$，すなわち $3tu^2=t(2-t^2)$．\n\\begin{itemize}\n  \\item $t=0$ のとき，すべての $u$ で成り立ち（$f$ は奇関数で $C_2=C_1$），共有点は無数．\n  \\item $t\\neq0$ のとき $u^2=\\dfrac{2-t^2}3$．異なる2実数解 $\\iff t^2<2$．$t^2=2$ なら1個，$t^2>2$ なら0個．\n\\end{itemize}\n共有点の $x$ 座標が決まれば点は1つに決まるので，ちょうど2個 $\\iff\\boldsymbol{0<|t|<\\sqrt2}$．\n\n(2) $c=\\sqrt{\\dfrac{2-t^2}3}$ とおく．$x=t+u$ で\n\\[\nf(x)-\\{2t-f(2t-x)\\}=2t^3+6tu^2-4t=6t(u^2-c^2).\n\\]\n2曲線の差は2次式なので，囲まれた部分は $-c\\leqq u\\leqq c$ の部分だけで，\n\\[\nS=\\int_{-c}^{c}6|t|(c^2-u^2)\\,du=6|t|\\cdot\\frac43c^3=8|t|c^3>0\n\\]\nであり，\n\\[\nS^2=64t^2c^6=\\frac{64}{27}\\,t^2(2-t^2)^3 .\n\\]\n$v=t^2$ とおくと $0<v<2$ で，$\\varphi(v)=v(2-v)^3=-v^4+6v^3-12v^2+8v$ の最大値を考えればよい．\n\\[\n\\varphi'(v)=-4v^3+18v^2-24v+8=-2(2v^3-9v^2+12v-4)=-2(v-2)^2(2v-1)\n\\]\nなので，$0<v<2$ では $\\varphi'(v)>0\\ \\bigl(v<\\frac12\\bigr)$，$\\varphi'(v)<0\\ \\bigl(\\frac12<v<2\\bigr)$ となり，$\\varphi$ は $v=\\frac12$ で最大値 $\\varphi\\left(\\frac12\\right)=\\frac12\\cdot\\left(\\frac32\\right)^3=\\frac{27}{16}$ をとる．$S>0$ なので $S$ も $v=\\frac12$ のとき最大で，$S^2=\\frac{64}{27}\\cdot\\frac{27}{16}=4$．\nよって $\\boldsymbol{t=\\pm\\dfrac1{\\sqrt2}}$ のとき最大値 $S=\\boldsymbol{2}$．"
+   }
+  ],
+  "idea": {
+   "tex": "対称の中心の $x$ 座標 $t$ を原点に移して $x=t+u$ とおく．点対称移動では $f(t+u)+f(t-u)$ が $u$ の偶関数となり，3次の項が打ち消し合って交点の方程式は $u^2=(\\text{定数})$ の形の2次方程式になる．面積は $\\int_{-c}^{c}(c^2-u^2)du=\\frac43c^3$ 型．"
+  },
+  "methods": [],
+  "tags": [
+   "3次関数",
+   "点対称移動",
+   "面積",
+   "最大値"
+  ],
+  "provenance": {
+   "created": "2026-11-10"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-CAL-268",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-12",
+  "level": 5,
+  "minutes": 40,
+  "theme": "3次曲線に頂点をもつ長方形と正方形",
+  "topic": "3次曲線に頂点をもつ長方形と正方形",
+  "statement": {
+   "tex": "$k$ を実数の定数とし，曲線 $C:\\ y=x^3-kx$ を考える．\n\\begin{enumerate}\n  \\item $C$ 上の相異なる4点を頂点とする平行四辺形があるとき，その対角線の交点は原点であることを示せ．\n  \\item $C$ 上の相異なる4点を頂点とする長方形が存在するような $k$ の値の範囲を求めよ．\n  \\item $C$ 上の相異なる4点を頂点とする正方形の個数を，$k$ の値によって答えよ．また $k=3$ のとき，それらの正方形の1辺の長さを求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 証明　(2) $k>\\sqrt3$　(3) $k<2\\sqrt2$ のとき $0$ 個，$k=2\\sqrt2$ のとき $1$ 個，$k>2\\sqrt2$ のとき $2$ 個；$k=3$ のとき1辺の長さは $2\\sqrt2$ と $\\sqrt{10}$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "$f(x)=x^3-kx$ とする．\n\n(1) 平行四辺形の対角線の交点を $\\mathrm M(m,c)$ とすると，4頂点は M に関して対称な2組に分かれる．点 $(x,f(x))$ の M に関する対称点 $(2m-x,\\,2c-f(x))$ が $C$ 上にある条件は $f(x)+f(2m-x)=2c$ で，\n\\[ f(x)+f(2m-x)-2c=6mx^2-12m^2x+8m^3-2km-2c. \\]\n4頂点は $C$ 上の相異なる点なので $x$ 座標も相異なり（$C$ は関数のグラフ），4つの $x$ 座標はすべてこの右辺を0にする．$m\\neq0$ なら右辺は $x$ の2次式で，0になる $x$ は高々2個だから矛盾．よって $m=0$ で，このとき右辺は $-2c$ なので $c=0$．交点は原点である．\\hfill$\\square$\n\n(2) (1) より長方形の頂点は $\\mathrm P(p,f(p))$，$\\mathrm Q(q,f(q))$，$-\\mathrm P$，$-\\mathrm Q$ の形で，4点が相異なることは $p\\neq0$，$q\\neq0$，$p\\neq\\pm q$ と同値．このとき Q は直線 OP 上にない（OP 上で $C$ と交わるのは $x=0,\\pm p$ の点だけ）ので，4点は O を中心とする平行四辺形をなし，長方形 $\\iff$ 対角線が等しい $\\iff|\\mathrm{OP}|=|\\mathrm{OQ}|$．\n\n$u=p^2$，$v=q^2$ とおくと $u,v>0$，$u\\neq v$ で，$|\\mathrm{OP}|^2=u+u(u-k)^2$．\n\\[ \\{u+u(u-k)^2\\}-\\{v+v(v-k)^2\\}=(u-v)\\{u^2+uv+v^2-2k(u+v)+k^2+1\\}. \\]\nよって条件は $u^2+uv+v^2-2k(u+v)+k^2+1=0$．$a=u-k$，$b=v-k$ とおくと，これは\n\\[ a^2+ab+b^2+k(a+b)+1=0 \\tag{①} \\]\nとなる（展開すると $k^2$ の項は $1+1+1-4+1=0$ で消える）．$s=a+b$，$t=ab$ とすると ① は $t=s^2+ks+1$．\n\n求める条件は「① をみたす相異なる実数 $a,b$ で $a+k>0$，$b+k>0$ のものが存在する」こと．\n\\begin{itemize}\n  \\item $a,b$ が相異なる実数 $\\iff s^2-4t>0\\iff3s^2+4ks+4<0$．\n  \\item $a+k>0$ かつ $b+k>0\\iff s+2k>0$ かつ $t+ks+k^2>0$．ここで $t+ks+k^2=(s+k)^2+1>0$ は常に成り立つ．\n\\end{itemize}\n$3s^2+4ks+4<0$ をみたす $s$ があるのは $4k^2-12>0$，すなわち $|k|>\\sqrt3$ のときで，その範囲は $\\dfrac{-2k-2\\sqrt{k^2-3}}3<s<\\dfrac{-2k+2\\sqrt{k^2-3}}3$．\n\\begin{itemize}\n  \\item $k>\\sqrt3$：上端 $\\frac{-2k+2\\sqrt{k^2-3}}3>-2k$（$\\iff2\\sqrt{k^2-3}>-4k$）なので $s>-2k$ もみたす $s$ がある．\n  \\item $k<-\\sqrt3$：上端 $<\\frac{-2k+2|k|}3=\\frac{4|k|}3<2|k|=-2k$ なので $s>-2k$ となる $s$ はない．\n\\end{itemize}\n$s$ が決まれば $a,b$ は $X^2-sX+t=0$ の2解として得られ，$p=\\sqrt{a+k}$，$q=\\sqrt{b+k}$ とすればよい．よって $\\boldsymbol{k>\\sqrt3}$．\n\n(3) 正方形 $\\iff$ 長方形かつ $\\mathrm{OP}\\perp\\mathrm{OQ}$．$\\overrightarrow{\\mathrm{OP}}\\cdot\\overrightarrow{\\mathrm{OQ}}=pq\\{1+(p^2-k)(q^2-k)\\}=pq(1+ab)$ で $pq\\neq0$ だから，直交 $\\iff ab=-1$．これと ① から $a^2+b^2+ks=0$，すなわち $s^2+ks+2=0$．逆に $s^2+ks+2=0$，$t=-1$ なら $t=s^2+ks+1$ で ① が成り立ち，$s^2-4t=s^2+4>0$ で $a\\neq b$．あとは $s>-2k$ が条件．\n\\begin{itemize}\n  \\item $s^2+ks+2=0$ が実数解をもつのは $k^2\\geqq8$．\n  \\item $k\\geqq2\\sqrt2$：2解 $s=\\frac{-k\\pm\\sqrt{k^2-8}}2$ はともに $>-2k$（$\\iff3k>\\sqrt{k^2-8}$ で成立）．\n  \\item $k\\leqq-2\\sqrt2$：解は正で $\\leqq\\frac{|k|+|k|}2=|k|<2|k|=-2k$ となり不適．\n\\end{itemize}\n正方形（4頂点の集合）は $\\{u,v\\}$ で決まり，$u+v=s+2k$ なので異なる $s$ は異なる正方形を与える．よって\\textbf{個数は $\\boldsymbol{k<2\\sqrt2}$ のとき0個，$\\boldsymbol{k=2\\sqrt2}$ のとき1個，$\\boldsymbol{k>2\\sqrt2}$ のとき2個}．\n\n$k=3$ のとき $s^2+3s+2=0$ より $s=-1,-2$．1辺は $\\sqrt2|\\mathrm{OP}|$，$|\\mathrm{OP}|^2=u(1+a^2)$．\n\\begin{itemize}\n  \\item $s=-2$：$a$ は $X^2+2X-1=0$ の解，$a=-1+\\sqrt2$ とすると $u=2+\\sqrt2$，$1+a^2=4-2\\sqrt2$，$|\\mathrm{OP}|^2=(2+\\sqrt2)(4-2\\sqrt2)=4$．1辺 $2\\sqrt2$．\n  \\item $s=-1$：$a=\\frac{-1+\\sqrt5}2$ とすると $u=\\frac{5+\\sqrt5}2$，$1+a^2=\\frac{5-\\sqrt5}2$，$|\\mathrm{OP}|^2=\\frac{25-5}4=5$．1辺 $\\sqrt{10}$．\n\\end{itemize}\nよって1辺の長さは $\\boldsymbol{2\\sqrt2}$ と $\\boldsymbol{\\sqrt{10}}$．"
+   }
+  ],
+  "idea": {
+   "tex": "曲線上の平行四辺形の中心 M について「点 $X$ と M に関する対称点がともに曲線上」は $x$ の方程式になり，$x^3$ の項が消えて高々2次．4つの異なる解をもつには恒等式でなければならず，中心は変曲点（原点）に限る．長方形は $|\\mathrm{OP}|=|\\mathrm{OQ}|$，正方形はさらに $\\mathrm{OP}\\perp\\mathrm{OQ}$ で，$u=p^2$，$v=q^2$ の対称式の条件（実数解・正の解の存在）に帰着する．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) 証明\n(2) k>sqrt(3)\n(3) 記述"
+  },
+  "methods": [],
+  "tags": [
+   "点対称",
+   "平行四辺形",
+   "対称式",
+   "解の存在条件"
+  ],
+  "provenance": {
+   "created": "2026-11-10"
   },
   "quality": {
    "status": "published",
@@ -14271,6 +12827,1865 @@
   ],
   "provenance": {
    "created": "2026-11-14"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-CAL-305",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-12",
+  "level": 3,
+  "minutes": 25,
+  "theme": "絶対値のついた放物線の上の直交する接線",
+  "topic": "絶対値のついた放物線の上の直交する接線",
+  "statement": {
+   "tex": "$a$ を正の定数とし，$f(x)=|x^2-ax|$ とする．曲線 $y=f(x)$（$0<x<2$）の，$x=a$ に対応する点以外の点では接線が引ける．\n\\begin{enumerate}\n  \\item この曲線上の異なる2点で，それぞれの点における接線が互いに直交するものが存在するような $a$ の値の範囲を求めよ．\n  \\item (1) の2点を，ともに $0<x<a$ の部分にとれるような $a$ の値の範囲を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $2-\\sqrt3<a<2+\\sqrt3$　(2) $1<a<2+\\sqrt3$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "\\textbf{準備．} 開区間 $(-\\alpha,0)$ のすべての値をとる $p$ と，開区間 $(0,\\beta)$ のすべての値をとる $q$ について，$pq=-1$ となる組がある $\\iff\\alpha\\beta>1$．\n\n実際，$\\alpha\\beta>1$ なら $\\frac1\\alpha<\\beta$ なので $\\frac1\\alpha<q<\\beta$ となる $q$ をとり $p=-\\frac1q\\in(-\\alpha,0)$ とすればよい．逆に $|p|<\\alpha$，$|q|<\\beta$ なら $|pq|<\\alpha\\beta$ なので，$pq=-1$ には $\\alpha\\beta>1$ が必要．\n\n2本の接線が直交 $\\iff$ 傾きの積が $-1$ で，このとき傾きは一方が負，他方が正である（傾きが異なるので2点は異なる）．\n\n(1) \\textbf{$0<a<2$ のとき．} $0<x<a$ では $f(x)=ax-x^2$，$f'(x)=a-2x$ で，傾きは $(-a,a)$ のすべての値をとる．$a<x<2$ では $f(x)=x^2-ax$，$f'(x)=2x-a$ で，傾きは $(a,4-a)$ のすべての値をとる．負の傾き全体は $(-a,0)$．正の傾き全体は $(0,a)\\cup(a,4-a)$ で，$pq=-1$ となる正の $q$ は $q>\\frac1a$ をみたすものである．$q>\\frac1a$ をみたす正の傾きがある $\\iff 4-a>\\frac1a$（$(\\frac1a,4-a)$ が空でない開区間なら，その中に $a$ 以外の点がある）$\\iff a^2-4a+1<0\\iff 2-\\sqrt3<a<2+\\sqrt3$．よって $2-\\sqrt3<a<2$．\n\n\\textbf{$a\\geqq2$ のとき．} $0<x<2$ で $x(a-x)>0$ なので $f(x)=ax-x^2$，傾きは $(a-4,a)$ のすべての値をとる．$a\\geqq4$ なら負の傾きがない．$2\\leqq a<4$ なら負の傾き全体は $(a-4,0)$，正の傾き全体は $(0,a)$ で，準備より条件は $(4-a)a>1\\iff2-\\sqrt3<a<2+\\sqrt3$．よって $2\\leqq a<2+\\sqrt3$．\n\n合わせて $\\boldsymbol{2-\\sqrt3<a<2+\\sqrt3}$．\n\n(2) 2点がともに $0<x<a$（かつ $0<x<2$）にあるとする．$0<a\\leqq2$ なら，そこでの傾き全体は $(-a,a)$ で，準備より条件は $a\\cdot a>1$，すなわち $1<a\\leqq2$．$a>2$ なら曲線全体が $0<x<a$ の部分にあるから (1) と同じで $2<a<2+\\sqrt3$．合わせて $\\boldsymbol{1<a<2+\\sqrt3}$．\\hfill$\\square$"
+   }
+  ],
+  "idea": {
+   "tex": "接線が直交する $\\iff$ 傾きの積が $-1$ で，一方は負，他方は正．負の傾きのとり得る範囲 $(-\\alpha,0)$ と正の傾きのとり得る範囲 $(0,\\beta)$（ともに開区間）から，積が $-1$ となる組がある $\\iff\\alpha\\beta>1$．絶対値で折り返した部分と折り返さない部分のどちらで負・正の傾きが出るかを $a$ の大きさで場合分けする．"
+  },
+  "methods": [],
+  "tags": [
+   "接線の傾き",
+   "絶対値",
+   "積が$-1$",
+   "値域"
+  ],
+  "provenance": {
+   "created": "2026-11-22"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-CAL-306",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-12",
+  "level": 3,
+  "minutes": 25,
+  "theme": "$f(x)\\geqq f'(x+1)$ をみたす2次関数と差の比の最大",
+  "topic": "$f(x)\\geqq f'(x+1)$ をみたす2次関数と差の比の最大",
+  "statement": {
+   "tex": "$b$，$c$ を実数とし，$f(x)=x^2+bx+c$ とする．$f(x)$ はすべての実数 $x$ に対して\n\\[f(x)\\geqq f'(x+1)\\]\nをみたしているとする．\n\\begin{enumerate}\n  \\item $c\\geqq|b|+2$ であることを示せ．また，等号が成り立つような $b$，$c$ を求めよ．\n  \\item 上の条件をみたすすべての $b$，$c$ に対して\n  \\[f(c)-f(b)\\leqq M(c^2-b^2)\\]\n  が成り立つような定数 $M$ の最小値を求めよ．また，$M$ がその最小値のとき等号が成り立つような $b$，$c$ を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 証明（等号は $b=2,\\ c=4$ または $b=-2,\\ c=4$）　(2) 最小値 $\\dfrac{1+\\sqrt3}2$（等号は $b=2\\sqrt3,\\ c=6$）"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) $f'(x)=2x+b$ より $f'(x+1)=2x+2+b$．条件は，すべての実数 $x$ に対して\n\\[x^2+(b-2)x+c-b-2\\geqq0\\]\nが成り立つこと．$x^2$ の係数が正だから，これは判別式が0以下であることと同値で，\n\\[(b-2)^2-4(c-b-2)\\leqq0\\iff b^2+12-4c\\leqq0\\iff c\\geqq\\frac{b^2}4+3.\\tag{$*$}\\]\nよって\n\\[c-|b|-2\\geqq\\frac{b^2}4-|b|+1=\\left(\\frac{|b|}2-1\\right)^2\\geqq0\\]\nとなり，$c\\geqq|b|+2$．等号は $c=\\dfrac{b^2}4+3$ かつ $|b|=2$ のときで，$\\boldsymbol{b=2,\\ c=4}$ \\textbf{または} $\\boldsymbol{b=-2,\\ c=4}$（これらは $(*)$ をみたす）．\\hfill$\\square$\n\n(2) $f(c)-f(b)=(c^2+bc+c)-(2b^2+c)=c^2+bc-2b^2=(c-b)(c+2b)$．\n\n(1) より $c\\geqq|b|+2$ なので $c-b>0$，$c+b>0$ で，$c^2-b^2=(c-b)(c+b)>0$．よって与えられた不等式は\n\\[M\\geqq\\frac{c+2b}{c+b}=1+\\frac{b}{c+b}\\ (=R\\text{ とおく})\\]\nと同値であり，$M$ の最小値は，条件 $(*)$ のもとでの $R$ の最大値である（最大値が存在すれば）．\n\n$b\\leqq0$ のとき $\\dfrac b{c+b}\\leqq0$ で $R\\leqq1$．\n\n$b>0$ のとき，$(*)$ より $c+b\\geqq\\dfrac{b^2}4+b+3>0$ なので\n\\[\\frac b{c+b}\\leqq\\frac{b}{\\dfrac{b^2}4+b+3}=\\frac1{\\dfrac b4+\\dfrac3b+1}.\\]\n相加平均と相乗平均の関係より $\\dfrac b4+\\dfrac3b\\geqq2\\sqrt{\\dfrac b4\\cdot\\dfrac3b}=\\sqrt3$ で，等号は $\\dfrac b4=\\dfrac3b$，すなわち $b=2\\sqrt3$ のとき．よって\n\\[R\\leqq1+\\frac1{\\sqrt3+1}=1+\\frac{\\sqrt3-1}2=\\frac{1+\\sqrt3}2,\\]\n等号は $b=2\\sqrt3$，$c=\\dfrac{b^2}4+3=6$ のとき（この $b,c$ は $(*)$ をみたす）．実際，このとき\n\\[R=\\frac{6+4\\sqrt3}{6+2\\sqrt3}=\\frac{(3+2\\sqrt3)(3-\\sqrt3)}{(3+\\sqrt3)(3-\\sqrt3)}=\\frac{3+3\\sqrt3}6=\\frac{1+\\sqrt3}2.\\]\n$\\dfrac{1+\\sqrt3}2>1$ だから，$R$ の最大値は $\\dfrac{1+\\sqrt3}2$ である．\n\nしたがって $M$ の最小値は $\\boldsymbol{\\dfrac{1+\\sqrt3}2}$ で，そのとき等号が成り立つのは $\\boldsymbol{b=2\\sqrt3,\\ c=6}$ のとき（$R=M$ となるのはこのときに限る）．"
+   }
+  ],
+  "idea": {
+   "tex": "「すべての $x$ で $f(x)\\geqq(\\text{1次式})$」を判別式で係数の条件 $c\\geqq\\dfrac{b^2}4+(\\text{定数})$ に直し，平方完成で $c$ と $|b|$ を比べる．$f(c)-f(b)=(c-b)(c+2b)$ と因数分解すると，$M$ の条件は比 $1+\\dfrac{b}{c+b}$ の上限で決まる．原題（$f(x)\\geqq f'(x)$）では $c\\geqq|b|$ の境界で比の上限 $\\dfrac32$ に近づくだけで到達しないが，捻りでは条件を $f(x)\\geqq f'(x+1)$ にずらすことで $c\\geqq|b|+2$ となり，比の最大が相加平均と相乗平均の関係で実際にとられる．"
+  },
+  "methods": [],
+  "tags": [
+   "2次関数",
+   "判別式",
+   "相加平均と相乗平均",
+   "最大値",
+   "恒等的に成り立つ不等式"
+  ],
+  "provenance": {
+   "created": "2026-11-22"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-CAL-307",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-12",
+  "level": 4,
+  "minutes": 30,
+  "theme": "解の和が0でない3次方程式の解の絶対値の和",
+  "topic": "解の和が0でない3次方程式の解の絶対値の和",
+  "statement": {
+   "tex": "$k$ を実数の定数とする．$x$ の3次方程式\n\\[\nx^3-3x^2-9x=k\n\\]\nが異なる3つの実数解をもつとき，それらを $\\alpha<\\beta<\\gamma$ とし，$S=|\\alpha|+|\\beta|+|\\gamma|$ とおく．\n\\begin{enumerate}\n  \\item $S$ のとりうる値の範囲を求めよ．\n  \\item $S=8$ となる $k$ の値をすべて求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $3\\sqrt5\\leqq S<9$　(2) $k=-\\dfrac{95}{8}$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "$f(x)=x^3-3x^2-9x$ とおくと $f'(x)=3x^2-6x-9=3(x+1)(x-3)$ であるから，$f(x)$ は $x\\leqq-1$ で増加，$-1\\leqq x\\leqq3$ で減少，$x\\geqq3$ で増加し，$f(-1)=5$，$f(3)=-27$ である．\n\n\\textbf{解の個数と配置．}\n$f(-3)=-27-27+27=-27$，$f(5)=125-75-45=5$ である．$-27<k<5$ のとき，$f(x)-k$ は $x\\leqq-1$ で増加し，$x=-3$ で $-27-k<0$，$x=-1$ で $5-k>0$ となるので，$x\\leqq-1$ ではちょうど1つの解をもち，それは $-3<x<-1$ にある．$-1\\leqq x\\leqq3$ では減少し，両端の値が $5-k>0$，$-27-k<0$ なので，$-1<x<3$ にちょうど1つの解をもつ．$x\\geqq3$ では増加し，$x=3$ で $-27-k<0$，$x=5$ で $5-k>0$ となるので，$x\\geqq3$ ではちょうど1つの解をもち，それは $3<x<5$ にある．よって異なる3つの実数解をもち，\n\\[\n\\alpha<-1<\\beta<3<\\gamma .\n\\]\n$k\\geqq5$ のとき，$x\\leqq3$ では $f(x)\\leqq5$ で等号は $x=-1$ のときに限るから，$x\\leqq3$ にある解は高々1個（$k=5$ のときの $x=-1$）であり，$x>3$ では増加なので解は高々1個．よって異なる解は高々2個．$k\\leqq-27$ のときも同様に，$x\\geqq-1$ では $f(x)\\geqq-27$ で等号は $x=3$ に限り，$x<-1$ では増加なので，異なる解は高々2個．\nしたがって条件は $-27<k<5$ であり，このとき上の配置が成り立つ．\n\n解と係数の関係より $\\alpha+\\beta+\\gamma=3$ である．\n\nまた $f(x)=x(x^2-3x-9)$ であり，$x^2-3x-9=0$ の解を $p=\\dfrac{3-3\\sqrt5}{2}$，$q=\\dfrac{3+3\\sqrt5}{2}$ とおく．$\\sqrt5>2$ より $p<-\\dfrac32<-1$，$q>3$ である．$f(p)=f(0)=f(q)=0$．\n\n\\textbf{$\\beta$ の符号．}\n$f$ は $-1\\leqq x\\leqq3$ で減少し，$\\beta$ と $0$ はこの範囲にあるので，$\\beta>0\\iff f(\\beta)<f(0)\\iff k<0$，$\\beta=0\\iff k=0$ である．$\\alpha<-1<0$，$\\gamma>3>0$ は常に成り立つ．\n\n\\textbf{(1)}\n(i) $k=0$ のとき．解は $p,0,q$ で，$S=-p+q=3\\sqrt5$．\n\n(ii) $0<k<5$ のとき．$\\alpha<0$，$\\beta<0<\\gamma$ なので\n\\[\nS=-\\alpha-\\beta+\\gamma=-(3-\\gamma)+\\gamma=2\\gamma-3 .\n\\]\n$f$ は $x\\geqq3$ で増加し，$f(q)=0$，$f(5)=125-75-45=5$ であるから，$0<k<5$ と $q<\\gamma<5$ は対応し，$k$ が $0<k<5$ を動くとき $\\gamma$ は $q<\\gamma<5$ のすべての値をとる（$f$ は区間 $q\\leqq x\\leqq5$ で連続かつ増加で，値 $0$ から $5$ までをちょうど1回ずつとる）．よって $S$ は $2q-3<S<7$，すなわち $3\\sqrt5<S<7$ のすべての値をとる．\n\n(iii) $-27<k<0$ のとき．$\\alpha<0<\\beta<\\gamma$ なので\n\\[\nS=-\\alpha+\\beta+\\gamma=-\\alpha+(3-\\alpha)=3-2\\alpha .\n\\]\n$f$ は $x\\leqq-1$ で増加し，$f(-3)=-27-27+27=-27$，$f(p)=0$ であるから，同様に $k$ が $-27<k<0$ を動くとき $\\alpha$ は $-3<\\alpha<p$ のすべての値をとる．よって $S$ は $3-2p<S<9$，すなわち $3\\sqrt5<S<9$ のすべての値をとる．\n\n$3\\sqrt5=\\sqrt{45}<\\sqrt{49}=7<9$ に注意して (i)〜(iii) を合わせると，求める範囲は\n\\[\n\\boldsymbol{3\\sqrt5\\leqq S<9}\n\\]\n（最小値 $3\\sqrt5$ は $k=0$ のときにとり，$9$ はとらない）．\n\n\\textbf{(2)}\n(i) では $S=3\\sqrt5<7$，(ii) では $S<7$ なので $S=8$ とならない．(iii) では $3-2\\alpha=8$ より $\\alpha=-\\dfrac52$．これが $-3<\\alpha<p$ をみたすことを確かめる．$-\\dfrac52<p\\iff -5<3-3\\sqrt5\\iff 3\\sqrt5<8\\iff45<64$ で成り立つ．このとき\n\\[\nk=f\\left(-\\frac52\\right)=-\\frac{125}{8}-\\frac{75}{4}+\\frac{45}{2}=\\frac{-125-150+180}{8}=-\\frac{95}{8},\n\\]\nこれは $-27<k<0$ をみたす．よって $\\boldsymbol{k=-\\dfrac{95}{8}}$．\n\\hfill$\\square$"
+   }
+  ],
+  "idea": {
+   "tex": "解と係数の関係で3解の和が一定なので，解の符号の並びが決まれば絶対値の和は「符号が1つだけ異なる解」1つの1次式になる．符号の並びは $k$ と $f(0)$ の大小で決まり，その1つの解はグラフの単調な部分での逆の対応として $k$ とともに単調に動く．"
+  },
+  "methods": [],
+  "tags": [
+   "3次方程式",
+   "解と係数の関係",
+   "解の配置",
+   "単調性"
+  ],
+  "provenance": {
+   "created": "2026-11-22"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-CAL-308",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-12",
+  "level": 5,
+  "minutes": 40,
+  "theme": "幅1の区間に入る極値点の個数を表す関数と4次関数の決定",
+  "topic": "幅1の区間に入る極値点の個数を表す関数と4次関数の決定",
+  "statement": {
+   "tex": "$x^4$ の係数が $1$ である4次関数 $f(x)$ がある．実数 $t$ に対し，$x$ の方程式 $f'(x)=0$ の異なる実数解のうち区間 $t\\leqq x\\leqq t+1$ に含まれるものの個数を $g(t)$ とする．$g(t)$ は次の条件をみたす．\n\\begin{itemize}[leftmargin=3.2em]\n  \\item[(ア)] すべての実数 $t$ について $g(t)\\leqq2$．\n  \\item[(イ)] $g(t)=2$ となる実数 $t$ はちょうど2個ある．\n  \\item[(ウ)] $f(0)=f(3)$，$g(f(0))=2$，$g(f(1))=1$．\n\\end{itemize}\n\\begin{enumerate}\n  \\item 方程式 $f'(x)=0$ は異なる3つの実数解をもち，それらは $\\alpha,\\ \\alpha+1,\\ \\alpha+2$（$\\alpha$ は実数）と表されることを示せ．\n  \\item $f(x)$ を求め，$f(4)$ の値を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 証明　(2) $f(x)=\\left(x-\\dfrac32\\right)^4-2\\left(x-\\dfrac32\\right)^2-\\dfrac1{16}$，$f(4)=\\dfrac{53}{2}$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "以下，区間 $t\\leqq x\\leqq t+1$ を $[t,t+1]$ と書く．\n\n(1) \\textbf{解の間隔．}$f'(x)$ は $x^3$ の係数 $4$ の3次式．隣り合う2つの異なる実数解 $p<q$ で $q-p<1$ となるものがあるとする．$q-1\\leqq t\\leqq p$ をみたす $t$ は無数にあり（$q-1<p$），そのような $t$ では $[t,t+1]$ が $p,q$ を含むので $g(t)\\geqq2$，(ア) とあわせて $g(t)=2$ となる．これは (イ) に反する．よって隣り合う解の間隔はすべて $1$ 以上．\n\n\\textbf{異なる解が2個以下の場合．}解が1個以下なら $g\\leqq1$ で (イ) に反する．ちょうど2個 $p<q$ なら，$g(t)=2\\iff t\\leqq p$ かつ $q\\leqq t+1\\iff q-1\\leqq t\\leqq p$ で，この $t$ の集合は空集合，1点，または無限個の点からなる区間であり，(イ) に反する．\n\n\\textbf{異なる3解 $\\alpha<\\beta<\\gamma$ の場合．}間隔は $1$ 以上なので $\\gamma-\\alpha\\geqq2>1$ で，$[t,t+1]$ が $\\alpha,\\gamma$ を同時に含むことはない．よって $g(t)=2$ となるのは $[t,t+1]$ が $\\{\\alpha,\\beta\\}$ または $\\{\\beta,\\gamma\\}$ を含むときで，前者は $\\beta-1\\leqq t\\leqq\\alpha$ かつ $\\beta-\\alpha\\geqq1$ より $\\beta-\\alpha=1$，$t=\\alpha$ のときに限る．後者も同様に $\\gamma-\\beta=1$，$t=\\beta$ のときに限る．(イ) よりこの両方が起こるので $\\beta=\\alpha+1$，$\\gamma=\\alpha+2$．\\hfill$\\square$\n\n(2) (1) より $f'(x)=4(x-\\alpha)(x-\\alpha-1)(x-\\alpha-2)$．$u=x-\\alpha-1$ とおくと $f'=4(u+1)u(u-1)=4u^3-4u$ で，$f$ の $x^4$ の係数が $1$ であることから\n\\[\nf(x)=u^4-2u^2+C=h(u)+C\\qquad(h(u)=u^4-2u^2,\\ C\\ \\text{は定数}).\n\\]\nまた (1) の議論より $g(t)=2\\iff t=\\alpha$ または $t=\\alpha+1$．\n\n\\textbf{$f(0)=f(3)$．}$u_0=-\\alpha-1$，$u_3=2-\\alpha$ とすると $h(u_0)-h(u_3)=(u_0^2-u_3^2)(u_0^2+u_3^2-2)=0$．$u_0^2+u_3^2-2=2\\alpha^2-2\\alpha+3=2\\left(\\alpha-\\frac12\\right)^2+\\frac52>0$ なので $u_0^2=u_3^2$．$u_0=u_3$ は $-1=2$ となり不可，よって $u_0=-u_3$，$-\\alpha-1=\\alpha-2$，$\\alpha=\\frac12$．\n\n\\textbf{$C$ の決定．}$u=x-\\frac32$ で，$f(0)=h(-\\frac32)+C=\\frac9{16}+C$，$f(1)=h(-\\frac12)+C=C-\\frac7{16}$．$g(f(0))=2$ より $f(0)=\\frac12$ または $\\frac32$，すなわち $C=-\\frac1{16}$ または $\\frac{15}{16}$．$C=\\frac{15}{16}$ なら $f(1)=\\frac12=\\alpha$ で $g(f(1))=2$ となり不適．$C=-\\frac1{16}$ なら $f(1)=-\\frac12$ で，$[-\\frac12,\\frac12]$ に含まれる解は $\\frac12$ のみなので $g(f(1))=1$．\n\n\\textbf{十分性．}$f'=0$ の解は $\\frac12,\\frac32,\\frac52$ で，$\\frac12$ と $\\frac52$ の差は $2>1$ なので $[t,t+1]$ が3解すべてを含むことはなく，すべての $t$ で $g(t)\\leqq2$，(ア) が成り立つ．(イ)，(ウ) も上で確かめた．よって\n\\[\n\\boldsymbol{f(x)=\\left(x-\\frac32\\right)^4-2\\left(x-\\frac32\\right)^2-\\frac1{16}},\\qquad\nf(4)=\\frac{625}{16}-\\frac{25}{2}-\\frac1{16}=\\boldsymbol{\\frac{53}2}.\n\\]"
+   }
+  ],
+  "idea": {
+   "tex": "$g(t)$＝「区間 $[t,t+1]$ に入る $f'(x)=0$ の解の個数」．隣り合う2解の間隔が $1$ より小さいと $g(t)\\geqq2$ となる $t$ が区間をなして無数にあり，$g\\leqq2$ のもとでは $g(t)=2$ となる $t$ が無数になる．したがって (ア)(イ) から「間隔がすべて $1$ 以上」が従い，このとき $g(t)=2$ となるのは間隔がちょうど $1$ の組の左端 $t$ だけ．間隔 $1,1$ の3解なら $f$ は軸 $x=\\alpha+1$ について対称な $u^4-2u^2+C$ の形で，$f(0)=f(3)$ が軸の位置を決める．"
+  },
+  "methods": [],
+  "tags": [
+   "4次関数",
+   "導関数",
+   "極値点",
+   "片側極限",
+   "関数の決定",
+   "対称性"
+  ],
+  "provenance": {
+   "created": "2026-11-22"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-CAL-309",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-12",
+  "level": 4,
+  "minutes": 35,
+  "theme": "区分的に定めた関数と水平線の共有点の個数の左右の極限",
+  "topic": "区分的に定めた関数と水平線の共有点の個数の左右の極限",
+  "statement": {
+   "tex": "正の整数 $a$，$b$ に対し，関数\n\\[\nf(x)=\\begin{cases}x^3-3x & (x\\leqq1)\\\\[2pt] a(x-1)(x-b)+5 & (x>1)\\end{cases}\n\\]\nを考える．実数 $t$ に対し，曲線 $y=f(x)$ と直線 $y=t$ の共有点の個数を $g(t)$ とし，実数 $k$ に対し\n\\[\nS(k)=g(k)+\\lim_{t\\to k-0}g(t)+\\lim_{t\\to k+0}g(t)\n\\]\nとおく．\n\\begin{enumerate}\n  \\item $a=1$，$b=3$ のとき，$S(k)$ が $3$ の倍数でないような実数 $k$ をすべて求めよ．\n  \\item $S(k)=9$ となる実数 $k$ がちょうど $2$ 個であるような正の整数の組 $(a,b)$ の個数を求めよ．また，そのような組における $a+b$ の最大値を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $k=-2,\\ 5$　(2) $22$ 組，$a+b$ の最大値 $29$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "$f$ を $x\\leqq1$ の部分 $L(x)=x^3-3x$ と $x>1$ の部分 $R(x)=a(x-1)(x-b)+5$ に分け，直線 $y=t$ との共有点の個数をそれぞれ $l(t)$，$r(t)$ とする．定義域が重ならないので $g(t)=l(t)+r(t)$ であり，\n$S(k)=\\Lambda(k)+P(k)$，ただし\n\\[\n\\Lambda(k)=l(k)+\\lim_{t\\to k-0}l(t)+\\lim_{t\\to k+0}l(t),\\qquad P(k)=r(k)+\\lim_{t\\to k-0}r(t)+\\lim_{t\\to k+0}r(t).\n\\]\n\n\\textbf{$l(t)$ について．} $L'(x)=3(x+1)(x-1)$ より $L$ は $x\\leqq-1$ で単調に増加して $-\\infty$ から $L(-1)=2$ まで，$-1\\leqq x\\leqq1$ で単調に減少して $2$ から $L(1)=-2$ まで変化する．また $L(x)+2=(x-1)^2(x+2)$ より $L(x)=-2$ の解は $x=-2,1$．よって\n\\[\nl(t)=\\begin{cases}1&(t<-2)\\\\2&(-2\\leqq t<2)\\\\1&(t=2)\\\\0&(t>2)\\end{cases}\n\\]\nで，$\\Lambda(-2)=1+2+2=5$，$\\Lambda(2)=2+1+0=3$，それ以外の $k$ では $\\Lambda(k)=3l(k)$．\n\n\\textbf{$r(t)$ について．} $R(x)\\to5\\ (x\\to1+0)$ で，$R(1)$ の値は使わない．\n\n$b=1$ のとき $R(x)=a(x-1)^2+5$ は $x>1$ で単調に増加し，値域は $t>5$．よって $r(t)=1\\ (t>5)$，$r(t)=0\\ (t\\leqq5)$ で，$P(5)=0+0+1=1$，それ以外は $P(k)=3r(k)$．\n\n$b\\geqq2$ のとき，$R$ は $1<x\\leqq\\dfrac{1+b}2$ で減少，$x\\geqq\\dfrac{1+b}2$ で増加し，最小値は $M=5-\\dfrac{a(b-1)^2}{4}<5$．$x\\to1+0$ で $5$ に近づき，$R(b)=5$．よって\n\\[\nr(t)=\\begin{cases}0&(t<M)\\\\1&(t=M)\\\\2&(M<t<5)\\\\1&(t\\geqq5)\\end{cases}\n\\]\nで，$P(M)=1+0+2=3$，$P(5)=1+2+1=4$，それ以外の $k$ では $P(k)=3r(k)$．\n\n$k$ が $-2,\\,2,\\,5,\\,M$ のどれでもないとき，$k$ の近くで $l$，$r$ は一定なので $S(k)=3g(k)$ である．\n\n(1) $a=1$，$b=3$ のとき $M=5-1=4$．$S(k)$ が3の倍数でない可能性があるのは $k=-2,2,4,5$ に限られる．\n$S(-2)=5+3r(-2)=5$，$S(2)=3+3r(2)=3$，$S(4)=3l(4)+P(4)=0+3=3$，$S(5)=3l(5)+4=4$．\nよって $\\boldsymbol{k=-2,\\ 5}$．\n\n(2) \\textbf{$b=1$ のとき．} $g(t)$ は $t<-2$ で $1$，$-2<t<2$ で $2$，$2<t\\leqq5$ で $0$，$t>5$ で $1$ だから，特別な点以外で $S(k)=3g(k)\\neq9$．また $S(-2)=5$，$S(2)=3$，$S(5)=1$．$S(k)=9$ となる $k$ はない．\n\n\\textbf{$b\\geqq2$ のとき．} まず，ある開区間で $g=3$ となると，その区間のすべての $k$ で $S(k)=9$ となり無数にある．$g(t)=3$ は $(l,r)=(1,2)$ か $(2,1)$ のとき．$(1,2)$ は $t<-2$ かつ $M<t<5$ で，これは $M<-2$ のとき開区間 $M<t<-2$ になる．$(2,1)$ は $-2\\leqq t<2$ かつ（$t=M$ または $t\\geqq5$）で，高々 $t=M$ の1点．よって $M<-2$ は不適．以下 $M\\geqq-2$ とすると，$S(k)=9$ となりうるのは特別な点 $k=-2,2,5,M$ だけである．\n\\begin{itemize}\n  \\item $M=-2$：$S(-2)=5+3=8$，$S(2)=3+3\\cdot2=9$，$S(5)=0+4=4$．$S=9$ は $k=2$ の1個．\n  \\item $-2<M<2$：$S(-2)=5+0=5$，$S(M)=3\\cdot2+3=9$，$S(2)=3+3\\cdot2=9$，$S(5)=4$．$S=9$ はちょうど2個．\n  \\item $M=2$：$S(-2)=5$，$S(2)=3+3=6$，$S(5)=4$．$S=9$ はない．\n  \\item $2<M<5$：$S(-2)=5$，$S(2)=3+0=3$，$S(M)=0+3=3$，$S(5)=4$．$S=9$ はない．\n\\end{itemize}\nしたがって条件は $b\\geqq2$ かつ $-2<M<2$，すなわち\n\\[\n12<a(b-1)^2<28.\n\\]\n$b-1=1$：$13\\leqq a\\leqq27$ の $15$ 組．$b-1=2$：$12<4a<28$ より $a=4,5,6$ の $3$ 組．$b-1=3$：$12<9a<28$ より $a=2,3$ の $2$ 組．$b-1=4$：$12<16a<28$ より $a=1$ の $1$ 組．$b-1=5$：$12<25a<28$ より $a=1$ の $1$ 組．$b-1\\geqq6$：$a(b-1)^2\\geqq36$ で不適．\n\n組の個数は $15+3+2+1+1=\\boldsymbol{22}$．$a+b$ の値は $b=2$ で最大 $27+2=29$，$b=3$ で最大 $9$，$b=4$ で最大 $7$，$b=5$ で $6$，$b=6$ で $7$ だから，最大値は $\\boldsymbol{29}$（$(a,b)=(27,2)$）．\\hfill$\\square$"
+   }
+  ],
+  "idea": {
+   "tex": "$S(k)=g(k)+\\lim_{t\\to k-0}g(t)+\\lim_{t\\to k+0}g(t)$ は，交点が「連続な単調部分を横切る点」でも「極値点」でも1点あたりちょうど $3$ を寄与する．$3$ の倍数からずれるのは不連続点や区間の端だけ．開区間で $g=3$ になると $S=9$ の $k$ が無数にできるので，それを除いたうえで，各部分ごとの寄与を足し合わせて $S(k)=9$ となる $k$ を数える．"
+  },
+  "methods": [],
+  "tags": [
+   "共有点の個数",
+   "片側極限",
+   "3次関数",
+   "2次関数",
+   "場合分け",
+   "数え上げ"
+  ],
+  "provenance": {
+   "created": "2026-11-22"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-CAL-310",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-12",
+  "level": 4,
+  "minutes": 35,
+  "theme": "3つおきの整数での値が異符号にならない3次関数",
+  "topic": "3つおきの整数での値が異符号にならない3次関数",
+  "statement": {
+   "tex": "$f(x)$ は $x^3$ の係数が $1$ の3次関数とする．\n\\begin{enumerate}\n  \\item 「$f(k)f(k+4)<0$ をみたす整数 $k$ が存在しない」という条件をみたす $f(x)$ は存在しないことを示せ．\n  \\item 「$f(k)f(k+3)<0$ をみたす整数 $k$ が存在しない」という条件をみたす $f(x)$ をすべて求めよ．\n  \\item (2) の条件をみたし，さらに $f'\\!\\left(\\dfrac12\\right)=-\\dfrac14$，$f\\!\\left(\\dfrac12\\right)>0$ をみたす $f(x)$ について，$f(8)$ の値を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 証明　(2) $f(x)=(x-c+1)(x-c)(x-c-1)$（$c$ は整数）　(3) $f(8)=336$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "\\textbf{補題．} $d$ を正の整数とし，$f(k)f(k+d)<0$ をみたす整数 $k$ が存在しないとする．このとき，$d$ で割った余りが $r$ である整数全体の中に，$f$ の値が $0$ になるものが必ずある（$r=0,1,\\dots,d-1$）．\n\n（証明）$b_i=f(di+r)$（$i$ は整数）とおく．$f$ は $x^3$ の係数が正の3次関数なので，$i$ が十分小さいと $b_i<0$，十分大きいと $b_i>0$．よって $b_i<0$ となる $i$ の集合は空でなく上に有界で，その最大のものを $I$ とすると $b_{I+1}\\geqq0$．$b_{I+1}>0$ なら $k=dI+r$ で $f(k)f(k+d)=b_Ib_{I+1}<0$ となり仮定に反する．よって $b_{I+1}=0$．\\hfill$\\square$\n\n(1) 条件をみたす $f$ があるとすると，補題（$d=4$）より4で割った余りが $0,1,2,3$ の整数それぞれに $f$ の解がある．これらは異なる4つの解であり，3次方程式 $f(x)=0$ の実数解は高々3個だから矛盾．よって存在しない．\n\n(2) \\textbf{必要条件．} 補題（$d=3$）より，3で割った余りが異なる3つの整数 $p,q,r$ が $f$ の解で，$f(x)=(x-p)(x-q)(x-r)$．$p<q<r$ としてよい．このとき\n\\[\nf(x)<0\\ (x<p),\\quad f(x)>0\\ (p<x<q),\\quad f(x)<0\\ (q<x<r),\\quad f(x)>0\\ (x>r).\n\\]\n\\begin{itemize}\n  \\item $q-p\\geqq3$ と仮定する．$q-3\\neq p$（余りが異なる）なので $q-3>p$．$q$ と余りが等しく $p$ より大きい最小の整数を $k$ とすると，$k\\leqq q-3<q$ かつ $k-3<p<k$（$k-3\\neq p$）．よって $f(k)>0$，$f(k-3)<0$ で，$f(k-3)f(k)<0$ となり矛盾．ゆえに $q-p\\leqq2$．\n  \\item $r-q\\geqq3$ と仮定する．同様に $q+3<r$ で，$q$ と余りが等しく $r$ より小さい最大の整数を $k$ とすると $q<q+3\\leqq k<r<k+3$．$f(k)<0$，$f(k+3)>0$ で矛盾．ゆえに $r-q\\leqq2$．\n  \\item よって $2\\leqq r-p\\leqq4$，$r-p$ は3の倍数でないので $r-p=2$ または $4$．$r-p=4$ なら $q=p+2$，$r=p+4$ で，$p+3$ は $q<p+3<r$ をみたすので $f(p+3)<0$，$p+6>r$ より $f(p+6)>0$．$k=p+3$ で矛盾．\n\\end{itemize}\nしたがって $r-p=2$，$q=p+1$．$c=p+1$ とおくと $f(x)=(x-c+1)(x-c)(x-c-1)$（$c$ は整数）．\n\n\\textbf{十分条件．} この $f$ について，整数 $n$ に対し $f(n)=0\\ (n=c-1,c,c+1)$，$f(n)<0\\ (n\\leqq c-2)$，$f(n)>0\\ (n\\geqq c+2)$．$f(k)f(k+3)<0$ なら $k\\leqq c-2$ かつ $k+3\\geqq c+2$，すなわち $k\\geqq c-1$ となり矛盾．よって条件をみたす．\n\n答：$\\boldsymbol{f(x)=(x-c+1)(x-c)(x-c-1)}$（$c$ は整数）．\n\n(3) $f(x)=(x-c)^3-(x-c)$ より $f'(x)=3(x-c)^2-1$．$f'\\!\\left(\\dfrac12\\right)=-\\dfrac14$ より $\\left(\\dfrac12-c\\right)^2=\\dfrac14$，$c=0$ または $1$．\n$c=0$ のとき $f\\!\\left(\\dfrac12\\right)=\\dfrac18-\\dfrac12<0$ で不適．$c=1$ のとき $f\\!\\left(\\dfrac12\\right)=-\\dfrac18+\\dfrac12>0$ で適する．\n$f(x)=x(x-1)(x-2)$，$f(8)=8\\cdot7\\cdot6=\\boldsymbol{336}$．\\hfill$\\square$"
+   }
+  ],
+  "idea": {
+   "tex": "「$f(k)f(k+d)<0$ となる整数 $k$ がない」は，$d$ で割った余りが等しい整数を順に並べた列 $f(r),f(r+d),f(r+2d),\\dots$ が，$0$ をはさまずに符号を変えないということ．最高次の係数が正の3次関数は $-\\infty$ 側で負，$+\\infty$ 側で正なので，各剰余類に整数の解が必要．$d=4$ なら解が4個必要で不可能，$d=3$ なら3つの解は剰余の異なる整数で，さらに隣り合う解の間隔の条件から連続する3整数に決まる．"
+  },
+  "methods": [],
+  "tags": [
+   "3次関数",
+   "符号",
+   "整数",
+   "剰余類",
+   "必要十分条件"
+  ],
+  "provenance": {
+   "created": "2026-11-22"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-CAL-311",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-12",
+  "level": 4,
+  "minutes": 35,
+  "theme": "導関数が0となる点の集合を平行移動して重ねるときの解の個数",
+  "topic": "導関数が0となる点の集合を平行移動して重ねるときの解の個数",
+  "statement": {
+   "tex": "$a,\\ b$ を実数の定数とし，$f(x)=x^4+ax^3+bx^2$ とする．正の数 $t$ に対して，$x$ の方程式\n\\[\nf'(x)\\,f'(x-t)=0\n\\]\nの異なる実数解の個数を $N(t)$ とする．\n\\begin{enumerate}\n  \\item $N(t)\\leqq4$ となる正の数 $t$ がちょうど1つだけ存在するための，$a,\\ b$ についての必要十分条件を求めよ．\n  \\item $N(t)=5$ となる正の数 $t$ がちょうど3つ存在するための，$a,\\ b$ についての必要十分条件を求めよ．\n  \\item (2) の条件をみたし，さらに $N(t)=5$ となる3つの $t$ の値がすべて整数で，それらの和が $8$ であるような組 $(a,\\ b)$ をすべて求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 「$a=0$ かつ $b<0$」または「$a\\neq0$ かつ $b=\\dfrac{a^2}{4}$」　(2) $9a^2>32b$，$a\\neq0$，$b\\neq0$，$b\\neq\\dfrac{a^2}{4}$　(3) $(a,b)=\\left(-\\dfrac{20}{3},8\\right),\\left(\\dfrac{20}{3},8\\right),\\left(-\\dfrac{8}{3},-6\\right),\\left(\\dfrac{8}{3},-6\\right),\\left(-\\dfrac{28}{3},24\\right),\\left(\\dfrac{28}{3},24\\right)$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "$f'(x)=4x^3+3ax^2+2bx=x(4x^2+3ax+2b)$ である．方程式 $f'(x)=0$ の異なる実数解の集合を $Z$ とし，その要素の個数を $|Z|$ と書く．$0$ は必ず $Z$ に属するので $|Z|$ は $1,\\ 2,\\ 3$ のいずれかである．\n\n\\textbf{$N(t)$ の表し方．}$f'(x)f'(x-t)=0\\iff$「$x$ が $Z$ に属する」または「$x-t$ が $Z$ に属する」．後者をみたす $x$ は $Z$ の各要素に $t$ を加えた $|Z|$ 個の数である．両方に共通な $x$ は，$x$ と $x-t$ がともに $Z$ に属する $x$ であり，これは「$Z$ の2数 $p<q$ で $q-p=t$ となる組 $(p,q)$」と1対1に対応する（$x=q$）．この組の個数を $r(t)$ とすると\n\\[\nN(t)=2|Z|-r(t)\n\\]\nである．\n\n\\textbf{$|Z|\\leqq2$ の場合．}$N(t)\\leqq2|Z|\\leqq4$ がすべての $t>0$ で成り立つので，$N(t)\\leqq4$ となる $t$ は無数にあり，$N(t)=5$ となる $t$ は存在しない．\n\n\\textbf{$|Z|=3$ の場合．}$Z=\\{z_1,z_2,z_3\\}$（$z_1<z_2<z_3$），$d_1=z_2-z_1$，$d_2=z_3-z_2$ とする．2数の差（大きい方から小さい方を引いたもの）は $d_1,\\ d_2,\\ d_1+d_2$ の3つで，$d_1+d_2$ は $d_1$ とも $d_2$ とも異なる．$N(t)=6-r(t)$ だから\n\\begin{itemize}\n  \\item $d_1=d_2\\ (=d)$ のとき：$N(d)=4$，$N(2d)=5$，それ以外の $t>0$ で $N(t)=6$．\n  \\item $d_1\\neq d_2$ のとき：3つの差はすべて異なり，$t=d_1,\\ d_2,\\ d_1+d_2$ で $N(t)=5$，それ以外の $t>0$ で $N(t)=6$．\n\\end{itemize}\n\n\\textbf{$|Z|=3$ となる条件．}2次方程式 $4x^2+3ax+2b=0$ が $0$ 以外の異なる2つの実数解をもつことで，$9a^2-32b>0$ かつ $b\\neq0$ である．\n\n(1) 以上より，$N(t)\\leqq4$ となる $t$ がちょうど1つ $\\iff$ $|Z|=3$ かつ $d_1=d_2$，すなわち「$0$ と $4x^2+3ax+2b=0$ の2解 $r,\\ s$（$0$ でない異なる実数）の3数が，小さい順に並べると等差数列になる」ことである．\n\\begin{itemize}\n  \\item $0$ が真ん中のとき：$r+s=0$，すなわち $-\\dfrac{3a}{4}=0$ で $a=0$．このとき $9a^2-32b>0\\iff b<0$ で，$b\\neq0$ も成り立つ．逆に $a=0,\\ b<0$ なら解は $\\pm\\sqrt{-\\frac b2}$ で条件をみたす．\n  \\item $0$ が端のとき：2解は $u,\\ 2u$（$u\\neq0$）と書ける．解と係数の関係から $3u=-\\dfrac{3a}4$，$2u^2=\\dfrac{2b}4$ なので $u=-\\dfrac a4$（よって $a\\neq0$），$b=4u^2=\\dfrac{a^2}4$．逆に $a\\neq0,\\ b=\\dfrac{a^2}4$ なら\n  \\[\n  4x^2+3ax+\\frac{a^2}2=\\frac12(2x+a)(4x+a)\n  \\]\n  より解は $-\\dfrac a2,\\ -\\dfrac a4$ で，$0,\\ -\\dfrac a4,\\ -\\dfrac a2$ は $0$ でない異なる数を含む等差数列をなす．\n\\end{itemize}\nよって求める条件は $\\boldsymbol{\\text{「}a=0\\text{ かつ }b<0\\text{」または「}a\\neq0\\text{ かつ }b=\\dfrac{a^2}{4}\\text{」}}$．\n\n(2) $N(t)=5$ となる $t$ がちょうど3つ $\\iff$ $|Z|=3$ かつ $d_1\\neq d_2$ である（$|Z|\\leqq2$ ならそのような $t$ はなく，$d_1=d_2$ なら1つだけ）．$|Z|=3$ は $9a^2>32b$ かつ $b\\neq0$ で，そのうち $d_1=d_2$ となるのは (1) の条件のときである．$9a^2>32b$ のもとで $a=0$ ならば $b<0$ となり (1) の前者の場合に当たるので，求める条件は\n\\[\n\\boldsymbol{9a^2>32b,\\quad a\\neq0,\\quad b\\neq0,\\quad b\\neq\\frac{a^2}{4}}\n\\]\nである．\n\n(3) (2) の条件のもとで，$N(t)=5$ となる $t$ は $d_1,\\ d_2,\\ d_1+d_2$ で，その和は $2(d_1+d_2)=8$ より $d_1+d_2=4$．$d_1,\\ d_2$ は異なる正の整数なので $\\{d_1,d_2\\}=\\{1,3\\}$ である．$Z=\\{z_1,\\ z_1+d_1,\\ z_1+4\\}$ が $0$ を含むことから，$Z$ は\n\\[\n\\{0,1,4\\},\\ \\{-1,0,3\\},\\ \\{-4,-3,0\\},\\ \\{0,3,4\\},\\ \\{-3,0,1\\},\\ \\{-4,-1,0\\}\n\\]\nのいずれかである．$Z$ の $0$ 以外の2数を $r,\\ s$ とすると $4x^2+3ax+2b=4(x-r)(x-s)$ だから $a=-\\dfrac{4(r+s)}3$，$b=2rs$ で，順に\n\\[\n\\left(-\\frac{20}3,8\\right),\\ \\left(-\\frac83,-6\\right),\\ \\left(\\frac{28}3,24\\right),\\ \\left(-\\frac{28}3,24\\right),\\ \\left(\\frac83,-6\\right),\\ \\left(\\frac{20}3,8\\right)\n\\]\nとなる．逆にこれらの $(a,b)$ では $Z$ が上の集合になり，$d_1,\\ d_2$ は $1$ と $3$（異なる）なので (2) の条件をみたし，$N(t)=5$ となる $t$ は $1,\\ 3,\\ 4$ で和は $8$ である．よって\n\\[\n\\boldsymbol{(a,b)=\\left(\\pm\\frac{20}{3},\\,8\\right),\\ \\left(\\pm\\frac{8}{3},\\,-6\\right),\\ \\left(\\pm\\frac{28}{3},\\,24\\right)}\n\\]\n（複号同順ではなく，それぞれ2組ずつの計6組）．"
+   }
+  ],
+  "idea": {
+   "tex": "方程式 $f'(x)f'(x-t)=0$ の解の集合は，$f'(x)=0$ の解の集合 $Z$ と，それを $t$ だけずらした集合の和集合である．重なる解の個数は「$Z$ の2数の差が $t$ になる組の個数」に等しく，解の個数は $2\\times(Z\\text{ の要素の個数})-(\\text{その組の個数})$．$Z$ が3個の数からなるとき，差は $d_1,\\ d_2,\\ d_1+d_2$ の3つで，$d_1=d_2$（等差）かどうかで「解の個数の現れ方」が決まる．"
+  },
+  "methods": [],
+  "tags": [
+   "導関数",
+   "方程式の解の個数",
+   "平行移動",
+   "零点の間隔",
+   "等差数列",
+   "場合分け"
+  ],
+  "provenance": {
+   "created": "2026-11-22"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-CAL-312",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-12",
+  "level": 4,
+  "minutes": 35,
+  "theme": "境目で符号を反転した3次関数と片側極限の符号",
+  "topic": "境目で符号を反転した3次関数と片側極限の符号",
+  "statement": {
+   "tex": "最高次の係数が正である3次関数 $f(x)$ と実数 $t$ に対し，関数 $g(x)$ を\n\\[\ng(x)=\\begin{cases}-f(x) & (x<t)\\\\ \\ \\ f(x) & (x\\geqq t)\\end{cases}\n\\]\nで定める．$g(x)$ は実数全体で連続であり，さらにすべての実数 $a$ について，2つの極限\n\\[\nR(a)=\\lim_{x\\to a+0}\\frac{g(x)}{x(x-2)},\\qquad L(a)=\\lim_{x\\to a-0}\\frac{g(x)}{x(x-2)}\n\\]\nがともに（有限の値として）存在するとする．$R(m)<0$ となる整数 $m$ 全体の集合を $P$，$L(m)<0$ となる整数 $m$ 全体の集合を $Q$ とする．\n\\begin{enumerate}\n  \\item 正の数 $c$ と実数 $\\beta$ を用いて $f(x)=cx(x-2)(x-\\beta)$ と表せること，および $t$ は $0,\\ 2,\\ \\beta$ のいずれかに等しいことを示せ．\n  \\item $P,\\ Q$ はともに有限個の整数からなることを示せ．さらに，$P$ と $Q$ の要素の個数の和が奇数ならば，$t$ は $0$ または $2$ であり，かつ $t\\neq\\beta$ であることを示せ．\n  \\item $P$ と $Q$ の要素の個数の和が $5$ であり，$P$ に属する整数の総和が $g(3)$ に，$Q$ に属する整数の総和が $g(1)$ に等しいとする．$f(x)$，$t$ および $g(-3)$ を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 証明　(2) 証明　(3) $f(x)=2x^3-9x^2+10x$，$t=0$，$g(-3)=165$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) \\textbf{$f(t)=0$．}$g$ は $x=t$ で連続なので $\\displaystyle\\lim_{x\\to t-0}g(x)=g(t)$．左辺は $f$ の連続性から $-f(t)$，右辺は $f(t)$ である．よって $f(t)=0$．\n\n\\textbf{$f(0)=f(2)=0$．}$R(0)$ が存在するので，$0<x<2$ で $g(x)=\\dfrac{g(x)}{x(x-2)}\\cdot x(x-2)$ と書いて $x\\to+0$ とすると\n\\[\n\\lim_{x\\to+0}g(x)=R(0)\\cdot0=0 .\n\\]\n$g$ は $x=0$ で連続だから $g(0)=0$．$g(0)$ は $f(0)$ または $-f(0)$ なので $f(0)=0$．同様に $R(2)$ の存在から $g(2)=0$，よって $f(2)=0$．\n\n因数定理より $f(x)=x(x-2)(cx+d)$（$c,d$ は実数）と書け，$c$ は $f$ の最高次の係数なので $c>0$．$\\beta=-\\dfrac{d}{c}$ とおけば $f(x)=cx(x-2)(x-\\beta)$．$t$ は $f$ の零点だから $t\\in\\{0,2,\\beta\\}$．\\hfill$\\square$\n\n(2) $\\sigma(x)=-1\\ (x<t)$，$\\sigma(x)=1\\ (x\\geqq t)$ とおくと，$x\\neq0,2$ で\n\\[\n\\frac{g(x)}{x(x-2)}=\\sigma(x)\\,c\\,(x-\\beta).\n\\]\n$a$ の右側の近く（$a<x<a+\\delta$）では，$a\\geqq t$ なら $\\sigma=1$，$a<t$ なら $\\delta$ を小さくとれば $\\sigma=-1$．左側の近くでは，$a>t$ なら $\\sigma=1$，$a\\leqq t$ なら $\\sigma=-1$．よって\n\\[\nR(a)=\\begin{cases}c(a-\\beta)&(a\\geqq t)\\\\-c(a-\\beta)&(a<t)\\end{cases},\\qquad\nL(a)=\\begin{cases}c(a-\\beta)&(a>t)\\\\-c(a-\\beta)&(a\\leqq t)\\end{cases}\n\\]\n（これらは確かに存在する）．$c>0$ なので，$R(m)<0$ となるのは「$m\\geqq t$ かつ $m<\\beta$」または「$m<t$ かつ $m>\\beta$」のときで，いずれにせよ $m$ は $t$ と $\\beta$ を両端とする閉区間に属する．この区間に含まれる整数は有限個なので $P$ は有限集合．$Q$ も同様．\n\n$m\\neq t$ なら上の式から $R(m)=L(m)$ なので，$t$ 以外の整数 $m$ については「$m\\in P\\iff m\\in Q$」．$t$ 以外で $P$（したがって $Q$）に属する整数の個数を $k$ とする．\n\\begin{itemize}\n  \\item $t$ が整数でないとき，$P,Q$ の要素の個数はともに $k$ で，和は $2k$（偶数）．\n  \\item $t$ が整数で $t=\\beta$ のとき，$R(t)=L(t)=0$ なので $t\\notin P$，$t\\notin Q$ で，和は $2k$（偶数）．\n  \\item $t$ が整数で $t\\neq\\beta$ のとき，$R(t)=c(t-\\beta)$，$L(t)=-c(t-\\beta)$ の一方だけが負なので，$t$ は $P,Q$ のちょうど一方に属し，和は $2k+1$（奇数）．\n\\end{itemize}\nしたがって和が奇数ならば，$t$ は整数で $t\\neq\\beta$．(1) より $t\\in\\{0,2,\\beta\\}$ なので $t=0$ または $t=2$．\\hfill$\\square$\n\n(3) 和 $5$ は奇数なので (2) より $t\\in\\{0,2\\}$，$t\\neq\\beta$ で，$2k+1=5$ から $k=2$．(2) の式より，$m>t$ では $R(m)<0\\iff m<\\beta$，$m<t$ では $R(m)<0\\iff m>\\beta$ だから，$t$ 以外で $P$ に属する整数は「$t$ と $\\beta$ の間に（両端を除いて）ある整数」である．また $t\\in P\\iff R(t)=c(t-\\beta)<0\\iff t<\\beta$．さらに $3\\geqq t$ なので\n\\[\ng(3)=f(3)=3c(3-\\beta),\\qquad g(1)=\\begin{cases}f(1)=c(\\beta-1)&(t=0)\\\\-f(1)=c(1-\\beta)&(t=2)\\end{cases}.\n\\]\n\\begin{itemize}\n  \\item $t=0,\\ \\beta<0$：$\\beta<m<0$ の整数が2個 $\\iff-3\\leqq\\beta<-2$．$P=\\{-2,-1\\}$ で総和 $-3$．一方 $g(3)=3c(3-\\beta)>0$ なので不適．\n  \\item $t=0,\\ \\beta>0$：$0<m<\\beta$ の整数が2個 $\\iff2<\\beta\\leqq3$．$0<\\beta$ より $0\\in P$ で，$P=\\{0,1,2\\}$，$Q=\\{1,2\\}$，総和はともに $3$．条件は $3c(3-\\beta)=3$，$c(\\beta-1)=3$．辺々加えて $2c=4$，$c=2$，$\\beta=\\dfrac52$．これは $2<\\beta\\leqq3$ をみたす．\n  \\item $t=2,\\ \\beta>2$：$2<m<\\beta$ の整数が2個 $\\iff4<\\beta\\leqq5$．$P=\\{2,3,4\\}$ で総和 $9>0$，一方 $g(3)=3c(3-\\beta)<0$ なので不適．\n  \\item $t=2,\\ \\beta<2$：$\\beta<m<2$ の整数が2個 $\\iff-1\\leqq\\beta<0$．$P=\\{0,1\\}$，$Q=\\{0,1,2\\}$ で，条件は $3c(3-\\beta)=1$，$c(1-\\beta)=3$．前者から $c(3-\\beta)=\\dfrac13$，辺々引いて $2c=\\dfrac13-3<0$ となり $c>0$ に反する．\n\\end{itemize}\n（$\\beta=0$ や $\\beta=2$ のときは間にある整数が2個未満なので現れない．）以上より $c=2$，$\\beta=\\dfrac52$，$t=0$ で\n\\[\nf(x)=2x(x-2)\\left(x-\\frac52\\right)=\\boldsymbol{2x^3-9x^2+10x},\\qquad \\boldsymbol{t=0}.\n\\]\n逆にこのとき $g$ は連続（$f(0)=0$），$R,L$ は存在し，$P=\\{0,1,2\\}$，$Q=\\{1,2\\}$，$g(3)=3=0+1+2$，$g(1)=f(1)=3=1+2$ で条件をみたす．$-3<0$ より\n\\[\ng(-3)=-f(-3)=-(-3)(-5)(-11)=\\boldsymbol{165}.\n\\]"
+   }
+  ],
+  "idea": {
+   "tex": "「$x<t$ で $-f$，$x\\geqq t$ で $f$」が連続 $\\Rightarrow f(t)=0$．分母が $0$ になる点での片側極限の存在 $\\Rightarrow$ 分子もそこで $0$．こうして $f(x)=cx(x-2)(x-\\beta)$，$t\\in\\{0,2,\\beta\\}$ となり，商は $\\pm c(x-\\beta)$．右側極限と左側極限は $x=t$ でしか食い違わないので，「負になる整数の集合」の右・左での要素数の差は $t$ だけから生じ，その偶奇から $t$ の候補が絞られる．"
+  },
+  "methods": [],
+  "tags": [
+   "片側極限",
+   "連続性",
+   "因数定理",
+   "符号",
+   "場合分け",
+   "整数の個数"
+  ],
+  "provenance": {
+   "created": "2026-11-22"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-CAL-313",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-12",
+  "level": 4,
+  "minutes": 35,
+  "theme": "4次関数と放物線の間に引ける直線と区間の長さ",
+  "topic": "4次関数と放物線の間に引ける直線と区間の長さ",
+  "statement": {
+   "tex": "$p$ を $p\\geqq2$ をみたす定数とし，\n\\[\nf(x)=x^4-2x^2,\\qquad g(x)=p(x^2-2)\n\\]\nとする．$-\\sqrt2\\leqq m<n\\leqq\\sqrt2$ をみたす実数 $m,\\ n$ に対して，$m\\leqq x\\leqq n$ をみたす実数 $x$ 全体の集合を $D$ とする．$D$ が次の条件をみたすとき，$D$ を「よい区間」とよぶ．\n\\begin{center}\nある実数 $k,\\ b$ があって，$D$ に属するすべての $x$ に対して $g(x)\\leqq kx+b\\leqq f(x)$ が成り立つ．\n\\end{center}\n\\begin{enumerate}\n  \\item $-\\sqrt2\\leqq x\\leqq\\sqrt2$ ならば $f(x)\\geqq g(x)$ であることを示せ．\n  \\item よい区間 $D$ が $-1$ と $1$ をともに含むならば，$n-m\\leqq2\\sqrt{2-\\dfrac1p}$ であることを示せ．\n  \\item よい区間 $D$ について，$n-m$ の最大値を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 証明　(2) 証明　(3) $2\\sqrt{2-\\dfrac1p}$（$m=-\\sqrt{2-\\frac1p}$，$n=\\sqrt{2-\\frac1p}$，直線 $y=-1$ のとき）"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) $f(x)-g(x)=x^4-(p+2)x^2+2p=(x^2-2)(x^2-p)$．$x^2\\leqq2\\leqq p$ なので $x^2-2\\leqq0$，$x^2-p\\leqq0$ で積は $0$ 以上．\\hfill$\\square$\n\n(2) 直線を $h(x)=kx+b$ とする．$\\pm1\\in D$ なので $g(\\pm1)\\leqq h(\\pm1)\\leqq f(\\pm1)$，すなわち\n\\[\n-p\\leqq b+k\\leqq-1,\\qquad -p\\leqq b-k\\leqq-1.\n\\]\nよって $b\\leqq-1-|k|$，また $2k=(b+k)-(b-k)$ より $|2k|\\leqq p-1$，$|k|\\leqq\\dfrac{p-1}2$．\n\n$D$ 上で $h(x)\\geqq g(x)$，すなわち $px^2-kx-(b+2p)\\leqq0$．$D$ は2点以上を含むので，この2次不等式は2つ以上の解をもち，判別式は正である．よって2次方程式 $px^2-kx-(b+2p)=0$ の2つの実数解を $\\alpha<\\beta$ とすると不等式の解は $\\alpha\\leqq x\\leqq\\beta$ で，$D$ のすべての $x$ がこれをみたすから $\\alpha\\leqq m<n\\leqq\\beta$．判別式を $\\Delta=k^2+4p(b+2p)$ とすると $\\beta-\\alpha=\\dfrac{\\sqrt\\Delta}p$．$b\\leqq-1-|k|$ より\n\\[\n\\Delta\\leqq k^2-4p|k|+4p(2p-1).\n\\]\n$u=|k|$ は $0\\leqq u\\leqq\\frac{p-1}2<2p$ をみたし，$u^2-4pu$ は $0\\leqq u\\leqq2p$ で減少するので $u^2-4pu\\leqq0$．よって $\\Delta\\leqq4p(2p-1)$ で，\n\\[\nn-m\\leqq\\beta-\\alpha\\leqq\\frac{\\sqrt{4p(2p-1)}}p=2\\sqrt{2-\\frac1p}.\n\\]\n\\hfill$\\square$\n\n(3) $\\ell=2\\sqrt{2-\\dfrac1p}$ とおく．$p\\geqq2$ より $2-\\dfrac1p\\geqq\\dfrac32$ なので $\\ell\\geqq\\sqrt6$．\n\n\\textbf{$n-m\\leqq\\ell$ の証明．}よい区間 $D$ で $n-m>\\ell$ と仮定する．$m\\geqq-\\sqrt2$ より $n>-\\sqrt2+\\ell\\geqq\\sqrt6-\\sqrt2$．$(\\sqrt6-\\sqrt2)^2=8-4\\sqrt3\\geqq1$（$7\\geqq4\\sqrt3\\iff49\\geqq48$）より $\\sqrt6-\\sqrt2\\geqq1$ なので $n>1$．同様に $n\\leqq\\sqrt2$ より $m<\\sqrt2-\\ell\\leqq-1$．よって $D$ は $\\pm1$ を含み，(2) より $n-m\\leqq\\ell$ となって矛盾．ゆえに $n-m\\leqq\\ell$．\n\n\\textbf{等号の成立．}$m=-\\sqrt{2-\\frac1p}$，$n=\\sqrt{2-\\frac1p}$（$-\\sqrt2<m<n<\\sqrt2$ をみたす），$h(x)=-1$ とすると，$f(x)-h(x)=(x^2-1)^2\\geqq0$，$h(x)-g(x)=p\\left(2-\\dfrac1p-x^2\\right)\\geqq0\\ (m\\leqq x\\leqq n)$．よって $D$ はよい区間で $n-m=\\ell$．\n\n答：最大値 $\\boldsymbol{2\\sqrt{2-\\dfrac1p}}$．（$p=4$ のとき $\\sqrt7$．）"
+   }
+  ],
+  "idea": {
+   "tex": "区間が十分長ければ $x=\\pm1$ を含む．$f(\\pm1)=-1$，$g(\\pm1)=-p$ なので，間に入る直線 $y=kx+b$ は $b\\leqq-1-|k|$，$|k|\\leqq\\frac{p-1}2$ をみたす．直線が放物線 $g$ の上にある範囲は2次不等式の解で，その幅は $\\frac{\\sqrt{k^2+4p(b+2p)}}p$ だから，$b$ の上限を代入して $k=0$ のとき最大になる．原題は接線に限って $p=4$ で $\\sqrt7$ 以下を示したが，捻りでは直線を一般にし，$p$ を一般にして最大値を求める．"
+  },
+  "methods": [],
+  "tags": [
+   "1次関数ではさむ",
+   "2次不等式",
+   "解の幅",
+   "最大値"
+  ],
+  "provenance": {
+   "created": "2026-11-22"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-CAL-207",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-12",
+  "level": 0,
+  "minutes": 6,
+  "theme": "微分法／平均変化率と微分係数の定義",
+  "unit": "微分法",
+  "topic": "平均変化率と微分係数の定義",
+  "statement": {
+   "tex": "関数 $f(x)=x^2+3x$ について，次の問いに答えよ．\n\\begin{enumerate}\n  \\item $x$ が $1$ から $3$ まで変化するときの平均変化率を求めよ．\n  \\item 微分係数 $f'(1)$ を，定義 $f'(1)=\\displaystyle\\lim_{h\\to0}\\dfrac{f(1+h)-f(1)}{h}$ に従って求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $7$　(2) $5$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) $\\dfrac{f(3)-f(1)}{3-1}=\\dfrac{18-4}{2}=\\boldsymbol{7}$．\n(2) $f(1+h)-f(1)=(1+h)^2+3(1+h)-4=5h+h^2$．\nよって $f'(1)=\\displaystyle\\lim_{h\\to0}\\dfrac{5h+h^2}{h}=\\lim_{h\\to0}(5+h)=\\boldsymbol{5}$．"
+   }
+  ],
+  "idea": {
+   "tex": "平均変化率は2点を結ぶ直線の傾き，微分係数はその $h\\to0$ の極限．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) 7\n(2) 5"
+  },
+  "methods": [],
+  "tags": [
+   "平均変化率",
+   "微分係数",
+   "定義"
+  ],
+  "provenance": {
+   "created": "2026-10-30"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-CAL-208",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-12",
+  "level": 0,
+  "minutes": 5,
+  "theme": "微分法／導関数の計算",
+  "unit": "微分法",
+  "topic": "導関数の計算",
+  "statement": {
+   "tex": "次の関数を微分せよ．\n\\begin{enumerate}\n  \\item $y=(x+2)(x^2-3)$\n  \\item $y=(2x-1)^2$\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $y'=3x^2+4x-3$　(2) $y'=8x-4$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) 展開すると $y=x^3+2x^2-3x-6$ なので $y'=\\boldsymbol{3x^2+4x-3}$．\n(2) $y=4x^2-4x+1$ なので $y'=\\boldsymbol{8x-4}$．"
+   }
+  ],
+  "idea": {
+   "tex": "積の形は展開してから，$(x^n)'=nx^{n-1}$ を項ごとに使う．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) $y'$：3x^2+4x-3\n(2) $y'$：8x-4"
+  },
+  "methods": [],
+  "tags": [
+   "導関数"
+  ],
+  "provenance": {
+   "created": "2026-10-30"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-CAL-209",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-12",
+  "level": 0,
+  "minutes": 5,
+  "theme": "微分法／曲線上の点における接線",
+  "unit": "微分法",
+  "topic": "曲線上の点における接線",
+  "statement": {
+   "tex": "次の曲線上の点における接線の方程式を求めよ．\n\\begin{enumerate}\n  \\item $y=x^3-2x$，点 $(1,-1)$\n  \\item $y=x^2-4x+5$，点 $(3,2)$\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $y=x-2$　(2) $y=2x-4$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) $y'=3x^2-2$ より傾きは $1$．$y-(-1)=1\\cdot(x-1)$，$\\boldsymbol{y=x-2}$．\n(2) $y'=2x-4$ より傾きは $2$．$y-2=2(x-3)$，$\\boldsymbol{y=2x-4}$．"
+   }
+  ],
+  "idea": {
+   "tex": "接点 $(a,f(a))$ での接線は $y-f(a)=f'(a)(x-a)$．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) $y$：x-2\n(2) $y$：2x-4"
+  },
+  "methods": [],
+  "tags": [
+   "接線"
+  ],
+  "provenance": {
+   "created": "2026-10-30"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-CAL-210",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-12",
+  "level": 0,
+  "minutes": 7,
+  "theme": "微分法／曲線外の点から引く接線",
+  "unit": "微分法",
+  "topic": "曲線外の点から引く接線",
+  "statement": {
+   "tex": "点 $(0,-2)$ から放物線 $y=x^2$ に引いた接線の方程式をすべて求めよ．"
+  },
+  "answer": {
+   "tex": "$y=2\\sqrt{2}x-2$，$y=-2\\sqrt{2}x-2$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "接点を $(t,t^2)$ とすると，接線は $y=2t(x-t)+t^2=2tx-t^2$．\nこれが $(0,-2)$ を通るので $-2=-t^2$，$t=\\pm\\sqrt2$．\nよって $\\boldsymbol{y=2\\sqrt{2}x-2}$，$\\boldsymbol{y=-2\\sqrt{2}x-2}$．"
+   }
+  ],
+  "idea": {
+   "tex": "接点を文字でおいて接線の式を作り，通る点の条件から接点を決める．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "$y$：{2sqrt(2)x-2, -2sqrt(2)x-2}"
+  },
+  "methods": [],
+  "tags": [
+   "接線",
+   "接点"
+  ],
+  "provenance": {
+   "created": "2026-10-30"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-CAL-211",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-12",
+  "level": 0,
+  "minutes": 6,
+  "theme": "微分法／増減と極値",
+  "unit": "微分法",
+  "topic": "増減と極値",
+  "statement": {
+   "tex": "関数 $f(x)=x^3-3x^2-9x+2$ の極大値と極小値を求めよ．また，そのときの $x$ の値を答えよ．"
+  },
+  "answer": {
+   "tex": "極大値 $7$（$x=-1$），極小値 $-25$（$x=3$）"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "$f'(x)=3x^2-6x-9=3(x+1)(x-3)$．\n$f'(x)$ の符号は $x<-1$ で正，$-1<x<3$ で負，$x>3$ で正．\nよって $x=-1$ で極大値 $f(-1)=\\boldsymbol{7}$，$x=3$ で極小値 $f(3)=\\boldsymbol{-25}$．"
+   }
+  ],
+  "idea": {
+   "tex": "$f'(x)=0$ となる点の前後で $f'(x)$ の符号を調べ，増減表を書く．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "極大値：7 ; そのときの $x$：-1 ; 極小値：-25 ; そのときの $x$：3"
+  },
+  "methods": [],
+  "tags": [
+   "極値",
+   "増減表"
+  ],
+  "provenance": {
+   "created": "2026-10-30"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-CAL-212",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-12",
+  "level": 0,
+  "minutes": 6,
+  "theme": "微分法／区間における最大・最小",
+  "unit": "微分法",
+  "topic": "区間における最大・最小",
+  "statement": {
+   "tex": "関数 $f(x)=x^3-3x$ の $-2\\leqq x\\leqq 3$ における最大値と最小値を求めよ．"
+  },
+  "answer": {
+   "tex": "最大値 $18$，最小値 $-2$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "$f'(x)=3(x+1)(x-1)$．$x=-1$ で極大値 $2$，$x=1$ で極小値 $-2$．\n端の値は $f(-2)=-2$，$f(3)=18$．\nよって最大値 $\\boldsymbol{18}$（$x=3$），最小値 $\\boldsymbol{-2}$（$x=-2,\\ 1$）．"
+   }
+  ],
+  "idea": {
+   "tex": "区間での最大・最小は，極値と区間の端の値を比べて決める．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "最大値：18 ; 最小値：-2"
+  },
+  "methods": [],
+  "tags": [
+   "最大最小",
+   "増減表"
+  ],
+  "provenance": {
+   "created": "2026-10-30"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-CAL-213",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-12",
+  "level": 0,
+  "minutes": 7,
+  "theme": "微分法／極値の条件から係数を決める",
+  "unit": "微分法",
+  "topic": "極値の条件から係数を決める",
+  "statement": {
+   "tex": "関数 $f(x)=x^3+ax^2+bx$ が $x=1$ で極小値 $-2$ をとるように，定数 $a$，$b$ の値を定めよ．また，そのときの極大値を求めよ．"
+  },
+  "answer": {
+   "tex": "$a=0$，$b=-3$，極大値 $2$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "$f'(x)=3x^2+2ax+b$．$f'(1)=0$，$f(1)=-2$ より $3+2a+b=0$，$1+a+b=-2$．\nこれを解いて $\\boldsymbol{a=0}$，$\\boldsymbol{b=-3}$．\nこのとき $f(x)=x^3-3x$，$f'(x)=3(x+1)(x-1)$ で，確かに $x=1$ で極小となる（十分性）．\n極大値は $f(-1)=\\boldsymbol{2}$．"
+   }
+  ],
+  "idea": {
+   "tex": "「$f'(1)=0$」は必要条件にすぎないので，求めた係数で実際に極小になるかを確かめる．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "$a$：0 ; $b$：-3 ; 極大値：2"
+  },
+  "methods": [],
+  "tags": [
+   "極値",
+   "係数決定",
+   "必要十分"
+  ],
+  "provenance": {
+   "created": "2026-10-30"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-CAL-214",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-12",
+  "level": 0,
+  "minutes": 7,
+  "theme": "微分法／方程式の実数解の個数",
+  "unit": "微分法",
+  "topic": "方程式の実数解の個数",
+  "statement": {
+   "tex": "$x$ の方程式 $x^3-3x=k$ が異なる3つの実数解をもつような定数 $k$ の値の範囲を求めよ．"
+  },
+  "answer": {
+   "tex": "$-2<k<2$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "$y=x^3-3x$ のグラフと直線 $y=k$ の共有点の個数を調べる．\n$y'=3(x+1)(x-1)$ より，$x=-1$ で極大値 $2$，$x=1$ で極小値 $-2$．\n直線 $y=k$ がグラフと3点で交わるのは，$k$ が極小値と極大値の間にあるときで $\\boldsymbol{-2<k<2}$．"
+   }
+  ],
+  "idea": {
+   "tex": "定数 $k$ を右辺に分けると，曲線と水平な直線の交点の個数の問題になる．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "-2<k<2"
+  },
+  "methods": [],
+  "tags": [
+   "実数解の個数",
+   "定数分離"
+  ],
+  "provenance": {
+   "created": "2026-10-30"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-CAL-215",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-12",
+  "level": 0,
+  "minutes": 5,
+  "theme": "積分法／不定積分",
+  "unit": "積分法",
+  "topic": "不定積分",
+  "statement": {
+   "tex": "\\begin{enumerate}\n  \\item 不定積分 $\\displaystyle\\int(3x^2-4x+1)\\,dx$ を求めよ．\n  \\item $f'(x)=6x-2$，$f(0)=1$ を満たす関数 $f(x)$ を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $x^3-2x^2+x+C$（$C$ は積分定数）　(2) $f(x)=3x^2-2x+1$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) $\\displaystyle\\int(3x^2-4x+1)\\,dx=\\boldsymbol{x^3-2x^2+x+C}$（$C$ は積分定数）．\n(2) $f(x)=\\displaystyle\\int(6x-2)\\,dx=3x^2-2x+C$．$f(0)=C=1$ より $f(x)=\\boldsymbol{3x^2-2x+1}$．"
+   }
+  ],
+  "idea": {
+   "tex": "$\\displaystyle\\int x^n\\,dx=\\dfrac{x^{n+1}}{n+1}+C$．条件 $f(0)=1$ で積分定数を決める．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) x^3-2x^2+x+C\n(2) $f(x)$：3x^2-2x+1"
+  },
+  "methods": [],
+  "tags": [
+   "不定積分",
+   "積分定数"
+  ],
+  "provenance": {
+   "created": "2026-10-30"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-CAL-216",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-12",
+  "level": 0,
+  "minutes": 5,
+  "theme": "積分法／定積分の計算",
+  "unit": "積分法",
+  "topic": "定積分の計算",
+  "statement": {
+   "tex": "次の定積分を求めよ．\n\\begin{enumerate}\n  \\item $\\displaystyle\\int_{-1}^{2}(x^2+x)\\,dx$\n  \\item $\\displaystyle\\int_{1}^{3}(x-1)(x-3)\\,dx$\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $\\dfrac{9}{2}$　(2) $-\\dfrac{4}{3}$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) $\\left[\\dfrac{x^3}{3}+\\dfrac{x^2}{2}\\right]_{-1}^{2}=\\left(\\dfrac83+2\\right)-\\left(-\\dfrac13+\\dfrac12\\right)=3+\\dfrac32=\\boldsymbol{\\dfrac{9}{2}}$．\n(2) $\\displaystyle\\int_\\alpha^\\beta(x-\\alpha)(x-\\beta)\\,dx=-\\dfrac{(\\beta-\\alpha)^3}{6}$ より $-\\dfrac{2^3}{6}=\\boldsymbol{-\\dfrac{4}{3}}$．"
+   }
+  ],
+  "idea": {
+   "tex": "原始関数の差をとる．$(x-\\alpha)(x-\\beta)$ の形なら $-\\dfrac16(\\beta-\\alpha)^3$ の公式が速い．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) 9/2\n(2) -4/3"
+  },
+  "methods": [],
+  "tags": [
+   "定積分"
+  ],
+  "provenance": {
+   "created": "2026-10-30"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-CAL-217",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-12",
+  "level": 0,
+  "minutes": 5,
+  "theme": "積分法／放物線と $x$ 軸で囲まれた面積",
+  "unit": "積分法",
+  "topic": "放物線と $x$ 軸で囲まれた面積",
+  "statement": {
+   "tex": "放物線 $y=x^2-2x-3$ と $x$ 軸で囲まれた部分の面積を求めよ．"
+  },
+  "answer": {
+   "tex": "$\\dfrac{32}{3}$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "$x^2-2x-3=(x+1)(x-3)$ より $x$ 軸との交点は $x=-1,\\ 3$．この間で $y\\leqq0$ なので\n面積 $=-\\displaystyle\\int_{-1}^{3}(x+1)(x-3)\\,dx=\\dfrac{(3-(-1))^3}{6}=\\boldsymbol{\\dfrac{32}{3}}$．"
+   }
+  ],
+  "idea": {
+   "tex": "グラフが $x$ 軸の下にある部分は，$-\\displaystyle\\int y\\,dx$ が面積になる．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "32/3"
+  },
+  "methods": [],
+  "tags": [
+   "面積",
+   "1/6公式"
+  ],
+  "provenance": {
+   "created": "2026-10-30"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-CAL-218",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-12",
+  "level": 0,
+  "minutes": 6,
+  "theme": "積分法／放物線と直線で囲まれた面積",
+  "unit": "積分法",
+  "topic": "放物線と直線で囲まれた面積",
+  "statement": {
+   "tex": "放物線 $y=x^2$ と直線 $y=x+2$ で囲まれた部分の面積を求めよ．"
+  },
+  "answer": {
+   "tex": "$\\dfrac{9}{2}$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "$x^2=x+2$ より $(x+1)(x-2)=0$，交点の $x$ 座標は $-1,\\ 2$．$-1\\leqq x\\leqq2$ で $x+2\\geqq x^2$．\n面積 $=\\displaystyle\\int_{-1}^{2}(x+2-x^2)\\,dx=\\dfrac{(2-(-1))^3}{6}=\\boldsymbol{\\dfrac{9}{2}}$．"
+   }
+  ],
+  "idea": {
+   "tex": "上の曲線から下の曲線を引いて，交点の間で積分する．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "9/2"
+  },
+  "methods": [],
+  "tags": [
+   "面積",
+   "1/6公式"
+  ],
+  "provenance": {
+   "created": "2026-10-30"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-CAL-219",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-12",
+  "level": 0,
+  "minutes": 6,
+  "theme": "積分法／積分区間に $x$ を含む関数",
+  "unit": "積分法",
+  "topic": "積分区間に $x$ を含む関数",
+  "statement": {
+   "tex": "関数 $f(x)$ と定数 $a$ が $\\displaystyle\\int_a^x f(t)\\,dt=x^2-4x+3$ を満たすとき，$f(x)$ と $a$ の値を求めよ．"
+  },
+  "answer": {
+   "tex": "$f(x)=2x-4$，$a=1,\\ 3$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "両辺を $x$ で微分すると $f(x)=\\boldsymbol{2x-4}$．\nまた $x=a$ とおくと左辺は $0$ なので $a^2-4a+3=0$，$(a-1)(a-3)=0$ より $\\boldsymbol{a=1,\\ 3}$．"
+   }
+  ],
+  "idea": {
+   "tex": "$\\dfrac{d}{dx}\\displaystyle\\int_a^x f(t)\\,dt=f(x)$ と，$x=a$ を代入すると積分が $0$ になることを使う．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "$f(x)$：2x-4 ; $a$：{1, 3}"
+  },
+  "methods": [],
+  "tags": [
+   "定積分で表された関数",
+   "微分"
+  ],
+  "provenance": {
+   "created": "2026-10-30"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-CAL-220",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-12",
+  "level": 0,
+  "minutes": 6,
+  "theme": "積分法／定積分を含む関数の決定",
+  "unit": "積分法",
+  "topic": "定積分を含む関数の決定",
+  "statement": {
+   "tex": "等式 $f(x)=3x^2-2\\displaystyle\\int_0^1 f(t)\\,dt$ を満たす関数 $f(x)$ を求めよ．"
+  },
+  "answer": {
+   "tex": "$f(x)=3x^2-\\dfrac{2}{3}$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "$\\displaystyle\\int_0^1f(t)\\,dt$ は定数なので $c$ とおくと $f(x)=3x^2-2c$．\n$c=\\displaystyle\\int_0^1(3t^2-2c)\\,dt=1-2c$ より $c=\\dfrac13$．\nよって $f(x)=\\boldsymbol{3x^2-\\dfrac{2}{3}}$．"
+   }
+  ],
+  "idea": {
+   "tex": "区間が定数の定積分は定数．文字でおいて，その定義式から方程式を作る．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "$f(x)$：3x^2-2/3"
+  },
+  "methods": [],
+  "tags": [
+   "定積分で表された関数"
+  ],
+  "provenance": {
+   "created": "2026-10-30"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-CAL-221",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-12",
+  "level": 0,
+  "minutes": 7,
+  "theme": "積分法／絶対値を含む関数の定積分",
+  "unit": "積分法",
+  "topic": "絶対値を含む関数の定積分",
+  "statement": {
+   "tex": "次の定積分を求めよ．\n\\begin{enumerate}\n  \\item $\\displaystyle\\int_0^3|x-1|\\,dx$\n  \\item $\\displaystyle\\int_0^2|x^2-1|\\,dx$\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $\\dfrac{5}{2}$　(2) $2$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) $\\displaystyle\\int_0^1(1-x)\\,dx+\\int_1^3(x-1)\\,dx=\\dfrac12+2=\\boldsymbol{\\dfrac{5}{2}}$．\n(2) $\\displaystyle\\int_0^1(1-x^2)\\,dx+\\int_1^2(x^2-1)\\,dx=\\dfrac23+\\dfrac43=\\boldsymbol{2}$．"
+   }
+  ],
+  "idea": {
+   "tex": "絶対値の中が $0$ になる点で区間を分け，それぞれ絶対値を外して積分する．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) 5/2\n(2) 2"
+  },
+  "methods": [],
+  "tags": [
+   "定積分",
+   "絶対値"
+  ],
+  "provenance": {
+   "created": "2026-10-30"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-CAL-222",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-12",
+  "level": 1,
+  "minutes": 10,
+  "theme": "微分法／3次関数が単調増加となる条件",
+  "unit": "微分法",
+  "topic": "3次関数が単調増加となる条件",
+  "statement": {
+   "tex": "\\begin{enumerate}\n  \\item 関数 $f(x)=x^3+ax^2+3x$ がつねに増加するような定数 $a$ の値の範囲を求めよ．\n  \\item 関数 $g(x)=x^3-3ax^2+3(a+2)x$ が極値をもつような定数 $a$ の値の範囲を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $-3\\leqq a\\leqq 3$　(2) $a<-1,\\ 2<a$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) $f'(x)=3x^2+2ax+3$．つねに増加 $\\iff$ すべての $x$ で $f'(x)\\geqq0$ $\\iff$ $\\dfrac{D}{4}=a^2-9\\leqq0$．\nよって $\\boldsymbol{-3\\leqq a\\leqq 3}$（$D=0$ のときも $f'(x)=0$ は1点だけなので増加する）．\n(2) $g'(x)=3\\{x^2-2ax+(a+2)\\}$．極値をもつ $\\iff$ $g'(x)$ の符号が変わる $\\iff$ $\\dfrac{D}{4}=a^2-a-2>0$．\n$(a+1)(a-2)>0$ より $\\boldsymbol{a<-1,\\ 2<a}$．"
+   }
+  ],
+  "idea": {
+   "tex": "3次関数の増減は $f'(x)$（2次式）の符号で決まる．判別式で符号が変わるかどうかを見る．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) -3<=a<=3\n(2) a<-1 または 2<a"
+  },
+  "methods": [],
+  "tags": [
+   "単調増加",
+   "極値をもつ条件",
+   "判別式"
+  ],
+  "provenance": {
+   "created": "2026-10-30"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-CAL-223",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-12",
+  "level": 1,
+  "minutes": 11,
+  "theme": "微分法／極大値と極小値の差",
+  "unit": "微分法",
+  "topic": "極大値と極小値の差",
+  "statement": {
+   "tex": "$p>0$ とする．関数 $f(x)=x^3-3px+1$ について，次の問いに答えよ．\n\\begin{enumerate}\n  \\item 極大値と極小値の差を $p$ で表せ．\n  \\item 極大値と極小値の差が $32$ となるような $p$ の値を求め，そのときの極小値を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $4p\\sqrt{p}$　(2) $p=4$，極小値 $-15$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) $f'(x)=3(x^2-p)$ より $x=-\\sqrt p$ で極大，$x=\\sqrt p$ で極小．\n$f(-\\sqrt p)-f(\\sqrt p)=(-p\\sqrt p+3p\\sqrt p)-(p\\sqrt p-3p\\sqrt p)=\\boldsymbol{4p\\sqrt{p}}$．\n(2) $4p\\sqrt p=32$ より $p^{\\frac32}=8$，$\\boldsymbol{p=4}$．\n極小値は $f(2)=8-24+1=\\boldsymbol{-15}$．"
+   }
+  ],
+  "idea": {
+   "tex": "極値をとる $x$ を求めて差を直接計算する．定数項は差に影響しない．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) 4p sqrt(p)\n(2) $p$：4 ; 極小値：-15"
+  },
+  "methods": [],
+  "tags": [
+   "極値",
+   "極値の差"
+  ],
+  "provenance": {
+   "created": "2026-10-30"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-CAL-224",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-12",
+  "level": 1,
+  "minutes": 12,
+  "theme": "微分法／2曲線が接する条件",
+  "unit": "微分法",
+  "topic": "2曲線が接する条件",
+  "statement": {
+   "tex": "曲線 $y=x^3-x$ と放物線 $y=x^2+a$ が接する（共有点をもち，その点で共通の接線をもつ）ような定数 $a$ の値をすべて求めよ．"
+  },
+  "answer": {
+   "tex": "$a=-1,\\ \\dfrac{5}{27}$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "接点の $x$ 座標を $t$ とすると，$y$ 座標と傾きが一致するので\n$t^3-t=t^2+a$ …①，$3t^2-1=2t$ …②．\n② より $(t-1)(3t+1)=0$，$t=1,\\ -\\dfrac13$．\n① より $a=t^3-t^2-t$ なので，$t=1$ のとき $a=-1$，$t=-\\dfrac13$ のとき $a=-\\dfrac1{27}-\\dfrac19+\\dfrac13=\\dfrac{5}{27}$．\nよって $\\boldsymbol{a=-1,\\ \\dfrac{5}{27}}$．"
+   }
+  ],
+  "idea": {
+   "tex": "「接する」は，接点で関数の値と微分係数が両方とも一致すること．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "$a$：{-1, 5/27}"
+  },
+  "methods": [],
+  "tags": [
+   "接する条件",
+   "共通接線"
+  ],
+  "provenance": {
+   "created": "2026-10-30"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-CAL-225",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-12",
+  "level": 1,
+  "minutes": 12,
+  "theme": "微分法／法線と囲まれた面積",
+  "unit": "微分法",
+  "topic": "法線と囲まれた面積",
+  "statement": {
+   "tex": "放物線 $C:y=x^2$ 上の点 $\\mathrm{A}(1,1)$ における法線を $\\ell$ とする．\n\\begin{enumerate}\n  \\item $\\ell$ の方程式を求めよ．\n  \\item $\\ell$ と $C$ の $\\mathrm{A}$ 以外の交点の座標を求めよ．\n  \\item $\\ell$ と $C$ で囲まれた部分の面積を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $y=-\\dfrac{1}{2}x+\\dfrac{3}{2}$　(2) $\\left(-\\dfrac{3}{2},\\ \\dfrac{9}{4}\\right)$　(3) $\\dfrac{125}{48}$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) $y'=2x$ より A での接線の傾きは $2$，法線の傾きは $-\\dfrac12$．$y-1=-\\dfrac12(x-1)$，$\\boldsymbol{y=-\\dfrac{1}{2}x+\\dfrac{3}{2}}$．\n(2) $x^2=-\\dfrac12x+\\dfrac32$ より $2x^2+x-3=0$，$(x-1)(2x+3)=0$．$x=-\\dfrac32$ で，交点は $\\boldsymbol{\\left(-\\dfrac{3}{2},\\ \\dfrac{9}{4}\\right)}$．\n(3) $\\displaystyle\\int_{-\\frac32}^{1}\\left(-\\dfrac12x+\\dfrac32-x^2\\right)dx=\\dfrac{1}{6}\\left(1+\\dfrac32\\right)^3=\\boldsymbol{\\dfrac{125}{48}}$．"
+   }
+  ],
+  "idea": {
+   "tex": "法線は接線に垂直で，傾きは $-\\dfrac{1}{f'(a)}$．囲まれた面積は $\\dfrac16$ 公式．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) $y$：-x/2+3/2\n(2) (-3/2, 9/4)\n(3) 125/48"
+  },
+  "methods": [],
+  "tags": [
+   "法線",
+   "面積"
+  ],
+  "provenance": {
+   "created": "2026-10-30"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-CAL-226",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-12",
+  "level": 1,
+  "minutes": 13,
+  "theme": "微分法／3次方程式の正の解・負の解の個数",
+  "unit": "微分法",
+  "topic": "3次方程式の正の解・負の解の個数",
+  "statement": {
+   "tex": "$x$ の3次方程式 $x^3-3x^2-9x-a=0$ が，異なる2つの正の解と1つの負の解をもつような定数 $a$ の値の範囲を求めよ．"
+  },
+  "answer": {
+   "tex": "$-27<a<0$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "$g(x)=x^3-3x^2-9x$ とおき，$y=g(x)$ と $y=a$ の共有点を考える．\n$g'(x)=3(x+1)(x-3)$ より $x=-1$ で極大値 $5$，$x=3$ で極小値 $-27$．また $g(0)=0$．\nグラフで，$x>0$ の部分と2回，$x<0$ の部分と1回交わるのは，直線 $y=a$ が $y=g(0)=0$ より下で極小値より上にあるとき．\nよって $\\boldsymbol{-27<a<0}$．"
+   }
+  ],
+  "idea": {
+   "tex": "定数を分離してグラフと水平線の交点を見る．解の正負は交点の $x$ 座標の位置で，$x=0$ での値 $g(0)$ が境目になる．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "-27<a<0"
+  },
+  "methods": [],
+  "tags": [
+   "定数分離",
+   "解の配置"
+  ],
+  "provenance": {
+   "created": "2026-10-30"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-CAL-227",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-12",
+  "level": 1,
+  "minutes": 11,
+  "theme": "微分法／不等式がつねに成り立つ条件",
+  "unit": "微分法",
+  "topic": "不等式がつねに成り立つ条件",
+  "statement": {
+   "tex": "$x\\geqq 0$ のすべての $x$ に対して不等式 $x^3-3x^2+a\\geqq 0$ が成り立つような定数 $a$ の値の範囲を求めよ．"
+  },
+  "answer": {
+   "tex": "$a\\geqq 4$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "$f(x)=x^3-3x^2+a$ とおく．$f'(x)=3x(x-2)$ より，$x\\geqq0$ では $0\\leqq x\\leqq2$ で減少，$x\\geqq2$ で増加．\nよって $x\\geqq0$ における最小値は $f(2)=a-4$．\n$a-4\\geqq0$ より $\\boldsymbol{a\\geqq 4}$．"
+   }
+  ],
+  "idea": {
+   "tex": "「つねに $\\geqq0$」は「その範囲での最小値 $\\geqq0$」と言い換える．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "a>=4"
+  },
+  "methods": [],
+  "tags": [
+   "不等式",
+   "最小値"
+  ],
+  "provenance": {
+   "created": "2026-10-30"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-CAL-228",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-12",
+  "level": 1,
+  "minutes": 11,
+  "theme": "微分法／容積の最大（文章題）",
+  "unit": "微分法",
+  "topic": "容積の最大（文章題）",
+  "statement": {
+   "tex": "1辺の長さが $12$ の正方形の厚紙の四隅から，1辺の長さ $x$ の正方形を切り取り，残りを折り曲げてふたのない直方体の箱を作る．\n\\begin{enumerate}\n  \\item 箱の容積 $V$ を $x$ の式で表し，$x$ のとりうる値の範囲を答えよ．\n  \\item $V$ の最大値と，そのときの $x$ の値を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $V=x(12-2x)^2$，$0<x<6$　(2) 最大値 $128$（$x=2$）"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) 底面は1辺 $12-2x$ の正方形，高さは $x$ なので $\\boldsymbol{V=x(12-2x)^2}$，$\\boldsymbol{0<x<6}$．\n(2) $V=4x^3-48x^2+144x$，$V'=12x^2-96x+144=12(x-2)(x-6)$．\n$0<x<6$ では $x=2$ の前後で $V'$ が正から負に変わるので，$x=2$ で最大．\n最大値は $2\\cdot8^2=\\boldsymbol{128}$（$x=2$）．"
+   }
+  ],
+  "idea": {
+   "tex": "量を1つの変数で表し，変数の範囲を確認してから増減を調べる．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) $V$：x(12-2x)^2 ; 0<x<6\n(2) 最大値：128 ; $x$：2"
+  },
+  "methods": [],
+  "tags": [
+   "最大最小",
+   "文章題"
+  ],
+  "provenance": {
+   "created": "2026-10-30"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-CAL-229",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-12",
+  "level": 1,
+  "minutes": 13,
+  "theme": "微分法／球に内接する円柱の体積",
+  "unit": "微分法",
+  "topic": "球に内接する円柱の体積",
+  "statement": {
+   "tex": "半径 $3$ の球に内接する円柱を考える．円柱の高さを $h$ とする．\n\\begin{enumerate}\n  \\item 円柱の体積 $V$ を $h$ の式で表せ．\n  \\item $V$ の最大値と，そのときの $h$ を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $V=\\pi\\left(9h-\\dfrac{h^3}{4}\\right)$　(2) 最大値 $12\\sqrt{3}\\pi$（$h=2\\sqrt{3}$）"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) 底面の半径を $r$ とすると，球の中心から底面までの距離は $\\dfrac h2$ なので $r^2=9-\\dfrac{h^2}{4}$．\n$V=\\pi r^2h=\\boldsymbol{\\pi\\left(9h-\\dfrac{h^3}{4}\\right)}$（$0<h<6$）．\n(2) $V'=\\pi\\left(9-\\dfrac{3h^2}{4}\\right)=0$ より $h^2=12$，$h=2\\sqrt3$．この前後で $V'$ は正から負．\n最大値は $\\pi\\left(18\\sqrt3-\\dfrac{24\\sqrt3}{4}\\right)=\\boldsymbol{12\\sqrt{3}\\pi}$（$h=2\\sqrt3$）．"
+   }
+  ],
+  "idea": {
+   "tex": "断面の直角三角形で半径と高さの関係を作り，体積を1変数の3次関数にする．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) $V$：π(9h-h^3/4)\n(2) 最大値：12sqrt(3)π ; $h$：2sqrt(3)"
+  },
+  "methods": [],
+  "tags": [
+   "最大最小",
+   "立体",
+   "文章題"
+  ],
+  "provenance": {
+   "created": "2026-10-30"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-CAL-230",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-12",
+  "level": 1,
+  "minutes": 12,
+  "theme": "積分法／3次関数のグラフと接線で囲まれた面積",
+  "unit": "積分法",
+  "topic": "3次関数のグラフと接線で囲まれた面積",
+  "statement": {
+   "tex": "曲線 $C:y=x^3-3x$ について，次の問いに答えよ．\n\\begin{enumerate}\n  \\item $C$ 上の点 $(1,-2)$ における接線 $\\ell$ の方程式と，$\\ell$ と $C$ の接点以外の共有点の $x$ 座標を求めよ．\n  \\item $C$ と $\\ell$ で囲まれた部分の面積を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $y=-2$，$x=-2$　(2) $\\dfrac{27}{4}$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) $y'=3x^2-3$ より $x=1$ での傾きは $0$．$\\ell:\\boldsymbol{y=-2}$．\n$x^3-3x+2=(x-1)^2(x+2)=0$ より，接点以外の共有点は $\\boldsymbol{x=-2}$．\n(2) $-2\\leqq x\\leqq1$ で $x^3-3x+2=(x-1)^2(x+2)\\geqq0$．\n面積 $=\\displaystyle\\int_{-2}^{1}(x-1)^2(x+2)\\,dx=\\dfrac{(1-(-2))^4}{12}=\\boldsymbol{\\dfrac{27}{4}}$．"
+   }
+  ],
+  "idea": {
+   "tex": "接線との差は接点で重解をもつので $(x-\\alpha)^2(x-\\beta)$ と因数分解でき，$\\dfrac1{12}$ 公式が使える．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) $y$：-2 ; $x$：-2\n(2) 27/4"
+  },
+  "methods": [],
+  "tags": [
+   "接線",
+   "面積",
+   "1/12公式"
+  ],
+  "provenance": {
+   "created": "2026-10-30"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-CAL-231",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-12",
+  "level": 1,
+  "minutes": 13,
+  "theme": "積分法／面積を2等分する直線",
+  "unit": "積分法",
+  "topic": "面積を2等分する直線",
+  "statement": {
+   "tex": "放物線 $y=x^2-2x$ と $x$ 軸で囲まれた部分を $D$ とする．\n\\begin{enumerate}\n  \\item $D$ の面積を求めよ．\n  \\item 原点を通る直線 $y=mx$ が $D$ の面積を2等分するとき，$m$ の値を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $\\dfrac{4}{3}$　(2) $m=\\sqrt[3]{4}-2$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) $-\\displaystyle\\int_0^2(x^2-2x)\\,dx=\\dfrac{2^3}{6}=\\boldsymbol{\\dfrac{4}{3}}$．\n(2) 直線が $D$ を通るには $-2<m<0$．$x^2-2x=mx$ より $x=0,\\ m+2$．\n直線と放物線で囲まれた部分の面積は $\\displaystyle\\int_0^{m+2}\\{mx-(x^2-2x)\\}\\,dx=\\dfrac{(m+2)^3}{6}$．\nこれが $\\dfrac23$ に等しいので $(m+2)^3=4$，$\\boldsymbol{m=\\sqrt[3]{4}-2}$（$-2<m<0$ を満たす）．"
+   }
+  ],
+  "idea": {
+   "tex": "直線と放物線で囲まれた小さい部分の面積を $m$ で表し，全体の半分とおく．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) 4/3\n(2) $m$：4^(1/3)-2"
+  },
+  "methods": [],
+  "tags": [
+   "面積",
+   "2等分",
+   "1/6公式"
+  ],
+  "provenance": {
+   "created": "2026-10-30"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-CAL-232",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-12",
+  "level": 1,
+  "minutes": 12,
+  "theme": "積分法／絶対値を含む定積分の最小",
+  "unit": "積分法",
+  "topic": "絶対値を含む定積分の最小",
+  "statement": {
+   "tex": "$0\\leqq a\\leqq 1$ とし，$F(a)=\\displaystyle\\int_0^1|x-a|\\,dx$ とおく．\n\\begin{enumerate}\n  \\item $F(a)$ を $a$ の式で表せ．\n  \\item $F(a)$ の最小値と，そのときの $a$ の値を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $F(a)=a^2-a+\\dfrac{1}{2}$　(2) 最小値 $\\dfrac{1}{4}$（$a=\\dfrac{1}{2}$）"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) $F(a)=\\displaystyle\\int_0^a(a-x)\\,dx+\\int_a^1(x-a)\\,dx=\\dfrac{a^2}{2}+\\dfrac{(1-a)^2}{2}=\\boldsymbol{a^2-a+\\dfrac{1}{2}}$．\n(2) $F(a)=\\left(a-\\dfrac12\\right)^2+\\dfrac14$ より，$a=\\dfrac12$ で最小値 $\\boldsymbol{\\dfrac{1}{4}}$．"
+   }
+  ],
+  "idea": {
+   "tex": "$x=a$ で区間を分けて絶対値を外すと，$F(a)$ は $a$ の2次関数になる．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) $F(a)$：a^2-a+1/2\n(2) 最小値：1/4 ; $a$：1/2"
+  },
+  "methods": [],
+  "tags": [
+   "定積分",
+   "絶対値",
+   "最大最小"
+  ],
+  "provenance": {
+   "created": "2026-10-30"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-CAL-233",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-12",
+  "level": 1,
+  "minutes": 11,
+  "theme": "積分法／定積分で表された関数の極値",
+  "unit": "積分法",
+  "topic": "定積分で表された関数の極値",
+  "statement": {
+   "tex": "関数 $f(x)=\\displaystyle\\int_0^x(t^2-4t+3)\\,dt$ の極大値と極小値を求めよ．"
+  },
+  "answer": {
+   "tex": "極大値 $\\dfrac{4}{3}$（$x=1$），極小値 $0$（$x=3$）"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "$f'(x)=x^2-4x+3=(x-1)(x-3)$．$x=1$ の前後で正から負，$x=3$ の前後で負から正．\n$f(x)=\\dfrac{x^3}{3}-2x^2+3x$ より，極大値 $f(1)=\\boldsymbol{\\dfrac{4}{3}}$，極小値 $f(3)=9-18+9=\\boldsymbol{0}$．"
+   }
+  ],
+  "idea": {
+   "tex": "微分すれば被積分関数が出てくるので，増減は被積分関数の符号で決まる．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "極大値：4/3 ; 極小値：0"
+  },
+  "methods": [],
+  "tags": [
+   "定積分で表された関数",
+   "極値"
+  ],
+  "provenance": {
+   "created": "2026-10-30"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-CAL-234",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-12",
+  "level": 1,
+  "minutes": 10,
+  "theme": "積分法／2つの放物線で囲まれた面積",
+  "unit": "積分法",
+  "topic": "2つの放物線で囲まれた面積",
+  "statement": {
+   "tex": "2つの放物線 $y=x^2$ と $y=-x^2+2x+4$ で囲まれた部分の面積を求めよ．"
+  },
+  "answer": {
+   "tex": "$9$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "$x^2=-x^2+2x+4$ より $2x^2-2x-4=0$，$(x+1)(x-2)=0$．\n$-1\\leqq x\\leqq2$ で $-x^2+2x+4\\geqq x^2$ なので\n面積 $=\\displaystyle\\int_{-1}^{2}(-2x^2+2x+4)\\,dx=-2\\int_{-1}^{2}(x+1)(x-2)\\,dx=2\\cdot\\dfrac{3^3}{6}=\\boldsymbol{9}$．"
+   }
+  ],
+  "idea": {
+   "tex": "差をとると2次式になり，交点の間の積分は $\\dfrac16$ 公式で求まる（$x^2$ の係数に注意）．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "9"
+  },
+  "methods": [],
+  "tags": [
+   "面積",
+   "1/6公式"
+  ],
+  "provenance": {
+   "created": "2026-10-30"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-CAL-235",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-12",
+  "level": 1,
+  "minutes": 13,
+  "theme": "積分法／$x$ を含む定積分を含む関数の決定",
+  "unit": "積分法",
+  "topic": "$x$ を含む定積分を含む関数の決定",
+  "statement": {
+   "tex": "等式 $f(x)=x^2+\\displaystyle\\int_0^1(x+t)f(t)\\,dt$ を満たす関数 $f(x)$ を求めよ．"
+  },
+  "answer": {
+   "tex": "$f(x)=x^{2}-5x-\\dfrac{17}{6}$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "$\\displaystyle\\int_0^1(x+t)f(t)\\,dt=x\\int_0^1f(t)\\,dt+\\int_0^1 tf(t)\\,dt$．\n$A=\\displaystyle\\int_0^1f(t)\\,dt$，$B=\\displaystyle\\int_0^1 tf(t)\\,dt$ とおくと $f(x)=x^2+Ax+B$．\n$A=\\displaystyle\\int_0^1(t^2+At+B)\\,dt=\\dfrac13+\\dfrac A2+B$，$B=\\displaystyle\\int_0^1(t^3+At^2+Bt)\\,dt=\\dfrac14+\\dfrac A3+\\dfrac B2$．\n整理すると $3A-6B=2$，$-4A+6B=3$．これを解いて $A=-5$，$B=-\\dfrac{17}{6}$．\nよって $f(x)=\\boldsymbol{x^{2}-5x-\\dfrac{17}{6}}$．"
+   }
+  ],
+  "idea": {
+   "tex": "$x$ は積分の外に出してから，残る定積分をそれぞれ定数とおく．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "$f(x)$：x^2-5*x-17/6"
+  },
+  "methods": [],
+  "tags": [
+   "定積分で表された関数",
+   "連立方程式"
+  ],
+  "provenance": {
+   "created": "2026-10-30"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-CAL-236",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-12",
+  "level": 1,
+  "minutes": 11,
+  "theme": "微分法／$(x-a)^2$ で割った余りと微分",
+  "unit": "微分法",
+  "topic": "$(x-a)^2$ で割った余りと微分",
+  "statement": {
+   "tex": "\\begin{enumerate}\n  \\item 整式 $f(x)$ を $(x-a)^2$ で割った余りを $px+q$ とするとき，$f(a)=pa+q$，$f'(a)=p$ が成り立つことを用いて，$x^{10}$ を $(x-1)^2$ で割った余りを求めよ．\n  \\item 整式 $x^{n}$（$n\\geqq2$）を $(x-1)^2$ で割った余りを $n$ の式で表せ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $10x-9$　(2) $nx-(n-1)$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "$x^{n}=(x-1)^2Q(x)+px+q$ とおき，両辺を微分すると $nx^{n-1}=2(x-1)Q(x)+(x-1)^2Q'(x)+p$．\n$x=1$ を代入すると $1=p+q$，$n=p$．\n(1) $n=10$ で $p=10$，$q=-9$．余りは $\\boldsymbol{10x-9}$．\n(2) $p=n$，$q=1-n$ より余りは $\\boldsymbol{nx-(n-1)}$．"
+   }
+  ],
+  "idea": {
+   "tex": "$(x-a)^2$ で割り切れる部分は，$x=a$ で値も微分係数も $0$ になる．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) 10x-9\n(2) nx-(n-1)"
+  },
+  "methods": [],
+  "tags": [
+   "剰余の定理",
+   "微分",
+   "整式の割り算"
+  ],
+  "provenance": {
+   "created": "2026-10-30"
   },
   "quality": {
    "status": "published",

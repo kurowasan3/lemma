@@ -377,6 +377,243 @@
   }
  },
  {
+  "id": "I-DAT-031",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "I-04",
+  "level": 4,
+  "minutes": 30,
+  "theme": "環状に並ぶ学校の台数をならす最小の移動",
+  "topic": "環状に並ぶ学校の台数をならす最小の移動",
+  "statement": {
+   "tex": "$n$ を正の整数とし，環状道路に沿って $2n+1$ 校の学校 $\\mathrm S_1,\\mathrm S_2,\\cdots,\\mathrm S_{2n+1}$ がこの順に並んでいる（$\\mathrm S_{2n+1}$ の次は $\\mathrm S_1$）．はじめ $\\mathrm S_k$ には $k$ 台の顕微鏡がある（$k=1,2,\\cdots,2n+1$）．\n各 $k$ について整数 $x_k$ を定め，「$\\mathrm S_k$ から次の学校へ $x_k$ 台移す」（$x_k<0$ のときは次の学校から $\\mathrm S_k$ へ $-x_k$ 台移すことを表す）という移し方で，すべての学校の台数を等しくしたい．このとき移動する総台数は $|x_1|+|x_2|+\\cdots+|x_{2n+1}|$ である．\n\\begin{enumerate}\n  \\item $n=3$ のとき，移動する総台数の最小値と，そのときの $x_1,x_2,\\cdots,x_7$ を求めよ．\n  \\item 一般の $n$ について，移動する総台数の最小値を求めよ．また，最小となる移し方はただ1通りであることを示し，そのときの $x_{2n+1}$ を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 最小値 $11$，$(x_1,\\cdots,x_7)=(2,0,-1,-1,0,2,5)$　(2) $n=2m$ のとき $\\dfrac{m(4m^2+3m+1)}{2}$，$n=2m-1$ のとき $\\dfrac{m(4m^2-3m+1)}{2}$（$m$ は正の整数）；ただ1通り（証明），$x_{2n+1}$ は $n=2m$ のとき $\\dfrac{m(3m+1)}2$，$n=2m-1$ のとき $\\dfrac{m(3m-1)}2$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "$N=2n+1$ とおき，$x_0=x_N$ と約束する．移したあとの $\\mathrm S_k$ の台数は $k-x_k+x_{k-1}$ であり，総数は $\\frac{N(N+1)}2$ なので，そろえた台数は $\\frac{N+1}2=n+1$ である．よって条件は\n\\[\nx_k=x_{k-1}+k-(n+1)\\quad(k=1,2,\\cdots,N)\n\\]\nである．$c=x_N$ とおいて順に足すと，$k=1,2,\\cdots,N$ に対して\n\\[\nx_k=c+\\sum_{j=1}^{k}(j-n-1)=c-T_k,\\qquad T_k=\\frac{k(2n+1-k)}{2}\n\\]\nとなる．$k=N$ のとき $T_N=0$ なので $x_N=c$ と矛盾しない．逆に任意の整数 $c$ に対し $x_k=c-T_k$ と定めれば（$k$ と $2n+1-k$ の一方は偶数なので $T_k$ は整数）条件をみたす．したがって，移し方は整数 $c$ と1対1に対応し，総台数は\n\\[\nF(c)=\\sum_{k=1}^{N}|c-T_k|\n\\]\nである．$T_{N-k}=T_k$（$1\\leqq k\\leqq 2n$）であり，$1\\leqq k\\leqq n-1$ のとき $T_{k+1}-T_k=n-k>0$ なので\n\\[\n0=T_N<T_1<T_2<\\cdots<T_n .\n\\]\nよって $N$ 個の値 $T_1,\\cdots,T_N$ を小さい順に並べたもの $v_1\\leqq v_2\\leqq\\cdots\\leqq v_N$ は\n\\[\nv_1=0,\\qquad v_{2i}=v_{2i+1}=T_i\\quad(i=1,2,\\cdots,n)\n\\]\nである．\n\n\\textbf{補題}　$v_1\\leqq\\cdots\\leqq v_{2n+1}$ のとき，$G(c)=\\sum_{i=1}^{2n+1}|c-v_i|$ は $c=v_{n+1}$ のときに限り最小値 $\\sum_{i=1}^{n}(v_{2n+2-i}-v_i)$ をとる．\n\n（証明）$i=1,\\cdots,n$ に対し $|c-v_i|+|c-v_{2n+2-i}|\\geqq v_{2n+2-i}-v_i$（三角不等式）であり，また $|c-v_{n+1}|\\geqq0$．足すと $G(c)\\geqq\\sum_{i=1}^n(v_{2n+2-i}-v_i)$．$c=v_{n+1}$ のときは $v_i\\leqq c\\leqq v_{2n+2-i}$ なので各不等式で等号が成り立つ．逆に等号が成り立てば $|c-v_{n+1}|=0$ である．\\hfill$\\square$\n\n$n+1$ を $2i$ または $2i+1$ と書くと $i=m$，ただし $n=2m$ または $n=2m-1$（$m$ は正の整数）．よって $v_{n+1}=T_m$ であり，最小となる移し方は $c=T_m$ のただ1通り，そのとき $x_{2n+1}=c=T_m$．\n\n最小値は，$T_k$ の大小に注意して\n\\[\nF(T_m)=T_m+2\\left\\{\\sum_{k=1}^{m-1}(T_m-T_k)+\\sum_{k=m+1}^{n}(T_k-T_m)\\right\\}\n=\\bigl(1+2(m-1)-2(n-m)\\bigr)T_m+2(B-A)\n\\]\nここで $A=\\sum_{k=1}^{m-1}T_k$，$B=\\sum_{k=m+1}^{n}T_k$．また $\\sum_{k=1}^{n}T_k=\\frac12\\left\\{(2n+1)\\frac{n(n+1)}2-\\frac{n(n+1)(2n+1)}6\\right\\}=\\frac{n(n+1)(2n+1)}6$ である．\n\n\\textbf{(ア) $n=2m$ のとき}　$T_k=\\frac{k(4m+1-k)}2$，$T_m=\\frac{m(3m+1)}2$．\n\\[\nA=\\frac12\\left\\{(4m+1)\\frac{(m-1)m}2-\\frac{(m-1)m(2m-1)}6\\right\\}=\\frac{(m-1)m(5m+2)}6 ,\n\\]\n$B=\\frac{2m(2m+1)(4m+1)}6-A-T_m=\\frac{m(11m^2+6m+1)}6$．よって $B-A=\\frac{m(6m^2+9m+3)}6=\\frac{m(m+1)(2m+1)}2$．係数は $1+2(m-1)-2m=-1$ なので\n\\[\nF(T_m)=-\\frac{m(3m+1)}2+m(m+1)(2m+1)=\\frac{m(4m^2+3m+1)}2 .\n\\]\n\n\\textbf{(イ) $n=2m-1$ のとき}　$T_k=\\frac{k(4m-1-k)}2$，$T_m=\\frac{m(3m-1)}2$．\n\\[\nA=\\frac12\\left\\{(4m-1)\\frac{(m-1)m}2-\\frac{(m-1)m(2m-1)}6\\right\\}=\\frac{(m-1)m(5m-1)}6 ,\n\\]\n$B=\\frac{(2m-1)2m(4m-1)}6-A-T_m=\\frac{m(m-1)(11m-4)}6$．よって $B-A=\\frac{m(m-1)(6m-3)}6=\\frac{m(m-1)(2m-1)}2$．係数は $1+2(m-1)-2(m-1)=1$ なので\n\\[\nF(T_m)=\\frac{m(3m-1)}2+m(m-1)(2m-1)=\\frac{m(4m^2-3m+1)}2 .\n\\]\n\n(1) $n=3$ は $m=2$ の(イ)．$(T_1,\\cdots,T_7)=(3,5,6,6,5,3,0)$，$c=T_2=5$ で $(x_1,\\cdots,x_7)=\\boldsymbol{(2,0,-1,-1,0,2,5)}$，最小値は $\\frac{2(16-6+1)}2=\\boldsymbol{11}$（実際 $2+0+1+1+0+2+5=11$）．\n\n(2) 最小値は\n\\[\n\\boldsymbol{n=2m\\ \\text{のとき}\\ \\dfrac{m(4m^2+3m+1)}2,\\qquad n=2m-1\\ \\text{のとき}\\ \\dfrac{m(4m^2-3m+1)}2}\n\\]\nである．最小となる移し方は $c=T_m$ のただ1通りで，$\\boldsymbol{x_{2n+1}=T_m}$，すなわち $n=2m$ のとき $\\frac{m(3m+1)}2$，$n=2m-1$ のとき $\\frac{m(3m-1)}2$．"
+   }
+  ],
+  "idea": {
+   "tex": "隣どうしの移動量を $x_k$（向きつき）とおくと，各校の台数がそろう条件から $x_k=c-T_k$ と1つの未知数 $c$ だけで表せる．総移動数 $\\sum|c-T_k|$ は，値 $T_k$ の中央値で最小となり，奇数個ならその $c$ はただ1つ．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) 最小値：11 ; $(x_1,\\cdots,x_7)$：(2, 0, -1, -1, 0, 2, 5)\n(2) 記述"
+  },
+  "methods": [],
+  "tags": [
+   "中央値",
+   "絶対値の和",
+   "環状",
+   "数列の和"
+  ],
+  "provenance": {
+   "created": "2026-11-19"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "I-DAT-029",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "I-04",
+  "level": 4,
+  "minutes": 30,
+  "theme": "縦に読み直した番号との相関係数",
+  "topic": "縦に読み直した番号との相関係数",
+  "statement": {
+   "tex": "$a,b$ を2以上の整数とし，$N=ab$ とする．$1$ から $N$ までの整数を，横に $a$ 個ずつ $b$ 行に並べる（第1行に $1,2,\\dots,a$，第2行に $a+1,\\dots,2a$，…）．このとき，$i$ が置かれた場所を上から縦に読み直した順番を $y_i$ とする．すなわち，$1\\leqq i\\leqq N$ に対し $i-1=aq+s$（$q,s$ は整数，$0\\leqq s\\leqq a-1$）と表すとき\n\\[x_i=i,\\qquad y_i=bs+q+1\\]\nとおき，$N$ 個の値の組 $(x_i,y_i)$ からなる2つの変量 $x,y$ を考える．$x$ と $y$ の共分散を $s_{xy}$，相関係数を $r$ とする．\n\\begin{enumerate}\n  \\item $y_1,y_2,\\dots,y_N$ は $1,2,\\dots,N$ を並べかえたものであることを示し，$s_{xy}$ と $r$ を $a,b$ で表せ．\n  \\item $r\\geqq\\dfrac12$ となる組 $(a,b)$ をすべて求めよ．\n  \\item $r=\\dfrac17$ となる組 $(a,b)$ をすべて求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $s_{xy}=\\dfrac{a(b^2-1)+b(a^2-1)}{12}$，$r=\\dfrac{a+b}{ab+1}$　(2) $a=2$（$b\\geqq2$ は任意），$b=2$（$a\\geqq2$ は任意），および $(a,b)=(3,3),(3,4),(4,3),(3,5),(5,3)$　(3) $(a,b)=(8,55),(9,31),(10,23),(11,19),(13,15),(15,13),(19,11),(23,10),(31,9),(55,8)$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "\\textbf{(1)}\n$i-1$ を $a$ で割った商が $q$，余りが $s$ である．$1\\leqq i\\leqq N$ のとき $0\\leqq i-1\\leqq ab-1$ であるから $0\\leqq q\\leqq b-1$ であり，$i$ と整数の組 $(q,s)$（$0\\leqq q\\leqq b-1$，$0\\leqq s\\leqq a-1$）は1対1に対応する．同様に $0\\leqq q\\leqq b-1$ より $y_i-1=bs+q$ は「$y_i-1$ を $b$ で割った商が $s$，余りが $q$」という表示であり，整数 $Y$（$1\\leqq Y\\leqq N$）と組 $(s,q)$ も1対1に対応する．したがって $i\\mapsto y_i$ は $\\{1,\\dots,N\\}$ から $\\{1,\\dots,N\\}$ への1対1の対応であり，$y_1,\\dots,y_N$ は $1,\\dots,N$ の並べかえである．\n\nよって $x$ と $y$ の平均はともに $\\dfrac{N+1}2$，分散はともに $1,\\dots,N$ の分散\n\\[s_x^2=s_y^2=\\frac1N\\sum_{i=1}^Ni^2-\\left(\\frac{N+1}2\\right)^2=\\frac{(N+1)(2N+1)}6-\\frac{(N+1)^2}4=\\frac{N^2-1}{12}\\]\nである．同じ計算から，$0,1,\\dots,b-1$ の平均 $\\bar q=\\dfrac{b-1}2$ のまわりの偏差平方和は $\\displaystyle\\sum_{q=0}^{b-1}(q-\\bar q)^2=\\frac{b(b^2-1)}{12}$，同様に $\\bar s=\\dfrac{a-1}2$ として $\\displaystyle\\sum_{s=0}^{a-1}(s-\\bar s)^2=\\frac{a(a^2-1)}{12}$ である．\n\n$x_i-1=aq+s$，$y_i-1=bs+q$ で，平均 $\\dfrac{N+1}2$ について $\\dfrac{N+1}2-1=\\dfrac{ab-1}2=a\\bar q+\\bar s=b\\bar s+\\bar q$ であるから，$Q=q-\\bar q$，$T=s-\\bar s$ とおくと\n\\[x_i-\\bar x=aQ+T,\\qquad y_i-\\bar y=bT+Q\\]\nとなる．$i$ をすべて動かすことは $(q,s)$ をすべての組で動かすことだから\n\\[Ns_{xy}=\\sum_{q=0}^{b-1}\\sum_{s=0}^{a-1}(aQ+T)(bT+Q)=\\sum_{q,s}\\bigl(abQT+aQ^2+bT^2+QT\\bigr)．\\]\n$\\displaystyle\\sum_{q,s}QT=\\Bigl(\\sum_qQ\\Bigr)\\Bigl(\\sum_sT\\Bigr)=0\\cdot0=0$，$\\displaystyle\\sum_{q,s}Q^2=a\\cdot\\frac{b(b^2-1)}{12}$，$\\displaystyle\\sum_{q,s}T^2=b\\cdot\\frac{a(a^2-1)}{12}$ であるから\n\\[Ns_{xy}=\\frac{ab\\{a(b^2-1)+b(a^2-1)\\}}{12},\\qquad \\boldsymbol{s_{xy}=\\frac{a(b^2-1)+b(a^2-1)}{12}}．\\]\nさらに $a(b^2-1)+b(a^2-1)=ab(a+b)-(a+b)=(a+b)(ab-1)$，$N^2-1=(ab-1)(ab+1)$ であり $ab-1>0$ だから\n\\[r=\\frac{s_{xy}}{s_xs_y}=\\frac{s_{xy}}{s_x^2}=\\frac{(a+b)(ab-1)}{(ab-1)(ab+1)}=\\boldsymbol{\\frac{a+b}{ab+1}}．\\]\n\n\\textbf{(2)}\n$r\\geqq\\dfrac12\\iff2(a+b)\\geqq ab+1\\iff ab-2a-2b+4\\leqq3\\iff(a-2)(b-2)\\leqq3$．\n$a-2\\geqq0$，$b-2\\geqq0$ である．$a=2$ または $b=2$ ならば左辺は $0$ で常に成り立つ．$a,b\\geqq3$ ならば $(a-2)(b-2)$ は $1,2,3$ のいずれかで，$(a-2,b-2)=(1,1),(1,2),(2,1),(1,3),(3,1)$．以上より\n\\[\\boldsymbol{a=2\\ (b\\text{ は任意}),\\quad b=2\\ (a\\text{ は任意}),\\quad (a,b)=(3,3),(3,4),(4,3),(3,5),(5,3)}．\\]\n\n\\textbf{(3)}\n$r=\\dfrac17\\iff7(a+b)=ab+1\\iff(a-7)(b-7)=48$．\n$a-7$ と $b-7$ は同符号の整数である．ともに負とすると $a,b\\geqq2$ より $-5\\leqq a-7\\leqq-1$，$-5\\leqq b-7\\leqq-1$ で積は $25$ 以下となり $48$ にならない．よってともに正で，$48$ の正の約数の組 $(a-7,b-7)=(1,48),(2,24),(3,16),(4,12),(6,8)$ とその入れかえである．\n\\[\\boldsymbol{(a,b)=(8,55),(9,31),(10,23),(11,19),(13,15),}\\]\n\\[\\boldsymbol{(15,13),(19,11),(23,10),(31,9),(55,8)}\\]\n\\hfill$\\square$"
+   }
+  ],
+  "idea": {
+   "tex": "データ $y$ が $x=1,2,\\dots,N$ の並べかえのとき，平均も分散も $x$ と同じで，相関係数は共分散だけで決まる．番号 $i$ を「行 $q$・列 $s$」に分解すると $x-1=aq+s$，$y-1=bs+q$ と2つの独立な添字の1次式になり，偏差の積の和は交差項が消えて各添字の偏差平方和だけで書ける．$r=\\dfrac{a+b}{ab+1}$ となり，$r$ の条件は $(a-m)(b-m)=m^2-1$ 型の積の形の不定方程式になる．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) $s_{xy}$：(a(b^2-1)+b(a^2-1))/12 ; $r$：(a+b)/(ab+1)\n(2) 記述\n(3) $(a,b)$：{(8, 55), (9, 31), (10, 23), (11, 19), (13, 15), (15, 13), (19, 11), (23, 10), (31, 9), (55, 8)}"
+  },
+  "methods": [],
+  "tags": [
+   "共分散",
+   "相関係数",
+   "番号の並べかえ",
+   "偏差の分解",
+   "不定方程式"
+  ],
+  "provenance": {
+   "created": "2026-11-10"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "I-DAT-030",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "I-04",
+  "level": 5,
+  "minutes": 35,
+  "theme": "順位相関係数が0になりうる人数",
+  "topic": "順位相関係数が0になりうる人数",
+  "statement": {
+   "tex": "$n$ を2以上の整数とする．$n$ 人のクラスで英語と理科のテストを行う．どちらの科目にも同順位の者はいないとする．出席番号 $i$（$i=1,2,\\dots,n$）の生徒の英語の順位を $x_i$，理科の順位を $y_i$ とし，\n\\[d_i=x_i-y_i,\\qquad D=\\sum_{i=1}^nd_i^2\\]\nとおく．また，変量 $x,y$ の相関係数を $r$ とする．\n\\begin{enumerate}\n  \\item $r=1-\\dfrac{6D}{n(n^2-1)}$ であることを示せ．\n  \\item $D$ はつねに偶数であることを示せ．\n  \\item $r=0$ となるような2科目の順位のつき方が存在する $n$ をすべて求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 証明　(2) 証明　(3) $n$ を4で割った余りが $0$ または $1$ であるすべての $n$，および余りが $3$ で $n\\geqq7$ であるすべての $n$（$n\\equiv2\\pmod4$ と $n=3$ では存在しない）"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) $x_1,\\dots,x_n$ と $y_1,\\dots,y_n$ はどちらも $1,2,\\dots,n$ の並べかえである．よって平均はともに $\\dfrac{n+1}2$，分散はともに\n\\[s^2=\\frac1n\\sum_{k=1}^nk^2-\\left(\\frac{n+1}2\\right)^2=\\frac{(n+1)(2n+1)}6-\\frac{(n+1)^2}4=\\frac{n^2-1}{12}\\ (>0).\\]\nまた $D=\\sum x_i^2+\\sum y_i^2-2\\sum x_iy_i=2\\sum_{k=1}^nk^2-2\\sum x_iy_i$ だから $\\sum x_iy_i=\\sum k^2-\\dfrac D2$．共分散は\n\\[s_{xy}=\\frac1n\\sum x_iy_i-\\left(\\frac{n+1}2\\right)^2=s^2-\\frac D{2n}.\\]\nしたがって $r=\\dfrac{s_{xy}}{s\\cdot s}=1-\\dfrac D{2ns^2}=1-\\dfrac{6D}{n(n^2-1)}$．\\hfill$\\square$\n\n(2) 各 $i$ で $d_i^2-d_i=d_i(d_i-1)$ は連続2整数の積なので偶数．よって $D\\equiv\\sum d_i\\pmod2$．$\\sum d_i=\\sum x_i-\\sum y_i=0$ だから $D$ は偶数．\\hfill$\\square$\n\n(3) (1) より $r=0\\iff D=T$，$T=\\dfrac{n(n^2-1)}6$．\n\n\\textbf{$n\\equiv2\\pmod4$ のとき．} $N=(n-1)n(n+1)$ とおく．$n=2\\times(\\text{奇数})$，$n\\pm1$ は奇数だから $N=2M$（$M$ は奇数）．連続3整数の積 $N$ は3の倍数で，3は奇数だから $M$ が3の倍数．よって $T=\\dfrac N6=\\dfrac M3$ は奇数．(2) より $D$ は偶数なので $D\\neq T$，$r\\neq0$．\n\n\\textbf{$n=3$ のとき．} 生徒の番号をつけかえても $D,r$ は変わらないので，$x_i=i$ としてよい．$(y_1,y_2,y_3)$ は6通りで，$D$ の値は\n$(1,2,3):0$，$(2,1,3):2$，$(1,3,2):2$，$(2,3,1):6$，$(3,1,2):6$，$(3,2,1):8$．$T=4$ は現れないので $r\\neq0$．\n\n\\textbf{構成．} $u_i=x_i-\\dfrac{n+1}2$，$v_i=y_i-\\dfrac{n+1}2$ とおくと $s_{xy}=\\dfrac1n\\sum u_iv_i$ なので，$r=0\\iff\\sum u_iv_i=0$．$u_i$ のとりうる値の集合 $W=\\left\\{k-\\dfrac{n+1}2\\ \\middle|\\ k=1,\\dots,n\\right\\}$ は $0$ に関して対称である．$W$ から $W$ への1対1の対応 $\\varphi$ を1つ決め，「英語の $u$ の値が $w$ の生徒の理科の $v$ の値を $\\varphi(w)$ とする」と順位がつけられ，このとき $\\sum u_iv_i=\\sum_{w\\in W}w\\,\\varphi(w)$．\n\n【補題】$a,b$ を $W$ の正の要素で $a\\neq b$ とすると，4つの値 $a,b,-a,-b$ を $a\\to b\\to-a\\to-b\\to a$ と対応させたときの $w\\varphi(w)$ の和は $ab+b(-a)+(-a)(-b)+(-b)a=0$．\n\n\\begin{itemize}\n  \\item $n=4m$（$m\\geqq1$）：$W$ の正の要素は $\\dfrac12,\\dfrac32,\\dots,\\dfrac{4m-1}2$ の $2m$ 個．これを $\\left\\{\\dfrac{4j-3}2,\\dfrac{4j-1}2\\right\\}$（$j=1,\\dots,m$）の $m$ 組に分け，各組とその符号を変えたものの4値に補題の対応を使うと，和は $0$．\n  \\item $n=4m+1$（$m\\geqq1$）：$W=\\{0,\\pm1,\\dots,\\pm2m\\}$．$\\varphi(0)=0$ とし，正の要素を $\\{2j-1,2j\\}$（$j=1,\\dots,m$）に分けて補題を使うと和は $0$．\n  \\item $n=4m+3$（$m\\geqq1$）：$W=\\{0,\\pm1,\\dots,\\pm(2m+1)\\}$．$\\{0,\\pm1,\\pm2,\\pm3\\}$ では $\\varphi(-3)=-1$，$\\varphi(-1)=3$，$\\varphi(3)=-3$，残り $0,\\pm2,1$ は動かさないとすると\n  \\[(-3)(-1)+(-1)\\cdot3+3\\cdot(-3)+0^2+(-2)^2+2^2+1^2=3-3-9+0+4+4+1=0.\\]\n  $m\\geqq2$ なら残りの正の要素 $4,5,\\dots,2m+1$ を $\\{2j,2j+1\\}$（$j=2,\\dots,m$）に分けて補題を使う．全体の和は $0$．\n\\end{itemize}\n以上より，$r=0$ となる順位のつき方が存在するのは\n\\[\\boldsymbol{n\\equiv0,1\\pmod4\\ \\text{のすべての}\\ n,\\ \\text{および}\\ n\\equiv3\\pmod4\\ \\text{かつ}\\ n\\geqq7\\ \\text{のすべての}\\ n}\\]\nである（$n\\geqq2$ の範囲で，$n=4m+1$ は $n\\geqq5$，$n=4m$ は $n\\geqq4$ となり，上の構成はすべてを尽くす）．"
+   }
+  ],
+  "idea": {
+   "tex": "順位は $1,\\dots,n$ の並べかえなので平均・分散は $n$ だけで決まり，$r=1-\\dfrac{6\\sum d_i^2}{n(n^2-1)}$．$d_i^2\\equiv d_i\\pmod2$ と $\\sum d_i=0$ から $\\sum d_i^2$ はつねに偶数で，$n\\equiv2\\pmod4$ では $\\dfrac{n(n^2-1)}6$ が奇数なので $r\\neq0$．逆に，平均を引いた順位を $\\pm a,\\pm b$ の4つ組に分けて $a\\to b\\to-a\\to-b\\to a$ と対応させると積の和が打ち消し合い，$r=0$ の例が作れる．"
+  },
+  "methods": [],
+  "tags": [
+   "相関係数",
+   "順位",
+   "偶奇",
+   "並べかえの構成"
+  ],
+  "provenance": {
+   "created": "2026-11-10"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "I-DAT-032",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "I-04",
+  "level": 3,
+  "minutes": 25,
+  "theme": "1つの得点を変えたときの相関係数の最大",
+  "topic": "1つの得点を変えたときの相関係数の最大",
+  "statement": {
+   "tex": "5人が2つの科目 X，Y の試験を受け，得点は次の表のとおりであった．ただし $x$ は実数とする．\n\\begin{center}\n\\begin{tabular}{c|ccccc}\n & ① & ② & ③ & ④ & ⑤\\\\ \\hline\n科目 X の得点 & $x$ & 6 & 4 & 7 & 4\\\\\n科目 Y の得点 & 9 & 7 & 5 & 10 & 9\n\\end{tabular}\n\\end{center}\nX の得点と Y の得点の相関係数を $r$ とする．\n\\begin{enumerate}\n  \\item $r$ を $x$ で表せ．\n  \\item $x$ がすべての実数を動くとき，$r$ の最大値と，そのときの $x$ の値を求めよ．\n  \\item $x$ が0以上の整数を動くとき，$r$ を最大にする $x$ の値と，そのときの $r$ の値を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $r=\\dfrac{\\sqrt5\\,x}{4\\sqrt{4x^2-42x+144}}$　(2) 最大値 $\\dfrac1{\\sqrt3}$（$x=\\dfrac{48}7$）　(3) $x=7$，$r=\\dfrac{7\\sqrt{230}}{184}$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) X の平均は $\\bar x=\\dfrac{x+21}5$，Y の平均は $\\bar y=\\dfrac{40}5=8$．Y の偏差は $1,-1,-3,2,1$ で，偏差の2乗和は $1+1+9+4+1=16$．Y の偏差の和は0なので，偏差の積の和は\n\\[\n\\sum(x_k-\\bar x)(y_k-\\bar y)=\\sum x_k(y_k-\\bar y)=x-6-12+14+4=x .\n\\]\nX の偏差の2乗和は\n\\[\n\\sum x_k^2-5\\bar x^2=x^2+117-\\frac{(x+21)^2}5=\\frac{4x^2-42x+144}5\n\\]\n（$4x^2-42x+144=4\\left(x-\\frac{21}4\\right)^2+\\frac{135}4>0$）．よって\n\\[\nr=\\frac{x}{\\sqrt{\\frac{4x^2-42x+144}5}\\cdot\\sqrt{16}}=\\boldsymbol{\\frac{\\sqrt5\\,x}{4\\sqrt{4x^2-42x+144}}}.\n\\]\n\n(2) $x\\leqq0$ では $r\\leqq0$．$x>0$ のとき $u=\\dfrac1x>0$ とおくと\n\\[\nr=\\frac{\\sqrt5}{4\\sqrt{144u^2-42u+4}},\\qquad 144u^2-42u+4=144\\left(u-\\frac7{48}\\right)^2+\\frac{15}{16}.\n\\]\n$u>0$ で分母の2次式の最小値は $\\frac{15}{16}$（$u=\\frac7{48}$）なので，$r\\leqq\\dfrac{\\sqrt5}{4\\cdot\\frac{\\sqrt{15}}4}=\\dfrac1{\\sqrt3}$，等号は $x=\\dfrac{48}7$．これは $x\\leqq0$ での値（0以下）より大きい．最大値 $\\boldsymbol{\\dfrac1{\\sqrt3}}$（$\\boldsymbol{x=\\dfrac{48}7}$）．\n\n(3) $x=0$ なら $r=0$．$x\\geqq1$ の整数では，(2) の式から $r$ は $\\left|\\dfrac1x-\\dfrac7{48}\\right|$ が小さいほど大きい．\n\\[\nx=6:\\ \\left|\\frac16-\\frac7{48}\\right|=\\frac1{48},\\qquad x=7:\\ \\left|\\frac17-\\frac7{48}\\right|=\\frac1{336},\n\\]\n$x\\geqq8$ では $\\dfrac7{48}-\\dfrac1x\\geqq\\dfrac7{48}-\\dfrac18=\\dfrac1{48}$，$1\\leqq x\\leqq5$ では $\\dfrac1x-\\dfrac7{48}\\geqq\\dfrac15-\\dfrac7{48}=\\dfrac{13}{240}$ で，いずれも $\\dfrac1{336}$ より大きい．よって $r$ を最大にするのは $\\boldsymbol{x=7}$ のみで，\n\\[\nr=\\frac{7\\sqrt5}{4\\sqrt{196-294+144}}=\\frac{7\\sqrt5}{4\\sqrt{46}}=\\boldsymbol{\\frac{7\\sqrt{230}}{184}}.\n\\]"
+   }
+  ],
+  "idea": {
+   "tex": "1人分の得点 $x$ だけを変えると，偏差の積の和は $\\sum x_k(y_k-\\bar y)$ により $x$ の1次式，$x$ の偏差の2乗和は $x$ の2次式．相関係数 $r=\\dfrac{(\\text{1次式})}{\\sqrt{(\\text{2次式})}}$ は，分子が正の範囲で $u=\\dfrac1x$ とおくと分母の2次式の最小に帰着する．整数の候補の比較は $\\left|\\dfrac1x-u_0\\right|$ の大小で行う．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) $r$：sqrt(5)x/(4sqrt(4x^2-42x+144))\n(2) 最大値：1/sqrt(3)\n(3) $x$：7 ; $r$：7sqrt(230)/184"
+  },
+  "methods": [],
+  "tags": [
+   "相関係数",
+   "共分散の計算",
+   "逆数の置き換え"
+  ],
+  "provenance": {
+   "created": "2026-11-18"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "I-DAT-033",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "I-04",
+  "level": 4,
+  "minutes": 30,
+  "theme": "円く並べたデータの隣どうしの平均と分散の比",
+  "topic": "円く並べたデータの隣どうしの平均と分散の比",
+  "statement": {
+   "tex": "6個の実数 $x_1,x_2,\\dots,x_6$ があり，これらはすべてが等しいわけではない．$x_7=x_1$ として\n\\[y_i=\\frac{x_i+x_{i+1}}2\\quad(i=1,2,\\dots,6)\\]\nとおく．データ $x_1,\\dots,x_6$ の分散を $s_x^2$，データ $y_1,\\dots,y_6$ の分散を $s_y^2$ とし，$r=\\dfrac{s_y^2}{s_x^2}$ とする．\n\\begin{enumerate}\n  \\item $r$ のとり得る値の範囲を求めよ．\n  \\item $r$ が最大となるとき，$x_1+x_4=x_2+x_5=x_3+x_6$ が成り立つことを示せ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $0\\leqq r\\leqq\\dfrac34$　(2) 証明"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "$\\bar x=\\frac16\\sum x_i$ とし，$u_i=x_i-\\bar x$（$u_7=u_1$）とおくと $\\sum_{i=1}^6u_i=0$．$y$ の平均は $\\frac16\\sum\\frac{x_i+x_{i+1}}2=\\bar x$ なので，$y_i$ の偏差は $\\frac{u_i+u_{i+1}}2$．\n\\[S=\\sum_{i=1}^6u_i^2,\\qquad C=u_1u_2+u_2u_3+u_3u_4+u_4u_5+u_5u_6+u_6u_1\\]\nとおくと $S>0$（すべてが等しいわけではない）で，\n\\[6s_y^2=\\frac14\\sum_{i=1}^6(u_i+u_{i+1})^2=\\frac14(2S+2C)=\\frac{S+C}2,\\qquad 6s_x^2=S\\]\nより $r=\\dfrac{S+C}{2S}$．\n\n\\textbf{下からの評価．} $S+C=\\frac12\\sum(u_i+u_{i+1})^2\\geqq0$ より $r\\geqq0$．\n\n\\textbf{上からの評価．} $A_i=u_i+u_{i+3}$，$B_i=u_i-u_{i+3}$（$i=1,2,3$）とおくと $u_i=\\frac{A_i+B_i}2$，$u_{i+3}=\\frac{A_i-B_i}2$ で，\n\\[S=\\frac12\\sum_{i=1}^3(A_i^2+B_i^2),\\qquad C=\\frac12(A_1A_2+A_2A_3+A_3A_1)+\\frac12(B_1B_2-B_1B_3+B_2B_3)\\]\nとなる（$C$ の各項を代入して展開すると確かめられる：たとえば $u_1u_2+u_4u_5=\\frac{(A_1+B_1)(A_2+B_2)+(A_1-B_1)(A_2-B_2)}4=\\frac{A_1A_2+B_1B_2}2$，$u_2u_3+u_5u_6=\\frac{A_2A_3+B_2B_3}2$，$u_3u_4+u_6u_1=\\frac{(A_3+B_3)(A_1-B_1)+(A_3-B_3)(A_1+B_1)}4=\\frac{A_3A_1-B_3B_1}2$）．\n\n$A_1+A_2+A_3=\\sum u_i=0$ より $A_1A_2+A_2A_3+A_3A_1=\\frac{(A_1+A_2+A_3)^2-\\sum A_i^2}2=-\\frac12\\sum A_i^2$．また\n\\[B_1B_2-B_1B_3+B_2B_3=\\frac12\\Bigl(\\sum B_i^2-(B_1-B_2+B_3)^2\\Bigr).\\]\nよって\n\\[\\frac S2-C=\\frac12\\sum A_i^2+\\frac14(B_1-B_2+B_3)^2\\geqq0,\\]\nすなわち $C\\leqq\\frac S2$ で $r\\leqq\\frac{S+S/2}{2S}=\\frac34$．\n\n\\textbf{すべての値をとること．} $v=(2,1,-1,-2,-1,1)$，$w=(1,-1,1,-1,1,-1)$ とし，$u=\\alpha v+\\beta w$（$x_i=u_i$ とすればよい．$\\sum v_i=\\sum w_i=0$）を考える．$\\sum v_i^2=12$，$\\sum w_i^2=6$，$\\sum v_iw_i=2-1-1+2-1-1=0$ なので $S=12\\alpha^2+6\\beta^2$．隣どうしの和は $v$ では $(3,0,-3,-3,0,3)$，$w$ ではすべて $0$ なので $\\frac12\\sum(u_i+u_{i+1})^2=\\frac12\\cdot36\\alpha^2=18\\alpha^2$，すなわち $S+C=18\\alpha^2$．よって\n\\[r=\\frac{18\\alpha^2}{2(12\\alpha^2+6\\beta^2)}=\\frac{3\\alpha^2}{4\\alpha^2+2\\beta^2}.\\]\n$0<r_0\\leqq\\frac34$ をみたす任意の $r_0$ に対し，$\\alpha=1$，$\\beta=t=\\sqrt{\\dfrac{3-4r_0}{2r_0}}$（$3-4r_0\\geqq0$ より実数）とすると $4+2t^2=\\dfrac3{r_0}$ なので $r=\\dfrac3{4+2t^2}=r_0$ となり，$0<r\\leqq\\frac34$ のすべての値をとる．$\\alpha=0$，$\\beta=1$ で $r=0$．\n\n(1) $\\boldsymbol{0\\leqq r\\leqq\\dfrac34}$．\n\n(2) $r=\\frac34\\iff C=\\frac S2\\iff\\sum A_i^2=0$ かつ $B_1-B_2+B_3=0$．特に $A_1=A_2=A_3=0$，すなわち $u_1+u_4=u_2+u_5=u_3+u_6=0$ で，$x_1+x_4=x_2+x_5=x_3+x_6=2\\bar x$．\\hfill$\\square$"
+   }
+  ],
+  "idea": {
+   "tex": "隣どうしの平均のデータの分散は，偏差 $u_i$ の2乗和 $S$ と隣り合う偏差の積の和 $C$ で $\\frac{S+C}{2}$（6で割る前）と書ける．$C\\geqq-S$ は平方の和から，$C\\leqq\\frac S2$ は向かい合う偏差の和 $A_i=u_i+u_{i+3}$ と差 $B_i=u_i-u_{i+3}$ に分け，$\\sum A_i=0$ と $(B_1-B_2+B_3)^2\\geqq0$ を使う．比の値の全体は2つの直交するパターンの組合せで実現する．"
+  },
+  "methods": [],
+  "tags": [
+   "分散",
+   "偏差",
+   "平方の和",
+   "等号条件"
+  ],
+  "provenance": {
+   "created": "2026-11-22"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
   "id": "I-DAT-009",
   "schema": "lemma.problem/1",
   "kind": "written",
@@ -1337,198 +1574,6 @@
   ],
   "provenance": {
    "created": "2026-10-30"
-  },
-  "quality": {
-   "status": "published",
-   "checks": {
-    "dual": false,
-    "sympy": true,
-    "human": false
-   },
-   "verified": false
-  }
- },
- {
-  "id": "I-DAT-029",
-  "schema": "lemma.problem/1",
-  "kind": "written",
-  "field": "I-04",
-  "level": 4,
-  "minutes": 30,
-  "theme": "縦に読み直した番号との相関係数",
-  "topic": "縦に読み直した番号との相関係数",
-  "statement": {
-   "tex": "$a,b$ を2以上の整数とし，$N=ab$ とする．$1$ から $N$ までの整数を，横に $a$ 個ずつ $b$ 行に並べる（第1行に $1,2,\\dots,a$，第2行に $a+1,\\dots,2a$，…）．このとき，$i$ が置かれた場所を上から縦に読み直した順番を $y_i$ とする．すなわち，$1\\leqq i\\leqq N$ に対し $i-1=aq+s$（$q,s$ は整数，$0\\leqq s\\leqq a-1$）と表すとき\n\\[x_i=i,\\qquad y_i=bs+q+1\\]\nとおき，$N$ 個の値の組 $(x_i,y_i)$ からなる2つの変量 $x,y$ を考える．$x$ と $y$ の共分散を $s_{xy}$，相関係数を $r$ とする．\n\\begin{enumerate}\n  \\item $y_1,y_2,\\dots,y_N$ は $1,2,\\dots,N$ を並べかえたものであることを示し，$s_{xy}$ と $r$ を $a,b$ で表せ．\n  \\item $r\\geqq\\dfrac12$ となる組 $(a,b)$ をすべて求めよ．\n  \\item $r=\\dfrac17$ となる組 $(a,b)$ をすべて求めよ．\n\\end{enumerate}"
-  },
-  "answer": {
-   "tex": "(1) $s_{xy}=\\dfrac{a(b^2-1)+b(a^2-1)}{12}$，$r=\\dfrac{a+b}{ab+1}$　(2) $a=2$（$b\\geqq2$ は任意），$b=2$（$a\\geqq2$ は任意），および $(a,b)=(3,3),(3,4),(4,3),(3,5),(5,3)$　(3) $(a,b)=(8,55),(9,31),(10,23),(11,19),(13,15),(15,13),(19,11),(23,10),(31,9),(55,8)$"
-  },
-  "solutions": [
-   {
-    "id": "main",
-    "kind": "main",
-    "tex": "\\textbf{(1)}\n$i-1$ を $a$ で割った商が $q$，余りが $s$ である．$1\\leqq i\\leqq N$ のとき $0\\leqq i-1\\leqq ab-1$ であるから $0\\leqq q\\leqq b-1$ であり，$i$ と整数の組 $(q,s)$（$0\\leqq q\\leqq b-1$，$0\\leqq s\\leqq a-1$）は1対1に対応する．同様に $0\\leqq q\\leqq b-1$ より $y_i-1=bs+q$ は「$y_i-1$ を $b$ で割った商が $s$，余りが $q$」という表示であり，整数 $Y$（$1\\leqq Y\\leqq N$）と組 $(s,q)$ も1対1に対応する．したがって $i\\mapsto y_i$ は $\\{1,\\dots,N\\}$ から $\\{1,\\dots,N\\}$ への1対1の対応であり，$y_1,\\dots,y_N$ は $1,\\dots,N$ の並べかえである．\n\nよって $x$ と $y$ の平均はともに $\\dfrac{N+1}2$，分散はともに $1,\\dots,N$ の分散\n\\[s_x^2=s_y^2=\\frac1N\\sum_{i=1}^Ni^2-\\left(\\frac{N+1}2\\right)^2=\\frac{(N+1)(2N+1)}6-\\frac{(N+1)^2}4=\\frac{N^2-1}{12}\\]\nである．同じ計算から，$0,1,\\dots,b-1$ の平均 $\\bar q=\\dfrac{b-1}2$ のまわりの偏差平方和は $\\displaystyle\\sum_{q=0}^{b-1}(q-\\bar q)^2=\\frac{b(b^2-1)}{12}$，同様に $\\bar s=\\dfrac{a-1}2$ として $\\displaystyle\\sum_{s=0}^{a-1}(s-\\bar s)^2=\\frac{a(a^2-1)}{12}$ である．\n\n$x_i-1=aq+s$，$y_i-1=bs+q$ で，平均 $\\dfrac{N+1}2$ について $\\dfrac{N+1}2-1=\\dfrac{ab-1}2=a\\bar q+\\bar s=b\\bar s+\\bar q$ であるから，$Q=q-\\bar q$，$T=s-\\bar s$ とおくと\n\\[x_i-\\bar x=aQ+T,\\qquad y_i-\\bar y=bT+Q\\]\nとなる．$i$ をすべて動かすことは $(q,s)$ をすべての組で動かすことだから\n\\[Ns_{xy}=\\sum_{q=0}^{b-1}\\sum_{s=0}^{a-1}(aQ+T)(bT+Q)=\\sum_{q,s}\\bigl(abQT+aQ^2+bT^2+QT\\bigr)．\\]\n$\\displaystyle\\sum_{q,s}QT=\\Bigl(\\sum_qQ\\Bigr)\\Bigl(\\sum_sT\\Bigr)=0\\cdot0=0$，$\\displaystyle\\sum_{q,s}Q^2=a\\cdot\\frac{b(b^2-1)}{12}$，$\\displaystyle\\sum_{q,s}T^2=b\\cdot\\frac{a(a^2-1)}{12}$ であるから\n\\[Ns_{xy}=\\frac{ab\\{a(b^2-1)+b(a^2-1)\\}}{12},\\qquad \\boldsymbol{s_{xy}=\\frac{a(b^2-1)+b(a^2-1)}{12}}．\\]\nさらに $a(b^2-1)+b(a^2-1)=ab(a+b)-(a+b)=(a+b)(ab-1)$，$N^2-1=(ab-1)(ab+1)$ であり $ab-1>0$ だから\n\\[r=\\frac{s_{xy}}{s_xs_y}=\\frac{s_{xy}}{s_x^2}=\\frac{(a+b)(ab-1)}{(ab-1)(ab+1)}=\\boldsymbol{\\frac{a+b}{ab+1}}．\\]\n\n\\textbf{(2)}\n$r\\geqq\\dfrac12\\iff2(a+b)\\geqq ab+1\\iff ab-2a-2b+4\\leqq3\\iff(a-2)(b-2)\\leqq3$．\n$a-2\\geqq0$，$b-2\\geqq0$ である．$a=2$ または $b=2$ ならば左辺は $0$ で常に成り立つ．$a,b\\geqq3$ ならば $(a-2)(b-2)$ は $1,2,3$ のいずれかで，$(a-2,b-2)=(1,1),(1,2),(2,1),(1,3),(3,1)$．以上より\n\\[\\boldsymbol{a=2\\ (b\\text{ は任意}),\\quad b=2\\ (a\\text{ は任意}),\\quad (a,b)=(3,3),(3,4),(4,3),(3,5),(5,3)}．\\]\n\n\\textbf{(3)}\n$r=\\dfrac17\\iff7(a+b)=ab+1\\iff(a-7)(b-7)=48$．\n$a-7$ と $b-7$ は同符号の整数である．ともに負とすると $a,b\\geqq2$ より $-5\\leqq a-7\\leqq-1$，$-5\\leqq b-7\\leqq-1$ で積は $25$ 以下となり $48$ にならない．よってともに正で，$48$ の正の約数の組 $(a-7,b-7)=(1,48),(2,24),(3,16),(4,12),(6,8)$ とその入れかえである．\n\\[\\boldsymbol{(a,b)=(8,55),(9,31),(10,23),(11,19),(13,15),}\\]\n\\[\\boldsymbol{(15,13),(19,11),(23,10),(31,9),(55,8)}\\]\n\\hfill$\\square$"
-   }
-  ],
-  "idea": {
-   "tex": "データ $y$ が $x=1,2,\\dots,N$ の並べかえのとき，平均も分散も $x$ と同じで，相関係数は共分散だけで決まる．番号 $i$ を「行 $q$・列 $s$」に分解すると $x-1=aq+s$，$y-1=bs+q$ と2つの独立な添字の1次式になり，偏差の積の和は交差項が消えて各添字の偏差平方和だけで書ける．$r=\\dfrac{a+b}{ab+1}$ となり，$r$ の条件は $(a-m)(b-m)=m^2-1$ 型の積の形の不定方程式になる．"
-  },
-  "grading": {
-   "format": "lemma-input/1",
-   "spec": "(1) $s_{xy}$：(a(b^2-1)+b(a^2-1))/12 ; $r$：(a+b)/(ab+1)\n(2) 記述\n(3) $(a,b)$：{(8, 55), (9, 31), (10, 23), (11, 19), (13, 15), (15, 13), (19, 11), (23, 10), (31, 9), (55, 8)}"
-  },
-  "methods": [],
-  "tags": [
-   "共分散",
-   "相関係数",
-   "番号の並べかえ",
-   "偏差の分解",
-   "不定方程式"
-  ],
-  "provenance": {
-   "created": "2026-11-10"
-  },
-  "quality": {
-   "status": "published",
-   "checks": {
-    "dual": false,
-    "sympy": true,
-    "human": false
-   },
-   "verified": false
-  }
- },
- {
-  "id": "I-DAT-030",
-  "schema": "lemma.problem/1",
-  "kind": "written",
-  "field": "I-04",
-  "level": 5,
-  "minutes": 35,
-  "theme": "順位相関係数が0になりうる人数",
-  "topic": "順位相関係数が0になりうる人数",
-  "statement": {
-   "tex": "$n$ を2以上の整数とする．$n$ 人のクラスで英語と理科のテストを行う．どちらの科目にも同順位の者はいないとする．出席番号 $i$（$i=1,2,\\dots,n$）の生徒の英語の順位を $x_i$，理科の順位を $y_i$ とし，\n\\[d_i=x_i-y_i,\\qquad D=\\sum_{i=1}^nd_i^2\\]\nとおく．また，変量 $x,y$ の相関係数を $r$ とする．\n\\begin{enumerate}\n  \\item $r=1-\\dfrac{6D}{n(n^2-1)}$ であることを示せ．\n  \\item $D$ はつねに偶数であることを示せ．\n  \\item $r=0$ となるような2科目の順位のつき方が存在する $n$ をすべて求めよ．\n\\end{enumerate}"
-  },
-  "answer": {
-   "tex": "(1) 証明　(2) 証明　(3) $n$ を4で割った余りが $0$ または $1$ であるすべての $n$，および余りが $3$ で $n\\geqq7$ であるすべての $n$（$n\\equiv2\\pmod4$ と $n=3$ では存在しない）"
-  },
-  "solutions": [
-   {
-    "id": "main",
-    "kind": "main",
-    "tex": "(1) $x_1,\\dots,x_n$ と $y_1,\\dots,y_n$ はどちらも $1,2,\\dots,n$ の並べかえである．よって平均はともに $\\dfrac{n+1}2$，分散はともに\n\\[s^2=\\frac1n\\sum_{k=1}^nk^2-\\left(\\frac{n+1}2\\right)^2=\\frac{(n+1)(2n+1)}6-\\frac{(n+1)^2}4=\\frac{n^2-1}{12}\\ (>0).\\]\nまた $D=\\sum x_i^2+\\sum y_i^2-2\\sum x_iy_i=2\\sum_{k=1}^nk^2-2\\sum x_iy_i$ だから $\\sum x_iy_i=\\sum k^2-\\dfrac D2$．共分散は\n\\[s_{xy}=\\frac1n\\sum x_iy_i-\\left(\\frac{n+1}2\\right)^2=s^2-\\frac D{2n}.\\]\nしたがって $r=\\dfrac{s_{xy}}{s\\cdot s}=1-\\dfrac D{2ns^2}=1-\\dfrac{6D}{n(n^2-1)}$．\\hfill$\\square$\n\n(2) 各 $i$ で $d_i^2-d_i=d_i(d_i-1)$ は連続2整数の積なので偶数．よって $D\\equiv\\sum d_i\\pmod2$．$\\sum d_i=\\sum x_i-\\sum y_i=0$ だから $D$ は偶数．\\hfill$\\square$\n\n(3) (1) より $r=0\\iff D=T$，$T=\\dfrac{n(n^2-1)}6$．\n\n\\textbf{$n\\equiv2\\pmod4$ のとき．} $N=(n-1)n(n+1)$ とおく．$n=2\\times(\\text{奇数})$，$n\\pm1$ は奇数だから $N=2M$（$M$ は奇数）．連続3整数の積 $N$ は3の倍数で，3は奇数だから $M$ が3の倍数．よって $T=\\dfrac N6=\\dfrac M3$ は奇数．(2) より $D$ は偶数なので $D\\neq T$，$r\\neq0$．\n\n\\textbf{$n=3$ のとき．} 生徒の番号をつけかえても $D,r$ は変わらないので，$x_i=i$ としてよい．$(y_1,y_2,y_3)$ は6通りで，$D$ の値は\n$(1,2,3):0$，$(2,1,3):2$，$(1,3,2):2$，$(2,3,1):6$，$(3,1,2):6$，$(3,2,1):8$．$T=4$ は現れないので $r\\neq0$．\n\n\\textbf{構成．} $u_i=x_i-\\dfrac{n+1}2$，$v_i=y_i-\\dfrac{n+1}2$ とおくと $s_{xy}=\\dfrac1n\\sum u_iv_i$ なので，$r=0\\iff\\sum u_iv_i=0$．$u_i$ のとりうる値の集合 $W=\\left\\{k-\\dfrac{n+1}2\\ \\middle|\\ k=1,\\dots,n\\right\\}$ は $0$ に関して対称である．$W$ から $W$ への1対1の対応 $\\varphi$ を1つ決め，「英語の $u$ の値が $w$ の生徒の理科の $v$ の値を $\\varphi(w)$ とする」と順位がつけられ，このとき $\\sum u_iv_i=\\sum_{w\\in W}w\\,\\varphi(w)$．\n\n【補題】$a,b$ を $W$ の正の要素で $a\\neq b$ とすると，4つの値 $a,b,-a,-b$ を $a\\to b\\to-a\\to-b\\to a$ と対応させたときの $w\\varphi(w)$ の和は $ab+b(-a)+(-a)(-b)+(-b)a=0$．\n\n\\begin{itemize}\n  \\item $n=4m$（$m\\geqq1$）：$W$ の正の要素は $\\dfrac12,\\dfrac32,\\dots,\\dfrac{4m-1}2$ の $2m$ 個．これを $\\left\\{\\dfrac{4j-3}2,\\dfrac{4j-1}2\\right\\}$（$j=1,\\dots,m$）の $m$ 組に分け，各組とその符号を変えたものの4値に補題の対応を使うと，和は $0$．\n  \\item $n=4m+1$（$m\\geqq1$）：$W=\\{0,\\pm1,\\dots,\\pm2m\\}$．$\\varphi(0)=0$ とし，正の要素を $\\{2j-1,2j\\}$（$j=1,\\dots,m$）に分けて補題を使うと和は $0$．\n  \\item $n=4m+3$（$m\\geqq1$）：$W=\\{0,\\pm1,\\dots,\\pm(2m+1)\\}$．$\\{0,\\pm1,\\pm2,\\pm3\\}$ では $\\varphi(-3)=-1$，$\\varphi(-1)=3$，$\\varphi(3)=-3$，残り $0,\\pm2,1$ は動かさないとすると\n  \\[(-3)(-1)+(-1)\\cdot3+3\\cdot(-3)+0^2+(-2)^2+2^2+1^2=3-3-9+0+4+4+1=0.\\]\n  $m\\geqq2$ なら残りの正の要素 $4,5,\\dots,2m+1$ を $\\{2j,2j+1\\}$（$j=2,\\dots,m$）に分けて補題を使う．全体の和は $0$．\n\\end{itemize}\n以上より，$r=0$ となる順位のつき方が存在するのは\n\\[\\boldsymbol{n\\equiv0,1\\pmod4\\ \\text{のすべての}\\ n,\\ \\text{および}\\ n\\equiv3\\pmod4\\ \\text{かつ}\\ n\\geqq7\\ \\text{のすべての}\\ n}\\]\nである（$n\\geqq2$ の範囲で，$n=4m+1$ は $n\\geqq5$，$n=4m$ は $n\\geqq4$ となり，上の構成はすべてを尽くす）．"
-   }
-  ],
-  "idea": {
-   "tex": "順位は $1,\\dots,n$ の並べかえなので平均・分散は $n$ だけで決まり，$r=1-\\dfrac{6\\sum d_i^2}{n(n^2-1)}$．$d_i^2\\equiv d_i\\pmod2$ と $\\sum d_i=0$ から $\\sum d_i^2$ はつねに偶数で，$n\\equiv2\\pmod4$ では $\\dfrac{n(n^2-1)}6$ が奇数なので $r\\neq0$．逆に，平均を引いた順位を $\\pm a,\\pm b$ の4つ組に分けて $a\\to b\\to-a\\to-b\\to a$ と対応させると積の和が打ち消し合い，$r=0$ の例が作れる．"
-  },
-  "methods": [],
-  "tags": [
-   "相関係数",
-   "順位",
-   "偶奇",
-   "並べかえの構成"
-  ],
-  "provenance": {
-   "created": "2026-11-10"
-  },
-  "quality": {
-   "status": "published",
-   "checks": {
-    "dual": false,
-    "sympy": true,
-    "human": false
-   },
-   "verified": false
-  }
- },
- {
-  "id": "I-DAT-031",
-  "schema": "lemma.problem/1",
-  "kind": "written",
-  "field": "I-04",
-  "level": 4,
-  "minutes": 30,
-  "theme": "環状に並ぶ学校の台数をならす最小の移動",
-  "topic": "環状に並ぶ学校の台数をならす最小の移動",
-  "statement": {
-   "tex": "$n$ を正の整数とし，環状道路に沿って $2n+1$ 校の学校 $\\mathrm S_1,\\mathrm S_2,\\cdots,\\mathrm S_{2n+1}$ がこの順に並んでいる（$\\mathrm S_{2n+1}$ の次は $\\mathrm S_1$）．はじめ $\\mathrm S_k$ には $k$ 台の顕微鏡がある（$k=1,2,\\cdots,2n+1$）．\n各 $k$ について整数 $x_k$ を定め，「$\\mathrm S_k$ から次の学校へ $x_k$ 台移す」（$x_k<0$ のときは次の学校から $\\mathrm S_k$ へ $-x_k$ 台移すことを表す）という移し方で，すべての学校の台数を等しくしたい．このとき移動する総台数は $|x_1|+|x_2|+\\cdots+|x_{2n+1}|$ である．\n\\begin{enumerate}\n  \\item $n=3$ のとき，移動する総台数の最小値と，そのときの $x_1,x_2,\\cdots,x_7$ を求めよ．\n  \\item 一般の $n$ について，移動する総台数の最小値を求めよ．また，最小となる移し方はただ1通りであることを示し，そのときの $x_{2n+1}$ を求めよ．\n\\end{enumerate}"
-  },
-  "answer": {
-   "tex": "(1) 最小値 $11$，$(x_1,\\cdots,x_7)=(2,0,-1,-1,0,2,5)$　(2) $n=2m$ のとき $\\dfrac{m(4m^2+3m+1)}{2}$，$n=2m-1$ のとき $\\dfrac{m(4m^2-3m+1)}{2}$（$m$ は正の整数）；ただ1通り（証明），$x_{2n+1}$ は $n=2m$ のとき $\\dfrac{m(3m+1)}2$，$n=2m-1$ のとき $\\dfrac{m(3m-1)}2$"
-  },
-  "solutions": [
-   {
-    "id": "main",
-    "kind": "main",
-    "tex": "$N=2n+1$ とおき，$x_0=x_N$ と約束する．移したあとの $\\mathrm S_k$ の台数は $k-x_k+x_{k-1}$ であり，総数は $\\frac{N(N+1)}2$ なので，そろえた台数は $\\frac{N+1}2=n+1$ である．よって条件は\n\\[\nx_k=x_{k-1}+k-(n+1)\\quad(k=1,2,\\cdots,N)\n\\]\nである．$c=x_N$ とおいて順に足すと，$k=1,2,\\cdots,N$ に対して\n\\[\nx_k=c+\\sum_{j=1}^{k}(j-n-1)=c-T_k,\\qquad T_k=\\frac{k(2n+1-k)}{2}\n\\]\nとなる．$k=N$ のとき $T_N=0$ なので $x_N=c$ と矛盾しない．逆に任意の整数 $c$ に対し $x_k=c-T_k$ と定めれば（$k$ と $2n+1-k$ の一方は偶数なので $T_k$ は整数）条件をみたす．したがって，移し方は整数 $c$ と1対1に対応し，総台数は\n\\[\nF(c)=\\sum_{k=1}^{N}|c-T_k|\n\\]\nである．$T_{N-k}=T_k$（$1\\leqq k\\leqq 2n$）であり，$1\\leqq k\\leqq n-1$ のとき $T_{k+1}-T_k=n-k>0$ なので\n\\[\n0=T_N<T_1<T_2<\\cdots<T_n .\n\\]\nよって $N$ 個の値 $T_1,\\cdots,T_N$ を小さい順に並べたもの $v_1\\leqq v_2\\leqq\\cdots\\leqq v_N$ は\n\\[\nv_1=0,\\qquad v_{2i}=v_{2i+1}=T_i\\quad(i=1,2,\\cdots,n)\n\\]\nである．\n\n\\textbf{補題}　$v_1\\leqq\\cdots\\leqq v_{2n+1}$ のとき，$G(c)=\\sum_{i=1}^{2n+1}|c-v_i|$ は $c=v_{n+1}$ のときに限り最小値 $\\sum_{i=1}^{n}(v_{2n+2-i}-v_i)$ をとる．\n\n（証明）$i=1,\\cdots,n$ に対し $|c-v_i|+|c-v_{2n+2-i}|\\geqq v_{2n+2-i}-v_i$（三角不等式）であり，また $|c-v_{n+1}|\\geqq0$．足すと $G(c)\\geqq\\sum_{i=1}^n(v_{2n+2-i}-v_i)$．$c=v_{n+1}$ のときは $v_i\\leqq c\\leqq v_{2n+2-i}$ なので各不等式で等号が成り立つ．逆に等号が成り立てば $|c-v_{n+1}|=0$ である．\\hfill$\\square$\n\n$n+1$ を $2i$ または $2i+1$ と書くと $i=m$，ただし $n=2m$ または $n=2m-1$（$m$ は正の整数）．よって $v_{n+1}=T_m$ であり，最小となる移し方は $c=T_m$ のただ1通り，そのとき $x_{2n+1}=c=T_m$．\n\n最小値は，$T_k$ の大小に注意して\n\\[\nF(T_m)=T_m+2\\left\\{\\sum_{k=1}^{m-1}(T_m-T_k)+\\sum_{k=m+1}^{n}(T_k-T_m)\\right\\}\n=\\bigl(1+2(m-1)-2(n-m)\\bigr)T_m+2(B-A)\n\\]\nここで $A=\\sum_{k=1}^{m-1}T_k$，$B=\\sum_{k=m+1}^{n}T_k$．また $\\sum_{k=1}^{n}T_k=\\frac12\\left\\{(2n+1)\\frac{n(n+1)}2-\\frac{n(n+1)(2n+1)}6\\right\\}=\\frac{n(n+1)(2n+1)}6$ である．\n\n\\textbf{(ア) $n=2m$ のとき}　$T_k=\\frac{k(4m+1-k)}2$，$T_m=\\frac{m(3m+1)}2$．\n\\[\nA=\\frac12\\left\\{(4m+1)\\frac{(m-1)m}2-\\frac{(m-1)m(2m-1)}6\\right\\}=\\frac{(m-1)m(5m+2)}6 ,\n\\]\n$B=\\frac{2m(2m+1)(4m+1)}6-A-T_m=\\frac{m(11m^2+6m+1)}6$．よって $B-A=\\frac{m(6m^2+9m+3)}6=\\frac{m(m+1)(2m+1)}2$．係数は $1+2(m-1)-2m=-1$ なので\n\\[\nF(T_m)=-\\frac{m(3m+1)}2+m(m+1)(2m+1)=\\frac{m(4m^2+3m+1)}2 .\n\\]\n\n\\textbf{(イ) $n=2m-1$ のとき}　$T_k=\\frac{k(4m-1-k)}2$，$T_m=\\frac{m(3m-1)}2$．\n\\[\nA=\\frac12\\left\\{(4m-1)\\frac{(m-1)m}2-\\frac{(m-1)m(2m-1)}6\\right\\}=\\frac{(m-1)m(5m-1)}6 ,\n\\]\n$B=\\frac{(2m-1)2m(4m-1)}6-A-T_m=\\frac{m(m-1)(11m-4)}6$．よって $B-A=\\frac{m(m-1)(6m-3)}6=\\frac{m(m-1)(2m-1)}2$．係数は $1+2(m-1)-2(m-1)=1$ なので\n\\[\nF(T_m)=\\frac{m(3m-1)}2+m(m-1)(2m-1)=\\frac{m(4m^2-3m+1)}2 .\n\\]\n\n(1) $n=3$ は $m=2$ の(イ)．$(T_1,\\cdots,T_7)=(3,5,6,6,5,3,0)$，$c=T_2=5$ で $(x_1,\\cdots,x_7)=\\boldsymbol{(2,0,-1,-1,0,2,5)}$，最小値は $\\frac{2(16-6+1)}2=\\boldsymbol{11}$（実際 $2+0+1+1+0+2+5=11$）．\n\n(2) 最小値は\n\\[\n\\boldsymbol{n=2m\\ \\text{のとき}\\ \\dfrac{m(4m^2+3m+1)}2,\\qquad n=2m-1\\ \\text{のとき}\\ \\dfrac{m(4m^2-3m+1)}2}\n\\]\nである．最小となる移し方は $c=T_m$ のただ1通りで，$\\boldsymbol{x_{2n+1}=T_m}$，すなわち $n=2m$ のとき $\\frac{m(3m+1)}2$，$n=2m-1$ のとき $\\frac{m(3m-1)}2$．"
-   }
-  ],
-  "idea": {
-   "tex": "隣どうしの移動量を $x_k$（向きつき）とおくと，各校の台数がそろう条件から $x_k=c-T_k$ と1つの未知数 $c$ だけで表せる．総移動数 $\\sum|c-T_k|$ は，値 $T_k$ の中央値で最小となり，奇数個ならその $c$ はただ1つ．"
-  },
-  "grading": {
-   "format": "lemma-input/1",
-   "spec": "(1) 最小値：11 ; $(x_1,\\cdots,x_7)$：(2, 0, -1, -1, 0, 2, 5)\n(2) 記述"
-  },
-  "methods": [],
-  "tags": [
-   "中央値",
-   "絶対値の和",
-   "環状",
-   "数列の和"
-  ],
-  "provenance": {
-   "created": "2026-11-19"
-  },
-  "quality": {
-   "status": "published",
-   "checks": {
-    "dual": false,
-    "sympy": true,
-    "human": false
-   },
-   "verified": false
-  }
- },
- {
-  "id": "I-DAT-032",
-  "schema": "lemma.problem/1",
-  "kind": "written",
-  "field": "I-04",
-  "level": 3,
-  "minutes": 25,
-  "theme": "1つの得点を変えたときの相関係数の最大",
-  "topic": "1つの得点を変えたときの相関係数の最大",
-  "statement": {
-   "tex": "5人が2つの科目 X，Y の試験を受け，得点は次の表のとおりであった．ただし $x$ は実数とする．\n\\begin{center}\n\\begin{tabular}{c|ccccc}\n & ① & ② & ③ & ④ & ⑤\\\\ \\hline\n科目 X の得点 & $x$ & 6 & 4 & 7 & 4\\\\\n科目 Y の得点 & 9 & 7 & 5 & 10 & 9\n\\end{tabular}\n\\end{center}\nX の得点と Y の得点の相関係数を $r$ とする．\n\\begin{enumerate}\n  \\item $r$ を $x$ で表せ．\n  \\item $x$ がすべての実数を動くとき，$r$ の最大値と，そのときの $x$ の値を求めよ．\n  \\item $x$ が0以上の整数を動くとき，$r$ を最大にする $x$ の値と，そのときの $r$ の値を求めよ．\n\\end{enumerate}"
-  },
-  "answer": {
-   "tex": "(1) $r=\\dfrac{\\sqrt5\\,x}{4\\sqrt{4x^2-42x+144}}$　(2) 最大値 $\\dfrac1{\\sqrt3}$（$x=\\dfrac{48}7$）　(3) $x=7$，$r=\\dfrac{7\\sqrt{230}}{184}$"
-  },
-  "solutions": [
-   {
-    "id": "main",
-    "kind": "main",
-    "tex": "(1) X の平均は $\\bar x=\\dfrac{x+21}5$，Y の平均は $\\bar y=\\dfrac{40}5=8$．Y の偏差は $1,-1,-3,2,1$ で，偏差の2乗和は $1+1+9+4+1=16$．Y の偏差の和は0なので，偏差の積の和は\n\\[\n\\sum(x_k-\\bar x)(y_k-\\bar y)=\\sum x_k(y_k-\\bar y)=x-6-12+14+4=x .\n\\]\nX の偏差の2乗和は\n\\[\n\\sum x_k^2-5\\bar x^2=x^2+117-\\frac{(x+21)^2}5=\\frac{4x^2-42x+144}5\n\\]\n（$4x^2-42x+144=4\\left(x-\\frac{21}4\\right)^2+\\frac{135}4>0$）．よって\n\\[\nr=\\frac{x}{\\sqrt{\\frac{4x^2-42x+144}5}\\cdot\\sqrt{16}}=\\boldsymbol{\\frac{\\sqrt5\\,x}{4\\sqrt{4x^2-42x+144}}}.\n\\]\n\n(2) $x\\leqq0$ では $r\\leqq0$．$x>0$ のとき $u=\\dfrac1x>0$ とおくと\n\\[\nr=\\frac{\\sqrt5}{4\\sqrt{144u^2-42u+4}},\\qquad 144u^2-42u+4=144\\left(u-\\frac7{48}\\right)^2+\\frac{15}{16}.\n\\]\n$u>0$ で分母の2次式の最小値は $\\frac{15}{16}$（$u=\\frac7{48}$）なので，$r\\leqq\\dfrac{\\sqrt5}{4\\cdot\\frac{\\sqrt{15}}4}=\\dfrac1{\\sqrt3}$，等号は $x=\\dfrac{48}7$．これは $x\\leqq0$ での値（0以下）より大きい．最大値 $\\boldsymbol{\\dfrac1{\\sqrt3}}$（$\\boldsymbol{x=\\dfrac{48}7}$）．\n\n(3) $x=0$ なら $r=0$．$x\\geqq1$ の整数では，(2) の式から $r$ は $\\left|\\dfrac1x-\\dfrac7{48}\\right|$ が小さいほど大きい．\n\\[\nx=6:\\ \\left|\\frac16-\\frac7{48}\\right|=\\frac1{48},\\qquad x=7:\\ \\left|\\frac17-\\frac7{48}\\right|=\\frac1{336},\n\\]\n$x\\geqq8$ では $\\dfrac7{48}-\\dfrac1x\\geqq\\dfrac7{48}-\\dfrac18=\\dfrac1{48}$，$1\\leqq x\\leqq5$ では $\\dfrac1x-\\dfrac7{48}\\geqq\\dfrac15-\\dfrac7{48}=\\dfrac{13}{240}$ で，いずれも $\\dfrac1{336}$ より大きい．よって $r$ を最大にするのは $\\boldsymbol{x=7}$ のみで，\n\\[\nr=\\frac{7\\sqrt5}{4\\sqrt{196-294+144}}=\\frac{7\\sqrt5}{4\\sqrt{46}}=\\boldsymbol{\\frac{7\\sqrt{230}}{184}}.\n\\]"
-   }
-  ],
-  "idea": {
-   "tex": "1人分の得点 $x$ だけを変えると，偏差の積の和は $\\sum x_k(y_k-\\bar y)$ により $x$ の1次式，$x$ の偏差の2乗和は $x$ の2次式．相関係数 $r=\\dfrac{(\\text{1次式})}{\\sqrt{(\\text{2次式})}}$ は，分子が正の範囲で $u=\\dfrac1x$ とおくと分母の2次式の最小に帰着する．整数の候補の比較は $\\left|\\dfrac1x-u_0\\right|$ の大小で行う．"
-  },
-  "grading": {
-   "format": "lemma-input/1",
-   "spec": "(1) $r$：sqrt(5)x/(4sqrt(4x^2-42x+144))\n(2) 最大値：1/sqrt(3)\n(3) $x$：7 ; $r$：7sqrt(230)/184"
-  },
-  "methods": [],
-  "tags": [
-   "相関係数",
-   "共分散の計算",
-   "逆数の置き換え"
-  ],
-  "provenance": {
-   "created": "2026-11-18"
   },
   "quality": {
    "status": "published",

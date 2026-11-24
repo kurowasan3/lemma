@@ -8325,1460 +8325,6 @@
   }
  },
  {
-  "id": "II-GEO-187",
-  "schema": "lemma.problem/1",
-  "kind": "written",
-  "field": "II-09",
-  "level": 0,
-  "minutes": 5,
-  "theme": "点と直線／内分点・外分点",
-  "unit": "点と直線",
-  "topic": "内分点・外分点",
-  "statement": {
-   "tex": "2点 $\\mathrm{A}(-2,\\ 3)$，$\\mathrm{B}(4,\\ -1)$ について，次の点の座標を求めよ．\n\\begin{enumerate}\n  \\item 線分 $\\mathrm{AB}$ を $1:2$ に内分する点\n  \\item 線分 $\\mathrm{AB}$ を $3:1$ に外分する点\n\\end{enumerate}"
-  },
-  "answer": {
-   "tex": "(1) $\\left(0,\\ \\dfrac{5}{3}\\right)$　(2) $\\left(7,\\ -3\\right)$"
-  },
-  "solutions": [
-   {
-    "id": "main",
-    "kind": "main",
-    "tex": "(1) $\\left(\\dfrac{2\\cdot(-2)+1\\cdot4}{1+2},\\ \\dfrac{2\\cdot3+1\\cdot(-1)}{1+2}\\right)=\\boldsymbol{\\left(0,\\ \\dfrac{5}{3}\\right)}$．\n(2) $\\left(\\dfrac{-1\\cdot(-2)+3\\cdot4}{3-1},\\ \\dfrac{-1\\cdot3+3\\cdot(-1)}{3-1}\\right)=\\boldsymbol{\\left(7,\\ -3\\right)}$．"
-   }
-  ],
-  "idea": {
-   "tex": "$m:n$ に内分する点は $\\dfrac{n\\mathrm{A}+m\\mathrm{B}}{m+n}$，外分は $n$ を $-n$ に置き換える．"
-  },
-  "grading": {
-   "format": "lemma-input/1",
-   "spec": "(1) (0, 5/3)\n(2) (7, -3)"
-  },
-  "methods": [],
-  "tags": [
-   "内分点",
-   "外分点"
-  ],
-  "provenance": {
-   "created": "2026-10-30"
-  },
-  "quality": {
-   "status": "published",
-   "checks": {
-    "dual": false,
-    "sympy": true,
-    "human": false
-   },
-   "verified": false
-  }
- },
- {
-  "id": "II-GEO-188",
-  "schema": "lemma.problem/1",
-  "kind": "written",
-  "field": "II-09",
-  "level": 0,
-  "minutes": 5,
-  "theme": "点と直線／三角形の重心と平行四辺形の頂点",
-  "unit": "点と直線",
-  "topic": "三角形の重心と平行四辺形の頂点",
-  "statement": {
-   "tex": "3点 $\\mathrm{A}(1,\\ 2)$，$\\mathrm{B}(5,\\ -1)$，$\\mathrm{C}(3,\\ 5)$ について，次の問いに答えよ．\n\\begin{enumerate}\n  \\item $\\triangle\\mathrm{ABC}$ の重心 $\\mathrm{G}$ の座標を求めよ．\n  \\item 四角形 $\\mathrm{ABCD}$ が平行四辺形となるような点 $\\mathrm{D}$ の座標を求めよ．\n\\end{enumerate}"
-  },
-  "answer": {
-   "tex": "(1) $\\left(3,\\ 2\\right)$　(2) $\\left(-1,\\ 8\\right)$"
-  },
-  "solutions": [
-   {
-    "id": "main",
-    "kind": "main",
-    "tex": "(1) $\\left(\\dfrac{1+5+3}{3},\\ \\dfrac{2-1+5}{3}\\right)=\\boldsymbol{\\left(3,\\ 2\\right)}$．\n(2) 平行四辺形の対角線 $\\mathrm{AC}$，$\\mathrm{BD}$ の中点が一致する．$\\mathrm{D}(p,q)$ として $\\dfrac{1+3}{2}=\\dfrac{5+p}{2}$，$\\dfrac{2+5}{2}=\\dfrac{-1+q}{2}$．\nよって $p=-1,\\ q=8$ で $\\mathrm{D}\\boldsymbol{\\left(-1,\\ 8\\right)}$．"
-   }
-  ],
-  "idea": {
-   "tex": "重心は3頂点の座標の平均．平行四辺形は「対角線がたがいの中点で交わる」を式にする．"
-  },
-  "grading": {
-   "format": "lemma-input/1",
-   "spec": "(1) (3, 2)\n(2) (-1, 8)"
-  },
-  "methods": [],
-  "tags": [
-   "重心",
-   "平行四辺形",
-   "中点"
-  ],
-  "provenance": {
-   "created": "2026-10-30"
-  },
-  "quality": {
-   "status": "published",
-   "checks": {
-    "dual": false,
-    "sympy": true,
-    "human": false
-   },
-   "verified": false
-  }
- },
- {
-  "id": "II-GEO-189",
-  "schema": "lemma.problem/1",
-  "kind": "written",
-  "field": "II-09",
-  "level": 0,
-  "minutes": 5,
-  "theme": "点と直線／2点間の距離と等距離の点",
-  "unit": "点と直線",
-  "topic": "2点間の距離と等距離の点",
-  "statement": {
-   "tex": "2点 $\\mathrm{A}(1,\\ 3)$，$\\mathrm{B}(5,\\ 1)$ について，次の問いに答えよ．\n\\begin{enumerate}\n  \\item 線分 $\\mathrm{AB}$ の長さを求めよ．\n  \\item $x$ 軸上の点 $\\mathrm{P}$ で，$\\mathrm{PA}=\\mathrm{PB}$ となるものの座標を求めよ．\n\\end{enumerate}"
-  },
-  "answer": {
-   "tex": "(1) $2 \\sqrt{5}$　(2) $\\left(2,\\ 0\\right)$"
-  },
-  "solutions": [
-   {
-    "id": "main",
-    "kind": "main",
-    "tex": "(1) $\\mathrm{AB}=\\sqrt{(5-1)^2+(1-3)^2}=\\sqrt{20}=\\boldsymbol{2 \\sqrt{5}}$．\n(2) $\\mathrm{P}(p,\\ 0)$ とおく．$\\mathrm{PA}^2=\\mathrm{PB}^2$ より $(p-1)^2+9=(p-5)^2+1$．\n$-2p+10=-10p+26$ から $p=2$．よって $\\mathrm{P}\\boldsymbol{\\left(2,\\ 0\\right)}$．"
-   }
-  ],
-  "idea": {
-   "tex": "距離の条件は2乗して根号を外して扱う．"
-  },
-  "grading": {
-   "format": "lemma-input/1",
-   "spec": "(1) 2sqrt(5)\n(2) (2, 0)"
-  },
-  "methods": [],
-  "tags": [
-   "2点間の距離"
-  ],
-  "provenance": {
-   "created": "2026-10-30"
-  },
-  "quality": {
-   "status": "published",
-   "checks": {
-    "dual": false,
-    "sympy": true,
-    "human": false
-   },
-   "verified": false
-  }
- },
- {
-  "id": "II-GEO-190",
-  "schema": "lemma.problem/1",
-  "kind": "written",
-  "field": "II-09",
-  "level": 0,
-  "minutes": 4,
-  "theme": "点と直線／直線の方程式",
-  "unit": "点と直線",
-  "topic": "直線の方程式",
-  "statement": {
-   "tex": "\\begin{enumerate}\n  \\item 2点 $(-1,\\ 4)$，$(3,\\ -4)$ を通る直線の方程式を求めよ．\n  \\item 点 $(2,\\ -3)$ を通り，傾きが $\\dfrac12$ の直線の方程式を求めよ．\n\\end{enumerate}"
-  },
-  "answer": {
-   "tex": "(1) $y=- 2x+2$　(2) $y=\\dfrac{1}{2}x-4$"
-  },
-  "solutions": [
-   {
-    "id": "main",
-    "kind": "main",
-    "tex": "(1) 傾きは $\\dfrac{-4-4}{3-(-1)}=-2$．$y-4=-2(x+1)$ より $\\boldsymbol{y=- 2x+2}$．\n(2) $y-(-3)=\\dfrac12(x-2)$ より $\\boldsymbol{y=\\dfrac{1}{2}x-4}$．"
-   }
-  ],
-  "idea": {
-   "tex": "傾き $m$ で点 $(x_1,y_1)$ を通る直線は $y-y_1=m(x-x_1)$．"
-  },
-  "grading": {
-   "format": "lemma-input/1",
-   "spec": "(1) $y$：-2x+2\n(2) $y$：x/2-4"
-  },
-  "methods": [],
-  "tags": [
-   "直線の方程式"
-  ],
-  "provenance": {
-   "created": "2026-10-30"
-  },
-  "quality": {
-   "status": "published",
-   "checks": {
-    "dual": false,
-    "sympy": true,
-    "human": false
-   },
-   "verified": false
-  }
- },
- {
-  "id": "II-GEO-191",
-  "schema": "lemma.problem/1",
-  "kind": "written",
-  "field": "II-09",
-  "level": 0,
-  "minutes": 5,
-  "theme": "点と直線／2直線の平行と垂直",
-  "unit": "点と直線",
-  "topic": "2直線の平行と垂直",
-  "statement": {
-   "tex": "点 $(2,\\ 1)$ を通り，直線 $2x-3y+1=0$ に\n\\begin{enumerate}\n  \\item 平行な直線の方程式を求めよ．\n  \\item 垂直な直線の方程式を求めよ．\n\\end{enumerate}"
-  },
-  "answer": {
-   "tex": "(1) $y=\\dfrac{2}{3}x-\\dfrac{1}{3}$　(2) $y=-\\dfrac{3}{2}x+4$"
-  },
-  "solutions": [
-   {
-    "id": "main",
-    "kind": "main",
-    "tex": "直線 $2x-3y+1=0$ は $y=\\dfrac23x+\\dfrac13$ で，傾きは $\\dfrac23$．\n(1) 傾き $\\dfrac23$ で $(2,1)$ を通るので $y-1=\\dfrac23(x-2)$，$\\boldsymbol{y=\\dfrac{2}{3}x-\\dfrac{1}{3}}$．\n(2) 垂直な直線の傾き $m$ は $\\dfrac23m=-1$ より $m=-\\dfrac32$．$y-1=-\\dfrac32(x-2)$，$\\boldsymbol{y=-\\dfrac{3}{2}x+4}$．"
-   }
-  ],
-  "idea": {
-   "tex": "平行 $\\iff$ 傾きが等しい，垂直 $\\iff$ 傾きの積が $-1$．"
-  },
-  "grading": {
-   "format": "lemma-input/1",
-   "spec": "(1) $y$：2x/3-1/3\n(2) $y$：-3x/2+4"
-  },
-  "methods": [],
-  "tags": [
-   "平行",
-   "垂直",
-   "直線の方程式"
-  ],
-  "provenance": {
-   "created": "2026-10-30"
-  },
-  "quality": {
-   "status": "published",
-   "checks": {
-    "dual": false,
-    "sympy": true,
-    "human": false
-   },
-   "verified": false
-  }
- },
- {
-  "id": "II-GEO-192",
-  "schema": "lemma.problem/1",
-  "kind": "written",
-  "field": "II-09",
-  "level": 0,
-  "minutes": 5,
-  "theme": "点と直線／点と直線の距離",
-  "unit": "点と直線",
-  "topic": "点と直線の距離",
-  "statement": {
-   "tex": "\\begin{enumerate}\n  \\item 点 $(3,\\ -2)$ と直線 $4x+3y-1=0$ の距離を求めよ．\n  \\item 平行な2直線 $x+2y-3=0$，$x+2y+7=0$ の距離を求めよ．\n\\end{enumerate}"
-  },
-  "answer": {
-   "tex": "(1) $1$　(2) $2 \\sqrt{5}$"
-  },
-  "solutions": [
-   {
-    "id": "main",
-    "kind": "main",
-    "tex": "(1) $\\dfrac{|4\\cdot3+3\\cdot(-2)-1|}{\\sqrt{4^2+3^2}}=\\dfrac{5}{5}=\\boldsymbol{1}$．\n(2) 直線 $x+2y-3=0$ 上の点 $(3,\\ 0)$ と直線 $x+2y+7=0$ の距離を求めればよい．$\\dfrac{|3+0+7|}{\\sqrt{1+4}}=\\dfrac{10}{\\sqrt5}=\\boldsymbol{2 \\sqrt{5}}$．"
-   }
-  ],
-  "idea": {
-   "tex": "点 $(x_1,y_1)$ と直線 $ax+by+c=0$ の距離は $\\dfrac{|ax_1+by_1+c|}{\\sqrt{a^2+b^2}}$．平行線の距離は一方の上の1点で測る．"
-  },
-  "grading": {
-   "format": "lemma-input/1",
-   "spec": "(1) 1\n(2) 2sqrt(5)"
-  },
-  "methods": [],
-  "tags": [
-   "点と直線の距離"
-  ],
-  "provenance": {
-   "created": "2026-10-30"
-  },
-  "quality": {
-   "status": "published",
-   "checks": {
-    "dual": false,
-    "sympy": true,
-    "human": false
-   },
-   "verified": false
-  }
- },
- {
-  "id": "II-GEO-193",
-  "schema": "lemma.problem/1",
-  "kind": "written",
-  "field": "II-09",
-  "level": 0,
-  "minutes": 6,
-  "theme": "点と直線／直線に関して対称な点",
-  "unit": "点と直線",
-  "topic": "直線に関して対称な点",
-  "statement": {
-   "tex": "直線 $\\ell:\\ y=2x+1$ に関して，点 $\\mathrm{A}(3,\\ 2)$ と対称な点 $\\mathrm{B}$ の座標を求めよ．"
-  },
-  "answer": {
-   "tex": "$\\left(-1,\\ 4\\right)$"
-  },
-  "solutions": [
-   {
-    "id": "main",
-    "kind": "main",
-    "tex": "$\\mathrm{B}(p,\\ q)$ とする．$\\mathrm{AB}\\perp\\ell$ より $\\dfrac{q-2}{p-3}\\cdot2=-1$，すなわち $p+2q=7$．\n線分 $\\mathrm{AB}$ の中点 $\\left(\\dfrac{p+3}{2},\\ \\dfrac{q+2}{2}\\right)$ が $\\ell$ 上にあるので $\\dfrac{q+2}{2}=(p+3)+1$，すなわち $2p-q=-6$．\nこれらを解いて $p=-1,\\ q=4$．よって $\\mathrm{B}\\boldsymbol{\\left(-1,\\ 4\\right)}$．"
-   }
-  ],
-  "idea": {
-   "tex": "対称点は「2点を結ぶ線分が $\\ell$ に垂直」「中点が $\\ell$ 上」の2条件で決まる．"
-  },
-  "grading": {
-   "format": "lemma-input/1",
-   "spec": "(-1, 4)"
-  },
-  "methods": [],
-  "tags": [
-   "対称点",
-   "垂直",
-   "中点"
-  ],
-  "provenance": {
-   "created": "2026-10-30"
-  },
-  "quality": {
-   "status": "published",
-   "checks": {
-    "dual": false,
-    "sympy": true,
-    "human": false
-   },
-   "verified": false
-  }
- },
- {
-  "id": "II-GEO-194",
-  "schema": "lemma.problem/1",
-  "kind": "written",
-  "field": "II-09",
-  "level": 0,
-  "minutes": 5,
-  "theme": "円／円の方程式（標準形と一般形）",
-  "unit": "円",
-  "topic": "円の方程式（標準形と一般形）",
-  "statement": {
-   "tex": "\\begin{enumerate}\n  \\item 円 $x^2+y^2-4x+6y-3=0$ の中心の座標と半径を求めよ．\n  \\item 中心が $(-1,\\ 2)$ で $x$ 軸に接する円の方程式を $x^2+y^2+lx+my+n=0$ の形で表すとき，定数 $l,\\ m,\\ n$ の値を求めよ．\n\\end{enumerate}"
-  },
-  "answer": {
-   "tex": "(1) 中心 $\\left(2,\\ -3\\right)$，半径 $4$　(2) $l=2,\\ m=-4,\\ n=1$"
-  },
-  "solutions": [
-   {
-    "id": "main",
-    "kind": "main",
-    "tex": "(1) $(x-2)^2+(y+3)^2=4+9+3=16$．中心 $\\boldsymbol{\\left(2,\\ -3\\right)}$，半径 $\\boldsymbol{4}$．\n(2) $x$ 軸に接するので半径は中心の $y$ 座標の絶対値 $2$．$(x+1)^2+(y-2)^2=4$ を展開して $x^2+y^2+2x-4y+1=0$．\nよって $\\boldsymbol{l=2,\\ m=-4,\\ n=1}$．"
-   }
-  ],
-  "idea": {
-   "tex": "平方完成で $(x-a)^2+(y-b)^2=r^2$ の形にすると中心と半径が読める．"
-  },
-  "grading": {
-   "format": "lemma-input/1",
-   "spec": "(1) 中心：(2, -3) ; 半径：4\n(2) $l$：2 ; $m$：-4 ; $n$：1"
-  },
-  "methods": [],
-  "tags": [
-   "円の方程式",
-   "平方完成"
-  ],
-  "provenance": {
-   "created": "2026-10-30"
-  },
-  "quality": {
-   "status": "published",
-   "checks": {
-    "dual": false,
-    "sympy": true,
-    "human": false
-   },
-   "verified": false
-  }
- },
- {
-  "id": "II-GEO-195",
-  "schema": "lemma.problem/1",
-  "kind": "written",
-  "field": "II-09",
-  "level": 0,
-  "minutes": 6,
-  "theme": "円／3点を通る円",
-  "unit": "円",
-  "topic": "3点を通る円",
-  "statement": {
-   "tex": "3点 $(-1,\\ 0)$，$(3,\\ 0)$，$(0,\\ 3)$ を通る円の中心の座標と半径を求めよ．"
-  },
-  "answer": {
-   "tex": "中心 $\\left(1,\\ 1\\right)$，半径 $\\sqrt{5}$（$x^2+y^2-2x-2y-3=0$）"
-  },
-  "solutions": [
-   {
-    "id": "main",
-    "kind": "main",
-    "tex": "求める円を $x^2+y^2+lx+my+n=0$ とおく．3点を代入して\n$1-l+n=0$，$9+3l+n=0$，$9+3m+n=0$．これを解いて $l=-2,\\ m=-2,\\ n=-3$．\n$x^2+y^2-2x-2y-3=0$ は $(x-1)^2+(y-1)^2=5$ なので，中心 $\\boldsymbol{\\left(1,\\ 1\\right)}$，半径 $\\boldsymbol{\\sqrt{5}}$．"
-   }
-  ],
-  "idea": {
-   "tex": "一般形 $x^2+y^2+lx+my+n=0$ に3点を代入して連立1次方程式を解く．"
-  },
-  "grading": {
-   "format": "lemma-input/1",
-   "spec": "中心：(1, 1) ; 半径：sqrt(5)"
-  },
-  "methods": [],
-  "tags": [
-   "円の方程式",
-   "連立方程式"
-  ],
-  "provenance": {
-   "created": "2026-10-30"
-  },
-  "quality": {
-   "status": "published",
-   "checks": {
-    "dual": false,
-    "sympy": true,
-    "human": false
-   },
-   "verified": false
-  }
- },
- {
-  "id": "II-GEO-196",
-  "schema": "lemma.problem/1",
-  "kind": "written",
-  "field": "II-09",
-  "level": 0,
-  "minutes": 5,
-  "theme": "円／円と直線の共有点",
-  "unit": "円",
-  "topic": "円と直線の共有点",
-  "statement": {
-   "tex": "円 $x^2+y^2=5$ と直線 $y=2x+k$ が共有点をもつような，定数 $k$ の値の範囲を求めよ．"
-  },
-  "answer": {
-   "tex": "$-5\\leqq k\\leqq5$"
-  },
-  "solutions": [
-   {
-    "id": "main",
-    "kind": "main",
-    "tex": "円の中心 $(0,0)$ と直線 $2x-y+k=0$ の距離は $\\dfrac{|k|}{\\sqrt5}$．共有点をもつ条件は，これが半径 $\\sqrt5$ 以下であること．\n$\\dfrac{|k|}{\\sqrt5}\\leqq\\sqrt5$ より $|k|\\leqq5$，すなわち $\\boldsymbol{-5\\leqq k\\leqq5}$．\n（別解：代入して $5x^2+4kx+k^2-5=0$，判別式 $\\dfrac D4=4k^2-5(k^2-5)=25-k^2\\geqq0$．）"
-   }
-  ],
-  "idea": {
-   "tex": "円と直線の位置関係は「中心と直線の距離」と半径の大小で判定する．"
-  },
-  "grading": {
-   "format": "lemma-input/1",
-   "spec": "-5<=k<=5"
-  },
-  "methods": [],
-  "tags": [
-   "円と直線",
-   "点と直線の距離",
-   "判別式"
-  ],
-  "provenance": {
-   "created": "2026-10-30"
-  },
-  "quality": {
-   "status": "published",
-   "checks": {
-    "dual": false,
-    "sympy": true,
-    "human": false
-   },
-   "verified": false
-  }
- },
- {
-  "id": "II-GEO-197",
-  "schema": "lemma.problem/1",
-  "kind": "written",
-  "field": "II-09",
-  "level": 0,
-  "minutes": 5,
-  "theme": "円／円周上の点における接線",
-  "unit": "円",
-  "topic": "円周上の点における接線",
-  "statement": {
-   "tex": "\\begin{enumerate}\n  \\item 円 $x^2+y^2=25$ 上の点 $(3,\\ -4)$ における接線の方程式を求めよ．\n  \\item 円 $(x-1)^2+(y-2)^2=10$ 上の点 $(2,\\ 5)$ における接線の方程式を求めよ．\n\\end{enumerate}"
-  },
-  "answer": {
-   "tex": "(1) $y=\\dfrac{3}{4}x-\\dfrac{25}{4}$（$3x-4y=25$）　(2) $y=-\\dfrac{1}{3}x+\\dfrac{17}{3}$（$x+3y=17$）"
-  },
-  "solutions": [
-   {
-    "id": "main",
-    "kind": "main",
-    "tex": "(1) 接線は $3x-4y=25$，すなわち $\\boldsymbol{y=\\dfrac{3}{4}x-\\dfrac{25}{4}}$．\n(2) 接線は $(2-1)(x-1)+(5-2)(y-2)=10$，すなわち $x+3y=17$ で $\\boldsymbol{y=-\\dfrac{1}{3}x+\\dfrac{17}{3}}$．\n（中心 $(1,2)$ と接点を結ぶ半径の傾きは $3$ なので，接線の傾きは $-\\dfrac13$ としても求まる．）"
-   }
-  ],
-  "idea": {
-   "tex": "円 $(x-a)^2+(y-b)^2=r^2$ 上の点 $(x_1,y_1)$ における接線は $(x_1-a)(x-a)+(y_1-b)(y-b)=r^2$．"
-  },
-  "grading": {
-   "format": "lemma-input/1",
-   "spec": "(1) $y$：3x/4-25/4\n(2) $y$：-x/3+17/3"
-  },
-  "methods": [],
-  "tags": [
-   "接線",
-   "円"
-  ],
-  "provenance": {
-   "created": "2026-10-30"
-  },
-  "quality": {
-   "status": "published",
-   "checks": {
-    "dual": false,
-    "sympy": true,
-    "human": false
-   },
-   "verified": false
-  }
- },
- {
-  "id": "II-GEO-198",
-  "schema": "lemma.problem/1",
-  "kind": "written",
-  "field": "II-09",
-  "level": 0,
-  "minutes": 5,
-  "theme": "円／2つの円の位置関係",
-  "unit": "円",
-  "topic": "2つの円の位置関係",
-  "statement": {
-   "tex": "2つの円 $x^2+y^2=4$，$(x-3)^2+(y-4)^2=r^2$（$r>0$）について，次の場合の $r$ の値を求めよ．\n\\begin{enumerate}\n  \\item 2つの円が外接する．\n  \\item 2つの円が内接する．\n\\end{enumerate}"
-  },
-  "answer": {
-   "tex": "(1) $r=3$　(2) $r=7$"
-  },
-  "solutions": [
-   {
-    "id": "main",
-    "kind": "main",
-    "tex": "中心間の距離は $\\sqrt{3^2+4^2}=5$，一方の半径は $2$．\n(1) 外接するとき $2+r=5$ より $\\boldsymbol{r=3}$．\n(2) 内接するとき $|r-2|=5$，$r>0$ より $\\boldsymbol{r=7}$．"
-   }
-  ],
-  "idea": {
-   "tex": "2円の位置関係は，中心間の距離 $d$ と半径の和・差の大小で決まる．"
-  },
-  "grading": {
-   "format": "lemma-input/1",
-   "spec": "(1) $r$：3\n(2) $r$：7"
-  },
-  "methods": [],
-  "tags": [
-   "2円の位置関係"
-  ],
-  "provenance": {
-   "created": "2026-10-30"
-  },
-  "quality": {
-   "status": "published",
-   "checks": {
-    "dual": false,
-    "sympy": true,
-    "human": false
-   },
-   "verified": false
-  }
- },
- {
-  "id": "II-GEO-199",
-  "schema": "lemma.problem/1",
-  "kind": "written",
-  "field": "II-09",
-  "level": 0,
-  "minutes": 6,
-  "theme": "軌跡と領域／アポロニウスの円",
-  "unit": "軌跡と領域",
-  "topic": "アポロニウスの円",
-  "statement": {
-   "tex": "2点 $\\mathrm{A}(0,\\ 0)$，$\\mathrm{B}(6,\\ 0)$ からの距離の比が $\\mathrm{AP}:\\mathrm{PB}=2:1$ である点 $\\mathrm{P}$ の軌跡は円である．その中心の座標と半径を求めよ．"
-  },
-  "answer": {
-   "tex": "中心 $\\left(8,\\ 0\\right)$，半径 $4$"
-  },
-  "solutions": [
-   {
-    "id": "main",
-    "kind": "main",
-    "tex": "$\\mathrm{P}(x,y)$ とすると $\\mathrm{AP}=2\\mathrm{PB}$ より $\\mathrm{AP}^2=4\\mathrm{PB}^2$．\n$x^2+y^2=4\\{(x-6)^2+y^2\\}$ を整理して $x^2+y^2-16x+48=0$，すなわち $(x-8)^2+y^2=16$．\nよって中心 $\\boldsymbol{\\left(8,\\ 0\\right)}$，半径 $\\boldsymbol{4}$ の円．"
-   }
-  ],
-  "idea": {
-   "tex": "動点を $(x,y)$ とおき，条件を $x,\\ y$ の式に直す．距離の条件は2乗する．"
-  },
-  "grading": {
-   "format": "lemma-input/1",
-   "spec": "中心：(8, 0) ; 半径：4"
-  },
-  "methods": [],
-  "tags": [
-   "軌跡",
-   "アポロニウスの円"
-  ],
-  "provenance": {
-   "created": "2026-10-30"
-  },
-  "quality": {
-   "status": "published",
-   "checks": {
-    "dual": false,
-    "sympy": true,
-    "human": false
-   },
-   "verified": false
-  }
- },
- {
-  "id": "II-GEO-200",
-  "schema": "lemma.problem/1",
-  "kind": "written",
-  "field": "II-09",
-  "level": 0,
-  "minutes": 7,
-  "theme": "軌跡と領域／連立不等式の表す領域",
-  "unit": "軌跡と領域",
-  "topic": "連立不等式の表す領域",
-  "statement": {
-   "tex": "連立不等式 $x\\geqq0,\\ y\\geqq0,\\ x+2y\\leqq6,\\ 2x+y\\leqq6$ の表す領域を $D$ とする．\n\\begin{enumerate}\n  \\item $D$ の面積を求めよ．\n  \\item 点 $(x,\\ y)$ が $D$ 内を動くとき，$x+y$ の最大値を求めよ．\n\\end{enumerate}"
-  },
-  "answer": {
-   "tex": "(1) $6$　(2) $4$"
-  },
-  "solutions": [
-   {
-    "id": "main",
-    "kind": "main",
-    "tex": "(1) 直線 $x+2y=6$ と $2x+y=6$ の交点は $(2,\\ 2)$．$D$ は4点 $(0,0),\\ (3,0),\\ (2,2),\\ (0,3)$ を頂点とする四角形．\n2つの三角形 $(0,0),(3,0),(2,2)$ と $(0,0),(2,2),(0,3)$ に分けて，面積は $\\dfrac12\\cdot3\\cdot2+\\dfrac12\\cdot3\\cdot2=\\boldsymbol{6}$．\n(2) $x+y=k$ とおくと傾き $-1$ の直線．この直線が $D$ と共有点をもつ範囲で $k$ が最大になるのは点 $(2,2)$ を通るときで，最大値 $\\boldsymbol{4}$．"
-   }
-  ],
-  "idea": {
-   "tex": "境界の直線の交点を求めて領域の頂点を確定する．1次式の最大は $=k$ とおいた直線を平行移動して考える．"
-  },
-  "grading": {
-   "format": "lemma-input/1",
-   "spec": "(1) 6\n(2) 4"
-  },
-  "methods": [],
-  "tags": [
-   "領域",
-   "面積",
-   "線形計画法"
-  ],
-  "provenance": {
-   "created": "2026-10-30"
-  },
-  "quality": {
-   "status": "published",
-   "checks": {
-    "dual": false,
-    "sympy": true,
-    "human": false
-   },
-   "verified": false
-  }
- },
- {
-  "id": "II-GEO-201",
-  "schema": "lemma.problem/1",
-  "kind": "written",
-  "field": "II-09",
-  "level": 0,
-  "minutes": 6,
-  "theme": "点と直線／2直線の交点を通る直線",
-  "unit": "点と直線",
-  "topic": "2直線の交点を通る直線",
-  "statement": {
-   "tex": "2直線 $2x+y-4=0$，$x-y+1=0$ の交点を通る直線のうち，次の条件を満たすものの方程式を求めよ．\n\\begin{enumerate}\n  \\item 点 $(4,\\ 0)$ を通る．\n  \\item 直線 $x+3y=0$ に垂直である．\n\\end{enumerate}"
-  },
-  "answer": {
-   "tex": "(1) $y=-\\dfrac{2}{3}x+\\dfrac{8}{3}$　(2) $y=3x-1$"
-  },
-  "solutions": [
-   {
-    "id": "main",
-    "kind": "main",
-    "tex": "2式を連立して交点は $(1,\\ 2)$．\n(1) 2点 $(1,2)$，$(4,0)$ を通るので傾き $-\\dfrac23$．$y-2=-\\dfrac23(x-1)$ より $\\boldsymbol{y=-\\dfrac{2}{3}x+\\dfrac{8}{3}}$．\n（別解：$(2x+y-4)+k(x-y+1)=0$ に $(4,0)$ を代入して $k=-\\dfrac45$．）\n(2) $x+3y=0$ の傾きは $-\\dfrac13$ なので，垂直な直線の傾きは $3$．$y-2=3(x-1)$ より $\\boldsymbol{y=3x-1}$．"
-   }
-  ],
-  "idea": {
-   "tex": "交点を先に求めるか，$f+kg=0$ の形（2直線の交点を通る直線群）を使う．"
-  },
-  "grading": {
-   "format": "lemma-input/1",
-   "spec": "(1) $y$：-2x/3+8/3\n(2) $y$：3x-1"
-  },
-  "methods": [],
-  "tags": [
-   "直線の方程式",
-   "交点",
-   "垂直"
-  ],
-  "provenance": {
-   "created": "2026-10-30"
-  },
-  "quality": {
-   "status": "published",
-   "checks": {
-    "dual": false,
-    "sympy": true,
-    "human": false
-   },
-   "verified": false
-  }
- },
- {
-  "id": "II-GEO-202",
-  "schema": "lemma.problem/1",
-  "kind": "written",
-  "field": "II-09",
-  "level": 1,
-  "minutes": 12,
-  "theme": "点と直線／3直線が三角形を作らない条件",
-  "unit": "点と直線",
-  "topic": "3直線が三角形を作らない条件",
-  "statement": {
-   "tex": "3直線 $x+y=1$，$x-2y=4$，$ax+y=2$ が三角形を作らないような，定数 $a$ の値をすべて求めよ．"
-  },
-  "answer": {
-   "tex": "$a=1,\\ -\\dfrac12,\\ \\dfrac32$"
-  },
-  "solutions": [
-   {
-    "id": "main",
-    "kind": "main",
-    "tex": "3直線が三角形を作らないのは，(i) どれか2直線が平行，(ii) 3直線が1点で交わる，のいずれか．\n(i) $x+y=1$ と平行：$a=1$．$x-2y=4$（傾き $\\dfrac12$）と平行：$-a=\\dfrac12$ より $a=-\\dfrac12$．最初の2直線は平行でない．\n(ii) $x+y=1$，$x-2y=4$ の交点は $(2,\\ -1)$．これが $ax+y=2$ 上にあるとき $2a-1=2$，$a=\\dfrac32$．\nよって $\\boldsymbol{a=1,\\ -\\dfrac12,\\ \\dfrac32}$．"
-   }
-  ],
-  "idea": {
-   "tex": "三角形ができない場合を「平行」と「1点で交わる」に分けて数え上げる．"
-  },
-  "grading": {
-   "format": "lemma-input/1",
-   "spec": "$a$：{1, -1/2, 3/2}"
-  },
-  "methods": [],
-  "tags": [
-   "直線",
-   "平行",
-   "3直線"
-  ],
-  "provenance": {
-   "created": "2026-10-30"
-  },
-  "quality": {
-   "status": "published",
-   "checks": {
-    "dual": false,
-    "sympy": true,
-    "human": false
-   },
-   "verified": false
-  }
- },
- {
-  "id": "II-GEO-203",
-  "schema": "lemma.problem/1",
-  "kind": "written",
-  "field": "II-09",
-  "level": 1,
-  "minutes": 10,
-  "theme": "点と直線／点と直線の距離と三角形の面積",
-  "unit": "点と直線",
-  "topic": "点と直線の距離と三角形の面積",
-  "statement": {
-   "tex": "3点 $\\mathrm{A}(-1,\\ 2)$，$\\mathrm{B}(3,\\ -1)$，$\\mathrm{C}(4,\\ 5)$ について，次の問いに答えよ．\n\\begin{enumerate}\n  \\item 直線 $\\mathrm{AB}$ の方程式を求めよ．\n  \\item 点 $\\mathrm{C}$ と直線 $\\mathrm{AB}$ の距離を求めよ．\n  \\item $\\triangle\\mathrm{ABC}$ の面積を求めよ．\n\\end{enumerate}"
-  },
-  "answer": {
-   "tex": "(1) $y=-\\dfrac{3}{4}x+\\dfrac{5}{4}$（$3x+4y-5=0$）　(2) $\\dfrac{27}{5}$　(3) $\\dfrac{27}{2}$"
-  },
-  "solutions": [
-   {
-    "id": "main",
-    "kind": "main",
-    "tex": "(1) 傾き $\\dfrac{-1-2}{3+1}=-\\dfrac34$ で，$y-2=-\\dfrac34(x+1)$，すなわち $3x+4y-5=0$．$\\boldsymbol{y=-\\dfrac{3}{4}x+\\dfrac{5}{4}}$．\n(2) $\\dfrac{|3\\cdot4+4\\cdot5-5|}{\\sqrt{9+16}}=\\boldsymbol{\\dfrac{27}{5}}$．\n(3) $\\mathrm{AB}=\\sqrt{16+9}=5$ なので，面積は $\\dfrac12\\cdot5\\cdot\\dfrac{27}{5}=\\boldsymbol{\\dfrac{27}{2}}$．\n（検算：$\\overrightarrow{\\mathrm{AB}}=(4,-3)$，$\\overrightarrow{\\mathrm{AC}}=(5,3)$ から $\\dfrac12|4\\cdot3-(-3)\\cdot5|=\\dfrac{27}{2}$．）"
-   }
-  ],
-  "idea": {
-   "tex": "1辺を底辺にとり，高さを点と直線の距離で求める．"
-  },
-  "grading": {
-   "format": "lemma-input/1",
-   "spec": "(1) $y$：-3x/4+5/4\n(2) 27/5\n(3) 27/2"
-  },
-  "methods": [],
-  "tags": [
-   "点と直線の距離",
-   "三角形の面積"
-  ],
-  "provenance": {
-   "created": "2026-10-30"
-  },
-  "quality": {
-   "status": "published",
-   "checks": {
-    "dual": false,
-    "sympy": true,
-    "human": false
-   },
-   "verified": false
-  }
- },
- {
-  "id": "II-GEO-204",
-  "schema": "lemma.problem/1",
-  "kind": "written",
-  "field": "II-09",
-  "level": 1,
-  "minutes": 12,
-  "theme": "点と直線／定点を通る直線",
-  "unit": "点と直線",
-  "topic": "定点を通る直線",
-  "statement": {
-   "tex": "$k$ を定数とする直線 $\\ell:\\ (1+2k)x+(1-k)y-3=0$ について，次の問いに答えよ．\n\\begin{enumerate}\n  \\item $\\ell$ は $k$ の値に関係なく定点を通る．その定点の座標を求めよ．\n  \\item $\\ell$ が2点 $\\mathrm{A}(4,\\ 0)$，$\\mathrm{B}(0,\\ -2)$ を結ぶ線分と共有点をもつような $k$ の値の範囲を求めよ．\n\\end{enumerate}"
-  },
-  "answer": {
-   "tex": "(1) $(1,\\ 2)$　(2) $-\\dfrac18\\leqq k\\leqq\\dfrac52$"
-  },
-  "solutions": [
-   {
-    "id": "main",
-    "kind": "main",
-    "tex": "(1) $k$ について整理すると $(x+y-3)+k(2x-y)=0$．これが任意の $k$ で成り立つ条件 $x+y-3=0$，$2x-y=0$ より定点 $\\boldsymbol{(1,\\ 2)}$．\n(2) $f(x,y)=(1+2k)x+(1-k)y-3$ とおく．線分 $\\mathrm{AB}$ と共有点をもつ $\\iff$ $\\mathrm{A}$，$\\mathrm{B}$ が $\\ell$ の両側または $\\ell$ 上 $\\iff f(\\mathrm{A})f(\\mathrm{B})\\leqq0$．\n$f(4,0)=8k+1$，$f(0,-2)=2k-5$ より $(8k+1)(2k-5)\\leqq0$，$\\boldsymbol{-\\dfrac18\\leqq k\\leqq\\dfrac52}$．"
-   }
-  ],
-  "idea": {
-   "tex": "$k$ について整理し「$k$ の恒等式」と見て定点を出す．線分との交わりは両端点での符号で判定する．"
-  },
-  "grading": {
-   "format": "lemma-input/1",
-   "spec": "(1) (1, 2)\n(2) -1/8<=k<=5/2"
-  },
-  "methods": [],
-  "tags": [
-   "定点",
-   "直線",
-   "領域"
-  ],
-  "provenance": {
-   "created": "2026-10-30"
-  },
-  "quality": {
-   "status": "published",
-   "checks": {
-    "dual": false,
-    "sympy": true,
-    "human": false
-   },
-   "verified": false
-  }
- },
- {
-  "id": "II-GEO-205",
-  "schema": "lemma.problem/1",
-  "kind": "written",
-  "field": "II-09",
-  "level": 1,
-  "minutes": 13,
-  "theme": "円／円外の点から引いた接線",
-  "unit": "円",
-  "topic": "円外の点から引いた接線",
-  "statement": {
-   "tex": "点 $\\mathrm{A}(3,\\ 1)$ から円 $x^2+y^2=5$ に2本の接線を引く．\n\\begin{enumerate}\n  \\item 2本の接線の方程式を求めよ．\n  \\item 2つの接点を通る直線の方程式を求めよ．\n\\end{enumerate}"
-  },
-  "answer": {
-   "tex": "(1) $y=2x-5,\\ y=-\\dfrac{1}{2}x+\\dfrac{5}{2}$　(2) $y=- 3x+5$"
-  },
-  "solutions": [
-   {
-    "id": "main",
-    "kind": "main",
-    "tex": "(1) 接点を $(p,\\ q)$ とすると $p^2+q^2=5$，接線は $px+qy=5$．これが $\\mathrm{A}$ を通るので $3p+q=5$．\n$q=5-3p$ を代入して $10p^2-30p+20=0$，$p=1,\\ 2$．接点は $(1,2),\\ (2,-1)$．\n接線は $x+2y=5$，$2x-y=5$．すなわち $\\boldsymbol{y=2x-5,\\ y=-\\dfrac{1}{2}x+\\dfrac{5}{2}}$．\n(2) 2つの接点はどちらも $3p+q=5$ を満たすので，求める直線は $3x+y=5$，すなわち $\\boldsymbol{y=- 3x+5}$．"
-   }
-  ],
-  "idea": {
-   "tex": "接点を文字でおき，接線の公式に外の点を代入する．2接点が同じ1次式を満たすことから接点を結ぶ直線が出る．"
-  },
-  "grading": {
-   "format": "lemma-input/1",
-   "spec": "(1) $y$：{2x-5, -x/2+5/2}\n(2) $y$：-3x+5"
-  },
-  "methods": [],
-  "tags": [
-   "接線",
-   "極線",
-   "円"
-  ],
-  "provenance": {
-   "created": "2026-10-30"
-  },
-  "quality": {
-   "status": "published",
-   "checks": {
-    "dual": false,
-    "sympy": true,
-    "human": false
-   },
-   "verified": false
-  }
- },
- {
-  "id": "II-GEO-206",
-  "schema": "lemma.problem/1",
-  "kind": "written",
-  "field": "II-09",
-  "level": 1,
-  "minutes": 12,
-  "theme": "円／円が直線から切り取る弦",
-  "unit": "円",
-  "topic": "円が直線から切り取る弦",
-  "statement": {
-   "tex": "円 $C:\\ x^2+y^2-4x-2y-4=0$ と直線 $\\ell:\\ x-y+1=0$ について，次の問いに答えよ．\n\\begin{enumerate}\n  \\item $C$ が $\\ell$ から切り取る弦の長さを求めよ．\n  \\item その弦の中点の座標を求めよ．\n\\end{enumerate}"
-  },
-  "answer": {
-   "tex": "(1) $2 \\sqrt{7}$　(2) $\\left(1,\\ 2\\right)$"
-  },
-  "solutions": [
-   {
-    "id": "main",
-    "kind": "main",
-    "tex": "$C$ は $(x-2)^2+(y-1)^2=9$ で，中心 $(2,1)$，半径 $3$．\n(1) 中心と $\\ell$ の距離は $\\dfrac{|2-1+1|}{\\sqrt2}=\\sqrt2$．三平方の定理より弦の長さは $2\\sqrt{9-2}=\\boldsymbol{2 \\sqrt{7}}$．\n(2) 弦の中点は中心から $\\ell$ に下ろした垂線の足．中心を通り $\\ell$ に垂直な直線 $y=-x+3$ と $\\ell$ の交点を求めて $\\boldsymbol{\\left(1,\\ 2\\right)}$．"
-   }
-  ],
-  "idea": {
-   "tex": "弦の長さは「中心と直線の距離」と半径で三平方の定理．弦の中点は中心からの垂線の足．"
-  },
-  "grading": {
-   "format": "lemma-input/1",
-   "spec": "(1) 2sqrt(7)\n(2) (1, 2)"
-  },
-  "methods": [],
-  "tags": [
-   "弦の長さ",
-   "点と直線の距離"
-  ],
-  "provenance": {
-   "created": "2026-10-30"
-  },
-  "quality": {
-   "status": "published",
-   "checks": {
-    "dual": false,
-    "sympy": true,
-    "human": false
-   },
-   "verified": false
-  }
- },
- {
-  "id": "II-GEO-207",
-  "schema": "lemma.problem/1",
-  "kind": "written",
-  "field": "II-09",
-  "level": 1,
-  "minutes": 14,
-  "theme": "円／2つの円の交点を通る直線・円",
-  "unit": "円",
-  "topic": "2つの円の交点を通る直線・円",
-  "statement": {
-   "tex": "2つの円 $x^2+y^2=10$，$x^2+y^2-2x-4y=0$ は2点で交わる．\n\\begin{enumerate}\n  \\item 2つの交点を通る直線の方程式を求めよ．\n  \\item 2つの交点を結ぶ線分の長さを求めよ．\n  \\item 2つの交点と点 $(2,\\ -1)$ を通る円の中心の座標と半径を求めよ．\n\\end{enumerate}"
-  },
-  "answer": {
-   "tex": "(1) $y=-\\dfrac{1}{2}x+\\dfrac{5}{2}$（$x+2y=5$）　(2) $2 \\sqrt{5}$　(3) 中心 $\\left(\\dfrac{1}{2},\\ 1\\right)$，半径 $\\dfrac{5}{2}$"
-  },
-  "solutions": [
-   {
-    "id": "main",
-    "kind": "main",
-    "tex": "(1) 2式を辺々引くと $2x+4y-10=0$，すなわち $x+2y=5$．2つの交点はこの直線上にあるので $\\boldsymbol{y=-\\dfrac{1}{2}x+\\dfrac{5}{2}}$．\n(2) $x=5-2y$ を $x^2+y^2=10$ に代入して $y^2-4y+3=0$，$y=1,\\ 3$．交点は $(3,1),\\ (-1,3)$ で，長さは $\\sqrt{16+4}=\\boldsymbol{2 \\sqrt{5}}$．\n(3) 求める円は $x^2+y^2-10+\\lambda(x+2y-5)=0$ と表せる．$(2,-1)$ を代入して $-5-5\\lambda=0$，$\\lambda=-1$．\n$x^2+y^2-x-2y-5=0$，すなわち $\\left(x-\\dfrac12\\right)^2+(y-1)^2=\\dfrac{25}{4}$．中心 $\\boldsymbol{\\left(\\dfrac{1}{2},\\ 1\\right)}$，半径 $\\boldsymbol{\\dfrac{5}{2}}$．"
-   }
-  ],
-  "idea": {
-   "tex": "2曲線 $f=0,\\ g=0$ の交点を通る図形は $f+\\lambda g=0$ と表せる．2円の差をとると交点を通る直線になる．"
-  },
-  "grading": {
-   "format": "lemma-input/1",
-   "spec": "(1) $y$：-x/2+5/2\n(2) 2sqrt(5)\n(3) 中心：(1/2, 1) ; 半径：5/2"
-  },
-  "methods": [],
-  "tags": [
-   "2円の交点",
-   "円束",
-   "共通弦"
-  ],
-  "provenance": {
-   "created": "2026-10-30"
-  },
-  "quality": {
-   "status": "published",
-   "checks": {
-    "dual": false,
-    "sympy": true,
-    "human": false
-   },
-   "verified": false
-  }
- },
- {
-  "id": "II-GEO-208",
-  "schema": "lemma.problem/1",
-  "kind": "written",
-  "field": "II-09",
-  "level": 1,
-  "minutes": 13,
-  "theme": "軌跡と領域／線形計画法",
-  "unit": "軌跡と領域",
-  "topic": "線形計画法",
-  "statement": {
-   "tex": "$x,\\ y$ が4つの不等式 $x\\geqq0,\\ y\\geqq0,\\ x+2y\\leqq8,\\ 3x+y\\leqq9$ を満たすとき，次の式の最大値と，そのときの $x,\\ y$ の値を求めよ．\n\\begin{enumerate}\n  \\item $2x+3y$\n  \\item $x+3y$\n\\end{enumerate}"
-  },
-  "answer": {
-   "tex": "(1) 最大値 $13$（$x=2,\\ y=3$）　(2) 最大値 $12$（$x=0,\\ y=4$）"
-  },
-  "solutions": [
-   {
-    "id": "main",
-    "kind": "main",
-    "tex": "領域は4点 $(0,0),\\ (3,0),\\ (2,3),\\ (0,4)$ を頂点とする四角形（$(2,3)$ は $x+2y=8$ と $3x+y=9$ の交点）．\n(1) $2x+3y=k$ は傾き $-\\dfrac23$ の直線．境界の傾き $-\\dfrac12$ と $-3$ の間にあるので，頂点 $(2,3)$ を通るとき $k$ が最大で，最大値 $\\boldsymbol{13}$（$\\boldsymbol{x=2,\\ y=3}$）．\n(2) $x+3y=k$ は傾き $-\\dfrac13$ の直線で，$x+2y=8$ の傾き $-\\dfrac12$ よりゆるやか．頂点 $(0,4)$ を通るとき最大で，最大値 $\\boldsymbol{12}$（$\\boldsymbol{x=0,\\ y=4}$）．"
-   }
-  ],
-  "idea": {
-   "tex": "目的の1次式を $=k$ とおき，その直線の傾きと境界線の傾きを比べて，最大を与える頂点を決める．"
-  },
-  "grading": {
-   "format": "lemma-input/1",
-   "spec": "(1) 最大値：13 ; $x$：2 ; $y$：3\n(2) 最大値：12 ; $x$：0 ; $y$：4"
-  },
-  "methods": [],
-  "tags": [
-   "線形計画法",
-   "領域",
-   "最大最小"
-  ],
-  "provenance": {
-   "created": "2026-10-30"
-  },
-  "quality": {
-   "status": "published",
-   "checks": {
-    "dual": false,
-    "sympy": true,
-    "human": false
-   },
-   "verified": false
-  }
- },
- {
-  "id": "II-GEO-209",
-  "schema": "lemma.problem/1",
-  "kind": "written",
-  "field": "II-09",
-  "level": 1,
-  "minutes": 13,
-  "theme": "軌跡と領域／円周上を動く点と式の最大・最小",
-  "unit": "軌跡と領域",
-  "topic": "円周上を動く点と式の最大・最小",
-  "statement": {
-   "tex": "点 $(x,\\ y)$ が円 $(x-2)^2+y^2=1$ 上を動くとき，次の問いに答えよ．\n\\begin{enumerate}\n  \\item $\\dfrac{y}{x}$ の最大値と最小値を求めよ．\n  \\item $x^2+y^2$ の最大値と最小値を求めよ．\n\\end{enumerate}"
-  },
-  "answer": {
-   "tex": "(1) 最大値 $\\dfrac{\\sqrt{3}}{3}$，最小値 $-\\dfrac{\\sqrt{3}}{3}$　(2) 最大値 $9$，最小値 $1$"
-  },
-  "solutions": [
-   {
-    "id": "main",
-    "kind": "main",
-    "tex": "(1) $\\dfrac yx=m$ とおくと，$m$ は原点と点 $(x,y)$ を結ぶ直線 $y=mx$ の傾き．この直線が円と共有点をもつ条件は\n中心 $(2,0)$ との距離 $\\dfrac{|2m|}{\\sqrt{m^2+1}}\\leqq1$．$4m^2\\leqq m^2+1$ より $-\\dfrac{1}{\\sqrt3}\\leqq m\\leqq\\dfrac{1}{\\sqrt3}$．\n最大値 $\\boldsymbol{\\dfrac{\\sqrt{3}}{3}}$，最小値 $\\boldsymbol{- \\dfrac{\\sqrt{3}}{3}}$（いずれも接するとき）．\n(2) $x^2+y^2$ は原点からの距離の2乗．原点と中心の距離は $2$ なので，距離は $2-1=1$ から $2+1=3$ まで動く．\n最大値 $\\boldsymbol{9}$，最小値 $\\boldsymbol{1}$．"
-   }
-  ],
-  "idea": {
-   "tex": "$\\dfrac yx$ は原点と結ぶ直線の傾き，$x^2+y^2$ は原点からの距離の2乗と図形的に読みかえる．"
-  },
-  "grading": {
-   "format": "lemma-input/1",
-   "spec": "(1) 最大値：sqrt(3)/3 ; 最小値：-sqrt(3)/3\n(2) 最大値：9 ; 最小値：1"
-  },
-  "methods": [],
-  "tags": [
-   "円",
-   "傾き",
-   "最大最小"
-  ],
-  "provenance": {
-   "created": "2026-10-30"
-  },
-  "quality": {
-   "status": "published",
-   "checks": {
-    "dual": false,
-    "sympy": true,
-    "human": false
-   },
-   "verified": false
-  }
- },
- {
-  "id": "II-GEO-210",
-  "schema": "lemma.problem/1",
-  "kind": "written",
-  "field": "II-09",
-  "level": 1,
-  "minutes": 12,
-  "theme": "軌跡と領域／円周上を動く点で決まる点の軌跡",
-  "unit": "軌跡と領域",
-  "topic": "円周上を動く点で決まる点の軌跡",
-  "statement": {
-   "tex": "点 $\\mathrm{Q}$ が円 $x^2+y^2=9$ 上を動くとき，点 $\\mathrm{A}(6,\\ 3)$ と $\\mathrm{Q}$ を結ぶ線分 $\\mathrm{AQ}$ を $1:2$ に内分する点 $\\mathrm{P}$ の軌跡は円である．その中心の座標と半径を求めよ．"
-  },
-  "answer": {
-   "tex": "中心 $\\left(4,\\ 2\\right)$，半径 $1$"
-  },
-  "solutions": [
-   {
-    "id": "main",
-    "kind": "main",
-    "tex": "$\\mathrm{Q}(s,t)$，$\\mathrm{P}(x,y)$ とすると $x=\\dfrac{2\\cdot6+s}{3}$，$y=\\dfrac{2\\cdot3+t}{3}$．\nよって $s=3x-12$，$t=3y-6$．これを $s^2+t^2=9$ に代入して $(3x-12)^2+(3y-6)^2=9$，すなわち $(x-4)^2+(y-2)^2=1$．\n逆にこの円上の任意の点はある $\\mathrm{Q}$ から得られる．軌跡は中心 $\\boldsymbol{\\left(4,\\ 2\\right)}$，半径 $\\boldsymbol{1}$ の円．"
-   }
-  ],
-  "idea": {
-   "tex": "動く点 $\\mathrm{Q}$ の座標を軌跡を求める点 $\\mathrm{P}$ の座標で表し，$\\mathrm{Q}$ の満たす式に代入する（つなぎの文字を消す）．"
-  },
-  "grading": {
-   "format": "lemma-input/1",
-   "spec": "中心：(4, 2) ; 半径：1"
-  },
-  "methods": [],
-  "tags": [
-   "軌跡",
-   "内分点"
-  ],
-  "provenance": {
-   "created": "2026-10-30"
-  },
-  "quality": {
-   "status": "published",
-   "checks": {
-    "dual": false,
-    "sympy": true,
-    "human": false
-   },
-   "verified": false
-  }
- },
- {
-  "id": "II-GEO-211",
-  "schema": "lemma.problem/1",
-  "kind": "written",
-  "field": "II-09",
-  "level": 1,
-  "minutes": 14,
-  "theme": "軌跡と領域／2直線の交点の軌跡",
-  "unit": "軌跡と領域",
-  "topic": "2直線の交点の軌跡",
-  "statement": {
-   "tex": "$m$ が実数全体を動くとき，2直線 $mx-y=0$，$x+my-2=0$ の交点 $\\mathrm{P}$ の軌跡を求めたい．\n\\begin{enumerate}\n  \\item 交点 $\\mathrm{P}$ の座標を $m$ で表せ．\n  \\item $\\mathrm{P}$ の軌跡は円から1点を除いたものである．円の中心の座標，半径，除かれる点の座標を求めよ．\n\\end{enumerate}"
-  },
-  "answer": {
-   "tex": "(1) $\\left(\\dfrac{2}{m^2+1},\\ \\dfrac{2m}{m^2+1}\\right)$　(2) 中心 $(1,\\ 0)$，半径 $1$，除かれる点 $(0,\\ 0)$"
-  },
-  "solutions": [
-   {
-    "id": "main",
-    "kind": "main",
-    "tex": "(1) $y=mx$ を $x+my=2$ に代入して $x(1+m^2)=2$．$\\boldsymbol{\\mathrm{P}\\left(\\dfrac{2}{m^2+1},\\ \\dfrac{2m}{m^2+1}\\right)}$．\n(2) 交点 $(x,y)$ は $mx-y=0$，$x+my-2=0$ を満たす．$x\\neq0$ なので（$x=0$ なら $y=0$ となり $x+my=2$ に反する）$m=\\dfrac yx$．\n代入して $x+\\dfrac{y^2}{x}-2=0$，すなわち $x^2+y^2-2x=0$，$(x-1)^2+y^2=1$．ただし $x\\neq0$ より点 $(0,0)$ は除く．\n逆に，この円上の $(0,0)$ 以外の点は $m=\\dfrac yx$ で得られる．よって中心 $\\boldsymbol{(1,\\ 0)}$，半径 $\\boldsymbol{1}$ の円から点 $\\boldsymbol{(0,\\ 0)}$ を除いたもの．"
-   }
-  ],
-  "idea": {
-   "tex": "媒介変数 $m$ を消去する．$m$ について解くとき，割る式が $0$ にならないかを確かめ，除外点を拾う．"
-  },
-  "grading": {
-   "format": "lemma-input/1",
-   "spec": "(1) (2/(m^2+1), 2m/(m^2+1))\n(2) 中心：(1, 0) ; 半径：1 ; 除かれる点：(0, 0)"
-  },
-  "methods": [],
-  "tags": [
-   "軌跡",
-   "媒介変数",
-   "除外点"
-  ],
-  "provenance": {
-   "created": "2026-10-30"
-  },
-  "quality": {
-   "status": "published",
-   "checks": {
-    "dual": false,
-    "sympy": true,
-    "human": false
-   },
-   "verified": false
-  }
- },
- {
-  "id": "II-GEO-212",
-  "schema": "lemma.problem/1",
-  "kind": "written",
-  "field": "II-09",
-  "level": 1,
-  "minutes": 12,
-  "theme": "円／2つの座標軸に接する円",
-  "unit": "円",
-  "topic": "2つの座標軸に接する円",
-  "statement": {
-   "tex": "点 $(1,\\ 2)$ を通り，$x$ 軸と $y$ 軸の両方に接する円は2つある．\n\\begin{enumerate}\n  \\item 2つの円の半径をそれぞれ求めよ．\n  \\item 2つの円の中心間の距離を求めよ．\n\\end{enumerate}"
-  },
-  "answer": {
-   "tex": "(1) $1,\\ 5$　(2) $4 \\sqrt{2}$"
-  },
-  "solutions": [
-   {
-    "id": "main",
-    "kind": "main",
-    "tex": "(1) 点 $(1,2)$ は第1象限にあるので，円の中心も第1象限にあり，半径を $a$ とすると中心は $(a,\\ a)$．\n$(1-a)^2+(2-a)^2=a^2$ より $a^2-6a+5=0$，$a=1,\\ 5$．半径は $\\boldsymbol{1,\\ 5}$．\n(2) 中心は $(1,1)$，$(5,5)$ なので距離は $\\sqrt{4^2+4^2}=\\boldsymbol{4 \\sqrt{2}}$．"
-   }
-  ],
-  "idea": {
-   "tex": "両軸に接する円は，中心が $(a,a)$ 型（象限に応じて符号）で半径 $|a|$．通る点の条件で $a$ を決める．"
-  },
-  "grading": {
-   "format": "lemma-input/1",
-   "spec": "(1) 半径：{1, 5}\n(2) 4sqrt(2)"
-  },
-  "technique_main": null,
-  "technique_support": [
-   "接線（接点を文字で置く）"
-  ],
-  "methods": [],
-  "tags": [
-   "円の方程式",
-   "接する"
-  ],
-  "provenance": {
-   "created": "2026-10-30"
-  },
-  "quality": {
-   "status": "published",
-   "checks": {
-    "dual": false,
-    "sympy": true,
-    "human": false
-   },
-   "verified": false
-  }
- },
- {
-  "id": "II-GEO-213",
-  "schema": "lemma.problem/1",
-  "kind": "written",
-  "field": "II-09",
-  "level": 1,
-  "minutes": 13,
-  "theme": "点と直線／対称点と折れ線の長さの最小",
-  "unit": "点と直線",
-  "topic": "対称点と折れ線の長さの最小",
-  "statement": {
-   "tex": "2点 $\\mathrm{A}(1,\\ 3)$，$\\mathrm{B}(4,\\ 5)$ と直線 $\\ell:\\ y=x$ がある．点 $\\mathrm{P}$ が $\\ell$ 上を動くとき，$\\mathrm{AP}+\\mathrm{PB}$ の最小値と，そのときの点 $\\mathrm{P}$ の座標を求めよ．"
-  },
-  "answer": {
-   "tex": "最小値 $\\sqrt{17}$，点 $\\mathrm{P}$ の座標 $\\left(\\dfrac{11}{3},\\ \\dfrac{11}{3}\\right)$"
-  },
-  "solutions": [
-   {
-    "id": "main",
-    "kind": "main",
-    "tex": "$\\mathrm{A}$，$\\mathrm{B}$ はともに $y>x$ の側にある．$\\ell$ に関して $\\mathrm{A}$ と対称な点は $\\mathrm{A}^\\prime(3,\\ 1)$．\n$\\mathrm{AP}=\\mathrm{A}^\\prime\\mathrm{P}$ なので $\\mathrm{AP}+\\mathrm{PB}=\\mathrm{A}^\\prime\\mathrm{P}+\\mathrm{PB}\\geqq\\mathrm{A}^\\prime\\mathrm{B}=\\sqrt{1^2+4^2}=\\sqrt{17}$．\n等号は $\\mathrm{P}$ が直線 $\\mathrm{A}^\\prime\\mathrm{B}:\\ y=4x-11$ と $\\ell$ の交点のとき．$x=4x-11$ より $x=\\dfrac{11}{3}$．\n最小値 $\\boldsymbol{\\sqrt{17}}$，$\\mathrm{P}\\boldsymbol{\\left(\\dfrac{11}{3},\\ \\dfrac{11}{3}\\right)}$．"
-   }
-  ],
-  "idea": {
-   "tex": "同じ側にある2点は，一方を直線に関して折り返すと，折れ線が一直線になるときが最短．"
-  },
-  "grading": {
-   "format": "lemma-input/1",
-   "spec": "最小値：sqrt(17) ; 点P：(11/3, 11/3)"
-  },
-  "methods": [],
-  "tags": [
-   "対称点",
-   "最短経路"
-  ],
-  "provenance": {
-   "created": "2026-10-30"
-  },
-  "quality": {
-   "status": "published",
-   "checks": {
-    "dual": false,
-    "sympy": true,
-    "human": false
-   },
-   "verified": false
-  }
- },
- {
-  "id": "II-GEO-214",
-  "schema": "lemma.problem/1",
-  "kind": "written",
-  "field": "II-09",
-  "level": 1,
-  "minutes": 11,
-  "theme": "円／2つの円が共有点をもつ条件",
-  "unit": "円",
-  "topic": "2つの円が共有点をもつ条件",
-  "statement": {
-   "tex": "円 $C_1:\\ x^2+y^2-6x-8y+16=0$ と円 $C_2:\\ x^2+y^2=r^2$（$r>0$）について，次の問いに答えよ．\n\\begin{enumerate}\n  \\item $C_1$ の中心の座標と半径を求めよ．\n  \\item $C_1$ と $C_2$ が共有点をもつような $r$ の値の範囲を求めよ．\n\\end{enumerate}"
-  },
-  "answer": {
-   "tex": "(1) 中心 $(3,\\ 4)$，半径 $3$　(2) $2\\leqq r\\leqq8$"
-  },
-  "solutions": [
-   {
-    "id": "main",
-    "kind": "main",
-    "tex": "(1) $(x-3)^2+(y-4)^2=9$ より中心 $\\boldsymbol{(3,\\ 4)}$，半径 $\\boldsymbol{3}$．\n(2) 中心間の距離は $5$．共有点をもつ条件は $|r-3|\\leqq5\\leqq r+3$．\n$5\\leqq r+3$ より $r\\geqq2$，$|r-3|\\leqq5$ より $-2\\leqq r\\leqq8$．よって $\\boldsymbol{2\\leqq r\\leqq8}$．"
-   }
-  ],
-  "idea": {
-   "tex": "2円が共有点をもつ $\\iff$ $|r_1-r_2|\\leqq d\\leqq r_1+r_2$（$d$ は中心間の距離）．"
-  },
-  "grading": {
-   "format": "lemma-input/1",
-   "spec": "(1) 中心：(3, 4) ; 半径：3\n(2) 2<=r<=8"
-  },
-  "methods": [],
-  "tags": [
-   "2円の位置関係"
-  ],
-  "provenance": {
-   "created": "2026-10-30"
-  },
-  "quality": {
-   "status": "published",
-   "checks": {
-    "dual": false,
-    "sympy": true,
-    "human": false
-   },
-   "verified": false
-  }
- },
- {
-  "id": "II-GEO-215",
-  "schema": "lemma.problem/1",
-  "kind": "written",
-  "field": "II-09",
-  "level": 1,
-  "minutes": 14,
-  "theme": "軌跡と領域／円と直線で囲まれた領域と最大・最小",
-  "unit": "軌跡と領域",
-  "topic": "円と直線で囲まれた領域と最大・最小",
-  "statement": {
-   "tex": "連立不等式 $x^2+y^2\\leqq4,\\ x+y\\geqq2$ の表す領域を $D$ とする．\n\\begin{enumerate}\n  \\item $D$ の面積を求めよ．\n  \\item 点 $(x,\\ y)$ が $D$ 内を動くとき，$x+2y$ の最大値と最小値を求めよ．\n\\end{enumerate}"
-  },
-  "answer": {
-   "tex": "(1) $\\pi-2$　(2) 最大値 $2 \\sqrt{5}$，最小値 $2$"
-  },
-  "solutions": [
-   {
-    "id": "main",
-    "kind": "main",
-    "tex": "(1) 直線 $x+y=2$ は円と $(2,0),\\ (0,2)$ で交わる．$D$ は中心角 $90^\\circ$ の扇形から直角三角形を除いた弓形で，\n面積は $\\dfrac14\\cdot\\pi\\cdot2^2-\\dfrac12\\cdot2\\cdot2=\\boldsymbol{\\pi-2}$．\n(2) $x+2y=k$ とおく（傾き $-\\dfrac12$ の直線）．$k$ が最大になるのは直線が弧に接するときで，$\\dfrac{|k|}{\\sqrt5}=2$ より $k=2\\sqrt5$．\n接点 $\\left(\\dfrac{2}{\\sqrt5},\\ \\dfrac{4}{\\sqrt5}\\right)$ は $x+y=\\dfrac{6}{\\sqrt5}\\geqq2$ を満たし $D$ の弧上にある．最大値 $\\boldsymbol{2 \\sqrt{5}}$．\n$k$ が最小になるのは端点 $(2,0)$ を通るときで，最小値 $\\boldsymbol{2}$（弦 $x+y=2$ 上では $x+2y=2+y\\geqq2$）．"
-   }
-  ],
-  "idea": {
-   "tex": "境界が円弧のときは「接するとき」，直線部分や端点では「頂点を通るとき」の両方を候補にする．"
-  },
-  "grading": {
-   "format": "lemma-input/1",
-   "spec": "(1) π-2\n(2) 最大値：2sqrt(5) ; 最小値：2"
-  },
-  "methods": [],
-  "tags": [
-   "領域",
-   "最大最小",
-   "円と直線"
-  ],
-  "provenance": {
-   "created": "2026-10-30"
-  },
-  "quality": {
-   "status": "published",
-   "checks": {
-    "dual": false,
-    "sympy": true,
-    "human": false
-   },
-   "verified": false
-  }
- },
- {
-  "id": "II-GEO-216",
-  "schema": "lemma.problem/1",
-  "kind": "written",
-  "field": "II-09",
-  "level": 1,
-  "minutes": 13,
-  "theme": "点と直線／三角形の垂心と外心",
-  "unit": "点と直線",
-  "topic": "三角形の垂心と外心",
-  "statement": {
-   "tex": "3点 $\\mathrm{A}(0,\\ 3)$，$\\mathrm{B}(-1,\\ 0)$，$\\mathrm{C}(3,\\ 0)$ を頂点とする $\\triangle\\mathrm{ABC}$ について，次の問いに答えよ．\n\\begin{enumerate}\n  \\item $\\triangle\\mathrm{ABC}$ の垂心 $\\mathrm{H}$ の座標を求めよ．\n  \\item $\\triangle\\mathrm{ABC}$ の外心 $\\mathrm{O}^\\prime$ の座標と外接円の半径を求めよ．\n\\end{enumerate}"
-  },
-  "answer": {
-   "tex": "(1) $\\left(0,\\ 1\\right)$　(2) 外心 $\\left(1,\\ 1\\right)$，半径 $\\sqrt{5}$"
-  },
-  "solutions": [
-   {
-    "id": "main",
-    "kind": "main",
-    "tex": "(1) $\\mathrm{A}$ から $\\mathrm{BC}$（$x$ 軸）への垂線は $x=0$．$\\mathrm{AC}$ の傾きは $-1$ なので，$\\mathrm{B}$ から $\\mathrm{AC}$ への垂線は傾き $1$ で $y=x+1$．\n2本の垂線の交点が垂心で，$\\mathrm{H}\\boldsymbol{\\left(0,\\ 1\\right)}$．\n(2) $\\mathrm{BC}$ の垂直二等分線は $x=1$．外心 $(1,\\ q)$ について $\\mathrm{O^\\prime A}^2=\\mathrm{O^\\prime B}^2$ より $1+(q-3)^2=4+q^2$，$q=1$．\n外心 $\\boldsymbol{\\left(1,\\ 1\\right)}$，半径 $\\sqrt{(1+1)^2+1^2}=\\boldsymbol{\\sqrt{5}}$．\n（検算：重心 $\\left(\\dfrac23,\\ 1\\right)$ とともに $\\mathrm{H}$，$\\mathrm{O}^\\prime$ は直線 $y=1$ 上にあり，$\\overrightarrow{\\mathrm{O^\\prime H}}=3\\overrightarrow{\\mathrm{O^\\prime G}}$ が成り立つ．）"
-   }
-  ],
-  "idea": {
-   "tex": "垂心は2本の垂線の交点，外心は2本の垂直二等分線の交点．座標軸に平行な辺を利用すると計算が軽い．"
-  },
-  "grading": {
-   "format": "lemma-input/1",
-   "spec": "(1) (0, 1)\n(2) 外心：(1, 1) ; 半径：sqrt(5)"
-  },
-  "methods": [],
-  "tags": [
-   "垂心",
-   "外心",
-   "垂直"
-  ],
-  "provenance": {
-   "created": "2026-10-30"
-  },
-  "quality": {
-   "status": "published",
-   "checks": {
-    "dual": false,
-    "sympy": true,
-    "human": false
-   },
-   "verified": false
-  }
- },
- {
   "id": "II-GEO-217",
   "schema": "lemma.problem/1",
   "kind": "written",
@@ -11030,335 +9576,6 @@
   }
  },
  {
-  "id": "II-GEO-243",
-  "schema": "lemma.problem/1",
-  "kind": "written",
-  "field": "II-09",
-  "level": 4,
-  "minutes": 35,
-  "theme": "共通接線が集まる相似の中心と3つの放物線",
-  "topic": "共通接線が集まる相似の中心と3つの放物線",
-  "statement": {
-   "tex": "$a,\\ b,\\ c$ を定数とし，$a\\neq0,\\ 1$ とする．放物線 $C:\\ y=x^2$ と $C':\\ y=ax^2+bx+c$ を考える．点 R$(p,\\ q)$ と $0$ でない実数 $k$ に対し，座標平面上の点 $(x,\\ y)$ を点 $\\bigl(p+k(x-p),\\ q+k(y-q)\\bigr)$ に移す移動を $H$ とする．なお，放物線の接線とは放物線上の点における接線のことであり，$y$ 軸に平行な直線は接線とはしない．\n\\begin{enumerate}\n  \\item $H$ によって $C$ 上の点全体がちょうど $C'$ 上の点全体に移るような $(p,\\ q,\\ k)$ がただ1組存在することを示し，$p,\\ q,\\ k$ を $a,\\ b,\\ c$ で表せ．\n  \\item $C$ と $C'$ の共通接線はすべて (1) の点 R を通ることを示せ．さらに，共通接線の本数を $a,\\ b,\\ c$ の条件によって分類せよ．\n  \\item $d$ を定数とする．3つの放物線 $y=x^2$，$y=2x^2-1$，$y=-x^2+6x+d$ のすべてに接する直線が存在するような $d$ の値と，そのときの直線の方程式を求めよ．\n\\end{enumerate}"
-  },
-  "answer": {
-   "tex": "(1) $k=\\dfrac1a$，$p=\\dfrac{b}{2(1-a)}$，$q=\\dfrac{4ac-b^2}{4(a-1)}$　(2) 証明；$a(b^2+4c(1-a))>0$ のとき2本，$=0$ のとき1本，$<0$ のとき0本　(3) $d=-13+6\\sqrt2$ のとき $y=2\\sqrt2\\,x-2$，$d=-13-6\\sqrt2$ のとき $y=-2\\sqrt2\\,x-2$"
-  },
-  "solutions": [
-   {
-    "id": "main",
-    "kind": "main",
-    "tex": "\\textbf{準備．} $\\alpha\\neq0$ とし，放物線 $P:\\ y=\\alpha x^2+\\beta x+\\gamma$ と $y$ 軸に平行でない直線 $\\ell:\\ y=mx+n$ を考える．共有点の $x$ 座標は $\\alpha x^2+(\\beta-m)x+\\gamma-n=0$ の実数解である．$\\ell$ が $P$ の $x=s$ における接線であることは，$m=2\\alpha s+\\beta$，$n=-\\alpha s^2+\\gamma$ と同値であり，これは $\\alpha x^2+(\\beta-m)x+\\gamma-n=\\alpha(x-s)^2$ と同値である．したがって\n\\begin{itemize}\n  \\item[(i)] $\\ell$ が $P$ に接する $\\iff$ 上の2次方程式が重解をもつ $\\iff$ $\\ell$ と $P$ の共有点がちょうど1個．\n  \\item[(ii)] 傾き $m$ の $P$ の接線は，接点が $s=\\dfrac{m-\\beta}{2\\alpha}$ に限られるので，ちょうど1本である．\n\\end{itemize}\n\n(1) $H$ は $(x,y)\\mapsto(X,Y)=\\bigl(p+k(x-p),\\ q+k(y-q)\\bigr)$ であり，逆に $x=p+\\dfrac{X-p}{k}$，$y=q+\\dfrac{Y-q}{k}$ と戻せるので，平面全体から平面全体への1対1の対応である．よって $C$ の像は\n\\[\nq+\\frac{Y-q}{k}=\\left(p+\\frac{X-p}{k}\\right)^2\n\\iff Y=\\frac1kX^2+\\frac{2p(k-1)}{k}X+\\frac{p^2(k-1)^2}{k}+q(1-k)\n\\]\nをみたす点 $(X,Y)$ 全体である．これも $C'$ も実数全体で定義された関数のグラフなので，両者が一致することは，2つの関数が一致すること，すなわち係数がすべて等しいことと同値である：\n\\[\n\\frac1k=a,\\qquad \\frac{2p(k-1)}{k}=b,\\qquad \\frac{p^2(k-1)^2}{k}+q(1-k)=c.\n\\]\n第1式より $k=\\dfrac1a$．このとき $\\dfrac{k-1}{k}=1-a\\neq0$ なので，第2式より $p=\\dfrac{b}{2(1-a)}$．さらに $\\dfrac{(k-1)^2}{k}=\\dfrac{(1-a)^2}{a}$，$1-k=\\dfrac{a-1}{a}$ だから第3式は $p^2(1-a)^2+q(a-1)=ac$ となり，$p^2(1-a)^2=\\dfrac{b^2}4$ より $q=\\dfrac{4ac-b^2}{4(a-1)}$．以上で $(p,q,k)$ はただ1組に定まり，逆にこの値で3式が成り立つ．\n\\[\n\\boldsymbol{k=\\frac1a,\\quad p=\\frac{b}{2(1-a)},\\quad q=\\frac{4ac-b^2}{4(a-1)}}\n\\]\n\n(2) 以下 $H$ は (1) のものとする．直線 $\\ell:\\ y=mx+n$ 上の点 $(x,\\ mx+n)$ の像 $(X,Y)$ は\n\\[\nY-mX=q+k(mx+n-q)-m\\bigl(p+k(x-p)\\bigr)=q-mp+k(n-q+mp)\n\\]\nをみたし，$x$ が実数全体を動くと $X$ も実数全体を動く．よって $H(\\ell)$ は直線 $y=mx+n'$，$n'=q-mp+k(n-q+mp)$ であり，\n\\[\nn'-n=(k-1)(n-q+mp)\n\\]\nとなる．$k=\\frac1a\\neq1$ なので，$H(\\ell)=\\ell\\iff n=q-mp\\iff$ R が $\\ell$ 上にある．また $H$ は1対1で $C$ を $C'$ に移すから，$\\ell$ と $C$ の共有点の個数は $H(\\ell)$ と $C'$ の共有点の個数に等しい．\n\n$\\ell$ を共通接線とし，傾きを $m$ とする．$\\ell$ と $C$ の共有点は1個なので，$H(\\ell)$ と $C'$ の共有点も1個であり，(i) より $H(\\ell)$ は傾き $m$ の $C'$ の接線である．$\\ell$ も傾き $m$ の $C'$ の接線なので，(ii) より $H(\\ell)=\\ell$．よって $\\ell$ は R を通る．\n\n逆に，R を通る $C$ の接線 $\\ell$ は $H(\\ell)=\\ell$ をみたし，上と同様に $H(\\ell)$ は $C'$ に接するので，共通接線である．したがって，\\textbf{共通接線とは R を通る $C$ の接線のことである．}\n\n$C$ の $x=t$ における接線 $y=2tx-t^2$ が R を通る条件は $t^2-2pt+q=0$ であり，$t$ が異なれば傾き $2t$ も異なる．よって本数はこの2次方程式の異なる実数解の個数で，判別式の符号は $p^2-q$ の符号で決まる．\n\\[\np^2-q=\\frac{b^2}{4(1-a)^2}+\\frac{(4ac-b^2)(1-a)}{4(1-a)^2}=\\frac{a\\bigl(b^2+4c(1-a)\\bigr)}{4(1-a)^2}.\n\\]\nよって共通接線は\n\\[\n\\boldsymbol{a\\bigl(b^2+4c(1-a)\\bigr)>0\\ \\text{のとき2本},\\quad =0\\ \\text{のとき1本},\\quad <0\\ \\text{のとき0本}}.\n\\]\n\n(3) $C_1:\\ y=2x^2-1$ は $(a,b,c)=(2,0,-1)$ なので，(1) の点は R$_1(0,\\ -2)$．$C_2:\\ y=-x^2+6x+d$ は $(a,b,c)=(-1,6,d)$ なので，R$_2\\left(\\dfrac32,\\ \\dfrac{-4d-36}{-8}\\right)=\\left(\\dfrac32,\\ \\dfrac{d+9}2\\right)$．\n\n3つすべてに接する直線 $\\ell$ は，$C$ と $C_1$ の共通接線なので R$_1$ を通り，$C$ と $C_2$ の共通接線なので R$_2$ を通る．R$_1\\neq$ R$_2$ だから $\\ell$ は直線 R$_1$R$_2$：\n\\[\ny=mx-2,\\qquad m=\\frac{\\frac{d+9}2+2}{\\frac32}=\\frac{d+13}{3}.\n\\]\nこれが $C$ に接する条件は $x^2-mx+2=0$ が重解をもつこと，すなわち $m^2=8$，$m=\\pm2\\sqrt2$．よって $d=3m-13=-13\\pm6\\sqrt2$．\n\n逆に，このとき $\\ell:\\ y=mx-2$ は $C$ に接し，R$_1$，R$_2$ を通るので，(2) より $C_1$，$C_2$ にも接する．\n\\[\n\\boldsymbol{d=-13+6\\sqrt2\\ \\text{のとき}\\ y=2\\sqrt2\\,x-2,\\qquad d=-13-6\\sqrt2\\ \\text{のとき}\\ y=-2\\sqrt2\\,x-2}\n\\]\n\\hfill$\\square$"
-   }
-  ],
-  "idea": {
-   "tex": "$y$ 軸方向に軸をもつ2つの放物線の共通接線は，接点の $x$ 座標についての2次方程式の実数解の個数で数えられ，その本数は「2つの放物線の位置関係（交わるか，共有点をもたないか）と凸の向き」で決まる．捻りでは，$y=ax^2+bx+c$ が $y=x^2$ のある点を中心とする相似比 $\\frac1a$ の拡大・縮小の像であることに注目する．各傾きの接線はただ1本なので，共通接線はこの移動で自分自身に移り，相似の中心を通る．共通接線の問題は「1点から $y=x^2$ に引く接線」の問題になる．"
-  },
-  "grading": {
-   "format": "lemma-input/1",
-   "spec": "(1) $k$：1/a ; $p$：b/(2(1-a)) ; $q$：(4ac-b^2)/(4(a-1))\n(2) 記述\n(3) 記述"
-  },
-  "methods": [],
-  "tags": [
-   "共通接線",
-   "相似の中心",
-   "重解条件",
-   "放物線の接線の一意性"
-  ],
-  "provenance": {
-   "created": "2026-11-10"
-  },
-  "quality": {
-   "status": "published",
-   "checks": {
-    "dual": false,
-    "sympy": true,
-    "human": false
-   },
-   "verified": false
-  }
- },
- {
-  "id": "II-GEO-244",
-  "schema": "lemma.problem/1",
-  "kind": "written",
-  "field": "II-09",
-  "level": 5,
-  "minutes": 35,
-  "theme": "最大値で書かれた領域と原点を通る直線",
-  "topic": "最大値で書かれた領域と原点を通る直線",
-  "statement": {
-   "tex": "座標平面上の領域 $E$ を\n\\[\n2x^2+y^2-11x-3y+14+\\left|\\,y^2-x-y-4\\,\\right|\\leqq 0\n\\]\nで定める．実数 $s$ に対し，原点を通る傾き $s$ の直線を $\\ell$ とする．\n\\begin{enumerate}\n  \\item $E$ は，ある円の周および内部と，ある放物線およびその上側の部分との共通部分であることを示し，その円と放物線の方程式を求めよ．\n  \\item $\\ell$ と $E$ が共有点をもつような $s$ の値の範囲を求めよ．\n  \\item $\\ell$ と $E$ の共有点がただ1つであるような $s$ の値をすべて求め，それぞれの場合の共有点の座標を求めよ．\n\\end{enumerate}"
-  },
-  "answer": {
-   "tex": "(1) 円 $(x-3)^2+(y-1)^2=5$，放物線 $y=x^2-5x+9$（$E$ は $(x-3)^2+(y-1)^2\\leqq5$ かつ $y\\geqq x^2-5x+9$）　(2) $1\\leqq s\\leqq\\dfrac32$　(3) $s=1$ のとき $(3,\\,3)$，$s=\\dfrac32$ のとき $(2,\\,3)$"
-  },
-  "solutions": [
-   {
-    "id": "main",
-    "kind": "main",
-    "tex": "\\textbf{(1)}　$P=x^2+y^2-6x-2y+5$，$Q=x^2-5x-y+9$ とおくと\n\\[\nP+Q=2x^2+y^2-11x-3y+14,\\qquad P-Q=y^2-x-y-4 .\n\\]\n実数 $u,v$ に対して，$u\\geqq v$ のとき $(u+v)+|u-v|=2u$，$u<v$ のとき $(u+v)+|u-v|=2v$ であり，いずれの場合も $u,v$ のうち小さくない方の $2$ 倍である．よって $E$ の不等式は「$P,Q$ のうち小さくない方が $0$ 以下」，すなわち「$P\\leqq0$ かつ $Q\\leqq0$」と同値である．\n$P\\leqq0\\iff(x-3)^2+(y-1)^2\\leqq5$，$Q\\leqq0\\iff y\\geqq x^2-5x+9$ なので，$E$ は\n円 $\\boldsymbol{(x-3)^2+(y-1)^2=5}$ の周および内部と，放物線 $\\boldsymbol{y=x^2-5x+9}$ およびその上側との共通部分である．\n\n\\medskip\n\\textbf{(2)}　$E$ の点は $(x-3)^2\\leqq5$ をみたすので $x\\geqq3-\\sqrt5>0$．よって，$\\ell$ と $E$ が共有点をもつことは，ある $x>0$ について点 $(x,sx)$ が $E$ に属することと同値である．$x>0$ のとき\n\\begin{itemize}\n  \\item[(i)] $Q\\leqq0$：$sx\\geqq x^2-5x+9$，すなわち $s\\geqq g(x)$，ただし $g(x)=x-5+\\dfrac9x$．\n  \\item[(ii)] $P\\leqq0$：$x^2+s^2x^2-6x-2sx+5\\leqq0$，すなわち $(sx-1)^2\\leqq h(x)$，ただし $h(x)=-x^2+6x-4$．\n\\end{itemize}\n\n\\emph{下限}．$x>0$ で $g(x)-1=\\dfrac{x^2-6x+9}{x}=\\dfrac{(x-3)^2}{x}\\geqq0$ なので，(i) から $s\\geqq1$．\n\n\\emph{共有点の $x$ 座標の範囲}．$(x,sx)\\in E$（$x>0$）とする．(i) より $sx-1\\geqq x^2-5x+8=\\left(x-\\frac52\\right)^2+\\frac74>0$．これと (ii) から\n$(x^2-5x+8)^2\\leqq(sx-1)^2\\leqq h(x)$，すなわち\n\\[\nq(x)=(x^2-5x+8)^2+x^2-6x+4=x^4-10x^3+42x^2-86x+68=(x-2)\\,r(x)\\leqq0,\n\\]\nただし $r(x)=x^3-8x^2+26x-34$．$r'(x)=3x^2-16x+26=3\\left(x-\\frac83\\right)^2+\\frac{14}3>0$ より $r$ は増加し，$r(3)=-1<0$，$r(4)=6>0$ であるから，$r(\\gamma)=0$ となる実数 $\\gamma$ がただ1つあって $3<\\gamma<4$，$x<\\gamma$ で $r(x)<0$，$x>\\gamma$ で $r(x)>0$．よって $q(x)\\leqq0\\iff2\\leqq x\\leqq\\gamma$．したがって共有点の $x$ 座標は $2\\leqq x\\leqq\\gamma$ をみたす．\n\n\\emph{上限}．$(x,sx)\\in E$ かつ $s>\\frac32$ と仮定する．$x\\geqq2$ より $sx-1>\\frac32x-1\\geqq2>0$ なので，(ii) から\n$h(x)\\geqq(sx-1)^2>\\left(\\frac{3x-2}2\\right)^2$．よって\n$4h(x)-(3x-2)^2=-13x^2+36x-20=-(x-2)(13x-10)>0$，すなわち $\\frac{10}{13}<x<2$ となり $x\\geqq2$ に矛盾する．ゆえに $s\\leqq\\frac32$．\n\n\\emph{十分性}．$1\\leqq s\\leqq\\frac32$ とし，$f(x)=x^2-(5+s)x+9$ とおく．判別式は $(5+s)^2-36=(s-1)(s+11)\\geqq0$ で，2解（重解を含む）は正で積が $9$ だから，小さい方の解 $x_0$ は $x_0\\leqq3$．また $f(2)=3-2s\\geqq0$ かつ軸 $\\frac{5+s}2>2$ より $x_0\\geqq2$．\n点 $(x_0,sx_0)$ について，$f(x_0)=0$ から $sx_0=x_0^2-5x_0+9$ で (i) は成り立つ．さらに $sx_0-1=x_0^2-5x_0+8$ かつ $2\\leqq x_0\\leqq3<\\gamma$ より $q(x_0)\\leqq0$，すなわち $(sx_0-1)^2\\leqq h(x_0)$ で (ii) も成り立つ．よって $(x_0,sx_0)\\in E$．\n\n以上より，求める範囲は $\\boldsymbol{1\\leqq s\\leqq\\dfrac32}$．\n\n\\medskip\n\\textbf{(3)}　$\\ell$ 上の点は $x$ 座標で区別されるので，$T(s)=\\{x>0\\mid (x,sx)\\in E\\}$ の要素の個数が共有点の個数である．(2) より $s<1$ または $s>\\frac32$ では $T(s)$ は空．\n\n\\emph{$s=1$}：(i) は $(x-3)^2\\leqq0$ で $x=3$ のみ．このとき $(sx-1)^2=4\\leqq h(3)=5$ で (ii) も成り立つ．共有点はただ1つで $(3,3)$．\n\n\\emph{$s=\\frac32$}：(i) は $2x^2-13x+18=(x-2)(2x-9)\\leqq0$ より $2\\leqq x\\leqq\\frac92$．(ii) は $13x^2-36x+20=(x-2)(13x-10)\\leqq0$ より $\\frac{10}{13}\\leqq x\\leqq2$．共通部分は $x=2$ のみで，共有点はただ1つ $(2,3)$．\n\n\\emph{$1<s<\\frac32$}：$f(x)=x^2-(5+s)x+9$ の判別式 $(s-1)(s+11)>0$ で2解は相異なり，積 $9$ より小さい解 $x_0$ は $x_0<3$，大きい解は $\\frac9{x_0}>3$．また $f(2)=3-2s>0$ と軸 $>2$ より $x_0>2$．(i) は $x_0\\leqq x\\leqq\\frac9{x_0}$ で成り立つ．\n次に $\\varphi(x)=h(x)-(sx-1)^2=-(1+s^2)x^2+(6+2s)x-5$ とおく．$2<x_0<3<\\gamma$ より $q(x_0)=(x_0-2)r(x_0)<0$ なので\n$\\varphi(x_0)=h(x_0)-(x_0^2-5x_0+8)^2=-q(x_0)>0$．$\\varphi$ は上に凸の2次関数だから，$\\varphi(x)=0$ は2つの実数解 $\\alpha<\\beta$ をもち $\\alpha<x_0<\\beta$，(ii) は $\\alpha\\leqq x\\leqq\\beta$ で成り立つ．\n$\\beta$ と $\\frac9{x_0}$ のうち大きくない方を $x_1$ とすると $x_0<x_1$ であり，$x_0\\leqq x\\leqq x_1$ をみたすすべての $x$ が $T(s)$ に属するから，共有点は無数にある．\n\n以上より，$\\boldsymbol{s=1}$ のとき共有点 $\\boldsymbol{(3,3)}$，$\\boldsymbol{s=\\dfrac32}$ のとき共有点 $\\boldsymbol{(2,3)}$．\\hfill$\\square$\n\n\\medskip\n\\noindent\\textbf{注}　円だけに届く傾きの範囲は $-\\frac12\\leqq s\\leqq2$（接点 $(2,-1)$，$(1,2)$），放物線の上側に届く傾きの範囲は $s\\leqq-11$ または $s\\geqq1$ であり，その共通部分 $1\\leqq s\\leqq2$ は正しい答えではない．円の接点 $(1,2)$ は放物線の下側にあるため $E$ に属さず，上端は円と放物線の交点 $(2,3)$ で決まる．"
-   }
-  ],
-  "idea": {
-   "tex": "$(P+Q)+|P-Q|$ が $P,Q$ のうち小さくない方の $2$ 倍（$(P+Q)-|P-Q|$ は大きくない方の $2$ 倍）であることにより，絶対値を含む1本の不等式が2つの領域の共通部分（和集合）を表すことを見抜く．共通部分に原点を通る直線が届く傾きの範囲は，それぞれの領域に届く範囲の共通部分ではない．$x$ を固定して傾き $s$ の条件に直し，端は「角」（境界どうしの交点）で決まることがある．"
-  },
-  "grading": {
-   "format": "lemma-input/1",
-   "spec": "(1) 記述\n(2) 1<=s<=3/2\n(3) 記述"
-  },
-  "methods": [],
-  "tags": [
-   "絶対値と最大値",
-   "領域の共通部分",
-   "直線の通過範囲",
-   "2次不等式"
-  ],
-  "provenance": {
-   "created": "2026-11-10"
-  },
-  "quality": {
-   "status": "published",
-   "checks": {
-    "dual": false,
-    "sympy": true,
-    "human": false
-   },
-   "verified": false
-  }
- },
- {
-  "id": "II-GEO-245",
-  "schema": "lemma.problem/1",
-  "kind": "written",
-  "field": "II-09",
-  "level": 5,
-  "minutes": 35,
-  "theme": "直線の道から見た2本の塔の先端",
-  "topic": "直線の道から見た2本の塔の先端",
-  "statement": {
-   "tex": "座標平面を水平な地面とみなし，A$(0,1)$，A$'(0,-1)$ とする．点 Q$(p,q)$ は $p\\neq0$ をみたす定点とし，点 P は $x$ 軸上を動くものとする．\n\\begin{enumerate}\n  \\item $\\lambda$ を正の数とする．$\\mathrm{PQ}=\\lambda\\,\\mathrm{PA}$ となる点 P が $x$ 軸上に存在するための必要十分条件は\n  \\[\\lambda^4-(1+p^2+q^2)\\lambda^2+q^2\\leqq0\\]\n  であることを示せ．\n  \\item $\\dfrac{\\mathrm{PQ}}{\\mathrm{PA}}$ の最大値と最小値を，QA と QA$'$ を用いて表せ．\n  \\item A に高さ $h$，Q に高さ $g$ の塔が地面に垂直に立っていて，$h=2g$ である．$x$ 軸上の点 P から2つの塔の先端を見上げる角度が等しくなるような P がちょうど2つ存在するための $p,q$ の条件を求めよ．また，Q が直線 $y=2$ 上にあるとき，この条件をみたす $p$ の範囲を求めよ．\n\\end{enumerate}"
-  },
-  "answer": {
-   "tex": "(1) 証明　(2) 最大値 $\\dfrac{\\mathrm{QA}+\\mathrm{QA'}}2$，最小値 $\\dfrac{|\\mathrm{QA}-\\mathrm{QA'}|}2$　(3) $12q^2-4p^2<3$（$p\\neq0$）；$q=2$ のとき $|p|>\\dfrac{3\\sqrt5}2$"
-  },
-  "solutions": [
-   {
-    "id": "main",
-    "kind": "main",
-    "tex": "(1) P$(s,0)$ とすると $\\mathrm{PQ}^2=(s-p)^2+q^2$，$\\mathrm{PA}^2=s^2+1$．PQ，PA は正または $0$ なので，$\\mathrm{PQ}=\\lambda\\,\\mathrm{PA}\\iff\\mathrm{PQ}^2=\\lambda^2\\mathrm{PA}^2$，すなわち\n\\[(1-\\lambda^2)s^2-2ps+p^2+q^2-\\lambda^2=0\\qquad\\cdots(*)\\]\n$F(u)=u^2-(1+p^2+q^2)u+q^2$ とおく．\n\n$\\lambda\\neq1$ のとき，$(*)$ は $s$ の2次方程式で，実数解をもつ条件は\n\\[\\frac{(\\text{判別式})}4=p^2-(1-\\lambda^2)(p^2+q^2-\\lambda^2)=-\\lambda^4+(1+p^2+q^2)\\lambda^2-q^2=-F(\\lambda^2)\\geqq0.\\]\n$\\lambda=1$ のとき，$(*)$ は $-2ps+p^2+q^2-1=0$ で，$p\\neq0$ より実数解 $s$ がある．一方 $F(1)=-p^2<0$ で条件 $F(\\lambda^2)\\leqq0$ も成り立つ．\n\nよって，どの $\\lambda>0$ についても，求める条件は $F(\\lambda^2)\\leqq0$，すなわち $\\lambda^4-(1+p^2+q^2)\\lambda^2+q^2\\leqq0$ である．\\hfill$\\square$\n\n(2) $F(1)=-p^2<0$ より $F(u)=0$ は異なる2実数解 $u_1<1<u_2$ をもち，$F(0)=q^2\\geqq0$ より $u_1\\geqq0$．\nP が $x$ 軸上を動くときの $\\dfrac{\\mathrm{PQ}}{\\mathrm{PA}}$ の値の集合を $E$ とする．(1) より，正の数 $\\lambda$ が $E$ に属する $\\iff u_1\\leqq\\lambda^2\\leqq u_2$．また $0\\in E\\iff$ P$=$Q となる P がある $\\iff q=0\\iff u_1=0$（$F(0)=q^2$ と $u_1u_2=q^2$，$u_2>0$ による）．よって $E=\\left[\\sqrt{u_1},\\sqrt{u_2}\\right]$ で，最大値 $\\sqrt{u_2}$，最小値 $\\sqrt{u_1}$．\n\n$a=\\mathrm{QA}$，$a'=\\mathrm{QA'}$ とすると $a^2=p^2+(q-1)^2$，$a'^2=p^2+(q+1)^2$ だから\n\\[u_1+u_2=1+p^2+q^2=\\frac{a^2+a'^2}2,\\qquad u_1u_2=q^2=\\left(\\frac{a'^2-a^2}4\\right)^2.\\]\n一方 $M=\\dfrac{a+a'}2$，$m=\\dfrac{|a-a'|}2$ とおくと $M^2+m^2=\\dfrac{a^2+a'^2}2$，$M^2m^2=\\left(\\dfrac{a^2-a'^2}4\\right)^2$．よって $M^2,m^2$ は $F(u)=0$ の2解で，$M\\geqq m$ だから $M^2=u_2$，$m^2=u_1$（$M^2\\neq m^2$ は $u_1\\neq u_2$ からわかる）．したがって\n\\[\\text{最大値 }\\boldsymbol{\\frac{\\mathrm{QA}+\\mathrm{QA'}}2},\\qquad\\text{最小値 }\\boldsymbol{\\frac{|\\mathrm{QA}-\\mathrm{QA'}|}2}.\\]\n\n(3) P から A の塔の先端，Q の塔の先端を見上げる角度を $\\varphi,\\psi$ とする．P$\\neq$Q のとき $0<\\varphi,\\psi<\\dfrac\\pi2$ で $\\tan\\varphi=\\dfrac h{\\mathrm{PA}}$，$\\tan\\psi=\\dfrac g{\\mathrm{PQ}}$ だから，$\\varphi=\\psi\\iff\\mathrm{PQ}=\\dfrac gh\\mathrm{PA}=\\dfrac12\\mathrm{PA}$．P$=$Q のときは $\\psi=\\dfrac\\pi2\\neq\\varphi$ であり，$\\mathrm{PQ}=\\dfrac12\\mathrm{PA}>0$ からも P$\\neq$Q．よって求める P の個数は，$\\lambda=\\dfrac12$ のときの $(*)$\n\\[\\frac34s^2-2ps+p^2+q^2-\\frac14=0\\]\nの実数解の個数に等しい．これが異なる2実数解をもつ条件は，(1) の計算から $-F\\left(\\dfrac14\\right)>0$，すなわち\n\\[\\frac1{16}-\\frac{1+p^2+q^2}4+q^2<0\\iff\\boldsymbol{12q^2-4p^2<3}\\quad(p\\neq0).\\]\n$q=2$ のとき $48-4p^2<3$，$p^2>\\dfrac{45}4$ で $\\boldsymbol{|p|>\\dfrac{3\\sqrt5}2}$．\n\n（注）境界 $12q^2-4p^2=3$ は (2) の最小値が $\\dfrac12$ となる点，すなわち $|\\mathrm{QA}-\\mathrm{QA'}|=1$ をみたす，A，A$'$ を焦点とする双曲線である．"
-   }
-  ],
-  "idea": {
-   "tex": "仰角が等しい $\\iff$ 距離の比が高さの比．P を直線上で動かすとき「$\\mathrm{PQ}=\\lambda\\,\\mathrm{PA}$ をみたす P が存在する」条件は P の座標の2次方程式の判別式で，$\\lambda^2$ の2次不等式 $F(\\lambda^2)\\leqq0$ になる．$F$ の2解は和が $\\dfrac{\\mathrm{QA}^2+\\mathrm{QA'}^2}2$，積が $\\left(\\dfrac{\\mathrm{QA}^2-\\mathrm{QA'}^2}4\\right)^2$（A$'$ は A の直線に関する対称点）なので，$\\dfrac{\\mathrm{PQ}}{\\mathrm{PA}}$ の最大・最小は焦点 A，A$'$ からの距離の和・差の半分になる．"
-  },
-  "methods": [],
-  "tags": [
-   "アポロニウスの円",
-   "判別式",
-   "解と係数の関係",
-   "焦点からの距離の和と差"
-  ],
-  "provenance": {
-   "created": "2026-11-10"
-  },
-  "quality": {
-   "status": "published",
-   "checks": {
-    "dual": false,
-    "sympy": true,
-    "human": false
-   },
-   "verified": false
-  }
- },
- {
-  "id": "II-GEO-246",
-  "schema": "lemma.problem/1",
-  "kind": "written",
-  "field": "II-09",
-  "level": 5,
-  "minutes": 35,
-  "theme": "2つの円とその鏡像に接する左右の円",
-  "topic": "2つの円とその鏡像に接する左右の円",
-  "statement": {
-   "tex": "座標平面において原点 O を中心とする半径1の円を $C_1$ とする．$0<\\theta<\\pi$ とし，極座標が $(r,\\theta)$ である点 P を中心とする円 $C_2$ が，$C_1$ 上の点 Q において $C_1$ に内接し，かつ $x$ 軸に接しているとする．$C_2$ を $x$ 軸に関して折り返した円を $C_2'$ とする．また，A$(-1,0)$ とし，直線 AQ の $y$ 切片を $t$ とする．\n\\begin{enumerate}\n  \\item $C_2$ の半径 $\\rho$ と $r$ を，それぞれ $t$ の式で表せ．\n  \\item $C_1$ に内接し，$C_2$ と $C_2'$ の両方に外接する円はちょうど2つあることを示せ．さらに，それらのうち中心の $x$ 座標が負のものを $C_3$，正のものを $C_4$ とし，それぞれの半径 $b$，$b'$ を $t$ の式で表せ．\n  \\item $\\dfrac1b+\\dfrac1{b'}$ を $\\rho$ の式で表せ．\n  \\item $\\theta$ が $0<\\theta<\\pi$ の範囲を動くとき，4つの円 $C_2,C_2',C_3,C_4$ の周の長さの和の最大値と，そのときの $\\theta$ を求めよ．\n\\end{enumerate}"
-  },
-  "answer": {
-   "tex": "(1) $\\rho=\\dfrac{2t}{(1+t)^2}$，$r=\\dfrac{1+t^2}{(1+t)^2}$　(2) 証明；$b=\\dfrac1{1+2t}$，$b'=\\dfrac t{t+2}$　(3) $\\dfrac1b+\\dfrac1{b'}=\\dfrac4\\rho-2$　(4) $\\theta=\\dfrac\\pi2$ のとき最大値 $\\dfrac{10}3\\pi$"
-  },
-  "solutions": [
-   {
-    "id": "main",
-    "kind": "main",
-    "tex": "(1) $0<\\theta<\\pi$ より P$(r\\cos\\theta,r\\sin\\theta)$ は上半平面にあり，$C_2$ は $x$ 軸に接するから $\\rho=r\\sin\\theta$．$C_2$ が $C_1$ に内接するから $\\mathrm{OP}=1-\\rho$，すなわち $r=1-r\\sin\\theta$ で\n\\[r=\\frac1{1+\\sin\\theta},\\qquad\\rho=\\frac{\\sin\\theta}{1+\\sin\\theta}.\\]\n内接する2円の接点は中心を結ぶ直線上にあるので，Q は半直線 OP 上で O から距離1の点，Q$(\\cos\\theta,\\sin\\theta)$．$1+\\cos\\theta>0$ だから直線 AQ の $y$ 切片は\n\\[t=\\frac{\\sin\\theta}{1+\\cos\\theta}=\\frac{2\\sin\\frac\\theta2\\cos\\frac\\theta2}{2\\cos^2\\frac\\theta2}=\\tan\\frac\\theta2.\\]\n$0<\\dfrac\\theta2<\\dfrac\\pi2$ なので $t$ は正の実数全体を動き，$\\theta$ と1対1に対応する．$\\sin\\theta=\\dfrac{2t}{1+t^2}$，$\\cos\\theta=\\dfrac{1-t^2}{1+t^2}$ を代入して\n\\[\\boldsymbol{r=\\frac{1+t^2}{(1+t)^2}},\\qquad\\boldsymbol{\\rho=1-r=\\frac{2t}{(1+t)^2}},\\qquad r\\cos\\theta=\\frac{1-t^2}{(1+t)^2}=\\frac{1-t}{1+t}.\\]\n\n(2) 中心 Z，半径 $c$ の円が条件をみたすとする．$C_1$ に内接するので $0<c<1$，$\\mathrm{OZ}=1-c$．$C_2,C_2'$ に外接するので $\\mathrm{ZP}=\\mathrm{ZP'}=c+\\rho$（P$'(r\\cos\\theta,-\\rho)$ は $C_2'$ の中心）．ZP$=$ZP$'$ より Z は線分 PP$'$ の垂直二等分線，すなわち $x$ 軸上にあり，Z$(z,0)$，$|z|=1-c>0$．よって $z=-(1-c)$ または $z=1-c$．逆に，$0<c<1$ と $z=\\pm(1-c)$ と $\\mathrm{ZP}=c+\\rho$ をみたせば，この円は条件をみたす（ZP$'=$ZP は対称性による）．\n\n\\textbf{$z=-(1-c)$ の場合．} $w=1+r\\cos\\theta=\\dfrac2{1+t}$ とおくと $\\mathrm{ZP}^2=(w-c)^2+\\rho^2$ なので，$\\mathrm{ZP}=c+\\rho\\iff(w-c)^2+\\rho^2=(c+\\rho)^2\\iff w^2=2c(w+\\rho)$．$w+\\rho=\\dfrac{2(1+t)+2t}{(1+t)^2}=\\dfrac{2(1+2t)}{(1+t)^2}$ だから\n\\[c=\\frac{w^2}{2(w+\\rho)}=\\frac{4/(1+t)^2}{4(1+2t)/(1+t)^2}=\\frac1{1+2t}.\\]\nこれは $0<c<1$ をみたすので，この場合の円はただ1つ存在する．\n\n\\textbf{$z=1-c$ の場合．} $w'=1-r\\cos\\theta=\\dfrac{2t}{1+t}$ とおくと同様に $w'^2=2c(w'+\\rho)$．$w'+\\rho=\\dfrac{2t(1+t)+2t}{(1+t)^2}=\\dfrac{2t(t+2)}{(1+t)^2}$ だから\n\\[c=\\frac{4t^2/(1+t)^2}{4t(t+2)/(1+t)^2}=\\frac t{t+2},\\]\nこれも $0<c<1$ をみたし，ただ1つ存在する．\n\n中心の位置が異なるので2円は別の円であり，条件をみたす円はちょうど2つ．\\hfill$\\square$\n\\[\\boldsymbol{b=\\frac1{1+2t}},\\qquad\\boldsymbol{b'=\\frac t{t+2}}.\\]\n\n(3) $\\dfrac1b+\\dfrac1{b'}=1+2t+\\dfrac{t+2}t=2+2\\left(t+\\dfrac1t\\right)$．一方 $\\dfrac1\\rho=\\dfrac{(1+t)^2}{2t}=\\dfrac12\\left(t+\\dfrac1t\\right)+1$ だから $t+\\dfrac1t=\\dfrac2\\rho-2$．よって\n\\[\\boldsymbol{\\frac1b+\\frac1{b'}=\\frac4\\rho-2}.\\]\n\n(4) 周の長さの和は $2\\pi(2\\rho+b+b')$．$s=t+\\dfrac1t$ とおくと，$t>0$ より $s\\geqq2$（等号は $t=1$）で，$t$ が正の実数全体を動くとき $s$ は $s\\geqq2$ の範囲すべてをとる．\n\\[\\rho=\\frac{2}{t+2+\\frac1t}=\\frac2{s+2},\\qquad b+b'=\\frac{(t+2)+t(1+2t)}{(1+2t)(t+2)}=\\frac{2t^2+2t+2}{2t^2+5t+2}=\\frac{2s+2}{2s+5}\\]\n（最後は分母・分子を $t$ で割った）．よって\n\\[G(s)=2\\rho+b+b'=\\frac4{s+2}+1-\\frac3{2s+5}.\\]\n$G(2)=1+1-\\dfrac13=\\dfrac53$ で，$s\\geqq2$ のとき\n\\[G(2)-G(s)=\\left(1-\\frac4{s+2}\\right)-\\left(\\frac13-\\frac3{2s+5}\\right)=\\frac{s-2}{s+2}-\\frac{2(s-2)}{3(2s+5)}=\\frac{(s-2)(4s+11)}{3(s+2)(2s+5)}\\geqq0.\\]\n等号は $s=2$，すなわち $t=1$，$\\theta=\\dfrac\\pi2$ のときに限る．よって周の長さの和は $\\boldsymbol{\\theta=\\dfrac\\pi2}$ のとき最大値 $2\\pi\\cdot\\dfrac53=\\boldsymbol{\\dfrac{10}3\\pi}$ をとる．"
-   }
-  ],
-  "idea": {
-   "tex": "$C_2$ の半径は $\\rho=r\\sin\\theta$ で，内接の条件は $r+\\rho=1$．$t=\\tan\\dfrac\\theta2$ にすると $r\\cos\\theta=\\dfrac{1-t}{1+t}$，$\\rho=\\dfrac{2t}{(1+t)^2}$ と有理式になる．$C_2,C_2'$ の両方に外接する円の中心は $x$ 軸上にあり，左右の2円の半径は $\\dfrac1{1+2t}$，$\\dfrac t{t+2}$．この2つは $t\\to\\dfrac1t$ で入れかわるので，半径の和は $s=t+\\dfrac1t$ の関数になる．"
-  },
-  "grading": {
-   "format": "lemma-input/1",
-   "spec": "(1) $\\rho$：2t/(1+t)^2 ; $r$：(1+t^2)/(1+t)^2\n(2) 記述\n(3) 記述\n(4) 記述"
-  },
-  "methods": [],
-  "tags": [
-   "円の内接と外接",
-   "半角の正接",
-   "対称性",
-   "相反式の最大"
-  ],
-  "provenance": {
-   "created": "2026-11-10"
-  },
-  "quality": {
-   "status": "published",
-   "checks": {
-    "dual": false,
-    "sympy": true,
-    "human": false
-   },
-   "verified": false
-  }
- },
- {
-  "id": "II-GEO-247",
-  "schema": "lemma.problem/1",
-  "kind": "written",
-  "field": "II-09",
-  "level": 4,
-  "minutes": 35,
-  "theme": "傾いた辺に接する放物線の族が通らない部分",
-  "topic": "傾いた辺に接する放物線の族が通らない部分",
-  "statement": {
-   "tex": "実数の組 $(p,q)$ に対し，$f(x)=(x-p)^2+q$ とおく．\n\\begin{enumerate}\n  \\item 放物線 $y=f(x)$ が点 $(0,1)$ を通り，しかも直線 $y=\\dfrac x2$ の $0<x<2$ の部分と接するような実数の組 $(p,q)$ と接点の座標を求めよ．\n  \\item 長方形 $R:\\ 0\\leqq x\\leqq2,\\ 0\\leqq y\\leqq2$ を考える．また，4点 $\\mathrm P_0(0,1)$，$\\mathrm P_1(0,0)$，$\\mathrm P_2(2,1)$，$\\mathrm P_3(2,0)$ をこの順に線分で結んで得られる折れ線を $L$ とする．実数の組 $(p,q)$ を，放物線 $y=f(x)$ と折れ線 $L$ に共有点がないようなすべての組にわたって動かすとき，$R$ の点のうちで放物線 $y=f(x)$ が通過する点全体の集合を $T$ とする．$R$ から $T$ を除いた部分 $S$ を図示し，その面積を求めよ．\n\\end{enumerate}"
-  },
-  "answer": {
-   "tex": "(1) $(p,q)=\\left(\\dfrac34,\\dfrac7{16}\\right)$，接点 $\\left(1,\\dfrac12\\right)$　(2) $S$ は $0\\leqq x\\leqq1,\\ 0\\leqq y\\leqq x^2-\\dfrac32x+1$ と $1\\leqq x\\leqq2,\\ 0\\leqq y\\leqq\\dfrac x2$ の和集合（境界を含む），面積 $\\dfrac43$"
-  },
-  "solutions": [
-   {
-    "id": "main",
-    "kind": "main",
-    "tex": "\\textbf{(1)} $f(x)-\\dfrac x2=x^2-\\left(2p+\\dfrac12\\right)x+p^2+q$．放物線が直線 $y=\\dfrac x2$ に接する条件は，この2次式が重解をもつこと，すなわち\n\\[\\left(2p+\\frac12\\right)^2-4(p^2+q)=0\\iff q=\\frac p2+\\frac1{16}\\]\nで，このとき $f(x)-\\dfrac x2=\\left(x-p-\\dfrac14\\right)^2$ となり，接点の $x$ 座標は $p+\\dfrac14$ である．\n点 $(0,1)$ を通る条件 $p^2+q=1$ に代入して $p^2+\\dfrac p2-\\dfrac{15}{16}=0$，すなわち $\\left(p-\\dfrac34\\right)\\left(p+\\dfrac54\\right)=0$．\n接点の $x$ 座標 $p+\\dfrac14$ が $0<x<2$ にあるのは $p=\\dfrac34$（接点の $x$ 座標1）のときで，$p=-\\dfrac54$ では $-1$ となり不適．\nよって $\\boldsymbol{(p,q)=\\left(\\dfrac34,\\ \\dfrac7{16}\\right)}$，接点 $\\boldsymbol{\\left(1,\\ \\dfrac12\\right)}$．\n\n以下 $h(x)=\\left(x-\\dfrac34\\right)^2+\\dfrac7{16}=x^2-\\dfrac32x+1$ とおく．$h(0)=1$，$h(1)=\\dfrac12$，$h(x)-\\dfrac x2=(x-1)^2\\geqq0$ である．\n\n\\textbf{(2)} \\textbf{補題}：$(p_1,q_1),(p_2,q_2)$ に対する $f_1,f_2$ について $g=f_2-f_1$ は $x^2$ の項が消えて1次以下の式になる．$\\alpha<\\beta$ で $g(\\alpha)>0$，$g(\\beta)>0$ ならば，$\\alpha\\leqq x\\leqq\\beta$ で\n\\[g(x)=\\frac{(\\beta-x)g(\\alpha)+(x-\\alpha)g(\\beta)}{\\beta-\\alpha}>0 .\\]\n\n$L$ は線分 $\\mathrm P_0\\mathrm P_1=\\{(0,y)\\mid0\\leqq y\\leqq1\\}$，$\\mathrm P_1\\mathrm P_2=\\{(x,\\frac x2)\\mid0\\leqq x\\leqq2\\}$，$\\mathrm P_2\\mathrm P_3=\\{(2,y)\\mid0\\leqq y\\leqq1\\}$ からなる．\n放物線 $y=f(x)$ が $L$ と共有点をもたないとし，$k(x)=f(x)-\\dfrac x2$ とおくと，$0\\leqq x\\leqq2$ で $k(x)\\neq0$，また $f(0)\\notin[0,1]$，$f(2)\\notin[0,1]$．$k$ は連続だから，中間値の定理により $[0,2]$ で $k$ の符号は一定．\n\\begin{itemize}\n  \\item $k<0$ のとき：$f(0)<0$，$f(2)<1$ より $f(2)<0$．2点 $(0,f(0))$，$(2,f(2))$ を結ぶ直線を $y=\\ell(x)$ とすると，$f(x)-\\ell(x)$ は $x^2$ の係数1で $x=0,2$ を解にもつから $f(x)-\\ell(x)=x(x-2)\\leqq0$（$0\\leqq x\\leqq2$）．よって $f(x)\\leqq\\ell(x)<0$ となり，この放物線は $R$（$y\\geqq0$）の点を通らない．\n  \\item $k>0$ のとき：$f(0)>0$ より $f(0)>1$，$f(2)>1$ である．\n\\end{itemize}\n逆に，$f(0)>1$ かつ $0\\leqq x\\leqq2$ で $f(x)>\\dfrac x2$ ならば，$f(2)>1$ も成り立ち，放物線は3つの線分のどれとも共有点をもたない．よって，$\\mathcal F$ を「$f(0)>1$ かつ $0\\leqq x\\leqq2$ で $f(x)>\\dfrac x2$」をみたす $f$ 全体とすると，\n\\[T=\\{(x_0,y_0)\\in R\\mid f(x_0)=y_0\\ \\text{となる}\\ f\\in\\mathcal F\\ \\text{が存在する}\\}.\\]\n\n\\textbf{$T$ の決定．}次を示す．\n\\[T=\\{(x,y)\\in R\\mid 0\\leqq x\\leqq1,\\ y>h(x)\\}\\cup\\{(x,y)\\in R\\mid1\\leqq x\\leqq2,\\ y>\\tfrac x2\\}.\\]\n(i) $f\\in\\mathcal F$ とする．$f(0)>1=h(0)$，$f(1)>\\dfrac12=h(1)$ だから，補題により $0\\leqq x\\leqq1$ で $f(x)>h(x)$．また $1\\leqq x\\leqq2$ では $f(x)>\\dfrac x2$．よって $T$ は右辺に含まれる．\n\n(ii) $0\\leqq x_0\\leqq1$，$h(x_0)<y_0\\leqq2$ のとき，$c=y_0-h(x_0)>0$ として $f=h+c$（$p=\\frac34$，$q=\\frac7{16}+c$）をとると，$f(0)=1+c>1$，$f(x)-\\dfrac x2=(x-1)^2+c>0$ より $f\\in\\mathcal F$ で，$f(x_0)=y_0$．\n\n$1\\leqq x_0\\leqq2$，$\\dfrac{x_0}2<y_0\\leqq2$ のとき，$p=x_0-\\dfrac14$，$c=y_0-\\dfrac{x_0}2>0$ として $f(x)=(x-p)^2+\\dfrac p2+\\dfrac1{16}+c$ をとる．(1)の計算から $f(x)-\\dfrac x2=(x-x_0)^2+c>0$，また $f(0)=p^2+\\dfrac p2+\\dfrac1{16}+c=\\left(p+\\dfrac14\\right)^2+c=x_0^{\\,2}+c>1$．よって $f\\in\\mathcal F$ で $f(x_0)=y_0$．\n以上で $T$ が決まった．\n\n$0\\leqq x\\leqq1$ で $h(x)-1=x\\left(x-\\dfrac32\\right)\\leqq0$，すなわち $h(x)\\leqq1<2$ だから，\n\\[S=\\{0\\leqq x\\leqq1,\\ 0\\leqq y\\leqq x^2-\\tfrac32x+1\\}\\cup\\{1\\leqq x\\leqq2,\\ 0\\leqq y\\leqq\\tfrac x2\\}.\\]\n図示：$S$ は，$y$ 軸上の線分 $(0,0)$–$(0,1)$，放物線 $y=x^2-\\frac32x+1$ の弧 $(0,1)$–$(1,\\frac12)$（頂点 $(\\frac34,\\frac7{16})$，$(1,\\frac12)$ で直線 $y=\\frac x2$ に接する），線分 $(1,\\frac12)$–$(2,1)$，線分 $(2,1)$–$(2,0)$，$x$ 軸上の線分 $(2,0)$–$(0,0)$ で囲まれた部分で，境界を含む．\n面積は\n\\[\\int_0^1\\left(x^2-\\frac32x+1\\right)dx+\\int_1^2\\frac x2\\,dx=\\left(\\frac13-\\frac34+1\\right)+\\frac34=\\boldsymbol{\\frac43}.\\]\n\\hfill$\\square$"
-   }
-  ],
-  "idea": {
-   "tex": "平行移動した2つの放物線 $y=(x-p_1)^2+q_1$，$y=(x-p_2)^2+q_2$ の差は1次式なので，2点で大小が決まればその間でも大小が決まる．障害物を避ける放物線の「下限」は，端の点を通り障害物の辺に接する極端な放物線で与えられ，それより先では障害物の辺そのものが境界になる．"
-  },
-  "methods": [],
-  "tags": [
-   "通過領域",
-   "放物線の平行移動",
-   "差が1次式",
-   "接線"
-  ],
-  "provenance": {
-   "created": "2026-11-10"
-  },
-  "quality": {
-   "status": "published",
-   "checks": {
-    "dual": false,
-    "sympy": true,
-    "human": false
-   },
-   "verified": false
-  }
- },
- {
-  "id": "II-GEO-248",
-  "schema": "lemma.problem/1",
-  "kind": "written",
-  "field": "II-09",
-  "level": 5,
-  "minutes": 40,
-  "theme": "円周上を動く基準点に対する比の条件と領域",
-  "topic": "円周上を動く基準点に対する比の条件と領域",
-  "statement": {
-   "tex": "座標平面上に原点 O を中心とする半径1の円 $C$ がある．$C$ 上の点 B と，O と異なる点 P に対して，次の条件 $(*)_{\\mathrm B}$ を考える．\n\\begin{center}\n$(*)_{\\mathrm B}$：半直線 OP 上の点 Q で $\\mathrm{OQ}\\leqq2\\,\\mathrm{OP}$ をみたすものすべてについて，$\\mathrm{QP}\\cdot\\mathrm{OB}\\leqq\\mathrm{BQ}\\cdot\\mathrm{OP}$ が成り立つ．\n\\end{center}\n\\begin{enumerate}\n  \\item $(*)_{\\mathrm B}$ が成り立つことは，$\\overrightarrow{\\mathrm{BO}}\\cdot\\overrightarrow{\\mathrm{BP}}\\geqq0$ かつ $\\overrightarrow{\\mathrm{PO}}\\cdot\\overrightarrow{\\mathrm{PB}}\\geqq0$ が成り立つことと同値であることを示せ．\n  \\item $C$ 上のすべての点 B について $(*)_{\\mathrm B}$ が成り立つような点 P 全体を求めよ．\n  \\item $C$ のうち $y\\geqq0$ の部分（両端を含む半円周）を $C^+$ とする．$C^+$ 上のすべての点 B について $(*)_{\\mathrm B}$ が成り立つような点 P 全体を $D$ とする．$D$ を図示し，$D$ のうち $y\\geqq-1$ をみたす部分の面積を求めよ．\n\\end{enumerate}"
-  },
-  "answer": {
-   "tex": "(1) 証明　(2) 円 $C$ 全体（$x^2+y^2=1$）　(3) $D$ は半円周 $x^2+y^2=1$（$y\\geqq0$）と，領域 $y<0$，$-1\\leqq x\\leqq1$，$x^2+y^2\\geqq|x|$（2円 $\\left(x\\mp\\frac12\\right)^2+y^2=\\frac14$ の外側）の和集合；面積は $2-\\dfrac\\pi4$"
-  },
-  "solutions": [
-   {
-    "id": "main",
-    "kind": "main",
-    "tex": "(1) $\\vec u=\\overrightarrow{\\mathrm{OP}}\\neq\\vec0$，$\\vec b=\\overrightarrow{\\mathrm{OB}}$（$|\\vec b|=1$）とする．$\\mathrm{OQ}\\leqq2\\mathrm{OP}$ をみたす半直線 OP 上の点 Q は $\\overrightarrow{\\mathrm{OQ}}=t\\vec u$（$0\\leqq t\\leqq2$）と表せる．\n$\\mathrm{QP}=|1-t||\\vec u|$，$\\mathrm{BQ}=|t\\vec u-\\vec b|$ だから，$|\\vec u|>0$ で割って\n\\[\\mathrm{QP}\\cdot\\mathrm{OB}\\leqq\\mathrm{BQ}\\cdot\\mathrm{OP}\\iff|1-t|\\leqq|t\\vec u-\\vec b|.\\]\n両辺は0以上なので2乗して同値で，\n\\[(1-t)^2\\leqq t^2|\\vec u|^2-2t\\,\\vec u\\cdot\\vec b+1\\iff t\\bigl\\{t(|\\vec u|^2-1)+2(1-\\vec u\\cdot\\vec b)\\bigr\\}\\geqq0.\\]\n$t=0$ ではつねに成り立つ．$\\ell(t)=t(|\\vec u|^2-1)+2(1-\\vec u\\cdot\\vec b)$ とおくと，$(*)_{\\mathrm B}\\iff$「$0<t\\leqq2$ で $\\ell(t)\\geqq0$」．\n$\\ell$ は1次以下の式なので，$\\ell(0)\\geqq0$ かつ $\\ell(2)\\geqq0$ なら $0\\leqq t\\leqq2$ で $\\ell(t)=\\left(1-\\frac t2\\right)\\ell(0)+\\frac t2\\ell(2)\\geqq0$．逆に $\\ell(0)<0$ なら連続性より十分小さい $t>0$ で $\\ell(t)<0$，$\\ell(2)<0$ なら $t=2$ で不成立．よって\n\\[(*)_{\\mathrm B}\\iff\\ell(0)\\geqq0\\ \\text{かつ}\\ \\ell(2)\\geqq0\\iff 1-\\vec u\\cdot\\vec b\\geqq0\\ \\text{かつ}\\ |\\vec u|^2-\\vec u\\cdot\\vec b\\geqq0.\\]\nここで $\\overrightarrow{\\mathrm{BO}}\\cdot\\overrightarrow{\\mathrm{BP}}=(-\\vec b)\\cdot(\\vec u-\\vec b)=1-\\vec u\\cdot\\vec b$，$\\overrightarrow{\\mathrm{PO}}\\cdot\\overrightarrow{\\mathrm{PB}}=(-\\vec u)\\cdot(\\vec b-\\vec u)=|\\vec u|^2-\\vec u\\cdot\\vec b$ なので示された．\\hfill$\\square$\n\n以下，$m(\\mathrm P)$ を B が動く範囲での $\\vec u\\cdot\\vec b$ の最大値とすると，(1) より条件は\n\\[m(\\mathrm P)\\leqq1\\quad\\text{かつ}\\quad|\\vec u|^2\\geqq m(\\mathrm P).\\]\n\n(2) B が $C$ 全体を動くとき，$\\vec u\\cdot\\vec b\\leqq|\\vec u|$ で，等号は $\\vec b=\\frac{\\vec u}{|\\vec u|}$ のとき．よって $m=|\\vec u|$．条件は $|\\vec u|\\leqq1$ かつ $|\\vec u|^2\\geqq|\\vec u|$（$|\\vec u|>0$ より $|\\vec u|\\geqq1$）．\n求める P 全体は\\textbf{円 $C$：$x^2+y^2=1$ 全体}．\n\n(3) P$(x,y)$，B$(\\cos\\varphi,\\sin\\varphi)$（$0\\leqq\\varphi\\leqq\\pi$）とする．\n\n$y\\geqq0$ のとき：$\\vec u\\cdot\\vec b\\leqq|\\vec u|$ で，$\\frac{\\vec u}{|\\vec u|}$ は $C^+$ 上にあるから $m=|\\vec u|$．(2) と同様に条件は $x^2+y^2=1$．\n\n$y<0$ のとき：$\\sin\\varphi\\geqq0$ より $\\vec u\\cdot\\vec b=x\\cos\\varphi+y\\sin\\varphi\\leqq x\\cos\\varphi\\leqq|x|$．等号は $x\\geqq0$ なら $\\varphi=0$，$x<0$ なら $\\varphi=\\pi$ で成立するから $m=|x|$．条件は\n\\[|x|\\leqq1\\quad\\text{かつ}\\quad x^2+y^2\\geqq|x|\\iff\\left(|x|-\\tfrac12\\right)^2+y^2\\geqq\\tfrac14.\\]\n\nよって $D$ は\n\\begin{itemize}\n  \\item 半円周 $x^2+y^2=1$，$y\\geqq0$（両端 $(\\pm1,0)$ を含む）と，\n  \\item 帯 $-1\\leqq x\\leqq1$ の $y<0$ の部分から，2円 $\\left(x-\\frac12\\right)^2+y^2<\\frac14$，$\\left(x+\\frac12\\right)^2+y^2<\\frac14$ の内部を除いた部分（境界の直線 $x=\\pm1$ と2円周の $y<0$ の部分は含み，$x$ 軸上の点は含まない）\n\\end{itemize}\nの和集合である（下側は下方に限りなく広がる）．\n\n面積：半円周の面積は0．下側のうち $-1\\leqq y<0$ の部分は，長方形 $-1\\leqq x\\leqq1$，$-1\\leqq y\\leqq0$（面積2）から2つの半径 $\\frac12$ の半円板（それぞれ面積 $\\frac\\pi8$，$-\\frac12\\leqq y\\leqq0$ に含まれる）を除いたもの（境界の有無は面積に影響しない）．\n\\[2-2\\cdot\\frac\\pi8=\\boldsymbol{2-\\dfrac\\pi4}.\\]\n\\hfill$\\square$"
-   }
-  ],
-  "idea": {
-   "tex": "Q を半直線上の媒介変数 $t$ で表して比の条件を2乗すると $t$ についての2次不等式で，定数項が0（$t=0$ で等号）だから $t$ で割ると1次不等式になり，区間の両端の条件に帰着する．両端の条件は内積 $\\overrightarrow{\\mathrm{BO}}\\cdot\\overrightarrow{\\mathrm{BP}}\\geqq0$，$\\overrightarrow{\\mathrm{PO}}\\cdot\\overrightarrow{\\mathrm{PB}}\\geqq0$ という幾何的な形になり，基準点 B を円周上で動かすと「$\\overrightarrow{\\mathrm{OP}}\\cdot\\overrightarrow{\\mathrm{OB}}$ の最大値」の問題になる．"
-  },
-  "methods": [],
-  "tags": [
-   "領域",
-   "全称条件",
-   "1次関数",
-   "内積",
-   "円"
-  ],
-  "provenance": {
-   "created": "2026-11-10"
-  },
-  "quality": {
-   "status": "published",
-   "checks": {
-    "dual": false,
-    "sympy": true,
-    "human": false
-   },
-   "verified": false
-  }
- },
- {
-  "id": "II-GEO-249",
-  "schema": "lemma.problem/1",
-  "kind": "written",
-  "field": "II-09",
-  "level": 5,
-  "minutes": 40,
-  "theme": "放物線の接線と対辺の交点が並ぶ直線",
-  "topic": "放物線の接線と対辺の交点が並ぶ直線",
-  "statement": {
-   "tex": "放物線 $y=x^2$ 上の3点 A$(a,a^2)$，B$(b,b^2)$，C$(c,c^2)$ を考える．ただし $a,b,c$ は相異なる実数で，$2a\\neq b+c$，$2b\\neq c+a$，$2c\\neq a+b$ をみたすとする．\n\\begin{enumerate}\n  \\item 点 A における放物線の接線と直線 BC の交点を P とするとき，P の座標を $a,b,c$ を用いて表せ．\n  \\item 点 B における接線と直線 CA の交点を Q，点 C における接線と直線 AB の交点を R とする．3点 P，Q，R は相異なり，一直線上にあることを示せ．\n  \\item (2) の直線を $\\ell$ とする．放物線 $y=x^2$ と $\\ell$ は共有点をもたないことを示せ．\n\\end{enumerate}"
-  },
-  "answer": {
-   "tex": "(1) $\\mathrm P\\Bigl(\\dfrac{a^2-bc}{2a-b-c},\\ \\dfrac{a(ab+ac-2bc)}{2a-b-c}\\Bigr)$　(2) 証明　(3) 証明"
-  },
-  "solutions": [
-   {
-    "id": "main",
-    "kind": "main",
-    "tex": "(1) A における接線は $y=2ax-a^2$，直線 BC は傾き $\\dfrac{b^2-c^2}{b-c}=b+c$ で $y=(b+c)x-bc$．$2a\\neq b+c$ より交点はただ1つで，$(2a-b-c)x=a^2-bc$．\n\\[\nx=\\frac{a^2-bc}{2a-b-c},\\qquad y=2ax-a^2=\\frac{2a(a^2-bc)-a^2(2a-b-c)}{2a-b-c}=\\frac{a(ab+ac-2bc)}{2a-b-c}.\n\\]\n$\\boldsymbol{\\mathrm P\\Bigl(\\dfrac{a^2-bc}{2a-b-c},\\ \\dfrac{a(ab+ac-2bc)}{2a-b-c}\\Bigr)}$．Q，R は $(a,b,c)$ を $(b,c,a)$，$(c,a,b)$ に置きかえたもの．\n\n(2) \\textbf{相異なること．}直線 $y=mx+k$ と放物線の共有点は $x^2-mx-k=0$ の解なので高々2個．よって A，B，C は一直線上になく，直線 BC と CA は C だけで交わる．$\\mathrm P=\\mathrm Q$ なら，この点は BC 上かつ CA 上なので C に一致し，C が A における接線上にあることになる．しかし $x^2-(2ax-a^2)=(x-a)^2$ より接線と放物線の共有点は A だけで，$\\mathrm C\\neq\\mathrm A$ に矛盾．$\\mathrm Q\\neq\\mathrm R$，$\\mathrm R\\neq\\mathrm P$ も同様．\n\n\\textbf{一直線上にあること．}$e_1=a+b+c$，$e_2=ab+bc+ca$，$e_3=abc$ とし，\n\\[\n\\ell:\\ (e_1^2-3e_2)\\,y=(e_1e_2-9e_3)\\,x-(e_2^2-3e_1e_3)\n\\]\nを考える．$e_1^2-3e_2=\\frac12\\{(a-b)^2+(b-c)^2+(c-a)^2\\}>0$ なので $\\ell$ は直線である．$\\ell$ の式は $a,b,c$ について対称なので，P が $\\ell$ 上にあることを示せば，文字を入れかえて Q，R も $\\ell$ 上にある．\n\n$\\sigma=b+c$，$\\pi=bc$ とおくと $e_1=a+\\sigma$，$e_2=a\\sigma+\\pi$，$e_3=a\\pi$ で\n\\[\ne_1^2-3e_2=a^2-a\\sigma+\\sigma^2-3\\pi,\\quad e_1e_2-9e_3=a^2\\sigma+a\\sigma^2+\\sigma\\pi-8a\\pi,\\quad e_2^2-3e_1e_3=a^2\\sigma^2-a\\sigma\\pi+\\pi^2-3a^2\\pi .\n\\]\nP の座標を代入し $2a-\\sigma\\ (\\neq0)$ を掛けると，示すべき式は\n\\[\n(e_1e_2-9e_3)(a^2-\\pi)-(e_1^2-3e_2)\\,a(a\\sigma-2\\pi)=(e_2^2-3e_1e_3)(2a-\\sigma).\n\\]\n左辺第1項 $=a^4\\sigma+a^3\\sigma^2-8a^3\\pi-a\\sigma^2\\pi-\\sigma\\pi^2+8a\\pi^2$，第2項（引く前）$=a^4\\sigma-a^3\\sigma^2+a^2\\sigma^3-2a^3\\pi-a^2\\sigma\\pi-2a\\sigma^2\\pi+6a\\pi^2$ で，\n\\[\n\\text{左辺}=2a^3\\sigma^2-a^2\\sigma^3-6a^3\\pi+a^2\\sigma\\pi+a\\sigma^2\\pi+2a\\pi^2-\\sigma\\pi^2 .\n\\]\n右辺 $=2a^3\\sigma^2-2a^2\\sigma\\pi+2a\\pi^2-6a^3\\pi-a^2\\sigma^3+a\\sigma^2\\pi-\\sigma\\pi^2+3a^2\\sigma\\pi$ もこれに等しい．よって P は $\\ell$ 上にあり，P，Q，R は一直線 $\\ell$ 上にある．\n\n(3) 放物線上の点 $(x,x^2)$ が $\\ell$ 上にあるとすると $F(x)=(e_1^2-3e_2)x^2-(e_1e_2-9e_3)x+(e_2^2-3e_1e_3)=0$．ここで\n\\[\nG(x)=\\frac12\\bigl\\{(b-c)^2(x-a)^2+(c-a)^2(x-b)^2+(a-b)^2(x-c)^2\\bigr\\}\n\\]\nを展開すると，$x^2$ の係数は $\\frac12\\{(b-c)^2+(c-a)^2+(a-b)^2\\}=e_1^2-3e_2$，$x$ の係数は\n\\[\n-\\{a(b-c)^2+b(c-a)^2+c(a-b)^2\\}=-\\{a^2(b+c)+b^2(c+a)+c^2(a+b)-6abc\\}=-\\{(e_1e_2-3e_3)-6e_3\\}=-(e_1e_2-9e_3)\n\\]\n（$e_1e_2=a^2(b+c)+b^2(c+a)+c^2(a+b)+3abc$ を用いた），定数項は\n\\[\n\\frac12\\{a^2(b-c)^2+b^2(c-a)^2+c^2(a-b)^2\\}=(a^2b^2+b^2c^2+c^2a^2)-abc\\,e_1=(e_2^2-2e_1e_3)-e_1e_3=e_2^2-3e_1e_3\n\\]\nとなり，$F(x)=G(x)$．$G(x)=0$ なら3つの平方がすべて0で，$b\\neq c$ などから $x=a$ かつ $x=b$ となり $a\\neq b$ に矛盾．よって $G(x)>0$ で $F(x)=0$ となる $x$ はなく，$\\ell$ と放物線は共有点をもたない（放物線は $\\ell$ の上側にある）．\\hfill$\\square$"
-   }
-  ],
-  "idea": {
-   "tex": "接線と対辺の交点を計算し，3点を通る直線を基本対称式 $e_1,e_2,e_3$ で書くと $a,b,c$ について対称な式になるので，1点が乗ることを示せば残りの2点も乗る．放物線との交点の方程式の左辺は $\\frac12\\{(b-c)^2(x-a)^2+(c-a)^2(x-b)^2+(a-b)^2(x-c)^2\\}$ という平方和に一致し，正の値しかとらない．"
-  },
-  "methods": [],
-  "tags": [
-   "接線",
-   "共線",
-   "対称式",
-   "平方和",
-   "放物線"
-  ],
-  "provenance": {
-   "created": "2026-11-10"
-  },
-  "quality": {
-   "status": "published",
-   "checks": {
-    "dual": false,
-    "sympy": true,
-    "human": false
-   },
-   "verified": false
-  }
- },
- {
   "id": "II-GEO-253",
   "schema": "lemma.problem/1",
   "kind": "written",
@@ -12106,6 +10323,335 @@
   ],
   "provenance": {
    "created": "2026-11-19"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-GEO-243",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-09",
+  "level": 4,
+  "minutes": 35,
+  "theme": "共通接線が集まる相似の中心と3つの放物線",
+  "topic": "共通接線が集まる相似の中心と3つの放物線",
+  "statement": {
+   "tex": "$a,\\ b,\\ c$ を定数とし，$a\\neq0,\\ 1$ とする．放物線 $C:\\ y=x^2$ と $C':\\ y=ax^2+bx+c$ を考える．点 R$(p,\\ q)$ と $0$ でない実数 $k$ に対し，座標平面上の点 $(x,\\ y)$ を点 $\\bigl(p+k(x-p),\\ q+k(y-q)\\bigr)$ に移す移動を $H$ とする．なお，放物線の接線とは放物線上の点における接線のことであり，$y$ 軸に平行な直線は接線とはしない．\n\\begin{enumerate}\n  \\item $H$ によって $C$ 上の点全体がちょうど $C'$ 上の点全体に移るような $(p,\\ q,\\ k)$ がただ1組存在することを示し，$p,\\ q,\\ k$ を $a,\\ b,\\ c$ で表せ．\n  \\item $C$ と $C'$ の共通接線はすべて (1) の点 R を通ることを示せ．さらに，共通接線の本数を $a,\\ b,\\ c$ の条件によって分類せよ．\n  \\item $d$ を定数とする．3つの放物線 $y=x^2$，$y=2x^2-1$，$y=-x^2+6x+d$ のすべてに接する直線が存在するような $d$ の値と，そのときの直線の方程式を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $k=\\dfrac1a$，$p=\\dfrac{b}{2(1-a)}$，$q=\\dfrac{4ac-b^2}{4(a-1)}$　(2) 証明；$a(b^2+4c(1-a))>0$ のとき2本，$=0$ のとき1本，$<0$ のとき0本　(3) $d=-13+6\\sqrt2$ のとき $y=2\\sqrt2\\,x-2$，$d=-13-6\\sqrt2$ のとき $y=-2\\sqrt2\\,x-2$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "\\textbf{準備．} $\\alpha\\neq0$ とし，放物線 $P:\\ y=\\alpha x^2+\\beta x+\\gamma$ と $y$ 軸に平行でない直線 $\\ell:\\ y=mx+n$ を考える．共有点の $x$ 座標は $\\alpha x^2+(\\beta-m)x+\\gamma-n=0$ の実数解である．$\\ell$ が $P$ の $x=s$ における接線であることは，$m=2\\alpha s+\\beta$，$n=-\\alpha s^2+\\gamma$ と同値であり，これは $\\alpha x^2+(\\beta-m)x+\\gamma-n=\\alpha(x-s)^2$ と同値である．したがって\n\\begin{itemize}\n  \\item[(i)] $\\ell$ が $P$ に接する $\\iff$ 上の2次方程式が重解をもつ $\\iff$ $\\ell$ と $P$ の共有点がちょうど1個．\n  \\item[(ii)] 傾き $m$ の $P$ の接線は，接点が $s=\\dfrac{m-\\beta}{2\\alpha}$ に限られるので，ちょうど1本である．\n\\end{itemize}\n\n(1) $H$ は $(x,y)\\mapsto(X,Y)=\\bigl(p+k(x-p),\\ q+k(y-q)\\bigr)$ であり，逆に $x=p+\\dfrac{X-p}{k}$，$y=q+\\dfrac{Y-q}{k}$ と戻せるので，平面全体から平面全体への1対1の対応である．よって $C$ の像は\n\\[\nq+\\frac{Y-q}{k}=\\left(p+\\frac{X-p}{k}\\right)^2\n\\iff Y=\\frac1kX^2+\\frac{2p(k-1)}{k}X+\\frac{p^2(k-1)^2}{k}+q(1-k)\n\\]\nをみたす点 $(X,Y)$ 全体である．これも $C'$ も実数全体で定義された関数のグラフなので，両者が一致することは，2つの関数が一致すること，すなわち係数がすべて等しいことと同値である：\n\\[\n\\frac1k=a,\\qquad \\frac{2p(k-1)}{k}=b,\\qquad \\frac{p^2(k-1)^2}{k}+q(1-k)=c.\n\\]\n第1式より $k=\\dfrac1a$．このとき $\\dfrac{k-1}{k}=1-a\\neq0$ なので，第2式より $p=\\dfrac{b}{2(1-a)}$．さらに $\\dfrac{(k-1)^2}{k}=\\dfrac{(1-a)^2}{a}$，$1-k=\\dfrac{a-1}{a}$ だから第3式は $p^2(1-a)^2+q(a-1)=ac$ となり，$p^2(1-a)^2=\\dfrac{b^2}4$ より $q=\\dfrac{4ac-b^2}{4(a-1)}$．以上で $(p,q,k)$ はただ1組に定まり，逆にこの値で3式が成り立つ．\n\\[\n\\boldsymbol{k=\\frac1a,\\quad p=\\frac{b}{2(1-a)},\\quad q=\\frac{4ac-b^2}{4(a-1)}}\n\\]\n\n(2) 以下 $H$ は (1) のものとする．直線 $\\ell:\\ y=mx+n$ 上の点 $(x,\\ mx+n)$ の像 $(X,Y)$ は\n\\[\nY-mX=q+k(mx+n-q)-m\\bigl(p+k(x-p)\\bigr)=q-mp+k(n-q+mp)\n\\]\nをみたし，$x$ が実数全体を動くと $X$ も実数全体を動く．よって $H(\\ell)$ は直線 $y=mx+n'$，$n'=q-mp+k(n-q+mp)$ であり，\n\\[\nn'-n=(k-1)(n-q+mp)\n\\]\nとなる．$k=\\frac1a\\neq1$ なので，$H(\\ell)=\\ell\\iff n=q-mp\\iff$ R が $\\ell$ 上にある．また $H$ は1対1で $C$ を $C'$ に移すから，$\\ell$ と $C$ の共有点の個数は $H(\\ell)$ と $C'$ の共有点の個数に等しい．\n\n$\\ell$ を共通接線とし，傾きを $m$ とする．$\\ell$ と $C$ の共有点は1個なので，$H(\\ell)$ と $C'$ の共有点も1個であり，(i) より $H(\\ell)$ は傾き $m$ の $C'$ の接線である．$\\ell$ も傾き $m$ の $C'$ の接線なので，(ii) より $H(\\ell)=\\ell$．よって $\\ell$ は R を通る．\n\n逆に，R を通る $C$ の接線 $\\ell$ は $H(\\ell)=\\ell$ をみたし，上と同様に $H(\\ell)$ は $C'$ に接するので，共通接線である．したがって，\\textbf{共通接線とは R を通る $C$ の接線のことである．}\n\n$C$ の $x=t$ における接線 $y=2tx-t^2$ が R を通る条件は $t^2-2pt+q=0$ であり，$t$ が異なれば傾き $2t$ も異なる．よって本数はこの2次方程式の異なる実数解の個数で，判別式の符号は $p^2-q$ の符号で決まる．\n\\[\np^2-q=\\frac{b^2}{4(1-a)^2}+\\frac{(4ac-b^2)(1-a)}{4(1-a)^2}=\\frac{a\\bigl(b^2+4c(1-a)\\bigr)}{4(1-a)^2}.\n\\]\nよって共通接線は\n\\[\n\\boldsymbol{a\\bigl(b^2+4c(1-a)\\bigr)>0\\ \\text{のとき2本},\\quad =0\\ \\text{のとき1本},\\quad <0\\ \\text{のとき0本}}.\n\\]\n\n(3) $C_1:\\ y=2x^2-1$ は $(a,b,c)=(2,0,-1)$ なので，(1) の点は R$_1(0,\\ -2)$．$C_2:\\ y=-x^2+6x+d$ は $(a,b,c)=(-1,6,d)$ なので，R$_2\\left(\\dfrac32,\\ \\dfrac{-4d-36}{-8}\\right)=\\left(\\dfrac32,\\ \\dfrac{d+9}2\\right)$．\n\n3つすべてに接する直線 $\\ell$ は，$C$ と $C_1$ の共通接線なので R$_1$ を通り，$C$ と $C_2$ の共通接線なので R$_2$ を通る．R$_1\\neq$ R$_2$ だから $\\ell$ は直線 R$_1$R$_2$：\n\\[\ny=mx-2,\\qquad m=\\frac{\\frac{d+9}2+2}{\\frac32}=\\frac{d+13}{3}.\n\\]\nこれが $C$ に接する条件は $x^2-mx+2=0$ が重解をもつこと，すなわち $m^2=8$，$m=\\pm2\\sqrt2$．よって $d=3m-13=-13\\pm6\\sqrt2$．\n\n逆に，このとき $\\ell:\\ y=mx-2$ は $C$ に接し，R$_1$，R$_2$ を通るので，(2) より $C_1$，$C_2$ にも接する．\n\\[\n\\boldsymbol{d=-13+6\\sqrt2\\ \\text{のとき}\\ y=2\\sqrt2\\,x-2,\\qquad d=-13-6\\sqrt2\\ \\text{のとき}\\ y=-2\\sqrt2\\,x-2}\n\\]\n\\hfill$\\square$"
+   }
+  ],
+  "idea": {
+   "tex": "$y$ 軸方向に軸をもつ2つの放物線の共通接線は，接点の $x$ 座標についての2次方程式の実数解の個数で数えられ，その本数は「2つの放物線の位置関係（交わるか，共有点をもたないか）と凸の向き」で決まる．捻りでは，$y=ax^2+bx+c$ が $y=x^2$ のある点を中心とする相似比 $\\frac1a$ の拡大・縮小の像であることに注目する．各傾きの接線はただ1本なので，共通接線はこの移動で自分自身に移り，相似の中心を通る．共通接線の問題は「1点から $y=x^2$ に引く接線」の問題になる．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) $k$：1/a ; $p$：b/(2(1-a)) ; $q$：(4ac-b^2)/(4(a-1))\n(2) 記述\n(3) 記述"
+  },
+  "methods": [],
+  "tags": [
+   "共通接線",
+   "相似の中心",
+   "重解条件",
+   "放物線の接線の一意性"
+  ],
+  "provenance": {
+   "created": "2026-11-10"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-GEO-244",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-09",
+  "level": 5,
+  "minutes": 35,
+  "theme": "最大値で書かれた領域と原点を通る直線",
+  "topic": "最大値で書かれた領域と原点を通る直線",
+  "statement": {
+   "tex": "座標平面上の領域 $E$ を\n\\[\n2x^2+y^2-11x-3y+14+\\left|\\,y^2-x-y-4\\,\\right|\\leqq 0\n\\]\nで定める．実数 $s$ に対し，原点を通る傾き $s$ の直線を $\\ell$ とする．\n\\begin{enumerate}\n  \\item $E$ は，ある円の周および内部と，ある放物線およびその上側の部分との共通部分であることを示し，その円と放物線の方程式を求めよ．\n  \\item $\\ell$ と $E$ が共有点をもつような $s$ の値の範囲を求めよ．\n  \\item $\\ell$ と $E$ の共有点がただ1つであるような $s$ の値をすべて求め，それぞれの場合の共有点の座標を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 円 $(x-3)^2+(y-1)^2=5$，放物線 $y=x^2-5x+9$（$E$ は $(x-3)^2+(y-1)^2\\leqq5$ かつ $y\\geqq x^2-5x+9$）　(2) $1\\leqq s\\leqq\\dfrac32$　(3) $s=1$ のとき $(3,\\,3)$，$s=\\dfrac32$ のとき $(2,\\,3)$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "\\textbf{(1)}　$P=x^2+y^2-6x-2y+5$，$Q=x^2-5x-y+9$ とおくと\n\\[\nP+Q=2x^2+y^2-11x-3y+14,\\qquad P-Q=y^2-x-y-4 .\n\\]\n実数 $u,v$ に対して，$u\\geqq v$ のとき $(u+v)+|u-v|=2u$，$u<v$ のとき $(u+v)+|u-v|=2v$ であり，いずれの場合も $u,v$ のうち小さくない方の $2$ 倍である．よって $E$ の不等式は「$P,Q$ のうち小さくない方が $0$ 以下」，すなわち「$P\\leqq0$ かつ $Q\\leqq0$」と同値である．\n$P\\leqq0\\iff(x-3)^2+(y-1)^2\\leqq5$，$Q\\leqq0\\iff y\\geqq x^2-5x+9$ なので，$E$ は\n円 $\\boldsymbol{(x-3)^2+(y-1)^2=5}$ の周および内部と，放物線 $\\boldsymbol{y=x^2-5x+9}$ およびその上側との共通部分である．\n\n\\medskip\n\\textbf{(2)}　$E$ の点は $(x-3)^2\\leqq5$ をみたすので $x\\geqq3-\\sqrt5>0$．よって，$\\ell$ と $E$ が共有点をもつことは，ある $x>0$ について点 $(x,sx)$ が $E$ に属することと同値である．$x>0$ のとき\n\\begin{itemize}\n  \\item[(i)] $Q\\leqq0$：$sx\\geqq x^2-5x+9$，すなわち $s\\geqq g(x)$，ただし $g(x)=x-5+\\dfrac9x$．\n  \\item[(ii)] $P\\leqq0$：$x^2+s^2x^2-6x-2sx+5\\leqq0$，すなわち $(sx-1)^2\\leqq h(x)$，ただし $h(x)=-x^2+6x-4$．\n\\end{itemize}\n\n\\emph{下限}．$x>0$ で $g(x)-1=\\dfrac{x^2-6x+9}{x}=\\dfrac{(x-3)^2}{x}\\geqq0$ なので，(i) から $s\\geqq1$．\n\n\\emph{共有点の $x$ 座標の範囲}．$(x,sx)\\in E$（$x>0$）とする．(i) より $sx-1\\geqq x^2-5x+8=\\left(x-\\frac52\\right)^2+\\frac74>0$．これと (ii) から\n$(x^2-5x+8)^2\\leqq(sx-1)^2\\leqq h(x)$，すなわち\n\\[\nq(x)=(x^2-5x+8)^2+x^2-6x+4=x^4-10x^3+42x^2-86x+68=(x-2)\\,r(x)\\leqq0,\n\\]\nただし $r(x)=x^3-8x^2+26x-34$．$r'(x)=3x^2-16x+26=3\\left(x-\\frac83\\right)^2+\\frac{14}3>0$ より $r$ は増加し，$r(3)=-1<0$，$r(4)=6>0$ であるから，$r(\\gamma)=0$ となる実数 $\\gamma$ がただ1つあって $3<\\gamma<4$，$x<\\gamma$ で $r(x)<0$，$x>\\gamma$ で $r(x)>0$．よって $q(x)\\leqq0\\iff2\\leqq x\\leqq\\gamma$．したがって共有点の $x$ 座標は $2\\leqq x\\leqq\\gamma$ をみたす．\n\n\\emph{上限}．$(x,sx)\\in E$ かつ $s>\\frac32$ と仮定する．$x\\geqq2$ より $sx-1>\\frac32x-1\\geqq2>0$ なので，(ii) から\n$h(x)\\geqq(sx-1)^2>\\left(\\frac{3x-2}2\\right)^2$．よって\n$4h(x)-(3x-2)^2=-13x^2+36x-20=-(x-2)(13x-10)>0$，すなわち $\\frac{10}{13}<x<2$ となり $x\\geqq2$ に矛盾する．ゆえに $s\\leqq\\frac32$．\n\n\\emph{十分性}．$1\\leqq s\\leqq\\frac32$ とし，$f(x)=x^2-(5+s)x+9$ とおく．判別式は $(5+s)^2-36=(s-1)(s+11)\\geqq0$ で，2解（重解を含む）は正で積が $9$ だから，小さい方の解 $x_0$ は $x_0\\leqq3$．また $f(2)=3-2s\\geqq0$ かつ軸 $\\frac{5+s}2>2$ より $x_0\\geqq2$．\n点 $(x_0,sx_0)$ について，$f(x_0)=0$ から $sx_0=x_0^2-5x_0+9$ で (i) は成り立つ．さらに $sx_0-1=x_0^2-5x_0+8$ かつ $2\\leqq x_0\\leqq3<\\gamma$ より $q(x_0)\\leqq0$，すなわち $(sx_0-1)^2\\leqq h(x_0)$ で (ii) も成り立つ．よって $(x_0,sx_0)\\in E$．\n\n以上より，求める範囲は $\\boldsymbol{1\\leqq s\\leqq\\dfrac32}$．\n\n\\medskip\n\\textbf{(3)}　$\\ell$ 上の点は $x$ 座標で区別されるので，$T(s)=\\{x>0\\mid (x,sx)\\in E\\}$ の要素の個数が共有点の個数である．(2) より $s<1$ または $s>\\frac32$ では $T(s)$ は空．\n\n\\emph{$s=1$}：(i) は $(x-3)^2\\leqq0$ で $x=3$ のみ．このとき $(sx-1)^2=4\\leqq h(3)=5$ で (ii) も成り立つ．共有点はただ1つで $(3,3)$．\n\n\\emph{$s=\\frac32$}：(i) は $2x^2-13x+18=(x-2)(2x-9)\\leqq0$ より $2\\leqq x\\leqq\\frac92$．(ii) は $13x^2-36x+20=(x-2)(13x-10)\\leqq0$ より $\\frac{10}{13}\\leqq x\\leqq2$．共通部分は $x=2$ のみで，共有点はただ1つ $(2,3)$．\n\n\\emph{$1<s<\\frac32$}：$f(x)=x^2-(5+s)x+9$ の判別式 $(s-1)(s+11)>0$ で2解は相異なり，積 $9$ より小さい解 $x_0$ は $x_0<3$，大きい解は $\\frac9{x_0}>3$．また $f(2)=3-2s>0$ と軸 $>2$ より $x_0>2$．(i) は $x_0\\leqq x\\leqq\\frac9{x_0}$ で成り立つ．\n次に $\\varphi(x)=h(x)-(sx-1)^2=-(1+s^2)x^2+(6+2s)x-5$ とおく．$2<x_0<3<\\gamma$ より $q(x_0)=(x_0-2)r(x_0)<0$ なので\n$\\varphi(x_0)=h(x_0)-(x_0^2-5x_0+8)^2=-q(x_0)>0$．$\\varphi$ は上に凸の2次関数だから，$\\varphi(x)=0$ は2つの実数解 $\\alpha<\\beta$ をもち $\\alpha<x_0<\\beta$，(ii) は $\\alpha\\leqq x\\leqq\\beta$ で成り立つ．\n$\\beta$ と $\\frac9{x_0}$ のうち大きくない方を $x_1$ とすると $x_0<x_1$ であり，$x_0\\leqq x\\leqq x_1$ をみたすすべての $x$ が $T(s)$ に属するから，共有点は無数にある．\n\n以上より，$\\boldsymbol{s=1}$ のとき共有点 $\\boldsymbol{(3,3)}$，$\\boldsymbol{s=\\dfrac32}$ のとき共有点 $\\boldsymbol{(2,3)}$．\\hfill$\\square$\n\n\\medskip\n\\noindent\\textbf{注}　円だけに届く傾きの範囲は $-\\frac12\\leqq s\\leqq2$（接点 $(2,-1)$，$(1,2)$），放物線の上側に届く傾きの範囲は $s\\leqq-11$ または $s\\geqq1$ であり，その共通部分 $1\\leqq s\\leqq2$ は正しい答えではない．円の接点 $(1,2)$ は放物線の下側にあるため $E$ に属さず，上端は円と放物線の交点 $(2,3)$ で決まる．"
+   }
+  ],
+  "idea": {
+   "tex": "$(P+Q)+|P-Q|$ が $P,Q$ のうち小さくない方の $2$ 倍（$(P+Q)-|P-Q|$ は大きくない方の $2$ 倍）であることにより，絶対値を含む1本の不等式が2つの領域の共通部分（和集合）を表すことを見抜く．共通部分に原点を通る直線が届く傾きの範囲は，それぞれの領域に届く範囲の共通部分ではない．$x$ を固定して傾き $s$ の条件に直し，端は「角」（境界どうしの交点）で決まることがある．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) 記述\n(2) 1<=s<=3/2\n(3) 記述"
+  },
+  "methods": [],
+  "tags": [
+   "絶対値と最大値",
+   "領域の共通部分",
+   "直線の通過範囲",
+   "2次不等式"
+  ],
+  "provenance": {
+   "created": "2026-11-10"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-GEO-245",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-09",
+  "level": 5,
+  "minutes": 35,
+  "theme": "直線の道から見た2本の塔の先端",
+  "topic": "直線の道から見た2本の塔の先端",
+  "statement": {
+   "tex": "座標平面を水平な地面とみなし，A$(0,1)$，A$'(0,-1)$ とする．点 Q$(p,q)$ は $p\\neq0$ をみたす定点とし，点 P は $x$ 軸上を動くものとする．\n\\begin{enumerate}\n  \\item $\\lambda$ を正の数とする．$\\mathrm{PQ}=\\lambda\\,\\mathrm{PA}$ となる点 P が $x$ 軸上に存在するための必要十分条件は\n  \\[\\lambda^4-(1+p^2+q^2)\\lambda^2+q^2\\leqq0\\]\n  であることを示せ．\n  \\item $\\dfrac{\\mathrm{PQ}}{\\mathrm{PA}}$ の最大値と最小値を，QA と QA$'$ を用いて表せ．\n  \\item A に高さ $h$，Q に高さ $g$ の塔が地面に垂直に立っていて，$h=2g$ である．$x$ 軸上の点 P から2つの塔の先端を見上げる角度が等しくなるような P がちょうど2つ存在するための $p,q$ の条件を求めよ．また，Q が直線 $y=2$ 上にあるとき，この条件をみたす $p$ の範囲を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 証明　(2) 最大値 $\\dfrac{\\mathrm{QA}+\\mathrm{QA'}}2$，最小値 $\\dfrac{|\\mathrm{QA}-\\mathrm{QA'}|}2$　(3) $12q^2-4p^2<3$（$p\\neq0$）；$q=2$ のとき $|p|>\\dfrac{3\\sqrt5}2$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) P$(s,0)$ とすると $\\mathrm{PQ}^2=(s-p)^2+q^2$，$\\mathrm{PA}^2=s^2+1$．PQ，PA は正または $0$ なので，$\\mathrm{PQ}=\\lambda\\,\\mathrm{PA}\\iff\\mathrm{PQ}^2=\\lambda^2\\mathrm{PA}^2$，すなわち\n\\[(1-\\lambda^2)s^2-2ps+p^2+q^2-\\lambda^2=0\\qquad\\cdots(*)\\]\n$F(u)=u^2-(1+p^2+q^2)u+q^2$ とおく．\n\n$\\lambda\\neq1$ のとき，$(*)$ は $s$ の2次方程式で，実数解をもつ条件は\n\\[\\frac{(\\text{判別式})}4=p^2-(1-\\lambda^2)(p^2+q^2-\\lambda^2)=-\\lambda^4+(1+p^2+q^2)\\lambda^2-q^2=-F(\\lambda^2)\\geqq0.\\]\n$\\lambda=1$ のとき，$(*)$ は $-2ps+p^2+q^2-1=0$ で，$p\\neq0$ より実数解 $s$ がある．一方 $F(1)=-p^2<0$ で条件 $F(\\lambda^2)\\leqq0$ も成り立つ．\n\nよって，どの $\\lambda>0$ についても，求める条件は $F(\\lambda^2)\\leqq0$，すなわち $\\lambda^4-(1+p^2+q^2)\\lambda^2+q^2\\leqq0$ である．\\hfill$\\square$\n\n(2) $F(1)=-p^2<0$ より $F(u)=0$ は異なる2実数解 $u_1<1<u_2$ をもち，$F(0)=q^2\\geqq0$ より $u_1\\geqq0$．\nP が $x$ 軸上を動くときの $\\dfrac{\\mathrm{PQ}}{\\mathrm{PA}}$ の値の集合を $E$ とする．(1) より，正の数 $\\lambda$ が $E$ に属する $\\iff u_1\\leqq\\lambda^2\\leqq u_2$．また $0\\in E\\iff$ P$=$Q となる P がある $\\iff q=0\\iff u_1=0$（$F(0)=q^2$ と $u_1u_2=q^2$，$u_2>0$ による）．よって $E=\\left[\\sqrt{u_1},\\sqrt{u_2}\\right]$ で，最大値 $\\sqrt{u_2}$，最小値 $\\sqrt{u_1}$．\n\n$a=\\mathrm{QA}$，$a'=\\mathrm{QA'}$ とすると $a^2=p^2+(q-1)^2$，$a'^2=p^2+(q+1)^2$ だから\n\\[u_1+u_2=1+p^2+q^2=\\frac{a^2+a'^2}2,\\qquad u_1u_2=q^2=\\left(\\frac{a'^2-a^2}4\\right)^2.\\]\n一方 $M=\\dfrac{a+a'}2$，$m=\\dfrac{|a-a'|}2$ とおくと $M^2+m^2=\\dfrac{a^2+a'^2}2$，$M^2m^2=\\left(\\dfrac{a^2-a'^2}4\\right)^2$．よって $M^2,m^2$ は $F(u)=0$ の2解で，$M\\geqq m$ だから $M^2=u_2$，$m^2=u_1$（$M^2\\neq m^2$ は $u_1\\neq u_2$ からわかる）．したがって\n\\[\\text{最大値 }\\boldsymbol{\\frac{\\mathrm{QA}+\\mathrm{QA'}}2},\\qquad\\text{最小値 }\\boldsymbol{\\frac{|\\mathrm{QA}-\\mathrm{QA'}|}2}.\\]\n\n(3) P から A の塔の先端，Q の塔の先端を見上げる角度を $\\varphi,\\psi$ とする．P$\\neq$Q のとき $0<\\varphi,\\psi<\\dfrac\\pi2$ で $\\tan\\varphi=\\dfrac h{\\mathrm{PA}}$，$\\tan\\psi=\\dfrac g{\\mathrm{PQ}}$ だから，$\\varphi=\\psi\\iff\\mathrm{PQ}=\\dfrac gh\\mathrm{PA}=\\dfrac12\\mathrm{PA}$．P$=$Q のときは $\\psi=\\dfrac\\pi2\\neq\\varphi$ であり，$\\mathrm{PQ}=\\dfrac12\\mathrm{PA}>0$ からも P$\\neq$Q．よって求める P の個数は，$\\lambda=\\dfrac12$ のときの $(*)$\n\\[\\frac34s^2-2ps+p^2+q^2-\\frac14=0\\]\nの実数解の個数に等しい．これが異なる2実数解をもつ条件は，(1) の計算から $-F\\left(\\dfrac14\\right)>0$，すなわち\n\\[\\frac1{16}-\\frac{1+p^2+q^2}4+q^2<0\\iff\\boldsymbol{12q^2-4p^2<3}\\quad(p\\neq0).\\]\n$q=2$ のとき $48-4p^2<3$，$p^2>\\dfrac{45}4$ で $\\boldsymbol{|p|>\\dfrac{3\\sqrt5}2}$．\n\n（注）境界 $12q^2-4p^2=3$ は (2) の最小値が $\\dfrac12$ となる点，すなわち $|\\mathrm{QA}-\\mathrm{QA'}|=1$ をみたす，A，A$'$ を焦点とする双曲線である．"
+   }
+  ],
+  "idea": {
+   "tex": "仰角が等しい $\\iff$ 距離の比が高さの比．P を直線上で動かすとき「$\\mathrm{PQ}=\\lambda\\,\\mathrm{PA}$ をみたす P が存在する」条件は P の座標の2次方程式の判別式で，$\\lambda^2$ の2次不等式 $F(\\lambda^2)\\leqq0$ になる．$F$ の2解は和が $\\dfrac{\\mathrm{QA}^2+\\mathrm{QA'}^2}2$，積が $\\left(\\dfrac{\\mathrm{QA}^2-\\mathrm{QA'}^2}4\\right)^2$（A$'$ は A の直線に関する対称点）なので，$\\dfrac{\\mathrm{PQ}}{\\mathrm{PA}}$ の最大・最小は焦点 A，A$'$ からの距離の和・差の半分になる．"
+  },
+  "methods": [],
+  "tags": [
+   "アポロニウスの円",
+   "判別式",
+   "解と係数の関係",
+   "焦点からの距離の和と差"
+  ],
+  "provenance": {
+   "created": "2026-11-10"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-GEO-246",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-09",
+  "level": 5,
+  "minutes": 35,
+  "theme": "2つの円とその鏡像に接する左右の円",
+  "topic": "2つの円とその鏡像に接する左右の円",
+  "statement": {
+   "tex": "座標平面において原点 O を中心とする半径1の円を $C_1$ とする．$0<\\theta<\\pi$ とし，極座標が $(r,\\theta)$ である点 P を中心とする円 $C_2$ が，$C_1$ 上の点 Q において $C_1$ に内接し，かつ $x$ 軸に接しているとする．$C_2$ を $x$ 軸に関して折り返した円を $C_2'$ とする．また，A$(-1,0)$ とし，直線 AQ の $y$ 切片を $t$ とする．\n\\begin{enumerate}\n  \\item $C_2$ の半径 $\\rho$ と $r$ を，それぞれ $t$ の式で表せ．\n  \\item $C_1$ に内接し，$C_2$ と $C_2'$ の両方に外接する円はちょうど2つあることを示せ．さらに，それらのうち中心の $x$ 座標が負のものを $C_3$，正のものを $C_4$ とし，それぞれの半径 $b$，$b'$ を $t$ の式で表せ．\n  \\item $\\dfrac1b+\\dfrac1{b'}$ を $\\rho$ の式で表せ．\n  \\item $\\theta$ が $0<\\theta<\\pi$ の範囲を動くとき，4つの円 $C_2,C_2',C_3,C_4$ の周の長さの和の最大値と，そのときの $\\theta$ を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $\\rho=\\dfrac{2t}{(1+t)^2}$，$r=\\dfrac{1+t^2}{(1+t)^2}$　(2) 証明；$b=\\dfrac1{1+2t}$，$b'=\\dfrac t{t+2}$　(3) $\\dfrac1b+\\dfrac1{b'}=\\dfrac4\\rho-2$　(4) $\\theta=\\dfrac\\pi2$ のとき最大値 $\\dfrac{10}3\\pi$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) $0<\\theta<\\pi$ より P$(r\\cos\\theta,r\\sin\\theta)$ は上半平面にあり，$C_2$ は $x$ 軸に接するから $\\rho=r\\sin\\theta$．$C_2$ が $C_1$ に内接するから $\\mathrm{OP}=1-\\rho$，すなわち $r=1-r\\sin\\theta$ で\n\\[r=\\frac1{1+\\sin\\theta},\\qquad\\rho=\\frac{\\sin\\theta}{1+\\sin\\theta}.\\]\n内接する2円の接点は中心を結ぶ直線上にあるので，Q は半直線 OP 上で O から距離1の点，Q$(\\cos\\theta,\\sin\\theta)$．$1+\\cos\\theta>0$ だから直線 AQ の $y$ 切片は\n\\[t=\\frac{\\sin\\theta}{1+\\cos\\theta}=\\frac{2\\sin\\frac\\theta2\\cos\\frac\\theta2}{2\\cos^2\\frac\\theta2}=\\tan\\frac\\theta2.\\]\n$0<\\dfrac\\theta2<\\dfrac\\pi2$ なので $t$ は正の実数全体を動き，$\\theta$ と1対1に対応する．$\\sin\\theta=\\dfrac{2t}{1+t^2}$，$\\cos\\theta=\\dfrac{1-t^2}{1+t^2}$ を代入して\n\\[\\boldsymbol{r=\\frac{1+t^2}{(1+t)^2}},\\qquad\\boldsymbol{\\rho=1-r=\\frac{2t}{(1+t)^2}},\\qquad r\\cos\\theta=\\frac{1-t^2}{(1+t)^2}=\\frac{1-t}{1+t}.\\]\n\n(2) 中心 Z，半径 $c$ の円が条件をみたすとする．$C_1$ に内接するので $0<c<1$，$\\mathrm{OZ}=1-c$．$C_2,C_2'$ に外接するので $\\mathrm{ZP}=\\mathrm{ZP'}=c+\\rho$（P$'(r\\cos\\theta,-\\rho)$ は $C_2'$ の中心）．ZP$=$ZP$'$ より Z は線分 PP$'$ の垂直二等分線，すなわち $x$ 軸上にあり，Z$(z,0)$，$|z|=1-c>0$．よって $z=-(1-c)$ または $z=1-c$．逆に，$0<c<1$ と $z=\\pm(1-c)$ と $\\mathrm{ZP}=c+\\rho$ をみたせば，この円は条件をみたす（ZP$'=$ZP は対称性による）．\n\n\\textbf{$z=-(1-c)$ の場合．} $w=1+r\\cos\\theta=\\dfrac2{1+t}$ とおくと $\\mathrm{ZP}^2=(w-c)^2+\\rho^2$ なので，$\\mathrm{ZP}=c+\\rho\\iff(w-c)^2+\\rho^2=(c+\\rho)^2\\iff w^2=2c(w+\\rho)$．$w+\\rho=\\dfrac{2(1+t)+2t}{(1+t)^2}=\\dfrac{2(1+2t)}{(1+t)^2}$ だから\n\\[c=\\frac{w^2}{2(w+\\rho)}=\\frac{4/(1+t)^2}{4(1+2t)/(1+t)^2}=\\frac1{1+2t}.\\]\nこれは $0<c<1$ をみたすので，この場合の円はただ1つ存在する．\n\n\\textbf{$z=1-c$ の場合．} $w'=1-r\\cos\\theta=\\dfrac{2t}{1+t}$ とおくと同様に $w'^2=2c(w'+\\rho)$．$w'+\\rho=\\dfrac{2t(1+t)+2t}{(1+t)^2}=\\dfrac{2t(t+2)}{(1+t)^2}$ だから\n\\[c=\\frac{4t^2/(1+t)^2}{4t(t+2)/(1+t)^2}=\\frac t{t+2},\\]\nこれも $0<c<1$ をみたし，ただ1つ存在する．\n\n中心の位置が異なるので2円は別の円であり，条件をみたす円はちょうど2つ．\\hfill$\\square$\n\\[\\boldsymbol{b=\\frac1{1+2t}},\\qquad\\boldsymbol{b'=\\frac t{t+2}}.\\]\n\n(3) $\\dfrac1b+\\dfrac1{b'}=1+2t+\\dfrac{t+2}t=2+2\\left(t+\\dfrac1t\\right)$．一方 $\\dfrac1\\rho=\\dfrac{(1+t)^2}{2t}=\\dfrac12\\left(t+\\dfrac1t\\right)+1$ だから $t+\\dfrac1t=\\dfrac2\\rho-2$．よって\n\\[\\boldsymbol{\\frac1b+\\frac1{b'}=\\frac4\\rho-2}.\\]\n\n(4) 周の長さの和は $2\\pi(2\\rho+b+b')$．$s=t+\\dfrac1t$ とおくと，$t>0$ より $s\\geqq2$（等号は $t=1$）で，$t$ が正の実数全体を動くとき $s$ は $s\\geqq2$ の範囲すべてをとる．\n\\[\\rho=\\frac{2}{t+2+\\frac1t}=\\frac2{s+2},\\qquad b+b'=\\frac{(t+2)+t(1+2t)}{(1+2t)(t+2)}=\\frac{2t^2+2t+2}{2t^2+5t+2}=\\frac{2s+2}{2s+5}\\]\n（最後は分母・分子を $t$ で割った）．よって\n\\[G(s)=2\\rho+b+b'=\\frac4{s+2}+1-\\frac3{2s+5}.\\]\n$G(2)=1+1-\\dfrac13=\\dfrac53$ で，$s\\geqq2$ のとき\n\\[G(2)-G(s)=\\left(1-\\frac4{s+2}\\right)-\\left(\\frac13-\\frac3{2s+5}\\right)=\\frac{s-2}{s+2}-\\frac{2(s-2)}{3(2s+5)}=\\frac{(s-2)(4s+11)}{3(s+2)(2s+5)}\\geqq0.\\]\n等号は $s=2$，すなわち $t=1$，$\\theta=\\dfrac\\pi2$ のときに限る．よって周の長さの和は $\\boldsymbol{\\theta=\\dfrac\\pi2}$ のとき最大値 $2\\pi\\cdot\\dfrac53=\\boldsymbol{\\dfrac{10}3\\pi}$ をとる．"
+   }
+  ],
+  "idea": {
+   "tex": "$C_2$ の半径は $\\rho=r\\sin\\theta$ で，内接の条件は $r+\\rho=1$．$t=\\tan\\dfrac\\theta2$ にすると $r\\cos\\theta=\\dfrac{1-t}{1+t}$，$\\rho=\\dfrac{2t}{(1+t)^2}$ と有理式になる．$C_2,C_2'$ の両方に外接する円の中心は $x$ 軸上にあり，左右の2円の半径は $\\dfrac1{1+2t}$，$\\dfrac t{t+2}$．この2つは $t\\to\\dfrac1t$ で入れかわるので，半径の和は $s=t+\\dfrac1t$ の関数になる．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) $\\rho$：2t/(1+t)^2 ; $r$：(1+t^2)/(1+t)^2\n(2) 記述\n(3) 記述\n(4) 記述"
+  },
+  "methods": [],
+  "tags": [
+   "円の内接と外接",
+   "半角の正接",
+   "対称性",
+   "相反式の最大"
+  ],
+  "provenance": {
+   "created": "2026-11-10"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-GEO-247",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-09",
+  "level": 4,
+  "minutes": 35,
+  "theme": "傾いた辺に接する放物線の族が通らない部分",
+  "topic": "傾いた辺に接する放物線の族が通らない部分",
+  "statement": {
+   "tex": "実数の組 $(p,q)$ に対し，$f(x)=(x-p)^2+q$ とおく．\n\\begin{enumerate}\n  \\item 放物線 $y=f(x)$ が点 $(0,1)$ を通り，しかも直線 $y=\\dfrac x2$ の $0<x<2$ の部分と接するような実数の組 $(p,q)$ と接点の座標を求めよ．\n  \\item 長方形 $R:\\ 0\\leqq x\\leqq2,\\ 0\\leqq y\\leqq2$ を考える．また，4点 $\\mathrm P_0(0,1)$，$\\mathrm P_1(0,0)$，$\\mathrm P_2(2,1)$，$\\mathrm P_3(2,0)$ をこの順に線分で結んで得られる折れ線を $L$ とする．実数の組 $(p,q)$ を，放物線 $y=f(x)$ と折れ線 $L$ に共有点がないようなすべての組にわたって動かすとき，$R$ の点のうちで放物線 $y=f(x)$ が通過する点全体の集合を $T$ とする．$R$ から $T$ を除いた部分 $S$ を図示し，その面積を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $(p,q)=\\left(\\dfrac34,\\dfrac7{16}\\right)$，接点 $\\left(1,\\dfrac12\\right)$　(2) $S$ は $0\\leqq x\\leqq1,\\ 0\\leqq y\\leqq x^2-\\dfrac32x+1$ と $1\\leqq x\\leqq2,\\ 0\\leqq y\\leqq\\dfrac x2$ の和集合（境界を含む），面積 $\\dfrac43$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "\\textbf{(1)} $f(x)-\\dfrac x2=x^2-\\left(2p+\\dfrac12\\right)x+p^2+q$．放物線が直線 $y=\\dfrac x2$ に接する条件は，この2次式が重解をもつこと，すなわち\n\\[\\left(2p+\\frac12\\right)^2-4(p^2+q)=0\\iff q=\\frac p2+\\frac1{16}\\]\nで，このとき $f(x)-\\dfrac x2=\\left(x-p-\\dfrac14\\right)^2$ となり，接点の $x$ 座標は $p+\\dfrac14$ である．\n点 $(0,1)$ を通る条件 $p^2+q=1$ に代入して $p^2+\\dfrac p2-\\dfrac{15}{16}=0$，すなわち $\\left(p-\\dfrac34\\right)\\left(p+\\dfrac54\\right)=0$．\n接点の $x$ 座標 $p+\\dfrac14$ が $0<x<2$ にあるのは $p=\\dfrac34$（接点の $x$ 座標1）のときで，$p=-\\dfrac54$ では $-1$ となり不適．\nよって $\\boldsymbol{(p,q)=\\left(\\dfrac34,\\ \\dfrac7{16}\\right)}$，接点 $\\boldsymbol{\\left(1,\\ \\dfrac12\\right)}$．\n\n以下 $h(x)=\\left(x-\\dfrac34\\right)^2+\\dfrac7{16}=x^2-\\dfrac32x+1$ とおく．$h(0)=1$，$h(1)=\\dfrac12$，$h(x)-\\dfrac x2=(x-1)^2\\geqq0$ である．\n\n\\textbf{(2)} \\textbf{補題}：$(p_1,q_1),(p_2,q_2)$ に対する $f_1,f_2$ について $g=f_2-f_1$ は $x^2$ の項が消えて1次以下の式になる．$\\alpha<\\beta$ で $g(\\alpha)>0$，$g(\\beta)>0$ ならば，$\\alpha\\leqq x\\leqq\\beta$ で\n\\[g(x)=\\frac{(\\beta-x)g(\\alpha)+(x-\\alpha)g(\\beta)}{\\beta-\\alpha}>0 .\\]\n\n$L$ は線分 $\\mathrm P_0\\mathrm P_1=\\{(0,y)\\mid0\\leqq y\\leqq1\\}$，$\\mathrm P_1\\mathrm P_2=\\{(x,\\frac x2)\\mid0\\leqq x\\leqq2\\}$，$\\mathrm P_2\\mathrm P_3=\\{(2,y)\\mid0\\leqq y\\leqq1\\}$ からなる．\n放物線 $y=f(x)$ が $L$ と共有点をもたないとし，$k(x)=f(x)-\\dfrac x2$ とおくと，$0\\leqq x\\leqq2$ で $k(x)\\neq0$，また $f(0)\\notin[0,1]$，$f(2)\\notin[0,1]$．$k$ は連続だから，中間値の定理により $[0,2]$ で $k$ の符号は一定．\n\\begin{itemize}\n  \\item $k<0$ のとき：$f(0)<0$，$f(2)<1$ より $f(2)<0$．2点 $(0,f(0))$，$(2,f(2))$ を結ぶ直線を $y=\\ell(x)$ とすると，$f(x)-\\ell(x)$ は $x^2$ の係数1で $x=0,2$ を解にもつから $f(x)-\\ell(x)=x(x-2)\\leqq0$（$0\\leqq x\\leqq2$）．よって $f(x)\\leqq\\ell(x)<0$ となり，この放物線は $R$（$y\\geqq0$）の点を通らない．\n  \\item $k>0$ のとき：$f(0)>0$ より $f(0)>1$，$f(2)>1$ である．\n\\end{itemize}\n逆に，$f(0)>1$ かつ $0\\leqq x\\leqq2$ で $f(x)>\\dfrac x2$ ならば，$f(2)>1$ も成り立ち，放物線は3つの線分のどれとも共有点をもたない．よって，$\\mathcal F$ を「$f(0)>1$ かつ $0\\leqq x\\leqq2$ で $f(x)>\\dfrac x2$」をみたす $f$ 全体とすると，\n\\[T=\\{(x_0,y_0)\\in R\\mid f(x_0)=y_0\\ \\text{となる}\\ f\\in\\mathcal F\\ \\text{が存在する}\\}.\\]\n\n\\textbf{$T$ の決定．}次を示す．\n\\[T=\\{(x,y)\\in R\\mid 0\\leqq x\\leqq1,\\ y>h(x)\\}\\cup\\{(x,y)\\in R\\mid1\\leqq x\\leqq2,\\ y>\\tfrac x2\\}.\\]\n(i) $f\\in\\mathcal F$ とする．$f(0)>1=h(0)$，$f(1)>\\dfrac12=h(1)$ だから，補題により $0\\leqq x\\leqq1$ で $f(x)>h(x)$．また $1\\leqq x\\leqq2$ では $f(x)>\\dfrac x2$．よって $T$ は右辺に含まれる．\n\n(ii) $0\\leqq x_0\\leqq1$，$h(x_0)<y_0\\leqq2$ のとき，$c=y_0-h(x_0)>0$ として $f=h+c$（$p=\\frac34$，$q=\\frac7{16}+c$）をとると，$f(0)=1+c>1$，$f(x)-\\dfrac x2=(x-1)^2+c>0$ より $f\\in\\mathcal F$ で，$f(x_0)=y_0$．\n\n$1\\leqq x_0\\leqq2$，$\\dfrac{x_0}2<y_0\\leqq2$ のとき，$p=x_0-\\dfrac14$，$c=y_0-\\dfrac{x_0}2>0$ として $f(x)=(x-p)^2+\\dfrac p2+\\dfrac1{16}+c$ をとる．(1)の計算から $f(x)-\\dfrac x2=(x-x_0)^2+c>0$，また $f(0)=p^2+\\dfrac p2+\\dfrac1{16}+c=\\left(p+\\dfrac14\\right)^2+c=x_0^{\\,2}+c>1$．よって $f\\in\\mathcal F$ で $f(x_0)=y_0$．\n以上で $T$ が決まった．\n\n$0\\leqq x\\leqq1$ で $h(x)-1=x\\left(x-\\dfrac32\\right)\\leqq0$，すなわち $h(x)\\leqq1<2$ だから，\n\\[S=\\{0\\leqq x\\leqq1,\\ 0\\leqq y\\leqq x^2-\\tfrac32x+1\\}\\cup\\{1\\leqq x\\leqq2,\\ 0\\leqq y\\leqq\\tfrac x2\\}.\\]\n図示：$S$ は，$y$ 軸上の線分 $(0,0)$–$(0,1)$，放物線 $y=x^2-\\frac32x+1$ の弧 $(0,1)$–$(1,\\frac12)$（頂点 $(\\frac34,\\frac7{16})$，$(1,\\frac12)$ で直線 $y=\\frac x2$ に接する），線分 $(1,\\frac12)$–$(2,1)$，線分 $(2,1)$–$(2,0)$，$x$ 軸上の線分 $(2,0)$–$(0,0)$ で囲まれた部分で，境界を含む．\n面積は\n\\[\\int_0^1\\left(x^2-\\frac32x+1\\right)dx+\\int_1^2\\frac x2\\,dx=\\left(\\frac13-\\frac34+1\\right)+\\frac34=\\boldsymbol{\\frac43}.\\]\n\\hfill$\\square$"
+   }
+  ],
+  "idea": {
+   "tex": "平行移動した2つの放物線 $y=(x-p_1)^2+q_1$，$y=(x-p_2)^2+q_2$ の差は1次式なので，2点で大小が決まればその間でも大小が決まる．障害物を避ける放物線の「下限」は，端の点を通り障害物の辺に接する極端な放物線で与えられ，それより先では障害物の辺そのものが境界になる．"
+  },
+  "methods": [],
+  "tags": [
+   "通過領域",
+   "放物線の平行移動",
+   "差が1次式",
+   "接線"
+  ],
+  "provenance": {
+   "created": "2026-11-10"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-GEO-248",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-09",
+  "level": 5,
+  "minutes": 40,
+  "theme": "円周上を動く基準点に対する比の条件と領域",
+  "topic": "円周上を動く基準点に対する比の条件と領域",
+  "statement": {
+   "tex": "座標平面上に原点 O を中心とする半径1の円 $C$ がある．$C$ 上の点 B と，O と異なる点 P に対して，次の条件 $(*)_{\\mathrm B}$ を考える．\n\\begin{center}\n$(*)_{\\mathrm B}$：半直線 OP 上の点 Q で $\\mathrm{OQ}\\leqq2\\,\\mathrm{OP}$ をみたすものすべてについて，$\\mathrm{QP}\\cdot\\mathrm{OB}\\leqq\\mathrm{BQ}\\cdot\\mathrm{OP}$ が成り立つ．\n\\end{center}\n\\begin{enumerate}\n  \\item $(*)_{\\mathrm B}$ が成り立つことは，$\\overrightarrow{\\mathrm{BO}}\\cdot\\overrightarrow{\\mathrm{BP}}\\geqq0$ かつ $\\overrightarrow{\\mathrm{PO}}\\cdot\\overrightarrow{\\mathrm{PB}}\\geqq0$ が成り立つことと同値であることを示せ．\n  \\item $C$ 上のすべての点 B について $(*)_{\\mathrm B}$ が成り立つような点 P 全体を求めよ．\n  \\item $C$ のうち $y\\geqq0$ の部分（両端を含む半円周）を $C^+$ とする．$C^+$ 上のすべての点 B について $(*)_{\\mathrm B}$ が成り立つような点 P 全体を $D$ とする．$D$ を図示し，$D$ のうち $y\\geqq-1$ をみたす部分の面積を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 証明　(2) 円 $C$ 全体（$x^2+y^2=1$）　(3) $D$ は半円周 $x^2+y^2=1$（$y\\geqq0$）と，領域 $y<0$，$-1\\leqq x\\leqq1$，$x^2+y^2\\geqq|x|$（2円 $\\left(x\\mp\\frac12\\right)^2+y^2=\\frac14$ の外側）の和集合；面積は $2-\\dfrac\\pi4$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) $\\vec u=\\overrightarrow{\\mathrm{OP}}\\neq\\vec0$，$\\vec b=\\overrightarrow{\\mathrm{OB}}$（$|\\vec b|=1$）とする．$\\mathrm{OQ}\\leqq2\\mathrm{OP}$ をみたす半直線 OP 上の点 Q は $\\overrightarrow{\\mathrm{OQ}}=t\\vec u$（$0\\leqq t\\leqq2$）と表せる．\n$\\mathrm{QP}=|1-t||\\vec u|$，$\\mathrm{BQ}=|t\\vec u-\\vec b|$ だから，$|\\vec u|>0$ で割って\n\\[\\mathrm{QP}\\cdot\\mathrm{OB}\\leqq\\mathrm{BQ}\\cdot\\mathrm{OP}\\iff|1-t|\\leqq|t\\vec u-\\vec b|.\\]\n両辺は0以上なので2乗して同値で，\n\\[(1-t)^2\\leqq t^2|\\vec u|^2-2t\\,\\vec u\\cdot\\vec b+1\\iff t\\bigl\\{t(|\\vec u|^2-1)+2(1-\\vec u\\cdot\\vec b)\\bigr\\}\\geqq0.\\]\n$t=0$ ではつねに成り立つ．$\\ell(t)=t(|\\vec u|^2-1)+2(1-\\vec u\\cdot\\vec b)$ とおくと，$(*)_{\\mathrm B}\\iff$「$0<t\\leqq2$ で $\\ell(t)\\geqq0$」．\n$\\ell$ は1次以下の式なので，$\\ell(0)\\geqq0$ かつ $\\ell(2)\\geqq0$ なら $0\\leqq t\\leqq2$ で $\\ell(t)=\\left(1-\\frac t2\\right)\\ell(0)+\\frac t2\\ell(2)\\geqq0$．逆に $\\ell(0)<0$ なら連続性より十分小さい $t>0$ で $\\ell(t)<0$，$\\ell(2)<0$ なら $t=2$ で不成立．よって\n\\[(*)_{\\mathrm B}\\iff\\ell(0)\\geqq0\\ \\text{かつ}\\ \\ell(2)\\geqq0\\iff 1-\\vec u\\cdot\\vec b\\geqq0\\ \\text{かつ}\\ |\\vec u|^2-\\vec u\\cdot\\vec b\\geqq0.\\]\nここで $\\overrightarrow{\\mathrm{BO}}\\cdot\\overrightarrow{\\mathrm{BP}}=(-\\vec b)\\cdot(\\vec u-\\vec b)=1-\\vec u\\cdot\\vec b$，$\\overrightarrow{\\mathrm{PO}}\\cdot\\overrightarrow{\\mathrm{PB}}=(-\\vec u)\\cdot(\\vec b-\\vec u)=|\\vec u|^2-\\vec u\\cdot\\vec b$ なので示された．\\hfill$\\square$\n\n以下，$m(\\mathrm P)$ を B が動く範囲での $\\vec u\\cdot\\vec b$ の最大値とすると，(1) より条件は\n\\[m(\\mathrm P)\\leqq1\\quad\\text{かつ}\\quad|\\vec u|^2\\geqq m(\\mathrm P).\\]\n\n(2) B が $C$ 全体を動くとき，$\\vec u\\cdot\\vec b\\leqq|\\vec u|$ で，等号は $\\vec b=\\frac{\\vec u}{|\\vec u|}$ のとき．よって $m=|\\vec u|$．条件は $|\\vec u|\\leqq1$ かつ $|\\vec u|^2\\geqq|\\vec u|$（$|\\vec u|>0$ より $|\\vec u|\\geqq1$）．\n求める P 全体は\\textbf{円 $C$：$x^2+y^2=1$ 全体}．\n\n(3) P$(x,y)$，B$(\\cos\\varphi,\\sin\\varphi)$（$0\\leqq\\varphi\\leqq\\pi$）とする．\n\n$y\\geqq0$ のとき：$\\vec u\\cdot\\vec b\\leqq|\\vec u|$ で，$\\frac{\\vec u}{|\\vec u|}$ は $C^+$ 上にあるから $m=|\\vec u|$．(2) と同様に条件は $x^2+y^2=1$．\n\n$y<0$ のとき：$\\sin\\varphi\\geqq0$ より $\\vec u\\cdot\\vec b=x\\cos\\varphi+y\\sin\\varphi\\leqq x\\cos\\varphi\\leqq|x|$．等号は $x\\geqq0$ なら $\\varphi=0$，$x<0$ なら $\\varphi=\\pi$ で成立するから $m=|x|$．条件は\n\\[|x|\\leqq1\\quad\\text{かつ}\\quad x^2+y^2\\geqq|x|\\iff\\left(|x|-\\tfrac12\\right)^2+y^2\\geqq\\tfrac14.\\]\n\nよって $D$ は\n\\begin{itemize}\n  \\item 半円周 $x^2+y^2=1$，$y\\geqq0$（両端 $(\\pm1,0)$ を含む）と，\n  \\item 帯 $-1\\leqq x\\leqq1$ の $y<0$ の部分から，2円 $\\left(x-\\frac12\\right)^2+y^2<\\frac14$，$\\left(x+\\frac12\\right)^2+y^2<\\frac14$ の内部を除いた部分（境界の直線 $x=\\pm1$ と2円周の $y<0$ の部分は含み，$x$ 軸上の点は含まない）\n\\end{itemize}\nの和集合である（下側は下方に限りなく広がる）．\n\n面積：半円周の面積は0．下側のうち $-1\\leqq y<0$ の部分は，長方形 $-1\\leqq x\\leqq1$，$-1\\leqq y\\leqq0$（面積2）から2つの半径 $\\frac12$ の半円板（それぞれ面積 $\\frac\\pi8$，$-\\frac12\\leqq y\\leqq0$ に含まれる）を除いたもの（境界の有無は面積に影響しない）．\n\\[2-2\\cdot\\frac\\pi8=\\boldsymbol{2-\\dfrac\\pi4}.\\]\n\\hfill$\\square$"
+   }
+  ],
+  "idea": {
+   "tex": "Q を半直線上の媒介変数 $t$ で表して比の条件を2乗すると $t$ についての2次不等式で，定数項が0（$t=0$ で等号）だから $t$ で割ると1次不等式になり，区間の両端の条件に帰着する．両端の条件は内積 $\\overrightarrow{\\mathrm{BO}}\\cdot\\overrightarrow{\\mathrm{BP}}\\geqq0$，$\\overrightarrow{\\mathrm{PO}}\\cdot\\overrightarrow{\\mathrm{PB}}\\geqq0$ という幾何的な形になり，基準点 B を円周上で動かすと「$\\overrightarrow{\\mathrm{OP}}\\cdot\\overrightarrow{\\mathrm{OB}}$ の最大値」の問題になる．"
+  },
+  "methods": [],
+  "tags": [
+   "領域",
+   "全称条件",
+   "1次関数",
+   "内積",
+   "円"
+  ],
+  "provenance": {
+   "created": "2026-11-10"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-GEO-249",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-09",
+  "level": 5,
+  "minutes": 40,
+  "theme": "放物線の接線と対辺の交点が並ぶ直線",
+  "topic": "放物線の接線と対辺の交点が並ぶ直線",
+  "statement": {
+   "tex": "放物線 $y=x^2$ 上の3点 A$(a,a^2)$，B$(b,b^2)$，C$(c,c^2)$ を考える．ただし $a,b,c$ は相異なる実数で，$2a\\neq b+c$，$2b\\neq c+a$，$2c\\neq a+b$ をみたすとする．\n\\begin{enumerate}\n  \\item 点 A における放物線の接線と直線 BC の交点を P とするとき，P の座標を $a,b,c$ を用いて表せ．\n  \\item 点 B における接線と直線 CA の交点を Q，点 C における接線と直線 AB の交点を R とする．3点 P，Q，R は相異なり，一直線上にあることを示せ．\n  \\item (2) の直線を $\\ell$ とする．放物線 $y=x^2$ と $\\ell$ は共有点をもたないことを示せ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $\\mathrm P\\Bigl(\\dfrac{a^2-bc}{2a-b-c},\\ \\dfrac{a(ab+ac-2bc)}{2a-b-c}\\Bigr)$　(2) 証明　(3) 証明"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) A における接線は $y=2ax-a^2$，直線 BC は傾き $\\dfrac{b^2-c^2}{b-c}=b+c$ で $y=(b+c)x-bc$．$2a\\neq b+c$ より交点はただ1つで，$(2a-b-c)x=a^2-bc$．\n\\[\nx=\\frac{a^2-bc}{2a-b-c},\\qquad y=2ax-a^2=\\frac{2a(a^2-bc)-a^2(2a-b-c)}{2a-b-c}=\\frac{a(ab+ac-2bc)}{2a-b-c}.\n\\]\n$\\boldsymbol{\\mathrm P\\Bigl(\\dfrac{a^2-bc}{2a-b-c},\\ \\dfrac{a(ab+ac-2bc)}{2a-b-c}\\Bigr)}$．Q，R は $(a,b,c)$ を $(b,c,a)$，$(c,a,b)$ に置きかえたもの．\n\n(2) \\textbf{相異なること．}直線 $y=mx+k$ と放物線の共有点は $x^2-mx-k=0$ の解なので高々2個．よって A，B，C は一直線上になく，直線 BC と CA は C だけで交わる．$\\mathrm P=\\mathrm Q$ なら，この点は BC 上かつ CA 上なので C に一致し，C が A における接線上にあることになる．しかし $x^2-(2ax-a^2)=(x-a)^2$ より接線と放物線の共有点は A だけで，$\\mathrm C\\neq\\mathrm A$ に矛盾．$\\mathrm Q\\neq\\mathrm R$，$\\mathrm R\\neq\\mathrm P$ も同様．\n\n\\textbf{一直線上にあること．}$e_1=a+b+c$，$e_2=ab+bc+ca$，$e_3=abc$ とし，\n\\[\n\\ell:\\ (e_1^2-3e_2)\\,y=(e_1e_2-9e_3)\\,x-(e_2^2-3e_1e_3)\n\\]\nを考える．$e_1^2-3e_2=\\frac12\\{(a-b)^2+(b-c)^2+(c-a)^2\\}>0$ なので $\\ell$ は直線である．$\\ell$ の式は $a,b,c$ について対称なので，P が $\\ell$ 上にあることを示せば，文字を入れかえて Q，R も $\\ell$ 上にある．\n\n$\\sigma=b+c$，$\\pi=bc$ とおくと $e_1=a+\\sigma$，$e_2=a\\sigma+\\pi$，$e_3=a\\pi$ で\n\\[\ne_1^2-3e_2=a^2-a\\sigma+\\sigma^2-3\\pi,\\quad e_1e_2-9e_3=a^2\\sigma+a\\sigma^2+\\sigma\\pi-8a\\pi,\\quad e_2^2-3e_1e_3=a^2\\sigma^2-a\\sigma\\pi+\\pi^2-3a^2\\pi .\n\\]\nP の座標を代入し $2a-\\sigma\\ (\\neq0)$ を掛けると，示すべき式は\n\\[\n(e_1e_2-9e_3)(a^2-\\pi)-(e_1^2-3e_2)\\,a(a\\sigma-2\\pi)=(e_2^2-3e_1e_3)(2a-\\sigma).\n\\]\n左辺第1項 $=a^4\\sigma+a^3\\sigma^2-8a^3\\pi-a\\sigma^2\\pi-\\sigma\\pi^2+8a\\pi^2$，第2項（引く前）$=a^4\\sigma-a^3\\sigma^2+a^2\\sigma^3-2a^3\\pi-a^2\\sigma\\pi-2a\\sigma^2\\pi+6a\\pi^2$ で，\n\\[\n\\text{左辺}=2a^3\\sigma^2-a^2\\sigma^3-6a^3\\pi+a^2\\sigma\\pi+a\\sigma^2\\pi+2a\\pi^2-\\sigma\\pi^2 .\n\\]\n右辺 $=2a^3\\sigma^2-2a^2\\sigma\\pi+2a\\pi^2-6a^3\\pi-a^2\\sigma^3+a\\sigma^2\\pi-\\sigma\\pi^2+3a^2\\sigma\\pi$ もこれに等しい．よって P は $\\ell$ 上にあり，P，Q，R は一直線 $\\ell$ 上にある．\n\n(3) 放物線上の点 $(x,x^2)$ が $\\ell$ 上にあるとすると $F(x)=(e_1^2-3e_2)x^2-(e_1e_2-9e_3)x+(e_2^2-3e_1e_3)=0$．ここで\n\\[\nG(x)=\\frac12\\bigl\\{(b-c)^2(x-a)^2+(c-a)^2(x-b)^2+(a-b)^2(x-c)^2\\bigr\\}\n\\]\nを展開すると，$x^2$ の係数は $\\frac12\\{(b-c)^2+(c-a)^2+(a-b)^2\\}=e_1^2-3e_2$，$x$ の係数は\n\\[\n-\\{a(b-c)^2+b(c-a)^2+c(a-b)^2\\}=-\\{a^2(b+c)+b^2(c+a)+c^2(a+b)-6abc\\}=-\\{(e_1e_2-3e_3)-6e_3\\}=-(e_1e_2-9e_3)\n\\]\n（$e_1e_2=a^2(b+c)+b^2(c+a)+c^2(a+b)+3abc$ を用いた），定数項は\n\\[\n\\frac12\\{a^2(b-c)^2+b^2(c-a)^2+c^2(a-b)^2\\}=(a^2b^2+b^2c^2+c^2a^2)-abc\\,e_1=(e_2^2-2e_1e_3)-e_1e_3=e_2^2-3e_1e_3\n\\]\nとなり，$F(x)=G(x)$．$G(x)=0$ なら3つの平方がすべて0で，$b\\neq c$ などから $x=a$ かつ $x=b$ となり $a\\neq b$ に矛盾．よって $G(x)>0$ で $F(x)=0$ となる $x$ はなく，$\\ell$ と放物線は共有点をもたない（放物線は $\\ell$ の上側にある）．\\hfill$\\square$"
+   }
+  ],
+  "idea": {
+   "tex": "接線と対辺の交点を計算し，3点を通る直線を基本対称式 $e_1,e_2,e_3$ で書くと $a,b,c$ について対称な式になるので，1点が乗ることを示せば残りの2点も乗る．放物線との交点の方程式の左辺は $\\frac12\\{(b-c)^2(x-a)^2+(c-a)^2(x-b)^2+(a-b)^2(x-c)^2\\}$ という平方和に一致し，正の値しかとらない．"
+  },
+  "methods": [],
+  "tags": [
+   "接線",
+   "共線",
+   "対称式",
+   "平方和",
+   "放物線"
+  ],
+  "provenance": {
+   "created": "2026-11-10"
   },
   "quality": {
    "status": "published",
@@ -13684,6 +12230,1595 @@
   ],
   "provenance": {
    "created": "2026-11-14"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-GEO-300",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-09",
+  "level": 4,
+  "minutes": 35,
+  "theme": "点と直線の距離の積で定まる曲線の分割線",
+  "topic": "点と直線の距離の積で定まる曲線の分割線",
+  "statement": {
+   "tex": "直線 $l:\\ px+qy+r=0$ と2点 $\\mathrm P_1(x_1,y_1)$，$\\mathrm P_2(x_2,y_2)$ に対し $\\eta=(px_1+qy_1+r)(px_2+qy_2+r)$ とおき，$\\eta<0$ のとき「$\\mathrm P_1,\\mathrm P_2$ は $l$ で隔てられる」という．曲線 $K$ と直線 $l$ が共有点をもたず，かつ $K$ 上に $l$ で隔てられる2点が存在するとき，$l$ を $K$ の\\textbf{分割線}とよぶ．\n\n$c$ を正の定数とし，点 $\\mathrm Q(0,2)$ をとる．点 P から Q までの距離と，P から $x$ 軸までの距離の積が $c$ に等しいような点 P の軌跡を $E$ とする．\n\\begin{enumerate}\n  \\item $E$ の方程式を求めよ．また，$x$ 軸に平行でないどんな直線も $E$ と共有点をもつことを示せ．\n  \\item $E$ の分割線をすべて求めよ（$c$ の値で場合分けして答えよ）．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $(x^2+(y-2)^2)y^2=c^2$，証明　(2) $c\\geqq1$ のとき直線 $y=0$ のみ；$0<c<1$ のとき直線 $y=0$ と，直線 $y=m$（$1-\\sqrt{1-c}<m<1+\\sqrt{1-c}$）"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) P$(x,y)$ について $\\mathrm{PQ}=\\sqrt{x^2+(y-2)^2}$，P と $x$ 軸の距離は $|y|$ である．条件 $\\mathrm{PQ}\\cdot|y|=c$ は，両辺が0以上なので2乗した\n\\[\n\\boldsymbol{\\bigl(x^2+(y-2)^2\\bigr)y^2=c^2}\n\\]\nと同値であり，これが $E$ の方程式である．$G(x,y)=\\bigl(x^2+(y-2)^2\\bigr)y^2-c^2$ とおく．\n\n$x$ 軸に平行でない直線 $l$ は，$y$ 座標が $0$ である点 $\\mathrm A$ と，$y$ 座標が $c+2$ である点 $\\mathrm B$ をもつ．\nA では $G=-c^2<0$．B$(x_{\\mathrm B},c+2)$ では\n\\[\nG\\geqq(c+2-2)^2(c+2)^2-c^2=c^2\\bigl\\{(c+2)^2-1\\bigr\\}>0 .\n\\]\n線分 AB 上の点を $\\mathrm A+s(\\mathrm B-\\mathrm A)$ $(0\\leqq s\\leqq1)$ と表すと，$G$ の値は $s$ の多項式で連続だから，中間値の定理により $G=0$ となる $s$ が $0<s<1$ に存在する．その点は $l$ と $E$ の共有点である．\\hfill$\\square$\n\n(2) (1) より，$x$ 軸に平行でない直線は $E$ と共有点をもつので分割線ではない．分割線は $y=m$ の形に限られる．\n\n$E$ 上の点の $y$ 座標のとりうる値の集合を $Y$ とする．$y=0$ をみたす点は $G=-c^2\\neq0$ なので $E$ 上にない．$y\\neq0$ のとき，$G(x,y)=0\\iff x^2=\\dfrac{c^2}{y^2}-(y-2)^2$ だから，そのような $x$ が存在する条件は $\\dfrac{c^2}{y^2}\\geqq(y-2)^2$，すなわち $|y(y-2)|\\leqq c$．よって\n\\[\nY=\\{\\,y\\mid y\\neq0,\\ -c\\leqq y^2-2y\\leqq c\\,\\}=\\{\\,y\\mid y\\neq0,\\ 1-c\\leqq(y-1)^2\\leqq1+c\\,\\}.\n\\]\n直線 $y=m$（方程式 $y-m=0$）について，2点の $\\eta$ は $(y_1-m)(y_2-m)$ である．したがって $y=m$ が分割線であるための必要十分条件は\n\\begin{center}\n「$m\\notin Y$（共有点がない）かつ，$y_1<m<y_2$ となる $y_1,y_2\\in Y$ が存在する」\n\\end{center}\nである．$\\alpha=1-\\sqrt{1+c}$，$\\beta=1+\\sqrt{1+c}$ とおくと $\\alpha<0<\\beta$ で，$Y$ の要素はすべて $\\alpha$ 以上 $\\beta$ 以下であり，$\\alpha,\\beta\\in Y$．よって条件は「$\\alpha<m<\\beta$ かつ $m\\notin Y$」と同値である．\n\n(i) $c\\geqq1$ のとき：$1-c\\leqq0$ なので $Y=\\{y\\mid\\alpha\\leqq y\\leqq\\beta,\\ y\\neq0\\}$．$\\alpha<m<\\beta$ で $m\\notin Y$ となるのは $m=0$ のみ．\n\n(ii) $0<c<1$ のとき：$\\gamma_1=1-\\sqrt{1-c}$，$\\gamma_2=1+\\sqrt{1-c}$ とおくと $0<\\gamma_1<1<\\gamma_2$ で，\n$Y=\\{y\\mid\\alpha\\leqq y\\leqq\\gamma_1\\ \\text{または}\\ \\gamma_2\\leqq y\\leqq\\beta\\}$ から $0$ を除いた集合．$\\alpha<m<\\beta$ で $m\\notin Y$ となるのは $m=0$ または $\\gamma_1<m<\\gamma_2$．\n\n以上より，分割線は次の通り．\n\\begin{itemize}\n  \\item $c\\geqq1$ のとき：$\\boldsymbol{\\text{直線 } y=0 \\text{ のみ}}$．\n  \\item $0<c<1$ のとき：$\\boldsymbol{\\text{直線 } y=0}$ と $\\boldsymbol{\\text{直線 } y=m\\ \\bigl(1-\\sqrt{1-c}<m<1+\\sqrt{1-c}\\bigr)}$．\n\\end{itemize}"
+   }
+  ],
+  "idea": {
+   "tex": "曲線の方程式 $F(x,y)=0$ に直線上の点を代入した1変数関数が，直線上の2点で異符号になれば中間値の定理で共有点がある．$x$ 軸上の点と $y$ 座標が十分大きい点を選ぶと，水平でない直線はすべて曲線と交わり，分割線の候補は水平線に限られる．水平線 $y=m$ については，曲線上の点の $y$ 座標のとりうる値の集合を求め，$m$ がその「すき間」にあるかどうかで決まる．"
+  },
+  "methods": [],
+  "tags": [
+   "軌跡",
+   "分割線",
+   "中間値の定理",
+   "水平線"
+  ],
+  "provenance": {
+   "created": "2026-11-22"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-GEO-301",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-09",
+  "level": 4,
+  "minutes": 35,
+  "theme": "整数点で交わる直線上の点列と放物線上の点列・係数の大きさの最小",
+  "topic": "整数点で交わる直線上の点列と放物線上の点列・係数の大きさの最小",
+  "statement": {
+   "tex": "$a$，$b$ を実数とし，座標平面上の2つの点の集合\n\\[\nA=\\{(n,\\ na+b)\\mid n\\ \\text{は整数}\\},\\qquad B=\\{(m,\\ 2m^2+9)\\mid m\\ \\text{は整数}\\}\n\\]\nを考える．\n\\begin{enumerate}\n  \\item $A\\cap B$ が空集合でないような実数の組 $(a,b)$ について，$a^2+b^2$ の最小値と，最小値を与える $(a,b)$ をすべて求めよ．\n  \\item $A\\cap B$ は3個以上の点を含まないことを示せ．また，$A\\cap B$ がちょうど2個の点を含むような $(a,b)$ について，$a^2+b^2$ の最小値と，最小値を与える $(a,b)$ をすべて求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 最小値 $\\dfrac{289}{5}$，$(a,b)=\\left(\\pm\\dfrac{34}{5},\\ \\dfrac{17}{5}\\right)$　(2) 証明；最小値 $61$，$(a,b)=(\\pm6,\\ 5)$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "{\\bf 準備．}点 $(n,na+b)$ と点 $(m,2m^2+9)$ が一致するのは $m=n$ かつ $na+b=2n^2+9$ のときである．よって\n\\[\nA\\cap B=\\{(n,\\ 2n^2+9)\\mid n\\ \\text{は整数で}\\ na+b=2n^2+9\\}\n\\]\nであり，$A\\cap B$ の点の個数は「$na+b=2n^2+9$ をみたす整数 $n$ の個数」に等しい．\n\nまた，任意の実数 $n$，$a$，$b$ に対して\n\\[\n(n^2+1)(a^2+b^2)-(na+b)^2=n^2b^2+a^2-2nab=(nb-a)^2\\geqq0 \\tag{$*$}\n\\]\nで，等号は $a=nb$ のときに限る．\n\n(1) $A\\cap B\\neq\\varnothing$ とし，$na+b=2n^2+9$ をみたす整数 $n$ をとる．($*$) より\n\\[\na^2+b^2\\geqq\\frac{(2n^2+9)^2}{n^2+1}.\n\\]\n$t=n^2+1$ とおくと $2n^2+9=2t+7$ で，右辺は\n\\[\ng(t)=\\frac{(2t+7)^2}{t}=4t+28+\\frac{49}{t}\n\\]\nとなる．$n$ は整数だから $t$ は $1,\\ 2,\\ 5$ または $10$ 以上の整数である．$t\\geqq5$ のとき\n\\[\ng(t)-g(5)=4(t-5)+49\\left(\\frac1t-\\frac15\\right)=(t-5)\\left(4-\\frac{49}{5t}\\right)\\geqq0\n\\]\n（$t-5\\geqq0$，$5t\\geqq25$ より $\\dfrac{49}{5t}<4$）で，等号は $t=5$ のときに限る．また\n\\[\ng(1)=81,\\qquad g(2)=\\frac{121}{2},\\qquad g(5)=\\frac{289}{5}\n\\]\nであり，$\\dfrac{289}5=\\dfrac{578}{10}<\\dfrac{605}{10}=\\dfrac{121}2<81$．よって $g(n^2+1)\\geqq\\dfrac{289}5$ で，等号は $n^2=4$，すなわち $n=\\pm2$ のときに限る．したがって $A\\cap B\\neq\\varnothing$ ならば $a^2+b^2\\geqq\\dfrac{289}5$．\n\n等号が成り立つのは，$n=\\pm2$ で ($*$) の等号 $a=nb$ が成り立つときである．$a=nb$ を $na+b=2n^2+9$ に代入すると $(n^2+1)b=2n^2+9$，$n^2=4$ より $5b=17$，$b=\\dfrac{17}5$，$a=\\pm\\dfrac{34}5$（複号は $n=\\pm2$ と同順）．\n\n逆に $(a,b)=\\left(\\dfrac{34}5,\\dfrac{17}5\\right)$ のとき $2a+b=\\dfrac{85}5=17=2\\cdot2^2+9$ で点 $(2,17)\\in A\\cap B$，$(a,b)=\\left(-\\dfrac{34}5,\\dfrac{17}5\\right)$ のとき $(-2)a+b=17$ で点 $(-2,17)\\in A\\cap B$．いずれも $a^2+b^2=\\dfrac{1156+289}{25}=\\dfrac{1445}{25}=\\dfrac{289}5$．\n\n以上より，最小値は $\\boldsymbol{\\dfrac{289}{5}}$，それを与えるのは $\\boldsymbol{(a,b)=\\left(\\pm\\dfrac{34}{5},\\ \\dfrac{17}{5}\\right)}$．\n\n(2) 準備より，$A\\cap B$ の点の個数は2次方程式\n\\[\n2x^2-ax+(9-b)=0 \\tag{$**$}\n\\]\nの整数解の個数に等しい．2次方程式の解は高々2個だから，$A\\cap B$ は3個以上の点を含まない．\\hfill$\\square$\n\n$A\\cap B$ がちょうど2個の点を含むとき，($**$) は相異なる2つの整数解 $n$，$m$ をもつ．解と係数の関係より $n+m=\\dfrac a2$，$nm=\\dfrac{9-b}2$，すなわち\n\\[\na=2(n+m),\\qquad b=9-2nm.\n\\]\n逆に，相異なる整数 $n$，$m$ に対してこのように $a$，$b$ を定めると，($**$) の左辺は $2x^2-2(n+m)x+2nm=2(x-n)(x-m)$ となり整数解はちょうど $n$，$m$ の2個だから，$A\\cap B$ はちょうど2個の点を含む．したがって，$s=n+m$，$p=nm$ とおき，相異なる整数 $n$，$m$全体にわたる\n\\[\na^2+b^2=4s^2+(2p-9)^2\n\\]\nの最小値を求めればよい．\n\n(i) $p\\leqq0$ のとき：$2p-9\\leqq-9$ より $a^2+b^2\\geqq(2p-9)^2\\geqq81$．\n\n(ii) $p\\geqq1$ のとき：$n\\neq m$ は整数なので $s^2-4p=(n-m)^2\\geqq1$，よって $4s^2\\geqq16p+4$．したがって\n\\[\na^2+b^2\\geqq16p+4+(2p-9)^2=4p^2-20p+85=(2p-5)^2+60.\n\\]\n$2p-5$ は奇数なので $(2p-5)^2\\geqq1$，ゆえに $a^2+b^2\\geqq61$．等号は $(n-m)^2=1$ かつ $(2p-5)^2=1$ のときに限る．$(2p-5)^2=1$ より $p=2$ または $p=3$．$s^2=4p+1$ は $p=2$ のとき $9$（$s=\\pm3$），$p=3$ のとき $13$（平方数でない）なので，$p=2$，$s=\\pm3$．このとき $n$，$m$ は $x^2\\mp3x+2=0$ の解で，$\\{n,m\\}=\\{1,2\\}$ または $\\{-1,-2\\}$．\n\n(i)，(ii) より $a^2+b^2\\geqq61$（$81>61$）で，等号は $\\{n,m\\}=\\{1,2\\}$ のとき $(a,b)=(6,5)$，$\\{n,m\\}=\\{-1,-2\\}$ のとき $(a,b)=(-6,5)$．実際，$(a,b)=(6,5)$ では ($**$) は $2x^2-6x+4=2(x-1)(x-2)=0$，$(a,b)=(-6,5)$ では $2x^2+6x+4=2(x+1)(x+2)=0$ で，ともに整数解が2個あり $a^2+b^2=36+25=61$．\n\n以上より，最小値は $\\boldsymbol{61}$，それを与えるのは $\\boldsymbol{(a,b)=(\\pm6,\\ 5)}$．"
+   }
+  ],
+  "idea": {
+   "tex": "共有点 $(n,\\,na+b)$ の条件 $na+b=2n^2+9$ を「点 $(a,b)$ が直線 $nX+Y=2n^2+9$ 上にある」と見て，$(n^2+1)(a^2+b^2)-(na+b)^2=(nb-a)^2\\geqq0$ から $a^2+b^2\\geqq\\dfrac{(2n^2+9)^2}{n^2+1}$（原点からその直線までの距離の2乗）．$t=n^2+1$ の関数としての最小は整数でない $t$ でとられるので，実際に $t$ がとりうる値 $1,2,5,10,\\dots$ の中で比べる．原題は「半径12の円板と交わるか」の存在判定だけだが，捻りでは最小値を正確に決め，さらに共有点が2個ある場合は解と係数の関係で $(a,b)$ が2つの整数で決まり，$(n-m)^2\\geqq1$ を使った平方完成で整数の最小を確定させる．"
+  },
+  "methods": [],
+  "tags": [
+   "係数平面",
+   "コーシー・シュワルツの不等式",
+   "整数の候補の比較",
+   "解と係数の関係"
+  ],
+  "provenance": {
+   "created": "2026-11-22"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-GEO-302",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-09",
+  "level": 4,
+  "minutes": 30,
+  "theme": "3次曲線の対称の中心を通る直線と長さの比",
+  "topic": "3次曲線の対称の中心を通る直線と長さの比",
+  "statement": {
+   "tex": "座標平面上の曲線 $C:y=x^3-3x$ と原点 O を考える．O を通り，$x$ 軸とも $y$ 軸とも異なる直線 $l$ をとり，その傾きを $k$ とする．$C$ 上の点 M で $l$ 上にないものに対し，M から $l$ に下ろした垂線と $l$ の交点を A，M を通り $y$ 軸に平行な直線と $l$ の交点を B とする．\n\\begin{enumerate}\n  \\item M の $x$ 座標を $t$ とするとき，OB，OA を $k$，$t$ で表せ．\n  \\item 自然数 $n$ と直線 $l$ の組であって，A が O と異なるようなすべての M について $\\dfrac{\\mathrm{OB}^n}{\\mathrm{OA}}$ が M によらず一定となるものをすべて求めよ．また，そのときの一定の値を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $\\mathrm{OB}=|t|\\sqrt{1+k^2}$，$\\mathrm{OA}=\\dfrac{|t|\\,|kt^2+1-3k|}{\\sqrt{1+k^2}}$　(2) $n=3$，$l:y=\\dfrac13x$，一定の値 $\\dfrac{100}{27}$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) $l:y=kx$ で，M$(t,\\,t^3-3t)$ である．M は $l$ 上にないので M$\\neq$O，すなわち $t\\neq0$ である（$t=0$ なら M$=$O は $l$ 上）．\n\nB は $l$ 上で $x$ 座標が $t$ の点だから B$(t,kt)$ で，\n\\[\\mathrm{OB}=\\sqrt{t^2+k^2t^2}=|t|\\sqrt{1+k^2}.\\]\n$\\vec e=\\dfrac1{\\sqrt{1+k^2}}(1,k)$ は $l$ の方向の単位ベクトルで，A は M の $l$ への正射影だから $\\overrightarrow{\\mathrm{OA}}=(\\overrightarrow{\\mathrm{OM}}\\cdot\\vec e)\\,\\vec e$．よって\n\\[\\mathrm{OA}=|\\overrightarrow{\\mathrm{OM}}\\cdot\\vec e|=\\frac{|t+k(t^3-3t)|}{\\sqrt{1+k^2}}=\\boldsymbol{\\frac{|t|\\,|kt^2+1-3k|}{\\sqrt{1+k^2}}},\\qquad \\boldsymbol{\\mathrm{OB}=|t|\\sqrt{1+k^2}}.\\]\n\n(2) $t\\neq0$ だから，A$\\neq$O $\\iff$ $kt^2+1-3k\\neq0$．このとき\n\\[R(t)=\\frac{\\mathrm{OB}^n}{\\mathrm{OA}}=\\frac{|t|^{n-1}(1+k^2)^{\\frac{n+1}2}}{|kt^2+1-3k|}.\\]\n除外される $t$ は，$t=0$，M が $l$ 上にある $t$（$t^3-3t=kt$ かつ $t\\neq0$ より $t^2=3+k$，高々2個），$kt^2+1-3k=0$ となる $t$（$k\\neq0$ より高々2個）だけで，有限個である．\n\n{\\bf 必要条件．}$R(t)$ が一定値 $K$ をとるとする（$K>0$）．$k\\neq0$ だから，十分大きい正の数 $T$ をとると，$t>T$ はすべて除外されず，しかも $kt^2+1-3k$ の符号は $k$ の符号 $\\sigma\\ (=\\pm1)$ に一致する．よって $t>T$ のすべての $t$ で\n\\[t^{n-1}(1+k^2)^{\\frac{n+1}2}=K\\sigma\\,(kt^2+1-3k).\\]\n両辺は $t$ の多項式で，無数の $t$ で値が一致するから，多項式として等しい．右辺は $k\\neq0$ よりちょうど2次で，定数項は $K\\sigma(1-3k)$．左辺は単項式 $t^{n-1}$ の正の定数倍である．次数を比べて $n-1=2$，定数項を比べて $K\\sigma(1-3k)=0$，$K\\neq0$ より $k=\\dfrac13$．\n\n{\\bf 十分条件．}$n=3$，$k=\\dfrac13$ のとき，$kt^2+1-3k=\\dfrac{t^2}3\\neq0$（$t\\neq0$）だから A$\\neq$O は常に成り立ち，\n\\[R(t)=\\frac{t^2\\left(\\frac{10}9\\right)^2}{\\frac{t^2}3}=3\\cdot\\frac{100}{81}=\\frac{100}{27}\\]\nで一定である．\n\n以上より，求める組は $\\boldsymbol{n=3,\\ l:y=\\dfrac13x}$，一定の値は $\\boldsymbol{\\dfrac{100}{27}}$．\\hfill$\\square$\n\n（注：原点は $C$ の対称の中心であり，$y=x^3-3x$ と $y=\\frac13x$ の差 $x^3-\\frac{10}3x$ から $x$ をくくった残りが $x^2$ の定数倍だけになる傾きが $k=\\frac13$ である．）"
+   }
+  ],
+  "idea": {
+   "tex": "直線 $l$ 上の2点 A（垂線の足），B（$y$ 軸方向の交点）までの長さは，$l$ の方向の単位ベクトルとの内積と，$x$ 座標の差の $\\sqrt{1+k^2}$ 倍で表せる．比が一定 $\\iff$ 2つの式の比が定数 $\\iff$ 多項式として比例（無数の点で一致する多項式は恒等的に等しい）．原題は放物線上の点 Q を通る直線で $|\\mathrm{QB}|^2/|\\mathrm{QA}|$ を一定にするが，捻りでは3次曲線の対称の中心を通る直線とし，べき指数 $n$ も未知として恒等式の次数比較で $n$ と傾きを同時に決める．"
+  },
+  "methods": [],
+  "tags": [
+   "点と直線",
+   "正射影",
+   "恒等式",
+   "3次関数のグラフの対称性"
+  ],
+  "provenance": {
+   "created": "2026-11-22"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-GEO-187",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-09",
+  "level": 0,
+  "minutes": 5,
+  "theme": "点と直線／内分点・外分点",
+  "unit": "点と直線",
+  "topic": "内分点・外分点",
+  "statement": {
+   "tex": "2点 $\\mathrm{A}(-2,\\ 3)$，$\\mathrm{B}(4,\\ -1)$ について，次の点の座標を求めよ．\n\\begin{enumerate}\n  \\item 線分 $\\mathrm{AB}$ を $1:2$ に内分する点\n  \\item 線分 $\\mathrm{AB}$ を $3:1$ に外分する点\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $\\left(0,\\ \\dfrac{5}{3}\\right)$　(2) $\\left(7,\\ -3\\right)$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) $\\left(\\dfrac{2\\cdot(-2)+1\\cdot4}{1+2},\\ \\dfrac{2\\cdot3+1\\cdot(-1)}{1+2}\\right)=\\boldsymbol{\\left(0,\\ \\dfrac{5}{3}\\right)}$．\n(2) $\\left(\\dfrac{-1\\cdot(-2)+3\\cdot4}{3-1},\\ \\dfrac{-1\\cdot3+3\\cdot(-1)}{3-1}\\right)=\\boldsymbol{\\left(7,\\ -3\\right)}$．"
+   }
+  ],
+  "idea": {
+   "tex": "$m:n$ に内分する点は $\\dfrac{n\\mathrm{A}+m\\mathrm{B}}{m+n}$，外分は $n$ を $-n$ に置き換える．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) (0, 5/3)\n(2) (7, -3)"
+  },
+  "methods": [],
+  "tags": [
+   "内分点",
+   "外分点"
+  ],
+  "provenance": {
+   "created": "2026-10-30"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-GEO-188",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-09",
+  "level": 0,
+  "minutes": 5,
+  "theme": "点と直線／三角形の重心と平行四辺形の頂点",
+  "unit": "点と直線",
+  "topic": "三角形の重心と平行四辺形の頂点",
+  "statement": {
+   "tex": "3点 $\\mathrm{A}(1,\\ 2)$，$\\mathrm{B}(5,\\ -1)$，$\\mathrm{C}(3,\\ 5)$ について，次の問いに答えよ．\n\\begin{enumerate}\n  \\item $\\triangle\\mathrm{ABC}$ の重心 $\\mathrm{G}$ の座標を求めよ．\n  \\item 四角形 $\\mathrm{ABCD}$ が平行四辺形となるような点 $\\mathrm{D}$ の座標を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $\\left(3,\\ 2\\right)$　(2) $\\left(-1,\\ 8\\right)$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) $\\left(\\dfrac{1+5+3}{3},\\ \\dfrac{2-1+5}{3}\\right)=\\boldsymbol{\\left(3,\\ 2\\right)}$．\n(2) 平行四辺形の対角線 $\\mathrm{AC}$，$\\mathrm{BD}$ の中点が一致する．$\\mathrm{D}(p,q)$ として $\\dfrac{1+3}{2}=\\dfrac{5+p}{2}$，$\\dfrac{2+5}{2}=\\dfrac{-1+q}{2}$．\nよって $p=-1,\\ q=8$ で $\\mathrm{D}\\boldsymbol{\\left(-1,\\ 8\\right)}$．"
+   }
+  ],
+  "idea": {
+   "tex": "重心は3頂点の座標の平均．平行四辺形は「対角線がたがいの中点で交わる」を式にする．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) (3, 2)\n(2) (-1, 8)"
+  },
+  "methods": [],
+  "tags": [
+   "重心",
+   "平行四辺形",
+   "中点"
+  ],
+  "provenance": {
+   "created": "2026-10-30"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-GEO-189",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-09",
+  "level": 0,
+  "minutes": 5,
+  "theme": "点と直線／2点間の距離と等距離の点",
+  "unit": "点と直線",
+  "topic": "2点間の距離と等距離の点",
+  "statement": {
+   "tex": "2点 $\\mathrm{A}(1,\\ 3)$，$\\mathrm{B}(5,\\ 1)$ について，次の問いに答えよ．\n\\begin{enumerate}\n  \\item 線分 $\\mathrm{AB}$ の長さを求めよ．\n  \\item $x$ 軸上の点 $\\mathrm{P}$ で，$\\mathrm{PA}=\\mathrm{PB}$ となるものの座標を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $2 \\sqrt{5}$　(2) $\\left(2,\\ 0\\right)$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) $\\mathrm{AB}=\\sqrt{(5-1)^2+(1-3)^2}=\\sqrt{20}=\\boldsymbol{2 \\sqrt{5}}$．\n(2) $\\mathrm{P}(p,\\ 0)$ とおく．$\\mathrm{PA}^2=\\mathrm{PB}^2$ より $(p-1)^2+9=(p-5)^2+1$．\n$-2p+10=-10p+26$ から $p=2$．よって $\\mathrm{P}\\boldsymbol{\\left(2,\\ 0\\right)}$．"
+   }
+  ],
+  "idea": {
+   "tex": "距離の条件は2乗して根号を外して扱う．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) 2sqrt(5)\n(2) (2, 0)"
+  },
+  "methods": [],
+  "tags": [
+   "2点間の距離"
+  ],
+  "provenance": {
+   "created": "2026-10-30"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-GEO-190",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-09",
+  "level": 0,
+  "minutes": 4,
+  "theme": "点と直線／直線の方程式",
+  "unit": "点と直線",
+  "topic": "直線の方程式",
+  "statement": {
+   "tex": "\\begin{enumerate}\n  \\item 2点 $(-1,\\ 4)$，$(3,\\ -4)$ を通る直線の方程式を求めよ．\n  \\item 点 $(2,\\ -3)$ を通り，傾きが $\\dfrac12$ の直線の方程式を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $y=- 2x+2$　(2) $y=\\dfrac{1}{2}x-4$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) 傾きは $\\dfrac{-4-4}{3-(-1)}=-2$．$y-4=-2(x+1)$ より $\\boldsymbol{y=- 2x+2}$．\n(2) $y-(-3)=\\dfrac12(x-2)$ より $\\boldsymbol{y=\\dfrac{1}{2}x-4}$．"
+   }
+  ],
+  "idea": {
+   "tex": "傾き $m$ で点 $(x_1,y_1)$ を通る直線は $y-y_1=m(x-x_1)$．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) $y$：-2x+2\n(2) $y$：x/2-4"
+  },
+  "methods": [],
+  "tags": [
+   "直線の方程式"
+  ],
+  "provenance": {
+   "created": "2026-10-30"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-GEO-191",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-09",
+  "level": 0,
+  "minutes": 5,
+  "theme": "点と直線／2直線の平行と垂直",
+  "unit": "点と直線",
+  "topic": "2直線の平行と垂直",
+  "statement": {
+   "tex": "点 $(2,\\ 1)$ を通り，直線 $2x-3y+1=0$ に\n\\begin{enumerate}\n  \\item 平行な直線の方程式を求めよ．\n  \\item 垂直な直線の方程式を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $y=\\dfrac{2}{3}x-\\dfrac{1}{3}$　(2) $y=-\\dfrac{3}{2}x+4$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "直線 $2x-3y+1=0$ は $y=\\dfrac23x+\\dfrac13$ で，傾きは $\\dfrac23$．\n(1) 傾き $\\dfrac23$ で $(2,1)$ を通るので $y-1=\\dfrac23(x-2)$，$\\boldsymbol{y=\\dfrac{2}{3}x-\\dfrac{1}{3}}$．\n(2) 垂直な直線の傾き $m$ は $\\dfrac23m=-1$ より $m=-\\dfrac32$．$y-1=-\\dfrac32(x-2)$，$\\boldsymbol{y=-\\dfrac{3}{2}x+4}$．"
+   }
+  ],
+  "idea": {
+   "tex": "平行 $\\iff$ 傾きが等しい，垂直 $\\iff$ 傾きの積が $-1$．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) $y$：2x/3-1/3\n(2) $y$：-3x/2+4"
+  },
+  "methods": [],
+  "tags": [
+   "平行",
+   "垂直",
+   "直線の方程式"
+  ],
+  "provenance": {
+   "created": "2026-10-30"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-GEO-192",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-09",
+  "level": 0,
+  "minutes": 5,
+  "theme": "点と直線／点と直線の距離",
+  "unit": "点と直線",
+  "topic": "点と直線の距離",
+  "statement": {
+   "tex": "\\begin{enumerate}\n  \\item 点 $(3,\\ -2)$ と直線 $4x+3y-1=0$ の距離を求めよ．\n  \\item 平行な2直線 $x+2y-3=0$，$x+2y+7=0$ の距離を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $1$　(2) $2 \\sqrt{5}$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) $\\dfrac{|4\\cdot3+3\\cdot(-2)-1|}{\\sqrt{4^2+3^2}}=\\dfrac{5}{5}=\\boldsymbol{1}$．\n(2) 直線 $x+2y-3=0$ 上の点 $(3,\\ 0)$ と直線 $x+2y+7=0$ の距離を求めればよい．$\\dfrac{|3+0+7|}{\\sqrt{1+4}}=\\dfrac{10}{\\sqrt5}=\\boldsymbol{2 \\sqrt{5}}$．"
+   }
+  ],
+  "idea": {
+   "tex": "点 $(x_1,y_1)$ と直線 $ax+by+c=0$ の距離は $\\dfrac{|ax_1+by_1+c|}{\\sqrt{a^2+b^2}}$．平行線の距離は一方の上の1点で測る．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) 1\n(2) 2sqrt(5)"
+  },
+  "methods": [],
+  "tags": [
+   "点と直線の距離"
+  ],
+  "provenance": {
+   "created": "2026-10-30"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-GEO-193",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-09",
+  "level": 0,
+  "minutes": 6,
+  "theme": "点と直線／直線に関して対称な点",
+  "unit": "点と直線",
+  "topic": "直線に関して対称な点",
+  "statement": {
+   "tex": "直線 $\\ell:\\ y=2x+1$ に関して，点 $\\mathrm{A}(3,\\ 2)$ と対称な点 $\\mathrm{B}$ の座標を求めよ．"
+  },
+  "answer": {
+   "tex": "$\\left(-1,\\ 4\\right)$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "$\\mathrm{B}(p,\\ q)$ とする．$\\mathrm{AB}\\perp\\ell$ より $\\dfrac{q-2}{p-3}\\cdot2=-1$，すなわち $p+2q=7$．\n線分 $\\mathrm{AB}$ の中点 $\\left(\\dfrac{p+3}{2},\\ \\dfrac{q+2}{2}\\right)$ が $\\ell$ 上にあるので $\\dfrac{q+2}{2}=(p+3)+1$，すなわち $2p-q=-6$．\nこれらを解いて $p=-1,\\ q=4$．よって $\\mathrm{B}\\boldsymbol{\\left(-1,\\ 4\\right)}$．"
+   }
+  ],
+  "idea": {
+   "tex": "対称点は「2点を結ぶ線分が $\\ell$ に垂直」「中点が $\\ell$ 上」の2条件で決まる．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(-1, 4)"
+  },
+  "methods": [],
+  "tags": [
+   "対称点",
+   "垂直",
+   "中点"
+  ],
+  "provenance": {
+   "created": "2026-10-30"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-GEO-194",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-09",
+  "level": 0,
+  "minutes": 5,
+  "theme": "円／円の方程式（標準形と一般形）",
+  "unit": "円",
+  "topic": "円の方程式（標準形と一般形）",
+  "statement": {
+   "tex": "\\begin{enumerate}\n  \\item 円 $x^2+y^2-4x+6y-3=0$ の中心の座標と半径を求めよ．\n  \\item 中心が $(-1,\\ 2)$ で $x$ 軸に接する円の方程式を $x^2+y^2+lx+my+n=0$ の形で表すとき，定数 $l,\\ m,\\ n$ の値を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 中心 $\\left(2,\\ -3\\right)$，半径 $4$　(2) $l=2,\\ m=-4,\\ n=1$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) $(x-2)^2+(y+3)^2=4+9+3=16$．中心 $\\boldsymbol{\\left(2,\\ -3\\right)}$，半径 $\\boldsymbol{4}$．\n(2) $x$ 軸に接するので半径は中心の $y$ 座標の絶対値 $2$．$(x+1)^2+(y-2)^2=4$ を展開して $x^2+y^2+2x-4y+1=0$．\nよって $\\boldsymbol{l=2,\\ m=-4,\\ n=1}$．"
+   }
+  ],
+  "idea": {
+   "tex": "平方完成で $(x-a)^2+(y-b)^2=r^2$ の形にすると中心と半径が読める．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) 中心：(2, -3) ; 半径：4\n(2) $l$：2 ; $m$：-4 ; $n$：1"
+  },
+  "methods": [],
+  "tags": [
+   "円の方程式",
+   "平方完成"
+  ],
+  "provenance": {
+   "created": "2026-10-30"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-GEO-195",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-09",
+  "level": 0,
+  "minutes": 6,
+  "theme": "円／3点を通る円",
+  "unit": "円",
+  "topic": "3点を通る円",
+  "statement": {
+   "tex": "3点 $(-1,\\ 0)$，$(3,\\ 0)$，$(0,\\ 3)$ を通る円の中心の座標と半径を求めよ．"
+  },
+  "answer": {
+   "tex": "中心 $\\left(1,\\ 1\\right)$，半径 $\\sqrt{5}$（$x^2+y^2-2x-2y-3=0$）"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "求める円を $x^2+y^2+lx+my+n=0$ とおく．3点を代入して\n$1-l+n=0$，$9+3l+n=0$，$9+3m+n=0$．これを解いて $l=-2,\\ m=-2,\\ n=-3$．\n$x^2+y^2-2x-2y-3=0$ は $(x-1)^2+(y-1)^2=5$ なので，中心 $\\boldsymbol{\\left(1,\\ 1\\right)}$，半径 $\\boldsymbol{\\sqrt{5}}$．"
+   }
+  ],
+  "idea": {
+   "tex": "一般形 $x^2+y^2+lx+my+n=0$ に3点を代入して連立1次方程式を解く．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "中心：(1, 1) ; 半径：sqrt(5)"
+  },
+  "methods": [],
+  "tags": [
+   "円の方程式",
+   "連立方程式"
+  ],
+  "provenance": {
+   "created": "2026-10-30"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-GEO-196",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-09",
+  "level": 0,
+  "minutes": 5,
+  "theme": "円／円と直線の共有点",
+  "unit": "円",
+  "topic": "円と直線の共有点",
+  "statement": {
+   "tex": "円 $x^2+y^2=5$ と直線 $y=2x+k$ が共有点をもつような，定数 $k$ の値の範囲を求めよ．"
+  },
+  "answer": {
+   "tex": "$-5\\leqq k\\leqq5$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "円の中心 $(0,0)$ と直線 $2x-y+k=0$ の距離は $\\dfrac{|k|}{\\sqrt5}$．共有点をもつ条件は，これが半径 $\\sqrt5$ 以下であること．\n$\\dfrac{|k|}{\\sqrt5}\\leqq\\sqrt5$ より $|k|\\leqq5$，すなわち $\\boldsymbol{-5\\leqq k\\leqq5}$．\n（別解：代入して $5x^2+4kx+k^2-5=0$，判別式 $\\dfrac D4=4k^2-5(k^2-5)=25-k^2\\geqq0$．）"
+   }
+  ],
+  "idea": {
+   "tex": "円と直線の位置関係は「中心と直線の距離」と半径の大小で判定する．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "-5<=k<=5"
+  },
+  "methods": [],
+  "tags": [
+   "円と直線",
+   "点と直線の距離",
+   "判別式"
+  ],
+  "provenance": {
+   "created": "2026-10-30"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-GEO-197",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-09",
+  "level": 0,
+  "minutes": 5,
+  "theme": "円／円周上の点における接線",
+  "unit": "円",
+  "topic": "円周上の点における接線",
+  "statement": {
+   "tex": "\\begin{enumerate}\n  \\item 円 $x^2+y^2=25$ 上の点 $(3,\\ -4)$ における接線の方程式を求めよ．\n  \\item 円 $(x-1)^2+(y-2)^2=10$ 上の点 $(2,\\ 5)$ における接線の方程式を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $y=\\dfrac{3}{4}x-\\dfrac{25}{4}$（$3x-4y=25$）　(2) $y=-\\dfrac{1}{3}x+\\dfrac{17}{3}$（$x+3y=17$）"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) 接線は $3x-4y=25$，すなわち $\\boldsymbol{y=\\dfrac{3}{4}x-\\dfrac{25}{4}}$．\n(2) 接線は $(2-1)(x-1)+(5-2)(y-2)=10$，すなわち $x+3y=17$ で $\\boldsymbol{y=-\\dfrac{1}{3}x+\\dfrac{17}{3}}$．\n（中心 $(1,2)$ と接点を結ぶ半径の傾きは $3$ なので，接線の傾きは $-\\dfrac13$ としても求まる．）"
+   }
+  ],
+  "idea": {
+   "tex": "円 $(x-a)^2+(y-b)^2=r^2$ 上の点 $(x_1,y_1)$ における接線は $(x_1-a)(x-a)+(y_1-b)(y-b)=r^2$．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) $y$：3x/4-25/4\n(2) $y$：-x/3+17/3"
+  },
+  "methods": [],
+  "tags": [
+   "接線",
+   "円"
+  ],
+  "provenance": {
+   "created": "2026-10-30"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-GEO-198",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-09",
+  "level": 0,
+  "minutes": 5,
+  "theme": "円／2つの円の位置関係",
+  "unit": "円",
+  "topic": "2つの円の位置関係",
+  "statement": {
+   "tex": "2つの円 $x^2+y^2=4$，$(x-3)^2+(y-4)^2=r^2$（$r>0$）について，次の場合の $r$ の値を求めよ．\n\\begin{enumerate}\n  \\item 2つの円が外接する．\n  \\item 2つの円が内接する．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $r=3$　(2) $r=7$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "中心間の距離は $\\sqrt{3^2+4^2}=5$，一方の半径は $2$．\n(1) 外接するとき $2+r=5$ より $\\boldsymbol{r=3}$．\n(2) 内接するとき $|r-2|=5$，$r>0$ より $\\boldsymbol{r=7}$．"
+   }
+  ],
+  "idea": {
+   "tex": "2円の位置関係は，中心間の距離 $d$ と半径の和・差の大小で決まる．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) $r$：3\n(2) $r$：7"
+  },
+  "methods": [],
+  "tags": [
+   "2円の位置関係"
+  ],
+  "provenance": {
+   "created": "2026-10-30"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-GEO-199",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-09",
+  "level": 0,
+  "minutes": 6,
+  "theme": "軌跡と領域／アポロニウスの円",
+  "unit": "軌跡と領域",
+  "topic": "アポロニウスの円",
+  "statement": {
+   "tex": "2点 $\\mathrm{A}(0,\\ 0)$，$\\mathrm{B}(6,\\ 0)$ からの距離の比が $\\mathrm{AP}:\\mathrm{PB}=2:1$ である点 $\\mathrm{P}$ の軌跡は円である．その中心の座標と半径を求めよ．"
+  },
+  "answer": {
+   "tex": "中心 $\\left(8,\\ 0\\right)$，半径 $4$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "$\\mathrm{P}(x,y)$ とすると $\\mathrm{AP}=2\\mathrm{PB}$ より $\\mathrm{AP}^2=4\\mathrm{PB}^2$．\n$x^2+y^2=4\\{(x-6)^2+y^2\\}$ を整理して $x^2+y^2-16x+48=0$，すなわち $(x-8)^2+y^2=16$．\nよって中心 $\\boldsymbol{\\left(8,\\ 0\\right)}$，半径 $\\boldsymbol{4}$ の円．"
+   }
+  ],
+  "idea": {
+   "tex": "動点を $(x,y)$ とおき，条件を $x,\\ y$ の式に直す．距離の条件は2乗する．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "中心：(8, 0) ; 半径：4"
+  },
+  "methods": [],
+  "tags": [
+   "軌跡",
+   "アポロニウスの円"
+  ],
+  "provenance": {
+   "created": "2026-10-30"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-GEO-200",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-09",
+  "level": 0,
+  "minutes": 7,
+  "theme": "軌跡と領域／連立不等式の表す領域",
+  "unit": "軌跡と領域",
+  "topic": "連立不等式の表す領域",
+  "statement": {
+   "tex": "連立不等式 $x\\geqq0,\\ y\\geqq0,\\ x+2y\\leqq6,\\ 2x+y\\leqq6$ の表す領域を $D$ とする．\n\\begin{enumerate}\n  \\item $D$ の面積を求めよ．\n  \\item 点 $(x,\\ y)$ が $D$ 内を動くとき，$x+y$ の最大値を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $6$　(2) $4$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) 直線 $x+2y=6$ と $2x+y=6$ の交点は $(2,\\ 2)$．$D$ は4点 $(0,0),\\ (3,0),\\ (2,2),\\ (0,3)$ を頂点とする四角形．\n2つの三角形 $(0,0),(3,0),(2,2)$ と $(0,0),(2,2),(0,3)$ に分けて，面積は $\\dfrac12\\cdot3\\cdot2+\\dfrac12\\cdot3\\cdot2=\\boldsymbol{6}$．\n(2) $x+y=k$ とおくと傾き $-1$ の直線．この直線が $D$ と共有点をもつ範囲で $k$ が最大になるのは点 $(2,2)$ を通るときで，最大値 $\\boldsymbol{4}$．"
+   }
+  ],
+  "idea": {
+   "tex": "境界の直線の交点を求めて領域の頂点を確定する．1次式の最大は $=k$ とおいた直線を平行移動して考える．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) 6\n(2) 4"
+  },
+  "methods": [],
+  "tags": [
+   "領域",
+   "面積",
+   "線形計画法"
+  ],
+  "provenance": {
+   "created": "2026-10-30"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-GEO-201",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-09",
+  "level": 0,
+  "minutes": 6,
+  "theme": "点と直線／2直線の交点を通る直線",
+  "unit": "点と直線",
+  "topic": "2直線の交点を通る直線",
+  "statement": {
+   "tex": "2直線 $2x+y-4=0$，$x-y+1=0$ の交点を通る直線のうち，次の条件を満たすものの方程式を求めよ．\n\\begin{enumerate}\n  \\item 点 $(4,\\ 0)$ を通る．\n  \\item 直線 $x+3y=0$ に垂直である．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $y=-\\dfrac{2}{3}x+\\dfrac{8}{3}$　(2) $y=3x-1$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "2式を連立して交点は $(1,\\ 2)$．\n(1) 2点 $(1,2)$，$(4,0)$ を通るので傾き $-\\dfrac23$．$y-2=-\\dfrac23(x-1)$ より $\\boldsymbol{y=-\\dfrac{2}{3}x+\\dfrac{8}{3}}$．\n（別解：$(2x+y-4)+k(x-y+1)=0$ に $(4,0)$ を代入して $k=-\\dfrac45$．）\n(2) $x+3y=0$ の傾きは $-\\dfrac13$ なので，垂直な直線の傾きは $3$．$y-2=3(x-1)$ より $\\boldsymbol{y=3x-1}$．"
+   }
+  ],
+  "idea": {
+   "tex": "交点を先に求めるか，$f+kg=0$ の形（2直線の交点を通る直線群）を使う．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) $y$：-2x/3+8/3\n(2) $y$：3x-1"
+  },
+  "methods": [],
+  "tags": [
+   "直線の方程式",
+   "交点",
+   "垂直"
+  ],
+  "provenance": {
+   "created": "2026-10-30"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-GEO-202",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-09",
+  "level": 1,
+  "minutes": 12,
+  "theme": "点と直線／3直線が三角形を作らない条件",
+  "unit": "点と直線",
+  "topic": "3直線が三角形を作らない条件",
+  "statement": {
+   "tex": "3直線 $x+y=1$，$x-2y=4$，$ax+y=2$ が三角形を作らないような，定数 $a$ の値をすべて求めよ．"
+  },
+  "answer": {
+   "tex": "$a=1,\\ -\\dfrac12,\\ \\dfrac32$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "3直線が三角形を作らないのは，(i) どれか2直線が平行，(ii) 3直線が1点で交わる，のいずれか．\n(i) $x+y=1$ と平行：$a=1$．$x-2y=4$（傾き $\\dfrac12$）と平行：$-a=\\dfrac12$ より $a=-\\dfrac12$．最初の2直線は平行でない．\n(ii) $x+y=1$，$x-2y=4$ の交点は $(2,\\ -1)$．これが $ax+y=2$ 上にあるとき $2a-1=2$，$a=\\dfrac32$．\nよって $\\boldsymbol{a=1,\\ -\\dfrac12,\\ \\dfrac32}$．"
+   }
+  ],
+  "idea": {
+   "tex": "三角形ができない場合を「平行」と「1点で交わる」に分けて数え上げる．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "$a$：{1, -1/2, 3/2}"
+  },
+  "methods": [],
+  "tags": [
+   "直線",
+   "平行",
+   "3直線"
+  ],
+  "provenance": {
+   "created": "2026-10-30"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-GEO-203",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-09",
+  "level": 1,
+  "minutes": 10,
+  "theme": "点と直線／点と直線の距離と三角形の面積",
+  "unit": "点と直線",
+  "topic": "点と直線の距離と三角形の面積",
+  "statement": {
+   "tex": "3点 $\\mathrm{A}(-1,\\ 2)$，$\\mathrm{B}(3,\\ -1)$，$\\mathrm{C}(4,\\ 5)$ について，次の問いに答えよ．\n\\begin{enumerate}\n  \\item 直線 $\\mathrm{AB}$ の方程式を求めよ．\n  \\item 点 $\\mathrm{C}$ と直線 $\\mathrm{AB}$ の距離を求めよ．\n  \\item $\\triangle\\mathrm{ABC}$ の面積を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $y=-\\dfrac{3}{4}x+\\dfrac{5}{4}$（$3x+4y-5=0$）　(2) $\\dfrac{27}{5}$　(3) $\\dfrac{27}{2}$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) 傾き $\\dfrac{-1-2}{3+1}=-\\dfrac34$ で，$y-2=-\\dfrac34(x+1)$，すなわち $3x+4y-5=0$．$\\boldsymbol{y=-\\dfrac{3}{4}x+\\dfrac{5}{4}}$．\n(2) $\\dfrac{|3\\cdot4+4\\cdot5-5|}{\\sqrt{9+16}}=\\boldsymbol{\\dfrac{27}{5}}$．\n(3) $\\mathrm{AB}=\\sqrt{16+9}=5$ なので，面積は $\\dfrac12\\cdot5\\cdot\\dfrac{27}{5}=\\boldsymbol{\\dfrac{27}{2}}$．\n（検算：$\\overrightarrow{\\mathrm{AB}}=(4,-3)$，$\\overrightarrow{\\mathrm{AC}}=(5,3)$ から $\\dfrac12|4\\cdot3-(-3)\\cdot5|=\\dfrac{27}{2}$．）"
+   }
+  ],
+  "idea": {
+   "tex": "1辺を底辺にとり，高さを点と直線の距離で求める．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) $y$：-3x/4+5/4\n(2) 27/5\n(3) 27/2"
+  },
+  "methods": [],
+  "tags": [
+   "点と直線の距離",
+   "三角形の面積"
+  ],
+  "provenance": {
+   "created": "2026-10-30"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-GEO-204",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-09",
+  "level": 1,
+  "minutes": 12,
+  "theme": "点と直線／定点を通る直線",
+  "unit": "点と直線",
+  "topic": "定点を通る直線",
+  "statement": {
+   "tex": "$k$ を定数とする直線 $\\ell:\\ (1+2k)x+(1-k)y-3=0$ について，次の問いに答えよ．\n\\begin{enumerate}\n  \\item $\\ell$ は $k$ の値に関係なく定点を通る．その定点の座標を求めよ．\n  \\item $\\ell$ が2点 $\\mathrm{A}(4,\\ 0)$，$\\mathrm{B}(0,\\ -2)$ を結ぶ線分と共有点をもつような $k$ の値の範囲を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $(1,\\ 2)$　(2) $-\\dfrac18\\leqq k\\leqq\\dfrac52$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) $k$ について整理すると $(x+y-3)+k(2x-y)=0$．これが任意の $k$ で成り立つ条件 $x+y-3=0$，$2x-y=0$ より定点 $\\boldsymbol{(1,\\ 2)}$．\n(2) $f(x,y)=(1+2k)x+(1-k)y-3$ とおく．線分 $\\mathrm{AB}$ と共有点をもつ $\\iff$ $\\mathrm{A}$，$\\mathrm{B}$ が $\\ell$ の両側または $\\ell$ 上 $\\iff f(\\mathrm{A})f(\\mathrm{B})\\leqq0$．\n$f(4,0)=8k+1$，$f(0,-2)=2k-5$ より $(8k+1)(2k-5)\\leqq0$，$\\boldsymbol{-\\dfrac18\\leqq k\\leqq\\dfrac52}$．"
+   }
+  ],
+  "idea": {
+   "tex": "$k$ について整理し「$k$ の恒等式」と見て定点を出す．線分との交わりは両端点での符号で判定する．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) (1, 2)\n(2) -1/8<=k<=5/2"
+  },
+  "methods": [],
+  "tags": [
+   "定点",
+   "直線",
+   "領域"
+  ],
+  "provenance": {
+   "created": "2026-10-30"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-GEO-205",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-09",
+  "level": 1,
+  "minutes": 13,
+  "theme": "円／円外の点から引いた接線",
+  "unit": "円",
+  "topic": "円外の点から引いた接線",
+  "statement": {
+   "tex": "点 $\\mathrm{A}(3,\\ 1)$ から円 $x^2+y^2=5$ に2本の接線を引く．\n\\begin{enumerate}\n  \\item 2本の接線の方程式を求めよ．\n  \\item 2つの接点を通る直線の方程式を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $y=2x-5,\\ y=-\\dfrac{1}{2}x+\\dfrac{5}{2}$　(2) $y=- 3x+5$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) 接点を $(p,\\ q)$ とすると $p^2+q^2=5$，接線は $px+qy=5$．これが $\\mathrm{A}$ を通るので $3p+q=5$．\n$q=5-3p$ を代入して $10p^2-30p+20=0$，$p=1,\\ 2$．接点は $(1,2),\\ (2,-1)$．\n接線は $x+2y=5$，$2x-y=5$．すなわち $\\boldsymbol{y=2x-5,\\ y=-\\dfrac{1}{2}x+\\dfrac{5}{2}}$．\n(2) 2つの接点はどちらも $3p+q=5$ を満たすので，求める直線は $3x+y=5$，すなわち $\\boldsymbol{y=- 3x+5}$．"
+   }
+  ],
+  "idea": {
+   "tex": "接点を文字でおき，接線の公式に外の点を代入する．2接点が同じ1次式を満たすことから接点を結ぶ直線が出る．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) $y$：{2x-5, -x/2+5/2}\n(2) $y$：-3x+5"
+  },
+  "methods": [],
+  "tags": [
+   "接線",
+   "極線",
+   "円"
+  ],
+  "provenance": {
+   "created": "2026-10-30"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-GEO-206",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-09",
+  "level": 1,
+  "minutes": 12,
+  "theme": "円／円が直線から切り取る弦",
+  "unit": "円",
+  "topic": "円が直線から切り取る弦",
+  "statement": {
+   "tex": "円 $C:\\ x^2+y^2-4x-2y-4=0$ と直線 $\\ell:\\ x-y+1=0$ について，次の問いに答えよ．\n\\begin{enumerate}\n  \\item $C$ が $\\ell$ から切り取る弦の長さを求めよ．\n  \\item その弦の中点の座標を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $2 \\sqrt{7}$　(2) $\\left(1,\\ 2\\right)$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "$C$ は $(x-2)^2+(y-1)^2=9$ で，中心 $(2,1)$，半径 $3$．\n(1) 中心と $\\ell$ の距離は $\\dfrac{|2-1+1|}{\\sqrt2}=\\sqrt2$．三平方の定理より弦の長さは $2\\sqrt{9-2}=\\boldsymbol{2 \\sqrt{7}}$．\n(2) 弦の中点は中心から $\\ell$ に下ろした垂線の足．中心を通り $\\ell$ に垂直な直線 $y=-x+3$ と $\\ell$ の交点を求めて $\\boldsymbol{\\left(1,\\ 2\\right)}$．"
+   }
+  ],
+  "idea": {
+   "tex": "弦の長さは「中心と直線の距離」と半径で三平方の定理．弦の中点は中心からの垂線の足．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) 2sqrt(7)\n(2) (1, 2)"
+  },
+  "methods": [],
+  "tags": [
+   "弦の長さ",
+   "点と直線の距離"
+  ],
+  "provenance": {
+   "created": "2026-10-30"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-GEO-207",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-09",
+  "level": 1,
+  "minutes": 14,
+  "theme": "円／2つの円の交点を通る直線・円",
+  "unit": "円",
+  "topic": "2つの円の交点を通る直線・円",
+  "statement": {
+   "tex": "2つの円 $x^2+y^2=10$，$x^2+y^2-2x-4y=0$ は2点で交わる．\n\\begin{enumerate}\n  \\item 2つの交点を通る直線の方程式を求めよ．\n  \\item 2つの交点を結ぶ線分の長さを求めよ．\n  \\item 2つの交点と点 $(2,\\ -1)$ を通る円の中心の座標と半径を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $y=-\\dfrac{1}{2}x+\\dfrac{5}{2}$（$x+2y=5$）　(2) $2 \\sqrt{5}$　(3) 中心 $\\left(\\dfrac{1}{2},\\ 1\\right)$，半径 $\\dfrac{5}{2}$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) 2式を辺々引くと $2x+4y-10=0$，すなわち $x+2y=5$．2つの交点はこの直線上にあるので $\\boldsymbol{y=-\\dfrac{1}{2}x+\\dfrac{5}{2}}$．\n(2) $x=5-2y$ を $x^2+y^2=10$ に代入して $y^2-4y+3=0$，$y=1,\\ 3$．交点は $(3,1),\\ (-1,3)$ で，長さは $\\sqrt{16+4}=\\boldsymbol{2 \\sqrt{5}}$．\n(3) 求める円は $x^2+y^2-10+\\lambda(x+2y-5)=0$ と表せる．$(2,-1)$ を代入して $-5-5\\lambda=0$，$\\lambda=-1$．\n$x^2+y^2-x-2y-5=0$，すなわち $\\left(x-\\dfrac12\\right)^2+(y-1)^2=\\dfrac{25}{4}$．中心 $\\boldsymbol{\\left(\\dfrac{1}{2},\\ 1\\right)}$，半径 $\\boldsymbol{\\dfrac{5}{2}}$．"
+   }
+  ],
+  "idea": {
+   "tex": "2曲線 $f=0,\\ g=0$ の交点を通る図形は $f+\\lambda g=0$ と表せる．2円の差をとると交点を通る直線になる．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) $y$：-x/2+5/2\n(2) 2sqrt(5)\n(3) 中心：(1/2, 1) ; 半径：5/2"
+  },
+  "methods": [],
+  "tags": [
+   "2円の交点",
+   "円束",
+   "共通弦"
+  ],
+  "provenance": {
+   "created": "2026-10-30"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-GEO-208",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-09",
+  "level": 1,
+  "minutes": 13,
+  "theme": "軌跡と領域／線形計画法",
+  "unit": "軌跡と領域",
+  "topic": "線形計画法",
+  "statement": {
+   "tex": "$x,\\ y$ が4つの不等式 $x\\geqq0,\\ y\\geqq0,\\ x+2y\\leqq8,\\ 3x+y\\leqq9$ を満たすとき，次の式の最大値と，そのときの $x,\\ y$ の値を求めよ．\n\\begin{enumerate}\n  \\item $2x+3y$\n  \\item $x+3y$\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 最大値 $13$（$x=2,\\ y=3$）　(2) 最大値 $12$（$x=0,\\ y=4$）"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "領域は4点 $(0,0),\\ (3,0),\\ (2,3),\\ (0,4)$ を頂点とする四角形（$(2,3)$ は $x+2y=8$ と $3x+y=9$ の交点）．\n(1) $2x+3y=k$ は傾き $-\\dfrac23$ の直線．境界の傾き $-\\dfrac12$ と $-3$ の間にあるので，頂点 $(2,3)$ を通るとき $k$ が最大で，最大値 $\\boldsymbol{13}$（$\\boldsymbol{x=2,\\ y=3}$）．\n(2) $x+3y=k$ は傾き $-\\dfrac13$ の直線で，$x+2y=8$ の傾き $-\\dfrac12$ よりゆるやか．頂点 $(0,4)$ を通るとき最大で，最大値 $\\boldsymbol{12}$（$\\boldsymbol{x=0,\\ y=4}$）．"
+   }
+  ],
+  "idea": {
+   "tex": "目的の1次式を $=k$ とおき，その直線の傾きと境界線の傾きを比べて，最大を与える頂点を決める．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) 最大値：13 ; $x$：2 ; $y$：3\n(2) 最大値：12 ; $x$：0 ; $y$：4"
+  },
+  "methods": [],
+  "tags": [
+   "線形計画法",
+   "領域",
+   "最大最小"
+  ],
+  "provenance": {
+   "created": "2026-10-30"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-GEO-209",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-09",
+  "level": 1,
+  "minutes": 13,
+  "theme": "軌跡と領域／円周上を動く点と式の最大・最小",
+  "unit": "軌跡と領域",
+  "topic": "円周上を動く点と式の最大・最小",
+  "statement": {
+   "tex": "点 $(x,\\ y)$ が円 $(x-2)^2+y^2=1$ 上を動くとき，次の問いに答えよ．\n\\begin{enumerate}\n  \\item $\\dfrac{y}{x}$ の最大値と最小値を求めよ．\n  \\item $x^2+y^2$ の最大値と最小値を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 最大値 $\\dfrac{\\sqrt{3}}{3}$，最小値 $-\\dfrac{\\sqrt{3}}{3}$　(2) 最大値 $9$，最小値 $1$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) $\\dfrac yx=m$ とおくと，$m$ は原点と点 $(x,y)$ を結ぶ直線 $y=mx$ の傾き．この直線が円と共有点をもつ条件は\n中心 $(2,0)$ との距離 $\\dfrac{|2m|}{\\sqrt{m^2+1}}\\leqq1$．$4m^2\\leqq m^2+1$ より $-\\dfrac{1}{\\sqrt3}\\leqq m\\leqq\\dfrac{1}{\\sqrt3}$．\n最大値 $\\boldsymbol{\\dfrac{\\sqrt{3}}{3}}$，最小値 $\\boldsymbol{- \\dfrac{\\sqrt{3}}{3}}$（いずれも接するとき）．\n(2) $x^2+y^2$ は原点からの距離の2乗．原点と中心の距離は $2$ なので，距離は $2-1=1$ から $2+1=3$ まで動く．\n最大値 $\\boldsymbol{9}$，最小値 $\\boldsymbol{1}$．"
+   }
+  ],
+  "idea": {
+   "tex": "$\\dfrac yx$ は原点と結ぶ直線の傾き，$x^2+y^2$ は原点からの距離の2乗と図形的に読みかえる．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) 最大値：sqrt(3)/3 ; 最小値：-sqrt(3)/3\n(2) 最大値：9 ; 最小値：1"
+  },
+  "methods": [],
+  "tags": [
+   "円",
+   "傾き",
+   "最大最小"
+  ],
+  "provenance": {
+   "created": "2026-10-30"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-GEO-210",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-09",
+  "level": 1,
+  "minutes": 12,
+  "theme": "軌跡と領域／円周上を動く点で決まる点の軌跡",
+  "unit": "軌跡と領域",
+  "topic": "円周上を動く点で決まる点の軌跡",
+  "statement": {
+   "tex": "点 $\\mathrm{Q}$ が円 $x^2+y^2=9$ 上を動くとき，点 $\\mathrm{A}(6,\\ 3)$ と $\\mathrm{Q}$ を結ぶ線分 $\\mathrm{AQ}$ を $1:2$ に内分する点 $\\mathrm{P}$ の軌跡は円である．その中心の座標と半径を求めよ．"
+  },
+  "answer": {
+   "tex": "中心 $\\left(4,\\ 2\\right)$，半径 $1$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "$\\mathrm{Q}(s,t)$，$\\mathrm{P}(x,y)$ とすると $x=\\dfrac{2\\cdot6+s}{3}$，$y=\\dfrac{2\\cdot3+t}{3}$．\nよって $s=3x-12$，$t=3y-6$．これを $s^2+t^2=9$ に代入して $(3x-12)^2+(3y-6)^2=9$，すなわち $(x-4)^2+(y-2)^2=1$．\n逆にこの円上の任意の点はある $\\mathrm{Q}$ から得られる．軌跡は中心 $\\boldsymbol{\\left(4,\\ 2\\right)}$，半径 $\\boldsymbol{1}$ の円．"
+   }
+  ],
+  "idea": {
+   "tex": "動く点 $\\mathrm{Q}$ の座標を軌跡を求める点 $\\mathrm{P}$ の座標で表し，$\\mathrm{Q}$ の満たす式に代入する（つなぎの文字を消す）．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "中心：(4, 2) ; 半径：1"
+  },
+  "methods": [],
+  "tags": [
+   "軌跡",
+   "内分点"
+  ],
+  "provenance": {
+   "created": "2026-10-30"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-GEO-211",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-09",
+  "level": 1,
+  "minutes": 14,
+  "theme": "軌跡と領域／2直線の交点の軌跡",
+  "unit": "軌跡と領域",
+  "topic": "2直線の交点の軌跡",
+  "statement": {
+   "tex": "$m$ が実数全体を動くとき，2直線 $mx-y=0$，$x+my-2=0$ の交点 $\\mathrm{P}$ の軌跡を求めたい．\n\\begin{enumerate}\n  \\item 交点 $\\mathrm{P}$ の座標を $m$ で表せ．\n  \\item $\\mathrm{P}$ の軌跡は円から1点を除いたものである．円の中心の座標，半径，除かれる点の座標を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $\\left(\\dfrac{2}{m^2+1},\\ \\dfrac{2m}{m^2+1}\\right)$　(2) 中心 $(1,\\ 0)$，半径 $1$，除かれる点 $(0,\\ 0)$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) $y=mx$ を $x+my=2$ に代入して $x(1+m^2)=2$．$\\boldsymbol{\\mathrm{P}\\left(\\dfrac{2}{m^2+1},\\ \\dfrac{2m}{m^2+1}\\right)}$．\n(2) 交点 $(x,y)$ は $mx-y=0$，$x+my-2=0$ を満たす．$x\\neq0$ なので（$x=0$ なら $y=0$ となり $x+my=2$ に反する）$m=\\dfrac yx$．\n代入して $x+\\dfrac{y^2}{x}-2=0$，すなわち $x^2+y^2-2x=0$，$(x-1)^2+y^2=1$．ただし $x\\neq0$ より点 $(0,0)$ は除く．\n逆に，この円上の $(0,0)$ 以外の点は $m=\\dfrac yx$ で得られる．よって中心 $\\boldsymbol{(1,\\ 0)}$，半径 $\\boldsymbol{1}$ の円から点 $\\boldsymbol{(0,\\ 0)}$ を除いたもの．"
+   }
+  ],
+  "idea": {
+   "tex": "媒介変数 $m$ を消去する．$m$ について解くとき，割る式が $0$ にならないかを確かめ，除外点を拾う．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) (2/(m^2+1), 2m/(m^2+1))\n(2) 中心：(1, 0) ; 半径：1 ; 除かれる点：(0, 0)"
+  },
+  "methods": [],
+  "tags": [
+   "軌跡",
+   "媒介変数",
+   "除外点"
+  ],
+  "provenance": {
+   "created": "2026-10-30"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-GEO-212",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-09",
+  "level": 1,
+  "minutes": 12,
+  "theme": "円／2つの座標軸に接する円",
+  "unit": "円",
+  "topic": "2つの座標軸に接する円",
+  "statement": {
+   "tex": "点 $(1,\\ 2)$ を通り，$x$ 軸と $y$ 軸の両方に接する円は2つある．\n\\begin{enumerate}\n  \\item 2つの円の半径をそれぞれ求めよ．\n  \\item 2つの円の中心間の距離を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $1,\\ 5$　(2) $4 \\sqrt{2}$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) 点 $(1,2)$ は第1象限にあるので，円の中心も第1象限にあり，半径を $a$ とすると中心は $(a,\\ a)$．\n$(1-a)^2+(2-a)^2=a^2$ より $a^2-6a+5=0$，$a=1,\\ 5$．半径は $\\boldsymbol{1,\\ 5}$．\n(2) 中心は $(1,1)$，$(5,5)$ なので距離は $\\sqrt{4^2+4^2}=\\boldsymbol{4 \\sqrt{2}}$．"
+   }
+  ],
+  "idea": {
+   "tex": "両軸に接する円は，中心が $(a,a)$ 型（象限に応じて符号）で半径 $|a|$．通る点の条件で $a$ を決める．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) 半径：{1, 5}\n(2) 4sqrt(2)"
+  },
+  "technique_main": null,
+  "technique_support": [
+   "接線（接点を文字で置く）"
+  ],
+  "methods": [],
+  "tags": [
+   "円の方程式",
+   "接する"
+  ],
+  "provenance": {
+   "created": "2026-10-30"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-GEO-213",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-09",
+  "level": 1,
+  "minutes": 13,
+  "theme": "点と直線／対称点と折れ線の長さの最小",
+  "unit": "点と直線",
+  "topic": "対称点と折れ線の長さの最小",
+  "statement": {
+   "tex": "2点 $\\mathrm{A}(1,\\ 3)$，$\\mathrm{B}(4,\\ 5)$ と直線 $\\ell:\\ y=x$ がある．点 $\\mathrm{P}$ が $\\ell$ 上を動くとき，$\\mathrm{AP}+\\mathrm{PB}$ の最小値と，そのときの点 $\\mathrm{P}$ の座標を求めよ．"
+  },
+  "answer": {
+   "tex": "最小値 $\\sqrt{17}$，点 $\\mathrm{P}$ の座標 $\\left(\\dfrac{11}{3},\\ \\dfrac{11}{3}\\right)$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "$\\mathrm{A}$，$\\mathrm{B}$ はともに $y>x$ の側にある．$\\ell$ に関して $\\mathrm{A}$ と対称な点は $\\mathrm{A}^\\prime(3,\\ 1)$．\n$\\mathrm{AP}=\\mathrm{A}^\\prime\\mathrm{P}$ なので $\\mathrm{AP}+\\mathrm{PB}=\\mathrm{A}^\\prime\\mathrm{P}+\\mathrm{PB}\\geqq\\mathrm{A}^\\prime\\mathrm{B}=\\sqrt{1^2+4^2}=\\sqrt{17}$．\n等号は $\\mathrm{P}$ が直線 $\\mathrm{A}^\\prime\\mathrm{B}:\\ y=4x-11$ と $\\ell$ の交点のとき．$x=4x-11$ より $x=\\dfrac{11}{3}$．\n最小値 $\\boldsymbol{\\sqrt{17}}$，$\\mathrm{P}\\boldsymbol{\\left(\\dfrac{11}{3},\\ \\dfrac{11}{3}\\right)}$．"
+   }
+  ],
+  "idea": {
+   "tex": "同じ側にある2点は，一方を直線に関して折り返すと，折れ線が一直線になるときが最短．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "最小値：sqrt(17) ; 点P：(11/3, 11/3)"
+  },
+  "methods": [],
+  "tags": [
+   "対称点",
+   "最短経路"
+  ],
+  "provenance": {
+   "created": "2026-10-30"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-GEO-214",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-09",
+  "level": 1,
+  "minutes": 11,
+  "theme": "円／2つの円が共有点をもつ条件",
+  "unit": "円",
+  "topic": "2つの円が共有点をもつ条件",
+  "statement": {
+   "tex": "円 $C_1:\\ x^2+y^2-6x-8y+16=0$ と円 $C_2:\\ x^2+y^2=r^2$（$r>0$）について，次の問いに答えよ．\n\\begin{enumerate}\n  \\item $C_1$ の中心の座標と半径を求めよ．\n  \\item $C_1$ と $C_2$ が共有点をもつような $r$ の値の範囲を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 中心 $(3,\\ 4)$，半径 $3$　(2) $2\\leqq r\\leqq8$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) $(x-3)^2+(y-4)^2=9$ より中心 $\\boldsymbol{(3,\\ 4)}$，半径 $\\boldsymbol{3}$．\n(2) 中心間の距離は $5$．共有点をもつ条件は $|r-3|\\leqq5\\leqq r+3$．\n$5\\leqq r+3$ より $r\\geqq2$，$|r-3|\\leqq5$ より $-2\\leqq r\\leqq8$．よって $\\boldsymbol{2\\leqq r\\leqq8}$．"
+   }
+  ],
+  "idea": {
+   "tex": "2円が共有点をもつ $\\iff$ $|r_1-r_2|\\leqq d\\leqq r_1+r_2$（$d$ は中心間の距離）．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) 中心：(3, 4) ; 半径：3\n(2) 2<=r<=8"
+  },
+  "methods": [],
+  "tags": [
+   "2円の位置関係"
+  ],
+  "provenance": {
+   "created": "2026-10-30"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-GEO-215",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-09",
+  "level": 1,
+  "minutes": 14,
+  "theme": "軌跡と領域／円と直線で囲まれた領域と最大・最小",
+  "unit": "軌跡と領域",
+  "topic": "円と直線で囲まれた領域と最大・最小",
+  "statement": {
+   "tex": "連立不等式 $x^2+y^2\\leqq4,\\ x+y\\geqq2$ の表す領域を $D$ とする．\n\\begin{enumerate}\n  \\item $D$ の面積を求めよ．\n  \\item 点 $(x,\\ y)$ が $D$ 内を動くとき，$x+2y$ の最大値と最小値を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $\\pi-2$　(2) 最大値 $2 \\sqrt{5}$，最小値 $2$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) 直線 $x+y=2$ は円と $(2,0),\\ (0,2)$ で交わる．$D$ は中心角 $90^\\circ$ の扇形から直角三角形を除いた弓形で，\n面積は $\\dfrac14\\cdot\\pi\\cdot2^2-\\dfrac12\\cdot2\\cdot2=\\boldsymbol{\\pi-2}$．\n(2) $x+2y=k$ とおく（傾き $-\\dfrac12$ の直線）．$k$ が最大になるのは直線が弧に接するときで，$\\dfrac{|k|}{\\sqrt5}=2$ より $k=2\\sqrt5$．\n接点 $\\left(\\dfrac{2}{\\sqrt5},\\ \\dfrac{4}{\\sqrt5}\\right)$ は $x+y=\\dfrac{6}{\\sqrt5}\\geqq2$ を満たし $D$ の弧上にある．最大値 $\\boldsymbol{2 \\sqrt{5}}$．\n$k$ が最小になるのは端点 $(2,0)$ を通るときで，最小値 $\\boldsymbol{2}$（弦 $x+y=2$ 上では $x+2y=2+y\\geqq2$）．"
+   }
+  ],
+  "idea": {
+   "tex": "境界が円弧のときは「接するとき」，直線部分や端点では「頂点を通るとき」の両方を候補にする．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) π-2\n(2) 最大値：2sqrt(5) ; 最小値：2"
+  },
+  "methods": [],
+  "tags": [
+   "領域",
+   "最大最小",
+   "円と直線"
+  ],
+  "provenance": {
+   "created": "2026-10-30"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-GEO-216",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-09",
+  "level": 1,
+  "minutes": 13,
+  "theme": "点と直線／三角形の垂心と外心",
+  "unit": "点と直線",
+  "topic": "三角形の垂心と外心",
+  "statement": {
+   "tex": "3点 $\\mathrm{A}(0,\\ 3)$，$\\mathrm{B}(-1,\\ 0)$，$\\mathrm{C}(3,\\ 0)$ を頂点とする $\\triangle\\mathrm{ABC}$ について，次の問いに答えよ．\n\\begin{enumerate}\n  \\item $\\triangle\\mathrm{ABC}$ の垂心 $\\mathrm{H}$ の座標を求めよ．\n  \\item $\\triangle\\mathrm{ABC}$ の外心 $\\mathrm{O}^\\prime$ の座標と外接円の半径を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $\\left(0,\\ 1\\right)$　(2) 外心 $\\left(1,\\ 1\\right)$，半径 $\\sqrt{5}$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) $\\mathrm{A}$ から $\\mathrm{BC}$（$x$ 軸）への垂線は $x=0$．$\\mathrm{AC}$ の傾きは $-1$ なので，$\\mathrm{B}$ から $\\mathrm{AC}$ への垂線は傾き $1$ で $y=x+1$．\n2本の垂線の交点が垂心で，$\\mathrm{H}\\boldsymbol{\\left(0,\\ 1\\right)}$．\n(2) $\\mathrm{BC}$ の垂直二等分線は $x=1$．外心 $(1,\\ q)$ について $\\mathrm{O^\\prime A}^2=\\mathrm{O^\\prime B}^2$ より $1+(q-3)^2=4+q^2$，$q=1$．\n外心 $\\boldsymbol{\\left(1,\\ 1\\right)}$，半径 $\\sqrt{(1+1)^2+1^2}=\\boldsymbol{\\sqrt{5}}$．\n（検算：重心 $\\left(\\dfrac23,\\ 1\\right)$ とともに $\\mathrm{H}$，$\\mathrm{O}^\\prime$ は直線 $y=1$ 上にあり，$\\overrightarrow{\\mathrm{O^\\prime H}}=3\\overrightarrow{\\mathrm{O^\\prime G}}$ が成り立つ．）"
+   }
+  ],
+  "idea": {
+   "tex": "垂心は2本の垂線の交点，外心は2本の垂直二等分線の交点．座標軸に平行な辺を利用すると計算が軽い．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) (0, 1)\n(2) 外心：(1, 1) ; 半径：sqrt(5)"
+  },
+  "methods": [],
+  "tags": [
+   "垂心",
+   "外心",
+   "垂直"
+  ],
+  "provenance": {
+   "created": "2026-10-30"
   },
   "quality": {
    "status": "published",

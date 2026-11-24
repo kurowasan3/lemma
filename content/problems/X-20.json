@@ -972,398 +972,6 @@
   }
  },
  {
-  "id": "X-MIX-027",
-  "schema": "lemma.problem/1",
-  "kind": "written",
-  "field": "X-20",
-  "level": 1,
-  "minutes": 14,
-  "theme": "確率×数列／2地点を移動する点の確率漸化式",
-  "unit": "確率×数列",
-  "topic": "2地点を移動する点の確率漸化式",
-  "statement": {
-   "tex": "点 P は地点 A，B のどちらかにあり，1秒ごとに次の規則で移動する．\nA にいるときは確率 $\\dfrac23$ で B に移り，確率 $\\dfrac13$ で A にとどまる．B にいるときは確率 $\\dfrac12$ で A に移り，確率 $\\dfrac12$ で B にとどまる．\n最初 P は A にいる．$n$ 秒後に P が A にいる確率を $p_n$ とする（$p_0=1$）．\n\\begin{enumerate}\n  \\item $p_1$ を求めよ．また，$p_{n+1}=ap_n+b$ がすべての $n\\geqq0$ で成り立つような定数 $a$，$b$ を求めよ．\n  \\item $p_n$ を $n$ の式で表せ．\n\\end{enumerate}"
-  },
-  "answer": {
-   "tex": "(1) $p_1=\\dfrac{1}{3}$，$a=-\\dfrac{1}{6}$，$b=\\dfrac{1}{2}$　(2) $p_n=\\dfrac{3}{7}+\\dfrac{4}{7}\\left(-\\dfrac{1}{6}\\right)^n$"
-  },
-  "solutions": [
-   {
-    "id": "main",
-    "kind": "main",
-    "tex": "(1) $p_1=\\boldsymbol{\\dfrac{1}{3}}$．$n+1$ 秒後に A にいるのは，「$n$ 秒後に A にいてとどまる」か「$n$ 秒後に B にいて A に移る」場合なので\n$p_{n+1}=\\dfrac13p_n+\\dfrac12(1-p_n)=-\\dfrac{1}{6}p_n+\\dfrac{1}{2}$．よって $\\boldsymbol{a=-\\dfrac{1}{6}}$，$\\boldsymbol{b=\\dfrac{1}{2}}$．\n(2) $\\alpha=-\\dfrac16\\alpha+\\dfrac12$ を解くと $\\alpha=\\dfrac37$．$p_{n+1}-\\dfrac37=-\\dfrac16\\left(p_n-\\dfrac37\\right)$．\n$p_0-\\dfrac37=\\dfrac47$ なので $p_n=\\boldsymbol{\\dfrac{3}{7}+\\dfrac{4}{7}\\left(-\\dfrac{1}{6}\\right)^n}$．"
-   }
-  ],
-  "idea": {
-   "tex": "$n$ 回目から $n+1$ 回目への推移だけを見て漸化式を立てる．B にいる確率は $1-p_n$．"
-  },
-  "grading": {
-   "format": "lemma-input/1",
-   "spec": "(1) $p_1$：1/3 ; $a$：-1/6 ; $b$：1/2\n(2) $p_n$：3/7+(4/7)(-1/6)^n"
-  },
-  "methods": [],
-  "tags": [
-   "確率漸化式",
-   "隣接2項間漸化式"
-  ],
-  "provenance": {
-   "created": "2026-10-30"
-  },
-  "quality": {
-   "status": "published",
-   "checks": {
-    "dual": false,
-    "sympy": true,
-    "human": false
-   },
-   "verified": false
-  }
- },
- {
-  "id": "X-MIX-028",
-  "schema": "lemma.problem/1",
-  "kind": "written",
-  "field": "X-20",
-  "level": 1,
-  "minutes": 13,
-  "theme": "微分×図形と方程式／曲線上の点と直線の距離の最小",
-  "unit": "微分×図形と方程式",
-  "topic": "曲線上の点と直線の距離の最小",
-  "statement": {
-   "tex": "曲線 $C:y=x^3\\ (x\\geqq0)$ 上の点 P と，直線 $\\ell:y=3x-5$ の距離を考える．\n\\begin{enumerate}\n  \\item P の $x$ 座標を $t\\ (t\\geqq0)$ とするとき，P と $\\ell$ の距離を $t$ の式で表せ．\n  \\item P と $\\ell$ の距離の最小値と，そのときの P の座標を求めよ．\n\\end{enumerate}"
-  },
-  "answer": {
-   "tex": "(1) $\\dfrac{t^3-3t+5}{\\sqrt{10}}$　(2) 最小値 $\\dfrac{3\\sqrt{10}}{10}$，P の座標 $(1,1)$"
-  },
-  "solutions": [
-   {
-    "id": "main",
-    "kind": "main",
-    "tex": "(1) $\\ell:3x-y-5=0$．P$(t,t^3)$ との距離は $\\dfrac{|3t-t^3-5|}{\\sqrt{10}}$．\n$g(t)=t^3-3t+5$ とおくと $g'(t)=3(t+1)(t-1)$ より，$t\\geqq0$ での最小値は $g(1)=3>0$．よって $g(t)>0$ で，距離は $\\boldsymbol{\\dfrac{t^3-3t+5}{\\sqrt{10}}}$．\n(2) $g(t)$ は $t=1$ で最小値 $3$ をとるので，距離の最小値は $\\dfrac{3}{\\sqrt{10}}=\\boldsymbol{\\dfrac{3\\sqrt{10}}{10}}$，そのとき $\\boldsymbol{\\mathrm{P}(1,1)}$．\n（$t=1$ での接線の傾き $3$ は $\\ell$ の傾きに等しい．）"
-   }
-  ],
-  "idea": {
-   "tex": "点と直線の距離の公式で距離を $t$ の3次関数にし，微分で最小を求める．絶対値の中の符号を確かめる．"
-  },
-  "grading": {
-   "format": "lemma-input/1",
-   "spec": "(1) (t^3-3t+5)/sqrt(10)\n(2) 最小値：3sqrt(10)/10 ; P：(1, 1)"
-  },
-  "methods": [],
-  "tags": [
-   "点と直線の距離",
-   "微分",
-   "最大最小"
-  ],
-  "provenance": {
-   "created": "2026-10-30"
-  },
-  "quality": {
-   "status": "published",
-   "checks": {
-    "dual": false,
-    "sympy": true,
-    "human": false
-   },
-   "verified": false
-  }
- },
- {
-  "id": "X-MIX-029",
-  "schema": "lemma.problem/1",
-  "kind": "written",
-  "field": "X-20",
-  "level": 1,
-  "minutes": 12,
-  "theme": "整数×数列／余りの条件で決まる数列の和",
-  "unit": "整数×数列",
-  "topic": "余りの条件で決まる数列の和",
-  "statement": {
-   "tex": "3で割ると2余り，5で割ると3余る自然数を小さい順に並べてできる数列を $\\{a_n\\}$ とする．\n\\begin{enumerate}\n  \\item $a_1$ と，一般項 $a_n$ を求めよ．\n  \\item $\\displaystyle\\sum_{k=1}^{20}a_k$ を求めよ．\n\\end{enumerate}"
-  },
-  "answer": {
-   "tex": "(1) $a_1=8$，$a_n=15n-7$　(2) $3010$"
-  },
-  "solutions": [
-   {
-    "id": "main",
-    "kind": "main",
-    "tex": "(1) 5で割ると3余る数 $3,8,13,\\cdots$ のうち，3で割ると2余る最小のものは $8$．よって $\\boldsymbol{a_1=8}$．\n$x$ が条件を満たすとき $x-8$ は3でも5でも割り切れるので15の倍数．逆に $x=8+15m$ は条件を満たす．\nよって $\\{a_n\\}$ は初項 $8$，公差 $15$ の等差数列で $a_n=\\boldsymbol{15n-7}$．\n(2) $\\dfrac{20(a_1+a_{20})}{2}=10(8+293)=\\boldsymbol{3010}$．"
-   }
-  ],
-  "idea": {
-   "tex": "1つの解を見つければ，残りは2つの法の最小公倍数ずつずれる．そこから等差数列になる．"
-  },
-  "grading": {
-   "format": "lemma-input/1",
-   "spec": "(1) $a_1$：8 ; $a_n$：15n-7\n(2) 3010"
-  },
-  "methods": [],
-  "tags": [
-   "合同式",
-   "等差数列",
-   "和"
-  ],
-  "provenance": {
-   "created": "2026-10-30"
-  },
-  "quality": {
-   "status": "published",
-   "checks": {
-    "dual": false,
-    "sympy": true,
-    "human": false
-   },
-   "verified": false
-  }
- },
- {
-  "id": "X-MIX-030",
-  "schema": "lemma.problem/1",
-  "kind": "written",
-  "field": "X-20",
-  "level": 1,
-  "minutes": 12,
-  "theme": "対数×数列／等比数列の項と常用対数",
-  "unit": "対数×数列",
-  "topic": "等比数列の項と常用対数",
-  "statement": {
-   "tex": "初項 $3$，公比 $2$ の等比数列 $\\{a_n\\}$ について，次の問いに答えよ．ただし $\\log_{10}2=0.3010$，$\\log_{10}3=0.4771$ とする．\n\\begin{enumerate}\n  \\item $a_n>10^{10}$ となる最小の自然数 $n$ を求めよ．\n  \\item $b_n=\\log_2\\dfrac{a_n}{3}$ とするとき，$\\displaystyle\\sum_{k=1}^{n}b_k$ を $n$ の式で表せ．\n\\end{enumerate}"
-  },
-  "answer": {
-   "tex": "(1) $33$　(2) $\\dfrac{n(n-1)}{2}$"
-  },
-  "solutions": [
-   {
-    "id": "main",
-    "kind": "main",
-    "tex": "(1) $a_n=3\\cdot2^{n-1}$．$3\\cdot2^{n-1}>10^{10}$ の常用対数をとると $0.4771+0.3010(n-1)>10$．\n$n-1>\\dfrac{9.5229}{0.3010}=31.6\\cdots$ より $n-1\\geqq32$，最小の $n$ は $\\boldsymbol{33}$．\n(2) $b_n=\\log_2 2^{n-1}=n-1$ なので $\\displaystyle\\sum_{k=1}^n(k-1)=\\boldsymbol{\\dfrac{n(n-1)}{2}}$．"
-   }
-  ],
-  "idea": {
-   "tex": "等比数列の項に対数をとると，指数の部分が $n$ の1次式になる．"
-  },
-  "grading": {
-   "format": "lemma-input/1",
-   "spec": "(1) 33\n(2) n(n-1)/2"
-  },
-  "methods": [],
-  "tags": [
-   "等比数列",
-   "常用対数"
-  ],
-  "provenance": {
-   "created": "2026-10-30"
-  },
-  "quality": {
-   "status": "published",
-   "checks": {
-    "dual": false,
-    "sympy": true,
-    "human": false
-   },
-   "verified": false
-  }
- },
- {
-  "id": "X-MIX-031",
-  "schema": "lemma.problem/1",
-  "kind": "written",
-  "field": "X-20",
-  "level": 1,
-  "minutes": 14,
-  "theme": "三角関数×微分／3倍角を含む関数の最大・最小",
-  "unit": "三角関数×微分",
-  "topic": "3倍角を含む関数の最大・最小",
-  "statement": {
-   "tex": "$0\\leqq\\theta\\leqq\\pi$ のとき，$f(\\theta)=2\\cos3\\theta-3\\cos2\\theta+6\\cos\\theta$ について，次の問いに答えよ．\n\\begin{enumerate}\n  \\item $t=\\cos\\theta$ とおくとき，$f(\\theta)$ を $t$ の式で表せ．\n  \\item $f(\\theta)$ の最大値と最小値を求めよ．\n\\end{enumerate}"
-  },
-  "answer": {
-   "tex": "(1) $8t^3-6t^2+3$　(2) 最大値 $5$，最小値 $-11$"
-  },
-  "solutions": [
-   {
-    "id": "main",
-    "kind": "main",
-    "tex": "(1) $\\cos3\\theta=4t^3-3t$，$\\cos2\\theta=2t^2-1$ より $f=2(4t^3-3t)-3(2t^2-1)+6t=\\boldsymbol{8t^3-6t^2+3}$．\n(2) $0\\leqq\\theta\\leqq\\pi$ より $-1\\leqq t\\leqq1$．$g(t)=8t^3-6t^2+3$，$g'(t)=12t(2t-1)$．\n$g(-1)=-11$，$g(0)=3$（極大），$g\\left(\\dfrac12\\right)=\\dfrac52$（極小），$g(1)=5$．\nよって最大値 $\\boldsymbol{5}$（$\\theta=0$），最小値 $\\boldsymbol{-11}$（$\\theta=\\pi$）．"
-   }
-  ],
-  "idea": {
-   "tex": "3倍角・2倍角の公式で $\\cos\\theta$ の3次式にし，$t$ の範囲で増減を調べる．"
-  },
-  "grading": {
-   "format": "lemma-input/1",
-   "spec": "(1) 8t^3-6t^2+3\n(2) 最大値：5 ; 最小値：-11"
-  },
-  "methods": [],
-  "tags": [
-   "3倍角",
-   "置き換え",
-   "微分",
-   "最大最小"
-  ],
-  "provenance": {
-   "created": "2026-10-30"
-  },
-  "quality": {
-   "status": "published",
-   "checks": {
-    "dual": false,
-    "sympy": true,
-    "human": false
-   },
-   "verified": false
-  }
- },
- {
-  "id": "X-MIX-032",
-  "schema": "lemma.problem/1",
-  "kind": "written",
-  "field": "X-20",
-  "level": 1,
-  "minutes": 12,
-  "theme": "積分×数列／放物線が囲む面積の和",
-  "unit": "積分×数列",
-  "topic": "放物線が囲む面積の和",
-  "statement": {
-   "tex": "自然数 $n$ に対し，放物線 $y=x^2-nx$ と $x$ 軸で囲まれた部分の面積を $S_n$ とする．\n\\begin{enumerate}\n  \\item $S_n$ を $n$ の式で表せ．\n  \\item $\\displaystyle\\sum_{k=1}^{n}S_k$ を $n$ の式で表し，$\\displaystyle\\sum_{k=1}^{10}S_k$ を求めよ．\n\\end{enumerate}"
-  },
-  "answer": {
-   "tex": "(1) $S_n=\\dfrac{n^3}{6}$　(2) $\\dfrac{n^2(n+1)^2}{24}$，$\\dfrac{3025}{6}$"
-  },
-  "solutions": [
-   {
-    "id": "main",
-    "kind": "main",
-    "tex": "(1) $x^2-nx=x(x-n)$ より $x$ 軸との交点は $x=0,\\ n$．$S_n=-\\displaystyle\\int_0^n x(x-n)\\,dx=\\boldsymbol{\\dfrac{n^3}{6}}$．\n(2) $\\displaystyle\\sum_{k=1}^{n}\\dfrac{k^3}{6}=\\dfrac16\\left\\{\\dfrac{n(n+1)}{2}\\right\\}^2=\\boldsymbol{\\dfrac{n^2(n+1)^2}{24}}$．\n$n=10$ とすると $\\dfrac{100\\cdot121}{24}=\\boldsymbol{\\dfrac{3025}{6}}$．"
-   }
-  ],
-  "idea": {
-   "tex": "面積は $\\dfrac16$ 公式で $n^3$ に比例する．和は $\\sum k^3$ の公式で求める．"
-  },
-  "grading": {
-   "format": "lemma-input/1",
-   "spec": "(1) $S_n$：n^3/6\n(2) n^2(n+1)^2/24 ; 3025/6"
-  },
-  "methods": [],
-  "tags": [
-   "面積",
-   "1/6公式",
-   "Σ"
-  ],
-  "provenance": {
-   "created": "2026-10-30"
-  },
-  "quality": {
-   "status": "published",
-   "checks": {
-    "dual": false,
-    "sympy": true,
-    "human": false
-   },
-   "verified": false
-  }
- },
- {
-  "id": "X-MIX-033",
-  "schema": "lemma.problem/1",
-  "kind": "written",
-  "field": "X-20",
-  "level": 1,
-  "minutes": 12,
-  "theme": "場合の数×整数／積や和が3の倍数になる選び方",
-  "unit": "場合の数×整数",
-  "topic": "積や和が3の倍数になる選び方",
-  "statement": {
-   "tex": "1から100までの整数から異なる2つを選ぶ（順序は考えない）．\n\\begin{enumerate}\n  \\item 選んだ2数の積が3の倍数となる選び方は何通りか．\n  \\item 選んだ2数の和が3の倍数となる選び方は何通りか．\n\\end{enumerate}"
-  },
-  "answer": {
-   "tex": "(1) $2739$ 通り　(2) $1650$ 通り"
-  },
-  "solutions": [
-   {
-    "id": "main",
-    "kind": "main",
-    "tex": "1から100までの整数を3で割った余りで分けると，余り0が33個，余り1が34個，余り2が33個．\n(1) 積が3の倍数でないのは，2数とも3の倍数でないとき．3の倍数でない数は67個．\n${}_{100}\\mathrm{C}_2-{}_{67}\\mathrm{C}_2=4950-2211=\\boldsymbol{2739}$ 通り．\n(2) 余りの組が $(0,0)$ または $(1,2)$ のとき．${}_{33}\\mathrm{C}_2+34\\times33=528+1122=\\boldsymbol{1650}$ 通り．"
-   }
-  ],
-  "idea": {
-   "tex": "3の倍数かどうかは3で割った余りだけで決まるので，余りで3つのグループに分けて数える．"
-  },
-  "grading": {
-   "format": "lemma-input/1",
-   "spec": "(1) 2739通り\n(2) 1650通り"
-  },
-  "methods": [],
-  "tags": [
-   "場合の数",
-   "余りによる分類"
-  ],
-  "provenance": {
-   "created": "2026-10-30"
-  },
-  "quality": {
-   "status": "published",
-   "checks": {
-    "dual": false,
-    "sympy": true,
-    "human": false
-   },
-   "verified": false
-  }
- },
- {
-  "id": "X-MIX-034",
-  "schema": "lemma.problem/1",
-  "kind": "written",
-  "field": "X-20",
-  "level": 1,
-  "minutes": 14,
-  "theme": "図形×数列／角に内接する円の半径の等比数列",
-  "unit": "図形×数列",
-  "topic": "角に内接する円の半径の等比数列",
-  "statement": {
-   "tex": "$\\angle\\mathrm{XOY}=60^\\circ$ の2辺 OX，OY の両方に接する円 $C_1,C_2,C_3,\\cdots$ があり，$C_{n+1}$ は $C_n$ と外接し，$C_n$ より頂点 O に近い側にある．$C_1$ の半径を $1$ とし，$C_n$ の半径を $r_n$ とする．\n\\begin{enumerate}\n  \\item $r_n$ を $n$ の式で表せ．\n  \\item $C_1$ から $C_n$ までの円の面積の和を $n$ の式で表せ．\n\\end{enumerate}"
-  },
-  "answer": {
-   "tex": "(1) $r_n=\\left(\\dfrac{1}{3}\\right)^{n-1}$　(2) $\\dfrac{9\\pi}{8}\\left(1-\\left(\\dfrac{1}{9}\\right)^{n}\\right)$"
-  },
-  "solutions": [
-   {
-    "id": "main",
-    "kind": "main",
-    "tex": "(1) 円の中心は $\\angle\\mathrm{XOY}$ の二等分線上にあり，二等分線と辺のなす角は $30^\\circ$．\n半径 $r$ の円の中心と O の距離は $\\dfrac{r}{\\sin30^\\circ}=2r$．\n$C_n$ と $C_{n+1}$ は外接するので，中心間の距離について $2r_n-2r_{n+1}=r_n+r_{n+1}$，$r_{n+1}=\\dfrac13r_n$．\nよって $r_n=\\boldsymbol{\\left(\\dfrac{1}{3}\\right)^{n-1}}$．\n(2) 面積は $\\pi r_k^2=\\pi\\left(\\dfrac19\\right)^{k-1}$ で，初項 $\\pi$，公比 $\\dfrac19$ の等比数列．\n和は $\\pi\\cdot\\dfrac{1-\\left(\\frac19\\right)^n}{1-\\frac19}=\\boldsymbol{\\dfrac{9\\pi}{8}\\left(1-\\left(\\dfrac{1}{9}\\right)^{n}\\right)}$．"
-   }
-  ],
-  "idea": {
-   "tex": "中心は角の二等分線上にあり，O からの距離が半径に比例する．外接の条件から半径の比が一定になる．"
-  },
-  "grading": {
-   "format": "lemma-input/1",
-   "spec": "(1) $r_n$：(1/3)^(n-1)\n(2) (9π/8)(1-(1/9)^n)"
-  },
-  "technique_main": "円の接線と半径（垂直・接線の長さ）",
-  "technique_support": [],
-  "methods": [],
-  "tags": [
-   "図形",
-   "等比数列",
-   "接する円"
-  ],
-  "provenance": {
-   "created": "2026-10-30"
-  },
-  "quality": {
-   "status": "published",
-   "checks": {
-    "dual": false,
-    "sympy": true,
-    "human": false
-   },
-   "verified": false
-  }
- },
- {
   "id": "X-MIX-035",
   "schema": "lemma.problem/1",
   "kind": "written",
@@ -1938,255 +1546,6 @@
   }
  },
  {
-  "id": "X-MIX-047",
-  "schema": "lemma.problem/1",
-  "kind": "written",
-  "field": "X-20",
-  "level": 5,
-  "minutes": 40,
-  "theme": "内積が $q^{|s-t|}$ となる数列の列と2次形式の下からの評価",
-  "topic": "内積が $q^{|s-t|}$ となる数列の列と2次形式の下からの評価",
-  "statement": {
-   "tex": "数列 $\\{a_n\\}$ が「長さ有限」とは，ある番号から先のすべての $n$ に対して $a_n=0$ となることをいう（$a_n$ はすべて実数）．長さ有限の数列 $A=\\{a_n\\}$ について，$a_n\\neq0$ となる自然数 $n$ の最大値を $A$ の「長さ」と呼ぶ．長さ有限の数列 $A=\\{a_n\\}$，$B=\\{b_n\\}$ と実数 $c$ に対して $A+B=\\{a_n+b_n\\}$，$cA=\\{ca_n\\}$ と定め，さらに\n\\[\nA\\cdot B=\\sum_{n=1}^{\\infty}a_nb_n,\\qquad |A|=\\sqrt{A\\cdot A}\n\\]\nと定める（$\\sum$ は実際には有限個の和である）．また，第 $s$ 項だけが $1$ で他の項がすべて $0$ である数列を $E(s)$ と書く．\n\n$0<q<1$ とする．長さ有限の数列の列 $A(1)$，$A(2)$，$A(3)$，$\\cdots$ は次の条件をみたすとする．\n\\begin{itemize}\n  \\item[(i)] 各 $s$ に対して $A(s)=\\bigl(a(s)_1,\\ a(s)_2,\\ \\cdots\\bigr)$ の長さは $s$ であり，$a(s)_s>0$ である．\n  \\item[(ii)] すべての自然数 $s$，$t$ に対して $A(s)\\cdot A(t)=q^{|s-t|}$ である（$s=t$ のときは $|A(s)|=1$）．\n\\end{itemize}\n\\begin{enumerate}\n  \\item 条件 (i)，(ii) をみたす数列の列はただ1通りに定まることを示し，$a(s)_k$（$1\\leqq k\\leqq s$）を $q$，$s$，$k$ で表せ．\n  \\item $n\\geqq2$ とし，$c_n=1$ とする．実数 $c_1,\\cdots,c_{n-1}$ を動かすとき\n  \\[\n  Q=\\sum_{i=1}^{n}\\sum_{j=1}^{n}c_ic_jq^{|i-j|}\n  \\]\n  の最小値と，最小値をとるときの $c_1,\\cdots,c_{n-1}$ を求めよ．\n  \\item 自然数 $n$ と，すべては $0$ でない実数 $c_1,\\cdots,c_n$ に対して，(2) の $Q$ について\n  \\[\n  Q>\\frac{1-q}{1+q}\\sum_{k=1}^{n}c_k^{\\,2}\n  \\]\n  が成り立つことを示せ．\n  \\item $K>\\dfrac{1-q}{1+q}$ をみたす任意の定数 $K$ に対して，ある自然数 $n$ と実数 $c_1,\\cdots,c_n$（すべては $0$ でない）で $Q<K\\displaystyle\\sum_{k=1}^{n}c_k^{\\,2}$ となるものが存在することを示せ．\n\\end{enumerate}"
-  },
-  "answer": {
-   "tex": "(1) $a(s)_1=q^{s-1}$，$a(s)_k=\\sqrt{1-q^2}\\,q^{s-k}$（$2\\leqq k\\leqq s$）；一意性は証明　(2) 最小値 $1-q^2$，$c_{n-1}=-q$，$c_1=\\cdots=c_{n-2}=0$　(3) 証明　(4) 証明（$c_k=(-1)^k$，$n$ を十分大きくとる）"
-  },
-  "solutions": [
-   {
-    "id": "main",
-    "kind": "main",
-    "tex": "以下，$\\displaystyle\\sum_iX_i\\cdot\\sum_jY_j=\\sum_i\\sum_jX_i\\cdot Y_j$ など，内積が有限和について分配法則をみたすことを断りなく用いる．また，長さが $s$ 以下の数列は第 $s+1$ 項以降がすべて $0$ である．\n\n\\medskip\n\\textbf{(1)}　\\emph{候補の数列}．$A^*(1)=E(1)$，$A^*(s)=qA^*(s-1)+\\sqrt{1-q^2}\\,E(s)$（$s\\geqq2$）で数列の列 $A^*(s)$ を定めると，帰納的に\n\\[\na^*(s)_1=q^{s-1},\\qquad a^*(s)_k=\\sqrt{1-q^2}\\,q^{s-k}\\ \\ (2\\leqq k\\leqq s),\\qquad a^*(s)_k=0\\ \\ (k>s)\n\\]\nである．$1-q^2>0$ より $a^*(s)_s>0$ なので (i) をみたす．(ii) を確かめる．$s\\leqq t$ とすると，共通に $0$ でない項は第 $1$ 項から第 $s$ 項までで，\n\\[\nA^*(s)\\cdot A^*(t)=q^{s-1}q^{t-1}+(1-q^2)\\sum_{k=2}^{s}q^{s-k}q^{t-k}\n=q^{s+t-2}+(1-q^2)\\sum_{j=0}^{s-2}q^{t-s+2j}\n\\]\n（$j=s-k$ とおいた）．$\\displaystyle(1-q^2)\\sum_{j=0}^{s-2}q^{2j}=1-q^{2(s-1)}$ であるから\n\\[\nA^*(s)\\cdot A^*(t)=q^{s+t-2}+q^{t-s}\\bigl(1-q^{2s-2}\\bigr)=q^{t-s}=q^{|s-t|}.\n\\]\n（$s=1$ のときは和が空で，$q^{t-1}$ となりこれも正しい．）よって $A^*(s)$ は (i)，(ii) をみたす．\n\n\\emph{一意性}．(i)，(ii) をみたす列 $A(s)$ が $A(s)=A^*(s)$ をみたすことを $s$ についての帰納法で示す．\n\n$s=1$：$A(1)$ は長さ $1$ なので $A(1)=a(1)_1E(1)$ で，$|A(1)|=1$，$a(1)_1>0$ から $a(1)_1=1$，つまり $A(1)=A^*(1)$．\n\n$A(1)=A^*(1),\\cdots,A(s-1)=A^*(s-1)$（$s\\geqq2$）と仮定する．$A(s)=(u_1,\\cdots,u_s,0,0,\\cdots)$ とおく．$t=1,\\cdots,s-1$ に対し，$A(t)=A^*(t)$ の長さは $t$ なので，(ii) は\n\\[\n\\sum_{k=1}^{t}a^*(t)_k\\,u_k=q^{s-t}\\qquad(t=1,2,\\cdots,s-1)\\tag{$*$}\n\\]\nとなる．$t=1$ の式から $u_1$ が，次に $t=2$ の式から（$u_1$ が既知で $a^*(2)_2\\neq0$ なので）$u_2$ が定まり，以下同様に $t=3,\\cdots,s-1$ の式から順に $u_t$ が $\\dfrac1{a^*(t)_t}\\Bigl(q^{s-t}-\\sum_{k<t}a^*(t)_ku_k\\Bigr)$ としてただ1通りに定まる．一方 $A^*(s)$ の第 $1$ 項から第 $s-1$ 項も $(*)$ をみたす（$A^*(s)\\cdot A^*(t)=q^{s-t}$ であり，$A^*(t)$ の第 $t+1$ 項以降は $0$ だから）．よって $u_k=a^*(s)_k$（$1\\leqq k\\leqq s-1$）．さらに $|A(s)|^2=1$ より\n\\[\nu_s^{\\,2}=1-\\sum_{k=1}^{s-1}a^*(s)_k^{\\,2}=1-\\bigl|qA^*(s-1)\\bigr|^2=1-q^2\n\\]\n（$A^*(s)$ の最初の $s-1$ 項は $qA^*(s-1)$ の項そのものである）．$u_s>0$ から $u_s=\\sqrt{1-q^2}=a^*(s)_s$．よって $A(s)=A^*(s)$．\n\n以上より，条件をみたす列はただ1通りに定まり，\n\\[\n\\boldsymbol{a(s)_1=q^{s-1},\\qquad a(s)_k=\\sqrt{1-q^2}\\;q^{s-k}\\ \\ (2\\leqq k\\leqq s)}.\n\\]\n\n\\medskip\n\\textbf{(2)}　$W=\\displaystyle\\sum_{i=1}^{n}c_iA(i)$ とおくと，(ii) と分配法則から\n\\[\nQ=\\sum_{i=1}^{n}\\sum_{j=1}^{n}c_ic_j\\,A(i)\\cdot A(j)=W\\cdot W=|W|^2 .\n\\]\n$A(1),\\cdots,A(n-1)$ の第 $n$ 項は $0$ なので，$W$ の第 $n$ 項は $c_n\\,a(n)_n=\\sqrt{1-q^2}$ である．$|W|^2$ は $W$ の各項の2乗の和なので\n\\[\nQ=|W|^2\\geqq\\bigl(\\sqrt{1-q^2}\\bigr)^2=1-q^2 ,\n\\]\n等号は $W$ の第 $n$ 項以外がすべて $0$，すなわち $W=\\sqrt{1-q^2}\\,E(n)$ のときに限る．\n\n$c_{n-1}=-q$，$c_1=\\cdots=c_{n-2}=0$ とすると，(1) の漸化式より $W=A(n)-qA(n-1)=\\sqrt{1-q^2}\\,E(n)$ となり等号が成り立つ．\n\n逆に等号が成り立つとき，$W=A(n)-qA(n-1)$ より\n\\[\n\\sum_{i=1}^{n-1}e_iA(i)=0,\\qquad e_i=c_i\\ (i\\leqq n-2),\\quad e_{n-1}=c_{n-1}+q\n\\]\nである．$e_i$ の中に $0$ でないものがあれば，その最大の番号を $p$ とすると，左辺の第 $p$ 項は $e_p\\,a(p)_p\\neq0$（番号が $p$ より小さい $A(i)$ の第 $p$ 項は $0$）となって矛盾．よってすべての $e_i=0$ である．\n\nゆえに，\\textbf{最小値は $\\boldsymbol{1-q^2}$}，最小値をとるのは $\\boldsymbol{c_{n-1}=-q,\\ c_1=\\cdots=c_{n-2}=0}$ のときに限る．\n\n\\medskip\n\\textbf{(3)}　$W=\\displaystyle\\sum_{i=1}^{n}c_iA(i)$ とし，$k=1,\\cdots,n+1$ に対して\n\\[\nd_k=\\sum_{i=k}^{n}c_iq^{\\,i-k}\\qquad(d_{n+1}=0)\n\\]\nとおく．$A(i)$ の第 $k$ 項は $i<k$ なら $0$，$i\\geqq k$ なら (1) より $k=1$ で $q^{i-1}$，$k\\geqq2$ で $\\sqrt{1-q^2}\\,q^{i-k}$ だから，$W$ の第 $1$ 項は $d_1$，第 $k$ 項（$2\\leqq k\\leqq n$）は $\\sqrt{1-q^2}\\,d_k$，第 $n+1$ 項以降は $0$ である．よって\n\\[\nQ=|W|^2=d_1^{\\,2}+(1-q^2)\\sum_{k=2}^{n}d_k^{\\,2}\\geqq(1-q^2)\\sum_{k=1}^{n}d_k^{\\,2}, \\tag{a}\n\\]\nここで等号は $q^2d_1^{\\,2}=0$，すなわち $d_1=0$ のときに限る．\n\nまた $d_k=c_k+q\\,d_{k+1}$ より $c_k=d_k-q\\,d_{k+1}$（$1\\leqq k\\leqq n$）である．実数 $a$，$b$ に対し\n\\[\n(1+q)(a^2+qb^2)-(a-qb)^2=q(a^2+2ab+b^2)=q(a+b)^2\\geqq0\n\\]\n（等号は $a=-b$ のとき）であるから，\n\\[\n\\sum_{k=1}^{n}c_k^{\\,2}=\\sum_{k=1}^{n}(d_k-qd_{k+1})^2\n\\leqq(1+q)\\Bigl(\\sum_{k=1}^{n}d_k^{\\,2}+q\\sum_{k=2}^{n+1}d_k^{\\,2}\\Bigr)\n=(1+q)\\Bigl(\\sum_{k=1}^{n}d_k^{\\,2}+q\\sum_{k=2}^{n}d_k^{\\,2}\\Bigr)\n\\leqq(1+q)^2\\sum_{k=1}^{n}d_k^{\\,2}. \\tag{b}\n\\]\n(a)，(b) から\n\\[\nQ\\geqq(1-q^2)\\sum_{k=1}^{n}d_k^{\\,2}\\geqq\\frac{1-q^2}{(1+q)^2}\\sum_{k=1}^{n}c_k^{\\,2}=\\frac{1-q}{1+q}\\sum_{k=1}^{n}c_k^{\\,2}.\n\\]\n等号が成り立つとすると，(b) の最初の不等号で等号が必要なので，すべての $k=1,\\cdots,n$ について $d_k=-d_{k+1}$ である．$d_{n+1}=0$ から順に $d_n=d_{n-1}=\\cdots=d_1=0$ となり，$c_k=d_k-qd_{k+1}=0$（すべての $k$）となって，「すべては $0$ でない」に反する．よって\n\\[\nQ>\\frac{1-q}{1+q}\\sum_{k=1}^{n}c_k^{\\,2}.\\tag*{$\\square$}\n\\]\n\n\\medskip\n\\textbf{(4)}　$c_k=(-1)^k$（$1\\leqq k\\leqq n$）とする．$\\sum c_k^{\\,2}=n$ である．$x=-q$ とおくと $c_ic_jq^{|i-j|}=x^{|i-j|}$ で，$|i-j|=d$（$1\\leqq d\\leqq n-1$）となる順序対 $(i,j)$ は $2(n-d)$ 個あるから\n\\[\nQ=n+2\\sum_{d=1}^{n-1}(n-d)x^{d}.\n\\]\n$T=\\displaystyle\\sum_{d=1}^{n-1}(n-d)x^d$ について，$xT=\\displaystyle\\sum_{d=2}^{n}(n-d+1)x^{d}$ であるから，$x^d$ の係数を比べて\n\\[\nT-xT=(n-1)x-\\sum_{d=2}^{n}x^d=nx-\\sum_{d=1}^{n}x^d .\n\\]\nよって\n\\[\n(1-x)T=nx-\\frac{x(1-x^{n})}{1-x},\n\\qquad\nT=\\frac{nx}{1-x}-\\frac{x-x^{n+1}}{(1-x)^2}.\n\\]\nしたがって\n\\[\nQ=n\\Bigl(1+\\frac{2x}{1-x}\\Bigr)-\\frac{2(x-x^{n+1})}{(1-x)^2}\n=n\\cdot\\frac{1-q}{1+q}+\\frac{2\\bigl(q+(-q)^{n+1}\\bigr)}{(1+q)^2}.\n\\]\n$|(-q)^{n+1}|<q$ なので最後の項は $0$ より大きく $\\dfrac{4q}{(1+q)^2}$ より小さい．ゆえに\n\\[\nQ<\\frac{1-q}{1+q}\\,n+\\frac{4q}{(1+q)^2}.\n\\]\n$K>\\dfrac{1-q}{1+q}$ に対し $\\delta=K-\\dfrac{1-q}{1+q}>0$ とおき，$n>\\dfrac{4q}{(1+q)^2\\delta}$ となる自然数 $n$ をとると $\\dfrac{4q}{(1+q)^2}<n\\delta$ なので\n\\[\nQ<\\frac{1-q}{1+q}\\,n+n\\delta=Kn=K\\sum_{k=1}^{n}c_k^{\\,2}.\n\\]\nよって条件をみたす $n$，$c_1,\\cdots,c_n$ が存在する．\\hfill$\\square$"
-   }
-  ],
-  "idea": {
-   "tex": "「長さ $s$」の数列 $A(s)$ を内積の条件だけから順に決めていくと，最初の $s-1$ 項は三角形型の連立1次方程式でただ1通りに決まり，最後の項は大きさの条件で決まる．原題（どの2つも距離1，すなわち正単体）では前の項が共有されたが，捻りでは内積を $q^{|s-t|}$ にしたため「$A(s)-qA(s-1)$ が新しい成分だけをもつ」という構造になる．これを使うと $\\sum c_ic_jq^{|i-j|}=\\bigl|\\sum c_iA(i)\\bigr|^2$ の各成分が「後ろからの重み付き和」$d_k$ で書け，$c_k=d_k-qd_{k+1}$ と逆に解けるので，$(a-qb)^2\\leqq(1+q)(a^2+qb^2)$ によって最良定数 $\\frac{1-q}{1+q}$ の下からの評価が得られる．定数が最良であることは符号が交互の数列で確かめる．"
-  },
-  "grading": {
-   "format": "lemma-input/1",
-   "spec": "(1) 記述\n(2) 最小値：1-q^2 ; $c_{n-1}$：-q ; $c_1$：0\n(3) 証明\n(4) 記述"
-  },
-  "methods": [],
-  "tags": [
-   "長さ有限の数列",
-   "内積",
-   "三角形型の連立1次方程式",
-   "変数の付けかえ",
-   "コーシー・シュワルツ型の不等式",
-   "最良定数"
-  ],
-  "provenance": {
-   "created": "2026-11-10"
-  },
-  "quality": {
-   "status": "published",
-   "checks": {
-    "dual": false,
-    "sympy": true,
-    "human": false
-   },
-   "verified": false
-  }
- },
- {
-  "id": "X-MIX-048",
-  "schema": "lemma.problem/1",
-  "kind": "written",
-  "field": "X-20",
-  "level": 4,
-  "minutes": 35,
-  "theme": "偏りのある回転の積が実数になる確率",
-  "topic": "偏りのある回転の積が実数になる確率",
-  "statement": {
-   "tex": "1個のさいころを $n$ 回投げる．$k$ 回目に出た目が1または2のときは $X_k=1$，3のときは $X_k=-1$，4，5，6のときは $X_k=0$ とし，\n\\[\nY_k=\\cos\\Bigl(\\frac\\pi3X_k\\Bigr)+i\\sin\\Bigl(\\frac\\pi3X_k\\Bigr),\\qquad Z_n=Y_1Y_2\\cdots Y_n\n\\]\nとおく．ただし $i$ は虚数単位である．\n\\begin{enumerate}\n  \\item $Z_n$ が実数である確率 $p_n$ を $n$ で表せ．\n  \\item $p_n<\\dfrac13$ となる自然数 $n$，および $p_n=\\dfrac13$ となる自然数 $n$ をそれぞれすべて求めよ．\n  \\item $Z_1,Z_2,\\dots,Z_n$ がいずれも実数でない確率 $q_n$ を $n$ で表せ．\n\\end{enumerate}"
-  },
-  "answer": {
-   "tex": "(1) $p_n=\\dfrac13+\\dfrac23\\left(\\dfrac{\\sqrt3}6\\right)^n\\cos\\dfrac{n\\pi}6$　(2) $p_n<\\dfrac13\\iff n$ を12で割った余りが4,5,6,7,8；$p_n=\\dfrac13\\iff n$ を6で割った余りが3　(3) $q_n=\\dfrac{6+5\\sqrt2}{24}\\left(\\dfrac{3+\\sqrt2}6\\right)^{n-1}+\\dfrac{6-5\\sqrt2}{24}\\left(\\dfrac{3-\\sqrt2}6\\right)^{n-1}$"
-  },
-  "solutions": [
-   {
-    "id": "main",
-    "kind": "main",
-    "tex": "(1) $S_n=X_1+\\dots+X_n$ とおく．ド・モアブルの定理より $Z_n=\\cos\\frac{\\pi S_n}3+i\\sin\\frac{\\pi S_n}3$ であるから，\n$Z_n$ が実数 $\\iff\\sin\\frac{\\pi S_n}3=0\\iff S_n$ は3の倍数．\n\n$\\omega=\\cos\\frac{2\\pi}3+i\\sin\\frac{2\\pi}3$ とおくと $\\omega^3=1$，$\\omega^2+\\omega+1=0$．整数 $m$ について，$m$ が3の倍数なら $1+\\omega^m+\\omega^{2m}=3$，そうでなければ $\\omega^m$ は $\\omega$ または $\\omega^2$ で，どちらも $x^2+x+1=0$ の解だから $1+\\omega^m+\\omega^{2m}=0$．\n\n目の出方 $6^n$ 通りは同様に確からしい．そのうち $S_n$ が3の倍数であるものの数を $N$ とすると，\n\\[\n3N=\\sum(1+\\omega^{S_n}+\\omega^{2S_n})=6^n+T_1+T_2,\\qquad T_j=\\sum\\omega^{jS_n}\n\\]\n（和は $6^n$ 通りすべてにわたる）．目 $f$ に対する $X$ の値を $X(f)$ とすると，$\\omega^{S_n}=\\omega^{X(f_1)}\\omega^{X(f_2)}\\cdots\\omega^{X(f_n)}$ であり，$n$ 個の同じ因数の積 $\\Bigl(\\sum_{f=1}^6\\omega^{X(f)}\\Bigr)\\Bigl(\\sum_{f=1}^6\\omega^{X(f)}\\Bigr)\\cdots\\Bigl(\\sum_{f=1}^6\\omega^{X(f)}\\Bigr)$ を展開すると各目の列 $(f_1,\\dots,f_n)$ についての項がちょうど1回ずつ現れるから，\n\\[\nT_1=\\Bigl(\\sum_{f=1}^6\\omega^{X(f)}\\Bigr)^n=(2\\omega+\\omega^{-1}+3)^n=(3+2\\omega+\\omega^2)^n=(2+\\omega)^n .\n\\]\n$2+\\omega=\\frac32+\\frac{\\sqrt3}2i=\\sqrt3\\left(\\cos\\frac\\pi6+i\\sin\\frac\\pi6\\right)$ より $T_1=(\\sqrt3)^n\\left(\\cos\\frac{n\\pi}6+i\\sin\\frac{n\\pi}6\\right)$．\n$\\omega^2=\\bar\\omega$ だから $T_2=\\sum\\bar\\omega^{S_n}=\\overline{T_1}$．よって $T_1+T_2=2(\\sqrt3)^n\\cos\\frac{n\\pi}6$ で，\n\\[\n\\boldsymbol{p_n=\\frac N{6^n}=\\frac13+\\frac23\\left(\\frac{\\sqrt3}6\\right)^n\\cos\\frac{n\\pi}6}.\n\\]\n（$n=1$ で $\\frac13+\\frac23\\cdot\\frac{\\sqrt3}6\\cdot\\frac{\\sqrt3}2=\\frac12$ となり，目4，5，6の確率に一致する．）\n\n(2) $\\frac23\\left(\\frac{\\sqrt3}6\\right)^n>0$ だから，$p_n-\\frac13$ の符号は $\\cos\\frac{n\\pi}6$ の符号と一致する．$n$ を12で割った余りを $r$ とすると $\\cos\\frac{n\\pi}6=\\cos\\frac{r\\pi}6$ で，$r=0,1,\\dots,11$ について\n$\\cos\\frac{r\\pi}6<0\\iff\\frac\\pi2<\\frac{r\\pi}6<\\frac{3\\pi}2\\iff r=4,5,6,7,8$，\n$\\cos\\frac{r\\pi}6=0\\iff r=3,9$．\nよって $\\boldsymbol{p_n<\\frac13\\iff n\\text{ を12で割った余りが }4,5,6,7,8}$，$\\boldsymbol{p_n=\\frac13\\iff n\\text{ を6で割った余りが3}}$．\n\n(3) $Z_1,\\dots,Z_n$ がいずれも実数でなく，かつ $S_n$ を3で割った余りが1，2である確率をそれぞれ $a_n,b_n$ とすると $q_n=a_n+b_n$．1回で $X=1,-1,0$ となる確率は $\\frac13,\\frac16,\\frac12$．\n$a_1=\\frac13$，$b_1=\\frac16$．余りが1の状態から，$X=0$ なら余り1，$X=1$ なら余り2，$X=-1$ なら余り0（実数になる）．余りが2の状態から，$X=0$ なら余り2，$X=-1$ なら余り1，$X=1$ なら余り0．したがって\n\\[\na_{n+1}=\\frac12a_n+\\frac16b_n,\\qquad b_{n+1}=\\frac13a_n+\\frac12b_n .\n\\]\n$u_n=a_n+\\frac{b_n}{\\sqrt2}$，$v_n=a_n-\\frac{b_n}{\\sqrt2}$ とおくと，\n\\[\nu_{n+1}=\\Bigl(\\frac12+\\frac1{3\\sqrt2}\\Bigr)a_n+\\Bigl(\\frac16+\\frac1{2\\sqrt2}\\Bigr)b_n=\\Bigl(\\frac12+\\frac{\\sqrt2}6\\Bigr)\\Bigl(a_n+\\frac{b_n}{\\sqrt2}\\Bigr)=\\lambda_1u_n\n\\]\n（$\\lambda_1=\\frac{3+\\sqrt2}6$），同様に $v_{n+1}=\\lambda_2v_n$（$\\lambda_2=\\frac{3-\\sqrt2}6$）．実際 $\\lambda_2\\cdot\\bigl(-\\frac1{\\sqrt2}\\bigr)=\\frac16-\\frac1{2\\sqrt2}$ が $b_n$ の係数に一致する．\n$u_1=\\frac{4+\\sqrt2}{12}$，$v_1=\\frac{4-\\sqrt2}{12}$．$a_n=\\frac{u_n+v_n}2$，$b_n=\\frac{u_n-v_n}{\\sqrt2}$ より $q_n=\\frac{1+\\sqrt2}2u_n+\\frac{1-\\sqrt2}2v_n$．\n$\\frac{1+\\sqrt2}2\\cdot\\frac{4+\\sqrt2}{12}=\\frac{6+5\\sqrt2}{24}$，$\\frac{1-\\sqrt2}2\\cdot\\frac{4-\\sqrt2}{12}=\\frac{6-5\\sqrt2}{24}$ だから\n\\[\n\\boldsymbol{q_n=\\frac{6+5\\sqrt2}{24}\\left(\\frac{3+\\sqrt2}6\\right)^{n-1}+\\frac{6-5\\sqrt2}{24}\\left(\\frac{3-\\sqrt2}6\\right)^{n-1}}.\n\\]\n（$n=1$ で $\\frac12$，$n=2$ で $\\frac7{18}$ となり，直接の計算と一致する．）"
-   }
-  ],
-  "idea": {
-   "tex": "積 $Z_n$ の偏角は $\\frac\\pi3\\times(\\text{和 }S_n)$ で，実数 $\\iff S_n$ が3の倍数．回転の向きに偏りがあると「実数か否か」の2状態には縮まないので，$1+\\omega^m+\\omega^{2m}$（$\\omega$ は1の虚数3乗根）で「$S_n$ が3の倍数」である場合を選び出し，全事象にわたる和を1回分の和の $n$ 乗に分解する．「一度も実数にならない」は2状態の連立漸化式を，等比数列になる1次結合で解く．"
-  },
-  "grading": {
-   "format": "lemma-input/1",
-   "spec": "(1) $p_n$：1/3+(2/3)(sqrt(3)/6)^n cos(nπ/6)\n(2) 記述\n(3) $q_n$：((6+5sqrt(2))/24)((3+sqrt(2))/6)^(n-1)+((6-5sqrt(2))/24)((3-sqrt(2))/6)^(n-1)"
-  },
-  "methods": [],
-  "tags": [
-   "複素数",
-   "ド・モアブルの定理",
-   "1の3乗根",
-   "確率漸化式"
-  ],
-  "provenance": {
-   "created": "2026-11-10"
-  },
-  "quality": {
-   "status": "published",
-   "checks": {
-    "dual": false,
-    "sympy": true,
-    "human": false
-   },
-   "verified": false
-  }
- },
- {
-  "id": "X-MIX-049",
-  "schema": "lemma.problem/1",
-  "kind": "written",
-  "field": "X-20",
-  "level": 4,
-  "minutes": 30,
-  "theme": "整式係数の三角関数の1次結合",
-  "topic": "整式係数の三角関数の1次結合",
-  "statement": {
-   "tex": "以下，整式とは $x$ の実数係数の多項式とする．\n\\begin{enumerate}\n  \\item 整式 $p(x)$，$q(x)$，$r(x)$ がすべての実数 $x$ に対して $p(x)+q(x)\\sin x+r(x)\\cos x=0$ をみたすならば，$p(x)$，$q(x)$，$r(x)$ はいずれも整式として0であることを示せ．\n  \\item 実数 $a$ に対し，すべての実数 $x$ で\n  \\[ f(x)+g(x)\\sin x+h(x)\\sin(x+a)=0 \\]\n  をみたす整式 $f(x)$，$g(x)$，$h(x)$ で，少なくとも1つは整式として0でないものが存在するための $a$ の条件を求めよ．\n  \\item すべての実数 $x$ で $e^x=p(x)+q(x)\\sin x$ をみたす整式 $p(x)$，$q(x)$ は存在しないことを示せ．\n\\end{enumerate}"
-  },
-  "answer": {
-   "tex": "(1) 証明　(2) $a=m\\pi$（$m$ は整数）　(3) 証明"
-  },
-  "solutions": [
-   {
-    "id": "main",
-    "kind": "main",
-    "tex": "0でない整式の零点は高々（次数）個であること（因数定理）を用いる．\n\n(1) $x=2m\\pi$（$m$ は整数）を代入すると $p(2m\\pi)+r(2m\\pi)=0$．整式 $p+r$ は無限個の零点をもつので $p+r=0$．$x=(2m+1)\\pi$ では $p-r$ が無限個の零点をもち $p-r=0$．よって $p=r=0$．すると $q(x)\\sin x=0$ で，$x=\\frac\\pi2+2m\\pi$ を代入すると $q$ は無限個の零点をもち $q=0$．\\hfill$\\square$\n\n(2) 加法定理より等式は\n\\[ f(x)+\\{g(x)+h(x)\\cos a\\}\\sin x+h(x)\\sin a\\cos x=0 . \\]\n$\\sin a\\neq0$ のとき，(1) より $f=0$，$h\\sin a=0$ から $h=0$，さらに $g+h\\cos a=0$ から $g=0$．よって0でないものは存在しない．\n\n$\\sin a=0$ のとき，$\\cos a=\\pm1$ で $\\sin(x+a)=\\cos a\\sin x$．$f=0$，$g=-\\cos a$，$h=1$ とすれば等式が成り立ち，$h\\neq0$．\n\nよって条件は $\\boldsymbol{\\sin a=0}$，すなわち $\\boldsymbol{a=m\\pi}$（$m$ は整数）．\n\n(3) 存在したとする．$x=2m\\pi$（$m=1,2,\\dots$）を代入すると $e^{2m\\pi}=p(2m\\pi)$．$e^{2m\\pi}\\neq0$ より $p$ は0でない整式である．$p$ の次数を $d$，係数の絶対値の和を $K$ とすると，$x\\geqq1$ で $|p(x)|\\leqq Kx^d$．よって $\\dfrac{e^{2m\\pi}}{(2m\\pi)^d}\\leqq K$ がすべての $m$ で成り立つ．\n\n一方，$x>0$ で $e^x>\\dfrac{x^{d+1}}{(d+1)!}$ である．実際，$\\varphi_j(x)=e^x-\\displaystyle\\sum_{i=0}^{j}\\frac{x^i}{i!}$（$j=0,1,2,\\dots$）とおくと，$x>0$ で $\\varphi_0(x)=e^x-1>0$ であり，$\\varphi_j(0)=0$，$\\varphi_j'(x)=\\varphi_{j-1}(x)$ だから，$x>0$ で $\\varphi_{j-1}(x)>0$ ならば $\\varphi_j$ は $x\\geqq0$ で増加して $\\varphi_j(x)>0$．帰納法により $x>0$ で $e^x>\\displaystyle\\sum_{i=0}^{d+1}\\frac{x^i}{i!}\\geqq\\frac{x^{d+1}}{(d+1)!}$．\n\nよって $\\dfrac{e^{2m\\pi}}{(2m\\pi)^d}>\\dfrac{2m\\pi}{(d+1)!}$ で，$m>\\dfrac{K(d+1)!}{2\\pi}$ となる $m$ をとると右辺は $K$ を超え，矛盾する．\\hfill$\\square$"
-   }
-  ],
-  "idea": {
-   "tex": "$\\sin x$，$\\cos x$ が同時に決まった値をとる無限個の点（$x=2m\\pi$，$(2m+1)\\pi$，$\\frac\\pi2+2m\\pi$）で代入すると，整式の1次結合が無限個の零点をもち恒等的に0になる．$\\sin(x+a)$ は加法定理で $\\sin x$，$\\cos x$ に分解でき，$\\sin a=0$ かどうかで独立性が崩れるかが決まる．指数関数は増大度で整式と区別する．"
-  },
-  "grading": {
-   "format": "lemma-input/1",
-   "spec": "(1) 証明\n(2) $a$：mπ\n(3) 証明"
-  },
-  "methods": [],
-  "tags": [
-   "整式の零点",
-   "三角関数",
-   "加法定理",
-   "極限"
-  ],
-  "provenance": {
-   "created": "2026-11-10"
-  },
-  "quality": {
-   "status": "published",
-   "checks": {
-    "dual": false,
-    "sympy": true,
-    "human": false
-   },
-   "verified": false
-  }
- },
- {
-  "id": "X-MIX-050",
-  "schema": "lemma.problem/1",
-  "kind": "written",
-  "field": "X-20",
-  "level": 4,
-  "minutes": 35,
-  "theme": "部分分数の交代二項和と調和数",
-  "topic": "部分分数の交代二項和と調和数",
-  "statement": {
-   "tex": "$n$ を自然数とする．\n\\begin{enumerate}\n  \\item $x>0$ のとき，次の等式を示せ．\n  \\[ \\frac{n!}{x(x+1)(x+2)\\cdots(x+n)}=\\sum_{r=0}^n(-1)^r\\frac{{}_n\\mathrm C_r}{x+r} \\]\n  \\item $\\displaystyle\\sum_{r=0}^n(-1)^r\\frac{{}_n\\mathrm C_r}{(r+1)^2}=\\frac1{n+1}\\sum_{k=1}^{n+1}\\frac1k$ を示せ．\n  \\item $\\displaystyle\\lim_{n\\to\\infty}\\frac{n}{\\log n}\\sum_{r=0}^n(-1)^r\\frac{{}_n\\mathrm C_r}{(r+1)^2}$ を求めよ．\n\\end{enumerate}"
-  },
-  "answer": {
-   "tex": "(1) 証明　(2) 証明　(3) $1$"
-  },
-  "solutions": [
-   {
-    "id": "main",
-    "kind": "main",
-    "tex": "(1) $f(x)=x(x+1)(x+2)\\cdots(x+n)$ とし，$f_r(x)=\\dfrac{f(x)}{x+r}$（$f(x)$ から因数 $x+r$ を除いた $n$ 個の1次式の積）とおく．$N(x)=\\displaystyle\\sum_{r=0}^n(-1)^r{}_n\\mathrm C_rf_r(x)$ とおくと，$N$ は次数 $n$ 以下の整式．$j=0,1,\\dots,n$ について $x=-j$ を代入すると $r\\neq j$ の項は因数 $x+j$ を含み0になるので\n\\[ N(-j)=(-1)^j{}_n\\mathrm C_jf_j(-j)=(-1)^j{}_n\\mathrm C_j\\cdot\\{(-j)(-j+1)\\cdots(-1)\\}\\cdot\\{1\\cdot2\\cdots(n-j)\\}=(-1)^j{}_n\\mathrm C_j\\cdot(-1)^jj!\\cdot(n-j)!=n!. \\]\n（$j=0$ のときは前の括弧，$j=n$ のときは後の括弧を1と読む．）$N(x)-n!$ は次数 $n$ 以下の整式で $x=0,-1,\\dots,-n$ の $n+1$ 個の値で0になる．もし0でない整式なら，因数定理により $x(x+1)\\cdots(x+n)$ で割り切れて次数が $n+1$ 以上となり矛盾するから，恒等的に0．$N(x)=n!$ の両辺を $x(x+1)\\cdots(x+n)$（$x>0$ で正）で割れば求める等式．\\hfill$\\square$\n\n(2) $F(x)=\\dfrac{n!}{x(x+1)\\cdots(x+n)}$ とおくと，$\\log F(x)=\\log n!-\\sum_{k=0}^n\\log(x+k)$ を微分して $F'(x)=-F(x)\\sum_{k=0}^n\\dfrac1{x+k}$．(1) の右辺を微分すると $-\\sum(-1)^r\\dfrac{{}_n\\mathrm C_r}{(x+r)^2}$．よって\n\\[ \\sum_{r=0}^n(-1)^r\\frac{{}_n\\mathrm C_r}{(x+r)^2}=F(x)\\sum_{k=0}^n\\frac1{x+k}. \\]\n$x=1$ とすると $F(1)=\\frac{n!}{(n+1)!}=\\frac1{n+1}$ で，求める等式を得る．\\hfill$\\square$\n\n(3) $H=\\sum_{k=1}^{n+1}\\frac1k$ とおく．$\\frac1x$ は減少関数なので $\\frac1{k+1}\\leqq\\int_k^{k+1}\\frac{dx}x\\leqq\\frac1k$．これを加えて\n\\[ \\log(n+2)\\leqq H\\leqq1+\\log(n+1). \\]\n求める式は $\\dfrac{n}{(n+1)\\log n}H$ で，$n\\geqq2$ において\n\\[ \\frac{n}{n+1}\\cdot\\frac{\\log(n+2)}{\\log n}\\leqq\\frac{nH}{(n+1)\\log n}\\leqq\\frac{n}{n+1}\\cdot\\frac{1+\\log(n+1)}{\\log n}. \\]\n$\\log(n+2)>\\log n$ より左辺は $\\frac n{n+1}$ 以上で，$\\frac n{n+1}\\to1$．右辺は $\\log(n+1)=\\log n+\\log\\left(1+\\frac1n\\right)$ より $\\frac{n}{n+1}\\left(1+\\frac{1+\\log(1+1/n)}{\\log n}\\right)\\to1$．はさみうちで極限値は $\\boldsymbol{1}$．"
-   }
-  ],
-  "idea": {
-   "tex": "分子 $N(x)=\\sum(-1)^r{}_n\\mathrm C_r\\dfrac{x(x+1)\\cdots(x+n)}{x+r}$ は次数 $n$ 以下で，$x=-j$ では1項だけ残り値 $n!$．$n+1$ 点で一致するので恒等的に $n!$．両辺を $x$ で微分すると左辺には $\\sum\\frac1{x+k}$ が現れ，$x=1$ で交代和 $\\sum(-1)^r\\frac{{}_n\\mathrm C_r}{(r+1)^2}$ が調和数で表せる．"
-  },
-  "grading": {
-   "format": "lemma-input/1",
-   "spec": "(1) 証明\n(2) 証明\n(3) 1"
-  },
-  "methods": [],
-  "tags": [
-   "部分分数",
-   "恒等式",
-   "微分",
-   "調和数",
-   "極限"
-  ],
-  "provenance": {
-   "created": "2026-11-10"
-  },
-  "quality": {
-   "status": "published",
-   "checks": {
-    "dual": false,
-    "sympy": true,
-    "human": false
-   },
-   "verified": false
-  }
- },
- {
-  "id": "X-MIX-051",
-  "schema": "lemma.problem/1",
-  "kind": "written",
-  "field": "X-20",
-  "level": 5,
-  "minutes": 40,
-  "theme": "直径も鏡になった半円の中の光線",
-  "topic": "直径も鏡になった半円の中の光線",
-  "statement": {
-   "tex": "座標平面上の半円板 $K:\\ x^2+y^2\\leqq1,\\ y\\geqq0$ の周（半円弧と直径）はすべて内側が鏡になっている．A$(1,0)$，B$(-1,0)$ とし，$0<\\theta<\\dfrac\\pi2$ とする．A からベクトル $(-\\cos\\theta,\\ \\sin\\theta)$ の向きに光線を $K$ の内部へ発射する．光線は鏡に当たるたびに反射の法則にしたがって反射し，A または B に到達したときに止まるものとする．\n\\begin{enumerate}\n  \\item 光線が最初に半円弧に当たる点を $\\mathrm Q_1$ とする．$\\angle\\mathrm{AOQ_1}$ を $\\theta$ で表せ（O は原点）．\n  \\item 光線がいつか A に到達するための $\\theta$ の条件を求めよ．\n  \\item (2) の条件がみたされるとき，$\\dfrac\\theta\\pi=\\dfrac u{2v}$（$u,v$ は互いに素な正の整数）と表す．光線が A に到達するまでに半円弧で反射する回数と直径で反射する回数を，それぞれ $u,v$ で表せ．\n  \\item 光線が A に到達するまでの反射の回数（半円弧と直径の合計）がちょうど19となるような $\\theta$ をすべて求めよ．\n\\end{enumerate}"
-  },
-  "answer": {
-   "tex": "(1) $\\pi-2\\theta$　(2) $\\dfrac\\theta\\pi$ が有理数で，既約分数で表したとき分母が4で割って2余る（$\\theta=\\dfrac{u}{2v}\\pi$，$u,v$ は互いに素な正の奇数，$u<v$）　(3) 半円弧 $v-1$ 回，直径 $v-u-1$ 回　(4) $\\theta=\\dfrac{\\pi}{22},\\ \\dfrac{5\\pi}{26},\\ \\dfrac{13\\pi}{34},\\ \\dfrac{17\\pi}{38}$"
-  },
-  "solutions": [
-   {
-    "id": "main",
-    "kind": "main",
-    "tex": "$\\alpha=\\pi-2\\theta$ とおくと $0<\\alpha<\\pi$ である．単位円を $\\Gamma$ とし，$k=0,1,2,\\dots$ に対して $\\mathrm P_k=(\\cos k\\alpha,\\ \\sin k\\alpha)$ とおく．折れ線 $\\mathrm P_0\\mathrm P_1\\mathrm P_2\\cdots$ を $\\Pi$ とし，写像 $\\varphi(x,y)=(x,|y|)$ を考える．\n\n\\textbf{[1] $\\Pi$ は円 $\\Gamma$ 全体が鏡のときの光線の経路．}\n$\\mathrm P_1-\\mathrm P_0=(\\cos\\alpha-1,\\ \\sin\\alpha)=(-1-\\cos2\\theta,\\ \\sin2\\theta)=2\\cos\\theta\\,(-\\cos\\theta,\\ \\sin\\theta)$ だから，最初の弦 $\\mathrm P_0\\mathrm P_1$ は発射の向きと一致する．\nまた $\\triangle\\mathrm{OP}_k\\mathrm P_{k+1}$ は $\\mathrm{OP}_k=\\mathrm{OP}_{k+1}=1$，頂角 $\\alpha$ の二等辺三角形なので $\\angle\\mathrm{OP}_{k+1}\\mathrm P_k=\\dfrac{\\pi-\\alpha}2=\\theta$，同様に $\\angle\\mathrm{OP}_{k+1}\\mathrm P_{k+2}=\\theta$．さらに $\\mathrm P_k,\\mathrm P_{k+2}$ の偏角は $(k+1)\\alpha\\mp\\alpha$（$0<\\alpha<\\pi$）なので，2点は直線 $\\mathrm{OP}_{k+1}$ の反対側にある．$\\mathrm P_{k+1}$ における $\\Gamma$ の法線は直線 $\\mathrm{OP}_{k+1}$ だから，弦 $\\mathrm P_k\\mathrm P_{k+1}$ に沿って来た光線は反射の法則によりちょうど弦 $\\mathrm P_{k+1}\\mathrm P_{k+2}$ に沿って進む．\n\n\\textbf{[2] 折りたたみ．}\n$x$ 軸に関する対称移動を $\\sigma$ とすると，$\\Gamma$ は $\\sigma$ で自分自身に移り，対称移動は角を保つので反射の法則を保つ．$\\Pi$ の $y\\geqq0$ の部分はそのまま，$y\\leqq0$ の部分は $\\sigma$ で移すと，$\\varphi(\\Pi)$ は次の性質をもつ．\n\\begin{itemize}\n  \\item $\\Pi$ が頂点以外で $x$ 軸を横切る点 $(c,0)$ は弦の内部の点なので開円板内にあり $|c|<1$．そこで $\\varphi(\\Pi)$ は直線の続きを $x$ 軸で折り返した向きに進む．これは直径での反射の法則そのものである．\n  \\item $\\Pi$ が $y<0$ の頂点 $\\mathrm P_k$ で反射することは，$\\sigma$ で移すと上半分の弧上の点 $\\sigma(\\mathrm P_k)$ での反射になる．\n\\end{itemize}\nよって $K$ 内の実際の光線の経路は（止まるまで）$\\varphi(\\Pi)$ である．しかも，半円弧での反射は $\\sin k\\alpha\\neq0$ である頂点 $\\mathrm P_k$（$k\\geqq1$）に，直径での反射は弦が端点以外で $x$ 軸を横切る点に対応する．弦の端点以外の点は開円板内にあるから，光線が A または B に達するのは，$\\sin k\\alpha=0$ となる頂点 $\\mathrm P_k$（$k\\geqq1$）に達したときに限る（$\\cos k\\alpha=1$ なら A，$-1$ なら B）．\n\n(1) $\\sin\\alpha>0$ なので $\\mathrm Q_1=\\mathrm P_1$ で，$\\angle\\mathrm{AOQ_1}=\\alpha=\\boldsymbol{\\pi-2\\theta}$．\n\n(2) 光線は $\\dfrac{k\\alpha}\\pi$ が整数となる最小の $k\\geqq1$ で止まり，その整数が偶数なら A，奇数なら B である．\n\\begin{itemize}\n  \\item $\\dfrac\\alpha\\pi$ が無理数なら，どの $k$ でも $\\dfrac{k\\alpha}\\pi$ は整数でなく，A に到達しない．\n  \\item $\\dfrac\\alpha\\pi=\\dfrac pq$（$p,q$ は互いに素な正の整数，$p<q$）のとき，$p,q$ は互いに素だから，$\\dfrac{kp}q$ が整数 $\\iff$ $k$ が $q$ の倍数．最小の $k$ は $q$ で，そのとき $\\dfrac{k\\alpha}\\pi=p$．よって A に到達する $\\iff$ $p$ が偶数．\n\\end{itemize}\n$p$ が偶数なら $q$ は奇数で，$\\dfrac\\theta\\pi=\\dfrac12\\left(1-\\dfrac pq\\right)=\\dfrac{q-p}{2q}$．$q-p$ は奇数で，$q-p$ と $q$ の公約数は $p=q-(q-p)$ の約数でもあるから $q-p$ と $q$ は互いに素．よって，これは既約分数で分母 $2q$ は4で割って2余る．\n逆に $\\dfrac\\theta\\pi=\\dfrac u{2v}$ が既約で $v$ が奇数なら，$u$ も奇数で $u,v$ は互いに素，$\\dfrac\\alpha\\pi=\\dfrac{v-u}v$ は，$v-u$ が偶数で，$v-u$ と $v$ の公約数は $u$ の約数でもあるから $v-u$ と $v$ が互いに素なので A に到達する．\n以上より，求める条件は\n\\[\\boldsymbol{\\frac\\theta\\pi\\text{ が有理数で，既約分数で表したときの分母が4で割って2余ること}}\\]\n（すなわち $\\theta=\\dfrac u{2v}\\pi$，$u,v$ は互いに素な正の奇数で $u<v$）．\n\n(3) (2) の条件のもとで $\\dfrac\\theta\\pi=\\dfrac u{2v}$（$u,v$ は互いに素）と表すと，$u$ が偶数なら約分した分母が $v$ になり，$v$ が偶数なら $u$ は奇数でなければならず（互いに素）$\\dfrac u{2v}$ の分母が4の倍数になって (2) の条件に反するので，$u,v$ はともに奇数で既約である．(2) の記号で $p=v-u$，$q=v$ であり，光線は $\\mathrm P_v$ で A に到達する．\n\n半円弧での反射は頂点 $\\mathrm P_1,\\dots,\\mathrm P_{v-1}$（どれも $x$ 軸上にない）で，$\\boldsymbol{v-1}$ 回．\n\n直径での反射：頂点の偏角 $0,\\alpha,2\\alpha,\\dots,v\\alpha=p\\pi$ は $\\alpha\\ (<\\pi)$ ずつ増える．弦 $\\mathrm P_k\\mathrm P_{k+1}$ に区間 $[k\\alpha,(k+1)\\alpha]$ を対応させる．$0<l\\pi<p\\pi$ となる $l\\pi$（$l=1,\\dots,p-1$）はどれも頂点の偏角ではないので，ちょうど1つの区間の内部に入り，区間の長さが $\\pi$ 未満なので各区間の内部には高々1つしか入らない．内部に $l\\pi$ を含む区間では両端の偏角が $(l\\pi-\\pi,l\\pi)$ と $(l\\pi,l\\pi+\\pi)$ にあるので両端の $y$ 座標は異符号で，弦は端点以外でちょうど1回 $x$ 軸を横切る．含まない区間では，両端が $x$ 軸の同じ側にあるか（$k=0$ と $k=v-1$ では一方の端点 $\\mathrm P_0$ または $\\mathrm P_v$ のみが $x$ 軸上），弦は端点以外で $x$ 軸と交わらない．よって直径での反射は $p-1=\\boldsymbol{v-u-1}$ 回．\n\n(4) 合計は $(v-1)+(v-u-1)=2v-u-2=19$，すなわち $u=2v-21$．$u,v$ は互いに素な正の奇数で $u<v$ だから $0<2v-21<v$ より $11\\leqq v\\leqq19$（$v$ は奇数）．$2v-21$ と $v$ の公約数は $21=2v-(2v-21)$ の約数でもあり，逆に $21$ と $v$ の公約数は $2v-21$ の約数でもあるから，$u,v$ が互いに素 $\\iff$ $v$ が $3,7$ の倍数でない．これをみたすのは $v=11,13,17,19$（$v=15$ は除く）で，$u=1,5,13,17$．よって\n\\[\\theta=\\boldsymbol{\\frac\\pi{22},\\ \\frac{5\\pi}{26},\\ \\frac{13\\pi}{34},\\ \\frac{17\\pi}{38}}.\\]\n\\hfill$\\square$"
-   }
-  ],
-  "idea": {
-   "tex": "円の内側で反射をくり返す光線は，どの弦も中心角が等しい（弦と半径のなす角が保たれる）ので，反射点は円周上を一定の角 $\\alpha$ ずつ回る．直径での反射は $x$ 軸に関する折り返しで消せるので，半円の中の光線は「円全体の中の光線を折りたたんだもの」になる．"
-  },
-  "grading": {
-   "format": "lemma-input/1",
-   "spec": "(1) π-2θ\n(2) 記述\n(3) 記述\n(4) $\\theta$：{π/22, 5π/26, 13π/34, 17π/38}"
-  },
-  "methods": [],
-  "tags": [
-   "反射",
-   "折り返し",
-   "円周角",
-   "有理数",
-   "周期"
-  ],
-  "provenance": {
-   "created": "2026-11-10"
-  },
-  "quality": {
-   "status": "published",
-   "checks": {
-    "dual": false,
-    "sympy": true,
-    "human": false
-   },
-   "verified": false
-  }
- },
- {
   "id": "X-MIX-060",
   "schema": "lemma.problem/1",
   "kind": "written",
@@ -2696,6 +2055,255 @@
   ],
   "provenance": {
    "created": "2026-11-19"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "X-MIX-047",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "X-20",
+  "level": 5,
+  "minutes": 40,
+  "theme": "内積が $q^{|s-t|}$ となる数列の列と2次形式の下からの評価",
+  "topic": "内積が $q^{|s-t|}$ となる数列の列と2次形式の下からの評価",
+  "statement": {
+   "tex": "数列 $\\{a_n\\}$ が「長さ有限」とは，ある番号から先のすべての $n$ に対して $a_n=0$ となることをいう（$a_n$ はすべて実数）．長さ有限の数列 $A=\\{a_n\\}$ について，$a_n\\neq0$ となる自然数 $n$ の最大値を $A$ の「長さ」と呼ぶ．長さ有限の数列 $A=\\{a_n\\}$，$B=\\{b_n\\}$ と実数 $c$ に対して $A+B=\\{a_n+b_n\\}$，$cA=\\{ca_n\\}$ と定め，さらに\n\\[\nA\\cdot B=\\sum_{n=1}^{\\infty}a_nb_n,\\qquad |A|=\\sqrt{A\\cdot A}\n\\]\nと定める（$\\sum$ は実際には有限個の和である）．また，第 $s$ 項だけが $1$ で他の項がすべて $0$ である数列を $E(s)$ と書く．\n\n$0<q<1$ とする．長さ有限の数列の列 $A(1)$，$A(2)$，$A(3)$，$\\cdots$ は次の条件をみたすとする．\n\\begin{itemize}\n  \\item[(i)] 各 $s$ に対して $A(s)=\\bigl(a(s)_1,\\ a(s)_2,\\ \\cdots\\bigr)$ の長さは $s$ であり，$a(s)_s>0$ である．\n  \\item[(ii)] すべての自然数 $s$，$t$ に対して $A(s)\\cdot A(t)=q^{|s-t|}$ である（$s=t$ のときは $|A(s)|=1$）．\n\\end{itemize}\n\\begin{enumerate}\n  \\item 条件 (i)，(ii) をみたす数列の列はただ1通りに定まることを示し，$a(s)_k$（$1\\leqq k\\leqq s$）を $q$，$s$，$k$ で表せ．\n  \\item $n\\geqq2$ とし，$c_n=1$ とする．実数 $c_1,\\cdots,c_{n-1}$ を動かすとき\n  \\[\n  Q=\\sum_{i=1}^{n}\\sum_{j=1}^{n}c_ic_jq^{|i-j|}\n  \\]\n  の最小値と，最小値をとるときの $c_1,\\cdots,c_{n-1}$ を求めよ．\n  \\item 自然数 $n$ と，すべては $0$ でない実数 $c_1,\\cdots,c_n$ に対して，(2) の $Q$ について\n  \\[\n  Q>\\frac{1-q}{1+q}\\sum_{k=1}^{n}c_k^{\\,2}\n  \\]\n  が成り立つことを示せ．\n  \\item $K>\\dfrac{1-q}{1+q}$ をみたす任意の定数 $K$ に対して，ある自然数 $n$ と実数 $c_1,\\cdots,c_n$（すべては $0$ でない）で $Q<K\\displaystyle\\sum_{k=1}^{n}c_k^{\\,2}$ となるものが存在することを示せ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $a(s)_1=q^{s-1}$，$a(s)_k=\\sqrt{1-q^2}\\,q^{s-k}$（$2\\leqq k\\leqq s$）；一意性は証明　(2) 最小値 $1-q^2$，$c_{n-1}=-q$，$c_1=\\cdots=c_{n-2}=0$　(3) 証明　(4) 証明（$c_k=(-1)^k$，$n$ を十分大きくとる）"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "以下，$\\displaystyle\\sum_iX_i\\cdot\\sum_jY_j=\\sum_i\\sum_jX_i\\cdot Y_j$ など，内積が有限和について分配法則をみたすことを断りなく用いる．また，長さが $s$ 以下の数列は第 $s+1$ 項以降がすべて $0$ である．\n\n\\medskip\n\\textbf{(1)}　\\emph{候補の数列}．$A^*(1)=E(1)$，$A^*(s)=qA^*(s-1)+\\sqrt{1-q^2}\\,E(s)$（$s\\geqq2$）で数列の列 $A^*(s)$ を定めると，帰納的に\n\\[\na^*(s)_1=q^{s-1},\\qquad a^*(s)_k=\\sqrt{1-q^2}\\,q^{s-k}\\ \\ (2\\leqq k\\leqq s),\\qquad a^*(s)_k=0\\ \\ (k>s)\n\\]\nである．$1-q^2>0$ より $a^*(s)_s>0$ なので (i) をみたす．(ii) を確かめる．$s\\leqq t$ とすると，共通に $0$ でない項は第 $1$ 項から第 $s$ 項までで，\n\\[\nA^*(s)\\cdot A^*(t)=q^{s-1}q^{t-1}+(1-q^2)\\sum_{k=2}^{s}q^{s-k}q^{t-k}\n=q^{s+t-2}+(1-q^2)\\sum_{j=0}^{s-2}q^{t-s+2j}\n\\]\n（$j=s-k$ とおいた）．$\\displaystyle(1-q^2)\\sum_{j=0}^{s-2}q^{2j}=1-q^{2(s-1)}$ であるから\n\\[\nA^*(s)\\cdot A^*(t)=q^{s+t-2}+q^{t-s}\\bigl(1-q^{2s-2}\\bigr)=q^{t-s}=q^{|s-t|}.\n\\]\n（$s=1$ のときは和が空で，$q^{t-1}$ となりこれも正しい．）よって $A^*(s)$ は (i)，(ii) をみたす．\n\n\\emph{一意性}．(i)，(ii) をみたす列 $A(s)$ が $A(s)=A^*(s)$ をみたすことを $s$ についての帰納法で示す．\n\n$s=1$：$A(1)$ は長さ $1$ なので $A(1)=a(1)_1E(1)$ で，$|A(1)|=1$，$a(1)_1>0$ から $a(1)_1=1$，つまり $A(1)=A^*(1)$．\n\n$A(1)=A^*(1),\\cdots,A(s-1)=A^*(s-1)$（$s\\geqq2$）と仮定する．$A(s)=(u_1,\\cdots,u_s,0,0,\\cdots)$ とおく．$t=1,\\cdots,s-1$ に対し，$A(t)=A^*(t)$ の長さは $t$ なので，(ii) は\n\\[\n\\sum_{k=1}^{t}a^*(t)_k\\,u_k=q^{s-t}\\qquad(t=1,2,\\cdots,s-1)\\tag{$*$}\n\\]\nとなる．$t=1$ の式から $u_1$ が，次に $t=2$ の式から（$u_1$ が既知で $a^*(2)_2\\neq0$ なので）$u_2$ が定まり，以下同様に $t=3,\\cdots,s-1$ の式から順に $u_t$ が $\\dfrac1{a^*(t)_t}\\Bigl(q^{s-t}-\\sum_{k<t}a^*(t)_ku_k\\Bigr)$ としてただ1通りに定まる．一方 $A^*(s)$ の第 $1$ 項から第 $s-1$ 項も $(*)$ をみたす（$A^*(s)\\cdot A^*(t)=q^{s-t}$ であり，$A^*(t)$ の第 $t+1$ 項以降は $0$ だから）．よって $u_k=a^*(s)_k$（$1\\leqq k\\leqq s-1$）．さらに $|A(s)|^2=1$ より\n\\[\nu_s^{\\,2}=1-\\sum_{k=1}^{s-1}a^*(s)_k^{\\,2}=1-\\bigl|qA^*(s-1)\\bigr|^2=1-q^2\n\\]\n（$A^*(s)$ の最初の $s-1$ 項は $qA^*(s-1)$ の項そのものである）．$u_s>0$ から $u_s=\\sqrt{1-q^2}=a^*(s)_s$．よって $A(s)=A^*(s)$．\n\n以上より，条件をみたす列はただ1通りに定まり，\n\\[\n\\boldsymbol{a(s)_1=q^{s-1},\\qquad a(s)_k=\\sqrt{1-q^2}\\;q^{s-k}\\ \\ (2\\leqq k\\leqq s)}.\n\\]\n\n\\medskip\n\\textbf{(2)}　$W=\\displaystyle\\sum_{i=1}^{n}c_iA(i)$ とおくと，(ii) と分配法則から\n\\[\nQ=\\sum_{i=1}^{n}\\sum_{j=1}^{n}c_ic_j\\,A(i)\\cdot A(j)=W\\cdot W=|W|^2 .\n\\]\n$A(1),\\cdots,A(n-1)$ の第 $n$ 項は $0$ なので，$W$ の第 $n$ 項は $c_n\\,a(n)_n=\\sqrt{1-q^2}$ である．$|W|^2$ は $W$ の各項の2乗の和なので\n\\[\nQ=|W|^2\\geqq\\bigl(\\sqrt{1-q^2}\\bigr)^2=1-q^2 ,\n\\]\n等号は $W$ の第 $n$ 項以外がすべて $0$，すなわち $W=\\sqrt{1-q^2}\\,E(n)$ のときに限る．\n\n$c_{n-1}=-q$，$c_1=\\cdots=c_{n-2}=0$ とすると，(1) の漸化式より $W=A(n)-qA(n-1)=\\sqrt{1-q^2}\\,E(n)$ となり等号が成り立つ．\n\n逆に等号が成り立つとき，$W=A(n)-qA(n-1)$ より\n\\[\n\\sum_{i=1}^{n-1}e_iA(i)=0,\\qquad e_i=c_i\\ (i\\leqq n-2),\\quad e_{n-1}=c_{n-1}+q\n\\]\nである．$e_i$ の中に $0$ でないものがあれば，その最大の番号を $p$ とすると，左辺の第 $p$ 項は $e_p\\,a(p)_p\\neq0$（番号が $p$ より小さい $A(i)$ の第 $p$ 項は $0$）となって矛盾．よってすべての $e_i=0$ である．\n\nゆえに，\\textbf{最小値は $\\boldsymbol{1-q^2}$}，最小値をとるのは $\\boldsymbol{c_{n-1}=-q,\\ c_1=\\cdots=c_{n-2}=0}$ のときに限る．\n\n\\medskip\n\\textbf{(3)}　$W=\\displaystyle\\sum_{i=1}^{n}c_iA(i)$ とし，$k=1,\\cdots,n+1$ に対して\n\\[\nd_k=\\sum_{i=k}^{n}c_iq^{\\,i-k}\\qquad(d_{n+1}=0)\n\\]\nとおく．$A(i)$ の第 $k$ 項は $i<k$ なら $0$，$i\\geqq k$ なら (1) より $k=1$ で $q^{i-1}$，$k\\geqq2$ で $\\sqrt{1-q^2}\\,q^{i-k}$ だから，$W$ の第 $1$ 項は $d_1$，第 $k$ 項（$2\\leqq k\\leqq n$）は $\\sqrt{1-q^2}\\,d_k$，第 $n+1$ 項以降は $0$ である．よって\n\\[\nQ=|W|^2=d_1^{\\,2}+(1-q^2)\\sum_{k=2}^{n}d_k^{\\,2}\\geqq(1-q^2)\\sum_{k=1}^{n}d_k^{\\,2}, \\tag{a}\n\\]\nここで等号は $q^2d_1^{\\,2}=0$，すなわち $d_1=0$ のときに限る．\n\nまた $d_k=c_k+q\\,d_{k+1}$ より $c_k=d_k-q\\,d_{k+1}$（$1\\leqq k\\leqq n$）である．実数 $a$，$b$ に対し\n\\[\n(1+q)(a^2+qb^2)-(a-qb)^2=q(a^2+2ab+b^2)=q(a+b)^2\\geqq0\n\\]\n（等号は $a=-b$ のとき）であるから，\n\\[\n\\sum_{k=1}^{n}c_k^{\\,2}=\\sum_{k=1}^{n}(d_k-qd_{k+1})^2\n\\leqq(1+q)\\Bigl(\\sum_{k=1}^{n}d_k^{\\,2}+q\\sum_{k=2}^{n+1}d_k^{\\,2}\\Bigr)\n=(1+q)\\Bigl(\\sum_{k=1}^{n}d_k^{\\,2}+q\\sum_{k=2}^{n}d_k^{\\,2}\\Bigr)\n\\leqq(1+q)^2\\sum_{k=1}^{n}d_k^{\\,2}. \\tag{b}\n\\]\n(a)，(b) から\n\\[\nQ\\geqq(1-q^2)\\sum_{k=1}^{n}d_k^{\\,2}\\geqq\\frac{1-q^2}{(1+q)^2}\\sum_{k=1}^{n}c_k^{\\,2}=\\frac{1-q}{1+q}\\sum_{k=1}^{n}c_k^{\\,2}.\n\\]\n等号が成り立つとすると，(b) の最初の不等号で等号が必要なので，すべての $k=1,\\cdots,n$ について $d_k=-d_{k+1}$ である．$d_{n+1}=0$ から順に $d_n=d_{n-1}=\\cdots=d_1=0$ となり，$c_k=d_k-qd_{k+1}=0$（すべての $k$）となって，「すべては $0$ でない」に反する．よって\n\\[\nQ>\\frac{1-q}{1+q}\\sum_{k=1}^{n}c_k^{\\,2}.\\tag*{$\\square$}\n\\]\n\n\\medskip\n\\textbf{(4)}　$c_k=(-1)^k$（$1\\leqq k\\leqq n$）とする．$\\sum c_k^{\\,2}=n$ である．$x=-q$ とおくと $c_ic_jq^{|i-j|}=x^{|i-j|}$ で，$|i-j|=d$（$1\\leqq d\\leqq n-1$）となる順序対 $(i,j)$ は $2(n-d)$ 個あるから\n\\[\nQ=n+2\\sum_{d=1}^{n-1}(n-d)x^{d}.\n\\]\n$T=\\displaystyle\\sum_{d=1}^{n-1}(n-d)x^d$ について，$xT=\\displaystyle\\sum_{d=2}^{n}(n-d+1)x^{d}$ であるから，$x^d$ の係数を比べて\n\\[\nT-xT=(n-1)x-\\sum_{d=2}^{n}x^d=nx-\\sum_{d=1}^{n}x^d .\n\\]\nよって\n\\[\n(1-x)T=nx-\\frac{x(1-x^{n})}{1-x},\n\\qquad\nT=\\frac{nx}{1-x}-\\frac{x-x^{n+1}}{(1-x)^2}.\n\\]\nしたがって\n\\[\nQ=n\\Bigl(1+\\frac{2x}{1-x}\\Bigr)-\\frac{2(x-x^{n+1})}{(1-x)^2}\n=n\\cdot\\frac{1-q}{1+q}+\\frac{2\\bigl(q+(-q)^{n+1}\\bigr)}{(1+q)^2}.\n\\]\n$|(-q)^{n+1}|<q$ なので最後の項は $0$ より大きく $\\dfrac{4q}{(1+q)^2}$ より小さい．ゆえに\n\\[\nQ<\\frac{1-q}{1+q}\\,n+\\frac{4q}{(1+q)^2}.\n\\]\n$K>\\dfrac{1-q}{1+q}$ に対し $\\delta=K-\\dfrac{1-q}{1+q}>0$ とおき，$n>\\dfrac{4q}{(1+q)^2\\delta}$ となる自然数 $n$ をとると $\\dfrac{4q}{(1+q)^2}<n\\delta$ なので\n\\[\nQ<\\frac{1-q}{1+q}\\,n+n\\delta=Kn=K\\sum_{k=1}^{n}c_k^{\\,2}.\n\\]\nよって条件をみたす $n$，$c_1,\\cdots,c_n$ が存在する．\\hfill$\\square$"
+   }
+  ],
+  "idea": {
+   "tex": "「長さ $s$」の数列 $A(s)$ を内積の条件だけから順に決めていくと，最初の $s-1$ 項は三角形型の連立1次方程式でただ1通りに決まり，最後の項は大きさの条件で決まる．原題（どの2つも距離1，すなわち正単体）では前の項が共有されたが，捻りでは内積を $q^{|s-t|}$ にしたため「$A(s)-qA(s-1)$ が新しい成分だけをもつ」という構造になる．これを使うと $\\sum c_ic_jq^{|i-j|}=\\bigl|\\sum c_iA(i)\\bigr|^2$ の各成分が「後ろからの重み付き和」$d_k$ で書け，$c_k=d_k-qd_{k+1}$ と逆に解けるので，$(a-qb)^2\\leqq(1+q)(a^2+qb^2)$ によって最良定数 $\\frac{1-q}{1+q}$ の下からの評価が得られる．定数が最良であることは符号が交互の数列で確かめる．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) 記述\n(2) 最小値：1-q^2 ; $c_{n-1}$：-q ; $c_1$：0\n(3) 証明\n(4) 記述"
+  },
+  "methods": [],
+  "tags": [
+   "長さ有限の数列",
+   "内積",
+   "三角形型の連立1次方程式",
+   "変数の付けかえ",
+   "コーシー・シュワルツ型の不等式",
+   "最良定数"
+  ],
+  "provenance": {
+   "created": "2026-11-10"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "X-MIX-048",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "X-20",
+  "level": 4,
+  "minutes": 35,
+  "theme": "偏りのある回転の積が実数になる確率",
+  "topic": "偏りのある回転の積が実数になる確率",
+  "statement": {
+   "tex": "1個のさいころを $n$ 回投げる．$k$ 回目に出た目が1または2のときは $X_k=1$，3のときは $X_k=-1$，4，5，6のときは $X_k=0$ とし，\n\\[\nY_k=\\cos\\Bigl(\\frac\\pi3X_k\\Bigr)+i\\sin\\Bigl(\\frac\\pi3X_k\\Bigr),\\qquad Z_n=Y_1Y_2\\cdots Y_n\n\\]\nとおく．ただし $i$ は虚数単位である．\n\\begin{enumerate}\n  \\item $Z_n$ が実数である確率 $p_n$ を $n$ で表せ．\n  \\item $p_n<\\dfrac13$ となる自然数 $n$，および $p_n=\\dfrac13$ となる自然数 $n$ をそれぞれすべて求めよ．\n  \\item $Z_1,Z_2,\\dots,Z_n$ がいずれも実数でない確率 $q_n$ を $n$ で表せ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $p_n=\\dfrac13+\\dfrac23\\left(\\dfrac{\\sqrt3}6\\right)^n\\cos\\dfrac{n\\pi}6$　(2) $p_n<\\dfrac13\\iff n$ を12で割った余りが4,5,6,7,8；$p_n=\\dfrac13\\iff n$ を6で割った余りが3　(3) $q_n=\\dfrac{6+5\\sqrt2}{24}\\left(\\dfrac{3+\\sqrt2}6\\right)^{n-1}+\\dfrac{6-5\\sqrt2}{24}\\left(\\dfrac{3-\\sqrt2}6\\right)^{n-1}$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) $S_n=X_1+\\dots+X_n$ とおく．ド・モアブルの定理より $Z_n=\\cos\\frac{\\pi S_n}3+i\\sin\\frac{\\pi S_n}3$ であるから，\n$Z_n$ が実数 $\\iff\\sin\\frac{\\pi S_n}3=0\\iff S_n$ は3の倍数．\n\n$\\omega=\\cos\\frac{2\\pi}3+i\\sin\\frac{2\\pi}3$ とおくと $\\omega^3=1$，$\\omega^2+\\omega+1=0$．整数 $m$ について，$m$ が3の倍数なら $1+\\omega^m+\\omega^{2m}=3$，そうでなければ $\\omega^m$ は $\\omega$ または $\\omega^2$ で，どちらも $x^2+x+1=0$ の解だから $1+\\omega^m+\\omega^{2m}=0$．\n\n目の出方 $6^n$ 通りは同様に確からしい．そのうち $S_n$ が3の倍数であるものの数を $N$ とすると，\n\\[\n3N=\\sum(1+\\omega^{S_n}+\\omega^{2S_n})=6^n+T_1+T_2,\\qquad T_j=\\sum\\omega^{jS_n}\n\\]\n（和は $6^n$ 通りすべてにわたる）．目 $f$ に対する $X$ の値を $X(f)$ とすると，$\\omega^{S_n}=\\omega^{X(f_1)}\\omega^{X(f_2)}\\cdots\\omega^{X(f_n)}$ であり，$n$ 個の同じ因数の積 $\\Bigl(\\sum_{f=1}^6\\omega^{X(f)}\\Bigr)\\Bigl(\\sum_{f=1}^6\\omega^{X(f)}\\Bigr)\\cdots\\Bigl(\\sum_{f=1}^6\\omega^{X(f)}\\Bigr)$ を展開すると各目の列 $(f_1,\\dots,f_n)$ についての項がちょうど1回ずつ現れるから，\n\\[\nT_1=\\Bigl(\\sum_{f=1}^6\\omega^{X(f)}\\Bigr)^n=(2\\omega+\\omega^{-1}+3)^n=(3+2\\omega+\\omega^2)^n=(2+\\omega)^n .\n\\]\n$2+\\omega=\\frac32+\\frac{\\sqrt3}2i=\\sqrt3\\left(\\cos\\frac\\pi6+i\\sin\\frac\\pi6\\right)$ より $T_1=(\\sqrt3)^n\\left(\\cos\\frac{n\\pi}6+i\\sin\\frac{n\\pi}6\\right)$．\n$\\omega^2=\\bar\\omega$ だから $T_2=\\sum\\bar\\omega^{S_n}=\\overline{T_1}$．よって $T_1+T_2=2(\\sqrt3)^n\\cos\\frac{n\\pi}6$ で，\n\\[\n\\boldsymbol{p_n=\\frac N{6^n}=\\frac13+\\frac23\\left(\\frac{\\sqrt3}6\\right)^n\\cos\\frac{n\\pi}6}.\n\\]\n（$n=1$ で $\\frac13+\\frac23\\cdot\\frac{\\sqrt3}6\\cdot\\frac{\\sqrt3}2=\\frac12$ となり，目4，5，6の確率に一致する．）\n\n(2) $\\frac23\\left(\\frac{\\sqrt3}6\\right)^n>0$ だから，$p_n-\\frac13$ の符号は $\\cos\\frac{n\\pi}6$ の符号と一致する．$n$ を12で割った余りを $r$ とすると $\\cos\\frac{n\\pi}6=\\cos\\frac{r\\pi}6$ で，$r=0,1,\\dots,11$ について\n$\\cos\\frac{r\\pi}6<0\\iff\\frac\\pi2<\\frac{r\\pi}6<\\frac{3\\pi}2\\iff r=4,5,6,7,8$，\n$\\cos\\frac{r\\pi}6=0\\iff r=3,9$．\nよって $\\boldsymbol{p_n<\\frac13\\iff n\\text{ を12で割った余りが }4,5,6,7,8}$，$\\boldsymbol{p_n=\\frac13\\iff n\\text{ を6で割った余りが3}}$．\n\n(3) $Z_1,\\dots,Z_n$ がいずれも実数でなく，かつ $S_n$ を3で割った余りが1，2である確率をそれぞれ $a_n,b_n$ とすると $q_n=a_n+b_n$．1回で $X=1,-1,0$ となる確率は $\\frac13,\\frac16,\\frac12$．\n$a_1=\\frac13$，$b_1=\\frac16$．余りが1の状態から，$X=0$ なら余り1，$X=1$ なら余り2，$X=-1$ なら余り0（実数になる）．余りが2の状態から，$X=0$ なら余り2，$X=-1$ なら余り1，$X=1$ なら余り0．したがって\n\\[\na_{n+1}=\\frac12a_n+\\frac16b_n,\\qquad b_{n+1}=\\frac13a_n+\\frac12b_n .\n\\]\n$u_n=a_n+\\frac{b_n}{\\sqrt2}$，$v_n=a_n-\\frac{b_n}{\\sqrt2}$ とおくと，\n\\[\nu_{n+1}=\\Bigl(\\frac12+\\frac1{3\\sqrt2}\\Bigr)a_n+\\Bigl(\\frac16+\\frac1{2\\sqrt2}\\Bigr)b_n=\\Bigl(\\frac12+\\frac{\\sqrt2}6\\Bigr)\\Bigl(a_n+\\frac{b_n}{\\sqrt2}\\Bigr)=\\lambda_1u_n\n\\]\n（$\\lambda_1=\\frac{3+\\sqrt2}6$），同様に $v_{n+1}=\\lambda_2v_n$（$\\lambda_2=\\frac{3-\\sqrt2}6$）．実際 $\\lambda_2\\cdot\\bigl(-\\frac1{\\sqrt2}\\bigr)=\\frac16-\\frac1{2\\sqrt2}$ が $b_n$ の係数に一致する．\n$u_1=\\frac{4+\\sqrt2}{12}$，$v_1=\\frac{4-\\sqrt2}{12}$．$a_n=\\frac{u_n+v_n}2$，$b_n=\\frac{u_n-v_n}{\\sqrt2}$ より $q_n=\\frac{1+\\sqrt2}2u_n+\\frac{1-\\sqrt2}2v_n$．\n$\\frac{1+\\sqrt2}2\\cdot\\frac{4+\\sqrt2}{12}=\\frac{6+5\\sqrt2}{24}$，$\\frac{1-\\sqrt2}2\\cdot\\frac{4-\\sqrt2}{12}=\\frac{6-5\\sqrt2}{24}$ だから\n\\[\n\\boldsymbol{q_n=\\frac{6+5\\sqrt2}{24}\\left(\\frac{3+\\sqrt2}6\\right)^{n-1}+\\frac{6-5\\sqrt2}{24}\\left(\\frac{3-\\sqrt2}6\\right)^{n-1}}.\n\\]\n（$n=1$ で $\\frac12$，$n=2$ で $\\frac7{18}$ となり，直接の計算と一致する．）"
+   }
+  ],
+  "idea": {
+   "tex": "積 $Z_n$ の偏角は $\\frac\\pi3\\times(\\text{和 }S_n)$ で，実数 $\\iff S_n$ が3の倍数．回転の向きに偏りがあると「実数か否か」の2状態には縮まないので，$1+\\omega^m+\\omega^{2m}$（$\\omega$ は1の虚数3乗根）で「$S_n$ が3の倍数」である場合を選び出し，全事象にわたる和を1回分の和の $n$ 乗に分解する．「一度も実数にならない」は2状態の連立漸化式を，等比数列になる1次結合で解く．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) $p_n$：1/3+(2/3)(sqrt(3)/6)^n cos(nπ/6)\n(2) 記述\n(3) $q_n$：((6+5sqrt(2))/24)((3+sqrt(2))/6)^(n-1)+((6-5sqrt(2))/24)((3-sqrt(2))/6)^(n-1)"
+  },
+  "methods": [],
+  "tags": [
+   "複素数",
+   "ド・モアブルの定理",
+   "1の3乗根",
+   "確率漸化式"
+  ],
+  "provenance": {
+   "created": "2026-11-10"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "X-MIX-049",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "X-20",
+  "level": 4,
+  "minutes": 30,
+  "theme": "整式係数の三角関数の1次結合",
+  "topic": "整式係数の三角関数の1次結合",
+  "statement": {
+   "tex": "以下，整式とは $x$ の実数係数の多項式とする．\n\\begin{enumerate}\n  \\item 整式 $p(x)$，$q(x)$，$r(x)$ がすべての実数 $x$ に対して $p(x)+q(x)\\sin x+r(x)\\cos x=0$ をみたすならば，$p(x)$，$q(x)$，$r(x)$ はいずれも整式として0であることを示せ．\n  \\item 実数 $a$ に対し，すべての実数 $x$ で\n  \\[ f(x)+g(x)\\sin x+h(x)\\sin(x+a)=0 \\]\n  をみたす整式 $f(x)$，$g(x)$，$h(x)$ で，少なくとも1つは整式として0でないものが存在するための $a$ の条件を求めよ．\n  \\item すべての実数 $x$ で $e^x=p(x)+q(x)\\sin x$ をみたす整式 $p(x)$，$q(x)$ は存在しないことを示せ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 証明　(2) $a=m\\pi$（$m$ は整数）　(3) 証明"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "0でない整式の零点は高々（次数）個であること（因数定理）を用いる．\n\n(1) $x=2m\\pi$（$m$ は整数）を代入すると $p(2m\\pi)+r(2m\\pi)=0$．整式 $p+r$ は無限個の零点をもつので $p+r=0$．$x=(2m+1)\\pi$ では $p-r$ が無限個の零点をもち $p-r=0$．よって $p=r=0$．すると $q(x)\\sin x=0$ で，$x=\\frac\\pi2+2m\\pi$ を代入すると $q$ は無限個の零点をもち $q=0$．\\hfill$\\square$\n\n(2) 加法定理より等式は\n\\[ f(x)+\\{g(x)+h(x)\\cos a\\}\\sin x+h(x)\\sin a\\cos x=0 . \\]\n$\\sin a\\neq0$ のとき，(1) より $f=0$，$h\\sin a=0$ から $h=0$，さらに $g+h\\cos a=0$ から $g=0$．よって0でないものは存在しない．\n\n$\\sin a=0$ のとき，$\\cos a=\\pm1$ で $\\sin(x+a)=\\cos a\\sin x$．$f=0$，$g=-\\cos a$，$h=1$ とすれば等式が成り立ち，$h\\neq0$．\n\nよって条件は $\\boldsymbol{\\sin a=0}$，すなわち $\\boldsymbol{a=m\\pi}$（$m$ は整数）．\n\n(3) 存在したとする．$x=2m\\pi$（$m=1,2,\\dots$）を代入すると $e^{2m\\pi}=p(2m\\pi)$．$e^{2m\\pi}\\neq0$ より $p$ は0でない整式である．$p$ の次数を $d$，係数の絶対値の和を $K$ とすると，$x\\geqq1$ で $|p(x)|\\leqq Kx^d$．よって $\\dfrac{e^{2m\\pi}}{(2m\\pi)^d}\\leqq K$ がすべての $m$ で成り立つ．\n\n一方，$x>0$ で $e^x>\\dfrac{x^{d+1}}{(d+1)!}$ である．実際，$\\varphi_j(x)=e^x-\\displaystyle\\sum_{i=0}^{j}\\frac{x^i}{i!}$（$j=0,1,2,\\dots$）とおくと，$x>0$ で $\\varphi_0(x)=e^x-1>0$ であり，$\\varphi_j(0)=0$，$\\varphi_j'(x)=\\varphi_{j-1}(x)$ だから，$x>0$ で $\\varphi_{j-1}(x)>0$ ならば $\\varphi_j$ は $x\\geqq0$ で増加して $\\varphi_j(x)>0$．帰納法により $x>0$ で $e^x>\\displaystyle\\sum_{i=0}^{d+1}\\frac{x^i}{i!}\\geqq\\frac{x^{d+1}}{(d+1)!}$．\n\nよって $\\dfrac{e^{2m\\pi}}{(2m\\pi)^d}>\\dfrac{2m\\pi}{(d+1)!}$ で，$m>\\dfrac{K(d+1)!}{2\\pi}$ となる $m$ をとると右辺は $K$ を超え，矛盾する．\\hfill$\\square$"
+   }
+  ],
+  "idea": {
+   "tex": "$\\sin x$，$\\cos x$ が同時に決まった値をとる無限個の点（$x=2m\\pi$，$(2m+1)\\pi$，$\\frac\\pi2+2m\\pi$）で代入すると，整式の1次結合が無限個の零点をもち恒等的に0になる．$\\sin(x+a)$ は加法定理で $\\sin x$，$\\cos x$ に分解でき，$\\sin a=0$ かどうかで独立性が崩れるかが決まる．指数関数は増大度で整式と区別する．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) 証明\n(2) $a$：mπ\n(3) 証明"
+  },
+  "methods": [],
+  "tags": [
+   "整式の零点",
+   "三角関数",
+   "加法定理",
+   "極限"
+  ],
+  "provenance": {
+   "created": "2026-11-10"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "X-MIX-050",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "X-20",
+  "level": 4,
+  "minutes": 35,
+  "theme": "部分分数の交代二項和と調和数",
+  "topic": "部分分数の交代二項和と調和数",
+  "statement": {
+   "tex": "$n$ を自然数とする．\n\\begin{enumerate}\n  \\item $x>0$ のとき，次の等式を示せ．\n  \\[ \\frac{n!}{x(x+1)(x+2)\\cdots(x+n)}=\\sum_{r=0}^n(-1)^r\\frac{{}_n\\mathrm C_r}{x+r} \\]\n  \\item $\\displaystyle\\sum_{r=0}^n(-1)^r\\frac{{}_n\\mathrm C_r}{(r+1)^2}=\\frac1{n+1}\\sum_{k=1}^{n+1}\\frac1k$ を示せ．\n  \\item $\\displaystyle\\lim_{n\\to\\infty}\\frac{n}{\\log n}\\sum_{r=0}^n(-1)^r\\frac{{}_n\\mathrm C_r}{(r+1)^2}$ を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 証明　(2) 証明　(3) $1$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) $f(x)=x(x+1)(x+2)\\cdots(x+n)$ とし，$f_r(x)=\\dfrac{f(x)}{x+r}$（$f(x)$ から因数 $x+r$ を除いた $n$ 個の1次式の積）とおく．$N(x)=\\displaystyle\\sum_{r=0}^n(-1)^r{}_n\\mathrm C_rf_r(x)$ とおくと，$N$ は次数 $n$ 以下の整式．$j=0,1,\\dots,n$ について $x=-j$ を代入すると $r\\neq j$ の項は因数 $x+j$ を含み0になるので\n\\[ N(-j)=(-1)^j{}_n\\mathrm C_jf_j(-j)=(-1)^j{}_n\\mathrm C_j\\cdot\\{(-j)(-j+1)\\cdots(-1)\\}\\cdot\\{1\\cdot2\\cdots(n-j)\\}=(-1)^j{}_n\\mathrm C_j\\cdot(-1)^jj!\\cdot(n-j)!=n!. \\]\n（$j=0$ のときは前の括弧，$j=n$ のときは後の括弧を1と読む．）$N(x)-n!$ は次数 $n$ 以下の整式で $x=0,-1,\\dots,-n$ の $n+1$ 個の値で0になる．もし0でない整式なら，因数定理により $x(x+1)\\cdots(x+n)$ で割り切れて次数が $n+1$ 以上となり矛盾するから，恒等的に0．$N(x)=n!$ の両辺を $x(x+1)\\cdots(x+n)$（$x>0$ で正）で割れば求める等式．\\hfill$\\square$\n\n(2) $F(x)=\\dfrac{n!}{x(x+1)\\cdots(x+n)}$ とおくと，$\\log F(x)=\\log n!-\\sum_{k=0}^n\\log(x+k)$ を微分して $F'(x)=-F(x)\\sum_{k=0}^n\\dfrac1{x+k}$．(1) の右辺を微分すると $-\\sum(-1)^r\\dfrac{{}_n\\mathrm C_r}{(x+r)^2}$．よって\n\\[ \\sum_{r=0}^n(-1)^r\\frac{{}_n\\mathrm C_r}{(x+r)^2}=F(x)\\sum_{k=0}^n\\frac1{x+k}. \\]\n$x=1$ とすると $F(1)=\\frac{n!}{(n+1)!}=\\frac1{n+1}$ で，求める等式を得る．\\hfill$\\square$\n\n(3) $H=\\sum_{k=1}^{n+1}\\frac1k$ とおく．$\\frac1x$ は減少関数なので $\\frac1{k+1}\\leqq\\int_k^{k+1}\\frac{dx}x\\leqq\\frac1k$．これを加えて\n\\[ \\log(n+2)\\leqq H\\leqq1+\\log(n+1). \\]\n求める式は $\\dfrac{n}{(n+1)\\log n}H$ で，$n\\geqq2$ において\n\\[ \\frac{n}{n+1}\\cdot\\frac{\\log(n+2)}{\\log n}\\leqq\\frac{nH}{(n+1)\\log n}\\leqq\\frac{n}{n+1}\\cdot\\frac{1+\\log(n+1)}{\\log n}. \\]\n$\\log(n+2)>\\log n$ より左辺は $\\frac n{n+1}$ 以上で，$\\frac n{n+1}\\to1$．右辺は $\\log(n+1)=\\log n+\\log\\left(1+\\frac1n\\right)$ より $\\frac{n}{n+1}\\left(1+\\frac{1+\\log(1+1/n)}{\\log n}\\right)\\to1$．はさみうちで極限値は $\\boldsymbol{1}$．"
+   }
+  ],
+  "idea": {
+   "tex": "分子 $N(x)=\\sum(-1)^r{}_n\\mathrm C_r\\dfrac{x(x+1)\\cdots(x+n)}{x+r}$ は次数 $n$ 以下で，$x=-j$ では1項だけ残り値 $n!$．$n+1$ 点で一致するので恒等的に $n!$．両辺を $x$ で微分すると左辺には $\\sum\\frac1{x+k}$ が現れ，$x=1$ で交代和 $\\sum(-1)^r\\frac{{}_n\\mathrm C_r}{(r+1)^2}$ が調和数で表せる．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) 証明\n(2) 証明\n(3) 1"
+  },
+  "methods": [],
+  "tags": [
+   "部分分数",
+   "恒等式",
+   "微分",
+   "調和数",
+   "極限"
+  ],
+  "provenance": {
+   "created": "2026-11-10"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "X-MIX-051",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "X-20",
+  "level": 5,
+  "minutes": 40,
+  "theme": "直径も鏡になった半円の中の光線",
+  "topic": "直径も鏡になった半円の中の光線",
+  "statement": {
+   "tex": "座標平面上の半円板 $K:\\ x^2+y^2\\leqq1,\\ y\\geqq0$ の周（半円弧と直径）はすべて内側が鏡になっている．A$(1,0)$，B$(-1,0)$ とし，$0<\\theta<\\dfrac\\pi2$ とする．A からベクトル $(-\\cos\\theta,\\ \\sin\\theta)$ の向きに光線を $K$ の内部へ発射する．光線は鏡に当たるたびに反射の法則にしたがって反射し，A または B に到達したときに止まるものとする．\n\\begin{enumerate}\n  \\item 光線が最初に半円弧に当たる点を $\\mathrm Q_1$ とする．$\\angle\\mathrm{AOQ_1}$ を $\\theta$ で表せ（O は原点）．\n  \\item 光線がいつか A に到達するための $\\theta$ の条件を求めよ．\n  \\item (2) の条件がみたされるとき，$\\dfrac\\theta\\pi=\\dfrac u{2v}$（$u,v$ は互いに素な正の整数）と表す．光線が A に到達するまでに半円弧で反射する回数と直径で反射する回数を，それぞれ $u,v$ で表せ．\n  \\item 光線が A に到達するまでの反射の回数（半円弧と直径の合計）がちょうど19となるような $\\theta$ をすべて求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $\\pi-2\\theta$　(2) $\\dfrac\\theta\\pi$ が有理数で，既約分数で表したとき分母が4で割って2余る（$\\theta=\\dfrac{u}{2v}\\pi$，$u,v$ は互いに素な正の奇数，$u<v$）　(3) 半円弧 $v-1$ 回，直径 $v-u-1$ 回　(4) $\\theta=\\dfrac{\\pi}{22},\\ \\dfrac{5\\pi}{26},\\ \\dfrac{13\\pi}{34},\\ \\dfrac{17\\pi}{38}$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "$\\alpha=\\pi-2\\theta$ とおくと $0<\\alpha<\\pi$ である．単位円を $\\Gamma$ とし，$k=0,1,2,\\dots$ に対して $\\mathrm P_k=(\\cos k\\alpha,\\ \\sin k\\alpha)$ とおく．折れ線 $\\mathrm P_0\\mathrm P_1\\mathrm P_2\\cdots$ を $\\Pi$ とし，写像 $\\varphi(x,y)=(x,|y|)$ を考える．\n\n\\textbf{[1] $\\Pi$ は円 $\\Gamma$ 全体が鏡のときの光線の経路．}\n$\\mathrm P_1-\\mathrm P_0=(\\cos\\alpha-1,\\ \\sin\\alpha)=(-1-\\cos2\\theta,\\ \\sin2\\theta)=2\\cos\\theta\\,(-\\cos\\theta,\\ \\sin\\theta)$ だから，最初の弦 $\\mathrm P_0\\mathrm P_1$ は発射の向きと一致する．\nまた $\\triangle\\mathrm{OP}_k\\mathrm P_{k+1}$ は $\\mathrm{OP}_k=\\mathrm{OP}_{k+1}=1$，頂角 $\\alpha$ の二等辺三角形なので $\\angle\\mathrm{OP}_{k+1}\\mathrm P_k=\\dfrac{\\pi-\\alpha}2=\\theta$，同様に $\\angle\\mathrm{OP}_{k+1}\\mathrm P_{k+2}=\\theta$．さらに $\\mathrm P_k,\\mathrm P_{k+2}$ の偏角は $(k+1)\\alpha\\mp\\alpha$（$0<\\alpha<\\pi$）なので，2点は直線 $\\mathrm{OP}_{k+1}$ の反対側にある．$\\mathrm P_{k+1}$ における $\\Gamma$ の法線は直線 $\\mathrm{OP}_{k+1}$ だから，弦 $\\mathrm P_k\\mathrm P_{k+1}$ に沿って来た光線は反射の法則によりちょうど弦 $\\mathrm P_{k+1}\\mathrm P_{k+2}$ に沿って進む．\n\n\\textbf{[2] 折りたたみ．}\n$x$ 軸に関する対称移動を $\\sigma$ とすると，$\\Gamma$ は $\\sigma$ で自分自身に移り，対称移動は角を保つので反射の法則を保つ．$\\Pi$ の $y\\geqq0$ の部分はそのまま，$y\\leqq0$ の部分は $\\sigma$ で移すと，$\\varphi(\\Pi)$ は次の性質をもつ．\n\\begin{itemize}\n  \\item $\\Pi$ が頂点以外で $x$ 軸を横切る点 $(c,0)$ は弦の内部の点なので開円板内にあり $|c|<1$．そこで $\\varphi(\\Pi)$ は直線の続きを $x$ 軸で折り返した向きに進む．これは直径での反射の法則そのものである．\n  \\item $\\Pi$ が $y<0$ の頂点 $\\mathrm P_k$ で反射することは，$\\sigma$ で移すと上半分の弧上の点 $\\sigma(\\mathrm P_k)$ での反射になる．\n\\end{itemize}\nよって $K$ 内の実際の光線の経路は（止まるまで）$\\varphi(\\Pi)$ である．しかも，半円弧での反射は $\\sin k\\alpha\\neq0$ である頂点 $\\mathrm P_k$（$k\\geqq1$）に，直径での反射は弦が端点以外で $x$ 軸を横切る点に対応する．弦の端点以外の点は開円板内にあるから，光線が A または B に達するのは，$\\sin k\\alpha=0$ となる頂点 $\\mathrm P_k$（$k\\geqq1$）に達したときに限る（$\\cos k\\alpha=1$ なら A，$-1$ なら B）．\n\n(1) $\\sin\\alpha>0$ なので $\\mathrm Q_1=\\mathrm P_1$ で，$\\angle\\mathrm{AOQ_1}=\\alpha=\\boldsymbol{\\pi-2\\theta}$．\n\n(2) 光線は $\\dfrac{k\\alpha}\\pi$ が整数となる最小の $k\\geqq1$ で止まり，その整数が偶数なら A，奇数なら B である．\n\\begin{itemize}\n  \\item $\\dfrac\\alpha\\pi$ が無理数なら，どの $k$ でも $\\dfrac{k\\alpha}\\pi$ は整数でなく，A に到達しない．\n  \\item $\\dfrac\\alpha\\pi=\\dfrac pq$（$p,q$ は互いに素な正の整数，$p<q$）のとき，$p,q$ は互いに素だから，$\\dfrac{kp}q$ が整数 $\\iff$ $k$ が $q$ の倍数．最小の $k$ は $q$ で，そのとき $\\dfrac{k\\alpha}\\pi=p$．よって A に到達する $\\iff$ $p$ が偶数．\n\\end{itemize}\n$p$ が偶数なら $q$ は奇数で，$\\dfrac\\theta\\pi=\\dfrac12\\left(1-\\dfrac pq\\right)=\\dfrac{q-p}{2q}$．$q-p$ は奇数で，$q-p$ と $q$ の公約数は $p=q-(q-p)$ の約数でもあるから $q-p$ と $q$ は互いに素．よって，これは既約分数で分母 $2q$ は4で割って2余る．\n逆に $\\dfrac\\theta\\pi=\\dfrac u{2v}$ が既約で $v$ が奇数なら，$u$ も奇数で $u,v$ は互いに素，$\\dfrac\\alpha\\pi=\\dfrac{v-u}v$ は，$v-u$ が偶数で，$v-u$ と $v$ の公約数は $u$ の約数でもあるから $v-u$ と $v$ が互いに素なので A に到達する．\n以上より，求める条件は\n\\[\\boldsymbol{\\frac\\theta\\pi\\text{ が有理数で，既約分数で表したときの分母が4で割って2余ること}}\\]\n（すなわち $\\theta=\\dfrac u{2v}\\pi$，$u,v$ は互いに素な正の奇数で $u<v$）．\n\n(3) (2) の条件のもとで $\\dfrac\\theta\\pi=\\dfrac u{2v}$（$u,v$ は互いに素）と表すと，$u$ が偶数なら約分した分母が $v$ になり，$v$ が偶数なら $u$ は奇数でなければならず（互いに素）$\\dfrac u{2v}$ の分母が4の倍数になって (2) の条件に反するので，$u,v$ はともに奇数で既約である．(2) の記号で $p=v-u$，$q=v$ であり，光線は $\\mathrm P_v$ で A に到達する．\n\n半円弧での反射は頂点 $\\mathrm P_1,\\dots,\\mathrm P_{v-1}$（どれも $x$ 軸上にない）で，$\\boldsymbol{v-1}$ 回．\n\n直径での反射：頂点の偏角 $0,\\alpha,2\\alpha,\\dots,v\\alpha=p\\pi$ は $\\alpha\\ (<\\pi)$ ずつ増える．弦 $\\mathrm P_k\\mathrm P_{k+1}$ に区間 $[k\\alpha,(k+1)\\alpha]$ を対応させる．$0<l\\pi<p\\pi$ となる $l\\pi$（$l=1,\\dots,p-1$）はどれも頂点の偏角ではないので，ちょうど1つの区間の内部に入り，区間の長さが $\\pi$ 未満なので各区間の内部には高々1つしか入らない．内部に $l\\pi$ を含む区間では両端の偏角が $(l\\pi-\\pi,l\\pi)$ と $(l\\pi,l\\pi+\\pi)$ にあるので両端の $y$ 座標は異符号で，弦は端点以外でちょうど1回 $x$ 軸を横切る．含まない区間では，両端が $x$ 軸の同じ側にあるか（$k=0$ と $k=v-1$ では一方の端点 $\\mathrm P_0$ または $\\mathrm P_v$ のみが $x$ 軸上），弦は端点以外で $x$ 軸と交わらない．よって直径での反射は $p-1=\\boldsymbol{v-u-1}$ 回．\n\n(4) 合計は $(v-1)+(v-u-1)=2v-u-2=19$，すなわち $u=2v-21$．$u,v$ は互いに素な正の奇数で $u<v$ だから $0<2v-21<v$ より $11\\leqq v\\leqq19$（$v$ は奇数）．$2v-21$ と $v$ の公約数は $21=2v-(2v-21)$ の約数でもあり，逆に $21$ と $v$ の公約数は $2v-21$ の約数でもあるから，$u,v$ が互いに素 $\\iff$ $v$ が $3,7$ の倍数でない．これをみたすのは $v=11,13,17,19$（$v=15$ は除く）で，$u=1,5,13,17$．よって\n\\[\\theta=\\boldsymbol{\\frac\\pi{22},\\ \\frac{5\\pi}{26},\\ \\frac{13\\pi}{34},\\ \\frac{17\\pi}{38}}.\\]\n\\hfill$\\square$"
+   }
+  ],
+  "idea": {
+   "tex": "円の内側で反射をくり返す光線は，どの弦も中心角が等しい（弦と半径のなす角が保たれる）ので，反射点は円周上を一定の角 $\\alpha$ ずつ回る．直径での反射は $x$ 軸に関する折り返しで消せるので，半円の中の光線は「円全体の中の光線を折りたたんだもの」になる．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) π-2θ\n(2) 記述\n(3) 記述\n(4) $\\theta$：{π/22, 5π/26, 13π/34, 17π/38}"
+  },
+  "methods": [],
+  "tags": [
+   "反射",
+   "折り返し",
+   "円周角",
+   "有理数",
+   "周期"
+  ],
+  "provenance": {
+   "created": "2026-11-10"
   },
   "quality": {
    "status": "published",
@@ -3487,6 +3095,1037 @@
   ],
   "provenance": {
    "created": "2026-11-14"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "X-MIX-087",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "X-20",
+  "level": 4,
+  "minutes": 35,
+  "theme": "$f(ab)=af(b)+bf(a)$ と符号の条件で決まる関数",
+  "topic": "$f(ab)=af(b)+bf(a)$ と符号の条件で決まる関数",
+  "statement": {
+   "tex": "実数全体で定義された関数 $f(x)$ が，すべての実数 $a$，$b$ に対して\n\\[f(ab)=af(b)+bf(a)\\]\nをみたし，さらに $f(2)=2$ であり，$x\\geqq1$ をみたすすべての実数 $x$ に対して $f(x)\\geqq0$ であるとする．\n\\begin{enumerate}\n  \\item $f(0)$，$f(1)$，$f(-1)$ を求めよ．また，すべての実数 $x$ に対して $f(-x)=-f(x)$ であることを示せ．\n  \\item $x>0$ とする．すべての正の整数 $n$ に対して $f(x^n)=nx^{n-1}f(x)$ であることを示せ．また $f\\!\\left(\\dfrac1x\\right)=-\\dfrac{f(x)}{x^2}$ であることを示せ．\n  \\item $f(x)$ をすべての実数 $x$ について求めよ．\n  \\item $\\displaystyle\\sum_{k=1}^nf\\!\\left(\\frac1{2^k}\\right)$ を $n$ の式で表せ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $f(0)=0$，$f(1)=0$，$f(-1)=0$，奇関数であることは証明　(2) 証明　(3) $x\\neq0$ のとき $f(x)=x\\log_2|x|$，$f(0)=0$　(4) $\\dfrac{n+2}{2^n}-2$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) $a=b=0$ とおくと $f(0)=0$．$a=b=1$ とおくと $f(1)=2f(1)$ より $f(1)=0$．$a=b=-1$ とおくと $f(1)=-2f(-1)$ より $f(-1)=0$．\nよって $\\boldsymbol{f(0)=f(1)=f(-1)=0}$．$a=-1$，$b=x$ とおくと $f(-x)=-f(x)+xf(-1)=-f(x)$．\\hfill$\\square$\n\n(2) $n=1$ で成り立つ．$f(x^n)=nx^{n-1}f(x)$ とすると\n\\[f(x^{n+1})=f(x^n\\cdot x)=x^nf(x)+xf(x^n)=x^nf(x)+nx^nf(x)=(n+1)x^nf(x).\\]\nよって帰納法ですべての $n$ で成り立つ．また $0=f(1)=f\\!\\left(x\\cdot\\dfrac1x\\right)=xf\\!\\left(\\dfrac1x\\right)+\\dfrac1xf(x)$ より $f\\!\\left(\\dfrac1x\\right)=-\\dfrac{f(x)}{x^2}$．\\hfill$\\square$\n\n(3) $x>0$ で $g(x)=\\dfrac{f(x)}x$ とおく．$x,y>0$ で関係式を $xy$ で割ると\n\\[g(xy)=g(x)+g(y).\\tag{a}\\]\n(2) より $g(x^n)=ng(x)$，$g\\!\\left(\\dfrac1x\\right)=-g(x)$，$g(1)=0$，$g(2)=1$．\n\n{\\bf 増加性．}$0<x<y$ なら $\\dfrac yx>1$ で $f\\!\\left(\\dfrac yx\\right)\\geqq0$ より $g\\!\\left(\\dfrac yx\\right)\\geqq0$．(a) より $g(y)=g(x)+g\\!\\left(\\dfrac yx\\right)\\geqq g(x)$．\n\n{\\bf 有理数乗．}整数 $p$ と正の整数 $q$ に対し $u=2^{\\frac pq}$ とおくと，$qg(u)=g(u^q)=g(2^p)$．$p\\geqq1$ なら $g(2^p)=pg(2)=p$，$p=0$ なら $0$，$p\\leqq-1$ なら $g(2^p)=-g(2^{-p})=p$．よって $g\\!\\left(2^{\\frac pq}\\right)=\\dfrac pq$．\n\n{\\bf 決定．}$x>0$ を任意にとり，$t=\\log_2x$ とする．$g(x)>t$ と仮定する．正の整数 $q$ を $q\\{g(x)-t\\}>1$ となるようにとり，$p=[qt]+1$（$[\\ ]$ はガウス記号で，$[s]$ は $s$ を超えない最大の整数を表す）とすると $qt<p\\leqq qt+1<qg(x)$．よって $t<\\dfrac pq<g(x)$．$x=2^t<2^{\\frac pq}$ だから増加性より $g(x)\\leqq g\\!\\left(2^{\\frac pq}\\right)=\\dfrac pq<g(x)$ で矛盾．\n$g(x)<t$ と仮定すると，同様に $q\\{t-g(x)\\}>1$ となる $q$ と $p=[qg(x)]+1$ をとれば $g(x)<\\dfrac pq<t$ で，$2^{\\frac pq}<x$ より $\\dfrac pq=g\\!\\left(2^{\\frac pq}\\right)\\leqq g(x)<\\dfrac pq$ で矛盾．\nよって $g(x)=\\log_2x$，すなわち $x>0$ で $f(x)=x\\log_2x$．$x<0$ では (1) より $f(x)=-f(-x)=-(-x)\\log_2(-x)=x\\log_2|x|$．\n\n{\\bf 確認．}逆に $f(x)=x\\log_2|x|$（$x\\neq0$），$f(0)=0$ とすると，$a,b\\neq0$ で $f(ab)=ab(\\log_2|a|+\\log_2|b|)=af(b)+bf(a)$，$a=0$ または $b=0$ では両辺0．$f(2)=2$，$x\\geqq1$ で $x\\log_2x\\geqq0$．よって条件をすべてみたす．\n\\[\\boldsymbol{f(x)=x\\log_2|x|\\ (x\\neq0),\\quad f(0)=0}\\]\n\n(4) $f\\!\\left(\\dfrac1{2^k}\\right)=\\dfrac1{2^k}\\log_2\\dfrac1{2^k}=-\\dfrac k{2^k}$．$T_n=\\displaystyle\\sum_{k=1}^n\\frac k{2^k}$ とすると $T_n-\\dfrac12T_n=\\displaystyle\\sum_{k=1}^n\\frac1{2^k}-\\frac n{2^{n+1}}=1-\\frac1{2^n}-\\frac n{2^{n+1}}$ より $T_n=2-\\dfrac{n+2}{2^n}$．\n\\[\\sum_{k=1}^nf\\!\\left(\\frac1{2^k}\\right)=\\boldsymbol{\\frac{n+2}{2^n}-2}\\]"
+   }
+  ],
+  "idea": {
+   "tex": "$f(ab)=af(b)+bf(a)$ は $x\\neq0$ で $g(x)=\\dfrac{f(x)}x$ とおくと $g(ab)=g(a)+g(b)$ という「対数型」の関係になる．原題は $f(2^{-n})$ の値と数列の和を求めるだけだが，捻りでは「$x\\geqq1$ で $f(x)\\geqq0$」を加えると $g$ が $x>0$ で増加（減少しない）関数になり，$2$ の有理数乗での値 $g(2^{p/q})=\\dfrac pq$ と増加性から，間に有理数をはさむ議論で $g(x)=\\log_2x$ がすべての $x>0$ で決まる．奇関数であることから負の側も決まる．"
+  },
+  "methods": [],
+  "tags": [
+   "関数方程式",
+   "対数関数",
+   "単調性",
+   "有理数による近似",
+   "数学的帰納法"
+  ],
+  "provenance": {
+   "created": "2026-11-22"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "X-MIX-088",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "X-20",
+  "level": 4,
+  "minutes": 35,
+  "theme": "$\\cos nx$ の差を $\\cos x$ の差で抑える",
+  "topic": "$\\cos nx$ の差を $\\cos x$ の差で抑える",
+  "statement": {
+   "tex": "$n$ を自然数とする．\n\\begin{enumerate}\n  \\item すべての実数 $x$，$y$ に対して\n  \\[|\\cos nx-\\cos ny|\\leqq n^2|\\cos x-\\cos y|\\]\n  が成り立つことを示せ．\n  \\item 正の数 $c$ が「すべての実数 $x$，$y$ に対して $|\\cos nx-\\cos ny|\\leqq c|\\cos x-\\cos y|$」をみたすならば，$c\\geqq n^2$ であることを示せ．\n  \\item $n\\geqq2$ とする．(1) の不等式で等号が成り立つための必要十分条件は $\\cos x=\\cos y$ であることを示せ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 証明　(2) 証明　(3) 証明"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "{\\bf 補題．}(a) すべての実数 $\\theta$ と自然数 $k$ に対して $|\\sin k\\theta|\\leqq k|\\sin\\theta|$．\n(b) $\\sin\\theta\\neq0$ のとき，2以上のすべての自然数 $k$ に対して $|\\sin k\\theta|<k|\\sin\\theta|$．\n\n(a) $k=1$ では等号で成り立つ．$k$ で成り立つとすると，加法定理と $|\\cos\\theta|\\leqq1$，$|\\cos k\\theta|\\leqq1$ より\n\\begin{align*}|\\sin(k+1)\\theta|&=|\\sin k\\theta\\cos\\theta+\\cos k\\theta\\sin\\theta|\\leqq|\\sin k\\theta||\\cos\\theta|+|\\cos k\\theta||\\sin\\theta|\\\\&\\leqq|\\sin k\\theta|+|\\sin\\theta|\\leqq(k+1)|\\sin\\theta|.\\end{align*}\n\n(b) $\\sin\\theta\\neq0$ なら $\\cos^2\\theta=1-\\sin^2\\theta<1$ より $|\\cos\\theta|<1$．$k=2$ では $|\\sin2\\theta|=2|\\sin\\theta||\\cos\\theta|<2|\\sin\\theta|$．$k$（$\\geqq2$）で成り立つとすると，(a) の計算の途中の式 $|\\sin(k+1)\\theta|\\leqq|\\sin k\\theta|+|\\sin\\theta|$ と仮定から $|\\sin(k+1)\\theta|<k|\\sin\\theta|+|\\sin\\theta|=(k+1)|\\sin\\theta|$．\\hfill$\\square$\n\n{\\bf 和積の変形．}$u=\\dfrac{x+y}2$，$v=\\dfrac{x-y}2$ とおくと $x=u+v$，$y=u-v$ であり，加法定理より\n\\begin{gather*}\\cos nx-\\cos ny=\\cos(nu+nv)-\\cos(nu-nv)=-2\\sin nu\\sin nv,\\\\ \\cos x-\\cos y=-2\\sin u\\sin v.\\tag{$*$}\\end{gather*}\n\n(1) 補題 (a) を $\\theta=u$，$\\theta=v$ に用いて\n\\[|\\cos nx-\\cos ny|=2|\\sin nu||\\sin nv|\\leqq2\\cdot n|\\sin u|\\cdot n|\\sin v|=n^2|\\cos x-\\cos y|.\\]\n\\hfill$\\square$\n\n(2) $0<t<\\dfrac\\pi2$ に対して $x=2t$，$y=0$ とおくと，$1-\\cos2nt=2\\sin^2nt$，$1-\\cos2t=2\\sin^2t$ より，仮定は $2\\sin^2nt\\leqq2c\\sin^2t$ となる．$\\sin t>0$ だから\n\\[c\\geqq\\left(\\frac{\\sin nt}{\\sin t}\\right)^2\\qquad\\left(0<t<\\frac\\pi2\\right).\\tag{1}\\]\n一方 $\\displaystyle\\lim_{s\\to0}\\frac{\\sin s}s=1$ より\n\\[\\lim_{t\\to+0}\\frac{\\sin nt}{\\sin t}=\\lim_{t\\to+0}n\\cdot\\frac{\\sin nt}{nt}\\cdot\\frac{t}{\\sin t}=n,\\qquad\\text{よって}\\quad\\lim_{t\\to+0}\\left(\\frac{\\sin nt}{\\sin t}\\right)^2=n^2.\\]\nもし $c<n^2$ なら，極限値 $n^2$ が $c$ より大きいので，十分0に近い $t$（$0<t<\\frac\\pi2$）で $\\left(\\dfrac{\\sin nt}{\\sin t}\\right)^2>c$ となり (1) に反する．よって $c\\geqq n^2$．\\hfill$\\square$\n\n(3) $\\cos x=\\cos y$ のとき：$(*)$ より $\\sin u\\sin v=0$，すなわち $\\sin u=0$ または $\\sin v=0$．補題 (a) より $\\sin nu=0$ または $\\sin nv=0$ となり，$(*)$ から $\\cos nx=\\cos ny$．よって両辺とも0で等号が成り立つ．\n\n$\\cos x\\neq\\cos y$ のとき：$(*)$ より $\\sin u\\neq0$ かつ $\\sin v\\neq0$．$n\\geqq2$ だから補題 (b) より $|\\sin nu|<n|\\sin u|$，また補題 (a) より $|\\sin nv|\\leqq n|\\sin v|$ で，$n|\\sin v|>0$ だから\n\\[|\\sin nu||\\sin nv|\\leqq|\\sin nu|\\cdot n|\\sin v|<n|\\sin u|\\cdot n|\\sin v|.\\]\n両辺を2倍して $(*)$ を用いると $|\\cos nx-\\cos ny|<n^2|\\cos x-\\cos y|$ で，等号は成り立たない．\n\n以上より，等号成立 $\\iff\\cos x=\\cos y$．\\hfill$\\square$"
+   }
+  ],
+  "idea": {
+   "tex": "加法定理と三角不等式から $|\\sin(k+1)\\theta|\\leqq|\\sin k\\theta|+|\\sin\\theta|$ となり，帰納法で $|\\sin n\\theta|\\leqq n|\\sin\\theta|$．原題はこの不等式そのものの証明だが，捻りでは和積の公式 $\\cos nx-\\cos ny=-2\\sin nu\\sin nv$（$u=\\frac{x+y}2$，$v=\\frac{x-y}2$）により2つの $\\sin$ に分け，この評価を2回使って $\\cos nx$ の差を $n^2$ 倍で抑える．定数 $n^2$ が下げられないことは $\\frac{\\sin nt}{\\sin t}\\to n$ で，等号の条件は「$\\sin\\theta\\neq0$ なら $n\\geqq2$ で不等号が真に成り立つ」ことを帰納法で示して決める．"
+  },
+  "methods": [],
+  "tags": [
+   "数学的帰納法",
+   "和積の公式",
+   "三角関数の不等式",
+   "等号成立条件",
+   "極限"
+  ],
+  "provenance": {
+   "created": "2026-11-22"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "X-MIX-089",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "X-20",
+  "level": 4,
+  "minutes": 35,
+  "theme": "傾き1以下の奇関数で等長になる区間の位置",
+  "topic": "傾き1以下の奇関数で等長になる区間の位置",
+  "statement": {
+   "tex": "区間 $-1\\leqq x\\leqq1$ で定義された関数 $f(x)$ が次の2条件をみたすとする．\n\\begin{itemize}\n  \\item[(i)] $f(-1)=f(1)=0$．\n  \\item[(ii)] $-1\\leqq u\\leqq1$，$-1\\leqq v\\leqq1$ をみたすすべての $u,v$ に対して $|f(u)-f(v)|\\leqq|u-v|$．\n\\end{itemize}\n\\begin{enumerate}\n  \\item $-1\\leqq x\\leqq1$ のとき $|f(x)|\\leqq1-|x|$ であることを示せ．\n  \\item $0<a<1$ とする．$a\\leqq u\\leqq1$，$a\\leqq v\\leqq1$ をみたすすべての $u,v$ に対して $|f(u)-f(v)|=|u-v|$ が成り立つならば，「$a\\leqq x\\leqq1$ のすべての $x$ で $f(x)=1-x$」または「$a\\leqq x\\leqq1$ のすべての $x$ で $f(x)=x-1$」であることを示せ．\n  \\item $0<a<1$ とする．(i)，(ii) に加えて次の3条件をみたす関数 $f(x)$ が存在するような $a$ の値の範囲を求めよ．\n  \\begin{itemize}\n    \\item[(iii)] $f(x)$ は奇関数である．\n    \\item[(iv)] $0\\leqq u\\leqq a$，$0\\leqq v\\leqq a$，$u\\neq v$ をみたすすべての $u,v$ に対して $|f(u)-f(v)|<|u-v|$．\n    \\item[(v)] $a\\leqq u\\leqq1$，$a\\leqq v\\leqq1$ をみたすすべての $u,v$ に対して $|f(u)-f(v)|=|u-v|$．\n  \\end{itemize}\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 証明　(2) 証明　(3) $\\dfrac12<a<1$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) (ii) で $u=x$，$v=1$ とおくと $|f(x)|=|f(x)-f(1)|\\leqq1-x$．$u=x$，$v=-1$ とおくと $|f(x)|=|f(x)-f(-1)|\\leqq x+1$．$x\\geqq0$ なら $1-|x|=1-x$，$x<0$ なら $1-|x|=1+x$ なので，いずれの場合も $|f(x)|\\leqq1-|x|$．\\hfill$\\square$\n\n(2) $a\\leqq x\\leqq1$ のとき，仮定で $u=x$，$v=1$ とおくと $|f(x)|=|f(x)-f(1)|=1-x$．よって各 $x$ について $f(x)=1-x$ または $f(x)=-(1-x)$．$x=1$ ではどちらも $0$ である．\n\n$a\\leqq x<1$，$a\\leqq y<1$ で $f(x)=1-x$，$f(y)=-(1-y)$ となる $x,y$ があったとする．$1-x>0$，$1-y>0$ より $x\\neq y$ で，\n\\[|f(x)-f(y)|=(1-x)+(1-y)=2-x-y.\\]\n仮定よりこれは $|x-y|$ に等しい．$x<y$ なら $2-x-y=y-x$ から $y=1$，$x>y$ なら $2-x-y=x-y$ から $x=1$ となり，いずれも矛盾．よって $a\\leqq x<1$ では $f(x)=1-x$ がすべてで成り立つか，$f(x)=x-1$ がすべてで成り立つかのどちらかであり，$x=1$ も含めて主張が成り立つ．\\hfill$\\square$\n\n(3) {\\bf 必要条件．}条件をみたす $f$ があるとする．(v) と (2) より $f(a)=1-a$ または $f(a)=a-1$ で，いずれにせよ $|f(a)|=1-a$．(iii) より $f(0)=-f(0)$，$f(0)=0$．(iv) で $u=a$，$v=0$ とおくと $|f(a)-f(0)|<a$，すなわち $1-a<a$．よって $a>\\dfrac12$．\n\n{\\bf 十分条件．}$\\dfrac12<a<1$ とし，$c=\\dfrac{1-a}a$ とおくと $0<c<1$．\n\\[f(x)=\\begin{cases}-1-x&(-1\\leqq x\\leqq-a)\\\\ cx&(-a\\leqq x\\leqq a)\\\\ 1-x&(a\\leqq x\\leqq1)\\end{cases}\\]\nと定める．$x=\\pm a$ では $ca=1-a$，$-ca=-1+a$ で2つの式の値が一致するので，$f$ は矛盾なく定義される．\n\\begin{itemize}\n  \\item (i)：$f(-1)=0$，$f(1)=0$．\n  \\item (iii)：$a\\leqq x\\leqq1$ なら $-x$ は $-1\\leqq -x\\leqq -a$ にあり $f(-x)=-1+x=-f(x)$．$|x|\\leqq a$ なら $f(-x)=-cx=-f(x)$．$-1\\leqq x\\leqq-a$ も同様．\n  \\item (iv)：$0\\leqq u,v\\leqq a$，$u\\neq v$ なら $|f(u)-f(v)|=c|u-v|<|u-v|$．\n  \\item (v)：$a\\leqq u,v\\leqq1$ なら $|f(u)-f(v)|=|(1-u)-(1-v)|=|u-v|$．\n  \\item (ii)：3つの区間 $I_1=[-1,-a]$，$I_2=[-a,a]$，$I_3=[a,1]$ のそれぞれで $f$ は傾き $-1,c,-1$ の1次関数なので，同じ区間内の $u,v$ では $|f(u)-f(v)|\\leqq|u-v|$．$u<v$ が異なる区間にあるときは，間にある区切りの点（$-a$ と $a$ のうち $u$ と $v$ の間にあるもの）を $u=z_0<z_1<\\cdots<z_l=v$ とはさむと，隣り合う $z_{j-1},z_j$ は同じ区間にあるので\n  \\[|f(v)-f(u)|\\leqq\\sum_{j=1}^l|f(z_j)-f(z_{j-1})|\\leqq\\sum_{j=1}^l(z_j-z_{j-1})=v-u.\\]\n\\end{itemize}\nよってこの $f$ はすべての条件をみたす．\n\n以上より求める範囲は $\\boldsymbol{\\dfrac12<a<1}$．"
+   }
+  ],
+  "idea": {
+   "tex": "$|f(u)-f(v)|\\leqq|u-v|$ と端点の値 $f(\\pm1)=0$ から $|f(x)|\\leqq1-|x|$．区間 $[a,1]$ で等号 $|f(u)-f(v)|=|u-v|$ が成り立つと，$v=1$ との比較で $f(x)=\\pm(1-x)$ となり，符号の混在は等号条件と両立しないので $f$ はその区間で1次関数に決まる．すると $|f(a)|=1-a$ と奇関数の $f(0)=0$ から「$[0,a]$ で真に小さい」条件が $1-a<a$ を要求する．原題は $a=\\dfrac12$ で存在しないことを示すだけだが，捻りでは区間の境目 $a$ を動かし，等長部分が1次関数になることの証明と，存在する $a$ の範囲の決定（折れ線による構成）を問う．"
+  },
+  "methods": [],
+  "tags": [
+   "関数の不等式",
+   "絶対値",
+   "奇関数",
+   "存在条件",
+   "折れ線関数の構成"
+  ],
+  "provenance": {
+   "created": "2026-11-22"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "X-MIX-090",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "X-20",
+  "level": 5,
+  "minutes": 45,
+  "theme": "余りが最小になるように順に組を作るときの組の数",
+  "topic": "余りが最小になるように順に組を作るときの組の数",
+  "statement": {
+   "tex": "有限個の正の数が与えられていて，どの数も $25$ 以下であり，その総和は $640$ である．これらの数を次の手順で組に分ける．\n\nまず，和が $100$ 以下となるように1個以上の数を選んで第1組とする．ただしその選び方は，$100$ から選んだ数の和を引いた値（これを第1組の{\\bf 余り}といい $r_1$ で表す）が，和が $100$ 以下となるすべての選び方の中で最小になるようにする（そのような選び方が複数あるときはどれを選んでもよい）．次に，第1組に入れた数を除いた残りの数から同じ規則で第2組を作り，その余りを $r_2$ とする．これを数がなくなるまでくり返し，最後にできた組を第 $N$ 組，その余りを $r_N$ とする．\n\\begin{enumerate}\n  \\item $r_1\\leqq r_2\\leqq\\cdots\\leqq r_N$ を示せ．また $1\\leqq n<N$ のとき，第 $n$ 組を作ったあとに残っている数はどれも $r_n$ より大きいこと，および第 $N$ 組以外の組はどれも4個以上の数を含むことを示せ．\n  \\item $2\\leqq n<N$ のとき，$r_{n-1}>\\dfrac{100n-640}{n-1}$ が成り立つことを示せ．\n  \\item $N\\leqq8$ であることを示せ．また，$N=8$ となるような数の例を1つ挙げ，実際に $N=8$ となることを確かめよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 証明　(2) 証明　(3) $N\\leqq8$（証明）．例：$\\dfrac{640}{31}$ を31個（4個ずつ7組と3個の組で $N=8$）"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "各段階で，残っている数から和が $100$ 以下となる選び方は有限個で，各数は $25$ 以下だから1個だけ選ぶ選び方は必ずある．よって余りを最小にする選び方が存在し，手順は定まる．第 $n$ 組の数の和を $s_n$ とすると $r_n=100-s_n\\geqq0$ である．\n\n(1) {\\bf 余りの単調性．}$1\\leqq n<N$ とする．第 $n+1$ 組の数は，第 $n$ 組を作る時点ですべて残っていて，その和 $s_{n+1}$ は $100$ 以下である．よって第 $n$ 組を作るとき「第 $n+1$ 組の数をそのまま選ぶ」ことも可能で，余りの最小性から $r_n\\leqq100-s_{n+1}=r_{n+1}$．したがって $r_1\\leqq r_2\\leqq\\cdots\\leqq r_N$．\n\n{\\bf 残りの数は余りより大きい．}$1\\leqq n<N$ のとき，第 $n$ 組を作ったあとに残っている数 $x$ で $x\\leqq r_n$ となるものがあったとする．第 $n$ 組に $x$ を加えた選び方は和が $s_n+x\\leqq100$ で，余りは $r_n-x<r_n$ となり，最小性に反する．よって残りの数はどれも $r_n$ より大きい．\n\n{\\bf 4個以上．}$1\\leqq n<N$ のとき，第 $n$ 組が3個以下の数からなるとすると $s_n\\leqq75$ で $r_n\\geqq25$．$n<N$ より残りの数があり，それは $25$ 以下だから $r_n$ 以下となって，上で示したことに反する．よって第 $N$ 組以外の組は4個以上の数を含む．\\hfill$\\square$\n\n(2) $2\\leqq n<N$ とする．第1組から第 $n$ 組までの和は $\\displaystyle\\sum_{i=1}^n s_i=100n-\\sum_{i=1}^n r_i$．第 $n$ 組を作ったあとに残っている数は1個以上あり，(1) よりどれも $r_n$ より大きいので，その和は $r_n$ より大きい．したがって\n\\[640>100n-\\sum_{i=1}^n r_i+r_n=100n-\\sum_{i=1}^{n-1}r_i\\geqq100n-(n-1)r_{n-1}\\]\n（最後は (1) の $r_i\\leqq r_{n-1}$ による）．$n-1>0$ で割って $r_{n-1}>\\dfrac{100n-640}{n-1}$．\\hfill$\\square$\n\n(3) {\\bf $N\\leqq8$．}$N\\geqq9$ と仮定する．(2) で $n=8$（$<N$）とすると $r_7>\\dfrac{800-640}7=\\dfrac{160}7$．(1) より第7組を作ったあとに残る数はどれも $r_7$ より大きく，とくに第8組の数はどれも $\\dfrac{160}7$ より大きい．$8<N$ だから第8組は (1) より4個以上の数を含み，\n\\[s_8>4\\cdot\\frac{160}7=\\frac{640}7,\\qquad r_8=100-s_8<\\frac{60}7<\\frac{160}7<r_7\\]\nとなって，(1) の $r_7\\leqq r_8$ に反する．よって $\\boldsymbol{N\\leqq8}$．\n\n{\\bf $N=8$ の例．}$\\boldsymbol{\\dfrac{640}{31}}$ という数を $\\boldsymbol{31}$ 個とる．$\\dfrac{640}{31}<\\dfrac{775}{31}=25$ でどれも $25$ 以下，総和は $640$ である．$k$ 個選んだときの和は $\\dfrac{640k}{31}$ で，これが $100$ 以下 $\\iff640k\\leqq3100\\iff k\\leqq4$．残りが4個以上あるとき，余り $100-\\dfrac{640k}{31}$ は $k$ が大きいほど小さいので，最小となるのは4個選ぶとき（余り $\\dfrac{540}{31}$）に限る．よって第1組から第7組まで4個ずつ選ばれて $28$ 個を使い，残り3個（和 $\\dfrac{1920}{31}\\leqq100$）は第8組で3個とも選ばれる（3個とも選ぶのが余り最小）．したがってこの例で $N=8$ となる．\\hfill$\\square$"
+   }
+  ],
+  "idea": {
+   "tex": "「余りが最小になる選び方」をくり返す組分けでは，(i) 後の組は前の段階でも選べたので余りは単調に増加し，(ii) 残った数はどれもその段階の余りより大きい（さもなければ加えて余りを減らせる）．全体の和から「$n$ 組目までの和＋残り」を評価すると $r_{n-1}>\\dfrac{100n-L}{n-1}$ が得られ，余りが大きいと次の組に入る数も大きくなって個数が足りなくなる．原題（各数 $\\leqq\\frac13\\cdot$容量）は組の数の上からの評価を示すだけだが，捻りでは各数 $\\leqq\\frac14\\cdot$容量で「4個以上」の性質を使い，さらに全部等しい数の例でその上からの評価が実際に達成されることを示す．"
+  },
+  "methods": [],
+  "tags": [
+   "組分け",
+   "最小性の利用",
+   "余りの単調性",
+   "背理法",
+   "最良性の例"
+  ],
+  "provenance": {
+   "created": "2026-11-22"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "X-MIX-091",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "X-20",
+  "level": 3,
+  "minutes": 30,
+  "theme": "線対称と点対称をあわせもつ関数の零点",
+  "topic": "線対称と点対称をあわせもつ関数の零点",
+  "statement": {
+   "tex": "実数全体で定義された関数 $f(x)$ が，すべての実数 $x$ に対して\n\\[f(2-x)=f(2+x),\\qquad f(7-x)=-f(7+x)\\]\nをみたしている．\n\\begin{enumerate}\n  \\item すべての実数 $x$ に対して $f(x+10)=-f(x)$ が成り立つことを示せ．また $f(x+20)=f(x)$ を示せ．\n  \\item さらに，$2\\leqq x\\leqq7$ の範囲で $f(x)=0$ となる $x$ は $x=3$ と $x=7$ だけであるとする．このとき $f(x)$ は偶関数でも奇関数でもないことを示せ．\n  \\item (2) の条件のもとで，方程式 $f(x)=0$ の$-2005\\leqq x\\leqq2005$ の範囲にある解の個数を求めよ．また，(2) の条件をすべてみたす関数 $f(x)$ が実際に存在することを示せ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 証明　(2) 証明　(3) $1203$ 個（例：$f(x)=\\cos\\dfrac{\\pi(x-2)}{10}\\left\\{\\cos\\dfrac{\\pi(x-2)}5-\\cos\\dfrac\\pi5\\right\\}$）"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) $f(2-x)=f(2+x)$ で $x$ を $x-2$ におきかえると\n\\[f(4-x)=f(x)\\qquad(\\text{すべての }x).\\tag{i}\\]\n$f(7-x)=-f(7+x)$ で $x$ を $x-7$ におきかえると\n\\[f(14-x)=-f(x)\\qquad(\\text{すべての }x).\\tag{ii}\\]\n(i) を $14-x$ に用いると $f(4-(14-x))=f(14-x)$，すなわち $f(x-10)=f(14-x)=-f(x)$．$x$ を $x+10$ におきかえて $f(x)=-f(x+10)$，つまり $f(x+10)=-f(x)$．これを2回用いて $f(x+20)=-f(x+10)=f(x)$．\\hfill$\\square$\n\n(2) {\\bf 偶関数でないこと．}$f$ が偶関数とすると，(i) より $f(x+4)=f(4-(-x))=f(-x)=f(x)$．すると (1) より $-f(x)=f(x+10)=f((x+2)+8)=f(x+2)$，すなわち $f(x+2)=-f(x)$．$x=3$ とおくと $f(5)=-f(3)=0$ となるが，$2\\leqq5\\leqq7$ で $3,7$ と異なるので仮定に反する．\n\n{\\bf 奇関数でないこと．}$f$ が奇関数とすると，(i) より $f(x+4)=f(-x)=-f(x)$．これを5回用いると $f(x+20)=(-1)^5f(x)=-f(x)$．(1) の $f(x+20)=f(x)$ と合わせて $f(x)=0$ がすべての $x$ で成り立つが，$f(2)\\neq0$（$2\\leqq2\\leqq7$，$2\\neq3,7$）に反する．\n\nよって $f$ は偶関数でも奇関数でもない．\\hfill$\\square$\n\n(3) {\\bf $-3\\leqq x\\leqq7$ の零点．}$-3\\leqq x\\leqq2$ のとき $2\\leqq4-x\\leqq7$ で，(i) より $f(x)=f(4-x)$ だから，$f(x)=0\\iff4-x\\in\\{3,7\\}\\iff x\\in\\{1,-3\\}$．仮定と合わせて，$-3\\leqq x\\leqq7$ における零点は $x=-3,\\ 1,\\ 3,\\ 7$ である．\n\n{\\bf すべての零点．}任意の実数 $x$ は，整数 $k$ と $-3\\leqq y<7$ をみたす $y$ を用いて $x=y+10k$ とただ1通りに表せる．(1) をくり返し用いると $f(x)=(-1)^kf(y)$（$k<0$ のときは $f(y)=-f(y-10)$ を用いる）なので，$f(x)=0\\iff f(y)=0\\iff y\\in\\{-3,1,3\\}$．よって零点全体は\n\\[x=10k-3,\\quad 10k+1,\\quad 10k+3\\qquad(k\\text{ は整数}).\\]\n\n{\\bf 個数．}$-2005\\leqq10k-3\\leqq2005\\iff-200.2\\leqq k\\leqq200.8\\iff-200\\leqq k\\leqq200$ で $401$ 個．$-2005\\leqq10k+1\\leqq2005\\iff-200.6\\leqq k\\leqq200.4$ で $401$ 個．$-2005\\leqq10k+3\\leqq2005\\iff-200.8\\leqq k\\leqq200.2$ で $401$ 個．3つの形の数は10で割った余りが $7,1,3$ と異なるので重複はなく，合計 $\\boldsymbol{1203}$ {\\bf 個}．\n\n{\\bf 存在．}\n\\[g(x)=\\cos\\frac{\\pi(x-2)}{10},\\qquad h(x)=\\cos\\frac{\\pi(x-2)}5-\\cos\\frac\\pi5,\\qquad f(x)=g(x)h(x)\\]\nとおく．$g(4-x)=\\cos\\dfrac{\\pi(2-x)}{10}=g(x)$，$h(4-x)=h(x)$ より $f(4-x)=f(x)$ で，これは $f(2-x)=f(2+x)$ と同値．また\n\\[g(14-x)=\\cos\\left(\\frac{\\pi(x-2)}{10}-\\pi\\right)=-g(x),\\qquad h(14-x)=\\cos\\left(\\frac{\\pi(x-2)}5-2\\pi\\right)-\\cos\\frac\\pi5=h(x)\\]\nより $f(14-x)=-f(x)$ で，これは $f(7-x)=-f(7+x)$ と同値．\n\n$2\\leqq x\\leqq7$ のとき $0\\leqq u=\\dfrac{\\pi(x-2)}{10}\\leqq\\dfrac\\pi2$ で $g(x)=\\cos u=0\\iff u=\\dfrac\\pi2\\iff x=7$．また $0\\leqq v=\\dfrac{\\pi(x-2)}5\\leqq\\pi$ で，$\\cos$ は $0\\leqq v\\leqq\\pi$ で減少するから $h(x)=0\\iff\\cos v=\\cos\\dfrac\\pi5\\iff v=\\dfrac\\pi5\\iff x=3$．よって $2\\leqq x\\leqq7$ で $f(x)=0$ となるのは $x=3,7$ だけであり，この $f$ は条件をすべてみたす．"
+   }
+  ],
+  "idea": {
+   "tex": "グラフが2つの対称の中心（軸）をもつと，2つの対称移動の合成が平行移動になり，関数は周期をもつ．直線 $x=a$ に関する線対称と点 $(b,0)$ に関する点対称を合成すると $f(x+2(b-a))=-f(x)$ となり，周期は $4(b-a)$ である．原題は2本の対称軸（周期10）だったが，捻りでは線対称と点対称の組合せにして符号の反転を扱い，偶関数・奇関数でないことの証明と，1周期分の零点からの零点の個数の決定，さらに条件をみたす関数の存在まで示す．"
+  },
+  "methods": [],
+  "tags": [
+   "関数の対称性",
+   "周期関数",
+   "偶関数と奇関数",
+   "零点の個数"
+  ],
+  "provenance": {
+   "created": "2026-11-22"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "X-MIX-092",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "X-20",
+  "level": 5,
+  "minutes": 40,
+  "theme": "値がつねに不動点になる関数方程式",
+  "topic": "値がつねに不動点になる関数方程式",
+  "statement": {
+   "tex": "実数全体で定義された関数 $f(x)$ が，すべての実数 $x$ に対して\n\\[\nf\\bigl(f(x)-x^2+1\\bigr)=f(x)-x^2+1\\qquad\\cdots(*)\n\\]\nをみたし，さらに方程式 $f(x)=x$ の実数解はちょうど2個であるとする．\n\\begin{enumerate}\n  \\item $f(x)$ が連続関数であるとき，$f(x)$ を求めよ．\n  \\item $f(x)$ の連続性を仮定しないとき，方程式 $f(x)=x$ の2個の実数解の組としてありうるものをすべて求めよ．\n  \\item $f(x)$ の連続性を仮定しないとき，$f(3)$ のとりうる値をすべて求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $f(x)=x^2$ または $f(x)=x^2-2$　(2) $\\{-1,1\\}$，$\\{0,1\\}$，$\\{-1,2\\}$　(3) $7,\\ 8,\\ 9,\\ 10$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "$c(x)=f(x)-x^2+1$ とおき，方程式 $f(x)=x$ の実数解の集合を $A$ とする．$(*)$ は「すべての $x$ で $f(c(x))=c(x)$」，すなわち\n\\[\n\\text{すべての実数 $x$ に対して}\\ c(x)\\in A\\qquad\\cdots(\\dagger)\n\\]\nと同値である．また $f(x)=x^2-1+c(x)$ である．\n\n(1) $A=\\{p,q\\}$（$p<q$）とする．$c(x)=f(x)-x^2+1$ は連続で，$(\\dagger)$ より値は $p,q$ のどちらかである．もし $c(s)=p$，$c(t)=q$ となる $s,t$ があれば，中間値の定理により $s,t$ の間に $c(u)=\\dfrac{p+q}2$ となる $u$ があるが，$\\dfrac{p+q}2\\notin A$ で $(\\dagger)$ に反する．よって $c(x)$ は定数 $k\\in A$ で，$f(x)=x^2-1+k$．$k\\in A$ より $f(k)=k$，すなわち $k^2-1+k=k$ で $k=\\pm1$．\n\\begin{itemize}\n  \\item $k=1$：$f(x)=x^2$．$f(x)=x\\iff x=0,1$ でちょうど2個，$A=\\{0,1\\}$ で $k=1\\in A$ だから $(\\dagger)$ も成り立つ．\n  \\item $k=-1$：$f(x)=x^2-2$．$f(x)=x\\iff x^2-x-2=0\\iff x=-1,2$ でちょうど2個，$k=-1\\in A$ で $(\\dagger)$ も成り立つ．\n\\end{itemize}\nよって $\\boldsymbol{f(x)=x^2}$ または $\\boldsymbol{f(x)=x^2-2}$．\n\n(2) $A=\\{p,q\\}$（$p\\neq q$）とする．$f(p)=p$ は $p^2-1+c(p)=p$，すなわち $c(p)=p-p^2+1$ であり，同様に $c(q)=q-q^2+1$．さらに $(\\dagger)$ より $c(p),c(q)\\in\\{p,q\\}$．\n\\begin{itemize}\n  \\item $c(p)=p$，$c(q)=q$ のとき：$p^2=1$，$q^2=1$ で $p\\neq q$ だから $\\{p,q\\}=\\{-1,1\\}$．\n  \\item $c(p)=p$，$c(q)=p$ のとき：$p^2=1$ かつ $q-q^2+1=p$，すなわち $q^2-q+p-1=0$．$p=1$ なら $q^2-q=0$ で $q\\neq1$ より $q=0$．$p=-1$ なら $q^2-q-2=0$ で $q\\neq-1$ より $q=2$．よって $\\{0,1\\}$ または $\\{-1,2\\}$．\n  \\item $c(p)=q$，$c(q)=q$ のとき：$p$ と $q$ の役割を入れかえると前の場合と同じで，$\\{0,1\\}$ または $\\{-1,2\\}$．\n  \\item $c(p)=q$，$c(q)=p$ のとき：$q=p-p^2+1$，$p=q-q^2+1$．辺々引くと $q-p=(p-q)-(p^2-q^2)=(p-q)(1-p-q)$．$q-p\\neq0$ で割ると $1=-(1-p-q)$，すなわち $p+q=2$．$q=2-p$ を代入して $2-p=p-p^2+1$，$(p-1)^2=0$ で $p=1$，$q=1$ となり $p\\neq q$ に反する．\n\\end{itemize}\nよって $A$ は $\\{-1,1\\}$，$\\{0,1\\}$，$\\{-1,2\\}$ のいずれかである．逆に，$\\{0,1\\}$ は $f(x)=x^2$，$\\{-1,2\\}$ は $f(x)=x^2-2$ で実現される（(1)）．$\\{-1,1\\}$ については\n\\[\nf(x)=\\begin{cases}x^2-2&(x=-1,\\ 0)\\\\ x^2&(x\\neq-1,\\ 0)\\end{cases}\n\\]\nとする．$f(-1)=-1$，$f(0)=-2\\neq0$ で，$x\\neq-1,0$ では $f(x)=x\\iff x^2=x\\iff x=1$（$x=0$ は除かれている）．よって $A=\\{-1,1\\}$．また $c(x)$ は $x=-1,0$ で $-1$，それ以外で $1$ だから $(\\dagger)$ が成り立ち，$(*)$ をみたす．\n\n以上より，答えは $\\boldsymbol{\\{-1,1\\},\\ \\{0,1\\},\\ \\{-1,2\\}}$．\n\n(3) $f(3)=9-1+c(3)=8+c(3)$ で，$c(3)\\in A$．(2) より $A\\subset\\{-1,0,1,2\\}$ だから $f(3)\\in\\{7,8,9,10\\}$．逆に，各値は次の関数で実現される．\n\\begin{itemize}\n  \\item $f(x)=x^2-2$：$f(3)=7$．$f(x)=x^2$：$f(3)=9$．（(1)）\n  \\item $f(x)=x^2\\ (x\\neq3)$，$f(3)=8$：$x\\neq3$ での解は $0,1$，$f(3)=8\\neq3$ だから $A=\\{0,1\\}$．$c(x)$ は $x\\neq3$ で $1$，$c(3)=0$ で，いずれも $A$ に入るので $(*)$ をみたす．\n  \\item $f(x)=x^2-2\\ (x\\neq3)$，$f(3)=10$：$x\\neq3$ での解は $-1,2$，$f(3)=10\\neq3$ だから $A=\\{-1,2\\}$．$c(x)$ は $x\\neq3$ で $-1$，$c(3)=2$ で，いずれも $A$ に入るので $(*)$ をみたす．\n\\end{itemize}\nよって $f(3)$ のとりうる値は $\\boldsymbol{7,\\ 8,\\ 9,\\ 10}$．"
+   }
+  ],
+  "idea": {
+   "tex": "$f(\\varphi(x))=\\varphi(x)$ の形の関数方程式では，$c(x)=\\varphi(x)$ の値がつねに「$f(x)=x$ の解の集合」$A$ に入ることと方程式が同値になる．逆に $f$ は $c(x)$ を通して $f(x)=x^2-1+c(x)$ と表され，$A$ の各要素 $p$ について「$c(p)\\in A$ かつ $f(p)=p$」という有限個の条件に帰着する．原題は不動点がただ1つの場合で $c$ が定数になり $f$ が決まるが，捻りでは不動点をちょうど2個とし，連続なら中間値の定理で $c$ が定数になって2通りの $f$ が得られること，連続性がなければ $c(p),c(q)$ の4通りの組合せから不動点の組が3通りに決まり，各組を実現する関数を具体的に作れることを見る．"
+  },
+  "methods": [],
+  "tags": [
+   "関数方程式",
+   "不動点",
+   "中間値の定理",
+   "場合分け",
+   "構成"
+  ],
+  "provenance": {
+   "created": "2026-11-22"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "X-MIX-079",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "X-20",
+  "level": 4,
+  "minutes": 40,
+  "theme": "並べかえを係数にもつ $q$ のべきの和が一致しない条件",
+  "topic": "並べかえを係数にもつ $q$ のべきの和が一致しない条件",
+  "statement": {
+   "tex": "$n$ を2以上の整数とする．$1,2,\\cdots,n$ を1列に並べた並べかえ $(k_1,k_2,\\cdots,k_n)$ と正の実数 $q$ に対して\n\\[F_q(k_1,k_2,\\cdots,k_n)=k_1+k_2q+k_3q^2+\\cdots+k_nq^{n-1}\\]\nと定める．\n\\begin{enumerate}\n  \\item $q\\geqq n$ のとき，異なる2つの並べかえ $(k_1,\\cdots,k_n)$，$(l_1,\\cdots,l_n)$ に対して $F_q(k_1,\\cdots,k_n)\\neq F_q(l_1,\\cdots,l_n)$ であることを示せ．\n  \\item $n=4$ とする．$q\\geqq3$ をみたす実数 $q$ のうちで，異なる2つの並べかえ $(k_1,k_2,k_3,k_4)$，$(l_1,l_2,l_3,l_4)$ であって $F_q(k_1,k_2,k_3,k_4)=F_q(l_1,l_2,l_3,l_4)$ となるものが存在するような $q$ をすべて求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 証明　(2) $q=3$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "2つの並べかえを $(k_1,\\cdots,k_n)$，$(l_1,\\cdots,l_n)$ とし，$e_i=k_i-l_i$（$i=1,\\cdots,n$）とおく．$k_i$，$l_i$ はともに $1$ 以上 $n$ 以下の整数なので，$e_i$ は整数で $|e_i|\\leqq n-1$ である．また $k_1+\\cdots+k_n=l_1+\\cdots+l_n=1+2+\\cdots+n$ より\n\\[e_1+e_2+\\cdots+e_n=0.\\tag{$*$}\\]\nさらに\n\\[D=F_q(k_1,\\cdots,k_n)-F_q(l_1,\\cdots,l_n)=\\sum_{i=1}^ne_iq^{i-1}\\]\nである．\n\n(1) 2つの並べかえが異なるので，$e_i\\neq0$ となる $i$ がある．そのような $i$ のうち最大のものを $m$ とすると，$i>m$ では $e_i=0$ だから\n\\[D=e_mq^{m-1}+\\sum_{i=1}^{m-1}e_iq^{i-1}.\\]\n$m=1$ とすると $e_1\\neq0$ で $e_2=\\cdots=e_n=0$ となり，($*$) に反する．よって $m\\geqq2$ である．\n\n$q\\geqq n\\geqq2$ より $q-1\\geqq n-1>0$ だから，等比数列の和の公式により\n\\[\\left|\\sum_{i=1}^{m-1}e_iq^{i-1}\\right|\\leqq(n-1)\\sum_{i=1}^{m-1}q^{i-1}=(n-1)\\cdot\\frac{q^{m-1}-1}{q-1}\\leqq(q-1)\\cdot\\frac{q^{m-1}-1}{q-1}=q^{m-1}-1.\\]\n一方，$e_m$ は0でない整数なので $|e_mq^{m-1}|\\geqq q^{m-1}$．したがって\n\\[|D|\\geqq|e_mq^{m-1}|-\\left|\\sum_{i=1}^{m-1}e_iq^{i-1}\\right|\\geqq q^{m-1}-(q^{m-1}-1)=1>0.\\]\nよって $F_q(k_1,\\cdots,k_n)\\neq F_q(l_1,\\cdots,l_n)$ である．\\hfill$\\square$\n\n(2) $n=4$ とする．このとき $|e_i|\\leqq3$ である．\n\n{\\bf $q=3$ で一致が起こること．}$(k_1,k_2,k_3,k_4)=(4,2,1,3)$，$(l_1,l_2,l_3,l_4)=(1,3,4,2)$ とすると，\n\\[F_3(4,2,1,3)=4+2\\cdot3+1\\cdot9+3\\cdot27=100,\\qquad F_3(1,3,4,2)=1+3\\cdot3+4\\cdot9+2\\cdot27=100\\]\nで，異なる並べかえに対して値が一致する．\n\n{\\bf $q>3$ では一致が起こらないこと．}$q>3$ とし，2つの並べかえは異なるとする．($*$) より $D=D-(e_1+e_2+e_3+e_4)$ だから\n\\[D=\\sum_{i=1}^4e_i(q^{i-1}-1)=e_2(q-1)+e_3(q^2-1)+e_4(q^3-1)=(q-1)G,\\]\n\\[G=e_2+e_3(q+1)+e_4(q^2+q+1).\\]\n$q-1>0$ なので，$G\\neq0$ を示せばよい．\n\n(i) $e_4=0$，$e_3=0$ のとき．$G=e_2$ である．$e_2=0$ とすると ($*$) より $e_1=0$ となり，2つの並べかえが一致して仮定に反する．よって $G=e_2\\neq0$．\n\n(ii) $e_4=0$，$e_3\\neq0$ のとき．$|e_3(q+1)|\\geqq q+1>4>3\\geqq|e_2|$ なので $G=e_2+e_3(q+1)\\neq0$．\n\n(iii) $e_4\\neq0$ のとき．2つの並べかえの役割を入れかえると，すべての $e_i$ の符号が変わり $G$ は $-G$ になるので，$e_4\\geqq1$ の場合に $G>0$ を示せばよい．$e_2\\geqq-3$，$e_3\\geqq-3$ に注意する．\n\\begin{itemize}\n  \\item $e_4\\geqq2$ のとき：$G\\geqq-3-3(q+1)+2(q^2+q+1)=2q^2-q-4=q(2q-1)-4>3\\cdot5-4>0$．\n  \\item $e_4=1$，$e_3\\geqq-2$ のとき：$G\\geqq-3-2(q+1)+(q^2+q+1)=q^2-q-4=q(q-1)-4>3\\cdot2-4>0$．\n  \\item $e_4=1$，$e_3=-3$ のとき：$k_3-l_3=-3$ と $1\\leqq k_3$，$l_3\\leqq4$ から $k_3=1$，$l_3=4$．並べかえでは同じ数は1回しか現れないので，$k_2\\neq1$ より $k_2\\geqq2$，$l_2\\neq4$ より $l_2\\leqq3$ で，$e_2=k_2-l_2\\geqq-1$．よって\n  \\[G\\geqq-1-3(q+1)+(q^2+q+1)=q^2-2q-3=(q-3)(q+1)>0.\\]\n\\end{itemize}\nいずれの場合も $G\\neq0$ なので $D\\neq0$ である．\n\n以上より，求める $q$ は $\\boldsymbol{q=3}$ のみである．\n\n（(1) の評価だけでは $n=4$ で $q\\geqq4$ までしか保証されない．($*$) を使って $q-1$ でくくると，$e_4=1$，$e_3=-3$ の場合を除いて $q>3$ で十分になり，最後の場合も「同じ数を2か所で使えない」ことで $e_2\\geqq-1$ と改善されて，境目がちょうど $q=3$ になる．）"
+   }
+  ],
+  "idea": {
+   "tex": "$1,2,\\cdots,n$ の2つの並べかえを係数とする $q$ のべきの和の差は $\\sum e_iq^{i-1}$（$e_i$ は係数の差で $|e_i|\\leqq n-1$）であり，0でない最大の番号の項が残りの項の和の大きさを上回るので0にならない（$q$ 進法の表し方がただ1通りであることと同じ評価）．原題は「等差数列 $\\times$ 等比数列」の和でこの評価を $q\\geqq n$ の場合に使うだけだが，捻りでは $q\\geqq n$ という条件が最良かを $n=4$ で調べる．係数の差の和が0であることを使って $\\sum e_i(q^{i-1}-1)$ と書き直し $q-1$ でくくると，評価がずっと鋭くなり，係数の差が並べかえから来るという制約（同じ数を2か所で使えない）まで使うと，一致が起こる $q\\geqq3$ はちょうど $q=3$ だけであることがわかる．"
+  },
+  "methods": [],
+  "tags": [
+   "並べかえ",
+   "最上位の項の評価",
+   "等比数列の和",
+   "場合分け",
+   "最良の値"
+  ],
+  "provenance": {
+   "created": "2026-11-22"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "X-MIX-080",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "X-20",
+  "level": 5,
+  "minutes": 40,
+  "theme": "3行の数表で行の和・列の和の絶対値の最小を大きくする",
+  "topic": "3行の数表で行の和・列の和の絶対値の最小を大きくする",
+  "statement": {
+   "tex": "$n$ を3または4とする．3行 $n$ 列に実数を並べた数表 $A$ で，次の2つの条件をみたすものを考える．\n\\begin{itemize}\n  \\item 各成分の絶対値は1以下である．\n  \\item すべての成分の和は0である．\n\\end{itemize}\n$A$ の第 $i$ 行の成分の和を $r_i$（$i=1,2,3$），第 $j$ 列の成分の和を $c_j$（$j=1,\\cdots,n$）とし，$n+3$ 個の数 $|r_1|,|r_2|,|r_3|,|c_1|,\\cdots,|c_n|$ のうちで最小のものを $k(A)$ とする．\n\\begin{enumerate}\n  \\item $n=3$ のとき，$k(A)$ の最大値を求めよ．\n  \\item $n=4$ のとき，$k(A)$ の最大値を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $\\dfrac54$　(2) $\\dfrac32$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "$k=k(A)$ とおき，$A$ の第 $i$ 行第 $j$ 列の成分を $a_{ij}$ とする．$n=3,4$ をまとめて扱う．\n\n{\\bf 上からの評価．}$k>0$ の場合を考える（$k=0$ なら以下の値以下であることは明らか）．すべての $r_i,c_j$ は0でない．$r_1+r_2+r_3=0$ より行の和には正のものと負のものがある．必要なら全成分の符号を変える（条件も $k(A)$ も変わらない）ことで，正の行がちょうど2つであるとしてよい．行を並べかえて $r_1,r_2>0>r_3$ とすると，$r_1,r_2\\geqq k$ より\n\\[r_3=-(r_1+r_2)\\leqq-2k.\\quad\\cdots\\text{①}\\]\n列の和も合計0なので正と負の両方があり，正の列の個数を $p$（$1\\leqq p\\leqq n-1$）とする．各成分は $-1$ 以上1以下である．\n\n(i) $p\\geqq2$ のとき．正の列 $j$ では $c_j\\geqq k$ より $a_{3j}=c_j-a_{1j}-a_{2j}\\geqq k-2$．負の列では $a_{3j}\\geqq-1$．よって\n\\[r_3\\geqq p(k-2)-(n-p).\\]\n① と合わせて $p(k-2)-(n-p)\\leqq-2k$，すなわち $(p+2)k\\leqq n+p$ で\n\\[k\\leqq\\frac{n+p}{p+2}=1+\\frac{n-2}{p+2}\\leqq1+\\frac{n-2}4=\\frac{n+2}4.\\]\n\n(ii) $p=1$ のとき．正の列を第 $j_0$ 列とすると，他の $n-1$ 列の和はどれも $-k$ 以下なので $c_{j_0}\\geqq(n-1)k$．よって $a_{3j_0}\\geqq(n-1)k-2$．第3行の他の $n-1$ 個の成分は $-1$ 以上だから\n\\[r_3\\geqq(n-1)k-2-(n-1).\\]\n① と合わせて $(n+1)k\\leqq n+1$，すなわち $k\\leqq1$．\n\n$n=3,4$ では $\\dfrac{n+2}4>1$ なので，いずれの場合も $k\\leqq\\dfrac{n+2}4$．\n\n{\\bf 等号の実現．}(1) $n=3$：\n数表 $A$ を\n\\[\\begin{array}{|c|c|c|}\\hline 1&1&-\\frac34\\\\ \\hline 1&1&-\\frac34\\\\ \\hline -\\frac34&-\\frac34&-1\\\\ \\hline\\end{array}\\]\nとすると，$A$ は各成分の絶対値が1以下である．行の和は $\\dfrac54,\\dfrac54,-\\dfrac52$，列の和も $\\dfrac54,\\dfrac54,-\\dfrac52$ で，総和は0である．よって $k(A)=\\dfrac54$ となり，最大値は $\\boldsymbol{\\dfrac54}$．\n\n(2) $n=4$：\n数表 $A$ を\n\\[\\begin{array}{|c|c|c|c|}\\hline 1&1&-1&\\frac12\\\\ \\hline 1&1&\\frac12&-1\\\\ \\hline -\\frac12&-\\frac12&-1&-1\\\\ \\hline\\end{array}\\]\nとすると，$A$ は各成分の絶対値が1以下である．行の和は $\\dfrac32,\\dfrac32,-3$，列の和は $\\dfrac32,\\dfrac32,-\\dfrac32,-\\dfrac32$ で，総和は0である．よって $k(A)=\\dfrac32$ となり，最大値は $\\boldsymbol{\\dfrac32}$．"
+   }
+  ],
+  "idea": {
+   "tex": "行の和・列の和の符号で行と列を分け，「多数派の符号の行の和を合わせると，少数派の行の和の絶対値は $2k$ 以上」と，「正の列の和が $k$ 以上なら，その列の残りの成分は（他の成分が1以下なので）$k-2$ 以上」を組み合わせる．これで1つの行の和を上下から評価できる．原題は2行の表で，正の列の個数が多い側から評価する．捻りでは3行にすると，行は「2つが正，1つが負」に正規化できる．列の符号の個数 $p$ で場合分けすると，$p\\geqq2$ では $k\\leqq\\dfrac{n+p}{p+2}$，$p=1$ では $k\\leqq1$ が得られる．等号を実現する表を具体的に作って最大値を確定する．"
+  },
+  "methods": [],
+  "tags": [
+   "数表",
+   "符号による場合分け",
+   "不等式による評価",
+   "最大値の構成"
+  ],
+  "provenance": {
+   "created": "2026-11-22"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "X-MIX-081",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "X-20",
+  "level": 5,
+  "minutes": 45,
+  "theme": "山形の折れ線関数の3回合成で戻る点",
+  "topic": "山形の折れ線関数の3回合成で戻る点",
+  "statement": {
+   "tex": "$0<a\\leqq1$ とし，$0\\leqq x\\leqq1$ で定義された関数 $f(x)=a(1-|2x-1|)$ を考える（$f(x)$ の値も $0$ 以上 $1$ 以下である）．$0\\leqq x\\leqq 1$ で\n\\[f(f(f(x)))=x\\quad\\text{かつ}\\quad f(x)\\neq x\\]\nをみたす $x$ を{\\bf 3周期点}とよぶ．\n\\begin{enumerate}\n  \\item $a=1$ のとき，3周期点をすべて求めよ．\n  \\item 3周期点が存在するような $a$ の値の範囲を求めよ．\n  \\item (2) の範囲の $a$ について，3周期点の個数を求めよ．また，(2) の範囲の最小の $a$ に対して3周期点をすべて求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $x=\\dfrac29,\\dfrac49,\\dfrac89,\\dfrac27,\\dfrac47,\\dfrac67$　(2) $\\dfrac{1+\\sqrt5}4\\leqq a\\leqq1$　(3) $a=\\dfrac{1+\\sqrt5}4$ のとき3個（$x=\\dfrac{\\sqrt5-1}4,\\ \\dfrac12,\\ \\dfrac{1+\\sqrt5}4$），$\\dfrac{1+\\sqrt5}4<a\\leqq1$ のとき6個"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "$\\mu=2a$（$0<\\mu\\leqq2$）とおくと\n\\[f(x)=\\begin{cases}\\mu x&\\left(0\\leqq x\\leqq\\dfrac12\\right)\\\\[4pt]\\mu(1-x)&\\left(\\dfrac12\\leqq x\\leqq1\\right)\\end{cases}\\]\n（$x=\\dfrac12$ では両式とも $\\dfrac\\mu2$）．また $\\varphi=\\dfrac{1+\\sqrt5}2$ とおく（$\\varphi^2=\\varphi+1$）．\n\n{\\bf 記号列．}$x_0$ を3周期点とし，$x_1=f(x_0)$，$x_2=f(x_1)$ とおくと $f(x_2)=x_0$．各 $x_i$ に，$x_i\\leqq\\dfrac12$ なら L，$x_i>\\dfrac12$ なら R を対応させ，記号列 $c_0c_1c_2$ を作る．$x_{i+1}=\\mu x_i$（L のとき），$\\mu(1-x_i)$（R のとき）である（$x_3=x_0$）．\nまた $x_1\\neq x_0$ である．$x_2=x_0$ なら $x_0=f(x_2)=f(x_0)=x_1$ となり矛盾し，$x_2=x_1$ なら $x_0=f(x_2)=f(x_1)=x_2=x_1$ となり矛盾する．よって $x_0,x_1,x_2$ は相異なる．\n\n\\begin{itemize}\n  \\item LLL：$x_1=\\mu x_0$，$x_0=\\mu^3x_0$．$\\mu=1$ なら $x_1=x_0$ で不適．$\\mu\\neq1$ なら $x_0=0$，$x_1=0=x_0$ で不適．\n  \\item RRR：$x_1=\\mu-\\mu x_0$，$x_2=\\mu-\\mu^2+\\mu^2x_0$，$x_0=\\mu-\\mu^2+\\mu^3-\\mu^3x_0$．$1+\\mu^3=(1+\\mu)(1-\\mu+\\mu^2)$ より $x_0=\\dfrac\\mu{1+\\mu}$．このとき $x_1=\\mu\\left(1-\\dfrac\\mu{1+\\mu}\\right)=\\dfrac\\mu{1+\\mu}=x_0$ で不適．\n\\end{itemize}\nよって記号列は L と R をともに含む．$x_1$ の記号列は $c_1c_2c_0$，$x_2$ の記号列は $c_2c_0c_1$ だから，$x_0,x_1,x_2$ の中に記号列が LLR または LRR となる点 $y$ がある（L が2個なら R の次の点，L が1個なら L の点を選べばよい）．逆に，そのような $y$ が求まれば3周期点は $y,f(y),f(f(y))$ である．\n\n{\\bf LLR．}$y_1=\\mu y_0$，$y_2=\\mu^2y_0$，$y_0=\\mu(1-\\mu^2y_0)$ より $y_0=\\dfrac\\mu{1+\\mu^3}$，$y_1=\\dfrac{\\mu^2}{1+\\mu^3}$，$y_2=\\dfrac{\\mu^3}{1+\\mu^3}$．条件は\n\\[y_2>\\frac12\\iff\\mu^3>1\\iff\\mu>1,\\]\n\\[y_1\\leqq\\frac12\\iff\\mu^3-2\\mu^2+1\\geqq0\\iff(\\mu-1)(\\mu^2-\\mu-1)\\geqq0,\\]\n\\[y_0\\leqq\\frac12\\iff\\mu^3-2\\mu+1\\geqq0\\iff(\\mu-1)(\\mu^2+\\mu-1)\\geqq0.\\]\n$\\mu>1$ のもとで第2式は $\\mu^2-\\mu-1\\geqq0\\iff\\mu\\geqq\\varphi$，そのとき $\\mu^2+\\mu-1>0$ で第3式も成り立つ．逆に $\\varphi\\leqq\\mu\\leqq2$ なら3条件が成り立ち，$f(y_0)=y_1$，$f(y_1)=y_2$，$f(y_2)=y_0$ で $y_1\\neq y_0$（$\\mu\\neq1$，$y_0>0$）だから $y_0$ は3周期点．\n\n{\\bf LRR．}$y_1=\\mu y_0$，$y_2=\\mu(1-\\mu y_0)$，$y_0=\\mu(1-y_2)=\\mu-\\mu^2+\\mu^3y_0$．$\\mu=1$ なら $y_1=y_0$ となり $y_0\\leqq\\dfrac12<y_1$ に反する．$\\mu\\neq1$ なら $y_0=\\dfrac{\\mu(1-\\mu)}{1-\\mu^3}=\\dfrac\\mu{1+\\mu+\\mu^2}$，$y_1=\\dfrac{\\mu^2}{1+\\mu+\\mu^2}$，$y_2=\\dfrac{\\mu(1+\\mu)}{1+\\mu+\\mu^2}$．条件は\n\\[y_0\\leqq\\frac12\\iff\\mu^2-\\mu+1\\geqq0\\ (\\text{常に成立}),\\]\n\\[y_1>\\frac12\\iff\\mu^2-\\mu-1>0\\iff\\mu>\\varphi,\\qquad y_2>\\frac12\\iff\\mu^2+\\mu-1>0.\\]\n$\\mu>\\varphi$ なら第3式も成り立つ．逆に $\\varphi<\\mu\\leqq2$ なら同様に $y_0$ は3周期点．\n\n{\\bf まとめ．}LLR の周期点の組は $\\dfrac12$ 以下の点を2個，LRR の組は1個含むので，両者は異なる組であり，3周期点の組は共通の点をもたない（1点からその組全体が決まる）．\n\\begin{itemize}\n  \\item $\\mu<\\varphi$：3周期点はない．\n  \\item $\\mu=\\varphi$：LLR の3個だけ．\n  \\item $\\varphi<\\mu\\leqq2$：LLR の3個と LRR の3個で6個．\n\\end{itemize}\n\n(1) $a=1$（$\\mu=2>\\varphi$）：LLR から $\\dfrac29,\\dfrac49,\\dfrac89$，LRR から $\\dfrac27,\\dfrac47,\\dfrac67$．答えは $\\boldsymbol{x=\\dfrac29,\\dfrac49,\\dfrac89,\\dfrac27,\\dfrac47,\\dfrac67}$．\n\n(2) $\\mu=2a\\geqq\\varphi$ より $\\boldsymbol{\\dfrac{1+\\sqrt5}4\\leqq a\\leqq1}$．\n\n(3) $a=\\dfrac{1+\\sqrt5}4$ のとき $\\boldsymbol{3}$ 個，$\\dfrac{1+\\sqrt5}4<a\\leqq1$ のとき $\\boldsymbol{6}$ 個．\n$\\mu=\\varphi$ では $\\mu^3=\\mu\\cdot\\mu^2=\\mu^2+\\mu=2\\mu+1$ より $1+\\mu^3=2(\\mu+1)=2\\mu^2$ で\n\\[y_0=\\frac\\mu{2\\mu^2}=\\frac1{2\\varphi}=\\frac1{1+\\sqrt5}=\\frac{\\sqrt5-1}4,\\quad y_1=\\frac{\\mu^2}{2\\mu^2}=\\frac12,\\quad y_2=\\frac{\\mu^3}{2\\mu^2}=\\frac\\varphi2=\\frac{1+\\sqrt5}4.\\]\nよって3周期点は $\\boldsymbol{x=\\dfrac{\\sqrt5-1}4,\\ \\dfrac12,\\ \\dfrac{1+\\sqrt5}4}$．（検算：$f\\left(\\dfrac{\\sqrt5-1}4\\right)=\\dfrac{(1+\\sqrt5)(\\sqrt5-1)}8=\\dfrac12$，$f\\left(\\dfrac12\\right)=\\dfrac{1+\\sqrt5}4$，$f\\left(\\dfrac{1+\\sqrt5}4\\right)=\\dfrac{1+\\sqrt5}2\\cdot\\dfrac{3-\\sqrt5}4=\\dfrac{\\sqrt5-1}4$．）"
+   }
+  ],
+  "idea": {
+   "tex": "$f(x)=a(1-|2x-1|)$ は $x\\leqq\\dfrac12$ と $x\\geqq\\dfrac12$ でそれぞれ1次式なので，$x$ と $f(x)$，$f(f(x))$ がどちらの側にあるかの並び（左右の記号列）を決めると，合成は1次式になり候補が1つに決まる．原題は2回合成で戻る点を扱うが，捻りでは3回合成で戻る点を求める．記号列は回転して「左左右」「左右右」の2種類にまとめられ，各候補が本当にその並びになる条件から，傾き $2a$ が $\\dfrac{1+\\sqrt5}2$ 以上であることが必要十分とわかる．"
+  },
+  "methods": [],
+  "tags": [
+   "合成関数",
+   "折れ線",
+   "周期点",
+   "場合分け",
+   "黄金比"
+  ],
+  "provenance": {
+   "created": "2026-11-22"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "X-MIX-082",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "X-20",
+  "level": 5,
+  "minutes": 40,
+  "theme": "余弦が周期をもつ増加関数",
+  "topic": "余弦が周期をもつ増加関数",
+  "statement": {
+   "tex": "実数全体で定義された連続関数 $f(x)$ が，$x<y$ ならば $f(x)<f(y)$ をみたしているとする．正の数 $T$ が，すべての実数 $x$ に対して $\\cos f(x+T)=\\cos f(x)$ をみたすとき，$T$ を $f$ の{\\bf 余弦周期}とよぶ．\n\\begin{enumerate}\n  \\item $T$ が $f$ の余弦周期ならば，各実数 $x$ に対して，$f(x+T)-f(x)$ と $f(x+T)+f(x)$ の少なくとも一方は $2\\pi$ の整数倍であることを示せ．\n  \\item $T$ が $f$ の余弦周期ならば，ある正の整数 $N$ があって，すべての実数 $x$ に対して $f(x+T)=f(x)+2N\\pi$ が成り立つことを示せ．\n  \\item $1$ が $f$ の余弦周期であるとし，(2) で $T=1$ としたときの正の整数を $N$ とする．正の数 $S$ も $f$ の余弦周期ならば，$NS$ は整数であることを示せ．特に，$1$ と $\\sqrt2$ がともに余弦周期となるような $f$ は存在しないことを示せ．\n  \\item $f(x)=4\\pi x+\\sin2\\pi x$ は問題文の条件をみたし，$1$ を余弦周期にもち，(3) の $N$ が $2$ であることを示せ．さらに，$S=\\dfrac12$ は $NS$ が整数であるにもかかわらず $f$ の余弦周期でないことを示せ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 証明　(2) 証明　(3) 証明（$1$ と $\\sqrt2$ をともに余弦周期とする $f$ は存在しない）　(4) 証明（例えば $x=\\dfrac18$ で $\\cos f\\left(\\dfrac58\\right)\\neq\\cos f\\left(\\dfrac18\\right)$）"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) 一般に $\\cos A-\\cos B=-2\\sin\\dfrac{A+B}2\\sin\\dfrac{A-B}2$ である．$\\cos A=\\cos B$ ならば $\\sin\\dfrac{A+B}2=0$ または $\\sin\\dfrac{A-B}2=0$ で，$\\sin\\alpha=0\\iff\\alpha$ は $\\pi$ の整数倍だから，$A+B$ または $A-B$ は $2\\pi$ の整数倍である．$A=f(x+T)$，$B=f(x)$ とすればよい．\\hfill$\\square$\n\n(2) $D(x)=f(x+T)-f(x)$，$\\varphi(x)=f(x+T)+f(x)$ とおく．どちらも連続で，$f$ が増加関数なので $D(x)>0$，また $x<y$ ならば $\\varphi(x)<\\varphi(y)$．\n\n{\\bf 有界な区間での議論．}$p<q$ を任意にとる．区間 $[p,q]$ 内で $\\varphi(x)$ が $2\\pi$ の整数倍となる $x$ を考える．$p\\leqq x\\leqq q$ では $\\varphi(p)\\leqq\\varphi(x)\\leqq\\varphi(q)$ なので，$\\varphi(x)=2k\\pi$ となりうる整数 $k$ は有限個で，$\\varphi$ が増加関数であることから各 $k$ に対してそのような $x$ は高々1個．よってそのような $x$ は有限個である．これらと $p$，$q$ を小さい順に $p=c_0<c_1<\\cdots<c_r=q$ と並べる．\n\n各開区間 $c_{j-1}<x<c_j$ では $\\varphi(x)$ は $2\\pi$ の整数倍でないので，(1) より $D(x)$ は $2\\pi$ の整数倍である．この開区間内の2点 $x<y$ で $D(x)\\neq D(y)$ であったとすると，$D(x)=2i\\pi$，$D(y)=2l\\pi$（$i\\neq l$）．$i<l$ なら $2i\\pi<(2i+1)\\pi<2l\\pi$，$i>l$ なら $2l\\pi<(2l+1)\\pi<2i\\pi$ であり，中間値の定理により $x$ と $y$ の間（したがってこの開区間内）に $D(\\xi)$ が $\\pi$ の奇数倍となる $\\xi$ が存在する．これは $D(\\xi)$ が $2\\pi$ の整数倍であることに反する．よって $D$ は各開区間で一定値 $d_j$ をとる．\n\n$D$ は連続なので，$x$ を開区間 $(c_{j-1},c_j)$ 内から $c_j$ に近づけて $D(c_j)=d_j$，$(c_j,c_{j+1})$ 内から近づけて $D(c_j)=d_{j+1}$．よって $d_1=d_2=\\cdots=d_r$ で，端点も含めて $D$ は $[p,q]$ で一定である．\n\n{\\bf 全体での結論．}任意の実数 $x$ に対し，$x$ と $0$ を含む区間 $[p,q]$ をとれば $D(x)=D(0)$．よって $D$ は定数 $d$ で，上で見たように $d$ は開区間内での値として $2\\pi$ の整数倍であり，$d>0$．したがって正の整数 $N$ があって $f(x+T)=f(x)+2N\\pi$ がすべての $x$ で成り立つ．\\hfill$\\square$\n\n(3) $1$ と $S$ が余弦周期だから，(2) より正の整数 $N$，$K$ があって，すべての $x$ で\n\\[f(x+1)=f(x)+2N\\pi,\\qquad f(x+S)=f(x)+2K\\pi.\\]\n第1式で $x$ を $x-1$ にかえると $f(x-1)=f(x)-2N\\pi$．これらをくり返し用いると（数学的帰納法），すべての整数 $a$ に対して $f(x+a)=f(x)+2aN\\pi$．同様にすべての整数 $b$ に対して $f(x+bS)=f(x)+2bK\\pi$．$x=0$ から順に $a=K$，$b=-N$ を用いると\n\\[f(K-NS)=f(-NS)+2KN\\pi=f(0)-2NK\\pi+2KN\\pi=f(0).\\]\n$f$ は $x<y\\Rightarrow f(x)<f(y)$ をみたすので，$f(K-NS)=f(0)$ ならば $K-NS=0$．よって $NS=K$ は整数である．\n\n特に $S=\\sqrt2$ とすると $N\\sqrt2$ が正の整数 $K$ となり $\\sqrt2=\\dfrac KN$ は有理数となるが，$\\sqrt2$ は無理数なので矛盾．よって $1$ と $\\sqrt2$ をともに余弦周期とする $f$ は存在しない．\\hfill$\\square$\n\n(4) $f(x)=4\\pi x+\\sin2\\pi x$ は連続で，$f'(x)=4\\pi+2\\pi\\cos2\\pi x\\geqq4\\pi-2\\pi=2\\pi>0$ だから $x<y$ ならば $f(x)<f(y)$．また $\\sin2\\pi(x+1)=\\sin2\\pi x$ より $f(x+1)=f(x)+4\\pi$ で，$\\cos f(x+1)=\\cos f(x)$．よって $1$ は余弦周期で，$f(x+1)=f(x)+2\\cdot2\\pi$ より (3) の $N$ は $\\boldsymbol2$ である（(2) の $N$ は $D(x)=f(x+1)-f(x)$ で決まるので一意）．\n\n$S=\\dfrac12$ なら $NS=1$ は整数である．しかし\n\\[f\\left(\\frac18\\right)=\\frac\\pi2+\\sin\\frac\\pi4=\\frac\\pi2+\\frac{\\sqrt2}2,\\qquad f\\left(\\frac58\\right)=\\frac{5\\pi}2+\\sin\\frac{5\\pi}4=\\frac{5\\pi}2-\\frac{\\sqrt2}2\\]\nより\n\\[\\cos f\\left(\\frac18\\right)=-\\sin\\frac{\\sqrt2}2,\\qquad\\cos f\\left(\\frac58\\right)=\\cos\\left(\\frac\\pi2-\\frac{\\sqrt2}2\\right)=\\sin\\frac{\\sqrt2}2.\\]\n$0<\\dfrac{\\sqrt2}2<\\pi$ より $\\sin\\dfrac{\\sqrt2}2>0$ なので，両者は異なる．すなわち $x=\\dfrac18$ で $\\cos f\\left(x+\\dfrac12\\right)\\neq\\cos f(x)$ となり，$\\dfrac12$ は余弦周期でない．\\hfill$\\square$"
+   }
+  ],
+  "idea": {
+   "tex": "$\\cos A=\\cos B\\iff A-B$ または $A+B$ が $2\\pi$ の整数倍．増加関数 $f$ では $f(x+T)+f(x)$ も増加するので，それが $2\\pi$ の整数倍になる $x$ は有界な区間に有限個しかなく，残りの部分では連続関数 $f(x+T)-f(x)$ が $2\\pi$ の整数倍の値しかとらないから中間値の定理により一定になる．原題は $f(0)=0$，$f(T)=4\\pi$ という具体的な値のもとで $f(x+T)=f(x)+f(T)$ を示させるが，捻りでは一般の余弦周期 $T$ に対して $f(x+T)-f(x)$ が $2\\pi$ の正の整数倍で一定であることを示し，それを使って2つの余弦周期の比が有理数でなければならないこと（逆は成り立たないこと）を導く．"
+  },
+  "methods": [],
+  "tags": [
+   "周期関数",
+   "中間値の定理",
+   "増加関数",
+   "三角関数",
+   "無理数"
+  ],
+  "provenance": {
+   "created": "2026-11-22"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "X-MIX-083",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "X-20",
+  "level": 4,
+  "minutes": 40,
+  "theme": "3つの組から1項ずつ増やす操作と最少回数",
+  "topic": "3つの組から1項ずつ増やす操作と最少回数",
+  "statement": {
+   "tex": "正の整数からなる数列 $A$：$a_1,a_2,a_3,a_4,a_5,a_6$ に対し，次の操作を考える．\n\\begin{center}\n$i\\in\\{1,2\\}$，$j\\in\\{3,4\\}$，$k\\in\\{5,6\\}$ で $i+j+k$ が偶数となる組 $(i,j,k)$ を1つ選び，\\\\\n$a_i,a_j,a_k$ にそれぞれ1を加え，他の項は変えない．\n\\end{center}\n\\begin{enumerate}\n  \\item この操作を何回か（0回でもよい）くり返して6つの項をすべて等しくできるための必要十分条件は，$a_1+a_2=a_3+a_4=a_5+a_6$ であることを示せ．\n  \\item $A$：$1,9,8,2,8,2$ のとき，6つの項をすべて等しくするのに必要な操作の回数の最小値を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 証明　(2) $20$ 回"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "$i+j+k$ が偶数 $\\iff$ $i,j,k$ のうち奇数のものが偶数個（0個か2個）．したがって選べる組は\n\\[(2,4,6),\\quad(1,3,6),\\quad(1,4,5),\\quad(2,3,5)\\]\nの4種類で，これらを使う回数をそれぞれ $p,u,v,w$ とする．操作の順序によらず，操作後の各項は\n\\[a_1+u+v,\\ a_2+p+w,\\ a_3+u+w,\\ a_4+p+v,\\ a_5+v+w,\\ a_6+p+u\\tag{$*$}\\]\nとなる．操作の総回数を $N=p+u+v+w$ とする．\n\n(1) \\textbf{必要性．} どの操作でも $a_1+a_2$，$a_3+a_4$，$a_5+a_6$ はそれぞれちょうど1ずつ増える．操作後にすべての項が $T$ に等しいなら3つの和はすべて $2T$ なので，操作前の3つの和も互いに等しい．\n\n\\textbf{十分性．} $a_1+a_2=a_3+a_4=a_5+a_6=c$ とし，$T=2c+a_1+a_3+a_5$ とおく．\n\\[u=\\frac{T-a_1-a_3+a_5}2,\\ v=\\frac{T-a_1+a_3-a_5}2,\\ w=\\frac{T+a_1-a_3-a_5}2,\\ p=\\frac{T-2c+a_1+a_3+a_5}2\\]\nと定める．分子はすべて $T-a_1-a_3-a_5=2c$ と偶奇が等しいので偶数，したがって整数である．$a_1,a_3<c$ より $T-a_1-a_3\\geqq T-2c>0$ などから4つの分子はすべて正で，$u,v,w,p$ は正の整数．これを ($*$) に代入すると\n\\[a_1+u+v=a_1+(T-a_1)=T,\\quad a_2+p+w=a_2+\\frac{2T-2c+2a_1}2=a_2+a_1+T-c=T,\\]\n同様に $a_3+u+w=a_4+p+v=a_5+v+w=a_6+p+u=T$．よって各組を $p,u,v,w$ 回ずつ使えばすべての項が $T$ になる．\\hfill$\\square$\n\n(2) $a_1+a_2=a_3+a_4=a_5+a_6=10$ なので (1) よりすべての項を等しくできる．操作後の共通の値を $T$ とすると，$(*)$ より\n\\[u+v=T-1,\\quad u+w=T-8,\\quad v+w=T-8,\\quad p+w=T-9,\\quad p+v=T-2,\\quad p+u=T-2.\\]\nはじめの3式から $u+v+w=\\dfrac{3T-17}2$，よって\n\\[u=v=\\frac{T-1}2,\\quad w=\\frac{T-15}2,\\quad p=(T-9)-w=\\frac{T-3}2\\]\nとただ1通りに決まる（残りの式も成り立つ）．これらが0以上の整数であるためには，$T$ が奇数かつ $T\\geqq15$ が必要．また $N=p+u+v+w=\\dfrac{4T-20}2=2T-10$ は $T$ について増加する．\n\n$T=15$ のとき $p=6$，$u=v=7$，$w=0$ は0以上の整数で，実際に $(2,4,6)$ を6回，$(1,3,6)$ を7回，$(1,4,5)$ を7回行うと\n\\[1+14,\\ 9+6,\\ 8+7,\\ 2+13,\\ 8+7,\\ 2+13\\]\nですべて15になる．よって最小値は $N=2\\cdot15-10=\\boldsymbol{20}$ 回である．"
+   }
+  ],
+  "idea": {
+   "tex": "各組から1項ずつ選んで1を加える操作では，組ごとの和が毎回1ずつ増えるので「組の和の差」は不変（必要条件）．原題は4組で選ぶ番号の和が偶数という制限から $a_1+a_3+a_5+a_7$ の偶奇も不変となるが，捻りでは3組にする．このとき操作は「奇数番目を選ぶ組の個数が0か2」の4種類しかなく，各種類の回数は最終的な共通の値 $T$ から連立1次方程式でただ1通りに決まる．奇数番目の和の偶奇は $T$ の偶奇を選ぶことで吸収されるので条件は「組の和が等しい」だけになる一方，最少回数では各種類の回数が0以上の整数という制約（三角不等式型）が効いてくる．"
+  },
+  "methods": [],
+  "tags": [
+   "操作",
+   "不変量",
+   "偶奇",
+   "連立1次方程式",
+   "最少回数"
+  ],
+  "provenance": {
+   "created": "2026-11-22"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "X-MIX-084",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "X-20",
+  "level": 4,
+  "minutes": 35,
+  "theme": "積が0になる点の集合と直線 $y=x+1$ の共有点",
+  "topic": "積が0になる点の集合と直線 $y=x+1$ の共有点",
+  "statement": {
+   "tex": "$P(x)$，$Q(x)$ は実数係数の多項式で，方程式 $P(x)=0$ の異なる実数解はちょうど $7$ 個，方程式 $Q(x)=0$ の異なる実数解はちょうど $9$ 個である．座標平面上の点の集合\n\\[\nA=\\{(x,y)\\ \\big|\\ P(x)Q(y)=0\\ \\text{かつ}\\ Q(x)P(y)=0\\}\n\\]\nを考える（$x,y$ は実数）．\n\\begin{enumerate}\n  \\item $A$ が有限集合となるための必要十分条件を，方程式 $P(x)=0$ と $Q(x)=0$ の実数解の言葉で述べよ．また，そのとき $A$ の要素の個数を求めよ．\n  \\item $A$ が無限集合であるとき，$A$ のうち直線 $y=x+1$ 上にある点の個数の最大値を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $P(x)=0$ と $Q(x)=0$ が共通の実数解をもたないこと，要素の個数は $130$　(2) $15$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "$P(x)=0$，$Q(x)=0$ の実数解の集合をそれぞれ $S$，$T$ とし，$I=S\\cap T$ とする．$S$ の要素は7個，$T$ の要素は9個．\n\\[\n(x,y)\\in A\\iff(x\\in S\\ \\text{または}\\ y\\in T)\\ \\text{かつ}\\ (x\\in T\\ \\text{または}\\ y\\in S)\n\\]\nで，右辺を展開すると\n\\[\n(x,y)\\in A\\iff x\\in I\\ \\text{または}\\ (x\\in S\\ \\text{かつ}\\ y\\in S)\\ \\text{または}\\ (x\\in T\\ \\text{かつ}\\ y\\in T)\\ \\text{または}\\ y\\in I .\\tag{$*$}\n\\]\n\n(1) $I$ が空集合でないとき，$a\\in I$ をとると直線 $x=a$ 上の点はすべて $A$ に属し，$A$ は無限集合である．\n$I$ が空集合のとき，$(*)$ より $A$ は「$x,y$ がともに $S$ に属する点」7$\\times$7 個と「$x,y$ がともに $T$ に属する点」9$\\times$9 個の和集合で，両方に属する点は $x\\in S\\cap T$ となるので存在しない．よって $A$ は有限集合で，要素の個数は $49+81=130$．\n\nゆえに求める条件は\\textbf{「$P(x)=0$ と $Q(x)=0$ が共通の実数解をもたないこと」}で，そのとき要素の個数は $\\boldsymbol{130}$．\n\n(2) $A$ が無限集合なので，(1) より $I$ は空集合でない．$(*)$ で $y=x+1$ とすると，点 $(x,x+1)$ が $A$ に属する条件は\n\\[\n\\text{(i)}\\ x\\in I,\\quad\\text{(ii)}\\ x\\in S\\ \\text{かつ}\\ x+1\\in S,\\quad\\text{(iii)}\\ x\\in T\\ \\text{かつ}\\ x+1\\in T,\\quad\\text{(iv)}\\ x+1\\in I\n\\]\nのいずれかが成り立つことである．これをみたす実数 $x$ の集合を $W$ とすると，求める個数は $W$ の要素の個数 $N$ である．\n\n\\textbf{上からの評価．} 16個の「札」$\\langle s,P\\rangle$（$s\\in S$），$\\langle t,Q\\rangle$（$t\\in T$）を考える（$I$ の要素 $a$ には $\\langle a,P\\rangle$ と $\\langle a,Q\\rangle$ の2枚がある）．$x\\in W$ に札 $f(x)$ を次のように対応させる．\n\\begin{itemize}\n  \\item $x+1\\in S$ ならば $f(x)=\\langle x+1,P\\rangle$．\n  \\item $x+1\\notin S$，$x+1\\in T$ ならば $f(x)=\\langle x+1,Q\\rangle$．\n  \\item $x+1\\notin S$，$x+1\\notin T$ ならば，(ii)(iii)(iv) はいずれも $x+1\\in S$ または $x+1\\in T$ を含むので成り立たず，(i) より $x\\in I$．そこで $f(x)=\\langle x,Q\\rangle$．\n\\end{itemize}\n$f$ の異なる $x$ には異なる札が対応することを示す．札 $\\langle a,P\\rangle$ になりうるのは $x=a-1$ だけである．札 $\\langle a,Q\\rangle$ になりうるのは，$x=a-1$（このとき $a\\notin S$）か $x=a$（このとき $a\\in I\\subset S$）だけであり，$a\\notin S$ と $a\\in S$ は同時に成り立たないから，札 $\\langle a,Q\\rangle$ になる $x$ も高々1つである．よって $N\\leqq16$．\n\nさらに，ある札にはどの $x$ も対応しないことを示す．すべての札に対応する $x$ があると仮定する．$T$ は9個，$S$ は7個の要素をもつので，$T$ に属し $S$ に属さない数 $t$ がある．\n\n$t'\\in T$，$t'\\notin S$ である任意の $t'$ について，札 $\\langle t',Q\\rangle$ に対応する $x$ は，$x=t'$ の場合は $t'\\in S$ が必要なので不可能で，$x=t'-1\\in W$ である．$x=t'-1$ について (ii)(iv) は $t'\\notin S$ より成り立たないので，(i) か (iii) が成り立ち，いずれの場合も $t'-1\\in T$ となる．\n\n$T$ は有限集合なので，$t,t-1,t-2,\\cdots$ のすべてが「$T$ に属し $S$ に属さない」ことはない．この条件をみたさない最初のものを $t-j$（$j\\geqq1$）とする．$t-j+1$ は $T$ に属し $S$ に属さないから，上のことより $t-j\\in T$ である．$t-j$ は $T$ に属しながら条件をみたさないので，$S$ に属する．よって $u=t-j$ は $u\\in I$ をみたし，$u+1\\in T$，$u+1\\notin S$ である．\n\n札 $\\langle u,Q\\rangle$ に対応しうるのは，$x=u-1$（$u\\notin S$ が必要だが $u\\in S$）か $x=u$（$u+1\\notin T$ が必要だが $u+1\\in T$）だけで，どちらも起こらない．これは仮定に反する．よって $N\\leqq15$．\n\n\\textbf{等号の成立．} $P(x)=x(x-2)(x-4)(x-6)(x-8)(x-10)(x-12)$，$Q(x)=P(x)(x-13)(x-14)$ とすると，$S=\\{0,2,4,\\cdots,12\\}$（7個），$T=S\\cup\\{13,14\\}$（9個），$I=S$ で，$A$ は無限集合である．\n$x=0,2,\\cdots,12$ は (i)，$x=-1,1,3,\\cdots,11$ は (iv)，$x=13$ は (iii) をみたすので，$W$ は $-1$ から $13$ までの15個の整数をすべて含む．$N\\leqq15$ とあわせて $N=15$．\n\n以上より，求める最大値は $\\boldsymbol{15}$．"
+   }
+  ],
+  "idea": {
+   "tex": "「$P(x)Q(y)=0$ かつ $Q(x)P(y)=0$」を「または」に展開すると，点の集合は $P,Q$ の実数解の集合 $S,T$ と共通部分 $I=S\\cap T$ を用いて「$x\\in I$」「$x,y\\in S$」「$x,y\\in T$」「$y\\in I$」の和集合になり，共通解があるときに限り直線を含む．直線 $y=x+1$ 上の点を数えるには，条件をみたす各 $x$ に「$x+1$ の $P$ 側（なければ $Q$ 側）の解」，それもなければ「$x$ の $Q$ 側の解」を対応させると16個の解への1対1の対応ができ，さらに $T$ にだけ属する解から1ずつ下にたどることで，対応しきれない解が必ず残ることを示す．"
+  },
+  "methods": [],
+  "tags": [
+   "集合",
+   "和集合の分解",
+   "数え上げ",
+   "単射"
+  ],
+  "provenance": {
+   "created": "2026-11-22"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "X-MIX-085",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "X-20",
+  "level": 5,
+  "minutes": 35,
+  "theme": "単調関数と周期関数の積が「定数倍ずつ増える」とき",
+  "topic": "単調関数と周期関数の積が「定数倍ずつ増える」とき",
+  "statement": {
+   "tex": "実数全体で定義された関数 $f(x)$，$g(x)$ が次をみたすとする．\n\\begin{itemize}\n  \\item すべての実数 $x$ で $f(x)>0$ であり，$x_1<x_2$ ならば $f(x_1)\\leqq f(x_2)$ である．\n  \\item すべての実数 $x$ で $g(x)>0$ であり，ある正の数 $T_g$ に対して $g(x+T_g)=g(x)$ がすべての $x$ で成り立つ．また $g(x)$ は最大値 $M$ をもつ．\n\\end{itemize}\n$h(x)=f(x)g(x)$ とする．さらに，正の定数 $T,\\ \\lambda$ があって，すべての実数 $x$ に対して $h(x+T)=\\lambda h(x)$ が成り立つとする．\n\\begin{enumerate}\n  \\item $\\lambda\\geqq1$ であることを示せ．\n  \\item $\\lambda=1$ であるための必要十分条件は，$f(x)$ が定数関数であることである．これを示せ．\n  \\item 任意の $\\lambda>1$ に対して，上の条件をすべてみたす $f,\\ g,\\ T$ の例を1つ挙げよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 証明　(2) 証明　(3) 例：$T=1$，$f(x)=\\lambda^x$，$g(x)=2+\\sin2\\pi x$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "準備：$h(x+T)=\\lambda h(x)$ を繰り返し用いると，すべての整数 $N\\geqq0$ と実数 $y$ に対して $h(y+NT)=\\lambda^Nh(y)$．また $g(x+kT_g)=g(x)$（$k$ は整数）．$g$ が最大値 $M$ をとる点の1つを $x_0$ とする．\n\n区間 $x_0\\leqq y\\leqq x_0+T$ では $f(y)\\leqq f(x_0+T)$，$0<g(y)\\leqq M$ なので\n\\[\n0<h(y)\\leqq Mf(x_0+T)\\qquad(x_0\\leqq y\\leqq x_0+T).\\tag{A}\n\\]\n\n(1) $\\lambda<1$ と仮定する．正の整数 $k$ に対し $y_k=x_0+kT_g$ とおくと $g(y_k)=M$，$y_k>x_0$ なので\n\\[\nh(y_k)=Mf(y_k)\\geqq Mf(x_0).\n\\]\n一方 $N_k=\\left[\\dfrac{kT_g}T\\right]$（$[\\ ]$ はガウス記号）とおくと $0\\leqq kT_g-N_kT<T$ なので $y_k-N_kT$ は $[x_0,x_0+T)$ に属し，(A) より\n\\[\nh(y_k)=\\lambda^{N_k}h(y_k-N_kT)\\leqq\\lambda^{N_k}Mf(x_0+T).\n\\]\nよって $0<\\dfrac{f(x_0)}{f(x_0+T)}\\leqq\\lambda^{N_k}$．$k\\to\\infty$ のとき $N_k\\to\\infty$，$0<\\lambda<1$ より $\\lambda^{N_k}\\to0$ となり矛盾．ゆえに $\\lambda\\geqq1$．\\hfill$\\square$\n\n(2) \\textbf{$f$ が定数 $\\Rightarrow\\lambda=1$．}$f(x)=C\\ (>0)$ ならば $h=Cg$ で，$Cg(x+T)=\\lambda Cg(x)$．$x=x_0$ とすると $\\lambda M=g(x_0+T)\\leqq M$ より $\\lambda\\leqq1$．(1) と合わせて $\\lambda=1$．\n\n\\textbf{$\\lambda=1\\Rightarrow f$ が定数．}$\\lambda=1$ なので $h(y+NT)=h(y)$ がすべての整数 $N$（負も含む）で成り立つ（$h(y)=h((y-T)+T)=h(y-T)$ も成り立つから）．\n\n\\textit{第1段（$h$ は上に有界）．}任意の実数 $y$ に対し，$N=\\left[\\dfrac{y-x_0}T\\right]$ とおくと $y-NT\\in[x_0,x_0+T)$ なので，(A) より $h(y)=h(y-NT)\\leqq Mf(x_0+T)$．\n\n\\textit{第2段（$f$ は十分先で一定）．}$c_0=f(x_0+T)$ とおく．$x\\geqq x_0+T$ とし，$x_0+kT_g\\geqq x$ となる正の整数 $k$ をとると，単調性と第1段より\n\\[\nc_0\\leqq f(x)\\leqq f(x_0+kT_g)=\\frac{h(x_0+kT_g)}M\\leqq c_0.\n\\]\nよって $x\\geqq x_0+T$ で $f(x)=c_0$．\n\n\\textit{第3段（$g$ は周期 $T$ をもつ）．}$y\\geqq x_0+T$ ならば $c_0g(y+T)=h(y+T)=h(y)=c_0g(y)$ より $g(y+T)=g(y)$．任意の実数 $y$ に対しては，$y+kT_g\\geqq x_0+T$ となる正の整数 $k$ をとれば $g(y+T)=g(y+kT_g+T)=g(y+kT_g)=g(y)$．\n\n\\textit{第4段．}任意の実数 $x$ に対し，$x+NT\\geqq x_0+T$ となる正の整数 $N$ をとると，第2段・第3段より\n\\[\nf(x)g(x)=h(x)=h(x+NT)=c_0g(x+NT)=c_0g(x).\n\\]\n$g(x)>0$ で割って $f(x)=c_0$．よって $f$ は定数関数である．\\hfill$\\square$\n\n(3) $T=1$，$f(x)=\\lambda^x$，$g(x)=2+\\sin2\\pi x$ とする．$\\lambda>1$ より $f$ は正で増加，$g$ は正で周期 $T_g=1$，最大値 $M=3$ をもつ．$h(x+1)=\\lambda^{x+1}(2+\\sin(2\\pi x+2\\pi))=\\lambda h(x)$．\n\n答：(3) 例 $\\boldsymbol{T=1,\\ f(x)=\\lambda^x,\\ g(x)=2+\\sin2\\pi x}$．"
+   }
+  ],
+  "idea": {
+   "tex": "$g$ が最大値 $M$ をとる点 $x_0$ から周期 $T_g$ ずつずらした点では $g=M$ であり，$h=fg$ の値は $f$ の値の $M$ 倍になる．一方，$h(x+T)=\\lambda h(x)$ を使うとそれらの点の $h$ の値を区間 $[x_0,x_0+T)$ の値の $\\lambda^n$ 倍として上から抑えられる．$f$ が単調非減少であることと組み合わせると $\\lambda\\geqq1$ が出て，$\\lambda=1$ のときは $f$ が十分大きい $x$ で一定になり，そこから $g$ が周期 $T$ をもつこと，さらに $f$ が定数であることが従う．原題は $h$ が周期関数のとき（$\\lambda=1$）の同値性だけを問うたが，捻りでは比 $\\lambda$ を一般にして，とりうる値を決める．"
+  },
+  "methods": [],
+  "tags": [
+   "周期関数",
+   "単調関数",
+   "背理法",
+   "極限"
+  ],
+  "provenance": {
+   "created": "2026-11-22"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "X-MIX-086",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "X-20",
+  "level": 4,
+  "minutes": 30,
+  "theme": "差が $1$ 以上 $c$ 以下であることを保つ関数",
+  "topic": "差が $1$ 以上 $c$ 以下であることを保つ関数",
+  "statement": {
+   "tex": "$S$ を実数からなる集合とする．実数全体で定義された関数 $f(x)$ が「$x_1-x_2$ が $S$ に属するような任意の実数 $x_1,\\ x_2$ に対して，$f(x_1)-f(x_2)$ も $S$ に属する」をみたすとき，$f$ は $S$ 関連であるという．実数 $x$ を超えない最大の整数を $[x]$ で表す．\n\n$c>1$ をみたす実数 $c$ に対し，$1\\leqq t\\leqq c$ をみたす実数 $t$ 全体の集合を $A_c$，$t\\geqq0$ をみたす実数 $t$ 全体の集合を $B$ とする．次の命題 $P(c)$ を考える．\n\\begin{center}\n$P(c)$：実数全体で定義された任意の関数 $f$ について，「$f$ が $A_c$ 関連である」ことと「$f$ が $\\{1\\}$ 関連であり，かつ $B$ 関連である」こととは同値である．\n\\end{center}\n\\begin{enumerate}\n  \\item $c$ が2以上の整数ならば $P(c)$ は真であることを示せ．\n  \\item $P(c)$ が真となる $c>1$ をすべて求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 証明　(2) $c$ は2以上の整数"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "「$B$ 関連」は「$x_1\\geqq x_2$ ならば $f(x_1)\\geqq f(x_2)$」（単調非減少）と同じである．\n\n(1) $c$ を2以上の整数とする．\n\n\\textbf{$\\{1\\}$ 関連かつ $B$ 関連 $\\Rightarrow A_c$ 関連．}$f(x+1)=f(x)+1$ を繰り返して，すべての整数 $j$ に対し $f(x+j)=f(x)+j$．$x_1-x_2=t$ が $A_c$ に属する，すなわち $1\\leqq t\\leqq c$ とし $j=[t]$ とおくと $1\\leqq j\\leqq c$．$t=j$ なら $f(x_1)-f(x_2)=j$ は $A_c$ に属する．$t>j$ なら $j<c$（$c$ は整数で $t\\leqq c$）なので $j+1\\leqq c$ で，単調性より\n\\[\nj=f(x_2+j)-f(x_2)\\leqq f(x_1)-f(x_2)\\leqq f(x_2+j+1)-f(x_2)=j+1,\n\\]\nよって $1\\leqq j\\leqq f(x_1)-f(x_2)\\leqq j+1\\leqq c$ で，$f(x_1)-f(x_2)$ は $A_c$ に属する．\n\n\\textbf{$A_c$ 関連 $\\Rightarrow\\{1\\}$ 関連かつ $B$ 関連．}$x_1-x_2=1,\\ c$ の場合から，すべての $x$ で $f(x+1)-f(x)\\geqq1$，$f(x+c)-f(x)\\leqq c$．ところが\n\\[\nf(x+c)-f(x)=\\sum_{i=0}^{c-1}\\{f(x+i+1)-f(x+i)\\}\\geqq c\n\\]\nなので等号が成り立ち，各項が $1$ に等しい．特に $f(x+1)-f(x)=1$（$\\{1\\}$ 関連）．よって整数 $j$ に対し $f(x+j)=f(x)+j$．$x_1>x_2$ とし $t=x_1-x_2$，$j=[t]-1$（$t<1$ なら $j=-1$）とおくと $1\\leqq s=t-j<2\\leqq c$ より $s$ は $A_c$ に属するので\n\\[\nf(x_1)-f(x_2)=f(x_2+s)+j-f(x_2)\\geqq1+j=[t]\\geqq0.\n\\]\n$x_1=x_2$ なら差は $0$．よって $B$ 関連．\\hfill$\\square$\n\n(2) $c>1$ が整数でないとする．$f(x)=[x]$ は $[x+1]=[x]+1$ より $\\{1\\}$ 関連，単調非減少なので $B$ 関連である．$N=[c]\\ (\\geqq1)$，$\\delta=c-N\\ (0<\\delta<1)$ とし，$x_2=-\\dfrac\\delta2$，$x_1=x_2+c=N+\\dfrac\\delta2$ とおくと $x_1-x_2=c$ は $A_c$ に属するが\n\\[\nf(x_1)-f(x_2)=N-(-1)=N+1>N+\\delta=c\n\\]\nで $A_c$ に属さない．よって $f$ は $A_c$ 関連でなく，$P(c)$ は偽．(1) と合わせて\n\n答：$\\boldsymbol{c\\text{ は2以上の整数}}$．"
+   }
+  ],
+  "idea": {
+   "tex": "差が $1$ 以上 $c$ 以下であることを保つ関数は $f(x+1)-f(x)\\geqq1$ と $f(x+c)-f(x)\\leqq c$ をみたす．$c$ が整数なら $f(x+c)-f(x)$ は幅1の差 $c$ 個の和なので $c$ 以上となり，すべての差がちょうど $1$ に決まる．逆向きは $f(x+k)=f(x)+k$ と単調性から差を $[t]$ と $[t]+1$ ではさむ．$c$ が整数でないときは $f(x)=[x]$ で差が $[c]+1>c$ となる反例がある．原題は $c=2$ の場合の同値性だったが，捻りでは同値性が成り立つ $c$ をすべて決める．"
+  },
+  "methods": [],
+  "tags": [
+   "関数の性質",
+   "ガウス記号",
+   "同値条件",
+   "反例"
+  ],
+  "provenance": {
+   "created": "2026-11-22"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "X-MIX-027",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "X-20",
+  "level": 1,
+  "minutes": 14,
+  "theme": "確率×数列／2地点を移動する点の確率漸化式",
+  "unit": "確率×数列",
+  "topic": "2地点を移動する点の確率漸化式",
+  "statement": {
+   "tex": "点 P は地点 A，B のどちらかにあり，1秒ごとに次の規則で移動する．\nA にいるときは確率 $\\dfrac23$ で B に移り，確率 $\\dfrac13$ で A にとどまる．B にいるときは確率 $\\dfrac12$ で A に移り，確率 $\\dfrac12$ で B にとどまる．\n最初 P は A にいる．$n$ 秒後に P が A にいる確率を $p_n$ とする（$p_0=1$）．\n\\begin{enumerate}\n  \\item $p_1$ を求めよ．また，$p_{n+1}=ap_n+b$ がすべての $n\\geqq0$ で成り立つような定数 $a$，$b$ を求めよ．\n  \\item $p_n$ を $n$ の式で表せ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $p_1=\\dfrac{1}{3}$，$a=-\\dfrac{1}{6}$，$b=\\dfrac{1}{2}$　(2) $p_n=\\dfrac{3}{7}+\\dfrac{4}{7}\\left(-\\dfrac{1}{6}\\right)^n$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) $p_1=\\boldsymbol{\\dfrac{1}{3}}$．$n+1$ 秒後に A にいるのは，「$n$ 秒後に A にいてとどまる」か「$n$ 秒後に B にいて A に移る」場合なので\n$p_{n+1}=\\dfrac13p_n+\\dfrac12(1-p_n)=-\\dfrac{1}{6}p_n+\\dfrac{1}{2}$．よって $\\boldsymbol{a=-\\dfrac{1}{6}}$，$\\boldsymbol{b=\\dfrac{1}{2}}$．\n(2) $\\alpha=-\\dfrac16\\alpha+\\dfrac12$ を解くと $\\alpha=\\dfrac37$．$p_{n+1}-\\dfrac37=-\\dfrac16\\left(p_n-\\dfrac37\\right)$．\n$p_0-\\dfrac37=\\dfrac47$ なので $p_n=\\boldsymbol{\\dfrac{3}{7}+\\dfrac{4}{7}\\left(-\\dfrac{1}{6}\\right)^n}$．"
+   }
+  ],
+  "idea": {
+   "tex": "$n$ 回目から $n+1$ 回目への推移だけを見て漸化式を立てる．B にいる確率は $1-p_n$．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) $p_1$：1/3 ; $a$：-1/6 ; $b$：1/2\n(2) $p_n$：3/7+(4/7)(-1/6)^n"
+  },
+  "methods": [],
+  "tags": [
+   "確率漸化式",
+   "隣接2項間漸化式"
+  ],
+  "provenance": {
+   "created": "2026-10-30"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "X-MIX-028",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "X-20",
+  "level": 1,
+  "minutes": 13,
+  "theme": "微分×図形と方程式／曲線上の点と直線の距離の最小",
+  "unit": "微分×図形と方程式",
+  "topic": "曲線上の点と直線の距離の最小",
+  "statement": {
+   "tex": "曲線 $C:y=x^3\\ (x\\geqq0)$ 上の点 P と，直線 $\\ell:y=3x-5$ の距離を考える．\n\\begin{enumerate}\n  \\item P の $x$ 座標を $t\\ (t\\geqq0)$ とするとき，P と $\\ell$ の距離を $t$ の式で表せ．\n  \\item P と $\\ell$ の距離の最小値と，そのときの P の座標を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $\\dfrac{t^3-3t+5}{\\sqrt{10}}$　(2) 最小値 $\\dfrac{3\\sqrt{10}}{10}$，P の座標 $(1,1)$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) $\\ell:3x-y-5=0$．P$(t,t^3)$ との距離は $\\dfrac{|3t-t^3-5|}{\\sqrt{10}}$．\n$g(t)=t^3-3t+5$ とおくと $g'(t)=3(t+1)(t-1)$ より，$t\\geqq0$ での最小値は $g(1)=3>0$．よって $g(t)>0$ で，距離は $\\boldsymbol{\\dfrac{t^3-3t+5}{\\sqrt{10}}}$．\n(2) $g(t)$ は $t=1$ で最小値 $3$ をとるので，距離の最小値は $\\dfrac{3}{\\sqrt{10}}=\\boldsymbol{\\dfrac{3\\sqrt{10}}{10}}$，そのとき $\\boldsymbol{\\mathrm{P}(1,1)}$．\n（$t=1$ での接線の傾き $3$ は $\\ell$ の傾きに等しい．）"
+   }
+  ],
+  "idea": {
+   "tex": "点と直線の距離の公式で距離を $t$ の3次関数にし，微分で最小を求める．絶対値の中の符号を確かめる．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) (t^3-3t+5)/sqrt(10)\n(2) 最小値：3sqrt(10)/10 ; P：(1, 1)"
+  },
+  "methods": [],
+  "tags": [
+   "点と直線の距離",
+   "微分",
+   "最大最小"
+  ],
+  "provenance": {
+   "created": "2026-10-30"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "X-MIX-029",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "X-20",
+  "level": 1,
+  "minutes": 12,
+  "theme": "整数×数列／余りの条件で決まる数列の和",
+  "unit": "整数×数列",
+  "topic": "余りの条件で決まる数列の和",
+  "statement": {
+   "tex": "3で割ると2余り，5で割ると3余る自然数を小さい順に並べてできる数列を $\\{a_n\\}$ とする．\n\\begin{enumerate}\n  \\item $a_1$ と，一般項 $a_n$ を求めよ．\n  \\item $\\displaystyle\\sum_{k=1}^{20}a_k$ を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $a_1=8$，$a_n=15n-7$　(2) $3010$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) 5で割ると3余る数 $3,8,13,\\cdots$ のうち，3で割ると2余る最小のものは $8$．よって $\\boldsymbol{a_1=8}$．\n$x$ が条件を満たすとき $x-8$ は3でも5でも割り切れるので15の倍数．逆に $x=8+15m$ は条件を満たす．\nよって $\\{a_n\\}$ は初項 $8$，公差 $15$ の等差数列で $a_n=\\boldsymbol{15n-7}$．\n(2) $\\dfrac{20(a_1+a_{20})}{2}=10(8+293)=\\boldsymbol{3010}$．"
+   }
+  ],
+  "idea": {
+   "tex": "1つの解を見つければ，残りは2つの法の最小公倍数ずつずれる．そこから等差数列になる．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) $a_1$：8 ; $a_n$：15n-7\n(2) 3010"
+  },
+  "methods": [],
+  "tags": [
+   "合同式",
+   "等差数列",
+   "和"
+  ],
+  "provenance": {
+   "created": "2026-10-30"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "X-MIX-030",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "X-20",
+  "level": 1,
+  "minutes": 12,
+  "theme": "対数×数列／等比数列の項と常用対数",
+  "unit": "対数×数列",
+  "topic": "等比数列の項と常用対数",
+  "statement": {
+   "tex": "初項 $3$，公比 $2$ の等比数列 $\\{a_n\\}$ について，次の問いに答えよ．ただし $\\log_{10}2=0.3010$，$\\log_{10}3=0.4771$ とする．\n\\begin{enumerate}\n  \\item $a_n>10^{10}$ となる最小の自然数 $n$ を求めよ．\n  \\item $b_n=\\log_2\\dfrac{a_n}{3}$ とするとき，$\\displaystyle\\sum_{k=1}^{n}b_k$ を $n$ の式で表せ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $33$　(2) $\\dfrac{n(n-1)}{2}$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) $a_n=3\\cdot2^{n-1}$．$3\\cdot2^{n-1}>10^{10}$ の常用対数をとると $0.4771+0.3010(n-1)>10$．\n$n-1>\\dfrac{9.5229}{0.3010}=31.6\\cdots$ より $n-1\\geqq32$，最小の $n$ は $\\boldsymbol{33}$．\n(2) $b_n=\\log_2 2^{n-1}=n-1$ なので $\\displaystyle\\sum_{k=1}^n(k-1)=\\boldsymbol{\\dfrac{n(n-1)}{2}}$．"
+   }
+  ],
+  "idea": {
+   "tex": "等比数列の項に対数をとると，指数の部分が $n$ の1次式になる．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) 33\n(2) n(n-1)/2"
+  },
+  "methods": [],
+  "tags": [
+   "等比数列",
+   "常用対数"
+  ],
+  "provenance": {
+   "created": "2026-10-30"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "X-MIX-031",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "X-20",
+  "level": 1,
+  "minutes": 14,
+  "theme": "三角関数×微分／3倍角を含む関数の最大・最小",
+  "unit": "三角関数×微分",
+  "topic": "3倍角を含む関数の最大・最小",
+  "statement": {
+   "tex": "$0\\leqq\\theta\\leqq\\pi$ のとき，$f(\\theta)=2\\cos3\\theta-3\\cos2\\theta+6\\cos\\theta$ について，次の問いに答えよ．\n\\begin{enumerate}\n  \\item $t=\\cos\\theta$ とおくとき，$f(\\theta)$ を $t$ の式で表せ．\n  \\item $f(\\theta)$ の最大値と最小値を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $8t^3-6t^2+3$　(2) 最大値 $5$，最小値 $-11$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) $\\cos3\\theta=4t^3-3t$，$\\cos2\\theta=2t^2-1$ より $f=2(4t^3-3t)-3(2t^2-1)+6t=\\boldsymbol{8t^3-6t^2+3}$．\n(2) $0\\leqq\\theta\\leqq\\pi$ より $-1\\leqq t\\leqq1$．$g(t)=8t^3-6t^2+3$，$g'(t)=12t(2t-1)$．\n$g(-1)=-11$，$g(0)=3$（極大），$g\\left(\\dfrac12\\right)=\\dfrac52$（極小），$g(1)=5$．\nよって最大値 $\\boldsymbol{5}$（$\\theta=0$），最小値 $\\boldsymbol{-11}$（$\\theta=\\pi$）．"
+   }
+  ],
+  "idea": {
+   "tex": "3倍角・2倍角の公式で $\\cos\\theta$ の3次式にし，$t$ の範囲で増減を調べる．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) 8t^3-6t^2+3\n(2) 最大値：5 ; 最小値：-11"
+  },
+  "methods": [],
+  "tags": [
+   "3倍角",
+   "置き換え",
+   "微分",
+   "最大最小"
+  ],
+  "provenance": {
+   "created": "2026-10-30"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "X-MIX-032",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "X-20",
+  "level": 1,
+  "minutes": 12,
+  "theme": "積分×数列／放物線が囲む面積の和",
+  "unit": "積分×数列",
+  "topic": "放物線が囲む面積の和",
+  "statement": {
+   "tex": "自然数 $n$ に対し，放物線 $y=x^2-nx$ と $x$ 軸で囲まれた部分の面積を $S_n$ とする．\n\\begin{enumerate}\n  \\item $S_n$ を $n$ の式で表せ．\n  \\item $\\displaystyle\\sum_{k=1}^{n}S_k$ を $n$ の式で表し，$\\displaystyle\\sum_{k=1}^{10}S_k$ を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $S_n=\\dfrac{n^3}{6}$　(2) $\\dfrac{n^2(n+1)^2}{24}$，$\\dfrac{3025}{6}$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) $x^2-nx=x(x-n)$ より $x$ 軸との交点は $x=0,\\ n$．$S_n=-\\displaystyle\\int_0^n x(x-n)\\,dx=\\boldsymbol{\\dfrac{n^3}{6}}$．\n(2) $\\displaystyle\\sum_{k=1}^{n}\\dfrac{k^3}{6}=\\dfrac16\\left\\{\\dfrac{n(n+1)}{2}\\right\\}^2=\\boldsymbol{\\dfrac{n^2(n+1)^2}{24}}$．\n$n=10$ とすると $\\dfrac{100\\cdot121}{24}=\\boldsymbol{\\dfrac{3025}{6}}$．"
+   }
+  ],
+  "idea": {
+   "tex": "面積は $\\dfrac16$ 公式で $n^3$ に比例する．和は $\\sum k^3$ の公式で求める．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) $S_n$：n^3/6\n(2) n^2(n+1)^2/24 ; 3025/6"
+  },
+  "methods": [],
+  "tags": [
+   "面積",
+   "1/6公式",
+   "Σ"
+  ],
+  "provenance": {
+   "created": "2026-10-30"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "X-MIX-033",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "X-20",
+  "level": 1,
+  "minutes": 12,
+  "theme": "場合の数×整数／積や和が3の倍数になる選び方",
+  "unit": "場合の数×整数",
+  "topic": "積や和が3の倍数になる選び方",
+  "statement": {
+   "tex": "1から100までの整数から異なる2つを選ぶ（順序は考えない）．\n\\begin{enumerate}\n  \\item 選んだ2数の積が3の倍数となる選び方は何通りか．\n  \\item 選んだ2数の和が3の倍数となる選び方は何通りか．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $2739$ 通り　(2) $1650$ 通り"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "1から100までの整数を3で割った余りで分けると，余り0が33個，余り1が34個，余り2が33個．\n(1) 積が3の倍数でないのは，2数とも3の倍数でないとき．3の倍数でない数は67個．\n${}_{100}\\mathrm{C}_2-{}_{67}\\mathrm{C}_2=4950-2211=\\boldsymbol{2739}$ 通り．\n(2) 余りの組が $(0,0)$ または $(1,2)$ のとき．${}_{33}\\mathrm{C}_2+34\\times33=528+1122=\\boldsymbol{1650}$ 通り．"
+   }
+  ],
+  "idea": {
+   "tex": "3の倍数かどうかは3で割った余りだけで決まるので，余りで3つのグループに分けて数える．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) 2739通り\n(2) 1650通り"
+  },
+  "methods": [],
+  "tags": [
+   "場合の数",
+   "余りによる分類"
+  ],
+  "provenance": {
+   "created": "2026-10-30"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "X-MIX-034",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "X-20",
+  "level": 1,
+  "minutes": 14,
+  "theme": "図形×数列／角に内接する円の半径の等比数列",
+  "unit": "図形×数列",
+  "topic": "角に内接する円の半径の等比数列",
+  "statement": {
+   "tex": "$\\angle\\mathrm{XOY}=60^\\circ$ の2辺 OX，OY の両方に接する円 $C_1,C_2,C_3,\\cdots$ があり，$C_{n+1}$ は $C_n$ と外接し，$C_n$ より頂点 O に近い側にある．$C_1$ の半径を $1$ とし，$C_n$ の半径を $r_n$ とする．\n\\begin{enumerate}\n  \\item $r_n$ を $n$ の式で表せ．\n  \\item $C_1$ から $C_n$ までの円の面積の和を $n$ の式で表せ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $r_n=\\left(\\dfrac{1}{3}\\right)^{n-1}$　(2) $\\dfrac{9\\pi}{8}\\left(1-\\left(\\dfrac{1}{9}\\right)^{n}\\right)$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) 円の中心は $\\angle\\mathrm{XOY}$ の二等分線上にあり，二等分線と辺のなす角は $30^\\circ$．\n半径 $r$ の円の中心と O の距離は $\\dfrac{r}{\\sin30^\\circ}=2r$．\n$C_n$ と $C_{n+1}$ は外接するので，中心間の距離について $2r_n-2r_{n+1}=r_n+r_{n+1}$，$r_{n+1}=\\dfrac13r_n$．\nよって $r_n=\\boldsymbol{\\left(\\dfrac{1}{3}\\right)^{n-1}}$．\n(2) 面積は $\\pi r_k^2=\\pi\\left(\\dfrac19\\right)^{k-1}$ で，初項 $\\pi$，公比 $\\dfrac19$ の等比数列．\n和は $\\pi\\cdot\\dfrac{1-\\left(\\frac19\\right)^n}{1-\\frac19}=\\boldsymbol{\\dfrac{9\\pi}{8}\\left(1-\\left(\\dfrac{1}{9}\\right)^{n}\\right)}$．"
+   }
+  ],
+  "idea": {
+   "tex": "中心は角の二等分線上にあり，O からの距離が半径に比例する．外接の条件から半径の比が一定になる．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) $r_n$：(1/3)^(n-1)\n(2) (9π/8)(1-(1/9)^n)"
+  },
+  "technique_main": "円の接線と半径（垂直・接線の長さ）",
+  "technique_support": [],
+  "methods": [],
+  "tags": [
+   "図形",
+   "等比数列",
+   "接する円"
+  ],
+  "provenance": {
+   "created": "2026-10-30"
   },
   "quality": {
    "status": "published",

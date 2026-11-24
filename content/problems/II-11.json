@@ -2554,6 +2554,520 @@
   }
  },
  {
+  "id": "II-LOG-086",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-11",
+  "level": 4,
+  "minutes": 30,
+  "theme": "$5^n$ の最高位の数字の分布",
+  "topic": "$5^n$ の最高位の数字の分布",
+  "statement": {
+   "tex": "以下の問いに答えよ．必要ならば，$0.3010<\\log_{10}2<0.3011$ であることを用いてよい．\n\\begin{enumerate}\n  \\item $1\\leqq n\\leqq100$ をみたす整数 $n$ のうち，$5^n$ の最高位の数字が1であるものの個数を求めよ．\n  \\item $1\\leqq n\\leqq100$ をみたす整数 $n$ のうち，$5^n$ の最高位の数字が5以上であるものの個数を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $30$ 個　(2) $31$ 個"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "$L=\\log_{10}2$ とおく．正の整数 $N$ の桁数を $d(N)$ で表す．\n\n\\textbf{補題1．} $k\\geqq1$ とし，$5^k$ が $m$ 桁，すなわち $10^{m-1}\\leqq5^k<10^m$ とする．\n\\begin{itemize}\n  \\item $5^k$ の最高位が1，すなわち $10^{m-1}\\leqq5^k<2\\cdot10^{m-1}$ ならば，$5\\cdot10^{m-1}\\leqq5^{k+1}<10^m$ で $5^{k+1}$ も $m$ 桁．\n  \\item 最高位が2以上，すなわち $2\\cdot10^{m-1}\\leqq5^k<10^m$ ならば，$10^m\\leqq5^{k+1}<5\\cdot10^m$ で $5^{k+1}$ は $m+1$ 桁．\n\\end{itemize}\n同様に，$2^k=2\\cdot2^{k-1}$ について：$2^{k-1}$ が $10^{j}\\leqq2^{k-1}<5\\cdot10^{j}$ なら $2\\cdot10^j\\leqq2^k<10^{j+1}$（桁数は同じで最高位は2以上），$5\\cdot10^j\\leqq2^{k-1}<10^{j+1}$ なら $10^{j+1}\\leqq2^k<2\\cdot10^{j+1}$（桁数が1増え最高位は1）．したがって $k\\geqq1$ について\n\\[\n\\text{「}2^k\\text{ の最高位が1」}\\iff d(2^k)=d(2^{k-1})+1 .\n\\]\n\n(1) 補題1より，$1\\leqq k\\leqq100$ のうち $5^k$ の最高位が2以上である $k$ の個数は $d(5^{101})-d(5^1)=d(5^{101})-1$ に等しい．\n\\[\n\\log_{10}5^{101}=101(1-L),\\qquad 101\\times0.6989<101(1-L)<101\\times0.6990,\n\\]\nすなわち $70.5889<\\log_{10}5^{101}<70.599$ なので $d(5^{101})=71$．よって最高位が2以上のものは70個で，最高位が1のものは $100-70=\\boldsymbol{30}$ 個．\n\n(2) $1\\leqq k\\leqq100$ とし，$5^k$ が $m$ 桁とする．$2^k=\\dfrac{10^k}{5^k}$ より $10^{k-m}<2^k\\leqq10^{k-m+1}$ である．\n\\[\n5^k\\text{ の最高位が5以上}\\iff5^k\\geqq5\\cdot10^{m-1}\\iff2^k\\leqq\\frac{10^k}{5\\cdot10^{m-1}}=2\\cdot10^{k-m}.\n\\]\n$2^k=2\\cdot10^{k-m}$ となるのは $2^{k-1}=10^{k-m}$ のときで，$2^{k-1}$ は5で割り切れないから $k-m=0$ かつ $k=1$ のときに限る．実際 $k=1$ では $5^1=5$ で最高位は5である．$k\\geqq2$ のときは $2^k\\neq2\\cdot10^{k-m}$ なので，\n\\[\n5^k\\text{ の最高位が5以上}\\iff10^{k-m}<2^k<2\\cdot10^{k-m}\\iff2^k\\text{ の最高位が1}.\n\\]\n（$2^k$ は10の累乗でないから $10^{k-m}<2^k<10^{k-m+1}$ で，$2^k$ の桁数は $k-m+1$ である．）\n補題1より，$1\\leqq k\\leqq100$ で $2^k$ の最高位が1である $k$ の個数は $d(2^{100})-d(2^0)=d(2^{100})-1$．$30.10<100L<30.11$ より $d(2^{100})=31$ なのでこの個数は30．$k=1$ では $2^1=2$ で最高位は1でないから，$2\\leqq k\\leqq100$ でも30個．これに $k=1$ を加えて，求める個数は $\\boldsymbol{31}$ 個．"
+   }
+  ],
+  "idea": {
+   "tex": "$5^{n+1}=5\\cdot5^n$ は，$5^n$ の最高位が1なら桁数が変わらず，2以上なら桁数が1つ増える．よって「最高位が2以上の個数」は桁数の増え方で数えられる．最高位が5以上かどうかは $2^n\\cdot5^n=10^n$ を通して $2^n$ の最高位が1かどうかに言い換え，$2^n$ についても同じ数え方をする．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) 30個\n(2) 31個"
+  },
+  "methods": [],
+  "tags": [
+   "常用対数",
+   "桁数",
+   "最高位の数字",
+   "2^n5^n=10^n"
+  ],
+  "provenance": {
+   "created": "2026-10-30"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-LOG-087",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-11",
+  "level": 4,
+  "minutes": 30,
+  "theme": "対数の不等式が表す円の内外と積 $xy$ の値域",
+  "topic": "対数の不等式が表す円の内外と積 $xy$ の値域",
+  "statement": {
+   "tex": "$x$，$y$ は $x\\neq1$，$y\\neq1$ をみたす正の数で，不等式\n\\[\\log_xy+\\log_yx\\geqq\\log_x4+\\log_y4\\]\nをみたすとする．$X=\\log_2x$，$Y=\\log_2y$ とおく．\n\\begin{enumerate}\n  \\item 点 $(X,Y)$ の範囲を $XY$ 平面上に図示せよ．\n  \\item $x>1$ のとき，積 $xy$ のとりうる値の範囲を求めよ．また，$x<1$ のときの $xy$ のとりうる値の範囲を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 円 $(X-1)^2+(Y-1)^2=2$ を $K$ として，「$XY>0$ かつ $K$ の外部または周上」と「$XY<0$ かつ $K$ の内部または周上」の和集合（第3象限全体を含む．座標軸上の点は除く）　(2) $x>1$ のとき $1<xy<4$，$4<xy$；$x<1$ のとき $0<xy<1$，$1<xy<4$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) $x$，$y$ は正で1でないから $X\\neq0$，$Y\\neq0$．底の変換により\n$\\log_xy=\\dfrac YX$，$\\log_yx=\\dfrac XY$，$\\log_x4=\\dfrac2X$，$\\log_y4=\\dfrac2Y$．不等式は\n\\[\\frac YX+\\frac XY-\\frac2X-\\frac2Y\\geqq0\\iff\\frac{X^2+Y^2-2X-2Y}{XY}\\geqq0\\iff\\frac{(X-1)^2+(Y-1)^2-2}{XY}\\geqq0 .\\]\n$K$ を円 $(X-1)^2+(Y-1)^2=2$（中心 $(1,1)$，半径 $\\sqrt2$，4点 $(0,0)$，$(2,0)$，$(0,2)$，$(2,2)$ を通る）とすると，求める範囲は\n\\begin{itemize}\n  \\item $XY>0$（第1・第3象限）で，$K$ の外部または周上，\n  \\item $XY<0$（第2・第4象限）で，$K$ の内部または周上\n\\end{itemize}\nの和集合である（座標軸上の点は除く）．\nなお第3象限の点は $(X-1)^2>1$，$(Y-1)^2>1$ より $K$ の外部にあるので，第3象限全体が含まれる．\nしたがって図は，第1象限のうち円 $K$ の外側（周を含む），第3象限全体，第2象限で $K$ と $Y$ 軸ではさまれた部分（$K$ の弧の上は含み，$Y$ 軸上は含まない），第4象限で $K$ と $X$ 軸ではさまれた部分（同様）である．\n\n(2) $S=X+Y=\\log_2(xy)$ とおく．範囲内の点では $X^2+Y^2-2S$ と $XY$ が同符号または前者が0であり，\n\\[X^2+Y^2=S^2-2XY\\qquad\\cdots\\text{③}\\]\nが成り立つ．\n\n\\textbf{(ア) $x>1$ すなわち $X>0$ の場合．}\n\n・$Y>0$ のとき：$X^2+Y^2\\geqq2S$ かつ ③ より $X^2+Y^2<S^2$（$XY>0$）．$S>0$ だから $2S<S^2$，よって $S>2$．\n逆に $S>2$ に対し $(X,Y)=\\left(\\dfrac{S+2}{2},\\dfrac{S-2}{2}\\right)$ をとると $X>0$，$Y>0$，$X+Y=S$ で，\n\\[X^2+Y^2-2S=\\frac{(S+2)^2+(S-2)^2}{4}-2S=\\frac{S^2+4}{2}-2S=\\frac{(S-2)^2}{2}\\geqq0\\]\nだから範囲に属する．よって $S$ は $S>2$ のすべての値をとる．\n\n・$Y<0$ のとき：$X^2+Y^2\\leqq2S$．左辺 $>0$ だから $S>0$．③ と $XY<0$ より $X^2+Y^2>S^2$ なので $S^2<2S$，$S<2$．よって $0<S<2$．\n逆に $0<S<2$ に対し $\\delta=\\dfrac{S(2-S)}{8}$ とおき $(X,Y)=(S+\\delta,-\\delta)$ とすると，$X>0>Y$，$X+Y=S$．$0<S(2-S)\\leqq1$ より $0<\\delta\\leqq\\dfrac18$ であり，\n\\[X^2+Y^2-2S=-S(2-S)+2\\delta(S+\\delta)<-S(2-S)+2\\delta\\cdot4=-S(2-S)+S(2-S)=0\\]\n（$S+\\delta<2+\\frac18<4$ を用いた）．よって範囲に属し，$S$ は $0<S<2$ のすべての値をとる．\n\n$Y=0$ は除かれているので，$x>1$ のとき $S$ の値域は $0<S<2$，$2<S$．$xy=2^S$ より\n\\[\\boldsymbol{x>1\\text{ のとき }1<xy<4,\\ 4<xy}\\]\n\n\\textbf{(イ) $x<1$ すなわち $X<0$ の場合．}\n\n・$Y<0$ のとき：第3象限はすべて範囲内で，$S<0$．逆に $S<0$ なら $(X,Y)=\\left(\\frac S2,\\frac S2\\right)$ が範囲内．よって $S<0$ のすべての値．\n\n・$Y>0$ のとき：(ア) の $Y<0$ の場合と $X$，$Y$ の役割を入れかえた議論により，$S$ のとりうる値は $0<S<2$ のすべて（点 $(-\\delta,S+\\delta)$ を用いる）．\n\nよって $S<0$，$0<S<2$ で，\n\\[\\boldsymbol{x<1\\text{ のとき }0<xy<1,\\ 1<xy<4}\\]"
+   }
+  ],
+  "idea": {
+   "tex": "$X=\\log_2x$，$Y=\\log_2y$ とおくと不等式は $\\dfrac{(X-1)^2+(Y-1)^2-2}{XY}\\geqq0$ となり，原点を通る円の内外と象限の符号の組合せで範囲が決まる．$\\log_2(xy)=X+Y$ の値域は，第1象限では「円の外 $\\Rightarrow$ $X+Y>2$」，第2・4象限では「円の内 $\\Rightarrow$ $0<X+Y<2$」となり，値 $X+Y=0,\\,2$ が抜け落ちる．"
+  },
+  "methods": [],
+  "tags": [
+   "底の変換",
+   "分数不等式",
+   "円の内部と外部",
+   "値域",
+   "穴のあく値域"
+  ],
+  "provenance": {
+   "created": "2026-10-30"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-LOG-088",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-11",
+  "level": 4,
+  "minutes": 30,
+  "theme": "3桁になる $\\left(\\frac54\\right)^n$ と近似値の限界",
+  "topic": "3桁になる $\\left(\\frac54\\right)^n$ と近似値の限界",
+  "statement": {
+   "tex": "$0.3010<\\log_{10}2<0.3011$ であることは用いてよい．\n\\begin{enumerate}\n  \\item $\\left(\\dfrac54\\right)^n$ の整数部分がちょうど3桁となる自然数 $n$ をすべて求めよ．\n  \\item 各正の整数 $k$ に対し，$\\left(\\dfrac54\\right)^n$ の整数部分がちょうど $k$ 桁となる自然数 $n$ の個数は10または11であることを示せ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $n=21,22,\\dots,30$（10個）　(2) 証明"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "$l=\\log_{10}\\dfrac54=\\log_{10}10-3\\log_{10}2=1-3\\log_{10}2$ とおくと，$0.9030<3\\log_{10}2<0.9033$ より\n\\[0.0967<l<0.0970 .\\]\nまた $n\\geqq1$ のとき $\\left(\\frac54\\right)^n=\\dfrac{5^n}{4^n}$ は，分子が奇数，分母が偶数なので整数でない．したがって整数部分がちょうど $k$ 桁 $\\iff$ $10^{k-1}\\leqq\\left(\\frac54\\right)^n<10^k$ $\\iff$ $k-1\\leqq nl<k$．\n\n(1) $2\\leqq nl<3$ となる $n$ を調べる．\n\\begin{itemize}\n  \\item $n\\leqq20$：$nl<20\\times0.0970=1.94<2$ で不適．\n  \\item $21\\leqq n\\leqq30$：$nl>21\\times0.0967=2.0307>2$，$nl<30\\times0.0970=2.91<3$ で適する．\n  \\item $n\\geqq32$：$nl>32\\times0.0967=3.0944>3$ で不適．\n  \\item $n=31$：$31\\times0.0967=2.9977$，$31\\times0.0970=3.007$ なので，与えられた評価だけでは判定できない．\n\\end{itemize}\n$n=31$ を直接調べる．\n\\[\\left(\\frac54\\right)^{31}\\geqq1000\\iff5^{31}\\geqq10^3\\cdot2^{62}\\iff\\frac{10^{31}}{2^{31}}\\geqq10^3\\cdot2^{62}\\iff2^{93}\\leqq10^{28}.\\]\n$2^{93}=2^3\\cdot(2^{10})^9=8\\cdot1024^9=8\\cdot10^{27}\\cdot1.024^9$ である．ここで\n\\[1.024^2=1.048576,\\quad 1.024^3=1.073741824<1.0738,\\]\n\\[1.0738^2=1.15304644<1.1531,\\quad 1.0738^3<1.1531\\times1.0738=1.23819878<1.25\\]\nより $1.024^9=(1.024^3)^3<1.0738^3<1.25$．よって $2^{93}<8\\cdot10^{27}\\cdot1.25=10^{28}$ となり，$\\left(\\frac54\\right)^{31}>1000$，すなわち $31l>3$ で $n=31$ は不適．以上より\n\\[\\boldsymbol{n=21,22,\\dots,30}\\]\n\n(2) $L=\\dfrac1l$ とおくと $\\dfrac1{0.0970}<L<\\dfrac1{0.0967}$ で，$\\dfrac{1}{0.097}=10.30\\cdots>10$，$\\dfrac1{0.0967}=10.34\\cdots<11$ より $10<L<11$．\n\n$k\\geqq2$ のとき，求める個数は $(k-1)L\\leqq n<kL$ をみたす整数 $n$ の個数（$(k-1)L>0$ なのですべて自然数）．$(k-1)L$ 以上の最小の整数を $m$ とおくと，区間の幅が $L$ で $10<L<11$ だから，$m,m+1,\\dots,m+9$ はすべて $m+9<(k-1)L+10<kL$ をみたして区間に入り，$m+11\\geqq(k-1)L+11>kL$ は入らない．よって個数は10または11．\n\n$k=1$ のとき，$0\\leqq nl<1$ をみたす自然数 $n$ は $n<L$ をみたすもので，$10<L<11$ より $n=1,2,\\dots,10$ の10個．\n\n以上より，個数はつねに10または11である．\\hfill$\\square$"
+   }
+  ],
+  "idea": {
+   "tex": "$(5/4)^n$ の整数部分の桁数は $n\\log_{10}\\frac54=n(1-3\\log_{10}2)$ の整数部分で決まる．与えられた近似値では $n=31$ だけが判定できず，$2^{93}<10^{28}$ を $2^{10}=1024$ と $1.024^9<1.25$ の具体的計算で示して決着させる．区間の長さ $1/\\log_{10}\\frac54$ が10と11の間にあることから，各桁数の個数は10か11．"
+  },
+  "methods": [],
+  "tags": [
+   "常用対数",
+   "桁数",
+   "評価の精度",
+   "整数の大小比較"
+  ],
+  "provenance": {
+   "created": "2026-10-30"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-LOG-089",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-11",
+  "level": 4,
+  "minutes": 30,
+  "theme": "桁数の最高位の数字",
+  "topic": "桁数の最高位の数字",
+  "statement": {
+   "tex": "$N=2^{100}$ とする．必要なら $0.30102<\\log_{10}2<0.30103$，$0.47712<\\log_{10}3<0.47713$ を用いてよい．\n\\begin{enumerate}\n  \\item $N$ の桁数と最高位の数字を求めよ．\n  \\item $2^N$ の桁数を $n$ とする．$n$ の桁数と最高位の数字を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $31$ 桁，最高位 $1$　(2) $30$ 桁，最高位 $3$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "以下 $\\log$ は常用対数．\n\n(1) $\\log N=100\\log2$ で $30.102<\\log N<30.103$．よって $10^{30}<N<10^{31}$ で $\\boldsymbol{31}$ 桁．また $30+\\log2>30.30102>\\log N$ より $N<2\\cdot10^{30}$ で，最高位の数字は $\\boldsymbol1$．\n\n(2) 正の整数 $X$ の桁数は $\\lfloor\\log X\\rfloor+1$ なので，$M=N\\log2$ とおくと $n=\\lfloor M\\rfloor+1$，特に $M<n\\leqq M+1$．\n\\[\n\\log M=\\log N+\\log(\\log2)=100\\log2+\\log(\\log2).\n\\]\n\\textbf{下からの評価．}$\\log2>0.30102>0.3$ より $\\log(\\log2)>\\log0.3=\\log3-1>-0.52288$．よって\n\\[\n\\log M>30.102-0.52288=29.57912>29+\\log3\\quad(\\log3<0.47713)\n\\]\nで $M>3\\cdot10^{29}$，ゆえに $n>3\\cdot10^{29}$．\n\n\\textbf{上からの評価．}$\\log2<0.30103<0.3125=\\frac5{16}$ より\n\\[\n\\log(\\log2)<\\log\\frac5{16}=\\log\\frac{10}{32}=1-5\\log2<1-5\\times0.30102=-0.5051.\n\\]\nよって $\\log M<30.103-0.5051=29.5979$．一方 $\\log(4\\cdot10^{29})=29+2\\log2>29.60204$ なので\n\\[\n\\log(4\\cdot10^{29})-\\log M>0.00414>\\frac1{250}.\n\\]\nここで $10^{\\frac1{250}}>1+\\frac1{250}$ を示す．$m=250$ として，二項定理より\n\\[\n\\left(1+\\frac1m\\right)^m=\\sum_{j=0}^m{}_m\\mathrm C_j\\frac1{m^j},\\qquad {}_m\\mathrm C_j\\frac1{m^j}=\\frac1{j!}\\cdot\\frac{m(m-1)\\cdots(m-j+1)}{m^j}\\leqq\\frac1{j!}\\leqq\\frac1{2^{j-1}}\\ (j\\geqq1)\n\\]\nなので $\\left(1+\\frac1m\\right)^m\\leqq1+\\sum_{j=1}^m\\frac1{2^{j-1}}<3<10$，両辺を $\\frac1m$ 乗して $1+\\frac1{250}<10^{\\frac1{250}}$．\nしたがって\n\\[\nM<\\frac{4\\cdot10^{29}}{10^{1/250}}<\\frac{4\\cdot10^{29}}{1+\\frac1{250}}=4\\cdot10^{29}-\\frac{4\\cdot10^{29}}{251}<4\\cdot10^{29}-1,\n\\]\n$n\\leqq M+1<4\\cdot10^{29}$．\n\n以上より $3\\cdot10^{29}<n<4\\cdot10^{29}$ で，$n$ は $\\boldsymbol{30}$ 桁，最高位の数字は $\\boldsymbol3$．"
+   }
+  ],
+  "idea": {
+   "tex": "$2^N$ の桁数 $n$ は $\\lfloor N\\log_{10}2\\rfloor+1$．$n$ の最高位は $\\log_{10}(N\\log_{10}2)=100\\log_{10}2+\\log_{10}(\\log_{10}2)$ で決まり，$\\log_{10}(\\log_{10}2)$ を $0.3<\\log_{10}2<\\frac5{16}$ で挟む．床関数と $+1$ の影響は $10^{1/250}>1.004$ で吸収する．"
+  },
+  "methods": [],
+  "tags": [
+   "常用対数",
+   "桁数",
+   "最高位",
+   "精密評価"
+  ],
+  "provenance": {
+   "created": "2026-10-30"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-LOG-090",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-11",
+  "level": 3,
+  "minutes": 20,
+  "theme": "入れ子の対数方程式の解が有理数になるとき",
+  "topic": "入れ子の対数方程式の解が有理数になるとき",
+  "statement": {
+   "tex": "$m$ を正の整数とし，$x$ についての方程式\n\\[\n\\log_2x+\\log_2(\\log_2x)=m \\qquad\\cdots(*)\n\\]\nを考える．\n\\begin{enumerate}\n  \\item $(*)$ はただ1つの実数解をもつことを示せ．この解を $x_m$ とする．\n  \\item $x_m$ が有理数となるような $m$ をすべて求め，そのときの $x_m$ を求めよ．\n  \\item $1\\leqq m\\leqq100$ のうち，$x_m$ が有理数となる $m$ は何個あるか．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 証明　(2) $m=2^j+j$（$j=0,1,2,\\dots$），このとき $x_m=2^{2^j}$　(3) $7$ 個"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) \\textbf{同値な方程式．}$\\log_2(\\log_2x)$ が定義されるためには $x>0$ かつ $\\log_2x>0$，すなわち $x>1$ が必要十分である．$x>1$ のもとで\n\\[\n(*)\\iff\\log_2(x\\log_2x)=m\\iff x\\log_2x=2^m .\n\\]\n$f(x)=x\\log_2x$（$x\\geqq1$）とおく．$1\\leqq x_1<x_2$ ならば $0\\leqq\\log_2x_1<\\log_2x_2$ かつ $0<x_1<x_2$ であるから\n\\[\nf(x_2)-f(x_1)=x_2\\log_2x_2-x_1\\log_2x_1=x_2(\\log_2x_2-\\log_2x_1)+(x_2-x_1)\\log_2x_1>0\n\\]\nとなり，$f$ は $x\\geqq1$ で増加する．また $f$ は連続で $f(1)=0<2^m$，$f(2^m)=2^m\\cdot m\\geqq2^m$ である．$f(2^m)=2^m$ となるのは $m=1$ のときで，このとき $x=2$ が解．$m\\geqq2$ のときは $f(1)<2^m<f(2^m)$ であるから，中間値の定理により $1<x<2^m$ に解がある．$f$ は増加関数なので $f(x)=2^m$ の $x\\geqq1$ での解はただ1つで，$x=1$ は解でないから，$(*)$ の解は（$x>1$ の範囲に）ただ1つ存在する．\\hfill$\\square$\n\n(2) \\textbf{必要条件．}$x_m$ が有理数であるとする．$x_m>1$ と $x_m\\log_2x_m=2^m$ から $\\log_2x_m=\\dfrac{2^m}{x_m}$ は正の有理数である．そこで $\\log_2x_m=\\dfrac pq$（$p,q$ は正の整数）と書くと $x_m=2^{\\frac pq}$，すなわち $x_m{}^q=2^p$．\n\n$x_m=\\dfrac AB$（$A,B$ は互いに素な正の整数）とおくと $A^q=2^pB^q$．$B\\geqq2$ とすると $B$ の素因数 $s$ は $A^q$ を割り切るから $A$ を割り切り，$A$，$B$ が互いに素であることに反する．よって $B=1$ で，$x_m=A$ は整数であり $A^q=2^p$．素因数分解の一意性から $A$ の素因数は2だけであるから，$A=2^r$（$r$ は0以上の整数）と書ける．$x_m>1$ より $r\\geqq1$．\n\nこのとき $x_m\\log_2x_m=2^r\\cdot r=2^m$ より $r=2^{m-r}$．$r$ は正の整数なので $m-r\\geqq0$ であり，$j=m-r$ とおくと $r=2^j$，$m=r+j=2^j+j$（$j\\geqq0$ の整数）．\n\n\\textbf{十分性．}逆に $m=2^j+j$（$j\\geqq0$ の整数）のとき，$x=2^{2^j}$ は $x>1$ をみたし\n\\[\nx\\log_2x=2^{2^j}\\cdot2^j=2^{2^j+j}=2^m\n\\]\nであるから $(*)$ の解であり，解はただ1つなので $x_m=2^{2^j}$．これは整数（有理数）である．\n\n以上より，求める $m$ は\n\\[\n\\boldsymbol{m=2^j+j\\ (j=0,1,2,\\dots)},\\qquad\\text{そのとき}\\ \\boldsymbol{x_m=2^{2^j}} .\n\\]\n（$m=1,3,6,11,20,37,70,135,\\dots$．元の問題の $m=11$ では $x_{11}=2^8=256$．）\n\n(3) $g(j)=2^j+j$ は $j$ について増加し，$g(6)=70\\leqq100<135=g(7)$．よって $j=0,1,\\dots,6$ の $\\boldsymbol{7}$ 個（$m=1,3,6,11,20,37,70$）．"
+   }
+  ],
+  "idea": {
+   "tex": "$\\log_2x+\\log_2(\\log_2x)=m$ は真数条件 $x>1$ のもとで $x\\log_2x=2^m$ と同値で，左辺は $x>1$ で増加するから解はただ1つ．解が有理数なら $\\log_2x=\\dfrac{2^m}{x}$ も有理数で，$x^q=2^p$ から素因数分解の一意性により $x$ は2のべき $2^r$ に限られ，$r\\cdot2^r=2^m$ から $r$ 自身も2のべきになる．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) 証明\n(2) 記述\n(3) 7個"
+  },
+  "methods": [],
+  "tags": [
+   "対数方程式",
+   "単調性",
+   "中間値の定理",
+   "有理数",
+   "素因数分解の一意性"
+  ],
+  "provenance": {
+   "created": "2026-10-30"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-LOG-091",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-11",
+  "level": 4,
+  "minutes": 30,
+  "theme": "巡回する3つの対数とその逆数の和",
+  "topic": "巡回する3つの対数とその逆数の和",
+  "statement": {
+   "tex": "$l,\\ m,\\ n$ を2以上の相異なる整数とし，\n\\[ \\alpha=\\log_lm,\\quad \\beta=\\log_mn,\\quad \\gamma=\\log_nl,\\qquad a=\\alpha+\\beta+\\gamma,\\quad b=\\log_ml+\\log_nm+\\log_ln \\]\nとおく．\n\\begin{enumerate}\n  \\item $b-a=(1-\\alpha)(1-\\beta)(1-\\gamma)$ を示せ．\n  \\item $a<b$ となるための $l,\\ m,\\ n$ の大小関係についての必要十分条件を求めよ．\n  \\item $(l,\\ m,\\ n)=(2,\\ 3,\\ 5)$ のとき，$3<a<b<4$ を示せ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 証明　(2) $l<m<n$ または $m<n<l$ または $n<l<m$　(3) 証明"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) $l,m,n\\geqq2$ より $\\log l,\\log m,\\log n>0$ で，底の変換により\n\\[ \\alpha\\beta\\gamma=\\frac{\\log m}{\\log l}\\cdot\\frac{\\log n}{\\log m}\\cdot\\frac{\\log l}{\\log n}=1,\\qquad \\log_ml=\\frac1\\alpha,\\ \\log_nm=\\frac1\\beta,\\ \\log_ln=\\frac1\\gamma. \\]\nよって $b=\\dfrac1\\alpha+\\dfrac1\\beta+\\dfrac1\\gamma=\\dfrac{\\beta\\gamma+\\gamma\\alpha+\\alpha\\beta}{\\alpha\\beta\\gamma}=\\alpha\\beta+\\beta\\gamma+\\gamma\\alpha$ で，\n\\[ (1-\\alpha)(1-\\beta)(1-\\gamma)=1-(\\alpha+\\beta+\\gamma)+(\\alpha\\beta+\\beta\\gamma+\\gamma\\alpha)-\\alpha\\beta\\gamma=b-a. \\]\n\\hfill$\\square$\n\n(2) $\\alpha>1\\iff\\log m>\\log l\\iff m>l$，$\\alpha<1\\iff m<l$ で，$m\\neq l$ より $\\alpha\\neq1$．同様に $\\beta>1\\iff n>m$，$\\gamma>1\\iff l>n$ で，$\\beta,\\gamma\\neq1$．\n\n3つの条件「$m>l$」「$n>m$」「$l>n$」のうち成り立つものの個数を $k$ とする．すべて成り立つと $l<m<n<l$ となり矛盾，すべて成り立たないと $l>m>n>l$ となり矛盾なので $k=1$ または $2$．(1) より $b-a$ の符号は $(1-\\alpha)(1-\\beta)(1-\\gamma)$ の符号で，負の因数の個数は $k$ に等しい．よって\n\\[ a<b\\iff k=2. \\]\n$k=2$ となるのは，「$m>l,\\ n>m$」で $l>n$ でない（$l<m<n$），「$m>l,\\ l>n$」で $n>m$ でない（$n<l<m$），「$n>m,\\ l>n$」で $m>l$ でない（$m<n<l$）の3通りで，それぞれ確かに $k=2$ である．よって\n\\[ \\boldsymbol{l<m<n\\ \\text{または}\\ m<n<l\\ \\text{または}\\ n<l<m}. \\]\n\n(3) $2<3<5$ なので (2) より $a<b$．\n\n$a>3$ を示す．$X,Y,Z>0$ に対し\n\\[ X^3+Y^3+Z^3-3XYZ=\\frac12(X+Y+Z)\\{(X-Y)^2+(Y-Z)^2+(Z-X)^2\\}\\geqq0 \\]\nで，等号は $X=Y=Z$ のときに限る．$X=\\alpha^{\\frac13}$ などとおくと $\\alpha+\\beta+\\gamma\\geqq3(\\alpha\\beta\\gamma)^{\\frac13}=3$ で，等号は $\\alpha=\\beta=\\gamma=1$ のときに限る．$\\alpha=\\log_23\\neq1$ なので $a>3$．\n\n$b<4$ を示す．$8<9$ より $2^3<3^2$，$\\log_32<\\frac23$．$81<125$ より $3^4<5^3$，$\\log_53<\\frac34$．$125<128$ より $5^3<2^7$，$\\log_25<\\frac73$．よって\n\\[ b<\\frac23+\\frac34+\\frac73=\\frac{45}{12}<4. \\]\n以上より $3<a<b<4$．\\hfill$\\square$"
+   }
+  ],
+  "idea": {
+   "tex": "$\\alpha\\beta\\gamma=1$ なので逆数の和は $\\alpha\\beta+\\beta\\gamma+\\gamma\\alpha$ になり，$(1-\\alpha)(1-\\beta)(1-\\gamma)=b-a$．大小は「1より大きい対数がいくつあるか」で決まり，それは $l,m,n$ の巡回的な大小で決まる．整数部分は相加相乗平均と，整数の累乗の比較による上からの評価で．"
+  },
+  "methods": [],
+  "tags": [
+   "対数",
+   "底の変換",
+   "解と係数の関係",
+   "相加相乗平均",
+   "大小比較"
+  ],
+  "provenance": {
+   "created": "2026-11-18"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-LOG-092",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-11",
+  "level": 4,
+  "minutes": 30,
+  "theme": "2と5だけを素因数にもつ100桁の数で最高位が1のもの",
+  "topic": "2と5だけを素因数にもつ100桁の数で最高位が1のもの",
+  "statement": {
+   "tex": "$0.3010<\\log_{10}2<0.3011$ であることは用いてよい．100桁の自然数で，2と5以外の素因数をもたず，かつ最高位の数字が $1$ であるものの個数を求めよ．"
+  },
+  "answer": {
+   "tex": "$143$ 個"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "自然数 $N$ の桁数を $d(N)$ と書く．$N$ が $e$ 桁 $\\iff10^{e-1}\\leqq N<10^e$．\n\n\\textbf{形の整理．} 2と5以外の素因数をもたない自然数は $2^a5^b$（$a,b\\geqq0$）とただ1通りに表せる．$a\\geqq b$ なら $N=10^b\\cdot2^c$（$c=a-b\\geqq0$），$a<b$ なら $N=10^a\\cdot5^c$（$c=b-a\\geqq1$）．$10^e\\cdot L$ の桁数は $e+d(L)$，最高位の数字は $L$ と同じである．したがって条件をみたす $N$ は\n\\begin{itemize}\n  \\item (A) $c\\geqq0$，$d(2^c)\\leqq100$，$2^c$ の最高位が $1$ であるような $c$ に対する $10^{100-d(2^c)}\\cdot2^c$，\n  \\item (B) $c\\geqq1$，$d(5^c)\\leqq100$，$5^c$ の最高位が $1$ であるような $c$ に対する $10^{100-d(5^c)}\\cdot5^c$\n\\end{itemize}\nの全体で，異なる $c$ や (A)，(B) から同じ $N$ は生じない（素因数分解の一意性）．\n\n\\textbf{$c$ の範囲．} $d(2^c)\\leqq100\\iff2^c<10^{100}\\iff c\\log_{10}2<100$．$332\\times0.3011=99.9652<100$，$333\\times0.3010=100.233>100$ より $0\\leqq c\\leqq332$．$d(5^c)\\leqq100\\iff c(1-\\log_{10}2)<100$．$143\\times(1-0.3010)=99.957<100$，$144\\times(1-0.3011)=100.6416>100$ より $1\\leqq c\\leqq143$．\n\n\\textbf{補題．} 自然数 $L$ が $e$ 桁のとき，$2L$ は $L\\geqq5\\cdot10^{e-1}$（最高位が $5$ 以上）なら $e+1$ 桁で最高位が $1$，そうでなければ $e$ 桁で最高位が $2$ 以上．\n\n（証明）$L\\geqq5\\cdot10^{e-1}$ なら $10^e\\leqq2L<2\\cdot10^e$．$L<5\\cdot10^{e-1}$ なら $2\\cdot10^{e-1}\\leqq2L<10^e$．\\hfill$\\square$\n\n\\textbf{(A) の個数．} $c=0$（$N=10^{99}$）は適する．$c\\geqq1$ では，補題より「$2^c$ の最高位が $1$」$\\iff d(2^c)=d(2^{c-1})+1$ で，つねに $d(2^c)-d(2^{c-1})\\in\\{0,1\\}$．よって $1\\leqq c\\leqq332$ で適する $c$ の個数は $d(2^{332})-d(2^0)$．$332\\times0.3010=99.932$ より $99<332\\log_{10}2<100$，$d(2^{332})=100$．よって $100-1=99$ 個，$c=0$ と合わせて $100$ 個．\n\n\\textbf{(B) の個数．} $c\\geqq1$ とする．$5^c$ の最高位が $1$ $\\iff$ ある整数 $j\\geqq0$ で $10^j\\leqq5^c<2\\cdot10^j$ $\\iff$ $5\\cdot10^{c-j-1}<2^c\\leqq10^{c-j}$（$2^c=\\frac{10^c}{5^c}$）．$c\\geqq1$ では $2^c$ は $10$ の累乗でも $5\\cdot10^i$ の形でもない（$5$ で割り切れない）ので，これは「ある整数 $i$ で $5\\cdot10^i\\leqq2^c<10^{i+1}$」，すなわち「$2^c$ の最高位が $5$ 以上」と同値で，補題より $d(2^{c+1})=d(2^c)+1$ と同値である．よって $1\\leqq c\\leqq143$ で適する $c$ の個数は $d(2^{144})-d(2^1)$．$144\\times0.3010=43.344$，$144\\times0.3011=43.3584$ より $43<144\\log_{10}2<44$，$d(2^{144})=44$．よって $44-1=43$ 個．\n\n以上より，求める個数は $100+43=\\boldsymbol{143}$ 個．"
+   }
+  ],
+  "idea": {
+   "tex": "$2^a5^b$ は小さい方の指数で $10$ のべきをくくり出すと $10^b\\cdot2^c$ または $10^a\\cdot5^c$ となり，桁数は $10$ のべきの分だけずれ，最高位の数字は $2^c$，$5^c$ のものと一致する．$2^c$ の最高位が $1$ であることは「$2^{c-1}$ から桁が1つ増える」ことと同値，$5^c$ の最高位が $1$ であることは $10^c=2^c5^c$ により「$2^c$ の最高位が $5$ 以上」，すなわち「$2^c$ から $2^{c+1}$ で桁が増える」ことと同値．どちらも桁数の差で数えられる．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "143個"
+  },
+  "methods": [],
+  "tags": [
+   "常用対数",
+   "桁数",
+   "最高位の数字",
+   "素因数分解"
+  ],
+  "provenance": {
+   "created": "2026-11-14"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-LOG-093",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-11",
+  "level": 4,
+  "minutes": 35,
+  "theme": "9乗の和の桁数と上2桁",
+  "topic": "9乗の和の桁数と上2桁",
+  "statement": {
+   "tex": "\\[\nS=1^9+2^9+3^9+\\cdots+2025^9\n\\]\nとする．\n\\begin{enumerate}\n  \\item $n$ を2以上の整数とする．$x>0$ をみたす実数 $x$ に対して，不等式\n  \\[\n  nx^{n-1}<(x+1)^n-x^n<n(x+1)^{n-1}\n  \\]\n  が成り立つことを示せ．\n  \\item $2025^{10}<10S<2026^{10}$ を示せ．\n  \\item $S$ は何桁の整数か．また，$S$ の上2桁（最高位とその次の位の数字を並べた2桁の数）を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 証明　(2) 証明　(3) $33$ 桁，上2桁は $11$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "\\textbf{(1)}　$A=x+1$，$B=x$ とおくと $A-B=1$ なので\n\\[\n(x+1)^n-x^n=(A-B)\\sum_{j=0}^{n-1}A^jB^{n-1-j}=\\sum_{j=0}^{n-1}(x+1)^jx^{n-1-j}.\n\\]\n$0<x<x+1$ より，各項について $x^{n-1}\\leqq(x+1)^jx^{n-1-j}\\leqq(x+1)^{n-1}$ で，左の等号は $j=0$ のときだけ，右の等号は $j=n-1$ のときだけ成り立つ．$n\\geqq2$ より項は2つ以上あるので，和をとって\n\\[\nnx^{n-1}<(x+1)^n-x^n<n(x+1)^{n-1}.\n\\]\n\\hfill$\\square$\n\n\\medskip\n\\textbf{(2)}　(1) で $n=10$ とする．$k=1,2,\\dots,2025$ に対し $x=k$ とおくと $10k^9<(k+1)^{10}-k^{10}$．これを加えると右辺は打ち消し合って\n\\[\n10S<2026^{10}-1^{10}<2026^{10}.\n\\]\n$k=2,3,\\dots,2025$ に対し $x=k-1\\ (>0)$ とおくと $k^{10}-(k-1)^{10}<10k^9$．また $k=1$ では $1^{10}-0^{10}=1<10\\cdot1^9$．これらを加えて\n\\[\n2025^{10}=\\sum_{k=1}^{2025}\\left\\{k^{10}-(k-1)^{10}\\right\\}<10S .\n\\]\n\\hfill$\\square$\n\n\\medskip\n\\textbf{(3)}　\\emph{2つの不等式．}$h>0$，$n$ を正の整数とすると，二項定理より $(1+h)^n\\geqq1+nh$．また $0<h<1$ のとき $(1-h)^n\\geqq1-nh$ が成り立つ（$n=1$ で等号，$(1-h)^n\\geqq1-nh$ の両辺に正の数 $1-h$ を掛けて $(1-h)^{n+1}\\geqq1-(n+1)h+nh^2\\geqq1-(n+1)h$ となる帰納法による）．さらに $nh<1$ なら，$(1+h)^n(1-h)^n=(1-h^2)^n<1$ と合わせて\n\\[\n(1+h)^n<\\frac1{(1-h)^n}\\leqq\\frac1{1-nh}.\n\\]\n\\emph{下からの評価．}$2025=2000\\times1.0125$ で，$1.0125^{10}\\geqq1+10\\times0.0125=1.125$．$2^{10}=1024$ より\n\\[\n2025^{10}=1024\\times1.0125^{10}\\times10^{30}\\geqq1024\\times1.125\\times10^{30}=1152\\times10^{30}.\n\\]\n\\emph{上からの評価．}$2026=2000\\times1.013$ で，$10\\times0.013=0.13<1$ より $1.013^{10}<\\dfrac1{0.87}<1.15$（$0.87\\times1.15=1.0005>1$）．よって\n\\[\n2026^{10}=1024\\times1.013^{10}\\times10^{30}<1024\\times1.15\\times10^{30}=1177.6\\times10^{30}.\n\\]\n(2) と合わせて\n\\[\n1.152\\times10^{32}<S<1.1776\\times10^{32}.\n\\]\n$S$ は $1.1\\times10^{32}$ 以上 $1.2\\times10^{32}$ 未満の整数なので，$\\boldsymbol{33}$ 桁で，上2桁は $\\boldsymbol{11}$ である．"
+   }
+  ],
+  "idea": {
+   "tex": "$nx^{n-1}<(x+1)^n-x^n<n(x+1)^{n-1}$ は「1つの差のはさみうち」だが，これを $x=1,2,\\dots$ で足し合わせると左右が打ち消し合い，$\\sum k^9$ が $\\frac{m^{10}}{10}$ と $\\frac{(m+1)^{10}}{10}$ にはさまれる．上2桁まで決めるには対数の近似値では精度が足りず，$2025=2000\\times1.0125$ と分けて $(1+h)^{10}\\geqq1+10h$ と $(1+h)^{10}<\\frac1{1-10h}$（$(1-h)^{10}\\geqq1-10h$ との積から）を使う．原題の「1つの差 $2026^{10}-2025^{10}$ の桁数」を「9乗の和の桁数と上2桁」に変えた．"
+  },
+  "methods": [],
+  "tags": [
+   "桁数",
+   "階差による評価",
+   "和の評価",
+   "ベルヌーイの不等式",
+   "二項定理",
+   "累乗の差の因数分解"
+  ],
+  "provenance": {
+   "created": "2026-11-14"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-LOG-094",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-11",
+  "level": 4,
+  "minutes": 30,
+  "theme": "$1^1\\cdot2^3\\cdot3^5\\cdots100^{199}$ の大きさ",
+  "topic": "$1^1\\cdot2^3\\cdot3^5\\cdots100^{199}$ の大きさ",
+  "statement": {
+   "tex": "\\begin{enumerate}\n  \\item すべての自然数 $n$ に対して $2\\leqq\\left(1+\\dfrac1n\\right)^n<3$ が成り立つことを示せ．\n  \\item $2$ 以上の整数 $n$ に対して\n  \\[\n  \\left(1+\\frac11\\right)^{1^2}\\left(1+\\frac12\\right)^{2^2}\\cdots\\left(1+\\frac1{n-1}\\right)^{(n-1)^2}\n  =\\frac{n^{(n-1)^2}}{1^1\\cdot2^3\\cdot3^5\\cdots(n-1)^{2n-3}}\n  \\]\n  が成り立つことを示せ．\n  \\item $P=1^1\\cdot2^3\\cdot3^5\\cdots100^{199}$ とする．$P$ と $10^{17500}$，$P$ と $10^{18600}$ の大小をそれぞれ判定せよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 証明　(2) 証明　(3) $P>10^{17500}$，$P<10^{18600}$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) 二項定理より\n\\[\n\\left(1+\\frac1n\\right)^n=\\sum_{k=0}^{n}{}_n\\mathrm C_k\\frac1{n^k}.\n\\]\n各項は0以上で，$k=0,1$ の項の和は $1+n\\cdot\\dfrac1n=2$ なので，$\\left(1+\\dfrac1n\\right)^n\\geqq2$．\n\nまた $1\\leqq k\\leqq n$ のとき\n\\[\n{}_n\\mathrm C_k\\frac1{n^k}=\\frac1{k!}\\cdot\\frac nn\\cdot\\frac{n-1}n\\cdots\\frac{n-k+1}n\\leqq\\frac1{k!}\\leqq\\frac1{2^{k-1}}\n\\]\n（$k!=1\\cdot2\\cdot3\\cdots k$ の $2,3,\\dots,k$ はどれも $2$ 以上なので $k!\\geqq2^{k-1}$）．よって\n\\[\n\\left(1+\\frac1n\\right)^n\\leqq1+\\sum_{k=1}^{n}\\frac1{2^{k-1}}=1+2\\left(1-\\frac1{2^n}\\right)<3 .\n\\]\n\\hfill$\\square$\n\n(2) 左辺を $Q_n$，$1^1\\cdot2^3\\cdots(n-1)^{2n-3}$ を $R_n$ とおき，$Q_nR_n=n^{(n-1)^2}$ を $n$ についての帰納法で示す．\n\n$n=2$ のとき $Q_2=2$，$R_2=1^1=1$ で $Q_2R_2=2=2^{1}$．成り立つ．\n\n$n$ で成り立つとすると，$Q_{n+1}=Q_n\\left(\\dfrac{n+1}n\\right)^{n^2}$，$R_{n+1}=R_n\\cdot n^{2n-1}$ より\n\\[\nQ_{n+1}R_{n+1}=n^{(n-1)^2}\\cdot\\frac{(n+1)^{n^2}}{n^{n^2}}\\cdot n^{2n-1}=(n+1)^{n^2}\\cdot n^{(n-1)^2-n^2+2n-1}=(n+1)^{n^2}.\n\\]\nよって $n+1$ でも成り立つ．\\hfill$\\square$\n\n(3) (2) で $n=101$ とすると $R_{101}=P$ であり，\n\\[\nP=\\frac{101^{10000}}{Q_{101}},\\qquad Q_{101}=\\left(1+\\frac11\\right)^{1^2}\\cdots\\left(1+\\frac1{100}\\right)^{100^2}.\n\\]\n(1) より各 $k$ について $2^k\\leqq\\left\\{\\left(1+\\dfrac1k\\right)^k\\right\\}^k<3^k$ なので，$1+2+\\cdots+100=5050$ より\n\\[\n2^{5050}\\leqq Q_{101}<3^{5050},\\qquad\\text{よって}\\qquad \\frac{101^{10000}}{3^{5050}}<P\\leqq\\frac{101^{10000}}{2^{5050}} .\n\\]\n\n\\textbf{下からの評価．} $3^{25}=847288609443<10^{12}$ より $3^{5050}=(3^{25})^{202}<10^{2424}$．また $101^{10000}>100^{10000}=10^{20000}$．よって\n\\[\nP>\\frac{10^{20000}}{10^{2424}}=10^{17576}>10^{17500}.\n\\]\n\n\\textbf{上からの評価．} (1) で $n=100$ とすると $\\left(1+\\dfrac1{100}\\right)^{100}<3$ なので\n\\[\n101^{10000}=10^{20000}\\left\\{\\left(1+\\frac1{100}\\right)^{100}\\right\\}^{100}<10^{20000}\\cdot3^{100}=10^{20000}(3^{25})^4<10^{20048}.\n\\]\nまた $2^{10}=1024>10^3$ より $2^{5050}=(2^{10})^{505}>10^{1515}$．よって\n\\[\nP<\\frac{10^{20048}}{10^{1515}}=10^{18533}<10^{18600}.\n\\]\n以上より $\\boldsymbol{P>10^{17500}}$，$\\boldsymbol{P<10^{18600}}$．"
+   }
+  ],
+  "idea": {
+   "tex": "$\\left(1+\\frac1k\\right)^{k}=\\dfrac{(k+1)^k}{k^k}$ の積は望遠鏡式に縮み，$n^n$ と階乗のような積が現れる．各因子を $2\\leqq\\left(1+\\frac1k\\right)^k<3$ で挟めば，その積の大きさが $2$ のべきと $3$ のべきの間に定まる．指数を $k^2$ にすると $1^1\\cdot2^3\\cdot3^5\\cdots$ という積が現れ，$\\left(1+\\frac1k\\right)^{k^2}$ は $2^k$ と $3^k$ で挟まれる．"
+  },
+  "methods": [],
+  "tags": [
+   "二項定理",
+   "望遠鏡式の積",
+   "数学的帰納法",
+   "常用対数",
+   "不等式による評価"
+  ],
+  "provenance": {
+   "created": "2026-11-14"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-LOG-095",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-11",
+  "level": 3,
+  "minutes": 25,
+  "theme": "3辺の累乗が作る三角形の形",
+  "topic": "3辺の累乗が作る三角形の形",
+  "statement": {
+   "tex": "$x>0$ とする．$3^x+5^x=7^x$ をみたす正の実数 $x$ を $x_0$ とする．\n\\begin{enumerate}\n  \\item $x_0$ はただ1つ存在し，$1<x_0<2$ であることを示せ．\n  \\item 3つの数 $3^x,5^x,7^x$ が三角形の3辺の長さとなるような $x$ の範囲と，それが鈍角三角形となるような $x$ の範囲を，$x_0$ を用いて表せ．\n  \\item 3つの数 $3^x,5^x,7^x$ を3辺の長さとする三角形が存在し，その最大の角が $120^\\circ$ 以上となるような $x$ の範囲を，$x_0$ を用いて表せ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 証明　(2) 三角形：$0<x<x_0$，鈍角三角形：$\\dfrac{x_0}2<x<x_0$　(3) $1\\leqq x<x_0$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "$h(x)=\\left(\\dfrac37\\right)^x+\\left(\\dfrac57\\right)^x$ とおくと，底が1より小さい指数関数の和なので $h$ は減少関数である．\n\n(1) $3^x+5^x=7^x\\iff h(x)=1$．$h(1)=\\frac87>1$，$h(2)=\\frac{34}{49}<1$ で，$h$ は連続な減少関数だから $h(x)=1$ をみたす $x$ はただ1つで，$1<x_0<2$．\\hfill$\\square$\n\n(2) $x>0$ なら $3^x<5^x<7^x$ なので，三角形の3辺となる $\\iff 3^x+5^x>7^x\\iff h(x)>1=h(x_0)\\iff x<x_0$．よって $\\boldsymbol{0<x<x_0}$．\n\nこのとき最大の角は $7^x$ の対辺の角で，鈍角三角形 $\\iff(3^x)^2+(5^x)^2<(7^x)^2\\iff3^{2x}+5^{2x}<7^{2x}\\iff h(2x)<1=h(x_0)\\iff2x>x_0$．三角形となる条件と合わせて $\\boldsymbol{\\dfrac{x_0}2<x<x_0}$．\n\n(3) 三角形が存在するのは $0<x<x_0$ のとき．最大の角 $\\theta$（$7^x$ の対辺の角）について余弦定理より\n\\[\\cos\\theta=\\frac{9^x+25^x-49^x}{2\\cdot15^x}.\\]\n$\\theta\\geqq120^\\circ\\iff\\cos\\theta\\leqq-\\frac12\\iff9^x+25^x-49^x\\leqq-15^x\\iff9^x+15^x+25^x\\leqq49^x$．\n$g(x)=\\left(\\dfrac9{49}\\right)^x+\\left(\\dfrac{15}{49}\\right)^x+\\left(\\dfrac{25}{49}\\right)^x$ は減少関数で $g(1)=\\dfrac{9+15+25}{49}=1$ なので，これは $g(x)\\leqq1=g(1)\\iff x\\geqq1$．(1) より $1<x_0$ だから，求める範囲は $\\boldsymbol{1\\leqq x<x_0}$．\\hfill$\\square$"
+   }
+  ],
+  "idea": {
+   "tex": "最大辺で割った $\\left(\\frac37\\right)^x+\\left(\\frac57\\right)^x$ は減少関数なので，三角形の成立は $x<x_0$ の形になる．辺を2乗した条件（鈍角）は同じ関数の $2x$ での値なので $2x>x_0$ に，$120^\\circ$ 以上の条件は $9^x+15^x+25^x\\leqq49^x$ となり，$x=1$ で等号が成り立つ別の減少関数で判定できる．"
+  },
+  "methods": [],
+  "tags": [
+   "指数関数",
+   "単調性",
+   "三角形の成立条件",
+   "余弦定理"
+  ],
+  "provenance": {
+   "created": "2026-11-22"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-LOG-096",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-11",
+  "level": 4,
+  "minutes": 40,
+  "theme": "4つの数の巡回的な対数の和と並べ方",
+  "topic": "4つの数の巡回的な対数の和と並べ方",
+  "statement": {
+   "tex": "\\begin{enumerate}\n  \\item 正の実数 $x$，$y$，$z$ に対して\n  \\[\\left(\\frac1x+\\frac1y+\\frac1z+xyz\\right)-\\left(x+y+z+\\frac1{xyz}\\right)=\\frac{(xy-1)(yz-1)(zx-1)}{xyz}\\]\n  が成り立つことを示せ．\n  \\item $1<a\\leqq b\\leqq c\\leqq d$ のとき\n  \\[\\log_ab+\\log_bc+\\log_cd+\\log_da\\leqq\\log_ba+\\log_cb+\\log_dc+\\log_ad\\]\n  が成り立つことを示せ．また，等号が成り立つための $a,b,c,d$ の条件を求めよ．\n  \\item $a,b,c,d$ が $2,4,8,16$ を並べ替えたものであるとき，\n  \\[D=(\\log_ba+\\log_cb+\\log_dc+\\log_ad)-(\\log_ab+\\log_bc+\\log_cd+\\log_da)\\]\n  とする．$D>0$ となる並べ方 $(a,b,c,d)$ の個数と，$D$ の最大値を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 証明　(2) 証明，等号は $a=b=c$ または $b=c=d$ または「$a=b$ かつ $c=d$」のとき　(3) 個数 $12$，最大値 $\\dfrac56$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) 左辺に $xyz$ を掛けると\n\\[yz+zx+xy+x^2y^2z^2-x^2yz-xy^2z-xyz^2-1.\\]\n一方\n\\begin{align*}\n(xy-1)(yz-1)(zx-1)&=(xy\\cdot yz-xy-yz+1)(zx-1)\\\\\n&=x^2y^2z^2-xy^2z-x^2yz-xyz^2+xy+yz+zx-1\n\\end{align*}\nで両者は一致する．$xyz>0$ で割って示すべき等式を得る．\\hfill$\\square$\n\n(2) $x=\\log_ab$，$y=\\log_bc$，$z=\\log_cd$ とおく．$1<a\\leqq b$ より $x\\geqq\\log_aa=1$，同様に $y\\geqq1$，$z\\geqq1$．底の変換公式より\n\\[\\log_ad=\\frac{\\log_bd}{\\log_ba}=\\log_ab\\cdot\\log_bd=\\log_ab\\cdot\\log_bc\\cdot\\log_cd=xyz,\\]\n$\\log_da=\\frac1{xyz}$，$\\log_ba=\\frac1x$，$\\log_cb=\\frac1y$，$\\log_dc=\\frac1z$ である．よって (1) より\n\\[(\\text{右辺})-(\\text{左辺})=\\frac{(xy-1)(yz-1)(zx-1)}{xyz}.\\]\n$x,y,z\\geqq1$ より $xy,yz,zx\\geqq1$ だから，これは $0$ 以上であり，不等式が成り立つ．\n\n等号は $xy=1$ または $yz=1$ または $zx=1$ のときに限る．$x,y\\geqq1$ だから $xy=1\\iff x=y=1\\iff a=b=c$．同様に $yz=1\\iff b=c=d$，$zx=1\\iff$「$a=b$ かつ $c=d$」．よって等号成立条件は\n\\[\\boldsymbol{a=b=c\\ \\text{または}\\ b=c=d\\ \\text{または}\\ (a=b\\ \\text{かつ}\\ c=d)}.\\]\n\n(3) $a=2^p$，$b=2^q$，$c=2^r$，$d=2^s$ とおくと，$(p,q,r,s)$ は $1,2,3,4$ を並べ替えたもので，$x=\\frac qp$，$y=\\frac rq$，$z=\\frac sr$（いずれも正）．(2) と同じく $D=\\dfrac{(xy-1)(yz-1)(zx-1)}{xyz}$ であり，$xy=\\frac rp$，$yz=\\frac sq$，$zx=\\frac{qs}{pr}$，$xyz=\\frac sp$ だから\n\\[D=\\frac{r-p}p\\cdot\\frac{s-q}q\\cdot\\frac{qs-pr}{pr}\\cdot\\frac ps=\\frac{(r-p)(s-q)(qs-pr)}{pqrs}=\\frac{(r-p)(s-q)(qs-pr)}{24}.\\]\n並べ方は，$\\{1,2,3,4\\}$ を2つの組 $\\{p,r\\}$，$\\{q,s\\}$ に分ける分け方（3通り），どちらの組を $\\{p,r\\}$ にするか（2通り），各組の中の順（$2\\times2$ 通り）で決まり，全部で $3\\times2\\times4=24$ 通りである．$\\{p,r\\}$，$\\{q,s\\}$ の組が決まると $|r-p|$，$|s-q|$，$|qs-pr|$ は組だけで決まり，\n\\begin{itemize}\n  \\item $\\{1,3\\}$ と $\\{2,4\\}$：$|r-p|=|s-q|=2$，$|qs-pr|=|8-3|=5$ で $|D|=\\frac{20}{24}=\\frac56$，\n  \\item $\\{1,2\\}$ と $\\{3,4\\}$：$|r-p|=|s-q|=1$，$|qs-pr|=|12-2|=10$ で $|D|=\\frac{10}{24}=\\frac5{12}$，\n  \\item $\\{1,4\\}$ と $\\{2,3\\}$：$|r-p|=3$，$|s-q|=1$，$|qs-pr|=|6-4|=2$ で $|D|=\\frac6{24}=\\frac14$．\n\\end{itemize}\nいずれも $D\\neq0$ である．また $p$ と $r$ を入れかえると $r-p$ の符号だけが変わり，$s-q$，$qs-pr$ は変わらないので $D$ の符号が逆になる．この入れかえは24通りの並べ方を2つずつの組に分けるから，$D>0$ となる並べ方はちょうど半分の $\\boldsymbol{12}$ 個である．また $|D|$ の最大は $\\frac56$ で，たとえば $(p,q,r,s)=(1,2,3,4)$ のとき $D=\\frac{2\\cdot2\\cdot5}{24}=\\frac56>0$ だから，$D$ の最大値は $\\boldsymbol{\\dfrac56}$（$(a,b,c,d)=(2,4,8,16)$ などのとき）．"
+   }
+  ],
+  "idea": {
+   "tex": "$x=\\log_ab$，$y=\\log_bc$，$z=\\log_cd$ とおくと底の変換により $\\log_da=\\frac1{xyz}$，$\\log_ba=\\frac1x$ などとなり，両辺の差は $xyz$ を掛けると $(xy-1)(yz-1)(zx-1)$ に因数分解される．原題は3つの数で $(x-1)(y-1)(xy-1)$ の形に帰着させるが，捻りでは4つの数にして3つの因数の積の形を自分で見つけ，大小の順がそろわない場合には $a=2^p$ などとおいて差が $\\frac{(r-p)(s-q)(qs-pr)}{24}$ となることから，24通りの並べ方の符号と最大値を2組への分け方で整理する．"
+  },
+  "methods": [],
+  "tags": [
+   "対数の底の変換",
+   "置き換え",
+   "因数分解",
+   "不等式の証明",
+   "場合の数"
+  ],
+  "provenance": {
+   "created": "2026-11-22"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
   "id": "II-LOG-056",
   "schema": "lemma.problem/1",
   "kind": "written",
@@ -3984,429 +4498,6 @@
   ],
   "provenance": {
    "created": "2026-10-30"
-  },
-  "quality": {
-   "status": "published",
-   "checks": {
-    "dual": false,
-    "sympy": true,
-    "human": false
-   },
-   "verified": false
-  }
- },
- {
-  "id": "II-LOG-086",
-  "schema": "lemma.problem/1",
-  "kind": "written",
-  "field": "II-11",
-  "level": 4,
-  "minutes": 30,
-  "theme": "$5^n$ の最高位の数字の分布",
-  "topic": "$5^n$ の最高位の数字の分布",
-  "statement": {
-   "tex": "以下の問いに答えよ．必要ならば，$0.3010<\\log_{10}2<0.3011$ であることを用いてよい．\n\\begin{enumerate}\n  \\item $1\\leqq n\\leqq100$ をみたす整数 $n$ のうち，$5^n$ の最高位の数字が1であるものの個数を求めよ．\n  \\item $1\\leqq n\\leqq100$ をみたす整数 $n$ のうち，$5^n$ の最高位の数字が5以上であるものの個数を求めよ．\n\\end{enumerate}"
-  },
-  "answer": {
-   "tex": "(1) $30$ 個　(2) $31$ 個"
-  },
-  "solutions": [
-   {
-    "id": "main",
-    "kind": "main",
-    "tex": "$L=\\log_{10}2$ とおく．正の整数 $N$ の桁数を $d(N)$ で表す．\n\n\\textbf{補題1．} $k\\geqq1$ とし，$5^k$ が $m$ 桁，すなわち $10^{m-1}\\leqq5^k<10^m$ とする．\n\\begin{itemize}\n  \\item $5^k$ の最高位が1，すなわち $10^{m-1}\\leqq5^k<2\\cdot10^{m-1}$ ならば，$5\\cdot10^{m-1}\\leqq5^{k+1}<10^m$ で $5^{k+1}$ も $m$ 桁．\n  \\item 最高位が2以上，すなわち $2\\cdot10^{m-1}\\leqq5^k<10^m$ ならば，$10^m\\leqq5^{k+1}<5\\cdot10^m$ で $5^{k+1}$ は $m+1$ 桁．\n\\end{itemize}\n同様に，$2^k=2\\cdot2^{k-1}$ について：$2^{k-1}$ が $10^{j}\\leqq2^{k-1}<5\\cdot10^{j}$ なら $2\\cdot10^j\\leqq2^k<10^{j+1}$（桁数は同じで最高位は2以上），$5\\cdot10^j\\leqq2^{k-1}<10^{j+1}$ なら $10^{j+1}\\leqq2^k<2\\cdot10^{j+1}$（桁数が1増え最高位は1）．したがって $k\\geqq1$ について\n\\[\n\\text{「}2^k\\text{ の最高位が1」}\\iff d(2^k)=d(2^{k-1})+1 .\n\\]\n\n(1) 補題1より，$1\\leqq k\\leqq100$ のうち $5^k$ の最高位が2以上である $k$ の個数は $d(5^{101})-d(5^1)=d(5^{101})-1$ に等しい．\n\\[\n\\log_{10}5^{101}=101(1-L),\\qquad 101\\times0.6989<101(1-L)<101\\times0.6990,\n\\]\nすなわち $70.5889<\\log_{10}5^{101}<70.599$ なので $d(5^{101})=71$．よって最高位が2以上のものは70個で，最高位が1のものは $100-70=\\boldsymbol{30}$ 個．\n\n(2) $1\\leqq k\\leqq100$ とし，$5^k$ が $m$ 桁とする．$2^k=\\dfrac{10^k}{5^k}$ より $10^{k-m}<2^k\\leqq10^{k-m+1}$ である．\n\\[\n5^k\\text{ の最高位が5以上}\\iff5^k\\geqq5\\cdot10^{m-1}\\iff2^k\\leqq\\frac{10^k}{5\\cdot10^{m-1}}=2\\cdot10^{k-m}.\n\\]\n$2^k=2\\cdot10^{k-m}$ となるのは $2^{k-1}=10^{k-m}$ のときで，$2^{k-1}$ は5で割り切れないから $k-m=0$ かつ $k=1$ のときに限る．実際 $k=1$ では $5^1=5$ で最高位は5である．$k\\geqq2$ のときは $2^k\\neq2\\cdot10^{k-m}$ なので，\n\\[\n5^k\\text{ の最高位が5以上}\\iff10^{k-m}<2^k<2\\cdot10^{k-m}\\iff2^k\\text{ の最高位が1}.\n\\]\n（$2^k$ は10の累乗でないから $10^{k-m}<2^k<10^{k-m+1}$ で，$2^k$ の桁数は $k-m+1$ である．）\n補題1より，$1\\leqq k\\leqq100$ で $2^k$ の最高位が1である $k$ の個数は $d(2^{100})-d(2^0)=d(2^{100})-1$．$30.10<100L<30.11$ より $d(2^{100})=31$ なのでこの個数は30．$k=1$ では $2^1=2$ で最高位は1でないから，$2\\leqq k\\leqq100$ でも30個．これに $k=1$ を加えて，求める個数は $\\boldsymbol{31}$ 個．"
-   }
-  ],
-  "idea": {
-   "tex": "$5^{n+1}=5\\cdot5^n$ は，$5^n$ の最高位が1なら桁数が変わらず，2以上なら桁数が1つ増える．よって「最高位が2以上の個数」は桁数の増え方で数えられる．最高位が5以上かどうかは $2^n\\cdot5^n=10^n$ を通して $2^n$ の最高位が1かどうかに言い換え，$2^n$ についても同じ数え方をする．"
-  },
-  "grading": {
-   "format": "lemma-input/1",
-   "spec": "(1) 30個\n(2) 31個"
-  },
-  "methods": [],
-  "tags": [
-   "常用対数",
-   "桁数",
-   "最高位の数字",
-   "2^n5^n=10^n"
-  ],
-  "provenance": {
-   "created": "2026-10-30"
-  },
-  "quality": {
-   "status": "published",
-   "checks": {
-    "dual": false,
-    "sympy": true,
-    "human": false
-   },
-   "verified": false
-  }
- },
- {
-  "id": "II-LOG-087",
-  "schema": "lemma.problem/1",
-  "kind": "written",
-  "field": "II-11",
-  "level": 4,
-  "minutes": 30,
-  "theme": "対数の不等式が表す円の内外と積 $xy$ の値域",
-  "topic": "対数の不等式が表す円の内外と積 $xy$ の値域",
-  "statement": {
-   "tex": "$x$，$y$ は $x\\neq1$，$y\\neq1$ をみたす正の数で，不等式\n\\[\\log_xy+\\log_yx\\geqq\\log_x4+\\log_y4\\]\nをみたすとする．$X=\\log_2x$，$Y=\\log_2y$ とおく．\n\\begin{enumerate}\n  \\item 点 $(X,Y)$ の範囲を $XY$ 平面上に図示せよ．\n  \\item $x>1$ のとき，積 $xy$ のとりうる値の範囲を求めよ．また，$x<1$ のときの $xy$ のとりうる値の範囲を求めよ．\n\\end{enumerate}"
-  },
-  "answer": {
-   "tex": "(1) 円 $(X-1)^2+(Y-1)^2=2$ を $K$ として，「$XY>0$ かつ $K$ の外部または周上」と「$XY<0$ かつ $K$ の内部または周上」の和集合（第3象限全体を含む．座標軸上の点は除く）　(2) $x>1$ のとき $1<xy<4$，$4<xy$；$x<1$ のとき $0<xy<1$，$1<xy<4$"
-  },
-  "solutions": [
-   {
-    "id": "main",
-    "kind": "main",
-    "tex": "(1) $x$，$y$ は正で1でないから $X\\neq0$，$Y\\neq0$．底の変換により\n$\\log_xy=\\dfrac YX$，$\\log_yx=\\dfrac XY$，$\\log_x4=\\dfrac2X$，$\\log_y4=\\dfrac2Y$．不等式は\n\\[\\frac YX+\\frac XY-\\frac2X-\\frac2Y\\geqq0\\iff\\frac{X^2+Y^2-2X-2Y}{XY}\\geqq0\\iff\\frac{(X-1)^2+(Y-1)^2-2}{XY}\\geqq0 .\\]\n$K$ を円 $(X-1)^2+(Y-1)^2=2$（中心 $(1,1)$，半径 $\\sqrt2$，4点 $(0,0)$，$(2,0)$，$(0,2)$，$(2,2)$ を通る）とすると，求める範囲は\n\\begin{itemize}\n  \\item $XY>0$（第1・第3象限）で，$K$ の外部または周上，\n  \\item $XY<0$（第2・第4象限）で，$K$ の内部または周上\n\\end{itemize}\nの和集合である（座標軸上の点は除く）．\nなお第3象限の点は $(X-1)^2>1$，$(Y-1)^2>1$ より $K$ の外部にあるので，第3象限全体が含まれる．\nしたがって図は，第1象限のうち円 $K$ の外側（周を含む），第3象限全体，第2象限で $K$ と $Y$ 軸ではさまれた部分（$K$ の弧の上は含み，$Y$ 軸上は含まない），第4象限で $K$ と $X$ 軸ではさまれた部分（同様）である．\n\n(2) $S=X+Y=\\log_2(xy)$ とおく．範囲内の点では $X^2+Y^2-2S$ と $XY$ が同符号または前者が0であり，\n\\[X^2+Y^2=S^2-2XY\\qquad\\cdots\\text{③}\\]\nが成り立つ．\n\n\\textbf{(ア) $x>1$ すなわち $X>0$ の場合．}\n\n・$Y>0$ のとき：$X^2+Y^2\\geqq2S$ かつ ③ より $X^2+Y^2<S^2$（$XY>0$）．$S>0$ だから $2S<S^2$，よって $S>2$．\n逆に $S>2$ に対し $(X,Y)=\\left(\\dfrac{S+2}{2},\\dfrac{S-2}{2}\\right)$ をとると $X>0$，$Y>0$，$X+Y=S$ で，\n\\[X^2+Y^2-2S=\\frac{(S+2)^2+(S-2)^2}{4}-2S=\\frac{S^2+4}{2}-2S=\\frac{(S-2)^2}{2}\\geqq0\\]\nだから範囲に属する．よって $S$ は $S>2$ のすべての値をとる．\n\n・$Y<0$ のとき：$X^2+Y^2\\leqq2S$．左辺 $>0$ だから $S>0$．③ と $XY<0$ より $X^2+Y^2>S^2$ なので $S^2<2S$，$S<2$．よって $0<S<2$．\n逆に $0<S<2$ に対し $\\delta=\\dfrac{S(2-S)}{8}$ とおき $(X,Y)=(S+\\delta,-\\delta)$ とすると，$X>0>Y$，$X+Y=S$．$0<S(2-S)\\leqq1$ より $0<\\delta\\leqq\\dfrac18$ であり，\n\\[X^2+Y^2-2S=-S(2-S)+2\\delta(S+\\delta)<-S(2-S)+2\\delta\\cdot4=-S(2-S)+S(2-S)=0\\]\n（$S+\\delta<2+\\frac18<4$ を用いた）．よって範囲に属し，$S$ は $0<S<2$ のすべての値をとる．\n\n$Y=0$ は除かれているので，$x>1$ のとき $S$ の値域は $0<S<2$，$2<S$．$xy=2^S$ より\n\\[\\boldsymbol{x>1\\text{ のとき }1<xy<4,\\ 4<xy}\\]\n\n\\textbf{(イ) $x<1$ すなわち $X<0$ の場合．}\n\n・$Y<0$ のとき：第3象限はすべて範囲内で，$S<0$．逆に $S<0$ なら $(X,Y)=\\left(\\frac S2,\\frac S2\\right)$ が範囲内．よって $S<0$ のすべての値．\n\n・$Y>0$ のとき：(ア) の $Y<0$ の場合と $X$，$Y$ の役割を入れかえた議論により，$S$ のとりうる値は $0<S<2$ のすべて（点 $(-\\delta,S+\\delta)$ を用いる）．\n\nよって $S<0$，$0<S<2$ で，\n\\[\\boldsymbol{x<1\\text{ のとき }0<xy<1,\\ 1<xy<4}\\]"
-   }
-  ],
-  "idea": {
-   "tex": "$X=\\log_2x$，$Y=\\log_2y$ とおくと不等式は $\\dfrac{(X-1)^2+(Y-1)^2-2}{XY}\\geqq0$ となり，原点を通る円の内外と象限の符号の組合せで範囲が決まる．$\\log_2(xy)=X+Y$ の値域は，第1象限では「円の外 $\\Rightarrow$ $X+Y>2$」，第2・4象限では「円の内 $\\Rightarrow$ $0<X+Y<2$」となり，値 $X+Y=0,\\,2$ が抜け落ちる．"
-  },
-  "methods": [],
-  "tags": [
-   "底の変換",
-   "分数不等式",
-   "円の内部と外部",
-   "値域",
-   "穴のあく値域"
-  ],
-  "provenance": {
-   "created": "2026-10-30"
-  },
-  "quality": {
-   "status": "published",
-   "checks": {
-    "dual": false,
-    "sympy": true,
-    "human": false
-   },
-   "verified": false
-  }
- },
- {
-  "id": "II-LOG-088",
-  "schema": "lemma.problem/1",
-  "kind": "written",
-  "field": "II-11",
-  "level": 4,
-  "minutes": 30,
-  "theme": "3桁になる $\\left(\\frac54\\right)^n$ と近似値の限界",
-  "topic": "3桁になる $\\left(\\frac54\\right)^n$ と近似値の限界",
-  "statement": {
-   "tex": "$0.3010<\\log_{10}2<0.3011$ であることは用いてよい．\n\\begin{enumerate}\n  \\item $\\left(\\dfrac54\\right)^n$ の整数部分がちょうど3桁となる自然数 $n$ をすべて求めよ．\n  \\item 各正の整数 $k$ に対し，$\\left(\\dfrac54\\right)^n$ の整数部分がちょうど $k$ 桁となる自然数 $n$ の個数は10または11であることを示せ．\n\\end{enumerate}"
-  },
-  "answer": {
-   "tex": "(1) $n=21,22,\\dots,30$（10個）　(2) 証明"
-  },
-  "solutions": [
-   {
-    "id": "main",
-    "kind": "main",
-    "tex": "$l=\\log_{10}\\dfrac54=\\log_{10}10-3\\log_{10}2=1-3\\log_{10}2$ とおくと，$0.9030<3\\log_{10}2<0.9033$ より\n\\[0.0967<l<0.0970 .\\]\nまた $n\\geqq1$ のとき $\\left(\\frac54\\right)^n=\\dfrac{5^n}{4^n}$ は，分子が奇数，分母が偶数なので整数でない．したがって整数部分がちょうど $k$ 桁 $\\iff$ $10^{k-1}\\leqq\\left(\\frac54\\right)^n<10^k$ $\\iff$ $k-1\\leqq nl<k$．\n\n(1) $2\\leqq nl<3$ となる $n$ を調べる．\n\\begin{itemize}\n  \\item $n\\leqq20$：$nl<20\\times0.0970=1.94<2$ で不適．\n  \\item $21\\leqq n\\leqq30$：$nl>21\\times0.0967=2.0307>2$，$nl<30\\times0.0970=2.91<3$ で適する．\n  \\item $n\\geqq32$：$nl>32\\times0.0967=3.0944>3$ で不適．\n  \\item $n=31$：$31\\times0.0967=2.9977$，$31\\times0.0970=3.007$ なので，与えられた評価だけでは判定できない．\n\\end{itemize}\n$n=31$ を直接調べる．\n\\[\\left(\\frac54\\right)^{31}\\geqq1000\\iff5^{31}\\geqq10^3\\cdot2^{62}\\iff\\frac{10^{31}}{2^{31}}\\geqq10^3\\cdot2^{62}\\iff2^{93}\\leqq10^{28}.\\]\n$2^{93}=2^3\\cdot(2^{10})^9=8\\cdot1024^9=8\\cdot10^{27}\\cdot1.024^9$ である．ここで\n\\[1.024^2=1.048576,\\quad 1.024^3=1.073741824<1.0738,\\]\n\\[1.0738^2=1.15304644<1.1531,\\quad 1.0738^3<1.1531\\times1.0738=1.23819878<1.25\\]\nより $1.024^9=(1.024^3)^3<1.0738^3<1.25$．よって $2^{93}<8\\cdot10^{27}\\cdot1.25=10^{28}$ となり，$\\left(\\frac54\\right)^{31}>1000$，すなわち $31l>3$ で $n=31$ は不適．以上より\n\\[\\boldsymbol{n=21,22,\\dots,30}\\]\n\n(2) $L=\\dfrac1l$ とおくと $\\dfrac1{0.0970}<L<\\dfrac1{0.0967}$ で，$\\dfrac{1}{0.097}=10.30\\cdots>10$，$\\dfrac1{0.0967}=10.34\\cdots<11$ より $10<L<11$．\n\n$k\\geqq2$ のとき，求める個数は $(k-1)L\\leqq n<kL$ をみたす整数 $n$ の個数（$(k-1)L>0$ なのですべて自然数）．$(k-1)L$ 以上の最小の整数を $m$ とおくと，区間の幅が $L$ で $10<L<11$ だから，$m,m+1,\\dots,m+9$ はすべて $m+9<(k-1)L+10<kL$ をみたして区間に入り，$m+11\\geqq(k-1)L+11>kL$ は入らない．よって個数は10または11．\n\n$k=1$ のとき，$0\\leqq nl<1$ をみたす自然数 $n$ は $n<L$ をみたすもので，$10<L<11$ より $n=1,2,\\dots,10$ の10個．\n\n以上より，個数はつねに10または11である．\\hfill$\\square$"
-   }
-  ],
-  "idea": {
-   "tex": "$(5/4)^n$ の整数部分の桁数は $n\\log_{10}\\frac54=n(1-3\\log_{10}2)$ の整数部分で決まる．与えられた近似値では $n=31$ だけが判定できず，$2^{93}<10^{28}$ を $2^{10}=1024$ と $1.024^9<1.25$ の具体的計算で示して決着させる．区間の長さ $1/\\log_{10}\\frac54$ が10と11の間にあることから，各桁数の個数は10か11．"
-  },
-  "methods": [],
-  "tags": [
-   "常用対数",
-   "桁数",
-   "評価の精度",
-   "整数の大小比較"
-  ],
-  "provenance": {
-   "created": "2026-10-30"
-  },
-  "quality": {
-   "status": "published",
-   "checks": {
-    "dual": false,
-    "sympy": true,
-    "human": false
-   },
-   "verified": false
-  }
- },
- {
-  "id": "II-LOG-089",
-  "schema": "lemma.problem/1",
-  "kind": "written",
-  "field": "II-11",
-  "level": 4,
-  "minutes": 30,
-  "theme": "桁数の最高位の数字",
-  "topic": "桁数の最高位の数字",
-  "statement": {
-   "tex": "$N=2^{100}$ とする．必要なら $0.30102<\\log_{10}2<0.30103$，$0.47712<\\log_{10}3<0.47713$ を用いてよい．\n\\begin{enumerate}\n  \\item $N$ の桁数と最高位の数字を求めよ．\n  \\item $2^N$ の桁数を $n$ とする．$n$ の桁数と最高位の数字を求めよ．\n\\end{enumerate}"
-  },
-  "answer": {
-   "tex": "(1) $31$ 桁，最高位 $1$　(2) $30$ 桁，最高位 $3$"
-  },
-  "solutions": [
-   {
-    "id": "main",
-    "kind": "main",
-    "tex": "以下 $\\log$ は常用対数．\n\n(1) $\\log N=100\\log2$ で $30.102<\\log N<30.103$．よって $10^{30}<N<10^{31}$ で $\\boldsymbol{31}$ 桁．また $30+\\log2>30.30102>\\log N$ より $N<2\\cdot10^{30}$ で，最高位の数字は $\\boldsymbol1$．\n\n(2) 正の整数 $X$ の桁数は $\\lfloor\\log X\\rfloor+1$ なので，$M=N\\log2$ とおくと $n=\\lfloor M\\rfloor+1$，特に $M<n\\leqq M+1$．\n\\[\n\\log M=\\log N+\\log(\\log2)=100\\log2+\\log(\\log2).\n\\]\n\\textbf{下からの評価．}$\\log2>0.30102>0.3$ より $\\log(\\log2)>\\log0.3=\\log3-1>-0.52288$．よって\n\\[\n\\log M>30.102-0.52288=29.57912>29+\\log3\\quad(\\log3<0.47713)\n\\]\nで $M>3\\cdot10^{29}$，ゆえに $n>3\\cdot10^{29}$．\n\n\\textbf{上からの評価．}$\\log2<0.30103<0.3125=\\frac5{16}$ より\n\\[\n\\log(\\log2)<\\log\\frac5{16}=\\log\\frac{10}{32}=1-5\\log2<1-5\\times0.30102=-0.5051.\n\\]\nよって $\\log M<30.103-0.5051=29.5979$．一方 $\\log(4\\cdot10^{29})=29+2\\log2>29.60204$ なので\n\\[\n\\log(4\\cdot10^{29})-\\log M>0.00414>\\frac1{250}.\n\\]\nここで $10^{\\frac1{250}}>1+\\frac1{250}$ を示す．$m=250$ として，二項定理より\n\\[\n\\left(1+\\frac1m\\right)^m=\\sum_{j=0}^m{}_m\\mathrm C_j\\frac1{m^j},\\qquad {}_m\\mathrm C_j\\frac1{m^j}=\\frac1{j!}\\cdot\\frac{m(m-1)\\cdots(m-j+1)}{m^j}\\leqq\\frac1{j!}\\leqq\\frac1{2^{j-1}}\\ (j\\geqq1)\n\\]\nなので $\\left(1+\\frac1m\\right)^m\\leqq1+\\sum_{j=1}^m\\frac1{2^{j-1}}<3<10$，両辺を $\\frac1m$ 乗して $1+\\frac1{250}<10^{\\frac1{250}}$．\nしたがって\n\\[\nM<\\frac{4\\cdot10^{29}}{10^{1/250}}<\\frac{4\\cdot10^{29}}{1+\\frac1{250}}=4\\cdot10^{29}-\\frac{4\\cdot10^{29}}{251}<4\\cdot10^{29}-1,\n\\]\n$n\\leqq M+1<4\\cdot10^{29}$．\n\n以上より $3\\cdot10^{29}<n<4\\cdot10^{29}$ で，$n$ は $\\boldsymbol{30}$ 桁，最高位の数字は $\\boldsymbol3$．"
-   }
-  ],
-  "idea": {
-   "tex": "$2^N$ の桁数 $n$ は $\\lfloor N\\log_{10}2\\rfloor+1$．$n$ の最高位は $\\log_{10}(N\\log_{10}2)=100\\log_{10}2+\\log_{10}(\\log_{10}2)$ で決まり，$\\log_{10}(\\log_{10}2)$ を $0.3<\\log_{10}2<\\frac5{16}$ で挟む．床関数と $+1$ の影響は $10^{1/250}>1.004$ で吸収する．"
-  },
-  "methods": [],
-  "tags": [
-   "常用対数",
-   "桁数",
-   "最高位",
-   "精密評価"
-  ],
-  "provenance": {
-   "created": "2026-10-30"
-  },
-  "quality": {
-   "status": "published",
-   "checks": {
-    "dual": false,
-    "sympy": true,
-    "human": false
-   },
-   "verified": false
-  }
- },
- {
-  "id": "II-LOG-090",
-  "schema": "lemma.problem/1",
-  "kind": "written",
-  "field": "II-11",
-  "level": 3,
-  "minutes": 20,
-  "theme": "入れ子の対数方程式の解が有理数になるとき",
-  "topic": "入れ子の対数方程式の解が有理数になるとき",
-  "statement": {
-   "tex": "$m$ を正の整数とし，$x$ についての方程式\n\\[\n\\log_2x+\\log_2(\\log_2x)=m \\qquad\\cdots(*)\n\\]\nを考える．\n\\begin{enumerate}\n  \\item $(*)$ はただ1つの実数解をもつことを示せ．この解を $x_m$ とする．\n  \\item $x_m$ が有理数となるような $m$ をすべて求め，そのときの $x_m$ を求めよ．\n  \\item $1\\leqq m\\leqq100$ のうち，$x_m$ が有理数となる $m$ は何個あるか．\n\\end{enumerate}"
-  },
-  "answer": {
-   "tex": "(1) 証明　(2) $m=2^j+j$（$j=0,1,2,\\dots$），このとき $x_m=2^{2^j}$　(3) $7$ 個"
-  },
-  "solutions": [
-   {
-    "id": "main",
-    "kind": "main",
-    "tex": "(1) \\textbf{同値な方程式．}$\\log_2(\\log_2x)$ が定義されるためには $x>0$ かつ $\\log_2x>0$，すなわち $x>1$ が必要十分である．$x>1$ のもとで\n\\[\n(*)\\iff\\log_2(x\\log_2x)=m\\iff x\\log_2x=2^m .\n\\]\n$f(x)=x\\log_2x$（$x\\geqq1$）とおく．$1\\leqq x_1<x_2$ ならば $0\\leqq\\log_2x_1<\\log_2x_2$ かつ $0<x_1<x_2$ であるから\n\\[\nf(x_2)-f(x_1)=x_2\\log_2x_2-x_1\\log_2x_1=x_2(\\log_2x_2-\\log_2x_1)+(x_2-x_1)\\log_2x_1>0\n\\]\nとなり，$f$ は $x\\geqq1$ で増加する．また $f$ は連続で $f(1)=0<2^m$，$f(2^m)=2^m\\cdot m\\geqq2^m$ である．$f(2^m)=2^m$ となるのは $m=1$ のときで，このとき $x=2$ が解．$m\\geqq2$ のときは $f(1)<2^m<f(2^m)$ であるから，中間値の定理により $1<x<2^m$ に解がある．$f$ は増加関数なので $f(x)=2^m$ の $x\\geqq1$ での解はただ1つで，$x=1$ は解でないから，$(*)$ の解は（$x>1$ の範囲に）ただ1つ存在する．\\hfill$\\square$\n\n(2) \\textbf{必要条件．}$x_m$ が有理数であるとする．$x_m>1$ と $x_m\\log_2x_m=2^m$ から $\\log_2x_m=\\dfrac{2^m}{x_m}$ は正の有理数である．そこで $\\log_2x_m=\\dfrac pq$（$p,q$ は正の整数）と書くと $x_m=2^{\\frac pq}$，すなわち $x_m{}^q=2^p$．\n\n$x_m=\\dfrac AB$（$A,B$ は互いに素な正の整数）とおくと $A^q=2^pB^q$．$B\\geqq2$ とすると $B$ の素因数 $s$ は $A^q$ を割り切るから $A$ を割り切り，$A$，$B$ が互いに素であることに反する．よって $B=1$ で，$x_m=A$ は整数であり $A^q=2^p$．素因数分解の一意性から $A$ の素因数は2だけであるから，$A=2^r$（$r$ は0以上の整数）と書ける．$x_m>1$ より $r\\geqq1$．\n\nこのとき $x_m\\log_2x_m=2^r\\cdot r=2^m$ より $r=2^{m-r}$．$r$ は正の整数なので $m-r\\geqq0$ であり，$j=m-r$ とおくと $r=2^j$，$m=r+j=2^j+j$（$j\\geqq0$ の整数）．\n\n\\textbf{十分性．}逆に $m=2^j+j$（$j\\geqq0$ の整数）のとき，$x=2^{2^j}$ は $x>1$ をみたし\n\\[\nx\\log_2x=2^{2^j}\\cdot2^j=2^{2^j+j}=2^m\n\\]\nであるから $(*)$ の解であり，解はただ1つなので $x_m=2^{2^j}$．これは整数（有理数）である．\n\n以上より，求める $m$ は\n\\[\n\\boldsymbol{m=2^j+j\\ (j=0,1,2,\\dots)},\\qquad\\text{そのとき}\\ \\boldsymbol{x_m=2^{2^j}} .\n\\]\n（$m=1,3,6,11,20,37,70,135,\\dots$．元の問題の $m=11$ では $x_{11}=2^8=256$．）\n\n(3) $g(j)=2^j+j$ は $j$ について増加し，$g(6)=70\\leqq100<135=g(7)$．よって $j=0,1,\\dots,6$ の $\\boldsymbol{7}$ 個（$m=1,3,6,11,20,37,70$）．"
-   }
-  ],
-  "idea": {
-   "tex": "$\\log_2x+\\log_2(\\log_2x)=m$ は真数条件 $x>1$ のもとで $x\\log_2x=2^m$ と同値で，左辺は $x>1$ で増加するから解はただ1つ．解が有理数なら $\\log_2x=\\dfrac{2^m}{x}$ も有理数で，$x^q=2^p$ から素因数分解の一意性により $x$ は2のべき $2^r$ に限られ，$r\\cdot2^r=2^m$ から $r$ 自身も2のべきになる．"
-  },
-  "grading": {
-   "format": "lemma-input/1",
-   "spec": "(1) 証明\n(2) 記述\n(3) 7個"
-  },
-  "methods": [],
-  "tags": [
-   "対数方程式",
-   "単調性",
-   "中間値の定理",
-   "有理数",
-   "素因数分解の一意性"
-  ],
-  "provenance": {
-   "created": "2026-10-30"
-  },
-  "quality": {
-   "status": "published",
-   "checks": {
-    "dual": false,
-    "sympy": true,
-    "human": false
-   },
-   "verified": false
-  }
- },
- {
-  "id": "II-LOG-091",
-  "schema": "lemma.problem/1",
-  "kind": "written",
-  "field": "II-11",
-  "level": 4,
-  "minutes": 30,
-  "theme": "巡回する3つの対数とその逆数の和",
-  "topic": "巡回する3つの対数とその逆数の和",
-  "statement": {
-   "tex": "$l,\\ m,\\ n$ を2以上の相異なる整数とし，\n\\[ \\alpha=\\log_lm,\\quad \\beta=\\log_mn,\\quad \\gamma=\\log_nl,\\qquad a=\\alpha+\\beta+\\gamma,\\quad b=\\log_ml+\\log_nm+\\log_ln \\]\nとおく．\n\\begin{enumerate}\n  \\item $b-a=(1-\\alpha)(1-\\beta)(1-\\gamma)$ を示せ．\n  \\item $a<b$ となるための $l,\\ m,\\ n$ の大小関係についての必要十分条件を求めよ．\n  \\item $(l,\\ m,\\ n)=(2,\\ 3,\\ 5)$ のとき，$3<a<b<4$ を示せ．\n\\end{enumerate}"
-  },
-  "answer": {
-   "tex": "(1) 証明　(2) $l<m<n$ または $m<n<l$ または $n<l<m$　(3) 証明"
-  },
-  "solutions": [
-   {
-    "id": "main",
-    "kind": "main",
-    "tex": "(1) $l,m,n\\geqq2$ より $\\log l,\\log m,\\log n>0$ で，底の変換により\n\\[ \\alpha\\beta\\gamma=\\frac{\\log m}{\\log l}\\cdot\\frac{\\log n}{\\log m}\\cdot\\frac{\\log l}{\\log n}=1,\\qquad \\log_ml=\\frac1\\alpha,\\ \\log_nm=\\frac1\\beta,\\ \\log_ln=\\frac1\\gamma. \\]\nよって $b=\\dfrac1\\alpha+\\dfrac1\\beta+\\dfrac1\\gamma=\\dfrac{\\beta\\gamma+\\gamma\\alpha+\\alpha\\beta}{\\alpha\\beta\\gamma}=\\alpha\\beta+\\beta\\gamma+\\gamma\\alpha$ で，\n\\[ (1-\\alpha)(1-\\beta)(1-\\gamma)=1-(\\alpha+\\beta+\\gamma)+(\\alpha\\beta+\\beta\\gamma+\\gamma\\alpha)-\\alpha\\beta\\gamma=b-a. \\]\n\\hfill$\\square$\n\n(2) $\\alpha>1\\iff\\log m>\\log l\\iff m>l$，$\\alpha<1\\iff m<l$ で，$m\\neq l$ より $\\alpha\\neq1$．同様に $\\beta>1\\iff n>m$，$\\gamma>1\\iff l>n$ で，$\\beta,\\gamma\\neq1$．\n\n3つの条件「$m>l$」「$n>m$」「$l>n$」のうち成り立つものの個数を $k$ とする．すべて成り立つと $l<m<n<l$ となり矛盾，すべて成り立たないと $l>m>n>l$ となり矛盾なので $k=1$ または $2$．(1) より $b-a$ の符号は $(1-\\alpha)(1-\\beta)(1-\\gamma)$ の符号で，負の因数の個数は $k$ に等しい．よって\n\\[ a<b\\iff k=2. \\]\n$k=2$ となるのは，「$m>l,\\ n>m$」で $l>n$ でない（$l<m<n$），「$m>l,\\ l>n$」で $n>m$ でない（$n<l<m$），「$n>m,\\ l>n$」で $m>l$ でない（$m<n<l$）の3通りで，それぞれ確かに $k=2$ である．よって\n\\[ \\boldsymbol{l<m<n\\ \\text{または}\\ m<n<l\\ \\text{または}\\ n<l<m}. \\]\n\n(3) $2<3<5$ なので (2) より $a<b$．\n\n$a>3$ を示す．$X,Y,Z>0$ に対し\n\\[ X^3+Y^3+Z^3-3XYZ=\\frac12(X+Y+Z)\\{(X-Y)^2+(Y-Z)^2+(Z-X)^2\\}\\geqq0 \\]\nで，等号は $X=Y=Z$ のときに限る．$X=\\alpha^{\\frac13}$ などとおくと $\\alpha+\\beta+\\gamma\\geqq3(\\alpha\\beta\\gamma)^{\\frac13}=3$ で，等号は $\\alpha=\\beta=\\gamma=1$ のときに限る．$\\alpha=\\log_23\\neq1$ なので $a>3$．\n\n$b<4$ を示す．$8<9$ より $2^3<3^2$，$\\log_32<\\frac23$．$81<125$ より $3^4<5^3$，$\\log_53<\\frac34$．$125<128$ より $5^3<2^7$，$\\log_25<\\frac73$．よって\n\\[ b<\\frac23+\\frac34+\\frac73=\\frac{45}{12}<4. \\]\n以上より $3<a<b<4$．\\hfill$\\square$"
-   }
-  ],
-  "idea": {
-   "tex": "$\\alpha\\beta\\gamma=1$ なので逆数の和は $\\alpha\\beta+\\beta\\gamma+\\gamma\\alpha$ になり，$(1-\\alpha)(1-\\beta)(1-\\gamma)=b-a$．大小は「1より大きい対数がいくつあるか」で決まり，それは $l,m,n$ の巡回的な大小で決まる．整数部分は相加相乗平均と，整数の累乗の比較による上からの評価で．"
-  },
-  "methods": [],
-  "tags": [
-   "対数",
-   "底の変換",
-   "解と係数の関係",
-   "相加相乗平均",
-   "大小比較"
-  ],
-  "provenance": {
-   "created": "2026-11-18"
-  },
-  "quality": {
-   "status": "published",
-   "checks": {
-    "dual": false,
-    "sympy": true,
-    "human": false
-   },
-   "verified": false
-  }
- },
- {
-  "id": "II-LOG-092",
-  "schema": "lemma.problem/1",
-  "kind": "written",
-  "field": "II-11",
-  "level": 4,
-  "minutes": 30,
-  "theme": "2と5だけを素因数にもつ100桁の数で最高位が1のもの",
-  "topic": "2と5だけを素因数にもつ100桁の数で最高位が1のもの",
-  "statement": {
-   "tex": "$0.3010<\\log_{10}2<0.3011$ であることは用いてよい．100桁の自然数で，2と5以外の素因数をもたず，かつ最高位の数字が $1$ であるものの個数を求めよ．"
-  },
-  "answer": {
-   "tex": "$143$ 個"
-  },
-  "solutions": [
-   {
-    "id": "main",
-    "kind": "main",
-    "tex": "自然数 $N$ の桁数を $d(N)$ と書く．$N$ が $e$ 桁 $\\iff10^{e-1}\\leqq N<10^e$．\n\n\\textbf{形の整理．} 2と5以外の素因数をもたない自然数は $2^a5^b$（$a,b\\geqq0$）とただ1通りに表せる．$a\\geqq b$ なら $N=10^b\\cdot2^c$（$c=a-b\\geqq0$），$a<b$ なら $N=10^a\\cdot5^c$（$c=b-a\\geqq1$）．$10^e\\cdot L$ の桁数は $e+d(L)$，最高位の数字は $L$ と同じである．したがって条件をみたす $N$ は\n\\begin{itemize}\n  \\item (A) $c\\geqq0$，$d(2^c)\\leqq100$，$2^c$ の最高位が $1$ であるような $c$ に対する $10^{100-d(2^c)}\\cdot2^c$，\n  \\item (B) $c\\geqq1$，$d(5^c)\\leqq100$，$5^c$ の最高位が $1$ であるような $c$ に対する $10^{100-d(5^c)}\\cdot5^c$\n\\end{itemize}\nの全体で，異なる $c$ や (A)，(B) から同じ $N$ は生じない（素因数分解の一意性）．\n\n\\textbf{$c$ の範囲．} $d(2^c)\\leqq100\\iff2^c<10^{100}\\iff c\\log_{10}2<100$．$332\\times0.3011=99.9652<100$，$333\\times0.3010=100.233>100$ より $0\\leqq c\\leqq332$．$d(5^c)\\leqq100\\iff c(1-\\log_{10}2)<100$．$143\\times(1-0.3010)=99.957<100$，$144\\times(1-0.3011)=100.6416>100$ より $1\\leqq c\\leqq143$．\n\n\\textbf{補題．} 自然数 $L$ が $e$ 桁のとき，$2L$ は $L\\geqq5\\cdot10^{e-1}$（最高位が $5$ 以上）なら $e+1$ 桁で最高位が $1$，そうでなければ $e$ 桁で最高位が $2$ 以上．\n\n（証明）$L\\geqq5\\cdot10^{e-1}$ なら $10^e\\leqq2L<2\\cdot10^e$．$L<5\\cdot10^{e-1}$ なら $2\\cdot10^{e-1}\\leqq2L<10^e$．\\hfill$\\square$\n\n\\textbf{(A) の個数．} $c=0$（$N=10^{99}$）は適する．$c\\geqq1$ では，補題より「$2^c$ の最高位が $1$」$\\iff d(2^c)=d(2^{c-1})+1$ で，つねに $d(2^c)-d(2^{c-1})\\in\\{0,1\\}$．よって $1\\leqq c\\leqq332$ で適する $c$ の個数は $d(2^{332})-d(2^0)$．$332\\times0.3010=99.932$ より $99<332\\log_{10}2<100$，$d(2^{332})=100$．よって $100-1=99$ 個，$c=0$ と合わせて $100$ 個．\n\n\\textbf{(B) の個数．} $c\\geqq1$ とする．$5^c$ の最高位が $1$ $\\iff$ ある整数 $j\\geqq0$ で $10^j\\leqq5^c<2\\cdot10^j$ $\\iff$ $5\\cdot10^{c-j-1}<2^c\\leqq10^{c-j}$（$2^c=\\frac{10^c}{5^c}$）．$c\\geqq1$ では $2^c$ は $10$ の累乗でも $5\\cdot10^i$ の形でもない（$5$ で割り切れない）ので，これは「ある整数 $i$ で $5\\cdot10^i\\leqq2^c<10^{i+1}$」，すなわち「$2^c$ の最高位が $5$ 以上」と同値で，補題より $d(2^{c+1})=d(2^c)+1$ と同値である．よって $1\\leqq c\\leqq143$ で適する $c$ の個数は $d(2^{144})-d(2^1)$．$144\\times0.3010=43.344$，$144\\times0.3011=43.3584$ より $43<144\\log_{10}2<44$，$d(2^{144})=44$．よって $44-1=43$ 個．\n\n以上より，求める個数は $100+43=\\boldsymbol{143}$ 個．"
-   }
-  ],
-  "idea": {
-   "tex": "$2^a5^b$ は小さい方の指数で $10$ のべきをくくり出すと $10^b\\cdot2^c$ または $10^a\\cdot5^c$ となり，桁数は $10$ のべきの分だけずれ，最高位の数字は $2^c$，$5^c$ のものと一致する．$2^c$ の最高位が $1$ であることは「$2^{c-1}$ から桁が1つ増える」ことと同値，$5^c$ の最高位が $1$ であることは $10^c=2^c5^c$ により「$2^c$ の最高位が $5$ 以上」，すなわち「$2^c$ から $2^{c+1}$ で桁が増える」ことと同値．どちらも桁数の差で数えられる．"
-  },
-  "grading": {
-   "format": "lemma-input/1",
-   "spec": "143個"
-  },
-  "methods": [],
-  "tags": [
-   "常用対数",
-   "桁数",
-   "最高位の数字",
-   "素因数分解"
-  ],
-  "provenance": {
-   "created": "2026-11-14"
-  },
-  "quality": {
-   "status": "published",
-   "checks": {
-    "dual": false,
-    "sympy": true,
-    "human": false
-   },
-   "verified": false
-  }
- },
- {
-  "id": "II-LOG-093",
-  "schema": "lemma.problem/1",
-  "kind": "written",
-  "field": "II-11",
-  "level": 4,
-  "minutes": 35,
-  "theme": "9乗の和の桁数と上2桁",
-  "topic": "9乗の和の桁数と上2桁",
-  "statement": {
-   "tex": "\\[\nS=1^9+2^9+3^9+\\cdots+2025^9\n\\]\nとする．\n\\begin{enumerate}\n  \\item $n$ を2以上の整数とする．$x>0$ をみたす実数 $x$ に対して，不等式\n  \\[\n  nx^{n-1}<(x+1)^n-x^n<n(x+1)^{n-1}\n  \\]\n  が成り立つことを示せ．\n  \\item $2025^{10}<10S<2026^{10}$ を示せ．\n  \\item $S$ は何桁の整数か．また，$S$ の上2桁（最高位とその次の位の数字を並べた2桁の数）を求めよ．\n\\end{enumerate}"
-  },
-  "answer": {
-   "tex": "(1) 証明　(2) 証明　(3) $33$ 桁，上2桁は $11$"
-  },
-  "solutions": [
-   {
-    "id": "main",
-    "kind": "main",
-    "tex": "\\textbf{(1)}　$A=x+1$，$B=x$ とおくと $A-B=1$ なので\n\\[\n(x+1)^n-x^n=(A-B)\\sum_{j=0}^{n-1}A^jB^{n-1-j}=\\sum_{j=0}^{n-1}(x+1)^jx^{n-1-j}.\n\\]\n$0<x<x+1$ より，各項について $x^{n-1}\\leqq(x+1)^jx^{n-1-j}\\leqq(x+1)^{n-1}$ で，左の等号は $j=0$ のときだけ，右の等号は $j=n-1$ のときだけ成り立つ．$n\\geqq2$ より項は2つ以上あるので，和をとって\n\\[\nnx^{n-1}<(x+1)^n-x^n<n(x+1)^{n-1}.\n\\]\n\\hfill$\\square$\n\n\\medskip\n\\textbf{(2)}　(1) で $n=10$ とする．$k=1,2,\\dots,2025$ に対し $x=k$ とおくと $10k^9<(k+1)^{10}-k^{10}$．これを加えると右辺は打ち消し合って\n\\[\n10S<2026^{10}-1^{10}<2026^{10}.\n\\]\n$k=2,3,\\dots,2025$ に対し $x=k-1\\ (>0)$ とおくと $k^{10}-(k-1)^{10}<10k^9$．また $k=1$ では $1^{10}-0^{10}=1<10\\cdot1^9$．これらを加えて\n\\[\n2025^{10}=\\sum_{k=1}^{2025}\\left\\{k^{10}-(k-1)^{10}\\right\\}<10S .\n\\]\n\\hfill$\\square$\n\n\\medskip\n\\textbf{(3)}　\\emph{2つの不等式．}$h>0$，$n$ を正の整数とすると，二項定理より $(1+h)^n\\geqq1+nh$．また $0<h<1$ のとき $(1-h)^n\\geqq1-nh$ が成り立つ（$n=1$ で等号，$(1-h)^n\\geqq1-nh$ の両辺に正の数 $1-h$ を掛けて $(1-h)^{n+1}\\geqq1-(n+1)h+nh^2\\geqq1-(n+1)h$ となる帰納法による）．さらに $nh<1$ なら，$(1+h)^n(1-h)^n=(1-h^2)^n<1$ と合わせて\n\\[\n(1+h)^n<\\frac1{(1-h)^n}\\leqq\\frac1{1-nh}.\n\\]\n\\emph{下からの評価．}$2025=2000\\times1.0125$ で，$1.0125^{10}\\geqq1+10\\times0.0125=1.125$．$2^{10}=1024$ より\n\\[\n2025^{10}=1024\\times1.0125^{10}\\times10^{30}\\geqq1024\\times1.125\\times10^{30}=1152\\times10^{30}.\n\\]\n\\emph{上からの評価．}$2026=2000\\times1.013$ で，$10\\times0.013=0.13<1$ より $1.013^{10}<\\dfrac1{0.87}<1.15$（$0.87\\times1.15=1.0005>1$）．よって\n\\[\n2026^{10}=1024\\times1.013^{10}\\times10^{30}<1024\\times1.15\\times10^{30}=1177.6\\times10^{30}.\n\\]\n(2) と合わせて\n\\[\n1.152\\times10^{32}<S<1.1776\\times10^{32}.\n\\]\n$S$ は $1.1\\times10^{32}$ 以上 $1.2\\times10^{32}$ 未満の整数なので，$\\boldsymbol{33}$ 桁で，上2桁は $\\boldsymbol{11}$ である．"
-   }
-  ],
-  "idea": {
-   "tex": "$nx^{n-1}<(x+1)^n-x^n<n(x+1)^{n-1}$ は「1つの差のはさみうち」だが，これを $x=1,2,\\dots$ で足し合わせると左右が打ち消し合い，$\\sum k^9$ が $\\frac{m^{10}}{10}$ と $\\frac{(m+1)^{10}}{10}$ にはさまれる．上2桁まで決めるには対数の近似値では精度が足りず，$2025=2000\\times1.0125$ と分けて $(1+h)^{10}\\geqq1+10h$ と $(1+h)^{10}<\\frac1{1-10h}$（$(1-h)^{10}\\geqq1-10h$ との積から）を使う．原題の「1つの差 $2026^{10}-2025^{10}$ の桁数」を「9乗の和の桁数と上2桁」に変えた．"
-  },
-  "methods": [],
-  "tags": [
-   "桁数",
-   "階差による評価",
-   "和の評価",
-   "ベルヌーイの不等式",
-   "二項定理",
-   "累乗の差の因数分解"
-  ],
-  "provenance": {
-   "created": "2026-11-14"
-  },
-  "quality": {
-   "status": "published",
-   "checks": {
-    "dual": false,
-    "sympy": true,
-    "human": false
-   },
-   "verified": false
-  }
- },
- {
-  "id": "II-LOG-094",
-  "schema": "lemma.problem/1",
-  "kind": "written",
-  "field": "II-11",
-  "level": 4,
-  "minutes": 30,
-  "theme": "$1^1\\cdot2^3\\cdot3^5\\cdots100^{199}$ の大きさ",
-  "topic": "$1^1\\cdot2^3\\cdot3^5\\cdots100^{199}$ の大きさ",
-  "statement": {
-   "tex": "\\begin{enumerate}\n  \\item すべての自然数 $n$ に対して $2\\leqq\\left(1+\\dfrac1n\\right)^n<3$ が成り立つことを示せ．\n  \\item $2$ 以上の整数 $n$ に対して\n  \\[\n  \\left(1+\\frac11\\right)^{1^2}\\left(1+\\frac12\\right)^{2^2}\\cdots\\left(1+\\frac1{n-1}\\right)^{(n-1)^2}\n  =\\frac{n^{(n-1)^2}}{1^1\\cdot2^3\\cdot3^5\\cdots(n-1)^{2n-3}}\n  \\]\n  が成り立つことを示せ．\n  \\item $P=1^1\\cdot2^3\\cdot3^5\\cdots100^{199}$ とする．$P$ と $10^{17500}$，$P$ と $10^{18600}$ の大小をそれぞれ判定せよ．\n\\end{enumerate}"
-  },
-  "answer": {
-   "tex": "(1) 証明　(2) 証明　(3) $P>10^{17500}$，$P<10^{18600}$"
-  },
-  "solutions": [
-   {
-    "id": "main",
-    "kind": "main",
-    "tex": "(1) 二項定理より\n\\[\n\\left(1+\\frac1n\\right)^n=\\sum_{k=0}^{n}{}_n\\mathrm C_k\\frac1{n^k}.\n\\]\n各項は0以上で，$k=0,1$ の項の和は $1+n\\cdot\\dfrac1n=2$ なので，$\\left(1+\\dfrac1n\\right)^n\\geqq2$．\n\nまた $1\\leqq k\\leqq n$ のとき\n\\[\n{}_n\\mathrm C_k\\frac1{n^k}=\\frac1{k!}\\cdot\\frac nn\\cdot\\frac{n-1}n\\cdots\\frac{n-k+1}n\\leqq\\frac1{k!}\\leqq\\frac1{2^{k-1}}\n\\]\n（$k!=1\\cdot2\\cdot3\\cdots k$ の $2,3,\\dots,k$ はどれも $2$ 以上なので $k!\\geqq2^{k-1}$）．よって\n\\[\n\\left(1+\\frac1n\\right)^n\\leqq1+\\sum_{k=1}^{n}\\frac1{2^{k-1}}=1+2\\left(1-\\frac1{2^n}\\right)<3 .\n\\]\n\\hfill$\\square$\n\n(2) 左辺を $Q_n$，$1^1\\cdot2^3\\cdots(n-1)^{2n-3}$ を $R_n$ とおき，$Q_nR_n=n^{(n-1)^2}$ を $n$ についての帰納法で示す．\n\n$n=2$ のとき $Q_2=2$，$R_2=1^1=1$ で $Q_2R_2=2=2^{1}$．成り立つ．\n\n$n$ で成り立つとすると，$Q_{n+1}=Q_n\\left(\\dfrac{n+1}n\\right)^{n^2}$，$R_{n+1}=R_n\\cdot n^{2n-1}$ より\n\\[\nQ_{n+1}R_{n+1}=n^{(n-1)^2}\\cdot\\frac{(n+1)^{n^2}}{n^{n^2}}\\cdot n^{2n-1}=(n+1)^{n^2}\\cdot n^{(n-1)^2-n^2+2n-1}=(n+1)^{n^2}.\n\\]\nよって $n+1$ でも成り立つ．\\hfill$\\square$\n\n(3) (2) で $n=101$ とすると $R_{101}=P$ であり，\n\\[\nP=\\frac{101^{10000}}{Q_{101}},\\qquad Q_{101}=\\left(1+\\frac11\\right)^{1^2}\\cdots\\left(1+\\frac1{100}\\right)^{100^2}.\n\\]\n(1) より各 $k$ について $2^k\\leqq\\left\\{\\left(1+\\dfrac1k\\right)^k\\right\\}^k<3^k$ なので，$1+2+\\cdots+100=5050$ より\n\\[\n2^{5050}\\leqq Q_{101}<3^{5050},\\qquad\\text{よって}\\qquad \\frac{101^{10000}}{3^{5050}}<P\\leqq\\frac{101^{10000}}{2^{5050}} .\n\\]\n\n\\textbf{下からの評価．} $3^{25}=847288609443<10^{12}$ より $3^{5050}=(3^{25})^{202}<10^{2424}$．また $101^{10000}>100^{10000}=10^{20000}$．よって\n\\[\nP>\\frac{10^{20000}}{10^{2424}}=10^{17576}>10^{17500}.\n\\]\n\n\\textbf{上からの評価．} (1) で $n=100$ とすると $\\left(1+\\dfrac1{100}\\right)^{100}<3$ なので\n\\[\n101^{10000}=10^{20000}\\left\\{\\left(1+\\frac1{100}\\right)^{100}\\right\\}^{100}<10^{20000}\\cdot3^{100}=10^{20000}(3^{25})^4<10^{20048}.\n\\]\nまた $2^{10}=1024>10^3$ より $2^{5050}=(2^{10})^{505}>10^{1515}$．よって\n\\[\nP<\\frac{10^{20048}}{10^{1515}}=10^{18533}<10^{18600}.\n\\]\n以上より $\\boldsymbol{P>10^{17500}}$，$\\boldsymbol{P<10^{18600}}$．"
-   }
-  ],
-  "idea": {
-   "tex": "$\\left(1+\\frac1k\\right)^{k}=\\dfrac{(k+1)^k}{k^k}$ の積は望遠鏡式に縮み，$n^n$ と階乗のような積が現れる．各因子を $2\\leqq\\left(1+\\frac1k\\right)^k<3$ で挟めば，その積の大きさが $2$ のべきと $3$ のべきの間に定まる．指数を $k^2$ にすると $1^1\\cdot2^3\\cdot3^5\\cdots$ という積が現れ，$\\left(1+\\frac1k\\right)^{k^2}$ は $2^k$ と $3^k$ で挟まれる．"
-  },
-  "methods": [],
-  "tags": [
-   "二項定理",
-   "望遠鏡式の積",
-   "数学的帰納法",
-   "常用対数",
-   "不等式による評価"
-  ],
-  "provenance": {
-   "created": "2026-11-14"
   },
   "quality": {
    "status": "published",

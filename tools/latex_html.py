@@ -173,11 +173,11 @@ TEXT_CMDS = {
     'S': '§', 'textbackslash': '\\',
     # 文字の大きさ・改行位置の指定は使わない
     'small': '', 'scriptsize': '', 'footnotesize': '', 'normalsize': '', 'large': '', 'Large': '', 'tiny': '',
-    'allowbreak': '', 'centering': '', 'ast': '∗',
+    'allowbreak': '', 'centering': '', 'ast': '∗', 'textasteriskcentered': '∗',
 }
 CIRCLED = '①②③④⑤⑥⑦⑧⑨⑩⑪⑫⑬⑭⑮⑯⑰⑱⑲⑳'
 WRAP_CMDS = {'textbf': 'b', 'bf': 'b', 'emph': 'em', 'textit': 'em', 'underline': 'u', 'textrm': None, 'mbox': None,
-             'text': None, 'textgt': 'b', 'textsf': None}
+             'text': None, 'textgt': 'b', 'textsf': None, 'paragraph': 'b'}   # \paragraph{見出し} は太字の見出しとして
 
 
 def text_inline(t, ctx):

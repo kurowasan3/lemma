@@ -7039,1459 +7039,6 @@
   }
  },
  {
-  "id": "III-LIM-165",
-  "schema": "lemma.problem/1",
-  "kind": "written",
-  "field": "III-15",
-  "level": 0,
-  "minutes": 5,
-  "theme": "関数／分数関数のグラフと漸近線",
-  "unit": "関数",
-  "topic": "分数関数のグラフと漸近線",
-  "statement": {
-   "tex": "関数 $y=\\dfrac{3x-1}{x-2}$ を $y=\\dfrac{k}{x-p}+q$ の形に表すとき，定数 $k,\\ p,\\ q$ の値を求めよ．"
-  },
-  "answer": {
-   "tex": "$k=5,\\ p=2,\\ q=3$"
-  },
-  "solutions": [
-   {
-    "id": "main",
-    "kind": "main",
-    "tex": "$3x-1=3(x-2)+5$ より $y=\\dfrac{3(x-2)+5}{x-2}=\\dfrac{5}{x-2}+3$．\nよって $\\boldsymbol{k=5,\\ p=2,\\ q=3}$．グラフは $y=\\dfrac5x$ を $x$ 軸方向に $2$，$y$ 軸方向に $3$ 平行移動したもので，漸近線は $x=2,\\ y=3$．"
-   }
-  ],
-  "idea": {
-   "tex": "分子を分母で割って「商＋余り/分母」の形にすれば，平行移動の量と漸近線が読める．"
-  },
-  "grading": {
-   "format": "lemma-input/1",
-   "spec": "$k$：5 ; $p$：2 ; $q$：3"
-  },
-  "methods": [],
-  "tags": [
-   "分数関数",
-   "漸近線",
-   "平行移動"
-  ],
-  "provenance": {
-   "created": "2026-10-30"
-  },
-  "quality": {
-   "status": "published",
-   "checks": {
-    "dual": false,
-    "sympy": true,
-    "human": false
-   },
-   "verified": false
-  }
- },
- {
-  "id": "III-LIM-166",
-  "schema": "lemma.problem/1",
-  "kind": "written",
-  "field": "III-15",
-  "level": 0,
-  "minutes": 5,
-  "theme": "関数／逆関数",
-  "unit": "関数",
-  "topic": "逆関数",
-  "statement": {
-   "tex": "関数 $f(x)=\\dfrac{2x+1}{x-3}$ の逆関数 $f^{-1}(x)$ を求めよ．"
-  },
-  "answer": {
-   "tex": "$f^{-1}(x)=\\dfrac{3x+1}{x-2}$"
-  },
-  "solutions": [
-   {
-    "id": "main",
-    "kind": "main",
-    "tex": "$y=\\dfrac{2x+1}{x-3}$ を $x$ について解く．$y(x-3)=2x+1$ より $(y-2)x=3y+1$，$x=\\dfrac{3y+1}{y-2}$．\n$x$ と $y$ を入れかえて $\\boldsymbol{f^{-1}(x)=\\dfrac{3x+1}{x-2}}$．"
-   }
-  ],
-  "idea": {
-   "tex": "$y=f(x)$ を $x$ について解き，最後に $x$ と $y$ を入れかえる．"
-  },
-  "grading": {
-   "format": "lemma-input/1",
-   "spec": "$f^{-1}(x)$：(3x+1)/(x-2)"
-  },
-  "methods": [],
-  "tags": [
-   "逆関数",
-   "分数関数"
-  ],
-  "provenance": {
-   "created": "2026-10-30"
-  },
-  "quality": {
-   "status": "published",
-   "checks": {
-    "dual": false,
-    "sympy": true,
-    "human": false
-   },
-   "verified": false
-  }
- },
- {
-  "id": "III-LIM-167",
-  "schema": "lemma.problem/1",
-  "kind": "written",
-  "field": "III-15",
-  "level": 0,
-  "minutes": 4,
-  "theme": "関数／合成関数",
-  "unit": "関数",
-  "topic": "合成関数",
-  "statement": {
-   "tex": "$f(x)=2x+1,\\ g(x)=x^2-3$ とする．\\begin{enumerate}\n  \\item 合成関数 $(g\\circ f)(x)$ を求めよ．\n  \\item 合成関数 $(f\\circ g)(x)$ を求めよ．\n\\end{enumerate}"
-  },
-  "answer": {
-   "tex": "(1) $4x^2+4x-2$　(2) $2x^2-5$"
-  },
-  "solutions": [
-   {
-    "id": "main",
-    "kind": "main",
-    "tex": "(1) $(g\\circ f)(x)=g(f(x))=(2x+1)^2-3=\\boldsymbol{4x^2+4x-2}$．\n(2) $(f\\circ g)(x)=f(g(x))=2(x^2-3)+1=\\boldsymbol{2x^2-5}$．\n一般に $g\\circ f$ と $f\\circ g$ は一致しない．"
-   }
-  ],
-  "idea": {
-   "tex": "$(g\\circ f)(x)=g(f(x))$：内側の $f$ を先に計算し，それを $g$ に代入する．"
-  },
-  "grading": {
-   "format": "lemma-input/1",
-   "spec": "(1) 4x^2+4x-2\n(2) 2x^2-5"
-  },
-  "methods": [],
-  "tags": [
-   "合成関数"
-  ],
-  "provenance": {
-   "created": "2026-10-30"
-  },
-  "quality": {
-   "status": "published",
-   "checks": {
-    "dual": false,
-    "sympy": true,
-    "human": false
-   },
-   "verified": false
-  }
- },
- {
-  "id": "III-LIM-168",
-  "schema": "lemma.problem/1",
-  "kind": "written",
-  "field": "III-15",
-  "level": 0,
-  "minutes": 6,
-  "theme": "関数／無理関数と不等式（グラフの上下）",
-  "unit": "関数",
-  "topic": "無理関数と不等式（グラフの上下）",
-  "statement": {
-   "tex": "不等式 $\\sqrt{x+2}>x$ を解け．"
-  },
-  "answer": {
-   "tex": "$-2\\leqq x<2$"
-  },
-  "solutions": [
-   {
-    "id": "main",
-    "kind": "main",
-    "tex": "$y=\\sqrt{x+2}$（定義域 $x\\geqq-2$）と $y=x$ のグラフの交点を求める．$\\sqrt{x+2}=x$ を2乗して $x^2-x-2=0$，$(x-2)(x+1)=0$．\n$x\\geqq0$ が必要なので交点は $x=2$ のみ（$x=-1$ は $\\sqrt1=1\\neq-1$ で不適）．\nグラフより，$\\sqrt{x+2}$ のグラフが直線 $y=x$ より上にあるのは $-2\\leqq x<2$．よって $\\boldsymbol{-2\\leqq x<2}$．"
-   }
-  ],
-  "idea": {
-   "tex": "無理関数のグラフと直線の上下関係で考える．2乗したときに出る余分な解に注意する．"
-  },
-  "grading": {
-   "format": "lemma-input/1",
-   "spec": "-2<=x<2"
-  },
-  "methods": [],
-  "tags": [
-   "無理関数",
-   "無理不等式",
-   "グラフ"
-  ],
-  "provenance": {
-   "created": "2026-10-30"
-  },
-  "quality": {
-   "status": "published",
-   "checks": {
-    "dual": false,
-    "sympy": true,
-    "human": false
-   },
-   "verified": false
-  }
- },
- {
-  "id": "III-LIM-169",
-  "schema": "lemma.problem/1",
-  "kind": "written",
-  "field": "III-15",
-  "level": 0,
-  "minutes": 5,
-  "theme": "数列の極限／分数式・無理式（最高次で割る）",
-  "unit": "数列の極限",
-  "topic": "分数式・無理式（最高次で割る）",
-  "statement": {
-   "tex": "次の極限を求めよ．\\begin{enumerate}\n  \\item $\\displaystyle\\lim_{n\\to\\infty}\\frac{3n^2-n+4}{2n^2+5}$\n  \\item $\\displaystyle\\lim_{n\\to\\infty}\\frac{2n+1}{\\sqrt{n^2+3n}}$\n\\end{enumerate}"
-  },
-  "answer": {
-   "tex": "(1) $\\dfrac32$　(2) $2$"
-  },
-  "solutions": [
-   {
-    "id": "main",
-    "kind": "main",
-    "tex": "(1) 分母・分子を $n^2$ で割ると $\\dfrac{3-\\frac1n+\\frac4{n^2}}{2+\\frac5{n^2}}\\to\\boldsymbol{\\dfrac32}$．\n(2) 分母・分子を $n$ で割ると（$n>0$ より $\\sqrt{n^2+3n}=n\\sqrt{1+\\frac3n}$）$\\dfrac{2+\\frac1n}{\\sqrt{1+\\frac3n}}\\to\\boldsymbol{2}$．"
-   }
-  ],
-  "idea": {
-   "tex": "分母の最高次の項で分母・分子を割り，$\\frac1n\\to0$ を使う．"
-  },
-  "grading": {
-   "format": "lemma-input/1",
-   "spec": "(1) 3/2\n(2) 2"
-  },
-  "methods": [],
-  "tags": [
-   "数列の極限",
-   "不定形"
-  ],
-  "provenance": {
-   "created": "2026-10-30"
-  },
-  "quality": {
-   "status": "published",
-   "checks": {
-    "dual": false,
-    "sympy": true,
-    "human": false
-   },
-   "verified": false
-  }
- },
- {
-  "id": "III-LIM-170",
-  "schema": "lemma.problem/1",
-  "kind": "written",
-  "field": "III-15",
-  "level": 0,
-  "minutes": 5,
-  "theme": "数列の極限／$\\infty-\\infty$ 型（分子の有理化）",
-  "unit": "数列の極限",
-  "topic": "$\\infty-\\infty$ 型（分子の有理化）",
-  "statement": {
-   "tex": "極限 $\\displaystyle\\lim_{n\\to\\infty}\\left(\\sqrt{n^2+4n}-n\\right)$ を求めよ．"
-  },
-  "answer": {
-   "tex": "$2$"
-  },
-  "solutions": [
-   {
-    "id": "main",
-    "kind": "main",
-    "tex": "$\\sqrt{n^2+4n}-n=\\dfrac{(n^2+4n)-n^2}{\\sqrt{n^2+4n}+n}=\\dfrac{4n}{\\sqrt{n^2+4n}+n}=\\dfrac{4}{\\sqrt{1+\\frac4n}+1}$．\n$n\\to\\infty$ で $\\dfrac{4}{1+1}=\\boldsymbol{2}$．"
-   }
-  ],
-  "idea": {
-   "tex": "$\\infty-\\infty$ の形は，分子を有理化して分数の形にしてから最高次で割る．"
-  },
-  "grading": {
-   "format": "lemma-input/1",
-   "spec": "2"
-  },
-  "methods": [],
-  "tags": [
-   "数列の極限",
-   "有理化"
-  ],
-  "provenance": {
-   "created": "2026-10-30"
-  },
-  "quality": {
-   "status": "published",
-   "checks": {
-    "dual": false,
-    "sympy": true,
-    "human": false
-   },
-   "verified": false
-  }
- },
- {
-  "id": "III-LIM-171",
-  "schema": "lemma.problem/1",
-  "kind": "written",
-  "field": "III-15",
-  "level": 0,
-  "minutes": 5,
-  "theme": "数列の極限／$r^n$ を含む極限",
-  "unit": "数列の極限",
-  "topic": "$r^n$ を含む極限",
-  "statement": {
-   "tex": "次の極限を求めよ．\\begin{enumerate}\n  \\item $\\displaystyle\\lim_{n\\to\\infty}\\frac{3^{n+1}+2^n}{3^n-2^{n+1}}$\n  \\item $\\displaystyle\\lim_{n\\to\\infty}\\frac{4^n-1}{5^n+1}$\n\\end{enumerate}"
-  },
-  "answer": {
-   "tex": "(1) $3$　(2) $0$"
-  },
-  "solutions": [
-   {
-    "id": "main",
-    "kind": "main",
-    "tex": "(1) 分母・分子を $3^n$ で割ると $\\dfrac{3+\\left(\\frac23\\right)^n}{1-2\\left(\\frac23\\right)^n}$．$\\left(\\frac23\\right)^n\\to0$ より $\\boldsymbol{3}$．\n(2) 分母・分子を $5^n$ で割ると $\\dfrac{\\left(\\frac45\\right)^n-\\left(\\frac15\\right)^n}{1+\\left(\\frac15\\right)^n}\\to\\dfrac{0}{1}=\\boldsymbol{0}$．"
-   }
-  ],
-  "idea": {
-   "tex": "底がいちばん大きい項で割り，$|r|<1$ なら $r^n\\to0$ を使う．"
-  },
-  "grading": {
-   "format": "lemma-input/1",
-   "spec": "(1) 3\n(2) 0"
-  },
-  "methods": [],
-  "tags": [
-   "数列の極限",
-   "r^n"
-  ],
-  "provenance": {
-   "created": "2026-10-30"
-  },
-  "quality": {
-   "status": "published",
-   "checks": {
-    "dual": false,
-    "sympy": true,
-    "human": false
-   },
-   "verified": false
-  }
- },
- {
-  "id": "III-LIM-172",
-  "schema": "lemma.problem/1",
-  "kind": "written",
-  "field": "III-15",
-  "level": 0,
-  "minutes": 6,
-  "theme": "無限級数／無限等比級数の収束条件と和",
-  "unit": "無限級数",
-  "topic": "無限等比級数の収束条件と和",
-  "statement": {
-   "tex": "無限等比級数 $1+(x-1)+(x-1)^2+(x-1)^3+\\cdots$ について．\\begin{enumerate}\n  \\item この級数が収束するような $x$ の値の範囲を求めよ．\n  \\item (1) のとき，和を $x$ の式で表せ．\n\\end{enumerate}"
-  },
-  "answer": {
-   "tex": "(1) $0<x<2$　(2) $\\dfrac{1}{2-x}$"
-  },
-  "solutions": [
-   {
-    "id": "main",
-    "kind": "main",
-    "tex": "(1) 初項 $1$，公比 $x-1$ の無限等比級数である．初項が $0$ でないので，収束する条件は $|x-1|<1$，すなわち $\\boldsymbol{0<x<2}$．\n(2) 和は $\\dfrac{1}{1-(x-1)}=\\boldsymbol{\\dfrac{1}{2-x}}$．"
-   }
-  ],
-  "idea": {
-   "tex": "無限等比級数は「初項 $=0$」または「$|$公比$|<1$」のときに収束し，和は $\\frac{\\text{初項}}{1-\\text{公比}}$．"
-  },
-  "grading": {
-   "format": "lemma-input/1",
-   "spec": "(1) 0<x<2\n(2) 1/(2-x)"
-  },
-  "methods": [],
-  "tags": [
-   "無限等比級数",
-   "収束条件"
-  ],
-  "provenance": {
-   "created": "2026-10-30"
-  },
-  "quality": {
-   "status": "published",
-   "checks": {
-    "dual": false,
-    "sympy": true,
-    "human": false
-   },
-   "verified": false
-  }
- },
- {
-  "id": "III-LIM-173",
-  "schema": "lemma.problem/1",
-  "kind": "written",
-  "field": "III-15",
-  "level": 0,
-  "minutes": 6,
-  "theme": "無限級数／部分分数分解して和を求める",
-  "unit": "無限級数",
-  "topic": "部分分数分解して和を求める",
-  "statement": {
-   "tex": "無限級数 $\\displaystyle\\sum_{n=1}^{\\infty}\\frac{1}{n(n+2)}$ の和を求めよ．"
-  },
-  "answer": {
-   "tex": "$\\dfrac34$"
-  },
-  "solutions": [
-   {
-    "id": "main",
-    "kind": "main",
-    "tex": "$\\dfrac{1}{k(k+2)}=\\dfrac12\\left(\\dfrac1k-\\dfrac1{k+2}\\right)$ より，第 $n$ 項までの部分和は\n\\[S_n=\\frac12\\left(1+\\frac12-\\frac1{n+1}-\\frac1{n+2}\\right).\\]\n$n\\to\\infty$ で $S_n\\to\\dfrac12\\cdot\\dfrac32=\\boldsymbol{\\dfrac34}$．"
-   }
-  ],
-  "idea": {
-   "tex": "無限級数は部分和 $S_n$ を求めてから極限をとる．部分分数に分けると途中が打ち消し合う．"
-  },
-  "grading": {
-   "format": "lemma-input/1",
-   "spec": "3/4"
-  },
-  "methods": [],
-  "tags": [
-   "無限級数",
-   "部分分数",
-   "部分和"
-  ],
-  "provenance": {
-   "created": "2026-10-30"
-  },
-  "quality": {
-   "status": "published",
-   "checks": {
-    "dual": false,
-    "sympy": true,
-    "human": false
-   },
-   "verified": false
-  }
- },
- {
-  "id": "III-LIM-174",
-  "schema": "lemma.problem/1",
-  "kind": "written",
-  "field": "III-15",
-  "level": 0,
-  "minutes": 5,
-  "theme": "無限級数／循環小数を分数で表す",
-  "unit": "無限級数",
-  "topic": "循環小数を分数で表す",
-  "statement": {
-   "tex": "次の循環小数を分数で表せ．\\begin{enumerate}\n  \\item $0.\\dot{2}\\dot{7}$\n  \\item $0.1\\dot{2}\\dot{5}$\n\\end{enumerate}"
-  },
-  "answer": {
-   "tex": "(1) $\\dfrac{3}{11}$　(2) $\\dfrac{62}{495}$"
-  },
-  "solutions": [
-   {
-    "id": "main",
-    "kind": "main",
-    "tex": "(1) $0.\\dot2\\dot7=0.27+0.0027+\\cdots$ は初項 $\\dfrac{27}{100}$，公比 $\\dfrac1{100}$ の無限等比級数．和は $\\dfrac{27/100}{1-1/100}=\\dfrac{27}{99}=\\boldsymbol{\\dfrac{3}{11}}$．\n(2) $0.1\\dot2\\dot5=\\dfrac1{10}+\\left(0.025+0.00025+\\cdots\\right)=\\dfrac1{10}+\\dfrac{25/1000}{1-1/100}=\\dfrac1{10}+\\dfrac{25}{990}=\\dfrac{99+25}{990}=\\boldsymbol{\\dfrac{62}{495}}$．"
-   }
-  ],
-  "idea": {
-   "tex": "循環する部分を，初項と公比 $\\frac1{100}$ などをもつ無限等比級数とみる．"
-  },
-  "grading": {
-   "format": "lemma-input/1",
-   "spec": "(1) 3/11\n(2) 62/495"
-  },
-  "methods": [],
-  "tags": [
-   "無限等比級数",
-   "循環小数"
-  ],
-  "provenance": {
-   "created": "2026-10-30"
-  },
-  "quality": {
-   "status": "published",
-   "checks": {
-    "dual": false,
-    "sympy": true,
-    "human": false
-   },
-   "verified": false
-  }
- },
- {
-  "id": "III-LIM-175",
-  "schema": "lemma.problem/1",
-  "kind": "written",
-  "field": "III-15",
-  "level": 0,
-  "minutes": 5,
-  "theme": "関数の極限／$\\frac00$ 型（約分・有理化）",
-  "unit": "関数の極限",
-  "topic": "$\\frac00$ 型（約分・有理化）",
-  "statement": {
-   "tex": "次の極限を求めよ．\\begin{enumerate}\n  \\item $\\displaystyle\\lim_{x\\to2}\\frac{x^2-4}{x^2-3x+2}$\n  \\item $\\displaystyle\\lim_{x\\to1}\\frac{\\sqrt{x+3}-2}{x-1}$\n\\end{enumerate}"
-  },
-  "answer": {
-   "tex": "(1) $4$　(2) $\\dfrac14$"
-  },
-  "solutions": [
-   {
-    "id": "main",
-    "kind": "main",
-    "tex": "(1) $\\dfrac{(x-2)(x+2)}{(x-2)(x-1)}=\\dfrac{x+2}{x-1}\\to\\dfrac41=\\boldsymbol{4}$．\n(2) 分子を有理化して $\\dfrac{(x+3)-4}{(x-1)(\\sqrt{x+3}+2)}=\\dfrac{1}{\\sqrt{x+3}+2}\\to\\boldsymbol{\\dfrac14}$．"
-   }
-  ],
-  "idea": {
-   "tex": "$\\frac00$ の形は，0 になる原因の因数（$x-a$）を約分できる形に変形する．"
-  },
-  "grading": {
-   "format": "lemma-input/1",
-   "spec": "(1) 4\n(2) 1/4"
-  },
-  "methods": [],
-  "tags": [
-   "関数の極限",
-   "不定形",
-   "有理化"
-  ],
-  "provenance": {
-   "created": "2026-10-30"
-  },
-  "quality": {
-   "status": "published",
-   "checks": {
-    "dual": false,
-    "sympy": true,
-    "human": false
-   },
-   "verified": false
-  }
- },
- {
-  "id": "III-LIM-176",
-  "schema": "lemma.problem/1",
-  "kind": "written",
-  "field": "III-15",
-  "level": 0,
-  "minutes": 5,
-  "theme": "関数の極限／$\\frac{\\sin x}{x}$ の極限",
-  "unit": "関数の極限",
-  "topic": "$\\frac{\\sin x}{x}$ の極限",
-  "statement": {
-   "tex": "次の極限を求めよ．\\begin{enumerate}\n  \\item $\\displaystyle\\lim_{x\\to0}\\frac{\\sin3x}{x}$\n  \\item $\\displaystyle\\lim_{x\\to0}\\frac{1-\\cos x}{x^2}$\n\\end{enumerate}"
-  },
-  "answer": {
-   "tex": "(1) $3$　(2) $\\dfrac12$"
-  },
-  "solutions": [
-   {
-    "id": "main",
-    "kind": "main",
-    "tex": "(1) $\\dfrac{\\sin3x}{x}=3\\cdot\\dfrac{\\sin3x}{3x}\\to3\\cdot1=\\boldsymbol{3}$．\n(2) 分母・分子に $1+\\cos x$ を掛けると $\\dfrac{1-\\cos^2x}{x^2(1+\\cos x)}=\\left(\\dfrac{\\sin x}{x}\\right)^2\\cdot\\dfrac1{1+\\cos x}\\to1\\cdot\\dfrac12=\\boldsymbol{\\dfrac12}$．"
-   }
-  ],
-  "idea": {
-   "tex": "$\\lim_{\\theta\\to0}\\frac{\\sin\\theta}{\\theta}=1$ が使える形（$\\sin$ の中身と分母をそろえる）に直す．"
-  },
-  "grading": {
-   "format": "lemma-input/1",
-   "spec": "(1) 3\n(2) 1/2"
-  },
-  "methods": [],
-  "tags": [
-   "三角関数の極限"
-  ],
-  "provenance": {
-   "created": "2026-10-30"
-  },
-  "quality": {
-   "status": "published",
-   "checks": {
-    "dual": false,
-    "sympy": true,
-    "human": false
-   },
-   "verified": false
-  }
- },
- {
-  "id": "III-LIM-177",
-  "schema": "lemma.problem/1",
-  "kind": "written",
-  "field": "III-15",
-  "level": 0,
-  "minutes": 5,
-  "theme": "関数の極限／$e$ の定義と指数関数の極限",
-  "unit": "関数の極限",
-  "topic": "$e$ の定義と指数関数の極限",
-  "statement": {
-   "tex": "次の極限を求めよ．\\begin{enumerate}\n  \\item $\\displaystyle\\lim_{x\\to\\infty}\\left(1+\\frac2x\\right)^x$\n  \\item $\\displaystyle\\lim_{x\\to0}\\frac{e^{2x}-1}{x}$\n\\end{enumerate}"
-  },
-  "answer": {
-   "tex": "(1) $e^2$　(2) $2$"
-  },
-  "solutions": [
-   {
-    "id": "main",
-    "kind": "main",
-    "tex": "(1) $\\dfrac2x=h$ とおくと $x\\to\\infty$ のとき $h\\to+0$ で，$\\left(1+\\frac2x\\right)^x=\\left\\{(1+h)^{\\frac1h}\\right\\}^2\\to\\boldsymbol{e^2}$．\n(2) $2x=h$ とおくと $\\dfrac{e^{2x}-1}{x}=2\\cdot\\dfrac{e^h-1}{h}\\to2\\cdot1=\\boldsymbol{2}$．"
-   }
-  ],
-  "idea": {
-   "tex": "$\\lim_{h\\to0}(1+h)^{\\frac1h}=e$，$\\lim_{h\\to0}\\frac{e^h-1}{h}=1$ の形に置き換える．"
-  },
-  "grading": {
-   "format": "lemma-input/1",
-   "spec": "(1) e^2\n(2) 2"
-  },
-  "methods": [],
-  "tags": [
-   "eの定義",
-   "指数関数の極限"
-  ],
-  "provenance": {
-   "created": "2026-10-30"
-  },
-  "quality": {
-   "status": "published",
-   "checks": {
-    "dual": false,
-    "sympy": true,
-    "human": false
-   },
-   "verified": false
-  }
- },
- {
-  "id": "III-LIM-178",
-  "schema": "lemma.problem/1",
-  "kind": "written",
-  "field": "III-15",
-  "level": 0,
-  "minutes": 4,
-  "theme": "関数の連続性／つなぎ目で連続にする",
-  "unit": "関数の連続性",
-  "topic": "つなぎ目で連続にする",
-  "statement": {
-   "tex": "関数 $f(x)=\\begin{cases}\\dfrac{x^2+x-2}{x-1} & (x\\neq1)\\\\ a & (x=1)\\end{cases}$ が $x=1$ で連続となるように，定数 $a$ の値を定めよ．"
-  },
-  "answer": {
-   "tex": "$a=3$"
-  },
-  "solutions": [
-   {
-    "id": "main",
-    "kind": "main",
-    "tex": "$x\\neq1$ のとき $f(x)=\\dfrac{(x-1)(x+2)}{x-1}=x+2$ なので $\\displaystyle\\lim_{x\\to1}f(x)=3$．\n$x=1$ で連続 $\\iff\\displaystyle\\lim_{x\\to1}f(x)=f(1)$ だから $\\boldsymbol{a=3}$．"
-   }
-  ],
-  "idea": {
-   "tex": "$x=a$ で連続であるとは，$\\lim_{x\\to a}f(x)$ が存在して $f(a)$ に等しいこと．"
-  },
-  "grading": {
-   "format": "lemma-input/1",
-   "spec": "$a$：3"
-  },
-  "methods": [],
-  "tags": [
-   "連続性",
-   "関数の極限"
-  ],
-  "provenance": {
-   "created": "2026-10-30"
-  },
-  "quality": {
-   "status": "published",
-   "checks": {
-    "dual": false,
-    "sympy": true,
-    "human": false
-   },
-   "verified": false
-  }
- },
- {
-  "id": "III-LIM-179",
-  "schema": "lemma.problem/1",
-  "kind": "written",
-  "field": "III-15",
-  "level": 0,
-  "minutes": 6,
-  "theme": "数列の極限／漸化式で定まる数列の極限",
-  "unit": "数列の極限",
-  "topic": "漸化式で定まる数列の極限",
-  "statement": {
-   "tex": "$a_1=1,\\ a_{n+1}=\\dfrac12a_n+3\\ (n=1,2,3,\\ldots)$ で定まる数列 $\\{a_n\\}$ について．\\begin{enumerate}\n  \\item 一般項 $a_n$ を求めよ．\n  \\item $\\displaystyle\\lim_{n\\to\\infty}a_n$ を求めよ．\n\\end{enumerate}"
-  },
-  "answer": {
-   "tex": "(1) $a_n=6-5\\left(\\dfrac12\\right)^{n-1}$　(2) $6$"
-  },
-  "solutions": [
-   {
-    "id": "main",
-    "kind": "main",
-    "tex": "(1) $\\alpha=\\dfrac12\\alpha+3$ を解くと $\\alpha=6$．漸化式から引いて $a_{n+1}-6=\\dfrac12(a_n-6)$．\n$\\{a_n-6\\}$ は初項 $a_1-6=-5$，公比 $\\dfrac12$ の等比数列なので $\\boldsymbol{a_n=6-5\\left(\\dfrac12\\right)^{n-1}}$．\n(2) $\\left(\\dfrac12\\right)^{n-1}\\to0$ より $\\displaystyle\\lim_{n\\to\\infty}a_n=\\boldsymbol{6}$．"
-   }
-  ],
-  "idea": {
-   "tex": "$a_{n+1}=pa_n+q$ 型は，不動点 $\\alpha$ を引いて等比数列に直す．$|p|<1$ なら $\\alpha$ に収束する．"
-  },
-  "grading": {
-   "format": "lemma-input/1",
-   "spec": "(1) $a_n$：6-5(1/2)^(n-1)\n(2) 6"
-  },
-  "methods": [],
-  "tags": [
-   "漸化式",
-   "数列の極限"
-  ],
-  "provenance": {
-   "created": "2026-10-30"
-  },
-  "quality": {
-   "status": "published",
-   "checks": {
-    "dual": false,
-    "sympy": true,
-    "human": false
-   },
-   "verified": false
-  }
- },
- {
-  "id": "III-LIM-180",
-  "schema": "lemma.problem/1",
-  "kind": "written",
-  "field": "III-15",
-  "level": 0,
-  "minutes": 8,
-  "theme": "関数の極限／三角関数（倍角・置き換え）",
-  "unit": "関数の極限",
-  "topic": "三角関数（倍角・置き換え）",
-  "statement": {
-   "tex": "次の極限を求めよ．\\begin{enumerate}\n  \\item $\\displaystyle\\lim_{x\\to0}\\frac{1-\\cos2x}{x\\sin x}$\n  \\item $\\displaystyle\\lim_{x\\to\\pi}\\frac{\\sin x}{x-\\pi}$\n\\end{enumerate}"
-  },
-  "answer": {
-   "tex": "(1) $2$　(2) $-1$"
-  },
-  "solutions": [
-   {
-    "id": "main",
-    "kind": "main",
-    "tex": "(1) $1-\\cos2x=2\\sin^2x$ より $\\dfrac{2\\sin^2x}{x\\sin x}=2\\cdot\\dfrac{\\sin x}{x}\\to\\boldsymbol{2}$．\n(2) $x-\\pi=t$ とおくと $t\\to0$ で，$\\sin x=\\sin(t+\\pi)=-\\sin t$．よって $\\dfrac{-\\sin t}{t}\\to\\boldsymbol{-1}$．"
-   }
-  ],
-  "idea": {
-   "tex": "$x\\to a\\ (a\\neq0)$ のときは $x-a=t$ とおいて $t\\to0$ にし，$\\frac{\\sin t}{t}$ を作る．"
-  },
-  "grading": {
-   "format": "lemma-input/1",
-   "spec": "(1) 2\n(2) -1"
-  },
-  "methods": [],
-  "tags": [
-   "三角関数の極限",
-   "置き換え",
-   "倍角の公式"
-  ],
-  "provenance": {
-   "created": "2026-10-30"
-  },
-  "quality": {
-   "status": "published",
-   "checks": {
-    "dual": false,
-    "sympy": true,
-    "human": false
-   },
-   "verified": false
-  }
- },
- {
-  "id": "III-LIM-181",
-  "schema": "lemma.problem/1",
-  "kind": "written",
-  "field": "III-15",
-  "level": 1,
-  "minutes": 10,
-  "theme": "数列の極限／逆数をとる漸化式",
-  "unit": "数列の極限",
-  "topic": "逆数をとる漸化式",
-  "statement": {
-   "tex": "$a_1=1,\\ a_{n+1}=\\dfrac{a_n}{2a_n+1}\\ (n=1,2,3,\\ldots)$ で定まる数列 $\\{a_n\\}$ がある．\\begin{enumerate}\n  \\item $b_n=\\dfrac1{a_n}$ とおくとき，$b_n$ を $n$ の式で表せ．\n  \\item $\\displaystyle\\lim_{n\\to\\infty}na_n$ を求めよ．\n\\end{enumerate}"
-  },
-  "answer": {
-   "tex": "(1) $b_n=2n-1$　(2) $\\dfrac12$"
-  },
-  "solutions": [
-   {
-    "id": "main",
-    "kind": "main",
-    "tex": "(1) $a_1>0$ と漸化式から帰納的に $a_n>0$．両辺の逆数をとると $\\dfrac1{a_{n+1}}=\\dfrac{2a_n+1}{a_n}=2+\\dfrac1{a_n}$，すなわち $b_{n+1}=b_n+2$．\n$b_1=1$ より $\\boldsymbol{b_n=2n-1}$．\n(2) $a_n=\\dfrac1{2n-1}$ より $na_n=\\dfrac{n}{2n-1}=\\dfrac{1}{2-\\frac1n}\\to\\boldsymbol{\\dfrac12}$．"
-   }
-  ],
-  "idea": {
-   "tex": "分数形の漸化式は逆数をとると等差・等比型になることが多い．$a_n$ が 0 にならないことを確認してから逆数をとる．"
-  },
-  "grading": {
-   "format": "lemma-input/1",
-   "spec": "(1) $b_n$：2n-1\n(2) 1/2"
-  },
-  "methods": [],
-  "tags": [
-   "漸化式",
-   "逆数",
-   "数列の極限"
-  ],
-  "provenance": {
-   "created": "2026-10-30"
-  },
-  "quality": {
-   "status": "published",
-   "checks": {
-    "dual": false,
-    "sympy": true,
-    "human": false
-   },
-   "verified": false
-  }
- },
- {
-  "id": "III-LIM-182",
-  "schema": "lemma.problem/1",
-  "kind": "written",
-  "field": "III-15",
-  "level": 1,
-  "minutes": 10,
-  "theme": "数列の極限／$r^n$ を含む極限の場合分け",
-  "unit": "数列の極限",
-  "topic": "$r^n$ を含む極限の場合分け",
-  "statement": {
-   "tex": "$r>0$ とする．極限 $\\displaystyle\\lim_{n\\to\\infty}\\frac{r^n}{1+r^n}$ を，$r$ の値で場合分けして求めよ．"
-  },
-  "answer": {
-   "tex": "$0<r<1$ のとき $0$，$r=1$ のとき $\\dfrac12$，$r>1$ のとき $1$"
-  },
-  "solutions": [
-   {
-    "id": "main",
-    "kind": "main",
-    "tex": "$0<r<1$ のとき：$r^n\\to0$ なので $\\dfrac{0}{1+0}=\\boldsymbol{0}$．\n$r=1$ のとき：常に $\\dfrac{1}{1+1}=\\boldsymbol{\\dfrac12}$．\n$r>1$ のとき：分母・分子を $r^n$ で割ると $\\dfrac{1}{\\left(\\frac1r\\right)^n+1}$．$0<\\frac1r<1$ より $\\left(\\frac1r\\right)^n\\to0$ で $\\boldsymbol{1}$．"
-   }
-  ],
-  "idea": {
-   "tex": "$r^n$ の振る舞いは $|r|<1$，$r=1$，$|r|>1$ で変わる．$|r|>1$ では $r^n$ で割って $\\left(\\frac1r\\right)^n\\to0$ を使う．"
-  },
-  "grading": {
-   "format": "lemma-input/1",
-   "spec": "場合分け{ 0<r<1 → 0 | r=1 → 1/2 | r>1 → 1 }"
-  },
-  "methods": [],
-  "tags": [
-   "r^n",
-   "場合分け",
-   "数列の極限"
-  ],
-  "provenance": {
-   "created": "2026-10-30"
-  },
-  "quality": {
-   "status": "published",
-   "checks": {
-    "dual": false,
-    "sympy": true,
-    "human": false
-   },
-   "verified": false
-  }
- },
- {
-  "id": "III-LIM-183",
-  "schema": "lemma.problem/1",
-  "kind": "written",
-  "field": "III-15",
-  "level": 1,
-  "minutes": 10,
-  "theme": "無限級数／点の運動と無限等比級数",
-  "unit": "無限級数",
-  "topic": "点の運動と無限等比級数",
-  "statement": {
-   "tex": "座標平面上で，点 P が原点 O から出発し，まず $x$ 軸の正の向きに $1$ 進み，次に左へ $90^\\circ$ 向きを変えて $\\dfrac12$ 進み，さらに左へ $90^\\circ$ 向きを変えて $\\dfrac14$ 進む．以下同様に，左へ $90^\\circ$ 向きを変えるたびに，進む距離を直前の $\\dfrac12$ にしていく．このとき，P が限りなく近づく点の座標を求めよ．"
-  },
-  "answer": {
-   "tex": "$\\left(\\dfrac45,\\ \\dfrac25\\right)$"
-  },
-  "solutions": [
-   {
-    "id": "main",
-    "kind": "main",
-    "tex": "進む向きは $x$ 正，$y$ 正，$x$ 負，$y$ 負，… の順に繰り返す．\n$x$ 座標：$1-\\dfrac14+\\dfrac1{16}-\\cdots$ は初項 $1$，公比 $-\\dfrac14$ の無限等比級数で，和は $\\dfrac{1}{1+\\frac14}=\\dfrac45$．\n$y$ 座標：$\\dfrac12-\\dfrac18+\\dfrac1{32}-\\cdots$ は初項 $\\dfrac12$，公比 $-\\dfrac14$ で，和は $\\dfrac{\\frac12}{1+\\frac14}=\\dfrac25$．\nよって P は点 $\\boldsymbol{\\left(\\dfrac45,\\ \\dfrac25\\right)}$ に限りなく近づく．"
-   }
-  ],
-  "idea": {
-   "tex": "$x$ 方向の移動と $y$ 方向の移動に分けると，それぞれが公比 $-\\frac14$ の無限等比級数になる．"
-  },
-  "grading": {
-   "format": "lemma-input/1",
-   "spec": "(4/5, 2/5)"
-  },
-  "methods": [],
-  "tags": [
-   "無限等比級数",
-   "点の運動"
-  ],
-  "provenance": {
-   "created": "2026-10-30"
-  },
-  "quality": {
-   "status": "published",
-   "checks": {
-    "dual": false,
-    "sympy": true,
-    "human": false
-   },
-   "verified": false
-  }
- },
- {
-  "id": "III-LIM-184",
-  "schema": "lemma.problem/1",
-  "kind": "written",
-  "field": "III-15",
-  "level": 1,
-  "minutes": 12,
-  "theme": "無限級数／3つの因数の積の部分分数",
-  "unit": "無限級数",
-  "topic": "3つの因数の積の部分分数",
-  "statement": {
-   "tex": "無限級数 $\\displaystyle\\sum_{n=1}^{\\infty}\\frac{1}{n(n+1)(n+2)}$ について．\\begin{enumerate}\n  \\item 第 $n$ 項までの部分和 $S_n$ を求めよ．\n  \\item この無限級数の和を求めよ．\n\\end{enumerate}"
-  },
-  "answer": {
-   "tex": "(1) $S_n=\\dfrac14-\\dfrac{1}{2(n+1)(n+2)}$　(2) $\\dfrac14$"
-  },
-  "solutions": [
-   {
-    "id": "main",
-    "kind": "main",
-    "tex": "(1) $\\dfrac{1}{k(k+1)(k+2)}=\\dfrac12\\left\\{\\dfrac{1}{k(k+1)}-\\dfrac{1}{(k+1)(k+2)}\\right\\}$ と分けられる．\n$k=1$ から $n$ まで加えると途中が打ち消し合い，$S_n=\\dfrac12\\left\\{\\dfrac{1}{1\\cdot2}-\\dfrac{1}{(n+1)(n+2)}\\right\\}=\\boldsymbol{\\dfrac14-\\dfrac{1}{2(n+1)(n+2)}}$．\n(2) $n\\to\\infty$ で $\\dfrac{1}{(n+1)(n+2)}\\to0$ より，和は $\\boldsymbol{\\dfrac14}$．"
-   }
-  ],
-  "idea": {
-   "tex": "3つの連続する因数の積は「2つずつの積の差」に分けると，隣り合う項が打ち消し合う．"
-  },
-  "grading": {
-   "format": "lemma-input/1",
-   "spec": "(1) $S_n$：1/4-1/(2(n+1)(n+2))\n(2) 1/4"
-  },
-  "methods": [],
-  "tags": [
-   "無限級数",
-   "部分分数",
-   "部分和"
-  ],
-  "provenance": {
-   "created": "2026-10-30"
-  },
-  "quality": {
-   "status": "published",
-   "checks": {
-    "dual": false,
-    "sympy": true,
-    "human": false
-   },
-   "verified": false
-  }
- },
- {
-  "id": "III-LIM-185",
-  "schema": "lemma.problem/1",
-  "kind": "written",
-  "field": "III-15",
-  "level": 1,
-  "minutes": 12,
-  "theme": "無限級数／部分和を偶数番目・奇数番目に分ける",
-  "unit": "無限級数",
-  "topic": "部分和を偶数番目・奇数番目に分ける",
-  "statement": {
-   "tex": "無限級数 $1-\\dfrac12+\\dfrac12-\\dfrac13+\\dfrac13-\\dfrac14+\\cdots$ の第 $n$ 項までの部分和を $S_n$ とする．\\begin{enumerate}\n  \\item $S_{2n-1}$ を求めよ．\n  \\item $S_{2n}$ を $n$ の式で表せ．\n  \\item この無限級数の和を求めよ．\n\\end{enumerate}"
-  },
-  "answer": {
-   "tex": "(1) $1$　(2) $\\dfrac{n}{n+1}$　(3) $1$"
-  },
-  "solutions": [
-   {
-    "id": "main",
-    "kind": "main",
-    "tex": "(1) $S_{2n-1}=1+\\left(-\\dfrac12+\\dfrac12\\right)+\\cdots+\\left(-\\dfrac1n+\\dfrac1n\\right)=\\boldsymbol{1}$．\n(2) $S_{2n}=S_{2n-1}-\\dfrac1{n+1}=1-\\dfrac1{n+1}=\\boldsymbol{\\dfrac{n}{n+1}}$．\n(3) $\\displaystyle\\lim_{n\\to\\infty}S_{2n-1}=1$，$\\displaystyle\\lim_{n\\to\\infty}S_{2n}=1$ で一致するので $\\{S_n\\}$ は $1$ に収束し，和は $\\boldsymbol{1}$．"
-   }
-  ],
-  "idea": {
-   "tex": "項にかっこがない級数は勝手にまとめてはいけない．部分和を奇数番目と偶数番目に分け，両方の極限が一致することを確かめる．"
-  },
-  "grading": {
-   "format": "lemma-input/1",
-   "spec": "(1) 1\n(2) n/(n+1)\n(3) 1"
-  },
-  "methods": [],
-  "tags": [
-   "無限級数",
-   "部分和"
-  ],
-  "provenance": {
-   "created": "2026-10-30"
-  },
-  "quality": {
-   "status": "published",
-   "checks": {
-    "dual": false,
-    "sympy": true,
-    "human": false
-   },
-   "verified": false
-  }
- },
- {
-  "id": "III-LIM-186",
-  "schema": "lemma.problem/1",
-  "kind": "written",
-  "field": "III-15",
-  "level": 1,
-  "minutes": 10,
-  "theme": "関数の極限／極限値から係数を決める（無理式）",
-  "unit": "関数の極限",
-  "topic": "極限値から係数を決める（無理式）",
-  "statement": {
-   "tex": "等式 $\\displaystyle\\lim_{x\\to2}\\frac{a\\sqrt{x+2}+b}{x-2}=1$ が成り立つように，定数 $a,\\ b$ の値を定めよ．"
-  },
-  "answer": {
-   "tex": "$a=4,\\ b=-8$"
-  },
-  "solutions": [
-   {
-    "id": "main",
-    "kind": "main",
-    "tex": "$x\\to2$ で分母 $\\to0$ なので，極限が有限であるためには分子 $\\to0$ が必要：$2a+b=0$，$b=-2a$．\nこのとき $\\dfrac{a(\\sqrt{x+2}-2)}{x-2}=\\dfrac{a\\{(x+2)-4\\}}{(x-2)(\\sqrt{x+2}+2)}=\\dfrac{a}{\\sqrt{x+2}+2}\\to\\dfrac a4$．\n$\\dfrac a4=1$ より $\\boldsymbol{a=4,\\ b=-8}$（逆にこのとき極限は $1$ で条件をみたす）．"
-   }
-  ],
-  "idea": {
-   "tex": "分母 $\\to0$ で極限が有限なら分子 $\\to0$（必要条件）．それを使って文字を減らし，実際に極限を計算する．"
-  },
-  "grading": {
-   "format": "lemma-input/1",
-   "spec": "$a$：4 ; $b$：-8"
-  },
-  "methods": [],
-  "tags": [
-   "関数の極限",
-   "係数決定",
-   "有理化"
-  ],
-  "provenance": {
-   "created": "2026-10-30"
-  },
-  "quality": {
-   "status": "published",
-   "checks": {
-    "dual": false,
-    "sympy": true,
-    "human": false
-   },
-   "verified": false
-  }
- },
- {
-  "id": "III-LIM-187",
-  "schema": "lemma.problem/1",
-  "kind": "written",
-  "field": "III-15",
-  "level": 1,
-  "minutes": 12,
-  "theme": "関数の極限／$x\\to-\\infty$ の無理式・片側極限",
-  "unit": "関数の極限",
-  "topic": "$x\\to-\\infty$ の無理式・片側極限",
-  "statement": {
-   "tex": "次の極限を求めよ．\\begin{enumerate}\n  \\item $\\displaystyle\\lim_{x\\to-\\infty}\\left(\\sqrt{x^2+2x}+x\\right)$\n  \\item $\\displaystyle\\lim_{x\\to1+0}\\frac{x^2-x}{|x-1|}$ と $\\displaystyle\\lim_{x\\to1-0}\\frac{x^2-x}{|x-1|}$\n\\end{enumerate}"
-  },
-  "answer": {
-   "tex": "(1) $-1$　(2) $x\\to1+0$ のとき $1$，$x\\to1-0$ のとき $-1$"
-  },
-  "solutions": [
-   {
-    "id": "main",
-    "kind": "main",
-    "tex": "(1) $x=-t$ とおくと $t\\to\\infty$ で，$\\sqrt{t^2-2t}-t=\\dfrac{-2t}{\\sqrt{t^2-2t}+t}=\\dfrac{-2}{\\sqrt{1-\\frac2t}+1}\\to\\boldsymbol{-1}$．\n（$x<0$ で $\\sqrt{x^2}=-x$ となることに注意．$x=-t$ と置き換えると符号の誤りを防げる．）\n(2) $x^2-x=x(x-1)$．$x>1$ では $|x-1|=x-1$ なので $\\dfrac{x(x-1)}{x-1}=x\\to\\boldsymbol{1}$．\n$x<1$ では $|x-1|=-(x-1)$ なので $-x\\to\\boldsymbol{-1}$．（左右の極限が異なるので $x\\to1$ の極限は存在しない．）"
-   }
-  ],
-  "idea": {
-   "tex": "$x\\to-\\infty$ は $x=-t$ と置き換えて $t\\to\\infty$ にする．絶対値は中身の符号で場合を分け，片側ずつ極限をとる．"
-  },
-  "grading": {
-   "format": "lemma-input/1",
-   "spec": "(1) -1\n(2) $x\\to1+0$：1 ; $x\\to1-0$：-1"
-  },
-  "methods": [],
-  "tags": [
-   "関数の極限",
-   "無理式",
-   "片側極限",
-   "絶対値"
-  ],
-  "provenance": {
-   "created": "2026-10-30"
-  },
-  "quality": {
-   "status": "published",
-   "checks": {
-    "dual": false,
-    "sympy": true,
-    "human": false
-   },
-   "verified": false
-  }
- },
- {
-  "id": "III-LIM-188",
-  "schema": "lemma.problem/1",
-  "kind": "written",
-  "field": "III-15",
-  "level": 1,
-  "minutes": 10,
-  "theme": "関数の極限／対数関数と $e$ の極限",
-  "unit": "関数の極限",
-  "topic": "対数関数と $e$ の極限",
-  "statement": {
-   "tex": "次の極限を求めよ．\\begin{enumerate}\n  \\item $\\displaystyle\\lim_{x\\to0}\\frac{\\log(1+3x)}{x}$\n  \\item $\\displaystyle\\lim_{n\\to\\infty}\\left(1-\\frac1n\\right)^{2n}$\n\\end{enumerate}"
-  },
-  "answer": {
-   "tex": "(1) $3$　(2) $e^{-2}$"
-  },
-  "solutions": [
-   {
-    "id": "main",
-    "kind": "main",
-    "tex": "(1) $\\dfrac{\\log(1+3x)}{x}=3\\log(1+3x)^{\\frac1{3x}}$．$3x=h$ とおくと $(1+h)^{\\frac1h}\\to e$ なので $3\\log e=\\boldsymbol{3}$．\n(2) $-\\dfrac1n=h$ とおくと $n\\to\\infty$ で $h\\to-0$，$\\left(1-\\frac1n\\right)^{2n}=\\left\\{(1+h)^{\\frac1h}\\right\\}^{-2}\\to\\boldsymbol{e^{-2}}$．"
-   }
-  ],
-  "idea": {
-   "tex": "$(1+h)^{\\frac1h}\\to e$ の形を作る．指数の部分を $\\frac1h$ とその倍数に分けて考える．"
-  },
-  "grading": {
-   "format": "lemma-input/1",
-   "spec": "(1) 3\n(2) e^(-2)"
-  },
-  "methods": [],
-  "tags": [
-   "eの定義",
-   "対数関数の極限"
-  ],
-  "provenance": {
-   "created": "2026-10-30"
-  },
-  "quality": {
-   "status": "published",
-   "checks": {
-    "dual": false,
-    "sympy": true,
-    "human": false
-   },
-   "verified": false
-  }
- },
- {
-  "id": "III-LIM-189",
-  "schema": "lemma.problem/1",
-  "kind": "written",
-  "field": "III-15",
-  "level": 1,
-  "minutes": 12,
-  "theme": "数列・関数の極限／はさみうちの原理",
-  "unit": "数列・関数の極限",
-  "topic": "はさみうちの原理",
-  "statement": {
-   "tex": "実数 $x$ に対し，$x$ を超えない最大の整数を $[x]$ で表す．次の極限を求めよ．\\begin{enumerate}\n  \\item $\\displaystyle\\lim_{x\\to\\infty}\\frac{[2x]}{x}$\n  \\item $\\displaystyle\\lim_{n\\to\\infty}\\left(2^n+3^n\\right)^{\\frac1n}$\n\\end{enumerate}"
-  },
-  "answer": {
-   "tex": "(1) $2$　(2) $3$"
-  },
-  "solutions": [
-   {
-    "id": "main",
-    "kind": "main",
-    "tex": "(1) $2x-1<[2x]\\leqq2x$．$x>0$ のとき各辺を $x$ で割って $2-\\dfrac1x<\\dfrac{[2x]}{x}\\leqq2$．\n$x\\to\\infty$ で左辺 $\\to2$ なので，はさみうちの原理より $\\boldsymbol{2}$．\n(2) $3^n<2^n+3^n<2\\cdot3^n$ より $3<\\left(2^n+3^n\\right)^{\\frac1n}<2^{\\frac1n}\\cdot3$．\n$2^{\\frac1n}\\to1$ なので，はさみうちの原理より $\\boldsymbol{3}$．"
-   }
-  ],
-  "idea": {
-   "tex": "直接計算しにくい式は，極限が同じになる2つの式ではさむ．$[x]$ は $x-1<[x]\\leqq x$，和は最大の項で評価する．"
-  },
-  "grading": {
-   "format": "lemma-input/1",
-   "spec": "(1) 2\n(2) 3"
-  },
-  "methods": [],
-  "tags": [
-   "はさみうちの原理",
-   "ガウス記号"
-  ],
-  "provenance": {
-   "created": "2026-10-30"
-  },
-  "quality": {
-   "status": "published",
-   "checks": {
-    "dual": false,
-    "sympy": true,
-    "human": false
-   },
-   "verified": false
-  }
- },
- {
-  "id": "III-LIM-190",
-  "schema": "lemma.problem/1",
-  "kind": "written",
-  "field": "III-15",
-  "level": 1,
-  "minutes": 14,
-  "theme": "関数の連続性／極限で定められた関数",
-  "unit": "関数の連続性",
-  "topic": "極限で定められた関数",
-  "statement": {
-   "tex": "関数 $f(x)=\\displaystyle\\lim_{n\\to\\infty}\\frac{x^{2n+1}+ax^2+bx+1}{x^{2n}+1}$ が，すべての実数 $x$ で連続となるように，定数 $a,\\ b$ の値を定めよ．"
-  },
-  "answer": {
-   "tex": "$a=-1,\\ b=1$"
-  },
-  "solutions": [
-   {
-    "id": "main",
-    "kind": "main",
-    "tex": "$|x|<1$ のとき $x^{2n}\\to0$ なので $f(x)=ax^2+bx+1$．\n$|x|>1$ のとき分母・分子を $x^{2n}$ で割ると $f(x)=\\displaystyle\\lim\\frac{x+\\frac{ax^2+bx+1}{x^{2n}}}{1+\\frac1{x^{2n}}}=x$．\n$x=1$ のとき $f(1)=\\dfrac{a+b+2}{2}$，$x=-1$ のとき $f(-1)=\\dfrac{a-b}{2}$．\n$x=1$ で連続 $\\iff$ 左右の極限 $a+b+1$ と $1$ と $f(1)$ が一致：$a+b+1=1$．\n$x=-1$ で連続 $\\iff$ $a-b+1=-1$．\nこれらを解いて $\\boldsymbol{a=-1,\\ b=1}$（このとき $f(1)=1,\\ f(-1)=-1$ も一致する）．"
-   }
-  ],
-  "idea": {
-   "tex": "$|x|<1,\\ |x|>1,\\ x=\\pm1$ で場合を分けて $f(x)$ を具体的に求め，つなぎ目 $x=\\pm1$ での連続性を調べる．"
-  },
-  "grading": {
-   "format": "lemma-input/1",
-   "spec": "$a$：-1 ; $b$：1"
-  },
-  "methods": [],
-  "tags": [
-   "関数の極限",
-   "連続性",
-   "x^n"
-  ],
-  "provenance": {
-   "created": "2026-10-30"
-  },
-  "quality": {
-   "status": "published",
-   "checks": {
-    "dual": false,
-    "sympy": true,
-    "human": false
-   },
-   "verified": false
-  }
- },
- {
-  "id": "III-LIM-191",
-  "schema": "lemma.problem/1",
-  "kind": "written",
-  "field": "III-15",
-  "level": 1,
-  "minutes": 10,
-  "theme": "関数の連続性／中間値の定理と解の存在範囲",
-  "unit": "関数の連続性",
-  "topic": "中間値の定理と解の存在範囲",
-  "statement": {
-   "tex": "方程式 $x^3-3x+1=0$ の実数解はちょうど3個ある．それぞれの解は，ある整数 $n$ を用いて $n<x<n+1$ と表される区間に1個ずつ含まれる．そのような整数 $n$ をすべて求めよ．"
-  },
-  "answer": {
-   "tex": "$n=-2,\\ 0,\\ 1$"
-  },
-  "solutions": [
-   {
-    "id": "main",
-    "kind": "main",
-    "tex": "$f(x)=x^3-3x+1$ とおくと，$f(-2)=-1,\\ f(-1)=3,\\ f(0)=1,\\ f(1)=-1,\\ f(2)=3$．\n$f(x)$ は連続なので，中間値の定理により $-2<x<-1$，$0<x<1$，$1<x<2$ の各区間に少なくとも1つ解がある．\n3次方程式の実数解は高々3個なので，各区間にちょうど1個ずつある．よって $\\boldsymbol{n=-2,\\ 0,\\ 1}$．"
-   }
-  ],
-  "idea": {
-   "tex": "連続関数で $f(a)$ と $f(b)$ の符号が異なれば，$a<x<b$ に $f(x)=0$ の解がある（中間値の定理）．"
-  },
-  "grading": {
-   "format": "lemma-input/1",
-   "spec": "{-2, 0, 1}"
-  },
-  "methods": [],
-  "tags": [
-   "中間値の定理",
-   "連続性",
-   "方程式の解"
-  ],
-  "provenance": {
-   "created": "2026-10-30"
-  },
-  "quality": {
-   "status": "published",
-   "checks": {
-    "dual": false,
-    "sympy": true,
-    "human": false
-   },
-   "verified": false
-  }
- },
- {
-  "id": "III-LIM-192",
-  "schema": "lemma.problem/1",
-  "kind": "written",
-  "field": "III-15",
-  "level": 1,
-  "minutes": 12,
-  "theme": "無限級数／関数を項とする無限等比級数",
-  "unit": "無限級数",
-  "topic": "関数を項とする無限等比級数",
-  "statement": {
-   "tex": "無限級数 $x+x(1-x)+x(1-x)^2+\\cdots+x(1-x)^{n-1}+\\cdots$ について．\\begin{enumerate}\n  \\item この無限級数が収束するような実数 $x$ の値の範囲を求めよ．\n  \\item $x\\neq0$ で (1) の範囲にあるとき，和を求めよ．\n\\end{enumerate}"
-  },
-  "answer": {
-   "tex": "(1) $0\\leqq x<2$　(2) $1$"
-  },
-  "solutions": [
-   {
-    "id": "main",
-    "kind": "main",
-    "tex": "(1) 初項 $x$，公比 $1-x$ の無限等比級数．\n初項 $x=0$ のときは，すべての項が $0$ で和 $0$ に収束する．\n$x\\neq0$ のときは $|1-x|<1$，すなわち $0<x<2$ のとき収束する．よって $\\boldsymbol{0\\leqq x<2}$．\n(2) 和は $\\dfrac{x}{1-(1-x)}=\\boldsymbol{1}$．（$x=0$ のときの和 $0$ とは異なる．）"
-   }
-  ],
-  "idea": {
-   "tex": "無限等比級数の収束条件は「初項 $=0$ または $|$公比$|<1$」．初項が $0$ になる場合を落とさない．"
-  },
-  "grading": {
-   "format": "lemma-input/1",
-   "spec": "(1) 0<=x<2\n(2) 1"
-  },
-  "methods": [],
-  "tags": [
-   "無限等比級数",
-   "収束条件"
-  ],
-  "provenance": {
-   "created": "2026-10-30"
-  },
-  "quality": {
-   "status": "published",
-   "checks": {
-    "dual": false,
-    "sympy": true,
-    "human": false
-   },
-   "verified": false
-  }
- },
- {
-  "id": "III-LIM-193",
-  "schema": "lemma.problem/1",
-  "kind": "written",
-  "field": "III-15",
-  "level": 1,
-  "minutes": 12,
-  "theme": "関数／逆関数のグラフとの共有点",
-  "unit": "関数",
-  "topic": "逆関数のグラフとの共有点",
-  "statement": {
-   "tex": "関数 $f(x)=x^2-2x+2\\ (x\\geqq1)$ について．\\begin{enumerate}\n  \\item 逆関数 $f^{-1}(x)$ を求めよ．\n  \\item $y=f(x)$ のグラフと $y=f^{-1}(x)$ のグラフの共有点の座標をすべて求めよ．\n\\end{enumerate}"
-  },
-  "answer": {
-   "tex": "(1) $f^{-1}(x)=1+\\sqrt{x-1}\\ (x\\geqq1)$　(2) $(1,\\ 1),\\ (2,\\ 2)$"
-  },
-  "solutions": [
-   {
-    "id": "main",
-    "kind": "main",
-    "tex": "(1) $y=(x-1)^2+1$（$x\\geqq1$）の値域は $y\\geqq1$．$x-1\\geqq0$ より $x-1=\\sqrt{y-1}$，$x=1+\\sqrt{y-1}$．\n$x,\\ y$ を入れかえて $\\boldsymbol{f^{-1}(x)=1+\\sqrt{x-1}}$（定義域 $x\\geqq1$）．\n(2) $f(x)$ は $x\\geqq1$ で増加関数である．増加関数では，$y=f(x)$ と $y=f^{-1}(x)$ の共有点は直線 $y=x$ 上にある．\n（$f(a)=b,\\ f(b)=a$ で $a<b$ とすると $b=f(a)<f(b)=a$ となり矛盾するため．）\n$x^2-2x+2=x$ より $x^2-3x+2=0$，$x=1,\\ 2$（ともに $x\\geqq1$）．よって $\\boldsymbol{(1,\\ 1),\\ (2,\\ 2)}$．"
-   }
-  ],
-  "idea": {
-   "tex": "$y=f(x)$ と $y=f^{-1}(x)$ のグラフは直線 $y=x$ に関して対称．増加関数なら共有点は $y=x$ との交点に限られる．"
-  },
-  "grading": {
-   "format": "lemma-input/1",
-   "spec": "(1) $f^{-1}(x)$：1+sqrt(x-1)\n(2) {(1, 1), (2, 2)}"
-  },
-  "methods": [],
-  "tags": [
-   "逆関数",
-   "グラフの対称性",
-   "共有点"
-  ],
-  "provenance": {
-   "created": "2026-10-30"
-  },
-  "quality": {
-   "status": "published",
-   "checks": {
-    "dual": false,
-    "sympy": true,
-    "human": false
-   },
-   "verified": false
-  }
- },
- {
-  "id": "III-LIM-194",
-  "schema": "lemma.problem/1",
-  "kind": "written",
-  "field": "III-15",
-  "level": 1,
-  "minutes": 12,
-  "theme": "関数／分数関数のグラフと不等式",
-  "unit": "関数",
-  "topic": "分数関数のグラフと不等式",
-  "statement": {
-   "tex": "不等式 $\\dfrac{2x+1}{x-1}\\geqq x+1$ を解け．"
-  },
-  "answer": {
-   "tex": "$x\\leqq1-\\sqrt3,\\ 1<x\\leqq1+\\sqrt3$"
-  },
-  "solutions": [
-   {
-    "id": "main",
-    "kind": "main",
-    "tex": "$y=\\dfrac{2x+1}{x-1}=\\dfrac{3}{x-1}+2$ のグラフ（漸近線 $x=1,\\ y=2$）と直線 $y=x+1$ の上下関係を調べる．\n交点：$\\dfrac{2x+1}{x-1}=x+1$ より $2x+1=x^2-1$，$x^2-2x-2=0$，$x=1\\pm\\sqrt3$．\nグラフより，分数関数のグラフが直線の上側（または交点）にあるのは $x\\leqq1-\\sqrt3$ と $1<x\\leqq1+\\sqrt3$．\n（別解：移項して $\\dfrac{x^2-2x-2}{x-1}\\leqq0$，両辺に $(x-1)^2>0$ を掛けて $(x-1)(x^2-2x-2)\\leqq0$，$x\\neq1$ と同じ．）\nよって $\\boldsymbol{x\\leqq1-\\sqrt3,\\ 1<x\\leqq1+\\sqrt3}$．"
-   }
-  ],
-  "idea": {
-   "tex": "分母を払うときは符号に注意．グラフの上下関係で見るか，$(x-1)^2$ を掛けて符号の変化を調べる．"
-  },
-  "grading": {
-   "format": "lemma-input/1",
-   "spec": "x<=1-sqrt(3) または 1<x<=1+sqrt(3)"
-  },
-  "methods": [],
-  "tags": [
-   "分数関数",
-   "分数不等式",
-   "グラフ"
-  ],
-  "provenance": {
-   "created": "2026-10-30"
-  },
-  "quality": {
-   "status": "published",
-   "checks": {
-    "dual": false,
-    "sympy": true,
-    "human": false
-   },
-   "verified": false
-  }
- },
- {
   "id": "III-LIM-195",
   "schema": "lemma.problem/1",
   "kind": "written",
@@ -10486,6 +9033,444 @@
   }
  },
  {
+  "id": "III-LIM-271",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "III-15",
+  "level": 4,
+  "minutes": 35,
+  "theme": "相加平均と相乗平均をくり返す数列の差の桁数",
+  "topic": "相加平均と相乗平均をくり返す数列の差の桁数",
+  "statement": {
+   "tex": "数列 $\\{a_n\\}$，$\\{b_n\\}$ を\n\\[\na_1=2,\\quad b_1=1,\\qquad a_{n+1}=\\frac{a_n+b_n}{2},\\quad b_{n+1}=\\sqrt{a_nb_n}\\qquad(n=1,2,3,\\ldots)\n\\]\nで定め，$d_n=a_n-b_n$ とおく．\n\\begin{enumerate}\n  \\item すべての正の整数 $n$ に対して $1\\leqq b_n<b_{n+1}<a_{n+1}<a_n\\leqq2$ が成り立つことを示せ．\n  \\item すべての正の整数 $n$ に対して $\\dfrac{d_n^{\\,2}}{16}<d_{n+1}<\\dfrac{d_n^{\\,2}}{8}$ が成り立つことを示せ．\n  \\item $d_n<10^{-100}$ となる最小の正の整数 $n$ を求めよ．ただし $0.301<\\log_{10}2<0.302$ を用いてよい．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 証明　(2) 証明　(3) $n=8$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) 「$1\\leqq b_n<a_n\\leqq2$」$\\cdots$(＊) を仮定して，$b_n<b_{n+1}<a_{n+1}<a_n$ と，$n+1$ に対する(＊)を導く．$n=1$ のとき $b_1=1<2=a_1$ で(＊)は成り立つ．\n\n(＊)のもとで $a_n,b_n>0$ であり，\n\\[\na_{n+1}-b_{n+1}=\\frac{a_n-2\\sqrt{a_nb_n}+b_n}{2}=\\frac{(\\sqrt{a_n}-\\sqrt{b_n})^2}{2}>0\n\\]\n（$a_n\\neq b_n$ より $\\sqrt{a_n}\\neq\\sqrt{b_n}$）．また $b_n<a_n$ から\n\\[\na_{n+1}=\\frac{a_n+b_n}2<\\frac{a_n+a_n}2=a_n,\\qquad b_{n+1}=\\sqrt{a_nb_n}>\\sqrt{b_n\\cdot b_n}=b_n .\n\\]\nよって $b_n<b_{n+1}<a_{n+1}<a_n$ であり，$1\\leqq b_n<b_{n+1}$，$a_{n+1}<a_n\\leqq2$ から $n+1$ に対しても(＊)が成り立つ．数学的帰納法により，すべての $n$ で $1\\leqq b_n<b_{n+1}<a_{n+1}<a_n\\leqq2$ が成り立つ．\\hfill$\\square$\n\n(2) (1)の計算と $a_n-b_n=(\\sqrt{a_n}+\\sqrt{b_n})(\\sqrt{a_n}-\\sqrt{b_n})$ より\n\\[\nd_{n+1}=\\frac{(\\sqrt{a_n}-\\sqrt{b_n})^2}{2}=\\frac{d_n^{\\,2}}{2(\\sqrt{a_n}+\\sqrt{b_n})^2}.\n\\]\n$0<b_n<a_n$ より $\\sqrt{b_n}<\\sqrt{a_n}$ なので $2\\sqrt{b_n}<\\sqrt{a_n}+\\sqrt{b_n}<2\\sqrt{a_n}$，各辺正だから2乗して\n\\[\n4b_n<(\\sqrt{a_n}+\\sqrt{b_n})^2<4a_n .\n\\]\n(1)より $b_n\\geqq1$，$a_n\\leqq2$ なので $4\\leqq4b_n$，$4a_n\\leqq8$．よって $4<(\\sqrt{a_n}+\\sqrt{b_n})^2<8$ であり，$d_n^{\\,2}>0$ とあわせて\n\\[\n\\frac{d_n^{\\,2}}{16}<d_{n+1}<\\frac{d_n^{\\,2}}{8}.\n\\]\n\\hfill$\\square$\n\n(3) \\textbf{上からの評価．} $e_n=\\dfrac{d_n}8$ とおくと，(2)より $e_{n+1}<\\dfrac{d_n^{\\,2}}{64}=e_n^{\\,2}$．\n「$0<e_n\\leqq\\left(\\dfrac18\\right)^{2^{n-1}}$」を帰納法で示す．$n=1$ では $e_1=\\dfrac18$ で等号．$n$ で成り立てば，$e_{n+1}>0$ かつ $e_{n+1}<e_n^{\\,2}\\leqq\\left(\\dfrac18\\right)^{2^{n}}$．よって\n\\[\nd_n\\leqq8\\cdot8^{-2^{n-1}}=8^{\\,1-2^{n-1}}=2^{\\,3-3\\cdot2^{n-1}}.\n\\]\n\n\\textbf{下からの評価．} $f_n=\\dfrac{d_n}{16}$ とおくと，(2)より $f_{n+1}>\\dfrac{d_n^{\\,2}}{256}=f_n^{\\,2}$．\n「$f_n\\geqq\\left(\\dfrac1{16}\\right)^{2^{n-1}}$」を帰納法で示す．$n=1$ では $f_1=\\dfrac1{16}$ で等号．$n$ で成り立てば，両辺正なので2乗して $f_{n+1}>f_n^{\\,2}\\geqq\\left(\\dfrac1{16}\\right)^{2^{n}}$．よって\n\\[\nd_n\\geqq16^{\\,1-2^{n-1}}=2^{\\,4-4\\cdot2^{n-1}}.\n\\]\n\n\\textbf{単調性．} $d_1=1$ であり，$0<d_n\\leqq1$ ならば(2)より $0<d_{n+1}<\\dfrac{d_n^{\\,2}}8\\leqq\\dfrac{d_n}8<d_n\\leqq1$．帰納法により $0<d_n\\leqq1$ がすべての $n$ で成り立ち，同時に $d_{n+1}<d_n$，すなわち $\\{d_n\\}$ は減少する．\n\n\\textbf{$n=8$ と $n=7$．} 上からの評価で $n=8$ とすると $d_8\\leqq2^{3-384}=2^{-381}$ であり，\n\\[\n\\log_{10}2^{-381}=-381\\log_{10}2<-381\\times0.301=-114.681<-100\n\\]\nだから $d_8<10^{-100}$．下からの評価で $n=7$ とすると $d_7\\geqq2^{4-256}=2^{-252}$ であり，\n\\[\n\\log_{10}2^{-252}=-252\\log_{10}2>-252\\times0.302=-76.104>-100\n\\]\nだから $d_7>10^{-100}$．\n\n$\\{d_n\\}$ は減少するので，$n\\leqq7$ では $d_n\\geqq d_7>10^{-100}$，$n\\geqq8$ では $d_n\\leqq d_8<10^{-100}$．したがって求める最小の $n$ は\n\\[\n\\boldsymbol{n=8}.\n\\]"
+   }
+  ],
+  "idea": {
+   "tex": "差 $d_n=a_n-b_n$ は $d_{n+1}=\\dfrac{(\\sqrt{a_n}-\\sqrt{b_n})^2}{2}=\\dfrac{d_n^{\\,2}}{2(\\sqrt{a_n}+\\sqrt{b_n})^2}$ と「前の差の2乗」で書ける．$(\\sqrt{a_n}+\\sqrt{b_n})^2$ を $4b_n$ と $4a_n$ ではさむと $\\dfrac{d_n^{\\,2}}{16}<d_{n+1}<\\dfrac{d_n^{\\,2}}8$ となり，$\\dfrac{d_n}{8}$，$\\dfrac{d_n}{16}$ を考えると指数 $2^{n-1}$ の両側評価が得られる．上下の評価がともに使えるので，差が初めて指定の大きさを下回る番号が確定する．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) 証明\n(2) 証明\n(3) $n$：8"
+  },
+  "methods": [],
+  "tags": [
+   "数列の極限",
+   "相加相乗平均",
+   "2乗で減る誤差",
+   "両側評価",
+   "常用対数"
+  ],
+  "provenance": {
+   "created": "2026-11-19"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "III-LIM-272",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "III-15",
+  "level": 4,
+  "minutes": 30,
+  "theme": "井戸の深さの2つの近似とその誤差",
+  "topic": "井戸の深さの2つの近似とその誤差",
+  "statement": {
+   "tex": "井戸の口から小石を静かに落としたところ，小石が水面に達した音が $t$ 秒後に聞こえた．重力加速度を $g$，音の速さを $c$（$g,c$ は正の定数），井戸の口から水面までの距離を $d$ とし，小石は $\\frac12g\\tau^2$ の距離を時間 $\\tau$ で落ち，音は一定の速さ $c$ で伝わるものとする．\n\\begin{enumerate}\n  \\item $d$ を $g,c,t$ で表せ．\n  \\item $d_1=\\dfrac12gt^2$，$d_2=\\dfrac12gt^2\\left(1-\\dfrac{gt}c\\right)$ とおく．すべての $t>0$ に対して $d_2<d<d_1$ が成り立つことを示せ．\n  \\item 極限 $\\displaystyle\\lim_{t\\to+0}\\frac{d-d_2}{t^4}$ を $g,c$ で表せ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $d=\\dfrac{c^2}{g}\\left(1+\\dfrac{gt}{c}-\\sqrt{1+\\dfrac{2gt}{c}}\\right)$　(2) 証明　(3) $\\dfrac{5g^3}{8c^2}$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "小石が水面に達するまでの時間を $t_1$ とすると $d=\\frac12gt_1^2$ より $t_1=\\sqrt{\\frac{2d}g}$，音が上がってくる時間は $\\frac dc$．よって $t=\\sqrt{\\frac{2d}g}+\\frac dc$．右辺は $d>0$ について増加し，$d\\to+0$ で $0$，$d\\to\\infty$ で限りなく大きくなる連続関数なので，各 $t>0$ に対し $d$ はただ1つ定まる．\n\\[\nw=\\frac{\\sqrt{2gd}}c\\ (>0),\\qquad \\tau=\\frac{gt}c\\ (>0)\n\\]\nとおくと，$\\frac gc\\sqrt{\\frac{2d}g}=w$，$\\frac gc\\cdot\\frac dc=\\frac{gd}{c^2}=\\frac{w^2}2$ だから\n\\[\n\\tau=w+\\frac{w^2}2,\\qquad d=\\frac{c^2}{2g}w^2 .\n\\]\n\n(1) $(w+1)^2=1+2\\tau$，$w>0$ より $w=\\sqrt{1+2\\tau}-1$．よって\n\\[\nd=\\frac{c^2}{2g}\\bigl(\\sqrt{1+2\\tau}-1\\bigr)^2=\\frac{c^2}g\\bigl(1+\\tau-\\sqrt{1+2\\tau}\\bigr)=\\boldsymbol{\\frac{c^2}{g}\\left(1+\\frac{gt}{c}-\\sqrt{1+\\frac{2gt}{c}}\\right)}.\n\\]\n\n(2) $t=\\frac{c\\tau}g$ より $d_1=\\frac{c^2}{2g}\\tau^2$，$d_2=\\frac{c^2}{2g}\\tau^2(1-\\tau)$．\n$\\tau=w+\\frac{w^2}2>w>0$ なので $d_1-d=\\frac{c^2}{2g}(\\tau^2-w^2)>0$．\n次に $\\tau^2=w^2+w^3+\\frac{w^4}4$，$\\tau^3=w^3+\\frac32w^4+\\frac34w^5+\\frac18w^6$ より\n\\[\nw^2-\\tau^2(1-\\tau)=w^2-\\tau^2+\\tau^3=\\frac54w^4+\\frac34w^5+\\frac18w^6=\\frac{w^4(w^2+6w+10)}8>0 .\n\\]\nよって $d-d_2=\\dfrac{c^2}{2g}\\cdot\\dfrac{w^4(w^2+6w+10)}8>0$．以上で $d_2<d<d_1$．\\hfill$\\square$\n\n(3) $t^4=\\frac{c^4}{g^4}\\tau^4=\\frac{c^4}{g^4}w^4\\left(1+\\frac w2\\right)^4$ だから\n\\[\n\\frac{d-d_2}{t^4}=\\frac{c^2}{16g}w^4(w^2+6w+10)\\cdot\\frac{g^4}{c^4w^4(1+\\frac w2)^4}=\\frac{g^3}{16c^2}\\cdot\\frac{w^2+6w+10}{(1+\\frac w2)^4}.\n\\]\n$t\\to+0$ のとき $\\tau\\to0$ で $w=\\sqrt{1+2\\tau}-1\\to0$ だから，極限は $\\dfrac{g^3}{16c^2}\\cdot10=\\boldsymbol{\\dfrac{5g^3}{8c^2}}$．\n\\hfill$\\square$"
+   }
+  ],
+  "idea": {
+   "tex": "落下時間と音の伝わる時間の和 $t=\\sqrt{\\frac{2d}g}+\\frac dc$ は $\\sqrt d$ の2次式．$w=\\frac{\\sqrt{2gd}}c$，$\\tau=\\frac{gt}c$ と無次元化すると $\\tau=w+\\frac{w^2}2$ となり，近似式との差が $w$ の整式で書けて符号も極限も一目でわかる．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) $d$：(c^2/g)(1+gt/c-sqrt(1+2gt/c))\n(2) 証明\n(3) 5g^3/(8c^2)"
+  },
+  "methods": [],
+  "tags": [
+   "無理式",
+   "有理化",
+   "大小比較",
+   "関数の極限",
+   "無次元化"
+  ],
+  "provenance": {
+   "created": "2026-11-19"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "III-LIM-273",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "III-15",
+  "level": 3,
+  "minutes": 25,
+  "theme": "台形の中に次々つくる調和平均の線分",
+  "topic": "台形の中に次々つくる調和平均の線分",
+  "statement": {
+   "tex": "AD$\\parallel$BC，AD$=a$，BC$=b$（$a\\neq b$）の台形 ABCD がある．P$_0=$B，Q$_0=$C とし，$n=0,1,2,\\cdots$ に対して次のように P$_{n+1}$，Q$_{n+1}$ を定める：台形 AP$_n$Q$_n$D の2本の対角線の交点を通り AD に平行な直線が，辺 AB，CD と交わる点をそれぞれ P$_{n+1}$，Q$_{n+1}$ とする．$x_n=\\mathrm P_n\\mathrm Q_n$ とおく．\n\\begin{enumerate}\n  \\item $x_n$ を $a,b,n$ で表せ．\n  \\item $\\displaystyle\\lim_{n\\to\\infty}2^n(x_n-a)$ を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $x_n=\\dfrac{2^nab}{2^nb+a-b}$　(2) $\\dfrac{a(b-a)}b$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "\\textbf{補題．} AD$\\parallel$XY，AD$=p$，XY$=q$ の台形 AXYD（X は A の側，Y は D の側）の対角線 AY，DX の交点 O を通り AD に平行な直線が辺 AX，DY と交わる点を U，V とすると，UV$=\\dfrac{2pq}{p+q}$．\n\n（証明）AD$\\parallel$XY より $\\triangle\\mathrm{OAD}\\sim\\triangle\\mathrm{OYX}$（相似比 $p:q$）で，AO$:$OY$=$DO$:$OX$=p:q$．$\\triangle$AXY で UO$\\parallel$XY だから UO$=$XY$\\cdot\\dfrac{\\mathrm{AO}}{\\mathrm{AY}}=\\dfrac{pq}{p+q}$．同様に $\\triangle$DYX で OV$=\\dfrac{pq}{p+q}$．よって UV$=\\dfrac{2pq}{p+q}$．\\hfill$\\square$\n\n(1) P$_n$ が辺 AB 上（A と異なる点），Q$_n$ が辺 CD 上にあって P$_n$Q$_n\\parallel$AD，$x_n\\neq a$ ならば，台形 AP$_n$Q$_n$D に補題を使って P$_{n+1}$ は線分 AP$_n$（$\\subset$ 辺 AB）上，Q$_{n+1}$ は線分 DQ$_n$ 上にあり\n\\[\nx_{n+1}=\\frac{2ax_n}{a+x_n},\\qquad\\text{すなわち}\\qquad \\frac1{x_{n+1}}-\\frac1a=\\frac12\\Bigl(\\frac1{x_n}-\\frac1a\\Bigr).\n\\]\n$n=0$ では $x_0=b\\neq a$．帰納的に $\\dfrac1{x_n}-\\dfrac1a=\\dfrac1{2^n}\\Bigl(\\dfrac1b-\\dfrac1a\\Bigr)\\neq0$ となるので，各段階で $x_n\\neq a$（P$_n\\neq$A）が保たれ，作図は続けられる．よって\n\\[\n\\frac1{x_n}=\\frac1a+\\frac{a-b}{2^nab}=\\frac{2^nb+a-b}{2^nab},\\qquad x_n=\\boldsymbol{\\frac{2^nab}{2^nb+a-b}}\n\\]\n（分母 $2^nb+a-b=(2^n-1)b+a>0$）．\n\n(2)\n\\[\n2^n(x_n-a)=2^n\\cdot\\frac{2^nab-a(2^nb+a-b)}{2^nb+a-b}=\\frac{2^na(b-a)}{2^nb+a-b}=\\frac{a(b-a)}{b+\\frac{a-b}{2^n}}\\ \\longrightarrow\\ \\boldsymbol{\\frac{a(b-a)}b}\\quad(n\\to\\infty).\n\\]\n\\hfill$\\square$"
+   }
+  ],
+  "idea": {
+   "tex": "台形の対角線の交点を通り底辺に平行な線分の長さは，2つの底辺の調和平均 $\\frac{2pq}{p+q}$．逆数をとると $\\frac1{x_{n+1}}-\\frac1a=\\frac12\\bigl(\\frac1{x_n}-\\frac1a\\bigr)$ で，$\\frac1{x_n}-\\frac1a$ が等比数列になる．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) $x_n$：2^nab/(2^nb+a-b)\n(2) a(b-a)/b"
+  },
+  "methods": [],
+  "tags": [
+   "台形",
+   "相似",
+   "調和平均",
+   "漸化式",
+   "極限"
+  ],
+  "provenance": {
+   "created": "2026-11-19"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "III-LIM-274",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "III-15",
+  "level": 4,
+  "minutes": 35,
+  "theme": "正弦の反復が0に近づく速さ",
+  "topic": "正弦の反復が0に近づく速さ",
+  "statement": {
+   "tex": "$a_1=1$，$a_{n+1}=\\sin a_n\\ (n=1,2,3,\\cdots)$ で数列 $\\{a_n\\}$ を定める．\n\\begin{enumerate}\n  \\item $x\\geqq0$ のとき，$x-\\dfrac{x^3}6\\leqq\\sin x\\leqq x-\\dfrac{x^3}6+\\dfrac{x^5}{120}$ を示せ．\n  \\item すべての $n$ について $0<a_{n+1}<a_n\\leqq1$ を示せ．\n  \\item $0<\\varepsilon<1$ とする．$a_n<\\varepsilon$ となる正の整数 $n$ が存在することを示し，そのような $n$ のうち最小のものを $N$ とするとき，$N<1+\\dfrac{120}{19\\varepsilon^3}$ を示せ．\n  \\item すべての $n$ について $a_n\\geqq\\dfrac1{\\sqrt n}$ を示せ．また，(3) の $N$ について $N>\\dfrac1{\\varepsilon^2}$ を示せ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 証明　(2) 証明　(3) 証明　(4) 証明"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) $x\\geqq0$ で順に次の関数を考える．\n\\begin{itemize}\n  \\item $p(x)=x-\\sin x$：$p'(x)=1-\\cos x\\geqq0$，$p(0)=0$ より $p(x)\\geqq0$．\n  \\item $q(x)=\\cos x-1+\\frac{x^2}2$：$q'(x)=x-\\sin x=p(x)\\geqq0$，$q(0)=0$ より $q(x)\\geqq0$．\n  \\item $r(x)=\\sin x-x+\\frac{x^3}6$：$r'(x)=q(x)\\geqq0$，$r(0)=0$ より $r(x)\\geqq0$．\n  \\item $s(x)=1-\\frac{x^2}2+\\frac{x^4}{24}-\\cos x$：$s'(x)=r(x)\\geqq0$，$s(0)=0$ より $s(x)\\geqq0$．\n  \\item $w(x)=x-\\frac{x^3}6+\\frac{x^5}{120}-\\sin x$：$w'(x)=s(x)\\geqq0$，$w(0)=0$ より $w(x)\\geqq0$．\n\\end{itemize}\n$r\\geqq0$，$w\\geqq0$ が示すべき2つの不等式である．\\hfill$\\square$\n\n(2) $0<x\\leqq1$ のとき，$p'(x)=1-\\cos x>0$（$0<x<2\\pi$）より $p$ は $0\\leqq x\\leqq1$ で狭義に増加し $p(x)>0$，すなわち $\\sin x<x$．また $0<x\\leqq1<\\pi$ より $\\sin x>0$．$a_1=1$ から帰納的に $0<a_n\\leqq1$ が成り立ち，$0<a_{n+1}=\\sin a_n<a_n$．\\hfill$\\square$\n\n(3) $g(x)=\\dfrac{x^3}6-\\dfrac{x^5}{120}$ とおく．$g'(x)=\\dfrac{x^2(12-x^2)}{24}>0\\ (0<x\\leqq1)$ で $g$ は増加する．(1) より $a_k-a_{k+1}=a_k-\\sin a_k\\geqq g(a_k)$．\n\n自然数 $m\\geqq2$ について $a_1,\\cdots,a_{m-1}$ がすべて $\\varepsilon$ 以上ならば，$k=1,\\cdots,m-1$ で $a_k-a_{k+1}\\geqq g(a_k)\\geqq g(\\varepsilon)$ で，\n\\[g(\\varepsilon)=\\frac{\\varepsilon^3(20-\\varepsilon^2)}{120}>\\frac{19\\varepsilon^3}{120}.\\]\nこれらを足すと $a_1-a_m>(m-1)\\dfrac{19\\varepsilon^3}{120}$．$a_1-a_m<1$ より\n\\[m<1+\\frac{120}{19\\varepsilon^3}.\\tag{$*$}\\]\nもし $a_n<\\varepsilon$ となる $n$ がなければ，$1+\\frac{120}{19\\varepsilon^3}$ 以上の整数 $m$ に対して $(*)$ が成り立つことになり矛盾．よってそのような $n$ が存在し，最小の $N$ をとれる．$a_1=1>\\varepsilon$ より $N\\geqq2$ で，$a_1,\\cdots,a_{N-1}\\geqq\\varepsilon$ だから $m=N$ として $(*)$ より $N<1+\\dfrac{120}{19\\varepsilon^3}$．\\hfill$\\square$\n\n(4) 帰納法．$a_1=1$ で成り立つ．$a_n\\geqq\\frac1{\\sqrt n}$ とする．$k(x)=x-\\frac{x^3}6$ は $k'(x)=1-\\frac{x^2}2>0\\ (0\\leqq x\\leqq1)$ で増加し，$\\frac1{\\sqrt n}\\leqq a_n\\leqq1$ だから，(1) より\n\\[a_{n+1}=\\sin a_n\\geqq k(a_n)\\geqq k\\!\\left(\\frac1{\\sqrt n}\\right)=\\frac1{\\sqrt n}\\left(1-\\frac1{6n}\\right)>0.\\]\nここで\n\\[\\left(1-\\frac1{6n}\\right)^2=1-\\frac1{3n}+\\frac1{36n^2}>1-\\frac1{3n}\\geqq1-\\frac1{n+1}=\\frac n{n+1}\\]\n（$3n\\geqq n+1$ による）だから，$\\frac1{\\sqrt n}\\left(1-\\frac1{6n}\\right)>\\frac1{\\sqrt n}\\cdot\\sqrt{\\frac n{n+1}}=\\frac1{\\sqrt{n+1}}$．よって $a_{n+1}\\geqq\\frac1{\\sqrt{n+1}}$．\n\n$N$ について $\\varepsilon>a_N\\geqq\\frac1{\\sqrt N}$ だから $\\sqrt N>\\frac1\\varepsilon$，すなわち $\\boldsymbol{N>\\dfrac1{\\varepsilon^2}}$．\\hfill$\\square$"
+   }
+  ],
+  "idea": {
+   "tex": "不動点で傾きがちょうど1になる反復は，1回の変化量が「不動点からの距離」のべきで下から押さえられ，その距離が $\\varepsilon$ 以上である間は1回ごとに一定量以上動く．変化量を足し合わせると，$\\varepsilon$ まで近づくのに必要な回数の上からの評価が得られる．逆向きの評価は，下からの不等式を1回ずつ帰納法でつなぐ．"
+  },
+  "methods": [],
+  "tags": [
+   "漸化式",
+   "不等式の証明",
+   "微分による評価",
+   "望遠鏡和"
+  ],
+  "provenance": {
+   "created": "2026-11-19"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "III-LIM-275",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "III-15",
+  "level": 4,
+  "minutes": 35,
+  "theme": "2人のサイコロの目を並べた小数の和",
+  "topic": "2人のサイコロの目を並べた小数の和",
+  "statement": {
+   "tex": "2人がそれぞれ1つのサイコロを $n$ 回投げ，最初の人が出した目を順に小数点以下に並べてできる実数を $a_n$，2人目が出した目を同様に並べてできる実数を $b_n$ とする．たとえば最初の人の目が $5,2,6$ ならば $a_3=0.526$ である．\n\\begin{enumerate}\n  \\item $a_n+b_n\\leqq1$ となる確率 $q_n$ を $n$ で表し，$\\displaystyle\\lim_{n\\to\\infty}q_n$ を求めよ．\n  \\item $a_n+b_n\\leqq\\dfrac9{10}$ となる確率を $r_n$ とするとき，$\\displaystyle\\lim_{n\\to\\infty}r_n$ を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $q_n=\\dfrac{13}{16}+\\dfrac5{48}\\left(\\dfrac19\\right)^{n-1}$，極限 $\\dfrac{13}{16}$　(2) $\\dfrac{401}{576}$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "2人の第 $k$ 回の目を $d_k,e_k$，$s_k=d_k+e_k$（$2\\leqq s_k\\leqq12$）とすると $a_n+b_n=\\sum_{k=1}^n\\dfrac{s_k}{10^k}$．$s_1$ の分布は $P(s_1=j)=\\dfrac{6-|j-7|}{36}$ で\n\\[P(s_1\\leqq7)=\\frac{21}{36},\\quad P(s_1=8)=\\frac5{36},\\quad P(s_1\\leqq8)=\\frac{26}{36},\\quad P(s_1=9)=\\frac4{36}=\\frac19 .\\]\n$n\\geqq2$ のとき，第2回以降の目からつくった小数を $a',b'$（それぞれ $n-1$ 回分）とすると $a_n+b_n=\\dfrac{s_1}{10}+\\dfrac{a'+b'}{10}$ で，$a'+b'$ は $s_1$ と独立に $a_{n-1}+b_{n-1}$ と同じ分布をもつ．また\n\\[0<\\frac{a'+b'}{10}\\leqq12\\left(\\frac1{10^2}+\\cdots+\\frac1{10^n}\\right)<\\frac{12}{90}=\\frac2{15}.\\]\n\n(1) $n\\geqq2$ とする．$s_1\\leqq8$ なら $a_n+b_n<0.8+\\frac2{15}<1$．$s_1\\geqq10$ なら $a_n+b_n>1$．$s_1=9$ なら $a_n+b_n\\leqq1\\iff a'+b'\\leqq1$．よって\n\\[q_n=\\frac{13}{18}+\\frac19q_{n-1}\\quad(n\\geqq2),\\qquad q_1=P(s_1\\leqq10)=\\frac{33}{36}=\\frac{11}{12}.\\]\n$q_n-\\frac{13}{16}=\\frac19\\left(q_{n-1}-\\frac{13}{16}\\right)$，$q_1-\\frac{13}{16}=\\frac5{48}$ より\n\\[\\boldsymbol{q_n=\\frac{13}{16}+\\frac5{48}\\left(\\frac19\\right)^{n-1}},\\qquad \\lim_{n\\to\\infty}q_n=\\boldsymbol{\\frac{13}{16}}.\\]\n(2) $n\\geqq2$ とする．$s_1\\leqq7$ なら $a_n+b_n<0.7+\\frac2{15}<0.9$．$s_1\\geqq9$ なら $a_n+b_n>0.9$．$s_1=8$ なら $a_n+b_n\\leqq0.9\\iff a'+b'\\leqq1$．よって\n\\[r_n=\\frac{21}{36}+\\frac5{36}q_{n-1}\\ \\longrightarrow\\ \\frac7{12}+\\frac5{36}\\cdot\\frac{13}{16}=\\frac{336+65}{576}=\\boldsymbol{\\frac{401}{576}}.\\]"
+   }
+  ],
+  "idea": {
+   "tex": "2つの小数の和は各位の目の和 $s_k$（2〜12）を並べたもので，繰り上がりがあるため位ごとには比べられない．第1位の和 $s_1$ で場合を分けると，残りの位の寄与は $\\frac2{15}$ 未満なので $s_1$ がほぼ大小を決め，境目の値のときだけ「残りの位がつくる同じ形の問題」に帰着する．これが漸化式を与える．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) $q_n$：13/16+(5/48)(1/9)^(n-1) ; 極限：13/16\n(2) 401/576"
+  },
+  "methods": [],
+  "tags": [
+   "確率",
+   "漸化式",
+   "数列の極限",
+   "小数",
+   "自己相似"
+  ],
+  "provenance": {
+   "created": "2026-11-19"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "III-LIM-276",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "III-15",
+  "level": 4,
+  "minutes": 40,
+  "theme": "指数関数で巻きつく点が弧に入る時間の割合",
+  "topic": "指数関数で巻きつく点が弧に入る時間の割合",
+  "statement": {
+   "tex": "実数 $x$ に対し，座標平面上の単位円 $C$ 上の点 $P(x)$ を\n\\[\nP(x)=\\bigl(\\cos(2\\pi\\cdot2^x),\\ \\sin(2\\pi\\cdot2^x)\\bigr)\n\\]\nによって定める．$C$ の弧 $I$（端点を含む）で長さが $L$（$0<L<2\\pi$）であるものを固定する．そのとき各正の整数 $k$ に対して区間 $[k,k+1]$ の部分集合\n\\[\n\\{x\\mid k\\leqq x\\leqq k+1,\\ P(x)\\in I\\}\n\\]\nは互いに交わらない有限個の区間の和集合になっているので，それらの区間の長さの総和を $T_k$ で表す．\n\\begin{enumerate}\n  \\item $I$ が $C$ のうち $y\\geqq0$ の部分であるとき，$N=2^k$ として $T_k$ を $N$ を用いた和の形で表せ．\n  \\item 一般の弧 $I$ について，$\\displaystyle\\lim_{k\\to\\infty}T_k=\\frac{L}{2\\pi}$ を証明せよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $T_k=\\displaystyle\\sum_{m=N}^{2N-1}\\log_2\\frac{2m+1}{2m}$　(2) 証明"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "$\\log$ は自然対数とする．区間 $[p,q]$（$0<p<q$）について，$2^x\\in[p,q]$ となる $x$ の範囲は $[\\log_2p,\\log_2q]$ で，その長さは\n\\[\n\\log_2\\frac qp=\\frac1{\\log2}\\int_p^q\\frac{du}u.\n\\]\n$N=2^k$ とおく．$k\\leqq x\\leqq k+1\\iff N\\leqq2^x\\leqq2N$．\n\n(1) $P(x)$ が $y\\geqq0$ の部分にある $\\iff$ $2\\pi\\cdot2^x$ が，$2\\pi$ の整数倍 $2\\pi m$ に対して $2\\pi m\\leqq2\\pi\\cdot2^x\\leqq2\\pi m+\\pi$ $\\iff$ $m\\leqq2^x\\leqq m+\\frac12$（$m$ は整数）．$N\\leqq2^x\\leqq2N$ と合わせると $m=N,N+1,\\dots,2N-1$（と1点 $2^x=2N$）なので\n\\[\nT_k=\\sum_{m=N}^{2N-1}\\log_2\\frac{m+\\frac12}m=\\boldsymbol{\\sum_{m=N}^{2N-1}\\log_2\\frac{2m+1}{2m}}.\n\\]\n\n(2) $I$ を偏角が $2\\pi\\alpha$ から $2\\pi\\alpha+L$ までの弧（$0\\leqq\\alpha<1$）とし，$\\ell=\\frac L{2\\pi}$（$0<\\ell<1$）とおく．$P(x)$ が $I$ 上にあるのは，$2^x$ がある整数 $m$ に対する区間 $m+\\alpha\\leqq t\\leqq m+\\alpha+\\ell$ のいずれかに入るときであり，$\\ell<1$ よりこれらの区間は互いに交わらない．\n\n$k\\geqq1$（$N\\geqq2$）とする．$m=N,N+1,\\dots,2N-2$ では $N\\leqq m+\\alpha$，$m+\\alpha+\\ell<m+2\\leqq2N$ なので区間 $[m+\\alpha,m+\\alpha+\\ell]$ は $[N,2N]$ に含まれ，その寄与は $c_m=\\log_2\\frac{m+\\alpha+\\ell}{m+\\alpha}$．$m\\leqq N-2$ の区間は右端が $N$ より小さく，$m\\geqq2N$ の区間は左端が $2N$ 以上なので（共有点は高々1点で長さに影響しない），残りは $m=N-1$ と $m=2N-1$ の区間と $[N,2N]$ の共通部分だけである．前者は $[N,N+1]$ に，後者は $[2N-1,2N]$ に含まれるので，それぞれの寄与は $\\log_2\\frac{N+1}N\\leqq\\frac1{N\\log2}$，$\\log_2\\frac{2N}{2N-1}\\leqq\\frac1{(2N-1)\\log2}\\leqq\\frac1{N\\log2}$ 以下（$\\log(1+t)\\leqq t$）．よって\n\\[\n\\sum_{m=N}^{2N-2}c_m\\leqq T_k\\leqq\\sum_{m=N}^{2N-2}c_m+\\frac2{N\\log2}.\n\\]\n$c_m=\\frac1{\\log2}\\int_{m+\\alpha}^{m+\\alpha+\\ell}\\frac{du}u$ で，積分区間は $[m,m+2]$ に含まれるので $\\frac{\\ell}{(m+2)\\log2}\\leqq c_m\\leqq\\frac{\\ell}{m\\log2}$．また，$\\frac1j$ は $\\frac1u$ の $[j-1,j]$ での最小値，$[j,j+1]$ での最大値なので\n\\[\n\\sum_{m=N}^{2N-2}\\frac1m\\leqq\\int_{N-1}^{2N-2}\\frac{du}u=\\log2,\\qquad\n\\sum_{m=N}^{2N-2}\\frac1{m+2}=\\sum_{j=N+2}^{2N}\\frac1j\\geqq\\int_{N+2}^{2N+1}\\frac{du}u=\\log\\frac{2N+1}{N+2}.\n\\]\n以上より\n\\[\n\\frac{\\ell}{\\log2}\\log\\frac{2N+1}{N+2}\\leqq T_k\\leqq\\ell+\\frac2{N\\log2}.\n\\]\n$k\\to\\infty$ のとき $N\\to\\infty$，$\\frac{2N+1}{N+2}\\to2$ なので，両辺とも $\\ell$ に収束し，はさみうちにより $\\displaystyle\\lim_{k\\to\\infty}T_k=\\ell=\\frac L{2\\pi}$．\\hfill$\\square$"
+   }
+  ],
+  "idea": {
+   "tex": "$P(x)$ が弧 $I$ に入る条件を $u=f(x)$ の小数部分の条件に直し，$x$ の長さを $u$ の積分 $\\int\\frac{du}{f'(x)}$ として周期ごとに評価する．原題の $f$ は整数係数の2次式で，区間 $[k,k+1]$ 上の $f'$ がほぼ一定であることを使ったが，ここでは $f(x)=2^x$ で区間内の $f'$ が2倍も変わるため，各周期の寄与 $\\frac{\\ell}{u\\log2}$ を足し合わせた和 $\\sum\\frac1m$ と $\\log2$ の比較が必要になる．"
+  },
+  "methods": [],
+  "tags": [
+   "置換",
+   "区分ごとの評価",
+   "和と積分の比較",
+   "はさみうち",
+   "対数"
+  ],
+  "provenance": {
+   "created": "2026-11-19"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "III-LIM-277",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "III-15",
+  "level": 5,
+  "minutes": 40,
+  "theme": "接する2円板の間に入り込めない円板とすき間の面積",
+  "topic": "接する2円板の間に入り込めない円板とすき間の面積",
+  "statement": {
+   "tex": "座標平面上に，点 $\\mathrm A(-1,0)$，$\\mathrm B(1,0)$ をそれぞれ中心とする半径1の円板 $D$，$E$ がある．$r$ を正の数とし，半径 $r$ の円板 $F$ を，$D$ の内部とも $E$ の内部とも共有点をもたないように平面上に置く．$F$ はこの条件をみたす位置ならどこにでも置けるものとし，そのように置いた $F$ のどれかに含まれる点全体を $W$ とする．$D$ にも $E$ にも $W$ にも含まれない点全体の面積を $S(r)$ とする．また，$0<\\alpha<\\dfrac\\pi2$，$\\cos\\alpha=\\dfrac1{1+r}$ をみたす角 $\\alpha$ をとる．\n\\begin{enumerate}\n  \\item $S(r)$ を $r$ と $\\alpha$ で表せ．\n  \\item $S(1)$ を求めよ．\n  \\item 極限 $\\displaystyle\\lim_{r\\to+0}\\frac{S(r)}{r\\sqrt r}$ を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $S(r)=2\\sqrt{r^2+2r}-2\\alpha-(\\pi-2\\alpha)r^2$　(2) $S(1)=2\\sqrt3-\\pi$　(3) $\\dfrac{4\\sqrt2}3$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "$F$ の中心を Q とすると，$F$ が $D$ の内部と共有点をもたない $\\iff\\mathrm{QA}\\geqq1+r$（$E$ も同様）．よって，$\\mathrm{QA}\\geqq1+r$ かつ $\\mathrm{QB}\\geqq1+r$ をみたす点 Q 全体を $K$ として，点 P が $W$ に属する $\\iff$ $\\mathrm{PQ}\\leqq r$ となる $\\mathrm Q\\in K$ がある．$h=\\sqrt{(1+r)^2-1}=\\sqrt{r^2+2r}$，$\\mathrm C(0,h)$ とすると $\\mathrm{CA}=\\mathrm{CB}=1+r$，$\\mathrm C\\in K$ で，$\\angle\\mathrm{CAB}=\\angle\\mathrm{CBA}=\\alpha$（$\\cos\\angle\\mathrm{CAB}=\\frac{1}{1+r}$），$\\angle\\mathrm{ACB}=\\pi-2\\alpha$，$\\tan\\alpha=h$．\n\n図形は $x$ 軸に関して対称なので，$y\\geqq0$ の部分 $H$ で考える．$K$ の点 Q の $y$ 座標が負なら，$x$ 軸に関する対称点 Q$'$ も $K$ に属し，$\\mathrm P\\in H$ に対して $\\mathrm{PQ}'\\leqq\\mathrm{PQ}$ である．よって $\\mathrm P\\in H$ については $K\\cap H$ の点だけ考えればよい．\n\n三角形 ABC（周と内部）を $\\Delta$ とする．$\\Delta$ は $H$ と，直線 AC に関して B 側の閉半平面 $H_1$，直線 BC に関して A 側の閉半平面 $H_2$ の共通部分である．\n\n\\textbf{[1] $K\\cap\\Delta=\\{\\mathrm C\\}$．} O を原点とし，三角形 AOC の点 X を $\\mathrm X=\\lambda\\mathrm A+\\mu\\mathrm O+\\nu\\mathrm C$（$\\lambda,\\mu,\\nu\\geqq0$，$\\lambda+\\mu+\\nu=1$）と表すと\n\\[\n\\mathrm{XA}=\\left|\\mu\\overrightarrow{\\mathrm{AO}}+\\nu\\overrightarrow{\\mathrm{AC}}\\right|\\leqq\\mu+\\nu(1+r)\\leqq1+r\n\\]\nで，等号は $\\mu=0$，$\\nu=1$，すなわち $\\mathrm X=\\mathrm C$ のときに限る．三角形 OBC の点も B について同様．よって $\\Delta$ の点で $K$ に属するのは C だけ．\n\n\\textbf{[2] P $\\in\\Delta$ なら，任意の $\\mathrm Q\\in K\\cap H$ に対し $\\mathrm{PQ}\\geqq\\mathrm{PC}$．} $\\mathrm Q=\\mathrm C$ なら等号が成り立つので，$\\mathrm Q\\neq\\mathrm C$ とすると，[1] より $\\mathrm Q\\notin\\Delta$．線分 PQ 上で P から Q に向かって最後に $\\Delta$ に属する点を X とする（$\\Delta$ は閉じた集合）．X は $\\Delta$ の周上にある．X が辺 AB 上で A，B と異なれば，X の近くの $H$ の点はすべて $\\Delta$ に属し，線分 PQ は $H$ に含まれるので，X より先の点も $\\Delta$ に属して X の取り方に反する．よって X は辺 AC 上または辺 BC 上にある．X が辺 AC 上なら $\\mathrm{XA}+\\mathrm{XC}=1+r$ で，$\\mathrm{QA}\\geqq1+r$ より\n\\[\n\\mathrm{PQ}=\\mathrm{PX}+\\mathrm{XQ}\\geqq\\mathrm{PX}+(\\mathrm{QA}-\\mathrm{XA})\\geqq\\mathrm{PX}+(1+r-\\mathrm{XA})=\\mathrm{PX}+\\mathrm{XC}\\geqq\\mathrm{PC}.\n\\]\n辺 BC 上でも同様．したがって $\\mathrm P\\in\\Delta$ について，$\\mathrm P\\in W\\iff\\mathrm{PC}\\leqq r$．\n\n\\textbf{[3] P $\\in H$，$\\mathrm P\\notin\\Delta$，P が $D,E$ に含まれないなら $\\mathrm P\\in W$．} $\\mathrm{PA}>1$，$\\mathrm{PB}>1$ で，$\\mathrm P\\notin H_1$ または $\\mathrm P\\notin H_2$．$y$ 軸に関する対称性から $\\mathrm P\\notin H_2$ としてよい．このとき P は直線 BC に関して A と反対側にあり，$\\theta=\\angle\\mathrm{ABP}$ は $\\alpha<\\theta\\leqq\\pi$ をみたす．\n\\begin{itemize}\n  \\item $\\mathrm{PA}\\geqq1+r$ かつ $\\mathrm{PB}\\geqq1+r$ なら $\\mathrm P\\in K$ で，P を中心に $F$ を置けばよい．\n  \\item $\\mathrm{PB}<1+r$ のとき，$\\mathrm Q=\\mathrm B+\\dfrac{1+r}{\\mathrm{PB}}\\overrightarrow{\\mathrm{BP}}$ とすると $\\mathrm{QB}=1+r$，$\\mathrm{PQ}=1+r-\\mathrm{PB}<r$，$\\angle\\mathrm{ABQ}=\\theta$ で，余弦定理と $\\cos\\theta<\\cos\\alpha=\\dfrac1{1+r}$ より\n  \\[\n  \\mathrm{QA}^2=(1+r)^2+4-4(1+r)\\cos\\theta>(1+r)^2.\n  \\]\n  よって $\\mathrm Q\\in K$．\n  \\item $\\mathrm{PB}\\geqq1+r>\\mathrm{PA}$ のとき，P は B より A に近いので P$(x,y)$ は $x<0$．P が直線 BC $:\\ x+\\dfrac yh=1$ に関して A と反対側にあることから $y>h(1-x)$．$\\varphi=\\angle\\mathrm{BAP}$ とすると，$x\\leqq-1$ なら $\\varphi\\geqq\\dfrac\\pi2>\\alpha$，$-1<x<0$ なら $\\dfrac y{x+1}>\\dfrac{h(1-x)}{1+x}>h=\\tan\\alpha$ より $\\varphi>\\alpha$．そこで $\\mathrm Q=\\mathrm A+\\dfrac{1+r}{\\mathrm{PA}}\\overrightarrow{\\mathrm{AP}}$ とすると，上と同様に $\\mathrm{QA}=1+r$，$\\mathrm{PQ}<r$，$\\mathrm{QB}^2=(1+r)^2+4-4(1+r)\\cos\\varphi>(1+r)^2$ で $\\mathrm Q\\in K$．\n\\end{itemize}\n\n\\textbf{面積．} [2]，[3] より，$H$ で $D,E,W$ のどれにも含まれない点全体は\n「$\\Delta$ の点 P で $\\mathrm{PA}>1$，$\\mathrm{PB}>1$，$\\mathrm{PC}>r$ をみたすもの」全体 $U$ である．$\\Delta$ の中の $D$ の部分は，A を中心とする半径1，中心角 $\\alpha$ の扇形（辺 AB，AC の間）に一致する．実際，辺 BC 上の点 $\\mathrm Y=(1-\\tau)\\mathrm B+\\tau\\mathrm C\\ (0\\leqq\\tau\\leqq1)$ は $\\mathrm{AY}^2=(2-\\tau)^2+\\tau^2h^2>1$ をみたす（$\\tau<1$ なら $(2-\\tau)^2>1$，$\\tau=1$ なら $1+h^2>1$）ので，この扇形の点 X が直線 BC を越えると線分 AX が辺 BC と交わり，その交点 Y で $\\mathrm{AY}\\leqq\\mathrm{AX}\\leqq1$ となって矛盾する．$E$ も同様で中心角 $\\alpha$．C を中心とする半径 $r$ の円板の $\\Delta$ の中の部分は，C から辺 AB への距離が $h>r$ であることから同様に中心角 $\\pi-2\\alpha$ の扇形である．これら3つの扇形は，$D$ と $E$ が O で接し，$\\mathrm{CA}=\\mathrm{CB}=1+r$ より半径 $r$ の円板が $D$，$E$ と接するので，周上の点以外は重ならない．$\\Delta$ の面積は $\\frac12\\cdot2\\cdot h=h$ なので\n\\[\n(U\\text{ の面積})=h-\\frac\\alpha2-\\frac\\alpha2-\\frac{(\\pi-2\\alpha)r^2}2.\n\\]\n$x$ 軸上の点の面積は0なので，対称性から\n\\[\n\\text{(1)}\\qquad S(r)=\\boldsymbol{2\\sqrt{r^2+2r}-2\\alpha-(\\pi-2\\alpha)r^2}.\n\\]\n\n(2) $r=1$ のとき $\\cos\\alpha=\\frac12$ より $\\alpha=\\frac\\pi3$，$h=\\sqrt3$ で，$S(1)=2\\sqrt3-\\dfrac{2\\pi}3-\\dfrac\\pi3=\\boldsymbol{2\\sqrt3-\\pi}$．\n\n(3) $0<\\tau<\\frac\\pi2$ で $T=\\tan\\tau$ とおくと $\\dfrac{dT}{d\\tau}=1+T^2$．\n\\[\ng(\\tau)=\\tau-T+\\frac{T^3}3,\\qquad k(\\tau)=T-\\frac{T^3}3+\\frac{T^5}5-\\tau\n\\]\nとおくと\n\\[\ng'(\\tau)=1-(1+T^2)+T^2(1+T^2)=T^4\\geqq0,\\qquad k'(\\tau)=(1+T^2)(1-T^2+T^4)-1=T^6\\geqq0,\n\\]\n$g(0)=k(0)=0$ より $g(\\tau)\\geqq0$，$k(\\tau)\\geqq0$．$\\tau=\\alpha$（$T=h$）として\n\\[\n\\frac{h^3}3-\\frac{h^5}5\\leqq h-\\alpha\\leqq\\frac{h^3}3.\n\\]\n$h^2=r(r+2)$ より $\\dfrac{h^3}{r\\sqrt r}=(r+2)^{\\frac32}$，$\\dfrac{h^5}{r\\sqrt r}=r(r+2)^{\\frac52}$．よって\n\\[\n\\frac{2}{3}(r+2)^{\\frac32}-\\frac25r(r+2)^{\\frac52}\\leqq\\frac{2(h-\\alpha)}{r\\sqrt r}\\leqq\\frac23(r+2)^{\\frac32}\n\\]\nで，$r\\to+0$ のとき両端は $\\dfrac23\\cdot2\\sqrt2=\\dfrac{4\\sqrt2}3$ に近づく．また $0<(\\pi-2\\alpha)\\dfrac{r^2}{r\\sqrt r}<\\pi\\sqrt r\\to0$．したがって\n\\[\n\\lim_{r\\to+0}\\frac{S(r)}{r\\sqrt r}=\\lim_{r\\to+0}\\left\\{\\frac{2(h-\\alpha)}{r\\sqrt r}-(\\pi-2\\alpha)\\sqrt r\\right\\}=\\boldsymbol{\\frac{4\\sqrt2}3}.\n\\]"
+   }
+  ],
+  "idea": {
+   "tex": "動く円板 F（半径 $r$）の中心の置ける範囲 $K$ は「$\\mathrm A$，$\\mathrm B$ からの距離がともに $1+r$ 以上」で，点 P が覆われる $\\iff$ P から $K$ の点までの距離が $r$ 以下．原題の「2円に同時に接して入り込む位置」は中心 $\\mathrm C(0,h)$ で，三角形 ABC の中の点からは $K$ への最短距離が PC に等しい（線分 PQ が辺 AC を横切る点で三角不等式）．三角形の外では A か B から放射状に押し出した点が $K$ に入る．すき間は三角形から3つの扇形を除いた形で，$r\\to0$ では $\\tan\\alpha-\\alpha$ を $\\tan$ の多項式ではさむ評価が効く．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) $S(r)$：2sqrt(r^2+2r)-2α-(π-2α)r^2\n(2) $S(1)$：2sqrt(3)-π\n(3) 4sqrt(2)/3"
+  },
+  "methods": [],
+  "tags": [
+   "領域",
+   "距離",
+   "円の接触",
+   "三角不等式",
+   "不等式による評価",
+   "極限"
+  ],
+  "provenance": {
+   "created": "2026-11-19"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "III-LIM-278",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "III-15",
+  "level": 4,
+  "minutes": 30,
+  "theme": "二項係数の逆数の交代和と和の精密な極限",
+  "topic": "二項係数の逆数の交代和と和の精密な極限",
+  "statement": {
+   "tex": "自然数 $n$ に対して $f(n)=\\displaystyle\\sum_{k=0}^{n}\\frac{1}{{}_n\\mathrm C_k}$ とおく．\n\\begin{enumerate}\n  \\item 自然数 $m$ に対して，$\\displaystyle\\sum_{k=0}^{2m}\\frac{(-1)^k}{{}_{2m}\\mathrm C_k}$ を $m$ の式で表せ．\n  \\item 極限 $\\displaystyle\\lim_{n\\to\\infty}n^2\\left\\{f(n)-2-\\frac2n\\right\\}$ を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $\\dfrac{2m+1}{m+1}$　(2) $4$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "まず，$0\\leqq k\\leqq n$ に対して\n\\begin{align*}\n\\frac1{{}_{n+1}\\mathrm C_k}+\\frac1{{}_{n+1}\\mathrm C_{k+1}}\n&=\\frac{k!\\,(n+1-k)!+(k+1)!\\,(n-k)!}{(n+1)!}\\\\\n&=\\frac{k!\\,(n-k)!\\,(n+2)}{(n+1)!}\n=\\frac{n+2}{n+1}\\cdot\\frac1{{}_n\\mathrm C_k}.\n\\end{align*}\nすなわち $\\dfrac1{{}_n\\mathrm C_k}=\\dfrac{n+1}{n+2}\\left(u_k+u_{k+1}\\right)$，$u_j=\\dfrac1{{}_{n+1}\\mathrm C_j}$．\n\n(1) $n=2m$ として\n\\begin{align*}\n\\sum_{k=0}^{n}\\frac{(-1)^k}{{}_n\\mathrm C_k}\n&=\\frac{n+1}{n+2}\\sum_{k=0}^{n}\\left\\{(-1)^ku_k-(-1)^{k+1}u_{k+1}\\right\\}\\\\\n&=\\frac{n+1}{n+2}\\left\\{u_0-(-1)^{n+1}u_{n+1}\\right\\}\n=\\frac{n+1}{n+2}\\left\\{1+(-1)^n\\right\\}.\n\\end{align*}\n$n=2m$ では $\\dfrac{2(2m+1)}{2m+2}=\\boldsymbol{\\dfrac{2m+1}{m+1}}$．\n\n\n(2) $n\\geqq8$ とする．${}_n\\mathrm C_{k+1}\\div{}_n\\mathrm C_k=\\dfrac{n-k}{k+1}$ は $k\\leqq\\frac{n-1}2$ のとき1以上なので，${}_n\\mathrm C_k$ は $0\\leqq k\\leqq\\frac n2$ で $k$ について増加し，${}_n\\mathrm C_k={}_n\\mathrm C_{n-k}$ と合わせて，$4\\leqq k\\leqq n-4$ では ${}_n\\mathrm C_k\\geqq{}_n\\mathrm C_4$ である．$k=0,n$ の2項の和は $2$，$k=1,n-1$ の和は $\\dfrac2n$，$k=2,n-2$ の和は $\\dfrac{4}{n(n-1)}$，$k=3,n-3$ の和は $\\dfrac{12}{n(n-1)(n-2)}$ で，残りの $n-7$ 個の項はそれぞれ $\\dfrac1{{}_n\\mathrm C_4}=\\dfrac{24}{n(n-1)(n-2)(n-3)}$ 以下で正である．よって\n\\[\n0<f(n)-2-\\frac2n-\\frac{4}{n(n-1)}-\\frac{12}{n(n-1)(n-2)}\\leqq\\frac{24(n-7)}{n(n-1)(n-2)(n-3)}.\n\\]\n各辺に $n^2$ を掛けると\n\\[\n0<n^2\\left\\{f(n)-2-\\frac2n\\right\\}-\\frac{4n}{n-1}-\\frac{12n}{(n-1)(n-2)}\\leqq\\frac{24n(n-7)}{(n-1)(n-2)(n-3)}.\n\\]\n$n\\to\\infty$ で $\\dfrac{4n}{n-1}\\to4$，$\\dfrac{12n}{(n-1)(n-2)}\\to0$，右辺 $\\to0$ なので，はさみうちの原理により\n\\[\n\\lim_{n\\to\\infty}n^2\\left\\{f(n)-2-\\frac2n\\right\\}=\\boldsymbol4.\n\\]\n\\hfill$\\square$"
+   }
+  ],
+  "idea": {
+   "tex": "$\\dfrac{1}{{}_{n+1}\\mathrm C_k}+\\dfrac{1}{{}_{n+1}\\mathrm C_{k+1}}=\\dfrac{n+2}{n+1}\\cdot\\dfrac{1}{{}_n\\mathrm C_k}$ を自分で見つけると，符号を交互につけた和は隣り合う項が打ち消し合って両端だけが残る．和そのものの極限は，両端から4項ずつ（$k=0,1,2,3$ と $k=n,n-1,n-2,n-3$）を取り出し，残りの $n-7$ 項を $\\dfrac{1}{{}_n\\mathrm C_4}$ で一様に上から抑えてはさみうちにする．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) (2m+1)/(m+1)\n(2) 4"
+  },
+  "methods": [],
+  "tags": [
+   "二項係数",
+   "望遠鏡和",
+   "交代和",
+   "はさみうち",
+   "極限"
+  ],
+  "provenance": {
+   "created": "2026-11-19"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "III-LIM-279",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "III-15",
+  "level": 4,
+  "minutes": 30,
+  "theme": "4次曲線の2接線の交点が弦のどこに来るか",
+  "topic": "4次曲線の2接線の交点が弦のどこに来るか",
+  "statement": {
+   "tex": "$f(x)=x^4-4x^3$ とし，曲線 $C:y=f(x)$ 上に2点 $\\mathrm A(a,f(a))$，$\\mathrm B(b,f(b))$（$a<b$）をとる．$b$ が $a$ に十分近いとき，A における $C$ の接線と B における $C$ の接線は1点で交わる．その交点の $x$ 座標を $p$ とする．\n\\begin{enumerate}\n  \\item 各実数 $a$ に対して，$\\alpha(a)=\\displaystyle\\lim_{b\\to a+0}\\frac{p-a}{b-a}$ を求めよ．\n  \\item 各実数 $a$ に対して，$\\beta(a)=\\displaystyle\\lim_{b\\to a+0}\\frac{1}{b-a}\\left\\{\\frac{p-a}{b-a}-\\alpha(a)\\right\\}$ を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $a\\neq0,2$ のとき $\\alpha(a)=\\dfrac12$，$a=0,2$ のとき $\\alpha(a)=\\dfrac23$　(2) $a\\neq0,2$ のとき $\\beta(a)=\\dfrac{a-1}{6a(a-2)}$，$\\beta(0)=-\\dfrac1{36}$，$\\beta(2)=\\dfrac1{36}$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "A，B における接線は $y=f'(a)(x-a)+f(a)$，$y=f'(b)(x-b)+f(b)$．$x=p$ で値が等しい条件は\n\\[\n\\{f'(a)-f'(b)\\}(p-a)=f(b)-f(a)-f'(b)(b-a).\n\\]\n$b=a+h$（$h>0$），$f'(x)=4x^3-12x^2$ として計算する．\n\\[\nf(b)-f(a)=4a^3h+6a^2h^2+4ah^3+h^4-4(3a^2h+3ah^2+h^3),\n\\]\n\\[\nf'(b)h=4h(a^3+3a^2h+3ah^2+h^3)-12h(a^2+2ah+h^2)\n\\]\nより\n\\[\nf(b)-f(a)-f'(b)h=-h^2(6a^2-12a+8ah-8h+3h^2),\n\\]\n\\[\nf'(a)-f'(b)=-4\\{(3a^2h+3ah^2+h^3)-3(2ah+h^2)\\}=-4h(3a^2-6a+3ah-3h+h^2).\n\\]\n$A=6a(a-2)$ とおくと\n\\[\nf'(a)-f'(b)=-2h\\{A+(6a-6)h+2h^2\\}.\n\\]\n右辺の $\\{\\ \\}$ は $A\\neq0$ なら $h\\to0$ で $A\\neq0$ に近づき，$a=0$ では $-6h+2h^2=-2h(3-h)$，$a=2$ では $6h+2h^2$ で，いずれも $h$ が十分小さい正の数なら0でない．このとき接線は1点で交わり，\n\\[\nR(h)=\\frac{p-a}{h}=\\frac{A+(8a-8)h+3h^2}{2\\{A+(6a-6)h+2h^2\\}}.\n\\]\n\n(1)・(2) \\textbf{$a\\neq0,2$（$A\\neq0$）のとき．}$R(h)\\to\\dfrac A{2A}=\\dfrac12$．また\n\\[\nR(h)-\\frac12=\\frac{(8a-8)h+3h^2-(6a-6)h-2h^2}{2\\{A+(6a-6)h+2h^2\\}}=\\frac{h\\{(2a-2)+h\\}}{2\\{A+(6a-6)h+2h^2\\}}\n\\]\nより $\\dfrac1h\\left\\{R(h)-\\dfrac12\\right\\}\\to\\dfrac{2a-2}{2A}=\\dfrac{a-1}{6a(a-2)}$．\n\n\\textbf{$a=0$ のとき．}$A=0$ で $R(h)=\\dfrac{-8h+3h^2}{2(-6h+2h^2)}=\\dfrac{8-3h}{4(3-h)}\\to\\dfrac23$．\n\\[\nR(h)-\\frac23=\\frac{3(8-3h)-8(3-h)}{12(3-h)}=\\frac{-h}{12(3-h)}\n\\]\nより $\\dfrac1h\\left\\{R(h)-\\dfrac23\\right\\}\\to-\\dfrac1{36}$．\n\n\\textbf{$a=2$ のとき．}$A=0$ で $R(h)=\\dfrac{8h+3h^2}{2(6h+2h^2)}=\\dfrac{8+3h}{4(3+h)}\\to\\dfrac23$．\n\\[\nR(h)-\\frac23=\\frac{3(8+3h)-8(3+h)}{12(3+h)}=\\frac{h}{12(3+h)}\n\\]\nより $\\dfrac1h\\left\\{R(h)-\\dfrac23\\right\\}\\to\\dfrac1{36}$．\n\n以上より\n\\[\n\\boldsymbol{\\alpha(a)=\\frac12\\ (a\\neq0,2),\\quad \\alpha(0)=\\alpha(2)=\\frac23},\n\\]\n\\[\n\\boldsymbol{\\beta(a)=\\frac{a-1}{6a(a-2)}\\ (a\\neq0,2),\\quad\\beta(0)=-\\frac1{36},\\quad\\beta(2)=\\frac1{36}}.\n\\]\n（$x=0,2$ は $f''(x)=12x(x-2)=0$ となる変曲点であり，そこで比の極限が $\\frac12$ から $\\frac23$ に変わる．）\\hfill$\\square$"
+   }
+  ],
+  "idea": {
+   "tex": "2接線の交点は $(f'(a)-f'(b))(p-a)=f(b)-f(a)-f'(b)(b-a)$ で，$b=a+h$ として $h$ で展開すると比 $\\frac{p-a}{h}$ は $h$ の分数式．$f''(a)\\neq0$ なら極限 $\\frac12$，変曲点（$f''(a)=0$，$f'''(a)\\neq0$）では分子分母の最低次がずれて $\\frac23$ になり，次の項の極限も場合ごとに変わる．"
+  },
+  "methods": [],
+  "tags": [
+   "接線",
+   "交点",
+   "極限",
+   "変曲点",
+   "場合分け"
+  ],
+  "provenance": {
+   "created": "2026-11-19"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
   "id": "III-LIM-236",
   "schema": "lemma.problem/1",
   "kind": "written",
@@ -11170,444 +10155,6 @@
   ],
   "provenance": {
    "created": "2026-11-10"
-  },
-  "quality": {
-   "status": "published",
-   "checks": {
-    "dual": false,
-    "sympy": true,
-    "human": false
-   },
-   "verified": false
-  }
- },
- {
-  "id": "III-LIM-271",
-  "schema": "lemma.problem/1",
-  "kind": "written",
-  "field": "III-15",
-  "level": 4,
-  "minutes": 35,
-  "theme": "相加平均と相乗平均をくり返す数列の差の桁数",
-  "topic": "相加平均と相乗平均をくり返す数列の差の桁数",
-  "statement": {
-   "tex": "数列 $\\{a_n\\}$，$\\{b_n\\}$ を\n\\[\na_1=2,\\quad b_1=1,\\qquad a_{n+1}=\\frac{a_n+b_n}{2},\\quad b_{n+1}=\\sqrt{a_nb_n}\\qquad(n=1,2,3,\\ldots)\n\\]\nで定め，$d_n=a_n-b_n$ とおく．\n\\begin{enumerate}\n  \\item すべての正の整数 $n$ に対して $1\\leqq b_n<b_{n+1}<a_{n+1}<a_n\\leqq2$ が成り立つことを示せ．\n  \\item すべての正の整数 $n$ に対して $\\dfrac{d_n^{\\,2}}{16}<d_{n+1}<\\dfrac{d_n^{\\,2}}{8}$ が成り立つことを示せ．\n  \\item $d_n<10^{-100}$ となる最小の正の整数 $n$ を求めよ．ただし $0.301<\\log_{10}2<0.302$ を用いてよい．\n\\end{enumerate}"
-  },
-  "answer": {
-   "tex": "(1) 証明　(2) 証明　(3) $n=8$"
-  },
-  "solutions": [
-   {
-    "id": "main",
-    "kind": "main",
-    "tex": "(1) 「$1\\leqq b_n<a_n\\leqq2$」$\\cdots$(＊) を仮定して，$b_n<b_{n+1}<a_{n+1}<a_n$ と，$n+1$ に対する(＊)を導く．$n=1$ のとき $b_1=1<2=a_1$ で(＊)は成り立つ．\n\n(＊)のもとで $a_n,b_n>0$ であり，\n\\[\na_{n+1}-b_{n+1}=\\frac{a_n-2\\sqrt{a_nb_n}+b_n}{2}=\\frac{(\\sqrt{a_n}-\\sqrt{b_n})^2}{2}>0\n\\]\n（$a_n\\neq b_n$ より $\\sqrt{a_n}\\neq\\sqrt{b_n}$）．また $b_n<a_n$ から\n\\[\na_{n+1}=\\frac{a_n+b_n}2<\\frac{a_n+a_n}2=a_n,\\qquad b_{n+1}=\\sqrt{a_nb_n}>\\sqrt{b_n\\cdot b_n}=b_n .\n\\]\nよって $b_n<b_{n+1}<a_{n+1}<a_n$ であり，$1\\leqq b_n<b_{n+1}$，$a_{n+1}<a_n\\leqq2$ から $n+1$ に対しても(＊)が成り立つ．数学的帰納法により，すべての $n$ で $1\\leqq b_n<b_{n+1}<a_{n+1}<a_n\\leqq2$ が成り立つ．\\hfill$\\square$\n\n(2) (1)の計算と $a_n-b_n=(\\sqrt{a_n}+\\sqrt{b_n})(\\sqrt{a_n}-\\sqrt{b_n})$ より\n\\[\nd_{n+1}=\\frac{(\\sqrt{a_n}-\\sqrt{b_n})^2}{2}=\\frac{d_n^{\\,2}}{2(\\sqrt{a_n}+\\sqrt{b_n})^2}.\n\\]\n$0<b_n<a_n$ より $\\sqrt{b_n}<\\sqrt{a_n}$ なので $2\\sqrt{b_n}<\\sqrt{a_n}+\\sqrt{b_n}<2\\sqrt{a_n}$，各辺正だから2乗して\n\\[\n4b_n<(\\sqrt{a_n}+\\sqrt{b_n})^2<4a_n .\n\\]\n(1)より $b_n\\geqq1$，$a_n\\leqq2$ なので $4\\leqq4b_n$，$4a_n\\leqq8$．よって $4<(\\sqrt{a_n}+\\sqrt{b_n})^2<8$ であり，$d_n^{\\,2}>0$ とあわせて\n\\[\n\\frac{d_n^{\\,2}}{16}<d_{n+1}<\\frac{d_n^{\\,2}}{8}.\n\\]\n\\hfill$\\square$\n\n(3) \\textbf{上からの評価．} $e_n=\\dfrac{d_n}8$ とおくと，(2)より $e_{n+1}<\\dfrac{d_n^{\\,2}}{64}=e_n^{\\,2}$．\n「$0<e_n\\leqq\\left(\\dfrac18\\right)^{2^{n-1}}$」を帰納法で示す．$n=1$ では $e_1=\\dfrac18$ で等号．$n$ で成り立てば，$e_{n+1}>0$ かつ $e_{n+1}<e_n^{\\,2}\\leqq\\left(\\dfrac18\\right)^{2^{n}}$．よって\n\\[\nd_n\\leqq8\\cdot8^{-2^{n-1}}=8^{\\,1-2^{n-1}}=2^{\\,3-3\\cdot2^{n-1}}.\n\\]\n\n\\textbf{下からの評価．} $f_n=\\dfrac{d_n}{16}$ とおくと，(2)より $f_{n+1}>\\dfrac{d_n^{\\,2}}{256}=f_n^{\\,2}$．\n「$f_n\\geqq\\left(\\dfrac1{16}\\right)^{2^{n-1}}$」を帰納法で示す．$n=1$ では $f_1=\\dfrac1{16}$ で等号．$n$ で成り立てば，両辺正なので2乗して $f_{n+1}>f_n^{\\,2}\\geqq\\left(\\dfrac1{16}\\right)^{2^{n}}$．よって\n\\[\nd_n\\geqq16^{\\,1-2^{n-1}}=2^{\\,4-4\\cdot2^{n-1}}.\n\\]\n\n\\textbf{単調性．} $d_1=1$ であり，$0<d_n\\leqq1$ ならば(2)より $0<d_{n+1}<\\dfrac{d_n^{\\,2}}8\\leqq\\dfrac{d_n}8<d_n\\leqq1$．帰納法により $0<d_n\\leqq1$ がすべての $n$ で成り立ち，同時に $d_{n+1}<d_n$，すなわち $\\{d_n\\}$ は減少する．\n\n\\textbf{$n=8$ と $n=7$．} 上からの評価で $n=8$ とすると $d_8\\leqq2^{3-384}=2^{-381}$ であり，\n\\[\n\\log_{10}2^{-381}=-381\\log_{10}2<-381\\times0.301=-114.681<-100\n\\]\nだから $d_8<10^{-100}$．下からの評価で $n=7$ とすると $d_7\\geqq2^{4-256}=2^{-252}$ であり，\n\\[\n\\log_{10}2^{-252}=-252\\log_{10}2>-252\\times0.302=-76.104>-100\n\\]\nだから $d_7>10^{-100}$．\n\n$\\{d_n\\}$ は減少するので，$n\\leqq7$ では $d_n\\geqq d_7>10^{-100}$，$n\\geqq8$ では $d_n\\leqq d_8<10^{-100}$．したがって求める最小の $n$ は\n\\[\n\\boldsymbol{n=8}.\n\\]"
-   }
-  ],
-  "idea": {
-   "tex": "差 $d_n=a_n-b_n$ は $d_{n+1}=\\dfrac{(\\sqrt{a_n}-\\sqrt{b_n})^2}{2}=\\dfrac{d_n^{\\,2}}{2(\\sqrt{a_n}+\\sqrt{b_n})^2}$ と「前の差の2乗」で書ける．$(\\sqrt{a_n}+\\sqrt{b_n})^2$ を $4b_n$ と $4a_n$ ではさむと $\\dfrac{d_n^{\\,2}}{16}<d_{n+1}<\\dfrac{d_n^{\\,2}}8$ となり，$\\dfrac{d_n}{8}$，$\\dfrac{d_n}{16}$ を考えると指数 $2^{n-1}$ の両側評価が得られる．上下の評価がともに使えるので，差が初めて指定の大きさを下回る番号が確定する．"
-  },
-  "grading": {
-   "format": "lemma-input/1",
-   "spec": "(1) 証明\n(2) 証明\n(3) $n$：8"
-  },
-  "methods": [],
-  "tags": [
-   "数列の極限",
-   "相加相乗平均",
-   "2乗で減る誤差",
-   "両側評価",
-   "常用対数"
-  ],
-  "provenance": {
-   "created": "2026-11-19"
-  },
-  "quality": {
-   "status": "published",
-   "checks": {
-    "dual": false,
-    "sympy": true,
-    "human": false
-   },
-   "verified": false
-  }
- },
- {
-  "id": "III-LIM-272",
-  "schema": "lemma.problem/1",
-  "kind": "written",
-  "field": "III-15",
-  "level": 4,
-  "minutes": 30,
-  "theme": "井戸の深さの2つの近似とその誤差",
-  "topic": "井戸の深さの2つの近似とその誤差",
-  "statement": {
-   "tex": "井戸の口から小石を静かに落としたところ，小石が水面に達した音が $t$ 秒後に聞こえた．重力加速度を $g$，音の速さを $c$（$g,c$ は正の定数），井戸の口から水面までの距離を $d$ とし，小石は $\\frac12g\\tau^2$ の距離を時間 $\\tau$ で落ち，音は一定の速さ $c$ で伝わるものとする．\n\\begin{enumerate}\n  \\item $d$ を $g,c,t$ で表せ．\n  \\item $d_1=\\dfrac12gt^2$，$d_2=\\dfrac12gt^2\\left(1-\\dfrac{gt}c\\right)$ とおく．すべての $t>0$ に対して $d_2<d<d_1$ が成り立つことを示せ．\n  \\item 極限 $\\displaystyle\\lim_{t\\to+0}\\frac{d-d_2}{t^4}$ を $g,c$ で表せ．\n\\end{enumerate}"
-  },
-  "answer": {
-   "tex": "(1) $d=\\dfrac{c^2}{g}\\left(1+\\dfrac{gt}{c}-\\sqrt{1+\\dfrac{2gt}{c}}\\right)$　(2) 証明　(3) $\\dfrac{5g^3}{8c^2}$"
-  },
-  "solutions": [
-   {
-    "id": "main",
-    "kind": "main",
-    "tex": "小石が水面に達するまでの時間を $t_1$ とすると $d=\\frac12gt_1^2$ より $t_1=\\sqrt{\\frac{2d}g}$，音が上がってくる時間は $\\frac dc$．よって $t=\\sqrt{\\frac{2d}g}+\\frac dc$．右辺は $d>0$ について増加し，$d\\to+0$ で $0$，$d\\to\\infty$ で限りなく大きくなる連続関数なので，各 $t>0$ に対し $d$ はただ1つ定まる．\n\\[\nw=\\frac{\\sqrt{2gd}}c\\ (>0),\\qquad \\tau=\\frac{gt}c\\ (>0)\n\\]\nとおくと，$\\frac gc\\sqrt{\\frac{2d}g}=w$，$\\frac gc\\cdot\\frac dc=\\frac{gd}{c^2}=\\frac{w^2}2$ だから\n\\[\n\\tau=w+\\frac{w^2}2,\\qquad d=\\frac{c^2}{2g}w^2 .\n\\]\n\n(1) $(w+1)^2=1+2\\tau$，$w>0$ より $w=\\sqrt{1+2\\tau}-1$．よって\n\\[\nd=\\frac{c^2}{2g}\\bigl(\\sqrt{1+2\\tau}-1\\bigr)^2=\\frac{c^2}g\\bigl(1+\\tau-\\sqrt{1+2\\tau}\\bigr)=\\boldsymbol{\\frac{c^2}{g}\\left(1+\\frac{gt}{c}-\\sqrt{1+\\frac{2gt}{c}}\\right)}.\n\\]\n\n(2) $t=\\frac{c\\tau}g$ より $d_1=\\frac{c^2}{2g}\\tau^2$，$d_2=\\frac{c^2}{2g}\\tau^2(1-\\tau)$．\n$\\tau=w+\\frac{w^2}2>w>0$ なので $d_1-d=\\frac{c^2}{2g}(\\tau^2-w^2)>0$．\n次に $\\tau^2=w^2+w^3+\\frac{w^4}4$，$\\tau^3=w^3+\\frac32w^4+\\frac34w^5+\\frac18w^6$ より\n\\[\nw^2-\\tau^2(1-\\tau)=w^2-\\tau^2+\\tau^3=\\frac54w^4+\\frac34w^5+\\frac18w^6=\\frac{w^4(w^2+6w+10)}8>0 .\n\\]\nよって $d-d_2=\\dfrac{c^2}{2g}\\cdot\\dfrac{w^4(w^2+6w+10)}8>0$．以上で $d_2<d<d_1$．\\hfill$\\square$\n\n(3) $t^4=\\frac{c^4}{g^4}\\tau^4=\\frac{c^4}{g^4}w^4\\left(1+\\frac w2\\right)^4$ だから\n\\[\n\\frac{d-d_2}{t^4}=\\frac{c^2}{16g}w^4(w^2+6w+10)\\cdot\\frac{g^4}{c^4w^4(1+\\frac w2)^4}=\\frac{g^3}{16c^2}\\cdot\\frac{w^2+6w+10}{(1+\\frac w2)^4}.\n\\]\n$t\\to+0$ のとき $\\tau\\to0$ で $w=\\sqrt{1+2\\tau}-1\\to0$ だから，極限は $\\dfrac{g^3}{16c^2}\\cdot10=\\boldsymbol{\\dfrac{5g^3}{8c^2}}$．\n\\hfill$\\square$"
-   }
-  ],
-  "idea": {
-   "tex": "落下時間と音の伝わる時間の和 $t=\\sqrt{\\frac{2d}g}+\\frac dc$ は $\\sqrt d$ の2次式．$w=\\frac{\\sqrt{2gd}}c$，$\\tau=\\frac{gt}c$ と無次元化すると $\\tau=w+\\frac{w^2}2$ となり，近似式との差が $w$ の整式で書けて符号も極限も一目でわかる．"
-  },
-  "grading": {
-   "format": "lemma-input/1",
-   "spec": "(1) $d$：(c^2/g)(1+gt/c-sqrt(1+2gt/c))\n(2) 証明\n(3) 5g^3/(8c^2)"
-  },
-  "methods": [],
-  "tags": [
-   "無理式",
-   "有理化",
-   "大小比較",
-   "関数の極限",
-   "無次元化"
-  ],
-  "provenance": {
-   "created": "2026-11-19"
-  },
-  "quality": {
-   "status": "published",
-   "checks": {
-    "dual": false,
-    "sympy": true,
-    "human": false
-   },
-   "verified": false
-  }
- },
- {
-  "id": "III-LIM-273",
-  "schema": "lemma.problem/1",
-  "kind": "written",
-  "field": "III-15",
-  "level": 3,
-  "minutes": 25,
-  "theme": "台形の中に次々つくる調和平均の線分",
-  "topic": "台形の中に次々つくる調和平均の線分",
-  "statement": {
-   "tex": "AD$\\parallel$BC，AD$=a$，BC$=b$（$a\\neq b$）の台形 ABCD がある．P$_0=$B，Q$_0=$C とし，$n=0,1,2,\\cdots$ に対して次のように P$_{n+1}$，Q$_{n+1}$ を定める：台形 AP$_n$Q$_n$D の2本の対角線の交点を通り AD に平行な直線が，辺 AB，CD と交わる点をそれぞれ P$_{n+1}$，Q$_{n+1}$ とする．$x_n=\\mathrm P_n\\mathrm Q_n$ とおく．\n\\begin{enumerate}\n  \\item $x_n$ を $a,b,n$ で表せ．\n  \\item $\\displaystyle\\lim_{n\\to\\infty}2^n(x_n-a)$ を求めよ．\n\\end{enumerate}"
-  },
-  "answer": {
-   "tex": "(1) $x_n=\\dfrac{2^nab}{2^nb+a-b}$　(2) $\\dfrac{a(b-a)}b$"
-  },
-  "solutions": [
-   {
-    "id": "main",
-    "kind": "main",
-    "tex": "\\textbf{補題．} AD$\\parallel$XY，AD$=p$，XY$=q$ の台形 AXYD（X は A の側，Y は D の側）の対角線 AY，DX の交点 O を通り AD に平行な直線が辺 AX，DY と交わる点を U，V とすると，UV$=\\dfrac{2pq}{p+q}$．\n\n（証明）AD$\\parallel$XY より $\\triangle\\mathrm{OAD}\\sim\\triangle\\mathrm{OYX}$（相似比 $p:q$）で，AO$:$OY$=$DO$:$OX$=p:q$．$\\triangle$AXY で UO$\\parallel$XY だから UO$=$XY$\\cdot\\dfrac{\\mathrm{AO}}{\\mathrm{AY}}=\\dfrac{pq}{p+q}$．同様に $\\triangle$DYX で OV$=\\dfrac{pq}{p+q}$．よって UV$=\\dfrac{2pq}{p+q}$．\\hfill$\\square$\n\n(1) P$_n$ が辺 AB 上（A と異なる点），Q$_n$ が辺 CD 上にあって P$_n$Q$_n\\parallel$AD，$x_n\\neq a$ ならば，台形 AP$_n$Q$_n$D に補題を使って P$_{n+1}$ は線分 AP$_n$（$\\subset$ 辺 AB）上，Q$_{n+1}$ は線分 DQ$_n$ 上にあり\n\\[\nx_{n+1}=\\frac{2ax_n}{a+x_n},\\qquad\\text{すなわち}\\qquad \\frac1{x_{n+1}}-\\frac1a=\\frac12\\Bigl(\\frac1{x_n}-\\frac1a\\Bigr).\n\\]\n$n=0$ では $x_0=b\\neq a$．帰納的に $\\dfrac1{x_n}-\\dfrac1a=\\dfrac1{2^n}\\Bigl(\\dfrac1b-\\dfrac1a\\Bigr)\\neq0$ となるので，各段階で $x_n\\neq a$（P$_n\\neq$A）が保たれ，作図は続けられる．よって\n\\[\n\\frac1{x_n}=\\frac1a+\\frac{a-b}{2^nab}=\\frac{2^nb+a-b}{2^nab},\\qquad x_n=\\boldsymbol{\\frac{2^nab}{2^nb+a-b}}\n\\]\n（分母 $2^nb+a-b=(2^n-1)b+a>0$）．\n\n(2)\n\\[\n2^n(x_n-a)=2^n\\cdot\\frac{2^nab-a(2^nb+a-b)}{2^nb+a-b}=\\frac{2^na(b-a)}{2^nb+a-b}=\\frac{a(b-a)}{b+\\frac{a-b}{2^n}}\\ \\longrightarrow\\ \\boldsymbol{\\frac{a(b-a)}b}\\quad(n\\to\\infty).\n\\]\n\\hfill$\\square$"
-   }
-  ],
-  "idea": {
-   "tex": "台形の対角線の交点を通り底辺に平行な線分の長さは，2つの底辺の調和平均 $\\frac{2pq}{p+q}$．逆数をとると $\\frac1{x_{n+1}}-\\frac1a=\\frac12\\bigl(\\frac1{x_n}-\\frac1a\\bigr)$ で，$\\frac1{x_n}-\\frac1a$ が等比数列になる．"
-  },
-  "grading": {
-   "format": "lemma-input/1",
-   "spec": "(1) $x_n$：2^nab/(2^nb+a-b)\n(2) a(b-a)/b"
-  },
-  "methods": [],
-  "tags": [
-   "台形",
-   "相似",
-   "調和平均",
-   "漸化式",
-   "極限"
-  ],
-  "provenance": {
-   "created": "2026-11-19"
-  },
-  "quality": {
-   "status": "published",
-   "checks": {
-    "dual": false,
-    "sympy": true,
-    "human": false
-   },
-   "verified": false
-  }
- },
- {
-  "id": "III-LIM-274",
-  "schema": "lemma.problem/1",
-  "kind": "written",
-  "field": "III-15",
-  "level": 4,
-  "minutes": 35,
-  "theme": "正弦の反復が0に近づく速さ",
-  "topic": "正弦の反復が0に近づく速さ",
-  "statement": {
-   "tex": "$a_1=1$，$a_{n+1}=\\sin a_n\\ (n=1,2,3,\\cdots)$ で数列 $\\{a_n\\}$ を定める．\n\\begin{enumerate}\n  \\item $x\\geqq0$ のとき，$x-\\dfrac{x^3}6\\leqq\\sin x\\leqq x-\\dfrac{x^3}6+\\dfrac{x^5}{120}$ を示せ．\n  \\item すべての $n$ について $0<a_{n+1}<a_n\\leqq1$ を示せ．\n  \\item $0<\\varepsilon<1$ とする．$a_n<\\varepsilon$ となる正の整数 $n$ が存在することを示し，そのような $n$ のうち最小のものを $N$ とするとき，$N<1+\\dfrac{120}{19\\varepsilon^3}$ を示せ．\n  \\item すべての $n$ について $a_n\\geqq\\dfrac1{\\sqrt n}$ を示せ．また，(3) の $N$ について $N>\\dfrac1{\\varepsilon^2}$ を示せ．\n\\end{enumerate}"
-  },
-  "answer": {
-   "tex": "(1) 証明　(2) 証明　(3) 証明　(4) 証明"
-  },
-  "solutions": [
-   {
-    "id": "main",
-    "kind": "main",
-    "tex": "(1) $x\\geqq0$ で順に次の関数を考える．\n\\begin{itemize}\n  \\item $p(x)=x-\\sin x$：$p'(x)=1-\\cos x\\geqq0$，$p(0)=0$ より $p(x)\\geqq0$．\n  \\item $q(x)=\\cos x-1+\\frac{x^2}2$：$q'(x)=x-\\sin x=p(x)\\geqq0$，$q(0)=0$ より $q(x)\\geqq0$．\n  \\item $r(x)=\\sin x-x+\\frac{x^3}6$：$r'(x)=q(x)\\geqq0$，$r(0)=0$ より $r(x)\\geqq0$．\n  \\item $s(x)=1-\\frac{x^2}2+\\frac{x^4}{24}-\\cos x$：$s'(x)=r(x)\\geqq0$，$s(0)=0$ より $s(x)\\geqq0$．\n  \\item $w(x)=x-\\frac{x^3}6+\\frac{x^5}{120}-\\sin x$：$w'(x)=s(x)\\geqq0$，$w(0)=0$ より $w(x)\\geqq0$．\n\\end{itemize}\n$r\\geqq0$，$w\\geqq0$ が示すべき2つの不等式である．\\hfill$\\square$\n\n(2) $0<x\\leqq1$ のとき，$p'(x)=1-\\cos x>0$（$0<x<2\\pi$）より $p$ は $0\\leqq x\\leqq1$ で狭義に増加し $p(x)>0$，すなわち $\\sin x<x$．また $0<x\\leqq1<\\pi$ より $\\sin x>0$．$a_1=1$ から帰納的に $0<a_n\\leqq1$ が成り立ち，$0<a_{n+1}=\\sin a_n<a_n$．\\hfill$\\square$\n\n(3) $g(x)=\\dfrac{x^3}6-\\dfrac{x^5}{120}$ とおく．$g'(x)=\\dfrac{x^2(12-x^2)}{24}>0\\ (0<x\\leqq1)$ で $g$ は増加する．(1) より $a_k-a_{k+1}=a_k-\\sin a_k\\geqq g(a_k)$．\n\n自然数 $m\\geqq2$ について $a_1,\\cdots,a_{m-1}$ がすべて $\\varepsilon$ 以上ならば，$k=1,\\cdots,m-1$ で $a_k-a_{k+1}\\geqq g(a_k)\\geqq g(\\varepsilon)$ で，\n\\[g(\\varepsilon)=\\frac{\\varepsilon^3(20-\\varepsilon^2)}{120}>\\frac{19\\varepsilon^3}{120}.\\]\nこれらを足すと $a_1-a_m>(m-1)\\dfrac{19\\varepsilon^3}{120}$．$a_1-a_m<1$ より\n\\[m<1+\\frac{120}{19\\varepsilon^3}.\\tag{$*$}\\]\nもし $a_n<\\varepsilon$ となる $n$ がなければ，$1+\\frac{120}{19\\varepsilon^3}$ 以上の整数 $m$ に対して $(*)$ が成り立つことになり矛盾．よってそのような $n$ が存在し，最小の $N$ をとれる．$a_1=1>\\varepsilon$ より $N\\geqq2$ で，$a_1,\\cdots,a_{N-1}\\geqq\\varepsilon$ だから $m=N$ として $(*)$ より $N<1+\\dfrac{120}{19\\varepsilon^3}$．\\hfill$\\square$\n\n(4) 帰納法．$a_1=1$ で成り立つ．$a_n\\geqq\\frac1{\\sqrt n}$ とする．$k(x)=x-\\frac{x^3}6$ は $k'(x)=1-\\frac{x^2}2>0\\ (0\\leqq x\\leqq1)$ で増加し，$\\frac1{\\sqrt n}\\leqq a_n\\leqq1$ だから，(1) より\n\\[a_{n+1}=\\sin a_n\\geqq k(a_n)\\geqq k\\!\\left(\\frac1{\\sqrt n}\\right)=\\frac1{\\sqrt n}\\left(1-\\frac1{6n}\\right)>0.\\]\nここで\n\\[\\left(1-\\frac1{6n}\\right)^2=1-\\frac1{3n}+\\frac1{36n^2}>1-\\frac1{3n}\\geqq1-\\frac1{n+1}=\\frac n{n+1}\\]\n（$3n\\geqq n+1$ による）だから，$\\frac1{\\sqrt n}\\left(1-\\frac1{6n}\\right)>\\frac1{\\sqrt n}\\cdot\\sqrt{\\frac n{n+1}}=\\frac1{\\sqrt{n+1}}$．よって $a_{n+1}\\geqq\\frac1{\\sqrt{n+1}}$．\n\n$N$ について $\\varepsilon>a_N\\geqq\\frac1{\\sqrt N}$ だから $\\sqrt N>\\frac1\\varepsilon$，すなわち $\\boldsymbol{N>\\dfrac1{\\varepsilon^2}}$．\\hfill$\\square$"
-   }
-  ],
-  "idea": {
-   "tex": "不動点で傾きがちょうど1になる反復は，1回の変化量が「不動点からの距離」のべきで下から押さえられ，その距離が $\\varepsilon$ 以上である間は1回ごとに一定量以上動く．変化量を足し合わせると，$\\varepsilon$ まで近づくのに必要な回数の上からの評価が得られる．逆向きの評価は，下からの不等式を1回ずつ帰納法でつなぐ．"
-  },
-  "methods": [],
-  "tags": [
-   "漸化式",
-   "不等式の証明",
-   "微分による評価",
-   "望遠鏡和"
-  ],
-  "provenance": {
-   "created": "2026-11-19"
-  },
-  "quality": {
-   "status": "published",
-   "checks": {
-    "dual": false,
-    "sympy": true,
-    "human": false
-   },
-   "verified": false
-  }
- },
- {
-  "id": "III-LIM-275",
-  "schema": "lemma.problem/1",
-  "kind": "written",
-  "field": "III-15",
-  "level": 4,
-  "minutes": 35,
-  "theme": "2人のサイコロの目を並べた小数の和",
-  "topic": "2人のサイコロの目を並べた小数の和",
-  "statement": {
-   "tex": "2人がそれぞれ1つのサイコロを $n$ 回投げ，最初の人が出した目を順に小数点以下に並べてできる実数を $a_n$，2人目が出した目を同様に並べてできる実数を $b_n$ とする．たとえば最初の人の目が $5,2,6$ ならば $a_3=0.526$ である．\n\\begin{enumerate}\n  \\item $a_n+b_n\\leqq1$ となる確率 $q_n$ を $n$ で表し，$\\displaystyle\\lim_{n\\to\\infty}q_n$ を求めよ．\n  \\item $a_n+b_n\\leqq\\dfrac9{10}$ となる確率を $r_n$ とするとき，$\\displaystyle\\lim_{n\\to\\infty}r_n$ を求めよ．\n\\end{enumerate}"
-  },
-  "answer": {
-   "tex": "(1) $q_n=\\dfrac{13}{16}+\\dfrac5{48}\\left(\\dfrac19\\right)^{n-1}$，極限 $\\dfrac{13}{16}$　(2) $\\dfrac{401}{576}$"
-  },
-  "solutions": [
-   {
-    "id": "main",
-    "kind": "main",
-    "tex": "2人の第 $k$ 回の目を $d_k,e_k$，$s_k=d_k+e_k$（$2\\leqq s_k\\leqq12$）とすると $a_n+b_n=\\sum_{k=1}^n\\dfrac{s_k}{10^k}$．$s_1$ の分布は $P(s_1=j)=\\dfrac{6-|j-7|}{36}$ で\n\\[P(s_1\\leqq7)=\\frac{21}{36},\\quad P(s_1=8)=\\frac5{36},\\quad P(s_1\\leqq8)=\\frac{26}{36},\\quad P(s_1=9)=\\frac4{36}=\\frac19 .\\]\n$n\\geqq2$ のとき，第2回以降の目からつくった小数を $a',b'$（それぞれ $n-1$ 回分）とすると $a_n+b_n=\\dfrac{s_1}{10}+\\dfrac{a'+b'}{10}$ で，$a'+b'$ は $s_1$ と独立に $a_{n-1}+b_{n-1}$ と同じ分布をもつ．また\n\\[0<\\frac{a'+b'}{10}\\leqq12\\left(\\frac1{10^2}+\\cdots+\\frac1{10^n}\\right)<\\frac{12}{90}=\\frac2{15}.\\]\n\n(1) $n\\geqq2$ とする．$s_1\\leqq8$ なら $a_n+b_n<0.8+\\frac2{15}<1$．$s_1\\geqq10$ なら $a_n+b_n>1$．$s_1=9$ なら $a_n+b_n\\leqq1\\iff a'+b'\\leqq1$．よって\n\\[q_n=\\frac{13}{18}+\\frac19q_{n-1}\\quad(n\\geqq2),\\qquad q_1=P(s_1\\leqq10)=\\frac{33}{36}=\\frac{11}{12}.\\]\n$q_n-\\frac{13}{16}=\\frac19\\left(q_{n-1}-\\frac{13}{16}\\right)$，$q_1-\\frac{13}{16}=\\frac5{48}$ より\n\\[\\boldsymbol{q_n=\\frac{13}{16}+\\frac5{48}\\left(\\frac19\\right)^{n-1}},\\qquad \\lim_{n\\to\\infty}q_n=\\boldsymbol{\\frac{13}{16}}.\\]\n(2) $n\\geqq2$ とする．$s_1\\leqq7$ なら $a_n+b_n<0.7+\\frac2{15}<0.9$．$s_1\\geqq9$ なら $a_n+b_n>0.9$．$s_1=8$ なら $a_n+b_n\\leqq0.9\\iff a'+b'\\leqq1$．よって\n\\[r_n=\\frac{21}{36}+\\frac5{36}q_{n-1}\\ \\longrightarrow\\ \\frac7{12}+\\frac5{36}\\cdot\\frac{13}{16}=\\frac{336+65}{576}=\\boldsymbol{\\frac{401}{576}}.\\]"
-   }
-  ],
-  "idea": {
-   "tex": "2つの小数の和は各位の目の和 $s_k$（2〜12）を並べたもので，繰り上がりがあるため位ごとには比べられない．第1位の和 $s_1$ で場合を分けると，残りの位の寄与は $\\frac2{15}$ 未満なので $s_1$ がほぼ大小を決め，境目の値のときだけ「残りの位がつくる同じ形の問題」に帰着する．これが漸化式を与える．"
-  },
-  "grading": {
-   "format": "lemma-input/1",
-   "spec": "(1) $q_n$：13/16+(5/48)(1/9)^(n-1) ; 極限：13/16\n(2) 401/576"
-  },
-  "methods": [],
-  "tags": [
-   "確率",
-   "漸化式",
-   "数列の極限",
-   "小数",
-   "自己相似"
-  ],
-  "provenance": {
-   "created": "2026-11-19"
-  },
-  "quality": {
-   "status": "published",
-   "checks": {
-    "dual": false,
-    "sympy": true,
-    "human": false
-   },
-   "verified": false
-  }
- },
- {
-  "id": "III-LIM-276",
-  "schema": "lemma.problem/1",
-  "kind": "written",
-  "field": "III-15",
-  "level": 4,
-  "minutes": 40,
-  "theme": "指数関数で巻きつく点が弧に入る時間の割合",
-  "topic": "指数関数で巻きつく点が弧に入る時間の割合",
-  "statement": {
-   "tex": "実数 $x$ に対し，座標平面上の単位円 $C$ 上の点 $P(x)$ を\n\\[\nP(x)=\\bigl(\\cos(2\\pi\\cdot2^x),\\ \\sin(2\\pi\\cdot2^x)\\bigr)\n\\]\nによって定める．$C$ の弧 $I$（端点を含む）で長さが $L$（$0<L<2\\pi$）であるものを固定する．そのとき各正の整数 $k$ に対して区間 $[k,k+1]$ の部分集合\n\\[\n\\{x\\mid k\\leqq x\\leqq k+1,\\ P(x)\\in I\\}\n\\]\nは互いに交わらない有限個の区間の和集合になっているので，それらの区間の長さの総和を $T_k$ で表す．\n\\begin{enumerate}\n  \\item $I$ が $C$ のうち $y\\geqq0$ の部分であるとき，$N=2^k$ として $T_k$ を $N$ を用いた和の形で表せ．\n  \\item 一般の弧 $I$ について，$\\displaystyle\\lim_{k\\to\\infty}T_k=\\frac{L}{2\\pi}$ を証明せよ．\n\\end{enumerate}"
-  },
-  "answer": {
-   "tex": "(1) $T_k=\\displaystyle\\sum_{m=N}^{2N-1}\\log_2\\frac{2m+1}{2m}$　(2) 証明"
-  },
-  "solutions": [
-   {
-    "id": "main",
-    "kind": "main",
-    "tex": "$\\log$ は自然対数とする．区間 $[p,q]$（$0<p<q$）について，$2^x\\in[p,q]$ となる $x$ の範囲は $[\\log_2p,\\log_2q]$ で，その長さは\n\\[\n\\log_2\\frac qp=\\frac1{\\log2}\\int_p^q\\frac{du}u.\n\\]\n$N=2^k$ とおく．$k\\leqq x\\leqq k+1\\iff N\\leqq2^x\\leqq2N$．\n\n(1) $P(x)$ が $y\\geqq0$ の部分にある $\\iff$ $2\\pi\\cdot2^x$ が，$2\\pi$ の整数倍 $2\\pi m$ に対して $2\\pi m\\leqq2\\pi\\cdot2^x\\leqq2\\pi m+\\pi$ $\\iff$ $m\\leqq2^x\\leqq m+\\frac12$（$m$ は整数）．$N\\leqq2^x\\leqq2N$ と合わせると $m=N,N+1,\\dots,2N-1$（と1点 $2^x=2N$）なので\n\\[\nT_k=\\sum_{m=N}^{2N-1}\\log_2\\frac{m+\\frac12}m=\\boldsymbol{\\sum_{m=N}^{2N-1}\\log_2\\frac{2m+1}{2m}}.\n\\]\n\n(2) $I$ を偏角が $2\\pi\\alpha$ から $2\\pi\\alpha+L$ までの弧（$0\\leqq\\alpha<1$）とし，$\\ell=\\frac L{2\\pi}$（$0<\\ell<1$）とおく．$P(x)$ が $I$ 上にあるのは，$2^x$ がある整数 $m$ に対する区間 $m+\\alpha\\leqq t\\leqq m+\\alpha+\\ell$ のいずれかに入るときであり，$\\ell<1$ よりこれらの区間は互いに交わらない．\n\n$k\\geqq1$（$N\\geqq2$）とする．$m=N,N+1,\\dots,2N-2$ では $N\\leqq m+\\alpha$，$m+\\alpha+\\ell<m+2\\leqq2N$ なので区間 $[m+\\alpha,m+\\alpha+\\ell]$ は $[N,2N]$ に含まれ，その寄与は $c_m=\\log_2\\frac{m+\\alpha+\\ell}{m+\\alpha}$．$m\\leqq N-2$ の区間は右端が $N$ より小さく，$m\\geqq2N$ の区間は左端が $2N$ 以上なので（共有点は高々1点で長さに影響しない），残りは $m=N-1$ と $m=2N-1$ の区間と $[N,2N]$ の共通部分だけである．前者は $[N,N+1]$ に，後者は $[2N-1,2N]$ に含まれるので，それぞれの寄与は $\\log_2\\frac{N+1}N\\leqq\\frac1{N\\log2}$，$\\log_2\\frac{2N}{2N-1}\\leqq\\frac1{(2N-1)\\log2}\\leqq\\frac1{N\\log2}$ 以下（$\\log(1+t)\\leqq t$）．よって\n\\[\n\\sum_{m=N}^{2N-2}c_m\\leqq T_k\\leqq\\sum_{m=N}^{2N-2}c_m+\\frac2{N\\log2}.\n\\]\n$c_m=\\frac1{\\log2}\\int_{m+\\alpha}^{m+\\alpha+\\ell}\\frac{du}u$ で，積分区間は $[m,m+2]$ に含まれるので $\\frac{\\ell}{(m+2)\\log2}\\leqq c_m\\leqq\\frac{\\ell}{m\\log2}$．また，$\\frac1j$ は $\\frac1u$ の $[j-1,j]$ での最小値，$[j,j+1]$ での最大値なので\n\\[\n\\sum_{m=N}^{2N-2}\\frac1m\\leqq\\int_{N-1}^{2N-2}\\frac{du}u=\\log2,\\qquad\n\\sum_{m=N}^{2N-2}\\frac1{m+2}=\\sum_{j=N+2}^{2N}\\frac1j\\geqq\\int_{N+2}^{2N+1}\\frac{du}u=\\log\\frac{2N+1}{N+2}.\n\\]\n以上より\n\\[\n\\frac{\\ell}{\\log2}\\log\\frac{2N+1}{N+2}\\leqq T_k\\leqq\\ell+\\frac2{N\\log2}.\n\\]\n$k\\to\\infty$ のとき $N\\to\\infty$，$\\frac{2N+1}{N+2}\\to2$ なので，両辺とも $\\ell$ に収束し，はさみうちにより $\\displaystyle\\lim_{k\\to\\infty}T_k=\\ell=\\frac L{2\\pi}$．\\hfill$\\square$"
-   }
-  ],
-  "idea": {
-   "tex": "$P(x)$ が弧 $I$ に入る条件を $u=f(x)$ の小数部分の条件に直し，$x$ の長さを $u$ の積分 $\\int\\frac{du}{f'(x)}$ として周期ごとに評価する．原題の $f$ は整数係数の2次式で，区間 $[k,k+1]$ 上の $f'$ がほぼ一定であることを使ったが，ここでは $f(x)=2^x$ で区間内の $f'$ が2倍も変わるため，各周期の寄与 $\\frac{\\ell}{u\\log2}$ を足し合わせた和 $\\sum\\frac1m$ と $\\log2$ の比較が必要になる．"
-  },
-  "methods": [],
-  "tags": [
-   "置換",
-   "区分ごとの評価",
-   "和と積分の比較",
-   "はさみうち",
-   "対数"
-  ],
-  "provenance": {
-   "created": "2026-11-19"
-  },
-  "quality": {
-   "status": "published",
-   "checks": {
-    "dual": false,
-    "sympy": true,
-    "human": false
-   },
-   "verified": false
-  }
- },
- {
-  "id": "III-LIM-277",
-  "schema": "lemma.problem/1",
-  "kind": "written",
-  "field": "III-15",
-  "level": 5,
-  "minutes": 40,
-  "theme": "接する2円板の間に入り込めない円板とすき間の面積",
-  "topic": "接する2円板の間に入り込めない円板とすき間の面積",
-  "statement": {
-   "tex": "座標平面上に，点 $\\mathrm A(-1,0)$，$\\mathrm B(1,0)$ をそれぞれ中心とする半径1の円板 $D$，$E$ がある．$r$ を正の数とし，半径 $r$ の円板 $F$ を，$D$ の内部とも $E$ の内部とも共有点をもたないように平面上に置く．$F$ はこの条件をみたす位置ならどこにでも置けるものとし，そのように置いた $F$ のどれかに含まれる点全体を $W$ とする．$D$ にも $E$ にも $W$ にも含まれない点全体の面積を $S(r)$ とする．また，$0<\\alpha<\\dfrac\\pi2$，$\\cos\\alpha=\\dfrac1{1+r}$ をみたす角 $\\alpha$ をとる．\n\\begin{enumerate}\n  \\item $S(r)$ を $r$ と $\\alpha$ で表せ．\n  \\item $S(1)$ を求めよ．\n  \\item 極限 $\\displaystyle\\lim_{r\\to+0}\\frac{S(r)}{r\\sqrt r}$ を求めよ．\n\\end{enumerate}"
-  },
-  "answer": {
-   "tex": "(1) $S(r)=2\\sqrt{r^2+2r}-2\\alpha-(\\pi-2\\alpha)r^2$　(2) $S(1)=2\\sqrt3-\\pi$　(3) $\\dfrac{4\\sqrt2}3$"
-  },
-  "solutions": [
-   {
-    "id": "main",
-    "kind": "main",
-    "tex": "$F$ の中心を Q とすると，$F$ が $D$ の内部と共有点をもたない $\\iff\\mathrm{QA}\\geqq1+r$（$E$ も同様）．よって，$\\mathrm{QA}\\geqq1+r$ かつ $\\mathrm{QB}\\geqq1+r$ をみたす点 Q 全体を $K$ として，点 P が $W$ に属する $\\iff$ $\\mathrm{PQ}\\leqq r$ となる $\\mathrm Q\\in K$ がある．$h=\\sqrt{(1+r)^2-1}=\\sqrt{r^2+2r}$，$\\mathrm C(0,h)$ とすると $\\mathrm{CA}=\\mathrm{CB}=1+r$，$\\mathrm C\\in K$ で，$\\angle\\mathrm{CAB}=\\angle\\mathrm{CBA}=\\alpha$（$\\cos\\angle\\mathrm{CAB}=\\frac{1}{1+r}$），$\\angle\\mathrm{ACB}=\\pi-2\\alpha$，$\\tan\\alpha=h$．\n\n図形は $x$ 軸に関して対称なので，$y\\geqq0$ の部分 $H$ で考える．$K$ の点 Q の $y$ 座標が負なら，$x$ 軸に関する対称点 Q$'$ も $K$ に属し，$\\mathrm P\\in H$ に対して $\\mathrm{PQ}'\\leqq\\mathrm{PQ}$ である．よって $\\mathrm P\\in H$ については $K\\cap H$ の点だけ考えればよい．\n\n三角形 ABC（周と内部）を $\\Delta$ とする．$\\Delta$ は $H$ と，直線 AC に関して B 側の閉半平面 $H_1$，直線 BC に関して A 側の閉半平面 $H_2$ の共通部分である．\n\n\\textbf{[1] $K\\cap\\Delta=\\{\\mathrm C\\}$．} O を原点とし，三角形 AOC の点 X を $\\mathrm X=\\lambda\\mathrm A+\\mu\\mathrm O+\\nu\\mathrm C$（$\\lambda,\\mu,\\nu\\geqq0$，$\\lambda+\\mu+\\nu=1$）と表すと\n\\[\n\\mathrm{XA}=\\left|\\mu\\overrightarrow{\\mathrm{AO}}+\\nu\\overrightarrow{\\mathrm{AC}}\\right|\\leqq\\mu+\\nu(1+r)\\leqq1+r\n\\]\nで，等号は $\\mu=0$，$\\nu=1$，すなわち $\\mathrm X=\\mathrm C$ のときに限る．三角形 OBC の点も B について同様．よって $\\Delta$ の点で $K$ に属するのは C だけ．\n\n\\textbf{[2] P $\\in\\Delta$ なら，任意の $\\mathrm Q\\in K\\cap H$ に対し $\\mathrm{PQ}\\geqq\\mathrm{PC}$．} $\\mathrm Q=\\mathrm C$ なら等号が成り立つので，$\\mathrm Q\\neq\\mathrm C$ とすると，[1] より $\\mathrm Q\\notin\\Delta$．線分 PQ 上で P から Q に向かって最後に $\\Delta$ に属する点を X とする（$\\Delta$ は閉じた集合）．X は $\\Delta$ の周上にある．X が辺 AB 上で A，B と異なれば，X の近くの $H$ の点はすべて $\\Delta$ に属し，線分 PQ は $H$ に含まれるので，X より先の点も $\\Delta$ に属して X の取り方に反する．よって X は辺 AC 上または辺 BC 上にある．X が辺 AC 上なら $\\mathrm{XA}+\\mathrm{XC}=1+r$ で，$\\mathrm{QA}\\geqq1+r$ より\n\\[\n\\mathrm{PQ}=\\mathrm{PX}+\\mathrm{XQ}\\geqq\\mathrm{PX}+(\\mathrm{QA}-\\mathrm{XA})\\geqq\\mathrm{PX}+(1+r-\\mathrm{XA})=\\mathrm{PX}+\\mathrm{XC}\\geqq\\mathrm{PC}.\n\\]\n辺 BC 上でも同様．したがって $\\mathrm P\\in\\Delta$ について，$\\mathrm P\\in W\\iff\\mathrm{PC}\\leqq r$．\n\n\\textbf{[3] P $\\in H$，$\\mathrm P\\notin\\Delta$，P が $D,E$ に含まれないなら $\\mathrm P\\in W$．} $\\mathrm{PA}>1$，$\\mathrm{PB}>1$ で，$\\mathrm P\\notin H_1$ または $\\mathrm P\\notin H_2$．$y$ 軸に関する対称性から $\\mathrm P\\notin H_2$ としてよい．このとき P は直線 BC に関して A と反対側にあり，$\\theta=\\angle\\mathrm{ABP}$ は $\\alpha<\\theta\\leqq\\pi$ をみたす．\n\\begin{itemize}\n  \\item $\\mathrm{PA}\\geqq1+r$ かつ $\\mathrm{PB}\\geqq1+r$ なら $\\mathrm P\\in K$ で，P を中心に $F$ を置けばよい．\n  \\item $\\mathrm{PB}<1+r$ のとき，$\\mathrm Q=\\mathrm B+\\dfrac{1+r}{\\mathrm{PB}}\\overrightarrow{\\mathrm{BP}}$ とすると $\\mathrm{QB}=1+r$，$\\mathrm{PQ}=1+r-\\mathrm{PB}<r$，$\\angle\\mathrm{ABQ}=\\theta$ で，余弦定理と $\\cos\\theta<\\cos\\alpha=\\dfrac1{1+r}$ より\n  \\[\n  \\mathrm{QA}^2=(1+r)^2+4-4(1+r)\\cos\\theta>(1+r)^2.\n  \\]\n  よって $\\mathrm Q\\in K$．\n  \\item $\\mathrm{PB}\\geqq1+r>\\mathrm{PA}$ のとき，P は B より A に近いので P$(x,y)$ は $x<0$．P が直線 BC $:\\ x+\\dfrac yh=1$ に関して A と反対側にあることから $y>h(1-x)$．$\\varphi=\\angle\\mathrm{BAP}$ とすると，$x\\leqq-1$ なら $\\varphi\\geqq\\dfrac\\pi2>\\alpha$，$-1<x<0$ なら $\\dfrac y{x+1}>\\dfrac{h(1-x)}{1+x}>h=\\tan\\alpha$ より $\\varphi>\\alpha$．そこで $\\mathrm Q=\\mathrm A+\\dfrac{1+r}{\\mathrm{PA}}\\overrightarrow{\\mathrm{AP}}$ とすると，上と同様に $\\mathrm{QA}=1+r$，$\\mathrm{PQ}<r$，$\\mathrm{QB}^2=(1+r)^2+4-4(1+r)\\cos\\varphi>(1+r)^2$ で $\\mathrm Q\\in K$．\n\\end{itemize}\n\n\\textbf{面積．} [2]，[3] より，$H$ で $D,E,W$ のどれにも含まれない点全体は\n「$\\Delta$ の点 P で $\\mathrm{PA}>1$，$\\mathrm{PB}>1$，$\\mathrm{PC}>r$ をみたすもの」全体 $U$ である．$\\Delta$ の中の $D$ の部分は，A を中心とする半径1，中心角 $\\alpha$ の扇形（辺 AB，AC の間）に一致する．実際，辺 BC 上の点 $\\mathrm Y=(1-\\tau)\\mathrm B+\\tau\\mathrm C\\ (0\\leqq\\tau\\leqq1)$ は $\\mathrm{AY}^2=(2-\\tau)^2+\\tau^2h^2>1$ をみたす（$\\tau<1$ なら $(2-\\tau)^2>1$，$\\tau=1$ なら $1+h^2>1$）ので，この扇形の点 X が直線 BC を越えると線分 AX が辺 BC と交わり，その交点 Y で $\\mathrm{AY}\\leqq\\mathrm{AX}\\leqq1$ となって矛盾する．$E$ も同様で中心角 $\\alpha$．C を中心とする半径 $r$ の円板の $\\Delta$ の中の部分は，C から辺 AB への距離が $h>r$ であることから同様に中心角 $\\pi-2\\alpha$ の扇形である．これら3つの扇形は，$D$ と $E$ が O で接し，$\\mathrm{CA}=\\mathrm{CB}=1+r$ より半径 $r$ の円板が $D$，$E$ と接するので，周上の点以外は重ならない．$\\Delta$ の面積は $\\frac12\\cdot2\\cdot h=h$ なので\n\\[\n(U\\text{ の面積})=h-\\frac\\alpha2-\\frac\\alpha2-\\frac{(\\pi-2\\alpha)r^2}2.\n\\]\n$x$ 軸上の点の面積は0なので，対称性から\n\\[\n\\text{(1)}\\qquad S(r)=\\boldsymbol{2\\sqrt{r^2+2r}-2\\alpha-(\\pi-2\\alpha)r^2}.\n\\]\n\n(2) $r=1$ のとき $\\cos\\alpha=\\frac12$ より $\\alpha=\\frac\\pi3$，$h=\\sqrt3$ で，$S(1)=2\\sqrt3-\\dfrac{2\\pi}3-\\dfrac\\pi3=\\boldsymbol{2\\sqrt3-\\pi}$．\n\n(3) $0<\\tau<\\frac\\pi2$ で $T=\\tan\\tau$ とおくと $\\dfrac{dT}{d\\tau}=1+T^2$．\n\\[\ng(\\tau)=\\tau-T+\\frac{T^3}3,\\qquad k(\\tau)=T-\\frac{T^3}3+\\frac{T^5}5-\\tau\n\\]\nとおくと\n\\[\ng'(\\tau)=1-(1+T^2)+T^2(1+T^2)=T^4\\geqq0,\\qquad k'(\\tau)=(1+T^2)(1-T^2+T^4)-1=T^6\\geqq0,\n\\]\n$g(0)=k(0)=0$ より $g(\\tau)\\geqq0$，$k(\\tau)\\geqq0$．$\\tau=\\alpha$（$T=h$）として\n\\[\n\\frac{h^3}3-\\frac{h^5}5\\leqq h-\\alpha\\leqq\\frac{h^3}3.\n\\]\n$h^2=r(r+2)$ より $\\dfrac{h^3}{r\\sqrt r}=(r+2)^{\\frac32}$，$\\dfrac{h^5}{r\\sqrt r}=r(r+2)^{\\frac52}$．よって\n\\[\n\\frac{2}{3}(r+2)^{\\frac32}-\\frac25r(r+2)^{\\frac52}\\leqq\\frac{2(h-\\alpha)}{r\\sqrt r}\\leqq\\frac23(r+2)^{\\frac32}\n\\]\nで，$r\\to+0$ のとき両端は $\\dfrac23\\cdot2\\sqrt2=\\dfrac{4\\sqrt2}3$ に近づく．また $0<(\\pi-2\\alpha)\\dfrac{r^2}{r\\sqrt r}<\\pi\\sqrt r\\to0$．したがって\n\\[\n\\lim_{r\\to+0}\\frac{S(r)}{r\\sqrt r}=\\lim_{r\\to+0}\\left\\{\\frac{2(h-\\alpha)}{r\\sqrt r}-(\\pi-2\\alpha)\\sqrt r\\right\\}=\\boldsymbol{\\frac{4\\sqrt2}3}.\n\\]"
-   }
-  ],
-  "idea": {
-   "tex": "動く円板 F（半径 $r$）の中心の置ける範囲 $K$ は「$\\mathrm A$，$\\mathrm B$ からの距離がともに $1+r$ 以上」で，点 P が覆われる $\\iff$ P から $K$ の点までの距離が $r$ 以下．原題の「2円に同時に接して入り込む位置」は中心 $\\mathrm C(0,h)$ で，三角形 ABC の中の点からは $K$ への最短距離が PC に等しい（線分 PQ が辺 AC を横切る点で三角不等式）．三角形の外では A か B から放射状に押し出した点が $K$ に入る．すき間は三角形から3つの扇形を除いた形で，$r\\to0$ では $\\tan\\alpha-\\alpha$ を $\\tan$ の多項式ではさむ評価が効く．"
-  },
-  "grading": {
-   "format": "lemma-input/1",
-   "spec": "(1) $S(r)$：2sqrt(r^2+2r)-2α-(π-2α)r^2\n(2) $S(1)$：2sqrt(3)-π\n(3) 4sqrt(2)/3"
-  },
-  "methods": [],
-  "tags": [
-   "領域",
-   "距離",
-   "円の接触",
-   "三角不等式",
-   "不等式による評価",
-   "極限"
-  ],
-  "provenance": {
-   "created": "2026-11-19"
-  },
-  "quality": {
-   "status": "published",
-   "checks": {
-    "dual": false,
-    "sympy": true,
-    "human": false
-   },
-   "verified": false
-  }
- },
- {
-  "id": "III-LIM-278",
-  "schema": "lemma.problem/1",
-  "kind": "written",
-  "field": "III-15",
-  "level": 4,
-  "minutes": 30,
-  "theme": "二項係数の逆数の交代和と和の精密な極限",
-  "topic": "二項係数の逆数の交代和と和の精密な極限",
-  "statement": {
-   "tex": "自然数 $n$ に対して $f(n)=\\displaystyle\\sum_{k=0}^{n}\\frac{1}{{}_n\\mathrm C_k}$ とおく．\n\\begin{enumerate}\n  \\item 自然数 $m$ に対して，$\\displaystyle\\sum_{k=0}^{2m}\\frac{(-1)^k}{{}_{2m}\\mathrm C_k}$ を $m$ の式で表せ．\n  \\item 極限 $\\displaystyle\\lim_{n\\to\\infty}n^2\\left\\{f(n)-2-\\frac2n\\right\\}$ を求めよ．\n\\end{enumerate}"
-  },
-  "answer": {
-   "tex": "(1) $\\dfrac{2m+1}{m+1}$　(2) $4$"
-  },
-  "solutions": [
-   {
-    "id": "main",
-    "kind": "main",
-    "tex": "まず，$0\\leqq k\\leqq n$ に対して\n\\begin{align*}\n\\frac1{{}_{n+1}\\mathrm C_k}+\\frac1{{}_{n+1}\\mathrm C_{k+1}}\n&=\\frac{k!\\,(n+1-k)!+(k+1)!\\,(n-k)!}{(n+1)!}\\\\\n&=\\frac{k!\\,(n-k)!\\,(n+2)}{(n+1)!}\n=\\frac{n+2}{n+1}\\cdot\\frac1{{}_n\\mathrm C_k}.\n\\end{align*}\nすなわち $\\dfrac1{{}_n\\mathrm C_k}=\\dfrac{n+1}{n+2}\\left(u_k+u_{k+1}\\right)$，$u_j=\\dfrac1{{}_{n+1}\\mathrm C_j}$．\n\n(1) $n=2m$ として\n\\begin{align*}\n\\sum_{k=0}^{n}\\frac{(-1)^k}{{}_n\\mathrm C_k}\n&=\\frac{n+1}{n+2}\\sum_{k=0}^{n}\\left\\{(-1)^ku_k-(-1)^{k+1}u_{k+1}\\right\\}\\\\\n&=\\frac{n+1}{n+2}\\left\\{u_0-(-1)^{n+1}u_{n+1}\\right\\}\n=\\frac{n+1}{n+2}\\left\\{1+(-1)^n\\right\\}.\n\\end{align*}\n$n=2m$ では $\\dfrac{2(2m+1)}{2m+2}=\\boldsymbol{\\dfrac{2m+1}{m+1}}$．\n\n\n(2) $n\\geqq8$ とする．${}_n\\mathrm C_{k+1}\\div{}_n\\mathrm C_k=\\dfrac{n-k}{k+1}$ は $k\\leqq\\frac{n-1}2$ のとき1以上なので，${}_n\\mathrm C_k$ は $0\\leqq k\\leqq\\frac n2$ で $k$ について増加し，${}_n\\mathrm C_k={}_n\\mathrm C_{n-k}$ と合わせて，$4\\leqq k\\leqq n-4$ では ${}_n\\mathrm C_k\\geqq{}_n\\mathrm C_4$ である．$k=0,n$ の2項の和は $2$，$k=1,n-1$ の和は $\\dfrac2n$，$k=2,n-2$ の和は $\\dfrac{4}{n(n-1)}$，$k=3,n-3$ の和は $\\dfrac{12}{n(n-1)(n-2)}$ で，残りの $n-7$ 個の項はそれぞれ $\\dfrac1{{}_n\\mathrm C_4}=\\dfrac{24}{n(n-1)(n-2)(n-3)}$ 以下で正である．よって\n\\[\n0<f(n)-2-\\frac2n-\\frac{4}{n(n-1)}-\\frac{12}{n(n-1)(n-2)}\\leqq\\frac{24(n-7)}{n(n-1)(n-2)(n-3)}.\n\\]\n各辺に $n^2$ を掛けると\n\\[\n0<n^2\\left\\{f(n)-2-\\frac2n\\right\\}-\\frac{4n}{n-1}-\\frac{12n}{(n-1)(n-2)}\\leqq\\frac{24n(n-7)}{(n-1)(n-2)(n-3)}.\n\\]\n$n\\to\\infty$ で $\\dfrac{4n}{n-1}\\to4$，$\\dfrac{12n}{(n-1)(n-2)}\\to0$，右辺 $\\to0$ なので，はさみうちの原理により\n\\[\n\\lim_{n\\to\\infty}n^2\\left\\{f(n)-2-\\frac2n\\right\\}=\\boldsymbol4.\n\\]\n\\hfill$\\square$"
-   }
-  ],
-  "idea": {
-   "tex": "$\\dfrac{1}{{}_{n+1}\\mathrm C_k}+\\dfrac{1}{{}_{n+1}\\mathrm C_{k+1}}=\\dfrac{n+2}{n+1}\\cdot\\dfrac{1}{{}_n\\mathrm C_k}$ を自分で見つけると，符号を交互につけた和は隣り合う項が打ち消し合って両端だけが残る．和そのものの極限は，両端から4項ずつ（$k=0,1,2,3$ と $k=n,n-1,n-2,n-3$）を取り出し，残りの $n-7$ 項を $\\dfrac{1}{{}_n\\mathrm C_4}$ で一様に上から抑えてはさみうちにする．"
-  },
-  "grading": {
-   "format": "lemma-input/1",
-   "spec": "(1) (2m+1)/(m+1)\n(2) 4"
-  },
-  "methods": [],
-  "tags": [
-   "二項係数",
-   "望遠鏡和",
-   "交代和",
-   "はさみうち",
-   "極限"
-  ],
-  "provenance": {
-   "created": "2026-11-19"
-  },
-  "quality": {
-   "status": "published",
-   "checks": {
-    "dual": false,
-    "sympy": true,
-    "human": false
-   },
-   "verified": false
-  }
- },
- {
-  "id": "III-LIM-279",
-  "schema": "lemma.problem/1",
-  "kind": "written",
-  "field": "III-15",
-  "level": 4,
-  "minutes": 30,
-  "theme": "4次曲線の2接線の交点が弦のどこに来るか",
-  "topic": "4次曲線の2接線の交点が弦のどこに来るか",
-  "statement": {
-   "tex": "$f(x)=x^4-4x^3$ とし，曲線 $C:y=f(x)$ 上に2点 $\\mathrm A(a,f(a))$，$\\mathrm B(b,f(b))$（$a<b$）をとる．$b$ が $a$ に十分近いとき，A における $C$ の接線と B における $C$ の接線は1点で交わる．その交点の $x$ 座標を $p$ とする．\n\\begin{enumerate}\n  \\item 各実数 $a$ に対して，$\\alpha(a)=\\displaystyle\\lim_{b\\to a+0}\\frac{p-a}{b-a}$ を求めよ．\n  \\item 各実数 $a$ に対して，$\\beta(a)=\\displaystyle\\lim_{b\\to a+0}\\frac{1}{b-a}\\left\\{\\frac{p-a}{b-a}-\\alpha(a)\\right\\}$ を求めよ．\n\\end{enumerate}"
-  },
-  "answer": {
-   "tex": "(1) $a\\neq0,2$ のとき $\\alpha(a)=\\dfrac12$，$a=0,2$ のとき $\\alpha(a)=\\dfrac23$　(2) $a\\neq0,2$ のとき $\\beta(a)=\\dfrac{a-1}{6a(a-2)}$，$\\beta(0)=-\\dfrac1{36}$，$\\beta(2)=\\dfrac1{36}$"
-  },
-  "solutions": [
-   {
-    "id": "main",
-    "kind": "main",
-    "tex": "A，B における接線は $y=f'(a)(x-a)+f(a)$，$y=f'(b)(x-b)+f(b)$．$x=p$ で値が等しい条件は\n\\[\n\\{f'(a)-f'(b)\\}(p-a)=f(b)-f(a)-f'(b)(b-a).\n\\]\n$b=a+h$（$h>0$），$f'(x)=4x^3-12x^2$ として計算する．\n\\[\nf(b)-f(a)=4a^3h+6a^2h^2+4ah^3+h^4-4(3a^2h+3ah^2+h^3),\n\\]\n\\[\nf'(b)h=4h(a^3+3a^2h+3ah^2+h^3)-12h(a^2+2ah+h^2)\n\\]\nより\n\\[\nf(b)-f(a)-f'(b)h=-h^2(6a^2-12a+8ah-8h+3h^2),\n\\]\n\\[\nf'(a)-f'(b)=-4\\{(3a^2h+3ah^2+h^3)-3(2ah+h^2)\\}=-4h(3a^2-6a+3ah-3h+h^2).\n\\]\n$A=6a(a-2)$ とおくと\n\\[\nf'(a)-f'(b)=-2h\\{A+(6a-6)h+2h^2\\}.\n\\]\n右辺の $\\{\\ \\}$ は $A\\neq0$ なら $h\\to0$ で $A\\neq0$ に近づき，$a=0$ では $-6h+2h^2=-2h(3-h)$，$a=2$ では $6h+2h^2$ で，いずれも $h$ が十分小さい正の数なら0でない．このとき接線は1点で交わり，\n\\[\nR(h)=\\frac{p-a}{h}=\\frac{A+(8a-8)h+3h^2}{2\\{A+(6a-6)h+2h^2\\}}.\n\\]\n\n(1)・(2) \\textbf{$a\\neq0,2$（$A\\neq0$）のとき．}$R(h)\\to\\dfrac A{2A}=\\dfrac12$．また\n\\[\nR(h)-\\frac12=\\frac{(8a-8)h+3h^2-(6a-6)h-2h^2}{2\\{A+(6a-6)h+2h^2\\}}=\\frac{h\\{(2a-2)+h\\}}{2\\{A+(6a-6)h+2h^2\\}}\n\\]\nより $\\dfrac1h\\left\\{R(h)-\\dfrac12\\right\\}\\to\\dfrac{2a-2}{2A}=\\dfrac{a-1}{6a(a-2)}$．\n\n\\textbf{$a=0$ のとき．}$A=0$ で $R(h)=\\dfrac{-8h+3h^2}{2(-6h+2h^2)}=\\dfrac{8-3h}{4(3-h)}\\to\\dfrac23$．\n\\[\nR(h)-\\frac23=\\frac{3(8-3h)-8(3-h)}{12(3-h)}=\\frac{-h}{12(3-h)}\n\\]\nより $\\dfrac1h\\left\\{R(h)-\\dfrac23\\right\\}\\to-\\dfrac1{36}$．\n\n\\textbf{$a=2$ のとき．}$A=0$ で $R(h)=\\dfrac{8h+3h^2}{2(6h+2h^2)}=\\dfrac{8+3h}{4(3+h)}\\to\\dfrac23$．\n\\[\nR(h)-\\frac23=\\frac{3(8+3h)-8(3+h)}{12(3+h)}=\\frac{h}{12(3+h)}\n\\]\nより $\\dfrac1h\\left\\{R(h)-\\dfrac23\\right\\}\\to\\dfrac1{36}$．\n\n以上より\n\\[\n\\boldsymbol{\\alpha(a)=\\frac12\\ (a\\neq0,2),\\quad \\alpha(0)=\\alpha(2)=\\frac23},\n\\]\n\\[\n\\boldsymbol{\\beta(a)=\\frac{a-1}{6a(a-2)}\\ (a\\neq0,2),\\quad\\beta(0)=-\\frac1{36},\\quad\\beta(2)=\\frac1{36}}.\n\\]\n（$x=0,2$ は $f''(x)=12x(x-2)=0$ となる変曲点であり，そこで比の極限が $\\frac12$ から $\\frac23$ に変わる．）\\hfill$\\square$"
-   }
-  ],
-  "idea": {
-   "tex": "2接線の交点は $(f'(a)-f'(b))(p-a)=f(b)-f(a)-f'(b)(b-a)$ で，$b=a+h$ として $h$ で展開すると比 $\\frac{p-a}{h}$ は $h$ の分数式．$f''(a)\\neq0$ なら極限 $\\frac12$，変曲点（$f''(a)=0$，$f'''(a)\\neq0$）では分子分母の最低次がずれて $\\frac23$ になり，次の項の極限も場合ごとに変わる．"
-  },
-  "methods": [],
-  "tags": [
-   "接線",
-   "交点",
-   "極限",
-   "変曲点",
-   "場合分け"
-  ],
-  "provenance": {
-   "created": "2026-11-19"
   },
   "quality": {
    "status": "published",
@@ -14122,6 +12669,2054 @@
   ],
   "provenance": {
    "created": "2026-11-14"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "III-LIM-310",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "III-15",
+  "level": 4,
+  "minutes": 30,
+  "theme": "$2^a+\\log_2a=4^b+2\\log_4b$ で定まる $a$ の挟み込みと極限",
+  "topic": "$2^a+\\log_2a=4^b+2\\log_4b$ で定まる $a$ の挟み込みと極限",
+  "statement": {
+   "tex": "正の実数 $b$ に対して，等式\n\\[\n2^a+\\log_2a=4^b+2\\log_4b\n\\]\nをみたす正の実数 $a$ を考える．対数 $\\log$ は自然対数とする．\n\\begin{enumerate}\n  \\item 各 $b>0$ に対してこのような $a$ がただ1つ存在し，$b<a<2b$ をみたすことを示せ．\n  \\item (1) の $a$ を $a(b)$ と書く．$\\displaystyle\\lim_{b\\to\\infty}\\bigl(2b-a(b)\\bigr)$ を求めよ．\n  \\item $\\displaystyle\\lim_{b\\to+0}\\frac{a(b)-b}{b^2}$ を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 証明　(2) $0$　(3) $(\\log2)^2$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "$2\\log_4b=\\log_2b$ であり，$f(x)=2^x+\\log_2x$（$x>0$）とおくと条件は $f(a)=4^b+\\log_2b$．\n\n(1) $f$ は $x>0$ で連続かつ増加し，$x\\to+0$ で $2^x\\to1$，$\\log_2x\\to-\\infty$ より $f(x)\\to-\\infty$，$x\\to\\infty$ で $f(x)\\to\\infty$．よって中間値の定理と単調性から，$f(a)=4^b+\\log_2b$ をみたす $a>0$ はただ1つ存在する．\n\\[\n4^b+\\log_2b=f(2b)-1<f(2b),\\qquad 4^b+\\log_2b=f(b)+(4^b-2^b)>f(b)\n\\]\n（$b>0$ より $4^b>2^b$）．$f$ は増加なので $b<a<2b$．\\hfill$\\square$\n\n(2) $a=a(b)$ と書く．$f(2b)-f(a)=1$ より\n\\[\n4^b-2^a=1-\\log_2\\frac{2b}a.\n\\]\n(1) より $1<\\dfrac{2b}a<2$ だから $0<\\log_2\\dfrac{2b}a<1$，よって $0<4^b-2^a<1$．$4^b-2^a=2^a\\left(2^{2b-a}-1\\right)$ より\n\\[\n2^{2b-a}-1<2^{-a}<2^{-b},\\qquad 0<2b-a<\\log_2\\left(1+2^{-b}\\right).\n\\]\n$b\\to\\infty$ で右辺 $\\to\\log_21=0$ なので，はさみうちより $\\displaystyle\\lim_{b\\to\\infty}(2b-a)=\\boldsymbol{0}$．\n\n(3) $f(a)=4^b+\\log_2b$ より，$v=\\log_2\\dfrac ab$ とおくと $v=4^b-2^a$．(1) より $a>b$ なので $v>0$，$a<2b$ なので $2^a<4^b$ で $0<v<4^b-1$．$b\\to+0$ で $4^b-1\\to0$ なので $v\\to+0$，また $b<a<2b$ より $a\\to+0$．\n\n$\\dfrac ab=2^v$ だから\n\\[\n\\frac{a-b}{b^2}=\\frac{2^v-1}b=\\frac{2^v-1}v\\cdot\\frac vb,\\qquad\n\\frac vb=\\frac{4^b-1}b-\\frac{2^a-1}a\\cdot\\frac ab.\n\\]\n$(2^x)'=2^x\\log2$，$(4^x)'=4^x\\log4$ より $\\displaystyle\\lim_{x\\to0}\\frac{2^x-1}x=\\log2$，$\\displaystyle\\lim_{x\\to0}\\frac{4^x-1}x=2\\log2$．また $\\dfrac ab=2^v\\to1$．よって $b\\to+0$ のとき\n\\[\n\\frac vb\\to2\\log2-\\log2\\cdot1=\\log2,\\qquad\\frac{2^v-1}v\\to\\log2\\quad(v\\to+0),\n\\]\nしたがって $\\displaystyle\\lim_{b\\to+0}\\frac{a-b}{b^2}=\\boldsymbol{(\\log2)^2}$．"
+   }
+  ],
+  "idea": {
+   "tex": "$f(x)=2^x+\\log_2x$ は増加関数で，右辺は $f(2b)-1$ とも $f(b)+(4^b-2^b)$ とも書けるので $f(b)<f(a)<f(2b)$．差の大きさ $f(2b)-f(a)=1$，$\\log_2\\frac ab=4^b-2^a$ をそのまま評価すると，$2b-a$ や $\\frac ab$ の極限，さらに $\\frac{a-b}{b^2}$ の極限が微分係数 $\\lim\\frac{2^x-1}x=\\log2$ から出る．"
+  },
+  "methods": [],
+  "tags": [
+   "単調関数",
+   "大小比較",
+   "はさみうち",
+   "指数関数の微分係数"
+  ],
+  "provenance": {
+   "created": "2026-11-22"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "III-LIM-311",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "III-15",
+  "level": 4,
+  "minutes": 30,
+  "theme": "$x_n=x_{n+1}e^{x_{n+1}}$ で定まる数列の減り方",
+  "topic": "$x_n=x_{n+1}e^{x_{n+1}}$ で定まる数列の減り方",
+  "statement": {
+   "tex": "$x_1=1$ とし，$n=1,2,3,\\cdots$ に対して $x_{n+1}$ を，$y$ についての方程式 $ye^y=x_n$ の正の解と定める．\n\\begin{enumerate}\n  \\item $x_{n+1}$ はただ1つに定まり，$0<x_{n+1}<x_n$ であることを示せ．\n  \\item すべての正の整数 $n$ について $\\dfrac1n\\leqq x_n\\leqq\\dfrac2{n+1}$ が成り立つことを示せ．\n  \\item 極限 $\\displaystyle\\lim_{n\\to\\infty}nx_n$ を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 証明　(2) 証明　(3) $1$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) $\\varphi(y)=ye^y$ とおくと，$y\\geqq0$ で $\\varphi'(y)=(1+y)e^y>0$ なので $\\varphi$ は $y\\geqq0$ で増加し，$\\varphi(0)=0$．$x_n>0$ とすると，$\\varphi(x_n)=x_ne^{x_n}>x_n$ だから，中間値の定理により $\\varphi(y)=x_n$ をみたす $y$ が $0<y<x_n$ に存在し，増加性からそれは正の解としてただ1つ．よって $x_{n+1}$ はただ1つに定まり $0<x_{n+1}<x_n$．$x_1=1>0$ から帰納的にすべての $n$ で成り立つ．\\hfill$\\square$\n\n(2) まず $y>0$ で\n\\[\ny-\\frac{y^2}2<1-e^{-y}<y \\tag{$*$}\n\\]\nを示す．$u(y)=y-1+e^{-y}$ は $u(0)=0$，$u'(y)=1-e^{-y}>0$ $(y>0)$ より $y>0$ で $u(y)>0$：右側の不等式．$v(y)=1-e^{-y}-y+\\dfrac{y^2}2$ は $v(0)=0$，$v'(y)=e^{-y}-1+y=u(y)>0$ $(y>0)$ より $v(y)>0$：左側の不等式．\n\n$y=x_{n+1}$ とすると $x_n=ye^y$ だから\n\\[\n\\frac1{x_{n+1}}-\\frac1{x_n}=\\frac1y-\\frac1{ye^y}=\\frac{1-e^{-y}}y .\n\\]\n$(*)$ より\n\\[\n1-\\frac{x_{n+1}}2<\\frac1{x_{n+1}}-\\frac1{x_n}<1 . \\tag{$**$}\n\\]\n右側を $n=1,\\cdots,n-1$ で加えると $\\dfrac1{x_n}-1<n-1$ $(n\\geqq2)$，よって $x_n>\\dfrac1n$．$n=1$ では等号．\n\nまた (1) より $n\\geqq1$ で $x_{n+1}<x_1=1$ なので，$(**)$ の左側から $\\dfrac1{x_{n+1}}-\\dfrac1{x_n}>\\dfrac12$．これを加えると $\\dfrac1{x_n}-1>\\dfrac{n-1}2$ $(n\\geqq2)$，よって $x_n<\\dfrac2{n+1}$．$n=1$ では等号．以上で $\\dfrac1n\\leqq x_n\\leqq\\dfrac2{n+1}$．\\hfill$\\square$\n\n(3) (2) より $x_{k+1}\\leqq\\dfrac2{k+2}$ なので，$(**)$ の左側から $\\dfrac1{x_{k+1}}-\\dfrac1{x_k}>1-\\dfrac1{k+2}$．$k=1,\\cdots,n-1$ で加えると，$n\\geqq2$ で\n\\[\n\\frac1{x_n}>1+(n-1)-\\sum_{j=3}^{n+1}\\frac1j=n-H_n,\\qquad H_n=\\sum_{j=3}^{n+1}\\frac1j .\n\\]\n$j-1\\leqq x\\leqq j$ で $\\dfrac1x\\geqq\\dfrac1j$（等号は $x=j$ のみ）より $\\dfrac1j<\\displaystyle\\int_{j-1}^{j}\\frac{dx}x$ なので，$H_n<\\displaystyle\\int_2^{n+1}\\frac{dx}x=\\log\\frac{n+1}2$．\n\nさらに $t>0$ で $\\log t=2\\log\\sqrt t\\leqq2(\\sqrt t-1)<2\\sqrt t$（$\\log s\\leqq s-1$ は $w(s)=s-1-\\log s$ が $s=1$ で最小値0をとることから）．よって\n\\[\n0<\\frac{H_n}n<\\frac{2}{n}\\sqrt{\\frac{n+1}2}=\\sqrt{\\frac{2(n+1)}{n^2}}\\ \\longrightarrow\\ 0\\quad(n\\to\\infty).\n\\]\nとくに十分大きい $n$ で $H_n<n$ であり，そのとき (2) と合わせて\n\\[\n1\\leqq nx_n<\\frac{n}{n-H_n}=\\frac1{1-\\dfrac{H_n}n}.\n\\]\n右辺 $\\to1$ なので，はさみうちの原理により $\\displaystyle\\lim_{n\\to\\infty}nx_n=\\boldsymbol{1}$．"
+   }
+  ],
+  "idea": {
+   "tex": "次の項が方程式の解として陰に定まる漸化式．原題（$x_n=x_{n+1}+\\log(1+x_{n+1})$）は1次の評価で等比的にはさむが，$x_n=x_{n+1}e^{x_{n+1}}$ では $\\dfrac1{x_{n+1}}-\\dfrac1{x_n}=\\dfrac{1-e^{-y}}{y}$（$y=x_{n+1}$）となり，逆数の階差がほぼ1．$y-\\dfrac{y^2}2<1-e^{-y}<y$ で階差をはさみ，粗い評価を1回代入し直してから和をとる．"
+  },
+  "methods": [],
+  "tags": [
+   "陰に定まる漸化式",
+   "逆数の階差",
+   "不等式による評価",
+   "はさみうち"
+  ],
+  "provenance": {
+   "created": "2026-11-22"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "III-LIM-312",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "III-15",
+  "level": 5,
+  "minutes": 40,
+  "theme": "$a_{n+1}=a_n-a_n^3$ の減衰の速さ",
+  "topic": "$a_{n+1}=a_n-a_n^3$ の減衰の速さ",
+  "statement": {
+   "tex": "数列 $\\{a_n\\}$ を\n\\[\na_1=\\frac12,\\qquad a_{n+1}=a_n-a_n^3\\quad(n=1,2,3,\\dots)\n\\]\nで定め，$T_n=a_1^3+a_2^3+\\cdots+a_n^3$ とおく．\n\\begin{enumerate}\n  \\item すべての $n$ について $0<a_{n+1}<a_n\\leqq\\dfrac12$ が成り立つことを示し，$T_n$ を $a_{n+1}$ で表せ．\n  \\item すべての $n$ について $2\\leqq\\dfrac1{a_{n+1}^2}-\\dfrac1{a_n^2}\\leqq2+\\dfrac{16}3a_n^2$ を示せ．\n  \\item すべての $n$ について $2n+2\\leqq\\dfrac1{a_n^2}\\leqq2n+2+\\dfrac83\\log n$ を示せ．\n  \\item 極限 $\\displaystyle\\lim_{n\\to\\infty}\\sqrt n\\,a_n$ と $\\displaystyle\\lim_{n\\to\\infty}\\sqrt n\\left(\\frac12-T_n\\right)$ を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 証明，$T_n=\\dfrac12-a_{n+1}$　(2) 証明　(3) 証明　(4) ともに $\\dfrac{\\sqrt2}2$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) $a_1=\\frac12$．$0<a_n\\leqq\\frac12$ と仮定すると $0<1-a_n^2<1$ なので $a_{n+1}=a_n(1-a_n^2)$ は $0<a_{n+1}<a_n\\leqq\\frac12$ をみたす．帰納法で示された．また $a_k^3=a_k-a_{k+1}$ を $k=1,\\dots,n$ で加えて\n\\[\n\\boldsymbol{T_n=a_1-a_{n+1}=\\frac12-a_{n+1}} .\n\\]\n\n(2) $u=a_n^2$ とおくと $0<u\\leqq\\frac14$ で $a_{n+1}^2=u(1-u)^2$．\n\\[\n\\frac1{a_{n+1}^2}-\\frac1{a_n^2}=\\frac{1-(1-u)^2}{u(1-u)^2}=\\frac{2-u}{(1-u)^2},\\qquad\n\\frac{2-u}{(1-u)^2}-2=\\frac{u(3-2u)}{(1-u)^2}.\n\\]\n$0<u\\leqq\\frac14$ より $3-2u>0$ なので右の式は正．また $3-2u<3$，$(1-u)^2\\geqq\\frac9{16}$ より $\\dfrac{u(3-2u)}{(1-u)^2}\\leqq\\dfrac{3u}{9/16}=\\dfrac{16}3u$．よって $2\\leqq\\dfrac1{a_{n+1}^2}-\\dfrac1{a_n^2}\\leqq2+\\dfrac{16}3a_n^2$．\\hfill$\\square$\n\n(3) $b_n=\\dfrac1{a_n^2}$ とおく．$b_1=4$．(2) の左側から $b_n\\geqq4+2(n-1)=2n+2$，すなわち $a_n^2\\leqq\\dfrac1{2n+2}$．これを (2) の右側に用いて\n\\[\nb_{j+1}-b_j\\leqq2+\\frac{16}{3}\\cdot\\frac1{2j+2}=2+\\frac83\\cdot\\frac1{j+1}.\n\\]\n$n=1$ では示すべき式は $4\\leqq4\\leqq4$ で成り立つ．$n\\geqq2$ のとき $j=1,\\dots,n-1$ で加えて\n\\[\nb_n\\leqq2n+2+\\frac83\\sum_{i=2}^{n}\\frac1i .\n\\]\n$i\\geqq2$ に対し，$i-1<x<i$ で $\\frac1x>\\frac1i$ だから $\\frac1i<\\displaystyle\\int_{i-1}^{i}\\frac{dx}x$．よって $\\displaystyle\\sum_{i=2}^n\\frac1i<\\int_1^n\\frac{dx}x=\\log n$ で，$b_n\\leqq2n+2+\\dfrac83\\log n$．\\hfill$\\square$\n\n(4) まず $x\\geqq1$ で $\\log x\\leqq2\\sqrt x$ を示す．$h(x)=2\\sqrt x-\\log x$ とおくと $h'(x)=\\dfrac1{\\sqrt x}-\\dfrac1x=\\dfrac{\\sqrt x-1}{x}\\geqq0$，$h(1)=2>0$ より $h(x)>0$．\n\n(3) から\n\\[\n\\frac{1}{2+\\frac2n+\\frac{16}{3\\sqrt n}}\\leqq\\frac{n}{2n+2+\\frac83\\log n}\\leqq na_n^2\\leqq\\frac{n}{2n+2}=\\frac1{2+\\frac2n}.\n\\]\n両端はともに $n\\to\\infty$ で $\\frac12$ に収束するから，はさみうちの原理により $na_n^2\\to\\frac12$．$a_n>0$ より $\\sqrt n\\,a_n=\\sqrt{na_n^2}\\to\\boldsymbol{\\dfrac{\\sqrt2}2}$．\n\nまた (1) より $\\sqrt n\\left(\\frac12-T_n\\right)=\\sqrt n\\,a_{n+1}=\\sqrt{\\dfrac n{n+1}}\\cdot\\sqrt{n+1}\\,a_{n+1}\\to1\\cdot\\dfrac{\\sqrt2}2=\\boldsymbol{\\dfrac{\\sqrt2}2}$．"
+   }
+  ],
+  "idea": {
+   "tex": "$a_k^3=a_k-a_{k+1}$ で3乗の和は差の和に縮む．$b_n=\\frac1{a_n^2}$ とおくと $b_{n+1}-b_n=\\frac{2-a_n^2}{(1-a_n^2)^2}$ は $2$ 以上で，$2$ からのずれは $a_n^2$ の定数倍で抑えられる．まず粗い評価 $b_n\\geqq2n+2$ を得てそれをずれの評価に戻し，$\\sum\\frac1j\\leqq\\log n$ で補正項を抑えてはさみうちにする．"
+  },
+  "methods": [],
+  "tags": [
+   "漸化式",
+   "逆数の2乗",
+   "はさみうち",
+   "対数による評価"
+  ],
+  "provenance": {
+   "created": "2026-11-22"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "III-LIM-313",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "III-15",
+  "level": 3,
+  "minutes": 30,
+  "theme": "2つの不動点の間での反復と不動点の間隔",
+  "topic": "2つの不動点の間での反復と不動点の間隔",
+  "statement": {
+   "tex": "$a>0$ とし，$f(x)=ax^2+bx+c$ とする．方程式 $f(x)=x$ は2つの実数解 $x_1$，$x_2$（$x_1<x_2$）をもつとする．\n\\begin{enumerate}\n  \\item $x_2-x_1\\leqq\\dfrac1a$ のとき，放物線 $y=f(x)$ の軸を $x=x_0$ とすると $x_0\\leqq x_1$ であることを示せ．\n  \\item 「$x_1<x<x_2$ をみたすすべての $x$ に対して $x_1<f(x)<x$」が成り立つための必要十分条件は $x_2-x_1\\leqq\\dfrac1a$ であることを示せ．\n  \\item $x_2-x_1\\leqq\\dfrac1a$ とし，$x_1<p<x_2$ をみたす $p$ に対して数列 $\\{u_n\\}$ を $u_1=p$，$u_{n+1}=f(u_n)$ で定める．$\\displaystyle\\lim_{n\\to\\infty}u_n=x_1$ を示せ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 証明　(2) 証明　(3) 証明"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "$f(x)-x=a(x-x_1)(x-x_2)$ である．$d=x_2-x_1>0$ とおく．\n\n(1) $f(x)-x=ax^2+(b-1)x+c$ の解と係数の関係から $x_1+x_2=\\dfrac{1-b}a$，よって $b=1-a(x_1+x_2)$．軸は\n\\[x_0=-\\frac b{2a}=\\frac{x_1+x_2}2-\\frac1{2a}=x_1+\\frac12\\Bigl(d-\\frac1a\\Bigr)\\leqq x_1.\\]\n\\hfill$\\square$\n\n(2) $x_1<x<x_2$ のとき $f(x)-x=a(x-x_1)(x-x_2)<0$ だから $f(x)<x$ はつねに成り立つ．また\n\\[f(x)-x_1=(x-x_1)+a(x-x_1)(x-x_2)=(x-x_1)\\{1-a(x_2-x)\\}\\]\nで $x-x_1>0$ である．\n\n$d\\leqq\\dfrac1a$ のとき：$x_1<x<x_2$ ならば $0<a(x_2-x)<ad\\leqq1$ なので $1-a(x_2-x)>0$，よって $f(x)>x_1$．\n\n$d>\\dfrac1a$ のとき：$x=x_2-\\dfrac1a$ とおくと $x_1<x<x_2$ であり，$1-a(x_2-x)=0$ より $f(x)=x_1$．よって「$x_1<f(x)$」が成り立たない $x$ がある．\n\n以上より必要十分条件は $d\\leqq\\dfrac1a$ である．\\hfill$\\square$\n\n(3) まず $x_1<u_n\\leqq p$ をすべての $n$ について帰納法で示す．$n=1$ では成り立つ．$x_1<u_n\\leqq p<x_2$ ならば (2) より $x_1<f(u_n)<u_n$，すなわち $x_1<u_{n+1}<u_n\\leqq p$．\n\n次に $r=1-a(x_2-p)$ とおく．$0<a(x_2-p)<ad\\leqq1$ より $0<r<1$．$u_n\\leqq p$ より $x_2-u_n\\geqq x_2-p$ なので，(2) の式から\n\\[0<u_{n+1}-x_1=(u_n-x_1)\\{1-a(x_2-u_n)\\}\\leqq r(u_n-x_1).\\]\nこれをくり返して $0<u_n-x_1\\leqq r^{n-1}(p-x_1)$．$0<r<1$ より右辺は $0$ に収束するから，はさみうちの原理により $\\displaystyle\\lim_{n\\to\\infty}u_n=x_1$．\\hfill$\\square$"
+   }
+  ],
+  "idea": {
+   "tex": "$f(x)-x=a(x-x_1)(x-x_2)$ と因数分解し，$f(x)-x_1=(x-x_1)\\{1-a(x_2-x)\\}$ と書き直す．因子 $1-a(x_2-x)$ の符号が「$f(x)$ が $x_1$ を越えるか」を決め，その条件はちょうど $x_2-x_1\\leqq\\dfrac1a$．同じ式から反復で $x_1$ までの距離が一定の割合以下に縮むことも読める．軸の位置は $x_1+x_2=\\dfrac{1-b}a$ から決まる．"
+  },
+  "methods": [],
+  "tags": [
+   "2次関数",
+   "不動点",
+   "因数分解",
+   "数列の極限",
+   "はさみうち"
+  ],
+  "provenance": {
+   "created": "2026-11-22"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "III-LIM-314",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "III-15",
+  "level": 4,
+  "minutes": 35,
+  "theme": "2つの対称性と短い区間での加法性から決まる関数",
+  "topic": "2つの対称性と短い区間での加法性から決まる関数",
+  "statement": {
+   "tex": "実数全体で定義された関数 $f(x)$ が次の条件 (i)，(ii)，(iii) をみたしている．\n\\begin{enumerate}[label=(\\roman*)]\n  \\item $y=f(x)$ のグラフは原点に関して対称であり，直線 $x=1$ に関しても対称である．\n  \\item $0\\leqq x_1\\leqq\\dfrac12$，$0\\leqq x_2\\leqq\\dfrac12$ をみたすすべての $x_1$，$x_2$ に対して $f(x_1+x_2)=f(x_1)+f(x_2)$．\n  \\item $0\\leqq x<y\\leqq1$ ならば $f(x)\\leqq f(y)$ であり，$f(1)=1$．\n\\end{enumerate}\n\\begin{enumerate}\n  \\item すべての実数 $x$ に対して $f(x+4)=f(x)$ が成り立つことを示せ．\n  \\item $0\\leqq x\\leqq1$ のとき $f(x)=x$ であることを示せ．\n  \\item 方程式 $15f(x)=x$ の実数解の個数を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 証明　(2) 証明　(3) $15$ 個"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(i) は「すべての $x$ で $f(-x)=-f(x)$ かつ $f(2-x)=f(x)$」と同じである．\n\n(1) $f(2-x)=f(x)$ の $x$ に $-x$ を代入すると $f(2+x)=f(-x)=-f(x)$．これを2回使うと\n\\[f(x+4)=-f(x+2)=f(x).\\tag*{$\\square$}\\]\n\n(2) 奇関数なので $f(0)=-f(0)$，$f(0)=0$．\n$0\\leqq x\\leqq1$ のとき $0\\leqq\\dfrac x2\\leqq\\dfrac12$ だから，(ii) で $x_1=x_2=\\dfrac x2$ として\n\\[f(x)=2f\\!\\left(\\frac x2\\right)\\qquad(0\\leqq x\\leqq1).\\tag{a}\\]\n{\\bf 主張．}0以上の整数 $n$ と $0\\leqq j\\leqq2^n$ をみたす整数 $j$ に対して $f\\!\\left(\\dfrac j{2^n}\\right)=\\dfrac j{2^n}$．\n\n$n$ についての数学的帰納法で示す．$n=0$ では $f(0)=0$，$f(1)=1$ で正しい．$n$ で正しいとし，$0\\leqq j\\leqq2^{n+1}$ とする．\n\\begin{itemize}\n  \\item $j\\leqq2^n$ のとき：$\\dfrac j{2^n}\\in[0,1]$ だから (a) と仮定より $f\\!\\left(\\dfrac j{2^{n+1}}\\right)=\\dfrac12f\\!\\left(\\dfrac j{2^n}\\right)=\\dfrac j{2^{n+1}}$．\n  \\item $j>2^n$ のとき：$\\dfrac j{2^{n+1}}=\\dfrac12+\\dfrac{j-2^n}{2^{n+1}}$ で，$0<j-2^n\\leqq2^n$ より2つの数はともに $\\left[0,\\dfrac12\\right]$ に入る．(ii) と，前の場合（$j=2^n$ と $j-2^n$）の結果から\n  \\[f\\!\\left(\\frac j{2^{n+1}}\\right)=f\\!\\left(\\frac12\\right)+f\\!\\left(\\frac{j-2^n}{2^{n+1}}\\right)=\\frac12+\\frac{j-2^n}{2^{n+1}}=\\frac j{2^{n+1}}.\\]\n\\end{itemize}\nよって $n+1$ でも正しい．\n\n次に $0\\leqq x<1$ とし，正の整数 $n$ に対して $j=[2^nx]$（ガウス記号）とおく．$j\\leqq2^nx<j+1$ で，$2^nx<2^n$ より $j\\leqq2^n-1$，したがって $0\\leqq\\dfrac j{2^n}\\leqq x<\\dfrac{j+1}{2^n}\\leqq1$．(iii) と主張より\n\\[\\frac j{2^n}=f\\!\\left(\\frac j{2^n}\\right)\\leqq f(x)\\leqq f\\!\\left(\\frac{j+1}{2^n}\\right)=\\frac{j+1}{2^n}.\\]\n$\\dfrac j{2^n}>x-\\dfrac1{2^n}$，$\\dfrac{j+1}{2^n}\\leqq x+\\dfrac1{2^n}$ だから $|f(x)-x|\\leqq\\dfrac1{2^n}$ がすべての正の整数 $n$ で成り立つ．$n\\to\\infty$ とすると，はさみうちの原理により $f(x)=x$．$x=1$ では $f(1)=1$．よって $0\\leqq x\\leqq1$ で $f(x)=x$．\\hfill$\\square$\n\n(3) {\\bf $f$ の形．}(2) と奇関数であることから，$-1\\leqq x\\leqq1$ で $f(x)=x$．$1\\leqq x\\leqq3$ では $-1\\leqq2-x\\leqq1$ なので $f(x)=f(2-x)=2-x$．これと (1) から，整数 $m$ に対して\n\\[f(x)=\\begin{cases}x-4m&(4m-1\\leqq x\\leqq4m+1)\\\\4m+2-x&(4m+1\\leqq x\\leqq4m+3)\\end{cases}\\]\nであり，つねに $-1\\leqq f(x)\\leqq1$．\n\n{\\bf 解の個数．}$g(x)=15f(x)-x$ とおくと $g$ は奇関数なので，$x>0$ の解の個数を $N$ とすれば全体は $2N+1$ 個（$x=0$ は解）．$g(x)=0$ なら $|x|=15|f(x)|\\leqq15$ だから，$0<x\\leqq15$ で調べればよい．\n\\begin{itemize}\n  \\item $0<x\\leqq1$：$g(x)=14x>0$ で解はない．\n  \\item $4m+1\\leqq x\\leqq4m+3$（$m=0,1,2,3$）：$g(x)=60m+30-16x$ は狭義減少で，\n  \\[g(4m+1)=14-4m>0,\\qquad g(4m+3)=-4m-18<0.\\]\n  よって各区間に解がちょうど1個（端点ではない）．合計4個．\n  \\item $4m-1\\leqq x\\leqq4m+1$（$m=1,2,3$）：$g(x)=14x-60m$ は狭義増加で，\n  \\[g(4m-1)=-4m-14<0,\\qquad g(4m+1)=14-4m>0.\\]\n  よって各区間に解がちょうど1個（端点ではない）．合計3個．\n\\end{itemize}\nこれらの区間は $1\\leqq x\\leqq15$ をすき間なく覆い，どの端点でも $g\\neq0$ なので重複はない．よって $N=7$ で，解の個数は $2\\cdot7+1=\\boldsymbol{15}$ 個．"
+   }
+  ],
+  "idea": {
+   "tex": "グラフの2つの対称性（原点対称と直線 $x=1$ に関する対称）を合成すると平行移動 $f(x+2)=-f(x)$ が得られ，周期4が出る．短い区間 $\\left[0,\\dfrac12\\right]$ だけで成り立つ関数方程式からは「半分に分ける」ことで $\\dfrac{j}{2^n}$ の形の点での値がすべて決まり，単調性による挟み込みで区間全体の値が決まる．原題は乗法型 $f(x_1+x_2)=f(x_1)f(x_2)$ と偶関数で周期2を示すが，捻りでは加法型と奇関数にして周期4の折れ線を決定し，方程式の解の個数を数える．"
+  },
+  "methods": [],
+  "tags": [
+   "関数方程式",
+   "周期",
+   "奇関数",
+   "線対称",
+   "はさみうち",
+   "ガウス記号",
+   "方程式の解の個数"
+  ],
+  "provenance": {
+   "created": "2026-11-22"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "III-LIM-315",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "III-15",
+  "level": 4,
+  "minutes": 35,
+  "theme": "接線が弦に平行になる点の列と重みつきの和",
+  "topic": "接線が弦に平行になる点の列と重みつきの和",
+  "statement": {
+   "tex": "$f(x)=x^4+x^2$ とし，曲線 $C:y=f(x)$ を考える．正の数の列 $x_1,x_2,x_3,\\cdots$ を次のように定める：$x_1=1$ とし，$x_n$ が定まったとき，$0<t<x_n$ の範囲にあって「$C$ 上の点 $(t,f(t))$ における $C$ の接線が，原点 O と点 $(x_n,f(x_n))$ を結ぶ直線に平行」となる $t$ を $x_{n+1}$ とする．\n\\begin{enumerate}\n  \\item このような $t$ がつねにただ1つ存在することを示し，$x_n$ と $x_{n+1}$ がみたす関係式を求めよ．\n  \\item すべての正の整数 $n$ について\n  \\[\\left(\\frac12\\right)^{n-1}\\leqq x_n\\leqq\\left(\\frac34\\right)^{n-1}\\]\n  が成り立つことを示せ．\n  \\item $\\displaystyle\\lim_{N\\to\\infty}\\sum_{n=1}^{N}\\left(x_n+3x_n^{\\,3}\\right)$ を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 証明，$4x_{n+1}^{\\,3}+2x_{n+1}=x_n^{\\,3}+x_n$　(2) 証明　(3) $6$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "$f'(x)=4x^3+2x$ である．$g(t)=4t^3+2t$ とおくと $g'(t)=12t^2+2>0$ なので，$g(t)$ は実数全体で増加する連続関数で，$g(0)=0$ である．\n\n(1) $x_n>0$ が定まっているとする．原点と点 $(x_n,f(x_n))$ を結ぶ直線の傾きは $\\dfrac{f(x_n)}{x_n}=x_n^{\\,3}+x_n$，点 $(t,f(t))$ における接線の傾きは $g(t)$ だから，条件は $g(t)=x_n^{\\,3}+x_n$ である．\n\\[g(0)=0<x_n^{\\,3}+x_n,\\qquad g(x_n)-(x_n^{\\,3}+x_n)=3x_n^{\\,3}+x_n>0\\]\nで，$g$ は区間 $[0,x_n]$ で連続だから，中間値の定理により $g(t)=x_n^{\\,3}+x_n$ となる $t$ が $0<t<x_n$ に存在する．$g$ は増加関数なので，そのような $t$ はただ1つである．よって $x_1=1$ から順に，正の数 $x_2,x_3,\\cdots$ がただ1通りに定まり，\n\\[\\boldsymbol{4x_{n+1}^{\\,3}+2x_{n+1}=x_n^{\\,3}+x_n}\\qquad(\\text{すなわち }g(x_{n+1})=x_n^{\\,3}+x_n)\\]\nが成り立つ．また作り方から $0<x_{n+1}<x_n$ である．\\hfill$\\square$\n\n(2) {\\bf 下からの評価．}$x_{n+1}>\\dfrac{x_n}2$ を示す．もし $x_{n+1}\\leqq\\dfrac{x_n}2$ なら，$g$ は増加関数だから\n\\[x_n^{\\,3}+x_n=g(x_{n+1})\\leqq g\\!\\left(\\frac{x_n}2\\right)=\\frac{x_n^{\\,3}}2+x_n<x_n^{\\,3}+x_n\\]\nとなり矛盾する．よって $x_{n+1}>\\dfrac{x_n}2$．$x_1=1=\\left(\\dfrac12\\right)^0$ であり，$x_n\\geqq\\left(\\dfrac12\\right)^{n-1}$ ならば $x_{n+1}>\\dfrac12x_n\\geqq\\left(\\dfrac12\\right)^n$ だから，数学的帰納法により $x_n\\geqq\\left(\\dfrac12\\right)^{n-1}$ がすべての $n$ で成り立つ．\n\n{\\bf 上からの評価．}まず $x_2<\\dfrac1{\\sqrt2}$ を示す．$x_2$ は $g(x_2)=1^3+1=2$ をみたし，\n\\[g\\!\\left(\\frac1{\\sqrt2}\\right)=\\frac4{2\\sqrt2}+\\frac2{\\sqrt2}=\\sqrt2+\\sqrt2=2\\sqrt2>2=g(x_2)\\]\nで $g$ は増加関数だから $x_2<\\dfrac1{\\sqrt2}$ である．\n\n次に，関係式と $x_{n+1}>0$ より\n\\[2x_{n+1}<4x_{n+1}^{\\,3}+2x_{n+1}=x_n(1+x_n^{\\,2})\\quad\\text{すなわち}\\quad x_{n+1}<\\frac{1+x_n^{\\,2}}2\\,x_n.\\]\n$n\\geqq2$ のとき，$x_1>x_2>x_3>\\cdots$ より $0<x_n\\leqq x_2<\\dfrac1{\\sqrt2}$，よって $x_n^{\\,2}<\\dfrac12$ で，$x_{n+1}<\\dfrac{1+\\frac12}2x_n=\\dfrac34x_n$．\n$n=1$ のときも，$\\left(\\dfrac1{\\sqrt2}\\right)^2=\\dfrac12<\\dfrac9{16}=\\left(\\dfrac34\\right)^2$ より $x_2<\\dfrac1{\\sqrt2}<\\dfrac34=\\dfrac34x_1$．\nしたがってすべての $n\\geqq1$ で $x_{n+1}<\\dfrac34x_n$．$x_1=1=\\left(\\dfrac34\\right)^0$ から帰納法により $x_n\\leqq\\left(\\dfrac34\\right)^{n-1}$．\n\n以上で $\\left(\\dfrac12\\right)^{n-1}\\leqq x_n\\leqq\\left(\\dfrac34\\right)^{n-1}$ が示された（等号は $n=1$ のときのみ）．\\hfill$\\square$\n\n(3) $T_N=\\displaystyle\\sum_{n=1}^N(x_n+3x_n^{\\,3})$ とおく．関係式を $n=1,2,\\cdots,N$ について加えると\n\\[\\sum_{n=1}^N(x_n^{\\,3}+x_n)=\\sum_{n=1}^N(4x_{n+1}^{\\,3}+2x_{n+1})=\\sum_{n=2}^{N+1}(4x_n^{\\,3}+2x_n).\\]\n右辺は\n\\[\\sum_{n=1}^{N}(4x_n^{\\,3}+2x_n)-(4x_1^{\\,3}+2x_1)+(4x_{N+1}^{\\,3}+2x_{N+1})=\\sum_{n=1}^{N}(4x_n^{\\,3}+2x_n)-6+4x_{N+1}^{\\,3}+2x_{N+1}\\]\nだから，左辺を移項して\n\\[0=\\sum_{n=1}^N(3x_n^{\\,3}+x_n)-6+4x_{N+1}^{\\,3}+2x_{N+1},\\qquad\\text{すなわち}\\qquad T_N=6-4x_{N+1}^{\\,3}-2x_{N+1}.\\]\n(2) より $0<x_{N+1}\\leqq\\left(\\dfrac34\\right)^N$ で，$\\displaystyle\\lim_{N\\to\\infty}\\left(\\frac34\\right)^N=0$ だから，はさみうちの原理により $\\displaystyle\\lim_{N\\to\\infty}x_{N+1}=0$，したがって $\\displaystyle\\lim_{N\\to\\infty}x_{N+1}^{\\,3}=0$．よって\n\\[\\lim_{N\\to\\infty}\\sum_{n=1}^{N}\\left(x_n+3x_n^{\\,3}\\right)=\\boldsymbol{6}.\\]"
+   }
+  ],
+  "idea": {
+   "tex": "「点 $(x_{n+1},f(x_{n+1}))$ での接線が，原点と点 $(x_n,f(x_n))$ を結ぶ直線に平行」は $f'(x_{n+1})=\\dfrac{f(x_n)}{x_n}$ という陰に定まる漸化式になり，左辺の増加関数 $g(t)=f'(t)$ との大小比較で比 $\\dfrac{x_{n+1}}{x_n}$ を上下からはさめる．原題は $f(x)=x^3+x^2$ で $x_n$ を2つの等比数列ではさむだけだが，捻りでは4次式にして上からの比を $x_2$ の評価から自分で作り，さらに関係式を $n$ について足し合わせると両辺の和がずれて打ち消し合い，$x_n$ と $x_n^3$ の重みつきの和の極限が厳密に求まることを見る．"
+  },
+  "methods": [],
+  "tags": [
+   "接線の傾き",
+   "中間値の定理",
+   "数列の評価",
+   "はさみうちの原理",
+   "和の打ち消し"
+  ],
+  "provenance": {
+   "created": "2026-11-22"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "III-LIM-316",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "III-15",
+  "level": 4,
+  "minutes": 35,
+  "theme": "両端から組にして積をはさむ",
+  "topic": "両端から組にして積をはさむ",
+  "statement": {
+   "tex": "$F(x)=e^x+e^{-x}$ とし，正の整数 $n$ に対して $P_n=F(1)F(2)F(3)\\cdots F(n)$ とおく．\n\\begin{enumerate}\n  \\item すべての実数 $s$，$t$ に対して $F(s)F(t)=F(s+t)+F(s-t)$ が成り立つことを示せ．また，$F(s)F(t)\\geqq\\left\\{F\\!\\left(\\dfrac{s+t}2\\right)\\right\\}^2$ を示し，等号が成り立つ条件を求めよ．\n  \\item $n\\geqq2$ のとき\n  \\[\\left\\{F\\!\\left(\\frac{n+1}2\\right)\\right\\}^n<P_n\\leqq\\{F(1)F(n)\\}^{\\frac n2}\\]\n  が成り立つことを示せ．また，右側の不等式で等号が成り立つ $n$ を求めよ．\n  \\item 極限 $\\displaystyle\\lim_{n\\to\\infty}\\frac{\\log P_n}{n^2}$ を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 証明（等号は $s=t$ のとき）　(2) 証明，等号は $n=2$ のとき　(3) $\\dfrac12$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) 展開すると\n\\[F(s)F(t)=e^{s+t}+e^{-(s+t)}+e^{s-t}+e^{-(s-t)}=F(s+t)+F(s-t).\\]\n特に $s=t=\\dfrac w2$ とおくと $\\left\\{F\\!\\left(\\dfrac w2\\right)\\right\\}^2=F(w)+F(0)=F(w)+2$．よって\n\\[F(s)F(t)-\\left\\{F\\!\\left(\\frac{s+t}2\\right)\\right\\}^2=F(s-t)-2.\\]\nここで $F(-x)=F(x)$，$x>0$ で $F'(x)=e^x-e^{-x}>0$ だから，$F(x)$ は $|x|$ について狭義に増加し，$F(x)\\geqq F(0)=2$，等号は $x=0$ のときに限る．よって $F(s)F(t)\\geqq\\left\\{F\\!\\left(\\dfrac{s+t}2\\right)\\right\\}^2$，等号は $\\boldsymbol{s=t}$ のときに限る．\\hfill$\\square$\n\n(2) $P_n>0$ で，積の順序を逆にしたものを掛けると\n\\[P_n{}^2=\\{F(1)F(n)\\}\\{F(2)F(n-1)\\}\\cdots\\{F(n)F(1)\\}\\]\nとなり，右辺は $k=1,2,\\cdots,n$ についての $n$ 個の因数 $F(k)F(n+1-k)$ の積である．(1) より $F(k)F(n+1-k)=F(n+1)+F(2k-n-1)$ である．\n\n{\\bf 下から．}$F(2k-n-1)\\geqq2$ より各因数は $F(n+1)+2=\\left\\{F\\!\\left(\\dfrac{n+1}2\\right)\\right\\}^2$ 以上．$k=1$ では $2k-n-1=1-n\\neq0$（$n\\geqq2$）なので，この因数については真の不等号．よって $P_n{}^2>\\left\\{F\\!\\left(\\dfrac{n+1}2\\right)\\right\\}^{2n}$ で，両辺正だから $P_n>\\left\\{F\\!\\left(\\dfrac{n+1}2\\right)\\right\\}^n$．\n\n{\\bf 上から．}$1\\leqq k\\leqq n$ より $-(n-1)\\leqq2k-n-1\\leqq n-1$，つまり $|2k-n-1|\\leqq n-1$．$F$ は $|x|$ について増加するので $F(2k-n-1)\\leqq F(n-1)$，各因数は $F(n+1)+F(n-1)=F(1)F(n)$ 以下（(1) で $s=n$，$t=1$）．よって $P_n{}^2\\leqq\\{F(1)F(n)\\}^n$，$P_n\\leqq\\{F(1)F(n)\\}^{\\frac n2}$．\\hfill$\\square$\n\n{\\bf 等号．}等号はすべての $k$ で $|2k-n-1|=n-1$，すなわち各 $k$ が $1$ か $n$ のときに限る．$n\\geqq3$ では $k=2$ がこれをみたさず真の不等号．$n=2$ では $k=1,2$ がともにみたし等号（実際 $P_2=F(1)F(2)=\\{F(1)F(2)\\}^{\\frac22}$）．よって等号は $\\boldsymbol{n=2}$ のときに限る．\n\n（なお $\\left\\{F\\!\\left(\\dfrac{n+1}2\\right)\\right\\}^2=e^{n+1}+2+e^{-(n+1)}>e^{n+1}+2$ なので，原題の評価 $P_n>(e^{n+1}+2)^{\\frac n2}$ も従う．）\n\n(3) $n\\geqq2$ とする．下からは $F\\!\\left(\\dfrac{n+1}2\\right)>e^{\\frac{n+1}2}$ より\n\\[\\log P_n>n\\log F\\!\\left(\\frac{n+1}2\\right)>\\frac{n(n+1)}2.\\]\n上からは $F(n)=e^n+e^{-n}<2e^n$，$F(1)=e+e^{-1}<3+1=4$ より\n\\[\\log P_n\\leqq\\frac n2\\{\\log F(1)+\\log F(n)\\}<\\frac n2(\\log4+\\log2+n)=\\frac n2(n+\\log8).\\]\n$n^2$ で割って\n\\[\\frac{n+1}{2n}<\\frac{\\log P_n}{n^2}<\\frac{n+\\log8}{2n}.\\]\n$n\\to\\infty$ で両端はともに $\\dfrac12$ に近づくので，はさみうちの原理により\n\\[\\lim_{n\\to\\infty}\\frac{\\log P_n}{n^2}=\\boldsymbol{\\frac12}.\\]"
+   }
+  ],
+  "idea": {
+   "tex": "$F(x)=e^x+e^{-x}$ は $F(s)F(t)=F(s+t)+F(s-t)$ をみたす．積 $F(1)F(2)\\cdots F(n)$ を2回並べて $k$ 番目と $n+1-k$ 番目を組にすると，各組は $F(n+1)+F(2k-n-1)$ となり，和 $s+t$ が一定のもとでは $|s-t|$ が小さいほど積が小さい．原題は $F(2k-n-1)\\geqq2$ から下からの評価 $(e^{n+1}+2)^{\\frac n2}$ を示すだけだが，捻りでは上からの評価も同じ組み方で作り，両側の評価から $\\dfrac1{n^2}\\log\\{F(1)\\cdots F(n)\\}$ の極限を求める．"
+  },
+  "methods": [],
+  "tags": [
+   "積の評価",
+   "両端から組にする",
+   "指数関数",
+   "はさみうちの原理"
+  ],
+  "provenance": {
+   "created": "2026-11-22"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "III-LIM-317",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "III-15",
+  "level": 5,
+  "minutes": 45,
+  "theme": "$\\dfrac{x^k}{k}$ の和がつくる方程式の解の近づき方",
+  "topic": "$\\dfrac{x^k}{k}$ の和がつくる方程式の解の近づき方",
+  "statement": {
+   "tex": "正の整数 $n$ に対し，$\\displaystyle f_n(x)=-1+\\sum_{k=1}^n\\frac{x^k}k=-1+x+\\frac{x^2}2+\\cdots+\\frac{x^n}n$ とする．また $\\alpha=1-\\dfrac1e$ とおく．\n\\begin{enumerate}\n  \\item 各 $n$ に対し，$f_n(x)=0$ をみたす $x$ が $0<x\\leqq1$ の範囲にただ1つあることを示せ．これを $x_n$ とするとき，$x_{n+1}<x_n$ を示し，$x_2$ を求めよ．\n  \\item $0<x<1$ のとき，$\\displaystyle R_n(x)=\\int_0^x\\frac{t^n}{1-t}\\,dt$ とおくと $\\displaystyle\\sum_{k=1}^n\\frac{x^k}k=-\\log(1-x)-R_n(x)$ であり，\n  \\[\\frac{x^{n+1}}{n+1}<R_n(x)<\\frac{x^{n+1}}{(n+1)(1-x)}\\]\n  が成り立つことを示せ．\n  \\item $n\\geqq2$ のとき，次の不等式を示せ．\n  \\[(2-\\sqrt3)\\frac{\\alpha^{n+1}}{n+1}<x_n-\\alpha<e\\cdot\\frac{\\alpha^{n+1}}{n+1}\\]\n  \\item 極限 $\\displaystyle\\lim_{n\\to\\infty}\\frac{(n+1)(x_n-\\alpha)}{\\alpha^{n+1}}$ を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 証明，$x_2=\\sqrt3-1$　(2) 証明　(3) 証明　(4) $1$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) $x\\geqq0$ で $f_n'(x)=1+x+\\cdots+x^{n-1}\\geqq1>0$ だから $f_n$ は $x\\geqq0$ で増加．$f_n(0)=-1<0$，$f_n(1)=-1+\\left(1+\\dfrac12+\\cdots+\\dfrac1n\\right)\\geqq0$（等号は $n=1$ のときのみ）．$f_n$ は連続だから中間値の定理により $0<x\\leqq1$ に解があり，増加なのでただ1つ．$x_1=1$，$n\\geqq2$ では $0<x_n<1$．\n$f_{n+1}(x_n)=f_n(x_n)+\\dfrac{x_n^{n+1}}{n+1}=\\dfrac{x_n^{n+1}}{n+1}>0=f_{n+1}(x_{n+1})$ で $f_{n+1}$ は増加だから $x_{n+1}<x_n$．\n$f_2(x)=0\\iff x^2+2x-2=0$，$x>0$ より $\\boldsymbol{x_2=\\sqrt3-1}$．\\hfill$\\square$\n\n(2) $0\\leqq t<1$ で $1+t+\\cdots+t^{n-1}=\\dfrac{1-t^n}{1-t}=\\dfrac1{1-t}-\\dfrac{t^n}{1-t}$．$0$ から $x$ まで積分して\n\\[\\sum_{k=1}^n\\frac{x^k}k=\\Bigl[-\\log(1-t)\\Bigr]_0^x-R_n(x)=-\\log(1-x)-R_n(x).\\]\n$0<t<x$ では $1<\\dfrac1{1-t}<\\dfrac1{1-x}$ で $t^n>0$ だから，$t^n<\\dfrac{t^n}{1-t}<\\dfrac{t^n}{1-x}$．積分して（連続関数で，等号は区間全体では成り立たない）\n\\[\\frac{x^{n+1}}{n+1}<R_n(x)<\\frac{x^{n+1}}{(n+1)(1-x)}.\\tag*{$\\square$}\\]\n\n(3) $0<\\alpha<1$，$-\\log(1-\\alpha)=-\\log\\dfrac1e=1$ だから (2) より $f_n(\\alpha)=-1+1-R_n(\\alpha)=-R_n(\\alpha)<0=f_n(x_n)$．$f_n$ は増加なので $\\alpha<x_n$．平均値の定理により，$\\alpha<\\xi<x_n$ をみたす $\\xi$ で\n\\[R_n(\\alpha)=f_n(x_n)-f_n(\\alpha)=f_n'(\\xi)(x_n-\\alpha)\\]\nとなるものがある．\n\n{\\bf 上からの評価．}$n\\geqq2$ では $f_n'(\\xi)\\geqq1+\\xi>1$ だから，(2) と $1-\\alpha=\\dfrac1e$ より\n\\[x_n-\\alpha=\\frac{R_n(\\alpha)}{f_n'(\\xi)}<R_n(\\alpha)<\\frac{\\alpha^{n+1}}{(n+1)(1-\\alpha)}=e\\cdot\\frac{\\alpha^{n+1}}{n+1}.\\]\n\n{\\bf 下からの評価．}$0<\\xi<1$ より $f_n'(\\xi)=\\dfrac{1-\\xi^n}{1-\\xi}<\\dfrac1{1-\\xi}$．$\\xi<x_n\\leqq x_2=\\sqrt3-1$（(1) より $n\\geqq2$ で $x_n\\leqq x_2$）だから $\\dfrac1{1-\\xi}<\\dfrac1{1-x_2}=\\dfrac1{2-\\sqrt3}$．よって\n\\[x_n-\\alpha=\\frac{R_n(\\alpha)}{f_n'(\\xi)}>(2-\\sqrt3)R_n(\\alpha)>(2-\\sqrt3)\\frac{\\alpha^{n+1}}{n+1}.\\tag*{$\\square$}\\]\n\n(4) (3) の $\\xi$ を $\\xi_n$ と書き，$c_n=\\dfrac{(n+1)R_n(\\alpha)}{\\alpha^{n+1}}$ とおくと，$n\\geqq2$ で\n\\[\\frac{(n+1)(x_n-\\alpha)}{\\alpha^{n+1}}=\\frac{c_n}{f_n'(\\xi_n)}.\\]\n\n{\\bf $c_n\\to e$．}(2) より $c_n<\\dfrac1{1-\\alpha}=e$．一方 $\\beta_n=\\alpha\\left(1-\\dfrac1{\\sqrt n}\\right)$ とおくと $0\\leqq\\beta_n<\\alpha$ で，$\\beta_n\\leqq t\\leqq\\alpha$ では $\\dfrac1{1-t}\\geqq\\dfrac1{1-\\beta_n}$ だから\n\\[R_n(\\alpha)\\geqq\\int_{\\beta_n}^\\alpha\\frac{t^n}{1-t}dt\\geqq\\frac1{1-\\beta_n}\\cdot\\frac{\\alpha^{n+1}-\\beta_n^{n+1}}{n+1},\\qquad c_n\\geqq\\frac{1-\\left(1-\\frac1{\\sqrt n}\\right)^{n+1}}{1-\\beta_n}.\\]\n$u\\geqq0$ で $h(u)=e^{-u}-1+u$ は $h(0)=0$，$h'(u)=1-e^{-u}\\geqq0$ より $h(u)\\geqq0$，すなわち $0\\leqq1-u\\leqq e^{-u}$（$0\\leqq u\\leqq1$）．$u=\\dfrac1{\\sqrt n}$ として\n\\[0\\leqq\\left(1-\\frac1{\\sqrt n}\\right)^{n+1}\\leqq\\left(1-\\frac1{\\sqrt n}\\right)^n\\leqq e^{-\\sqrt n}\\to0.\\]\nまた $\\beta_n\\to\\alpha$ より $\\dfrac1{1-\\beta_n}\\to\\dfrac1{1-\\alpha}=e$．よって下からの評価も $e$ に収束し，はさみうちの原理で $c_n\\to e$．\n\n{\\bf $f_n'(\\xi_n)\\to e$．}(3) より $0<x_n-\\alpha<e\\cdot\\dfrac{\\alpha^{n+1}}{n+1}\\to0$ なので $x_n\\to\\alpha$，$\\alpha<\\xi_n<x_n$ よりはさみうちで $\\xi_n\\to\\alpha$，$\\dfrac1{1-\\xi_n}\\to e$．また $0<\\xi_n^n<(\\sqrt3-1)^n\\to0$．よって $f_n'(\\xi_n)=\\dfrac{1-\\xi_n^n}{1-\\xi_n}\\to e$．\n\n以上より\n\\[\\lim_{n\\to\\infty}\\frac{(n+1)(x_n-\\alpha)}{\\alpha^{n+1}}=\\frac ee=\\boldsymbol{1}.\\]"
+   }
+  ],
+  "idea": {
+   "tex": "部分和 $f_n(x)$ の解 $x_n$ は，$f_{n+1}(x_n)=f_n(x_n)+(\\text{正の項})$ から単調に減少する．原題は $\\sum\\frac1{k^2}$ の残りの評価で $x_n-x_{n+p}<\\frac1n$ を示すが，捻りでは係数を $\\frac1k$ にし，等比数列の和を積分して $\\sum_{k\\leqq n}\\frac{x^k}k=-\\log(1-x)-\\int_0^x\\frac{t^n}{1-t}dt$ と表すことで極限 $\\alpha=1-\\frac1e$ を特定する．$f_n(\\alpha)=-(\\text{残りの積分})$ と平均値の定理から $x_n-\\alpha$ を上下から $\\frac{\\alpha^{n+1}}{n+1}$ の定数倍ではさみ，さらに残りの積分の集中を評価して近づき方の正確な比を求める．"
+  },
+  "methods": [],
+  "tags": [
+   "方程式の解",
+   "単調性",
+   "定積分による評価",
+   "平均値の定理",
+   "はさみうちの原理"
+  ],
+  "provenance": {
+   "created": "2026-11-22"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "III-LIM-318",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "III-15",
+  "level": 5,
+  "minutes": 45,
+  "theme": "3個の卵から始まる家系が絶える確率",
+  "topic": "3個の卵から始まる家系が絶える確率",
+  "statement": {
+   "tex": "ある生物の各個体は，一生に一度だけ3個の卵を産んで死ぬ．各卵は，他の卵とは独立に確率 $s$（$0<s<1$）でかえって次の世代の個体となり，かえらなかった卵からは何も生まれない．各個体のふるまいは互いに独立であるとする．第0世代は1個体であるとし，第 $n$ 世代の個体数が $0$ である確率を $q_n$ とする（$q_0=0$）．\n\\begin{enumerate}\n  \\item すべての $n\\geqq0$ について $q_{n+1}=(1-s+sq_n)^3$ が成り立つことを示せ．\n  \\item $s=\\dfrac12$ のとき，$q_1,\\ q_2$ を求めよ．また，$\\displaystyle\\lim_{n\\to\\infty}q_n$ を求めよ．\n  \\item $s=\\dfrac13$ のとき，$\\displaystyle\\lim_{n\\to\\infty}q_n=1$ であることを示せ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 証明　(2) $q_1=\\dfrac18$，$q_2=\\dfrac{729}{4096}$，$\\displaystyle\\lim_{n\\to\\infty}q_n=\\sqrt5-2$　(3) 証明"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) 第1世代の個体数を $X$ とすると，3個の卵は独立に確率 $s$ でかえるので\n\\[P(X=j)={}_3\\mathrm C_j\\,s^j(1-s)^{3-j}\\quad(j=0,1,2,3).\\]\n$X=j$ のとき，第 $n+1$ 世代の個体はすべて第1世代の $j$ 個体のいずれかの子孫である．第1世代の各個体から始まる子孫の増え方は，第0世代の1個体から始まる場合と同じ規則にしたがい，互いに独立である．したがって「第 $n+1$ 世代の個体数が $0$」$\\iff$「$j$ 個体のそれぞれについて，その $n$ 世代後の子孫の数が $0$」であり，その確率は $q_n^{\\,j}$（$j=0$ のときは $1$）．よって\n\\[q_{n+1}=\\sum_{j=0}^{3}{}_3\\mathrm C_j\\,s^j(1-s)^{3-j}q_n^{\\,j}=\\sum_{j=0}^{3}{}_3\\mathrm C_j\\,(sq_n)^j(1-s)^{3-j}=(1-s+sq_n)^3.\\]\n\\hfill$\\square$\n\n(2) $s=\\dfrac12$ のとき $\\varphi(x)=\\dfrac{(1+x)^3}8$ とおくと $q_{n+1}=\\varphi(q_n)$．\n\\[q_1=\\varphi(0)=\\boldsymbol{\\frac18},\\qquad q_2=\\varphi\\!\\left(\\frac18\\right)=\\frac18\\left(\\frac98\\right)^3=\\boldsymbol{\\frac{729}{4096}}.\\]\n$r=\\sqrt5-2$ とおく．$1+r=\\sqrt5-1$ で\n\\[(1+r)^3=(\\sqrt5-1)^3=5\\sqrt5-15+3\\sqrt5-1=8\\sqrt5-16=8r\\]\nだから $\\varphi(r)=r$．また $0<r<1$．\n\nまず，すべての $n$ で $0\\leqq q_n<r$ を帰納法で示す．$q_0=0<r$．$0\\leqq q_n<r$ なら，$\\varphi$ は $x\\geqq0$ で増加し $\\varphi(x)>0$ なので $0<q_{n+1}=\\varphi(q_n)<\\varphi(r)=r$．\n\n次に，$0\\leqq q_n<r$ より\n\\[r-q_{n+1}=\\varphi(r)-\\varphi(q_n)=\\frac{(r-q_n)\\{(1+r)^2+(1+r)(1+q_n)+(1+q_n)^2\\}}8\\leqq\\frac{3(1+r)^2}8(r-q_n).\\]\nここで $c=\\dfrac{3(1+r)^2}8=\\dfrac{3(6-2\\sqrt5)}8=\\dfrac{9-3\\sqrt5}4$ であり，$3\\sqrt5>5$ より $0<c<1$．よって\n\\[0<r-q_n\\leqq c^n(r-q_0)=c^nr\\to0\\quad(n\\to\\infty)\\]\nで，はさみうちの原理より $\\displaystyle\\lim_{n\\to\\infty}q_n=\\boldsymbol{\\sqrt5-2}$．\n\n(3) $s=\\dfrac13$ のとき $q_{n+1}=\\left(\\dfrac{2+q_n}3\\right)^3$．$e_n=1-q_n$ とおくと $e_0=1$ で\n\\[e_{n+1}=1-\\left(1-\\frac{e_n}3\\right)^3=e_n-\\frac{e_n^{\\,2}}3+\\frac{e_n^{\\,3}}{27}.\\]\nまず $0<e_n\\leqq1$ を帰納法で示す．$e_0=1$．$0<e_n\\leqq1$ なら $\\dfrac23\\leqq1-\\dfrac{e_n}3<1$ なので $0<\\left(1-\\dfrac{e_n}3\\right)^3<1$，よって $0<e_{n+1}<1$．\n\n$0<e_n\\leqq1$ より $\\dfrac{e_n^{\\,3}}{27}\\leqq\\dfrac{e_n^{\\,2}}{27}$ なので\n\\[0<e_{n+1}\\leqq e_n-\\frac{e_n^{\\,2}}3+\\frac{e_n^{\\,2}}{27}=e_n\\left(1-\\frac{8e_n}{27}\\right).\\]\n$u=\\dfrac{8e_n}{27}$ は $0<u<1$ をみたし，$\\dfrac1{1-u}-(1+u)=\\dfrac{u^2}{1-u}>0$ だから\n\\[\\frac1{e_{n+1}}\\geqq\\frac1{e_n}\\cdot\\frac1{1-u}>\\frac1{e_n}(1+u)=\\frac1{e_n}+\\frac8{27}.\\]\nこれをくり返して $\\dfrac1{e_n}\\geqq\\dfrac1{e_0}+\\dfrac{8n}{27}=1+\\dfrac{8n}{27}$，すなわち\n\\[0<1-q_n=e_n\\leqq\\frac{27}{27+8n}\\to0\\quad(n\\to\\infty).\\]\nよって $\\displaystyle\\lim_{n\\to\\infty}q_n=1$．\\hfill$\\square$\n\n（(2) では家系は確率 $1-(\\sqrt5-2)=3-\\sqrt5$ で永久に続くが，(3) では子の数の期待値がちょうど $3\\cdot\\frac13=1$ で，家系は確率1で絶える．）"
+   }
+  ],
+  "idea": {
+   "tex": "第 $n$ 世代までに家系が絶える確率 $q_n$ は，第1世代の個体数で場合分けすると $q_{n+1}=\\varphi(q_n)$（$\\varphi$ は子の数の確率から作る多項式）となる．$\\varphi(x)=x$ の $1$ より小さい正の解 $r$ があれば，$q_n<r$ と $r-q_{n+1}\\leqq c\\,(r-q_n)$（$c<1$）で $q_n\\to r$．境目の場合は $e_n=1-q_n$ について $\\dfrac1{e_{n+1}}-\\dfrac1{e_n}$ が正の定数以上になることで $e_n\\to0$ を示す．原題は子の数の期待値が1以下なら絶滅確率が1，1を超えれば1未満となることの証明．"
+  },
+  "methods": [],
+  "tags": [
+   "分枝過程",
+   "漸化式と極限",
+   "不動点",
+   "逆数の差による評価"
+  ],
+  "provenance": {
+   "created": "2026-11-22"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "III-LIM-319",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "III-15",
+  "level": 4,
+  "minutes": 40,
+  "theme": "対数曲線の接線と $x$ 軸の交点をたどる数列",
+  "topic": "対数曲線の接線と $x$ 軸の交点をたどる数列",
+  "statement": {
+   "tex": "$a_1>0$ とする．曲線 $y=\\log x$ 上の点 $(a_1,\\log a_1)$ における接線と $x$ 軸の交点を $(a_2,0)$ とする．$a_2>0$ ならば点 $(a_2,\\log a_2)$ における接線と $x$ 軸の交点を $(a_3,0)$ とし，以下同様に続けて，$a_m\\leqq0$ となった時点で操作を終える．こうして得られる数列を $\\{a_n\\}$ とする．\n\\begin{enumerate}\n  \\item $a_1\\geqq e$ ならば $a_2\\leqq0$ となって操作が終わり，$0<a_1<e$ ならば操作は終わらず，$n\\geqq2$ のすべての $n$ で $0<a_n\\leqq1$ となることを示せ．\n  \\item $0<a_1<1$ のとき，すべての $n$ で $1-a_{n+1}\\leqq(1-a_n)^2$ が成り立つことを示し，極限 $\\displaystyle\\lim_{n\\to\\infty}a_n$ を求めよ．\n  \\item $a_1\\neq1$ とする．3以上の整数 $k$ で，「$a_1,a_2,\\cdots,a_k$ がすべて得られて，この順に等差数列をなす」ような $a_1$ が存在するものをすべて求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 証明　(2) 証明，$\\displaystyle\\lim_{n\\to\\infty}a_n=1$　(3) $k=3$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "点 $(a,\\log a)$ $(a>0)$ における接線は $y=\\dfrac1a(x-a)+\\log a$ で，傾きは $0$ でないから $x$ 軸と1点で交わり，その $x$ 座標は $x=a-a\\log a$．よって\n\\[a_{n+1}=\\psi(a_n),\\qquad \\psi(x)=x(1-\\log x),\\qquad \\psi'(x)=-\\log x.\\]\n$\\psi$ は $0<x\\leqq1$ で増加，$x\\geqq1$ で減少し，$\\psi(1)=1$，$\\psi(e)=0$．\n\n(1) $a_1\\geqq e$ のとき $1-\\log a_1\\leqq0$ なので $a_2=a_1(1-\\log a_1)\\leqq0$ で操作は終わる．\n\n$0<x<1$ のとき $\\psi(x)=x(1-\\log x)>0$ であり，$\\psi$ の増加性から $\\psi(x)<\\psi(1)=1$．よって $\\psi$ は $0<x<1$ の範囲を自分自身の中に移し，$\\psi(1)=1$．また $1<x<e$ のとき，$\\psi$ の減少性から $0=\\psi(e)<\\psi(x)<\\psi(1)=1$．\n\nしたがって $0<a_1<e$ ならば $0<a_2\\leqq1$（$a_1=1$ なら $a_2=1$）であり，以後帰納的に $0<a_n\\leqq1$ が $n\\geqq2$ のすべてで成り立つ．特に $a_n>0$ なので操作は終わらない．\\hfill$\\square$\n\n(2) $0<x\\leqq1$ に対し，$\\log x\\leqq x-1$（$k(x)=x-1-\\log x$ は $k'(x)=1-\\dfrac1x$ より $x=1$ で最小値 $0$）を用いると，$x>0$ だから\n\\[1-\\psi(x)=1-x+x\\log x\\leqq1-x+x(x-1)=(1-x)^2.\\]\n(1) の議論より $0<a_1<1$ ならすべての $n$ で $0<a_n<1$ なので $1-a_{n+1}\\leqq(1-a_n)^2$．\\hfill$\\square$\n\nさらに $0<1-a_n<1$ なので $(1-a_n)^2\\leqq(1-a_1)(1-a_n)$ も成り立つ（帰納的に $1-a_n\\leqq1-a_1$ がわかる：$1-a_{n+1}\\leqq(1-a_n)^2\\leqq1-a_n$）．よって\n\\[0<1-a_n\\leqq(1-a_1)^{n-1}(1-a_1)=(1-a_1)^n.\\]\n$0<1-a_1<1$ より右辺 $\\to0$．はさみうちの原理で $\\displaystyle\\lim_{n\\to\\infty}a_n=\\boldsymbol1$．\n\n(3) $h(x)=x\\log x$ とおくと $a_{n+1}-a_n=-a_n\\log a_n=-h(a_n)$．よって $a_1,a_2,a_3$ が（得られて）等差数列 $\\iff h(a_1)=h(a_2)$ であり，さらに $a_4$ まで等差なら $h(a_1)=h(a_2)=h(a_3)$．$a_1\\geqq e$ なら項は $a_1,a_2$ の2つしかないので，$0<a_1<e$，$a_1\\neq1$ で考える．\n\n{\\bf $1<a_1<e$ のとき．}$h(a_1)>0$．(1) より $0<a_2<1$ なので $h(a_2)<0$．よって $h(a_1)\\neq h(a_2)$ で，3項の等差数列にならない．\n\n{\\bf $0<a_1<1$ のとき．}$a_1=e^{-w}$ $(w>0)$ とおくと $a_2=e^{-w}(1+w)$，$h(a_1)=-we^{-w}$，$h(a_2)=e^{-w}(1+w)\\{\\log(1+w)-w\\}$．よって\n\\[h(a_1)=h(a_2)\\iff(1+w)\\{\\log(1+w)-w\\}=-w\\iff\\log(1+w)=w-\\frac w{1+w}=\\frac{w^2}{1+w}.\\]\n$\\varphi(w)=\\log(1+w)-\\dfrac{w^2}{1+w}$ は $w>0$ で連続で，$\\varphi(1)=\\log2-\\dfrac12>0$（$e<4$ より $\\log2>\\dfrac12$），$\\varphi(3)=\\log4-\\dfrac94<0$（$e^{9/4}>e^2>4$ より）．中間値の定理より $\\varphi(w_0)=0$ となる $w_0$ $(1<w_0<3)$ がある．$a_1=e^{-w_0}$ とすると $0<a_1<1$，$a_1\\neq1$ で，$a_1,a_2,a_3$ がすべて得られ（(1)），$h(a_1)=h(a_2)$ だから等差数列をなす．よって $k=3$ は条件をみたす．\n\n{\\bf $k\\geqq4$ は不可能．}$a_1,\\cdots,a_4$ が等差数列をなすとする．上の考察から $0<a_1<1$ でなければならない．このとき (1) より $a_1,a_2,a_3$ はどれも $0$ と $1$ の間にあり，$a_{n+1}-a_n=-h(a_n)>0$ なので $a_1<a_2<a_3$ と相異なる．ところが $h'(x)=\\log x+1$ より，$h$ は $0<x\\leqq\\dfrac1e$ で減少，$\\dfrac1e\\leqq x<1$ で増加する．相異なる3つの数 $a_1,a_2,a_3$ のうち2つは同じ区間 $\\left(0,\\dfrac1e\\right]$ または $\\left[\\dfrac1e,1\\right)$ に属し，そこで $h$ は狭義単調だから，その2つの $h$ の値は異なる．これは $h(a_1)=h(a_2)=h(a_3)$ に反する．\n\n以上より，求める $k$ は $\\boldsymbol{k=3}$ のみ．"
+   }
+  ],
+  "idea": {
+   "tex": "$y=\\log x$ の点 $(a,\\log a)$ での接線と $x$ 軸の交点は $\\psi(a)=a(1-\\log a)$．隣り合う項の差は $a_{n+1}-a_n=-h(a_n)$，$h(x)=x\\log x$ なので，3項が等差数列 $\\iff h(a_1)=h(a_2)$．$h$ は $0<x<1$ で「減少してから増加」するので同じ値を高々2回しかとらず，4項以上の等差数列は不可能．原題は $y$ 軸との交点（$a_{n}=\\log a_{n-1}-1$）で項が減り続ける場合だが，捻りでは $x$ 軸との交点にして不動点 $1$ があり，数列が $1$ に近づく場合に変え，3項の場合は方程式 $\\log(1+w)=\\dfrac{w^2}{1+w}$ の解の存在で示す．"
+  },
+  "methods": [],
+  "tags": [
+   "接線",
+   "漸化式",
+   "はさみうちの原理",
+   "等差数列",
+   "中間値の定理"
+  ],
+  "provenance": {
+   "created": "2026-11-22"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "III-LIM-320",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "III-15",
+  "level": 5,
+  "minutes": 35,
+  "theme": "逆関数の増分を用いた和の極限",
+  "topic": "逆関数の増分を用いた和の極限",
+  "statement": {
+   "tex": "$f(x)=x^3+x$ とする．$f(x)$ は増加関数で $f(0)=0$，$f(1)=2$ であるから，$0\\leqq y\\leqq2$ をみたす各 $y$ に対して，$f(x)=y$，$0\\leqq x\\leqq1$ をみたす $x$ がただ1つ定まる．これを $x=g(y)$ と表す．\n\n正の整数 $n$ に対して $x_k=g\\left(\\dfrac{2k}{n}\\right)$（$k=0,1,\\dots,n$）とおき，\n\\[\nS_n=\\sum_{k=1}^{n}\\left(\\frac{2k}{n}\\right)^2(x_k-x_{k-1}),\\qquad\nT_n=n\\sum_{k=1}^{n}(x_k-x_{k-1})^2\n\\]\nと定める．\n\\begin{enumerate}\n  \\item $\\displaystyle\\lim_{n\\to\\infty}S_n$ を求めよ．\n  \\item $\\displaystyle\\lim_{n\\to\\infty}T_n$ を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $\\dfrac{92}{105}$　(2) $\\dfrac{2\\sqrt3}{9}\\pi$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "$f'(x)=3x^2+1>0$ より $f$ は増加関数，したがって $g$ も増加関数で連続であり，$x_0=g(0)=0$，$x_n=g(2)=1$，$x_0<x_1<\\cdots<x_n$ である．$y_k=\\dfrac{2k}{n}$ とおくと $f(x_k)=y_k$ である．\n\n\\textbf{(1)}\n$x_{k-1}\\leqq x\\leqq x_k$ のとき，$f$ が増加であることから $y_{k-1}\\leqq f(x)\\leqq y_k$，さらに $f(x)\\geqq0$ なので $y_{k-1}^2\\leqq f(x)^2\\leqq y_k^2$．この区間で積分して\n\\[\ny_{k-1}^2(x_k-x_{k-1})\\leqq\\int_{x_{k-1}}^{x_k}f(x)^2dx\\leqq y_k^2(x_k-x_{k-1}) .\n\\]\n$k=1,2,\\dots,n$ について加え，$I=\\displaystyle\\int_0^1f(x)^2dx$ とおくと\n\\[\nS_n-\\sum_{k=1}^n(y_k^2-y_{k-1}^2)(x_k-x_{k-1})\\leqq I\\leqq S_n .\n\\]\nここで $y_k^2-y_{k-1}^2=\\dfrac{4(2k-1)}{n^2}\\leqq\\dfrac{8n}{n^2}=\\dfrac8n$，$x_k-x_{k-1}>0$ であるから\n\\[\n0\\leqq S_n-I\\leqq\\frac8n\\sum_{k=1}^n(x_k-x_{k-1})=\\frac8n(x_n-x_0)=\\frac8n .\n\\]\nよって $\\displaystyle\\lim_{n\\to\\infty}S_n=I$ であり，\n\\[\nI=\\int_0^1(x^3+x)^2dx=\\int_0^1(x^6+2x^4+x^2)dx=\\frac17+\\frac25+\\frac13=\\boldsymbol{\\frac{92}{105}} .\n\\]\n\n\\textbf{(2)}\n$f'(x)>0$ より $g$ は微分可能で，$g'(y)=\\dfrac{1}{f'(g(y))}=\\dfrac{1}{3g(y)^2+1}$ である．$h(y)=g'(y)^2=\\dfrac{1}{\\{3g(y)^2+1\\}^2}$ とおくと，$g(y)\\geqq0$ かつ $g$ が増加であるから，$h$ は $0\\leqq y\\leqq2$ で減少する連続関数であり，$h(0)=1$，$h(2)=\\dfrac1{16}$ である．\n\n平均値の定理により，各 $k$ に対して\n\\[\nx_k-x_{k-1}=g(y_k)-g(y_{k-1})=\\frac2n\\,g'(\\eta_k),\\quad y_{k-1}<\\eta_k<y_k\n\\]\nをみたす $\\eta_k$ がある．よって\n\\[\nT_n=n\\sum_{k=1}^n\\frac4{n^2}h(\\eta_k)=\\frac4n\\sum_{k=1}^nh(\\eta_k).\n\\]\n$h$ は減少なので $h(y_k)\\leqq h(\\eta_k)\\leqq h(y_{k-1})$．$U_n=\\dfrac4n\\displaystyle\\sum_{k=1}^nh(y_k)$ とおくと\n\\[\nU_n\\leqq T_n\\leqq\\frac4n\\sum_{k=1}^nh(y_{k-1})=U_n+\\frac4n\\{h(y_0)-h(y_n)\\}=U_n+\\frac4n\\cdot\\frac{15}{16} .\n\\]\n区分求積法により\n\\[\nU_n=2\\cdot\\frac2n\\sum_{k=1}^nh\\left(\\frac{2k}{n}\\right)=4\\cdot\\frac1n\\sum_{k=1}^nh\\left(2\\cdot\\frac kn\\right)\\longrightarrow4\\int_0^1h(2t)\\,dt=2\\int_0^2h(y)\\,dy\\qquad(n\\to\\infty)\n\\]\nであり，$\\dfrac4n\\cdot\\dfrac{15}{16}\\to0$ であるから，はさみうちの原理により\n\\[\n\\lim_{n\\to\\infty}T_n=2\\int_0^2g'(y)^2\\,dy .\n\\]\nこの積分で $y=f(x)$ と置換する．$y:0\\to2$ のとき $x:0\\to1$，$dy=f'(x)\\,dx$，$g(f(x))=x$ より $g'(f(x))=\\dfrac1{f'(x)}$ であるから\n\\[\n\\int_0^2g'(y)^2\\,dy=\\int_0^1\\frac{1}{f'(x)^2}\\,f'(x)\\,dx=\\int_0^1\\frac{dx}{3x^2+1}.\n\\]\nさらに $x=\\dfrac{\\tan\\theta}{\\sqrt3}$（$0\\leqq\\theta\\leqq\\dfrac\\pi3$）と置換すると，$dx=\\dfrac{d\\theta}{\\sqrt3\\cos^2\\theta}$，$3x^2+1=\\dfrac1{\\cos^2\\theta}$ より\n\\[\n\\int_0^1\\frac{dx}{3x^2+1}=\\int_0^{\\frac\\pi3}\\frac{\\cos^2\\theta}{\\sqrt3\\cos^2\\theta}\\,d\\theta=\\frac{\\pi}{3\\sqrt3}.\n\\]\nよって $\\displaystyle\\lim_{n\\to\\infty}T_n=\\frac{2\\pi}{3\\sqrt3}=\\boldsymbol{\\frac{2\\sqrt3}{9}\\pi}$．\n\\hfill$\\square$"
+   }
+  ],
+  "idea": {
+   "tex": "$y$ 軸を等分した点の逆関数の値 $x_k$ で $x$ 軸を不等分に分けると，各小区間で $f(x)$ は $\\frac{2(k-1)}n$ と $\\frac{2k}n$ の間にあるので，「$y$ の値 $\\times$ $x$ の増分」の和は $\\int f$ ではさめる．増分の2乗の和は平均値の定理で $g'$ の値に直し，$g'$ の単調性ではさんで区分求積にし，$y=f(x)$ の置換で $\\int\\frac{dx}{f'(x)}$ に戻す．"
+  },
+  "methods": [],
+  "tags": [
+   "逆関数",
+   "区分求積法",
+   "はさみうち",
+   "平均値の定理",
+   "置換積分"
+  ],
+  "provenance": {
+   "created": "2026-11-22"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "III-LIM-321",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "III-15",
+  "level": 4,
+  "minutes": 35,
+  "theme": "3つの式から選ばれる連続関数と最大値の条件",
+  "topic": "3つの式から選ばれる連続関数と最大値の条件",
+  "statement": {
+   "tex": "$k$ を実数の定数とする．実数全体で定義された連続関数 $f(x)$ で，すべての実数 $x$ について\n\\[\n\\{f(x)-k\\}\\{f(x)-x^2\\}\\{f(x)-2x\\}=0\n\\]\nをみたし，さらに「$f(x)$ は最大値と最小値をもち，最大値は $k$ である」という条件をみたすものの個数を $N(k)$ とする．\n\\begin{enumerate}\n  \\item 一般に，$p(x),q(x),r(x)$ を開区間 $I$ で連続な関数とし，$I$ のどの $x$ でも $p(x),q(x),r(x)$ は互いに異なるとする．$I$ で連続な関数 $h(x)$ が，$I$ の各 $x$ で $h(x)$ は $p(x),q(x),r(x)$ のいずれかに等しいとき，$h(x)$ は $I$ 全体で $p(x),q(x),r(x)$ のうちの1つに一致することを示せ．\n  \\item $N(k)$ を求めよ．\n  \\item $k=9$ のとき，$N(9)$ 個の $f(x)$ のうちで $\\displaystyle\\int_{-3}^{\\frac92}f(x)\\,dx$ が最小となるものを求め，その最小値を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 証明　(2) $k\\leqq0$ のとき $N(k)=1$，$0<k\\leqq4$ のとき $N(k)=3$，$k>4$ のとき $N(k)=5$　(3) $f(x)=9\\ (x\\leqq-3,\\ x\\geqq\\frac92)$，$f(x)=x^2\\ (-3\\leqq x\\leqq2)$，$f(x)=2x\\ (2\\leqq x\\leqq\\frac92)$ のとき最小値 $\\dfrac{335}{12}$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) $I$ 上で $p-q$，$q-r$，$r-p$ は連続で $0$ にならないから，中間値の定理によりそれぞれ $I$ 上で符号が一定である．よって $I$ 上で大小関係は一定であり，必要なら名前を付けかえて，$I$ 全体で $p(x)<q(x)<r(x)$ としてよい．\n\n$w(x)=h(x)-\\dfrac{p(x)+q(x)}{2}$ とおく．$w$ は $I$ で連続であり，各 $x$ で\n\\[\nh(x)=p(x)\\ \\text{なら}\\ w(x)<0,\\qquad h(x)=q(x)\\ \\text{または}\\ r(x)\\ \\text{なら}\\ w(x)>0\n\\]\nである．もし $h(a)=p(a)$，$h(b)\\neq p(b)$ となる $a,b\\in I$ があれば，$w(a)<0<w(b)$ なので，中間値の定理により $a,b$ の間に $w(c)=0$ となる $c$ がある．このとき $h(c)=\\dfrac{p(c)+q(c)}2$ であるが，これは $p(c)$ より大きく $q(c)$ より小さいので $p(c),q(c),r(c)$ のどれとも異なり，矛盾．よって $h=p$ が $I$ 全体で成り立つか，$I$ のどこでも $h\\neq p$ である．後者の場合，$I$ 上で $h(x)$ は $q(x)$ か $r(x)$ に等しく，$u(x)=h(x)-\\dfrac{q(x)+r(x)}2$ について同じ議論をすれば，$h=q$ が $I$ 全体で成り立つか $h=r$ が $I$ 全体で成り立つ．\\hfill$\\square$\n\n(2) 3つの式を $K(x)=k$，$P(x)=x^2$，$L(x)=2x$ と書く．2つの式の値が一致する $x$（以下「乗りかえ点」）は\n\\[\nx^2=k\\ (k>0\\ \\text{のとき}\\ x=\\pm\\sqrt k,\\ k=0\\ \\text{のとき}\\ x=0),\\quad 2x=k\\ (x=\\tfrac k2),\\quad x^2=2x\\ (x=0,2)\n\\]\nで有限個である．乗りかえ点を小さい順に並べると，実数直線はいくつかの開区間に分かれ，各開区間では3式の値は互いに異なるから，(1) により $f$ は各開区間で1つの式に一致する．隣り合う開区間の境の乗りかえ点 $c$ では，$f$ の連続性から両側の式の $c$ での値は等しい．逆に，各開区間に式を1つずつ割り当て，境の点で両側の式の値が等しくなっているものは，連続で恒等式をみたす関数を1つ定める．\n\n\\textbf{端の区間．}最も左の開区間 $(-\\infty,c_1)$ で $f=P$ なら $f$ は上に有界でなく最大値をもたない．$f=L$ なら $x\\to-\\infty$ で $f\\to-\\infty$ となり最小値をもたない．よって $f=K$．最も右の開区間 $(c_m,\\infty)$ でも同様に $f=P$ なら最大値なし，$f=L$ なら最大値なし（$x\\to\\infty$ で $2x\\to\\infty$）なので $f=K$．逆に両端の区間で $f=k$ ならば，$f$ は閉区間 $[c_1,c_m]$ で連続だから最大値・最小値をもち，その外では値 $k$ なので，$f$ は実数全体で最大値と最小値をもつ．このとき最大値が $k$ であることは「すべての $x$ で $f(x)\\leqq k$」と同値である（値 $k$ は端の区間でとる）．\n\n以上より，求める $f$ は「両端の区間で $K$，各区間で選んだ式がその区間で $k$ 以下，境で値が等しい」割り当てと1対1に対応する．$P\\leqq k$ となるのは $-\\sqrt k\\leqq x\\leqq\\sqrt k$（$k\\geqq0$），$L\\leqq k$ となるのは $x\\leqq\\frac k2$ のときである．\n\n\\textbf{$k<0$ のとき．}乗りかえ点は $\\frac k2<0<2$（$x^2=k$ は解なし）．区間 $(-\\infty,\\frac k2)$ で $K$．区間 $(\\frac k2,0)$ では，$x=\\frac k2$ での値が $k$ に等しい式は $K$ と $L$ だが，この区間で $2x>k$ なので $L$ は不可，よって $K$．区間 $(0,2)$ では $x=0$ での値が $k$ に等しい式は $K$ だけ（$P(0)=L(0)=0\\neq k$）．よって $f$ は定数 $k$ のみで $N(k)=1$．\n\n\\textbf{$k=0$ のとき．}乗りかえ点は $0,2$．$(-\\infty,0)$ で $K$．$(0,2)$ では $P=x^2>0$，$L=2x>0$ なので $K$ のみ．$N(0)=1$．\n\n\\textbf{$k>0$ のとき．}$-\\sqrt k$ のすぐ右で $P<k$ となる一方，$L$ は $x=-\\sqrt k$ で値 $-2\\sqrt k\\neq k$ である．\n\n(i) $0<k<4$ のとき，$\\frac k2<\\sqrt k<2$ であり，乗りかえ点は $-\\sqrt k<0<\\frac k2<\\sqrt k<2$．開区間を順に $J_0,\\dots,J_5$ とする．$J_0$ で $K$．$J_1=(-\\sqrt k,0)$ では $K$ か $P$（ともに $\\leqq k$）．\n\\begin{itemize}\n  \\item $J_1$ で $K$ のとき：$x=0$ で値 $k\\neq0$ なので $J_2$ でも $K$，以下 $\\frac k2,\\sqrt k,2$ のどれでも $K$ と値が等しい他の式は，$x=\\frac k2$ の $L$（右側で $2x>k$ で不可），$x=\\sqrt k$ の $P$（右側で $x^2>k$ で不可）だけなので，定数 $k$．\n  \\item $J_1$ で $P$ のとき：$J_2=(0,\\frac k2)$ では $P$ か $L$（$x=0$ で値 $0$）．$J_2$ で $P$ なら，$x=\\frac k2$ での値 $\\frac{k^2}4$ は $k$ とも $L(\\frac k2)=k$ とも異なる（$k\\neq4$）ので $J_3$ でも $P$．$x=\\sqrt k$ で値 $k$ となり，$J_4=(\\sqrt k,2)$ では $x^2>k$ より $P$ は不可，$L(\\sqrt k)=2\\sqrt k\\neq k$ なので $K$，以後 $K$．$J_2$ で $L$ なら，$x=\\frac k2$ で値 $k$，$J_3$ では $2x>k$ で $L$ は不可，$P(\\frac k2)\\neq k$ なので $K$，以後 $K$．\n\\end{itemize}\nいずれも条件をみたし，$N(k)=3$．\n\n(ii) $k=4$ のとき，乗りかえ点は $-2<0<2$ で，$x=2$ では3式とも値 $4$．$J_1=(-2,0)$ で $K$ なら $x=0$ で値 $4\\neq0$ より定数．$J_1$ で $P$ なら $J_2=(0,2)$ では $P$ か $L$（どちらも $\\leqq4$），$x=2$ で値 $4$ となり，$(2,\\infty)$ で $K$ に移れる．$N(4)=3$．\n\n(iii) $k>4$ のとき，$2<\\sqrt k<\\frac k2$ であり，乗りかえ点は $-\\sqrt k<0<2<\\sqrt k<\\frac k2$．$J_1$ で $K$ なら (i) と同様に定数 $k$ のみ（$x=2$ での値 $4\\neq k$）．$J_1$ で $P$ のとき，$J_2=(0,2)$ で $P$ か $L$ を選べ，$x=2$ で値 $4$ となるので $J_3=(2,\\sqrt k)$ でも $P$ か $L$ を選べる（$J_3$ で $x^2<k$，$2x<2\\sqrt k<k$）．$J_3$ で $P$ なら，$x=\\sqrt k$ で値 $k$，$J_4=(\\sqrt k,\\frac k2)$ では $P>k$ で不可，$L(\\sqrt k)=2\\sqrt k\\neq k$ なので $K$，以後 $K$．$J_3$ で $L$ なら，$x=\\sqrt k$ での値 $2\\sqrt k$ は $k$ とも $P(\\sqrt k)=k$ とも異なるので $J_4$ でも $L$（$2x<k$），$x=\\frac k2$ で値 $k$ となり $(\\frac k2,\\infty)$ で $K$ に移る．よって $P$ を選んだ場合が $2\\times2=4$ 通り，定数と合わせて $N(k)=5$．\n\n以上より\n\\[\n\\boldsymbol{N(k)=1\\ (k\\leqq0),\\quad N(k)=3\\ (0<k\\leqq4),\\quad N(k)=5\\ (k>4)}.\n\\]\n\n(3) $k=9$ のとき，乗りかえ点は $-3<0<2<3<\\frac92$ で，(iii) の5つの関数は次のとおり（記載以外の範囲では値 $9$）．\n\\[\n\\begin{array}{ll}\nF_0: & \\text{定数 } 9\\\\\nF_1: & x^2\\ (-3\\leqq x\\leqq3)\\\\\nF_2: & x^2\\ (-3\\leqq x\\leqq2),\\quad 2x\\ (2\\leqq x\\leqq\\tfrac92)\\\\\nF_3: & x^2\\ (-3\\leqq x\\leqq0),\\quad 2x\\ (0\\leqq x\\leqq2),\\quad x^2\\ (2\\leqq x\\leqq3)\\\\\nF_4: & x^2\\ (-3\\leqq x\\leqq0),\\quad 2x\\ (0\\leqq x\\leqq\\tfrac92)\n\\end{array}\n\\]\n$\\int_{-3}^{0}x^2dx=9$，$\\int_0^2x^2dx=\\frac83$，$\\int_2^3x^2dx=\\frac{19}3$，$\\int_0^22x\\,dx=4$，$\\int_2^{9/2}2x\\,dx=\\frac{81}4-4=\\frac{65}4$，$\\int_3^{9/2}9\\,dx=\\frac{27}2$ を用いると\n\\[\n\\begin{aligned}\n\\int_{-3}^{9/2}F_0&=\\frac{135}2,\\qquad\n\\int_{-3}^{9/2}F_1=9+\\frac83+\\frac{19}3+\\frac{27}2=\\frac{63}2,\\\\\n\\int_{-3}^{9/2}F_2&=9+\\frac83+\\frac{65}4=\\frac{335}{12},\\qquad\n\\int_{-3}^{9/2}F_3=9+4+\\frac{19}3+\\frac{27}2=\\frac{197}6,\\\\\n\\int_{-3}^{9/2}F_4&=9+4+\\frac{65}4=\\frac{117}4.\n\\end{aligned}\n\\]\n12倍すると $810,\\ 378,\\ 335,\\ 394,\\ 351$ なので最小は $F_2$．すなわち\n\\[\n\\boldsymbol{f(x)=9\\ (x\\leqq-3,\\ x\\geqq\\tfrac92),\\ \\ x^2\\ (-3\\leqq x\\leqq2),\\ \\ 2x\\ (2\\leqq x\\leqq\\tfrac92)}\\ \\text{のとき最小値}\\ \\boldsymbol{\\frac{335}{12}}.\n\\]"
+   }
+  ],
+  "idea": {
+   "tex": "$f(x)$ が各 $x$ で3つの式 $p(x),q(x),r(x)$ のどれかに等しい連続関数なら，3つの式の値が互いに異なる区間では，中間値の定理により $f$ は1つの式に一致する（$f$ と「下の2式の平均」との差の符号を見る）．式を乗りかえられるのは2つの式の値が一致する点だけなので，$f$ は「交点で式を乗りかえる道筋」として数え上げられる．最大値・最小値の存在は，左右の端の区間で使える式を制限する．"
+  },
+  "methods": [],
+  "tags": [
+   "連続関数",
+   "中間値の定理",
+   "場合分け",
+   "数え上げ",
+   "関数の決定"
+  ],
+  "provenance": {
+   "created": "2026-11-22"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "III-LIM-322",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "III-15",
+  "level": 4,
+  "minutes": 30,
+  "theme": "2倍の点との関数方程式と連続性・単調性",
+  "topic": "2倍の点との関数方程式と連続性・単調性",
+  "statement": {
+   "tex": "\\begin{enumerate}\n  \\item 実数全体で定義された関数 $f(x)$ が $x=0$ で連続であり，すべての実数 $x$ に対して $f(x)+f(2x)=5x^2$ をみたすとき，$f(x)$ を求めよ．\n  \\item 実数全体で定義された関数 $f(x)$ で，「$x<y$ ならば $f(x)>f(y)$」をみたし，かつすべての実数 $x$ に対して $f(x)-f(2x)=x$ をみたすものをすべて求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $f(x)=x^2$　(2) $f(x)=-x+p\\ (x<0)$，$f(0)=q$，$f(x)=-x+r\\ (x>0)$，ただし $p,q,r$ は $p\\geqq q\\geqq r$ をみたす任意の実数"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) $g(x)=f(x)-x^2$ とおくと $g(x)+g(2x)=5x^2-x^2-4x^2=0$．$x=0$ として $g(0)=0$．$g(2x)=-g(x)$ より $x$ を $\\dfrac x2$ にして $g(x)=-g\\left(\\dfrac x2\\right)$，くり返して $|g(x)|=\\left|g\\left(\\dfrac x{2^n}\\right)\\right|$．$f$ と $x^2$ は $x=0$ で連続なので $g$ も連続で，$n\\to\\infty$ で $g\\left(\\dfrac x{2^n}\\right)\\to g(0)=0$．よって $g(x)=0$，$\\boldsymbol{f(x)=x^2}$（これは条件をみたす）．\n\n(2) $g(x)=f(x)+x$ とおくと，$f(2x)=f(x)-x$ より $g(2x)=f(x)-x+2x=g(x)$．\n\n\\textbf{$x>0$ で定数．}$0<u<v$ なら $f(u)>f(v)$ より $g(v)-g(u)<v-u$．$\\dfrac u{2^n}<\\dfrac v{2^n}$ に適用すると $g(v)-g(u)=g\\left(\\dfrac v{2^n}\\right)-g\\left(\\dfrac u{2^n}\\right)<\\dfrac{v-u}{2^n}$ がすべての $n$ で成り立つ．$g(v)-g(u)=\\delta>0$ なら $\\dfrac{v-u}{2^n}<\\delta$ となる $n$ で矛盾するので $g(v)\\leqq g(u)$：$g$ は $x>0$ で減少（広義）．$x>0$ と $x\\leqq y\\leqq2x$ に対し $g(x)\\geqq g(y)\\geqq g(2x)=g(x)$ より $g(y)=g(x)$．任意の $0<y<z$ について $z\\leqq2^my$ となる $m$ をとると $g(y)\\geqq g(z)\\geqq g(2^my)=g(y)$．よって $g$ は $x>0$ で定数 $r$．\n\n\\textbf{$x<0$ で定数．}$u<v<0$ でも同様に $g(v)\\leqq g(u)$．$x<0$ と $2x\\leqq y\\leqq x$ に対し $g(2x)\\geqq g(y)\\geqq g(x)=g(2x)$．任意の $z<y<0$ に $2^my\\leqq z$ となる $m$ をとれば $g(2^my)\\geqq g(z)\\geqq g(y)=g(2^my)$．よって $g$ は $x<0$ で定数 $p$．\n\nよって $f(x)=-x+p\\ (x<0)$，$f(0)=q$，$f(x)=-x+r\\ (x>0)$．\n\n\\textbf{$p,q,r$ の条件．}$p<q$ なら $x=\\dfrac{p-q}2<0$ で $f(x)=\\dfrac{p+q}2<q=f(0)$ となり減少に反する．よって $p\\geqq q$．$q<r$ なら $y=\\dfrac{r-q}2>0$ で $f(y)=\\dfrac{q+r}2>q=f(0)$ となり反する．よって $q\\geqq r$．\n\n\\textbf{逆．}$p\\geqq q\\geqq r$ のとき，$x>0$ で $f(x)-f(2x)=(-x+r)-(-2x+r)=x$，$x<0$ も同様，$x=0$ で $0=0$．各区間で $-x$ は減少し，$x<0<y$ なら $f(x)=-x+p>p\\geqq q=f(0)\\geqq r>-y+r=f(y)$．よって条件をみたす．\n\n答：$\\boldsymbol{f(x)=-x+p\\ (x<0),\\ f(0)=q,\\ f(x)=-x+r\\ (x>0)}$，$\\boldsymbol{p\\geqq q\\geqq r}$ をみたす任意の実数 $p,q,r$．"
+   }
+  ],
+  "idea": {
+   "tex": "$f(x)\\pm f(2x)$ が多項式で与えられる関数方程式は，特殊解（$x^2$ や $-x$）を引くと $g(2x)=\\pm g(x)$ になる．$x=0$ で連続なら $g(x)=\\pm g\\left(\\frac x{2^n}\\right)\\to g(0)$ で $g$ が定まる．連続性がない場合でも単調性があれば，$u<v$ での不等式を $\\frac1{2^n}$ 倍に縮めて「$g$ は単調」が出て，$g(x)=g(2x)$ と合わせると $x>0$，$x<0$ のそれぞれで定数になる．原題は存在・非存在の判定（穴埋め）だったが，捻りでは解をすべて決定させる．"
+  },
+  "methods": [],
+  "tags": [
+   "関数方程式",
+   "連続性",
+   "単調性",
+   "極限",
+   "区間の分割"
+  ],
+  "provenance": {
+   "created": "2026-11-22"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "III-LIM-165",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "III-15",
+  "level": 0,
+  "minutes": 5,
+  "theme": "関数／分数関数のグラフと漸近線",
+  "unit": "関数",
+  "topic": "分数関数のグラフと漸近線",
+  "statement": {
+   "tex": "関数 $y=\\dfrac{3x-1}{x-2}$ を $y=\\dfrac{k}{x-p}+q$ の形に表すとき，定数 $k,\\ p,\\ q$ の値を求めよ．"
+  },
+  "answer": {
+   "tex": "$k=5,\\ p=2,\\ q=3$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "$3x-1=3(x-2)+5$ より $y=\\dfrac{3(x-2)+5}{x-2}=\\dfrac{5}{x-2}+3$．\nよって $\\boldsymbol{k=5,\\ p=2,\\ q=3}$．グラフは $y=\\dfrac5x$ を $x$ 軸方向に $2$，$y$ 軸方向に $3$ 平行移動したもので，漸近線は $x=2,\\ y=3$．"
+   }
+  ],
+  "idea": {
+   "tex": "分子を分母で割って「商＋余り/分母」の形にすれば，平行移動の量と漸近線が読める．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "$k$：5 ; $p$：2 ; $q$：3"
+  },
+  "methods": [],
+  "tags": [
+   "分数関数",
+   "漸近線",
+   "平行移動"
+  ],
+  "provenance": {
+   "created": "2026-10-30"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "III-LIM-166",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "III-15",
+  "level": 0,
+  "minutes": 5,
+  "theme": "関数／逆関数",
+  "unit": "関数",
+  "topic": "逆関数",
+  "statement": {
+   "tex": "関数 $f(x)=\\dfrac{2x+1}{x-3}$ の逆関数 $f^{-1}(x)$ を求めよ．"
+  },
+  "answer": {
+   "tex": "$f^{-1}(x)=\\dfrac{3x+1}{x-2}$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "$y=\\dfrac{2x+1}{x-3}$ を $x$ について解く．$y(x-3)=2x+1$ より $(y-2)x=3y+1$，$x=\\dfrac{3y+1}{y-2}$．\n$x$ と $y$ を入れかえて $\\boldsymbol{f^{-1}(x)=\\dfrac{3x+1}{x-2}}$．"
+   }
+  ],
+  "idea": {
+   "tex": "$y=f(x)$ を $x$ について解き，最後に $x$ と $y$ を入れかえる．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "$f^{-1}(x)$：(3x+1)/(x-2)"
+  },
+  "methods": [],
+  "tags": [
+   "逆関数",
+   "分数関数"
+  ],
+  "provenance": {
+   "created": "2026-10-30"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "III-LIM-167",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "III-15",
+  "level": 0,
+  "minutes": 4,
+  "theme": "関数／合成関数",
+  "unit": "関数",
+  "topic": "合成関数",
+  "statement": {
+   "tex": "$f(x)=2x+1,\\ g(x)=x^2-3$ とする．\\begin{enumerate}\n  \\item 合成関数 $(g\\circ f)(x)$ を求めよ．\n  \\item 合成関数 $(f\\circ g)(x)$ を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $4x^2+4x-2$　(2) $2x^2-5$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) $(g\\circ f)(x)=g(f(x))=(2x+1)^2-3=\\boldsymbol{4x^2+4x-2}$．\n(2) $(f\\circ g)(x)=f(g(x))=2(x^2-3)+1=\\boldsymbol{2x^2-5}$．\n一般に $g\\circ f$ と $f\\circ g$ は一致しない．"
+   }
+  ],
+  "idea": {
+   "tex": "$(g\\circ f)(x)=g(f(x))$：内側の $f$ を先に計算し，それを $g$ に代入する．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) 4x^2+4x-2\n(2) 2x^2-5"
+  },
+  "methods": [],
+  "tags": [
+   "合成関数"
+  ],
+  "provenance": {
+   "created": "2026-10-30"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "III-LIM-168",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "III-15",
+  "level": 0,
+  "minutes": 6,
+  "theme": "関数／無理関数と不等式（グラフの上下）",
+  "unit": "関数",
+  "topic": "無理関数と不等式（グラフの上下）",
+  "statement": {
+   "tex": "不等式 $\\sqrt{x+2}>x$ を解け．"
+  },
+  "answer": {
+   "tex": "$-2\\leqq x<2$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "$y=\\sqrt{x+2}$（定義域 $x\\geqq-2$）と $y=x$ のグラフの交点を求める．$\\sqrt{x+2}=x$ を2乗して $x^2-x-2=0$，$(x-2)(x+1)=0$．\n$x\\geqq0$ が必要なので交点は $x=2$ のみ（$x=-1$ は $\\sqrt1=1\\neq-1$ で不適）．\nグラフより，$\\sqrt{x+2}$ のグラフが直線 $y=x$ より上にあるのは $-2\\leqq x<2$．よって $\\boldsymbol{-2\\leqq x<2}$．"
+   }
+  ],
+  "idea": {
+   "tex": "無理関数のグラフと直線の上下関係で考える．2乗したときに出る余分な解に注意する．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "-2<=x<2"
+  },
+  "methods": [],
+  "tags": [
+   "無理関数",
+   "無理不等式",
+   "グラフ"
+  ],
+  "provenance": {
+   "created": "2026-10-30"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "III-LIM-169",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "III-15",
+  "level": 0,
+  "minutes": 5,
+  "theme": "数列の極限／分数式・無理式（最高次で割る）",
+  "unit": "数列の極限",
+  "topic": "分数式・無理式（最高次で割る）",
+  "statement": {
+   "tex": "次の極限を求めよ．\\begin{enumerate}\n  \\item $\\displaystyle\\lim_{n\\to\\infty}\\frac{3n^2-n+4}{2n^2+5}$\n  \\item $\\displaystyle\\lim_{n\\to\\infty}\\frac{2n+1}{\\sqrt{n^2+3n}}$\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $\\dfrac32$　(2) $2$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) 分母・分子を $n^2$ で割ると $\\dfrac{3-\\frac1n+\\frac4{n^2}}{2+\\frac5{n^2}}\\to\\boldsymbol{\\dfrac32}$．\n(2) 分母・分子を $n$ で割ると（$n>0$ より $\\sqrt{n^2+3n}=n\\sqrt{1+\\frac3n}$）$\\dfrac{2+\\frac1n}{\\sqrt{1+\\frac3n}}\\to\\boldsymbol{2}$．"
+   }
+  ],
+  "idea": {
+   "tex": "分母の最高次の項で分母・分子を割り，$\\frac1n\\to0$ を使う．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) 3/2\n(2) 2"
+  },
+  "methods": [],
+  "tags": [
+   "数列の極限",
+   "不定形"
+  ],
+  "provenance": {
+   "created": "2026-10-30"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "III-LIM-170",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "III-15",
+  "level": 0,
+  "minutes": 5,
+  "theme": "数列の極限／$\\infty-\\infty$ 型（分子の有理化）",
+  "unit": "数列の極限",
+  "topic": "$\\infty-\\infty$ 型（分子の有理化）",
+  "statement": {
+   "tex": "極限 $\\displaystyle\\lim_{n\\to\\infty}\\left(\\sqrt{n^2+4n}-n\\right)$ を求めよ．"
+  },
+  "answer": {
+   "tex": "$2$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "$\\sqrt{n^2+4n}-n=\\dfrac{(n^2+4n)-n^2}{\\sqrt{n^2+4n}+n}=\\dfrac{4n}{\\sqrt{n^2+4n}+n}=\\dfrac{4}{\\sqrt{1+\\frac4n}+1}$．\n$n\\to\\infty$ で $\\dfrac{4}{1+1}=\\boldsymbol{2}$．"
+   }
+  ],
+  "idea": {
+   "tex": "$\\infty-\\infty$ の形は，分子を有理化して分数の形にしてから最高次で割る．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "2"
+  },
+  "methods": [],
+  "tags": [
+   "数列の極限",
+   "有理化"
+  ],
+  "provenance": {
+   "created": "2026-10-30"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "III-LIM-171",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "III-15",
+  "level": 0,
+  "minutes": 5,
+  "theme": "数列の極限／$r^n$ を含む極限",
+  "unit": "数列の極限",
+  "topic": "$r^n$ を含む極限",
+  "statement": {
+   "tex": "次の極限を求めよ．\\begin{enumerate}\n  \\item $\\displaystyle\\lim_{n\\to\\infty}\\frac{3^{n+1}+2^n}{3^n-2^{n+1}}$\n  \\item $\\displaystyle\\lim_{n\\to\\infty}\\frac{4^n-1}{5^n+1}$\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $3$　(2) $0$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) 分母・分子を $3^n$ で割ると $\\dfrac{3+\\left(\\frac23\\right)^n}{1-2\\left(\\frac23\\right)^n}$．$\\left(\\frac23\\right)^n\\to0$ より $\\boldsymbol{3}$．\n(2) 分母・分子を $5^n$ で割ると $\\dfrac{\\left(\\frac45\\right)^n-\\left(\\frac15\\right)^n}{1+\\left(\\frac15\\right)^n}\\to\\dfrac{0}{1}=\\boldsymbol{0}$．"
+   }
+  ],
+  "idea": {
+   "tex": "底がいちばん大きい項で割り，$|r|<1$ なら $r^n\\to0$ を使う．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) 3\n(2) 0"
+  },
+  "methods": [],
+  "tags": [
+   "数列の極限",
+   "r^n"
+  ],
+  "provenance": {
+   "created": "2026-10-30"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "III-LIM-172",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "III-15",
+  "level": 0,
+  "minutes": 6,
+  "theme": "無限級数／無限等比級数の収束条件と和",
+  "unit": "無限級数",
+  "topic": "無限等比級数の収束条件と和",
+  "statement": {
+   "tex": "無限等比級数 $1+(x-1)+(x-1)^2+(x-1)^3+\\cdots$ について．\\begin{enumerate}\n  \\item この級数が収束するような $x$ の値の範囲を求めよ．\n  \\item (1) のとき，和を $x$ の式で表せ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $0<x<2$　(2) $\\dfrac{1}{2-x}$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) 初項 $1$，公比 $x-1$ の無限等比級数である．初項が $0$ でないので，収束する条件は $|x-1|<1$，すなわち $\\boldsymbol{0<x<2}$．\n(2) 和は $\\dfrac{1}{1-(x-1)}=\\boldsymbol{\\dfrac{1}{2-x}}$．"
+   }
+  ],
+  "idea": {
+   "tex": "無限等比級数は「初項 $=0$」または「$|$公比$|<1$」のときに収束し，和は $\\frac{\\text{初項}}{1-\\text{公比}}$．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) 0<x<2\n(2) 1/(2-x)"
+  },
+  "methods": [],
+  "tags": [
+   "無限等比級数",
+   "収束条件"
+  ],
+  "provenance": {
+   "created": "2026-10-30"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "III-LIM-173",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "III-15",
+  "level": 0,
+  "minutes": 6,
+  "theme": "無限級数／部分分数分解して和を求める",
+  "unit": "無限級数",
+  "topic": "部分分数分解して和を求める",
+  "statement": {
+   "tex": "無限級数 $\\displaystyle\\sum_{n=1}^{\\infty}\\frac{1}{n(n+2)}$ の和を求めよ．"
+  },
+  "answer": {
+   "tex": "$\\dfrac34$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "$\\dfrac{1}{k(k+2)}=\\dfrac12\\left(\\dfrac1k-\\dfrac1{k+2}\\right)$ より，第 $n$ 項までの部分和は\n\\[S_n=\\frac12\\left(1+\\frac12-\\frac1{n+1}-\\frac1{n+2}\\right).\\]\n$n\\to\\infty$ で $S_n\\to\\dfrac12\\cdot\\dfrac32=\\boldsymbol{\\dfrac34}$．"
+   }
+  ],
+  "idea": {
+   "tex": "無限級数は部分和 $S_n$ を求めてから極限をとる．部分分数に分けると途中が打ち消し合う．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "3/4"
+  },
+  "methods": [],
+  "tags": [
+   "無限級数",
+   "部分分数",
+   "部分和"
+  ],
+  "provenance": {
+   "created": "2026-10-30"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "III-LIM-174",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "III-15",
+  "level": 0,
+  "minutes": 5,
+  "theme": "無限級数／循環小数を分数で表す",
+  "unit": "無限級数",
+  "topic": "循環小数を分数で表す",
+  "statement": {
+   "tex": "次の循環小数を分数で表せ．\\begin{enumerate}\n  \\item $0.\\dot{2}\\dot{7}$\n  \\item $0.1\\dot{2}\\dot{5}$\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $\\dfrac{3}{11}$　(2) $\\dfrac{62}{495}$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) $0.\\dot2\\dot7=0.27+0.0027+\\cdots$ は初項 $\\dfrac{27}{100}$，公比 $\\dfrac1{100}$ の無限等比級数．和は $\\dfrac{27/100}{1-1/100}=\\dfrac{27}{99}=\\boldsymbol{\\dfrac{3}{11}}$．\n(2) $0.1\\dot2\\dot5=\\dfrac1{10}+\\left(0.025+0.00025+\\cdots\\right)=\\dfrac1{10}+\\dfrac{25/1000}{1-1/100}=\\dfrac1{10}+\\dfrac{25}{990}=\\dfrac{99+25}{990}=\\boldsymbol{\\dfrac{62}{495}}$．"
+   }
+  ],
+  "idea": {
+   "tex": "循環する部分を，初項と公比 $\\frac1{100}$ などをもつ無限等比級数とみる．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) 3/11\n(2) 62/495"
+  },
+  "methods": [],
+  "tags": [
+   "無限等比級数",
+   "循環小数"
+  ],
+  "provenance": {
+   "created": "2026-10-30"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "III-LIM-175",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "III-15",
+  "level": 0,
+  "minutes": 5,
+  "theme": "関数の極限／$\\frac00$ 型（約分・有理化）",
+  "unit": "関数の極限",
+  "topic": "$\\frac00$ 型（約分・有理化）",
+  "statement": {
+   "tex": "次の極限を求めよ．\\begin{enumerate}\n  \\item $\\displaystyle\\lim_{x\\to2}\\frac{x^2-4}{x^2-3x+2}$\n  \\item $\\displaystyle\\lim_{x\\to1}\\frac{\\sqrt{x+3}-2}{x-1}$\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $4$　(2) $\\dfrac14$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) $\\dfrac{(x-2)(x+2)}{(x-2)(x-1)}=\\dfrac{x+2}{x-1}\\to\\dfrac41=\\boldsymbol{4}$．\n(2) 分子を有理化して $\\dfrac{(x+3)-4}{(x-1)(\\sqrt{x+3}+2)}=\\dfrac{1}{\\sqrt{x+3}+2}\\to\\boldsymbol{\\dfrac14}$．"
+   }
+  ],
+  "idea": {
+   "tex": "$\\frac00$ の形は，0 になる原因の因数（$x-a$）を約分できる形に変形する．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) 4\n(2) 1/4"
+  },
+  "methods": [],
+  "tags": [
+   "関数の極限",
+   "不定形",
+   "有理化"
+  ],
+  "provenance": {
+   "created": "2026-10-30"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "III-LIM-176",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "III-15",
+  "level": 0,
+  "minutes": 5,
+  "theme": "関数の極限／$\\frac{\\sin x}{x}$ の極限",
+  "unit": "関数の極限",
+  "topic": "$\\frac{\\sin x}{x}$ の極限",
+  "statement": {
+   "tex": "次の極限を求めよ．\\begin{enumerate}\n  \\item $\\displaystyle\\lim_{x\\to0}\\frac{\\sin3x}{x}$\n  \\item $\\displaystyle\\lim_{x\\to0}\\frac{1-\\cos x}{x^2}$\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $3$　(2) $\\dfrac12$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) $\\dfrac{\\sin3x}{x}=3\\cdot\\dfrac{\\sin3x}{3x}\\to3\\cdot1=\\boldsymbol{3}$．\n(2) 分母・分子に $1+\\cos x$ を掛けると $\\dfrac{1-\\cos^2x}{x^2(1+\\cos x)}=\\left(\\dfrac{\\sin x}{x}\\right)^2\\cdot\\dfrac1{1+\\cos x}\\to1\\cdot\\dfrac12=\\boldsymbol{\\dfrac12}$．"
+   }
+  ],
+  "idea": {
+   "tex": "$\\lim_{\\theta\\to0}\\frac{\\sin\\theta}{\\theta}=1$ が使える形（$\\sin$ の中身と分母をそろえる）に直す．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) 3\n(2) 1/2"
+  },
+  "methods": [],
+  "tags": [
+   "三角関数の極限"
+  ],
+  "provenance": {
+   "created": "2026-10-30"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "III-LIM-177",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "III-15",
+  "level": 0,
+  "minutes": 5,
+  "theme": "関数の極限／$e$ の定義と指数関数の極限",
+  "unit": "関数の極限",
+  "topic": "$e$ の定義と指数関数の極限",
+  "statement": {
+   "tex": "次の極限を求めよ．\\begin{enumerate}\n  \\item $\\displaystyle\\lim_{x\\to\\infty}\\left(1+\\frac2x\\right)^x$\n  \\item $\\displaystyle\\lim_{x\\to0}\\frac{e^{2x}-1}{x}$\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $e^2$　(2) $2$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) $\\dfrac2x=h$ とおくと $x\\to\\infty$ のとき $h\\to+0$ で，$\\left(1+\\frac2x\\right)^x=\\left\\{(1+h)^{\\frac1h}\\right\\}^2\\to\\boldsymbol{e^2}$．\n(2) $2x=h$ とおくと $\\dfrac{e^{2x}-1}{x}=2\\cdot\\dfrac{e^h-1}{h}\\to2\\cdot1=\\boldsymbol{2}$．"
+   }
+  ],
+  "idea": {
+   "tex": "$\\lim_{h\\to0}(1+h)^{\\frac1h}=e$，$\\lim_{h\\to0}\\frac{e^h-1}{h}=1$ の形に置き換える．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) e^2\n(2) 2"
+  },
+  "methods": [],
+  "tags": [
+   "eの定義",
+   "指数関数の極限"
+  ],
+  "provenance": {
+   "created": "2026-10-30"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "III-LIM-178",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "III-15",
+  "level": 0,
+  "minutes": 4,
+  "theme": "関数の連続性／つなぎ目で連続にする",
+  "unit": "関数の連続性",
+  "topic": "つなぎ目で連続にする",
+  "statement": {
+   "tex": "関数 $f(x)=\\begin{cases}\\dfrac{x^2+x-2}{x-1} & (x\\neq1)\\\\ a & (x=1)\\end{cases}$ が $x=1$ で連続となるように，定数 $a$ の値を定めよ．"
+  },
+  "answer": {
+   "tex": "$a=3$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "$x\\neq1$ のとき $f(x)=\\dfrac{(x-1)(x+2)}{x-1}=x+2$ なので $\\displaystyle\\lim_{x\\to1}f(x)=3$．\n$x=1$ で連続 $\\iff\\displaystyle\\lim_{x\\to1}f(x)=f(1)$ だから $\\boldsymbol{a=3}$．"
+   }
+  ],
+  "idea": {
+   "tex": "$x=a$ で連続であるとは，$\\lim_{x\\to a}f(x)$ が存在して $f(a)$ に等しいこと．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "$a$：3"
+  },
+  "methods": [],
+  "tags": [
+   "連続性",
+   "関数の極限"
+  ],
+  "provenance": {
+   "created": "2026-10-30"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "III-LIM-179",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "III-15",
+  "level": 0,
+  "minutes": 6,
+  "theme": "数列の極限／漸化式で定まる数列の極限",
+  "unit": "数列の極限",
+  "topic": "漸化式で定まる数列の極限",
+  "statement": {
+   "tex": "$a_1=1,\\ a_{n+1}=\\dfrac12a_n+3\\ (n=1,2,3,\\ldots)$ で定まる数列 $\\{a_n\\}$ について．\\begin{enumerate}\n  \\item 一般項 $a_n$ を求めよ．\n  \\item $\\displaystyle\\lim_{n\\to\\infty}a_n$ を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $a_n=6-5\\left(\\dfrac12\\right)^{n-1}$　(2) $6$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) $\\alpha=\\dfrac12\\alpha+3$ を解くと $\\alpha=6$．漸化式から引いて $a_{n+1}-6=\\dfrac12(a_n-6)$．\n$\\{a_n-6\\}$ は初項 $a_1-6=-5$，公比 $\\dfrac12$ の等比数列なので $\\boldsymbol{a_n=6-5\\left(\\dfrac12\\right)^{n-1}}$．\n(2) $\\left(\\dfrac12\\right)^{n-1}\\to0$ より $\\displaystyle\\lim_{n\\to\\infty}a_n=\\boldsymbol{6}$．"
+   }
+  ],
+  "idea": {
+   "tex": "$a_{n+1}=pa_n+q$ 型は，不動点 $\\alpha$ を引いて等比数列に直す．$|p|<1$ なら $\\alpha$ に収束する．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) $a_n$：6-5(1/2)^(n-1)\n(2) 6"
+  },
+  "methods": [],
+  "tags": [
+   "漸化式",
+   "数列の極限"
+  ],
+  "provenance": {
+   "created": "2026-10-30"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "III-LIM-180",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "III-15",
+  "level": 0,
+  "minutes": 8,
+  "theme": "関数の極限／三角関数（倍角・置き換え）",
+  "unit": "関数の極限",
+  "topic": "三角関数（倍角・置き換え）",
+  "statement": {
+   "tex": "次の極限を求めよ．\\begin{enumerate}\n  \\item $\\displaystyle\\lim_{x\\to0}\\frac{1-\\cos2x}{x\\sin x}$\n  \\item $\\displaystyle\\lim_{x\\to\\pi}\\frac{\\sin x}{x-\\pi}$\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $2$　(2) $-1$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) $1-\\cos2x=2\\sin^2x$ より $\\dfrac{2\\sin^2x}{x\\sin x}=2\\cdot\\dfrac{\\sin x}{x}\\to\\boldsymbol{2}$．\n(2) $x-\\pi=t$ とおくと $t\\to0$ で，$\\sin x=\\sin(t+\\pi)=-\\sin t$．よって $\\dfrac{-\\sin t}{t}\\to\\boldsymbol{-1}$．"
+   }
+  ],
+  "idea": {
+   "tex": "$x\\to a\\ (a\\neq0)$ のときは $x-a=t$ とおいて $t\\to0$ にし，$\\frac{\\sin t}{t}$ を作る．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) 2\n(2) -1"
+  },
+  "methods": [],
+  "tags": [
+   "三角関数の極限",
+   "置き換え",
+   "倍角の公式"
+  ],
+  "provenance": {
+   "created": "2026-10-30"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "III-LIM-181",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "III-15",
+  "level": 1,
+  "minutes": 10,
+  "theme": "数列の極限／逆数をとる漸化式",
+  "unit": "数列の極限",
+  "topic": "逆数をとる漸化式",
+  "statement": {
+   "tex": "$a_1=1,\\ a_{n+1}=\\dfrac{a_n}{2a_n+1}\\ (n=1,2,3,\\ldots)$ で定まる数列 $\\{a_n\\}$ がある．\\begin{enumerate}\n  \\item $b_n=\\dfrac1{a_n}$ とおくとき，$b_n$ を $n$ の式で表せ．\n  \\item $\\displaystyle\\lim_{n\\to\\infty}na_n$ を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $b_n=2n-1$　(2) $\\dfrac12$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) $a_1>0$ と漸化式から帰納的に $a_n>0$．両辺の逆数をとると $\\dfrac1{a_{n+1}}=\\dfrac{2a_n+1}{a_n}=2+\\dfrac1{a_n}$，すなわち $b_{n+1}=b_n+2$．\n$b_1=1$ より $\\boldsymbol{b_n=2n-1}$．\n(2) $a_n=\\dfrac1{2n-1}$ より $na_n=\\dfrac{n}{2n-1}=\\dfrac{1}{2-\\frac1n}\\to\\boldsymbol{\\dfrac12}$．"
+   }
+  ],
+  "idea": {
+   "tex": "分数形の漸化式は逆数をとると等差・等比型になることが多い．$a_n$ が 0 にならないことを確認してから逆数をとる．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) $b_n$：2n-1\n(2) 1/2"
+  },
+  "methods": [],
+  "tags": [
+   "漸化式",
+   "逆数",
+   "数列の極限"
+  ],
+  "provenance": {
+   "created": "2026-10-30"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "III-LIM-182",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "III-15",
+  "level": 1,
+  "minutes": 10,
+  "theme": "数列の極限／$r^n$ を含む極限の場合分け",
+  "unit": "数列の極限",
+  "topic": "$r^n$ を含む極限の場合分け",
+  "statement": {
+   "tex": "$r>0$ とする．極限 $\\displaystyle\\lim_{n\\to\\infty}\\frac{r^n}{1+r^n}$ を，$r$ の値で場合分けして求めよ．"
+  },
+  "answer": {
+   "tex": "$0<r<1$ のとき $0$，$r=1$ のとき $\\dfrac12$，$r>1$ のとき $1$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "$0<r<1$ のとき：$r^n\\to0$ なので $\\dfrac{0}{1+0}=\\boldsymbol{0}$．\n$r=1$ のとき：常に $\\dfrac{1}{1+1}=\\boldsymbol{\\dfrac12}$．\n$r>1$ のとき：分母・分子を $r^n$ で割ると $\\dfrac{1}{\\left(\\frac1r\\right)^n+1}$．$0<\\frac1r<1$ より $\\left(\\frac1r\\right)^n\\to0$ で $\\boldsymbol{1}$．"
+   }
+  ],
+  "idea": {
+   "tex": "$r^n$ の振る舞いは $|r|<1$，$r=1$，$|r|>1$ で変わる．$|r|>1$ では $r^n$ で割って $\\left(\\frac1r\\right)^n\\to0$ を使う．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "場合分け{ 0<r<1 → 0 | r=1 → 1/2 | r>1 → 1 }"
+  },
+  "methods": [],
+  "tags": [
+   "r^n",
+   "場合分け",
+   "数列の極限"
+  ],
+  "provenance": {
+   "created": "2026-10-30"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "III-LIM-183",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "III-15",
+  "level": 1,
+  "minutes": 10,
+  "theme": "無限級数／点の運動と無限等比級数",
+  "unit": "無限級数",
+  "topic": "点の運動と無限等比級数",
+  "statement": {
+   "tex": "座標平面上で，点 P が原点 O から出発し，まず $x$ 軸の正の向きに $1$ 進み，次に左へ $90^\\circ$ 向きを変えて $\\dfrac12$ 進み，さらに左へ $90^\\circ$ 向きを変えて $\\dfrac14$ 進む．以下同様に，左へ $90^\\circ$ 向きを変えるたびに，進む距離を直前の $\\dfrac12$ にしていく．このとき，P が限りなく近づく点の座標を求めよ．"
+  },
+  "answer": {
+   "tex": "$\\left(\\dfrac45,\\ \\dfrac25\\right)$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "進む向きは $x$ 正，$y$ 正，$x$ 負，$y$ 負，… の順に繰り返す．\n$x$ 座標：$1-\\dfrac14+\\dfrac1{16}-\\cdots$ は初項 $1$，公比 $-\\dfrac14$ の無限等比級数で，和は $\\dfrac{1}{1+\\frac14}=\\dfrac45$．\n$y$ 座標：$\\dfrac12-\\dfrac18+\\dfrac1{32}-\\cdots$ は初項 $\\dfrac12$，公比 $-\\dfrac14$ で，和は $\\dfrac{\\frac12}{1+\\frac14}=\\dfrac25$．\nよって P は点 $\\boldsymbol{\\left(\\dfrac45,\\ \\dfrac25\\right)}$ に限りなく近づく．"
+   }
+  ],
+  "idea": {
+   "tex": "$x$ 方向の移動と $y$ 方向の移動に分けると，それぞれが公比 $-\\frac14$ の無限等比級数になる．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(4/5, 2/5)"
+  },
+  "methods": [],
+  "tags": [
+   "無限等比級数",
+   "点の運動"
+  ],
+  "provenance": {
+   "created": "2026-10-30"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "III-LIM-184",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "III-15",
+  "level": 1,
+  "minutes": 12,
+  "theme": "無限級数／3つの因数の積の部分分数",
+  "unit": "無限級数",
+  "topic": "3つの因数の積の部分分数",
+  "statement": {
+   "tex": "無限級数 $\\displaystyle\\sum_{n=1}^{\\infty}\\frac{1}{n(n+1)(n+2)}$ について．\\begin{enumerate}\n  \\item 第 $n$ 項までの部分和 $S_n$ を求めよ．\n  \\item この無限級数の和を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $S_n=\\dfrac14-\\dfrac{1}{2(n+1)(n+2)}$　(2) $\\dfrac14$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) $\\dfrac{1}{k(k+1)(k+2)}=\\dfrac12\\left\\{\\dfrac{1}{k(k+1)}-\\dfrac{1}{(k+1)(k+2)}\\right\\}$ と分けられる．\n$k=1$ から $n$ まで加えると途中が打ち消し合い，$S_n=\\dfrac12\\left\\{\\dfrac{1}{1\\cdot2}-\\dfrac{1}{(n+1)(n+2)}\\right\\}=\\boldsymbol{\\dfrac14-\\dfrac{1}{2(n+1)(n+2)}}$．\n(2) $n\\to\\infty$ で $\\dfrac{1}{(n+1)(n+2)}\\to0$ より，和は $\\boldsymbol{\\dfrac14}$．"
+   }
+  ],
+  "idea": {
+   "tex": "3つの連続する因数の積は「2つずつの積の差」に分けると，隣り合う項が打ち消し合う．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) $S_n$：1/4-1/(2(n+1)(n+2))\n(2) 1/4"
+  },
+  "methods": [],
+  "tags": [
+   "無限級数",
+   "部分分数",
+   "部分和"
+  ],
+  "provenance": {
+   "created": "2026-10-30"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "III-LIM-185",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "III-15",
+  "level": 1,
+  "minutes": 12,
+  "theme": "無限級数／部分和を偶数番目・奇数番目に分ける",
+  "unit": "無限級数",
+  "topic": "部分和を偶数番目・奇数番目に分ける",
+  "statement": {
+   "tex": "無限級数 $1-\\dfrac12+\\dfrac12-\\dfrac13+\\dfrac13-\\dfrac14+\\cdots$ の第 $n$ 項までの部分和を $S_n$ とする．\\begin{enumerate}\n  \\item $S_{2n-1}$ を求めよ．\n  \\item $S_{2n}$ を $n$ の式で表せ．\n  \\item この無限級数の和を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $1$　(2) $\\dfrac{n}{n+1}$　(3) $1$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) $S_{2n-1}=1+\\left(-\\dfrac12+\\dfrac12\\right)+\\cdots+\\left(-\\dfrac1n+\\dfrac1n\\right)=\\boldsymbol{1}$．\n(2) $S_{2n}=S_{2n-1}-\\dfrac1{n+1}=1-\\dfrac1{n+1}=\\boldsymbol{\\dfrac{n}{n+1}}$．\n(3) $\\displaystyle\\lim_{n\\to\\infty}S_{2n-1}=1$，$\\displaystyle\\lim_{n\\to\\infty}S_{2n}=1$ で一致するので $\\{S_n\\}$ は $1$ に収束し，和は $\\boldsymbol{1}$．"
+   }
+  ],
+  "idea": {
+   "tex": "項にかっこがない級数は勝手にまとめてはいけない．部分和を奇数番目と偶数番目に分け，両方の極限が一致することを確かめる．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) 1\n(2) n/(n+1)\n(3) 1"
+  },
+  "methods": [],
+  "tags": [
+   "無限級数",
+   "部分和"
+  ],
+  "provenance": {
+   "created": "2026-10-30"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "III-LIM-186",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "III-15",
+  "level": 1,
+  "minutes": 10,
+  "theme": "関数の極限／極限値から係数を決める（無理式）",
+  "unit": "関数の極限",
+  "topic": "極限値から係数を決める（無理式）",
+  "statement": {
+   "tex": "等式 $\\displaystyle\\lim_{x\\to2}\\frac{a\\sqrt{x+2}+b}{x-2}=1$ が成り立つように，定数 $a,\\ b$ の値を定めよ．"
+  },
+  "answer": {
+   "tex": "$a=4,\\ b=-8$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "$x\\to2$ で分母 $\\to0$ なので，極限が有限であるためには分子 $\\to0$ が必要：$2a+b=0$，$b=-2a$．\nこのとき $\\dfrac{a(\\sqrt{x+2}-2)}{x-2}=\\dfrac{a\\{(x+2)-4\\}}{(x-2)(\\sqrt{x+2}+2)}=\\dfrac{a}{\\sqrt{x+2}+2}\\to\\dfrac a4$．\n$\\dfrac a4=1$ より $\\boldsymbol{a=4,\\ b=-8}$（逆にこのとき極限は $1$ で条件をみたす）．"
+   }
+  ],
+  "idea": {
+   "tex": "分母 $\\to0$ で極限が有限なら分子 $\\to0$（必要条件）．それを使って文字を減らし，実際に極限を計算する．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "$a$：4 ; $b$：-8"
+  },
+  "methods": [],
+  "tags": [
+   "関数の極限",
+   "係数決定",
+   "有理化"
+  ],
+  "provenance": {
+   "created": "2026-10-30"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "III-LIM-187",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "III-15",
+  "level": 1,
+  "minutes": 12,
+  "theme": "関数の極限／$x\\to-\\infty$ の無理式・片側極限",
+  "unit": "関数の極限",
+  "topic": "$x\\to-\\infty$ の無理式・片側極限",
+  "statement": {
+   "tex": "次の極限を求めよ．\\begin{enumerate}\n  \\item $\\displaystyle\\lim_{x\\to-\\infty}\\left(\\sqrt{x^2+2x}+x\\right)$\n  \\item $\\displaystyle\\lim_{x\\to1+0}\\frac{x^2-x}{|x-1|}$ と $\\displaystyle\\lim_{x\\to1-0}\\frac{x^2-x}{|x-1|}$\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $-1$　(2) $x\\to1+0$ のとき $1$，$x\\to1-0$ のとき $-1$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) $x=-t$ とおくと $t\\to\\infty$ で，$\\sqrt{t^2-2t}-t=\\dfrac{-2t}{\\sqrt{t^2-2t}+t}=\\dfrac{-2}{\\sqrt{1-\\frac2t}+1}\\to\\boldsymbol{-1}$．\n（$x<0$ で $\\sqrt{x^2}=-x$ となることに注意．$x=-t$ と置き換えると符号の誤りを防げる．）\n(2) $x^2-x=x(x-1)$．$x>1$ では $|x-1|=x-1$ なので $\\dfrac{x(x-1)}{x-1}=x\\to\\boldsymbol{1}$．\n$x<1$ では $|x-1|=-(x-1)$ なので $-x\\to\\boldsymbol{-1}$．（左右の極限が異なるので $x\\to1$ の極限は存在しない．）"
+   }
+  ],
+  "idea": {
+   "tex": "$x\\to-\\infty$ は $x=-t$ と置き換えて $t\\to\\infty$ にする．絶対値は中身の符号で場合を分け，片側ずつ極限をとる．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) -1\n(2) $x\\to1+0$：1 ; $x\\to1-0$：-1"
+  },
+  "methods": [],
+  "tags": [
+   "関数の極限",
+   "無理式",
+   "片側極限",
+   "絶対値"
+  ],
+  "provenance": {
+   "created": "2026-10-30"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "III-LIM-188",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "III-15",
+  "level": 1,
+  "minutes": 10,
+  "theme": "関数の極限／対数関数と $e$ の極限",
+  "unit": "関数の極限",
+  "topic": "対数関数と $e$ の極限",
+  "statement": {
+   "tex": "次の極限を求めよ．\\begin{enumerate}\n  \\item $\\displaystyle\\lim_{x\\to0}\\frac{\\log(1+3x)}{x}$\n  \\item $\\displaystyle\\lim_{n\\to\\infty}\\left(1-\\frac1n\\right)^{2n}$\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $3$　(2) $e^{-2}$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) $\\dfrac{\\log(1+3x)}{x}=3\\log(1+3x)^{\\frac1{3x}}$．$3x=h$ とおくと $(1+h)^{\\frac1h}\\to e$ なので $3\\log e=\\boldsymbol{3}$．\n(2) $-\\dfrac1n=h$ とおくと $n\\to\\infty$ で $h\\to-0$，$\\left(1-\\frac1n\\right)^{2n}=\\left\\{(1+h)^{\\frac1h}\\right\\}^{-2}\\to\\boldsymbol{e^{-2}}$．"
+   }
+  ],
+  "idea": {
+   "tex": "$(1+h)^{\\frac1h}\\to e$ の形を作る．指数の部分を $\\frac1h$ とその倍数に分けて考える．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) 3\n(2) e^(-2)"
+  },
+  "methods": [],
+  "tags": [
+   "eの定義",
+   "対数関数の極限"
+  ],
+  "provenance": {
+   "created": "2026-10-30"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "III-LIM-189",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "III-15",
+  "level": 1,
+  "minutes": 12,
+  "theme": "数列・関数の極限／はさみうちの原理",
+  "unit": "数列・関数の極限",
+  "topic": "はさみうちの原理",
+  "statement": {
+   "tex": "実数 $x$ に対し，$x$ を超えない最大の整数を $[x]$ で表す．次の極限を求めよ．\\begin{enumerate}\n  \\item $\\displaystyle\\lim_{x\\to\\infty}\\frac{[2x]}{x}$\n  \\item $\\displaystyle\\lim_{n\\to\\infty}\\left(2^n+3^n\\right)^{\\frac1n}$\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $2$　(2) $3$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) $2x-1<[2x]\\leqq2x$．$x>0$ のとき各辺を $x$ で割って $2-\\dfrac1x<\\dfrac{[2x]}{x}\\leqq2$．\n$x\\to\\infty$ で左辺 $\\to2$ なので，はさみうちの原理より $\\boldsymbol{2}$．\n(2) $3^n<2^n+3^n<2\\cdot3^n$ より $3<\\left(2^n+3^n\\right)^{\\frac1n}<2^{\\frac1n}\\cdot3$．\n$2^{\\frac1n}\\to1$ なので，はさみうちの原理より $\\boldsymbol{3}$．"
+   }
+  ],
+  "idea": {
+   "tex": "直接計算しにくい式は，極限が同じになる2つの式ではさむ．$[x]$ は $x-1<[x]\\leqq x$，和は最大の項で評価する．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) 2\n(2) 3"
+  },
+  "methods": [],
+  "tags": [
+   "はさみうちの原理",
+   "ガウス記号"
+  ],
+  "provenance": {
+   "created": "2026-10-30"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "III-LIM-190",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "III-15",
+  "level": 1,
+  "minutes": 14,
+  "theme": "関数の連続性／極限で定められた関数",
+  "unit": "関数の連続性",
+  "topic": "極限で定められた関数",
+  "statement": {
+   "tex": "関数 $f(x)=\\displaystyle\\lim_{n\\to\\infty}\\frac{x^{2n+1}+ax^2+bx+1}{x^{2n}+1}$ が，すべての実数 $x$ で連続となるように，定数 $a,\\ b$ の値を定めよ．"
+  },
+  "answer": {
+   "tex": "$a=-1,\\ b=1$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "$|x|<1$ のとき $x^{2n}\\to0$ なので $f(x)=ax^2+bx+1$．\n$|x|>1$ のとき分母・分子を $x^{2n}$ で割ると $f(x)=\\displaystyle\\lim\\frac{x+\\frac{ax^2+bx+1}{x^{2n}}}{1+\\frac1{x^{2n}}}=x$．\n$x=1$ のとき $f(1)=\\dfrac{a+b+2}{2}$，$x=-1$ のとき $f(-1)=\\dfrac{a-b}{2}$．\n$x=1$ で連続 $\\iff$ 左右の極限 $a+b+1$ と $1$ と $f(1)$ が一致：$a+b+1=1$．\n$x=-1$ で連続 $\\iff$ $a-b+1=-1$．\nこれらを解いて $\\boldsymbol{a=-1,\\ b=1}$（このとき $f(1)=1,\\ f(-1)=-1$ も一致する）．"
+   }
+  ],
+  "idea": {
+   "tex": "$|x|<1,\\ |x|>1,\\ x=\\pm1$ で場合を分けて $f(x)$ を具体的に求め，つなぎ目 $x=\\pm1$ での連続性を調べる．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "$a$：-1 ; $b$：1"
+  },
+  "methods": [],
+  "tags": [
+   "関数の極限",
+   "連続性",
+   "x^n"
+  ],
+  "provenance": {
+   "created": "2026-10-30"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "III-LIM-191",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "III-15",
+  "level": 1,
+  "minutes": 10,
+  "theme": "関数の連続性／中間値の定理と解の存在範囲",
+  "unit": "関数の連続性",
+  "topic": "中間値の定理と解の存在範囲",
+  "statement": {
+   "tex": "方程式 $x^3-3x+1=0$ の実数解はちょうど3個ある．それぞれの解は，ある整数 $n$ を用いて $n<x<n+1$ と表される区間に1個ずつ含まれる．そのような整数 $n$ をすべて求めよ．"
+  },
+  "answer": {
+   "tex": "$n=-2,\\ 0,\\ 1$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "$f(x)=x^3-3x+1$ とおくと，$f(-2)=-1,\\ f(-1)=3,\\ f(0)=1,\\ f(1)=-1,\\ f(2)=3$．\n$f(x)$ は連続なので，中間値の定理により $-2<x<-1$，$0<x<1$，$1<x<2$ の各区間に少なくとも1つ解がある．\n3次方程式の実数解は高々3個なので，各区間にちょうど1個ずつある．よって $\\boldsymbol{n=-2,\\ 0,\\ 1}$．"
+   }
+  ],
+  "idea": {
+   "tex": "連続関数で $f(a)$ と $f(b)$ の符号が異なれば，$a<x<b$ に $f(x)=0$ の解がある（中間値の定理）．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "{-2, 0, 1}"
+  },
+  "methods": [],
+  "tags": [
+   "中間値の定理",
+   "連続性",
+   "方程式の解"
+  ],
+  "provenance": {
+   "created": "2026-10-30"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "III-LIM-192",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "III-15",
+  "level": 1,
+  "minutes": 12,
+  "theme": "無限級数／関数を項とする無限等比級数",
+  "unit": "無限級数",
+  "topic": "関数を項とする無限等比級数",
+  "statement": {
+   "tex": "無限級数 $x+x(1-x)+x(1-x)^2+\\cdots+x(1-x)^{n-1}+\\cdots$ について．\\begin{enumerate}\n  \\item この無限級数が収束するような実数 $x$ の値の範囲を求めよ．\n  \\item $x\\neq0$ で (1) の範囲にあるとき，和を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $0\\leqq x<2$　(2) $1$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) 初項 $x$，公比 $1-x$ の無限等比級数．\n初項 $x=0$ のときは，すべての項が $0$ で和 $0$ に収束する．\n$x\\neq0$ のときは $|1-x|<1$，すなわち $0<x<2$ のとき収束する．よって $\\boldsymbol{0\\leqq x<2}$．\n(2) 和は $\\dfrac{x}{1-(1-x)}=\\boldsymbol{1}$．（$x=0$ のときの和 $0$ とは異なる．）"
+   }
+  ],
+  "idea": {
+   "tex": "無限等比級数の収束条件は「初項 $=0$ または $|$公比$|<1$」．初項が $0$ になる場合を落とさない．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) 0<=x<2\n(2) 1"
+  },
+  "methods": [],
+  "tags": [
+   "無限等比級数",
+   "収束条件"
+  ],
+  "provenance": {
+   "created": "2026-10-30"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "III-LIM-193",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "III-15",
+  "level": 1,
+  "minutes": 12,
+  "theme": "関数／逆関数のグラフとの共有点",
+  "unit": "関数",
+  "topic": "逆関数のグラフとの共有点",
+  "statement": {
+   "tex": "関数 $f(x)=x^2-2x+2\\ (x\\geqq1)$ について．\\begin{enumerate}\n  \\item 逆関数 $f^{-1}(x)$ を求めよ．\n  \\item $y=f(x)$ のグラフと $y=f^{-1}(x)$ のグラフの共有点の座標をすべて求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $f^{-1}(x)=1+\\sqrt{x-1}\\ (x\\geqq1)$　(2) $(1,\\ 1),\\ (2,\\ 2)$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) $y=(x-1)^2+1$（$x\\geqq1$）の値域は $y\\geqq1$．$x-1\\geqq0$ より $x-1=\\sqrt{y-1}$，$x=1+\\sqrt{y-1}$．\n$x,\\ y$ を入れかえて $\\boldsymbol{f^{-1}(x)=1+\\sqrt{x-1}}$（定義域 $x\\geqq1$）．\n(2) $f(x)$ は $x\\geqq1$ で増加関数である．増加関数では，$y=f(x)$ と $y=f^{-1}(x)$ の共有点は直線 $y=x$ 上にある．\n（$f(a)=b,\\ f(b)=a$ で $a<b$ とすると $b=f(a)<f(b)=a$ となり矛盾するため．）\n$x^2-2x+2=x$ より $x^2-3x+2=0$，$x=1,\\ 2$（ともに $x\\geqq1$）．よって $\\boldsymbol{(1,\\ 1),\\ (2,\\ 2)}$．"
+   }
+  ],
+  "idea": {
+   "tex": "$y=f(x)$ と $y=f^{-1}(x)$ のグラフは直線 $y=x$ に関して対称．増加関数なら共有点は $y=x$ との交点に限られる．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) $f^{-1}(x)$：1+sqrt(x-1)\n(2) {(1, 1), (2, 2)}"
+  },
+  "methods": [],
+  "tags": [
+   "逆関数",
+   "グラフの対称性",
+   "共有点"
+  ],
+  "provenance": {
+   "created": "2026-10-30"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "III-LIM-194",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "III-15",
+  "level": 1,
+  "minutes": 12,
+  "theme": "関数／分数関数のグラフと不等式",
+  "unit": "関数",
+  "topic": "分数関数のグラフと不等式",
+  "statement": {
+   "tex": "不等式 $\\dfrac{2x+1}{x-1}\\geqq x+1$ を解け．"
+  },
+  "answer": {
+   "tex": "$x\\leqq1-\\sqrt3,\\ 1<x\\leqq1+\\sqrt3$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "$y=\\dfrac{2x+1}{x-1}=\\dfrac{3}{x-1}+2$ のグラフ（漸近線 $x=1,\\ y=2$）と直線 $y=x+1$ の上下関係を調べる．\n交点：$\\dfrac{2x+1}{x-1}=x+1$ より $2x+1=x^2-1$，$x^2-2x-2=0$，$x=1\\pm\\sqrt3$．\nグラフより，分数関数のグラフが直線の上側（または交点）にあるのは $x\\leqq1-\\sqrt3$ と $1<x\\leqq1+\\sqrt3$．\n（別解：移項して $\\dfrac{x^2-2x-2}{x-1}\\leqq0$，両辺に $(x-1)^2>0$ を掛けて $(x-1)(x^2-2x-2)\\leqq0$，$x\\neq1$ と同じ．）\nよって $\\boldsymbol{x\\leqq1-\\sqrt3,\\ 1<x\\leqq1+\\sqrt3}$．"
+   }
+  ],
+  "idea": {
+   "tex": "分母を払うときは符号に注意．グラフの上下関係で見るか，$(x-1)^2$ を掛けて符号の変化を調べる．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "x<=1-sqrt(3) または 1<x<=1+sqrt(3)"
+  },
+  "methods": [],
+  "tags": [
+   "分数関数",
+   "分数不等式",
+   "グラフ"
+  ],
+  "provenance": {
+   "created": "2026-10-30"
   },
   "quality": {
    "status": "published",

@@ -7090,1445 +7090,6 @@
   }
  },
  {
-  "id": "II-EQ-153",
-  "schema": "lemma.problem/1",
-  "kind": "written",
-  "field": "II-08",
-  "level": 0,
-  "minutes": 6,
-  "theme": "式と証明／二項定理（係数と定数項）",
-  "unit": "式と証明",
-  "topic": "二項定理（係数と定数項）",
-  "statement": {
-   "tex": "\\begin{enumerate}\n  \\item $(2x-1)^6$ の展開式における $x^4$ の係数を求めよ．\n  \\item $\\left(x^2+\\dfrac{1}{x}\\right)^6$ の展開式における定数項を求めよ．\n\\end{enumerate}"
-  },
-  "answer": {
-   "tex": "(1) $240$　(2) $15$"
-  },
-  "solutions": [
-   {
-    "id": "main",
-    "kind": "main",
-    "tex": "(1) 一般項は ${}_6\\mathrm{C}_r(2x)^{6-r}(-1)^r$．$x^4$ の項は $r=2$ のときで，${}_6\\mathrm{C}_2\\cdot2^4\\cdot(-1)^2=15\\cdot16=\\boldsymbol{240}$．\n(2) 一般項は ${}_6\\mathrm{C}_r(x^2)^{6-r}\\left(\\dfrac1x\\right)^r={}_6\\mathrm{C}_r\\,x^{12-3r}$．$12-3r=0$ より $r=4$ で，${}_6\\mathrm{C}_4=\\boldsymbol{15}$．"
-   }
-  ],
-  "idea": {
-   "tex": "一般項 ${}_n\\mathrm{C}_r a^{n-r}b^r$ を書き，求める次数になる $r$ を決める．"
-  },
-  "grading": {
-   "format": "lemma-input/1",
-   "spec": "(1) 240\n(2) 15"
-  },
-  "methods": [],
-  "tags": [
-   "二項定理",
-   "一般項"
-  ],
-  "provenance": {
-   "created": "2026-10-30"
-  },
-  "quality": {
-   "status": "published",
-   "checks": {
-    "dual": false,
-    "sympy": true,
-    "human": false
-   },
-   "verified": false
-  }
- },
- {
-  "id": "II-EQ-154",
-  "schema": "lemma.problem/1",
-  "kind": "written",
-  "field": "II-08",
-  "level": 0,
-  "minutes": 6,
-  "theme": "式と証明／整式の除法",
-  "unit": "式と証明",
-  "topic": "整式の除法",
-  "statement": {
-   "tex": "\\begin{enumerate}\n  \\item $2x^3-3x^2+4x-5$ を $x^2-x+2$ で割った商と余りを求めよ．\n  \\item 整式 $A$ を $x^2+x-1$ で割ると，商が $2x-3$，余りが $x+4$ である．$A$ を求めよ．\n\\end{enumerate}"
-  },
-  "answer": {
-   "tex": "(1) 商 $2x-1$，余り $- x-3$　(2) $A=2x^{3} - x^{2}-4x+7$"
-  },
-  "solutions": [
-   {
-    "id": "main",
-    "kind": "main",
-    "tex": "(1) $2x^3-3x^2+4x-5=(x^2-x+2)(2x-1)+(-x-3)$ と割り算を実行して，商 $\\boldsymbol{2x-1}$，余り $\\boldsymbol{- x-3}$．\n(2) $A=(x^2+x-1)(2x-3)+(x+4)=2x^3-x^2-5x+3+x+4=\\boldsymbol{2x^{3} - x^{2}-4x+7}$．"
-   }
-  ],
-  "idea": {
-   "tex": "割られる式 $=$ 割る式 $\\times$ 商 $+$ 余り（余りの次数は割る式より低い）．"
-  },
-  "grading": {
-   "format": "lemma-input/1",
-   "spec": "(1) 商：2x-1 ; 余り：-x-3\n(2) $A$：2x^3 - x^2 - 4x + 7"
-  },
-  "methods": [],
-  "tags": [
-   "整式の除法",
-   "商と余り"
-  ],
-  "provenance": {
-   "created": "2026-10-30"
-  },
-  "quality": {
-   "status": "published",
-   "checks": {
-    "dual": false,
-    "sympy": true,
-    "human": false
-   },
-   "verified": false
-  }
- },
- {
-  "id": "II-EQ-155",
-  "schema": "lemma.problem/1",
-  "kind": "written",
-  "field": "II-08",
-  "level": 0,
-  "minutes": 5,
-  "theme": "式と証明／分数式の加減",
-  "unit": "式と証明",
-  "topic": "分数式の加減",
-  "statement": {
-   "tex": "\\begin{enumerate}\n  \\item $\\dfrac{x+3}{x^2-1}-\\dfrac{2}{x-1}$ を計算せよ．\n  \\item $\\dfrac{1}{x(x+1)}+\\dfrac{1}{(x+1)(x+2)}$ を計算せよ．\n\\end{enumerate}"
-  },
-  "answer": {
-   "tex": "(1) $-\\dfrac{1}{x+1}$　(2) $\\dfrac{2}{x(x+2)}$"
-  },
-  "solutions": [
-   {
-    "id": "main",
-    "kind": "main",
-    "tex": "(1) 通分して $\\dfrac{x+3-2(x+1)}{(x+1)(x-1)}=\\dfrac{-(x-1)}{(x+1)(x-1)}=\\boldsymbol{-\\dfrac{1}{x+1}}$．\n(2) 通分して $\\dfrac{(x+2)+x}{x(x+1)(x+2)}=\\dfrac{2(x+1)}{x(x+1)(x+2)}=\\boldsymbol{\\dfrac{2}{x(x+2)}}$．"
-   }
-  ],
-  "idea": {
-   "tex": "分母を因数分解して通分し，最後に約分できるかを確かめる．"
-  },
-  "grading": {
-   "format": "lemma-input/1",
-   "spec": "(1) -1/(x+1)\n(2) 2/(x(x+2))"
-  },
-  "methods": [],
-  "tags": [
-   "分数式",
-   "通分"
-  ],
-  "provenance": {
-   "created": "2026-10-30"
-  },
-  "quality": {
-   "status": "published",
-   "checks": {
-    "dual": false,
-    "sympy": true,
-    "human": false
-   },
-   "verified": false
-  }
- },
- {
-  "id": "II-EQ-156",
-  "schema": "lemma.problem/1",
-  "kind": "written",
-  "field": "II-08",
-  "level": 0,
-  "minutes": 5,
-  "theme": "式と証明／繁分数式",
-  "unit": "式と証明",
-  "topic": "繁分数式",
-  "statement": {
-   "tex": "\\begin{enumerate}\n  \\item $\\dfrac{1-\\dfrac{1}{x}}{x-\\dfrac{1}{x}}$ を簡単にせよ．\n  \\item $\\dfrac{1}{1-\\dfrac{1}{1-x}}$ を簡単にせよ．\n\\end{enumerate}"
-  },
-  "answer": {
-   "tex": "(1) $\\dfrac{1}{x+1}$　(2) $\\dfrac{x-1}{x}$"
-  },
-  "solutions": [
-   {
-    "id": "main",
-    "kind": "main",
-    "tex": "(1) 分母・分子に $x$ を掛けて $\\dfrac{x-1}{x^2-1}=\\dfrac{x-1}{(x-1)(x+1)}=\\boldsymbol{\\dfrac{1}{x+1}}$．\n(2) $1-\\dfrac{1}{1-x}=\\dfrac{1-x-1}{1-x}=\\dfrac{-x}{1-x}$ なので，与式 $=\\dfrac{1-x}{-x}=\\boldsymbol{\\dfrac{x-1}{x}}$．"
-   }
-  ],
-  "idea": {
-   "tex": "分母・分子に同じ式を掛けて，中の分数を消す．"
-  },
-  "grading": {
-   "format": "lemma-input/1",
-   "spec": "(1) 1/(x+1)\n(2) (x-1)/x"
-  },
-  "methods": [],
-  "tags": [
-   "分数式",
-   "繁分数"
-  ],
-  "provenance": {
-   "created": "2026-10-30"
-  },
-  "quality": {
-   "status": "published",
-   "checks": {
-    "dual": false,
-    "sympy": true,
-    "human": false
-   },
-   "verified": false
-  }
- },
- {
-  "id": "II-EQ-157",
-  "schema": "lemma.problem/1",
-  "kind": "written",
-  "field": "II-08",
-  "level": 0,
-  "minutes": 5,
-  "theme": "式と証明／恒等式（係数の決定）",
-  "unit": "式と証明",
-  "topic": "恒等式（係数の決定）",
-  "statement": {
-   "tex": "等式 $2x^2+3x+5=a(x-1)^2+b(x-1)+c$ が $x$ についての恒等式となるように，定数 $a,\\ b,\\ c$ の値を定めよ．"
-  },
-  "answer": {
-   "tex": "$a=2,\\ b=7,\\ c=10$"
-  },
-  "solutions": [
-   {
-    "id": "main",
-    "kind": "main",
-    "tex": "右辺を展開すると $ax^2+(-2a+b)x+(a-b+c)$．係数を比べて $a=2$，$-2a+b=3$，$a-b+c=5$．\nよって $\\boldsymbol{a=2,\\ b=7,\\ c=10}$．\n（別解：$x=1$ を代入して $c=10$．$x=1+t$ とおいて $2(1+t)^2+3(1+t)+5=2t^2+7t+10$ からも同じ結果．）"
-   }
-  ],
-  "idea": {
-   "tex": "恒等式は両辺の同じ次数の係数が等しい（または，どんな $x$ を代入しても成り立つ）．"
-  },
-  "grading": {
-   "format": "lemma-input/1",
-   "spec": "$a$：2 ; $b$：7 ; $c$：10"
-  },
-  "methods": [],
-  "tags": [
-   "恒等式",
-   "係数比較"
-  ],
-  "provenance": {
-   "created": "2026-10-30"
-  },
-  "quality": {
-   "status": "published",
-   "checks": {
-    "dual": false,
-    "sympy": true,
-    "human": false
-   },
-   "verified": false
-  }
- },
- {
-  "id": "II-EQ-158",
-  "schema": "lemma.problem/1",
-  "kind": "written",
-  "field": "II-08",
-  "level": 0,
-  "minutes": 6,
-  "theme": "式と証明／相加平均と相乗平均の関係",
-  "unit": "式と証明",
-  "topic": "相加平均と相乗平均の関係",
-  "statement": {
-   "tex": "\\begin{enumerate}\n  \\item $x>0$ のとき，$x+\\dfrac{9}{x}$ の最小値と，そのときの $x$ の値を求めよ．\n  \\item $x>0$ のとき，$2x+\\dfrac{1}{x}$ の最小値を求めよ．\n\\end{enumerate}"
-  },
-  "answer": {
-   "tex": "(1) 最小値 $6$（$x=3$）　(2) $2\\sqrt{2}$"
-  },
-  "solutions": [
-   {
-    "id": "main",
-    "kind": "main",
-    "tex": "(1) $x>0,\\ \\dfrac9x>0$ なので，相加平均と相乗平均の関係より $x+\\dfrac9x\\geqq2\\sqrt{x\\cdot\\dfrac9x}=6$．\n等号は $x=\\dfrac9x$，すなわち $x=3$ のとき．よって最小値 $\\boldsymbol{6}$（$\\boldsymbol{x=3}$）．\n(2) $2x+\\dfrac1x\\geqq2\\sqrt{2x\\cdot\\dfrac1x}=2\\sqrt2$．等号は $2x=\\dfrac1x$，$x=\\dfrac{\\sqrt2}{2}$ のとき成り立つから，最小値 $\\boldsymbol{2\\sqrt{2}}$．"
-   }
-  ],
-  "idea": {
-   "tex": "積が一定になる2つの正の数の和には $a+b\\geqq2\\sqrt{ab}$ を使い，等号が成り立つことも確かめる．"
-  },
-  "grading": {
-   "format": "lemma-input/1",
-   "spec": "(1) 最小値：6 ; $x$：3\n(2) 2sqrt(2)"
-  },
-  "methods": [],
-  "tags": [
-   "相加平均・相乗平均",
-   "最小値"
-  ],
-  "provenance": {
-   "created": "2026-10-30"
-  },
-  "quality": {
-   "status": "published",
-   "checks": {
-    "dual": false,
-    "sympy": true,
-    "human": false
-   },
-   "verified": false
-  }
- },
- {
-  "id": "II-EQ-159",
-  "schema": "lemma.problem/1",
-  "kind": "written",
-  "field": "II-08",
-  "level": 0,
-  "minutes": 5,
-  "theme": "複素数と方程式／複素数の四則計算",
-  "unit": "複素数と方程式",
-  "topic": "複素数の四則計算",
-  "statement": {
-   "tex": "\\begin{enumerate}\n  \\item $\\dfrac{3+i}{1-2i}$ を $a+bi$（$a,\\ b$ は実数）の形で表せ．\n  \\item $(2+i)^2(1-i)$ を $a+bi$（$a,\\ b$ は実数）の形で表せ．\n\\end{enumerate}"
-  },
-  "answer": {
-   "tex": "(1) $\\dfrac{1}{5}+\\dfrac{7}{5}i$（$a=\\dfrac{1}{5},\\ b=\\dfrac{7}{5}$）　(2) $7 + i$（$a=7,\\ b=1$）"
-  },
-  "solutions": [
-   {
-    "id": "main",
-    "kind": "main",
-    "tex": "(1) 分母・分子に $1+2i$ を掛けて $\\dfrac{(3+i)(1+2i)}{1+4}=\\dfrac{3+7i+2i^2}{5}=\\dfrac{1+7i}{5}=\\boldsymbol{\\dfrac{1}{5}+\\dfrac{7}{5}i}$．\n(2) $(2+i)^2=4+4i+i^2=3+4i$．よって $(3+4i)(1-i)=3+i-4i^2=\\boldsymbol{7 + i}$．"
-   }
-  ],
-  "idea": {
-   "tex": "$i^2=-1$ を使って計算し，割り算は分母の共役複素数を分母・分子に掛ける．"
-  },
-  "grading": {
-   "format": "lemma-input/1",
-   "spec": "(1) $a$：1/5 ; $b$：7/5\n(2) $a$：7 ; $b$：1"
-  },
-  "methods": [],
-  "tags": [
-   "複素数",
-   "共役複素数"
-  ],
-  "provenance": {
-   "created": "2026-10-30"
-  },
-  "quality": {
-   "status": "published",
-   "checks": {
-    "dual": false,
-    "sympy": true,
-    "human": false
-   },
-   "verified": false
-  }
- },
- {
-  "id": "II-EQ-160",
-  "schema": "lemma.problem/1",
-  "kind": "written",
-  "field": "II-08",
-  "level": 0,
-  "minutes": 5,
-  "theme": "複素数と方程式／複素数の相等",
-  "unit": "複素数と方程式",
-  "topic": "複素数の相等",
-  "statement": {
-   "tex": "等式 $(2+i)x+(1-3i)y=4-5i$ を満たす実数 $x,\\ y$ の値を求めよ．"
-  },
-  "answer": {
-   "tex": "$x=1,\\ y=2$"
-  },
-  "solutions": [
-   {
-    "id": "main",
-    "kind": "main",
-    "tex": "左辺を整理すると $(2x+y)+(x-3y)i$．$x,\\ y$ は実数なので，実部と虚部を比べて $2x+y=4$，$x-3y=-5$．\nこれを解いて $\\boldsymbol{x=1,\\ y=2}$．"
-   }
-  ],
-  "idea": {
-   "tex": "$a,\\ b,\\ c,\\ d$ が実数のとき，$a+bi=c+di \\iff a=c$ かつ $b=d$．"
-  },
-  "grading": {
-   "format": "lemma-input/1",
-   "spec": "$x$：1 ; $y$：2"
-  },
-  "methods": [],
-  "tags": [
-   "複素数の相等"
-  ],
-  "provenance": {
-   "created": "2026-10-30"
-  },
-  "quality": {
-   "status": "published",
-   "checks": {
-    "dual": false,
-    "sympy": true,
-    "human": false
-   },
-   "verified": false
-  }
- },
- {
-  "id": "II-EQ-161",
-  "schema": "lemma.problem/1",
-  "kind": "written",
-  "field": "II-08",
-  "level": 0,
-  "minutes": 5,
-  "theme": "複素数と方程式／判別式と解の種類",
-  "unit": "複素数と方程式",
-  "topic": "判別式と解の種類",
-  "statement": {
-   "tex": "2次方程式 $x^2+2kx+k+6=0$ が異なる2つの虚数解をもつような，実数 $k$ の値の範囲を求めよ．"
-  },
-  "answer": {
-   "tex": "$-2<k<3$"
-  },
-  "solutions": [
-   {
-    "id": "main",
-    "kind": "main",
-    "tex": "判別式を $D$ とすると $\\dfrac D4=k^2-(k+6)=(k-3)(k+2)$．\n虚数解をもつ条件は $D<0$ なので $(k-3)(k+2)<0$，よって $\\boldsymbol{-2<k<3}$．"
-   }
-  ],
-  "idea": {
-   "tex": "実数係数の2次方程式は，判別式 $D<0$ のとき異なる2つの虚数解をもつ．"
-  },
-  "grading": {
-   "format": "lemma-input/1",
-   "spec": "-2<k<3"
-  },
-  "methods": [],
-  "tags": [
-   "判別式",
-   "虚数解"
-  ],
-  "provenance": {
-   "created": "2026-10-30"
-  },
-  "quality": {
-   "status": "published",
-   "checks": {
-    "dual": false,
-    "sympy": true,
-    "human": false
-   },
-   "verified": false
-  }
- },
- {
-  "id": "II-EQ-162",
-  "schema": "lemma.problem/1",
-  "kind": "written",
-  "field": "II-08",
-  "level": 0,
-  "minutes": 6,
-  "theme": "複素数と方程式／解と係数の関係（対称式の値）",
-  "unit": "複素数と方程式",
-  "topic": "解と係数の関係（対称式の値）",
-  "statement": {
-   "tex": "\\begin{enumerate}\n  \\item 2次方程式 $2x^2-4x+3=0$ の2つの解を $\\alpha,\\ \\beta$ とする．$\\alpha^2+\\beta^2$ と $\\alpha^3+\\beta^3$ の値を求めよ．\n  \\item (1) の $\\alpha,\\ \\beta$ について，$\\dfrac{\\beta}{\\alpha}+\\dfrac{\\alpha}{\\beta}$ の値を求めよ．\n\\end{enumerate}"
-  },
-  "answer": {
-   "tex": "(1) $\\alpha^2+\\beta^2=1,\\ \\alpha^3+\\beta^3=-1$　(2) $\\dfrac{2}{3}$"
-  },
-  "solutions": [
-   {
-    "id": "main",
-    "kind": "main",
-    "tex": "解と係数の関係より $\\alpha+\\beta=2$，$\\alpha\\beta=\\dfrac32$．\n(1) $\\alpha^2+\\beta^2=(\\alpha+\\beta)^2-2\\alpha\\beta=4-3=\\boldsymbol{1}$．$\\alpha^3+\\beta^3=(\\alpha+\\beta)^3-3\\alpha\\beta(\\alpha+\\beta)=8-9=\\boldsymbol{-1}$．\n(2) $\\dfrac{\\beta}{\\alpha}+\\dfrac{\\alpha}{\\beta}=\\dfrac{\\alpha^2+\\beta^2}{\\alpha\\beta}=1\\div\\dfrac32=\\boldsymbol{\\dfrac{2}{3}}$．"
-   }
-  ],
-  "idea": {
-   "tex": "解を直接求めずに，基本対称式 $\\alpha+\\beta,\\ \\alpha\\beta$ で表して値を出す．"
-  },
-  "grading": {
-   "format": "lemma-input/1",
-   "spec": "(1) $\\alpha^2+\\beta^2$：1 ; $\\alpha^3+\\beta^3$：-1\n(2) 2/3"
-  },
-  "methods": [],
-  "tags": [
-   "解と係数の関係",
-   "対称式"
-  ],
-  "provenance": {
-   "created": "2026-10-30"
-  },
-  "quality": {
-   "status": "published",
-   "checks": {
-    "dual": false,
-    "sympy": true,
-    "human": false
-   },
-   "verified": false
-  }
- },
- {
-  "id": "II-EQ-163",
-  "schema": "lemma.problem/1",
-  "kind": "written",
-  "field": "II-08",
-  "level": 0,
-  "minutes": 6,
-  "theme": "複素数と方程式／2数を解とする2次方程式",
-  "unit": "複素数と方程式",
-  "topic": "2数を解とする2次方程式",
-  "statement": {
-   "tex": "\\begin{enumerate}\n  \\item 2数 $2+\\sqrt3,\\ 2-\\sqrt3$ を解とする2次方程式を $x^2+px+q=0$ の形で求めよ．$p,\\ q$ の値を答えよ．\n  \\item 2次方程式 $x^2-x+3=0$ の2つの解を $\\alpha,\\ \\beta$ とする．$\\alpha+1,\\ \\beta+1$ を解とする2次方程式を $x^2+px+q=0$ の形で求めよ．$p,\\ q$ の値を答えよ．\n\\end{enumerate}"
-  },
-  "answer": {
-   "tex": "(1) $p=-4,\\ q=1$（$x^2-4x+1=0$）　(2) $p=-3,\\ q=5$（$x^2-3x+5=0$）"
-  },
-  "solutions": [
-   {
-    "id": "main",
-    "kind": "main",
-    "tex": "(1) 和は $4$，積は $4-3=1$ なので $x^2-4x+1=0$．$\\boldsymbol{p=-4,\\ q=1}$．\n(2) $\\alpha+\\beta=1$，$\\alpha\\beta=3$．$(\\alpha+1)+(\\beta+1)=3$，$(\\alpha+1)(\\beta+1)=\\alpha\\beta+(\\alpha+\\beta)+1=5$．\nよって $x^2-3x+5=0$ で，$\\boldsymbol{p=-3,\\ q=5}$．"
-   }
-  ],
-  "idea": {
-   "tex": "2数 $\\alpha,\\ \\beta$ を解とする2次方程式は $x^2-(\\alpha+\\beta)x+\\alpha\\beta=0$．和と積を求めればよい．"
-  },
-  "grading": {
-   "format": "lemma-input/1",
-   "spec": "(1) $p$：-4 ; $q$：1\n(2) $p$：-3 ; $q$：5"
-  },
-  "methods": [],
-  "tags": [
-   "解と係数の関係",
-   "2次方程式の作成"
-  ],
-  "provenance": {
-   "created": "2026-10-30"
-  },
-  "quality": {
-   "status": "published",
-   "checks": {
-    "dual": false,
-    "sympy": true,
-    "human": false
-   },
-   "verified": false
-  }
- },
- {
-  "id": "II-EQ-164",
-  "schema": "lemma.problem/1",
-  "kind": "written",
-  "field": "II-08",
-  "level": 0,
-  "minutes": 5,
-  "theme": "複素数と方程式／剰余の定理",
-  "unit": "複素数と方程式",
-  "topic": "剰余の定理",
-  "statement": {
-   "tex": "\\begin{enumerate}\n  \\item 整式 $P(x)=x^3-2x^2+ax+3$ を $x-2$ で割った余りが $5$ であるとき，定数 $a$ の値を求めよ．\n  \\item (1) のとき，$P(x)$ を $x+1$ で割った余りを求めよ．\n\\end{enumerate}"
-  },
-  "answer": {
-   "tex": "(1) $a=1$　(2) $-1$"
-  },
-  "solutions": [
-   {
-    "id": "main",
-    "kind": "main",
-    "tex": "(1) 剰余の定理より $P(2)=8-8+2a+3=2a+3=5$，よって $\\boldsymbol{a=1}$．\n(2) $P(x)=x^3-2x^2+x+3$ で，余りは $P(-1)=-1-2-1+3=\\boldsymbol{-1}$．"
-   }
-  ],
-  "idea": {
-   "tex": "$P(x)$ を $x-\\alpha$ で割った余りは $P(\\alpha)$．割り算を実行せずに代入で求める．"
-  },
-  "grading": {
-   "format": "lemma-input/1",
-   "spec": "(1) $a$：1\n(2) -1"
-  },
-  "methods": [],
-  "tags": [
-   "剰余の定理"
-  ],
-  "provenance": {
-   "created": "2026-10-30"
-  },
-  "quality": {
-   "status": "published",
-   "checks": {
-    "dual": false,
-    "sympy": true,
-    "human": false
-   },
-   "verified": false
-  }
- },
- {
-  "id": "II-EQ-165",
-  "schema": "lemma.problem/1",
-  "kind": "written",
-  "field": "II-08",
-  "level": 0,
-  "minutes": 6,
-  "theme": "複素数と方程式／因数定理と3次方程式",
-  "unit": "複素数と方程式",
-  "topic": "因数定理と3次方程式",
-  "statement": {
-   "tex": "3次方程式 $x^3-2x^2-5x+6=0$ を解け．"
-  },
-  "answer": {
-   "tex": "$x=1,\\ -2,\\ 3$"
-  },
-  "solutions": [
-   {
-    "id": "main",
-    "kind": "main",
-    "tex": "$P(x)=x^3-2x^2-5x+6$ とおくと $P(1)=1-2-5+6=0$ なので，$P(x)$ は $x-1$ を因数にもつ．\n割り算して $P(x)=(x-1)(x^2-x-6)=(x-1)(x+2)(x-3)$．よって $\\boldsymbol{x=1,\\ -2,\\ 3}$．"
-   }
-  ],
-  "idea": {
-   "tex": "定数項の約数を代入して $P(\\alpha)=0$ となる $\\alpha$ を見つけ，$x-\\alpha$ でくくり出す．"
-  },
-  "grading": {
-   "format": "lemma-input/1",
-   "spec": "$x$：{1, -2, 3}"
-  },
-  "methods": [],
-  "tags": [
-   "因数定理",
-   "高次方程式"
-  ],
-  "provenance": {
-   "created": "2026-10-30"
-  },
-  "quality": {
-   "status": "published",
-   "checks": {
-    "dual": false,
-    "sympy": true,
-    "human": false
-   },
-   "verified": false
-  }
- },
- {
-  "id": "II-EQ-166",
-  "schema": "lemma.problem/1",
-  "kind": "written",
-  "field": "II-08",
-  "level": 0,
-  "minutes": 5,
-  "theme": "式と証明／比例式",
-  "unit": "式と証明",
-  "topic": "比例式",
-  "statement": {
-   "tex": "$\\dfrac{x}{2}=\\dfrac{y}{3}=\\dfrac{z}{4}\\neq0$ のとき，次の式の値を求めよ．\n\\begin{enumerate}\n  \\item $\\dfrac{x+y+z}{x-y+z}$\n  \\item $\\dfrac{xy+yz+zx}{x^2+y^2+z^2}$\n\\end{enumerate}"
-  },
-  "answer": {
-   "tex": "(1) $3$　(2) $\\dfrac{26}{29}$"
-  },
-  "solutions": [
-   {
-    "id": "main",
-    "kind": "main",
-    "tex": "$\\dfrac x2=\\dfrac y3=\\dfrac z4=k$ とおくと $x=2k,\\ y=3k,\\ z=4k$（$k\\neq0$）．\n(1) $\\dfrac{2k+3k+4k}{2k-3k+4k}=\\dfrac{9k}{3k}=\\boldsymbol{3}$．\n(2) $\\dfrac{6k^2+12k^2+8k^2}{4k^2+9k^2+16k^2}=\\boldsymbol{\\dfrac{26}{29}}$．"
-   }
-  ],
-  "idea": {
-   "tex": "比例式は「$=k$」とおいて各文字を $k$ で表す．"
-  },
-  "grading": {
-   "format": "lemma-input/1",
-   "spec": "(1) 3\n(2) 26/29"
-  },
-  "methods": [],
-  "tags": [
-   "比例式"
-  ],
-  "provenance": {
-   "created": "2026-10-30"
-  },
-  "quality": {
-   "status": "published",
-   "checks": {
-    "dual": false,
-    "sympy": true,
-    "human": false
-   },
-   "verified": false
-  }
- },
- {
-  "id": "II-EQ-167",
-  "schema": "lemma.problem/1",
-  "kind": "written",
-  "field": "II-08",
-  "level": 0,
-  "minutes": 5,
-  "theme": "複素数と方程式／複2次方程式",
-  "unit": "複素数と方程式",
-  "topic": "複2次方程式",
-  "statement": {
-   "tex": "方程式 $x^4-5x^2+4=0$ を解け．"
-  },
-  "answer": {
-   "tex": "$x=1,\\ -1,\\ 2,\\ -2$"
-  },
-  "solutions": [
-   {
-    "id": "main",
-    "kind": "main",
-    "tex": "$x^2=X$ とおくと $X^2-5X+4=0$，$(X-1)(X-4)=0$ より $X=1,\\ 4$．\n$x^2=1$ から $x=\\pm1$，$x^2=4$ から $x=\\pm2$．よって $\\boldsymbol{x=\\pm1,\\ \\pm2}$．"
-   }
-  ],
-  "idea": {
-   "tex": "$x^2$ をひとまとまりと見て，2次方程式に帰着させる．"
-  },
-  "grading": {
-   "format": "lemma-input/1",
-   "spec": "$x$：{1, -1, 2, -2}"
-  },
-  "methods": [],
-  "tags": [
-   "高次方程式",
-   "置き換え"
-  ],
-  "provenance": {
-   "created": "2026-10-30"
-  },
-  "quality": {
-   "status": "published",
-   "checks": {
-    "dual": false,
-    "sympy": true,
-    "human": false
-   },
-   "verified": false
-  }
- },
- {
-  "id": "II-EQ-168",
-  "schema": "lemma.problem/1",
-  "kind": "written",
-  "field": "II-08",
-  "level": 1,
-  "minutes": 10,
-  "theme": "式と証明／多項定理",
-  "unit": "式と証明",
-  "topic": "多項定理",
-  "statement": {
-   "tex": "\\begin{enumerate}\n  \\item $(x+2y-z)^6$ の展開式における $x^2y^3z$ の係数を求めよ．\n  \\item $(1+2x-x^2)^4$ の展開式における $x^3$ の係数を求めよ．\n\\end{enumerate}"
-  },
-  "answer": {
-   "tex": "(1) $-480$　(2) $8$"
-  },
-  "solutions": [
-   {
-    "id": "main",
-    "kind": "main",
-    "tex": "(1) 一般項は $\\dfrac{6!}{p!\\,q!\\,r!}x^p(2y)^q(-z)^r$（$p+q+r=6$）．$p=2,\\ q=3,\\ r=1$ として\n$\\dfrac{6!}{2!\\,3!\\,1!}\\cdot2^3\\cdot(-1)=60\\cdot8\\cdot(-1)=\\boldsymbol{-480}$．\n(2) 一般項は $\\dfrac{4!}{p!\\,q!\\,r!}\\cdot1^p(2x)^q(-x^2)^r$ で，$x$ の次数は $q+2r$．$p+q+r=4,\\ q+2r=3$ を満たすのは\n$(p,q,r)=(1,3,0),\\ (2,1,1)$．係数は $\\dfrac{4!}{1!\\,3!}\\cdot2^3+\\dfrac{4!}{2!\\,1!\\,1!}\\cdot2\\cdot(-1)=32-24=\\boldsymbol{8}$．"
-   }
-  ],
-  "idea": {
-   "tex": "多項定理の一般項を書き，指数の条件を満たす組をすべて拾い出して足す．"
-  },
-  "grading": {
-   "format": "lemma-input/1",
-   "spec": "(1) -480\n(2) 8"
-  },
-  "methods": [],
-  "tags": [
-   "多項定理",
-   "展開式の係数"
-  ],
-  "provenance": {
-   "created": "2026-10-30"
-  },
-  "quality": {
-   "status": "published",
-   "checks": {
-    "dual": false,
-    "sympy": true,
-    "human": false
-   },
-   "verified": false
-  }
- },
- {
-  "id": "II-EQ-169",
-  "schema": "lemma.problem/1",
-  "kind": "written",
-  "field": "II-08",
-  "level": 1,
-  "minutes": 12,
-  "theme": "式と証明／二項定理と二項係数の和",
-  "unit": "式と証明",
-  "topic": "二項定理と二項係数の和",
-  "statement": {
-   "tex": "次の値を求めよ．\n\\begin{enumerate}\n  \\item ${}_6\\mathrm{C}_0+{}_6\\mathrm{C}_1\\cdot3+{}_6\\mathrm{C}_2\\cdot3^2+\\cdots+{}_6\\mathrm{C}_6\\cdot3^6$\n  \\item ${}_{10}\\mathrm{C}_0+{}_{10}\\mathrm{C}_2+{}_{10}\\mathrm{C}_4+\\cdots+{}_{10}\\mathrm{C}_{10}$\n  \\item ${}_8\\mathrm{C}_1+2\\cdot{}_8\\mathrm{C}_2+3\\cdot{}_8\\mathrm{C}_3+\\cdots+8\\cdot{}_8\\mathrm{C}_8$\n\\end{enumerate}"
-  },
-  "answer": {
-   "tex": "(1) $4096$　(2) $512$　(3) $1024$"
-  },
-  "solutions": [
-   {
-    "id": "main",
-    "kind": "main",
-    "tex": "(1) 二項定理 $(1+x)^6=\\sum_{r=0}^{6}{}_6\\mathrm{C}_r x^r$ に $x=3$ を代入して $4^6=\\boldsymbol{4096}$．\n(2) $(1+x)^{10}$ に $x=1,\\ -1$ を代入した式 $2^{10}=\\sum{}_{10}\\mathrm{C}_r$，$0=\\sum(-1)^r{}_{10}\\mathrm{C}_r$ を辺々加えると，偶数番目の和の2倍が $2^{10}$．よって $2^9=\\boldsymbol{512}$．\n(3) $r\\cdot{}_8\\mathrm{C}_r=8\\cdot{}_7\\mathrm{C}_{r-1}$ より，和は $8({}_7\\mathrm{C}_0+\\cdots+{}_7\\mathrm{C}_7)=8\\cdot2^7=\\boldsymbol{1024}$．"
-   }
-  ],
-  "idea": {
-   "tex": "二項定理の式に適当な値を代入する．係数つきの和は $r\\,{}_n\\mathrm{C}_r=n\\,{}_{n-1}\\mathrm{C}_{r-1}$ で整理する．"
-  },
-  "grading": {
-   "format": "lemma-input/1",
-   "spec": "(1) 4096\n(2) 512\n(3) 1024"
-  },
-  "methods": [],
-  "tags": [
-   "二項定理",
-   "二項係数"
-  ],
-  "provenance": {
-   "created": "2026-10-30"
-  },
-  "quality": {
-   "status": "published",
-   "checks": {
-    "dual": false,
-    "sympy": true,
-    "human": false
-   },
-   "verified": false
-  }
- },
- {
-  "id": "II-EQ-170",
-  "schema": "lemma.problem/1",
-  "kind": "written",
-  "field": "II-08",
-  "level": 1,
-  "minutes": 10,
-  "theme": "複素数と方程式／剰余の定理（2次式で割った余り）",
-  "unit": "複素数と方程式",
-  "topic": "剰余の定理（2次式で割った余り）",
-  "statement": {
-   "tex": "整式 $P(x)$ を $x-1$ で割ると余りが $3$，$x+2$ で割ると余りが $-3$ である．$P(x)$ を $x^2+x-2$ で割った余りを求めよ．"
-  },
-  "answer": {
-   "tex": "$2x+1$"
-  },
-  "solutions": [
-   {
-    "id": "main",
-    "kind": "main",
-    "tex": "$x^2+x-2=(x-1)(x+2)$．2次式で割った余りは1次以下なので，商を $Q(x)$，余りを $ax+b$ として\n$P(x)=(x-1)(x+2)Q(x)+ax+b$．剰余の定理より $P(1)=a+b=3$，$P(-2)=-2a+b=-3$．\nこれを解いて $a=2,\\ b=1$．よって余りは $\\boldsymbol{2x+1}$．"
-   }
-  ],
-  "idea": {
-   "tex": "余りを $ax+b$ とおき，割る式が $0$ になる $x$ を代入して剰余の定理の条件を式にする．"
-  },
-  "grading": {
-   "format": "lemma-input/1",
-   "spec": "2x+1"
-  },
-  "methods": [],
-  "tags": [
-   "剰余の定理",
-   "余り"
-  ],
-  "provenance": {
-   "created": "2026-10-30"
-  },
-  "quality": {
-   "status": "published",
-   "checks": {
-    "dual": false,
-    "sympy": true,
-    "human": false
-   },
-   "verified": false
-  }
- },
- {
-  "id": "II-EQ-171",
-  "schema": "lemma.problem/1",
-  "kind": "written",
-  "field": "II-08",
-  "level": 1,
-  "minutes": 13,
-  "theme": "複素数と方程式／剰余の定理（3次式で割った余り）",
-  "unit": "複素数と方程式",
-  "topic": "剰余の定理（3次式で割った余り）",
-  "statement": {
-   "tex": "整式 $P(x)$ を $(x-1)^2$ で割ると余りが $2x+3$，$x+2$ で割ると余りが $8$ である．$P(x)$ を $(x-1)^2(x+2)$ で割った余りを求めよ．"
-  },
-  "answer": {
-   "tex": "$x^{2}+4$"
-  },
-  "solutions": [
-   {
-    "id": "main",
-    "kind": "main",
-    "tex": "3次式で割った余りは2次以下．$P(x)=(x-1)^2(x+2)Q(x)+R(x)$ とおくと，$P(x)$ を $(x-1)^2$ で割った余りは $R(x)$ を $(x-1)^2$ で割った余りに等しい．\nよって $R(x)=a(x-1)^2+2x+3$ と書ける．$P(-2)=R(-2)=9a-1=8$ より $a=1$．\nしたがって余りは $(x-1)^2+2x+3=\\boldsymbol{x^{2}+4}$．"
-   }
-  ],
-  "idea": {
-   "tex": "余りを「$(x-1)^2$ で割った余り」が見える形 $a(x-1)^2+2x+3$ でおくと，未知数が1つで済む．"
-  },
-  "grading": {
-   "format": "lemma-input/1",
-   "spec": "x^2 + 4"
-  },
-  "methods": [],
-  "tags": [
-   "剰余の定理",
-   "余り"
-  ],
-  "provenance": {
-   "created": "2026-10-30"
-  },
-  "quality": {
-   "status": "published",
-   "checks": {
-    "dual": false,
-    "sympy": true,
-    "human": false
-   },
-   "verified": false
-  }
- },
- {
-  "id": "II-EQ-172",
-  "schema": "lemma.problem/1",
-  "kind": "written",
-  "field": "II-08",
-  "level": 1,
-  "minutes": 12,
-  "theme": "式と証明／部分分数分解（分数式の恒等式）",
-  "unit": "式と証明",
-  "topic": "部分分数分解（分数式の恒等式）",
-  "statement": {
-   "tex": "等式 $\\dfrac{3x^2-x+1}{x(x-1)^2}=\\dfrac{a}{x}+\\dfrac{b}{x-1}+\\dfrac{c}{(x-1)^2}$ が $x$ についての恒等式となるように，定数 $a,\\ b,\\ c$ の値を定めよ．"
-  },
-  "answer": {
-   "tex": "$a=1,\\ b=2,\\ c=3$"
-  },
-  "solutions": [
-   {
-    "id": "main",
-    "kind": "main",
-    "tex": "両辺に $x(x-1)^2$ を掛けて $3x^2-x+1=a(x-1)^2+bx(x-1)+cx$．これも恒等式．\n$x=0$ を代入して $a=1$．$x=1$ を代入して $c=3$．$x^2$ の係数を比べて $a+b=3$ より $b=2$．\nよって $\\boldsymbol{a=1,\\ b=2,\\ c=3}$．（逆にこのとき両辺は一致する．）"
-   }
-  ],
-  "idea": {
-   "tex": "分母を払った整式の恒等式にし，都合のよい値の代入と係数比較を組み合わせる．"
-  },
-  "grading": {
-   "format": "lemma-input/1",
-   "spec": "$a$：1 ; $b$：2 ; $c$：3"
-  },
-  "methods": [],
-  "tags": [
-   "恒等式",
-   "部分分数分解"
-  ],
-  "provenance": {
-   "created": "2026-10-30"
-  },
-  "quality": {
-   "status": "published",
-   "checks": {
-    "dual": false,
-    "sympy": true,
-    "human": false
-   },
-   "verified": false
-  }
- },
- {
-  "id": "II-EQ-173",
-  "schema": "lemma.problem/1",
-  "kind": "written",
-  "field": "II-08",
-  "level": 1,
-  "minutes": 12,
-  "theme": "式と証明／比例式（$=k$ とおく）",
-  "unit": "式と証明",
-  "topic": "比例式（$=k$ とおく）",
-  "statement": {
-   "tex": "$abc\\neq0$ である実数 $a,\\ b,\\ c$ について $\\dfrac{a+b}{c}=\\dfrac{b+c}{a}=\\dfrac{c+a}{b}=k$ が成り立つとき，$k$ の値をすべて求めよ．"
-  },
-  "answer": {
-   "tex": "$k=2,\\ -1$"
-  },
-  "solutions": [
-   {
-    "id": "main",
-    "kind": "main",
-    "tex": "$a+b=ck$，$b+c=ak$，$c+a=bk$．辺々加えて $2(a+b+c)=k(a+b+c)$，すなわち $(a+b+c)(k-2)=0$．\n$a+b+c\\neq0$ のとき $k=2$（例：$a=b=c=1$）．\n$a+b+c=0$ のとき $a+b=-c$ なので $k=\\dfrac{-c}{c}=-1$（例：$a=b=1,\\ c=-2$）．\nよって $\\boldsymbol{k=2,\\ -1}$．"
-   }
-  ],
-  "idea": {
-   "tex": "3つの式を辺々加えて $a+b+c$ でくくる．$a+b+c=0$ の場合を落とさない．"
-  },
-  "grading": {
-   "format": "lemma-input/1",
-   "spec": "$k$：{2, -1}"
-  },
-  "methods": [],
-  "tags": [
-   "比例式",
-   "場合分け"
-  ],
-  "provenance": {
-   "created": "2026-10-30"
-  },
-  "quality": {
-   "status": "published",
-   "checks": {
-    "dual": false,
-    "sympy": true,
-    "human": false
-   },
-   "verified": false
-  }
- },
- {
-  "id": "II-EQ-174",
-  "schema": "lemma.problem/1",
-  "kind": "written",
-  "field": "II-08",
-  "level": 1,
-  "minutes": 12,
-  "theme": "式と証明／相加平均・相乗平均の関係の応用",
-  "unit": "式と証明",
-  "topic": "相加平均・相乗平均の関係の応用",
-  "statement": {
-   "tex": "\\begin{enumerate}\n  \\item $x>1$ のとき，$x+\\dfrac{4}{x-1}$ の最小値と，そのときの $x$ の値を求めよ．\n  \\item $a>0,\\ b>0$ のとき，$\\left(a+\\dfrac1b\\right)\\left(b+\\dfrac4a\\right)$ の最小値を求めよ．\n\\end{enumerate}"
-  },
-  "answer": {
-   "tex": "(1) 最小値 $5$（$x=3$）　(2) $9$"
-  },
-  "solutions": [
-   {
-    "id": "main",
-    "kind": "main",
-    "tex": "(1) $x-1>0$ なので $x+\\dfrac{4}{x-1}=(x-1)+\\dfrac{4}{x-1}+1\\geqq2\\sqrt{4}+1=5$．\n等号は $x-1=\\dfrac{4}{x-1}$，$x-1=2$ すなわち $x=3$ のとき．最小値 $\\boldsymbol{5}$（$\\boldsymbol{x=3}$）．\n(2) 展開すると $ab+4+1+\\dfrac{4}{ab}=ab+\\dfrac{4}{ab}+5\\geqq2\\sqrt4+5=9$．\n等号は $ab=2$（例えば $a=1,\\ b=2$）のとき成り立つから，最小値 $\\boldsymbol{9}$．\n（注：$a+\\frac1b\\geqq2\\sqrt{\\frac ab}$，$b+\\frac4a\\geqq2\\sqrt{\\frac{4b}{a}}$ を掛けて $8$ とするのは，等号が同時に成り立たないので誤り．）"
-   }
-  ],
-  "idea": {
-   "tex": "積が一定になる形に変形してから相加平均・相乗平均の関係を使い，等号成立を必ず確認する．"
-  },
-  "grading": {
-   "format": "lemma-input/1",
-   "spec": "(1) 最小値：5 ; $x$：3\n(2) 9"
-  },
-  "methods": [],
-  "tags": [
-   "相加平均・相乗平均",
-   "最小値"
-  ],
-  "provenance": {
-   "created": "2026-10-30"
-  },
-  "quality": {
-   "status": "published",
-   "checks": {
-    "dual": false,
-    "sympy": true,
-    "human": false
-   },
-   "verified": false
-  }
- },
- {
-  "id": "II-EQ-175",
-  "schema": "lemma.problem/1",
-  "kind": "written",
-  "field": "II-08",
-  "level": 1,
-  "minutes": 12,
-  "theme": "複素数と方程式／次数下げによる式の値",
-  "unit": "複素数と方程式",
-  "topic": "次数下げによる式の値",
-  "statement": {
-   "tex": "\\begin{enumerate}\n  \\item $x=1+\\sqrt2\\,i$ のとき，$x^2-2x$ の値を求めよ．\n  \\item $x=1+\\sqrt2\\,i$ のとき，$x^4-x^3+x^2+3x+1$ の値を求めよ．\n\\end{enumerate}"
-  },
-  "answer": {
-   "tex": "(1) $-3$　(2) $1$"
-  },
-  "solutions": [
-   {
-    "id": "main",
-    "kind": "main",
-    "tex": "(1) $x-1=\\sqrt2\\,i$ の両辺を2乗して $x^2-2x+1=-2$，よって $x^2-2x=\\boldsymbol{-3}$．\n(2) $x^2-2x+3=0$ である．$x^4-x^3+x^2+3x+1$ を $x^2-2x+3$ で割ると，商 $x^2+x$，余り $1$ なので\n$x^4-x^3+x^2+3x+1=(x^2-2x+3)(x^2+x)+1=0+1=\\boldsymbol{1}$．"
-   }
-  ],
-  "idea": {
-   "tex": "$x$ が満たす2次方程式を作り，求める式をその2次式で割った余りに直して代入する．"
-  },
-  "grading": {
-   "format": "lemma-input/1",
-   "spec": "(1) -3\n(2) 1"
-  },
-  "methods": [],
-  "tags": [
-   "次数下げ",
-   "複素数",
-   "整式の除法"
-  ],
-  "provenance": {
-   "created": "2026-10-30"
-  },
-  "quality": {
-   "status": "published",
-   "checks": {
-    "dual": false,
-    "sympy": true,
-    "human": false
-   },
-   "verified": false
-  }
- },
- {
-  "id": "II-EQ-176",
-  "schema": "lemma.problem/1",
-  "kind": "written",
-  "field": "II-08",
-  "level": 1,
-  "minutes": 12,
-  "theme": "複素数と方程式／解と係数の関係（解の条件から係数を決める）",
-  "unit": "複素数と方程式",
-  "topic": "解と係数の関係（解の条件から係数を決める）",
-  "statement": {
-   "tex": "\\begin{enumerate}\n  \\item 2次方程式 $x^2+kx+8=0$ の2つの解の差が $2$ であるとき，定数 $k$ の値を求めよ．\n  \\item 2次方程式 $x^2-(k+1)x+2k=0$ の一方の解が他方の解の $2$ 倍であるとき，定数 $k$ の値を求めよ．\n\\end{enumerate}"
-  },
-  "answer": {
-   "tex": "(1) $k=\\pm6$　(2) $k=\\dfrac{7\\pm3\\sqrt5}{2}$"
-  },
-  "solutions": [
-   {
-    "id": "main",
-    "kind": "main",
-    "tex": "(1) 2つの解を $\\alpha,\\ \\alpha+2$ とすると，解と係数の関係より $2\\alpha+2=-k$，$\\alpha(\\alpha+2)=8$．\n後者から $\\alpha=2,\\ -4$．$\\alpha=2$ のとき $k=-6$，$\\alpha=-4$ のとき $k=6$．よって $\\boldsymbol{k=\\pm6}$．\n(2) 2つの解を $\\alpha,\\ 2\\alpha$ とすると $3\\alpha=k+1$，$2\\alpha^2=2k$．後者から $k=\\alpha^2$．これを前者に代入して\n$3\\alpha=\\alpha^2+1$ すなわち $\\alpha^2-3\\alpha+1=0$ から $\\alpha=\\dfrac{3\\pm\\sqrt5}{2}$，$k=\\alpha^2=3\\alpha-1=\\dfrac{7\\pm3\\sqrt5}{2}$．\nよって $\\boldsymbol{k=\\dfrac{7\\pm3\\sqrt5}{2}}$．"
-   }
-  ],
-  "idea": {
-   "tex": "2つの解を1つの文字で表し（$\\alpha,\\ \\alpha+2$ や $\\alpha,\\ 2\\alpha$），解と係数の関係から連立方程式を作る．"
-  },
-  "grading": {
-   "format": "lemma-input/1",
-   "spec": "(1) $k$：{6, -6}\n(2) $k$：{(7-3sqrt(5))/2, (7+3sqrt(5))/2}"
-  },
-  "methods": [],
-  "tags": [
-   "解と係数の関係"
-  ],
-  "provenance": {
-   "created": "2026-10-30"
-  },
-  "quality": {
-   "status": "published",
-   "checks": {
-    "dual": false,
-    "sympy": true,
-    "human": false
-   },
-   "verified": false
-  }
- },
- {
-  "id": "II-EQ-177",
-  "schema": "lemma.problem/1",
-  "kind": "written",
-  "field": "II-08",
-  "level": 1,
-  "minutes": 12,
-  "theme": "複素数と方程式／2次方程式の解の符号",
-  "unit": "複素数と方程式",
-  "topic": "2次方程式の解の符号",
-  "statement": {
-   "tex": "2次方程式 $x^2-2kx+k+2=0$ について，次の条件を満たす定数 $k$ の値の範囲を求めよ．\n\\begin{enumerate}\n  \\item 異なる2つの正の解をもつ．\n  \\item 正の解と負の解を1つずつもつ．\n\\end{enumerate}"
-  },
-  "answer": {
-   "tex": "(1) $k>2$　(2) $k<-2$"
-  },
-  "solutions": [
-   {
-    "id": "main",
-    "kind": "main",
-    "tex": "2つの解を $\\alpha,\\ \\beta$，判別式を $D$ とする．$\\alpha+\\beta=2k$，$\\alpha\\beta=k+2$．\n(1) 条件は $\\dfrac D4=k^2-k-2>0$，$\\alpha+\\beta>0$，$\\alpha\\beta>0$．\n$(k-2)(k+1)>0$ より $k<-1,\\ 2<k$．$k>0$，$k>-2$ と合わせて $\\boldsymbol{k>2}$．\n(2) 条件は $\\alpha\\beta<0$（このとき $D>0$ も自動的に成り立つ）．$k+2<0$ より $\\boldsymbol{k<-2}$．"
-   }
-  ],
-  "idea": {
-   "tex": "解の符号は「判別式・解の和・解の積」の3つの条件で言い換える．異符号なら積 $<0$ だけでよい．"
-  },
-  "grading": {
-   "format": "lemma-input/1",
-   "spec": "(1) k>2\n(2) k<-2"
-  },
-  "methods": [],
-  "tags": [
-   "解と係数の関係",
-   "解の符号",
-   "判別式"
-  ],
-  "provenance": {
-   "created": "2026-10-30"
-  },
-  "quality": {
-   "status": "published",
-   "checks": {
-    "dual": false,
-    "sympy": true,
-    "human": false
-   },
-   "verified": false
-  }
- },
- {
-  "id": "II-EQ-178",
-  "schema": "lemma.problem/1",
-  "kind": "written",
-  "field": "II-08",
-  "level": 1,
-  "minutes": 12,
-  "theme": "複素数と方程式／3次方程式の解と係数の関係",
-  "unit": "複素数と方程式",
-  "topic": "3次方程式の解と係数の関係",
-  "statement": {
-   "tex": "3次方程式 $x^3-2x^2+3x-4=0$ の3つの解を $\\alpha,\\ \\beta,\\ \\gamma$ とする．次の値を求めよ．\n\\begin{enumerate}\n  \\item $\\alpha^2+\\beta^2+\\gamma^2$\n  \\item $(1+\\alpha)(1+\\beta)(1+\\gamma)$\n  \\item $\\dfrac1\\alpha+\\dfrac1\\beta+\\dfrac1\\gamma$\n\\end{enumerate}"
-  },
-  "answer": {
-   "tex": "(1) $-2$　(2) $10$　(3) $\\dfrac{3}{4}$"
-  },
-  "solutions": [
-   {
-    "id": "main",
-    "kind": "main",
-    "tex": "解と係数の関係より $\\alpha+\\beta+\\gamma=2$，$\\alpha\\beta+\\beta\\gamma+\\gamma\\alpha=3$，$\\alpha\\beta\\gamma=4$．\n(1) $(\\alpha+\\beta+\\gamma)^2-2(\\alpha\\beta+\\beta\\gamma+\\gamma\\alpha)=4-6=\\boldsymbol{-2}$．\n(2) $1+(\\alpha+\\beta+\\gamma)+(\\alpha\\beta+\\beta\\gamma+\\gamma\\alpha)+\\alpha\\beta\\gamma=1+2+3+4=\\boldsymbol{10}$．\n（別解：$x^3-2x^2+3x-4=(x-\\alpha)(x-\\beta)(x-\\gamma)$ に $x=-1$ を代入して $-10=-(1+\\alpha)(1+\\beta)(1+\\gamma)$．）\n(3) $\\dfrac{\\alpha\\beta+\\beta\\gamma+\\gamma\\alpha}{\\alpha\\beta\\gamma}=\\boldsymbol{\\dfrac{3}{4}}$．"
-   }
-  ],
-  "idea": {
-   "tex": "3次方程式でも解の和・2つずつの積の和・積は係数で表せる．求める式を基本対称式で書き直す．"
-  },
-  "grading": {
-   "format": "lemma-input/1",
-   "spec": "(1) -2\n(2) 10\n(3) 3/4"
-  },
-  "methods": [],
-  "tags": [
-   "解と係数の関係",
-   "3次方程式"
-  ],
-  "provenance": {
-   "created": "2026-10-30"
-  },
-  "quality": {
-   "status": "published",
-   "checks": {
-    "dual": false,
-    "sympy": true,
-    "human": false
-   },
-   "verified": false
-  }
- },
- {
-  "id": "II-EQ-179",
-  "schema": "lemma.problem/1",
-  "kind": "written",
-  "field": "II-08",
-  "level": 1,
-  "minutes": 13,
-  "theme": "複素数と方程式／虚数解をもつ3次方程式",
-  "unit": "複素数と方程式",
-  "topic": "虚数解をもつ3次方程式",
-  "statement": {
-   "tex": "\\begin{enumerate}\n  \\item 3次方程式 $x^3+ax^2+bx+6=0$ が $1+i$ を解にもつとき，実数の定数 $a,\\ b$ の値を求めよ．\n  \\item (1) のとき，この方程式の実数解を求めよ．\n\\end{enumerate}"
-  },
-  "answer": {
-   "tex": "(1) $a=1,\\ b=-4$　(2) $x=-3$"
-  },
-  "solutions": [
-   {
-    "id": "main",
-    "kind": "main",
-    "tex": "(1) 係数が実数なので共役な $1-i$ も解．$1\\pm i$ を解とする2次式は $x^2-2x+2$．\n残りの解を $\\gamma$ とすると $x^3+ax^2+bx+6=(x^2-2x+2)(x-\\gamma)$．定数項を比べて $-2\\gamma=6$，$\\gamma=-3$．\n$(x^2-2x+2)(x+3)=x^3+x^2-4x+6$ より $\\boldsymbol{a=1,\\ b=-4}$．\n（別解：$x=1+i$ を代入し $(1+i)^2=2i,\\ (1+i)^3=-2+2i$ から $(-2+b+6)+(2+2a+b)i=0$．実部・虚部を $0$ として同じ結果．）\n(2) 解は $1\\pm i,\\ -3$ で，実数解は $\\boldsymbol{x=-3}$．"
-   }
-  ],
-  "idea": {
-   "tex": "実数係数の方程式では，虚数解の共役複素数も解になる．2次の因数を作って残りの因数を決める．"
-  },
-  "grading": {
-   "format": "lemma-input/1",
-   "spec": "(1) $a$：1 ; $b$：-4\n(2) $x$：-3"
-  },
-  "methods": [],
-  "tags": [
-   "高次方程式",
-   "共役複素数",
-   "虚数解"
-  ],
-  "provenance": {
-   "created": "2026-10-30"
-  },
-  "quality": {
-   "status": "published",
-   "checks": {
-    "dual": false,
-    "sympy": true,
-    "human": false
-   },
-   "verified": false
-  }
- },
- {
-  "id": "II-EQ-180",
-  "schema": "lemma.problem/1",
-  "kind": "written",
-  "field": "II-08",
-  "level": 1,
-  "minutes": 12,
-  "theme": "複素数と方程式／1の3乗根 $\\omega$",
-  "unit": "複素数と方程式",
-  "topic": "1の3乗根 $\\omega$",
-  "statement": {
-   "tex": "方程式 $x^3=1$ の虚数解の1つを $\\omega$ とする．次の値を求めよ．\n\\begin{enumerate}\n  \\item $\\omega^{20}+\\omega^{10}+1$\n  \\item $\\dfrac{1}{1+\\omega}+\\dfrac{1}{1+\\omega^2}$\n  \\item $(1-\\omega)(1-\\omega^2)$\n\\end{enumerate}"
-  },
-  "answer": {
-   "tex": "(1) $0$　(2) $1$　(3) $3$"
-  },
-  "solutions": [
-   {
-    "id": "main",
-    "kind": "main",
-    "tex": "$x^3-1=(x-1)(x^2+x+1)$ で $\\omega$ は虚数なので $\\omega^2+\\omega+1=0$，また $\\omega^3=1$．\n(1) $\\omega^{20}=(\\omega^3)^6\\omega^2=\\omega^2$，$\\omega^{10}=\\omega$ より，与式 $=\\omega^2+\\omega+1=\\boldsymbol{0}$．\n(2) 通分して $\\dfrac{2+\\omega+\\omega^2}{1+\\omega+\\omega^2+\\omega^3}=\\dfrac{2-1}{0+1}=\\boldsymbol{1}$．\n(3) $1-\\omega-\\omega^2+\\omega^3=2-(\\omega+\\omega^2)=2-(-1)=\\boldsymbol{3}$．"
-   }
-  ],
-  "idea": {
-   "tex": "$\\omega^3=1$ で指数を3で割った余りに下げ，$\\omega^2+\\omega+1=0$ でまとめる．"
-  },
-  "grading": {
-   "format": "lemma-input/1",
-   "spec": "(1) 0\n(2) 1\n(3) 3"
-  },
-  "methods": [],
-  "tags": [
-   "1の3乗根",
-   "次数下げ"
-  ],
-  "provenance": {
-   "created": "2026-10-30"
-  },
-  "quality": {
-   "status": "published",
-   "checks": {
-    "dual": false,
-    "sympy": true,
-    "human": false
-   },
-   "verified": false
-  }
- },
- {
-  "id": "II-EQ-181",
-  "schema": "lemma.problem/1",
-  "kind": "written",
-  "field": "II-08",
-  "level": 1,
-  "minutes": 12,
-  "theme": "複素数と方程式／共通解",
-  "unit": "複素数と方程式",
-  "topic": "共通解",
-  "statement": {
-   "tex": "2つの2次方程式 $x^2+kx+2=0$，$x^2+2x+k=0$ がただ1つの共通な実数解をもつように定数 $k$ の値を定め，そのときの共通解を求めよ．"
-  },
-  "answer": {
-   "tex": "$k=-3$，共通解 $x=1$"
-  },
-  "solutions": [
-   {
-    "id": "main",
-    "kind": "main",
-    "tex": "共通解を $\\alpha$ とすると $\\alpha^2+k\\alpha+2=0$，$\\alpha^2+2\\alpha+k=0$．辺々引いて $(k-2)\\alpha-(k-2)=0$，$(k-2)(\\alpha-1)=0$．\n$k=2$ のとき2式はともに $x^2+2x+2=0$ となり，実数解をもたないので不適．\nよって $\\alpha=1$．代入して $1+k+2=0$，$\\boldsymbol{k=-3}$．このとき $x^2-3x+2=0$ と $x^2+2x-3=0$ の共通解はただ1つ $\\boldsymbol{x=1}$．"
-   }
-  ],
-  "idea": {
-   "tex": "2式を引いて最高次の項を消し，共通解の候補をしぼる．係数が一致する場合を別に調べる．"
-  },
-  "grading": {
-   "format": "lemma-input/1",
-   "spec": "$k$：-3 ; 共通解：1"
-  },
-  "methods": [],
-  "tags": [
-   "共通解"
-  ],
-  "provenance": {
-   "created": "2026-10-30"
-  },
-  "quality": {
-   "status": "published",
-   "checks": {
-    "dual": false,
-    "sympy": true,
-    "human": false
-   },
-   "verified": false
-  }
- },
- {
-  "id": "II-EQ-182",
-  "schema": "lemma.problem/1",
-  "kind": "written",
-  "field": "II-08",
-  "level": 1,
-  "minutes": 14,
-  "theme": "複素数と方程式／3次方程式の重解",
-  "unit": "複素数と方程式",
-  "topic": "3次方程式の重解",
-  "statement": {
-   "tex": "\\begin{enumerate}\n  \\item $x^3+(k-1)x^2-k$ を因数分解せよ．\n  \\item 3次方程式 $x^3+(k-1)x^2-k=0$ の異なる実数解がちょうど2個となるような，定数 $k$ の値をすべて求めよ．\n\\end{enumerate}"
-  },
-  "answer": {
-   "tex": "(1) $(x-1)(x^2+kx+k)$　(2) $k=0,\\ 4,\\ -\\dfrac12$"
-  },
-  "solutions": [
-   {
-    "id": "main",
-    "kind": "main",
-    "tex": "(1) $x=1$ を代入すると $1+k-1-k=0$ なので $x-1$ を因数にもち，$\\boldsymbol{(x-1)(x^2+kx+k)}$．\n(2) 異なる実数解が2個となるのは，(i) $x^2+kx+k=0$ が $1$ 以外の重解をもつ，(ii) $x^2+kx+k=0$ が $x=1$ と $1$ 以外の解をもつ，のどちらか．\n(i) 判別式 $k^2-4k=0$ より $k=0,\\ 4$．重解は $x=-\\dfrac k2=0,\\ -2$ でいずれも $1$ でない．\n(ii) $1+2k=0$ より $k=-\\dfrac12$．このとき $x^2-\\dfrac12x-\\dfrac12=(x-1)\\left(x+\\dfrac12\\right)$ で，他の解 $-\\dfrac12\\neq1$．\nよって $\\boldsymbol{k=0,\\ 4,\\ -\\dfrac12}$．"
-   }
-  ],
-  "idea": {
-   "tex": "1つの解が見つかれば因数分解して，残りの2次方程式の重解・共有解の場合に分ける．"
-  },
-  "grading": {
-   "format": "lemma-input/1",
-   "spec": "(1) (x-1)(x^2+kx+k)\n(2) $k$：{0, 4, -1/2}"
-  },
-  "methods": [],
-  "tags": [
-   "高次方程式",
-   "重解",
-   "因数定理"
-  ],
-  "provenance": {
-   "created": "2026-10-30"
-  },
-  "quality": {
-   "status": "published",
-   "checks": {
-    "dual": false,
-    "sympy": true,
-    "human": false
-   },
-   "verified": false
-  }
- },
- {
   "id": "II-EQ-183",
   "schema": "lemma.problem/1",
   "kind": "written",
@@ -9748,243 +8309,6 @@
   }
  },
  {
-  "id": "II-EQ-209",
-  "schema": "lemma.problem/1",
-  "kind": "written",
-  "field": "II-08",
-  "level": 4,
-  "minutes": 35,
-  "theme": "2次の整数係数方程式の解がみたす欠項の方程式",
-  "topic": "2次の整数係数方程式の解がみたす欠項の方程式",
-  "statement": {
-   "tex": "複素数 $z$ に関する次の条件 (C)，(D)，(E) を考える．\n\\begin{itemize}\n  \\item[(C)] $z^2+mz+n=0$ をみたす整数 $m,\\ n$ が存在する．\n  \\item[(D)] $z^3+pz^2+q=0$ をみたす整数 $p,\\ q$ が存在する．\n  \\item[(E)] $z^4+pz+q=0$ をみたす整数 $p,\\ q$ が存在する．\n\\end{itemize}\n\\begin{enumerate}\n  \\item 複素数 $z$ が条件 (C) をみたすならば，条件 (E) もみたすことを証明せよ．\n  \\item $m,\\ n$ を整数とし，2次方程式 $x^2+mx+n=0$ は有理数の解をもたないとする．この方程式の解 $z$ が条件 (D) をみたすための，$m,\\ n$ についての必要十分条件を求めよ．\n  \\item $z=a+bi$（$a,\\ b$ は実数）と表したとき $a^2+b^2=1$ となる複素数 $z$ で，条件 (E) をみたすものをすべて求めよ．\n\\end{enumerate}"
-  },
-  "answer": {
-   "tex": "(1) 証明　(2) $m\\neq0$ かつ $n$ が $m$ の倍数　(3) $z=\\pm1,\\ \\pm i,\\ \\dfrac{\\pm1\\pm\\sqrt3\\,i}{2},\\ \\dfrac{\\pm1\\pm i}{\\sqrt2}$（複号任意，計12個）"
-  },
-  "solutions": [
-   {
-    "id": "main",
-    "kind": "main",
-    "tex": "(1) $z^2=-mz-n$ を用いて次数を下げる．\n\\[\nz^3=z\\cdot z^2=-mz^2-nz=-m(-mz-n)-nz=(m^2-n)z+mn,\n\\]\n\\[\nz^4=z\\cdot z^3=(m^2-n)z^2+mnz=(m^2-n)(-mz-n)+mnz=(2mn-m^3)z+n^2-m^2n.\n\\]\nよって $p=m^3-2mn$，$q=m^2n-n^2$ とおくと，これらは整数で $z^4+pz+q=0$ が成り立つ．したがって $z$ は条件 (E) をみたす．\\hfill$\\square$\n\n(2) 整数 $p,\\ q$ に対して，展開して確かめられる恒等式\n\\[\nx^3+px^2+q=(x^2+mx+n)(x+p-m)+(m^2-mp-n)x+(q+mn-np)\n\\]\nが成り立つ（実際，$(x^2+mx+n)(x+p-m)=x^3+px^2+(mp-m^2+n)x+np-mn$ である）．$\\alpha=m^2-mp-n$，$\\beta=q+mn-np$ とおくと，これらは整数で，$z^2+mz+n=0$ より\n\\[\nz^3+pz^2+q=\\alpha z+\\beta \\quad\\cdots\\text{①}\n\\]\nである．\n\n\\textbf{必要性}　$z$ が (D) をみたすとし，そのときの整数を $p,\\ q$ とすると，①より $\\alpha z+\\beta=0$．もし $\\alpha\\neq0$ なら $z=-\\dfrac{\\beta}{\\alpha}$ は有理数となり，$x^2+mx+n=0$ が有理数の解をもたないことに反する．よって $\\alpha=0$，したがって $\\beta=0$ である．\n\nここで $m=0$ とすると $\\alpha=-n=0$ となり，方程式は $x^2=0$ で有理数の解 $0$ をもつから矛盾する．よって $m\\neq0$ であり，$\\alpha=0$ より $n=m(m-p)$，すなわち $n$ は $m$ の倍数である．\n\n\\textbf{十分性}　$m\\neq0$ かつ $n=km$（$k$ は整数）とする．$p=m-k$，$q=-nk$ とおくとこれらは整数で，\n\\[\n\\alpha=m^2-m(m-k)-km=0,\\qquad \\beta=-nk+mn-n(m-k)=0.\n\\]\nよって①より $z^3+pz^2+q=0$ となり，$z$ は (D) をみたす．\n\n以上より，求める条件は $\\boldsymbol{m\\neq0}$ \\textbf{かつ} $\\boldsymbol{n}$ \\textbf{が} $\\boldsymbol{m}$ \\textbf{の倍数} である．（例えば $x^2-x-1=0$ の解は $x^3-2x^2+1=0$ をみたすが，$\\sqrt2$ は (D) をみたさない．）\n\n(3) $z=a+bi$（$a,\\ b$ は実数，$a^2+b^2=1$）とする．\n\n\\textbf{$z$ が実数の場合}　$b=0$ より $a^2=1$，$z=\\pm1$．このとき $z^4-1=0$ であるから，$p=0$，$q=-1$ として (E) をみたす．\n\n\\textbf{$z$ が虚数の場合}　$b\\neq0$ である．$c=z+\\overline{z}=2a$ とおくと $c$ は実数で，$c^2=4a^2=4(1-b^2)$ と $b\\neq0$ より $0\\leqq c^2<4$ である．また $z\\overline{z}=a^2+b^2=1$ だから $(x-z)(x-\\overline{z})=x^2-cx+1$ であり，$z^2-cz+1=0$ が成り立つ．\n\n展開すると $(x^2-cx+1)(x^2+cx+c^2-1)=x^4+(2c-c^3)x+c^2-1$ であるから，\n\\[\nx^4+px+q=(x^2-cx+1)(x^2+cx+c^2-1)+(p-2c+c^3)x+(q-c^2+1)\n\\]\nが恒等的に成り立つ．$x=z$ を代入して\n\\[\nz^4+pz+q=(p-2c+c^3)z+(q-c^2+1)\\quad\\cdots\\text{②}\n\\]\nを得る．\n\n\\textbf{必要性}　整数 $p,\\ q$ で $z^4+pz+q=0$ とすると，②より $(p-2c+c^3)z+(q-c^2+1)=0$．2つの係数は実数であり，$p-2c+c^3\\neq0$ ならば $z$ が実数となって矛盾する．よって\n\\[\np=2c-c^3=c(2-c^2),\\qquad q=c^2-1.\n\\]\n後者より $c^2=q+1$ は整数で，$0\\leqq c^2<4$ から $c^2\\in\\{0,1,2,3\\}$．$c^2=3$ ならば $p=-c$ で $p^2=3$ となるが，$p^2=3$ をみたす整数 $p$ は存在しない．よって $c^2\\in\\{0,1,2\\}$，すなわち $c\\in\\{0,\\ \\pm1,\\ \\pm\\sqrt2\\}$ であり，$z$ は $x^2-cx+1=0$ の虚数解である：\n\\begin{itemize}\n  \\item $c=0$：$z^2+1=0$ より $z=\\pm i$．\n  \\item $c=\\pm1$：$z^2\\mp z+1=0$ より $z=\\dfrac{\\pm1\\pm\\sqrt3\\,i}{2}$（複号任意）．\n  \\item $c=\\pm\\sqrt2$：$z^2\\mp\\sqrt2z+1=0$ より $z=\\dfrac{\\pm1\\pm i}{\\sqrt2}$（複号任意）．\n\\end{itemize}\n\n\\textbf{十分性}　上の各 $z$ は，$c\\in\\{0,\\pm1,\\pm\\sqrt2\\}$ に対する $x^2-cx+1=0$ の解であり，判別式 $c^2-4<0$ より虚数である．その解の一方を $z=a+bi$ とすると他方は $\\overline{z}=a-bi$ であり，解と係数の関係より $a^2+b^2=z\\overline{z}=1$ をみたす．$p=c(2-c^2)$，$q=c^2-1$ とおくと\n\\[\n(c,p,q)=(0,0,-1),\\ (1,1,0),\\ (-1,-1,0),\\ (\\pm\\sqrt2,0,1)\n\\]\nでいずれも $p,\\ q$ は整数であり，②の右辺の係数がともに $0$ になるので $z^4+pz+q=0$ が成り立つ．\n\n以上より求める $z$ は\n\\[\n\\boldsymbol{z=\\pm1,\\ \\ \\pm i,\\ \\ \\dfrac{\\pm1\\pm\\sqrt3\\,i}{2},\\ \\ \\dfrac{\\pm1\\pm i}{\\sqrt2}}\\quad\\text{（複号任意，計12個）}.\n\\]"
-   }
-  ],
-  "idea": {
-   "tex": "$z^2=-mz-n$ を使って $z$ の高次の式を1次式 $\\alpha z+\\beta$（$\\alpha,\\beta$ は整数）まで下げる．$z$ が有理数でない（または虚数である）とき，$\\alpha z+\\beta=0$ から $\\alpha=\\beta=0$ が出るので，「$z$ がある方程式をみたすか」は割り算の余りの係数が $0$ になる条件に翻訳される．$z\\overline{z}=1$ の虚数 $z$ は $x^2-cx+1$（$c=z+\\overline{z}$）の解なので，この2次式で割った余りが $0$ になる条件から $c$ を決める．"
-  },
-  "methods": [],
-  "tags": [
-   "整式の割り算",
-   "余りの係数比較",
-   "共役複素数",
-   "単位円上の解"
-  ],
-  "provenance": {
-   "created": "2026-11-10"
-  },
-  "quality": {
-   "status": "published",
-   "checks": {
-    "dual": false,
-    "sympy": true,
-    "human": false
-   },
-   "verified": false
-  }
- },
- {
-  "id": "II-EQ-210",
-  "schema": "lemma.problem/1",
-  "kind": "written",
-  "field": "II-08",
-  "level": 4,
-  "minutes": 30,
-  "theme": "位数4の1次分数関数による2乗和の方程式",
-  "topic": "位数4の1次分数関数による2乗和の方程式",
-  "statement": {
-   "tex": "$x$ は $x\\neq0$，$\\pm1$ をみたす実数とし，$f(x)=\\dfrac{1+x}{1-x}$ とおく．$c$ を実数とし，$x$ の方程式\n\\[\n(E_c)\\qquad x^2+\\{f(x)\\}^2+\\{f(f(x))\\}^2+\\{f(f(f(x)))\\}^2=c\n\\]\nを考える．\n\\begin{enumerate}\n  \\item $f(x)$ も $x\\neq0$，$\\pm1$ をみたす実数であることを示し，$f(f(x))=-\\dfrac1x$ および $f(f(f(f(x))))=x$ を証明せよ．\n  \\item $s(x)=x-\\dfrac1x$ とおく．$s(f(x))=-\\dfrac4{s(x)}$ であることを示し，$(E_c)$ の左辺を $s(x)$ で表せ．\n  \\item $(E_c)$ の実数解の個数を，$c$ の値によって分類して求めよ．\n  \\item $c=\\dfrac{481}{36}$ のとき，$(E_c)$ を解け．\n\\end{enumerate}"
-  },
-  "answer": {
-   "tex": "(1) 証明　(2) 証明，左辺 $=\\{s(x)\\}^2+\\dfrac{16}{\\{s(x)\\}^2}+4$　(3) $c<12$ のとき $0$ 個，$c=12$ のとき $4$ 個，$c>12$ のとき $8$ 個　(4) $x=\\pm2,\\ \\pm3,\\ \\pm\\dfrac12,\\ \\pm\\dfrac13$"
-  },
-  "solutions": [
-   {
-    "id": "main",
-    "kind": "main",
-    "tex": "(1) $x\\neq1$ より $f(x)$ は定義される．$f(x)=0\\iff x=-1$，$f(x)=1\\iff1+x=1-x\\iff x=0$，$f(x)=-1\\iff1+x=x-1$ で解なし．よって $x\\neq0,\\pm1$ なら $f(x)\\neq0,\\pm1$．次に\n\\[\nf(f(x))=\\frac{1+\\frac{1+x}{1-x}}{1-\\frac{1+x}{1-x}}=\\frac{(1-x)+(1+x)}{(1-x)-(1+x)}=\\frac2{-2x}=-\\frac1x.\n\\]\nこれを2回用いて $f(f(f(f(x))))=-\\dfrac1{-\\frac1x}=x$．\\hfill$\\square$\n\n(2)\n\\[\ns(f(x))=\\frac{1+x}{1-x}-\\frac{1-x}{1+x}=\\frac{(1+x)^2-(1-x)^2}{1-x^2}=\\frac{4x}{1-x^2}=-\\frac4{\\frac{x^2-1}x}=-\\frac4{s(x)}.\n\\]\n（$x\\neq\\pm1$ より $s(x)\\neq0$．）(1) より $f(f(x))=-\\frac1x$，$f(f(f(x)))=f(f(u))=-\\frac1u$（$u=f(x)$）なので\n\\[\nx^2+\\{f(f(x))\\}^2=x^2+\\frac1{x^2}=s(x)^2+2,\\qquad\nu^2+\\{f(f(u))\\}^2=s(u)^2+2=\\frac{16}{s(x)^2}+2.\n\\]\nよって左辺 $=\\boldsymbol{\\{s(x)\\}^2+\\dfrac{16}{\\{s(x)\\}^2}+4}$．\n\n(3) \\textbf{$s$ と $x$ の対応．} 0でない実数 $\\sigma$ に対し，$s(x)=\\sigma$ をみたす $x\\neq0,\\pm1$ は $x^2-\\sigma x-1=0$ の解である．判別式 $\\sigma^2+4>0$ より異なる2実数解をもち，その積は $-1$ なので0でなく，$x=\\pm1$ なら $\\sigma=s(\\pm1)=0$ となるので $\\pm1$ でもない．逆に $x\\neq0,\\pm1$ なら $s(x)\\neq0$．また異なる $\\sigma$ に対応する $x$ は異なる．よって0でない $\\sigma$ の1つの値に，解 $x$ がちょうど2個ずつ対応する．\n\n\\textbf{$w=s^2$ の方程式．} (2) より $(E_c)\\iff w+\\dfrac{16}w=c-4$，$w=\\{s(x)\\}^2>0$．$w>0$ の1つの値には $\\sigma=\\pm\\sqrt w$ の2つが対応する．相加平均と相乗平均の関係より $w+\\frac{16}w\\geqq8$（等号は $w=4$）．\n\\begin{itemize}\n  \\item $c<12$：$c-4<8$ なので $w$ は存在せず，解は $\\boldsymbol0$ 個．\n  \\item $c=12$：$w=4$ のみ．$\\sigma=\\pm2$ で解は $\\boldsymbol4$ 個．\n  \\item $c>12$：$w^2-(c-4)w+16=0$ は判別式 $(c-4)^2-64>0$ より異なる2実数解をもち，和 $c-4>0$，積 $16>0$ よりともに正．$\\sigma$ は4個で，解は $\\boldsymbol8$ 個．\n\\end{itemize}\n\n(4) $c-4=\\dfrac{337}{36}$ で，$36w^2-337w+576=0$，すなわち $(4w-9)(9w-64)=0$．$w=\\dfrac94,\\dfrac{64}9$ なので $\\sigma=\\pm\\dfrac32,\\pm\\dfrac83$．\n\\begin{itemize}\n  \\item $\\sigma=\\frac32$：$2x^2-3x-2=(2x+1)(x-2)=0$ で $x=2,-\\frac12$．$\\sigma=-\\frac32$：$x=-2,\\frac12$．\n  \\item $\\sigma=\\frac83$：$3x^2-8x-3=(3x+1)(x-3)=0$ で $x=3,-\\frac13$．$\\sigma=-\\frac83$：$x=-3,\\frac13$．\n\\end{itemize}\n$\\boldsymbol{x=\\pm2,\\ \\pm3,\\ \\pm\\dfrac12,\\ \\pm\\dfrac13}$．（実際 $2\\to-3\\to-\\frac12\\to\\frac13\\to2$ と $f$ で巡回し，$4+9+\\frac14+\\frac19=\\frac{481}{36}$．）"
-   }
-  ],
-  "idea": {
-   "tex": "$f(x)=\\frac{1+x}{1-x}$ では $f(f(x))=-\\frac1x$ で，$f$ を4回合成すると元に戻る．$x$ と $f(f(x))$，$f(x)$ と $f(f(f(x)))$ を組にすると，2乗和はそれぞれ $s^2+2$ の形（$s=x-\\frac1x$）になり，しかも $s(f(x))=-\\frac4{s(x)}$．方程式は $w=s^2>0$ についての $w+\\frac{16}w=c-4$ に帰着し，相加相乗平均で下限が決まる．$s\\neq0$ ごとに $x$ がちょうど2個ずつ対応することを確かめて解の個数を数える．"
-  },
-  "methods": [],
-  "tags": [
-   "1次分数関数",
-   "合成関数",
-   "置き換え",
-   "相加相乗平均",
-   "解の個数"
-  ],
-  "provenance": {
-   "created": "2026-11-10"
-  },
-  "quality": {
-   "status": "published",
-   "checks": {
-    "dual": false,
-    "sympy": true,
-    "human": false
-   },
-   "verified": false
-  }
- },
- {
-  "id": "II-EQ-211",
-  "schema": "lemma.problem/1",
-  "kind": "written",
-  "field": "II-08",
-  "level": 5,
-  "minutes": 40,
-  "theme": "3つ組の積と3次式の方程式の解の個数",
-  "topic": "3つ組の積と3次式の方程式の解の個数",
-  "statement": {
-   "tex": "実数の3つ組 $X=\\langle x,y,z\\rangle$ 全体を考える．$X=\\langle x,y,z\\rangle$，$X'=\\langle x',y',z'\\rangle$ と実数 $s$ に対し\n\\[\nX+X'=\\langle x+x',\\,y+y',\\,z+z'\\rangle,\\quad sX=\\langle sx,\\,sy,\\,sz\\rangle,\\quad\nX*X'=\\langle xx',\\,xy'+yz',\\,zz'\\rangle\n\\]\nと定め，$E=\\langle1,0,1\\rangle$，$X^1=X$，$X^{n+1}=X^n*X$（$n=1,2,\\dots$）とする．実数 $k,l,m$ に対し $f(t)=t^3+kt^2+lt+m$ とおき，\n\\[\nf(X)=X^3+kX^2+lX+mE\n\\]\nと定める．\n\\begin{enumerate}\n  \\item $X^2$，$X^3$ を成分で表せ．また，$f(X)=\\langle f(x),\\,y\\,\\Delta(x,z),\\,f(z)\\rangle$ となる $x,z$ の整式 $\\Delta(x,z)$ を求め，$x\\neq z$ のとき $\\Delta(x,z)=\\dfrac{f(x)-f(z)}{x-z}$，$x=z$ のとき $\\Delta(x,x)=f'(x)$ であることを示せ．\n  \\item $f(t)=t^3-3t$ とする．3つ組 $A=\\langle a,b,c\\rangle$ に対し，$f(X)=A$ をみたす3つ組 $X$ の個数を $N(A)$ とする（無数にあるときは $N(A)=\\infty$ と書く）．$N(A)=\\infty$ となるための $a,b,c$ の条件を求めよ．また，$N(A)$ のとりうる値をすべて求め，$N(A)=4$ となる $A$ をすべて求めよ．\n  \\item 「どのような3つ組 $A$ に対しても，$f(X)=A$ をみたす3つ組 $X$ がちょうど1つ存在する」ための $k,l,m$ の必要十分条件を求めよ．\n\\end{enumerate}"
-  },
-  "answer": {
-   "tex": "(1) $X^2=\\langle x^2,\\,y(x+z),\\,z^2\\rangle$，$X^3=\\langle x^3,\\,y(x^2+xz+z^2),\\,z^3\\rangle$，$\\Delta(x,z)=x^2+xz+z^2+k(x+z)+l$（後半は証明）　(2) $N(A)=\\infty\\iff a=c$ かつ $b=0$ かつ $|a|\\leqq2$；とりうる値は $1,2,3,4,6,9,\\infty$；$N(A)=4\\iff A=\\langle2,b,-2\\rangle$ または $\\langle-2,b,2\\rangle$（$b$ は任意の実数）　(3) $k^2<3l$（$m$ は任意）"
-  },
-  "solutions": [
-   {
-    "id": "main",
-    "kind": "main",
-    "tex": "\\textbf{(1)}\\ 定義から\n\\[\nX^2=X*X=\\langle x^2,\\ xy+yz,\\ z^2\\rangle=\\boldsymbol{\\langle x^2,\\ y(x+z),\\ z^2\\rangle},\n\\]\n\\[\nX^3=X^2*X=\\langle x^3,\\ x^2y+y(x+z)z,\\ z^3\\rangle=\\boldsymbol{\\langle x^3,\\ y(x^2+xz+z^2),\\ z^3\\rangle}.\n\\]\n$E$ の第2成分は $0$ なので，$f(X)$ の第1成分は $x^3+kx^2+lx+m=f(x)$，第3成分は $f(z)$，第2成分は\n\\[\ny(x^2+xz+z^2)+ky(x+z)+ly=y\\,\\Delta(x,z),\\qquad \\boldsymbol{\\Delta(x,z)=x^2+xz+z^2+k(x+z)+l}.\n\\]\n$x\\neq z$ のとき\n\\[\n\\frac{f(x)-f(z)}{x-z}=\\frac{x^3-z^3}{x-z}+k\\,\\frac{x^2-z^2}{x-z}+l=x^2+xz+z^2+k(x+z)+l=\\Delta(x,z).\n\\]\n$x=z$ のとき $\\Delta(x,x)=3x^2+2kx+l=f'(x)$．\\hfill$\\square$\n\n以下，$f(X)=A$（$A=\\langle a,b,c\\rangle$）は\n\\[\nf(x)=a,\\qquad f(z)=c,\\qquad y\\,\\Delta(x,z)=b\\tag{$\\dagger$}\n\\]\nと同値である．\n\n\\medskip\n\\textbf{(2)}\\ $f(t)=t^3-3t$，$\\Delta(x,z)=x^2+xz+z^2-3$．\n\n\\emph{$f(t)=a$ の実数解の個数 $n(a)$．}\\ $f'(t)=3(t+1)(t-1)$ より $f$ は $t\\leqq-1$ で増加，$-1\\leqq t\\leqq1$ で減少，$t\\geqq1$ で増加し，$f(-1)=2$，$f(1)=-2$，$t\\to\\pm\\infty$ で $f(t)\\to\\pm\\infty$．各区間で $f$ は連続かつ狭義単調なので，中間値の定理とあわせて，各区間で $f(t)=a$ の解は値の範囲に入るときちょうど1つ．よって $|a|<2$ のとき $n(a)=3$（3区間に1つずつ，どれも $\\pm1$ ではない）．$a=2$ のとき $t^3-3t-2=(t+1)^2(t-2)$ で解は $-1,\\,2$，$a=-2$ のとき $t^3-3t+2=(t-1)^2(t+2)$ で解は $1,\\,-2$ で $n(\\pm2)=2$．$|a|>2$ のとき $n(a)=1$．特に $f(t)=a$ の解に $t=-1$ が含まれるのは $a=2$ のとき，$t=1$ が含まれるのは $a=-2$ のときに限る．\n\n\\emph{$\\Delta$ が $0$ になる場合．}\\ $f(x)=a$，$f(z)=c$ の解の組 $(x,z)$ について，(1) より $x\\neq z$ なら $\\Delta(x,z)=\\dfrac{a-c}{x-z}$，$x=z$ なら $\\Delta=f'(x)=3(x^2-1)$．\n\n\\emph{場合1：$a\\neq c$．}\\ このとき必ず $x\\neq z$ で $\\Delta=\\frac{a-c}{x-z}\\neq0$ だから，各組 $(x,z)$ に対し $y=\\frac b\\Delta$ がただ1つ定まる．よって $N(A)=n(a)\\,n(c)$ で，その値は $1,2,3,4,6,9$ のいずれか．実際すべて実現する：$(a,c)=(3,4),(3,2),(3,0),(2,-2),(2,0),(0,1)$ でそれぞれ $1,2,3,4,6,9$．\n\n\\emph{場合2：$a=c$．}\\ $x\\neq z$ の組では $\\Delta=0$ で，$(\\dagger)$ の第3式は $b=0$ のとき任意の $y$ で成立，$b\\neq0$ のとき不成立．$x=z$ の組では $\\Delta=3(x^2-1)$．\n\\begin{itemize}\n  \\item $b=0$ かつ $|a|\\leqq2$：$n(a)\\geqq2$ より $x\\neq z$ の組があり，$y$ は任意なので $N(A)=\\infty$．\n  \\item $b=0$ かつ $|a|>2$：解は1つだけで $x=z$，しかも $x\\neq\\pm1$ だから $\\Delta\\neq0$ で $y=0$．$N(A)=1$．\n  \\item $b\\neq0$：$x=z$ かつ $x^2\\neq1$ の組だけが解を1つずつ与える．$|a|<2$ なら3個の解のどれも $\\pm1$ でないので $N(A)=3$．$a=2$ なら解 $-1,2$ のうち $2$ だけで $N(A)=1$，$a=-2$ も同様に $N(A)=1$．$|a|>2$ なら $N(A)=1$．\n\\end{itemize}\n\n以上より\n\\[\n\\boldsymbol{N(A)=\\infty\\iff a=c,\\ b=0,\\ |a|\\leqq2},\\qquad\nN(A)\\text{ のとりうる値は }\\boldsymbol{1,\\,2,\\,3,\\,4,\\,6,\\,9,\\,\\infty}.\n\\]\n$N(A)=4$ となるのは場合1で $n(a)=n(c)=2$，すなわち $|a|=|c|=2$，$a\\neq c$ のときに限るので（場合2の値は $1,3,\\infty$）\n\\[\n\\boldsymbol{A=\\langle2,\\,b,\\,-2\\rangle\\ \\text{または}\\ \\langle-2,\\,b,\\,2\\rangle\\quad(b\\text{ は任意の実数})}.\n\\]\n\n\\medskip\n\\textbf{(3)}\\ $f'(t)=3t^2+2kt+l=3\\left(t+\\dfrac k3\\right)^2+l-\\dfrac{k^2}3$．\n\n\\emph{十分性．}\\ $k^2<3l$ なら，すべての $t$ で $f'(t)>0$ なので $f$ は狭義増加．$t\\to\\pm\\infty$ で $f(t)\\to\\pm\\infty$ と中間値の定理から，任意の実数 $a$ に対し $f(x)=a$ の解はちょうど1つ．同様に $z$ もただ1つ．このとき $x\\neq z$ なら $\\Delta=\\frac{f(x)-f(z)}{x-z}>0$（狭義増加より分子と分母が同符号），$x=z$ なら $\\Delta=f'(x)>0$．よって $y=\\frac b\\Delta$ もただ1つで，$X$ はちょうど1つ存在する．\n\n\\emph{必要性．}\\ $k^2\\geqq3l$ とする．\n\\begin{itemize}\n  \\item $k^2>3l$ のとき：$f'(t)=0$ は異なる2実数解 $t_1<t_2$ をもち，$t_1<t<t_2$ で $f'(t)<0$ なので $f(t_1)>f(t_2)$．$f$ は $t\\geqq t_2$ で連続で $t\\to\\infty$ のとき $f(t)\\to\\infty$ だから，中間値の定理により $f(s)=f(t_1)$ となる $s>t_2$ がある．$a=f(t_1)$，$A=\\langle a,0,a\\rangle$ とすると，$x=t_1$，$z=s$（$x\\neq z$）で $\\Delta=\\frac{f(t_1)-f(s)}{t_1-s}=0$ となり，$(\\dagger)$ は任意の $y$ で成り立つ．解が無数にあり，条件をみたさない．\n  \\item $k^2=3l$ のとき：$t_0=-\\dfrac k3$ とおくと $f(t)=(t-t_0)^3+f(t_0)$（展開して係数を比べると $t^3+kt^2+\\frac{k^2}3t-\\frac{k^3}{27}+f(t_0)$ で，$t=t_0$ を代入して定数項が一致する）．$f$ は狭義増加なので，$A=\\langle f(t_0),1,f(t_0)\\rangle$ に対して $(\\dagger)$ の第1，2式は $x=z=t_0$ に限られ，$\\Delta=f'(t_0)=0$ だから第3式 $0=1$ が成り立たない．解がなく，条件をみたさない．\n\\end{itemize}\n$m$ は $\\Delta$ にも単調性にも関係しない．よって求める条件は\n\\[\n\\boldsymbol{k^2<3l\\quad(m\\text{ は任意})}.\n\\]"
-   }
-  ],
-  "idea": {
-   "tex": "成分ごとの計算で $f(X)=\\langle f(x),\\,y\\,\\Delta(x,z),\\,f(z)\\rangle$ となり，$\\Delta$ は $x\\neq z$ なら平均変化率 $\\frac{f(x)-f(z)}{x-z}$，$x=z$ なら $f'(x)$．したがって $f(X)=A$ は「$f(x)=a$，$f(z)=c$ の解の組ごとに1次方程式 $y\\Delta=b$」に分解され，$\\Delta=0$ となるのは「同じ値をとる異なる2点」か「$f'=0$ の点」に限る．解の個数は $f(t)=a$ の実数解の個数の積と，これら例外の組合せで決まる．"
-  },
-  "grading": {
-   "format": "lemma-input/1",
-   "spec": "(1) 記述\n(2) 記述\n(3) k^2<3l"
-  },
-  "methods": [],
-  "tags": [
-   "3次方程式の実数解の個数",
-   "平均変化率",
-   "単調性",
-   "場合分け",
-   "必要十分条件"
-  ],
-  "provenance": {
-   "created": "2026-11-10"
-  },
-  "quality": {
-   "status": "published",
-   "checks": {
-    "dual": false,
-    "sympy": true,
-    "human": false
-   },
-   "verified": false
-  }
- },
- {
-  "id": "II-EQ-212",
-  "schema": "lemma.problem/1",
-  "kind": "written",
-  "field": "II-08",
-  "level": 4,
-  "minutes": 35,
-  "theme": "$g\\circ h+h\\circ g$ が $g$ の2次式になる多項式",
-  "topic": "$g\\circ h+h\\circ g$ が $g$ の2次式になる多項式",
-  "statement": {
-   "tex": "$f(x)$ を $0$ でない実数係数の多項式とし，\n\\[\ng(x)=\\int_0^xf(t)\\,dt,\\qquad h(x)=\\int_x^1f(t)\\,dt,\\qquad a=g(1)\n\\]\nとする．ある実数の定数 $b$，$c$ が存在して，$x$ についての恒等式\n\\[\ng\\bigl(h(x)\\bigr)+h\\bigl(g(x)\\bigr)=b\\{g(x)\\}^2+c\n\\]\nが成り立つとする．\n\\begin{enumerate}\n  \\item 多項式 $G(y)$ と定数でない多項式 $H(x)$ について，$G(H(x))=0$ が $x$ についての恒等式ならば $G(y)$ は恒等的に $0$ であることを示せ．これを用いて，$b=0$，$c=a$ であり，すべての実数 $y$ に対して $g(a-y)=g(y)$ が成り立つことを示せ．\n  \\item さらに $f(x)$ の次数が3以下で $f(0)=0$ であるとする．このような $g(x)$ をすべて求めよ．\n  \\item (2) で $a\\neq0$ の場合を考える．$x$ についての方程式 $g(x)=a$ の異なる実数解の個数を，$a$ の値によって分類して答えよ．\n\\end{enumerate}"
-  },
-  "answer": {
-   "tex": "(1) 証明　(2) $a=0$ のとき $g(x)=p(x^4-x^2)$（$p$ は $0$ でない任意の実数），$a\\neq0$ のとき $a\\neq1$ で $g(x)=\\dfrac{a\\,x^2(x-a)^2}{(1-a)^2}$　(3) $a<-2-2\\sqrt2$ のとき4個，$a=-2-2\\sqrt2$ のとき3個，$-2-2\\sqrt2<a<-2+2\\sqrt2$（$a\\neq0$）のとき2個，$a=-2+2\\sqrt2$ のとき3個，$a>-2+2\\sqrt2$（$a\\neq1,\\ 2$）のとき4個，$a=2$ のとき3個"
-  },
-  "solutions": [
-   {
-    "id": "main",
-    "kind": "main",
-    "tex": "\\textbf{(1)}　\\emph{前半．}$H(x)$ の次数を $N\\ (\\geqq1)$ とする．任意の実数 $k$ に対し $H(x)-k$ は $N$ 次の多項式なので，$H(x)=k$ となる $x$ は高々 $N$ 個である．したがって $x=1,2,\\cdots,N\\ell+1$ における $H(x)$ の値のうち異なるものは少なくとも $\\ell+1$ 個あり（各値は高々 $N$ 回しか現れない），$\\ell$ は任意なので $H(x)$ のとる値は無限個ある．それらはすべて $G(y)=0$ の解である．$G$ が $0$ でない多項式なら，その次数を $d$ として解は高々 $d$ 個（$d=0$ なら0個）なので矛盾する．よって $G(y)$ は恒等的に $0$．\\hfill$\\square$\n\n\\emph{後半．}$g(x)+h(x)=\\displaystyle\\int_0^1f(t)\\,dt=a$ なので $h(x)=a-g(x)$．よって $h(g(x))=a-g(g(x))$ であり，条件は\n\\[\ng\\bigl(a-g(x)\\bigr)+a-g\\bigl(g(x)\\bigr)-b\\{g(x)\\}^2-c=0 .\n\\]\n$G(y)=g(a-y)-g(y)+a-by^2-c$（$y$ の多項式）とおくと，これは $G(g(x))=0$（恒等式）である．$g(x)$ は定数でない：定数なら $g(x)=g(0)=0$ で，$f(x)=g'(x)=0$ となり仮定に反する．前半より $G(y)=0$ がすべての $y$ で成り立つ．$y$ を $a-y$ に替えた式と足すと $g$ の項が打ち消し合い\n\\[\n2(a-c)-b\\{y^2+(a-y)^2\\}=0\\quad(\\text{すべての }y),\\qquad\\text{すなわち}\\quad 2(a-c)-ba^2+2bay-2by^2=0 .\n\\]\n$y^2$ の係数から $b=0$，すると定数項から $c=a$．このとき $G(y)=0$ は $g(a-y)=g(y)$ となる．\\hfill$\\square$\n\n\\medskip\n\\textbf{(2)}　$g(a-y)=g(y)$ で $y=\\frac a2+s$ とすると $g\\left(\\frac a2-s\\right)=g\\left(\\frac a2+s\\right)$．$\\varphi(s)=g\\left(\\frac a2+s\\right)$ は $s$ の多項式で $\\varphi(-s)=\\varphi(s)$ なので，奇数次の係数はすべて $0$ である（$\\varphi(s)-\\varphi(-s)=2\\times(\\text{奇数次の項の和})$ が恒等的に $0$）．$g$ の次数は $f$ の次数 $+1\\leqq4$ なので $\\varphi(s)=\\lambda s^4+\\mu s^2+\\nu$．$s^2=\\left(x-\\frac a2\\right)^2=w+\\frac{a^2}4$（$w=x(x-a)$）だから，$g(x)$ は $w$ の2次以下の多項式\n\\[\ng(x)=Pw^2+Qw+R\\qquad(w=x(x-a))\n\\]\nと書ける．$x=0$ で $w=0$ なので $R=g(0)=0$．また $f(x)=g'(x)=(2Pw+Q)(2x-a)$ より $f(0)=-aQ$．$x=1$ で $w=1-a$ なので $g(1)=a$ は $P(1-a)^2+Q(1-a)=a$．\n\n\\emph{$a=0$ のとき．}$w=x^2$，$g=Px^4+Qx^2$，$f(0)=0$ は自動的に成り立ち，$g(1)=0$ から $Q=-P$．$g(x)=P(x^4-x^2)$ で，$f\\neq0$ より $P\\neq0$．\n\n\\emph{$a\\neq0$ のとき．}$f(0)=0$ から $Q=0$，$P(1-a)^2=a\\neq0$ より $a\\neq1$，$P=\\dfrac a{(1-a)^2}$．\n\n逆に，これらの $g$ はいずれも $f=g'$ が $0$ でない3次以下の多項式で $f(0)=0$，$g(0)=0$，$g(1)=a$ をみたし，$w=x(x-a)$ が $x\\mapsto a-x$ で不変なので $g(a-y)=g(y)$ が成り立つ．このとき $h=a-g$ より\n\\[\ng(h(x))+h(g(x))=g\\bigl(a-g(x)\\bigr)+a-g\\bigl(g(x)\\bigr)=a\n\\]\nとなり，$b=0$，$c=a$ として条件をみたす．以上より\n\\[\n\\boldsymbol{a=0\\ \\text{のとき}\\ g(x)=p(x^4-x^2)\\ (p\\neq0),\\qquad a\\neq0\\ \\text{のとき}\\ a\\neq1\\ \\text{で}\\ g(x)=\\frac{a\\,x^2(x-a)^2}{(1-a)^2}}.\n\\]\n\n\\medskip\n\\textbf{(3)}　$a\\neq0,1$ で $g(x)=a\\iff x^2(x-a)^2=(1-a)^2\\iff x(x-a)=1-a$ または $x(x-a)=a-1$．\n\\begin{itemize}\n  \\item $x^2-ax-(1-a)=0$ は $(x-1)(x+1-a)=0$ と因数分解でき，解は $x=1,\\ a-1$（一致するのは $a=2$ のときだけ）．\n  \\item $x^2-ax+(1-a)=0$ の判別式は $a^2-4(1-a)=(a+2)^2-8$．\n  \\item 2つの方程式に共通解があれば $x(x-a)$ の値が $1-a$ と $a-1$ の両方に等しく，$a=1$ となるので，$a\\neq1$ では共通解はない．\n\\end{itemize}\n$(a+2)^2>8\\iff a<-2-2\\sqrt2$ または $a>-2+2\\sqrt2$ であり，$-2+2\\sqrt2<1<2$ に注意して数えると\n\\[\n\\boldsymbol{\\begin{array}{ll}\na<-2-2\\sqrt2 & 4\\text{個}\\\\\na=-2-2\\sqrt2 & 3\\text{個}\\\\\n-2-2\\sqrt2<a<-2+2\\sqrt2\\ (a\\neq0) & 2\\text{個}\\\\\na=-2+2\\sqrt2 & 3\\text{個}\\\\\na>-2+2\\sqrt2\\ (a\\neq1,\\ 2) & 4\\text{個}\\\\\na=2 & 3\\text{個}\n\\end{array}}\n\\]\n（$a=2$ では第1式の解が $x=1$ のみ，第2式は判別式 $8>0$ で2解．）"
-   }
-  ],
-  "idea": {
-   "tex": "$g(x)+h(x)=a$（定数）なので $h=a-g$ を代入すると，条件は $y=g(x)$ についての式 $G(g(x))=0$ になる．$g$ が定数でなければ $g(x)$ は無限個の値をとるので，多項式 $G$ は恒等的に $0$．得られる恒等式で $y$ と $a-y$ を入れかえて足すと左辺が打ち消し合い，右辺の $y^2$ の係数が $0$ でなければならないことがわかる（係数を比べる前に「対称性で消す」のが鍵）．結局 $g$ は直線 $x=\\frac a2$ に関して対称になり，$x(x-a)$ の多項式として書ける．原題の「合成の恒等式から $g$ の形を読みとる」に，$g\\circ h$ と $h\\circ g$ の両方を入れて対称性の議論を加えた．"
-  },
-  "methods": [],
-  "tags": [
-   "合成関数",
-   "恒等式",
-   "多項式の一致",
-   "対称性",
-   "解の個数"
-  ],
-  "provenance": {
-   "created": "2026-11-10"
-  },
-  "quality": {
-   "status": "published",
-   "checks": {
-    "dual": false,
-    "sympy": true,
-    "human": false
-   },
-   "verified": false
-  }
- },
- {
-  "id": "II-EQ-213",
-  "schema": "lemma.problem/1",
-  "kind": "written",
-  "field": "II-08",
-  "level": 4,
-  "minutes": 30,
-  "theme": "5次式の値が等差数列となる歩幅",
-  "topic": "5次式の値が等差数列となる歩幅",
-  "statement": {
-   "tex": "$l,m$ を実数の定数とし，$f(x)=x(x-1)(x-2)(x-3)(x-4)+lx+m$ とする．\n\\begin{enumerate}\n  \\item 実数 $c$ と正の数 $d$ に対し，3数 $f(c-d),\\ f(c),\\ f(c+d)$ がこの順に等差数列であることと，\n  \\[c=2\\quad\\text{または}\\quad2(c-2)^2+d^2=3\\]\n  が成り立つことは同値であることを示せ．\n  \\item 実数 $\\alpha$ と正の数 $d$ で，4数 $f(\\alpha),\\ f(\\alpha+d),\\ f(\\alpha+2d),\\ f(\\alpha+3d)$ がこの順に等差数列となるような組 $(\\alpha,d)$ をすべて求めよ．\n  \\item 実数 $\\alpha$，正の数 $d$，5以上の整数 $k$ で，$k$ 項からなる数列 $f(\\alpha),\\ f(\\alpha+d),\\ \\dots,\\ f(\\alpha+(k-1)d)$ が等差数列となるような組 $(\\alpha,d,k)$ をすべて求めよ．\n\\end{enumerate}"
-  },
-  "answer": {
-   "tex": "(1) 証明　(2) $(\\alpha,d)=(0,1),\\ (1,1),\\ \\left(2-\\dfrac{3\\sqrt2}2,\\ \\sqrt2\\right)$　(3) $(\\alpha,d,k)=(0,1,5)$ のみ"
-  },
-  "solutions": [
-   {
-    "id": "main",
-    "kind": "main",
-    "tex": "$P(x)=x(x-1)(x-2)(x-3)(x-4)$ とし，$Q(y)=P(y+2)=(y+2)(y+1)y(y-1)(y-2)=y^5-5y^3+4y$ とおく．\n\n\\textbf{(1)} 3数がこの順に等差数列 $\\iff f(c+d)-2f(c)+f(c-d)=0$．1次式の部分は $l(c+d)-2lc+l(c-d)=0$ で消え，$m$ も消えるから，$u=c-2$ として条件は $Q(u+d)+Q(u-d)-2Q(u)=0$．\n\\[(u+d)^5+(u-d)^5=2(u^5+10u^3d^2+5ud^4),\\quad(u+d)^3+(u-d)^3=2(u^3+3ud^2),\\quad(u+d)+(u-d)=2u\\]\nより\n\\[Q(u+d)+Q(u-d)-2Q(u)=2(10u^3d^2+5ud^4)-5\\cdot6ud^2=10ud^2(2u^2+d^2-3).\\]\n$d>0$ だから，条件は $u=0$ または $2u^2+d^2=3$，すなわち $c=2$ または $2(c-2)^2+d^2=3$．\\hfill$\\square$\n\n\\textbf{(2)} 4数が等差数列 $\\iff$ 「$f(\\alpha),f(\\alpha+d),f(\\alpha+2d)$ が等差数列」かつ「$f(\\alpha+d),f(\\alpha+2d),f(\\alpha+3d)$ が等差数列」．中心はそれぞれ $c_1=\\alpha+d$，$c_2=\\alpha+2d$．$u_1=c_1-2$，$u_2=c_2-2=u_1+d$ とおくと，(1)より\n\\[\\bigl(u_1=0\\ \\text{または}\\ 2u_1^{\\,2}+d^2=3\\bigr)\\ \\text{かつ}\\ \\bigl(u_2=0\\ \\text{または}\\ 2u_2^{\\,2}+d^2=3\\bigr).\\]\n$u_1\\neq u_2$ なので $u_1=u_2=0$ はない．\n\\begin{itemize}\n  \\item $u_1=0$ のとき：$u_2=d$ で $3d^2=3$，$d=1$，$\\alpha=c_1-d=1$．\n  \\item $u_2=0$ のとき：$u_1=-d$ で $3d^2=3$，$d=1$，$c_1=1$，$\\alpha=0$．\n  \\item $u_1\\neq0$，$u_2\\neq0$ のとき：$2u_1^{\\,2}+d^2=2u_2^{\\,2}+d^2$ より $u_1^{\\,2}=u_2^{\\,2}$，$u_1\\neq u_2$ だから $u_2=-u_1$，$u_1=-\\dfrac d2$．$\\dfrac{d^2}2+d^2=3$ より $d=\\sqrt2$，$c_1=2-\\dfrac{\\sqrt2}2$，$\\alpha=2-\\dfrac{3\\sqrt2}2$．\n\\end{itemize}\n各段階は同値変形なので，求める組は $\\boldsymbol{(\\alpha,d)=(0,1),\\ (1,1),\\ \\left(2-\\dfrac{3\\sqrt2}2,\\ \\sqrt2\\right)}$．\n\n\\textbf{(3)} $k=5$ のとき：等差数列であることは，最初の4項と最後の4項がともに等差数列であることと同値．よって $(\\alpha,d)$ と $(\\alpha+d,d)$ がともに(2)の組．$d=1$ なら $\\alpha\\in\\{0,1\\}$ かつ $\\alpha+1\\in\\{0,1\\}$ で $\\alpha=0$．$d=\\sqrt2$ なら $\\alpha+\\sqrt2=2-\\dfrac{\\sqrt2}2\\neq2-\\dfrac{3\\sqrt2}2$ で不適．逆に $(\\alpha,d)=(0,1)$ なら $f(j)=lj+m$（$j=0,1,2,3,4$）で等差数列．\n\n$k\\geqq6$ のとき：最初の5項と第2項からの5項がともに等差数列なので $\\alpha=0$ かつ $\\alpha+d=0$ となり $d>0$ に反する．\n\nよって $\\boldsymbol{(\\alpha,d,k)=(0,1,5)}$ のみ．\n\\hfill$\\square$"
-   }
-  ],
-  "idea": {
-   "tex": "$x(x-1)(x-2)(x-3)(x-4)$ は $y=x-2$ とおくと奇関数 $y(y^2-1)(y^2-4)$ になり，1次式 $lx+m$ は2階差分で消える．中心 $c$，歩幅 $d$ の3項が等差数列である条件は $u=c-2$ について $ud^2(2u^2+d^2-3)=0$ と因数分解でき，4項・5項の条件は隣り合う3項の条件を重ねて解く．"
-  },
-  "grading": {
-   "format": "lemma-input/1",
-   "spec": "(1) 証明\n(2) $(\\alpha,d)$：{(0, 1), (1, 1), (2-3sqrt(2)/2, sqrt(2))}\n(3) 記述"
-  },
-  "methods": [],
-  "tags": [
-   "5次式",
-   "等差数列",
-   "2階差分",
-   "対称移動",
-   "奇関数"
-  ],
-  "provenance": {
-   "created": "2026-11-10"
-  },
-  "quality": {
-   "status": "published",
-   "checks": {
-    "dual": false,
-    "sympy": true,
-    "human": false
-   },
-   "verified": false
-  }
- },
- {
   "id": "II-EQ-225",
   "schema": "lemma.problem/1",
   "kind": "written",
@@ -10595,6 +8919,243 @@
   ],
   "provenance": {
    "created": "2026-11-19"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-EQ-209",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-08",
+  "level": 4,
+  "minutes": 35,
+  "theme": "2次の整数係数方程式の解がみたす欠項の方程式",
+  "topic": "2次の整数係数方程式の解がみたす欠項の方程式",
+  "statement": {
+   "tex": "複素数 $z$ に関する次の条件 (C)，(D)，(E) を考える．\n\\begin{itemize}\n  \\item[(C)] $z^2+mz+n=0$ をみたす整数 $m,\\ n$ が存在する．\n  \\item[(D)] $z^3+pz^2+q=0$ をみたす整数 $p,\\ q$ が存在する．\n  \\item[(E)] $z^4+pz+q=0$ をみたす整数 $p,\\ q$ が存在する．\n\\end{itemize}\n\\begin{enumerate}\n  \\item 複素数 $z$ が条件 (C) をみたすならば，条件 (E) もみたすことを証明せよ．\n  \\item $m,\\ n$ を整数とし，2次方程式 $x^2+mx+n=0$ は有理数の解をもたないとする．この方程式の解 $z$ が条件 (D) をみたすための，$m,\\ n$ についての必要十分条件を求めよ．\n  \\item $z=a+bi$（$a,\\ b$ は実数）と表したとき $a^2+b^2=1$ となる複素数 $z$ で，条件 (E) をみたすものをすべて求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 証明　(2) $m\\neq0$ かつ $n$ が $m$ の倍数　(3) $z=\\pm1,\\ \\pm i,\\ \\dfrac{\\pm1\\pm\\sqrt3\\,i}{2},\\ \\dfrac{\\pm1\\pm i}{\\sqrt2}$（複号任意，計12個）"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) $z^2=-mz-n$ を用いて次数を下げる．\n\\[\nz^3=z\\cdot z^2=-mz^2-nz=-m(-mz-n)-nz=(m^2-n)z+mn,\n\\]\n\\[\nz^4=z\\cdot z^3=(m^2-n)z^2+mnz=(m^2-n)(-mz-n)+mnz=(2mn-m^3)z+n^2-m^2n.\n\\]\nよって $p=m^3-2mn$，$q=m^2n-n^2$ とおくと，これらは整数で $z^4+pz+q=0$ が成り立つ．したがって $z$ は条件 (E) をみたす．\\hfill$\\square$\n\n(2) 整数 $p,\\ q$ に対して，展開して確かめられる恒等式\n\\[\nx^3+px^2+q=(x^2+mx+n)(x+p-m)+(m^2-mp-n)x+(q+mn-np)\n\\]\nが成り立つ（実際，$(x^2+mx+n)(x+p-m)=x^3+px^2+(mp-m^2+n)x+np-mn$ である）．$\\alpha=m^2-mp-n$，$\\beta=q+mn-np$ とおくと，これらは整数で，$z^2+mz+n=0$ より\n\\[\nz^3+pz^2+q=\\alpha z+\\beta \\quad\\cdots\\text{①}\n\\]\nである．\n\n\\textbf{必要性}　$z$ が (D) をみたすとし，そのときの整数を $p,\\ q$ とすると，①より $\\alpha z+\\beta=0$．もし $\\alpha\\neq0$ なら $z=-\\dfrac{\\beta}{\\alpha}$ は有理数となり，$x^2+mx+n=0$ が有理数の解をもたないことに反する．よって $\\alpha=0$，したがって $\\beta=0$ である．\n\nここで $m=0$ とすると $\\alpha=-n=0$ となり，方程式は $x^2=0$ で有理数の解 $0$ をもつから矛盾する．よって $m\\neq0$ であり，$\\alpha=0$ より $n=m(m-p)$，すなわち $n$ は $m$ の倍数である．\n\n\\textbf{十分性}　$m\\neq0$ かつ $n=km$（$k$ は整数）とする．$p=m-k$，$q=-nk$ とおくとこれらは整数で，\n\\[\n\\alpha=m^2-m(m-k)-km=0,\\qquad \\beta=-nk+mn-n(m-k)=0.\n\\]\nよって①より $z^3+pz^2+q=0$ となり，$z$ は (D) をみたす．\n\n以上より，求める条件は $\\boldsymbol{m\\neq0}$ \\textbf{かつ} $\\boldsymbol{n}$ \\textbf{が} $\\boldsymbol{m}$ \\textbf{の倍数} である．（例えば $x^2-x-1=0$ の解は $x^3-2x^2+1=0$ をみたすが，$\\sqrt2$ は (D) をみたさない．）\n\n(3) $z=a+bi$（$a,\\ b$ は実数，$a^2+b^2=1$）とする．\n\n\\textbf{$z$ が実数の場合}　$b=0$ より $a^2=1$，$z=\\pm1$．このとき $z^4-1=0$ であるから，$p=0$，$q=-1$ として (E) をみたす．\n\n\\textbf{$z$ が虚数の場合}　$b\\neq0$ である．$c=z+\\overline{z}=2a$ とおくと $c$ は実数で，$c^2=4a^2=4(1-b^2)$ と $b\\neq0$ より $0\\leqq c^2<4$ である．また $z\\overline{z}=a^2+b^2=1$ だから $(x-z)(x-\\overline{z})=x^2-cx+1$ であり，$z^2-cz+1=0$ が成り立つ．\n\n展開すると $(x^2-cx+1)(x^2+cx+c^2-1)=x^4+(2c-c^3)x+c^2-1$ であるから，\n\\[\nx^4+px+q=(x^2-cx+1)(x^2+cx+c^2-1)+(p-2c+c^3)x+(q-c^2+1)\n\\]\nが恒等的に成り立つ．$x=z$ を代入して\n\\[\nz^4+pz+q=(p-2c+c^3)z+(q-c^2+1)\\quad\\cdots\\text{②}\n\\]\nを得る．\n\n\\textbf{必要性}　整数 $p,\\ q$ で $z^4+pz+q=0$ とすると，②より $(p-2c+c^3)z+(q-c^2+1)=0$．2つの係数は実数であり，$p-2c+c^3\\neq0$ ならば $z$ が実数となって矛盾する．よって\n\\[\np=2c-c^3=c(2-c^2),\\qquad q=c^2-1.\n\\]\n後者より $c^2=q+1$ は整数で，$0\\leqq c^2<4$ から $c^2\\in\\{0,1,2,3\\}$．$c^2=3$ ならば $p=-c$ で $p^2=3$ となるが，$p^2=3$ をみたす整数 $p$ は存在しない．よって $c^2\\in\\{0,1,2\\}$，すなわち $c\\in\\{0,\\ \\pm1,\\ \\pm\\sqrt2\\}$ であり，$z$ は $x^2-cx+1=0$ の虚数解である：\n\\begin{itemize}\n  \\item $c=0$：$z^2+1=0$ より $z=\\pm i$．\n  \\item $c=\\pm1$：$z^2\\mp z+1=0$ より $z=\\dfrac{\\pm1\\pm\\sqrt3\\,i}{2}$（複号任意）．\n  \\item $c=\\pm\\sqrt2$：$z^2\\mp\\sqrt2z+1=0$ より $z=\\dfrac{\\pm1\\pm i}{\\sqrt2}$（複号任意）．\n\\end{itemize}\n\n\\textbf{十分性}　上の各 $z$ は，$c\\in\\{0,\\pm1,\\pm\\sqrt2\\}$ に対する $x^2-cx+1=0$ の解であり，判別式 $c^2-4<0$ より虚数である．その解の一方を $z=a+bi$ とすると他方は $\\overline{z}=a-bi$ であり，解と係数の関係より $a^2+b^2=z\\overline{z}=1$ をみたす．$p=c(2-c^2)$，$q=c^2-1$ とおくと\n\\[\n(c,p,q)=(0,0,-1),\\ (1,1,0),\\ (-1,-1,0),\\ (\\pm\\sqrt2,0,1)\n\\]\nでいずれも $p,\\ q$ は整数であり，②の右辺の係数がともに $0$ になるので $z^4+pz+q=0$ が成り立つ．\n\n以上より求める $z$ は\n\\[\n\\boldsymbol{z=\\pm1,\\ \\ \\pm i,\\ \\ \\dfrac{\\pm1\\pm\\sqrt3\\,i}{2},\\ \\ \\dfrac{\\pm1\\pm i}{\\sqrt2}}\\quad\\text{（複号任意，計12個）}.\n\\]"
+   }
+  ],
+  "idea": {
+   "tex": "$z^2=-mz-n$ を使って $z$ の高次の式を1次式 $\\alpha z+\\beta$（$\\alpha,\\beta$ は整数）まで下げる．$z$ が有理数でない（または虚数である）とき，$\\alpha z+\\beta=0$ から $\\alpha=\\beta=0$ が出るので，「$z$ がある方程式をみたすか」は割り算の余りの係数が $0$ になる条件に翻訳される．$z\\overline{z}=1$ の虚数 $z$ は $x^2-cx+1$（$c=z+\\overline{z}$）の解なので，この2次式で割った余りが $0$ になる条件から $c$ を決める．"
+  },
+  "methods": [],
+  "tags": [
+   "整式の割り算",
+   "余りの係数比較",
+   "共役複素数",
+   "単位円上の解"
+  ],
+  "provenance": {
+   "created": "2026-11-10"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-EQ-210",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-08",
+  "level": 4,
+  "minutes": 30,
+  "theme": "位数4の1次分数関数による2乗和の方程式",
+  "topic": "位数4の1次分数関数による2乗和の方程式",
+  "statement": {
+   "tex": "$x$ は $x\\neq0$，$\\pm1$ をみたす実数とし，$f(x)=\\dfrac{1+x}{1-x}$ とおく．$c$ を実数とし，$x$ の方程式\n\\[\n(E_c)\\qquad x^2+\\{f(x)\\}^2+\\{f(f(x))\\}^2+\\{f(f(f(x)))\\}^2=c\n\\]\nを考える．\n\\begin{enumerate}\n  \\item $f(x)$ も $x\\neq0$，$\\pm1$ をみたす実数であることを示し，$f(f(x))=-\\dfrac1x$ および $f(f(f(f(x))))=x$ を証明せよ．\n  \\item $s(x)=x-\\dfrac1x$ とおく．$s(f(x))=-\\dfrac4{s(x)}$ であることを示し，$(E_c)$ の左辺を $s(x)$ で表せ．\n  \\item $(E_c)$ の実数解の個数を，$c$ の値によって分類して求めよ．\n  \\item $c=\\dfrac{481}{36}$ のとき，$(E_c)$ を解け．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 証明　(2) 証明，左辺 $=\\{s(x)\\}^2+\\dfrac{16}{\\{s(x)\\}^2}+4$　(3) $c<12$ のとき $0$ 個，$c=12$ のとき $4$ 個，$c>12$ のとき $8$ 個　(4) $x=\\pm2,\\ \\pm3,\\ \\pm\\dfrac12,\\ \\pm\\dfrac13$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) $x\\neq1$ より $f(x)$ は定義される．$f(x)=0\\iff x=-1$，$f(x)=1\\iff1+x=1-x\\iff x=0$，$f(x)=-1\\iff1+x=x-1$ で解なし．よって $x\\neq0,\\pm1$ なら $f(x)\\neq0,\\pm1$．次に\n\\[\nf(f(x))=\\frac{1+\\frac{1+x}{1-x}}{1-\\frac{1+x}{1-x}}=\\frac{(1-x)+(1+x)}{(1-x)-(1+x)}=\\frac2{-2x}=-\\frac1x.\n\\]\nこれを2回用いて $f(f(f(f(x))))=-\\dfrac1{-\\frac1x}=x$．\\hfill$\\square$\n\n(2)\n\\[\ns(f(x))=\\frac{1+x}{1-x}-\\frac{1-x}{1+x}=\\frac{(1+x)^2-(1-x)^2}{1-x^2}=\\frac{4x}{1-x^2}=-\\frac4{\\frac{x^2-1}x}=-\\frac4{s(x)}.\n\\]\n（$x\\neq\\pm1$ より $s(x)\\neq0$．）(1) より $f(f(x))=-\\frac1x$，$f(f(f(x)))=f(f(u))=-\\frac1u$（$u=f(x)$）なので\n\\[\nx^2+\\{f(f(x))\\}^2=x^2+\\frac1{x^2}=s(x)^2+2,\\qquad\nu^2+\\{f(f(u))\\}^2=s(u)^2+2=\\frac{16}{s(x)^2}+2.\n\\]\nよって左辺 $=\\boldsymbol{\\{s(x)\\}^2+\\dfrac{16}{\\{s(x)\\}^2}+4}$．\n\n(3) \\textbf{$s$ と $x$ の対応．} 0でない実数 $\\sigma$ に対し，$s(x)=\\sigma$ をみたす $x\\neq0,\\pm1$ は $x^2-\\sigma x-1=0$ の解である．判別式 $\\sigma^2+4>0$ より異なる2実数解をもち，その積は $-1$ なので0でなく，$x=\\pm1$ なら $\\sigma=s(\\pm1)=0$ となるので $\\pm1$ でもない．逆に $x\\neq0,\\pm1$ なら $s(x)\\neq0$．また異なる $\\sigma$ に対応する $x$ は異なる．よって0でない $\\sigma$ の1つの値に，解 $x$ がちょうど2個ずつ対応する．\n\n\\textbf{$w=s^2$ の方程式．} (2) より $(E_c)\\iff w+\\dfrac{16}w=c-4$，$w=\\{s(x)\\}^2>0$．$w>0$ の1つの値には $\\sigma=\\pm\\sqrt w$ の2つが対応する．相加平均と相乗平均の関係より $w+\\frac{16}w\\geqq8$（等号は $w=4$）．\n\\begin{itemize}\n  \\item $c<12$：$c-4<8$ なので $w$ は存在せず，解は $\\boldsymbol0$ 個．\n  \\item $c=12$：$w=4$ のみ．$\\sigma=\\pm2$ で解は $\\boldsymbol4$ 個．\n  \\item $c>12$：$w^2-(c-4)w+16=0$ は判別式 $(c-4)^2-64>0$ より異なる2実数解をもち，和 $c-4>0$，積 $16>0$ よりともに正．$\\sigma$ は4個で，解は $\\boldsymbol8$ 個．\n\\end{itemize}\n\n(4) $c-4=\\dfrac{337}{36}$ で，$36w^2-337w+576=0$，すなわち $(4w-9)(9w-64)=0$．$w=\\dfrac94,\\dfrac{64}9$ なので $\\sigma=\\pm\\dfrac32,\\pm\\dfrac83$．\n\\begin{itemize}\n  \\item $\\sigma=\\frac32$：$2x^2-3x-2=(2x+1)(x-2)=0$ で $x=2,-\\frac12$．$\\sigma=-\\frac32$：$x=-2,\\frac12$．\n  \\item $\\sigma=\\frac83$：$3x^2-8x-3=(3x+1)(x-3)=0$ で $x=3,-\\frac13$．$\\sigma=-\\frac83$：$x=-3,\\frac13$．\n\\end{itemize}\n$\\boldsymbol{x=\\pm2,\\ \\pm3,\\ \\pm\\dfrac12,\\ \\pm\\dfrac13}$．（実際 $2\\to-3\\to-\\frac12\\to\\frac13\\to2$ と $f$ で巡回し，$4+9+\\frac14+\\frac19=\\frac{481}{36}$．）"
+   }
+  ],
+  "idea": {
+   "tex": "$f(x)=\\frac{1+x}{1-x}$ では $f(f(x))=-\\frac1x$ で，$f$ を4回合成すると元に戻る．$x$ と $f(f(x))$，$f(x)$ と $f(f(f(x)))$ を組にすると，2乗和はそれぞれ $s^2+2$ の形（$s=x-\\frac1x$）になり，しかも $s(f(x))=-\\frac4{s(x)}$．方程式は $w=s^2>0$ についての $w+\\frac{16}w=c-4$ に帰着し，相加相乗平均で下限が決まる．$s\\neq0$ ごとに $x$ がちょうど2個ずつ対応することを確かめて解の個数を数える．"
+  },
+  "methods": [],
+  "tags": [
+   "1次分数関数",
+   "合成関数",
+   "置き換え",
+   "相加相乗平均",
+   "解の個数"
+  ],
+  "provenance": {
+   "created": "2026-11-10"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-EQ-211",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-08",
+  "level": 5,
+  "minutes": 40,
+  "theme": "3つ組の積と3次式の方程式の解の個数",
+  "topic": "3つ組の積と3次式の方程式の解の個数",
+  "statement": {
+   "tex": "実数の3つ組 $X=\\langle x,y,z\\rangle$ 全体を考える．$X=\\langle x,y,z\\rangle$，$X'=\\langle x',y',z'\\rangle$ と実数 $s$ に対し\n\\[\nX+X'=\\langle x+x',\\,y+y',\\,z+z'\\rangle,\\quad sX=\\langle sx,\\,sy,\\,sz\\rangle,\\quad\nX*X'=\\langle xx',\\,xy'+yz',\\,zz'\\rangle\n\\]\nと定め，$E=\\langle1,0,1\\rangle$，$X^1=X$，$X^{n+1}=X^n*X$（$n=1,2,\\dots$）とする．実数 $k,l,m$ に対し $f(t)=t^3+kt^2+lt+m$ とおき，\n\\[\nf(X)=X^3+kX^2+lX+mE\n\\]\nと定める．\n\\begin{enumerate}\n  \\item $X^2$，$X^3$ を成分で表せ．また，$f(X)=\\langle f(x),\\,y\\,\\Delta(x,z),\\,f(z)\\rangle$ となる $x,z$ の整式 $\\Delta(x,z)$ を求め，$x\\neq z$ のとき $\\Delta(x,z)=\\dfrac{f(x)-f(z)}{x-z}$，$x=z$ のとき $\\Delta(x,x)=f'(x)$ であることを示せ．\n  \\item $f(t)=t^3-3t$ とする．3つ組 $A=\\langle a,b,c\\rangle$ に対し，$f(X)=A$ をみたす3つ組 $X$ の個数を $N(A)$ とする（無数にあるときは $N(A)=\\infty$ と書く）．$N(A)=\\infty$ となるための $a,b,c$ の条件を求めよ．また，$N(A)$ のとりうる値をすべて求め，$N(A)=4$ となる $A$ をすべて求めよ．\n  \\item 「どのような3つ組 $A$ に対しても，$f(X)=A$ をみたす3つ組 $X$ がちょうど1つ存在する」ための $k,l,m$ の必要十分条件を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $X^2=\\langle x^2,\\,y(x+z),\\,z^2\\rangle$，$X^3=\\langle x^3,\\,y(x^2+xz+z^2),\\,z^3\\rangle$，$\\Delta(x,z)=x^2+xz+z^2+k(x+z)+l$（後半は証明）　(2) $N(A)=\\infty\\iff a=c$ かつ $b=0$ かつ $|a|\\leqq2$；とりうる値は $1,2,3,4,6,9,\\infty$；$N(A)=4\\iff A=\\langle2,b,-2\\rangle$ または $\\langle-2,b,2\\rangle$（$b$ は任意の実数）　(3) $k^2<3l$（$m$ は任意）"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "\\textbf{(1)}\\ 定義から\n\\[\nX^2=X*X=\\langle x^2,\\ xy+yz,\\ z^2\\rangle=\\boldsymbol{\\langle x^2,\\ y(x+z),\\ z^2\\rangle},\n\\]\n\\[\nX^3=X^2*X=\\langle x^3,\\ x^2y+y(x+z)z,\\ z^3\\rangle=\\boldsymbol{\\langle x^3,\\ y(x^2+xz+z^2),\\ z^3\\rangle}.\n\\]\n$E$ の第2成分は $0$ なので，$f(X)$ の第1成分は $x^3+kx^2+lx+m=f(x)$，第3成分は $f(z)$，第2成分は\n\\[\ny(x^2+xz+z^2)+ky(x+z)+ly=y\\,\\Delta(x,z),\\qquad \\boldsymbol{\\Delta(x,z)=x^2+xz+z^2+k(x+z)+l}.\n\\]\n$x\\neq z$ のとき\n\\[\n\\frac{f(x)-f(z)}{x-z}=\\frac{x^3-z^3}{x-z}+k\\,\\frac{x^2-z^2}{x-z}+l=x^2+xz+z^2+k(x+z)+l=\\Delta(x,z).\n\\]\n$x=z$ のとき $\\Delta(x,x)=3x^2+2kx+l=f'(x)$．\\hfill$\\square$\n\n以下，$f(X)=A$（$A=\\langle a,b,c\\rangle$）は\n\\[\nf(x)=a,\\qquad f(z)=c,\\qquad y\\,\\Delta(x,z)=b\\tag{$\\dagger$}\n\\]\nと同値である．\n\n\\medskip\n\\textbf{(2)}\\ $f(t)=t^3-3t$，$\\Delta(x,z)=x^2+xz+z^2-3$．\n\n\\emph{$f(t)=a$ の実数解の個数 $n(a)$．}\\ $f'(t)=3(t+1)(t-1)$ より $f$ は $t\\leqq-1$ で増加，$-1\\leqq t\\leqq1$ で減少，$t\\geqq1$ で増加し，$f(-1)=2$，$f(1)=-2$，$t\\to\\pm\\infty$ で $f(t)\\to\\pm\\infty$．各区間で $f$ は連続かつ狭義単調なので，中間値の定理とあわせて，各区間で $f(t)=a$ の解は値の範囲に入るときちょうど1つ．よって $|a|<2$ のとき $n(a)=3$（3区間に1つずつ，どれも $\\pm1$ ではない）．$a=2$ のとき $t^3-3t-2=(t+1)^2(t-2)$ で解は $-1,\\,2$，$a=-2$ のとき $t^3-3t+2=(t-1)^2(t+2)$ で解は $1,\\,-2$ で $n(\\pm2)=2$．$|a|>2$ のとき $n(a)=1$．特に $f(t)=a$ の解に $t=-1$ が含まれるのは $a=2$ のとき，$t=1$ が含まれるのは $a=-2$ のときに限る．\n\n\\emph{$\\Delta$ が $0$ になる場合．}\\ $f(x)=a$，$f(z)=c$ の解の組 $(x,z)$ について，(1) より $x\\neq z$ なら $\\Delta(x,z)=\\dfrac{a-c}{x-z}$，$x=z$ なら $\\Delta=f'(x)=3(x^2-1)$．\n\n\\emph{場合1：$a\\neq c$．}\\ このとき必ず $x\\neq z$ で $\\Delta=\\frac{a-c}{x-z}\\neq0$ だから，各組 $(x,z)$ に対し $y=\\frac b\\Delta$ がただ1つ定まる．よって $N(A)=n(a)\\,n(c)$ で，その値は $1,2,3,4,6,9$ のいずれか．実際すべて実現する：$(a,c)=(3,4),(3,2),(3,0),(2,-2),(2,0),(0,1)$ でそれぞれ $1,2,3,4,6,9$．\n\n\\emph{場合2：$a=c$．}\\ $x\\neq z$ の組では $\\Delta=0$ で，$(\\dagger)$ の第3式は $b=0$ のとき任意の $y$ で成立，$b\\neq0$ のとき不成立．$x=z$ の組では $\\Delta=3(x^2-1)$．\n\\begin{itemize}\n  \\item $b=0$ かつ $|a|\\leqq2$：$n(a)\\geqq2$ より $x\\neq z$ の組があり，$y$ は任意なので $N(A)=\\infty$．\n  \\item $b=0$ かつ $|a|>2$：解は1つだけで $x=z$，しかも $x\\neq\\pm1$ だから $\\Delta\\neq0$ で $y=0$．$N(A)=1$．\n  \\item $b\\neq0$：$x=z$ かつ $x^2\\neq1$ の組だけが解を1つずつ与える．$|a|<2$ なら3個の解のどれも $\\pm1$ でないので $N(A)=3$．$a=2$ なら解 $-1,2$ のうち $2$ だけで $N(A)=1$，$a=-2$ も同様に $N(A)=1$．$|a|>2$ なら $N(A)=1$．\n\\end{itemize}\n\n以上より\n\\[\n\\boldsymbol{N(A)=\\infty\\iff a=c,\\ b=0,\\ |a|\\leqq2},\\qquad\nN(A)\\text{ のとりうる値は }\\boldsymbol{1,\\,2,\\,3,\\,4,\\,6,\\,9,\\,\\infty}.\n\\]\n$N(A)=4$ となるのは場合1で $n(a)=n(c)=2$，すなわち $|a|=|c|=2$，$a\\neq c$ のときに限るので（場合2の値は $1,3,\\infty$）\n\\[\n\\boldsymbol{A=\\langle2,\\,b,\\,-2\\rangle\\ \\text{または}\\ \\langle-2,\\,b,\\,2\\rangle\\quad(b\\text{ は任意の実数})}.\n\\]\n\n\\medskip\n\\textbf{(3)}\\ $f'(t)=3t^2+2kt+l=3\\left(t+\\dfrac k3\\right)^2+l-\\dfrac{k^2}3$．\n\n\\emph{十分性．}\\ $k^2<3l$ なら，すべての $t$ で $f'(t)>0$ なので $f$ は狭義増加．$t\\to\\pm\\infty$ で $f(t)\\to\\pm\\infty$ と中間値の定理から，任意の実数 $a$ に対し $f(x)=a$ の解はちょうど1つ．同様に $z$ もただ1つ．このとき $x\\neq z$ なら $\\Delta=\\frac{f(x)-f(z)}{x-z}>0$（狭義増加より分子と分母が同符号），$x=z$ なら $\\Delta=f'(x)>0$．よって $y=\\frac b\\Delta$ もただ1つで，$X$ はちょうど1つ存在する．\n\n\\emph{必要性．}\\ $k^2\\geqq3l$ とする．\n\\begin{itemize}\n  \\item $k^2>3l$ のとき：$f'(t)=0$ は異なる2実数解 $t_1<t_2$ をもち，$t_1<t<t_2$ で $f'(t)<0$ なので $f(t_1)>f(t_2)$．$f$ は $t\\geqq t_2$ で連続で $t\\to\\infty$ のとき $f(t)\\to\\infty$ だから，中間値の定理により $f(s)=f(t_1)$ となる $s>t_2$ がある．$a=f(t_1)$，$A=\\langle a,0,a\\rangle$ とすると，$x=t_1$，$z=s$（$x\\neq z$）で $\\Delta=\\frac{f(t_1)-f(s)}{t_1-s}=0$ となり，$(\\dagger)$ は任意の $y$ で成り立つ．解が無数にあり，条件をみたさない．\n  \\item $k^2=3l$ のとき：$t_0=-\\dfrac k3$ とおくと $f(t)=(t-t_0)^3+f(t_0)$（展開して係数を比べると $t^3+kt^2+\\frac{k^2}3t-\\frac{k^3}{27}+f(t_0)$ で，$t=t_0$ を代入して定数項が一致する）．$f$ は狭義増加なので，$A=\\langle f(t_0),1,f(t_0)\\rangle$ に対して $(\\dagger)$ の第1，2式は $x=z=t_0$ に限られ，$\\Delta=f'(t_0)=0$ だから第3式 $0=1$ が成り立たない．解がなく，条件をみたさない．\n\\end{itemize}\n$m$ は $\\Delta$ にも単調性にも関係しない．よって求める条件は\n\\[\n\\boldsymbol{k^2<3l\\quad(m\\text{ は任意})}.\n\\]"
+   }
+  ],
+  "idea": {
+   "tex": "成分ごとの計算で $f(X)=\\langle f(x),\\,y\\,\\Delta(x,z),\\,f(z)\\rangle$ となり，$\\Delta$ は $x\\neq z$ なら平均変化率 $\\frac{f(x)-f(z)}{x-z}$，$x=z$ なら $f'(x)$．したがって $f(X)=A$ は「$f(x)=a$，$f(z)=c$ の解の組ごとに1次方程式 $y\\Delta=b$」に分解され，$\\Delta=0$ となるのは「同じ値をとる異なる2点」か「$f'=0$ の点」に限る．解の個数は $f(t)=a$ の実数解の個数の積と，これら例外の組合せで決まる．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) 記述\n(2) 記述\n(3) k^2<3l"
+  },
+  "methods": [],
+  "tags": [
+   "3次方程式の実数解の個数",
+   "平均変化率",
+   "単調性",
+   "場合分け",
+   "必要十分条件"
+  ],
+  "provenance": {
+   "created": "2026-11-10"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-EQ-212",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-08",
+  "level": 4,
+  "minutes": 35,
+  "theme": "$g\\circ h+h\\circ g$ が $g$ の2次式になる多項式",
+  "topic": "$g\\circ h+h\\circ g$ が $g$ の2次式になる多項式",
+  "statement": {
+   "tex": "$f(x)$ を $0$ でない実数係数の多項式とし，\n\\[\ng(x)=\\int_0^xf(t)\\,dt,\\qquad h(x)=\\int_x^1f(t)\\,dt,\\qquad a=g(1)\n\\]\nとする．ある実数の定数 $b$，$c$ が存在して，$x$ についての恒等式\n\\[\ng\\bigl(h(x)\\bigr)+h\\bigl(g(x)\\bigr)=b\\{g(x)\\}^2+c\n\\]\nが成り立つとする．\n\\begin{enumerate}\n  \\item 多項式 $G(y)$ と定数でない多項式 $H(x)$ について，$G(H(x))=0$ が $x$ についての恒等式ならば $G(y)$ は恒等的に $0$ であることを示せ．これを用いて，$b=0$，$c=a$ であり，すべての実数 $y$ に対して $g(a-y)=g(y)$ が成り立つことを示せ．\n  \\item さらに $f(x)$ の次数が3以下で $f(0)=0$ であるとする．このような $g(x)$ をすべて求めよ．\n  \\item (2) で $a\\neq0$ の場合を考える．$x$ についての方程式 $g(x)=a$ の異なる実数解の個数を，$a$ の値によって分類して答えよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 証明　(2) $a=0$ のとき $g(x)=p(x^4-x^2)$（$p$ は $0$ でない任意の実数），$a\\neq0$ のとき $a\\neq1$ で $g(x)=\\dfrac{a\\,x^2(x-a)^2}{(1-a)^2}$　(3) $a<-2-2\\sqrt2$ のとき4個，$a=-2-2\\sqrt2$ のとき3個，$-2-2\\sqrt2<a<-2+2\\sqrt2$（$a\\neq0$）のとき2個，$a=-2+2\\sqrt2$ のとき3個，$a>-2+2\\sqrt2$（$a\\neq1,\\ 2$）のとき4個，$a=2$ のとき3個"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "\\textbf{(1)}　\\emph{前半．}$H(x)$ の次数を $N\\ (\\geqq1)$ とする．任意の実数 $k$ に対し $H(x)-k$ は $N$ 次の多項式なので，$H(x)=k$ となる $x$ は高々 $N$ 個である．したがって $x=1,2,\\cdots,N\\ell+1$ における $H(x)$ の値のうち異なるものは少なくとも $\\ell+1$ 個あり（各値は高々 $N$ 回しか現れない），$\\ell$ は任意なので $H(x)$ のとる値は無限個ある．それらはすべて $G(y)=0$ の解である．$G$ が $0$ でない多項式なら，その次数を $d$ として解は高々 $d$ 個（$d=0$ なら0個）なので矛盾する．よって $G(y)$ は恒等的に $0$．\\hfill$\\square$\n\n\\emph{後半．}$g(x)+h(x)=\\displaystyle\\int_0^1f(t)\\,dt=a$ なので $h(x)=a-g(x)$．よって $h(g(x))=a-g(g(x))$ であり，条件は\n\\[\ng\\bigl(a-g(x)\\bigr)+a-g\\bigl(g(x)\\bigr)-b\\{g(x)\\}^2-c=0 .\n\\]\n$G(y)=g(a-y)-g(y)+a-by^2-c$（$y$ の多項式）とおくと，これは $G(g(x))=0$（恒等式）である．$g(x)$ は定数でない：定数なら $g(x)=g(0)=0$ で，$f(x)=g'(x)=0$ となり仮定に反する．前半より $G(y)=0$ がすべての $y$ で成り立つ．$y$ を $a-y$ に替えた式と足すと $g$ の項が打ち消し合い\n\\[\n2(a-c)-b\\{y^2+(a-y)^2\\}=0\\quad(\\text{すべての }y),\\qquad\\text{すなわち}\\quad 2(a-c)-ba^2+2bay-2by^2=0 .\n\\]\n$y^2$ の係数から $b=0$，すると定数項から $c=a$．このとき $G(y)=0$ は $g(a-y)=g(y)$ となる．\\hfill$\\square$\n\n\\medskip\n\\textbf{(2)}　$g(a-y)=g(y)$ で $y=\\frac a2+s$ とすると $g\\left(\\frac a2-s\\right)=g\\left(\\frac a2+s\\right)$．$\\varphi(s)=g\\left(\\frac a2+s\\right)$ は $s$ の多項式で $\\varphi(-s)=\\varphi(s)$ なので，奇数次の係数はすべて $0$ である（$\\varphi(s)-\\varphi(-s)=2\\times(\\text{奇数次の項の和})$ が恒等的に $0$）．$g$ の次数は $f$ の次数 $+1\\leqq4$ なので $\\varphi(s)=\\lambda s^4+\\mu s^2+\\nu$．$s^2=\\left(x-\\frac a2\\right)^2=w+\\frac{a^2}4$（$w=x(x-a)$）だから，$g(x)$ は $w$ の2次以下の多項式\n\\[\ng(x)=Pw^2+Qw+R\\qquad(w=x(x-a))\n\\]\nと書ける．$x=0$ で $w=0$ なので $R=g(0)=0$．また $f(x)=g'(x)=(2Pw+Q)(2x-a)$ より $f(0)=-aQ$．$x=1$ で $w=1-a$ なので $g(1)=a$ は $P(1-a)^2+Q(1-a)=a$．\n\n\\emph{$a=0$ のとき．}$w=x^2$，$g=Px^4+Qx^2$，$f(0)=0$ は自動的に成り立ち，$g(1)=0$ から $Q=-P$．$g(x)=P(x^4-x^2)$ で，$f\\neq0$ より $P\\neq0$．\n\n\\emph{$a\\neq0$ のとき．}$f(0)=0$ から $Q=0$，$P(1-a)^2=a\\neq0$ より $a\\neq1$，$P=\\dfrac a{(1-a)^2}$．\n\n逆に，これらの $g$ はいずれも $f=g'$ が $0$ でない3次以下の多項式で $f(0)=0$，$g(0)=0$，$g(1)=a$ をみたし，$w=x(x-a)$ が $x\\mapsto a-x$ で不変なので $g(a-y)=g(y)$ が成り立つ．このとき $h=a-g$ より\n\\[\ng(h(x))+h(g(x))=g\\bigl(a-g(x)\\bigr)+a-g\\bigl(g(x)\\bigr)=a\n\\]\nとなり，$b=0$，$c=a$ として条件をみたす．以上より\n\\[\n\\boldsymbol{a=0\\ \\text{のとき}\\ g(x)=p(x^4-x^2)\\ (p\\neq0),\\qquad a\\neq0\\ \\text{のとき}\\ a\\neq1\\ \\text{で}\\ g(x)=\\frac{a\\,x^2(x-a)^2}{(1-a)^2}}.\n\\]\n\n\\medskip\n\\textbf{(3)}　$a\\neq0,1$ で $g(x)=a\\iff x^2(x-a)^2=(1-a)^2\\iff x(x-a)=1-a$ または $x(x-a)=a-1$．\n\\begin{itemize}\n  \\item $x^2-ax-(1-a)=0$ は $(x-1)(x+1-a)=0$ と因数分解でき，解は $x=1,\\ a-1$（一致するのは $a=2$ のときだけ）．\n  \\item $x^2-ax+(1-a)=0$ の判別式は $a^2-4(1-a)=(a+2)^2-8$．\n  \\item 2つの方程式に共通解があれば $x(x-a)$ の値が $1-a$ と $a-1$ の両方に等しく，$a=1$ となるので，$a\\neq1$ では共通解はない．\n\\end{itemize}\n$(a+2)^2>8\\iff a<-2-2\\sqrt2$ または $a>-2+2\\sqrt2$ であり，$-2+2\\sqrt2<1<2$ に注意して数えると\n\\[\n\\boldsymbol{\\begin{array}{ll}\na<-2-2\\sqrt2 & 4\\text{個}\\\\\na=-2-2\\sqrt2 & 3\\text{個}\\\\\n-2-2\\sqrt2<a<-2+2\\sqrt2\\ (a\\neq0) & 2\\text{個}\\\\\na=-2+2\\sqrt2 & 3\\text{個}\\\\\na>-2+2\\sqrt2\\ (a\\neq1,\\ 2) & 4\\text{個}\\\\\na=2 & 3\\text{個}\n\\end{array}}\n\\]\n（$a=2$ では第1式の解が $x=1$ のみ，第2式は判別式 $8>0$ で2解．）"
+   }
+  ],
+  "idea": {
+   "tex": "$g(x)+h(x)=a$（定数）なので $h=a-g$ を代入すると，条件は $y=g(x)$ についての式 $G(g(x))=0$ になる．$g$ が定数でなければ $g(x)$ は無限個の値をとるので，多項式 $G$ は恒等的に $0$．得られる恒等式で $y$ と $a-y$ を入れかえて足すと左辺が打ち消し合い，右辺の $y^2$ の係数が $0$ でなければならないことがわかる（係数を比べる前に「対称性で消す」のが鍵）．結局 $g$ は直線 $x=\\frac a2$ に関して対称になり，$x(x-a)$ の多項式として書ける．原題の「合成の恒等式から $g$ の形を読みとる」に，$g\\circ h$ と $h\\circ g$ の両方を入れて対称性の議論を加えた．"
+  },
+  "methods": [],
+  "tags": [
+   "合成関数",
+   "恒等式",
+   "多項式の一致",
+   "対称性",
+   "解の個数"
+  ],
+  "provenance": {
+   "created": "2026-11-10"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-EQ-213",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-08",
+  "level": 4,
+  "minutes": 30,
+  "theme": "5次式の値が等差数列となる歩幅",
+  "topic": "5次式の値が等差数列となる歩幅",
+  "statement": {
+   "tex": "$l,m$ を実数の定数とし，$f(x)=x(x-1)(x-2)(x-3)(x-4)+lx+m$ とする．\n\\begin{enumerate}\n  \\item 実数 $c$ と正の数 $d$ に対し，3数 $f(c-d),\\ f(c),\\ f(c+d)$ がこの順に等差数列であることと，\n  \\[c=2\\quad\\text{または}\\quad2(c-2)^2+d^2=3\\]\n  が成り立つことは同値であることを示せ．\n  \\item 実数 $\\alpha$ と正の数 $d$ で，4数 $f(\\alpha),\\ f(\\alpha+d),\\ f(\\alpha+2d),\\ f(\\alpha+3d)$ がこの順に等差数列となるような組 $(\\alpha,d)$ をすべて求めよ．\n  \\item 実数 $\\alpha$，正の数 $d$，5以上の整数 $k$ で，$k$ 項からなる数列 $f(\\alpha),\\ f(\\alpha+d),\\ \\dots,\\ f(\\alpha+(k-1)d)$ が等差数列となるような組 $(\\alpha,d,k)$ をすべて求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 証明　(2) $(\\alpha,d)=(0,1),\\ (1,1),\\ \\left(2-\\dfrac{3\\sqrt2}2,\\ \\sqrt2\\right)$　(3) $(\\alpha,d,k)=(0,1,5)$ のみ"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "$P(x)=x(x-1)(x-2)(x-3)(x-4)$ とし，$Q(y)=P(y+2)=(y+2)(y+1)y(y-1)(y-2)=y^5-5y^3+4y$ とおく．\n\n\\textbf{(1)} 3数がこの順に等差数列 $\\iff f(c+d)-2f(c)+f(c-d)=0$．1次式の部分は $l(c+d)-2lc+l(c-d)=0$ で消え，$m$ も消えるから，$u=c-2$ として条件は $Q(u+d)+Q(u-d)-2Q(u)=0$．\n\\[(u+d)^5+(u-d)^5=2(u^5+10u^3d^2+5ud^4),\\quad(u+d)^3+(u-d)^3=2(u^3+3ud^2),\\quad(u+d)+(u-d)=2u\\]\nより\n\\[Q(u+d)+Q(u-d)-2Q(u)=2(10u^3d^2+5ud^4)-5\\cdot6ud^2=10ud^2(2u^2+d^2-3).\\]\n$d>0$ だから，条件は $u=0$ または $2u^2+d^2=3$，すなわち $c=2$ または $2(c-2)^2+d^2=3$．\\hfill$\\square$\n\n\\textbf{(2)} 4数が等差数列 $\\iff$ 「$f(\\alpha),f(\\alpha+d),f(\\alpha+2d)$ が等差数列」かつ「$f(\\alpha+d),f(\\alpha+2d),f(\\alpha+3d)$ が等差数列」．中心はそれぞれ $c_1=\\alpha+d$，$c_2=\\alpha+2d$．$u_1=c_1-2$，$u_2=c_2-2=u_1+d$ とおくと，(1)より\n\\[\\bigl(u_1=0\\ \\text{または}\\ 2u_1^{\\,2}+d^2=3\\bigr)\\ \\text{かつ}\\ \\bigl(u_2=0\\ \\text{または}\\ 2u_2^{\\,2}+d^2=3\\bigr).\\]\n$u_1\\neq u_2$ なので $u_1=u_2=0$ はない．\n\\begin{itemize}\n  \\item $u_1=0$ のとき：$u_2=d$ で $3d^2=3$，$d=1$，$\\alpha=c_1-d=1$．\n  \\item $u_2=0$ のとき：$u_1=-d$ で $3d^2=3$，$d=1$，$c_1=1$，$\\alpha=0$．\n  \\item $u_1\\neq0$，$u_2\\neq0$ のとき：$2u_1^{\\,2}+d^2=2u_2^{\\,2}+d^2$ より $u_1^{\\,2}=u_2^{\\,2}$，$u_1\\neq u_2$ だから $u_2=-u_1$，$u_1=-\\dfrac d2$．$\\dfrac{d^2}2+d^2=3$ より $d=\\sqrt2$，$c_1=2-\\dfrac{\\sqrt2}2$，$\\alpha=2-\\dfrac{3\\sqrt2}2$．\n\\end{itemize}\n各段階は同値変形なので，求める組は $\\boldsymbol{(\\alpha,d)=(0,1),\\ (1,1),\\ \\left(2-\\dfrac{3\\sqrt2}2,\\ \\sqrt2\\right)}$．\n\n\\textbf{(3)} $k=5$ のとき：等差数列であることは，最初の4項と最後の4項がともに等差数列であることと同値．よって $(\\alpha,d)$ と $(\\alpha+d,d)$ がともに(2)の組．$d=1$ なら $\\alpha\\in\\{0,1\\}$ かつ $\\alpha+1\\in\\{0,1\\}$ で $\\alpha=0$．$d=\\sqrt2$ なら $\\alpha+\\sqrt2=2-\\dfrac{\\sqrt2}2\\neq2-\\dfrac{3\\sqrt2}2$ で不適．逆に $(\\alpha,d)=(0,1)$ なら $f(j)=lj+m$（$j=0,1,2,3,4$）で等差数列．\n\n$k\\geqq6$ のとき：最初の5項と第2項からの5項がともに等差数列なので $\\alpha=0$ かつ $\\alpha+d=0$ となり $d>0$ に反する．\n\nよって $\\boldsymbol{(\\alpha,d,k)=(0,1,5)}$ のみ．\n\\hfill$\\square$"
+   }
+  ],
+  "idea": {
+   "tex": "$x(x-1)(x-2)(x-3)(x-4)$ は $y=x-2$ とおくと奇関数 $y(y^2-1)(y^2-4)$ になり，1次式 $lx+m$ は2階差分で消える．中心 $c$，歩幅 $d$ の3項が等差数列である条件は $u=c-2$ について $ud^2(2u^2+d^2-3)=0$ と因数分解でき，4項・5項の条件は隣り合う3項の条件を重ねて解く．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) 証明\n(2) $(\\alpha,d)$：{(0, 1), (1, 1), (2-3sqrt(2)/2, sqrt(2))}\n(3) 記述"
+  },
+  "methods": [],
+  "tags": [
+   "5次式",
+   "等差数列",
+   "2階差分",
+   "対称移動",
+   "奇関数"
+  ],
+  "provenance": {
+   "created": "2026-11-10"
   },
   "quality": {
    "status": "published",
@@ -12516,6 +11077,1628 @@
   ],
   "provenance": {
    "created": "2026-11-14"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-EQ-267",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-08",
+  "level": 5,
+  "minutes": 35,
+  "theme": "合成した方程式の実数解が一致する条件",
+  "topic": "合成した方程式の実数解が一致する条件",
+  "statement": {
+   "tex": "$p,q,r$ を実数とし，$f(x)=x^2+2x$，$g(x)=x^3+px^2+qx+r$ とする．次の条件(C)を考える．\n\\begin{center}\n(C)　方程式 $f(x)=0$ の実数解はすべて方程式 $g(f(x))=0$ の解であり，\\\\逆に $g(f(x))=0$ の実数解はすべて $f(x)=0$ の解である．\n\\end{center}\n\\begin{enumerate}\n  \\item (C) が成り立つならば $r=0$ であることを示せ．\n  \\item (C) が成り立つような点 $(p,q)$ の範囲を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 証明　(2) 「$p\\leqq2$ かつ $q>\\dfrac{p^2}4$」または「$p>2$ かつ $q>p-1$」または「$q=0$ かつ $p>1$」または $(p,q)=(0,0)$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) $f(0)=0$ なので $x=0$ は $f(x)=0$ の実数解であり，(C)より $g(f(0))=g(0)=r=0$．\\hfill$\\square$\n\n(2) $r=0$ より $g(u)=u\\,h(u)$，$h(u)=u^2+pu+q$ で，$g(f(x))=f(x)\\,h(f(x))$．$f(x)=0$ の解は $g(f(x))=0$ の解なので，(C)は\n\\[\\text{「}h(f(x))=0\\text{ をみたす実数 }x\\text{ はすべて }f(x)=0\\text{ をみたす」}\\]\nと同値．$f(x)=(x+1)^2-1$ の値域は $u\\geqq-1$ 全体である．\n\nこの条件は「$h(u)=0$ は $-1\\leqq u<0$，$0<u$ の範囲に実数解をもたない」(C$'$) と同値である．実際，(C$'$)のもとで $h(f(x))=0$ なら $u=f(x)\\geqq-1$ は $h$ の解なので $u=0$，すなわち $f(x)=0$．逆に $h(u_0)=0$ となる $u_0\\geqq-1$，$u_0\\neq0$ があれば，$(x+1)^2=u_0+1$ をみたす実数 $x$ について $f(x)=u_0\\neq0$ かつ $h(f(x))=0$ となり条件に反する．\n\n(C$'$) を調べる．\n\\begin{itemize}\n  \\item $p^2<4q$ のとき：$h$ は実数解をもたず，(C$'$) は成り立つ．\n  \\item $q=0$ のとき：$h(u)=u(u+p)$ の解は $0,-p$．(C$'$) $\\iff$ $-p=0$ または $-p<-1$ $\\iff$ $p=0$ または $p>1$．\n  \\item $q\\neq0$，$p^2\\geqq4q$ のとき：$h$ の実数解はどちらも $0$ でないので，(C$'$) $\\iff$ 2つの解（重解を含む）がともに $-1$ 未満 $\\iff$ $h(-1)=1-p+q>0$ かつ軸 $-\\frac p2<-1$（判別式 $\\geqq0$ は仮定）．すなわち $p>2$ かつ $p-1<q\\leqq\\frac{p^2}4$（このとき $q>p-1>1$ なので $q\\neq0$ は自動的にみたされる）．\n\\end{itemize}\nまとめると，$q>\\frac{p^2}4$，または $p>2$ かつ $p-1<q\\leqq\\frac{p^2}4$，または $q=0$ かつ $p>1$，または $p=q=0$．\n$p>2$ のとき $\\frac{p^2}4-(p-1)=\\frac{(p-2)^2}4>0$ なので，前の2つを合わせると「$p\\leqq2$ なら $q>\\frac{p^2}4$，$p>2$ なら $q>p-1$」となる．よって求める範囲は\n\\begin{gather*}\n\\boldsymbol{\\left(p\\leqq2\\text{ かつ }q>\\frac{p^2}4\\right)\\text{ または }(p>2\\text{ かつ }q>p-1)}\\\\\n\\boldsymbol{\\text{または }(q=0\\text{ かつ }p>1)\\text{ または }(p,q)=(0,0)}.\n\\end{gather*}\n（境界の放物線 $q=\\frac{p^2}4$ は $p\\leqq2$ の部分を含まず $p>2$ の部分を含む．直線 $q=p-1$ は含まない．ほかに半直線 $q=0\\ (p>1)$ と原点が加わる．）"
+   }
+  ],
+  "idea": {
+   "tex": "$f(x)=0$ の解 $x_0$ で $g(f(x_0))=g(0)$ となるので $g$ の定数項は $0$ で，$g(u)=u\\,h(u)$．$g(f(x))=0$ の余分な解は $h(f(x))=0$ から来るので，条件は「$h$ の $0$ 以外の実数解が $f$ の値域に入らない」こと．値域が $[-1,\\infty)$ のとき，2次方程式 $h(u)=0$ の解の配置（解なし／$0$ を解にもつ／2解とも $-1$ 未満）に分け，境界 $u=-1$ を含めないことに注意する．"
+  },
+  "methods": [],
+  "tags": [
+   "合成関数",
+   "値域",
+   "解の配置",
+   "場合分け",
+   "領域"
+  ],
+  "provenance": {
+   "created": "2026-11-22"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-EQ-268",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-08",
+  "level": 4,
+  "minutes": 40,
+  "theme": "巡回する等式 $x+\\frac2y=y+\\frac2z=z+\\frac2x$ と共通の値",
+  "topic": "巡回する等式 $x+\\frac2y=y+\\frac2z=z+\\frac2x$ と共通の値",
+  "statement": {
+   "tex": "0でない相異なる3つの実数 $x$，$y$，$z$ と実数 $k$ が\n\\[x+\\frac2y=y+\\frac2z=z+\\frac2x=k\\]\nをみたしている．\n\\begin{enumerate}\n  \\item $k$ と $xyz$ の値の組として考えられるものをすべて求めよ．\n  \\item さらに $x+y+z=0$ かつ $x<y<z$ であるとき，$k$ の値と $x$，$y$，$z$ を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $(k,\\ xyz)=(\\sqrt2,\\ -2\\sqrt2),\\ (-\\sqrt2,\\ 2\\sqrt2)$　(2) $k=\\sqrt2$，$x=2\\sqrt2\\cos160^\\circ$，$y=2\\sqrt2\\cos80^\\circ$，$z=2\\sqrt2\\cos40^\\circ$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) $xyz=P$ とおく．条件の3つの等式\n\\[x+\\frac2y=k\\quad\\cdots\\text{①},\\qquad y+\\frac2z=k\\quad\\cdots\\text{②},\\qquad z+\\frac2x=k\\quad\\cdots\\text{③}\\]\nの分母を払うと\n\\[xy=ky-2,\\qquad yz=kz-2,\\qquad zx=kx-2\\quad\\cdots\\text{④}\\]\nである．① の両辺に $yz$ を掛けると $P+2z=kyz$ で，④ の $yz=kz-2$ を代入すると $P+2z=k^2z-2k$，すなわち\n\\[(k^2-2)z=P+2k.\\]\n同様に ② の両辺に $zx$ を掛けて $zx=kx-2$ を代入すると $(k^2-2)x=P+2k$，③ の両辺に $xy$ を掛けて $xy=ky-2$ を代入すると $(k^2-2)y=P+2k$ を得る．よって $(k^2-2)x=(k^2-2)y$ で，$x\\neq y$ だから $k^2-2=0$．このとき $P+2k=0$．したがって\n\\[k=\\sqrt2,\\ xyz=-2\\sqrt2\\qquad\\text{または}\\qquad k=-\\sqrt2,\\ xyz=2\\sqrt2\\]\nが必要である．\n\n逆にこれらが実際に起こることを示す．(2) で求める3数 $x_0=2\\sqrt2\\cos160^\\circ$，$y_0=2\\sqrt2\\cos80^\\circ$，$z_0=2\\sqrt2\\cos40^\\circ$ は0でなく相異なり，$k=\\sqrt2$ で条件をみたす（(2) の十分性の確認を参照）．このとき上の議論から $x_0y_0z_0=-2\\sqrt2$ である．また $(x,y,z)=(-x_0,-y_0,-z_0)$ とすると\n\\[-x_0+\\frac2{-y_0}=-\\left(x_0+\\frac2{y_0}\\right)=-\\sqrt2\\]\nなどが成り立つので $k=-\\sqrt2$ で条件をみたし，$xyz=2\\sqrt2$ である．以上より\n\\[\\boldsymbol{(k,\\ xyz)=(\\sqrt2,\\ -2\\sqrt2),\\ (-\\sqrt2,\\ 2\\sqrt2)}.\\]\n\n(2) {\\bf 必要性．}$x+y+z=0$ とする．④ を辺々加えると $xy+yz+zx=k(x+y+z)-6=-6$．(1) より $xyz=-2k$．よって $x$，$y$，$z$ は3次方程式\n\\[T^3-6T+2k=0\\]\nの3つの解である（$(T-x)(T-y)(T-z)=T^3-(x+y+z)T^2+(xy+yz+zx)T-xyz$ による）．\n\n$k=\\sqrt2$ のとき，$T=\\sqrt2\\,u$ とおくと $2\\sqrt2\\,u^3-6\\sqrt2\\,u+2\\sqrt2=0$，すなわち $u^3-3u+1=0$．$u=2\\cos\\varphi$ とおくと，3倍角の公式 $\\cos3\\varphi=4\\cos^3\\varphi-3\\cos\\varphi$ より\n\\[u^3-3u+1=8\\cos^3\\varphi-6\\cos\\varphi+1=2\\cos3\\varphi+1\\]\nで，$\\varphi=40^\\circ,\\ 80^\\circ,\\ 160^\\circ$ のとき $3\\varphi=120^\\circ,\\ 240^\\circ,\\ 480^\\circ$ で $\\cos3\\varphi=-\\frac12$ だから，これらはいずれも解である．$\\cos$ は $0^\\circ\\leqq\\varphi\\leqq180^\\circ$ で減少するので $2\\cos160^\\circ<2\\cos80^\\circ<2\\cos40^\\circ$ は相異なり，3次方程式の解は高々3個だから，解はちょうどこの3つである．よって $x<y<z$ から\n\\[x=2\\sqrt2\\cos160^\\circ,\\quad y=2\\sqrt2\\cos80^\\circ,\\quad z=2\\sqrt2\\cos40^\\circ.\\]\n\n$k=-\\sqrt2$ のとき，$T$ が $T^3-6T-2\\sqrt2=0$ の解であることと $-T$ が $T^3-6T+2\\sqrt2=0$ の解であることは同値だから，解は $-2\\sqrt2\\cos40^\\circ<-2\\sqrt2\\cos80^\\circ<-2\\sqrt2\\cos160^\\circ$ で，$x<y<z$ より\n\\[x=-2\\sqrt2\\cos40^\\circ,\\quad z=-2\\sqrt2\\cos160^\\circ=2\\sqrt2\\cos20^\\circ.\\]\nここで $\\cos20^\\circ>\\cos30^\\circ=\\frac{\\sqrt3}2$ より $z>\\sqrt6$．また $\\cos40^\\circ>\\cos45^\\circ=\\frac1{\\sqrt2}$ より $0<\\dfrac1{\\sqrt2\\cos40^\\circ}<1$ なので $\\dfrac2x=-\\dfrac1{\\sqrt2\\cos40^\\circ}>-1$．よって\n\\[z+\\frac2x>\\sqrt6-1>0>-\\sqrt2\\]\nとなり ③ に反する．したがって $k=-\\sqrt2$ は起こらない．\n\n{\\bf 十分性．}$k=\\sqrt2$，$x=2\\sqrt2\\cos160^\\circ$，$y=2\\sqrt2\\cos80^\\circ$，$z=2\\sqrt2\\cos40^\\circ$ とする．$\\cos40^\\circ$，$\\cos80^\\circ$ は正，$\\cos160^\\circ$ は負なので3数は0でなく，上で見たように $x<y<z$．また $x+y+z=\\sqrt2\\,(u_1+u_2+u_3)$（$u_i$ は $u^3-3u+1=0$ の3解）で，解と係数の関係から $u_1+u_2+u_3=0$ なので $x+y+z=0$．\n\n①〜③ は，分母を払った $y(k-x)=2$，$z(k-y)=2$，$x(k-z)=2$ と同値である（$y,z,x\\neq0$）．積和の公式 $2\\cos A\\cos B=\\cos(A+B)+\\cos(A-B)$ を使うと\n\\begin{align*}\ny(k-x)&=2\\sqrt2\\cos80^\\circ\\cdot\\sqrt2\\,(1-2\\cos160^\\circ)=4\\cos80^\\circ-4\\cdot2\\cos80^\\circ\\cos160^\\circ\\\\\n&=4\\cos80^\\circ-4(\\cos240^\\circ+\\cos80^\\circ)=-4\\cos240^\\circ=2,\\\\\nz(k-y)&=2\\sqrt2\\cos40^\\circ\\cdot\\sqrt2\\,(1-2\\cos80^\\circ)=4\\cos40^\\circ-4(\\cos120^\\circ+\\cos40^\\circ)=-4\\cos120^\\circ=2,\\\\\nx(k-z)&=2\\sqrt2\\cos160^\\circ\\cdot\\sqrt2\\,(1-2\\cos40^\\circ)=4\\cos160^\\circ-4(\\cos200^\\circ+\\cos120^\\circ)\\\\\n&=4\\cos160^\\circ-4\\cos200^\\circ+2=2\n\\end{align*}\n（最後は $\\cos200^\\circ=\\cos(360^\\circ-160^\\circ)=\\cos160^\\circ$ による）．よって ①〜③ がすべて成り立つ．以上より\n\\[\\boldsymbol{k=\\sqrt2,\\quad x=2\\sqrt2\\cos160^\\circ,\\quad y=2\\sqrt2\\cos80^\\circ,\\quad z=2\\sqrt2\\cos40^\\circ}.\\]\n\\hfill$\\square$"
+   }
+  ],
+  "idea": {
+   "tex": "$x+\\frac ay=y+\\frac az=z+\\frac ax=k$ の各式に残りの2文字の積を掛けると $xyz+az=kyz$ などが得られ，さらに $yz=kz-a$ などを代入すると，3文字すべてについて同じ1次の関係 $(k^2-a)x=xyz+ak$ が現れる．$x,y,z$ が相異なることから $k^2=a$，$xyz=-ak$ が同時に決まる．原題は差をとって掛け合わせ $(xyz)^2=1$ を示すだけだが，捻りでは共通の値 $k$ と $xyz$ の符号の結びつきまで決め，さらに $x+y+z=0$ の条件で $x,y,z$ が3倍角の公式で解ける3次方程式の解になること，大小の順と巡回の向きが合うのは一方の $k$ だけであることを見る．"
+  },
+  "methods": [],
+  "tags": [
+   "巡回的な連立方程式",
+   "対称式",
+   "3次方程式",
+   "3倍角の公式",
+   "必要条件と十分条件"
+  ],
+  "provenance": {
+   "created": "2026-11-22"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-EQ-269",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-08",
+  "level": 5,
+  "minutes": 45,
+  "theme": "上の段に負の数や分数をおいた二項係数と中央の二項係数の積の和",
+  "topic": "上の段に負の数や分数をおいた二項係数と中央の二項係数の積の和",
+  "statement": {
+   "tex": "実数 $x$ と0以上の整数 $m$ に対して\n\\[B_0(x)=1,\\qquad B_m(x)=\\frac{x(x-1)(x-2)\\cdots(x-m+1)}{m!}\\quad(m\\geqq1)\\]\nと定める．0以上の整数 $s$ に対しては，$m\\leqq s$ のとき $B_m(s)={}_s\\mathrm C_m$，$m>s$ のとき $B_m(s)=0$ である．\n\\begin{enumerate}\n  \\item 0以上の整数 $m$ に対して\n  \\[B_m\\!\\left(-\\frac12\\right)=\\left(-\\frac14\\right)^m{}_{2m}\\mathrm C_m,\\qquad B_m\\!\\left(\\frac12\\right)=-\\left(-\\frac14\\right)^m\\frac{{}_{2m}\\mathrm C_m}{2m-1}\\]\n  が成り立つことを示せ．\n  \\item 0以上の整数 $n$ とすべての実数 $x$，$y$ に対して\n  \\[\\sum_{k=0}^nB_k(x)B_{n-k}(y)=B_n(x+y)\\]\n  が成り立つことを示せ．\n  \\item 正の整数 $n$ に対して，次の2つの和の値をそれぞれ求めよ．\n  \\[S_n=\\sum_{k=0}^n{}_{2k}\\mathrm C_k\\cdot{}_{2n-2k}\\mathrm C_{n-k},\\qquad T_n=\\sum_{k=0}^n\\frac{{}_{2k}\\mathrm C_k\\cdot{}_{2n-2k}\\mathrm C_{n-k}}{2k-1}\\]\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 証明　(2) 証明　(3) $S_n=4^n$，$T_n=0$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) $B_m\\!\\left(-\\dfrac12\\right)$：$m=0$ では両辺とも1．$m\\geqq1$ では\n\\[B_m\\!\\left(-\\frac12\\right)=\\frac{\\left(-\\frac12\\right)\\left(-\\frac32\\right)\\cdots\\left(-\\frac{2m-1}2\\right)}{m!}=\\frac{(-1)^m\\cdot1\\cdot3\\cdot5\\cdots(2m-1)}{2^m\\,m!}.\\]\n$1\\cdot3\\cdots(2m-1)=\\dfrac{(2m)!}{2\\cdot4\\cdots(2m)}=\\dfrac{(2m)!}{2^m\\,m!}$ を代入して\n\\[B_m\\!\\left(-\\frac12\\right)=\\frac{(-1)^m(2m)!}{4^m(m!)^2}=\\left(-\\frac14\\right)^m{}_{2m}\\mathrm C_m.\\]\n$B_m\\!\\left(\\dfrac12\\right)$：$m=0$ では右辺 $=-\\dfrac1{-1}=1$ で正しい．$m\\geqq1$ では，分子の因数 $\\dfrac12-i$（$i=0,1,\\cdots,m-1$）は $\\dfrac12-i=-\\dfrac{2i-1}2$ だから\n\\[B_m\\!\\left(\\frac12\\right)=\\frac{\\left(-\\frac{-1}2\\right)\\left(-\\frac12\\right)\\left(-\\frac32\\right)\\cdots\\left(-\\frac{2m-3}2\\right)}{m!}.\\]\nこれは $B_m\\!\\left(-\\dfrac12\\right)$ の式の分子で最後の因数 $-\\dfrac{2m-1}2$ を最初の因数 $-\\dfrac{-1}2$ に取りかえたものなので，\n\\[B_m\\!\\left(\\frac12\\right)=B_m\\!\\left(-\\frac12\\right)\\cdot\\frac{-\\frac{-1}2}{-\\frac{2m-1}2}=-\\frac{1}{2m-1}B_m\\!\\left(-\\frac12\\right)=-\\left(-\\frac14\\right)^m\\frac{{}_{2m}\\mathrm C_m}{2m-1}.\\tag*{$\\square$}\\]\n\n(2) {\\bf 0以上の整数の場合．}0以上の整数 $s$ について，二項定理と $m>s$ で $B_m(s)=0$ であることから，$u$ の多項式として $(1+u)^s=\\displaystyle\\sum_{m=0}^{N}B_m(s)u^m$（$N$ は $s$ 以上の任意の整数）．0以上の整数 $s$，$t$ に対し $N=s+t+n$ ととって $(1+u)^{s+t}=(1+u)^s(1+u)^t$ の両辺の $u^n$ の係数を比べると\n\\[B_n(s+t)=\\sum_{k=0}^nB_k(s)B_{n-k}(t).\\]\n\n{\\bf 実数への延長．}$G(x,y)=\\displaystyle\\sum_{k=0}^nB_k(x)B_{n-k}(y)-B_n(x+y)$ とおく．$B_k$ は次数 $k$ の多項式だから，$y$ を固定すると $G$ は $x$ の次数 $n$ 以下の多項式，$x$ を固定すると $y$ の次数 $n$ 以下の多項式である．\n\nまず0以上の整数 $t$ を固定する．$x$ の多項式 $G(x,t)$ は $x=0,1,2,\\cdots$ のすべてで0になる．次数 $n$ 以下の0でない多項式が0になる $x$ は（因数定理により）高々 $n$ 個だから，$G(x,t)$ は0多項式であり，すべての実数 $x$ で $G(x,t)=0$．\n\n次に実数 $x$ を任意に固定する．$y$ の多項式 $G(x,y)$ は，いま示したことから $y=0,1,2,\\cdots$ のすべてで0になる．同じ理由で $G(x,y)$ は0多項式であり，すべての実数 $y$ で $G(x,y)=0$．よって等式はすべての実数 $x$，$y$ で成り立つ．\\hfill$\\square$\n\n(3) $n\\geqq1$ とする．\n\n{\\bf $S_n$．}(2) で $x=y=-\\dfrac12$ とする．右辺は $B_n(-1)=\\dfrac{(-1)(-2)\\cdots(-n)}{n!}=(-1)^n$．左辺は (1) より\n\\[\\sum_{k=0}^n\\left(-\\frac14\\right)^k{}_{2k}\\mathrm C_k\\left(-\\frac14\\right)^{n-k}{}_{2n-2k}\\mathrm C_{n-k}=\\left(-\\frac14\\right)^nS_n.\\]\nよって $\\left(-\\dfrac14\\right)^nS_n=(-1)^n$ より $\\boldsymbol{S_n=4^n}$．\n\n{\\bf $T_n$．}(2) で $x=\\dfrac12$，$y=-\\dfrac12$ とする．右辺は $B_n(0)=0$（$n\\geqq1$ で分子に因数 $0$ がある）．左辺は (1) より\n\\[\\sum_{k=0}^n\\left\\{-\\left(-\\frac14\\right)^k\\frac{{}_{2k}\\mathrm C_k}{2k-1}\\right\\}\\left(-\\frac14\\right)^{n-k}{}_{2n-2k}\\mathrm C_{n-k}=-\\left(-\\frac14\\right)^nT_n.\\]\nよって $\\boldsymbol{T_n=0}$．\n\n（例：$n=1$ で $S_1=2+2=4$，$T_1=-2+2=0$．$n=2$ で $S_2=6+4+6=16$，$T_2=-6+4+2=0$．）"
+   }
+  ],
+  "idea": {
+   "tex": "$B_m(x)=\\dfrac{x(x-1)\\cdots(x-m+1)}{m!}$ は $x$ の多項式であり，0以上の整数 $x$ では二項係数と一致する．0以上の整数で成り立つ等式（$(1+u)^{s+t}=(1+u)^s(1+u)^t$ の係数比較）は，「0でない多項式の解は有限個」を1文字ずつ2回使うと実数全体へ延長できる．$x=-\\dfrac12$，$\\dfrac12$ では $B_m$ が中央の二項係数 ${}_{2m}\\mathrm C_m$ で表されるので，延長した等式から ${}_{2k}\\mathrm C_k$ の積の和が求まる．原題は $B_m(x)$ の値の計算と性質の拡張・整数性を問うが，捻りでは多項式の恒等式としての延長そのものを核にする．"
+  },
+  "methods": [],
+  "tags": [
+   "二項定理",
+   "恒等式",
+   "多項式の解の個数",
+   "二項係数",
+   "係数比較"
+  ],
+  "provenance": {
+   "created": "2026-11-22"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-EQ-270",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-08",
+  "level": 4,
+  "minutes": 40,
+  "theme": "4つの項の和のはさみうち",
+  "topic": "4つの項の和のはさみうち",
+  "statement": {
+   "tex": "$a$，$b$ を正の定数とし，$x>0$ に対して\n\\[f(x)=\\frac1{\\sqrt{1+x}}+\\frac1{\\sqrt{1+a}}+\\frac1{\\sqrt{1+b}}+\\sqrt{\\frac{abx}{abx+81}}\\]\nとする．\n\\begin{enumerate}\n  \\item $0<p<1$，$0<q<1$，$0<r<1$ のとき，$p+q+r-2<pqr$ を示せ．\n  \\item 正の数 $s$，$t$，$u$ に対して $s+t+u\\geqq3\\sqrt[3]{stu}$ を示せ．\n  \\item すべての $x>0$ に対して $1<f(x)<3$ が成り立つことを示せ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 証明　(2) 証明　(3) 証明"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) 展開して確かめると\n\\[pqr-p-q-r+2=(1-p)(1-q)+(1-r)(1-pq).\\]\n（右辺 $=1-p-q+pq+1-pq-r+pqr$．）$0<p,q,r<1$ より $(1-p)(1-q)>0$，$1-r>0$，$1-pq>0$ だから右辺は正．よって $p+q+r-2<pqr$．\\hfill$\\square$\n\n(2) $X=\\sqrt[3]s$，$Y=\\sqrt[3]t$，$Z=\\sqrt[3]u$（いずれも正）とおくと\n\\[X^3+Y^3+Z^3-3XYZ=\\frac12(X+Y+Z)\\{(X-Y)^2+(Y-Z)^2+(Z-X)^2\\}\\geqq0.\\]\nよって $s+t+u\\geqq3XYZ=3\\sqrt[3]{stu}$．\\hfill$\\square$\n\n(3) $u_1=x$，$u_2=a$，$u_3=b$，$u_4=\\dfrac{81}{abx}$ とおくと $u_i>0$，$u_1u_2u_3u_4=81$ で，\n\\[\\sqrt{\\frac{abx}{abx+81}}=\\frac1{\\sqrt{1+\\frac{81}{abx}}}=\\frac1{\\sqrt{1+u_4}}.\\]\n$p_i=\\dfrac1{\\sqrt{1+u_i}}$（$i=1,2,3,4$）とおくと $0<p_i<1$，$f(x)=p_1+p_2+p_3+p_4$ である．$u_i=\\dfrac{1-p_i^2}{p_i^2}$ だから，$P=p_1p_2p_3p_4$（$0<P<1$）として条件は\n\\[(1-p_1^2)(1-p_2^2)(1-p_3^2)(1-p_4^2)=81P^2\\qquad\\cdots(*)\\]\nとなる．\n\n{\\bf $f(x)>1$．}$p_1+p_2+p_3+p_4\\leqq1$ と仮定する．このとき例えば $1-p_1\\geqq p_2+p_3+p_4\\geqq3\\sqrt[3]{p_2p_3p_4}>0$（(2) による）で，同様に4つの不等式が成り立つ．正の数どうしの不等式を辺々掛けると，各 $p_j$ は右辺に3回ずつ $\\frac13$ 乗で現れるので\n\\[(1-p_1)(1-p_2)(1-p_3)(1-p_4)\\geqq81P.\\]\nさらに $(1+p_1)(1+p_2)(1+p_3)(1+p_4)>1$，$P>P^2$ より\n\\[(1-p_1^2)(1-p_2^2)(1-p_3^2)(1-p_4^2)>81P>81P^2\\]\nとなり $(*)$ に矛盾する．よって $f(x)>1$．\n\n{\\bf $f(x)<3$．}$p_1+p_2+p_3+p_4\\geqq3$ と仮定する．このとき (1) により\n\\[0<1-p_1\\leqq p_2+p_3+p_4-2<p_2p_3p_4\\]\nで，同様に $0<1-p_i<(\\text{他の3つの積})$ が $i=1,2,3,4$ で成り立つ．辺々掛けると，各 $p_j$ は右辺に3回ずつ現れるので\n\\[(1-p_1)(1-p_2)(1-p_3)(1-p_4)<P^3.\\]\nまた $(1+p_1)(1+p_2)(1+p_3)(1+p_4)<2^4=16$．よって\n\\[(1-p_1^2)(1-p_2^2)(1-p_3^2)(1-p_4^2)<16P^3<16P^2<81P^2\\]\nとなり $(*)$ に矛盾する．よって $f(x)<3$．\n\n以上より，すべての $x>0$ で $1<f(x)<3$．\\hfill$\\square$"
+   }
+  ],
+  "idea": {
+   "tex": "$p_i=\\dfrac1{\\sqrt{1+u_i}}$ と置き換えると条件 $u_1u_2u_3u_4=81$ は $(1-p_1^2)(1-p_2^2)(1-p_3^2)(1-p_4^2)=81(p_1p_2p_3p_4)^2$ となる．和が小さすぎると仮定すると「$1-p_i\\geqq$ 他の3つの和 $\\geqq3\\times$（相乗平均）」，大きすぎると仮定すると「$1-p_i\\leqq$ 他の3つの和 $-2<$ 他の3つの積」となり，どちらも条件の等式と矛盾する．原題は3項・積が8の場合であるが，捻りでは4項にし，上からの評価に3変数の多重1次式 $pqr-p-q-r+2$ の正値性が必要になる．"
+  },
+  "methods": [],
+  "tags": [
+   "不等式の証明",
+   "背理法",
+   "相加平均と相乗平均",
+   "置き換え"
+  ],
+  "provenance": {
+   "created": "2026-11-22"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-EQ-153",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-08",
+  "level": 0,
+  "minutes": 6,
+  "theme": "式と証明／二項定理（係数と定数項）",
+  "unit": "式と証明",
+  "topic": "二項定理（係数と定数項）",
+  "statement": {
+   "tex": "\\begin{enumerate}\n  \\item $(2x-1)^6$ の展開式における $x^4$ の係数を求めよ．\n  \\item $\\left(x^2+\\dfrac{1}{x}\\right)^6$ の展開式における定数項を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $240$　(2) $15$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) 一般項は ${}_6\\mathrm{C}_r(2x)^{6-r}(-1)^r$．$x^4$ の項は $r=2$ のときで，${}_6\\mathrm{C}_2\\cdot2^4\\cdot(-1)^2=15\\cdot16=\\boldsymbol{240}$．\n(2) 一般項は ${}_6\\mathrm{C}_r(x^2)^{6-r}\\left(\\dfrac1x\\right)^r={}_6\\mathrm{C}_r\\,x^{12-3r}$．$12-3r=0$ より $r=4$ で，${}_6\\mathrm{C}_4=\\boldsymbol{15}$．"
+   }
+  ],
+  "idea": {
+   "tex": "一般項 ${}_n\\mathrm{C}_r a^{n-r}b^r$ を書き，求める次数になる $r$ を決める．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) 240\n(2) 15"
+  },
+  "methods": [],
+  "tags": [
+   "二項定理",
+   "一般項"
+  ],
+  "provenance": {
+   "created": "2026-10-30"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-EQ-154",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-08",
+  "level": 0,
+  "minutes": 6,
+  "theme": "式と証明／整式の除法",
+  "unit": "式と証明",
+  "topic": "整式の除法",
+  "statement": {
+   "tex": "\\begin{enumerate}\n  \\item $2x^3-3x^2+4x-5$ を $x^2-x+2$ で割った商と余りを求めよ．\n  \\item 整式 $A$ を $x^2+x-1$ で割ると，商が $2x-3$，余りが $x+4$ である．$A$ を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 商 $2x-1$，余り $- x-3$　(2) $A=2x^{3} - x^{2}-4x+7$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) $2x^3-3x^2+4x-5=(x^2-x+2)(2x-1)+(-x-3)$ と割り算を実行して，商 $\\boldsymbol{2x-1}$，余り $\\boldsymbol{- x-3}$．\n(2) $A=(x^2+x-1)(2x-3)+(x+4)=2x^3-x^2-5x+3+x+4=\\boldsymbol{2x^{3} - x^{2}-4x+7}$．"
+   }
+  ],
+  "idea": {
+   "tex": "割られる式 $=$ 割る式 $\\times$ 商 $+$ 余り（余りの次数は割る式より低い）．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) 商：2x-1 ; 余り：-x-3\n(2) $A$：2x^3 - x^2 - 4x + 7"
+  },
+  "methods": [],
+  "tags": [
+   "整式の除法",
+   "商と余り"
+  ],
+  "provenance": {
+   "created": "2026-10-30"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-EQ-155",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-08",
+  "level": 0,
+  "minutes": 5,
+  "theme": "式と証明／分数式の加減",
+  "unit": "式と証明",
+  "topic": "分数式の加減",
+  "statement": {
+   "tex": "\\begin{enumerate}\n  \\item $\\dfrac{x+3}{x^2-1}-\\dfrac{2}{x-1}$ を計算せよ．\n  \\item $\\dfrac{1}{x(x+1)}+\\dfrac{1}{(x+1)(x+2)}$ を計算せよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $-\\dfrac{1}{x+1}$　(2) $\\dfrac{2}{x(x+2)}$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) 通分して $\\dfrac{x+3-2(x+1)}{(x+1)(x-1)}=\\dfrac{-(x-1)}{(x+1)(x-1)}=\\boldsymbol{-\\dfrac{1}{x+1}}$．\n(2) 通分して $\\dfrac{(x+2)+x}{x(x+1)(x+2)}=\\dfrac{2(x+1)}{x(x+1)(x+2)}=\\boldsymbol{\\dfrac{2}{x(x+2)}}$．"
+   }
+  ],
+  "idea": {
+   "tex": "分母を因数分解して通分し，最後に約分できるかを確かめる．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) -1/(x+1)\n(2) 2/(x(x+2))"
+  },
+  "methods": [],
+  "tags": [
+   "分数式",
+   "通分"
+  ],
+  "provenance": {
+   "created": "2026-10-30"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-EQ-156",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-08",
+  "level": 0,
+  "minutes": 5,
+  "theme": "式と証明／繁分数式",
+  "unit": "式と証明",
+  "topic": "繁分数式",
+  "statement": {
+   "tex": "\\begin{enumerate}\n  \\item $\\dfrac{1-\\dfrac{1}{x}}{x-\\dfrac{1}{x}}$ を簡単にせよ．\n  \\item $\\dfrac{1}{1-\\dfrac{1}{1-x}}$ を簡単にせよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $\\dfrac{1}{x+1}$　(2) $\\dfrac{x-1}{x}$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) 分母・分子に $x$ を掛けて $\\dfrac{x-1}{x^2-1}=\\dfrac{x-1}{(x-1)(x+1)}=\\boldsymbol{\\dfrac{1}{x+1}}$．\n(2) $1-\\dfrac{1}{1-x}=\\dfrac{1-x-1}{1-x}=\\dfrac{-x}{1-x}$ なので，与式 $=\\dfrac{1-x}{-x}=\\boldsymbol{\\dfrac{x-1}{x}}$．"
+   }
+  ],
+  "idea": {
+   "tex": "分母・分子に同じ式を掛けて，中の分数を消す．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) 1/(x+1)\n(2) (x-1)/x"
+  },
+  "methods": [],
+  "tags": [
+   "分数式",
+   "繁分数"
+  ],
+  "provenance": {
+   "created": "2026-10-30"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-EQ-157",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-08",
+  "level": 0,
+  "minutes": 5,
+  "theme": "式と証明／恒等式（係数の決定）",
+  "unit": "式と証明",
+  "topic": "恒等式（係数の決定）",
+  "statement": {
+   "tex": "等式 $2x^2+3x+5=a(x-1)^2+b(x-1)+c$ が $x$ についての恒等式となるように，定数 $a,\\ b,\\ c$ の値を定めよ．"
+  },
+  "answer": {
+   "tex": "$a=2,\\ b=7,\\ c=10$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "右辺を展開すると $ax^2+(-2a+b)x+(a-b+c)$．係数を比べて $a=2$，$-2a+b=3$，$a-b+c=5$．\nよって $\\boldsymbol{a=2,\\ b=7,\\ c=10}$．\n（別解：$x=1$ を代入して $c=10$．$x=1+t$ とおいて $2(1+t)^2+3(1+t)+5=2t^2+7t+10$ からも同じ結果．）"
+   }
+  ],
+  "idea": {
+   "tex": "恒等式は両辺の同じ次数の係数が等しい（または，どんな $x$ を代入しても成り立つ）．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "$a$：2 ; $b$：7 ; $c$：10"
+  },
+  "methods": [],
+  "tags": [
+   "恒等式",
+   "係数比較"
+  ],
+  "provenance": {
+   "created": "2026-10-30"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-EQ-158",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-08",
+  "level": 0,
+  "minutes": 6,
+  "theme": "式と証明／相加平均と相乗平均の関係",
+  "unit": "式と証明",
+  "topic": "相加平均と相乗平均の関係",
+  "statement": {
+   "tex": "\\begin{enumerate}\n  \\item $x>0$ のとき，$x+\\dfrac{9}{x}$ の最小値と，そのときの $x$ の値を求めよ．\n  \\item $x>0$ のとき，$2x+\\dfrac{1}{x}$ の最小値を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 最小値 $6$（$x=3$）　(2) $2\\sqrt{2}$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) $x>0,\\ \\dfrac9x>0$ なので，相加平均と相乗平均の関係より $x+\\dfrac9x\\geqq2\\sqrt{x\\cdot\\dfrac9x}=6$．\n等号は $x=\\dfrac9x$，すなわち $x=3$ のとき．よって最小値 $\\boldsymbol{6}$（$\\boldsymbol{x=3}$）．\n(2) $2x+\\dfrac1x\\geqq2\\sqrt{2x\\cdot\\dfrac1x}=2\\sqrt2$．等号は $2x=\\dfrac1x$，$x=\\dfrac{\\sqrt2}{2}$ のとき成り立つから，最小値 $\\boldsymbol{2\\sqrt{2}}$．"
+   }
+  ],
+  "idea": {
+   "tex": "積が一定になる2つの正の数の和には $a+b\\geqq2\\sqrt{ab}$ を使い，等号が成り立つことも確かめる．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) 最小値：6 ; $x$：3\n(2) 2sqrt(2)"
+  },
+  "methods": [],
+  "tags": [
+   "相加平均・相乗平均",
+   "最小値"
+  ],
+  "provenance": {
+   "created": "2026-10-30"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-EQ-159",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-08",
+  "level": 0,
+  "minutes": 5,
+  "theme": "複素数と方程式／複素数の四則計算",
+  "unit": "複素数と方程式",
+  "topic": "複素数の四則計算",
+  "statement": {
+   "tex": "\\begin{enumerate}\n  \\item $\\dfrac{3+i}{1-2i}$ を $a+bi$（$a,\\ b$ は実数）の形で表せ．\n  \\item $(2+i)^2(1-i)$ を $a+bi$（$a,\\ b$ は実数）の形で表せ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $\\dfrac{1}{5}+\\dfrac{7}{5}i$（$a=\\dfrac{1}{5},\\ b=\\dfrac{7}{5}$）　(2) $7 + i$（$a=7,\\ b=1$）"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) 分母・分子に $1+2i$ を掛けて $\\dfrac{(3+i)(1+2i)}{1+4}=\\dfrac{3+7i+2i^2}{5}=\\dfrac{1+7i}{5}=\\boldsymbol{\\dfrac{1}{5}+\\dfrac{7}{5}i}$．\n(2) $(2+i)^2=4+4i+i^2=3+4i$．よって $(3+4i)(1-i)=3+i-4i^2=\\boldsymbol{7 + i}$．"
+   }
+  ],
+  "idea": {
+   "tex": "$i^2=-1$ を使って計算し，割り算は分母の共役複素数を分母・分子に掛ける．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) $a$：1/5 ; $b$：7/5\n(2) $a$：7 ; $b$：1"
+  },
+  "methods": [],
+  "tags": [
+   "複素数",
+   "共役複素数"
+  ],
+  "provenance": {
+   "created": "2026-10-30"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-EQ-160",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-08",
+  "level": 0,
+  "minutes": 5,
+  "theme": "複素数と方程式／複素数の相等",
+  "unit": "複素数と方程式",
+  "topic": "複素数の相等",
+  "statement": {
+   "tex": "等式 $(2+i)x+(1-3i)y=4-5i$ を満たす実数 $x,\\ y$ の値を求めよ．"
+  },
+  "answer": {
+   "tex": "$x=1,\\ y=2$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "左辺を整理すると $(2x+y)+(x-3y)i$．$x,\\ y$ は実数なので，実部と虚部を比べて $2x+y=4$，$x-3y=-5$．\nこれを解いて $\\boldsymbol{x=1,\\ y=2}$．"
+   }
+  ],
+  "idea": {
+   "tex": "$a,\\ b,\\ c,\\ d$ が実数のとき，$a+bi=c+di \\iff a=c$ かつ $b=d$．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "$x$：1 ; $y$：2"
+  },
+  "methods": [],
+  "tags": [
+   "複素数の相等"
+  ],
+  "provenance": {
+   "created": "2026-10-30"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-EQ-161",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-08",
+  "level": 0,
+  "minutes": 5,
+  "theme": "複素数と方程式／判別式と解の種類",
+  "unit": "複素数と方程式",
+  "topic": "判別式と解の種類",
+  "statement": {
+   "tex": "2次方程式 $x^2+2kx+k+6=0$ が異なる2つの虚数解をもつような，実数 $k$ の値の範囲を求めよ．"
+  },
+  "answer": {
+   "tex": "$-2<k<3$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "判別式を $D$ とすると $\\dfrac D4=k^2-(k+6)=(k-3)(k+2)$．\n虚数解をもつ条件は $D<0$ なので $(k-3)(k+2)<0$，よって $\\boldsymbol{-2<k<3}$．"
+   }
+  ],
+  "idea": {
+   "tex": "実数係数の2次方程式は，判別式 $D<0$ のとき異なる2つの虚数解をもつ．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "-2<k<3"
+  },
+  "methods": [],
+  "tags": [
+   "判別式",
+   "虚数解"
+  ],
+  "provenance": {
+   "created": "2026-10-30"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-EQ-162",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-08",
+  "level": 0,
+  "minutes": 6,
+  "theme": "複素数と方程式／解と係数の関係（対称式の値）",
+  "unit": "複素数と方程式",
+  "topic": "解と係数の関係（対称式の値）",
+  "statement": {
+   "tex": "\\begin{enumerate}\n  \\item 2次方程式 $2x^2-4x+3=0$ の2つの解を $\\alpha,\\ \\beta$ とする．$\\alpha^2+\\beta^2$ と $\\alpha^3+\\beta^3$ の値を求めよ．\n  \\item (1) の $\\alpha,\\ \\beta$ について，$\\dfrac{\\beta}{\\alpha}+\\dfrac{\\alpha}{\\beta}$ の値を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $\\alpha^2+\\beta^2=1,\\ \\alpha^3+\\beta^3=-1$　(2) $\\dfrac{2}{3}$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "解と係数の関係より $\\alpha+\\beta=2$，$\\alpha\\beta=\\dfrac32$．\n(1) $\\alpha^2+\\beta^2=(\\alpha+\\beta)^2-2\\alpha\\beta=4-3=\\boldsymbol{1}$．$\\alpha^3+\\beta^3=(\\alpha+\\beta)^3-3\\alpha\\beta(\\alpha+\\beta)=8-9=\\boldsymbol{-1}$．\n(2) $\\dfrac{\\beta}{\\alpha}+\\dfrac{\\alpha}{\\beta}=\\dfrac{\\alpha^2+\\beta^2}{\\alpha\\beta}=1\\div\\dfrac32=\\boldsymbol{\\dfrac{2}{3}}$．"
+   }
+  ],
+  "idea": {
+   "tex": "解を直接求めずに，基本対称式 $\\alpha+\\beta,\\ \\alpha\\beta$ で表して値を出す．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) $\\alpha^2+\\beta^2$：1 ; $\\alpha^3+\\beta^3$：-1\n(2) 2/3"
+  },
+  "methods": [],
+  "tags": [
+   "解と係数の関係",
+   "対称式"
+  ],
+  "provenance": {
+   "created": "2026-10-30"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-EQ-163",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-08",
+  "level": 0,
+  "minutes": 6,
+  "theme": "複素数と方程式／2数を解とする2次方程式",
+  "unit": "複素数と方程式",
+  "topic": "2数を解とする2次方程式",
+  "statement": {
+   "tex": "\\begin{enumerate}\n  \\item 2数 $2+\\sqrt3,\\ 2-\\sqrt3$ を解とする2次方程式を $x^2+px+q=0$ の形で求めよ．$p,\\ q$ の値を答えよ．\n  \\item 2次方程式 $x^2-x+3=0$ の2つの解を $\\alpha,\\ \\beta$ とする．$\\alpha+1,\\ \\beta+1$ を解とする2次方程式を $x^2+px+q=0$ の形で求めよ．$p,\\ q$ の値を答えよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $p=-4,\\ q=1$（$x^2-4x+1=0$）　(2) $p=-3,\\ q=5$（$x^2-3x+5=0$）"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) 和は $4$，積は $4-3=1$ なので $x^2-4x+1=0$．$\\boldsymbol{p=-4,\\ q=1}$．\n(2) $\\alpha+\\beta=1$，$\\alpha\\beta=3$．$(\\alpha+1)+(\\beta+1)=3$，$(\\alpha+1)(\\beta+1)=\\alpha\\beta+(\\alpha+\\beta)+1=5$．\nよって $x^2-3x+5=0$ で，$\\boldsymbol{p=-3,\\ q=5}$．"
+   }
+  ],
+  "idea": {
+   "tex": "2数 $\\alpha,\\ \\beta$ を解とする2次方程式は $x^2-(\\alpha+\\beta)x+\\alpha\\beta=0$．和と積を求めればよい．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) $p$：-4 ; $q$：1\n(2) $p$：-3 ; $q$：5"
+  },
+  "methods": [],
+  "tags": [
+   "解と係数の関係",
+   "2次方程式の作成"
+  ],
+  "provenance": {
+   "created": "2026-10-30"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-EQ-164",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-08",
+  "level": 0,
+  "minutes": 5,
+  "theme": "複素数と方程式／剰余の定理",
+  "unit": "複素数と方程式",
+  "topic": "剰余の定理",
+  "statement": {
+   "tex": "\\begin{enumerate}\n  \\item 整式 $P(x)=x^3-2x^2+ax+3$ を $x-2$ で割った余りが $5$ であるとき，定数 $a$ の値を求めよ．\n  \\item (1) のとき，$P(x)$ を $x+1$ で割った余りを求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $a=1$　(2) $-1$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) 剰余の定理より $P(2)=8-8+2a+3=2a+3=5$，よって $\\boldsymbol{a=1}$．\n(2) $P(x)=x^3-2x^2+x+3$ で，余りは $P(-1)=-1-2-1+3=\\boldsymbol{-1}$．"
+   }
+  ],
+  "idea": {
+   "tex": "$P(x)$ を $x-\\alpha$ で割った余りは $P(\\alpha)$．割り算を実行せずに代入で求める．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) $a$：1\n(2) -1"
+  },
+  "methods": [],
+  "tags": [
+   "剰余の定理"
+  ],
+  "provenance": {
+   "created": "2026-10-30"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-EQ-165",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-08",
+  "level": 0,
+  "minutes": 6,
+  "theme": "複素数と方程式／因数定理と3次方程式",
+  "unit": "複素数と方程式",
+  "topic": "因数定理と3次方程式",
+  "statement": {
+   "tex": "3次方程式 $x^3-2x^2-5x+6=0$ を解け．"
+  },
+  "answer": {
+   "tex": "$x=1,\\ -2,\\ 3$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "$P(x)=x^3-2x^2-5x+6$ とおくと $P(1)=1-2-5+6=0$ なので，$P(x)$ は $x-1$ を因数にもつ．\n割り算して $P(x)=(x-1)(x^2-x-6)=(x-1)(x+2)(x-3)$．よって $\\boldsymbol{x=1,\\ -2,\\ 3}$．"
+   }
+  ],
+  "idea": {
+   "tex": "定数項の約数を代入して $P(\\alpha)=0$ となる $\\alpha$ を見つけ，$x-\\alpha$ でくくり出す．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "$x$：{1, -2, 3}"
+  },
+  "methods": [],
+  "tags": [
+   "因数定理",
+   "高次方程式"
+  ],
+  "provenance": {
+   "created": "2026-10-30"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-EQ-166",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-08",
+  "level": 0,
+  "minutes": 5,
+  "theme": "式と証明／比例式",
+  "unit": "式と証明",
+  "topic": "比例式",
+  "statement": {
+   "tex": "$\\dfrac{x}{2}=\\dfrac{y}{3}=\\dfrac{z}{4}\\neq0$ のとき，次の式の値を求めよ．\n\\begin{enumerate}\n  \\item $\\dfrac{x+y+z}{x-y+z}$\n  \\item $\\dfrac{xy+yz+zx}{x^2+y^2+z^2}$\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $3$　(2) $\\dfrac{26}{29}$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "$\\dfrac x2=\\dfrac y3=\\dfrac z4=k$ とおくと $x=2k,\\ y=3k,\\ z=4k$（$k\\neq0$）．\n(1) $\\dfrac{2k+3k+4k}{2k-3k+4k}=\\dfrac{9k}{3k}=\\boldsymbol{3}$．\n(2) $\\dfrac{6k^2+12k^2+8k^2}{4k^2+9k^2+16k^2}=\\boldsymbol{\\dfrac{26}{29}}$．"
+   }
+  ],
+  "idea": {
+   "tex": "比例式は「$=k$」とおいて各文字を $k$ で表す．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) 3\n(2) 26/29"
+  },
+  "methods": [],
+  "tags": [
+   "比例式"
+  ],
+  "provenance": {
+   "created": "2026-10-30"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-EQ-167",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-08",
+  "level": 0,
+  "minutes": 5,
+  "theme": "複素数と方程式／複2次方程式",
+  "unit": "複素数と方程式",
+  "topic": "複2次方程式",
+  "statement": {
+   "tex": "方程式 $x^4-5x^2+4=0$ を解け．"
+  },
+  "answer": {
+   "tex": "$x=1,\\ -1,\\ 2,\\ -2$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "$x^2=X$ とおくと $X^2-5X+4=0$，$(X-1)(X-4)=0$ より $X=1,\\ 4$．\n$x^2=1$ から $x=\\pm1$，$x^2=4$ から $x=\\pm2$．よって $\\boldsymbol{x=\\pm1,\\ \\pm2}$．"
+   }
+  ],
+  "idea": {
+   "tex": "$x^2$ をひとまとまりと見て，2次方程式に帰着させる．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "$x$：{1, -1, 2, -2}"
+  },
+  "methods": [],
+  "tags": [
+   "高次方程式",
+   "置き換え"
+  ],
+  "provenance": {
+   "created": "2026-10-30"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-EQ-168",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-08",
+  "level": 1,
+  "minutes": 10,
+  "theme": "式と証明／多項定理",
+  "unit": "式と証明",
+  "topic": "多項定理",
+  "statement": {
+   "tex": "\\begin{enumerate}\n  \\item $(x+2y-z)^6$ の展開式における $x^2y^3z$ の係数を求めよ．\n  \\item $(1+2x-x^2)^4$ の展開式における $x^3$ の係数を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $-480$　(2) $8$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) 一般項は $\\dfrac{6!}{p!\\,q!\\,r!}x^p(2y)^q(-z)^r$（$p+q+r=6$）．$p=2,\\ q=3,\\ r=1$ として\n$\\dfrac{6!}{2!\\,3!\\,1!}\\cdot2^3\\cdot(-1)=60\\cdot8\\cdot(-1)=\\boldsymbol{-480}$．\n(2) 一般項は $\\dfrac{4!}{p!\\,q!\\,r!}\\cdot1^p(2x)^q(-x^2)^r$ で，$x$ の次数は $q+2r$．$p+q+r=4,\\ q+2r=3$ を満たすのは\n$(p,q,r)=(1,3,0),\\ (2,1,1)$．係数は $\\dfrac{4!}{1!\\,3!}\\cdot2^3+\\dfrac{4!}{2!\\,1!\\,1!}\\cdot2\\cdot(-1)=32-24=\\boldsymbol{8}$．"
+   }
+  ],
+  "idea": {
+   "tex": "多項定理の一般項を書き，指数の条件を満たす組をすべて拾い出して足す．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) -480\n(2) 8"
+  },
+  "methods": [],
+  "tags": [
+   "多項定理",
+   "展開式の係数"
+  ],
+  "provenance": {
+   "created": "2026-10-30"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-EQ-169",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-08",
+  "level": 1,
+  "minutes": 12,
+  "theme": "式と証明／二項定理と二項係数の和",
+  "unit": "式と証明",
+  "topic": "二項定理と二項係数の和",
+  "statement": {
+   "tex": "次の値を求めよ．\n\\begin{enumerate}\n  \\item ${}_6\\mathrm{C}_0+{}_6\\mathrm{C}_1\\cdot3+{}_6\\mathrm{C}_2\\cdot3^2+\\cdots+{}_6\\mathrm{C}_6\\cdot3^6$\n  \\item ${}_{10}\\mathrm{C}_0+{}_{10}\\mathrm{C}_2+{}_{10}\\mathrm{C}_4+\\cdots+{}_{10}\\mathrm{C}_{10}$\n  \\item ${}_8\\mathrm{C}_1+2\\cdot{}_8\\mathrm{C}_2+3\\cdot{}_8\\mathrm{C}_3+\\cdots+8\\cdot{}_8\\mathrm{C}_8$\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $4096$　(2) $512$　(3) $1024$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) 二項定理 $(1+x)^6=\\sum_{r=0}^{6}{}_6\\mathrm{C}_r x^r$ に $x=3$ を代入して $4^6=\\boldsymbol{4096}$．\n(2) $(1+x)^{10}$ に $x=1,\\ -1$ を代入した式 $2^{10}=\\sum{}_{10}\\mathrm{C}_r$，$0=\\sum(-1)^r{}_{10}\\mathrm{C}_r$ を辺々加えると，偶数番目の和の2倍が $2^{10}$．よって $2^9=\\boldsymbol{512}$．\n(3) $r\\cdot{}_8\\mathrm{C}_r=8\\cdot{}_7\\mathrm{C}_{r-1}$ より，和は $8({}_7\\mathrm{C}_0+\\cdots+{}_7\\mathrm{C}_7)=8\\cdot2^7=\\boldsymbol{1024}$．"
+   }
+  ],
+  "idea": {
+   "tex": "二項定理の式に適当な値を代入する．係数つきの和は $r\\,{}_n\\mathrm{C}_r=n\\,{}_{n-1}\\mathrm{C}_{r-1}$ で整理する．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) 4096\n(2) 512\n(3) 1024"
+  },
+  "methods": [],
+  "tags": [
+   "二項定理",
+   "二項係数"
+  ],
+  "provenance": {
+   "created": "2026-10-30"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-EQ-170",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-08",
+  "level": 1,
+  "minutes": 10,
+  "theme": "複素数と方程式／剰余の定理（2次式で割った余り）",
+  "unit": "複素数と方程式",
+  "topic": "剰余の定理（2次式で割った余り）",
+  "statement": {
+   "tex": "整式 $P(x)$ を $x-1$ で割ると余りが $3$，$x+2$ で割ると余りが $-3$ である．$P(x)$ を $x^2+x-2$ で割った余りを求めよ．"
+  },
+  "answer": {
+   "tex": "$2x+1$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "$x^2+x-2=(x-1)(x+2)$．2次式で割った余りは1次以下なので，商を $Q(x)$，余りを $ax+b$ として\n$P(x)=(x-1)(x+2)Q(x)+ax+b$．剰余の定理より $P(1)=a+b=3$，$P(-2)=-2a+b=-3$．\nこれを解いて $a=2,\\ b=1$．よって余りは $\\boldsymbol{2x+1}$．"
+   }
+  ],
+  "idea": {
+   "tex": "余りを $ax+b$ とおき，割る式が $0$ になる $x$ を代入して剰余の定理の条件を式にする．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "2x+1"
+  },
+  "methods": [],
+  "tags": [
+   "剰余の定理",
+   "余り"
+  ],
+  "provenance": {
+   "created": "2026-10-30"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-EQ-171",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-08",
+  "level": 1,
+  "minutes": 13,
+  "theme": "複素数と方程式／剰余の定理（3次式で割った余り）",
+  "unit": "複素数と方程式",
+  "topic": "剰余の定理（3次式で割った余り）",
+  "statement": {
+   "tex": "整式 $P(x)$ を $(x-1)^2$ で割ると余りが $2x+3$，$x+2$ で割ると余りが $8$ である．$P(x)$ を $(x-1)^2(x+2)$ で割った余りを求めよ．"
+  },
+  "answer": {
+   "tex": "$x^{2}+4$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "3次式で割った余りは2次以下．$P(x)=(x-1)^2(x+2)Q(x)+R(x)$ とおくと，$P(x)$ を $(x-1)^2$ で割った余りは $R(x)$ を $(x-1)^2$ で割った余りに等しい．\nよって $R(x)=a(x-1)^2+2x+3$ と書ける．$P(-2)=R(-2)=9a-1=8$ より $a=1$．\nしたがって余りは $(x-1)^2+2x+3=\\boldsymbol{x^{2}+4}$．"
+   }
+  ],
+  "idea": {
+   "tex": "余りを「$(x-1)^2$ で割った余り」が見える形 $a(x-1)^2+2x+3$ でおくと，未知数が1つで済む．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "x^2 + 4"
+  },
+  "methods": [],
+  "tags": [
+   "剰余の定理",
+   "余り"
+  ],
+  "provenance": {
+   "created": "2026-10-30"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-EQ-172",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-08",
+  "level": 1,
+  "minutes": 12,
+  "theme": "式と証明／部分分数分解（分数式の恒等式）",
+  "unit": "式と証明",
+  "topic": "部分分数分解（分数式の恒等式）",
+  "statement": {
+   "tex": "等式 $\\dfrac{3x^2-x+1}{x(x-1)^2}=\\dfrac{a}{x}+\\dfrac{b}{x-1}+\\dfrac{c}{(x-1)^2}$ が $x$ についての恒等式となるように，定数 $a,\\ b,\\ c$ の値を定めよ．"
+  },
+  "answer": {
+   "tex": "$a=1,\\ b=2,\\ c=3$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "両辺に $x(x-1)^2$ を掛けて $3x^2-x+1=a(x-1)^2+bx(x-1)+cx$．これも恒等式．\n$x=0$ を代入して $a=1$．$x=1$ を代入して $c=3$．$x^2$ の係数を比べて $a+b=3$ より $b=2$．\nよって $\\boldsymbol{a=1,\\ b=2,\\ c=3}$．（逆にこのとき両辺は一致する．）"
+   }
+  ],
+  "idea": {
+   "tex": "分母を払った整式の恒等式にし，都合のよい値の代入と係数比較を組み合わせる．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "$a$：1 ; $b$：2 ; $c$：3"
+  },
+  "methods": [],
+  "tags": [
+   "恒等式",
+   "部分分数分解"
+  ],
+  "provenance": {
+   "created": "2026-10-30"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-EQ-173",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-08",
+  "level": 1,
+  "minutes": 12,
+  "theme": "式と証明／比例式（$=k$ とおく）",
+  "unit": "式と証明",
+  "topic": "比例式（$=k$ とおく）",
+  "statement": {
+   "tex": "$abc\\neq0$ である実数 $a,\\ b,\\ c$ について $\\dfrac{a+b}{c}=\\dfrac{b+c}{a}=\\dfrac{c+a}{b}=k$ が成り立つとき，$k$ の値をすべて求めよ．"
+  },
+  "answer": {
+   "tex": "$k=2,\\ -1$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "$a+b=ck$，$b+c=ak$，$c+a=bk$．辺々加えて $2(a+b+c)=k(a+b+c)$，すなわち $(a+b+c)(k-2)=0$．\n$a+b+c\\neq0$ のとき $k=2$（例：$a=b=c=1$）．\n$a+b+c=0$ のとき $a+b=-c$ なので $k=\\dfrac{-c}{c}=-1$（例：$a=b=1,\\ c=-2$）．\nよって $\\boldsymbol{k=2,\\ -1}$．"
+   }
+  ],
+  "idea": {
+   "tex": "3つの式を辺々加えて $a+b+c$ でくくる．$a+b+c=0$ の場合を落とさない．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "$k$：{2, -1}"
+  },
+  "methods": [],
+  "tags": [
+   "比例式",
+   "場合分け"
+  ],
+  "provenance": {
+   "created": "2026-10-30"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-EQ-174",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-08",
+  "level": 1,
+  "minutes": 12,
+  "theme": "式と証明／相加平均・相乗平均の関係の応用",
+  "unit": "式と証明",
+  "topic": "相加平均・相乗平均の関係の応用",
+  "statement": {
+   "tex": "\\begin{enumerate}\n  \\item $x>1$ のとき，$x+\\dfrac{4}{x-1}$ の最小値と，そのときの $x$ の値を求めよ．\n  \\item $a>0,\\ b>0$ のとき，$\\left(a+\\dfrac1b\\right)\\left(b+\\dfrac4a\\right)$ の最小値を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) 最小値 $5$（$x=3$）　(2) $9$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) $x-1>0$ なので $x+\\dfrac{4}{x-1}=(x-1)+\\dfrac{4}{x-1}+1\\geqq2\\sqrt{4}+1=5$．\n等号は $x-1=\\dfrac{4}{x-1}$，$x-1=2$ すなわち $x=3$ のとき．最小値 $\\boldsymbol{5}$（$\\boldsymbol{x=3}$）．\n(2) 展開すると $ab+4+1+\\dfrac{4}{ab}=ab+\\dfrac{4}{ab}+5\\geqq2\\sqrt4+5=9$．\n等号は $ab=2$（例えば $a=1,\\ b=2$）のとき成り立つから，最小値 $\\boldsymbol{9}$．\n（注：$a+\\frac1b\\geqq2\\sqrt{\\frac ab}$，$b+\\frac4a\\geqq2\\sqrt{\\frac{4b}{a}}$ を掛けて $8$ とするのは，等号が同時に成り立たないので誤り．）"
+   }
+  ],
+  "idea": {
+   "tex": "積が一定になる形に変形してから相加平均・相乗平均の関係を使い，等号成立を必ず確認する．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) 最小値：5 ; $x$：3\n(2) 9"
+  },
+  "methods": [],
+  "tags": [
+   "相加平均・相乗平均",
+   "最小値"
+  ],
+  "provenance": {
+   "created": "2026-10-30"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-EQ-175",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-08",
+  "level": 1,
+  "minutes": 12,
+  "theme": "複素数と方程式／次数下げによる式の値",
+  "unit": "複素数と方程式",
+  "topic": "次数下げによる式の値",
+  "statement": {
+   "tex": "\\begin{enumerate}\n  \\item $x=1+\\sqrt2\\,i$ のとき，$x^2-2x$ の値を求めよ．\n  \\item $x=1+\\sqrt2\\,i$ のとき，$x^4-x^3+x^2+3x+1$ の値を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $-3$　(2) $1$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) $x-1=\\sqrt2\\,i$ の両辺を2乗して $x^2-2x+1=-2$，よって $x^2-2x=\\boldsymbol{-3}$．\n(2) $x^2-2x+3=0$ である．$x^4-x^3+x^2+3x+1$ を $x^2-2x+3$ で割ると，商 $x^2+x$，余り $1$ なので\n$x^4-x^3+x^2+3x+1=(x^2-2x+3)(x^2+x)+1=0+1=\\boldsymbol{1}$．"
+   }
+  ],
+  "idea": {
+   "tex": "$x$ が満たす2次方程式を作り，求める式をその2次式で割った余りに直して代入する．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) -3\n(2) 1"
+  },
+  "methods": [],
+  "tags": [
+   "次数下げ",
+   "複素数",
+   "整式の除法"
+  ],
+  "provenance": {
+   "created": "2026-10-30"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-EQ-176",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-08",
+  "level": 1,
+  "minutes": 12,
+  "theme": "複素数と方程式／解と係数の関係（解の条件から係数を決める）",
+  "unit": "複素数と方程式",
+  "topic": "解と係数の関係（解の条件から係数を決める）",
+  "statement": {
+   "tex": "\\begin{enumerate}\n  \\item 2次方程式 $x^2+kx+8=0$ の2つの解の差が $2$ であるとき，定数 $k$ の値を求めよ．\n  \\item 2次方程式 $x^2-(k+1)x+2k=0$ の一方の解が他方の解の $2$ 倍であるとき，定数 $k$ の値を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $k=\\pm6$　(2) $k=\\dfrac{7\\pm3\\sqrt5}{2}$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) 2つの解を $\\alpha,\\ \\alpha+2$ とすると，解と係数の関係より $2\\alpha+2=-k$，$\\alpha(\\alpha+2)=8$．\n後者から $\\alpha=2,\\ -4$．$\\alpha=2$ のとき $k=-6$，$\\alpha=-4$ のとき $k=6$．よって $\\boldsymbol{k=\\pm6}$．\n(2) 2つの解を $\\alpha,\\ 2\\alpha$ とすると $3\\alpha=k+1$，$2\\alpha^2=2k$．後者から $k=\\alpha^2$．これを前者に代入して\n$3\\alpha=\\alpha^2+1$ すなわち $\\alpha^2-3\\alpha+1=0$ から $\\alpha=\\dfrac{3\\pm\\sqrt5}{2}$，$k=\\alpha^2=3\\alpha-1=\\dfrac{7\\pm3\\sqrt5}{2}$．\nよって $\\boldsymbol{k=\\dfrac{7\\pm3\\sqrt5}{2}}$．"
+   }
+  ],
+  "idea": {
+   "tex": "2つの解を1つの文字で表し（$\\alpha,\\ \\alpha+2$ や $\\alpha,\\ 2\\alpha$），解と係数の関係から連立方程式を作る．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) $k$：{6, -6}\n(2) $k$：{(7-3sqrt(5))/2, (7+3sqrt(5))/2}"
+  },
+  "methods": [],
+  "tags": [
+   "解と係数の関係"
+  ],
+  "provenance": {
+   "created": "2026-10-30"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-EQ-177",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-08",
+  "level": 1,
+  "minutes": 12,
+  "theme": "複素数と方程式／2次方程式の解の符号",
+  "unit": "複素数と方程式",
+  "topic": "2次方程式の解の符号",
+  "statement": {
+   "tex": "2次方程式 $x^2-2kx+k+2=0$ について，次の条件を満たす定数 $k$ の値の範囲を求めよ．\n\\begin{enumerate}\n  \\item 異なる2つの正の解をもつ．\n  \\item 正の解と負の解を1つずつもつ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $k>2$　(2) $k<-2$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "2つの解を $\\alpha,\\ \\beta$，判別式を $D$ とする．$\\alpha+\\beta=2k$，$\\alpha\\beta=k+2$．\n(1) 条件は $\\dfrac D4=k^2-k-2>0$，$\\alpha+\\beta>0$，$\\alpha\\beta>0$．\n$(k-2)(k+1)>0$ より $k<-1,\\ 2<k$．$k>0$，$k>-2$ と合わせて $\\boldsymbol{k>2}$．\n(2) 条件は $\\alpha\\beta<0$（このとき $D>0$ も自動的に成り立つ）．$k+2<0$ より $\\boldsymbol{k<-2}$．"
+   }
+  ],
+  "idea": {
+   "tex": "解の符号は「判別式・解の和・解の積」の3つの条件で言い換える．異符号なら積 $<0$ だけでよい．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) k>2\n(2) k<-2"
+  },
+  "methods": [],
+  "tags": [
+   "解と係数の関係",
+   "解の符号",
+   "判別式"
+  ],
+  "provenance": {
+   "created": "2026-10-30"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-EQ-178",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-08",
+  "level": 1,
+  "minutes": 12,
+  "theme": "複素数と方程式／3次方程式の解と係数の関係",
+  "unit": "複素数と方程式",
+  "topic": "3次方程式の解と係数の関係",
+  "statement": {
+   "tex": "3次方程式 $x^3-2x^2+3x-4=0$ の3つの解を $\\alpha,\\ \\beta,\\ \\gamma$ とする．次の値を求めよ．\n\\begin{enumerate}\n  \\item $\\alpha^2+\\beta^2+\\gamma^2$\n  \\item $(1+\\alpha)(1+\\beta)(1+\\gamma)$\n  \\item $\\dfrac1\\alpha+\\dfrac1\\beta+\\dfrac1\\gamma$\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $-2$　(2) $10$　(3) $\\dfrac{3}{4}$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "解と係数の関係より $\\alpha+\\beta+\\gamma=2$，$\\alpha\\beta+\\beta\\gamma+\\gamma\\alpha=3$，$\\alpha\\beta\\gamma=4$．\n(1) $(\\alpha+\\beta+\\gamma)^2-2(\\alpha\\beta+\\beta\\gamma+\\gamma\\alpha)=4-6=\\boldsymbol{-2}$．\n(2) $1+(\\alpha+\\beta+\\gamma)+(\\alpha\\beta+\\beta\\gamma+\\gamma\\alpha)+\\alpha\\beta\\gamma=1+2+3+4=\\boldsymbol{10}$．\n（別解：$x^3-2x^2+3x-4=(x-\\alpha)(x-\\beta)(x-\\gamma)$ に $x=-1$ を代入して $-10=-(1+\\alpha)(1+\\beta)(1+\\gamma)$．）\n(3) $\\dfrac{\\alpha\\beta+\\beta\\gamma+\\gamma\\alpha}{\\alpha\\beta\\gamma}=\\boldsymbol{\\dfrac{3}{4}}$．"
+   }
+  ],
+  "idea": {
+   "tex": "3次方程式でも解の和・2つずつの積の和・積は係数で表せる．求める式を基本対称式で書き直す．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) -2\n(2) 10\n(3) 3/4"
+  },
+  "methods": [],
+  "tags": [
+   "解と係数の関係",
+   "3次方程式"
+  ],
+  "provenance": {
+   "created": "2026-10-30"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-EQ-179",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-08",
+  "level": 1,
+  "minutes": 13,
+  "theme": "複素数と方程式／虚数解をもつ3次方程式",
+  "unit": "複素数と方程式",
+  "topic": "虚数解をもつ3次方程式",
+  "statement": {
+   "tex": "\\begin{enumerate}\n  \\item 3次方程式 $x^3+ax^2+bx+6=0$ が $1+i$ を解にもつとき，実数の定数 $a,\\ b$ の値を求めよ．\n  \\item (1) のとき，この方程式の実数解を求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $a=1,\\ b=-4$　(2) $x=-3$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) 係数が実数なので共役な $1-i$ も解．$1\\pm i$ を解とする2次式は $x^2-2x+2$．\n残りの解を $\\gamma$ とすると $x^3+ax^2+bx+6=(x^2-2x+2)(x-\\gamma)$．定数項を比べて $-2\\gamma=6$，$\\gamma=-3$．\n$(x^2-2x+2)(x+3)=x^3+x^2-4x+6$ より $\\boldsymbol{a=1,\\ b=-4}$．\n（別解：$x=1+i$ を代入し $(1+i)^2=2i,\\ (1+i)^3=-2+2i$ から $(-2+b+6)+(2+2a+b)i=0$．実部・虚部を $0$ として同じ結果．）\n(2) 解は $1\\pm i,\\ -3$ で，実数解は $\\boldsymbol{x=-3}$．"
+   }
+  ],
+  "idea": {
+   "tex": "実数係数の方程式では，虚数解の共役複素数も解になる．2次の因数を作って残りの因数を決める．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) $a$：1 ; $b$：-4\n(2) $x$：-3"
+  },
+  "methods": [],
+  "tags": [
+   "高次方程式",
+   "共役複素数",
+   "虚数解"
+  ],
+  "provenance": {
+   "created": "2026-10-30"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-EQ-180",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-08",
+  "level": 1,
+  "minutes": 12,
+  "theme": "複素数と方程式／1の3乗根 $\\omega$",
+  "unit": "複素数と方程式",
+  "topic": "1の3乗根 $\\omega$",
+  "statement": {
+   "tex": "方程式 $x^3=1$ の虚数解の1つを $\\omega$ とする．次の値を求めよ．\n\\begin{enumerate}\n  \\item $\\omega^{20}+\\omega^{10}+1$\n  \\item $\\dfrac{1}{1+\\omega}+\\dfrac{1}{1+\\omega^2}$\n  \\item $(1-\\omega)(1-\\omega^2)$\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $0$　(2) $1$　(3) $3$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "$x^3-1=(x-1)(x^2+x+1)$ で $\\omega$ は虚数なので $\\omega^2+\\omega+1=0$，また $\\omega^3=1$．\n(1) $\\omega^{20}=(\\omega^3)^6\\omega^2=\\omega^2$，$\\omega^{10}=\\omega$ より，与式 $=\\omega^2+\\omega+1=\\boldsymbol{0}$．\n(2) 通分して $\\dfrac{2+\\omega+\\omega^2}{1+\\omega+\\omega^2+\\omega^3}=\\dfrac{2-1}{0+1}=\\boldsymbol{1}$．\n(3) $1-\\omega-\\omega^2+\\omega^3=2-(\\omega+\\omega^2)=2-(-1)=\\boldsymbol{3}$．"
+   }
+  ],
+  "idea": {
+   "tex": "$\\omega^3=1$ で指数を3で割った余りに下げ，$\\omega^2+\\omega+1=0$ でまとめる．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) 0\n(2) 1\n(3) 3"
+  },
+  "methods": [],
+  "tags": [
+   "1の3乗根",
+   "次数下げ"
+  ],
+  "provenance": {
+   "created": "2026-10-30"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-EQ-181",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-08",
+  "level": 1,
+  "minutes": 12,
+  "theme": "複素数と方程式／共通解",
+  "unit": "複素数と方程式",
+  "topic": "共通解",
+  "statement": {
+   "tex": "2つの2次方程式 $x^2+kx+2=0$，$x^2+2x+k=0$ がただ1つの共通な実数解をもつように定数 $k$ の値を定め，そのときの共通解を求めよ．"
+  },
+  "answer": {
+   "tex": "$k=-3$，共通解 $x=1$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "共通解を $\\alpha$ とすると $\\alpha^2+k\\alpha+2=0$，$\\alpha^2+2\\alpha+k=0$．辺々引いて $(k-2)\\alpha-(k-2)=0$，$(k-2)(\\alpha-1)=0$．\n$k=2$ のとき2式はともに $x^2+2x+2=0$ となり，実数解をもたないので不適．\nよって $\\alpha=1$．代入して $1+k+2=0$，$\\boldsymbol{k=-3}$．このとき $x^2-3x+2=0$ と $x^2+2x-3=0$ の共通解はただ1つ $\\boldsymbol{x=1}$．"
+   }
+  ],
+  "idea": {
+   "tex": "2式を引いて最高次の項を消し，共通解の候補をしぼる．係数が一致する場合を別に調べる．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "$k$：-3 ; 共通解：1"
+  },
+  "methods": [],
+  "tags": [
+   "共通解"
+  ],
+  "provenance": {
+   "created": "2026-10-30"
+  },
+  "quality": {
+   "status": "published",
+   "checks": {
+    "dual": false,
+    "sympy": true,
+    "human": false
+   },
+   "verified": false
+  }
+ },
+ {
+  "id": "II-EQ-182",
+  "schema": "lemma.problem/1",
+  "kind": "written",
+  "field": "II-08",
+  "level": 1,
+  "minutes": 14,
+  "theme": "複素数と方程式／3次方程式の重解",
+  "unit": "複素数と方程式",
+  "topic": "3次方程式の重解",
+  "statement": {
+   "tex": "\\begin{enumerate}\n  \\item $x^3+(k-1)x^2-k$ を因数分解せよ．\n  \\item 3次方程式 $x^3+(k-1)x^2-k=0$ の異なる実数解がちょうど2個となるような，定数 $k$ の値をすべて求めよ．\n\\end{enumerate}"
+  },
+  "answer": {
+   "tex": "(1) $(x-1)(x^2+kx+k)$　(2) $k=0,\\ 4,\\ -\\dfrac12$"
+  },
+  "solutions": [
+   {
+    "id": "main",
+    "kind": "main",
+    "tex": "(1) $x=1$ を代入すると $1+k-1-k=0$ なので $x-1$ を因数にもち，$\\boldsymbol{(x-1)(x^2+kx+k)}$．\n(2) 異なる実数解が2個となるのは，(i) $x^2+kx+k=0$ が $1$ 以外の重解をもつ，(ii) $x^2+kx+k=0$ が $x=1$ と $1$ 以外の解をもつ，のどちらか．\n(i) 判別式 $k^2-4k=0$ より $k=0,\\ 4$．重解は $x=-\\dfrac k2=0,\\ -2$ でいずれも $1$ でない．\n(ii) $1+2k=0$ より $k=-\\dfrac12$．このとき $x^2-\\dfrac12x-\\dfrac12=(x-1)\\left(x+\\dfrac12\\right)$ で，他の解 $-\\dfrac12\\neq1$．\nよって $\\boldsymbol{k=0,\\ 4,\\ -\\dfrac12}$．"
+   }
+  ],
+  "idea": {
+   "tex": "1つの解が見つかれば因数分解して，残りの2次方程式の重解・共有解の場合に分ける．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) (x-1)(x^2+kx+k)\n(2) $k$：{0, 4, -1/2}"
+  },
+  "methods": [],
+  "tags": [
+   "高次方程式",
+   "重解",
+   "因数定理"
+  ],
+  "provenance": {
+   "created": "2026-10-30"
   },
   "quality": {
    "status": "published",
