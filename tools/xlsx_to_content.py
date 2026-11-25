@@ -31,7 +31,7 @@ HEADERS = {'ID': 'id', '作成日': 'date', '科目': 'subject', '分野': 'fiel
            '想定時間(分)': 'minutes', '問題文（LaTeX）': 'q', '答え': 'answer', '解答・解説': 'solution',
            '核となるアイデア': 'idea', '参考元（非公開）': 'source', '作成方法': 'method', '検証:二重解答': 'v1',
            '検証:SymPy等': 'v2', '検証:人間確認': 'v3', '検証済み': 'verified', 'タグ': 'tags', 'メモ': 'memo',
-           '入力用の答え': 'input', '図の式': 'figure', '頻出度': 'value', '教育的価値': 'value',
+           '入力用の答え': 'input', '図の式': 'figure', '答えの図': 'answer_figures', '頻出度': 'value', '教育的価値': 'value',
            '主な解法': 'technique_main', '補助の解法': 'technique_support', '解法': 'legacy_techniques'}
 PRIVATE = {'source', 'memo'}          # 決して書き出さない列
 INCLUDE_METHOD = False                # 「作成方法」を公開データに入れるか（未決定のため入れない）
@@ -136,6 +136,67 @@ def parse_figure(raw):
     return {'mode': mode, 'exprs': exprs, 'after': after}
 
 
+def parse_answer_figures(raw):
+    """「答えの図」列：解説の中に描く答えの図（図示せよ・軌跡・領域など）。1行に1つの式。図が2つ以上なら「---」の行で区切る。
+    各図の先頭に次の行を書ける。
+      見出し：(2) の領域 D（図の上に出す。省略すると「答えの図」）
+      モード：平面／複素数平面／空間（省略すると平面）
+      範囲：x -3..3, y -2..4（表示する範囲。省略するとアプリの既定）
+      縦横比：自由（縦と横の縮尺を別にして，範囲をちょうど画面に合わせる。細長い図形のとき。省略すると縦横同じ）
+      説明：図の下に添える一言（境界を含むか など。$…$ の数式も書ける）"""
+    if raw is None or not str(raw).strip():
+        return None
+    figs = []
+    for block in re.split(r'\n\s*-{3,}\s*(?:\n|$)', str(raw).replace('\r\n', '\n')):
+        mode, view, note, title, free, exprs = '2d', None, None, None, False, []
+        for line in block.split('\n'):
+            t = line.strip()
+            if not t:
+                continue
+            m = re.match(r'^(?:見出し|title)\s*[:：]\s*(.+)$', t)
+            if m:
+                title = m.group(1).strip()
+                continue
+            m = re.match(r'^(?:モード|mode)\s*[:：]\s*(.+)$', t)
+            if m:
+                key = m.group(1).strip()
+                if key not in FIG_MODES:
+                    raise ImportFailure(f'「答えの図」のモード「{key}」は使えません（平面・空間・複素数平面）')
+                mode = FIG_MODES[key]
+                continue
+            m = re.match(r'^(?:範囲|view)\s*[:：]\s*(.+)$', t)
+            if m:
+                num = r'(-?\d+(?:\.\d+)?)'
+                mx = re.search(r'x\s*[:：]?\s*' + num + r'\s*\.\.\s*' + num, m.group(1))
+                my = re.search(r'y\s*[:：]?\s*' + num + r'\s*\.\.\s*' + num, m.group(1))
+                if not (mx and my) or float(mx.group(1)) >= float(mx.group(2)) or float(my.group(1)) >= float(my.group(2)):
+                    raise ImportFailure(f'「答えの図」の範囲「{m.group(1)}」が読めません（例：範囲：x -3..3, y -2..4）')
+                view = [float(mx.group(1)), float(mx.group(2)), float(my.group(1)), float(my.group(2))]
+                continue
+            m = re.match(r'^(?:縦横比|aspect)\s*[:：]\s*(.+)$', t)
+            if m:
+                free = m.group(1).strip() in ('自由', 'free')
+                continue
+            m = re.match(r'^(?:説明|note)\s*[:：]\s*(.+)$', t)
+            if m:
+                note = m.group(1).strip()
+                continue
+            exprs.append(t)
+        if not exprs:
+            continue
+        fig = {'mode': mode, 'exprs': exprs}
+        if title:
+            fig['title'] = title
+        if view:
+            fig['view'] = [int(v) if v == int(v) else v for v in view]
+            if free:
+                fig['free_aspect'] = True
+        if note:
+            fig['note'] = note
+        figs.append(fig)
+    return figs or None
+
+
 VALUE_WORDS = {'1': 1, '2': 2, '3': 3, '低': 1, '中': 2, '高': 3, '★': 1, '★★': 2, '★★★': 3}
 
 
@@ -234,6 +295,9 @@ def to_problem(rec, key, issues):
     fig = parse_figure(rec.get('figure'))
     if fig:
         p['figure'] = fig
+    afigs = parse_answer_figures(rec.get('answer_figures'))
+    if afigs:
+        p['answer_figures'] = afigs
     val = parse_value(rec.get('value'))
     if val:
         p['value'] = val

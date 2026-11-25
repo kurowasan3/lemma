@@ -1929,7 +1929,7 @@
    {
     "id": "main",
     "kind": "main",
-    "tex": "(1) $\\vec c=s\\vec a+t\\vec b+\\vec n$（$\\vec n\\perp\\vec a,\\vec b$）．$\\vec a\\cdot\\vec b=-\\frac12$．\n$\\cos\\alpha=s-\\frac t2$，$\\cos\\beta=-\\frac s2+t$．$|s\\vec a+t\\vec b|^2=s^2-st+t^2\\leqq1$．\n$s,t$ を $u=\\cos\\alpha,v=\\cos\\beta$ で解くと $s=\\frac{4u+2v}3$，$t=\\frac{2u+4v}3$，代入して $s^2-st+t^2=\\frac43(u^2+uv+v^2)\\leqq1$．\n\n(2) 逆に $(*)$ なら $\\vec n$ を選んで $\\vec c$ が作れる．$\\gamma=\\frac{2\\pi}3$ とおくと $\\cos\\gamma=-\\frac12$，$\\sin^2\\gamma=\\frac34$ で，$(*)$ は $\\cos^2\\alpha+\\cos^2\\beta-2\\cos\\gamma\\cos\\alpha\\cos\\beta-\\sin^2\\gamma\\leqq0$．\n$\\cos(\\alpha+\\beta)+\\cos(\\alpha-\\beta)=2\\cos\\alpha\\cos\\beta$，$\\cos(\\alpha+\\beta)\\cos(\\alpha-\\beta)=\\cos^2\\alpha-\\sin^2\\beta=\\cos^2\\alpha+\\cos^2\\beta-1$ より，この左辺は $\\{\\cos\\gamma-\\cos(\\alpha+\\beta)\\}\\{\\cos\\gamma-\\cos(\\alpha-\\beta)\\}$ に等しい．\n$\\cos(\\alpha-\\beta)-\\cos(\\alpha+\\beta)=2\\sin\\alpha\\sin\\beta\\geqq0$ なので，$(*)\\iff\\cos(\\alpha+\\beta)\\leqq\\cos\\gamma\\leqq\\cos(\\alpha-\\beta)$．\n$0\\leqq|\\alpha-\\beta|\\leqq\\pi$ で $\\cos|\\alpha-\\beta|\\geqq-\\frac12\\iff|\\alpha-\\beta|\\leqq\\frac{2\\pi}3$，$0\\leqq\\alpha+\\beta\\leqq2\\pi$ で $\\cos(\\alpha+\\beta)\\leqq-\\frac12\\iff\\frac{2\\pi}3\\leqq\\alpha+\\beta\\leqq\\frac{4\\pi}3$．\n範囲：$\\boldsymbol{|\\alpha-\\beta|\\leqq\\dfrac{2\\pi}3\\leqq\\alpha+\\beta\\leqq\\dfrac{4\\pi}3}$（$\\alpha\\beta$ 平面の正方形 $[0,\\pi]^2$ 内の六角形の周および内部）．"
+    "tex": "(1) $\\vec c=s\\vec a+t\\vec b+\\vec n$（$\\vec n\\perp\\vec a,\\vec b$）．$\\vec a\\cdot\\vec b=-\\frac12$．\n$\\cos\\alpha=s-\\frac t2$，$\\cos\\beta=-\\frac s2+t$．$|s\\vec a+t\\vec b|^2=s^2-st+t^2\\leqq1$．\n$s,t$ を $u=\\cos\\alpha,v=\\cos\\beta$ で解くと $s=\\frac{4u+2v}3$，$t=\\frac{2u+4v}3$，代入して $s^2-st+t^2=\\frac43(u^2+uv+v^2)\\leqq1$．\n\n(2) 逆に $(*)$ なら $\\vec n$ を選んで $\\vec c$ が作れる．$\\gamma=\\frac{2\\pi}3$ とおくと $\\cos\\gamma=-\\frac12$，$\\sin^2\\gamma=\\frac34$ で，$(*)$ は $\\cos^2\\alpha+\\cos^2\\beta-2\\cos\\gamma\\cos\\alpha\\cos\\beta-\\sin^2\\gamma\\leqq0$．\n$\\cos(\\alpha+\\beta)+\\cos(\\alpha-\\beta)=2\\cos\\alpha\\cos\\beta$，$\\cos(\\alpha+\\beta)\\cos(\\alpha-\\beta)=\\cos^2\\alpha-\\sin^2\\beta=\\cos^2\\alpha+\\cos^2\\beta-1$ より，この左辺は $\\{\\cos\\gamma-\\cos(\\alpha+\\beta)\\}\\{\\cos\\gamma-\\cos(\\alpha-\\beta)\\}$ に等しい．\n$\\cos(\\alpha-\\beta)-\\cos(\\alpha+\\beta)=2\\sin\\alpha\\sin\\beta\\geqq0$ なので，$(*)\\iff\\cos(\\alpha+\\beta)\\leqq\\cos\\gamma\\leqq\\cos(\\alpha-\\beta)$．\n$0\\leqq|\\alpha-\\beta|\\leqq\\pi$ で $\\cos|\\alpha-\\beta|\\geqq-\\frac12\\iff|\\alpha-\\beta|\\leqq\\frac{2\\pi}3$，$0\\leqq\\alpha+\\beta\\leqq2\\pi$ で $\\cos(\\alpha+\\beta)\\leqq-\\frac12\\iff\\frac{2\\pi}3\\leqq\\alpha+\\beta\\leqq\\frac{4\\pi}3$．\n範囲：$\\boldsymbol{|\\alpha-\\beta|\\leqq\\dfrac{2\\pi}3\\leqq\\alpha+\\beta\\leqq\\dfrac{4\\pi}3}$（$\\alpha\\beta$ 平面の正方形 $[0,\\pi]^2$ 内で，4点 $\\left(\\frac{2\\pi}3,0\\right)$，$\\left(\\pi,\\frac\\pi3\\right)$，$\\left(\\frac\\pi3,\\pi\\right)$，$\\left(0,\\frac{2\\pi}3\\right)$ を頂点とする長方形の周および内部）．"
    }
   ],
   "idea": {
@@ -1939,6 +1939,26 @@
    "format": "lemma-input/1",
    "spec": "(1) 証明\n(2) |α-β|<=2π/3<=α+β<=4π/3"
   },
+  "answer_figures": [
+   {
+    "mode": "2d",
+    "exprs": [
+     "abs(x-y)<=2pi/3, 2pi/3<=x+y<=4pi/3",
+     "(2*pi/3,0)",
+     "(0,2*pi/3)",
+     "(pi,pi/3)",
+     "(pi/3,pi)"
+    ],
+    "title": "(2) (α, β) の範囲",
+    "view": [
+     -1,
+     4.4,
+     -0.5,
+     3.6
+    ],
+    "note": "横軸が $\\alpha$，縦軸が $\\beta$。4点 $\\left(\\frac{2\\pi}3,0\\right),\\left(0,\\frac{2\\pi}3\\right),\\left(\\pi,\\frac\\pi3\\right),\\left(\\frac\\pi3,\\pi\\right)$ を頂点とする長方形の周および内部（正方形 $0\\leqq\\alpha,\\beta\\leqq\\pi$ の中にある）。"
+   }
+  ],
   "methods": [],
   "tags": [
    "空間ベクトル",
@@ -4050,6 +4070,24 @@
    "format": "lemma-input/1",
    "spec": "(1) 4:2:3\n(2) 証明\n(3) 4/9"
   },
+  "answer_figures": [
+   {
+    "mode": "2d",
+    "exprs": [
+     "A=(3,0)",
+     "B=(1,3)",
+     "y>=0, y<=3x, 3x+2y<=6"
+    ],
+    "title": "(3) 領域 D",
+    "view": [
+     -0.8,
+     3.7,
+     -0.5,
+     3.3
+    ],
+    "note": "$\\mathrm A(3,0)$，$\\mathrm B(1,3)$ とした例．O と OA，OB を $2:1$ に内分する点を頂点とする三角形の周と内部で，点 O だけは含まない．"
+   }
+  ],
   "methods": [],
   "tags": [
    "位置ベクトル",
@@ -6455,6 +6493,27 @@
   "idea": {
    "tex": "$\\overrightarrow{\\mathrm{AP}}=\\frac{b\\overrightarrow{\\mathrm{AB}}+c\\overrightarrow{\\mathrm{AC}}}{a+b+c}$．P$=\\frac{a\\mathrm A+b\\mathrm B+c\\mathrm C}{a+b+c}$ の係数の符号の組が，どの直線のどちら側かを決める．"
   },
+  "answer_figures": [
+   {
+    "mode": "2d",
+    "exprs": [
+     "y<0, y<3x, x+y<4",
+     "A=(0,0)",
+     "B=(4,0)",
+     "C=(1,3)",
+     "p=B+t(C-B), 0<=t<=1",
+     "p=C+t(A-C), 0<=t<=1"
+    ],
+    "title": "(2) 点 P の存在範囲",
+    "view": [
+     -3.5,
+     7,
+     -4,
+     3.5
+    ],
+    "note": "三角形の例として A$(0,0)$，B$(4,0)$，C$(1,3)$ をとった（辺 CA，CB を実線で添えた）．直線 AB に関して C と反対側で，辺 CA の A を越える延長と辺 CB の B を越える延長ではさまれた部分．境界（直線 AB 上の部分も）はすべて含まない（破線）．"
+   }
+  ],
   "methods": [],
   "tags": [
    "重心座標",
@@ -7415,6 +7474,28 @@
    "format": "lemma-input/1",
    "spec": "2/3"
   },
+  "answer_figures": [
+   {
+    "mode": "2d",
+    "exprs": [
+     "A=(1,3)",
+     "B=(0,0)",
+     "C=(3,0)",
+     "p=A+t(B-A), 0<=t<=1",
+     "p=B+t(C-B), 0<=t<=1",
+     "p=C+t(A-C), 0<=t<=1",
+     "0<=y<=2, 0<=3x-y<=6, 3<=3x+2y<=9"
+    ],
+    "title": "重心 G の動く範囲",
+    "view": [
+     -1.1,
+     4.1,
+     -0.4,
+     3.07
+    ],
+    "note": "△ABC の形の例として A(1,3), B(0,0), C(3,0) をとった．各辺の3等分点6個を頂点とする六角形（周を含む），面積は △ABC の $\\frac23$ 倍"
+   }
+  ],
   "methods": [],
   "tags": [
    "重心",
@@ -7555,6 +7636,22 @@
    "format": "lemma-input/1",
    "spec": "(1) $k$：2(a+4)/(a^2+b^2+16)\n(2) 記述\n(3) 3a^2-32a+7b^2+48<=0"
   },
+  "answer_figures": [
+   {
+    "mode": "2d",
+    "exprs": [
+     "3x^2-32x+7y^2+48<=0"
+    ],
+    "title": "(3) Q の存在範囲",
+    "view": [
+     -0.5,
+     10,
+     -3.5,
+     3.5
+    ],
+    "note": "横軸が $a$，縦軸が $b$。楕円 $\\dfrac{(a-\\frac{16}3)^2}{\\frac{112}9}+\\dfrac{b^2}{\\frac{16}3}=1$ の周および内部。"
+   }
+  ],
   "methods": [],
   "tags": [
    "球",
@@ -8011,6 +8108,40 @@
   "idea": {
    "tex": "$\\overrightarrow{\\mathrm{OP}}=p\\vec a$，$\\overrightarrow{\\mathrm{OQ}}=q\\vec b$ とおくと条件は $(p+q-1)\\,\\vec a\\cdot\\vec b\\geqq0$．不等号の向きは $\\vec a\\cdot\\vec b$ の符号で変わる．重心は $\\frac p3\\vec a+\\frac q3\\vec b$．"
   },
+  "answer_figures": [
+   {
+    "mode": "2d",
+    "exprs": [
+     "a=(3,0)",
+     "b=(1,3)",
+     "x+2y/3>=1, y<1, x-y/3<1"
+    ],
+    "title": "∠AOB が鋭角の場合",
+    "view": [
+     -0.8,
+     3.6,
+     -0.5,
+     3.3
+    ],
+    "note": "$\\vec a=(3,0)$，$\\vec b=(1,3)$ を代表にとった図．3点 $\\frac13\\vec a,\\ \\frac13\\vec b,\\ \\frac13(\\vec a+\\vec b)$ を頂点とする三角形の内部と，$\\frac13\\vec a$ と $\\frac13\\vec b$ を結ぶ辺（実線）．破線の2辺と3つの頂点は含まない．面積 $\\frac S9$．"
+   },
+   {
+    "mode": "2d",
+    "exprs": [
+     "a=(3,0)",
+     "b=(-1,2)",
+     "x+2y<=1, y>0, x+y/2>0"
+    ],
+    "title": "∠AOB が鈍角の場合",
+    "view": [
+     -1.6,
+     3.4,
+     -0.6,
+     2.6
+    ],
+    "note": "$\\vec a=(3,0)$，$\\vec b=(-1,2)$ を代表にとった図．3点 O，$\\frac13\\vec a,\\ \\frac13\\vec b$ を頂点とする三角形の内部と，$\\frac13\\vec a$ と $\\frac13\\vec b$ を結ぶ辺（実線）．破線の2辺と3つの頂点は含まない．面積 $\\frac S9$．"
+   }
+  ],
   "methods": [],
   "tags": [
    "内積",
@@ -10244,6 +10375,22 @@
    "format": "lemma-input/1",
    "spec": "(1) x^2+y^2<4\n(2) 記述"
   },
+  "answer_figures": [
+   {
+    "mode": "2d",
+    "exprs": [
+     "x^2+y^2<4, x>0, y>0"
+    ],
+    "title": "(1) 存在条件",
+    "view": [
+     -1,
+     3,
+     -0.5,
+     2.5
+    ],
+    "note": "円 $x^2+y^2=4$ の内部の第1象限の部分．境界（円弧・座標軸）はすべて含まない"
+   }
+  ],
   "methods": [],
   "tags": [
    "四面体の存在",
@@ -10832,6 +10979,26 @@
    "format": "lemma-input/1",
    "spec": "(1) 証明\n(2) 4π^2/9\n(3) 記述"
   },
+  "answer_figures": [
+   {
+    "mode": "2d",
+    "exprs": [
+     "-2pi/3<=y-x<=2pi/3, 2pi/3<=x+y<=4pi/3",
+     "(2*pi/3,0)",
+     "(pi,pi/3)",
+     "(pi/3,pi)",
+     "(0,2*pi/3)"
+    ],
+    "title": "(2) 領域 D（横軸 α，縦軸 β）",
+    "view": [
+     -0.8,
+     4.2,
+     -0.4,
+     3.6
+    ],
+    "note": "横軸を $\\alpha$，縦軸を $\\beta$ とした。4頂点 $\\left(\\frac{2\\pi}3,0\\right),\\left(\\pi,\\frac\\pi3\\right),\\left(\\frac\\pi3,\\pi\\right),\\left(0,\\frac{2\\pi}3\\right)$ の長方形で，境界を含む。"
+   }
+  ],
   "methods": [],
   "tags": [
    "座標の導入",
@@ -11064,6 +11231,25 @@
   "idea": {
    "tex": "$\\overrightarrow{\\mathrm{OR}}=u\\overrightarrow{\\mathrm{OA}}+v\\overrightarrow{\\mathrm{OB}}$ と斜交座標 $(u,v)$ で表すと，$(u,v)=(\\alpha\\beta,(1-\\alpha)(1-\\beta))$．$\\alpha$ を固定すると $(u,v)$ は $(\\alpha,0)$ と $(0,1-\\alpha)$ を結ぶ線分（直線）上を動く．$(u,v)$ が通過するかどうかは，$\\alpha$ の2次方程式 $\\alpha^2-(1+u-v)\\alpha+u=0$ が $[0,1]$ に解をもつかどうかで決まる．境界 $\\sqrt u+\\sqrt v=1$ は放物線．"
   },
+  "answer_figures": [
+   {
+    "mode": "2d",
+    "exprs": [
+     "2x+y>=0, 3y-x>=0, x+4y<=7, (3x-2y)^2-14(x+4y)+49>=0",
+     "O=(0,0)",
+     "A=(3,1)",
+     "B=(-1,2)"
+    ],
+    "title": "(1) R の存在範囲",
+    "view": [
+     -2,
+     4,
+     -0.8,
+     3.2
+    ],
+    "note": "線分 OA，OB と放物線 $(3x-2y)^2-14(x+4y)+49=0$ の弧 AB で囲まれた部分．境界を含む"
+   }
+  ],
   "methods": [],
   "tags": [
    "斜交座標",
@@ -12398,6 +12584,22 @@
    "format": "lemma-input/1",
    "spec": "(1) 記述\n(2) 場合分け{ 0<k<=1 → 2k(7-2k-k^2)/3 | k>=1 → 2(7k^2-2k-1)/(3k) }\n(3) 最小値：8/3 ; $\\lim_{k\\to+0}\\frac{S(k)}k$：14/3"
   },
+  "answer_figures": [
+   {
+    "mode": "2d",
+    "exprs": [
+     "x^2/2<=y<=x^2-2abs(x)+2, -2<=x<=2"
+    ],
+    "title": "(1) 領域 $D_1$",
+    "view": [
+     -3,
+     3,
+     -0.5,
+     3.5
+    ],
+    "note": "下側の境界は放物線 $y=\\frac{x^2}2$，上側の境界は $y=(x\\mp1)^2+1$（$(0,2)$ で折れる）。両者は $(\\pm2,2)$ で出会う。境界を含む。"
+   }
+  ],
   "methods": [],
   "tags": [
    "ベクトル",
@@ -12444,6 +12646,44 @@
   "idea": {
    "tex": "$\\overrightarrow{\\mathrm{OR}}=\\overrightarrow{\\mathrm{OP}}-\\overrightarrow{\\mathrm{OQ}}$ で Q が原点中心の円上を動くとき，R は「P を中心とする同じ半径の円」上を動く．よって R の範囲は「図形からの距離がちょうど $\\rho$ になる点がある」点全体で，距離の値が連続的に動くことから「最短距離 $\\leqq\\rho\\leqq$ 最長距離」と言いかえられる．P が周上だけを動くと，内側に穴があく．"
   },
+  "answer_figures": [
+   {
+    "mode": "2d",
+    "exprs": [
+     "((abs(x)+abs(y)-1+abs(abs(x)+abs(y)-1))/2)^2+((abs(abs(x)-abs(y))-1+abs(abs(abs(x)-abs(y))-1))/2)^2<=2",
+     "(1,0)",
+     "(0,1)",
+     "(-1,0)",
+     "(0,-1)"
+    ],
+    "title": "(1) 領域 E",
+    "view": [
+     -3.6,
+     3.6,
+     -2.6,
+     2.6
+    ],
+    "note": "$D$ からの距離が $1$ 以下の点全体（境界を含む）．各辺を外側へ $1$ 平行移動した4線分と，頂点（図の点）を中心とする半径 $1$ の四分円弧で囲まれる．"
+   },
+   {
+    "mode": "2d",
+    "exprs": [
+     "((abs(x)+abs(y)-1+abs(abs(x)+abs(y)-1))/2)^2+((abs(abs(x)-abs(y))-1+abs(abs(abs(x)-abs(y))-1))/2)^2<=1/8, abs(x)+abs(y)>=1-sqrt(2)/4",
+     "(1,0)",
+     "(0,1)",
+     "(-1,0)",
+     "(0,-1)"
+    ],
+    "title": "(2) 領域 G",
+    "view": [
+     -2,
+     2,
+     -1.4,
+     1.4
+    ],
+    "note": "$L$ からの距離が $\\frac14$ 以下の点全体（境界を含む）．外周は各辺を $\\frac14$ 外側へ平行移動した線分と半径 $\\frac14$ の四分円弧，内周はひし形 $|x|+|y|=1-\\frac{\\sqrt2}4$．"
+   }
+  ],
   "methods": [],
   "tags": [
    "ベクトル",
@@ -12593,6 +12833,24 @@
    "format": "lemma-input/1",
    "spec": "(1) 記述\n(2) (10sqrt(3)/3)π+5-(3/2) log(3)"
   },
+  "answer_figures": [
+   {
+    "mode": "2d",
+    "exprs": [
+     "3x^2+(y-3)^2<=12, y>=sqrt(x^2+3)-2",
+     "(1,0)",
+     "(-1,0)"
+    ],
+    "title": "(1) $(x,y)$ の範囲",
+    "view": [
+     -5,
+     5,
+     -1,
+     6.6
+    ],
+    "note": "楕円 $3x^2+(y-3)^2\\leqq12$ の周および内部のうち $y\\geqq\\sqrt{x^2+3}-2$ の部分．境界を含む．2曲線は $(\\pm1,0)$ で交わる．"
+   }
+  ],
   "methods": [],
   "tags": [
    "空間ベクトル",
@@ -13114,6 +13372,22 @@
   "idea": {
    "tex": "正四面体を $(1,1,1)$ などの座標に置くと内接球は原点中心・半径 $\\frac{1}{\\sqrt3}$．平面 EFG は F，G が $y\\leftrightarrow z$ で入れかわるので法線を $(\\ast,1,1)$ 型で求められる．距離の条件を整理すると $8s\\{s(6t^2-6t+1)-t(3t-2)\\}\\leqq0$ に因数分解され，$6t^2-6t+1$ の符号で場合分けする．"
   },
+  "answer_figures": [
+   {
+    "mode": "2d",
+    "exprs": [
+     "x(6y^2-6y+1)<=y(3y-2), 0<x<1, 0<y<1",
+     "(1/2,1/2)"
+    ],
+    "view": [
+     -0.4,
+     1.4,
+     -0.1,
+     1.1
+    ],
+    "note": "横軸 $s$，縦軸 $t$．曲線 $s(6t^2-6t+1)=t(3t-2)$ の弧（点 $(\\frac12,\\frac12)$ を通る）は含み，直線 $s=0$，$s=1$，$t=1$ 上の点（弧の端 $(1,\\frac13)$，$(0,\\frac23)$ を含む）は含まない"
+   }
+  ],
   "methods": [],
   "tags": [
    "法線ベクトル",
@@ -13204,6 +13478,21 @@
   "idea": {
    "tex": "平面 OPQ の法線を内積で求め，D を通る垂線と平面の交点（垂線の足）H を $\\lambda\\vv{OP}+\\mu\\vv{OQ}$ と表す．「三角形と交わる」$\\iff$ $\\lambda,\\mu\\geqq0$，$\\lambda+\\mu\\leqq1$ で，最後の条件が $st$ 平面の楕円の外部になる．"
   },
+  "answer_figures": [
+   {
+    "mode": "2d",
+    "exprs": [
+     "(x-1/2)^2/(1/4)+(y-1/2)^2/(1/9)>=1, 0<x<1, 0<y<1"
+    ],
+    "view": [
+     -0.4,
+     1.4,
+     -0.1,
+     1.1
+    ],
+    "note": "横軸が $s$，縦軸が $t$．正方形 $0<s<1,\\ 0<t<1$ から楕円の内部を除いた部分．楕円の周は含み，正方形の辺は含まない（楕円が辺に接する点 $(0,\\frac12)$，$(1,\\frac12)$ も含まない）．"
+   }
+  ],
   "methods": [],
   "tags": [
    "平面の法線",
@@ -13342,6 +13631,21 @@
   "idea": {
    "tex": "P，Q，R をそれぞれ1つの媒介変数で表すと X の座標は3変数の1次式．1つの変数 $q$ を残し，他の2変数が $(0,1)$ に入る条件を $q$ の区間として書き，それらの区間が共通部分をもつ条件（下端どうし・上端どうしのすべての組の大小）に直すと六角形が得られる．"
   },
+  "answer_figures": [
+   {
+    "mode": "2d",
+    "exprs": [
+     "0<x<3, 0<y<5, 2<x+y<6"
+    ],
+    "view": [
+     -2,
+     6,
+     -0.8,
+     5.8
+    ],
+    "note": "頂点 $(0,2),(2,0),(3,0),(3,3),(1,5),(0,5)$ の六角形の内部。境界は含まない。"
+   }
+  ],
   "methods": [],
   "tags": [
    "媒介変数",
@@ -14445,6 +14749,26 @@
    "format": "lemma-input/1",
    "spec": "(1) 記述\n(2) 最大値：25/8 ; 最小値：-49/24"
   },
+  "answer_figures": [
+   {
+    "mode": "2d",
+    "exprs": [
+     "x-2y<=0, 2x+y<=5, 3y-2x<=7, x+2y>=0",
+     "(0,0)",
+     "(2,1)",
+     "(1,3)",
+     "(-2,1)"
+    ],
+    "title": "(1) 点 $(p,q)$ の動く範囲",
+    "view": [
+     -3,
+     3.5,
+     -0.8,
+     3.6
+    ],
+    "note": "横軸 $p$，縦軸 $q$．4点 $(0,0)$，$(2,1)$，$(1,3)$，$(-2,1)$ を頂点とする四角形の周および内部．"
+   }
+  ],
   "methods": [],
   "tags": [
    "ベクトルの通過領域",
@@ -14830,6 +15154,23 @@
    "format": "lemma-input/1",
    "spec": "(1) 記述\n(2) 25/64"
   },
+  "answer_figures": [
+   {
+    "mode": "2d",
+    "exprs": [
+     "x+2y<1, -4x+2y<1, -4x-8y<1, x-8y<1",
+     "x+2y=1, x>0, y>0"
+    ],
+    "title": "(1) Q の存在範囲",
+    "view": [
+     -0.5,
+     1.2,
+     -0.3,
+     0.8
+    ],
+    "note": "四角形の内部と，辺 $(1,0)$–$\\left(0,\\frac12\\right)$（実線）を合わせた全体。この辺の両端 $(1,0)$，$\\left(0,\\frac12\\right)$ と，他の3辺（破線）上の点は含まない。"
+   }
+  ],
   "methods": [],
   "tags": [
    "ベクトルの1次結合",
@@ -16101,6 +16442,24 @@
    "format": "lemma-input/1",
    "spec": "(1) 記述\n(2) 記述\n(3) 最大値：(5sqrt(5)-11)/2\n(4) 記述"
   },
+  "answer_figures": [
+   {
+    "mode": "2d",
+    "exprs": [
+     "2x+2y-3xy>=1, x(2-y)<=1, y(2-x)<=1, x>=0, y>=0",
+     "(1/2,0)",
+     "(0,1/2)"
+    ],
+    "title": "(4) 点 (x, y) の範囲",
+    "view": [
+     -0.3,
+     1.3,
+     -0.15,
+     1.15
+    ],
+    "note": "曲線 $2x+2y-3xy=1$，$x=\\frac{1}{2-y}$，$y=\\frac{1}{2-x}$ で囲まれた曲線三角形．境界を含むが，頂点 $(1,1)$ は含まない．"
+   }
+  ],
   "methods": [],
   "tags": [
    "交点の位置ベクトル",
@@ -16437,6 +16796,25 @@
   "idea": {
    "tex": "凸な立体 $D$ と外部の点 A について，線分 AP（P は $D$ 上）の通過範囲は，$D$ に「A から見える面」それぞれを底面とする角錐を付け加えたもの．$D:\\ |x|+|y|+|z|\\leqq1$ の面は $\\varepsilon_1x+\\varepsilon_2y+\\varepsilon_3z=1$（$\\varepsilon_i=\\pm1$）で，角錐の体積は $\\dfrac{\\varepsilon\\cdot\\mathrm A-1}{6}$ という1次式になる．体積は $\\dfrac43+\\dfrac16\\times$（8つの値 $\\varepsilon\\cdot\\mathrm A-1$ のうち正のものの和）と「1次式の正の部分の和」で表され，対称性で絶対値の折れ線にまとまる．"
   },
+  "answer_figures": [
+   {
+    "mode": "2d",
+    "exprs": [
+     "3abs(x)+abs(y)<=6, abs(x)+3abs(y)<=6",
+     "(2,0)",
+     "(3/2,3/2)",
+     "(0,2)"
+    ],
+    "title": "(2) 点 A の範囲（平面 z=1 上）",
+    "view": [
+     -3.3,
+     3.3,
+     -2.3,
+     2.3
+    ],
+    "note": "A$=(x,y,1)$ の $x,y$ を描いた．8点 $(\\pm2,0),(0,\\pm2),(\\pm\\frac32,\\pm\\frac32)$ を頂点とする八角形，境界を含む．"
+   }
+  ],
   "methods": [],
   "tags": [
    "空間図形",

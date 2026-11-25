@@ -8708,6 +8708,25 @@
    "format": "lemma-input/1",
    "spec": "(1) 記述\n(2) 2π+(16sqrt(3)/27)π^2"
   },
+  "answer_figures": [
+   {
+    "mode": "2d",
+    "exprs": [
+     "x^2+(y-1/sqrt(3))^2<=4/3",
+     "x^2+(y+1/sqrt(3))^2<=4/3",
+     "(-1,0)",
+     "(1,0)"
+    ],
+    "title": "(1) 図形 F",
+    "view": [
+     -2.5,
+     2.5,
+     -1.9,
+     1.9
+    ],
+    "note": "2円 $x^2+\\left(y\\mp\\frac1{\\sqrt3}\\right)^2=\\frac43$ の内部の和集合（周を含む。色の違う部分を合わせた全体）。A$(-1,0)$，B$(1,0)$ を含む。"
+   }
+  ],
   "methods": [],
   "tags": [
    "円周角",
@@ -18094,6 +18113,22 @@
    "format": "lemma-input/1",
    "spec": "(1) 記述\n(2) 3sqrt(2)-log(1+sqrt(2))"
   },
+  "answer_figures": [
+   {
+    "mode": "2d",
+    "exprs": [
+     "4y^2<=x^2-2x, -2<=x<=0"
+    ],
+    "title": "(1) 影 G",
+    "view": [
+     -4,
+     2,
+     -2,
+     2
+    ],
+    "note": "双曲線 $(x-1)^2-4y^2=1$ の左側の枝と直線 $x=-2$ で囲まれた部分（境界を含む）．$x=-2$ で $|y|\\leqq\\sqrt2$．"
+   }
+  ],
   "methods": [],
   "tags": [
    "影",
@@ -19488,6 +19523,22 @@
    "format": "lemma-input/1",
    "spec": "(1) 記述\n(2) 8sqrt(2)\n(3) 16sqrt(2)/3"
   },
+  "answer_figures": [
+   {
+    "mode": "2d",
+    "exprs": [
+     "abs(x-cos(y))>=sqrt(2)*abs(cos(y)), 0<=y<2pi"
+    ],
+    "title": "(1) C の展開図",
+    "view": [
+     -5,
+     5,
+     -0.9,
+     6.8
+    ],
+    "note": "横軸が $x$，縦軸が $\\theta$．帯 $0\\leqq\\theta<2\\pi$ から，2曲線 $x=(1+\\sqrt2)\\cos\\theta$，$x=(1-\\sqrt2)\\cos\\theta$ ではさまれた部分を除いたもの（2曲線上は $C$ に含む）．上端 $\\theta=2\\pi$ は含まない（$\\theta=0$ と同じ線）．帯は $x$ 方向に限りなく続く．"
+   }
+  ],
   "methods": [],
   "tags": [
    "展開図",
@@ -23129,6 +23180,23 @@
   "idea": {
    "tex": "弧の長さの比は円周角の比．弧 TB が弧 AT の2倍であることは $\\angle\\mathrm{TAB}=2\\angle\\mathrm{TBA}$ と同じで，この角の条件は正弦定理と和積公式により $\\mathrm{TB}^2-\\mathrm{TA}^2-\\mathrm{TA}\\cdot\\mathrm{AB}$ の符号に置き換わる．$\\mathrm{TB}^2-\\mathrm{TA}^2$ が $x$ の1次式なので，境界は双曲線の片方の枝になる．"
   },
+  "answer_figures": [
+   {
+    "mode": "2d",
+    "exprs": [
+     "y>0, x^2+y^2<=1, x<-1/3, y^2<=(3x+1)(x-1)",
+     "(-1/2,sqrt(3)/2)"
+    ],
+    "title": "(2) 集合 D",
+    "view": [
+     -1.5,
+     0.5,
+     -0.3,
+     1.1
+    ],
+    "note": "$-1<x\\leqq-\\frac12$ では円弧 $y=\\sqrt{1-x^2}$，$-\\frac12\\leqq x<-\\frac13$ では双曲線 $y=\\sqrt{3x^2-2x-1}$ と $x$ 軸の間の部分。円弧・双曲線上は含み，$x$ 軸上（$(-1,0)$，$\\left(-\\frac13,0\\right)$ を含む）は含まない（破線）。円と双曲線の交点は $\\left(-\\frac12,\\frac{\\sqrt3}2\\right)$。"
+   }
+  ],
   "methods": [],
   "tags": [
    "円周角",
@@ -23763,6 +23831,24 @@
    "format": "lemma-input/1",
    "spec": "(1) 記述\n(2) 記述\n(3) sqrt(2)(π+2)"
   },
+  "answer_figures": [
+   {
+    "mode": "2d",
+    "exprs": [
+     "2sin(x)-sqrt(2)*sin((x+pi/2-abs(x-pi/2))/2)<=y<=2sin(x)+sqrt(2)*sin((x+pi/2+abs(x-pi/2))/2), 0<=x<=pi",
+     "(pi/2,2+sqrt(2))",
+     "(pi/2,2-sqrt(2))"
+    ],
+    "title": "(2) 範囲 D",
+    "view": [
+     -0.8,
+     4,
+     -1.8,
+     3.7
+    ],
+    "note": "$0\\leqq x\\leqq\\frac\\pi2$ では $(2-\\sqrt2)\\sin x\\leqq y\\leqq2\\sin x+\\sqrt2$，$\\frac\\pi2\\leqq x\\leqq\\pi$ では $2\\sin x-\\sqrt2\\leqq y\\leqq(2+\\sqrt2)\\sin x$．境界を含む．点は $\\left(\\frac\\pi2,2\\pm\\sqrt2\\right)$．"
+   }
+  ],
   "methods": [],
   "tags": [
    "三角関数の直交性",
@@ -26022,6 +26108,24 @@
    "format": "lemma-input/1",
    "spec": "(1) 記述\n(2) (2e^3+1)π/9"
   },
+  "answer_figures": [
+   {
+    "mode": "2d",
+    "exprs": [
+     "y<=(1+(x+e-abs(x-e))/2+abs((x+e-abs(x-e))/2-1))/2-x*log((1+(x+e-abs(x-e))/2+abs((x+e-abs(x-e))/2-1))/2)",
+     "(1,1)",
+     "(e,0)"
+    ],
+    "title": "(1) D",
+    "view": [
+     -2,
+     5,
+     -3,
+     1.67
+    ],
+    "note": "境界は $x\\leqq1$ で $y=1$，$1<x<e$ で $y=x-x\\log x$，$x\\geqq e$ で $y=e-x$（点 $(1,1)$，$(e,0)$ でなめらかにつながる）．その下側，境界を含む"
+   }
+  ],
   "methods": [],
   "tags": [
    "最小値",

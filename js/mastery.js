@@ -34,7 +34,7 @@
 //   learning 学習中  … それ以外
 import { retrievability, TARGET_R } from './scheduler.js';
 
-export const FILE_VERSION = '0.30.0';
+export const FILE_VERSION = '0.31.0';
 export const MASTER = { full: 4, solo: 2, score: 0.7 };
 export const STATUS = { none: '未学習', learning: '学習中', review: '要復習', mastered: '習得' };
 // 転用の段階の表示。「転用できた」「応用力が身についた」とは言わない（代理の指標のため）

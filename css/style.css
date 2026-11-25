@@ -1,5 +1,5 @@
 :root {
-  --lemma-version: '0.30.0';
+  --lemma-version: '0.31.0';
   --paper: #f6f4ee;
   --card: #ffffff;
   --ink: #1c1d21;
@@ -618,6 +618,7 @@ body.sheet-open { overflow: hidden; }
 .hero.alt b { color: var(--accent); }
 .hero[disabled] { opacity: .5; }
 .weak-note { margin: 10px 2px 14px; font-size: 13.5px; color: var(--ink-2); line-height: 1.7; }
+.hero + .toolbar, .weak-note + .toolbar { margin-top: 24px; }   /* 「今日の演習を始める」と難易度ボタンの間をあける（苦手な分野の行があるときも） */
 .weak-note .linkbtn { font-size: 13px; color: var(--accent); margin-left: 6px; text-decoration: none; font-weight: 600; }
 details.howto { margin-top: 26px; border-top: 1px solid var(--line); padding-top: 12px; font-size: 14px; color: var(--ink-2); }
 details.howto summary { cursor: pointer; font-weight: 600; color: var(--ink); padding: 4px 0; }
@@ -876,3 +877,16 @@ form.search input { border-width: 2px; border-radius: 8px; }
 /* 鳥の吹き出し */
 #bird .bubble { border-radius: 12px 12px 4px 12px; border-width: 2px; box-shadow: 0 3px 0 var(--line); }
 .toast { background: var(--navy); color: #fff; }
+
+/* 答の枠：長い式は枠の中で横にスクロール（枠ごとはみ出さない） */
+.ansrow { display: flex; max-width: 100%; }
+.ansrow > .al { display: flex; align-items: center; justify-content: center; flex: none; }
+.ansrow > .aa { display: block; min-width: 0; overflow-x: auto; }
+
+/* 答えの図（解説の中） */
+.afig { margin: 14px 0 4px; }
+.afig-title { font-size: 12px; font-weight: 800; color: var(--accent); letter-spacing: .08em; margin-bottom: 6px; }
+.afig-host { height: 300px; }
+.afig-note { margin: 8px 2px 0; font-size: 14px; line-height: 1.7; }
+.afig-help { margin: 4px 2px 0; }
+.afig-sl:empty { display: none; }
