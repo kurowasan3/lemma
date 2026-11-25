@@ -1,0 +1,23 @@
+problem_id,subproblem,independent_answer,stored_answer,stored_explanation_excerpt,final_answer_match,explanation_category,mathematical_correctness,logical_validity,calculation_accuracy,condition_coverage,boundary_case_coverage,reproducibility,numeric_dependence,confidence,issue_description,correction_proposal,human_review_required
+III-DIF-388,(1),証明（x1=1でx2が存在しない）,証明（x1=1でx2が存在しない）,x>0で値2をとるのはx=1だけで，x<0ではg(x)≦0<2．よってx2が存在せず,該当なし（証明）,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+III-DIF-388,(2),k=(3+√5)/2,k=(3+√5)/2,"A>B, A<B, A=B で場合分け．A=B は 2√k=2k−2",一致,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+III-DIF-390,(1),0<x≦1/aで増加，x≧1/aで減少（極大値−log a−1）,0<x≦1/aで増加，x≧1/aで減少,f'(x)=1/x−a=(1−ax)/x．よってf(x)は0<x≦1/aで増加し…,一致,A,OK,OK,OK,OK,OK,OK,なし,高,問題は増減のみを問うので極値・極限の記載がなくても不足ではない,,いいえ
+III-DIF-390,(2),log2/2≦a≦log2,log2/2≦a≦log2,a=u(r)/α≦u(r)≦u(2)=log2… a≧r u(r)/4=v(r)/4≧v(2)/4,一致,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+III-DIF-391,(1),最小値 −x0(log x0)^2,最小値 −x0(log x0)^2,x1をeとaのうち小さくない方とすると…f'(x1)≧1>0,一致,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+III-DIF-391,(2),0≦a≦2e,0≦a≦2e,a<0のとき x=e^{(e+1)/a} とおくと…f(x)<−(e+1)<−e,一致,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+III-DIF-394,(1),証明,証明,a^{h_a(x)}=a+1−a^x より h_a(h_a(x))=log_a a^x=x,該当なし（証明）,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+III-DIF-394,(2),0<m_a<1/2 または 1/2<m_a<1,0<m_a<1/2 または 1/2<m_a<1,N(a)=a log a−(a+1)log((a+1)/2)，N'(a)=log(2a/(a+1))…Fは各区間で増加,一致,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+III-DIF-394,(3),a>1,a>1,(a+1)−a^x−a^{1−x}=(1−a^x)(1−a^{1−x}),一致,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+III-DIF-396,全体,−4/π²≦a<−1/π,−4/π²≦a<−1/π,"k'(x)=sin x(2−x(π−x))…k(0)=0, k(π/2)=0…h は0<x≦π/2で増加",一致,A,OK,OK,OK,OK,OK,OK,なし,高,（第一段階はB）各変形を検証した結果，h'(x)の分子k(x)とk'(x)=sin x(2−x(π−x))，k(0)=k(π/2)=0による符号判定，極限1/πをとらないことの論証，中間値の定理による値域の確定はすべて正しく，飛躍は見当たらないためAとした,,いいえ
+III-DIF-397,(1),証明,証明,f_n(x)=(e^x−nf_{n−1}(x))/x と表され，f_nは微分可能,該当なし（証明）,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+III-DIF-397,(2),証明,証明,g_n=g_{n−1}+(−1)^n e/n!,該当なし（証明）,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+III-DIF-397,(3),1,1,R_n=(1/n!)∫(1−t)^n e^{−t}dt…0<R_n≦1/(n+1)!,一致,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+III-DIF-401,(1),証明,証明,f(x)/a=G(x−log a)−G(log(x−1)),該当なし（証明）,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+III-DIF-401,(2),0<a<e²,0<a<e²,h(x)=x−log(x−1)≧h(2)=2（等号はx=2に限る）,一致,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+III-DIF-401,(3),x=2,x=2,f(x)=0⇔x−2=log(x−1)⇔h(x)=2⇔x=2,一致,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+III-DIF-403,(1),b≧√(2e),b≧√(2e),k'(t)=e^t(2t−1)/(2t√t)…k(1/2)=√(2e),一致,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+III-DIF-403,(2),"最小値2(√2−1)e^{√2}, a=(2−√2)e^{1/√2}, b=2^{3/4}(√2−1)e^{1/√2}","最小値2(√2−1)e^{√2}, a=(2−√2)e^{√2/2}, b=2^{3/4}(√2−1)e^{√2/2}",(a²+b²)(t²+t)−(at+b√t)²=(a√t−bt)²≧0,同値（表記差）,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+III-INT-717,全体,最大7/2，最小−1/2,最大7/2，最小−1/2,"J=2−2∫qP dx, J=2∫pQ dx−2 … −2≦J≦2",一致,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+III-INT-719,(1),証明,証明,J_k上でgが異なる2値a<bをとったとすると…a+1/2…矛盾,該当なし（証明）,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+III-INT-719,(2),n偶数 1/(2π)，n奇数 (n²−1)/(2n²π),n偶数 1/(2π)，n奇数 (n²−1)/(2n²π),Σδ_k(2k−1)=Σδ_k(2k−1−c)≦Σ|2k−1−c|,一致,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+III-INT-719,(3),5個,5個,(Pの和)−(Qの和)=10 …合計5通り,一致,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ

@@ -1,0 +1,27 @@
+problem_id,subproblem,independent_answer,stored_answer,stored_explanation_excerpt,final_answer_match,explanation_category,mathematical_correctness,logical_validity,calculation_accuracy,condition_coverage,boundary_case_coverage,reproducibility,numeric_dependence,confidence,issue_description,correction_proposal,human_review_required
+X-MIX-079,(1),証明,証明,$|D|\geqq q^{m-1}-(q^{m-1}-1)=1>0$,該当なし（証明）,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+X-MIX-079,(2),q=3,q=3,$e_4=1$，$e_3=-3$ のとき…$e_2\geqq-1$…$G\geqq(q-3)(q+1)>0$,一致,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+X-MIX-083,(1),証明,証明,$T=2c+a_1+a_3+a_5$ とおく…分子はすべて…偶数,該当なし（証明）,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+X-MIX-083,(2),20回,20回,"$u=v=\frac{T-1}2,\ w=\frac{T-15}2,\ p=\frac{T-3}2$…$N=2T-10$",一致,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+X-MIX-084,(1),共通の実数解をもたないこと，130個,共通の実数解をもたないこと，130個,$A$ は 7×7 個と 9×9 個の和集合で，両方に属する点は存在しない,一致,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+X-MIX-084,(2),15,15,"札 $\langle u,Q\rangle$ に対応しうるのは…どちらも起こらない…$N\leqq15$",一致,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+X-MIX-087,(1),f(0)=f(1)=f(-1)=0，奇関数は証明,f(0)=f(1)=f(-1)=0，奇関数は証明,$a=-1$，$b=x$ とおくと $f(-x)=-f(x)+xf(-1)=-f(x)$,一致,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+X-MIX-087,(2),証明,証明,$f(x^{n+1})=x^nf(x)+xf(x^n)=(n+1)x^nf(x)$,該当なし（証明）,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+X-MIX-087,(3),"f(x)=x log2|x| (x≠0), f(0)=0","f(x)=x log2|x| (x≠0), f(0)=0",$p=[qt]+1$…$t<\frac pq<g(x)$…増加性より矛盾,一致,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+X-MIX-087,(4),(n+2)/2^n - 2,(n+2)/2^n - 2,$T_n=2-\frac{n+2}{2^n}$,一致,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+X-MIX-089,(1),証明,証明,$|f(x)|\leqq1-x$，$|f(x)|\leqq x+1$,該当なし（証明）,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+X-MIX-089,(2),証明,証明,$x<y$ なら $2-x-y=y-x$ から $y=1$…いずれも矛盾,該当なし（証明）,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+X-MIX-089,(3),1/2<a<1,1/2<a<1,(iv) で $u=a$，$v=0$…$1-a<a$；折れ線 $f$ を構成,一致,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+A-COM-505,(1),証明,証明,"$b_k+M(T_{k-1}(P),a_1+\cdots+a_k)=T_k(P)$",該当なし（証明）,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+A-COM-505,(2),39,39,"補題（隣どうしの入れかえ）…$m(b_X,a_Y)\geqq m(b_Y,a_X)$ ならば $T_5(P)\leqq T_5(P')$",一致,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+B-SEQ-304,(1),証明,証明,$T_{m+1}=n+1-\frac{m+2}{2^{m+1-n}}$,該当なし（証明）,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+B-SEQ-304,(2),証明,証明,$(4/3)^m\geqq1+m/3$ より $(3/4)^m<3/m$…矛盾,該当なし（証明）,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+B-SEQ-304,(3),a_n=n+1,a_n=n+1,ある $j$ で $e_j>0$ と仮定…矛盾．よって $a_{k+1}=2a_k-k$,一致,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+B-SEQ-324,(1),証明,証明,$S_C+S_E\geqq2S_D\iff S_{C'}\geqq2S_{D'}$,該当なし（証明）,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+B-SEQ-324,(2),0<r≤(√3-1)/2 または r≥1+√3,0<r≤(√3-1)/2 または r≥1+√3,"$2\leqq r<1+\sqrt3$：$C=\{3\}$，$D=\{1,2\}$…不適",一致,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+B-SEQ-324,(3),0<r≤1/3 または r≥3,0<r≤1/3 または r≥3,$2S_D-S_C=\frac{r^k(3-r)-2}{r-1}>0$,一致,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+B-SEQ-327,(1),証明,証明,$c_n-c_{n+2}=b_n+kb_{n+1}+b_{n+2}$,該当なし（証明）,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+B-SEQ-327,(2),-2<k<2 または k>2,-2<k<2 または k>2,$f_{n+1}=f_n-(2+k)e_{n+1}\leqq f_n$…$e_n=0$,一致,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+B-SEQ-328,(1),"1, 1/2, -9/2, -5","1, 1/2, -9/2, -5","$(2j-i-k)t=ik-j^2$…$t=-4,0$ は除く",一致,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+B-SEQ-328,(2),8,8,$g_3\geqq g_1+3$…$l-i\geqq3g_1+4\geqq7$,一致,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+B-SEQ-328,(3),証明,証明,$a_{N+2v+uv}=A(1+u)^2$,該当なし（証明）,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ

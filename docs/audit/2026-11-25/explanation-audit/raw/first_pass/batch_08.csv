@@ -1,0 +1,27 @@
+problem_id,subproblem,independent_answer,stored_answer,stored_explanation_excerpt,final_answer_match,explanation_category,mathematical_correctness,logical_validity,calculation_accuracy,condition_coverage,boundary_case_coverage,reproducibility,numeric_dependence,confidence,issue_description,correction_proposal,human_review_required
+C-CUR-485,(1),"Q,Rのx座標はともに-8k",x=-8k,"ρ=m1/m2=-(x1-2)(x2-2)/(4y1y2)=(4k+1)/(4k-1)，x=2(ρ+1)/(1-ρ)=-8k；ρはC,D入替で不変なのでRも同じ",一致,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+C-CUR-485,(2),"M=(-8k,2)で定直線y=2，QR=2√(16k²+3)",直線y=2，QR=2√(16k²+3),y_Q+y_R=(2-8k)²/(4k-1)²=4，y_Q-y_R=-(1+4k²)(x1-x2)，|x1-x2|=2√(16k²+3)/(1+4k²),一致,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+C-CUR-485,(3),k=±√3/6,k=±√3/6,"-8k+1/(2k)+2k=0⇔k²=1/12，0,±1/4と異なるので適する",一致,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+C-CUR-488,(1),OH=2/√(1+3sin²t)，PH=3sin t cos t/√(1+3sin²t),OH=2/√(cos²t+4sin²t)，PH=3sin t cos t/√(cos²t+4sin²t),OP²D-1=(4c²+s²)(c²/4+s²)-(c²+s²)²=9c²s²/4,同値（表記差）,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+C-CUR-488,(2),"最大値3/4，P(√2,√2/2)","最大値3/4，P(√2,√2/2)",tan∠POH=PH/OH=3cs/2=(3/4)sin2t,一致,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+C-CUR-488,(3),"最大値3/4，P(4√5/5,√5/5)","最大値3/4，P(4√5/5,√5/5)",△OPH=3cs/(c²+4s²)=3u/(1+4u²)≦3/4（u=tan t=1/2で等号）,一致,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+C-VEC-450,(1),証明,証明,Mへの射影が1点に集まる場合を排除→直線gから平面P；cosφ=0ならF(X)のy座標不変でA'〜D'が1直線上となり矛盾,該当なし（証明）,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+C-VEC-450,(2),平行四辺形，S=2/(√3|cosφ|),平行四辺形，S=2/(√3|cosφ|),"w=A+C-B-D：F(w)=0かつm·w=0，m·n≠0よりw=0；正規直交e1,e2で|F(e2)|²=(3/4)cos²φ，1=|ad-bc||g|",一致,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+C-VEC-450,(3),S≧2√3/3,S≧2√3/3,X_i=Y_i-(m·Y_i)/(m·n)n でF(X_i)=Y_i となる4点を構成し，0<γ≦1の全てで実現,一致,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+C-VEC-451,(1),1辺√42，体積7√21,1辺√42，体積7√21,"x+y=1,x+z=3,y+z=6→(x,y,z)=(-1,2,4)，ℓ²=2(x²+y²+z²)=42；具体的な配置で存在も確認",一致,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+C-VEC-451,(2),t=√7-1,t=√7-1,"(x,y,z)=(0,1,1+t)，1+(1+t)²=8，t>0よりt=√7-1；逆に配置を構成",一致,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+C-VEC-453,(1),√(5+4|cosθ|),√(5+4|cosθ|),"|x|+|y|=max(|x+y|,|x-y|)，|p·e|≦|p|，p方向のeで等号；M²=5+2|a·b|",一致,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+C-VEC-453,(2),sinθ,sinθ,2sinθ=|a1b2-a2b1|≦2|a1|+|b1|≦2F(e)，e⊥bで等号,一致,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+C-VEC-453,(3),a·b=±4(√10-1)/9,a·b=±(4√10-4)/9,9c²+4c-4=0，c=|cosθ|=(-2+2√10)/9，両符号とも実現,同値（表記差）,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+C-VEC-457,(1),(1/4)CB,(1/4)CB,DB+EC+FA=(3/4)(AB+BC+CA)-(1/4)BC=(1/4)CB,一致,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+C-VEC-457,(2),7,7,AX=w-v，|AX|²=1+2e·v+|v|²≦49，等号⇔d_i=|d_i|e,一致,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+C-VEC-457,(3),9√3/4,9√3/4,"B(0,0),C(4,0),A(2,2√3)でP(5/2,3√3/2),Q(4,0),R(13/2,√3/2)，面積(1/2)|9√3/2|",一致,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+C-VEC-458,(1),(x-sin2θ)²+y²cos²θ≦sin²2θ,x²+y²cos²θ≦4x sinθcosθ,x²+y²+x²tan²θ≦4x tanθ に cos²θ を掛ける；正射影は1対1,同値（表記差）,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+C-VEC-458,(2),M=sin2θ+√(sin²2θ+16sin²θ),M=2sinθcosθ+2sinθ√(cos²θ+4),"x=2st+2stX,y=2sYで単位円板に帰着，|(2st,4s)|=2s√(t²+4)",同値（表記差）,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+C-VEC-458,(3),最大値2√5，tanθ=√5,最大値2√5，tanθ=√5,4-x²-y²≧(2-x tanθ)²≧0 より D_θ⊂{x²+y²≦4}，x+2y≦2√5；等号条件からtanθ=√5，逆に点が D_θ に属することを確認,一致,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+I-DAT-033,(1),0≦r≦3/4,0≦r≦3/4,"S/2-C=(1/2)ΣA_i²+(1/4)(B1-B2+B3)²≧0；u=αv+βwでr=3α²/(4α²+2β²)が[0,3/4]全体をとる",一致,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+I-DAT-033,(2),証明,証明,r=3/4⇔ΣA_i²=0かつB1-B2+B3=0 ⇒ x1+x4=x2+x5=x3+x6=2x̄,該当なし（証明）,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+I-QF-150,(1),"直線a=b ∪ {a≧b²/4, b≧a²/4}（レンズ形）",a=b，またはb²/4≦a<b，またはa²/4≦b<a,（⇒）q(x0)<0なら x=(u+r2)/2 で q(x)<0<p(x) を構成；b≦0は正の解の存在で除外；図は言葉で説明,同値（表記差）,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+I-QF-150,(2),0<a+b<8,0<a+b<8,a+b≧b²/4+b>0，a+b<2b<8；逆にb0=-2+2√(1+s)で全値実現,一致,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+I-QF-151,(1),|p|>q+1,q<|p|-1,T+≠∅⇔f(1)<0：1はx0と1/x0の間にありSは区間；T-も同様,同値（表記差）,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+I-QF-151,(2),q<-|p|-1，L=(q+1)√(p²-4q)/q,q<-|p|-1，L=(q+1)√(p²-4q)/q,"T±はそれぞれ空か1区間，両方非空⇔2区間；T+=(1/β,β)，T-=(α,1/α)，L=(β-α)(1+1/q)",一致,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ

@@ -1,0 +1,29 @@
+problem_id,subproblem,independent_answer,stored_answer,stored_explanation_excerpt,final_answer_match,explanation_category,mathematical_correctness,logical_validity,calculation_accuracy,condition_coverage,boundary_case_coverage,reproducibility,numeric_dependence,confidence,issue_description,correction_proposal,human_review_required
+III-DIF-367,(1),"a=1/2, b=0","a=1/2, b=0",sin2πa≠0 と仮定すると…ψ は定数で φ も定数となるが…反する．ゆえに sin2πa=0；|f'|≤|a−2cos x|≤a+2|cos x|≤a+2 の等号条件,一致,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+III-DIF-367,(2),"n=4, T=8π","n=4, T=8π",φ(4π−x)=2π−φ(x) より f(4π−x)=f(x)…0<x<2π での極大点は x1 と 2π−α の2つ,一致,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+III-DIF-376,(1),27,27,g_c'(x)=(u−2){3(u+1)^2−c}（u=e^x+e^{−x}）；c>27 では 0 の近くで g_c'<0,一致,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+III-DIF-376,(2),証明,証明,c*=33/2+9√2 で g_{c*}'<0 (0<x<x0)，g_{c*}(x0)<0 から log2<(18+13√2)/(27+18√2)=(2+3√2)/9,該当なし（証明）,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+III-DIF-376,(3),証明,証明,47×1.4142/96=66.4674/96>0.692，(2+4.2429)/9<6.246/9=0.694,該当なし（証明）,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+III-DIF-384,(1),証明,証明,"g(m)=e^m−2m>0…α_m+m=e^{α_m}∈(0,1)，β_m=log(β_m+m)，m<β_m+m<2m",該当なし（証明）,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+III-DIF-384,(2),1,1,0<m+α_m<e^{1−m} ではさみうち，e^{m+α_m}→e^0=1,一致,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+III-DIF-384,(3),1,1,u/(1+u)<log(1+u)<u を u=β_m/m に適用し log m で割ってはさみうち,一致,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+III-INT-716,(1),証明,証明,f'=√(4−f²)≥0；I 上 f'>0 で f''=−ff'/f'=−f,該当なし（証明）,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+III-INT-716,(2),x≤−2π/3で−2，中央 2sin(x+π/6)，x≥π/3で2,同左,"補題 A=f cos x−f' sin x, B=f sin x+f' cos x は定数…f(4π/3)=−2<1 で矛盾…α=π/3；逆の確認あり",一致,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+III-INT-716,(3),2π/3,2π/3,−2π/3+0+4π/3=2π/3,一致,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+III-INT-718,(1),g(t)=(t−3/2)/π+3cosπt/π²,g(t)=3cosπt/π²+(t−3/2)/π,g(t)=U(t)−U(t−1)+V(5/2)−V(t),同値（表記差）,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+III-INT-718,(2),t=0 極大 2/π²；t=1 極小 −4/π²；t=2+α/π 極大 (π/2+α+2√2)/π²,同左,"t=−1, t=7/2 でも片側の値が等しいので，定義により極値ではない",一致,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+III-INT-718,(3),最大 (π/2+α+2√2)/π²，最小 −4/π²,同左,g(t1)≥g(5/2)=1/π>2/π²,一致,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+III-LIM-317,(1),証明；x2=√3−1,証明；x2=√3−1,f_{n+1}(x_n)=x_n^{n+1}/(n+1)>0=f_{n+1}(x_{n+1}),一致,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+III-LIM-317,(2),証明,証明,t^n<t^n/(1−t)<t^n/(1−x) を積分,該当なし（証明）,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+III-LIM-317,(3),証明,証明,f_n'(ξ)≥1+ξ>1；1/(1−ξ)<1/(1−x2)=1/(2−√3),該当なし（証明）,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+III-LIM-317,(4),1,1,β_n=α(1−1/√n)…(1−1/√n)^n≤e^{−√n}→0，c_n→e，f_n'(ξ_n)→e,一致,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+III-LIM-318,(1),証明,証明,第1世代の個体数 X で条件付け，確率 q_n^j（j=0 のときは1）,該当なし（証明）,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+III-LIM-318,(2),"1/8, 729/4096, √5−2","1/8, 729/4096, √5−2",r−q_{n+1}≤3(1+r)²/8·(r−q_n)，c=(9−3√5)/4<1,一致,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+III-LIM-318,(3),証明,証明,1/e_{n+1}≥1/e_n+8/27 より e_n≤27/(27+8n),該当なし（証明）,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+III-LIM-320,(1),92/105,92/105,0≤S_n−I≤(8/n)Σ(x_k−x_{k−1})=8/n,一致,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+III-LIM-320,(2),2√3π/9,2√3π/9,U_n≤T_n≤U_n+(4/n)(15/16)，∫_0^2 g'(y)²dy=∫_0^1 dx/(3x²+1)=π/(3√3),一致,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+X-MIX-080,(1),5/4,5/4,p≥2 で (p+2)k≤n+p，p=1 で k≤1；例の表で k=5/4,一致,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+X-MIX-080,(2),3/2,3/2,k≤(n+p)/(p+2)≤(n+2)/4=3/2；例の表で k=3/2,一致,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+X-MIX-081,(1),"2/9,4/9,8/9,2/7,4/7,6/7",同左,"LLR から 2/9,4/9,8/9，LRR から 2/7,4/7,6/7",一致,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+X-MIX-081,(2),(1+√5)/4≤a≤1,(1+√5)/4≤a≤1,y1≤1/2⇔(μ−1)(μ²−μ−1)≥0…μ≥φ,一致,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+X-MIX-081,(3),"a=(1+√5)/4 で3個（(√5−1)/4, 1/2, (1+√5)/4），それより大で6個",同左,LLR の組は1/2以下の点を2個，LRR の組は1個含むので…共通の点をもたない,一致,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ

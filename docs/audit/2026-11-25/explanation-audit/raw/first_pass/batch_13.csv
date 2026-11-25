@@ -1,0 +1,30 @@
+problem_id,subproblem,independent_answer,stored_answer,stored_explanation_excerpt,final_answer_match,explanation_category,mathematical_correctness,logical_validity,calculation_accuracy,condition_coverage,boundary_case_coverage,reproducibility,numeric_dependence,confidence,issue_description,correction_proposal,human_review_required
+III-INT-720,(1),証明（道のり=2M）,証明,"いずれの場合も2次式 v の2つの零点のうち開区間 (0,1) にあるのは s だけで，s は単解だから v は s で符号を変え",該当なし（証明）,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+III-INT-720,(2),1/2≦M≦1,1/2≦M≦1,"0<r≦1/4 のとき … μ(r)≧1-16r^2．… 中間値の定理により μ(r)=m となる r∈[ε,1/2] が存在する",一致,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+III-INT-720,(3),"(6√3,-3√3),(-6√3,3√3)","(6√3,-3√3),(-6√3,3√3)","H1=H2 ⇔ X_r(s1)+X_r(s2)=0 ⇔ X_r(t0)=0 ⇔ t0∈{0,r,1}",一致,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+III-INT-724,(1),"π/4, π, 7π/4, 2π","π/4, π, 7π/4, 2π",補題 (i) 0<|x-a|<δ で φ(x)<φ(a)（または >）ならば h は x=a で極値をとる,一致,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+III-INT-724,(2),1013π,1013π,2026=4·506+2 より a_2026=(2·506+1)π=1013π,一致,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+III-INT-724,(3),-π^2/2-π+2,2-π-π^2/2,h(π)=[xF(x)]_0^π-∫_0^π xF'(x)dx=-∫_0^π x(sin x+cos x+1)dx,同値（表記差）,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+III-INT-725,(1),f(4x)=4f(x)（証明）；f(x)=4log_2x (2≦x<4),証明，f(x)=4log_2x (2≦x<4),第1の条件で x を f(x) におきかえると f(f(f(x)))=4f(x)．左辺は … f(4x) に等しい,一致,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+III-INT-725,(2),一意性（証明）；x=2^m (m∈Z),証明，x=2^n（n は整数）,x=4^ju のとき f(x)=4^jf(u)，2x=4^j·2u だから，f(x)=2x ⇔ f(u)=2u,一致,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+III-INT-725,(3),408-102/log2,408-102/log2,∫_4^16 f(x)dx=∫_1^4 f(4u)·4du=16I,一致,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+III-LIM-310,(1),証明,証明,"4^b+log_2b=f(2b)-1<f(2b), 4^b+log_2b=f(b)+(4^b-2^b)>f(b)",該当なし（証明）,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+III-LIM-310,(2),0,0,"2^{2b-a}-1<2^{-a}<2^{-b}, 0<2b-a<log_2(1+2^{-b})",一致,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+III-LIM-310,(3),(log2)^2,(log2)^2,v/b=(4^b-1)/b-(2^a-1)/a·a/b → 2log2-log2,一致,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+III-LIM-311,(1),証明,証明,φ(x_n)=x_ne^{x_n}>x_n だから，中間値の定理により φ(y)=x_n をみたす y が 0<y<x_n に存在,該当なし（証明）,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+III-LIM-311,(2),証明（帰納法）,証明,1-x_{n+1}/2<1/x_{n+1}-1/x_n<1 … x_{n+1}<1 なので … >1/2,該当なし（証明）,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+III-LIM-311,(3),1,1,"1/x_n>n-H_n, H_n<log((n+1)/2), 1≦nx_n<n/(n-H_n)",一致,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+III-LIM-315,(1),4x_{n+1}^3+2x_{n+1}=x_n^3+x_n,4x_{n+1}^3+2x_{n+1}=x_n^3+x_n,"g(0)=0<x_n^3+x_n, g(x_n)-(x_n^3+x_n)=3x_n^3+x_n>0",一致,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+III-LIM-315,(2),証明,証明,x_2<1/√2 … x_{n+1}<(1+x_n^2)/2·x_n … <3/4 x_n,該当なし（証明）,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+III-LIM-315,(3),6,6,T_N=6-4x_{N+1}^3-2x_{N+1},一致,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+III-LIM-316,(1),証明；等号 s=t,証明（等号は s=t）,F(s)F(t)-{F((s+t)/2)}^2=F(s-t)-2,該当なし（証明）,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+III-LIM-316,(2),証明；等号 n=2,証明，等号は n=2,各因数は F(n+1)+F(n-1)=F(1)F(n) 以下 … n≧3 では k=2 がこれをみたさず真の不等号,該当なし（証明）,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+III-LIM-316,(3),1/2,1/2,(n+1)/(2n)<log P_n/n^2<(n+log8)/(2n),一致,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+III-LIM-319,(1),証明,証明,0<a_1<e ならば 0<a_2≦1（a_1=1 なら a_2=1）であり，以後帰納的に 0<a_n≦1,該当なし（証明）,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+III-LIM-319,(2),証明；lim a_n=1,証明，lim a_n=1,1-ψ(x)=1-x+x log x≦(1-x)^2 … 0<1-a_n≦(1-a_1)^n,一致,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+III-LIM-319,(3),k=3 のみ,k=3,"log(1+w)=w^2/(1+w)，φ(1)>0, φ(3)<0 … 相異なる3つの数のうち2つは同じ区間に属し",一致,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+III-LIM-321,(1),証明,証明,w(x)=h(x)-(p(x)+q(x))/2 … w(a)<0<w(b) なので中間値の定理により w(c)=0,該当なし（証明）,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+III-LIM-321,(2),"N=1 (k≦0), 3 (0<k≦4), 5 (k>4)","N=1 (k≦0), 3 (0<k≦4), 5 (k>4)",最も左の開区間で f=P なら … 最大値をもたない．f=L なら … 最小値をもたない．よって f=K,一致,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+III-LIM-321,(3),"x^2 (-3≦x≦2), 2x (2≦x≦9/2), 他は9；最小値335/12",同左；最小値 335/12,"12倍すると 810, 378, 335, 394, 351 なので最小は F_2",一致,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+III-LIM-322,(1),f(x)=x^2,f(x)=x^2,|g(x)|=|g(x/2^n)| … n→∞ で g(x/2^n)→g(0)=0,一致,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+III-LIM-322,(2),"f=-x+α (x<0), β (x=0), -x+γ (x>0), α≧β≧γ","f=-x+p (x<0), q (x=0), -x+r (x>0), p≧q≧r",x≦y≦2x に対し g(x)≧g(y)≧g(2x)=g(x) より g(y)=g(x),同値（表記差）,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ

@@ -1,0 +1,27 @@
+problem_id,subproblem,independent_answer,stored_answer,stored_explanation_excerpt,final_answer_match,explanation_category,mathematical_correctness,logical_validity,calculation_accuracy,condition_coverage,boundary_case_coverage,reproducibility,numeric_dependence,confidence,issue_description,correction_proposal,human_review_required
+III-DIF-363,(1),f(x)=x^3-3x+2,f(x)=x^3-3x+2,極小点の個数が4となるには |β|<2 が必要（そうでなければ高々 1+1+1=3 個）．このとき β<2 なので x=-1 は極小でなく，x=1 が極小である必要があり,一致,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+III-DIF-363,(2),"k<0,k>4:1個; k=0,4:5個; 0<k<4:9個","k<0,k>4:1個; k=0,4:5個; 0<k<4:9個",f(s)-4=(s+1)^2(s-2)．g(x)=k の実数解は，f(s)=k の各実数解 s に対する t(x)=s の実数解を合わせたもの,一致,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+III-DIF-369,(1),q=-3p-8 かつ k=2r-4p-16；値は1,q=-3p-8 かつ k=2r-4p-16；値は1,よって x=2m で微分可能 ⇔ 「f(2)-f(0)=k かつ f'(2)=f'(0)」．この条件は m によらない,一致,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+III-DIF-369,(2),k最小 16√3/9；f=x^4-4x^3+4x^2+(8√3/9)x+s,k最小 16√3/9；f=x^4-4x^3+4x^2+(8√3/9)x+s（s任意）,特に u=1/√3 として 0≦φ(1/√3)=A/3+B-8√3/9．よって k=2(A/3+B)≧16√3/9,一致,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+III-DIF-371,(1),"[3log2,∞)",3log2 以上のすべての実数,T は 4<t≦8 で減少，t≧8 で増加し，T(8)=3log2,一致,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+III-DIF-371,(2),a≦3log2,a≦3log2,"ψ'(x)=(a-T(x))/x^2 … ψ は狭義単調減少；必要性: T(t0)=a となる t0>8 で接線を引き h(8)<0, x→+0 で h→∞",一致,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+III-DIF-372,(1),"a=-1,b=0","a=-1,b=0",c=1 は (iii) の場合で，2^{x0}=x0+1，x0≠0 の解は x0=1,一致,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+III-DIF-372,(2),"(a,b,log2) (a^2≦4b) または (-t,0,(2^t-1)/t) (t≠0)","「c=log2 かつ a^2≦4b」または「b=0, a≠0, c=(1-2^{-a})/a」",q(0)=0，同様に q(x0)=0 … q(x)=x(x-x0)，すなわち a=-x0，b=0,同値（表記差）,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+III-DIF-375,(1),"a=2,b=3","a=2,b=3",f'(1)=ae．接線が y=2e(x-1)+3 であるから f(1)=3，f'(1)=2e,一致,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+III-DIF-375,(2),証明,証明,f(x)>2 ⇔ x^2 log x+3/(2e)>xe^{-x}．…2つの等号は同時には成り立たない,該当なし（証明）,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+III-DIF-375,(3),証明（2<m<3）,証明（最小値mが存在し 2<m<3）,"f は閉区間 I=[3/(5e), e] で連続…I の外では f(x)>3>m",該当なし（証明）,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+III-DIF-378,全体,m=6,m=6,P_n<(495/128)e^{3/8}… (256/165)^8>(12/5)^4=20736/625>27>e^3；P_7=86538375/16777216>5,一致,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+III-DIF-382,(1),0<a≦e^{1/e},0<a≦e^{1/e},T0=e^{log a-1}…g(T0)<log a≦g(e) だから，中間値の定理により g(T)=log a となる T が存在,一致,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+III-DIF-382,(2),証明,証明,0<|T|<1 とすると，x=x0-nT として f(x0)=T^n f(x0-nT) より |f(x0)|≦|T|^n B,該当なし（証明）,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+III-DIF-382,(3),"k=(2n-1)π (n=1,2,…)","k=(2m+1)π (m=0,1,2,…)",T=1: 条件は -sin kx=sin πx…k=π，しかし x=1/2 で不成立．T=-1: 2sin(kx-k/2)cos(k/2)=0,同値（表記差）,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+III-DIF-383,(1),証明,証明,"g(b)-g(m)=∫_0^h g'(m+s)ds, g(m)-g(a)=∫_0^h g'(m-s)ds",該当なし（証明）,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+III-DIF-383,(2),証明,証明,F'(t)=g'(t)-g'((a+t)/2)-log2=log(t/(a+t))<0,該当なし（証明）,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+III-DIF-383,(3),K≧log2,K≧log2,"b=1，0<a<1 … D(a,1)/(1-a) → log2 (a→+0)",一致,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+III-DIF-383,(4),M≦1/2,M≦1/2,"D(1-h,1+h)≦h^2/(1-h^2)<2Mh^2 （0<h^2<1-1/(2M)）",一致,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+III-DIF-385,(1),"f^{-1}(x)=log(e^x-1) (x>0), f'(x)=e^x/(e^x+1)","f^{-1}(x)=log(e^x-1) (x>0), f'(x)=e^x/(e^x+1)",値域は y>0 で，e^y=e^x+1 より x=log(e^y-1),一致,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+III-DIF-385,(2),s>2,s>2,s^2(s+1)<(s^2-1)(s+2) ⇔ 0<s^2-s-2=(s-2)(s+1),一致,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+III-DIF-385,(3),s=4 で最大値 log(9/8),s=4 で最大値 log(9/8),L(s)=log(1+(s-2)/s^2)，r'(s)=(4-s)/s^3,一致,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+III-DIF-386,(1),証明,証明,u を 0 と b/√6 のうち小さくない方より大きくとると -√6u+b<0,該当なし（証明）,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+III-DIF-386,(2),「a≦0かつb≦c」または「a>0かつb≦c-a^2/4」,同左,a≦0 のとき最小値 k(0)=c-b；a>0 のとき k(a/2)=c-b-a^2/4,一致,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+III-DIF-386,(3),"c≧3∛9/4；(a,b)=(∛3,∛9/2) のみ","c≧(3/4)∛9；(a,b)=(∛3,∛9/2) のみ",φ(a)=a^2/4+3/(2a)…最小値 (3/4)∛9；b は ∛9/2≦b≦∛9/2,一致,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+III-DIF-386,(4),7/6-(3/2)log2,7/6-(3/2)log2,(a-1)(a-2)(a+3)≦0 … ∫_1^2(7/4-a^2/4-3/(2a))da,一致,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
