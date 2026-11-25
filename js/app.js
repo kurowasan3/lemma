@@ -26,7 +26,7 @@ import {
 } from './catalog.js';
 import { techMastery, techCandidates, masterChecklist, makeCtx, transferTargets, transferWhy, MASTER, STATUS, TRANSFER, TRANSFER_KIND } from './mastery.js';
 
-const VERSION = '0.30.0';
+const VERSION = '0.31.0';
 const KEY = 'lemma.v2';
 let sync = null, syncApplying = false, syncStatus = null;   // アカウントと同期（initSync で用意）
 const $ = (sel, el = document) => el.querySelector(sel);
@@ -973,7 +973,7 @@ function mountAnswerFigures(root) {
   $$('.afig-host:not([data-on])', root).forEach((host) => {
     host.dataset.on = '1';
     let af; try { af = JSON.parse(decodeURIComponent(host.dataset.af)); } catch (e) { return; }
-    const view = af.v ? { xmin: af.v[0], xmax: af.v[1], ymin: af.v[2], ymax: af.v[3] } : undefined;
+    const view = af.v ? { xmin: af.v[0], xmax: af.v[1], ymin: af.v[2], ymax: af.v[3], free: !!af.f } : undefined;
     try {
       const g = mountGraph(host, af.e, { view, three: af.m === '3d', mode: af.m === '3d' ? undefined : af.m === 'complex' ? 'complex' : 'xy' });
       const sl = host.parentElement.querySelector('.afig-sl');

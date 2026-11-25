@@ -6,7 +6,7 @@
 import { parse, compile, splitRelation, freeVars } from './parser.js';
 import { analyzePlane, solveRoots, fmtComplex, fmtNum, holds as holdsEq } from './plane.js';
 
-export const FILE_VERSION = '0.30.0';
+export const FILE_VERSION = '0.31.0';
 export const COLORS = ['#2f6fdf', '#d9463b', '#2e9d5b', '#8e4fd6', '#e08a1e', '#1a9aa8'];
 const RESERVED = new Set(['x', 'y', 't', 'θ', 'r']);
 const TAU = Math.PI * 2;
@@ -54,8 +54,8 @@ export function analyze(raw) {
   if (clauses.length > 1 && clauses.slice(1).every(c => /[<>≦≧≤≥]/.test(c))) {
     const cur = analyze(clauses[0]);
     const regs = clauses.slice(1).map(c => analyze(c));
-    if ((cur.kind === 'implicit' || cur.kind === 'fx') && regs.every(r => r.kind === 'region')) {
-      const g = cur.kind === 'fx' ? (s) => s.y - cur.f(s) : cur.g;
+    if ((cur.kind === 'implicit' || cur.kind === 'fx' || cur.kind === 'fy') && regs.every(r => r.kind === 'region')) {
+      const g = cur.kind === 'fx' ? (s) => s.y - cur.f(s) : cur.kind === 'fy' ? (s) => s.x - cur.f(s) : cur.g;
       return { kind: 'implicitc', g, mask: regs.flatMap(r => r.conds), params: new Set([...cur.params, ...regs.flatMap(r => [...r.params])]) };
     }
   }
@@ -206,9 +206,11 @@ export class Graph {
     this.draw();
   }
 
-  applyBounds({ xmin, xmax, ymin, ymax }) {
-    const scale = Math.min(this.W / (xmax - xmin), this.H / (ymax - ymin));
-    this.view = { cx: (xmin + xmax) / 2, cy: (ymin + ymax) / 2, scale };
+  applyBounds({ xmin, xmax, ymin, ymax, free }) {
+    // free：縦横の縮尺を別にして，範囲をちょうど画面に合わせる（細長い図形を見やすくするため）
+    const sx = this.W / (xmax - xmin), sy = this.H / (ymax - ymin);
+    const scale = free ? sx : Math.min(sx, sy);
+    this.view = { cx: (xmin + xmax) / 2, cy: (ymin + ymax) / 2, scale, ay: free ? sy / sx : 1 };
   }
 
   setView(b) {
@@ -219,9 +221,11 @@ export class Graph {
   zoomBy(f) { this.zoomAt(this.W / 2, this.H / 2, f); }
 
   sx(x) { return this.W / 2 + (x - this.view.cx) * this.view.scale; }
-  sy(y) { return this.H / 2 - (y - this.view.cy) * this.view.scale; }
+  // 縦の拡大率（ふつうは横と同じ。「縦横比：自由」の図だけ別：view.ay 倍）
+  get ys() { return this.view.scale * (this.view.ay || 1); }
+  sy(y) { return this.H / 2 - (y - this.view.cy) * this.ys; }
   wx(px) { return this.view.cx + (px - this.W / 2) / this.view.scale; }
-  wy(py) { return this.view.cy - (py - this.H / 2) / this.view.scale; }
+  wy(py) { return this.view.cy - (py - this.H / 2) / this.ys; }
 
   setMode(mode) { this.mode = mode || 'xy'; this.trace = null; }
 
@@ -304,7 +308,7 @@ export class Graph {
           this.curStroke.push([this.wx(p.x), this.wy(p.y)]);
         } else {
           this.view.cx -= (p.x - prev.x) / this.view.scale;
-          this.view.cy += (p.y - prev.y) / this.view.scale;
+          this.view.cy += (p.y - prev.y) / this.ys;
           this.trace = null;
         }
         this.requestDraw();
@@ -312,7 +316,7 @@ export class Graph {
         const now = this.pinchState();
         const f = now.d / this.pinch.d;
         this.view.cx -= (now.mx - this.pinch.mx) / this.view.scale;
-        this.view.cy += (now.my - this.pinch.my) / this.view.scale;
+        this.view.cy += (now.my - this.pinch.my) / this.ys;
         this.zoomAt(now.mx, now.my, f, false);
         this.pinch = now;
         this.trace = null;
@@ -350,7 +354,7 @@ export class Graph {
     const wx = this.wx(px), wy = this.wy(py);
     this.view.scale = Math.min(1e5, Math.max(1e-3, this.view.scale * f));
     this.view.cx = wx - (px - this.W / 2) / this.view.scale;
-    this.view.cy = wy + (py - this.H / 2) / this.view.scale;
+    this.view.cy = wy + (py - this.H / 2) / this.ys;
     if (redraw) this.requestDraw();
   }
 
@@ -405,18 +409,18 @@ export class Graph {
 
   drawGrid(col) {
     const { ctx, W, H } = this;
-    const step = niceStep(70 / this.view.scale);
-    const lead = Math.round(step / Math.pow(10, Math.floor(Math.log10(step))));
-    const minor = step / (lead === 2 ? 4 : 5);
+    const step = niceStep(70 / this.view.scale), stepY = niceStep(70 / this.ys);
+    const minorOf = (st) => { const lead = Math.round(st / Math.pow(10, Math.floor(Math.log10(st)))); return st / (lead === 2 ? 4 : 5); };
+    const minor = minorOf(step), minorY = minorOf(stepY);
     const x0 = this.wx(0), x1 = this.wx(W), y0 = this.wy(H), y1 = this.wy(0);
-    const lines = (st, color) => {
+    const lines = (st, sty, color) => {
       ctx.strokeStyle = color; ctx.lineWidth = 1; ctx.beginPath();
       for (let x = Math.ceil(x0 / st) * st; x <= x1; x += st) { const p = Math.round(this.sx(x)) + 0.5; ctx.moveTo(p, 0); ctx.lineTo(p, H); }
-      for (let y = Math.ceil(y0 / st) * st; y <= y1; y += st) { const p = Math.round(this.sy(y)) + 0.5; ctx.moveTo(0, p); ctx.lineTo(W, p); }
+      for (let y = Math.ceil(y0 / sty) * sty; y <= y1; y += sty) { const p = Math.round(this.sy(y)) + 0.5; ctx.moveTo(0, p); ctx.lineTo(W, p); }
       ctx.stroke();
     };
-    if (minor * this.view.scale > 8) lines(minor, col.grid);
-    lines(step, col.major);
+    if (minor * this.view.scale > 8) lines(minor, minorY, col.grid);
+    lines(step, stepY, col.major);
     // 軸
     ctx.strokeStyle = col.axis; ctx.lineWidth = 1.25; ctx.beginPath();
     const ax = this.sx(0), ay = this.sy(0);
@@ -433,9 +437,9 @@ export class Graph {
     const lx = Math.min(W - 6, Math.max(6, ax - 6));
     ctx.textAlign = ax - 6 < 30 ? 'left' : 'right';
     const lxx = ax - 6 < 30 ? Math.max(4, ax + 6) : lx;
-    for (let y = Math.ceil(y0 / step) * step; y <= y1; y += step) {
-      if (Math.abs(y) < step / 2 || this.sy(y) < 10 || this.sy(y) > H - 6) continue;
-      ctx.fillText(fmt(y, step), lxx, this.sy(y) + 4);
+    for (let y = Math.ceil(y0 / stepY) * stepY; y <= y1; y += stepY) {
+      if (Math.abs(y) < stepY / 2 || this.sy(y) < 10 || this.sy(y) > H - 6) continue;
+      ctx.fillText(fmt(y, stepY), lxx, this.sy(y) + 4);
     }
     ctx.textAlign = 'right';
     if (ax > 0 && ax < W && ay > 0 && ay < H) ctx.fillText('O', ax - 4, ay + 14);

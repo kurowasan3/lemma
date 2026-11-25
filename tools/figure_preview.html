@@ -11,7 +11,7 @@ const spec = JSON.parse(decodeURIComponent(escape(atob(location.hash.slice(1))))
 const host = document.getElementById('h');
 const g = spec.mode === '3d' ? new Graph3D(host) : new Graph(host, { mode: spec.mode === 'complex' ? 'complex' : 'xy' });
 const items = g.setExpressions(spec.exprs.map((src, i) => ({ src, color: COLORS[i % COLORS.length] })));
-if (spec.view && g.setView) g.setView({ xmin: spec.view[0], xmax: spec.view[1], ymin: spec.view[2], ymax: spec.view[3] });
+if (spec.view && g.setView) g.setView({ xmin: spec.view[0], xmax: spec.view[1], ymin: spec.view[2], ymax: spec.view[3], free: !!spec.free_aspect });
 window.RESULT = { errors: (items || []).map((it, i) => it.error ? `${i + 1}行目「${spec.exprs[i]}」：${it.error}` : null).filter(Boolean),
   kinds: (items || []).map(it => it.a ? it.a.kind : null), params: g.paramNames ? g.paramNames() : [] };
 </script></body></html>

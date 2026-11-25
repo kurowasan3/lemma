@@ -463,6 +463,14 @@ try {
     await G.click('[data-fig-sheet]'); await G.waitForTimeout(600);
     ok(await G.locator('.gsheet canvas').count() === 1, '答えになる図：答え合わせのあとは開ける');
     await G.click('.gsheet-close'); await G.waitForTimeout(200);
+    // 図示の問題：解説の中に「答えの図」を描く（答え合わせのあと）。「答」の枠には答えだけ
+    await G.goto(U + '#today'); await G.reload(); await G.waitForTimeout(1000);
+    await G.evaluate("__lemma.open(['II-GEO-247'])"); await G.waitForTimeout(1000);
+    ok(await G.locator('.afig').count() === 0, '答えの図：答え合わせの前は出ない');
+    await G.locator('#conf button').nth(1).click();
+    await G.click('#reveal'); await G.waitForTimeout(800);
+    ok(await G.locator('.afig .afig-host canvas').count() === 1, '答えの図：答え合わせのあと解説の中に描く');
+    ok((await G.locator('.ansrow').last().innerText()).replace(/\s/g, '').length < 20, '「答」の枠には答えだけ（途中の計算は入れない）');
     ok(G.errors.length === 0, `ページのエラーなし ${G.errors}`);
     await G.evaluate(() => { const s = JSON.parse(localStorage.getItem('lemma.v2')); s.graphMode = '2d'; localStorage.setItem('lemma.v2', JSON.stringify(s)); });
   }

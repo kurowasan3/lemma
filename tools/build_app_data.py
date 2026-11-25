@@ -5,7 +5,7 @@
 
 出力の形は v0.6 までと同じ（アプリは今の catalog.js のまま読める）。足したもの：
   f-*.json の "fg"（問題の図。{m: モード, e: [式], a: 答え合わせのあとか, s: manual|auto}）
-  f-*.json の "af"（解説の中に描く答えの図の配列。[{m: モード, e: [式], v: [xmin, xmax, ymin, ymax], n: 一言, t: 見出し}]）
+  f-*.json の "af"（解説の中に描く答えの図の配列。[{m: モード, e: [式], v: [xmin, xmax, ymin, ymax], n: 一言, t: 見出し, f: 縦横の縮尺を別にするか}]）
   f-*.json の "ch"（選択式の選択肢。content/choices.json から。tools/make_choices.mjs で作る）
   index.json の "format"（データ形式の版）・"dataVersion"（中身から計算する版）・"builtinUnits"（内蔵問題の単元→分野）
   f-*.json の "_meta": {"dataVersion"}（一部のファイルだけ古いときに気づくため）
@@ -211,7 +211,7 @@ def build(content=ROOT / 'content', out=ROOT / 'data'):
         afgs = p.get('answer_figures')
         if afgs:
             b['af'] = [{'m': f['mode'], 'e': f['exprs'], **({'v': f['view']} if f.get('view') else {}), **({'n': f['note']} if f.get('note') else {}),
-                        **({'t': f['title']} if f.get('title') else {})} for f in afgs]
+                        **({'t': f['title']} if f.get('title') else {}), **({'f': 1} if f.get('free_aspect') else {})} for f in afgs]
         # 頻出度：管理表の「頻出度」列、なければ判定済みのもの（問題文が同じときだけ）。2（中）は書かない
         v = p.get('value')
         if not v:

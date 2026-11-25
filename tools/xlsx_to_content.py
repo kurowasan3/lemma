@@ -142,12 +142,13 @@ def parse_answer_figures(raw):
       見出し：(2) の領域 D（図の上に出す。省略すると「答えの図」）
       モード：平面／複素数平面／空間（省略すると平面）
       範囲：x -3..3, y -2..4（表示する範囲。省略するとアプリの既定）
+      縦横比：自由（縦と横の縮尺を別にして，範囲をちょうど画面に合わせる。細長い図形のとき。省略すると縦横同じ）
       説明：図の下に添える一言（境界を含むか など。$…$ の数式も書ける）"""
     if raw is None or not str(raw).strip():
         return None
     figs = []
     for block in re.split(r'\n\s*-{3,}\s*(?:\n|$)', str(raw).replace('\r\n', '\n')):
-        mode, view, note, title, exprs = '2d', None, None, None, []
+        mode, view, note, title, free, exprs = '2d', None, None, None, False, []
         for line in block.split('\n'):
             t = line.strip()
             if not t:
@@ -172,6 +173,10 @@ def parse_answer_figures(raw):
                     raise ImportFailure(f'「答えの図」の範囲「{m.group(1)}」が読めません（例：範囲：x -3..3, y -2..4）')
                 view = [float(mx.group(1)), float(mx.group(2)), float(my.group(1)), float(my.group(2))]
                 continue
+            m = re.match(r'^(?:縦横比|aspect)\s*[:：]\s*(.+)$', t)
+            if m:
+                free = m.group(1).strip() in ('自由', 'free')
+                continue
             m = re.match(r'^(?:説明|note)\s*[:：]\s*(.+)$', t)
             if m:
                 note = m.group(1).strip()
@@ -184,6 +189,8 @@ def parse_answer_figures(raw):
             fig['title'] = title
         if view:
             fig['view'] = [int(v) if v == int(v) else v for v in view]
+            if free:
+                fig['free_aspect'] = True
         if note:
             fig['note'] = note
         figs.append(fig)

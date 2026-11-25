@@ -364,6 +364,10 @@
           "title": {
             "type": "string",
             "description": "図の上に出す見出し（省略すると「答えの図」）"
+          },
+          "free_aspect": {
+            "type": "boolean",
+            "description": "縦と横の縮尺を別にして，範囲をちょうど画面に合わせる（view があるときだけ）"
           }
         }
       }
