@@ -2,7 +2,7 @@
 import { parse, toTeX } from './parser.js';
 import { parseSpec, checkField } from './answer.js';
 
-export const FILE_VERSION = '0.29.3';
+export const FILE_VERSION = '0.30.0';
 
 // ---------------------------------------------------------------- 乱数・分数
 const ri = (a, b) => a + Math.floor(Math.random() * (b - a + 1));
@@ -326,7 +326,12 @@ function runDrill(view, ctx, topic) {
         <div class="btn-row"><button class="btn" id="dagain">もう一度</button><button class="btn primary" id="dhome">計算トップへ</button></div>
       </div>`;
     ctx.setImmersive(false);
-    ctx.birdSay(ok === n ? '全問正解！ 計算が安定してきました。' : ok >= n * 0.7 ? 'いい調子です。間違えた形を、次はゆっくり確かめよう。' : '計算はまず正確さから。符号と係数を1つずつ確認しよう。', { sound: false });
+    const pick = (a) => a[Math.floor(Math.random() * a.length)];
+    ctx.birdSay(pick(ok === n
+      ? ['全問正解！ 計算が安定してきました。', 'パーフェクト！ 手が覚えてきましたね。', '全問正解です。次は時間を少し縮めてみよう。']
+      : ok >= n * 0.7
+        ? ['いい調子です。間違えた形を、次はゆっくり確かめよう。', 'あと少しで全問正解！ 間違えた1問を見直そう。', 'だいぶ安定してきました。ミスの形をメモしておくと減らせます。']
+        : ['計算はまず正確さから。符号と係数を1つずつ確認しよう。', '焦らなくて大丈夫。途中式を1行ずつ書くとミスが減ります。', 'ゆっくりでいいので、まずは全部合わせることを目指そう。']), { sound: false });
     view.querySelector('#dagain').addEventListener('click', () => runDrill(view, ctx, topic));
     view.querySelector('#dhome').addEventListener('click', () => renderDrillHome(view, ctx));
   }

@@ -160,6 +160,15 @@ ok((r1[0].tg || []).includes('数学的帰納法'), 'タグが一致する問題
 const r3 = await CAT.searchProblems('漸化式 確率', { levels: [0, 1, 2] });
 ok(r3.length > 0 && r3.every(e => e.lv <= 2), `複数語・難易度の絞り込み（${r3.length}問）`);
 ok((await CAT.searchProblems('')).length === 0, '空の検索は0件');
+// 問題番号で探す（表記ゆれ：ハイフン・大文字小文字・全角）
+for (const q of ['III-DIF-374', 'iii-dif-374', 'IIIDIF374', 'ＩＩＩ－ＤＩＦ－３７４']) {
+  const r = await CAT.searchProblems(q);
+  ok(r.length >= 1 && r[0].id === 'III-DIF-374', `問題番号「${q}」で III-DIF-374 が先頭（${r.length}問）`);
+}
+const rp = await CAT.searchProblems('DIF-374');
+ok(rp.length >= 1 && rp.every(e => e.id.includes('DIF-374')) && rp[0].id.endsWith('DIF-374'), `問題番号の一部「DIF-374」で探せる（${rp.map(e => e.id).join(', ')}）`);
+const rq = await CAT.searchProblems('III-DIF-374 微分');
+ok(rq.length === 1 && rq[0].id === 'III-DIF-374' || rq.length === 0, '問題番号と語を組み合わせても動く');
 const cols = await CAT.loadCollections();
 ok(cols.length >= 1 && cols.every(c => c.items.every(it => CAT.entryById.has(it.id))), `問題セット ${cols.length}件、すべての問題がある`);
 const pc = CAT.pickCollection({ problems: { [cols[0].items[0].id]: { last: 1, n: 1 } } }, cols[0], 5);

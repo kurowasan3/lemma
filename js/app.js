@@ -26,7 +26,7 @@ import {
 } from './catalog.js';
 import { techMastery, techCandidates, masterChecklist, makeCtx, transferTargets, transferWhy, MASTER, STATUS, TRANSFER, TRANSFER_KIND } from './mastery.js';
 
-const VERSION = '0.29.3';
+const VERSION = '0.30.0';
 const KEY = 'lemma.v2';
 let sync = null, syncApplying = false, syncStatus = null;   // アカウントと同期（initSync で用意）
 const $ = (sel, el = document) => el.querySelector(sel);
@@ -710,7 +710,7 @@ function renderToday() {
       </div>
       <p class="sub" style="margin:12px 2px 0">解いた問題 ${solved(all)} / ${all.length}（選んだ難易度）</p>
       <form class="search" id="sform" role="search">
-        <input type="search" id="sq" placeholder="問題を探す（例：漸化式 確率、回転体）" enterkeyhint="search" autocomplete="off">
+        <input type="search" id="sq" placeholder="問題を探す（例：漸化式 確率、回転体、III-DIF-374）" enterkeyhint="search" autocomplete="off">
         <button class="btn" type="submit">検索</button>
       </form>
       <div id="sets"></div>
@@ -811,7 +811,7 @@ function resRow(e, note = '') {
   const f = fieldByKey[e.f] || {};
   return `<button class="res-row" data-pid="${esc(e.id)}">
         <span class="nm">${e.th || esc(e.id)}${note ? `<span class="muted small note">${esc(note)}</span>` : ''}</span>
-        <span class="muted small">${esc(f.subject || '')}・${esc(f.name || '')}　<span class="chip lv${e.lv}">${LEVELS[e.lv]}</span>${valueChip(e)}${state.problems[e.id] ? '　✓ 解いた' : ''}${(e.tg || []).length ? '　' + e.tg.slice(0, 3).map(esc).join('・') : ''}</span>
+        <span class="muted small"><span class="rid">${esc(e.id)}</span>　${esc(f.subject || '')}・${esc(f.name || '')}　<span class="chip lv${e.lv}">${LEVELS[e.lv]}</span>${valueChip(e)}${state.problems[e.id] ? '　✓ 解いた' : ''}${(e.tg || []).length ? '　' + e.tg.slice(0, 3).map(esc).join('・') : ''}</span>
       </button>`;
 }
 function openIds(ids) {
@@ -847,7 +847,7 @@ async function renderSearch(q) {
     <div class="kicker">問題を探す</div>
     <h1>検索</h1>
     <form class="search" id="sform" role="search">
-      <input type="search" id="sq" value="${esc(q)}" placeholder="例：漸化式 確率、回転体、チェビシェフ" enterkeyhint="search" autocomplete="off">
+      <input type="search" id="sq" value="${esc(q)}" placeholder="例：漸化式 確率、回転体、問題番号 III-DIF-374" enterkeyhint="search" autocomplete="off">
       <button class="btn" type="submit">検索</button>
     </form>
     ${bar.html}
@@ -1847,7 +1847,8 @@ function confNoteHTML(sg, conf, key) {
 }
 // 解法の想起（任意の1タップ）：主な解法がある問題で、解法を知らされていない演習のときだけ聞く。
 // 答えは直前の記録に r（1=すぐ浮かんだ 2=考えるうちに気づいた 3=浮かばなかった・別の方法で解いた）として残し、解法の習熟の判定に使う
-const RECALL = [[1, 'すぐ浮かんだ'], [2, '考えるうちに気づいた'], [3, '浮かばなかった・別の方法']];
+// 画面では左から「浮かばなかった → 考えるうちに気づいた → すぐ浮かんだ」の順に並べる（記録の値 r は変えない）
+const RECALL = [[3, '浮かばなかった・別の方法'], [2, '考えるうちに気づいた'], [1, 'すぐ浮かんだ']];
 function recallMain(pid) {
   if (!TECH || (session && session.cfg && session.cfg.tech)) return null;
   const m = (TECH.byProblem.get(pid) || []).find(x => x.main);
