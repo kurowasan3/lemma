@@ -1555,13 +1555,13 @@
    "tex": "平面上の2点 P$(t,0)$，Q$(0,2)$ に対して，P を通り PQ に垂直な直線を $l$ とする．$t$ が $0\\leqq t\\leqq2$ の範囲を動くとき，$l$ が通過する領域を求めて図示せよ．"
   },
   "answer": {
-   "tex": "解答参照（$y\\leqq\\frac{x^2}8$ などの区分）"
+   "tex": "$x<0$ で $x-2\\leqq y\\leqq0$，$0\\leqq x\\leqq2$ で $x-2\\leqq y\\leqq\\dfrac{x^2}8$，$2\\leqq x\\leqq4$ で $0\\leqq y\\leqq\\dfrac{x^2}8$，$x>4$ で $0\\leqq y\\leqq x-2$ の部分（境界を含む）"
   },
   "solutions": [
    {
     "id": "main",
     "kind": "main",
-    "tex": "$\\overrightarrow{\\mathrm{PQ}}=(-t,2)$ に垂直：$-t(x-t)+2y=0$，$y=\\dfrac{tx-t^2}2$．\n$x$ を固定して $t\\in[0,2]$ での値域を求める．$\\varphi(t)=\\frac{tx-t^2}2$ は上に凸，頂点 $t=\\frac x2$．\n最大：$x<0$ で $0$，$0\\leqq x\\leqq4$ で $\\frac{x^2}8$，$x>4$ で $x-2$．最小：$\\min(\\varphi(0),\\varphi(2))=\\min(0,x-2)$．\n領域：$x<0$ で $x-2\\leqq y\\leqq0$，$0\\leqq x\\leqq2$ で $x-2\\leqq y\\leqq\\frac{x^2}8$，$2\\leqq x\\leqq4$ で $0\\leqq y\\leqq\\frac{x^2}8$，$x>4$ で $0\\leqq y\\leqq x-2$．"
+    "tex": "$\\overrightarrow{\\mathrm{PQ}}=(-t,2)$ に垂直：$-t(x-t)+2y=0$，$y=\\dfrac{tx-t^2}2$．\n$x$ を固定して $t\\in[0,2]$ での値域を求める．$\\varphi(t)=\\frac{tx-t^2}2$ は上に凸，頂点 $t=\\frac x2$．\n最大：$x<0$ で $0$，$0\\leqq x\\leqq4$ で $\\frac{x^2}8$，$x>4$ で $x-2$．最小：$\\min(\\varphi(0),\\varphi(2))=\\min(0,x-2)$．\nよって求める領域は \\textbf{$x<0$ で $x-2\\leqq y\\leqq0$，$0\\leqq x\\leqq2$ で $x-2\\leqq y\\leqq\\frac{x^2}8$，$2\\leqq x\\leqq4$ で $0\\leqq y\\leqq\\frac{x^2}8$，$x>4$ で $0\\leqq y\\leqq x-2$ の部分（境界を含む）}．"
    }
   ],
   "idea": {
@@ -4850,7 +4850,7 @@
    {
     "id": "main",
     "kind": "main",
-    "tex": "$x$ を固定し $y=s^2+(x-s)^2$，$s\\in[\\max(0,x-1),\\min(1,x)]$．最小は $s=\\frac x2$ で $\\frac{x^2}2$．\n最大は端点：$0\\leqq x\\leqq1$ で $x^2$，$1\\leqq x\\leqq2$ で $1+(x-1)^2$．\n\\textbf{$\\dfrac{x^2}2\\leqq y\\leqq x^2$（$0\\leqq x\\leqq1$），$\\dfrac{x^2}2\\leqq y\\leqq(x-1)^2+1$（$1\\leqq x\\leqq2$）}．\n面積 $\\frac13+\\frac43-\\frac43=\\boldsymbol{\\dfrac13}$．"
+    "tex": "$x$ を固定し $y=s^2+(x-s)^2$，$s\\in[\\max(0,x-1),\\min(1,x)]$．最小は $s=\\frac x2$ で $\\frac{x^2}2$．\n最大は端点：$0\\leqq x\\leqq1$ で $x^2$，$1\\leqq x\\leqq2$ で $1+(x-1)^2$．\n\\textbf{$\\dfrac{x^2}2\\leqq y\\leqq x^2$（$0\\leqq x\\leqq1$），$\\dfrac{x^2}2\\leqq y\\leqq(x-1)^2+1$（$1\\leqq x\\leqq2$）}．\n面積は $\\displaystyle\\int_0^1\\left(x^2-\\frac{x^2}2\\right)dx+\\int_1^2\\left\\{(x-1)^2+1-\\frac{x^2}2\\right\\}dx=\\frac16+\\left(\\frac13+1-\\frac76\\right)=\\frac16+\\frac16=\\boldsymbol{\\dfrac13}$．"
    }
   ],
   "idea": {
@@ -7606,13 +7606,13 @@
    "tex": "曲線 $C$ を，原点を中心とする半径2の円のうち偏角が $0$ 以上 $\\frac{2\\pi}3$ 以下の弧とする．点 P，Q は $C$ 上にあり，線分 PQ の中点を R とする（P と Q が一致するときは R$=$P とする）．\n\\begin{enumerate}\n  \\item P が弧の中点 $\\left(1,\\sqrt3\\right)$ に固定され，Q が $C$ 上を動くとき，R の軌跡を求めよ．\n  \\item P，Q が $C$ 上を自由に動くとき，R の動く範囲を図示し，その面積を求めよ．\n\\end{enumerate}"
   },
   "answer": {
-   "tex": "(1) 点 $\\left(\\dfrac12,\\dfrac{\\sqrt3}2\\right)$ を中心とする半径1の円のうち，$\\left(\\dfrac32,\\dfrac{\\sqrt3}2\\right)$ から $(0,\\sqrt3)$ までの弧　(2) $\\dfrac{2\\pi}3-\\dfrac{\\sqrt3}2$"
+   "tex": "(1) 点 $\\left(\\dfrac12,\\dfrac{\\sqrt3}2\\right)$ を中心とする半径1の円のうち，$\\left(\\dfrac32,\\dfrac{\\sqrt3}2\\right)$ から $(0,\\sqrt3)$ までの弧　(2) 扇形 $x^2+y^2\\leqq4$，$0\\leqq\\arg\\leqq\\frac{2\\pi}3$ から，2円 $(x-1)^2+y^2<1$，$\\left(x+\\frac12\\right)^2+\\left(y-\\frac{\\sqrt3}2\\right)^2<1$ の内部と原点を除いた部分，面積 $\\dfrac{2\\pi}3-\\dfrac{\\sqrt3}2$"
   },
   "solutions": [
    {
     "id": "main",
     "kind": "main",
-    "tex": "P$(2\\cos\\alpha,2\\sin\\alpha)$，Q$(2\\cos\\beta,2\\sin\\beta)$（$0\\leqq\\alpha,\\beta\\leqq\\frac{2\\pi}3$）とおくと $\\mathrm R=(\\cos\\alpha+\\cos\\beta,\\ \\sin\\alpha+\\sin\\beta)$．和積の公式により，$\\theta=\\frac{\\alpha+\\beta}2$，$\\delta=\\frac{|\\alpha-\\beta|}2$ として $\\mathrm R=2\\cos\\delta\\,(\\cos\\theta,\\sin\\theta)$．\n\n(1) $\\mathrm R=\\left(\\frac12+\\cos\\beta,\\ \\frac{\\sqrt3}2+\\sin\\beta\\right)$（$0\\leqq\\beta\\leqq\\frac{2\\pi}3$）．\\textbf{点 $\\left(\\frac12,\\frac{\\sqrt3}2\\right)$ を中心とする半径1の円のうち，$\\left(\\frac32,\\frac{\\sqrt3}2\\right)$ から $(0,\\sqrt3)$ までの弧（中心から見て偏角 $0$ 以上 $\\frac{2\\pi}3$ 以下の部分）}．\n\n(2) $\\theta\\in\\left[0,\\frac{2\\pi}3\\right]$ を固定すると，$\\alpha,\\beta=\\theta\\pm\\delta$ が $\\left[0,\\frac{2\\pi}3\\right]$ に入る条件は $0\\leqq\\delta\\leqq\\mu=\\min\\left(\\theta,\\frac{2\\pi}3-\\theta\\right)$（$\\leqq\\frac\\pi3$）で，$\\delta$ がこの範囲を動くと原点からの距離 $2\\cos\\delta$ は $2\\cos\\mu$ から $2$ まで連続的に変わる．よって R の範囲は，扇形 $x^2+y^2\\leqq4$，$0\\leqq\\theta\\leqq\\frac{2\\pi}3$（$\\theta$ は偏角）のうち，原点からの距離 $r$ が $r\\geqq2\\cos\\mu$ をみたす部分．\n$0\\leqq\\theta\\leqq\\frac\\pi3$ での $r<2\\cos\\theta$ は $r^2<2r\\cos\\theta$，すなわち円 $K_1:(x-1)^2+y^2<1$ の内部を表し，$\\frac\\pi3\\leqq\\theta\\leqq\\frac{2\\pi}3$ での $r<2\\cos\\left(\\frac{2\\pi}3-\\theta\\right)$ は $x^2+y^2<-x+\\sqrt3y$，すなわち円 $K_2:\\left(x+\\frac12\\right)^2+\\left(y-\\frac{\\sqrt3}2\\right)^2<1$ の内部を表す．また $\\theta\\geqq\\frac\\pi3$ では $2\\cos\\theta\\leqq2\\cos\\left(\\frac{2\\pi}3-\\theta\\right)$ なので $K_1$ の点も除かれ，$\\theta\\leqq\\frac\\pi3$ の $K_2$ の点も同様．\n\\textbf{扇形 $x^2+y^2\\leqq4$，$0\\leqq\\arg\\leqq\\frac{2\\pi}3$ から，2円 $(x-1)^2+y^2<1$，$\\left(x+\\frac12\\right)^2+\\left(y-\\frac{\\sqrt3}2\\right)^2<1$ の内部を除いた部分}．\n面積：扇形は $\\frac12\\cdot2^2\\cdot\\frac{2\\pi}3=\\frac{4\\pi}3$．除く部分のうち $0\\leqq\\theta\\leqq\\frac\\pi3$ のものは，$K_1$ の上半分（面積 $\\frac\\pi2$）から，直線 $y=\\sqrt3x$ 上の弦（原点〜$\\left(\\frac12,\\frac{\\sqrt3}2\\right)$）と弧で囲まれた弓形（$K_1$ の中心 $(1,0)$ から見た中心角 $\\frac\\pi3$，面積 $\\frac12\\left(\\frac\\pi3-\\frac{\\sqrt3}2\\right)$）を除いたもので，$\\frac\\pi2-\\frac\\pi6+\\frac{\\sqrt3}4=\\frac\\pi3+\\frac{\\sqrt3}4$．$\\frac\\pi3\\leqq\\theta\\leqq\\frac{2\\pi}3$ の部分は直線 $\\theta=\\frac\\pi3$ に関してこれと対称で，面積は同じ．\n求める面積は $\\frac{4\\pi}3-2\\left(\\frac\\pi3+\\frac{\\sqrt3}4\\right)=\\boldsymbol{\\dfrac{2\\pi}3-\\dfrac{\\sqrt3}2}$．"
+    "tex": "P$(2\\cos\\alpha,2\\sin\\alpha)$，Q$(2\\cos\\beta,2\\sin\\beta)$（$0\\leqq\\alpha,\\beta\\leqq\\frac{2\\pi}3$）とおくと $\\mathrm R=(\\cos\\alpha+\\cos\\beta,\\ \\sin\\alpha+\\sin\\beta)$．和積の公式により，$\\theta=\\frac{\\alpha+\\beta}2$，$\\delta=\\frac{|\\alpha-\\beta|}2$ として $\\mathrm R=2\\cos\\delta\\,(\\cos\\theta,\\sin\\theta)$．\n\n(1) $\\mathrm R=\\left(\\frac12+\\cos\\beta,\\ \\frac{\\sqrt3}2+\\sin\\beta\\right)$（$0\\leqq\\beta\\leqq\\frac{2\\pi}3$）．\\textbf{点 $\\left(\\frac12,\\frac{\\sqrt3}2\\right)$ を中心とする半径1の円のうち，$\\left(\\frac32,\\frac{\\sqrt3}2\\right)$ から $(0,\\sqrt3)$ までの弧（中心から見て偏角 $0$ 以上 $\\frac{2\\pi}3$ 以下の部分）}．\n\n(2) $\\theta\\in\\left[0,\\frac{2\\pi}3\\right]$ を固定すると，$\\alpha,\\beta=\\theta\\pm\\delta$ が $\\left[0,\\frac{2\\pi}3\\right]$ に入る条件は $0\\leqq\\delta\\leqq\\mu=\\min\\left(\\theta,\\frac{2\\pi}3-\\theta\\right)$（$\\leqq\\frac\\pi3$）で，$\\delta$ がこの範囲を動くと原点からの距離 $2\\cos\\delta$ は $2\\cos\\mu$ から $2$ まで連続的に変わる．よって R の範囲は，扇形 $x^2+y^2\\leqq4$，$0\\leqq\\theta\\leqq\\frac{2\\pi}3$（$\\theta$ は偏角）のうち，原点からの距離 $r$ が $r\\geqq2\\cos\\mu$ をみたす部分．\n$0\\leqq\\theta\\leqq\\frac\\pi3$ での $r<2\\cos\\theta$ は $r^2<2r\\cos\\theta$，すなわち円 $K_1:(x-1)^2+y^2<1$ の内部を表し，$\\frac\\pi3\\leqq\\theta\\leqq\\frac{2\\pi}3$ での $r<2\\cos\\left(\\frac{2\\pi}3-\\theta\\right)$ は $x^2+y^2<-x+\\sqrt3y$，すなわち円 $K_2:\\left(x+\\frac12\\right)^2+\\left(y-\\frac{\\sqrt3}2\\right)^2<1$ の内部を表す．また $\\theta\\geqq\\frac\\pi3$ では $2\\cos\\theta\\leqq2\\cos\\left(\\frac{2\\pi}3-\\theta\\right)$ なので $K_1$ の点も除かれ，$\\theta\\leqq\\frac\\pi3$ の $K_2$ の点も同様．\nR は原点にはならない（$2\\cos\\delta\\geqq2\\cos\\frac\\pi3=1$）．よって，R の動く範囲は \\textbf{扇形 $x^2+y^2\\leqq4$，$0\\leqq\\arg\\leqq\\frac{2\\pi}3$ から，2円 $(x-1)^2+y^2<1$，$\\left(x+\\frac12\\right)^2+\\left(y-\\frac{\\sqrt3}2\\right)^2<1$ の内部と原点を除いた部分}．\n面積：扇形は $\\frac12\\cdot2^2\\cdot\\frac{2\\pi}3=\\frac{4\\pi}3$．除く部分のうち $0\\leqq\\theta\\leqq\\frac\\pi3$ のものは，$K_1$ の上半分（面積 $\\frac\\pi2$）から，直線 $y=\\sqrt3x$ 上の弦（原点〜$\\left(\\frac12,\\frac{\\sqrt3}2\\right)$）と弧で囲まれた弓形（$K_1$ の中心 $(1,0)$ から見た中心角 $\\frac\\pi3$，面積 $\\frac12\\left(\\frac\\pi3-\\frac{\\sqrt3}2\\right)$）を除いたもので，$\\frac\\pi2-\\frac\\pi6+\\frac{\\sqrt3}4=\\frac\\pi3+\\frac{\\sqrt3}4$．$\\frac\\pi3\\leqq\\theta\\leqq\\frac{2\\pi}3$ の部分は直線 $\\theta=\\frac\\pi3$ に関してこれと対称で，面積は同じ．\n求める面積は $\\frac{4\\pi}3-2\\left(\\frac\\pi3+\\frac{\\sqrt3}4\\right)=\\boldsymbol{\\dfrac{2\\pi}3-\\dfrac{\\sqrt3}2}$．"
    }
   ],
   "idea": {
@@ -7824,7 +7824,7 @@
    "tex": "実数 $x,y$ が $x^2+xy+y^2\\leqq3$ をみたしながら変化する．\n\\begin{enumerate}\n  \\item $s=x+y$，$t=xy$ とするとき，点 $(s,t)$ の動く範囲を $st$ 平面上に図示し，その面積を求めよ．\n  \\item 負でない定数 $m$ に対して，$xy+m(x+y)$ の最大値と最小値を $m$ で表せ．\n\\end{enumerate}"
   },
   "answer": {
-   "tex": "(1) $8$　(2) 最大値 $1+2m$，最小値 $-\\dfrac{m^2}4-3$（$0\\leqq m\\leqq4$），$1-2m$（$m>4$）"
+   "tex": "(1) $s^2-3\\leqq t\\leqq\\dfrac{s^2}4$（$-2\\leqq s\\leqq2$）の部分（境界を含む），面積 $8$　(2) 最大値 $1+2m$，最小値 $-\\dfrac{m^2}4-3$（$0\\leqq m\\leqq4$），$1-2m$（$m>4$）"
   },
   "solutions": [
    {
@@ -10605,7 +10605,7 @@
    {
     "id": "main",
     "kind": "main",
-    "tex": "$a+b+c=0$ より $b=-(a+c)$ で\n\\[\nf(x)=ax^2-(a+c)x+c=(x-1)(ax-c).\n\\]\n\\textbf{条件の言い換え}．$f(1)=0$．$0\\leqq x<1$ では $x-1<0$ なので，$f(x)\\leqq0\\iff ax-c\\geqq0$．ここで\n\\[\nax-c=(1-x)(-c)+x(a-c).\n\\]\n$c\\leqq0$ かつ $a-c\\geqq0$ なら，$0\\leqq x<1$ で右辺は $0$ 以上．逆に，$x=0$ とすると $-c\\geqq0$ が必要．また $a-c<0$ とすると，$x\\to1-0$ で右辺 $\\to a-c<0$ となり，1 に十分近い $x\\ (<1)$ で $ax-c<0$ となって不適．よって条件は\n\\[\nc\\leqq0,\\qquad a\\geqq c,\\qquad a\\neq0.\n\\]\n\n\\textbf{対応}．$X=f(-1)=(-2)(-a-c)=2a+2c$，$Y=f(2)=2a-c$．これを解くと\n\\[\nc=\\frac{X-Y}{3},\\qquad a=\\frac{X+2Y}{6}\n\\]\nで，$(a,c)$ と $(X,Y)$ は1対1に対応する．したがって $E$ は\n\\[\nc\\leqq0\\iff Y\\geqq X,\\qquad a\\geqq c\\iff X+2Y\\geqq2X-2Y\\iff 4Y\\geqq X,\\qquad a\\neq0\\iff X+2Y\\neq0\n\\]\nをすべてみたす $(X,Y)$ 全体である．直線 $X+2Y=0$ 上の点 $(-2t,t)$ は，$t\\geqq0$ のとき $Y\\geqq X$，$4Y\\geqq X$ をみたし，$t<0$ のときみたさない．よって\n\\[\n\\boldsymbol{E:\\ Y\\geqq X\\ \\text{かつ}\\ 4Y\\geqq X\\ \\text{の表す領域から，半直線}\\ X+2Y=0\\ (Y\\geqq0)\\ \\text{を除いたもの}}\n\\]\nである．図示すると，原点を頂点とし半直線 $Y=X\\ (X\\leqq0)$ と半直線 $Y=\\frac X4\\ (X\\geqq0)$ を境界とする（境界を含む）上側の角領域から，その内部を通る半直線 $Y=-\\frac X2\\ (X\\leqq0)$ を除いたものになる（原点も除かれる）．"
+    "tex": "$a+b+c=0$ より $b=-(a+c)$ で\n\\[\nf(x)=ax^2-(a+c)x+c=(x-1)(ax-c).\n\\]\n\\textbf{条件の言い換え}．$f(1)=0$．$0\\leqq x<1$ では $x-1<0$ なので，$f(x)\\leqq0\\iff ax-c\\geqq0$．ここで\n\\[\nax-c=(1-x)(-c)+x(a-c).\n\\]\n$c\\leqq0$ かつ $a-c\\geqq0$ なら，$0\\leqq x<1$ で右辺は $0$ 以上．逆に，$x=0$ とすると $-c\\geqq0$ が必要．また $a-c<0$ とすると，$x\\to1-0$ で右辺 $\\to a-c<0$ となり，1 に十分近い $x\\ (<1)$ で $ax-c<0$ となって不適．よって条件は\n\\[\nc\\leqq0,\\qquad a\\geqq c,\\qquad a\\neq0.\n\\]\n\n\\textbf{対応}．$X=f(-1)=(-2)(-a-c)=2a+2c$，$Y=f(2)=2a-c$．これを解くと\n\\[\nc=\\frac{X-Y}{3},\\qquad a=\\frac{X+2Y}{6}\n\\]\nで，$(a,c)$ と $(X,Y)$ は1対1に対応する．したがって $E$ は\n\\[\nc\\leqq0\\iff Y\\geqq X,\\qquad a\\geqq c\\iff X+2Y\\geqq2X-2Y\\iff 4Y\\geqq X,\\qquad a\\neq0\\iff X+2Y\\neq0\n\\]\nをすべてみたす $(X,Y)$ 全体である．直線 $X+2Y=0$ 上の点 $(-2t,t)$ は，$t\\geqq0$ のとき $Y\\geqq X$，$4Y\\geqq X$ をみたし，$t<0$ のときみたさない．よって\n\\[\n\\boldsymbol{E:\\ Y\\geqq X\\ \\text{かつ}\\ 4Y\\geqq X\\ \\text{の表す領域から，半直線}\\ X+2Y=0\\ (Y\\geqq0)\\ \\text{を除いたもの}}\n\\]\nである．図示すると，原点を頂点とし半直線 $Y=X\\ (X\\geqq0)$ と半直線 $Y=\\frac X4\\ (X\\leqq0)$ を境界とする（境界を含む）上側の角領域から，その内部を通る半直線 $Y=-\\frac X2\\ (X\\leqq0)$ を除いたものになる（原点も除かれる）．"
    }
   ],
   "idea": {
