@@ -1,0 +1,26 @@
+problem_id,subproblem,independent_answer,stored_answer,stored_explanation_excerpt,final_answer_match,explanation_category,mathematical_correctness,logical_validity,calculation_accuracy,condition_coverage,boundary_case_coverage,reproducibility,numeric_dependence,confidence,issue_description,correction_proposal,human_review_required
+I-TRI-138,(1),証明（⇔ a^2+c^2=2b^2）,証明,3式を2乗して加えると…k^2=3/4．これを BM^2=k^2b^2 に代入して…a^2+c^2=2b^2,該当なし（証明）,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+I-TRI-138,(2),証明（cos B>1/2）,証明,cos B=b^2/(2ac)．a≠c より 2ac<a^2+c^2=2b^2…cos B>1/2,該当なし（証明）,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+I-TRI-138,(3),"(7,13,17),(7,17,23),(17,25,31)","(7,13,17),(7,17,23),(17,25,31)",v^2=(b-u)(b+u)…(ア)v奇数 (イ)v偶数…t>(2+√3)s,一致,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+II-CAL-307,(1),3√5≦S<9,3√5≦S<9,(ii) 0<k<5: S=2γ-3…3√5<S<7；(iii) -27<k<0: S=3-2α…3√5<S<9,一致,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+II-CAL-307,(2),k=-95/8,k=-95/8,3-2α=8 より α=-5/2…k=f(-5/2)=-95/8,一致,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+II-CAL-309,(1),"k=-2,5","k=-2,5",S(-2)=5+3r(-2)=5，S(2)=3，S(4)=0+3=3，S(5)=3l(5)+4=4,一致,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+II-CAL-309,(2),22組，a+bの最大値29,22組，最大値29,M<-2 は不適…-2<M<2：S(M)=9，S(2)=9…12<a(b-1)^2<28,一致,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+II-CAL-310,(1),証明,証明,"補題（d=4）より4で割った余りが0,1,2,3の整数それぞれにfの解がある",該当なし（証明）,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+II-CAL-310,(2),f=(x-n)(x-n-1)(x-n-2)（n整数）,f=(x-c+1)(x-c)(x-c-1)（c整数）,q-p≧3と仮定…r-p=4なら…k=p+3で矛盾,同値（表記差）,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+II-CAL-310,(3),f(8)=336,f(8)=336,(1/2-c)^2=1/4，c=0 または 1…c=1 のとき適する,一致,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+II-CAL-311,(1),「a=0かつb<0」または「a≠0かつb=a^2/4」,同左,"N(t)=2|Z|-r(t)…0が真ん中…0が端のとき2解はu,2u",一致,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+II-CAL-311,(2),"a≠0,b≠0,32b<9a^2,b≠a^2/4","9a^2>32b,a≠0,b≠0,b≠a^2/4",N(t)=5となるtがちょうど3つ ⇔ |Z|=3 かつ d1≠d2,一致,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+II-CAL-311,(3),"(±20/3,8),(±8/3,-6),(±28/3,24)","(±20/3,8),(±8/3,-6),(±28/3,24)","2(d1+d2)=8…{d1,d2}={1,3}…a=-4(r+s)/3，b=2rs",一致,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+II-CAL-312,(1),証明,証明,g(x)=g(x)/(x(x-2))·x(x-2)…lim g=R(0)·0=0,該当なし（証明）,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+II-CAL-312,(2),証明,証明,m≠t なら R(m)=L(m)…t が整数で t≠β のとき…和は 2k+1,該当なし（証明）,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+II-CAL-312,(3),f=2x^3-9x^2+10x，t=0，g(-3)=165,f=2x^3-9x^2+10x，t=0，g(-3)=165,条件は 3c(3-β)=3，c(β-1)=3．辺々加えて 2c=4,一致,C,OK,OK,問題あり,OK,OK,OK,なし,高,"t=0,β>0 の場合，3c(3-β)=3 と c(β-1)=3 を「辺々加えて 2c=4」としているが，そのまま加えると 9c-2cβ-c=6 であり 2c=4 にはならない．第1式を3で割って c(3-β)=1 としてから加える，という一段が抜けている（結論 c=2，β=5/2 は正しい）．他の場合分け（4通り），P・Q の決定，g(-3) の計算はすべて正しい．",「前者を3で割って c(3-β)=1．これと c(β-1)=3 を辺々加えて 2c=4」と書く。,いいえ
+II-EQ-268,(1),"(k,xyz)=(√2,-2√2),(-√2,2√2)",同左,①の両辺にyzを掛けると P+2z=kyz…(k^2-2)z=P+2k,一致,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+II-EQ-268,(2),k=√2，x=2√2cos(8π/9)，y=2√2cos(4π/9)，z=2√2cos(2π/9),k=√2，x=2√2cos160°，y=2√2cos80°，z=2√2cos40°,k=-√2 のとき…z+2/x>√6-1>0>-√2 となり③に反する,同値（表記差）,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+II-GEO-301,(1),"最小値289/5，(±34/5,17/5)","最小値289/5，(±34/5,17/5)",g(t)-g(5)=(t-5)(4-49/(5t))≧0,一致,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+II-GEO-301,(2),"証明；最小値61，(±6,5)","証明；最小値61，(±6,5)",a^2+b^2≧16p+4+(2p-9)^2=(2p-5)^2+60,一致,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+II-LOG-096,(1),証明,証明,(xy-1)(yz-1)(zx-1)=x^2y^2z^2-xy^2z-x^2yz-xyz^2+xy+yz+zx-1,該当なし（証明）,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+II-LOG-096,(2),証明；等号 a=b=c または b=c=d または(a=b かつ c=d),同左,xy=1⇔x=y=1⇔a=b=c…zx=1⇔「a=bかつc=d」,一致,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+II-LOG-096,(3),12個，最大値5/6,12個，最大値5/6,D=(r-p)(s-q)(qs-pr)/24…pとrを入れかえるとDの符号が逆,一致,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+II-TRI-186,(1),最小値 4k (k≧√2)，16/(k(4-k^2)) (0<k<√2),同左,"I_k={t>1, t≧4/k^2}…kt^2/(t-1)=k(v+1/v+2)",一致,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+II-TRI-186,(2),3/5≦cos A<√2/2,3/5≦cos A<√2/2,tan A=t/(t-1)…1<tan A≦4/3,一致,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ

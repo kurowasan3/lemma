@@ -1,0 +1,24 @@
+problem_id,subproblem,independent_answer,stored_answer,stored_explanation_excerpt,final_answer_match,explanation_category,mathematical_correctness,logical_validity,calculation_accuracy,condition_coverage,boundary_case_coverage,reproducibility,numeric_dependence,confidence,issue_description,correction_proposal,human_review_required
+II-TRI-187,(1),積は1/5（一定）,1/5,FC∥PD で △AFC∽△APD，FC=PD/3，tanα=FC/PC=(1/3)PD/PC；同様に tanβ=(3/5)PC/PD,一致,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+II-TRI-187,(2),cosθ0=-√5/3，PC=√70/7,cosθ0=-√5/3，PC=√70/7,tan(α+β)=(5/4)(t+1/(5t))≥√5/2…PC²(1+9/5)=4，PC²=10/7,一致,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+II-TRI-189,(1),"p=1,q=1","p=1,q=1",x=0 とおいて pq=1，x=π/8 とおいて (q²−p²)/2=0．逆にこの2式が成り立てば恒等的に cos4x,一致,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+II-TRI-189,(2),証明,証明,x=z とおくと cos4z=f(z)f(z+α)=0．x=z−α とおくと cos4(z−α)=f(z−α)f(z)=0,該当なし（証明）,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+II-TRI-189,(3),"α=π/4,π/2,3π/4,π","α=π/4,π/2,3π/4,π",α=π/2：f=1+√2sin2x；α=π：f=1+2√2|sin x|cos x，積は1−8sin²x cos²x=cos4x,一致,A,OK,OK,OK,OK,OK,OK,なし,高,連続な構成例を各αに与えており，独立解答（不連続を許す類ごとの構成）より具体的で優れている．4つの構成はすべて手計算・数値で確認済み．,,いいえ
+II-TRI-191,(1),証明,証明,d1+d2=2π−2t なので一方は π−t 以下…cos(a−t)=cos d1≧cos(π−t)=−cos t,該当なし（証明）,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+II-TRI-191,(2),証明,証明,cosθ=1/4…(1) を t=2θ，a=φ に用いる…M(φ)≧f(x0)≧1/4+7/8=9/8,該当なし（証明）,A,OK,OK,OK,OK,OK,OK,なし,高,M(φ) の存在（連続周期関数の最大値）は暗黙だが問題文で定義済みであり減点不要．,,いいえ
+II-TRI-191,(3),φ=π のみ,φ=π,(iii) 15s²−49(1+c)²=2(1+c)(−17−32c)>0 … M(φ)>9/8,一致,A,OK,OK,OK,OK,OK,OK,なし,高,"c の3区間 (1/8,1]，[−17/32,1/8]，(−1,−17/32) で M>9/8 を示す議論を各式とも検算（数値でも確認）．独立解答の連結性による議論とは別法だが正しい．",,いいえ
+III-DIF-349,全体,a≦1/2,a≦1/2,L'(x)=(1+x²)/(1+x)³>0…f''(x)≦((1−2a)+(2+2a)x)/(1−x)，δ=(2a−1)/(2a+2),一致,A,OK,OK,OK,OK,OK,OK,なし,高,a>1/2 の反例を δ まで具体化しており，独立解答の連続性による議論より明示的．数値でも f(δ)−2f(δ/2)<0 を確認．,,いいえ
+III-DIF-351,(1),証明,証明,s1+s2=2(x−t)²+2f(t)²+2{f(x)−f(t)}²+2 … x0=t … s1'(t)=2f(t)−2f'(t)=0,該当なし（証明）,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+III-DIF-351,(2),f(x)=e^x（(＊)をみたす）,f(x)=e^x,h(e^h−1)−B=1−e^h(1−h)≧0 … B²≦Ah² となり s1(x)−s1(t)≧0,一致,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+III-DIF-352,(1),証明,証明,h''(x)=−log x/(4x√x)．0<x<1 で h''>0 なので h' は 0<x≦1 で増加,該当なし（証明）,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+III-DIF-352,(2),証明,証明,h(t)≦f(x2)−f(x1)≦−h(1−t)…ψ(t)≦ψ(e^{-4})=4/e…−h(1−t)≦1−s=t≦t^{1/4},該当なし（証明）,A,OK,OK,OK,OK,OK,OK,なし,高,右端側の評価は (A) から t 以下に抑えており，独立解答の場合分け（t≧1/16 等）より簡潔．,,いいえ
+III-DIF-352,(3),4/e,4/e,x2=e^{-4}，x1→+0 で比→4e^{-2}/e^{-1}=4/e>C,一致,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+III-DIF-353,(1),"a=−3,b=1","a=−3,b=1",f'(0)=1+a=−2，f(0)=b=1,一致,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+III-DIF-353,(2),−2,−2,φ'_{-2}(x)=2{h'(−2+2x)−h'(−2+x)}+2D(x)>0,一致,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+III-DIF-354,(1),証明,証明,g'(x)=sin2x−xe^{-x}…sin2x≧(3√3/π)x>x…sin2x>√3/2>1/e≧xe^{-x},該当なし（証明）,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+III-DIF-354,(2),1/2,1/2,P_n²≧f(1)²(n+1)²/(4n)>f(1)²(n+1)/4,一致,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+III-DIF-355,(1),"最大値√10/5，P(5/2,±5√3/2,0)","最大値√10/5，P(5/2,±5√3/2,0)",a=4，h=3…c1=1/2 で w の最大値は√(2/5)=√10/5,一致,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+III-DIF-355,(2),√((5−h)/5),√(1−h/5),c1=(5−h)/a，c1c2=1，a²−(5−h)²=2h(5−h)>0 より c1<1 … w² の最大値=(5−h)/5,同値（表記差）,A,OK,OK,OK,OK,OK,OK,なし,高,対称移動・回転による一般化，h=5 の退化も扱っている．,,いいえ
+III-DIF-359,(1),証明,証明,x=−1：右側の微分係数は −φ_k'(−1)=ke，左側は φ_k'(−1)=−ke,該当なし（証明）,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+III-DIF-359,(2),N(8)=4,4,"奇数側は {1,7},{3,5}，偶数側は {2,8},{4,6}．N(8)=2×2=4",一致,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+III-DIF-359,(3),"n≡0,7 (mod 8)","n≡0,7 (mod 8)","n=8s+7：偶数…2+4−6=0 とし，残り 4s 個を4個ずつ +,−,−,+",一致,A,OK,OK,OK,OK,OK,OK,なし,高,"総当たり（n≦16）で n=7,8,15,16 のみ N≧1 を確認．",,いいえ

@@ -1,0 +1,26 @@
+problem_id,subproblem,independent_answer,stored_answer,stored_explanation_excerpt,final_answer_match,explanation_category,mathematical_correctness,logical_validity,calculation_accuracy,condition_coverage,boundary_case_coverage,reproducibility,numeric_dependence,confidence,issue_description,correction_proposal,human_review_required
+A-COM-501,(1),p_jc_i−p_ic_j，(1−p_i)(p_kc_j−p_jc_k),p_jc_i−p_ic_j，(1−p_i)(p_kc_j−p_jc_k),"E(i,j,k)=c_i+(1−p_i)c_j+(1−p_i)(1−p_j)c_k",一致,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+A-COM-501,(2),証明,証明,"最小を与える順番について，もし ρ_i>ρ_j なら E(j,i,k)<E(i,j,k) となり最小性に反する",該当なし（証明）,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+A-COM-501,(3),"(X2,X1,X3)，最小値29/5；確率順(X3,X1,X2)で67/10","(X2,X1,X3)，29/5；(X3,X1,X2)で67/10","ρ1=6，ρ2=5，ρ3=15/2 … E(2,1,3)=29/5",一致,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+A-COM-509,(1),r3=p^3−q^3，r4=p^4−q^4，r3−r4=pq(p−q)>0,r3=(2p−1)(p^2−p+1)，r4=(2p−1)(2p^2−2p+1)，r4<r3,r3−r4=(2p−1)(p−p^2)=(2p−1)p(1−p)>0,同値（表記差）,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+A-COM-509,(2),証明,証明,r_{2m+2}−r_{2m}=Bp^{m−1}q^{m−1}(p−q)(1−(3m+3)/(m+2)·pq),該当なし（証明）,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+A-COM-511,(1),n!(n−2)(2n−3)/2,n!(n−2)(2n−3)/2 個,n(A1)=n−1 または n−2 … n!(n−1)(n−2)/2 + n!(n−2)^2/2,一致,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+A-COM-511,(2),n·n!(n−2)/2,n·n!(n−2)/2 個,"(i) n(A1)=n−1,n(A2)=n−2 … n!(n−2)，(ii) n!(n−2)^2/2",一致,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+A-COM-513,(1),証明,証明,"G(A)={n_1,…,n_M}（n_j は初めて値 j をとる番号）",該当なし（証明）,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+A-COM-513,(2),"C(2n,n)",2nCn 個,M=0 となる数は 2^{2n}−L(1)=…=E(0)+E(−1)=E(0),一致,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+A-COM-513,(3),"C(2n,n+⌈r/2⌉)",r偶数: 2nC(n+r/2)，r奇数: 2nC(n+(r+1)/2),L(r)−L(r+1)=E(r)+E(r+1),同値（表記差）,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+A-GEO-114,(1),"証明（Aは内心，B,C,Hは傍心）",証明,D と B は直線 AE の同じ側にある((ii))から，円周角の定理より ∠ADE=∠ABE,該当なし（証明）,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+A-GEO-114,(2),EF=7/2，FD=39/14，DE=55/14，内接円半径15√3/28,EF=7/2，FD=39/14，DE=55/14，15√3/28,EF=7sin30°=7/2 … ρ=15√3/28,一致,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+A-GEO-115,(1),証明,証明,K は三角形 PAD の内部または周上の，直線 PL 上の点なので線分 PL 上にあり，B，C と異なるから P，L とも異なる,該当なし（証明）,B,OK,問題あり,OK,OK,問題あり,OK,なし,中,"「K は B，C と異なるから P，L とも異なる」は理由になっていない。K≠P，K≠L（P,K,L がこの順に並ぶこと）の根拠が欠けている。角の計算と QK=QL の論証は正しい。",B，C はそれぞれ辺 PA，PD の P 以外の点なので線分 BC は P を通らず，また辺 AD とも交わらない（BC 上の点は P 側の重みが正）。よって K≠P，K≠L，と書き換える。,いいえ
+A-GEO-115,(2),証明（対角線が互いに垂直二等分）,証明,直線 QM は線分 KL の中点を通り KL に垂直 … 4辺が等しい,該当なし（証明）,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+A-INT-454,(1),第12項,第12項,99=(10200)_3，P2 での位置は (00102)_3=11,一致,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+A-INT-454,(2),x20,x20,桁を逆順にした (00201)_3=19 の位置,一致,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+A-INT-454,(3),P3:9個，P4:27個,P3:9個，P4:27個,d0=d1=d3=d4，d2 は任意 … 3^3=27,一致,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+A-INT-457,(1),証明,証明,2m−x は整数だから 2m−x≦[N/x],該当なし（証明）,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+A-INT-457,(2),証明,証明,x_n≦N−(n−1) … n=N+1 で x_n≦0 となって (1) に反する,該当なし（証明）,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+A-INT-457,(3),N+1 が平方数でないこと,N+1 が平方数でないこと,r=2q，すなわち N=(q+1)^2−1 のとき … q，q+1 を交互にとる,一致,A,OK,OK,OK,OK,OK,OK,なし,高,,（任意）N+1=m^2 なら q=m−1 で r=2q となる，という逆向きを一言添えるとより丁寧。,いいえ
+B-SEQ-295,(1),p=1/8，一定値1/1600,p=1/8，1/1600,(2p/5−1/20)n^2+(1/20−2p/5)n+p^2−p/5+1/100,一致,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+B-SEQ-295,(2),証明，a_n=1/40 は n=1 のみ,証明，n=1 のみ,A_n√n+B_n√(n−1)≧A_n+B_n=(32n^2−32n+6)/40>4n(n−1)/5,一致,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+B-SEQ-303,(1),証明,証明,a_{n+1}^2=a_n^2+2/k+1/(k^2a_n^2),該当なし（証明）,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+B-SEQ-303,(2),証明,証明,1≦n≦k で a_n^2<a_{k+1}^2<(3k+1)/k，よって 1/a_n^2>k/(3k+1),該当なし（証明）,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+B-SEQ-303,(3),証明,証明,2√3<a+√3<2+√3<4,該当なし（証明）,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ

@@ -1,0 +1,32 @@
+problem_id,subproblem,independent_answer,stored_answer,stored_explanation_excerpt,final_answer_match,explanation_category,mathematical_correctness,logical_validity,calculation_accuracy,condition_coverage,boundary_case_coverage,reproducibility,numeric_dependence,confidence,issue_description,correction_proposal,human_review_required
+X-MIX-092,(1),f(x)=x^2 または x^2-2,f(x)=x^2 または x^2-2,"c(x) は連続で値が p,q のどちらか…中間値の定理により c(u)=(p+q)/2 となる u があるが…よって c(x) は定数 k∈A",一致,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+X-MIX-092,(2),"{-1,1},{-1,2},{0,1}","{-1,1},{0,1},{-1,2}","c(p),c(q)∈{p,q} の4通り…{-1,1} については f(x)=x^2-2 (x=-1,0), x^2 (それ以外)",一致,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+X-MIX-092,(3),"7,8,9,10","7,8,9,10","f(3)=8+c(3)…f(x)=x^2 (x≠3), f(3)=8：c(3)=0∈A",一致,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+B-SEQ-299,(1),証明,証明,r^0 の係数は 1-n，2≦k≦n の r^{k-1} の係数は 2，r^n の係数は -(n-1),該当なし（証明）,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+B-SEQ-299,(2),-1<r<0 または 0<r<1 で負，r>1 で正,r>1 で正，-1<r<1 (r≠0) で負,1+r^n-r^j-r^{n-j}=(1-r^j)(1-r^{n-j})…各項は正,同値（表記差）,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+B-SEQ-329,(1),証明,証明,T_nT_{n+2}-T_{n+1}^2=q^n{(q-1)T_n-q^n}…(q-1)S_n=q^n-1 は q=1 のときも成り立つ,該当なし（証明）,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+B-SEQ-329,(2),"q>1, c≧1/(q-1)；等号は c=1/(q-1)","q>1, c≧1/(q-1)；等号は q>1, c=1/(q-1)",0<q<1 のとき…T_1=1+c≦-q/(1-q)<0 となり不適,一致,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+B-SEQ-329,(3),0<q≦1: c>-1；q>1: -1<c≦1/(q-1),q>1: -1<c≦1/(q-1)；0<q≦1: c>-1,0<q<1 のとき c≧-1/(1-q)．-1/(1-q)<-1 なので c>-1 ならば成り立ち,一致,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+II-LOG-095,(1),証明,証明,h(1)=8/7>1，h(2)=34/49<1 で，h は連続な減少関数だから…ただ1つ,該当なし（証明）,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+II-LOG-095,(2),三角形 0<x<x0，鈍角 x0/2<x<x0,三角形 0<x<x0，鈍角 x0/2<x<x0,h(2x)<1=h(x0)⇔2x>x0,一致,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+II-LOG-095,(3),1≦x<x0,1≦x<x0,9^x+15^x+25^x≦49^x…g(1)=1 なので x≧1,一致,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+III-DIF-402,(1),証明,証明,p'(x)=x-1+1/(1+x)=x^2/(1+x)…q'(x)=x^2/(2(1+x)^2),該当なし（証明）,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+III-DIF-402,(2),証明,証明,U=a+√(a^2+2a)…U^2/(2(1+U))=a．(1) より g(U)>a,該当なし（証明）,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+III-DIF-402,(3),不等式は証明，極限 √2,不等式は証明，極限 √2,√2<x0/√a<√a+√(a+2),一致,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+III-LIM-313,(1),証明,証明,x0=(x1+x2)/2-1/(2a)=x1+(d-1/a)/2≦x1,該当なし（証明）,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+III-LIM-313,(2),証明,証明,f(x)-x1=(x-x1){1-a(x2-x)}…d>1/a のとき x=x2-1/a とおくと f(x)=x1,該当なし（証明）,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+III-LIM-313,(3),証明,証明,r=1-a(x2-p)…0<u_{n+1}-x1≦r(u_n-x1),該当なし（証明）,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+X-MIX-091,(1),証明,証明,f(x-10)=f(14-x)=-f(x),該当なし（証明）,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+X-MIX-091,(2),証明,証明,偶関数なら f(x+2)=-f(x)，f(5)=0；奇関数なら f(x+20)=-f(x) で f≡0，f(2)≠0 に反する,該当なし（証明）,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+X-MIX-091,(3),1203 個，例 cos(π(x-2)/10)(cos(π(x-2)/5)-cos(π/5)),1203 個，同じ例,"零点全体は x=10k-3, 10k+1, 10k+3…各 401 個",一致,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+A-COM-497,(1),証明,証明,係数の和は s_m+s_m'+s_m''≦3·3^{t-1}…v_j=1 他 0 で c_j=1,該当なし（証明）,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+A-COM-497,(2),証明,証明,第 j 単位時間後，x は第 j+1〜t 桁が一致する y の v_y の和を記憶,該当なし（証明）,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+A-COM-497,(3),5,5,コンピュータ 81+i は各回にコンピュータ i と同じ相手を読み取る,一致,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+A-COM-499,(1),証明,証明,pq+qr+rp=(m^2-(p^2+q^2+r^2))/2…≦m^2/3,該当なし（証明）,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+A-COM-499,(2),証明,証明,"第1項と第2項の組は9通り…鳩の巣原理…d(A,B)≦2",該当なし（証明）,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+A-COM-499,(3),証明,証明,D≧108 かつ D≦108…各番号 i で等号…p=q=r=3,該当なし（証明）,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+A-COM-499,(4),"{(a,b,a+b,a+2b) mod 3} の9個",同じ集合,x≠0 かつ y≠0 のとき…x+y と x+2y がともに3の倍数なら差 y も3の倍数,同値（表記差）,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+A-COM-500,(1),証明,証明,|k-a_k| と k+a_k は差が 2s_k で偶数,該当なし（証明）,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+A-COM-500,(2),証明,証明,X=n(n+1)-2Σs_k…t_{2i-1}≧i，t_{2i}≧i,該当なし（証明）,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+A-COM-500,(3),n=2r: (r!)^2，n=2r+1: (2r+1)(r!)^2,n=2r: (r!)^2，n=2r+1: (2r+1)(r!)^2,計 r·r·r!·(r-1)!=r(r!)^2 個…合計 (2r+1)(r!)^2,一致,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+A-COM-500,(4),n-1,n-1,d_k=1 となる k がちょうど1つ…q=p+1,一致,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ

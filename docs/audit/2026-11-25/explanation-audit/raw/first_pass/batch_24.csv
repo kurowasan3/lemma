@@ -1,0 +1,27 @@
+problem_id,subproblem,independent_answer,stored_answer,stored_explanation_excerpt,final_answer_match,explanation_category,mathematical_correctness,logical_validity,calculation_accuracy,condition_coverage,boundary_case_coverage,reproducibility,numeric_dependence,confidence,issue_description,correction_proposal,human_review_required
+III-DIF-395,(1),"x≤-1で減少,x≥-1で増加,極小-1/e;x<-2上に凸,x>-2下に凸,変曲点(-2,-2/e^2)",同左,"f'(x)=(x+1)e^x，f''(x)=(x+2)e^x．…変曲点は(-2,-2e^{-2})",一致,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+III-DIF-395,(2),t=-2 または t≥-1,t=-2 または t≥-1,(イ-2) x0=t^2/(t+1) とおくと…g(x0)<e^t{t^2-(t+1)x0}=0,一致,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+III-DIF-398,(1),証明,証明,c=a^2/4 とおくと…f(c)>-√c=a/2>a,該当なし（証明）,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+III-DIF-398,(2),証明,証明,x2<1+a，x1≥-a-1/e^2 を合わせて x2-x1<1+2a+1/e^2,該当なし（証明）,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+III-DIF-398,(3),証明,証明,k(x)=x log x-(x-1)/(e-1)…1/e<x<1 で k(x)<0,該当なし（証明）,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+III-DIF-399,(1),公比 -e^{aπ},公比 -e^{aπ},x_n=nπ-φ…f(x_{n+1})/f(x_n)=-e^{aπ},一致,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+III-DIF-399,(2),証明,証明,e^s≥(e^2/4)s^2…a^4/(1+a^2) は a≥1 で増加…e^2>4√2,該当なし（証明）,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+III-DIF-399,(3),証明,証明,r(x)=e^{x/2}/x^2 は0<x<4で減少…√5π^2>22.04,該当なし（証明）,A,OK,OK,OK,OK,OK,OK,補助のみ,高,,,いいえ
+III-DIF-400,(1),"(a,b)=(1,1/2)","(a,b)=(1,1/2)",|b-1/2|x^2<(4/3+2b^2)x^3…h'(x)=x^2/((1+x)(2+x)^2),一致,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+III-DIF-400,(2),証明,証明,24/35<log2<24/35+1/324+1/96=63433/90720,該当なし（証明）,A,OK,OK,OK,OK,OK,OK,補助のみ,高,,,いいえ
+III-INT-714,(1),証明,証明,等号が成り立つと仮定すると…f=m または f=M（定数）…(ii) に反する,該当なし（証明）,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+III-INT-714,(2),証明,証明,IJ=S-Lδ…L>0 なら δ<(S-c)/L をみたす δ をとれば IJ>c,該当なし（証明）,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+III-INT-715,(1),証明,証明,u_k^3-u_k^4=u_{k+1}(u_k-u_{k+1})…Q_n<∫y dy=(x^2-u_n^2)/2<1/2,該当なし（証明）,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+III-INT-715,(2),証明,証明,y^2≤u_k^2=u_{k+1}…Q_n>∫y^2dy=(x^3-u_n^3)/3,該当なし（証明）,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+III-INT-715,(3),例 x=0.999，n=12 程度,例 x^3=199/200，n=16,(1+1/199)^N≥1+N/199>330>200…Q_16>33/100,該当なし（証明）,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+III-INT-723,(1),証明,証明,k<0 と仮定…h(t1)=3k/4<0 となり h(t1)>0 に反する,該当なし（証明）,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+III-INT-723,(2),f(x)=√(x-k)e^{√(x-k)},f(x)=√(x-k)e^{√(x-k)},s=√(x-k)，t0=se^s…h(t0)=s^2+k=x,一致,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+III-INT-723,(3),k=5，3e/2,k=5，3e/2,Φ'(σ)=2σ^2e^σ>0…Φ(2)=4e^2-4,一致,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+III-LIM-314,(1),証明,証明,f(2+x)=f(-x)=-f(x)…f(x+4)=-f(x+2)=f(x),該当なし（証明）,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+III-LIM-314,(2),証明,証明,f(j/2^n)=j/2^n を帰納法…|f(x)-x|≤1/2^n,該当なし（証明）,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+III-LIM-314,(3),15個,15個,g(x)=60m+30-16x…g(4m+1)=14-4m>0，g(4m+3)=-4m-18<0,一致,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+X-MIX-086,(1),証明,証明,j=[t]-1…1≤s=t-j<2≤c より s∈A_c,該当なし（証明）,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+X-MIX-086,(2),c=2以上の整数,c=2以上の整数,f(x)=[x]…x2=-δ/2，x1=N+δ/2…差 N+1>c,一致,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+X-MIX-088,(1),証明,証明,cos nx-cos ny=-2 sin nu sin nv…≤n^2|cos x-cos y|,該当なし（証明）,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+X-MIX-088,(2),証明,証明,x=2t，y=0…(sin nt/sin t)^2→n^2,該当なし（証明）,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+X-MIX-088,(3),証明,証明,補題(b) より |sin nu|<n|sin u|…等号は成り立たない,該当なし（証明）,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ

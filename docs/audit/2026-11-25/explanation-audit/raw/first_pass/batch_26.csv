@@ -1,0 +1,15 @@
+problem_id,subproblem,independent_answer,stored_answer,stored_explanation_excerpt,final_answer_match,explanation_category,mathematical_correctness,logical_validity,calculation_accuracy,condition_coverage,boundary_case_coverage,reproducibility,numeric_dependence,confidence,issue_description,correction_proposal,human_review_required
+III-LIM-312,(1),0<a_{n+1}<a_n≦1/2 の証明，T_n=1/2−a_{n+1},証明，T_n=1/2−a_{n+1},0<a_n≦1/2 と仮定すると 0<1−a_n^2<1 なので a_{n+1}=a_n(1−a_n^2) は…,一致,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+III-LIM-312,(2),証明（差=(2−x)/(1−x)^2 を評価）,証明,(2−u)/(1−u)^2−2=u(3−2u)/(1−u)^2 … 3−2u<3，(1−u)^2≧9/16 より ≦16u/3,該当なし（証明）,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+III-LIM-312,(3),証明（(2)を和にとり a_k^2≦1/(2k+2)，Σ1/j≦log n）,証明,b_{j+1}−b_j≦2+(8/3)/(j+1) … Σ_{i=2}^n 1/i<∫_1^n dx/x=log n,該当なし（証明）,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+III-LIM-312,(4),ともに 1/√2,ともに √2/2,log x≦2√x を示し 1/(2+2/n+16/(3√n))≦na_n^2≦1/(2+2/n)，はさみうち,同値（表記差）,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+X-MIX-082,(1),証明（和積公式）,証明,cos A−cos B=−2 sin((A+B)/2) sin((A−B)/2) … A+B または A−B は 2π の整数倍,該当なし（証明）,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+X-MIX-082,(2),証明（D=f(x+T)−f(x) は定数 2Nπ）,証明,各開区間 c_{j−1}<x<c_j では φ(x) は 2π の整数倍でないので … D は各開区間で一定値 d_j,該当なし（証明）,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+X-MIX-082,(3),証明（g=f−2Nπx の有界性から NS 整数，√2 無理数で矛盾）,証明（1と√2をともに余弦周期とする f は存在しない）,f(K−NS)=f(−NS)+2KNπ=f(0) … 狭義増加より K−NS=0,該当なし（証明）,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+X-MIX-082,(4),証明（N=2，x=1/8 で cos f(5/8)≠cos f(1/8)）,証明（x=1/8 で cos f(5/8)≠cos f(1/8)）,cos f(1/8)=−sin(√2/2)，cos f(5/8)=cos(π/2−√2/2)=sin(√2/2),該当なし（証明）,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+X-MIX-085,(1),証明（負方向反復で h(x−kT)≦Mf(x)）,証明,h(y_k)=λ^{N_k}h(y_k−N_kT)≦λ^{N_k}Mf(x_0+T) … λ^{N_k}→0 となり矛盾,該当なし（証明）,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+X-MIX-085,(2),証明（g の最大値点列で f が定数）,証明,第2段 c_0≦f(x)≦f(x_0+kT_g)=h(x_0+kT_g)/M≦c_0 … 第4段 f(x)g(x)=c_0g(x),該当なし（証明）,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+X-MIX-085,(3),f=λ^x，g=2+sin2πx（T_g=1，M=3），T=1,T=1，f=λ^x，g=2+sin2πx,λ>1 より f は正で増加，g は正で周期 T_g=1，最大値 M=3 … h(x+1)=λh(x),一致,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+X-MIX-090,(1),証明（最適性に反する選び方を作る）,証明,第 n 組に x を加えた選び方は和が s_n+x≦100 で，余りは r_n−x<r_n となり，最小性に反する,該当なし（証明）,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+X-MIX-090,(2),証明（残りの和>100 から 640>(n−1)(100−r_{n−1})+100）,証明,640>100n−Σ_{i=1}^n r_i+r_n=100n−Σ_{i=1}^{n−1}r_i≧100n−(n−1)r_{n−1},該当なし（証明）,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+X-MIX-090,(3),"N≦8．例：21を30個と10を1個（組の和 94,84×6,42）",N≦8．例：640/31 を31個（4個ずつ7組と3個の組）,s_8>4·160/7=640/7，r_8<60/7<160/7<r_7 … 640/31 を31個,不一致,A,OK,OK,OK,OK,OK,OK,なし,高,N≦8 の部分は一致．N=8 の例が独立解答と異なるが，例は一意でなく双方とも正しい（厳密有理数で手順を再現し両例とも N=8 を確認）．保存済み解説に問題なし．,,いいえ

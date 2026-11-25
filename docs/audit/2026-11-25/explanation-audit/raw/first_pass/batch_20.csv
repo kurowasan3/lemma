@@ -1,0 +1,30 @@
+problem_id,subproblem,independent_answer,stored_answer,stored_explanation_excerpt,final_answer_match,explanation_category,mathematical_correctness,logical_validity,calculation_accuracy,condition_coverage,boundary_case_coverage,reproducibility,numeric_dependence,confidence,issue_description,correction_proposal,human_review_required
+C-CUR-462,(1),FA+FB+FP=9/2,9/2,F からの距離は 2-x/2 … FA+FB+FP=6-(x1+x2+x3)/2=9/2,一致,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+C-CUR-462,(2),1≦FA<9/4 かつ FA≠9/8,1≦FA<9/4，FA≠9/8,補題：M を中点とする C 上の相異なる2点が存在 ⇔ m²/4+n²/3<1，組はただ1つ … x1=7/4 を除外,一致,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+C-CUR-466,(1),AC·BD=9,9,y1y2=9(1-cos²θ)/sin²θ=9 … AC·BD=|y1y2|=9,一致,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+C-CUR-466,(2),証明,証明,FC·FD=-9+y1y2=0，両ベクトルは零でない,該当なし（証明）,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+C-CUR-466,(3),"最小値9，P(4,±9/5)","最小値9，P(4,±9/5)",(2T)²=162+y1²+81y2²≧324，等号 y1=±9,一致,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+C-CUR-467,(1),"C(1+cos(θ-π/3), √3+sin(θ-π/3))，中心(1,√3)半径1の開半円（√3x+y>2√3 側）","同じ座標；(2,√3)を含む側の半円周（端点除く）",(C-2)/(β-2)=1/2-(√3/2)i … C=1+√3i+e^{iφ},同値（表記差）,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+C-CUR-467,(2),最大値3（θ=2π/3）,最大値3（θ=2π/3）,OC²=5+4cos(φ-π/3)≦9,一致,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+C-CUR-467,(3),最大値1+√3/4（θ=5π/6）,最大値1+√3/4（θ=5π/6）,x1y2-x2y1=2cos(θ+π/6)-√3/2,一致,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+C-CUR-469,(1),"q=b²(x1-a)/(ay1), q'=-b²(x1+a)/(ay1), qq'=-b², AQ·A'Q'=b²",同じ,x1²-a²=a²y1²/b² を代入して qq'=-b²,一致,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+C-CUR-469,(2),証明,証明,FQ·FQ'=(a-c)(-a-c)+qq'=c²-a²-b²=0,該当なし（証明）,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+C-CUR-469,(3),"R(x1, y1/2)","R(x1, y1/2)","q+q'=-2b²/y1≠0 より傾きは異なり … x=x1, y=y1/2",一致,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+C-CUR-469,(4),"双曲線 x²/a²-4y²/b²=1 から(±a,0)を除く","同双曲線の y≠0 の部分（(±a,0)を除く）","逆に…P(X,2Y) は H 上の y 座標が0でない点であり，(3) よりこの P に対する R は (X,Y)",同値（表記差）,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+C-CUR-471,(1),証明,証明,① をみたす t は ② t(t1+t2)=2t1t2 をみたす t と一致 … t=1/L,該当なし（証明）,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+C-CUR-471,(2),直線 x+2y=4 全体,直線 x+2y=4 全体,x+2y=2+(c+2s)/L=4；逆に L=1/λ≠0 で P=R,一致,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+C-CUR-471,(3),証明；最大2（y=1/2），最小1/2（x=1）,証明；最大2（y=1/2），最小1/2（x=1）,AP·AQ=1/(2D)=-t1t2=AB·AC … 2/(1+3s²)，s²≠1/5,一致,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+C-CUR-473,(1),(2-t)x²-2x-ty²+t=0，0<t<1: 0<x<t/(2-t)，t≧1: 0<x<1,(t-2)x²+2x+ty²=t の 0<x<x_t の部分（同じ x_t）,g(x)=-(x-1){(t-2)x+t} … 0<x<x_t で g(x)>0 なので y≠0 … AB=(t-x)/x,同値（表記差）,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+C-CUR-473,(2),"0<t<1,1<t<2 双曲線；t=1 2直線；t=2 放物線；t>2 楕円",同じ,(t-2)(x+1/(t-2))²+ty²=(t-1)²/(t-2),一致,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+C-CUR-474,(1),証明，λ=(e²-1)/(2(ke²+1)),λ=(e²-1)/(2(ke²+1)),g(t)={(2k+1)e²+1}t²-2(k+1)e²t+(e²-1)，g(1)=0，t0=(e²-1)/((2k+1)e²+1),一致,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+C-CUR-474,(2),e>1/k，(1-k)/(2k)<λ<1/(2k),同じ,a は h の連続な狭義減少関数 … λ=(1/2k)(1-(k+1)/(ke²+1)) は狭義増加,一致,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+C-CUR-474,(3),1/3<k<1/2，e=√(3/(1-2k)),同じ,(1-k)/(2k)<1<1/(2k) ⇔ 1/3<k<1/2,一致,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+C-CUR-476,(1),証明，(q-2k)/4,(q-2k)/4,2k²+k+1>0，αβ=-4/(2k²+k+1)≠0,一致,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+C-CUR-476,(2),証明，q/4,q/4,p=0 とすると…H=O となり矛盾 … 1/p=(k2/x1-k1/x4)/(k2-k1),一致,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+C-CUR-476,(3),証明（r=-p）,証明,q=0 のとき 1/p+1/r=0，r=-p，OP=|p|=|r|=OQ,該当なし（証明）,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+C-CUR-479,(1),証明,証明,sin(ψ-θ)=0 … m=1 なら sinψ=-sinθ<0 となり r sinψ=2(s+2)>0 に反する,該当なし（証明）,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+C-CUR-479,(2),"存在；F_θ(-3-4cotθ, 4cotθ-2)","F_θ(-3-4cosθ/sinθ, -2+4cosθ/sinθ)","s(4k-2-y)+(2x+6+8k)=0 … 法線(2,-s1),(2,-s2)は平行でない",同値（表記差）,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+C-CUR-479,(3),直線 x+y+5=0 全体,直線 x+y+5=0 全体,k(θ)=cosθ/sinθ は全実数値をとる … 座標の和は-5,一致,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+C-CUR-480,(1),"P(s+t, st)，証明","P(s+t, st)，証明",FP²=(s+t)²+(st-1)²=(s²+1)(t²+1)=FA·FB,一致,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+C-CUR-480,(2),証明,証明,cos∠PFA=cos∠PFB=(st+1)/FP … △AFP∽△PFB,該当なし（証明）,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+C-CUR-480,(3),"2本の証明；最小値8，P(2,-1)","最小値8，P(2,-1)",判別式 (p-2)²+8>0 … FA·FB=FP²=2(p-2)²+8≧8,一致,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ

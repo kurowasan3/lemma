@@ -1,0 +1,28 @@
+problem_id,subproblem,independent_answer,stored_answer,stored_explanation_excerpt,final_answer_match,explanation_category,mathematical_correctness,logical_validity,calculation_accuracy,condition_coverage,boundary_case_coverage,reproducibility,numeric_dependence,confidence,issue_description,correction_proposal,human_review_required
+III-INT-722,(1),k≥1で最大値なし（単調増加）；0<k<1で最大値(k+1)^2/(2k),k≥1で最大値なし；0<k<1で最大値(k+1)^2/(2k),A'(t)=sin t(k+cos t)/k … k+cos t>k-1≥0 … A(t0)=1+k+(1-k^2)/(2k),一致,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+III-INT-722,(2),k=1/2,k=1/2,2k^2-5k+2=0，(2k-1)(k-2)=0．0<k<1 より k=1/2（k=2 のときは最大値が存在しない）,一致,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+A-COM-491,(1),証明,証明,Σ_{k=1}^6 a_{i+k}=w-a_i．a_i^2=a_i より Σ a_i(w-a_i)=w^2-w,該当なし（証明）,A,OK,OK,OK,OK,該当なし,OK,なし,高,,,いいえ
+A-COM-491,(2),14通り,14通り,"{d1,d2,d3}={1,2,4}…始点7通り×並べ方6通り=42，1つのSは3個の組から得られ 42÷3=14",一致,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+A-COM-491,(3),w=4，14通り,w=4，14通り,Σ b_i b_{i+k}=7-2w+7C(k)…w=4 で全C(k)=2/7 ⇔ b が(2)の条件,一致,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+A-COM-492,(1),N(6)=4,N(6)=4,"3|B|≤n[(n-1)/2]…{1,2,3},{1,4,5},{2,4,6},{3,5,6}",一致,A,OK,OK,OK,OK,該当なし,OK,なし,高,,,いいえ
+A-COM-492,(2),N(9)=12,N(9)=12,行・列・c-r一定・c+r一定の12個…4つの量のうち3の倍数はちょうど1つ,一致,A,OK,OK,OK,OK,該当なし,OK,なし,高,,,いいえ
+A-COM-492,(3),N(8)=8,N(8)=8,(2)の12個のうち位置9を含まない8個,一致,A,OK,OK,OK,OK,該当なし,OK,なし,高,,,いいえ
+A-COM-494,(1),証明,証明,u-1≤a_n≤w+1．よって I_n は I_{n-1}，I_{n-1}∪{u-1}，I_{n-1}∪{w+1} のいずれか,該当なし（証明）,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+A-COM-494,(2),2^(N-1),2^(N-1),性質Pをもたないとき a_n=u-1 または w+1…ちょうど2通り,一致,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+A-COM-494,(3),2^(N-3)(N-2)(N+1),2^(N-3)(N-2)(N+1),|I_{p-1}|=p-1 なので p=2 は不可能…Σ_{p=3}^N (p-1)2^{N-2},一致,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+A-COM-494,(4),440,440,|I_{q-1}|=q-2≥2…8{2(2+3+4)+3(3+4)+4·4}=440,一致,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+A-COM-498,(1),196,196,f(f(x))=f(x) ⇔ f(x)∈K…Σ 5Ck k^{5-k}=196,一致,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+A-COM-498,(2),756,756,"K,L,M に分割…m≥1 の表の和 560，196+560=756",一致,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+A-COM-502,(1),2(4^m-1)/3,2(4^m-1)/3,l桁の数についての和は 2·4^{l-1},一致,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+A-COM-502,(2),N=521,N=521,T(485)=1706，T(512)=1962，T(521)=2026．T は狭義増加で高々1つ,一致,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+A-COM-503,(1),4032,4032,"鎖ごとに「11も000も含まない」列 c(5)=7,c(3)=4,c(2)=3 → 7·4·3^2·2^4",一致,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+A-COM-503,(2),"n=1,4,5","n=1,4,5",長さ2の鎖 ⇔ n/4<m≤n/2…n≥8 では区間に連続2整数,一致,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+A-COM-504,(1),証明,証明,A_n≥n，B_n≤n+1…d_n=-1 のときは等号がともに成り立ち A_n=n,該当なし（証明）,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+A-COM-504,(2),証明,証明,"m=B_n とおくと A_n=m+1…P_n={1,…,m-1,m+1} で個数を比べて m=n",該当なし（証明）,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+A-COM-504,(3),89,89,a_1=1 なら c_{N-1}，a_1=2 なら a_2=1 で c_{N-2}…c_10=89,一致,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+A-COM-504,(4),461,461,N!=Σ I_r (N-r)!…I_6=720-259=461,一致,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+A-COM-506,(1),証明,証明,a_2=b_1+2n-1≥2n+1 となり a_2≤2n に矛盾,該当なし（証明）,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+A-COM-506,(2),4/21,4/21,2Σ_{k=2}^n {}_{2n-2k}C_{n-2}…n=5 で 2×24=48，48/252,一致,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+A-COM-506,(3),証明（P(M)<P(R)）,証明,{}_{2n-2k}C_{n-2}≤{}_{2n-2k}C_{n-k}…(Rの数)=2(1+Σ…),該当なし（証明）,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+A-COM-507,(1),22,22,"t(s) は順に 0,1,2,3,2,1,0 … 1+2+4+8+4+2+1=22",一致,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
+A-COM-507,(2),"1..m；2,1,3..m；2,3,1,4..m；3,4,2,1,5..m とその反転（計8個）",同左（計8個）,"a_2=s+1 の場合…s=1,2,3,m-1 の4個とその反転",一致,A,OK,OK,OK,OK,OK,OK,なし,高,,,いいえ
