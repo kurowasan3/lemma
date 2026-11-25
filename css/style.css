@@ -618,7 +618,7 @@ body.sheet-open { overflow: hidden; }
 .hero.alt b { color: var(--accent); }
 .hero[disabled] { opacity: .5; }
 .weak-note { margin: 10px 2px 14px; font-size: 13.5px; color: var(--ink-2); line-height: 1.7; }
-.hero + .toolbar, .weak-note + .toolbar { margin-top: 48px; }   /* 「今日の演習を始める」と難易度ボタンの間をあける（苦手な分野の行があるときも） */
+.hero + .toolbar, .weak-note + .toolbar { margin-top: 28px; }   /* 「今日の演習を始める」と難易度ボタンの間をあける（苦手な分野の行があるときも） */
 .weak-note .linkbtn { font-size: 13px; color: var(--accent); margin-left: 6px; text-decoration: none; font-weight: 600; }
 details.howto { margin-top: 26px; border-top: 1px solid var(--line); padding-top: 12px; font-size: 14px; color: var(--ink-2); }
 details.howto summary { cursor: pointer; font-weight: 600; color: var(--ink); padding: 4px 0; }
