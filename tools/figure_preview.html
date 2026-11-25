@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="ja"><head><meta charset="utf-8">
+<!-- 答えの図の下見（tools/answer_figure_check.mjs が開く）。#<base64 の JSON {mode, exprs, view}> を描く -->
+<link rel="stylesheet" href="../css/style.css">
+<style>body::before{display:none!important}body{margin:0;background:#fff}#h{width:600px;height:420px}</style>
+</head><body><div id="h"></div>
+<script type="module">
+import { Graph, COLORS } from '../js/graph.js';
+import { Graph3D } from '../js/graph3d.js';
+const spec = JSON.parse(decodeURIComponent(escape(atob(location.hash.slice(1)))));
+const host = document.getElementById('h');
+const g = spec.mode === '3d' ? new Graph3D(host) : new Graph(host, { mode: spec.mode === 'complex' ? 'complex' : 'xy' });
+const items = g.setExpressions(spec.exprs.map((src, i) => ({ src, color: COLORS[i % COLORS.length] })));
+if (spec.view && g.setView) g.setView({ xmin: spec.view[0], xmax: spec.view[1], ymin: spec.view[2], ymax: spec.view[3] });
+window.RESULT = { errors: (items || []).map((it, i) => it.error ? `${i + 1}行目「${spec.exprs[i]}」：${it.error}` : null).filter(Boolean),
+  kinds: (items || []).map(it => it.a ? it.a.kind : null), params: g.paramNames ? g.paramNames() : [] };
+</script></body></html>

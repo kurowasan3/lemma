@@ -298,13 +298,19 @@
       }
     },
     "technique_main": {
-      "type": ["string", "null"],
+      "type": [
+        "string",
+        "null"
+      ],
       "minLength": 1,
       "description": "主な解法：解法カード（content/techniques.json）の名前か ID。null は明示の「主な解法なし」。項目が無ければ未指定（technique_support と両方無ければタグから自動）。管理表の「主な解法」列"
     },
     "technique_support": {
       "type": "array",
-      "items": { "type": "string", "minLength": 1 },
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
       "uniqueItems": true,
       "description": "補助の解法：名前か ID の並び（書いた順を保つ）。[] は明示の「補助の解法なし」。technique_main と両方そろえて書く。管理表の「補助の解法」列"
     },
@@ -313,6 +319,54 @@
       "minimum": 1,
       "maximum": 3,
       "description": "頻出度（管理表の「頻出度」列。1=低 2=中 3=高）。無いときは content/values.json の自動判定"
+    },
+    "answer_figures": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 6,
+      "description": "解説の中に描く答えの図（管理表の「答えの図」列）。図示せよ・軌跡・領域などの答えを、アプリのグラフの式で書いたもの",
+      "items": {
+        "type": "object",
+        "required": [
+          "mode",
+          "exprs"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "mode": {
+            "enum": [
+              "2d",
+              "complex",
+              "3d"
+            ]
+          },
+          "exprs": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "minItems": 1,
+            "maxItems": 30
+          },
+          "view": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            },
+            "minItems": 4,
+            "maxItems": 4,
+            "description": "表示する範囲 [xmin, xmax, ymin, ymax]"
+          },
+          "note": {
+            "type": "string",
+            "description": "図の下に添える一言"
+          },
+          "title": {
+            "type": "string",
+            "description": "図の上に出す見出し（省略すると「答えの図」）"
+          }
+        }
+      }
     }
   }
 }

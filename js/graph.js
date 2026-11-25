@@ -23,12 +23,42 @@ const constValue = (src) => {
 };
 
 // 1行の式を解析して描画方法を決める
+// 入れ子（かっこ）の外のカンマで分ける
+function splitTopComma(src) {
+  const out = []; let d = 0, last = 0;
+  for (let i = 0; i < src.length; i++) {
+    const c = src[i];
+    if ('([{'.includes(c)) d++; else if (')]}'.includes(c)) d--;
+    else if (c === ',' && d === 0) { out.push(src.slice(last, i).trim()); last = i + 1; }
+  }
+  out.push(src.slice(last).trim());
+  return out.filter(Boolean);
+}
 export function analyze(raw) {
   let src = String(raw || '').trim();
   if (!src) return { kind: 'empty', params: new Set() };
   let trange = null;
   const m = src.match(/^(.*?)[\s;]+t\s*:\s*(.+?)\s*(?:\.\.|〜|~)\s*(.+)$/);
   if (m) { src = m[1]; trange = [constValue(m[2]), constValue(m[3])]; }
+
+  // 「y>=x^2, x+y<=2」のように，入れ子の外のカンマで区切った不等式は「かつ」（共通部分の領域）
+  const clauses = splitTopComma(src);
+  if (clauses.length > 1 && clauses.every(c => /[<>≦≧≤≥]/.test(c) && !/[^<>!]=[^=]/.test(c.replace(/[<>]=|=[<>]/g, '')))) {
+    const regs = clauses.map(c => analyze(c));
+    if (regs.every(r => r.kind === 'region')) {
+      const conds = regs.flatMap(r => r.conds), params = new Set(regs.flatMap(r => [...r.params]));
+      return { kind: 'region', conds, bounds: conds.map(c => ({ type: 'implicit', g: c.g, strict: c.op === '<' || c.op === '>' })), params, verify: true };
+    }
+  }
+  // 「x^2+y^2=1, y>=0」：曲線のうち，あとの不等式をみたす部分だけ
+  if (clauses.length > 1 && clauses.slice(1).every(c => /[<>≦≧≤≥]/.test(c))) {
+    const cur = analyze(clauses[0]);
+    const regs = clauses.slice(1).map(c => analyze(c));
+    if ((cur.kind === 'implicit' || cur.kind === 'fx') && regs.every(r => r.kind === 'region')) {
+      const g = cur.kind === 'fx' ? (s) => s.y - cur.f(s) : cur.g;
+      return { kind: 'implicitc', g, mask: regs.flatMap(r => r.conds), params: new Set([...cur.params, ...regs.flatMap(r => [...r.params])]) };
+    }
+  }
 
   const { parts, ops } = splitRelation(src);
   if (ops.length === 0) {
@@ -492,6 +522,12 @@ export class Graph {
           if (opts.verify) { const gv = g(s); if (!Number.isFinite(gv) || Math.abs(gv) > 0.2 * m + 1e-12) continue; }
           if (opts.keep && opts.keep.length && !opts.keep.every(c => { const v = c.g(s); return Number.isFinite(v) && holdsEq(v + (c.op.startsWith('<') ? -1e-7 : c.op.startsWith('>') ? 1e-7 : 0), c.op); })) continue;
         }
+        if (opts && opts.dash) {
+          // 線分の向きに沿った座標で 8px ずつ描く・描かないを交互に（どの向きの曲線でも破線に見える）
+          const dx = pts[1][0] - pts[0][0], dy = pts[1][1] - pts[0][1];
+          const mx = (pts[0][0] + pts[1][0]) / 2, my = (pts[0][1] + pts[1][1]) / 2;
+          if (Math.floor((Math.abs(dx) >= Math.abs(dy) ? mx : my) / 8) % 2) continue;
+        }
         ctx.moveTo(pts[0][0], pts[0][1]); ctx.lineTo(pts[1][0], pts[1][1]);
         if (pts.length === 4) { ctx.moveTo(pts[2][0], pts[2][1]); ctx.lineTo(pts[3][0], pts[3][1]); }
       }
@@ -531,10 +567,11 @@ export class Graph {
       case 'region':
         this.fillRegion(a.conds, s, it.color);
         a.bounds.forEach((b, k) => {
-          if (b.type === 'fx') this.pathFx(b.f, s);
-          else if (a.verify) this.pathImplicit(b.g, s, { verify: true, keep: a.conds.filter((_, j) => j !== k) });   // 境界は、ほかの条件を満たす部分だけ
-          else this.pathImplicit(b.g, s);
-          this.strokePath(it.color, b.strict, 1.75);
+          // 含まない境界（< >）は破線。陰関数の境界は短い線分の集まりなので，線分ごとに間引いて破線にする
+          if (b.type === 'fx') { this.pathFx(b.f, s); this.strokePath(it.color, b.strict, 1.75); return; }
+          if (a.verify) this.pathImplicit(b.g, s, { verify: true, keep: a.conds.filter((_, j) => j !== k), dash: b.strict });   // 境界は、ほかの条件を満たす部分だけ
+          else this.pathImplicit(b.g, s, { dash: b.strict });
+          this.strokePath(it.color, false, 1.75);
         });
         break;
       case 'implicitc': this.pathImplicit(a.g, s, { verify: true, keep: a.mask }); this.strokePath(it.color); break;

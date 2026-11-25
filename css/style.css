@@ -881,3 +881,11 @@ form.search input { border-width: 2px; border-radius: 8px; }
 .ansrow { display: flex; max-width: 100%; }
 .ansrow > .al { display: flex; align-items: center; justify-content: center; flex: none; }
 .ansrow > .aa { display: block; min-width: 0; overflow-x: auto; }
+
+/* 答えの図（解説の中） */
+.afig { margin: 14px 0 4px; }
+.afig-title { font-size: 12px; font-weight: 800; color: var(--accent); letter-spacing: .08em; margin-bottom: 6px; }
+.afig-host { height: 300px; }
+.afig-note { margin: 8px 2px 0; font-size: 14px; line-height: 1.7; }
+.afig-help { margin: 4px 2px 0; }
+.afig-sl:empty { display: none; }

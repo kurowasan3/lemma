@@ -961,6 +961,27 @@ const FEEL = [
   { k: 1, label: '手が出ない' }, { k: 2, label: '苦戦' }, { k: 3, label: 'ふつう' }, { k: 4, label: 'ほぼ解けた' }, { k: 5, label: '余裕' },
 ];
 
+// 答えの図（管理表の「答えの図」列）：図示せよ・軌跡・領域などの答えを，解説の中にグラフで描く
+function answerFigureHTML(list) {
+  return (Array.isArray(list) ? list : [list]).map(af => `<div class="afig"><div class="afig-title">${af.t ? `答えの図：${af.t}` : '答えの図'}</div>
+    <div class="afig-host" data-af="${encodeURIComponent(JSON.stringify(af))}"></div>
+    <div class="sliders afig-sl"></div>
+    ${af.n ? `<p class="afig-note">${af.n}</p>` : ''}</div>`).join('') +
+    '<p class="muted small afig-help">境界の実線は含む，破線は含まない。指でずらす・＋−で拡大縮小できます。</p>';
+}
+function mountAnswerFigures(root) {
+  $$('.afig-host:not([data-on])', root).forEach((host) => {
+    host.dataset.on = '1';
+    let af; try { af = JSON.parse(decodeURIComponent(host.dataset.af)); } catch (e) { return; }
+    const view = af.v ? { xmin: af.v[0], xmax: af.v[1], ymin: af.v[2], ymax: af.v[3] } : undefined;
+    try {
+      const g = mountGraph(host, af.e, { view, three: af.m === '3d', mode: af.m === '3d' ? undefined : af.m === 'complex' ? 'complex' : 'xy' });
+      const sl = host.parentElement.querySelector('.afig-sl');
+      if (sl && g.paramNames && g.paramNames().length) renderSliders(sl, g);
+    } catch (e) { /* 描けないときは mountGraph がメッセージを出す */ }
+  });
+}
+
 // 解説を読みやすく：文の終わりで改行し、∫・Σ・lim を大きく表示する
 function bigOps(html) {
   return html.replace(/\$([^$]+)\$/g, (m, body) => /\\(int|iint|sum|prod|lim)\b/.test(body) && !/\\displaystyle/.test(body) ? `$\\displaystyle ${body}$` : m);
@@ -1821,6 +1842,7 @@ function renderWritten(step, e) {
         <div class="segment self" id="self">${SELF.map(x => `<button data-g="${x.id}">${ICON[x.icon]}<span>${x.label}</span></button>`).join('')}</div>` : ''}
       <div id="after"></div>`;
     math(fb);
+    mountAnswerFigures(fb);
     addDisputeButtons();
     $$('#self button').forEach(btn => btn.addEventListener('click', () => grade(btn.dataset.g)));
     if (spec && !selfParts.length) grade(null);
@@ -1830,6 +1852,7 @@ function renderWritten(step, e) {
     return `<div class="solution fade-in" id="solbox">
         <div class="title">解答・解説</div>
         <div class="qhtml sol">${solutionSections(formatSolution(b.s)) || '（解説なし）'}</div>
+        ${b.af ? answerFigureHTML(b.af) : ''}
         ${b.k ? `<div class="keypoint"><b>核となるアイデア</b>${b.k}</div>` : ''}
         ${techChipsHTML(e.id)}
         ${e.th || e.tg ? `<div class="methods">${e.th ? `<span class="chip plain">${e.th}</span>` : ''}${(e.tg || []).map(t => `<span class="chip plain">${esc(t)}</span>`).join('')}</div>` : ''}
@@ -1933,7 +1956,7 @@ function renderWritten(step, e) {
         ${similarTo(state, e.id, session.steps.map(st => st.pid), TECH && TECH.byProblem) ? `<button class="btn" id="similar">類題を1問追加</button>` : ''}
         <button class="btn primary" id="next">${session.i + 1 < session.steps.length ? '次へ' : '結果を見る'}</button>
       </div>`;
-    math(after);
+    math(after); mountAnswerFigures(after);
     $('#similar')?.addEventListener('click', (ev) => addSimilar(e.id, ev.currentTarget));
     bindRecall(e.id, sg);
     $$('#feel button').forEach(btn => btn.addEventListener('click', () => {
