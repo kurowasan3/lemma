@@ -19573,6 +19573,10 @@
   "idea": {
    "tex": "隅の3面に接する球の中心は「隅から各面へ半径だけ離れた点」に決まるので，向かい合う隅の2球が外接する条件は半径の和 $u=r+s$ だけの2次方程式になる（原題は正方形・立方体で $u$ が一定）．直方体に入る条件は「各半径の2倍が短い辺以下」で，存在条件は $u$ の2次方程式が $0<u\\leqq(\\text{短い辺})$ に解をもつことに帰着し，軸の位置から端点の符号だけで判定できる．和が一定のとき $r^3+s^3=u^3-3urs$ は $rs$ の範囲で最大・最小が決まる．"
   },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) 2-sqrt(2)<=h<=2\n(2) 最大値：(12/125)π ; 最小値：(9/125)π"
+  },
   "methods": [],
   "tags": [
    "球の接する条件",
@@ -19617,6 +19621,10 @@
   ],
   "idea": {
    "tex": "平面 $M$ への正射影が一直線上にある点は，その直線を含み $M$ に垂直な平面 $P$ 上にある．平面 $N$ への正射影 $X\\to X-(\\vec n\\cdot X)\\vec n$ はベクトルの和と実数倍を保つので，像が平行四辺形なら「$\\vec a+\\vec c-\\vec b-\\vec d$ が $\\vec n$ に平行かつ $P$ に平行」となり，$P$ が $N$ に垂直でなければ $0$ に限る．面積の比は，$P$ と $N$ の交線方向とそれに垂直な方向の正規直交な2本のベクトルで調べると，交線方向は不変，垂直方向だけが一定の割合で縮む．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) 証明\n(2) 記述\n(3) S>=2sqrt(3)/3"
   },
   "methods": [],
   "tags": [
@@ -19663,6 +19671,10 @@
   ],
   "idea": {
    "tex": "正四面体 $\\mathrm A_1\\mathrm A_2\\mathrm A_3\\mathrm A_4$ の $\\vec b=\\overrightarrow{\\mathrm A_1\\mathrm A_2}$，$\\vec c=\\overrightarrow{\\mathrm A_1\\mathrm A_3}$，$\\vec d=\\overrightarrow{\\mathrm A_1\\mathrm A_4}$ から $\\vec e_1=\\frac{\\vec b+\\vec c-\\vec d}2$ などを作ると，互いに垂直で長さの等しい3つのベクトル（立方体の3辺）になり，$\\vec b=\\vec e_1+\\vec e_2$ などと表せる．平行な平面の単位法線ベクトル $\\vec n$ との内積 $x=\\vec n\\cdot\\vec e_1$ などは $x^2+y^2+z^2=(\\text{立方体の1辺})^2$ をみたし，各頂点の「高さ」は $x+y$，$x+z$，$y+z$ となる．原題は間隔の等しい4平面について正四面体を作図し体積を求めるが，捻りでは間隔を不等にして連立1次方程式から1辺の長さを決め，逆に1辺の長さから間隔を決める．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) 記述\n(2) $t$：sqrt(7)-1"
   },
   "methods": [],
   "tags": [
@@ -19756,6 +19768,10 @@
   ],
   "idea": {
    "tex": "原題は「すべての単位ベクトル $\\vec e$ で $|\\vec a\\cdot\\vec e|+|\\vec b\\cdot\\vec e|\\leqq\\sqrt6$」から，$|x|+|y|$ が $|x+y|$ と $|x-y|$ の小さくない方に等しいことを使って最大値 $\\sqrt{5+2|\\vec a\\cdot\\vec b|}$ に帰着させる．捻りでは最小値も求める．$\\vec e$ を $x$ 軸の向きにとった座標で，平行四辺形の面積 $|a_1b_2-a_2b_1|=|\\vec a||\\vec b|\\sin\\theta$ を $|a_1|$，$|b_1|$ で上から押さえると最小値 $\\sin\\theta$ が出る．最大値と最小値の比から $\\vec a\\cdot\\vec b$ を決める．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) 記述\n(2) sin(θ)\n(3) 記述"
   },
   "methods": [],
   "tags": [
@@ -19939,6 +19955,10 @@
   "idea": {
    "tex": "$\\overrightarrow{\\mathrm{PB}}=\\overrightarrow{\\mathrm{DB}}-\\overrightarrow{\\mathrm{DP}}$ などと分けると，内分点で決まる部分 $\\overrightarrow{\\mathrm{DB}}+\\overrightarrow{\\mathrm{EC}}+\\overrightarrow{\\mathrm{FA}}$ は $\\overrightarrow{\\mathrm{AB}}+\\overrightarrow{\\mathrm{BC}}+\\overrightarrow{\\mathrm{CA}}=\\vec0$ により簡単な1つのベクトルになる．残りは長さ一定の3つのベクトルの和で，大きさの最大は「すべて同じ向き，かつ定ベクトルと逆向き」のときだけ．長さが異なるので，最大のときの三角形は平行移動ではなく，向きの決まった具体的な位置になる．"
   },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) 記述\n(2) 7\n(3) 9sqrt(3)/4"
+  },
   "methods": [],
   "tags": [
    "平面ベクトル",
@@ -19985,6 +20005,10 @@
   ],
   "idea": {
    "tex": "平面の傾き $\\theta$ をもつ平面と球の交わり（円）を $xy$ 平面に正射影すると楕円になり，その形は断面（平面の方程式を球の方程式に代入）から $\\cos\\theta$ を用いて表せる．原題は射影した楕円が与えられた領域に収まるための $\\cos\\theta$ の最大値を直線との接する条件で求めたが，ここでは各 $\\theta$ での1次式の最大値（楕円の支持関数）$M(\\theta)$ を求め，さらにそれを $\\theta$ について最大化する．$M(\\theta)$ を直接微分するのは煩雑で，鍵は「どの $\\theta$ でも射影は円板 $x^2+y^2\\leqq4$ に含まれる」こと（$4-x^2-y^2\\geqq(2-x\\tan\\theta)^2$ と平方完成できる）であり，等号の点から最大を与える $\\theta$ が逆に決まる．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) 記述\n(2) $M(\\theta)$：2sin(θ) cos(θ)+2sin(θ) sqrt(cos(θ)^2+4)\n(3) 最大値：2sqrt(5) ; $\\tan\\theta$：sqrt(5)"
   },
   "methods": [],
   "tags": [

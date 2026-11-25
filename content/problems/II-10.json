@@ -7246,6 +7246,10 @@
   "idea": {
    "tex": "積の零点は各因数の零点を合わせたもので，$\\theta=\\omega x$ に直すと2つの等差数列 $n\\pi$ と $\\frac\\pi3+n\\pi$ を合わせた列を小さい順に数えればよい．極値は積を和に直して $\\frac12\\sin\\left(2\\omega x+\\frac\\pi6\\right)-\\frac14$ とし，位相 $2\\omega x+\\frac\\pi6$ が動く区間に入る $\\frac\\pi2+m\\pi$ を数える．区間の端で個数が変わる．"
   },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) 7/3<=ω<3\n(2) 記述"
+  },
   "methods": [],
   "tags": [
    "三角関数",
@@ -7292,6 +7296,10 @@
   "idea": {
    "tex": "$\\sin A=\\sin(B+C)$ を展開して $\\cos B\\cos C$ で割ると $\\tan B+\\tan C=k\\tan B\\tan C$．$t=\\tan B\\tan C$ とおくと $\\tan A=\\frac{kt}{t-1}$，積は $\\frac{kt^2}{t-1}=k\\bigl((t-1)+\\frac1{t-1}+2\\bigr)$．$\\tan B,\\tan C$ が正の実数として存在する条件 $(kt)^2\\geqq4t$ が $t$ の範囲を制限し，等号の点 $t=2$ が範囲に入るかどうかで最小値の形が変わる．"
   },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) 記述\n(2) 3/5<=cos(A)<sqrt(2)/2"
+  },
   "methods": [],
   "tags": [
    "正接の加法定理",
@@ -7336,6 +7344,10 @@
   ],
   "idea": {
    "tex": "直径 CD の円周上の点 P では $\\angle\\mathrm{CPD}=90^\\circ$ なので，C を通り PD に平行な直線と D を通り PC に平行な直線で直角三角形を作ると，$\\tan\\angle\\mathrm{APC}=\\frac{\\mathrm{AC}}{\\mathrm{AD}}\\cdot\\frac{\\mathrm{PD}}{\\mathrm{PC}}$，$\\tan\\angle\\mathrm{BPD}=\\frac{\\mathrm{BD}}{\\mathrm{BC}}\\cdot\\frac{\\mathrm{PC}}{\\mathrm{PD}}$ となり，比 $\\frac{\\mathrm{PD}}{\\mathrm{PC}}$ が打ち消し合って積が P によらない．原題は AC$=$CD$=$DB で積 $\\frac14$ を示すだけだが，捻りでは分け方を不均等にして積の値を一般の比から求め，$\\angle\\mathrm{APB}=90^\\circ+\\angle\\mathrm{APC}+\\angle\\mathrm{BPD}$ と積一定の条件から，正接の加法定理と相加平均・相乗平均の関係で $\\angle\\mathrm{APB}$ の最小値と，それを与える（左右対称でない）点 P の位置を決める．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) 1/5\n(2) $\\cos\\theta_0$：-sqrt(5)/3 ; $\\mathrm{PC}$：sqrt(70)/7"
   },
   "methods": [],
   "tags": [
@@ -7429,6 +7441,10 @@
   "idea": {
    "tex": "$f(x)f(x+\\alpha)=\\cos4x$ では，右辺の零点 $x_0$ で $f(x_0)$ か $f(x_0+\\alpha)$ のどちらかが $0$ になり，その零点 $z$ を左右どちらの因子に入れても式が成り立つことから，$\\cos4z=0$ と $\\cos4(z-\\alpha)=0$ が同時に従う．こうして右辺の零点の間隔が $\\alpha$ を縛る．原題は $\\alpha$ と $f$ を1組設計するだけだが，捻りでは $f(x)f(x+\\alpha)=\\cos4x$ をみたす関数 $f$ が存在する $\\alpha$ をすべて決定する（必要性は零点の議論，十分性は各 $\\alpha$ ごとの関数の構成）．"
   },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) $p$：1 ; $q$：1\n(2) 証明\n(3) $\\alpha$：{π/4, π/2, 3π/4, π}"
+  },
   "methods": [],
   "tags": [
    "関数方程式",
@@ -7520,6 +7536,10 @@
   ],
   "idea": {
    "tex": "$x$ を幅 $2\\theta$ の区間で動かすと，高い周波数の項の角 $2x+\\varphi$ は幅 $4\\theta$ の区間を動くので，位相 $\\varphi$ をどう選んでもその項を都合のよい値から逃がすことはできない．原題は $5\\cos x-\\cos(5x+\\varphi)$ で「$\\cos y\\leqq\\cos\\theta$ となる点がある」を使うが，捻りでは低い周波数の項と同符号の $\\cos x+\\cos(2x+\\varphi)$ にし，「区間の端点のどちらかは $2\\pi$ の倍数から $\\pi-t$ 以内にある」ことから $\\cos y\\geqq-\\cos t$ を導く．最適な幅は $\\cos\\theta-\\cos2\\theta$ を最大にする $\\cos\\theta=\\frac14$ で決まる．さらに最小を与える位相がただ1つであることを，$\\cos\\varphi$ の範囲で3通りに分け，それぞれ別の2点（$x=0$，$x=\\pm\\frac\\pi3$，$\\cos x=\\frac14$ の2点）での値で示す．"
+  },
+  "grading": {
+   "format": "lemma-input/1",
+   "spec": "(1) 証明\n(2) 証明\n(3) $\\varphi$：π"
   },
   "methods": [],
   "tags": [
