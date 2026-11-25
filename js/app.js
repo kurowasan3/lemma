@@ -978,6 +978,115 @@ function formatSolution(html) {
   return bigOps(t);
 }
 
+// 「答」の枠に入れるのは答えだけにする。太字（\boldsymbol）の答えを含む1文を，途中の計算（枠の上にふつうの文として出す）と
+// 答え（枠の中）に分ける。
+//   ・太字の数式より前に数式があれば，そこまでは計算として枠の外へ。前が短い言葉だけ（「よって最大値は」など）なら枠に残す
+//   ・太字と同じ数式の中に計算があるとき（$a+b=\frac12+\frac13=\boldsymbol{\frac56}$ など）は，その数式を（太字をはずして）枠の外に出し，
+//     枠には「左辺＝答え」（左辺が短い名前のときだけ）か答えだけを入れる
+const ANSWER_BOLD = /\\boldsymbol/;
+const MATH_SEG = /\$[^$]*\$|\\\[[\s\S]*?\\\]/g;
+function stripBold(tex) {
+  let out = '', i = 0;
+  while (i < tex.length) {
+    const k = tex.indexOf('\\boldsymbol', i);
+    if (k < 0) { out += tex.slice(i); break; }
+    out += tex.slice(i, k); let j = k + 11;
+    while (tex[j] === ' ') j++;
+    if (tex[j] !== '{') { i = j; continue; }
+    let d = 0, e = j;
+    for (; e < tex.length; e++) { if (tex[e] === '{') d++; else if (tex[e] === '}' && --d === 0) break; }
+    out += tex.slice(j + 1, e); i = e + 1;
+  }
+  return out;
+}
+// 数式の中の，入れ子の外にある「=」で分ける
+function topLevelEq(tex) {
+  const parts = []; let d = 0, last = 0;
+  for (let i = 0; i < tex.length; i++) {
+    const c = tex[i];
+    if (c === '{' || c === '(' || c === '[') d++;
+    else if (c === '}' || c === ')' || c === ']') d--;
+    else if (c === '=' && d === 0 && tex[i - 1] !== '\\') { parts.push(tex.slice(last, i)); last = i + 1; }
+  }
+  parts.push(tex.slice(last));
+  return parts;
+}
+// 左辺が「名前」と言える短い式か（S，V(l)，P_n，f(0)+f(1)，\mathrm{MQ} など。分数・積分などの計算を含まない）
+const simpleLHS = (t) => { const x = t.trim(); return !!x && x.length <= 24 && !/\\(d?frac|t?frac|int|sum|lim|cdot|times|log|sqrt|left|right|binom)\b/.test(x); };
+// 入れ子の外の「\\」（別行立ての数式の改行）で行に分ける
+function splitRows(tex) {
+  const rows = []; let d = 0, last = 0;
+  for (let i = 0; i < tex.length; i++) {
+    const c = tex[i];
+    if (c === '{') d++; else if (c === '}') d--;
+    else if (c === '\\' && tex[i + 1] === '\\' && d === 0) {
+      rows.push(tex.slice(last, i)); i++;
+      const m = tex.slice(i + 1).match(/^\s*\[[^\]]*\]/); if (m) i += m[0].length;
+      last = i + 1;
+    }
+  }
+  rows.push(tex.slice(last));
+  return rows.map(r => r.trim()).filter(Boolean);
+}
+const tidyEnd = (t) => t.replace(/(\\text\{[．。，、]\}|\\quad|\\qquad|[.,．，;\s])+$/, '');
+// 1つの式（行）から枠に入れる答えを取り出す。太字がなければ null（計算の行）。calc は「この行に計算が含まれる」
+function answerPiece(row) {
+  const k = row.indexOf('\\boldsymbol');
+  if (k < 0) return { piece: null, calc: true };
+  let calc = false, piece = row;
+  const before = row.slice(0, k);
+  if (before.trim()) {
+    const eq = topLevelEq(before);                         // 末尾が「=」なら最後は空
+    const lhs = eq.length >= 2 && !eq[eq.length - 1].trim() ? eq[0] : null;
+    if (!(lhs !== null && eq.length === 2 && simpleLHS(lhs))) {   // 同じ式の中に計算がある
+      calc = true;
+      piece = (lhs !== null && simpleLHS(lhs) ? lhs.trim() + '=' : '') + row.slice(k);
+    }
+  }
+  piece = tidyEnd(piece);
+  // 太字の中が「A=（計算）=答え」のときは，最初の左辺と最後の値だけを枠に（a=b=1 のような短い連なり・並べた答えはそのまま）
+  piece = piece.replace(/\\boldsymbol\s*\{([\s\S]*)\}$/, (all, inner) => {
+    const eqs = topLevelEq(inner);
+    if (eqs.length < 3 || /\\q?quad|\\text|[,;]/.test(inner) || eqs.slice(1, -1).every(x => /^[A-Za-z0-9_'{}\\ ]{1,8}$/.test(x.trim()))) return all;
+    calc = true;
+    return `\\boldsymbol{${eqs[0].trim()}=${eqs[eqs.length - 1].trim()}}`;
+  });
+  return { piece: balanceLR(tidyEnd(piece)), calc };
+}
+// 途中で切った式の \left・\right の数をそろえる（相手のないものは外す）
+function balanceLR(t) {
+  const L = (t.match(/\\left\b/g) || []).length, R = (t.match(/\\right\b/g) || []).length;
+  if (R > L) { let n = R - L; t = t.replace(/\\right\s*(\\[{}|]|\\[a-z]+|[)\]|.])/g, (m) => n-- > 0 ? '' : m); }
+  if (L > R) { let n = L - R; t = t.replace(/\\left\s*(\\[{}|]|\\[a-z]+|[(\[|.])/g, (m) => n-- > 0 ? '' : m); }
+  return t;
+}
+function splitAnswerLine(h) {
+  if (/\\text\s*\{[^}]*\$/.test(h)) return { pre: '', ans: h };   // \text{$x$ …} のように数式が入れ子：分けずにこれまでどおり
+  const segs = [...h.matchAll(MATH_SEG)];
+  const pieces = []; let clean = true;
+  for (const m of segs) {
+    const display = m[0].startsWith('\\[');
+    let body = display ? m[0].slice(2, -2) : m[0].slice(1, -1);
+    if (!body.includes('\\boldsymbol')) { clean = false; continue; }   // 太字のない数式＝途中の計算
+    if (display) {
+      clean = false;                                       // 別行立ての数式は枠の外に残し，枠には答えだけを1行で
+      body = body.replace(/\\(begin|end)\{(gathered|aligned|align\*?|gather\*?|split)\}/g, '');
+      if (/\\begin\{/.test(body)) return { pre: '', ans: h };            // cases・array など：分けずにこれまでどおり
+    }
+    const rows = display ? splitRows(body) : [body];
+    for (let row of rows) {
+      row = row.replace(/&amp;|&(?!(?:lt|gt|amp|quot|#\d+);)/g, '').trim();
+      const r = answerPiece(row);
+      if (r.calc) clean = false;
+      if (r.piece) pieces.push(r.piece);
+    }
+  }
+  const text = h.replace(MATH_SEG, '').replace(/<[^>]+>/g, '').trim();
+  if (text.length > 24) clean = false;                     // 長い説明の文も枠の外へ
+  if (clean || !pieces.length) return { pre: '', ans: h };
+  return { pre: h.replace(MATH_SEG, (m) => m.includes('\\boldsymbol') ? stripBold(m) : m), ans: pieces.map(x => `$${x}$`).join('，') };
+}
+
 // 解説を小問ごとの枠に分ける（見出しバー・別解の枠・点線の区切り・答の枠）。
 // 区切るのは入れ子の外の改行だけで、数式とタグの中では区切らない。
 function solutionSections(html) {
@@ -1018,7 +1127,12 @@ function solutionSections(html) {
   }
   const lineHTML = (h) => {
     const a = h.replace(/^\s*(?:<b>)?答[：:](?:<\/b>)?\s*/, '');
-    return a !== h || /\\boldsymbol/.test(h) ? `<div class="ansrow"><span class="al">答</span><span class="aa">${a}</span></div>` : h;
+    const box = (x) => `<div class="ansrow"><span class="al">答</span><span class="aa">${x}</span></div>`;
+    if (a !== h) return box(a);
+    // 太字はふつう答えの印。ただし \boldsymbol u・\boldsymbol{v} のような1文字はベクトルの記号なので，それだけの文は答えにしない
+    if (!/\\boldsymbol/.test(h) || !ANSWER_BOLD.test(h.replace(/\\boldsymbol\s*(\{\s*[A-Za-z]\s*\}|[A-Za-z](?![A-Za-z]))/g, ''))) return h;
+    const { pre, ans } = splitAnswerLine(h);
+    return pre ? `${pre}${box(ans)}` : box(ans);
   };
   return secs.filter(x => x.lines.length || (x.head && x.kind !== 'cont')).map(x => {
     let body = '';

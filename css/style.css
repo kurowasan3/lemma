@@ -876,3 +876,8 @@ form.search input { border-width: 2px; border-radius: 8px; }
 /* 鳥の吹き出し */
 #bird .bubble { border-radius: 12px 12px 4px 12px; border-width: 2px; box-shadow: 0 3px 0 var(--line); }
 .toast { background: var(--navy); color: #fff; }
+
+/* 答の枠：長い式は枠の中で横にスクロール（枠ごとはみ出さない） */
+.ansrow { display: flex; max-width: 100%; }
+.ansrow > .al { display: flex; align-items: center; justify-content: center; flex: none; }
+.ansrow > .aa { display: block; min-width: 0; overflow-x: auto; }
