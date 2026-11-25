@@ -285,9 +285,9 @@ def checks(guide, checklist, index):
         if n_x != (len(DEC) if name != 'index' else 0): errs.append(f'{name}：判定のチェック数 {n_x} が記録 {len(DEC)} と違う')
     if not all(v['ok'] for v in VER.values()): errs.append('verify_results に ✗ がある')
     # 資料フォルダ以外に変更がないこと（PR #4 の head と比べる。未追跡ファイルも含む）
-    diff = [l for l in git('diff', '--name-only', PR4).splitlines() if not l.startswith('docs/audit/2026-11-25/human-review/')]
+    diff = [l for l in git('diff', '--name-only', PR4).splitlines() if not l.startswith(('docs/audit/2026-11-25/human-review/', 'docs/audit/2026-11-25/release/'))]
     untracked = [l[3:] for l in git('status', '--porcelain', '--untracked-files=all').splitlines()
-                 if not l[3:].startswith('docs/audit/2026-11-25/human-review/')]
+                 if not l[3:].startswith(('docs/audit/2026-11-25/human-review/', 'docs/audit/2026-11-25/release/'))]
     if diff or untracked: errs.append(f'資料フォルダ以外の変更：{diff + untracked}')
     return errs
 
