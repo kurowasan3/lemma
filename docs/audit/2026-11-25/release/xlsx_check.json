@@ -1,0 +1,135 @@
+{
+ "zip_parts": {
+  "orig": 18,
+  "synced": 18,
+  "only_orig": [],
+  "only_synced": [],
+  "differing": [
+   "xl/worksheets/sheet2.xml"
+  ]
+ },
+ "sheets": {
+  "orig": [
+   "使い方",
+   "問題一覧",
+   "分野一覧",
+   "弟テスト記録"
+  ],
+  "synced": [
+   "使い方",
+   "問題一覧",
+   "分野一覧",
+   "弟テスト記録"
+  ]
+ },
+ "dimensions": {
+  "使い方": [
+   "A1:A17",
+   "A1:A17",
+   17,
+   17,
+   1,
+   1
+  ],
+  "問題一覧": [
+   "A1:V5472",
+   "A1:V5472",
+   5472,
+   5472,
+   22,
+   22
+  ],
+  "分野一覧": [
+   "A1:F24",
+   "A1:F24",
+   24,
+   24,
+   6,
+   6
+  ],
+  "弟テスト記録": [
+   "A1:J301",
+   "A1:J301",
+   301,
+   301,
+   10,
+   10
+  ]
+ },
+ "formula_cells_in_orig": 6454,
+ "cells": {
+  "differing_cells": 12,
+  "unexpected_cells": [],
+  "expected_changed_fields": 12,
+  "differing_equals_expected": true,
+  "synced_equals_pr3": [
+   [
+    "A-GEO-115",
+    "解答・解説",
+    true
+   ],
+   [
+    "B-SEQ-342",
+    "核となるアイデア",
+    true
+   ],
+   [
+    "B-SEQ-342",
+    "解答・解説",
+    true
+   ],
+   [
+    "C-CUR-459",
+    "解答・解説",
+    true
+   ],
+   [
+    "C-CUR-484",
+    "解答・解説",
+    true
+   ],
+   [
+    "II-CAL-312",
+    "解答・解説",
+    true
+   ],
+   [
+    "II-GEO-300",
+    "解答・解説",
+    true
+   ],
+   [
+    "III-DIF-359",
+    "解答・解説",
+    true
+   ],
+   [
+    "III-DIF-374",
+    "核となるアイデア",
+    true
+   ],
+   [
+    "III-DIF-374",
+    "解答・解説",
+    true
+   ],
+   [
+    "III-DIF-380",
+    "答え",
+    true
+   ],
+   [
+    "III-DIF-380",
+    "解答・解説",
+    true
+   ]
+  ],
+  "all_match": true
+ },
+ "ids": {
+  "rows_with_id": 5471,
+  "unique": 5471,
+  "json_pr3": 5532,
+  "same_set": false
+ }
+}
