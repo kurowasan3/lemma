@@ -55,6 +55,10 @@ REM = {sub_key(r): r for r in csv.DictReader(open(HERE.parent / 'explanation-rem
 EXP = {sub_key(r): r for r in git_csv(AUDIT, 'docs/audit/2026-11-25/explanation-audit/explanation_results.csv')}
 AGGR = {sub_key(r): r for r in git_csv(AGG, 'docs/audit/2026-11-25/aggregate-254/subproblem_summary.csv')}
 VER = json.loads((HERE / 'verify_results.json').read_text(encoding='utf-8'))
+DEC_PATH = HERE / 'review_decisions.json'
+DEC_RAW = json.loads(DEC_PATH.read_text(encoding='utf-8')) if DEC_PATH.exists() else None
+DEC = {(d['id'], d['sub']): d for d in DEC_RAW['decisions']} if DEC_RAW else {}
+def status(pid, sub): return f'判定済み（{DEC[(pid, sub)]["decision"]}）' if (pid, sub) in DEC else '未審査'
 FROZEN_MD = git('show', f'{FROZEN}:docs/audit/2026-11-25/explanation-audit/independent_solutions.md')
 
 def frozen_section(pid, sub):
@@ -90,9 +94,16 @@ def anchor(pid, sub): return f'{pid}-{sub.strip("()")}'.lower()
 def fmt_cat(c): return c if c else '（記録なし）'
 DECISION_BOX = ['承認', '修正を要求', '保留・追加検証']
 def decision_block(pid, sub):
-    return ('\n'.join(f'- [ ] {d}' for d in DECISION_BOX) +
-            '\n\n判定理由：\n\n> （未記入）\n\n必要な修正（「修正を要求」のとき）：\n\n> （未記入）\n\n'
-            '審査者：（未記入）　審査日：（未記入）\n')
+    d = DEC.get((pid, sub))
+    if not d:
+        return ('\n'.join(f'- [ ] {x}' for x in DECISION_BOX) +
+                '\n\n判定理由：\n\n> （未記入）\n\n必要な修正（「修正を要求」のとき）：\n\n> （未記入）\n\n'
+                '審査者：（未記入）　審査日：（未記入）\n')
+    assert d['decision'] in DECISION_BOX, d
+    return ('\n'.join(f'- [{"x" if x == d["decision"] else " "}] {x}' for x in DECISION_BOX) +
+            f'\n\n判定理由：\n\n> {d["reason"]}\n\n必要な修正：\n\n> {d["fix"]}\n\n'
+            f'審査者：{DEC_RAW["reviewer"]}　審査日：{DEC_RAW["date"]}\n\n'
+            f'記録の出所：{DEC_RAW["source"]}（`review_decisions.json`）\n')
 
 def section_A(pid):
     return f'問題ファイル：`{FILE[pid]}`（問題文は PR #3・main とも同じで，変更されていない）\n\n' + tex(CUR[pid]['statement'])
@@ -151,7 +162,9 @@ def section_E(pid, sub):
 # ---------------------------------------------------------------- 出力
 def build_guide():
     L = ['# 人手レビューの手引き：PR #3 の13小問', '',
-         '人による審査のための資料。**この資料は審査の結果ではない。** 13小問はすべて「未審査」で，判定欄（F）はすべて空欄である。', '',
+         '人による審査のための資料。A〜E は資料を作った AI が用意したもので，審査の結果ではない。'
+         'F（判定欄）は審査者が決めた判定だけを `review_decisions.json` から写す（AI が判定を書き込むことはない）。' +
+         (f'**判定の状況：{len(DEC)}/{len(RN.TARGETS)} 小問 判定済み（審査者 {DEC_RAW["reviewer"]}，{DEC_RAW["date"]}）。** {DEC_RAW["source"]}' if DEC else '**13小問はすべて「未審査」で，判定欄はすべて空欄。**'), '',
          '## 前提', '',
          f'- 審査の対象は PR #3（`fix/explanation-remediation-2026-11-25`，{PR3[:7]}）の登録内容。PR #4（{PR4[:7]}）は管理表の同期と検証で，登録内容は PR #3 と同じ。',
          f'- 修正前は main（{MAIN[:7]}）。この資料のブランチは PR #4 の上に作り，資料（このフォルダ）以外は何も変えていない。',
@@ -186,9 +199,9 @@ def build_guide():
 
 def build_checklist():
     L = ['# 人手レビュー チェックリスト（13小問）', '',
-         '審査者が記入する。**AI は記入しない。** 詳しい資料は `human_review_guide.md`。', '',
+         '判定は審査者が決め，`review_decisions.json` に記録したものだけを写す（AI は判定しない）。詳しい資料は `human_review_guide.md`。', '',
          '## 進み具合', '', '| 小問 | 状態 |', '|---|---|']
-    for pid, sub in RN.TARGETS: L.append(f'| {pid} {sub} | 未審査 |')
+    for pid, sub in RN.TARGETS: L.append(f'| {pid} {sub} | {status(pid, sub)} |')
     L += ['', '## 小問ごとの記入欄', '']
     for pid, sub in RN.TARGETS:
         e = RN.E[(pid, sub)]
@@ -212,7 +225,7 @@ def build_index():
         ok = all(VER[k]['ok'] for k in RN.VERIFY_KEYS[(pid, sub)])
         L.append(f'| [{pid} {sub}](human_review_guide.md#{anchor(pid, sub)}) | `{FILE[pid]}` | {RN.KIND[(pid, sub)]} | {a.get("category", "")} | '
                  f'{e["first_pass_category"]}／{e["second_pass_category"]}／{e["explanation_category"]} | '
-                 f'{"・".join(FIELD_JA[k] for k in changed_fields(pid)) or "なし"} | {"✓" if ok else "✗"} | 未審査 |')
+                 f'{"・".join(FIELD_JA[k] for k in changed_fields(pid)) or "なし"} | {"✓" if ok else "✗"} | {status(pid, sub)} |')
     L += ['', '## このフォルダのファイル', '',
           '| ファイル | 内容 |', '|---|---|',
           '| `human_review_guide.md` | 13小問それぞれの A〜F（問題文，登録内容と修正前後，監査の指摘，独立した検証，判断の論点，判定欄） |',
@@ -257,12 +270,19 @@ def checks(guide, checklist, index):
         block = guide.split(f'<a id="{a}"></a>')[1].split('\n---\n')[0]
         for h in ['### A.', '### B.', '### C.', '### D.', '### E.', '### F.']:
             if h not in block: errs.append(f'{pid} {sub}：{h} がない')
-        if block.count('- [ ] ') != 3: errs.append(f'{pid} {sub}：判定欄が3つでない')
-        if f'| {pid} {sub} | 未審査 |' not in checklist: errs.append(f'{pid} {sub}：チェックリストの状態が未審査でない')
+        boxes = re.findall(r'^- \[([ xX])\] (承認|修正を要求|保留・追加検証)$', block, re.M)
+        if len(boxes) != 3: errs.append(f'{pid} {sub}：判定欄が3つでない')
+        checked = [b for c, b in boxes if c != ' ']
+        want_chk = [DEC[(pid, sub)]['decision']] if (pid, sub) in DEC else []
+        if checked != want_chk: errs.append(f'{pid} {sub}：判定欄のチェックが審査者の記録と違う {checked}')
+        if f'| {pid} {sub} | {status(pid, sub)} |' not in checklist: errs.append(f'{pid} {sub}：チェックリストの状態が記録と違う')
         if f'[{pid} {sub}]' not in index: errs.append(f'{pid} {sub}：索引にない')
+    if DEC:
+        if set(DEC) - set(RN.TARGETS): errs.append(f'対象外の判定がある：{set(DEC) - set(RN.TARGETS)}')
+        if not (DEC_RAW.get('reviewer') and DEC_RAW.get('date') and DEC_RAW.get('source')): errs.append('審査者・日付・出所の記録がない')
     for name, text in [('guide', guide), ('checklist', checklist), ('index', index)]:
-        if re.search(r'- \[[xX]\]', text): errs.append(f'{name}：チェック済みの欄がある')
-        if re.search(r'承認済み|審査済み|確認済み（人）', text): errs.append(f'{name}：審査済みを示す語がある')
+        n_x = len(re.findall(r'^- \[[xX]\] (承認|修正を要求|保留・追加検証)$', text, re.M))
+        if n_x != (len(DEC) if name != 'index' else 0): errs.append(f'{name}：判定のチェック数 {n_x} が記録 {len(DEC)} と違う')
     if not all(v['ok'] for v in VER.values()): errs.append('verify_results に ✗ がある')
     # 資料フォルダ以外に変更がないこと（PR #4 の head と比べる。未追跡ファイルも含む）
     diff = [l for l in git('diff', '--name-only', PR4).splitlines() if not l.startswith('docs/audit/2026-11-25/human-review/')]
