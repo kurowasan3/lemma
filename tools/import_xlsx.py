@@ -138,7 +138,7 @@ def legacy(argv):
             entry['in'] = 1
 
     out.mkdir(parents=True, exist_ok=True)
-    for old in out.glob('f-*.json'):
+    for old in list(out.glob('f-*.json')) + list(out.glob('b/*.json')):   # 塊の形（v0.32〜）の本文も消す（この形の一覧は f-*.json を読む）
         old.unlink()
     fields = [{'key': k, 'subject': s, 'name': f} for (s, f), k in keys.items()
               if any(e['f'] == k for e in index)]

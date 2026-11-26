@@ -29,6 +29,7 @@ from pathlib import Path
 HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE))
 import import_xlsx as IX  # noqa: E402
+import build_app_data as BA  # noqa: E402
 
 FIELDS = {
     '数I': ['数と式', '2次関数', '図形と計量', 'データの分析'],
@@ -50,8 +51,8 @@ def main():
     errs = []
     existing_q = set()
     data = HERE.parent / 'data'
-    for f in data.glob('f-*.json'):
-        for b in json.loads(f.read_text(encoding='utf-8')).values():
+    for _, _, items in BA.read_bodies(data):
+        for b in items.values():
             existing_q.add(re.sub(r'\s+', '', b['q']))
     html, specs, rows, seen_q = {}, {}, [], {}
     for n, it in enumerate(items):

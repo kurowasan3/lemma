@@ -10,17 +10,19 @@ import json
 import sys
 from pathlib import Path
 
-IGNORE = {'generated', 'format', 'dataVersion', 'builtinUnits', 'problems'}
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from build_app_data import read_bodies  # noqa: E402
+
+IGNORE = {'generated', 'format', 'dataVersion', 'builtinUnits', 'problems', 'bodies'}   # bodies（本文の置き方）は問題ごとの本文で比べる
 
 
 def load(d):
     d = Path(d)
     idx = json.loads((d / 'index.json').read_text(encoding='utf-8'))
     bodies = {}
-    for f in sorted(d.glob('f-*.json')):
-        for k, v in json.loads(f.read_text(encoding='utf-8')).items():
-            if k != '_meta':
-                bodies[k] = (f.name, v)
+    for name, _, items in read_bodies(d):
+        for k, v in items.items():
+            bodies[k] = (name, v)
     meta = {k: v for k, v in idx.items() if k not in IGNORE}
     return meta, {e['id']: e for e in idx['problems']}, bodies
 
@@ -31,7 +33,7 @@ def compare(old, new):
     for i in sorted(e0.keys() & e1.keys()):
         if e0[i] != e1[i]:
             changed.append((i, '一覧', sorted(k for k in set(e0[i]) | set(e1[i]) if e0[i].get(k) != e1[i].get(k))))
-        elif b0.get(i) != b1.get(i):
+        elif b0.get(i, (None, None))[1] != b1.get(i, (None, None))[1]:   # 置き場所（ファイル名）の違いは比べない
             x, y = b0.get(i, (None, {})), b1.get(i, (None, {}))
             keys = sorted(k for k in set(x[1]) | set(y[1]) if x[1].get(k) != y[1].get(k))
             changed.append((i, '本文', keys if keys else [f'ファイル {x[0]} → {y[0]}']))

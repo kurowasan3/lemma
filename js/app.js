@@ -26,7 +26,7 @@ import {
 } from './catalog.js';
 import { techMastery, techCandidates, masterChecklist, makeCtx, transferTargets, transferWhy, MASTER, STATUS, TRANSFER, TRANSFER_KIND } from './mastery.js';
 
-const VERSION = '0.31.1';
+const VERSION = '0.32.0';
 const KEY = 'lemma.v2';
 let sync = null, syncApplying = false, syncStatus = null;   // アカウントと同期（initSync で用意）
 const $ = (sel, el = document) => el.querySelector(sel);
@@ -892,10 +892,24 @@ async function renderSearch(q) {
   $$('.res-row', box).forEach(b => b.addEventListener('click', () => openIds([b.dataset.pid])));
 }
 
+// 問題の本文を読み込めなかったとき：理由と「もう一度読み込む」「今日の学習へ戻る」（学習記録・中断した演習はそのまま）
+function loadFailed(e, retry) {
+  const offline = navigator.onLine === false;
+  view.innerHTML = `<div class="panel load-failed fade-in" role="alert">
+    <h2 style="margin-top:0">問題を読み込めませんでした</h2>
+    <p class="sub">${offline ? 'オフラインのようです。電波のある場所で、もう一度読み込んでください。一度開いた問題は、オフラインでも開けます。' : '通信がうまくいきませんでした。少し待ってから、もう一度読み込んでください。'}</p>
+    <p class="small muted">${esc(e && e.message || '')}</p>
+    <button class="btn primary block" id="lretry">もう一度読み込む</button>
+    <button class="btn ghost block" id="lback" style="margin-top:10px">今日の学習へ戻る</button>
+  </div>`;
+  $('#lretry').addEventListener('click', () => retry());
+  $('#lback').addEventListener('click', () => { if (location.hash !== '#today') location.hash = '#today'; else route(); });
+}
+
 async function startSession(steps, cfg = null) {
   view.innerHTML = '<p class="muted" style="padding:40px 4px">問題を読み込んでいます…</p>';
   try { await ensureBodies(steps.map(s => s.pid).filter(Boolean)); dataWarn(); }
-  catch (e) { showBanner(`<b>問題を読み込めませんでした</b>${esc(e.message)}`); route(); return; }
+  catch (e) { return loadFailed(e, () => startSession(steps, cfg)); }
   session = { steps, i: 0, results: [], cfg };
   saveSession();
   if (!studyStart || Date.now() - lastActivity > 15 * 60000) { studyStart = Date.now(); breakNotified = 0; }
@@ -909,7 +923,7 @@ async function resumeSession(d) {
   const steps = d.steps.slice(d.i).filter(st => st.kind !== 'problem' || entryById.has(st.pid));
   view.innerHTML = '<p class="muted" style="padding:40px 4px">問題を読み込んでいます…</p>';
   try { await ensureBodies(steps.map(s => s.pid).filter(Boolean)); dataWarn(); }
-  catch (e) { showBanner(`<b>問題を読み込めませんでした</b>${esc(e.message)}`); route(); return; }
+  catch (e) { return loadFailed(e, () => resumeSession(d)); }
   // 進み具合の表示を保つため、解き終えた分も steps に残して i から始める
   session = { steps: [...d.steps.slice(0, d.i), ...steps], i: d.i, results: Array.isArray(d.results) ? d.results : [], cfg: d.cfg || null };
   saveSession();

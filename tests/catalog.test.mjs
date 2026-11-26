@@ -6,8 +6,12 @@ import { fileURLToPath } from 'url';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 // catalog.js は相対 URL で fetch するので、リポジトリのファイルを返す fetch に差し替える
+const fetched = [];          // 読んだ URL（本文の分割読み込みのテスト用）
+let failNext = null;         // この文字列を含む URL を1回だけ失敗させる
 globalThis.fetch = async (url) => {
-  const p = path.join(root, String(url));
+  fetched.push(String(url));
+  if (failNext && String(url).includes(failNext)) { failNext = null; throw new TypeError('network'); }
+  const p = path.join(root, String(url).split('?')[0]);
   if (!fs.existsSync(p)) return { ok: false, status: 404, json: async () => { throw new Error('404'); } };
   const text = fs.readFileSync(p, 'utf8');
   return { ok: true, status: 200, json: async () => JSON.parse(text) };
@@ -149,6 +153,33 @@ const missing = [...ids].filter(i => !CAT.entryById.has(i));
 ok(missing.length === 0, `v0.6 の記録にある問題ID がすべてある（無い ${missing.slice(0, 5)}）`);
 ok(st.practice.fields.every(k => CAT.fieldByKey[k]), 'v0.6 の記録にある分野ID がすべてある');
 ok(CAT.fieldByKey['I-02'].name === '2次関数' && CAT.fieldByKey['III-17'].name === '積分法', '分野ID の意味が v0.6 と同じ');
+
+// 本文の分割読み込み（v0.32）：塊ごと・二重に読まない・同時に頼んでも1回・失敗したら次に読み直す
+{
+  // 別のモジュールとして読み込み直す（上のテストで全問の本文を読んだあとなので）
+  const CAT = await import('../js/catalog.js?split');
+  await CAT.loadCatalog();
+  const idx = JSON.parse(fs.readFileSync(path.join(root, 'data/index.json'), 'utf8'));
+  ok(idx.bodies && idx.bodies.layout === 'chunks' && idx.bodies.size === 20, '一覧に本文の置き方（20番ごとの塊）');
+  ok(CAT.bodyFile(CAT.entryById.get('III-DIF-374')).path === 'data/b/III-DIF-18.json' && CAT.bodyFile(CAT.entryById.get('III-DIF-374')).url === `data/b/III-DIF-18.json?h=${idx.bodies.chunks['III-DIF-18']}`, '問題IDから塊が決まる（III-DIF-374 → III-DIF-18，URL に中身のハッシュ）');
+  const ids = ['III-DIF-360', 'III-DIF-379', 'III-DIF-380'].filter(id => CAT.entryById.has(id));
+  fetched.length = 0;
+  await Promise.all([CAT.ensureBodies(ids), CAT.ensureBodies(ids)]);
+  const b = fetched.filter(u => u.includes('/b/'));
+  ok(b.length === new Set(b).size && b.length === new Set(ids.map(id => CAT.bodyFile(CAT.entryById.get(id)).path)).size, `同時に頼んでも塊は1回ずつ（${b.join(' ')}）`);
+  ok(ids.every(id => CAT.getBody(id)), '頼んだ問題の本文がそろう');
+  fetched.length = 0;
+  await CAT.ensureBodies(ids);
+  ok(fetched.length === 0, '読み込み済みなら通信しない');
+  const far = CAT.ENTRIES.find(e => e.kind === 'bank' && e.id.startsWith('C-VEC-') && !CAT.getBody(e.id));
+  failNext = CAT.bodyFile(far).path;
+  let err = null;
+  try { await CAT.ensureBodies([far.id]); } catch (e) { err = e; }
+  ok(err && err.message.includes(CAT.bodyFile(far).path), `失敗はファイル名つきのエラー（${err && err.message}）`);
+  await CAT.ensureBodies([far.id]);
+  ok(!!CAT.getBody(far.id), '失敗したあと，もう一度頼むと読み直せる');
+  ok(CAT.staleDataFiles().length === 0, 'すべての塊の中身のハッシュが一覧と合う');
+}
 
 // 検索・問題セット（v0.8）
 ok(CAT.normText('最大・最小') === CAT.normText('最大最小') && CAT.normText('ＡＢ　c') === 'abc', 'normText が表記ゆれを吸収する');

@@ -13,7 +13,7 @@ const { chromium } = require('playwright');
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const TYPES = { '.html': 'text/html', '.js': 'text/javascript', '.mjs': 'text/javascript', '.css': 'text/css', '.json': 'application/json',
   '.png': 'image/png', '.webmanifest': 'application/manifest+json', '.woff2': 'font/woff2', '.svg': 'image/svg+xml' };
-let fakeDataVersion = null;
+let fakeDataVersion = null, fakeChunk = null;
 const mock = createMockSupabase({ key: 'sb_publishable_e2e' });   // 同期のテスト用（このサーバーの /mock/ で応える）   // Service Worker のテスト用：index.json の dataVersion を差し替える
 const server = http.createServer((req, res) => {
   let p = decodeURIComponent(new URL(req.url, 'http://x').pathname);
@@ -35,6 +35,7 @@ export const SUPABASE_KEY = 'sb_publishable_e2e';`);
   }
   if (fakeDataVersion && p === '/data/index.json') {
     const d = JSON.parse(fs.readFileSync(path.join(root, p), 'utf8')); d.dataVersion = fakeDataVersion;
+    if (fakeChunk) d.bodies.chunks[fakeChunk] = 'changed000';
     res.writeHead(200, { 'Content-Type': 'application/json' }); return res.end(JSON.stringify(d));
   }
   const f = path.join(root, p);
@@ -138,16 +139,16 @@ try {
     ok(st.log.length === old.log.length + 1, '学習記録が続きに足される');
     ok(page.errors.length === 0, `ページのエラーなし ${page.errors}`);
   }
-  // 4. 一部の data/ だけ古い（f-I-01.json の版が違う）
+  // 4. 一部の data/ だけ古い（本文の塊 b/I-EXP-0.json の中身のハッシュが一覧と違う）
   {
-    const page = await newPage({ route: (p) => p.route('**/data/f-I-01.json', async (r) => {
-      const res = await r.fetch(); const d = await res.json(); d._meta = { dataVersion: 'old000000000' };
+    const page = await newPage({ route: (p) => p.route('**/data/b/I-EXP-0.json*', async (r) => {
+      const res = await r.fetch(); const d = await res.json(); d._meta = { h: 'old0000000' };
       await r.fulfill({ response: res, body: JSON.stringify(d) });
     }) });
     await page.goto(U + '#today'); await page.waitForTimeout(1200);
     await page.evaluate("__lemma.open(['I-EXP-001'])"); await page.waitForTimeout(800);
     const b = page.locator('.banner');
-    ok(await b.count() === 1 && (await b.innerText()).includes('data/f-I-01.json'), '古い本文ファイルを読むと警告が出る');
+    ok(await b.count() === 1 && (await b.innerText()).includes('data/b/I-EXP-0.json'), '古い本文ファイルを読むと警告が出る');
     ok(await page.locator('#inputs input').count() > 0, '警告が出ても問題は解ける');
   }
   // 5. 自己採点の前に解答・解説が出る／設定に「問題データ」が無い
@@ -348,7 +349,10 @@ try {
     const v = JSON.parse(fs.readFileSync(path.join(root, 'data/index.json'), 'utf8')).dataVersion;
     const keys = await page.evaluate(async () => caches.keys());
     ok(keys.includes('lemma-data-' + v) && keys.some(k => k.startsWith('lemma-v')), `コード用とデータ用のキャッシュが分かれる ${keys}`);
-    ok(await page.evaluate(async () => !!(await caches.match('data/f-I-01.json'))), '開いた分野の本文がキャッシュされる');
+    const idx0 = JSON.parse(fs.readFileSync(path.join(root, 'data/index.json'), 'utf8'));
+    const chunkURL = `data/b/I-EXP-0.json?h=${idx0.bodies.chunks['I-EXP-0']}`;
+    ok(keys.includes('lemma-chunks') && await page.evaluate(async (u) => !!(await (await caches.open('lemma-chunks')).match(u)), chunkURL), '開いた問題の本文の塊がキャッシュされる');
+    ok(!(await page.evaluate(async () => !!(await caches.match('data/f-I-01.json')))), '分野ごとの本文ファイルは読まない');
     await page.context().setOffline(true);
     await page.goto(U + '#today'); await page.waitForTimeout(1200);
     await page.evaluate("__lemma.open(['I-EXP-001'])"); await page.waitForTimeout(1200);
@@ -360,8 +364,74 @@ try {
     await page.waitForTimeout(500);
     const keys2 = await page.evaluate(async () => caches.keys());
     ok(keys2.includes('lemma-data-e2enewversion') && !keys2.includes('lemma-data-' + v), `データの版が変わると古いデータ用キャッシュを消す ${keys2}`);
-    ok(!(await page.evaluate(async () => !!(await caches.match('data/f-I-01.json')))), '古い版の本文は残らない');
+    ok(await page.evaluate(async (u) => !!(await (await caches.open('lemma-chunks')).match(u)), chunkURL), '中身の変わらない塊は，データの版が変わってもキャッシュに残る');
+    fakeChunk = 'I-EXP-0';
+    await page.evaluate(async () => fetch('data/index.json', { cache: 'no-cache' }));
+    await page.waitForTimeout(500);
+    ok(!(await page.evaluate(async (u) => !!(await (await caches.open('lemma-chunks')).match(u)), chunkURL)), '中身が変わった塊の古いキャッシュは消す');
+    fakeChunk = null;
     fakeDataVersion = null;
+  }
+  // 7b. 本文の分割読み込み（v0.32）：必要な塊だけ・二重に読まない・失敗したら再試行・検索は全問題・戻る
+  {
+    const idx = JSON.parse(fs.readFileSync(path.join(root, 'data/index.json'), 'utf8'));
+    const chunkOf = (id) => { const m = /^(.+)-(\d+)$/.exec(id); return m ? `${m[1]}-${Math.floor(+m[2] / idx.bodies.size)}` : null; };   // 内蔵問題（q01 など）は本文ファイルなし
+    const page = await newPage();
+    const got = [];
+    page.on('request', r => { const u = new URL(r.url()); if (u.pathname.includes('/data/')) got.push(u.pathname.split('/data/')[1]); });
+    await page.goto(U + '#today'); await page.waitForTimeout(1500);
+    ok(got.every(f => !f.startsWith('b/') && !f.startsWith('f-')), `起動時は本文を読まない（${got.join(' ')}）`);
+    got.length = 0;
+    await page.click('#firstgo'); await page.waitForTimeout(1500);
+    const sess = await page.evaluate(() => JSON.parse(localStorage.getItem('lemma.session.v1') || 'null'));
+    const pids = (sess ? sess.steps : []).map(st => st.pid).filter(Boolean);
+    const want = new Set(pids.filter(id => idx.problems.some(e => e.id === id)).map(id => 'b/' + chunkOf(id) + '.json'));
+    const read = got.filter(f => f.startsWith('b/') || f.startsWith('f-'));
+    ok(pids.length === 8 && read.length && read.length <= 8, `初回の8問で読む本文ファイルは8個まで（${read.length}個）`);
+    ok(read.every(f => want.has(f)) && [...want].every(f => read.includes(f)), '読むのは出題する問題の塊だけ（全部そろう）');
+    ok(new Set(read).size === read.length, '同じ塊を二度読まない');
+    ok(!read.some(f => f.startsWith('f-')), '分野ごとの大きなファイルは読まない');
+    const fieldsMixed = new Set(pids.map(id => idx.problems.find(e => e.id === id)?.f).filter(Boolean)).size;
+    ok(fieldsMixed >= 3, `分野を混ぜた出題のまま（${fieldsMixed}分野）`);
+    const kb = (await Promise.all(read.map(f => fs.promises.stat(path.join(root, 'data', f)).then(x => x.size)))).reduce((a, b) => a + b, 0) / 1024;
+    const allKb = fs.readdirSync(path.join(root, 'data/b')).reduce((a, f) => a + fs.statSync(path.join(root, 'data/b', f)).size, 0) / 1024;
+    ok(kb < allKb / 20, `初回8問の本文は全体の1/20未満（${Math.round(kb)}KB / ${Math.round(allKb)}KB）`);
+    // 同じ問題をもう一度開いても読み直さない
+    got.length = 0;
+    await page.evaluate((ids) => __lemma.open(ids), pids.slice(0, 3)); await page.waitForTimeout(1000);
+    ok(!got.some(f => f.startsWith('b/')), '読み込み済みの問題は通信せずに開く');
+    await page.click('#quit').catch(() => {}); await page.waitForTimeout(400);
+    // 読み込みに失敗したら，理由と「もう一度読み込む」。押すと読み直して始まる（学習記録はそのまま）
+    const logBefore = await page.evaluate(() => ((JSON.parse(localStorage.getItem('lemma.v2') || 'null') || { log: [] }).log || []).length);
+    const target = 'III-DIF-374';
+    await page.route('**/data/b/' + chunkOf(target) + '.json*', r => r.abort());
+    await page.evaluate((id) => __lemma.open([id]), target); await page.waitForTimeout(1000);
+    ok(await page.locator('.load-failed #lretry').count() === 1 && (await page.locator('.load-failed').innerText()).includes('読み込めませんでした'), '読み込みの失敗を画面に出す（もう一度読み込む）');
+    await page.unroute('**/data/b/' + chunkOf(target) + '.json*');
+    await page.click('#lretry'); await page.waitForTimeout(1200);
+    ok(await page.locator('#conf button').count() === 3 && (await page.locator('.qhtml').first().innerText()).length > 10, '「もう一度読み込む」で問題が開く');
+    ok(await page.evaluate(() => ((JSON.parse(localStorage.getItem('lemma.v2') || 'null') || { log: [] }).log || []).length) === logBefore, '失敗と再試行で学習記録は変わらない');
+    await page.click('#quit').catch(() => {}); await page.waitForTimeout(400);
+    // オフラインで，まだ読んでいない問題：オフラインと分かる表示。「今日の学習へ戻る」
+    await page.context().setOffline(true);
+    const unread = idx.problems.find(e => e.f === 'C-19' && !pids.some(p => chunkOf(p) === chunkOf(e.id))).id;
+    await page.evaluate((id) => __lemma.open([id]), unread); await page.waitForTimeout(1000);
+    ok((await page.locator('.load-failed').innerText()).includes('オフライン'), 'オフラインのときはそう表示する');
+    await page.click('#lback'); await page.waitForTimeout(800);
+    ok(await page.locator('#todaygo, #firstgo').count() >= 1, '「今日の学習へ戻る」で戻れる');
+    await page.context().setOffline(false);
+    page.errors.length = 0;   // 上でわざと起こした通信の失敗（コンソールの Failed to load resource）は数えない
+    // 検索：まだ本文を読んでいない問題も番号・科目名で見つかり，開くとその塊だけ読む
+    got.length = 0;
+    await page.goto(U + '#search=' + encodeURIComponent('B-SEQ-342')); await page.waitForTimeout(1500);
+    ok(await page.locator('.res-row[data-pid="B-SEQ-342"]').count() === 1 && !got.some(f => f.startsWith('b/')), '検索は本文を読まずに全問題から探す（軽い索引）');
+    await page.click('.res-row[data-pid="B-SEQ-342"]'); await page.waitForTimeout(1200);
+    ok(got.filter(f => f.startsWith('b/')).join() === 'b/' + chunkOf('B-SEQ-342') + '.json', `検索結果から開くと，その問題の塊だけ読む（${got.filter(f => f.startsWith('b/'))}）`);
+    ok((await page.locator('.pid').first().innerText()).includes('B-SEQ-342'), '検索結果から正しい問題が開く');
+    await page.goBack(); await page.waitForTimeout(1200);
+    ok(await page.locator('.res-row[data-pid="B-SEQ-342"]').count() === 1, 'ブラウザの戻るで検索結果に戻る');
+    ok(page.errors.length === 0, `ページのエラーなし ${page.errors}`);
+    await page.context().close();
   }
   // 8. アカウントと同期：2台の端末でログインすると記録が合わさる（にせ Supabase）
   {
@@ -384,10 +454,10 @@ try {
     const B = await newPage({ state: { ...old, log: old.log.slice(20) } });
     await login(B);
     ok(!A.asked && B.asked, 'ログイン時：アカウントにも端末にも記録があるときだけ、合わせるかを聞く');
-    const nB = await B.evaluate(() => JSON.parse(localStorage.getItem('lemma.v2')).log.length);
+    const nB = await B.evaluate(() => ((JSON.parse(localStorage.getItem('lemma.v2') || 'null') || { log: [] }).log || []).length);
     ok(nB === old.log.length, `端末B：両方の端末の記録が合わさる（${nB}件）`);
     await A.click('#acct-now'); await A.waitForTimeout(1500);
-    const nA = await A.evaluate(() => JSON.parse(localStorage.getItem('lemma.v2')).log.length);
+    const nA = await A.evaluate(() => ((JSON.parse(localStorage.getItem('lemma.v2') || 'null') || { log: [] }).log || []).length);
     ok(nA === old.log.length, '端末A：「今すぐ同期」で端末Bの記録も入る');
     // 解いたあとは自動で同期の予約が入る（ここでは画面を閉じたときの同期で確かめる）
     await A.evaluate("__lemma.open(['I-QF-109'])"); await A.waitForTimeout(800);
@@ -402,7 +472,7 @@ try {
     await A.goto(U + '#settings'); await A.waitForTimeout(1200);
     await A.click('#acct-out'); await A.waitForTimeout(300);
     await A.click('.chooser [data-k="keep"]'); await A.waitForTimeout(1200);
-    ok(await A.locator('#acct-email').count() === 1 && (await A.evaluate(() => JSON.parse(localStorage.getItem('lemma.v2')).log.length)) > 0, 'ログアウトしても端末の記録は残る');
+    ok(await A.locator('#acct-email').count() === 1 && (await A.evaluate(() => ((JSON.parse(localStorage.getItem('lemma.v2') || 'null') || { log: [] }).log || []).length)) > 0, 'ログアウトしても端末の記録は残る');
     await B.goto(U + '#settings'); await B.waitForTimeout(1200);
     await B.click('#acct-del'); await B.waitForTimeout(1200);
     ok(mock.rows.size === 0 && mock.users.size === 0, '退会でサーバーの記録とアカウントが消える');
@@ -549,7 +619,7 @@ try {
     await P.waitForTimeout(400);
     await P.click('.chooser [data-k="merge"]'); await P.waitForTimeout(600);
     await P.click('.chooser [data-k="ok"]'); await P.waitForTimeout(400);
-    ok((await P.evaluate(() => JSON.parse(localStorage.getItem('lemma.v2')).log.length)) === old.log.length, '読み込み：同じバックアップを合わせても記録は重複しない');
+    ok((await P.evaluate(() => ((JSON.parse(localStorage.getItem('lemma.v2') || 'null') || { log: [] }).log || []).length)) === old.log.length, '読み込み：同じバックアップを合わせても記録は重複しない');
     // 控えの時点に戻す（設定の「自動の控え」）
     await P.goto(U + '#settings'); await P.waitForTimeout(800);
     ok(await P.locator('.snap-back').count() >= 1 && (await P.locator('.integrity summary').innerText()).includes('記録の点検'), '設定：記録の点検と自動の控えが見える');
@@ -572,7 +642,7 @@ try {
     ok(srvN() === 0, `消去：アカウントの記録も消える（${srvN()}件）`);
     await Q.goto(U + '#settings'); await Q.waitForTimeout(800);
     await Q.click('#acct-now'); await Q.waitForTimeout(1500);
-    const nQ = await Q.evaluate(() => JSON.parse(localStorage.getItem('lemma.v2')).log.length);
+    const nQ = await Q.evaluate(() => ((JSON.parse(localStorage.getItem('lemma.v2') || 'null') || { log: [] }).log || []).length);
     ok(nQ === 0 && srvN() === 0, `消去：ほかの端末の古い記録も、同期で消える（端末 ${nQ}件・サーバー ${srvN()}件）`);
     // ログイン時に「アカウントの記録だけを使う」：端末の記録は書き出してから消える
     await P.evaluate("__lemma.open(['I-EXP-001'])"); await P.waitForTimeout(800);
@@ -593,7 +663,7 @@ try {
     await R.goto(U + '#settings'); await R.waitForTimeout(800);
     await R.click('#acct-out'); await R.waitForTimeout(300);
     await R.click('.chooser [data-k="wipe"]'); await R.waitForTimeout(1500);
-    const nR2 = await R.evaluate(() => JSON.parse(localStorage.getItem('lemma.v2')).log.length);
+    const nR2 = await R.evaluate(() => ((JSON.parse(localStorage.getItem('lemma.v2') || 'null') || { log: [] }).log || []).length);
     ok(nR2 === 0 && await R.locator('#acct-email').count() === 1, 'ログアウト時に端末の記録も消せる');
     // v0.23：保存されていた記録が壊れていても、上書きせずに退避する
     const BR = await newPage({ raw: '{"log":[{"p":"I-EXP-001","t":1700000000000,"g":3}], こわれた' });
@@ -612,7 +682,7 @@ try {
       await pg.locator('#self button[data-g="full"]').click(); await pg.waitForTimeout(300);
     };
     await solve(T1, 'A-COM-020');
-    const t1n = await T1.evaluate(() => JSON.parse(localStorage.getItem('lemma.v2')).log.length);
+    const t1n = await T1.evaluate(() => ((JSON.parse(localStorage.getItem('lemma.v2') || 'null') || { log: [] }).log || []).length);
     await solve(T2, 'A-COM-021');
     const both = await T2.evaluate(() => JSON.parse(localStorage.getItem('lemma.v2')).log.map(l => l.p));
     ok(t1n >= 1 && both.includes('A-COM-020') && both.includes('A-COM-021'), `2つのタブ：あとから保存したタブが、先のタブの記録を消さない（${both}）`);

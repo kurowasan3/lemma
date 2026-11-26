@@ -1,14 +1,18 @@
 #!/usr/bin/env python3
-"""正規データ（content/）→ アプリ用データ（data/index.json と data/f-<分野ID>.json）
+"""正規データ（content/）→ アプリ用データ（data/index.json と data/b/<塊>.json）
 
     python3 tools/build_app_data.py [content フォルダ] [data フォルダ]
 
-出力の形は v0.6 までと同じ（アプリは今の catalog.js のまま読める）。足したもの：
-  f-*.json の "fg"（問題の図。{m: モード, e: [式], a: 答え合わせのあとか, s: manual|auto}）
-  f-*.json の "af"（解説の中に描く答えの図の配列。[{m: モード, e: [式], v: [xmin, xmax, ymin, ymax], n: 一言, t: 見出し, f: 縦横の縮尺を別にするか}]）
-  f-*.json の "ch"（選択式の選択肢。content/choices.json から。tools/make_choices.mjs で作る）
+本文（問題文・答え・解説など）は「問題番号20番ごとの塊」に分けて data/b/ に出す（v0.32 から。それまでは分野ごとの f-<分野ID>.json）。
+  塊の名前は問題IDだけで決まる：III-DIF-374 → III-DIF-18（360〜379番）。問題を足しても非表示にしても，ほかの問題の塊は変わらない
+  index.json の "bodies"：{"layout": "chunks", "dir": "b", "size": 20, "chunks": {塊: 中身のハッシュ}}
+  b/*.json の "_meta": {"h": 中身のハッシュ}（一覧と合わない＝一部のファイルだけ古いことに気づくため。中身が同じなら作り直しても同じファイル）
+  アプリは問題に必要な塊だけを読む（初回の8問で分野のファイルを丸ごと読まない）。"bodies" が無い一覧（--legacy の取り込み）は f-*.json を読む
+本文の中身（キー）：
+  "fg"（問題の図。{m: モード, e: [式], a: 答え合わせのあとか, s: manual|auto}）
+  "af"（解説の中に描く答えの図の配列。[{m: モード, e: [式], v: [xmin, xmax, ymin, ymax], n: 一言, t: 見出し, f: 縦横の縮尺を別にするか}]）
+  "ch"（選択式の選択肢。content/choices.json から。tools/make_choices.mjs で作る）
   index.json の "format"（データ形式の版）・"dataVersion"（中身から計算する版）・"builtinUnits"（内蔵問題の単元→分野）
-  f-*.json の "_meta": {"dataVersion"}（一部のファイルだけ古いときに気づくため）
   タグはタグ辞書（content/tags.json）の正規名に置き換えて出す
   search.json（検索用の索引）・collections.json（問題セット）・techniques.json（解法カードと結びつく問題）
 quality.status が "hidden" の問題は出さない。
@@ -25,6 +29,31 @@ import tags as TG  # noqa: E402
 import re  # noqa: E402
 
 FORMAT = 'lemma.data/1'
+CHUNK = 20          # 本文の塊：問題番号20番ごと
+CHUNK_DIR = 'b'
+_ID_NUM = re.compile(r'(.+)-(\d+)')
+
+
+def chunk_of(pid, field):
+    """問題の本文が入る塊の名前（js/catalog.js の chunkOf と同じ規則）。番号で終わらない ID は分野ごとの塊"""
+    m = _ID_NUM.fullmatch(pid)
+    return f'{m[1]}-{int(m[2]) // CHUNK}' if m else f'_{field}'
+
+
+def body_hash(items):
+    """塊の中身（_meta を除く）のハッシュ。キーの順に依らない"""
+    return hashlib.sha1(json.dumps(items, ensure_ascii=False, sort_keys=True, separators=(',', ':')).encode('utf-8')).hexdigest()[:10]
+
+
+def read_bodies(data):
+    """data/ の本文ファイルを読む（塊の形と，前の分野ごとの形のどちらでも）。
+    戻り値：[(ファイル名 data/ からの相対, _meta, {問題ID: 本文})]"""
+    data = Path(data)
+    out = []
+    for f in sorted((data / CHUNK_DIR).glob('*.json')) + sorted(data.glob('f-*.json')):
+        d = json.loads(f.read_text(encoding='utf-8'))
+        out.append((f.relative_to(data).as_posix(), d.get('_meta', {}), {k: v for k, v in d.items() if k != '_meta'}))
+    return out
 
 
 def load_content(content):
@@ -240,17 +269,22 @@ def build(content=ROOT / 'content', out=ROOT / 'data'):
             b['ch'] = ch['f']      # 選択式の選択肢（欄の順。先頭が正解、表示のときに混ぜる。null の欄は入力式）
             e['ch'] = 1
         index.append(e)
-        bodies.setdefault(p['field'], {'_meta': {'dataVersion': version}})[p['id']] = b
+        bodies.setdefault(chunk_of(p['id'], p['field']), {})[p['id']] = b
+    used = {e['f'] for e in index}
     fields = [{'key': f['key'], 'subject': f['subject'], 'name': f['name']}
-              for f in sorted(tax['fields'], key=lambda f: f['order']) if f['key'] in bodies]
+              for f in sorted(tax['fields'], key=lambda f: f['order']) if f['key'] in used]
+    hashes = {key: body_hash(items) for key, items in sorted(bodies.items())}
     idx = {'format': FORMAT, 'dataVersion': version, 'generated': meta['generated'], 'source': meta['source'],
-           'count': len(index), 'fields': fields, 'builtinUnits': tax.get('builtinUnits', {}), 'problems': index}
+           'count': len(index), 'fields': fields, 'builtinUnits': tax.get('builtinUnits', {}),
+           'bodies': {'layout': 'chunks', 'dir': CHUNK_DIR, 'size': CHUNK, 'chunks': hashes}, 'problems': index}
     out.mkdir(parents=True, exist_ok=True)
-    for old in out.glob('f-*.json'):
+    for old in list(out.glob('f-*.json')) + list((out / CHUNK_DIR).glob('*.json')):
         old.unlink()
+    (out / CHUNK_DIR).mkdir(exist_ok=True)
     (out / 'index.json').write_text(json.dumps(idx, ensure_ascii=False, separators=(',', ':')), encoding='utf-8')
-    for key, b in bodies.items():
-        (out / f'f-{key}.json').write_text(json.dumps(b, ensure_ascii=False, separators=(',', ':')), encoding='utf-8')
+    for key, items in bodies.items():
+        b = {'_meta': {'h': hashes[key]}, **items}
+        (out / CHUNK_DIR / f'{key}.json').write_text(json.dumps(b, ensure_ascii=False, separators=(',', ':')), encoding='utf-8')
     # 検索用の索引：[ID, 比較用に正規化した文字列]（テーマ・分野名・タグと別名・問題文の文章部分）
     (out / 'search.json').write_text(json.dumps({'dataVersion': version, 'items': search}, ensure_ascii=False,
                                                 separators=(',', ':')), encoding='utf-8')

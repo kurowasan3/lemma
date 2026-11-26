@@ -15,7 +15,7 @@
                      ┌──────────────────────── GitHub Pages（kurowasan3.github.io/lemma/）───────────────────────┐
  Lemma問題管理表.xlsx │  index.html ── js/app.js（ES Modules）── js/*.js                                          │
  （手元のみ・非公開）  │      │            │                                                                       │
-   │ tools/import_xlsx.py   │            ├─ fetch data/index.json・f-<分野>.json・search.json・collections.json│
+   │ tools/import_xlsx.py   │            ├─ fetch data/index.json・b/<塊>.json・search.json・collections.json  │
    ▼                  │      │            └─ dynamic import('./sync.js') ──► Supabase（Auth・PostgREST）        │
  content/（正規データ）│      sw.js（コード用キャッシュ＋データ用キャッシュ）                                      │
    │ tools/build_app_data.py                                                                                     │
@@ -35,7 +35,7 @@
 | ファイル | 行数 | 役割 | import している相手 |
 | --- | ---: | --- | --- |
 | `js/app.js` | 1731 | 画面・状態（`state`）・保存・採点の流れ・設定・起動 | ほぼ全部（下記） |
-| `js/catalog.js` | 212 | 問題一覧（`data/index.json`）と本文（`data/f-*.json`）の読み込み、出題の選び方、検索 | `content.js` `scheduler.js` |
+| `js/catalog.js` | 212 | 問題一覧（`data/index.json`）と本文（`data/b/*.json`，問題番号20番ごとの塊）の読み込み、出題の選び方、検索 | `content.js` `scheduler.js` |
 | `js/content.js` | 488 | 内蔵問題 61問（`q01`…）と解法カード 45枚 | なし |
 | `js/scheduler.js` | 165 | FSRS を簡略化した復習間隔（`review()` `retrievability()`） | `content.js` |
 | `js/answer.js` | 438 | 入力用の答え（`lemma-input/1`）の読み取りと採点 | `parser.js` |
@@ -82,7 +82,7 @@ app.js ─┬─ catalog.js ─┬─ content.js
 | --- | --- | --- |
 | 正規データ | `content/problems/<分野ID>.json` ほか | 13 MB |
 | 一覧 | `data/index.json`（4,236問の `id/f/lv/t/th/tg/in/ch`） | 0.67 MB |
-| 本文 | `data/f-<分野ID>.json`（`q/a/s/k/in/ch`。HTML 済み） | 計 約10 MB、最大 1.4 MB（`f-III-17.json`） |
+| 本文 | `data/b/<塊>.json`（`q/a/s/k/in/ch`。HTML 済み。v0.32 から問題番号20番ごと） | 計 約16 MB・289ファイル、1ファイル平均 約57 KB（gzip 約16 KB） |
 | 検索索引 | `data/search.json` | 1.5 MB |
 
 - 【確認】起動時に `data/index.json` を `cache: 'no-cache'` で取得（`catalog.js` 34行）。本文は出題する分野のファイルだけ読む（`ensureBodies()`）。

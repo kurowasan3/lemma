@@ -13,7 +13,7 @@ content/                       … 正規データ（公開・git で差分を�
    problems/<分野ID>.json  problems/builtin.json
    │ tools/build_app_data.py
    ▼
-data/                          … アプリ用（index.json・f-<分野ID>.json・search.json・collections.json）
+data/                          … アプリ用（index.json・b/<塊>.json・search.json・collections.json）
 ```
 
 ふだんは `python3 tools/import_xlsx.py Lemma問題管理表.xlsx` で 1〜3 をまとめて行い、`node tests/run.mjs` で検査する。
@@ -85,7 +85,11 @@ data/                          … アプリ用（index.json・f-<分野ID>.json
 v0.6 と同じ項目に、次を足しただけ（古いアプリは無視する）。
 
 - `index.json`：`format`（`"lemma.data/1"`）、`dataVersion`（`content/` の中身から計算する12桁）、`builtinUnits`
-- `f-*.json`：`"_meta": {"dataVersion"}`。`index.json` と違えば、アプリは「問題データの版が揃っていません」と表示する
+- 本文（v0.32〜）：`b/<塊>.json`。問題番号20番ごとの塊で，塊の名前は問題IDだけで決まる（`III-DIF-374` → `III-DIF-18`＝360〜379番）。
+  問題を足しても非表示にしても，ほかの問題の塊は変わらない。`"_meta": {"h"}` は中身のハッシュで，`index.json` の
+  `bodies: {layout: "chunks", dir: "b", size: 20, chunks: {塊: ハッシュ}}` と違えば，アプリは「問題データの版が揃っていません」と表示する。
+  中身が同じなら作り直しても同じファイルになる（差分は変わった塊だけ）。アプリは出題する問題の塊だけを `b/<塊>.json?h=<ハッシュ>` で読む
+- 前の形（v0.31 まで・`--legacy` の取り込み）：分野ごとの `f-<分野ID>.json`（`"_meta": {"dataVersion"}`）。`index.json` に `bodies` が無ければアプリはこちらを読む
 - `search.json`・`collections.json`：上記。どちらも `dataVersion` を持つ
 - `dataVersion` は taxonomy・problems・tags・collections の中身から計算する
 
@@ -94,9 +98,10 @@ v0.6 と同じ項目に、次を足しただけ（古いアプリは無視する
 | キャッシュ | 中身 | 入れ替え |
 | --- | --- | --- |
 | `lemma-v<版>` | コード（HTML・JS・CSS・KaTeX） | `VERSION` を上げると古いものを消す |
-| `lemma-data-<dataVersion>` | `data/` のファイル（開いた分野の本文・検索の索引など） | `data/index.json` を取り直して版が変わったら、古いデータ用キャッシュを丸ごと消す |
+| `lemma-data-<dataVersion>` | `data/` のファイル（一覧・検索の索引など） | `data/index.json` を取り直して版が変わったら、古いデータ用キャッシュを丸ごと消す |
+| `lemma-chunks` | 本文の塊（`data/b/<塊>.json?h=<ハッシュ>`） | `data/index.json` を取り直したとき，一覧に無い塊・ハッシュが変わった塊だけ消す（中身が同じ塊は版が変わっても残る） |
 
-どちらも「まずネットワーク、つながらなければキャッシュ」。オフラインでは、一度開いた分野の問題が解ける。
+本文の塊は URL が中身で決まるので「まずキャッシュ」。それ以外は「まずネットワーク、つながらなければキャッシュ」。オフラインでは、一度開いた問題が解ける。
 
 ## 版は3つを分ける
 

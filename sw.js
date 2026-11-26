@@ -1,8 +1,10 @@
 // オフラインで動かすためのキャッシュ。
 //   コード用  … VERSION（アプリを更新したら上げる）。古い版は activate で消す
 //   データ用  … lemma-data-<dataVersion>（data/ の中身の版。data/index.json を取り直して版が変わったら、古い問題データを捨てる）
-// どちらも「まずネットワーク、つながらなければキャッシュ」なので、更新はすぐ反映される。
-const VERSION = 'lemma-v0.31.1';
+//   本文の塊用 … lemma-chunks（data/b/<塊>.json?h=<中身のハッシュ>。URL が中身で決まるので「まずキャッシュ」。
+//                 一覧（data/index.json）を取り直したときに，一覧に無くなった塊・古いハッシュの塊を消す）
+// 本文の塊以外は「まずネットワーク、つながらなければキャッシュ」なので、更新はすぐ反映される。
+const VERSION = 'lemma-v0.32.0';
 const FILES = [
   "./",
   "index.html",
@@ -53,7 +55,30 @@ const FILES = [
 ];
 
 const DATA_PREFIX = 'lemma-data-';
+const CHUNK_CACHE = 'lemma-chunks';
 const isData = (url) => url.pathname.includes('/data/');
+const isChunk = (url) => url.pathname.includes('/data/b/') && url.searchParams.has('h');
+
+// 一覧にある塊（名前 → ハッシュ）だけを残す
+async function pruneChunks(index) {
+  const chunks = index && index.bodies && index.bodies.chunks;
+  if (!chunks) return;
+  const c = await caches.open(CHUNK_CACHE);
+  for (const req of await c.keys()) {
+    const u = new URL(req.url);
+    const key = decodeURIComponent(u.pathname.split('/').pop().replace(/\.json$/, ''));
+    if (chunks[key] !== u.searchParams.get('h')) await c.delete(req);
+  }
+}
+// 本文の塊：まずキャッシュ，無ければネットワーク（取れたら入れておく）
+async function chunkFirst(req) {
+  const c = await caches.open(CHUNK_CACHE);
+  const hit = await c.match(req);
+  if (hit) return hit;
+  const res = await fetch(req);
+  if (res.ok) await c.put(req, res.clone());
+  return res;
+}
 
 // いまのデータ用キャッシュの名前（無ければ null）
 async function currentDataCache() {
@@ -86,7 +111,7 @@ self.addEventListener('install', (e) => {
 
 self.addEventListener('activate', (e) => {
   e.waitUntil(caches.keys()
-    .then((keys) => Promise.all(keys.filter((k) => k !== VERSION && !k.startsWith(DATA_PREFIX)).map((k) => caches.delete(k))))
+    .then((keys) => Promise.all(keys.filter((k) => k !== VERSION && k !== CHUNK_CACHE && !k.startsWith(DATA_PREFIX)).map((k) => caches.delete(k))))
     .then(() => self.clients.claim()));
 });
 
@@ -97,8 +122,9 @@ async function fromNetwork(req, url) {
   if (!isData(url)) {
     (await caches.open(VERSION)).put(req, copy);
   } else if (url.pathname.endsWith('/data/index.json')) {
-    const v = (await copy.clone().json()).dataVersion;
-    (await useDataVersion(v)).put(req, copy);
+    const index = await copy.clone().json();
+    (await useDataVersion(index.dataVersion)).put(req, copy);
+    await pruneChunks(index).catch(() => {});
   } else {
     const name = await currentDataCache();
     (await caches.open(name || DATA_PREFIX + 'legacy')).put(req, copy);
@@ -110,5 +136,6 @@ async function fromNetwork(req, url) {
 self.addEventListener('fetch', (e) => {
   const url = new URL(e.request.url);
   if (e.request.method !== 'GET' || url.origin !== location.origin) return;
+  if (isChunk(url)) { e.respondWith(chunkFirst(e.request).catch(() => Response.error())); return; }
   e.respondWith(fromNetwork(e.request, url).catch(() => caches.match(e.request).then((r) => r || (isData(url) ? Response.error() : caches.match('./')))));
 });

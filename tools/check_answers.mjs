@@ -8,8 +8,11 @@ import { parseSpec, checkField } from '../js/answer.js';
 const target = process.argv[2] || 'data';
 let specs = {};
 if (fs.statSync(target).isDirectory()) {
-  for (const f of fs.readdirSync(target).filter(f => f.startsWith('f-'))) {
-    for (const [id, b] of Object.entries(JSON.parse(fs.readFileSync(path.join(target, f), 'utf8')))) if (b.in) specs[id] = b.in;
+  // 本文ファイル：塊（data/b/*.json）と前の形（data/f-*.json）のどちらでも
+  const files = [...(fs.existsSync(path.join(target, 'b')) ? fs.readdirSync(path.join(target, 'b')).filter(f => f.endsWith('.json')).map(f => path.join('b', f)) : []),
+    ...fs.readdirSync(target).filter(f => f.startsWith('f-'))];
+  for (const f of files) {
+    for (const [id, b] of Object.entries(JSON.parse(fs.readFileSync(path.join(target, f), 'utf8')))) if (id !== '_meta' && b.in) specs[id] = b.in;
   }
 } else {
   for (const [id, v] of Object.entries(JSON.parse(fs.readFileSync(target, 'utf8')))) if (v.spec) specs[id] = v.spec;
