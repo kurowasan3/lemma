@@ -6,6 +6,12 @@
     python3 tools/import_xlsx.py Lemma問題管理表.xlsx            取り込む（content/ と data/ を作り直す）
     python3 tools/import_xlsx.py Lemma問題管理表.xlsx --check    書き出さずに、今の content/・data/ と違うかだけ調べる
     python3 tools/import_xlsx.py Lemma問題管理表.xlsx --new-fields   表に無い分野を taxonomy.json に足してから取り込む
+    python3 tools/import_xlsx.py Lemma問題管理表.xlsx --allow-loss   今の content/ にある項目が消える取り込みも通す（ふつうは止める）
+
+古い管理表からの取り込みを防ぐため、書き出す前に一度別の場所で取り込み、今の content/ と比べる：
+    ・今ある問題が消える，または今ある項目（答えの図・解説など）が空になる問題があれば，何も書き換えずに中止する
+      （本当に消すときだけ --allow-loss）
+    ・内容が変わる問題の数と例を表示する（古い管理表だと，直したはずの解説が戻っていることに気づける）
     python3 tools/import_xlsx.py Lemma問題管理表.xlsx 出力先 --legacy  v0.6 までの方法（Excel → data/ を直接）。戻すとき用
 
 中で行うこと：
@@ -174,6 +180,58 @@ def run(src, content, data, new_fields=False):
     return n, notes, r
 
 
+def load_problems(content):
+    """content/problems/*.json → { 問題ID: 問題 }（内蔵問題 builtin.json は管理表から作らないので除く）"""
+    out = {}
+    for f in sorted((Path(content) / 'problems').glob('*.json')):
+        if f.name == 'builtin.json':
+            continue
+        for p in json.loads(f.read_text(encoding='utf-8')):
+            out[p['id']] = p
+    return out
+
+
+def empty(v):
+    return v is None or v == '' or v == [] or v == {}
+
+
+def compare_problems(old, new):
+    """取り込みの前後を比べる。戻り値：(消える問題, [(ID, 空になる項目)], 内容が変わる問題)"""
+    gone = sorted(set(old) - set(new))
+    lost, changed = [], []
+    for pid in sorted(set(old) & set(new)):
+        a, b = old[pid], new[pid]
+        keys = [k for k in a if not empty(a[k]) and empty(b.get(k))]
+        if keys:
+            lost.append((pid, keys))
+        if a != b:
+            changed.append(pid)
+    return gone, lost, changed
+
+
+def guard(src, content, new_fields, allow_loss):
+    """別の場所で取り込んで今の content/ と比べ，消えるものがあれば中止する"""
+    with tempfile.TemporaryDirectory() as tmp:
+        tc, td = Path(tmp) / 'content', Path(tmp) / 'data'
+        shutil.copytree(content, tc)
+        run(src, tc, td, new_fields)
+        gone, lost, changed = compare_problems(load_problems(content), load_problems(tc))
+    print(f'取り込みで内容が変わる問題：{len(changed)}問' + (f'（例 {", ".join(changed[:8])}）' if changed else ''))
+    if (gone or lost) and not allow_loss:
+        keys = {}
+        for _, ks in lost:
+            for k in ks:
+                keys[k] = keys.get(k, 0) + 1
+        msg = []
+        if gone:
+            msg.append(f'管理表に無い問題 {len(gone)}問（例 {", ".join(gone[:8])}）')
+        if lost:
+            msg.append('空になる項目：' + '，'.join(f'{k} {n}問' for k, n in sorted(keys.items(), key=lambda x: -x[1])) +
+                       f'（例 {", ".join(p for p, _ in lost[:8])}）')
+        raise SystemExit('取り込みを中止しました（何も書き換えていません）。今の content/ にあるものが消えます：\n  ' + '\n  '.join(msg) +
+                         '\n古い管理表を使っていないか確かめてください。本当に消すときは --allow-loss を付けて取り込みます。')
+
+
 def main():
     argv = [a for a in sys.argv if not a.startswith('--')]
     if '--legacy' in sys.argv:
@@ -198,6 +256,7 @@ def main():
                 print('data/：', end='')
                 ok = CD.report(CD.compare(data, td))
             sys.exit(0 if (ok and same_content) else 1)
+        guard(src, content, '--new-fields' in sys.argv, '--allow-loss' in sys.argv)
         n, notes, r = run(src, content, data, '--new-fields' in sys.argv)
     except XC.ImportFailure as e:
         sys.exit(f'取り込みを中止しました（何も書き換えていません）：\n{e}')
