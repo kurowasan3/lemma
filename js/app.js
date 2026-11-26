@@ -26,7 +26,7 @@ import {
 } from './catalog.js';
 import { techMastery, techCandidates, masterChecklist, makeCtx, transferTargets, transferWhy, MASTER, STATUS, TRANSFER, TRANSFER_KIND } from './mastery.js';
 
-const VERSION = '0.31.0';
+const VERSION = '0.31.1';
 const KEY = 'lemma.v2';
 let sync = null, syncApplying = false, syncStatus = null;   // アカウントと同期（initSync で用意）
 const $ = (sel, el = document) => el.querySelector(sel);
@@ -861,22 +861,27 @@ async function renderSearch(q) {
   try { res = await M_CAT.searchProblems(q, { levels: pr.levels }); }
   catch (e) { box.innerHTML = `<p class="muted">検索の索引を読めませんでした（${esc(e.message)}）。</p>`; return; }
   dataWarn();
-  const found = res.length;
+  const found = res.length, hiddenByLevel = res.hiddenByLevel || 0;
+  // 問題番号がそのまま一致した問題は，並べ方・絞り込みにかかわらず先頭に出す
+  const exact = M_CAT.exactIdHit(q);
   res = sortResults(filterResults(res));
+  if (exact && found && !res.includes(exact)) res = [exact, ...res];
+  else if (exact && res.includes(exact)) res = [exact, ...res.filter(e => e !== exact)];
+  const hiddenNote = hiddenByLevel ? `<p class="small muted" style="margin:0 0 8px">選んでいない難易度に、ほかに ${hiddenByLevel}問あります（上の難易度ボタンで広げられます）。</p>` : '';
   const tools = `<div class="sres-tools"><select id="sfilter" aria-label="絞り込み">${Object.entries(SFILTERS).map(([k, v]) => `<option value="${k}" ${sfilterKey() === k ? 'selected' : ''}>${v}</option>`).join('')}</select>
       <select id="ssort" aria-label="並べ方">${Object.entries(SORTS).map(([k, v]) => `<option value="${k}" ${sortKey() === k ? 'selected' : ''}>${v}順</option>`).join('')}</select></div>`;
   const bindTools = () => {
     $('#ssort').addEventListener('change', (ev) => { pr.sort = ev.target.value; save(); renderSearch(q); });
     $('#sfilter').addEventListener('change', (ev) => { pr.sfilter = ev.target.value; save(); searchShown = 30; renderSearch(q); });
   };
-  if (!found) { box.innerHTML = '<p class="muted">見つかりませんでした。言葉を短くするか、難易度の選択を広げてみてください。</p>'; return; }
+  if (!found) { box.innerHTML = hiddenByLevel ? `<p class="muted">選んだ難易度では見つかりませんでした。ほかの難易度に ${hiddenByLevel}問あります。上の難易度ボタンで広げてください。</p>` : '<p class="muted">見つかりませんでした。言葉を短くしてみてください。</p>'; return; }
   if (!res.length) { box.innerHTML = `<div class="toolbar" style="margin:4px 0 10px"><p class="sub" style="margin:0">${found}問のうち「${SFILTERS[sfilterKey()]}」の問題はありません</p>${tools}</div>`; bindTools(); return; }
   const fresh = res.filter(e => !state.problems[e.id]);
   const pickIds = [...fresh, ...res.filter(e => state.problems[e.id])].slice(0, pr.size).map(e => e.id);
   box.innerHTML = `<div class="toolbar" style="margin:4px 0 10px"><p class="sub" style="margin:0">${sfilterKey() === 'all' ? `${res.length}問 見つかりました（未着手 ${fresh.length}問）` : `${found}問のうち「${SFILTERS[sfilterKey()]}」${res.length}問`}</p>
       ${tools}</div>
     <div class="btn-row" style="margin-top:0"><button class="btn primary" id="sgo">${pickIds.length}問 演習する</button><button class="btn ghost" id="sshare">リンクをコピー</button></div>
-    ${techHitsHTML(q)}
+    ${hiddenNote}${techHitsHTML(q)}
     <div class="results">${res.slice(0, searchShown).map(e => resRow(e)).join('')}</div>
     ${res.length > searchShown ? `<button class="btn ghost block" id="smore">さらに表示（残り ${res.length - searchShown}問）</button>` : ''}`;
   math(box);

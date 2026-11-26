@@ -165,6 +165,21 @@ try {
     ok(!(await page.locator('#view').innerText()).includes('問題データ'), '設定に「問題データ」の項目が無い');
     ok(page.errors.length === 0, `ページのエラーなし ${page.errors}`);
   }
+  // 5a. 主ボタンの文字と背景のコントラスト（ライト・ダーク）：WCAG AA の 4.5:1 に近いこと
+  for (const scheme of ['light', 'dark']) {
+    const page = await newPage();
+    await page.emulateMedia({ colorScheme: scheme });
+    await page.goto(U + '#today'); await page.waitForTimeout(1200);
+    const worst = await page.evaluate(() => {
+      const rgb = (s) => s.match(/[\d.]+/g).slice(0, 3).map(Number);
+      const lum = (c) => { const [r, g, b] = c.map(v => { v /= 255; return v <= 0.03928 ? v / 12.92 : ((v + 0.055) / 1.055) ** 2.4; }); return 0.2126 * r + 0.7152 * g + 0.0722 * b; };
+      const cr = (a, b) => { const x = lum(a), y = lum(b); return (Math.max(x, y) + 0.05) / (Math.min(x, y) + 0.05); };
+      return Math.min(...[...document.querySelectorAll('.hero:not(.alt), .btn.primary')].filter(e => e.offsetParent)
+        .map(e => { const s = getComputedStyle(e); return cr(rgb(s.color), rgb(s.backgroundColor)); }));
+    });
+    ok(worst >= (scheme === 'dark' ? 4.5 : 4.2), `主ボタンの文字が読める（${scheme}：最小コントラスト ${worst.toFixed(2)}:1）`);
+    await page.context().close();
+  }
   // 5b. 今日の学習（v0.16）：今日の演習・中断と再開・自信なしの正解は早めに復習・類題・検索の絞り込み
   {
     const page = await newPage();
@@ -248,6 +263,21 @@ try {
     ok((await page.locator('.tech-page .panel').innerText()).includes('1問を解いた') && await page.locator('#twrong').count() === 1, '解法カードに自分の結果と「間違えた問題を解き直す」');
     await page.goto(U + '#search=' + encodeURIComponent('漸化式')); await page.waitForTimeout(1500);
     ok(await page.locator('.tech-hits .tech-row').count() >= 1, '検索で解法カードが出る');
+    {
+      // 難易度を基礎〜入試基礎に絞っても，問題番号で探せば入試発展の問題が出る。絞り込みで外れた数も示す
+      const pr0 = await page.evaluate(() => JSON.parse(localStorage.getItem('lemma.v2')).practice.levels);
+      for (const c of ['lv3', 'lv4', 'lv5']) await page.locator('.toolbar .tog.' + c).first().click();
+      await page.goto(U + '#search=' + encodeURIComponent('III-DIF-374')); await page.waitForTimeout(1200);
+      ok(await page.locator('.res-row[data-pid="III-DIF-374"]').count() === 1, '難易度を絞っていても問題番号の検索で出る');
+      await page.selectOption('#ssort', 'easy'); await page.waitForTimeout(800);
+      await page.goto(U + '#search=' + encodeURIComponent('漸化式')); await page.waitForTimeout(1200);
+      ok((await page.locator('#sres').innerText()).includes('選んでいない難易度に、ほかに'), '難易度で外れた問題の数を示す');
+      await page.goto(U + '#search=' + encodeURIComponent('B-SEQ-342 ')); await page.waitForTimeout(1200);
+      ok(await page.locator('.res-row').first().getAttribute('data-pid') === 'B-SEQ-342', '並べ方を変えても問題番号の一致が先頭');
+      for (const c of ['lv3', 'lv4', 'lv5']) await page.locator('.toolbar .tog.' + c).first().click();
+      await page.selectOption('#ssort', 'rel'); await page.waitForTimeout(500);
+      ok(JSON.stringify(await page.evaluate(() => JSON.parse(localStorage.getItem('lemma.v2')).practice.levels)) === JSON.stringify(pr0), '難易度の選択を元に戻した');
+    }
     await page.goto(U + '#tech=ivt-mvt'); await page.waitForTimeout(1200);
     ok((await page.locator('h1').innerText()).includes('平均値の定理') && page.url().endsWith('#tech=mvt'), '旧 ID のリンクは新しいカードへ');
     await page.goto(U + '#today'); await page.waitForTimeout(1500);

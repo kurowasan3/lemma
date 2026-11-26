@@ -2,7 +2,7 @@
 import { PROBLEMS as BUILTIN, cardById, problemById as builtinById, unitOf as builtinUnit } from './content.js';
 import { retrievability, dueAt, TARGET_R } from './scheduler.js';
 
-export const FILE_VERSION = '0.31.0';
+export const FILE_VERSION = '0.31.1';
 
 // 難易度（問題管理表と同じ6段階。0=基礎 は v0.6 で追加。v0.15 で 3〜5 の名前を変更）
 export const LEVELS = { 0: '基礎', 1: '標準', 2: '入試基礎', 3: '入試標準', 4: '入試発展', 5: '数学探究' };
@@ -293,24 +293,51 @@ export async function loadSearch() {
 }
 // 空白で区切った語をすべて含む問題を返す。問題番号が一致 > 問題番号に含む > タグが語と一致 > テーマに含む > 本文に含む の順、同点は易しい順
 // 問題番号（例 III-DIF-374）は normText で「iiidif374」になるので，「III-DIF-374」「dif374」「DIF-374」のどれでも引ける
+// 科目名・分野名（「数III」「数3」「微分法」など）も語として使える（例「数III 374」「数B 漸化式」）
+// 難易度の絞り込み（levels）：問題番号がそのまま一致した問題は，選んだ難易度の外でも返す（番号で開きたい問題が出ないのを防ぐ）。
+// 絞り込みで外れた問題の数は，返す配列の hiddenByLevel に入れる。問題番号で探したとき（どの語も番号の一部）は番号順に並べる
+const ROMAN = { i: '1', ii: '2', iii: '3' };
+const fieldText = (f) => {
+  if (!f) return '';
+  const sub = normText(f.subject), m = sub.match(/^数(i{1,3})$/);
+  return sub + (m ? '数' + ROMAN[m[1]] : '') + normText(f.name);
+};
+const ID_TERM = (t) => /\d/.test(t) && /[a-z]/.test(t);
+const natId = (a, b) => a.localeCompare(b, 'en', { numeric: true });
 export async function searchProblems(query, { levels = null } = {}) {
   const terms = String(query || '').split(/[\s　]+/).map(normText).filter(Boolean);
   if (!terms.length) return [];
   const items = await loadSearch();
   const ls = levels && new Set(levels);
   const out = [];
+  let hidden = 0;
   for (const [id, text] of items) {
     const idn = normText(id);
-    if (!terms.every(t => text.includes(t) || idn.includes(t))) continue;
     const e = entryById.get(id);
-    if (!e || (ls && !ls.has(e.lv))) continue;
+    if (!e) continue;
+    const ft = fieldText(fieldByKey[e.f]);
+    if (!terms.every(t => text.includes(t) || idn.includes(t) || ft.includes(t))) continue;
+    const exact = terms.some(t => t === idn);
+    if (ls && !ls.has(e.lv) && !exact) { hidden++; continue; }
     const tags = (e.tg || []).map(normText), theme = normText((e.th || '').replace(/<[^>]+>|\$[^$]*\$/g, ''));
-    let score = 0;
-    for (const t of terms) score += idn === t ? 100 : idn.includes(t) && /\d/.test(t) && /[a-z]/.test(t) ? 10 : tags.includes(t) ? 3 : theme.includes(t) ? 2 : tags.some(x => x.includes(t)) ? 1.5 : 1;
-    out.push({ e, score });
+    let score = 0, byId = true;
+    for (const t of terms) {
+      const idHit = idn.includes(t) && (ID_TERM(t) || /^\d+$/.test(t) || !text.includes(t) && !ft.includes(t));
+      if (!idHit) byId = false;
+      score += idn === t ? 100 : idn.includes(t) && ID_TERM(t) ? 10 : tags.includes(t) ? 3 : theme.includes(t) ? 2 : tags.some(x => x.includes(t)) ? 1.5 : 1;
+    }
+    out.push({ e, score, byId });
   }
-  out.sort((a, b) => b.score - a.score || a.e.lv - b.e.lv || (a.e.id < b.e.id ? -1 : 1));
-  return out.map(x => x.e);
+  out.sort((a, b) => b.score - a.score || (a.byId && b.byId ? natId(a.e.id, b.e.id) : a.e.lv - b.e.lv || (a.e.id < b.e.id ? -1 : 1)));
+  const res = out.map(x => x.e);
+  res.hiddenByLevel = hidden;
+  return res;
+}
+// 問題番号がそのまま一致する問題（無ければ null）。検索結果の並べ替え・絞り込みのあとも先頭に置くのに使う
+export function exactIdHit(query) {
+  const terms = String(query || '').split(/[\s　]+/).map(normText).filter(Boolean);
+  for (const e of ENTRIES) { const idn = normText(e.id); if (terms.includes(idn)) return e; }
+  return null;
 }
 
 // ---------- 解法カード（data/techniques.json を初めて使うときに読む） ----------

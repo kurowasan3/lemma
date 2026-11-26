@@ -1,5 +1,5 @@
 :root {
-  --lemma-version: '0.31.0';
+  --lemma-version: '0.31.1';
   --paper: #f6f4ee;
   --card: #ffffff;
   --ink: #1c1d21;
@@ -806,7 +806,7 @@ h2::before { content: ""; width: 4px; height: 1.1em; border-radius: 2px; backgro
   font-weight: 700; box-shadow: 0 3px 0 var(--line); transition: transform .06s, box-shadow .06s, background .15s;
 }
 .btn:active { transform: translateY(2px); box-shadow: 0 1px 0 var(--line); }
-.btn.primary { background: var(--accent); border-color: var(--accent); color: #fff; box-shadow: 0 4px 0 var(--accent-deep); }
+.btn.primary { background: var(--accent); border-color: var(--accent); color: var(--on-accent);   /* ダークでは濃い文字（白だとコントラスト 2.8:1） */ box-shadow: 0 4px 0 var(--accent-deep); }
 .btn.primary:active { box-shadow: 0 1px 0 var(--accent-deep); transform: translateY(3px); }
 .btn.ghost { background: transparent; box-shadow: none; }
 .btn.ghost:active { transform: translateY(1px); }
@@ -815,7 +815,7 @@ h2::before { content: ""; width: 4px; height: 1.1em; border-radius: 2px; backgro
 .btn-row { margin-top: 18px; }
 
 /* 「今日の演習」などの大きなボタン */
-.hero { border-radius: 12px; background: var(--accent); box-shadow: 0 5px 0 var(--accent-deep); padding: 20px 22px; color: #fff; }
+.hero { border-radius: 12px; background: var(--accent); box-shadow: 0 5px 0 var(--accent-deep); padding: 20px 22px; color: var(--on-accent); }
 .hero:active { transform: translateY(3px); box-shadow: 0 2px 0 var(--accent-deep); }
 .hero b { font-family: var(--sans); font-weight: 800; font-size: 20px; }
 .hero.alt { background: var(--card); border: 2px solid var(--accent); box-shadow: 0 4px 0 var(--accent-soft); color: var(--ink); }

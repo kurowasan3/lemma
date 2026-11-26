@@ -169,6 +169,24 @@ const rp = await CAT.searchProblems('DIF-374');
 ok(rp.length >= 1 && rp.every(e => e.id.includes('DIF-374')) && rp[0].id.endsWith('DIF-374'), `問題番号の一部「DIF-374」で探せる（${rp.map(e => e.id).join(', ')}）`);
 const rq = await CAT.searchProblems('III-DIF-374 微分');
 ok(rq.length === 1 && rq[0].id === 'III-DIF-374' || rq.length === 0, '問題番号と語を組み合わせても動く');
+// 問題番号は難易度の絞り込みの外でも出す（III-DIF-374 は入試発展）。外れた数は hiddenByLevel
+const lvOnly = [0, 1, 2];
+const rx = await CAT.searchProblems('III-DIF-374', { levels: lvOnly });
+ok(rx.length === 1 && rx[0].id === 'III-DIF-374', '問題番号がそのまま一致すれば、選んでいない難易度の問題でも出す');
+const rh = await CAT.searchProblems('漸化式', { levels: lvOnly });
+const rall = await CAT.searchProblems('漸化式');
+ok(rh.hiddenByLevel === rall.length - rh.length && rh.hiddenByLevel > 0, `難易度で外れた数を返す（${rh.hiddenByLevel}問）`);
+ok(CAT.exactIdHit('ｂ－ｓｅｑ－３４２')?.id === 'B-SEQ-342' && CAT.exactIdHit('漸化式') === null, 'exactIdHit：表記ゆれを吸収して完全一致だけ');
+// 科目名・分野名でも絞れる
+for (const q of ['数III 374', '数3 374', '数Ⅲ 374']) {
+  const r = await CAT.searchProblems(q);
+  ok(r.length >= 1 && r.every(e => e.id.startsWith('III-')) && r.some(e => e.id === 'III-DIF-374'), `「${q}」で数IIIの374番だけ（${r.map(e => e.id).join(', ')}）`);
+}
+const rb = await CAT.searchProblems('数B 漸化式');
+ok(rb.length > 10 && rb.every(e => CAT.fieldByKey[e.f].subject === '数B'), `「数B 漸化式」は数Bだけ（${rb.length}問）`);
+// 問題番号の前半で探すと番号順
+const rpre = await CAT.searchProblems('III-DIF-37');
+ok(rpre.slice(0, 5).map(e => e.id).join() === 'III-DIF-370,III-DIF-371,III-DIF-372,III-DIF-373,III-DIF-374' || rpre.every((e, i) => !i || rpre[i - 1].id.localeCompare(e.id, 'en', { numeric: true }) < 0), `番号の前半「III-DIF-37」は番号順（${rpre.slice(0, 6).map(e => e.id).join(' ')}）`);
 const cols = await CAT.loadCollections();
 ok(cols.length >= 1 && cols.every(c => c.items.every(it => CAT.entryById.has(it.id))), `問題セット ${cols.length}件、すべての問題がある`);
 const pc = CAT.pickCollection({ problems: { [cols[0].items[0].id]: { last: 1, n: 1 } } }, cols[0], 5);
