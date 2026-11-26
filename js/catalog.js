@@ -92,20 +92,25 @@ export async function ensureBodies(ids) {
     if (e && e.kind === 'bank' && !bodies.has(id)) { const f = bodyFile(e); need.set(f.path, f); }
   }
   await Promise.all([...need.values()].map(f => {
-    if (!loaded.has(f.path)) {
-      loaded.set(f.path, fetch(f.url).then(r => {
-        if (!r.ok) throw new Error(`${f.path} を読めません（${r.status}）`);
-        return r.json();
-      }, () => { throw new Error(`${f.path} を読めません（${typeof navigator !== 'undefined' && navigator.onLine === false ? 'オフライン' : '通信できません'}）`); }).then(d => {
-        // 一覧（index.json）と版が違う＝一部のファイルだけ古い
-        const m = d._meta || {};
-        if (f.h ? m.h !== f.h : (META.dataVersion && m.dataVersion !== META.dataVersion)) staleData.add(f.path);
-        for (const [id, b] of Object.entries(d)) if (id !== '_meta') bodies.set(id, b);
-      })
-        .catch(e => { loaded.delete(f.path); throw e; }));
-    }
+    if (!loaded.has(f.path)) loaded.set(f.path, loadBodyFile(f).catch(e => { loaded.delete(f.path); throw e; }));
     return loaded.get(f.path);
   }));
+}
+// 1つの本文ファイルを読む。塊の中身のハッシュが一覧と違うとき：キャッシュ（Service Worker の lemma-chunks）が壊れているかもしれないので，
+// その項目を消して一度だけ読み直す。それでも違えば「一部だけ古い」として警告に出す（本文は使う）
+async function loadBodyFile(f, retried = false) {
+  let r;
+  try { r = await fetch(f.url); }
+  catch { throw new Error(`${f.path} を読めません（${typeof navigator !== 'undefined' && navigator.onLine === false ? 'オフライン' : '通信できません'}）`); }
+  if (!r.ok) throw new Error(`${f.path} を読めません（${r.status}）`);
+  const d = await r.json();
+  const m = d._meta || {};
+  const stale = f.h ? m.h !== f.h : (META.dataVersion && m.dataVersion !== META.dataVersion);
+  if (stale && f.h && !retried && typeof caches !== 'undefined') {
+    try { if (await (await caches.open('lemma-chunks')).delete(f.url)) return loadBodyFile(f, true); } catch { /* キャッシュを使えない環境 */ }
+  }
+  if (stale) staleData.add(f.path);
+  for (const [id, b] of Object.entries(d)) if (id !== '_meta') bodies.set(id, b);
 }
 // 読み込んだ本文ファイル（テスト・計測用）
 export const loadedBodyFiles = () => [...loaded.keys()];

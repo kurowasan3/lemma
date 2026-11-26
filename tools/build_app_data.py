@@ -31,7 +31,7 @@ import re  # noqa: E402
 FORMAT = 'lemma.data/1'
 CHUNK = 20          # 本文の塊：問題番号20番ごと
 CHUNK_DIR = 'b'
-_ID_NUM = re.compile(r'(.+)-(\d+)')
+_ID_NUM = re.compile(r'(.+)-([0-9]+)')   # 半角の数字だけ（js/catalog.js の \d と同じ。全角の数字は番号とみなさない）
 
 
 def chunk_of(pid, field):
@@ -43,6 +43,54 @@ def chunk_of(pid, field):
 def body_hash(items):
     """塊の中身（_meta を除く）のハッシュ。キーの順に依らない"""
     return hashlib.sha1(json.dumps(items, ensure_ascii=False, sort_keys=True, separators=(',', ':')).encode('utf-8')).hexdigest()[:10]
+
+
+def nat_key(pid):
+    """問題IDの自然な順（III-DIF-9 < III-DIF-10）"""
+    return [int(t) if t.isdigit() else t for t in re.split(r'([0-9]+)', pid)]
+
+
+def load_bodies_checked(data):
+    """data/ の一覧と本文を読み，欠け・重複・置き場所・ハッシュを確かめる（監査ツールが一部だけを見て成功しないように）。
+    戻り値：(index, {問題ID: (ファイル名, 本文)}, [問題の説明])。説明が空なら，一覧の全問の本文がちょうど1つずつそろっている"""
+    data = Path(data)
+    idx = json.loads((data / 'index.json').read_text(encoding='utf-8'))
+    bodies, errs = {}, []
+    files = read_bodies(data)
+    for name, _, items in files:
+        for k, v in items.items():
+            if k in bodies:
+                errs.append(f'{k}: 本文が2つのファイルにある（{bodies[k][0]} と {name}）')
+            bodies[k] = (name, v)
+    bl = idx.get('bodies') or {}
+    chunked = bl.get('layout') == 'chunks'
+    if chunked:
+        d = bl.get('dir', CHUNK_DIR)
+        have = {name: meta for name, meta, _ in files}
+        for name in sorted(n for n in have if n.startswith('f-')):
+            errs.append(f'{name}: 塊の形の一覧なのに，前の形の本文ファイルが残っている')
+        for key, h in sorted(bl.get('chunks', {}).items()):
+            name = f'{d}/{key}.json'
+            if name not in have:
+                errs.append(f'{name}: 一覧にある本文ファイルが無い')
+        for name, meta, items in files:
+            if not name.startswith(d + '/'):
+                continue
+            key = name[len(d) + 1:-5]
+            h = body_hash(items)
+            if key not in bl.get('chunks', {}):
+                errs.append(f'{name}: 一覧（bodies.chunks）に無い本文ファイル')
+            elif not (meta.get('h') == h == bl['chunks'][key]):
+                errs.append(f'{name}: 中身のハッシュ {h} が，ファイルの {meta.get("h")}・一覧の {bl["chunks"][key]} と合わない')
+    for e in idx['problems']:
+        if e['id'] not in bodies:
+            errs.append(f'{e["id"]}: 本文が無い')
+        elif chunked and bodies[e['id']][0] != f'{bl.get("dir", CHUNK_DIR)}/{chunk_of(e["id"], e["f"])}.json':
+            errs.append(f'{e["id"]}: 本文が {bodies[e["id"]][0]} にある（{chunk_of(e["id"], e["f"])} のはず）')
+    ids = {e['id'] for e in idx['problems']}
+    for k in sorted(set(bodies) - ids):
+        errs.append(f'{k}: 本文はあるが一覧に無い')
+    return idx, bodies, errs
 
 
 def read_bodies(data):
@@ -283,7 +331,7 @@ def build(content=ROOT / 'content', out=ROOT / 'data'):
     (out / CHUNK_DIR).mkdir(exist_ok=True)
     (out / 'index.json').write_text(json.dumps(idx, ensure_ascii=False, separators=(',', ':')), encoding='utf-8')
     for key, items in bodies.items():
-        b = {'_meta': {'h': hashes[key]}, **items}
+        b = {'_meta': {'h': hashes[key]}, **{k: items[k] for k in sorted(items, key=nat_key)}}   # 問題IDの順（content の並びに依らず同じバイト）
         (out / CHUNK_DIR / f'{key}.json').write_text(json.dumps(b, ensure_ascii=False, separators=(',', ':')), encoding='utf-8')
     # 検索用の索引：[ID, 比較用に正規化した文字列]（テーマ・分野名・タグと別名・問題文の文章部分）
     (out / 'search.json').write_text(json.dumps({'dataVersion': version, 'items': search}, ensure_ascii=False,

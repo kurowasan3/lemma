@@ -353,11 +353,23 @@ try {
     const chunkURL = `data/b/I-EXP-0.json?h=${idx0.bodies.chunks['I-EXP-0']}`;
     ok(keys.includes('lemma-chunks') && await page.evaluate(async (u) => !!(await (await caches.open('lemma-chunks')).match(u)), chunkURL), '開いた問題の本文の塊がキャッシュされる');
     ok(!(await page.evaluate(async () => !!(await caches.match('data/f-I-01.json')))), '分野ごとの本文ファイルは読まない');
+    // キャッシュの塊が壊れていたら（中身のハッシュが一覧と違う）：その項目を消して読み直す。警告は出さず，本文は正しい
+    await page.evaluate(async (u) => { const c = await caches.open('lemma-chunks'); const d = await (await c.match(u)).json(); d._meta.h = 'broken0000'; d['I-EXP-001'].q = '<p>壊れた本文</p>'; await c.put(u, new Response(JSON.stringify(d), { headers: { 'Content-Type': 'application/json' } })); }, chunkURL);
+    await page.goto(U + '#today'); await page.reload(); await page.waitForTimeout(1200);
+    await page.evaluate("__lemma.open(['I-EXP-001'])"); await page.waitForTimeout(1200);
+    ok(!(await page.locator('.qhtml').first().innerText()).includes('壊れた本文') && await page.locator('.banner').count() === 0, '壊れた塊のキャッシュは読み直して使う（警告なし）');
+    ok(await page.evaluate(async (u) => (await (await (await caches.open('lemma-chunks')).match(u)).json())._meta.h, chunkURL) === idx0.bodies.chunks['I-EXP-0'], '読み直した塊でキャッシュが直る');
     await page.context().setOffline(true);
     await page.goto(U + '#today'); await page.waitForTimeout(1200);
     await page.evaluate("__lemma.open(['I-EXP-001'])"); await page.waitForTimeout(1200);
     ok(await page.locator('#inputs input').count() === 7, 'オフラインでも開いた分野の問題が解ける');
+    // 前の版（v0.31 まで）のアプリが読む分野ごとの f-*.json：サーバーには無いので，Service Worker が塊から組み立てて返す
+    const nI01 = JSON.parse(fs.readFileSync(path.join(root, 'data/index.json'), 'utf8')).problems.filter(e => e.f === 'I-01').length;
+    const legacyOff = await page.evaluate(async () => { const r = await fetch('data/f-I-01.json'); return r.ok ? Object.keys(await r.json()).filter(k => k !== '_meta') : r.status; }).catch(() => 'error');
+    ok(legacyOff === 'error', `オフラインで塊がそろわないときは，一部だけの f-I-01.json を返さず失敗にする（${legacyOff}）`);
     await page.context().setOffline(false);
+    const legacy = await page.evaluate(async () => { const r = await fetch('data/f-I-01.json'); const d = await r.json(); return [r.status, Object.keys(d).filter(k => k !== '_meta').length, d._meta && d._meta.dataVersion]; });
+    ok(legacy[0] === 200 && legacy[1] === nI01 && legacy[2] === v, `前の版のアプリが読む f-I-01.json を塊から組み立てて返す（${legacy[1]}/${nI01}問）`);
     fakeDataVersion = 'e2enewversion';
     await page.goto(U + '#today'); await page.waitForTimeout(1500);
     await page.evaluate(async () => fetch('data/index.json', { cache: 'no-cache' }));

@@ -16,10 +16,11 @@ new.json は次の形のオブジェクトの配列：
   4. 入力用の答えがアプリで読め、正解を入れると正解になること
   5. 小問の数（\\item の数）と入力用の答えの行数が合うこと
   6. 入力用の答えの値が「答え」列の数式と SymPy で一致すること
-  7. 既存の問題（data/）と問題文がまったく同じでないこと
+  7. 既存の問題（data/）と問題文がまったく同じでないこと（data/ の本文が欠けていれば中止する。別の data/ は環境変数 LEMMA_DATA で）
 問題がなければ終了コード 0。
 """
 import json
+import os
 import re
 import subprocess
 import sys
@@ -50,10 +51,13 @@ def main():
     items = json.loads(src.read_text(encoding='utf-8'))
     errs = []
     existing_q = set()
-    data = HERE.parent / 'data'
-    for _, _, items in BA.read_bodies(data):
-        for b in items.values():
-            existing_q.add(re.sub(r'\s+', '', b['q']))
+    data = Path(os.environ.get('LEMMA_DATA') or HERE.parent / 'data')
+    # 既存の問題文（7. の照合用）：一覧の全問の本文がそろっていることを確かめてから使う（欠けていると重複を見逃すため）
+    _, existing, bad = BA.load_bodies_checked(data)
+    if bad:
+        sys.exit('data/ の本文がそろっていないので，既存の問題との照合ができません（node tests/run.mjs で確かめてください）：\n  ' + '\n  '.join(bad[:10]))
+    for _, b in existing.values():
+        existing_q.add(re.sub(r'\s+', '', b['q']))
     html, specs, rows, seen_q = {}, {}, [], {}
     for n, it in enumerate(items):
         tid = str(it.get('tid') or f'#{n + 1}')
