@@ -26,8 +26,10 @@ for (const line of fs.readFileSync(path.join(dist, '_headers'), 'utf8').split('\
 const match = (pat, p) => new RegExp('^' + pat.replace(/[.+?^${}()|[\]\\]/g, '\\$&').replace(/\*/g, '.*') + '$').test(p);
 const TYPES = { '.html': 'text/html', '.js': 'text/javascript', '.css': 'text/css', '.json': 'application/json',
   '.png': 'image/png', '.webmanifest': 'application/manifest+json', '.woff2': 'font/woff2', '.txt': 'text/plain' };
+const hits = [];   // サーバーに来た要求（Service Worker がキャッシュから返した分は来ない）
 const server = http.createServer((req, res) => {
   let p = decodeURIComponent(new URL(req.url, 'http://x').pathname);
+  hits.push(p);
   if (p.endsWith('/')) p += 'index.html';
   const f = path.join(dist, p);
   if (!f.startsWith(dist) || !fs.existsSync(f) || p.startsWith('/_headers')) { res.writeHead(404); return res.end(); }
@@ -52,8 +54,11 @@ try {
   ok(/script-src 'self'/.test(resp.headers()['content-security-policy'] || ''), 'CSP ヘッダーが付いている');
   await page.waitForTimeout(1500);
   ok(await page.locator('#random').count() === 1, 'ホームが出る');
-  // 入力式の採点（parser.js の compile）
+  // 入力式の採点（parser.js の compile）。本文は dist の塊（data/b/）から，その問題の分だけ読む
+  const got = [];
+  page.on('response', r => { const u = new URL(r.url()); if (u.pathname.includes('/data/b/') || u.pathname.includes('/data/f-')) got.push([u.pathname.split('/data/')[1], r.status()]); });
   await page.evaluate("__lemma.open(['I-QF-109'])"); await page.waitForTimeout(1000);
+  ok(got.length === 1 && got[0][0] === 'b/I-QF-5.json' && got[0][1] === 200, `dist の本文の塊を1つだけ読む（${got.map(x => x.join(':'))}）`);
   await page.locator('#conf button').nth(1).click();
   const inp = page.locator('#inputs input');
   await inp.nth(0).fill('x^2-8x+10'); await inp.nth(1).fill('4'); await inp.nth(2).fill('-3');
@@ -70,6 +75,27 @@ try {
   }
   ok((await (await page.request.get(U + 'robots.txt')).text()).includes('Disallow: /'), 'robots.txt で収集を断る');
   ok(errs.length === 0, `CSP 違反・エラーなし ${errs.join(' / ')}`);
+  // Service Worker（CSP つき）：開いた問題はオフラインでも開ける。サーバーへの本文の要求は2回目から0
+  {
+    const c2 = await browser.newContext({ viewport: { width: 390, height: 844 }, serviceWorkers: 'allow' });
+    const p2 = await c2.newPage();
+    const e2 = []; p2.on('pageerror', e => e2.push(String(e))); p2.on('console', m => { if (/Content Security Policy/.test(m.text())) e2.push(m.text()); });
+    await p2.goto(U + '#today'); await p2.waitForFunction(() => navigator.serviceWorker.controller, null, { timeout: 20000 }).catch(() => {});
+    await p2.reload(); await p2.waitForTimeout(1200);
+    hits.length = 0;
+    await p2.evaluate("__lemma.open(['I-QF-109','A-COM-038'])"); await p2.waitForTimeout(1200);
+    const first = hits.filter(h => h.includes('/data/b/')).length;
+    await p2.goto(U + '#today'); await p2.reload(); await p2.waitForTimeout(1200);
+    hits.length = 0;
+    await p2.evaluate("__lemma.open(['I-QF-109','A-COM-038'])"); await p2.waitForTimeout(1200);
+    ok(first === 2 && hits.filter(h => h.includes('/data/b/')).length === 0, `2回目はサーバーに本文を取りに行かない（1回目 ${first}件 → 2回目 ${hits.filter(h => h.includes('/data/b/')).length}件）`);
+    await c2.setOffline(true);
+    await p2.reload().catch(() => {}); await p2.waitForTimeout(1500);
+    await p2.evaluate("__lemma.open(['I-QF-109'])"); await p2.waitForTimeout(1200);
+    ok(await p2.locator('#inputs input').count() > 0, 'dist：オフラインでも開いた問題が開ける');
+    ok(e2.length === 0, `Service Worker でも CSP 違反・エラーなし ${e2.join(' / ')}`);
+    await c2.close();
+  }
 } finally {
   await browser.close();
   server.close();

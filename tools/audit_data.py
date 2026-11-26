@@ -17,6 +17,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from build_app_data import RESERVED, spec_errors  # noqa: E402
+import build_app_data as BA  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
 DATA, CONTENT, GOLDEN = ROOT / 'data', ROOT / 'content', ROOT / 'tests' / 'golden'
@@ -31,17 +32,21 @@ def builtin_ids():
 
 def load_data():
     idx = json.loads((DATA / 'index.json').read_text(encoding='utf-8'))
-    bodies, where = {}, {}
-    for f in sorted(DATA.glob('f-*.json')):
-        d = json.loads(f.read_text(encoding='utf-8'))
-        for k, v in d.items():
-            if k == '_meta':
-                continue
+    bodies, dup = {}, []
+    for name, meta, items in BA.read_bodies(DATA):
+        for k, v in items.items():
             if k in bodies:
-                where.setdefault(k, [where.get(k)]).append(f.name)
-            bodies[k] = (f.stem[2:], v, d.get('_meta', {}).get('dataVersion'))
-            where.setdefault(k, f.name)
-    return idx, bodies
+                dup.append(f'{k}: 本文が2つのファイルにある（{bodies[k][0]} と {name}）')
+            bodies[k] = (name, v, meta)
+    return idx, bodies, dup
+
+
+def group_items(bodies):
+    """{ファイル名: {問題ID: 本文}}"""
+    out = {}
+    for k, (name, v, _) in bodies.items():
+        out.setdefault(name, {})[k] = v
+    return out
 
 
 def load_content():
@@ -57,9 +62,13 @@ def load_content():
 
 def audit(xlsx=None):
     E, W = [], Counter()
-    idx, bodies = load_data()
+    idx, bodies, dup = load_data()
+    E += dup
     ids = [e['id'] for e in idx['problems']]
     fields = {f['key'] for f in idx['fields']}
+    chunked = (idx.get('bodies') or {}).get('layout') == 'chunks'
+    if chunked and any(n.startswith('f-') for (n, _, _) in bodies.values()):
+        E.append('塊の形の一覧なのに，前の形の本文ファイル f-*.json が残っている')
     bids = builtin_ids()
 
     # 1. ID の重複・内蔵問題との衝突
@@ -79,10 +88,11 @@ def audit(xlsx=None):
     for e in idx['problems']:
         if e['f'] not in fields:
             E.append(f'{e["id"]}: 分野 {e["f"]} が fields にない')
+        want = (f'{BA.CHUNK_DIR}/{BA.chunk_of(e["id"], e["f"])}.json' if chunked else f'f-{e["f"]}.json')
         if e['id'] not in bodies:
-            E.append(f'{e["id"]}: 本文（f-{e["f"]}.json）がない')
-        elif bodies[e['id']][0] != e['f']:
-            E.append(f'{e["id"]}: 一覧の分野 {e["f"]} と本文のファイル f-{bodies[e["id"]][0]}.json が違う')
+            E.append(f'{e["id"]}: 本文（{want}）がない')
+        elif bodies[e['id']][0] != want:
+            E.append(f'{e["id"]}: 本文が {want} でなく {bodies[e["id"]][0]} にある')
         if not isinstance(e.get('lv'), int) or not 0 <= e['lv'] <= 5:
             E.append(f'{e["id"]}: 難易度 {e.get("lv")} が 0〜5 でない')
         if 't' in e and (not isinstance(e['t'], int) or e['t'] <= 0):
@@ -102,9 +112,24 @@ def audit(xlsx=None):
     if idx.get('count') != len(ids):
         E.append(f'index.json の count {idx.get("count")} と問題数 {len(ids)} が違う')
 
-    # 3. データの版（新しい形式のときだけ）
-    if 'dataVersion' in idx:
-        vs = {v for (_, _, v) in bodies.values()}
+    # 3. データの版：塊の形はファイルごとのハッシュ（一覧の chunks と中身）。前の形は dataVersion
+    if chunked:
+        chunks = idx['bodies']['chunks']
+        files = {}
+        for name, _, meta in bodies.values():
+            files[name] = meta
+        names = {f'{BA.CHUNK_DIR}/{k}.json' for k in chunks}
+        for name in sorted(set(files) - names):
+            E.append(f'{name}: 一覧（index.json の bodies.chunks）にない本文ファイル')
+        for name in sorted(names - set(files)):
+            E.append(f'{name}: 一覧にあるのに本文ファイルが無い')
+        for name, items in group_items(bodies).items():
+            key = name[len(BA.CHUNK_DIR) + 1:-5]
+            h = BA.body_hash(items)
+            if files[name].get('h') != h or chunks.get(key) != h:
+                E.append(f'{name}: 中身のハッシュ {h} が，ファイルの _meta.h {files[name].get("h")}・一覧の {chunks.get(key)} と合わない')
+    elif 'dataVersion' in idx:
+        vs = {m.get('dataVersion') for (_, _, m) in bodies.values()}
         if vs != {idx['dataVersion']}:
             E.append(f'dataVersion が揃っていない: index.json {idx["dataVersion"]}、f-*.json {sorted(map(str, vs))}')
 

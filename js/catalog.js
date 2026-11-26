@@ -2,7 +2,7 @@
 import { PROBLEMS as BUILTIN, cardById, problemById as builtinById, unitOf as builtinUnit } from './content.js';
 import { retrievability, dueAt, TARGET_R } from './scheduler.js';
 
-export const FILE_VERSION = '0.31.1';
+export const FILE_VERSION = '0.32.0';
 
 // 難易度（問題管理表と同じ6段階。0=基礎 は v0.6 で追加。v0.15 で 3〜5 の名前を変更）
 export const LEVELS = { 0: '基礎', 1: '標準', 2: '入試基礎', 3: '入試標準', 4: '入試発展', 5: '数学探究' };
@@ -46,6 +46,9 @@ export async function loadCatalog() {
     META = { count: 0, generated: null, source: null, ok: false, error: e.message, format: null, dataVersion: null, warnings: [] };
   }
   FIELDS = meta ? meta.fields.slice() : [];
+  // 本文の置き方：塊（v0.32〜）か，分野ごとのファイル（それ以前・--legacy の取り込み）
+  const bl = meta && meta.bodies;
+  BODIES = bl && bl.layout === 'chunks' && bl.chunks ? { dir: bl.dir || 'b', size: bl.size || 20, chunks: bl.chunks } : null;
   const keyOf = (subject, name) => {
     let f = FIELDS.find(x => x.subject === subject && x.name === name);
     if (!f) { f = { key: `b-${FIELDS.length}`, subject, name }; FIELDS.push(f); }
@@ -66,31 +69,51 @@ export async function loadCatalog() {
   return META;
 }
 
-// 本文（分野ごとのファイル）を必要な分だけ読み込む
+// 本文を必要な分だけ読み込む。
+//   塊の形（index.json に bodies がある）：問題番号20番ごとの data/b/<塊>.json?h=<中身のハッシュ>。
+//     ハッシュつきの URL なので，中身が同じあいだは同じ URL（Service Worker がそのままキャッシュから返せる）
+//   前の形：分野ごとの data/f-<分野>.json
+// 同じファイルは一度だけ読む（読み込み中のものは同じ Promise を待つ）。失敗したファイルは忘れて，次に呼ばれたら読み直す
+let BODIES = null;   // { dir, size, chunks: { 塊: ハッシュ } } または null
 const bodies = new Map();
 const loaded = new Map();
+// 問題の本文が入るファイル（tools/build_app_data.py の chunk_of と同じ規則）
+export function bodyFile(e) {
+  if (!BODIES) return { path: `data/f-${e.f}.json`, url: `data/f-${e.f}.json`, h: null };
+  const m = /^(.+)-(\d+)$/.exec(e.id);
+  const key = m ? `${m[1]}-${Math.floor(+m[2] / BODIES.size)}` : `_${e.f}`;
+  const h = BODIES.chunks[key];
+  return { path: `data/${BODIES.dir}/${key}.json`, url: `data/${BODIES.dir}/${key}.json${h ? `?h=${h}` : ''}`, h };
+}
 export async function ensureBodies(ids) {
-  const need = new Set();
+  const need = new Map();
   for (const id of ids) {
     const e = entryById.get(id);
-    if (e && e.kind === 'bank' && !bodies.has(id)) need.add(e.f);
+    if (e && e.kind === 'bank' && !bodies.has(id)) { const f = bodyFile(e); need.set(f.path, f); }
   }
-  await Promise.all([...need].map(f => {
-    if (!loaded.has(f)) {
-      loaded.set(f, fetch(`data/f-${f}.json`).then(r => {
-        if (!r.ok) throw new Error(`data/f-${f}.json を読めません（${r.status}）`);
-        return r.json();
-      }).then(d => {
-        // 本文ファイルの版が一覧（index.json）と違う＝一部のファイルだけ古い
-        const v = d._meta && d._meta.dataVersion;
-        if (META.dataVersion && v !== META.dataVersion) staleData.add(`data/f-${f}.json`);
-        for (const [id, b] of Object.entries(d)) if (id !== '_meta') bodies.set(id, b);
-      })
-        .catch(e => { loaded.delete(f); throw e; }));
-    }
-    return loaded.get(f);
+  await Promise.all([...need.values()].map(f => {
+    if (!loaded.has(f.path)) loaded.set(f.path, loadBodyFile(f).catch(e => { loaded.delete(f.path); throw e; }));
+    return loaded.get(f.path);
   }));
 }
+// 1つの本文ファイルを読む。塊の中身のハッシュが一覧と違うとき：キャッシュ（Service Worker の lemma-chunks）が壊れているかもしれないので，
+// その項目を消して一度だけ読み直す。それでも違えば「一部だけ古い」として警告に出す（本文は使う）
+async function loadBodyFile(f, retried = false) {
+  let r;
+  try { r = await fetch(f.url); }
+  catch { throw new Error(`${f.path} を読めません（${typeof navigator !== 'undefined' && navigator.onLine === false ? 'オフライン' : '通信できません'}）`); }
+  if (!r.ok) throw new Error(`${f.path} を読めません（${r.status}）`);
+  const d = await r.json();
+  const m = d._meta || {};
+  const stale = f.h ? m.h !== f.h : (META.dataVersion && m.dataVersion !== META.dataVersion);
+  if (stale && f.h && !retried && typeof caches !== 'undefined') {
+    try { if (await (await caches.open('lemma-chunks')).delete(f.url)) return loadBodyFile(f, true); } catch { /* キャッシュを使えない環境 */ }
+  }
+  if (stale) staleData.add(f.path);
+  for (const [id, b] of Object.entries(d)) if (id !== '_meta') bodies.set(id, b);
+}
+// 読み込んだ本文ファイル（テスト・計測用）
+export const loadedBodyFiles = () => [...loaded.keys()];
 export const getBody = (id) => bodies.get(id);
 
 // 一覧と版が合わなかった本文ファイル（ensureBodies のあとに見る）

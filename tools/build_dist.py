@@ -7,9 +7,9 @@
 リポジトリを非公開にしたあとは、GitHub Pages（リポジトリ全体が配信される）ではなく、
 この dist/ だけを Cloudflare Pages などに置く。content/（正規データ）・tools/・tests/・docs/・supabase/ は配信しない。
 
-入れるもの：index.html・privacy.html・terms.html・manifest.webmanifest・sw.js・css/・js/・vendor/・icons/・data/*.json
+入れるもの：index.html・privacy.html・terms.html・manifest.webmanifest・sw.js・css/・js/・vendor/・icons/・data/*.json・data/b/*.json
 足すもの　：_headers（セキュリティヘッダー。Cloudflare Pages・Netlify の書式）・robots.txt（検索・収集ツールに読ませない）
-確かめること：sw.js の FILES がすべて揃っている、data/index.json の分野ファイルがすべてある、配信してはいけないものが無い。
+確かめること：sw.js の FILES がすべて揃っている、data/index.json の全問の本文がちょうど1つずつある（塊のハッシュも一致・前の形のファイルが残っていない）、配信してはいけないものが無い。
 """
 import json
 import re
@@ -17,6 +17,8 @@ import shutil
 import sys
 from pathlib import Path
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import build_app_data as BA  # noqa: E402
 ROOT = Path(__file__).resolve().parent.parent
 PAGES = ['index.html', 'privacy.html', 'terms.html', 'manifest.webmanifest', 'sw.js']
 DIRS = ['css', 'js', 'vendor', 'icons']
@@ -82,6 +84,10 @@ def build(out):
     (out / 'data').mkdir()
     for f in sorted((ROOT / 'data').glob('*.json')):
         shutil.copy2(f, out / 'data' / f.name)
+    if (ROOT / 'data' / 'b').is_dir():   # 本文の塊（v0.32〜）
+        (out / 'data' / 'b').mkdir()
+        for f in sorted((ROOT / 'data' / 'b').glob('*.json')):
+            shutil.copy2(f, out / 'data' / 'b' / f.name)
     (out / '_headers').write_text(headers_text(), encoding='utf-8')
     (out / 'robots.txt').write_text(ROBOTS, encoding='utf-8')
     return check(out)
@@ -95,10 +101,9 @@ def check(out):
     for f in files:
         if f != './' and not (out / f).exists():
             bad.append(f'sw.js の FILES にある {f} が dist に無い')
-    idx = json.loads((out / 'data' / 'index.json').read_text(encoding='utf-8'))
-    for fld in {p['f'] for p in idx['problems']}:
-        if not (out / 'data' / f'f-{fld}.json').exists():
-            bad.append(f'data/f-{fld}.json が無い')
+    # 一覧の全問の本文が dist にちょうど1つずつあり，塊のハッシュが一覧と合うこと（開発環境では動くのに dist に欠ける，を防ぐ）
+    _, _, errs = BA.load_bodies_checked(out / 'data')
+    bad += [f'dist/data：{x}' for x in errs]
     for f in FORBIDDEN:
         if (out / f).exists():
             bad.append(f'配信してはいけない {f} が入っている')
